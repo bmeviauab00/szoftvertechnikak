@@ -1,0 +1,38 @@
+/* Custom styles to override MkDocs defaults and enhance theme */
+
+/* Unordered list <ul> symbols:
+ * - level 2 is hollow circle
+ * - level 3 is filled square
+ * - ul default is filled disc (bullet)
+ */
+article ul ul {
+	list-style-type:  circle !important;
+}
+
+article ul ul ul {
+	list-style-type:  square !important;
+}
+
+/* img	{
+	height: 50%;
+    width: 50%;
+    border: 1px solid #9f9f9f;
+} */
+
+/* img {
+	transform: scale(0.5);
+} */
+
+/* img	{
+    max-width: 50%;
+	height: auto;
+    border: 1px solid #9f9f9f;
+} */
+
+/* span.xxx  {
+	display: inline-block;
+  }
+  
+ img.yyy {
+	width: 75%;
+  } */

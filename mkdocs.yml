@@ -1,0 +1,84 @@
+site_name: BMEVIAUAB00 Szoftvertechnikák
+site_author: Benedek Zoltán
+copyright: Copyright &copy; BME VIK AUT
+repo_name: bmeviauab00/szoftvertechnikak
+repo_url: https://github.com/bmeviauab00/szoftvertechnikak
+
+theme:
+  name: material
+  language: hu
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      primary: red
+      accent: red
+      toggle:
+        icon: material/lightbulb-outline
+        name: Váltás sötét témára
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: red
+      toggle:
+        icon: material/lightbulb
+        name: Váltás világos témára
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.tabs
+    - navigation.instant
+    - navigation.top
+    - search.suggest   
+  logo: img/logo-bme-aut.png
+  favicon: img/favicon.ico
+
+extra_css:
+  - extra-material-theme.css
+
+extra:
+  generator: false
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed
+  - pymdownx.tilde
+  - md_in_html
+  - attr_list
+
+plugins:
+  - search:
+      prebuild_index: true
+
+nav:
+  - index.md
+  - "Laborok":
+      - labor/1-model-es-kod-kapcsolata/index.md
+      - labor/2-nyelvi-eszkozok/index.md
+      - labor/3-felhasznaloi-felulet/index.md
+      - labor/4-tobbszalu/index.md
+      - labor/5-adatkezeles/index.md
+      - labor/6-doc-view/index.md
+      - labor/7-tervezesi-mintak/index.md      
+  - "Önálló/házi feladatok":
+      - hazi/index.md
+      - hazi/1-model-es-kod-kapcsolata/index.md
+      - hazi/2-modern-nyelvi-eszkozok/index.md
+      - hazi/3-felhasznaloi-felulet-kialakitasa/index.md
+      - hazi/4-tobbszalu-alkalmazasok-fejlesztese/index.md
+      - hazi/5-document-view-architectura/index.md
+      - hazi/VisualStudio.md
