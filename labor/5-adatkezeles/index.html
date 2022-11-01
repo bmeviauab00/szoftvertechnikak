@@ -1,0 +1,1143 @@
+
+<!doctype html>
+<html lang="hu" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Benedek Zoltán">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.7">
+    
+    
+      
+        <title>5. Adatkezelés - BMEVIAUAB00 Szoftvertechnikák</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../extra-material-theme.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#5-adatkezeles" class="md-skip">
+          Kihagyás
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Élőfej">
+    <a href="../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-header__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
+      
+  <img src="../../img/logo-bme-aut.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BMEVIAUAB00 Szoftvertechnikák
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5. Adatkezelés
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red"  aria-label="Váltás sötét témára"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Váltás sötét témára" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent=""  aria-label="Váltás világos témára"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Váltás világos témára" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Keresés" placeholder="Keresés" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Törlés" aria-label="Törlés" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Keresés inicializálása
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bmeviauab00/szoftvertechnikak
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Lapok" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Szoftvertechnikák
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1-model-es-kod-kapcsolata/" class="md-tabs__link md-tabs__link--active">
+        Laborok
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../hazi/" class="md-tabs__link">
+        Önálló/házi feladatok
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigáció" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-nav__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
+      
+  <img src="../../img/logo-bme-aut.png" alt="logo">
+
+    </a>
+    BMEVIAUAB00 Szoftvertechnikák
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bmeviauab00/szoftvertechnikak
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Szoftvertechnikák
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Laborok
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Laborok" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Laborok
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-model-es-kod-kapcsolata/" class="md-nav__link">
+        1. A modell és a kód kapcsolata
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-nyelvi-eszkozok/" class="md-nav__link">
+        2. Nyelvi eszközök
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-felhasznaloi-felulet/" class="md-nav__link">
+        3. A felhasználói felület kialakítása
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-tobbszalu/" class="md-nav__link">
+        4. Többszálú alkalmazások készítése
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          5. Adatkezelés
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        5. Adatkezelés
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tartalomjegyzék
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-gyakorlat-celja" class="md-nav__link">
+    A gyakorlat célja
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elofeltetelek" class="md-nav__link">
+    Előfeltételek
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bevezeto" class="md-nav__link">
+    Bevezető
+  </a>
+  
+    <nav class="md-nav" aria-label="Bevezető">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adonet" class="md-nav__link">
+    ADO.NET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-kapcsolatalapu-modell" class="md-nav__link">
+    A kapcsolatalapú modell
+  </a>
+  
+    <nav class="md-nav" aria-label="A kapcsolatalapú modell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connection" class="md-nav__link">
+    Connection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command" class="md-nav__link">
+    Command
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-reader" class="md-nav__link">
+    Data Reader
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-feladat-adatbazis-elokeszitese" class="md-nav__link">
+    1. Feladat – Adatbázis előkészítése
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-feladat-lekerdezes-adonet-sqldatareader-rel" class="md-nav__link">
+    2. Feladat – Lekérdezés ADO.NET SqlDataReader-rel
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-feladat-beszuras-sql-utasitassal" class="md-nav__link">
+    3. Feladat – Beszúrás SQL utasítással
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-feladat-modositas-tarolt-eljarassal" class="md-nav__link">
+    4. Feladat - Módosítás tárolt eljárással
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-feladat-sql-injection" class="md-nav__link">
+    5. Feladat - SQL Injection
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-feladat-torles" class="md-nav__link">
+    6. Feladat - Törlés
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kitekintes" class="md-nav__link">
+    Kitekintés
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fuggelek-adatbazisok-sql-nyelv-alapok" class="md-nav__link">
+    Függelék – Adatbázisok, SQL nyelv alapok
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-doc-view/" class="md-nav__link">
+        6. Document-View architektúra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-tervezesi-mintak/" class="md-nav__link">
+        7. Tervezési minták
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Önálló/házi feladatok
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Önálló/házi feladatok" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Önálló/házi feladatok
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hazi/" class="md-nav__link">
+        Házi feladatok
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hazi/1-model-es-kod-kapcsolata/" class="md-nav__link">
+        1. HF - A modell és a kód kapcsolata
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hazi/2-modern-nyelvi-eszkozok/" class="md-nav__link">
+        2. HF - Modern nyelvi eszközök
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hazi/3-felhasznaloi-felulet-kialakitasa/" class="md-nav__link">
+        3. HF - Felhasználói felület kialakítása
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hazi/4-tobbszalu-alkalmazasok-fejlesztese/" class="md-nav__link">
+        4. HF - Többszálú alkalmazások fejlesztése
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hazi/5-document-view-architectura/" class="md-nav__link">
+        5. HF - Document-View architektúra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hazi/VisualStudio/" class="md-nav__link">
+        Visual Studio & .NET SDK telepítése
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tartalomjegyzék
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-gyakorlat-celja" class="md-nav__link">
+    A gyakorlat célja
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elofeltetelek" class="md-nav__link">
+    Előfeltételek
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bevezeto" class="md-nav__link">
+    Bevezető
+  </a>
+  
+    <nav class="md-nav" aria-label="Bevezető">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adonet" class="md-nav__link">
+    ADO.NET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-kapcsolatalapu-modell" class="md-nav__link">
+    A kapcsolatalapú modell
+  </a>
+  
+    <nav class="md-nav" aria-label="A kapcsolatalapú modell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connection" class="md-nav__link">
+    Connection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command" class="md-nav__link">
+    Command
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-reader" class="md-nav__link">
+    Data Reader
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-feladat-adatbazis-elokeszitese" class="md-nav__link">
+    1. Feladat – Adatbázis előkészítése
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-feladat-lekerdezes-adonet-sqldatareader-rel" class="md-nav__link">
+    2. Feladat – Lekérdezés ADO.NET SqlDataReader-rel
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-feladat-beszuras-sql-utasitassal" class="md-nav__link">
+    3. Feladat – Beszúrás SQL utasítással
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-feladat-modositas-tarolt-eljarassal" class="md-nav__link">
+    4. Feladat - Módosítás tárolt eljárással
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-feladat-sql-injection" class="md-nav__link">
+    5. Feladat - SQL Injection
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-feladat-torles" class="md-nav__link">
+    6. Feladat - Törlés
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kitekintes" class="md-nav__link">
+    Kitekintés
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fuggelek-adatbazisok-sql-nyelv-alapok" class="md-nav__link">
+    Függelék – Adatbázisok, SQL nyelv alapok
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/bmeviauab00/szoftvertechnikak/edit/master/docs/labor/5-adatkezeles/index.md" title="Oldal szerkesztése" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="5-adatkezeles">5. Adatkezelés<a class="headerlink" href="#5-adatkezeles" title="Permanent link">&para;</a></h1>
+<p>Utolsó módosítás ideje: 2022.10.31<br />
+Kidolgozta: Kaszó Márk, Simon Gábor</p>
+<h2 id="a-gyakorlat-celja">A gyakorlat célja<a class="headerlink" href="#a-gyakorlat-celja" title="Permanent link">&para;</a></h2>
+<p>A gyakorlat célja az ADO.NET programozási modelljének megismerése és a leggyakoribb adatkezelési problémák, buktatók szemléltetése alapvető CRUD műveletek megírásán keresztül.</p>
+<p>Kapcsolódó előadások: Adatkezelés, ADO.NET alapismeretek.</p>
+<h2 id="elofeltetelek">Előfeltételek<a class="headerlink" href="#elofeltetelek" title="Permanent link">&para;</a></h2>
+<p>A gyakorlat elvégzéséhez szükséges eszközök:</p>
+<ul>
+<li>Visual Studio 2022</li>
+<li>Windows 10 vagy Windows 11 operációs rendszer (Linux és macOS nem alkalmas)</li>
+<li>A gyakorlat során az <em>SQL Server Object Explorer</em>-t fogjuk használni az adatbázis objektumok közötti navigálására és a lekérdezések futtatására. Ehhez szükség lehet az <em>SQL Server Data Tools</em> komponensre, melyet legegyszerűbben az <em>Individual Components</em> oldalon tudunk telepíteni a Visual Studio Installer-ben.</li>
+</ul>
+<h2 id="bevezeto">Bevezető<a class="headerlink" href="#bevezeto" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Megjegyzés gyakorlatvezetőknek</p>
+<p>Ezt a fejezetet gyakorlaton nem kell a leírtaknak megfelelő részletességgel ismertetni, a fontosabb fogalmakat azonban mindenképpen ismertessük röviden.</p>
+</div>
+<h3 id="adonet">ADO.NET<a class="headerlink" href="#adonet" title="Permanent link">&para;</a></h3>
+<p>Alacsony szintű adatbáziskezelésre a .NET platformon az ADO.NET áll rendelkezésre, segítségével relációs adatbázisokat tudunk elérni.</p>
+<p>Az ADO.NET használata során két eltérő adathozzáférési modellt alkalmazhatunk:</p>
+<ul>
+<li>Kapcsolatalapú modell</li>
+<li>Kapcsolat nélküli modell</li>
+</ul>
+<p>Az alábbi két blokkot lenyitva áttekintést kaphatunk a két modell alapelvéről.</p>
+<details class="abstract">
+<summary>A Kapcsolatalapú modell alapelvei</summary>
+<p>Lényege az, hogy az adatbáziskapcsolatot végig nyitva tartjuk, amíg az adatokat lekérdezzük, módosítjuk, majd a változtatásokat az adatbázisba visszaírjuk. A megoldásra DataReader objektumokat használhatunk (lásd később). A megoldás előnye az egyszerűségében rejlik (egyszerűbb programozási modell és konkurenciakezelés). A megoldás hátránya, hogy a folyamatosan fenntartott hálózati kapcsolat miatt skálázhatósági problémák adódhatnak. Ez azt jelenti, hogy az adatkezelőhöz történő nagyszámú párhuzamos felhasználói hozzáférés esetén folyamatosan nagyszámú adatbázis kapcsolat él, ami adatkezelő rendszerek esetén a teljesítmény szempontjából költséges erőforrásnak számít. Így a fejlesztés során célszerű arra törekedni, hogy az adatbázis kapcsolatokat mielőbb zárjuk le.</p>
+<p>A modell előnyei:</p>
+<ul>
+<li>Egyszerűbb a konkurencia kezelése</li>
+<li>Az adatok mindenhol a legfrissebbek</li>
+</ul>
+<p>Megjegyzés: ezek az előnyök akkor jelentkeznek, ha az adatbázis hozzáférés az adatkezelő szigorú zárakat használ – ezt mi a hozzáférés során megfelelő tranzakció izolációs szint megadásával tudjuk szabályozni. Ennek technikái későbbi tanulmányok során kerülnek ismertetésre).</p>
+<p>Hátrányok:</p>
+<ul>
+<li>Folyamatos hálózati kapcsolat</li>
+<li>Skálázhatóság</li>
+</ul>
+</details>
+<details class="abstract">
+<summary>A Kapcsolatnélküli modell alapelvei</summary>
+<p>A kapcsolatalapú modellel ellentétben az adatok megjelenítése és memóriában történő módosítása során nem tartunk fent adatbázis kapcsolatot. Ennek megfelelően a főbb lépések a következők: a kapcsolat felvételét és az adatok lekérdezését követően azonnal bontjuk a kapcsolatot. Az adatokat ezt követően tipikusan megjelenítjük és lehetőséget biztosítunk a felhasználónak az adatok módosítására (rekordok felvétele, módosítása, törlése igény szerint). A módosítások mentése során újra felvesszük az adatkapcsolatot, mentjük az adatbázisba a változtatásokat és zárjuk a kapcsolatot. Természetesen a modell megköveteli, hogy a lekérdezése és a módosítások visszaírása között – amikor nincs kapcsolatunk az adatbázissal – az adatokat és a változtatásokat a memóriában nyilvántartsuk. Erre az ADO.NET környezetben nagyon kényelmes megoldást nyújt a DataSet objektumok alkalmazása.</p>
+<p>A modell előnyei:</p>
+<ul>
+<li>Nem szükséges folyamatos hálózati kapcsolat</li>
+<li>Skálázhatóság</li>
+</ul>
+<p>Hátrányok</p>
+<ul>
+<li>Az adatok nem mindig a legfrissebbek</li>
+<li>Ütközések lehetségesek</li>
+</ul>
+<p>Megjegyzés: Számos lehetőségünk van arra, hogy az objektumokat és kapcsolódó változásokat nyilvántartsuk a memóriában. A DataSet csak az egyik lehetséges technika. De használhatunk erre a célra közönséges objektumokat, illetve ezek menedzselését megkönnyítő ADO.NET-nél korszerűbb .NET technológiákat (pl. Entity Framework).</p>
+</details>
+<h3 id="a-kapcsolatalapu-modell">A kapcsolatalapú modell<a class="headerlink" href="#a-kapcsolatalapu-modell" title="Permanent link">&para;</a></h3>
+<p>A mérés keretében a kapcsolatalapú modellt ismerjük meg.</p>
+<p>Az alapfolyamat a következő:</p>
+<ol>
+<li>Kapcsolat létrehozása az alkalmazás illetve az adatbázis kezelő rendszer között (<code>Connection</code> objektum felhasználásával)</li>
+<li>A futtatandó SQL utasítás összeállítás (<code>Command</code> objektum felhasználásával)</li>
+<li>Utasítás futtatása (<code>Command</code> objektum felhasználásával)</li>
+<li>Lekérdezések esetén a visszakapott rekordhalmaz feldolgozása (<code>DataReader</code> objektum felhasználásával). Erre a módosító parancsok esetén értelemszerűen nincs szükség.</li>
+<li>Kapcsolat lezárása</li>
+</ol>
+<p>Mint a fentiekből kiderül, az adatbázissal való kommunikációnak ebben a modellben három fő összetevője van:</p>
+<ul>
+<li>Connection</li>
+<li>Command</li>
+<li>Data Reader</li>
+</ul>
+<p>Ezek az összetevők egy-egy osztályként jelennek meg, adatbáziskezelőfüggetlen részük a <em>System.Data.dll</em>-ben található <code>DbConnection</code>, <code>DbCommand</code>, illetve <code>DbDataReader</code> néven. Ezek absztrakt osztályok, az adatbáziskezelők gyártóinak feladata, hogy ezekből leszármazva megírják a konkrét adatbáziskezelőket támogató változatokat. A Microsoftt SQL Servert támogató változatok szintén a <em>System.Data.dll</em>-ben, „Sql” prefixű osztályokban találhatók (<code>SqlConnection</code>, <code>SqlCommand</code> és <code>SqlDataReader</code>).
+A többi gyártó külön dll-(ek)be teszi a saját változatát, az így létrejött komponenst data providernek nevezik. Található még a <em>System.Data.dll</em>-ben Oracle adatbáziskezelőt támogató provider is, azonban ez már elavult. Néhány további gyártó ADO.NET adatbázis providere a teljesség igénye nélkül: ODP.NET (Oracle), MySqlConnector/Net (MySQL), Npgsql (PostgreSQL), System.Data.SQLite (SQLite)</p>
+<p>Mindhárom ADO.NET összetevő támogatja a <em>Dispose</em> mintát, így using blokkban használható – használjuk is így, amikor csak tudjuk. Az adatbáziskezelő általában másik gépen található, mint ahol a kódunk fut (a mérés során pont nem :)), így tekintsünk ezekre, mint távoli hálózati erőforrásokra.</p>
+<h4 id="connection">Connection<a class="headerlink" href="#connection" title="Permanent link">&para;</a></h4>
+<p>Ez teremti meg a kapcsolatot a programunk, illetve az adatbáziskezelő-rendszer között
+Inicializálásához szükség van egy connection string-re, ami a kapcsolat felépítéséhez szükséges adatokat adja meg a driver számára. Adatbázisgyártónként eltérő belső formátuma van (bővebben: <a href="http://www.connectionstrings.com">http://www.connectionstrings.com</a>).</p>
+<p>Új <code>Connection</code> példányosításakor nem biztos, hogy tényleg új kapcsolat fog létrejönni az adatbázis felé, a driverek általában connection pooling-ot alkalmaznak, hasonlóan, mint a thread pool esetében, újrahasználhatják a korábbi (éppen nem használt) kapcsolatokat.</p>
+<h4 id="command">Command<a class="headerlink" href="#command" title="Permanent link">&para;</a></h4>
+<p>Ennek segítségével vagyunk képesek „utasításokat” megfogalmazni az adatbázis kezelő számára. Ezeket SQL nyelven kell megfogalmaznunk.
+A <code>Command</code>-nak be kell állítani egy kapcsolatot – ezen keresztül fog a parancs végrehajtódni. A parancsnak különböző eredménye lehet, ennek megfelelően különböző függvényekkel sütjük el a parancsot:</p>
+<ul>
+<li><strong>ExecuteReader</strong>: Eredményhalmaz (result set) lekérdezése</li>
+<li><strong>ExecuteScalar</strong>: Skalár érték lekérdezése</li>
+<li><strong>ExecuteNonQuery</strong>: Nincs visszatérési érték (Pl: INSERT), viszont a művelet következtében érintett rekordok számát visszakapjuk</li>
+</ul>
+<h4 id="data-reader">Data Reader<a class="headerlink" href="#data-reader" title="Permanent link">&para;</a></h4>
+<p>Ha a parancs eredménye eredményhalmaz, akkor ennek a komponensnek a segítségével tudjuk az adatokat kiolvasni. Az eredményhalmaz egy táblázatnak tekinthető, a Data Reader ezen tud kurzoros módszerrel soronként végignavigálni (csak előrefelé!). A kurzor egyszerre egy soron áll, ha a sorból a szükséges adatokat kiolvastuk, a kurzort egy sorral előre léptethetjük. Csak az aktuális sorból tudunk olvasni. Kezdetben a kurzor nem az első soron áll, azt egyszer léptetnünk kell, hogy az első sorra álljon.</p>
+<p>Megjegyzés: navigálás kliens oldalon történik a memóriában, nincs köze az egyes adatkezelők által támogatott kiszolgáló oldali kurzorokhoz.</p>
+<h2 id="1-feladat-adatbazis-elokeszitese">1. Feladat – Adatbázis előkészítése<a class="headerlink" href="#1-feladat-adatbazis-elokeszitese" title="Permanent link">&para;</a></h2>
+<p>Elsőként szükségünk van egy adatbáziskezelőre. Ezt valós környezetben dedikált szerveren futó, adatbázis adminisztrátorok által felügyelt, teljesértékű adatbáziskezelők jelentik. Fejlesztési időben, lokális teszteléshez azonban kényelmesebb fejlesztői adatbáziskezelő használata.
+A Visual Studio telepítésének részeként kapunk is egy ilyen adatbázis engine-t, ez a LocalDB, ami a teljesértékű SQL Server egyszerűsített változata. Főbb tulajdonságai:</p>
+<ul>
+<li>nem csak a Visual Studio-val, hanem külön is telepíthető</li>
+<li>az adatbázismotor szinte teljes mértékben kompatibilis a teljesértékű Microsoft SQL Serverrel</li>
+<li>alapvetően arról a gépről érhető el, amire telepítettük</li>
+<li>több példány is létrehozható igény szerint, a példányok alapvetően a létrehozó operációs rendszer felhasználója számára érhető el (igény esetén megosztható egy példány a felhasználók között)</li>
+<li>a saját példányok kezelése (létrehozás, törlés, stb.) nem igényel adminisztrátori jogokat</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">ssqllocaldb parancssori eszköz</p>
+<p>Érdekesség, (ezeket a gyakorlaton nem kell elmondani), csak a lehetőséget említsük meg. A példányok kezelésére az sqllocaldb parancssori eszköz használható.  Néhány parancs, melyet az sqllocaldb után beírva alkalmazhatunk :</p>
+<table>
+<thead>
+<tr>
+<th>Paracs</th>
+<th>Leírás</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>info</td>
+<td>az aktuális felhasznááló számára látható példányok listája</td>
+</tr>
+<tr>
+<td>create „locdb”</td>
+<td>„locdb” nevű példány törlése</td>
+</tr>
+<tr>
+<td>start „locdb”</td>
+<td>„locdb” nevű példány indítása</td>
+</tr>
+<tr>
+<td>stop „locdb”</td>
+<td>„locdb” nevű példány leállítása</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A Visual Studio is vesz fel, illetve indít LocalDB példányokat, ezért érdemes megnézni, hogy a Visual Studio alapból milyen példányokat lát.</p>
+<ol>
+<li>Indítsuk el a Visual Studio-t, a View menüből válasszuk az SQL Server Object Explorer-t (SSOE).</li>
+<li>Nyissuk ki az SQL Server csomópontot, ha alatta látunk további csomópontokat, akkor nyert ügyünk van, nyissuk ki valamelyiket (ilyenkor indul el a példány, ha nincs elindítva, így lehet, hogy várni kell kicsit)</li>
+<li>Ha nem jelent meg semmi, akkor parancssorból az <code>mssqllocaldb info</code> parancs megadja a létező példányokat. Válasszuk az SQL Server csomóponton jobbklikkelve az <em>Add SQL Server</em> opciót, majd adjuk meg valamelyik létező példányt, pl.: <em>(localdb)\MSSQLLocalDB</em></li>
+<li>A megjelenő <em>Databases</em> csomóponton válasszuk a <em>New Database</em> opciót, itt adjunk meg egy adatbázisnevet. (Laboron, mivel több hallgató is használhatja ugyanazt az operációs rendszer felhasználót, így javasolt a neptunkód mint név használata.)</li>
+<li>Az új adatbázis csomópontján jobbklikkelve válasszuk a <em>New Query</em> opciót, ami egy új query ablakot nyit</li>
+<li>A tárgyhonlapról nyissuk meg vagy töltsük le a <em>Northwind</em> adatbázis inicializáló szkriptet (a publikus anyagok között található, <a href="https://www.aut.bme.hu/Upload/Course/ujgen/publikus_anyagok/instnwndEx.sql">„Northwind példaadatbázis”</a> néven)</li>
+<li>Másoljuk be a teljes szkriptet a query ablakba</li>
+<li>A szkript elején a megadott helyen írjuk be az adatbázisunk nevét</li>
+<li>Futtassuk le a szkriptet a kis zöld nyíllal (<em>Execute</em>)</li>
+<li>Ellenőrizzük, hogy az adatbázisunk ban megjelentek-e táblák, nézetek</li>
+<li>Fedezzük fel az SSOE legfontosabb funkcióit (táblák adatainak, sémájának lekérdezése stb.)</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A Visual Studio-ban két eszközzel is kezelhetünk adatbázisokat: a Server Explorer-rel és az SQL Server Object Explorer-rel is. Előbbi egy általánosabb eszköz, mely nem csak adatbázis, hanem egyéb szerver erőforrások (pl. Azure szerverek) kezelésére is alkalmas, míg a másik kifejezetten csak adatbáziskezelésre van kihegyezve. Mindkettő elérhető a View menüből és mindkettő hasonló funkciókat ad adatbáziskezeléshez, ezért ebben a mérésben csak az egyiket (SQL Server Object Explorer) használjuk.</p>
+<p>Amikor nem áll rendelkezésünkre a Visual Studio fejlesztőkörnyezet, akkor az adatbázisunk menedzselésére az (ingyenes) SQL Server Management Studio-t tudjuk használni.</p>
+</div>
+<h2 id="2-feladat-lekerdezes-adonet-sqldatareader-rel">2. Feladat – Lekérdezés ADO.NET SqlDataReader-rel<a class="headerlink" href="#2-feladat-lekerdezes-adonet-sqldatareader-rel" title="Permanent link">&para;</a></h2>
+<p>COMING SOON</p>
+<h2 id="3-feladat-beszuras-sql-utasitassal">3. Feladat – Beszúrás SQL utasítással<a class="headerlink" href="#3-feladat-beszuras-sql-utasitassal" title="Permanent link">&para;</a></h2>
+<p>COMING SOON</p>
+<h2 id="4-feladat-modositas-tarolt-eljarassal">4. Feladat - Módosítás tárolt eljárással<a class="headerlink" href="#4-feladat-modositas-tarolt-eljarassal" title="Permanent link">&para;</a></h2>
+<p>COMING SOON</p>
+<h2 id="5-feladat-sql-injection">5. Feladat - SQL Injection<a class="headerlink" href="#5-feladat-sql-injection" title="Permanent link">&para;</a></h2>
+<p>COMING SOON</p>
+<h2 id="6-feladat-torles">6. Feladat - Törlés<a class="headerlink" href="#6-feladat-torles" title="Permanent link">&para;</a></h2>
+<p>COMING SOON</p>
+<h2 id="kitekintes">Kitekintés<a class="headerlink" href="#kitekintes" title="Permanent link">&para;</a></h2>
+<p>COMING SOON</p>
+<h2 id="fuggelek-adatbazisok-sql-nyelv-alapok">Függelék – Adatbázisok, SQL nyelv alapok<a class="headerlink" href="#fuggelek-adatbazisok-sql-nyelv-alapok" title="Permanent link">&para;</a></h2>
+<p>Az adatbáziskezelő rendszerek világába és az SQL nyelvbe betekintést a kapcsolódó előadáson, illetve az alábbi hivatkozás alatt találsz: <a href="adatbazisok-sql-alapok/">Adatbázisok, SQL nyelv alapok</a></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Élőláb" >
+      
+        
+        <a href="../4-tobbszalu/" class="md-footer__link md-footer__link--prev" aria-label="Előző: 4. Többszálú alkalmazások készítése" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Előző
+              </span>
+              4. Többszálú alkalmazások készítése
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../6-doc-view/" class="md-footer__link md-footer__link--next" aria-label="Következő: 6. Document-View architektúra" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Következő
+              </span>
+              6. Document-View architektúra
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; BME VIK AUT
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.config.lang": "hu", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Keres\u00e9s", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.8492ddcf.min.js"></script>
+      
+    
+  </body>
+</html>
