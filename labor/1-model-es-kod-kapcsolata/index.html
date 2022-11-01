@@ -1039,7 +1039,7 @@ A <code>Console.WriteLine</code> műveletnek vagy egy egyszerű stringet adunk m
 <span class="w">     </span><span class="n">equipment</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">eq</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<p>Korábbi döntésünk értelmében az IEquipment interfészt használjuk az különböző alkatrész típusok egységes kezelésére. Estünkben mind a SoundCard, mind a HardDisk osztály rendelkezik GetAge() és GetPrice() metódussal, mégsem tudjuk őket egységesen kezelni (pl. közös listában tárolni). Ahhoz, hogy ezt meg tudjuk tenni, el kell érnünk, hogy mindkét osztály megvalósítsa az IEquipment interfészt. Módosítsuk a forrásukat:</p>
+<p>Korábbi döntésünk értelmében az <code>IEquipment</code> interfészt használjuk az különböző alkatrész típusok egységes kezelésére. Estünkben mind a SoundCard, mind a <code>HardDisk</code> osztály rendelkezik <code>GetAge()</code> és <code>GetPrice()</code> metódussal, mégsem tudjuk őket egységesen kezelni (pl. közös listában tárolni). Ahhoz, hogy ezt meg tudjuk tenni, el kell érnünk, hogy mindkét osztály megvalósítsa az <code>IEquipment</code> interfészt. Módosítsuk a forrásukat:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SoundCard</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="p">...</span><span class="w"></span>
@@ -1148,10 +1148,10 @@ A diagramunk és a forráskódunk vonatkozó részei ezt követően így néznek
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SoundCard</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">EquipmentBase</span><span class="w"></span>
 <span class="p">{</span><span class="w"> </span><span class="err">…</span><span class="w"></span>
 </code></pre></div>
-<p>A kódunk még nem fordul, ennek több oka is van. Az EquipmentBase implementálja az IEquipment interfészt, de még nincsenek benne implementálva az interfész műveletei. Vagy generáltassuk le a metódusokat a smart tag használatával, vagy gépeljük be a következő elveknek megfelelően:</p>
+<p>A kódunk még nem fordul, ennek több oka is van. Az <code>EquipmentBase</code> implementálja az <code>IEquipment</code> interfészt, de még nincsenek benne implementálva az interfész műveletei. Vagy generáltassuk le a metódusokat a smart tag használatával, vagy gépeljük be a következő elveknek megfelelően:</p>
 <ul>
 <li>A <code>newPrice</code> és <code>earOfCreation</code> duplikálva vannak a <code>HardDisk</code> és <code>SoundCard</code> osztályokban: mozgassuk (és ne másoljuk!) át ezeket a közös EquipmentBase ősbe, és protected láthatóságot adjunk meg.</li>
-<li>A <code>GetAge</code> művelet duplikálva van a <code>HardDisk</code> és <code>SoundCard</code> osztályokban, ezekből töröljük ki az implementációt és vigyük át az <code>EquipmentBase</code> osztályba. </li>
+<li>A <code>GetAge</code> művelet duplikálva van a <code>HardDisk</code> és <code>SoundCard</code> osztályokban, ezekből töröljük ki az implementációt és vigyük át az <code>EquipmentBase</code> osztályba.</li>
 <li>A <code>GetPrice</code> műveletet absztrakt műveletként vegyük fel az ősbe. Ez szándékos tervezői döntés, így rákényszerítjük a leszármazott osztályokat, hogy mindenképpen definiálják felül ezt a műveletet.</li>
 <li>A <code>GetDescription</code> esetében viszont pont fordítottja a helyzet: ezt virtuálisnak definiáljuk (és nem absztraktnak), vagyis már az ősben is adunk meg implementációt. Így a leszármazottak nincsenek rákényszerítve a művelet felüldefiniálására.</li>
 </ul>
@@ -1180,7 +1180,7 @@ A diagramunk és a forráskódunk vonatkozó részei ezt követően így néznek
 <li>Az absztrakt műveletek esetében az abstract kulcsszót kell megadni</li>
 <li>.NET környezetben lehetőségünk van szabályozni, hogy egy művelet virtuális-e vagy sem. Ebből a szempontból a C++ nyelvhez hasonlít. Amennyiben egy műveletet virtuálissá szeretnénk tenni, a virtual kulcsszót kell a műveletre megadni. Emlékeztető: akkor definiáljunk egy műveletet virtuálisnak, ha a leszármazottak azt felüldefiniál(hat)ják. Csak ekkor garantált, hogy egy ősreferencián meghívva az adott műveletet a leszármazottbeli verzió hívódik meg.</li>
 </ul>
-<p>A következő lépésben térjünk át az EquipmentBase leszármazottakra. C# nyelven az absztrakt és virtuális műveletek felüldefiniálásakor a leszármazottban meg kell adni az override kulcsszót. Első lépésben a GetPrice műveletet definiáljuk felül:</p>
+<p>A következő lépésben térjünk át az EquipmentBase leszármazottakra. C# nyelven az absztrakt és virtuális műveletek felüldefiniálásakor a leszármazottban meg kell adni az <code>override</code> kulcsszót. Első lépésben a <code>GetPrice</code> műveletet definiáljuk felül:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">HardDisk</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">EquipmentBase</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="err">…</span><span class="w"></span>
