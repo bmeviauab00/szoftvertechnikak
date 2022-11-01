@@ -1,0 +1,2 @@
+# szoftvertechnikak
+BME Szoftvertechnikák
