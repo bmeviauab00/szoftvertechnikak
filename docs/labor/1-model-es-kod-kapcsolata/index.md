@@ -245,7 +245,7 @@ public void AddEquipment(IEquipment eq)
 }
 ```
 
-Korábbi döntésünk értelmében az IEquipment interfészt használjuk az különböző alkatrész típusok egységes kezelésére. Estünkben mind a SoundCard, mind a HardDisk osztály rendelkezik GetAge() és GetPrice() metódussal, mégsem tudjuk őket egységesen kezelni (pl. közös listában tárolni). Ahhoz, hogy ezt meg tudjuk tenni, el kell érnünk, hogy mindkét osztály megvalósítsa az IEquipment interfészt. Módosítsuk a forrásukat:
+Korábbi döntésünk értelmében az `IEquipment` interfészt használjuk az különböző alkatrész típusok egységes kezelésére. Estünkben mind a SoundCard, mind a `HardDisk` osztály rendelkezik `GetAge()` és `GetPrice()` metódussal, mégsem tudjuk őket egységesen kezelni (pl. közös listában tárolni). Ahhoz, hogy ezt meg tudjuk tenni, el kell érnünk, hogy mindkét osztály megvalósítsa az `IEquipment` interfészt. Módosítsuk a forrásukat:
 
 ```cs
 public class SoundCard : IEquipment
@@ -395,10 +395,10 @@ public class SoundCard : EquipmentBase
 { …
 ```
 
-A kódunk még nem fordul, ennek több oka is van. Az EquipmentBase implementálja az IEquipment interfészt, de még nincsenek benne implementálva az interfész műveletei. Vagy generáltassuk le a metódusokat a smart tag használatával, vagy gépeljük be a következő elveknek megfelelően:
+A kódunk még nem fordul, ennek több oka is van. Az `EquipmentBase` implementálja az `IEquipment` interfészt, de még nincsenek benne implementálva az interfész műveletei. Vagy generáltassuk le a metódusokat a smart tag használatával, vagy gépeljük be a következő elveknek megfelelően:
 
 - A `newPrice` és `earOfCreation` duplikálva vannak a `HardDisk` és `SoundCard` osztályokban: mozgassuk (és ne másoljuk!) át ezeket a közös EquipmentBase ősbe, és protected láthatóságot adjunk meg.
-- A `GetAge` művelet duplikálva van a `HardDisk` és `SoundCard` osztályokban, ezekből töröljük ki az implementációt és vigyük át az `EquipmentBase` osztályba. 
+- A `GetAge` művelet duplikálva van a `HardDisk` és `SoundCard` osztályokban, ezekből töröljük ki az implementációt és vigyük át az `EquipmentBase` osztályba.
 - A `GetPrice` műveletet absztrakt műveletként vegyük fel az ősbe. Ez szándékos tervezői döntés, így rákényszerítjük a leszármazott osztályokat, hogy mindenképpen definiálják felül ezt a műveletet.
 - A `GetDescription` esetében viszont pont fordítottja a helyzet: ezt virtuálisnak definiáljuk (és nem absztraktnak), vagyis már az ősben is adunk meg implementációt. Így a leszármazottak nincsenek rákényszerítve a művelet felüldefiniálására.
 
@@ -430,7 +430,7 @@ Néhány kiegészítő gondolat a kódrészletre vonatkozóan:
 - Az absztrakt műveletek esetében az abstract kulcsszót kell megadni
 - .NET környezetben lehetőségünk van szabályozni, hogy egy művelet virtuális-e vagy sem. Ebből a szempontból a C++ nyelvhez hasonlít. Amennyiben egy műveletet virtuálissá szeretnénk tenni, a virtual kulcsszót kell a műveletre megadni. Emlékeztető: akkor definiáljunk egy műveletet virtuálisnak, ha a leszármazottak azt felüldefiniál(hat)ják. Csak ekkor garantált, hogy egy ősreferencián meghívva az adott műveletet a leszármazottbeli verzió hívódik meg.
 
-A következő lépésben térjünk át az EquipmentBase leszármazottakra. C# nyelven az absztrakt és virtuális műveletek felüldefiniálásakor a leszármazottban meg kell adni az override kulcsszót. Első lépésben a GetPrice műveletet definiáljuk felül:
+A következő lépésben térjünk át az EquipmentBase leszármazottakra. C# nyelven az absztrakt és virtuális műveletek felüldefiniálásakor a leszármazottban meg kell adni az `override` kulcsszót. Első lépésben a `GetPrice` műveletet definiáljuk felül:
 
 ```cs
 public class HardDisk : EquipmentBase
