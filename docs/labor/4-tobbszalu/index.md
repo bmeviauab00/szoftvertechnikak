@@ -171,3 +171,374 @@ Ez a megoldás már működőképes. A `Form` osztály `InvokeRequired` metódus
 Tegyünk töréspontot a `ShowResult` művelet első sorára, és az alkalmazást futtatva győződjünk meg, hogy a `ShowResult` művelet – különösen az `Invoke` tekintetében – a fentiekben ismertetetteknek megfelelően működik.
 
 Vegyük ki a töréspontot, így futtassuk az alkalmazást: vegyük észre, hogy amíg egy számítás fut, újabbakat is indíthatunk, hiszen a felületünk végig reszponzív maradt.
+
+## 4. feladat – Művelet végzése Threadpool szálon
+
+Az előző megoldás egy jellemzője, hogy mindig új szálat hoz létre a művelethez. Esetünkben ennek nincs különösebb jelentősége, de ez a megközelítés egy olyan kiszolgáló alkalmazás esetében, amely nagyszámú kérést szolgál ki úgy, hogy minden kéréshez külön szálat indít, már problémás lehet. Két okból is:
+
+- Ha a szálfüggvény gyorsan lefut (egy kliens kiszolgálása gyors), akkor a CPU nagy részét arra pazaroljuk, hogy szálakat indítsunk és állítsunk le, ezek ugyanis önmagukban is erőforrásigényesek.
+- Túl nagy számú szál is létrejöhet, ennyit kell ütemeznie az operációs rendszernek, ami feleslegesen pazarolja az erőforrásokat.
+- 
+Egy másik probléma jelen megoldásunkkal: mivel a számítás előtérszálon fut (az újonnan létrehozott szálak alapértelmezésben előtérszálak), hiába zárjuk be az alkalmazást, a program tovább fut a háttérben mindaddig, amíg végre nem hajtódik az utoljára indított számolás is: egy processz futása ugyanis csak akkor fejeződik csak be, ha már nincs futó előtérszála.
+
+Módosítsuk a gomb eseménykezelőjét, hogy új szál indítása helyett threadpool szálon futtassa a számítást. Ehhez csak a gombnyomás eseménykezelőjét kell ismét átírni.
+
+```cs hl_lines="7"
+private void buttonCalcResult_Click(object sender, EventArgs e)
+{
+    if (double.TryParse(textBoxParam1.Text, out var p1) && double.TryParse(textBoxParam2.Text, out var p2))
+    {
+        var parameters = new double[] { p1, p2 };
+
+        ThreadPool.QueueUserWorkItem(CalculatorThread, parameters);
+    }
+    else
+    {
+        MessageBox.Show(this, "Invalid parameter!", "Error");
+    }
+}
+```
+
+Próbáljuk ki az alkalmazást, és vegyük észre, hogy az alkalmazás az ablak bezárásakor azonnal leáll, nem foglalkozik az esetlegesen még futó szálakkal (mert a threadpool szálak háttér szálak).
+
+## 5. Feladat – Termelő-fogyasztó alapú megoldás
+
+Az előző feladatok megoldása során önmagában egy jól működő komplett megoldását kaptuk az eredeti problémának, mely lehetővé teszi, hogy akár több munkaszál is párhuzamosan dolgozzon a háttérben a számításon, ha a gombot sokszor egymás után megnyomjuk. A következőkben úgy fogjuk módosítani az alkalmazásunkat, hogy a gombnyomásra ne mindig keletkezzen új szál, hanem a feladatok bekerüljenek egy feladatsorba, ahonnan több, a háttérben folyamatosan futó szál egymás után fogja kivenni őket és végrehajtani. Ez a feladat a klasszikus termelő-fogyasztó probléma, mely a gyakorlatban is sokszor előfordul, a működését az alábbi ábra szemlélteti.
+
+![Termelő fogyasztó](images/termelo-fogyaszto.png)
+
+!!! warning "Termelő fogyasztó vs ThreadPool"
+    Ha belegondolunk a ThreadPool megoldásunk is a keretrendszerben már leimplementált Termelő fogyasztó és ütemező mechanizmus. Mi most csak azért implementáljuk le a laboron kézzel újra, hogy bizonyos szálkezeléssel kapcsolatos konkurencia problémákkal találkozhassunk.
+
+A főszálunk a termelő, a _Calculate result_ gombra kattintva hoz létre egy új feladatot. Fogyasztó/feldolgozó/munkaszálból azért indítunk majd többet, mert így több CPU magot is ki tudunk használni, valamint a feladatok végrehajtását párhuzamosítani tudjuk.
+
+A feladatok ideiglenes tárolására a kiinduló projektünkben már némiképpen előkészített `DataFifo` osztályt tudjuk használni. Nézzük meg a forráskódját. Egy egyszerű FIFO sort valósít meg, melyben `double[]` elemeket tárol. A `Put` metódus hozzáfűzi a belső lista végéhez az új párokat, míg a `TryGet` metódus visszaadja (és eltávolítja) a belső lista első elemét. Amennyiben a lista üres, a függvény nem tud visszaadni elemet. Ilyenkor a `false` visszatérési értékkel jelzi ezt.
+
+1. Módosítsuk a gomb eseménykezelőjét, hogy ne `ThreadPool`ba dolgozzon, hanem a FIFO-ba:
+
+    ```cs hl_lines="7"
+    private void buttonCalcResult_Click(object sender, EventArgs e)
+    {
+        if (double.TryParse(textBoxParam1.Text, out var p1) && double.TryParse(textBoxParam2.Text, out var p2))
+        {
+            var parameters = new double[] { p1, p2 };
+
+            _fifo.Put(parameters);
+        }
+        else
+        {
+            MessageBox.Show(this, "Invalid parameter!", "Error");
+        }
+    }
+    ```
+
+2. Készítsük el az új szálkezelő függvény naív implementációját az űrlap osztályunkban:
+
+    ```cs
+    private void WorkerThread()
+    {
+        while (true)
+        {
+            if (_fifo.TryGet(out var data))
+            {
+                double result = Algorithms.SuperAlgorithm.Calculate(data);
+                ShowResult(data, result);
+            }
+
+            Thread.Sleep(500);
+        }
+    }
+    ```
+
+    A `Thread.Sleep` bevezetésére azért van szükség, mert e nélkül a munkaszálak üres FIFO esetén folyamatosan feleslegesen pörögnének, semmi hasznos műveletet nem végezve is 100%-ban kiterhelnének egy-egy CPU magot. Megoldásunk nem ideális, később továbbfejlesztjük.
+
+3. Hozzuk létre, és indítsuk el a feldolgozó szálakat a konstruktorban:
+
+    ```cs
+    new Thread(WorkerThread) { Name = "Szal1" }.Start();
+    new Thread(WorkerThread) { Name = "Szal2" }.Start();
+    new Thread(WorkerThread) { Name = "Szal3" }.Start();
+    ```
+
+4. Indítsuk el az alkalmazást, majd zárjuk is be azonnal anélkül, hogy a Calculate Result gombra kattintanánk. Az tapasztaljuk, hogy az ablakunk bezáródik ugyan, de a processzünk tovább fut, az alkalmazás bezárására csak a Visual Studioból, vagy a Task Managerből van lehetőség:
+
+    ![Stop Debugging](images/stop-debugging.png)
+
+    A feldolgozó szálak előtérszálak, kilépéskor megakadályozzák a processz megszűnését. Az egyik megoldás az lehetne, ha a szálak `IsBackground` tulajdonságát `true`-ra állítanánk a létrehozásukat követően. A másik megoldás, hogy kilépéskor gondoskodunk a feldolgozó szálak kiléptetéséről. Egyelőre tegyük félre ezt a problémát, később visszatérünk rá.
+
+Indítsuk el az alkalmazást azt tapasztaljuk, hogy miután kattintunk a _Calculate Result_ gombon nagy valószínűséggel kivételt fogunk kapni. A probléma az, hogy a `DataFifo` nem szálbiztos, inkonzisztensé vált. Két eredő ok is húzódik a háttérben:
+
+### Probléma 1
+
+Nézzük a következő forgatókönyvet:
+
+1. A sor üres. A feldolgozó szálak egy `while` ciklusban folyamatosan pollozzák a FIFO-t, vagyis hívják a `TryGet` metódusát.
+2. A felhasználó egy feladatot tesz a sorba.
+3. Az egyik feldolgozó szál a `TryGet` metódusban azt látja, van adat a sorban, vagyis `if ( _innerList.Count > 0 )` kódsor feltétele teljesül, és rálép a következő kódsorra. Tegyük fel, hogy ez a szál ebben a pillanatban elveszti a futási jogát, már nincs ideje kivenni az adatot a sorból.
+4. Egy másik feldolgozó szál is éppen ekkor ejti meg az `if ( _innerList.Count > 0 )` vizsgálatot, nála is teljesül a feltétel, és ez a szál ki is veszi az adatot a sorból.
+5. Az első szálunk újra ütemezésre kerül, felébred, ő is megpróbálja kivenni az adatot a sorból: a sor viszont már üres, a másik szálunk kivette az egyetlen adatot a sorból az orra előtt. Így a `_innerList[0]` hozzáférés kivételt eredményez.
+
+Ezt a problémát csak úgy tudjuk elkerülni, ha a sor ürességének a vizsgálatát és az elem kivételét oszthatatlanná tesszük.
+
+!!! note "Thread.Sleep(500)"
+    Az ürességvizsgálatot figyelő kódsort követő `Thread.Sleep(500);` kódsornak csak az a szerepe a példakódunkban, hogy a fenti peches forgatókönyv bekövetkezésének a valószínűségét megnövelje, s így a példát szemléletesebbé tegye. A későbbiekben ezt ki is fogjuk venni, egyelőre hagyjuk benne.
+
+### Probléma 2
+
+A `DataFifo` osztály egyidőben több szálból is hozzáférhet a `List<double[]>` típusú `_innerList` tagváltozóhoz. Ugyanakkor, ha megnézzük a `List<T>` dokumentációját, azt találjuk, hogy az osztály nem szálbiztos (not thread safe). Ez esetben viszont ez nem tehetjük meg, nekünk kell zárakkal biztosítanunk, hogy a kódunk egyidőben csak egy metódusához/tulajdonságához/tagváltozójához fér hozzá (pontosabban inkonzisztencia csak egyidejű írás, illetve egyidejű írás és olvasás esetén léphet fel, de az írókat és az olvasókat a legtöbb esetben nem szoktuk megkülönböztetni, itt sem tesszük).
+
+A következő lépésben a `DataFifo` osztályunkat szálbiztossá tesszük, amivel megakadályozzuk, hogy a fenti két probléma bekövetkezhessen.
+
+## feladat – Tegyük szábiztossá a DataFifo osztályt
+
+A `DataFifo` osztály szálbiztossá tételéhez szükségünk van egy objektumra (ez bármilyen referencia típusú objektum lehet), amit kulcsként használhatunk a zárolásnál. Ezt követően a `lock` kulcsszó segítségével el tudjuk érni, hogy egyszerre mindig csak egy szál tartózkodjon az adott kulccsal védett blokkokban.
+
+1.	Vegyünk fel egy `object` típusú mezőt `_syncRoot` néven a `DataFifo` osztályba.
+
+    ```cs
+    private object _syncRoot = new object();
+    ```
+
+2. Egészítsük ki a `Put` és a `TryGet` függvényeket a zárolással.
+
+!!! tip "Surround with"
+    Használjuk a Visual Studio _Surround with_ funkcióját a CTRL + K, CTRL + S billentyű kombinációjával a körülvenni kívánt kijelölt kódrészleten.
+
+    ```cs hl_lines="3-4 18"
+    public void Put(double[] data)
+    {
+        lock (_syncRoot)
+        {
+            _innerList.Add(data); 
+        }
+    }
+    ```
+
+    ```cs hl_lines="3-4 6"
+    public bool TryGet(out double[] data)
+    {
+        lock (_syncRoot)
+        {
+            if (_innerList.Count > 0)
+            {
+                Thread.Sleep(500);
+
+                data = _innerList[0];
+                _innerList.RemoveAt(0);
+                return true;
+            }
+            else
+            {
+                data = null;
+                return false;
+            } 
+        }
+    }
+    ```
+
+Most már nem szabad kivételt kapnunk.
+
+Ki is vehetjük a `TryGet` metódusból a mesterséges késleltetést (`Thread.Sleep(500);` sor).
+
+!!! error "lock on this"
+    Felmerülhet a kérdés, hogy miért nem a `this` referenciával lockolunk, amikor az is referencia típus, és alkalmas lenne lockolásra. A fő ok, hogy a kritikus szakaszt szeretnénk ha csak a `DataFifo` definálná, ezért egy privát `object` típusú változót használunk erre. Ha a `this`-re lockolnánk, akkor előfordulhat, hogy valaki más kívülről is ezt a `this` referenciát használná egy másik zárolásra (pl.: `MainForm`-nak van referenciája a `DataFifo`-ra), ami helytelen eredményt okozna.
+
+## 7. feladat – Hatékony jelzés megvalósítása
+
+### ManualResetEvent használata
+
+A `WorkerThread`-ben folyamatosan futó `while` ciklus ún. aktív várakozást valósít meg, ami mindig kerülendő. Ha a `Thread.Sleep`-et nem tettük volna a ciklusmagba, akkor ezzel maximumra ki is terhelné a processzort. A `Thread.Sleep` megoldja ugyan a processzor terhelés problémát, de bevezet egy másikat: ha mindhárom munkaszálunk éppen alvó állapotba lépett, mikor beérkezik egy új adat, akkor feleslegesen várunk 500 ms-ot az adat feldolgozásának megkezdéséig.
+
+A következőkben úgy fogjuk módosítani az alkalmazást, hogy blokkolva várakozzon, amíg adat nem kerül a FIFO-ba. Annak jelzésére, hogy van-e adat a sorban egy `ManualResetEvent`-et fogunk használni.
+
+1. Adjunk hozzá egy `MaunalResetEvent` példányt a `DataFifo` osztályunkhoz `_hasData` néven.
+
+    ```cs
+    private ManualResetEvent hasData = new ManualResetEvent(false);
+    ```
+
+2. A `_hasData` alkalmazásunkban kapuként viselkedik. Amikor adat kerül a listába „kinyitjuk”, míg amikor kiürül a lista „bezárjuk”.
+
+    ```cs hl_lines="6"
+    public void Put(double[] data)
+    {
+        lock (_syncRoot)
+        {
+            _innerList.Add(data);
+            _hasData.Set();
+        }
+    }
+    ```
+
+    ```cs hl_lines="11-14"
+    public bool TryGet(out double[] data)
+    {
+        lock (_syncRoot)
+        {
+            if (_innerList.Count > 0)
+            {
+                data = _innerList[0];
+                _innerList.RemoveAt(0);
+                if (_innerList.Count == 0)
+                {
+                    _hasData.Reset();
+                }
+
+                return true;
+            }
+            else
+            {
+                data = null;
+                return false;
+            } 
+        }
+    }
+    ```
+
+### Jelzésre várakozás (blokkoló a Get)
+
+Az előző pontban megoldottuk a jelzést, ám ez önmagában nem sokat ér, hiszen nem várakoznak rá. Ennek megvalósítása jön most.
+
+1. Módosítsuk a metódust az alábbiak szerint: kidobjuk az üresség vizsgálatot és az eseményre való várakozással pótoljuk.
+
+    ```cs hl_lines="5"
+    public bool TryGet(out double[] data)
+    {
+        lock (_syncRoot)
+        {
+            if (_hasData.WaitOne())
+            {
+                // ...
+    ```
+
+2. Ezzel a `Thread.Sleep` a `WorkerThread`-ben feleslegessé vált, kommentezzük ki!
+
+    A fenti megoldás futtatásakor azt tapasztaljuk, hogy az alkalmazásunk felülete az első gombnyomást követően befagy. Az előző megoldásunkban ugyanis egy amatőr hibát követtünk el. A lock-olt kódrészleten belül várakozunk a `_hasData` jelzésére, így a főszálnak lehetősége sincs arra, hogy a `Put` műveletben (egy szintén `lock`-kal védett részen belül) jelzést küldjön `_hasData`-val. **Gyakorlatilag egy holtpont (deadlock) helyzet alakult ki.**
+
+    Gyors hibajavításként megadhatunk egy időkorlátot (ms) a várakozásnál:
+
+    ```cs
+    if (_hasData.WaitOne(100))
+    ```
+
+    Teszteljük az alkalmazást! A megoldás ugyan fut, de az elegáns és követendő minta az, hogy lock-on belül kerüljük a blokkolva várakozást.
+
+    Valódi javításként cseréljük meg a `lock`-ot és a `WaitOne`-t:
+
+    ```cs hl_lines="3-6 15-21"
+    public bool TryGet(out double[] data)
+    {
+        if (_hasData.WaitOne())
+        {
+            lock (_syncRoot)
+            {
+                data = _innerList[0];
+                _innerList.RemoveAt(0);
+                if (_innerList.Count == 0)
+                {
+                    _hasData.Reset();
+                }
+
+                return true; 
+            }
+        }
+        else
+        {
+            data = null;
+            return false;
+        }
+    }
+    ```
+
+    Így elkerüljük a deadlockot, **azonban a szálbiztosság sérült**, hiszen mire a `lock`-on belülre jutunk, nem biztos, hogy maradt elem a listában. Ugyanis lehet, több szál is várakozik a `_hasData.WaitOne()` műveletnél arra, hogy elem kerüljön a sorba. Mikor ez bekövetkezik, a `ManualResetEvent` objektumunk mind átengedi (hacsak éppen gyorsan le nem csukja egy szál, de ez nem garantált).
+
+3. Javításként tegyük vissza a `lock`-on belüli üresség-vizsgálatot.
+
+    ```cs hl_lines="3-4 13-18"
+    lock (_syncRoot)
+    {
+        if (_innerList.Count > 0)
+        {
+            data = _innerList[0];
+            _innerList.RemoveAt(0);
+            if (_innerList.Count == 0)
+            {
+                _hasData.Reset();
+            }
+
+            return true;  
+        }
+        else
+        {
+            data = null;
+            return false;
+        }
+    }
+    ```
+
+    Ez már jól működik. Előfordulhat ugyan, hogy feleslegesen fordulunk a listához, de ezzel így most megelégszünk.
+
+    Teszteljük az alkalmazást!
+
+!!! tip "System.Collections.Concurrent"
+    A .NET keretrendszerben több beépített szálbiztosságra felkészített osztály is található a `System.Collections.Concurrent` névtérben. A fenti példában a `DataFifo` osztályt a `System.Collections.Concurrent.ConcurrentQueue` osztállyal kiválthattuk volna.
+
+## 8. feladat – Kulturált leállás
+
+Korábban félretettük azt a problémát, hogy az ablakunk bezárásakor a processzünk „beragad”, ugyanis a feldolgozó munkaszálak előtérszálak, kiléptetésüket eddig nem oldottuk meg. Célunk, hogy a végtelen `while` ciklust kiváltva a munkaszálaink az alkalmazás bezárásakor kulturált módon álljanak le.
+
+1. Egy `ManualResetEvent` segítségével jelezzük a leállítást a FIFO-ban a `TryGet`-ben történő várakozás során. A FIFO-ban vegyünk fel egy új `ManualResetEvent`-et, és vezessünk be egy `Release` műveletet, amellyel a várakozásainkat zárhatjuk rövidre (új eseményünk jelzett állapotba állítható).
+
+    ```cs
+    private ManualResetEvent _releaseTryGet = new ManualResetEvent(false);
+
+    public void Release()
+    {
+        _releaseTryGet.Set();
+    }
+    ```
+
+2.	A `TryGet`-ben erre az eseményre is várakozzunk. A `WaitAny` metódus akkor engedi tovább a futtatást, ha a paraméterként megadott `WaitHandle` típusú objektumok közül valamelyik jelzett állapotba kerül, és visszaadja annak tömbbéli indexét. Továbbmenni pedig csak akkor szeretnénk, ha a `_hasData` jelzett.
+
+    ```cs hl_lines="3"
+    public bool TryGet(out double[] data)
+    {
+        if (WaitHandle.WaitAny(new[] { _hasData, _releaseTryGet }) == 0)
+        {
+            lock (_syncRoot)
+            {
+    ```
+
+3. `MainForm.Designer.cs`-ben egészítsük ki a Dispose metódust, ahol elengedjük a FIFO-t:
+
+    ```cs hl_lines="7"
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing && (components != null))
+        {
+            components.Dispose();
+        }
+        _fifo.Release();
+        base.Dispose(disposing);
+    }
+    ```
+
+4. Írjuk át a `while` ciklust, hogy az `IsDisposed` tulajdonságot figyelje.
+
+    ```cs hl_lines="3"
+    private void WorkerThread()
+    {
+        while (!IsDisposed)
+        {
+    ```
+
+5. Futtassuk az alkalmazást, és ellenőrizzük, kilépéskor az processzünk valóban befejezi-e a futását.
+
+!!! tip "Hol hívjunk Release-t"
+    A `Designer.cs` fájlokat alapvetően nem szokás szerkeszteni, bár ezt a metódust a designer már nem piszkálja, ha létrejött a form. Ha ez zavar minket, akkor nyugodtan helyezzük át ezt a függvényt a `MainForm.cs`-be.
+
+    Egyik alternatíva lehetne, hogy a `Form` `Dispose` metódusa helyett egy másik életciklus metódust definiálunk felül pl.: `OnClosing`, `OnClosed`
+
+    Itt a `Release` művelet helyett még egy másik alternatíva lehetne, hogy az `IDisposable` mintát megvalósítjuk a `DataFifo`-ba, de ilyenkor is kézzel kellene `Dispose`-t hívni, mivel nem függvény szintű az életciklusa a FIFO objektumnak, így nem tudnánk `using` blokkban használni.
+
+    Egy összetett alkalmazásban egyénként gyakran nem kézzel kezeljük egy-egy osztálynak a függőségeit és az életciklusát. Helyette a [Dependency Injection tervezési mintát](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection) érdemes alkalmazni, ahol egy külön komponensbe szervezzük ki az objektumok példányosítását és életciklusának kezelését.
