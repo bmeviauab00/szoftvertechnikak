@@ -144,6 +144,11 @@ Alkalmazásunkban azért kaptunk kivételt, mert a `listViewResult` vezérlőt a
 
 A fenti szabály alól van pár kivétel, ilyen pl. a `Control` osztályban definiált `InvokeRequired` property és `Invoke` metódusa bármely szálból biztonságosan elérhető. Az `InvokeRequired` tulajdonság értéke igaz, ha nem a vezérlőelemet létrehozó szálból kérdezzük le az értékét, egyébként hamis. Az `Invoke` metódus pedig a vezérlőelemet létrehozó szálon futtatja le a paraméterként megadott metódust. Az `InvokeRequired` és a `Invoke` felhasználásával el tudjuk kerülni korábbi kivételünket, ezt fogjuk a következőkben megtenni.
 
+!!! warning "Csak Debug módban jön az `InvalidOperationException`?"
+    Ha kipróbálnánk, hogy debugger nélkül indítjuk el az alkalmazást (VS-ben Start without debugging vagy magát az exe-t), akkor azt tapasztalnánk, hogy nem jön a fenti kivétel. Ennek az az oka, hogy, fejlesztés időben, debuggerrel vizsgálva az alkalmazást, sokkal szigorúbban figyeli a keretrendszer a UI szál sértést, hogy már fejlesztés időben előjöjjenek olyan potenciális hibák, amik amúgy még nem jelentenék az alkalmazás összeomlását.
+
+    A fenti esetben a `ListView` piszkálását még túlélné az app, de a keretrendszer a debuggeren keresztül jelzi a hibás gyakorlatot.
+
 ## 3. Feladat – Tegyük szálbiztossá a ShowResult metódust
 
 Módosítaniuk kell a `ShowResult` metódust, hogy mellékszálból történő hívás esetén se dobjon kivételt.
