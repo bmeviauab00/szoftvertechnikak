@@ -38,7 +38,7 @@ A kiinduló alkalmazásban a felhasználói felület elő is van készítve. Fut
 
 ![starter](images/starter.png)
 
-Az alkalmazás felületén meg tudjuk adni az algoritmus bemenő paramétereit (double számok tömbje): a példánkban mindig két double szám paraméterrel hívjuk az algoritmust, ezt a két felső szövegmezőben lehet megadni.
+Az alkalmazás felületén meg tudjuk adni az algoritmus bemenő paramétereit (`double` számok tömbje): a példánkban mindig két `double` szám paraméterrel hívjuk az algoritmust, ezt a két felső szövegmezőben lehet megadni.
 A feladatunk az, hogy a _Calculate Result_ gombra kattintás során futtassuk az algoritmust a megadott paraméterekkel, majd, ha végzett, akkor a _Result_ alatti listázó mező új sorában jelenítsük meg a kapott eredményt a bemenő paraméterekkel együtt.
 
 Következő lépésben ismerkedjünk meg a letöltött Visual Studio solutionnel:
@@ -97,7 +97,7 @@ Most már rátérhetünk az algoritmus futtatására. Első lépésben ezt az al
     }
     ```
 
-2.	Próbáljuk ki az alkalmazást, és vegyük észre, hogy az ablak a számolás ideje alatt nem reagál a mozgatásra, átméretezésre, a felület gyakorlatilag befagy.
+2. Próbáljuk ki az alkalmazást, és vegyük észre, hogy az ablak a számolás ideje alatt nem reagál a mozgatásra, átméretezésre, a felület gyakorlatilag befagy.
 
 Az alkalmazásunk eseményvezérelt, mint minden Windows alkalmazás. Az operációs rendszer a különböző interakciókról (pl. mozgatás, átméretezés) üzenetekben értesíti az alkalmazásunkat. Mivel a gombnyomást követően az alkalmazásunk egyetlen szála a kalkulációval van elfoglalva, nem tudja azonnal feldolgozni a további felhasználói utasításokat. Amint a számítás lefutott (és az eredmények megjelennek a listában) a korábban kapott parancsok is végrehajtásra kerülnek.
 
@@ -144,7 +144,7 @@ Alkalmazásunkban azért kaptunk kivételt, mert a `listViewResult` vezérlőt a
 
 A fenti szabály alól van pár kivétel, ilyen pl. a `Control` osztályban definiált `InvokeRequired` property és `Invoke` metódusa bármely szálból biztonságosan elérhető. Az `InvokeRequired` tulajdonság értéke igaz, ha nem a vezérlőelemet létrehozó szálból kérdezzük le az értékét, egyébként hamis. Az `Invoke` metódus pedig a vezérlőelemet létrehozó szálon futtatja le a paraméterként megadott metódust. Az `InvokeRequired` és a `Invoke` felhasználásával el tudjuk kerülni korábbi kivételünket, ezt fogjuk a következőkben megtenni.
 
-## 3. Feladat – Tegyük szálbiztossá a ShowResult metódust (Invoke)
+## 3. Feladat – Tegyük szálbiztossá a ShowResult metódust
 
 Módosítaniuk kell a `ShowResult` metódust, hogy mellékszálból történő hívás esetén se dobjon kivételt.
 
@@ -207,8 +207,8 @@ Az előző feladatok megoldása során önmagában egy jól működő komplett m
 
 ![Termelő fogyasztó](images/termelo-fogyaszto.png)
 
-!!! warning "Termelő fogyasztó vs ThreadPool"
-    Ha belegondolunk a ThreadPool megoldásunk is a keretrendszerben már leimplementált Termelő fogyasztó és ütemező mechanizmus. Mi most csak azért implementáljuk le a laboron kézzel újra, hogy bizonyos szálkezeléssel kapcsolatos konkurencia problémákkal találkozhassunk.
+!!! tip "Termelő fogyasztó vs `ThreadPool`"
+    Ha belegondolunk a `ThreadPool` is a keretrendszerben egy már leimplementált Termelő fogyasztó és ütemező mechanizmus. Mi most csak azért implementáljuk le a laboron kézzel újra, hogy bizonyos szálkezeléssel kapcsolatos konkurencia problémákkal találkozhassunk.
 
 A főszálunk a termelő, a _Calculate result_ gombra kattintva hoz létre egy új feladatot. Fogyasztó/feldolgozó/munkaszálból azért indítunk majd többet, mert így több CPU magot is ki tudunk használni, valamint a feladatok végrehajtását párhuzamosítani tudjuk.
 
@@ -266,7 +266,7 @@ A feladatok ideiglenes tárolására a kiinduló projektünkben már némiképpe
 
     A feldolgozó szálak előtérszálak, kilépéskor megakadályozzák a processz megszűnését. Az egyik megoldás az lehetne, ha a szálak `IsBackground` tulajdonságát `true`-ra állítanánk a létrehozásukat követően. A másik megoldás, hogy kilépéskor gondoskodunk a feldolgozó szálak kiléptetéséről. Egyelőre tegyük félre ezt a problémát, később visszatérünk rá.
 
-Indítsuk el az alkalmazást azt tapasztaljuk, hogy miután kattintunk a _Calculate Result_ gombon nagy valószínűséggel kivételt fogunk kapni. A probléma az, hogy a `DataFifo` nem szálbiztos, inkonzisztensé vált. Két eredő ok is húzódik a háttérben:
+5. Indítsuk el az alkalmazást azt tapasztaljuk, hogy miután kattintunk a _Calculate Result_ gombon nagy valószínűséggel kivételt fogunk kapni. A probléma az, hogy a `DataFifo` nem szálbiztos, inkonzisztensé vált. Két eredő ok is húzódik a háttérben:
 
 ### Probléma 1
 
@@ -281,15 +281,15 @@ Nézzük a következő forgatókönyvet:
 Ezt a problémát csak úgy tudjuk elkerülni, ha a sor ürességének a vizsgálatát és az elem kivételét oszthatatlanná tesszük.
 
 !!! note "Thread.Sleep(500)"
-    Az ürességvizsgálatot figyelő kódsort követő `Thread.Sleep(500);` kódsornak csak az a szerepe a példakódunkban, hogy a fenti peches forgatókönyv bekövetkezésének a valószínűségét megnövelje, s így a példát szemléletesebbé tegye. A későbbiekben ezt ki is fogjuk venni, egyelőre hagyjuk benne.
+    Az ürességvizsgálatot figyelő kódsort követő `Thread.Sleep(500);` kódsornak csak az a szerepe a példakódunkban, hogy a fenti peches forgatókönyv bekövetkezésének a valószínűségét megnövelje, s így a példát szemléletesebbé tegye (mivel ilyenkor szinte biztos, hogy átütemeződik a szál). A későbbiekben ezt ki is fogjuk venni, egyelőre hagyjuk benne.
 
 ### Probléma 2
 
-A `DataFifo` osztály egyidőben több szálból is hozzáférhet a `List<double[]>` típusú `_innerList` tagváltozóhoz. Ugyanakkor, ha megnézzük a `List<T>` dokumentációját, azt találjuk, hogy az osztály nem szálbiztos (not thread safe). Ez esetben viszont ez nem tehetjük meg, nekünk kell zárakkal biztosítanunk, hogy a kódunk egyidőben csak egy metódusához/tulajdonságához/tagváltozójához fér hozzá (pontosabban inkonzisztencia csak egyidejű írás, illetve egyidejű írás és olvasás esetén léphet fel, de az írókat és az olvasókat a legtöbb esetben nem szoktuk megkülönböztetni, itt sem tesszük).
+A `DataFifo` osztály egyidőben több szálból is hozzáférhet a `List<double[]>` típusú `_innerList` tagváltozóhoz. Ugyanakkor, ha megnézzük a `List<T>` dokumentációját, azt találjuk, hogy az osztály nem szálbiztos (not thread safe). Ez esetben viszont ez nem tehetjük meg, nekünk kell zárakkal biztosítanunk, hogy a kódunk egyidőben csak egy metódusához / tulajdonságához / tagváltozójához fér hozzá (pontosabban inkonzisztencia csak egyidejű írás, illetve egyidejű írás és olvasás esetén léphet fel, de az írókat és az olvasókat a legtöbb esetben nem szoktuk megkülönböztetni, itt sem tesszük).
 
 A következő lépésben a `DataFifo` osztályunkat szálbiztossá tesszük, amivel megakadályozzuk, hogy a fenti két probléma bekövetkezhessen.
 
-## feladat – Tegyük szábiztossá a DataFifo osztályt
+## 6. feladat – Tegyük szábiztossá a DataFifo osztályt
 
 A `DataFifo` osztály szálbiztossá tételéhez szükségünk van egy objektumra (ez bármilyen referencia típusú objektum lehet), amit kulcsként használhatunk a zárolásnál. Ezt követően a `lock` kulcsszó segítségével el tudjuk érni, hogy egyszerre mindig csak egy szál tartózkodjon az adott kulccsal védett blokkokban.
 
@@ -300,9 +300,6 @@ A `DataFifo` osztály szálbiztossá tételéhez szükségünk van egy objektumr
     ```
 
 2. Egészítsük ki a `Put` és a `TryGet` függvényeket a zárolással.
-
-!!! tip "Surround with"
-    Használjuk a Visual Studio _Surround with_ funkcióját a CTRL + K, CTRL + S billentyű kombinációjával a körülvenni kívánt kijelölt kódrészleten.
 
     ```cs hl_lines="3-4 18"
     public void Put(double[] data)
@@ -336,11 +333,15 @@ A `DataFifo` osztály szálbiztossá tételéhez szükségünk van egy objektumr
     }
     ```
 
+    !!! tip "Surround with"
+        Használjuk a Visual Studio _Surround with_ funkcióját a CTRL + K, CTRL + S billentyű kombinációjával a körülvenni kívánt kijelölt kódrészleten.
+
+
 Most már nem szabad kivételt kapnunk.
 
 Ki is vehetjük a `TryGet` metódusból a mesterséges késleltetést (`Thread.Sleep(500);` sor).
 
-!!! error "lock on this"
+!!! error "Lockolás `this`-en"
     Felmerülhet a kérdés, hogy miért nem a `this` referenciával lockolunk, amikor az is referencia típus, és alkalmas lenne lockolásra. A fő ok, hogy a kritikus szakaszt szeretnénk ha csak a `DataFifo` definálná, ezért egy privát `object` típusú változót használunk erre. Ha a `this`-re lockolnánk, akkor előfordulhat, hogy valaki más kívülről is ezt a `this` referenciát használná egy másik zárolásra (pl.: `MainForm`-nak van referenciája a `DataFifo`-ra), ami helytelen eredményt okozna.
 
 ## 7. feladat – Hatékony jelzés megvalósítása
@@ -454,19 +455,30 @@ Az előző pontban megoldottuk a jelzést, ám ez önmagában nem sokat ér, his
 
 3. Javításként tegyük vissza a `lock`-on belüli üresség-vizsgálatot.
 
-    ```cs hl_lines="3-4 13-18"
-    lock (_syncRoot)
+    ```cs hl_lines="7-8 17-22"
+    public bool TryGet(out double[] data)
     {
-        if (_innerList.Count > 0)
+        if (_hasData.WaitOne())
         {
-            data = _innerList[0];
-            _innerList.RemoveAt(0);
-            if (_innerList.Count == 0)
+            lock (_syncRoot)
             {
-                _hasData.Reset();
-            }
+                if (_innerList.Count > 0)
+                {
+                    data = _innerList[0];
+                    _innerList.RemoveAt(0);
+                    if (_innerList.Count == 0)
+                    {
+                        _hasData.Reset();
+                    }
 
-            return true;  
+                    return true;  
+                }
+                else
+                {
+                    data = null;
+                    return false;
+                }
+            }
         }
         else
         {
@@ -480,7 +492,7 @@ Az előző pontban megoldottuk a jelzést, ám ez önmagában nem sokat ér, his
 
     Teszteljük az alkalmazást!
 
-!!! tip "System.Collections.Concurrent"
+!!! note "System.Collections.Concurrent"
     A .NET keretrendszerben több beépített szálbiztosságra felkészített osztály is található a `System.Collections.Concurrent` névtérben. A fenti példában a `DataFifo` osztályt a `System.Collections.Concurrent.ConcurrentQueue` osztállyal kiválthattuk volna.
 
 ## 8. feladat – Kulturált leállás
@@ -534,7 +546,7 @@ Korábban félretettük azt a problémát, hogy az ablakunk bezárásakor a proc
 
 5. Futtassuk az alkalmazást, és ellenőrizzük, kilépéskor az processzünk valóban befejezi-e a futását.
 
-!!! tip "Hol hívjunk Release-t"
+!!! note "Hol hívjunk Release-t"
     A `Designer.cs` fájlokat alapvetően nem szokás szerkeszteni, bár ezt a metódust a designer már nem piszkálja, ha létrejött a form. Ha ez zavar minket, akkor nyugodtan helyezzük át ezt a függvényt a `MainForm.cs`-be.
 
     Egyik alternatíva lehetne, hogy a `Form` `Dispose` metódusa helyett egy másik életciklus metódust definiálunk felül pl.: `OnClosing`, `OnClosed`
