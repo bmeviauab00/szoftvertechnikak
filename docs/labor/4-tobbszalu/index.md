@@ -32,7 +32,7 @@ A feladat során egyszerű Windows Forms alkalmazást fogunk felruházni többsz
 
 Klónozzuk le a 4. gyakorlathoz tartozó kiinduló alkalmazást repositoryját a [GitHub-ról](https://github.com/bmeviauab00/lab-tobbszalu-kiindulo), és nyissuk meg _SuperCalculator.sln_ solutiont Visual Studio-ban.
 
-A feladatunk az, hogy egy bináris formában megkapott algoritmus futtatásához Windows Forms technológiával felhasználói felületet készítsünk. A bináris forma .NET esetében egy _.dll_ kiterjesztésű fájlt jelent, ami programozói szemmel egy osztálykönyvtár.  A fájl neve esetünkben _Algorithms.dll_, megtalálható a leklónozott repóban állományban.
+A feladatunk az, hogy egy bináris formában megkapott algoritmus futtatásához Windows Forms technológiával felhasználói felületet készítsünk. A bináris forma .NET esetében egy _.dll_ kiterjesztésű fájlt jelent, ami programozói szemmel egy osztálykönyvtár.  A fájl neve esetünkben _Algorithms.dll_, megtalálható a leklónozott Git repositoryban.
 
 A kiinduló alkalmazásban a felhasználói felület elő is van készítve. Futtassuk az alkalmazást:
 
@@ -137,21 +137,26 @@ Következő lépésben a számítás elvégzésére egy külön szálat fogunk i
 
     A Thread objektum `Start` műveletében átadott paramétert kapja meg a `CalculatorThread` szálfüggvényünk.
 
-3.	Futtassuk az alkalmazást F5-tel! _InvalidOperationException, Cross-thread operation not valid_ hibaüzenetet kapunk a `ShowResult` metódusban, ugyanis nem abból a szálból próbálunk hozzáférni a UI elemhez / vezérlőhöz, amelyik létrehozta (a vezérlőt). A következő feladatban ezt a problémát oldjuk meg.
+3.	Futtassuk az alkalmazást F5-tel (most fontos, hogy így, a debuggerben futtassuk)! _InvalidOperationException, Cross-thread operation not valid_ hibaüzenetet kapunk a `ShowResult` metódusban, ugyanis nem abból a szálból próbálunk hozzáférni a UI elemhez / vezérlőhöz, amelyik létrehozta (a vezérlőt). A következő feladatban ezt a problémát oldjuk meg.
 
 A problémát a következő okozza. Windows Forms alkalmazásoknál él az alábbi szabály: az űrlapok/vezérlőelemek alapvetően nem szálvédett objektumok, így egy űrlaphoz/vezérlőhöz csak abból a szálból szabad hozzáférni (pl. propertyjét olvasni, állítani, műveletét meghívni), amelyik szál az adott űrlapot/vezérlőt létrehozta, máskülönben kivételt kapunk.
 Alkalmazásunkban azért kaptunk kivételt, mert a `listViewResult` vezérlőt a fő szálban hoztuk létre, a `ShowResult` metódusban az eredmény megjelenítésekor viszont egy másik szálból férünk hozzá (`listViewResult.Items.Add`).
 
-A fenti szabály alól van pár kivétel, ilyen pl. a `Control` osztályban definiált `InvokeRequired` property és `Invoke` metódusa bármely szálból biztonságosan elérhető. Az `InvokeRequired` tulajdonság értéke igaz, ha nem a vezérlőelemet létrehozó szálból kérdezzük le az értékét, egyébként hamis. Az `Invoke` metódus pedig a vezérlőelemet létrehozó szálon futtatja le a paraméterként megadott metódust. Az `InvokeRequired` és a `Invoke` felhasználásával el tudjuk kerülni korábbi kivételünket, ezt fogjuk a következőkben megtenni.
+A fenti szabály alól van pár kivétel: ilyen pl. a `Control` osztályban definiált `InvokeRequired` property és `Invoke` metódus, melyek bármely szálból biztonságosan elérhetők:
 
-!!! warning "Csak Debug módban jön az `InvalidOperationException`?"
-    Ha kipróbálnánk, hogy debugger nélkül indítjuk el az alkalmazást (VS-ben Start without debugging vagy magát az exe-t), akkor azt tapasztalnánk, hogy nem jön a fenti kivétel. Ennek az az oka, hogy, fejlesztés időben, debuggerrel vizsgálva az alkalmazást, sokkal szigorúbban figyeli a keretrendszer a UI szál sértést, hogy már fejlesztés időben előjöjjenek olyan potenciális hibák, amik amúgy még nem jelentenék az alkalmazás összeomlását.
+- Ha az `InvokeRequired` tulajdonság értéke igaz, akkor a szál (mely az `InvokeRequired`-et hívja) a hívás helyén nem egyezik a vezérlőt létrehozó szállal, és ilyenkor csak az `Invoke` művelet segítségével "kerülő úton" férhetünk vezérlőnkhöz. Vagyis egy vezérlőhöz való hozzáférés során ezzel tudjuk eldönteni, közvetlenül hozzáférhetünk-e egy adott helyen a szálunkból, vagy csak az `Invoke` segítségével.
+- Az `Invoke` metódus a vezérlőelemet létrehozó szálon futtatja le a számára paraméterként megadott metódust (melyből már közvetlenül hozzáférhetünk a vezérlőhöz).
 
-    A fenti esetben a `ListView` piszkálását még túlélné az app, de a keretrendszer a debuggeren keresztül jelzi a hibás gyakorlatot.
+Az `InvokeRequired` és a `Invoke` felhasználásával el tudjuk kerülni korábbi kivételünket, ezt fogjuk a következőkben megtenni.
+
+!!! warning "Csak debuggerben futtatva jön az `InvalidOperationException`?"
+    Ha kipróbálnánk, hogy debugger nélkül indítjuk el az alkalmazást (VS-ben Start without debugging vagy magát az exe-t), akkor azt tapasztalnánk, hogy nem jön a fenti kivétel. Ennek az az oka, hogy, fejlesztés időben, debuggerrel vizsgálva az alkalmazást, sokkal szigorúbban figyeli a keretrendszer a UI szál sértést, hogy már fejlesztés időben előjöjjenek olyan potenciális hibák, melyek amúgy még nem jelentenék az alkalmazás összeomlását.
+
+    A fenti esetben a `ListView` `Invoke` nélküli manipulálását jó eséllyel az esetek többségében még túlélné az app, de a keretrendszer a debuggeren keresztül futtatás során jelzi a hibás gyakorlatot.
 
 ## 3. Feladat – Tegyük szálbiztossá a ShowResult metódust
 
-Módosítaniuk kell a `ShowResult` metódust, hogy mellékszálból történő hívás esetén se dobjon kivételt.
+Módosítanunk kell a `ShowResult` metódust annak érdekében, hogy mellékszálból történő hívás esetén se dobjon kivételt.
 
 ```cs hl_lines="3-8 12"
 private void ShowResult(double[] parameters, double result)
@@ -184,9 +189,9 @@ Az előző megoldás egy jellemzője, hogy mindig új szálat hoz létre a műve
 - Ha a szálfüggvény gyorsan lefut (egy kliens kiszolgálása gyors), akkor a CPU nagy részét arra pazaroljuk, hogy szálakat indítsunk és állítsunk le, ezek ugyanis önmagukban is erőforrásigényesek.
 - Túl nagy számú szál is létrejöhet, ennyit kell ütemeznie az operációs rendszernek, ami feleslegesen pazarolja az erőforrásokat.
 - 
-Egy másik probléma jelen megoldásunkkal: mivel a számítás előtérszálon fut (az újonnan létrehozott szálak alapértelmezésben előtérszálak), hiába zárjuk be az alkalmazást, a program tovább fut a háttérben mindaddig, amíg végre nem hajtódik az utoljára indított számolás is: egy processz futása ugyanis csak akkor fejeződik csak be, ha már nincs futó előtérszála.
+Egy másik probléma jelen megoldásunkkal: mivel a számítás ún. **előtérszálon** fut (az újonnan létrehozott szálak alapértelmezésben előtérszálak), hiába zárjuk be az alkalmazást, a program tovább fut a háttérben mindaddig, amíg végre nem hajtódik az utoljára indított számolás is: egy processz futása ugyanis csak akkor fejeződik csak be, ha már nincs futó előtérszála.
 
-Módosítsuk a gomb eseménykezelőjét, hogy új szál indítása helyett threadpool szálon futtassa a számítást. Ehhez csak a gombnyomás eseménykezelőjét kell ismét átírni.
+Módosítsuk a gomb eseménykezelőjét, hogy új szál indítása helyett **threadpool** szálon futtassa a számítást. Ehhez csak a gombnyomás eseménykezelőjét kell ismét átírni.
 
 ```cs hl_lines="7"
 private void buttonCalcResult_Click(object sender, EventArgs e)
@@ -213,7 +218,7 @@ Az előző feladatok megoldása során önmagában egy jól működő komplett m
 ![Termelő fogyasztó](images/termelo-fogyaszto.png)
 
 !!! tip "Termelő fogyasztó vs `ThreadPool`"
-    Ha belegondolunk a `ThreadPool` is a keretrendszerben egy már leimplementált Termelő fogyasztó és ütemező mechanizmus. Mi most csak azért implementáljuk le a laboron kézzel újra, hogy bizonyos szálkezeléssel kapcsolatos konkurencia problémákkal találkozhassunk.
+    Ha belegondolunk, a `ThreadPool` is egy speciális, a .NET által számunkra biztosított termelő-fogyasztó és ütemező mechanizmus. A következőkben egy más jellegű termelő-fogyasztó megoldást dolgozunk ki annak érdekében, hogy bizonyos szálkezeléssel kapcsolatos konkurencia problémákkal találkozhassunk.
 
 A főszálunk a termelő, a _Calculate result_ gombra kattintva hoz létre egy új feladatot. Fogyasztó/feldolgozó/munkaszálból azért indítunk majd többet, mert így több CPU magot is ki tudunk használni, valamint a feladatok végrehajtását párhuzamosítani tudjuk.
 
@@ -296,7 +301,7 @@ A következő lépésben a `DataFifo` osztályunkat szálbiztossá tesszük, ami
 
 ## 6. feladat – Tegyük szábiztossá a DataFifo osztályt
 
-A `DataFifo` osztály szálbiztossá tételéhez szükségünk van egy objektumra (ez bármilyen referencia típusú objektum lehet), amit kulcsként használhatunk a zárolásnál. Ezt követően a `lock` kulcsszó segítségével el tudjuk érni, hogy egyszerre mindig csak egy szál tartózkodjon az adott kulccsal védett blokkokban.
+A `DataFifo` osztály szálbiztossá tételéhez szükségünk van egy objektumra (ez bármilyen referencia típusú objektum lehet), melyet kulcsként használhatunk a zárolásnál. Ezt követően a `lock` kulcsszó segítségével el tudjuk érni, hogy egyszerre mindig csak egy szál tartózkodjon az adott kulccsal védett blokkokban.
 
 1.	Vegyünk fel egy `object` típusú mezőt `_syncRoot` néven a `DataFifo` osztályba.
 
@@ -347,7 +352,7 @@ Most már nem szabad kivételt kapnunk.
 Ki is vehetjük a `TryGet` metódusból a mesterséges késleltetést (`Thread.Sleep(500);` sor).
 
 !!! error "Lockolás `this`-en"
-    Felmerülhet a kérdés, hogy miért nem a `this` referenciával lockolunk, amikor az is referencia típus, és alkalmas lenne lockolásra. A fő ok, hogy a kritikus szakaszt szeretnénk ha csak a `DataFifo` definálná, ezért egy privát `object` típusú változót használunk erre. Ha a `this`-re lockolnánk, akkor előfordulhat, hogy valaki más kívülről is ezt a `this` referenciát használná egy másik zárolásra (pl.: `MainForm`-nak van referenciája a `DataFifo`-ra), ami helytelen eredményt okozna.
+    Felmerülhet a kérdés, hogy miért vezettünk be egy külön `_syncRoot` tagváltozót és használtuk ezt zárolásra a `lock` paramétereként, amikor a `this`-t is használhattuk volna helyette (a `DataFifo` referencia típus, így ennek nem lenne akadálya). A `this` alkalmazása azonban **sértené az osztályunk egységbezárását**! Ne feledjük: a `this` egy referencia az objektumunkra, de más osztályoknak is van ugyanerre az objektumra referenciájuk (pl. esetünkben a `MainForm`-nak van referenciája a `DataFifo`-ra), és ha ezek a külső osztályok zárat tesznek a `lock` segítségével az objektumra, akkor az "interferál" az általunk az osztályon belük használt zárolással (mivel `this` alkalmazása miatt a külső és belső `lock`-ok paramétere ugyanaz lesz). Így pl. egy külső zárral teljesen meg lehet "bénítani" a `TryGet` és `Put` művelet működését. Ezzel szemben az általunk választott megoldásban a `lock` paramétere, a `_syncRoot` változó privát, ehhez már külső osztályok nem férhetnek hozzá, így nem is zavarhatják meg az osztályunk belső működését.
 
 ## 7. feladat – Hatékony jelzés megvalósítása
 
@@ -355,15 +360,19 @@ Ki is vehetjük a `TryGet` metódusból a mesterséges késleltetést (`Thread.S
 
 A `WorkerThread`-ben folyamatosan futó `while` ciklus ún. aktív várakozást valósít meg, ami mindig kerülendő. Ha a `Thread.Sleep`-et nem tettük volna a ciklusmagba, akkor ezzel maximumra ki is terhelné a processzort. A `Thread.Sleep` megoldja ugyan a processzor terhelés problémát, de bevezet egy másikat: ha mindhárom munkaszálunk éppen alvó állapotba lépett, mikor beérkezik egy új adat, akkor feleslegesen várunk 500 ms-ot az adat feldolgozásának megkezdéséig.
 
-A következőkben úgy fogjuk módosítani az alkalmazást, hogy blokkolva várakozzon, amíg adat nem kerül a FIFO-ba. Annak jelzésére, hogy van-e adat a sorban egy `ManualResetEvent`-et fogunk használni.
+A következőkben úgy fogjuk módosítani az alkalmazást, hogy blokkolva várakozzon, amíg adat nem kerül a FIFO-ba (amikor viszont adat kerül bele, azonnal kezdje meg a feldolgozást). Annak jelzésére, hogy van-e adat a sorban egy `ManualResetEvent`-et fogunk használni.
 
 1. Adjunk hozzá egy `MaunalResetEvent` példányt a `DataFifo` osztályunkhoz `_hasData` néven.
 
     ```cs
-    private ManualResetEvent hasData = new ManualResetEvent(false);
+    // A false konstruktor paraméter eredményeképpen kezdetben az esemény nem jelzett (kapu csukva)
+    private ManualResetEvent _hasData = new ManualResetEvent(false);
     ```
 
 2. A `_hasData` alkalmazásunkban kapuként viselkedik. Amikor adat kerül a listába „kinyitjuk”, míg amikor kiürül a lista „bezárjuk”.
+
+    !!! tip "Az esemény szemantikája és elnevezése"
+        Lényeges, hogy jó válasszuk meg az eseményünk szemantikáját és ezt a változónk nevével pontosan ki is fejezzük. A példánkban a `hasData` név jól kifejezi, hogy pontosan akkor és csak akkor jelzett az eseményünk (nyitott a kapu), amikor van feldolgozandó adat. Most már "csak" az a dolgunk, hogy ezt a szemantikát megvalósítsuk: jelzettbe tegyük az eseményt, mikor adat kerül a FIFO-ba, és jelzetlenbe, amikor kiürül a FIFO.
 
     ```cs hl_lines="6"
     public void Put(double[] data)
@@ -515,7 +524,7 @@ Korábban félretettük azt a problémát, hogy az ablakunk bezárásakor a proc
     }
     ```
 
-2.	A `TryGet`-ben erre az eseményre is várakozzunk. A `WaitAny` metódus akkor engedi tovább a futtatást, ha a paraméterként megadott `WaitHandle` típusú objektumok közül valamelyik jelzett állapotba kerül, és visszaadja annak tömbbéli indexét. Továbbmenni pedig csak akkor szeretnénk, ha a `_hasData` jelzett.
+2.	A `TryGet`-ben erre az eseményre is várakozzunk. A `WaitAny` metódus akkor engedi tovább a futtatást, ha a paraméterként megadott `WaitHandle` típusú objektumok közül valamelyik jelzett állapotba kerül, és visszaadja annak tömbbéli indexét. Tényleges adatfeldolgozást pedig csak akkor szeretnénk, ha a `_hasData` jelzett (amikor is a `WaitAny` 0-val tér vissza).
 
     ```cs hl_lines="3"
     public bool TryGet(out double[] data)
