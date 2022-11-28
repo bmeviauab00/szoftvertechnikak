@@ -555,9 +555,11 @@ Korábban félretettük azt a problémát, hogy az ablakunk bezárásakor a proc
 
 6. Végül biztosítsuk, hogy a már bezáródó ablak esetében ne próbáljunk üzeneteket kiírni
 
-    ```cs
-    if (_isClosed)
-		return;
+    ```cs hl_lines="3-4"
+    private void ShowResult(double[] parameters, double result)
+    {
+        if (_isClosed)
+		    return;
     ```
 
 7. Futtassuk az alkalmazást, és ellenőrizzük, kilépéskor az processzünk valóban befejezi-e a futását.
