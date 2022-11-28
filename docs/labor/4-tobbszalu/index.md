@@ -30,7 +30,12 @@ A feladat során egyszerű Windows Forms alkalmazást fogunk felruházni többsz
 
 ## 0. Feladat - Ismerkedés a kiinduló alkalmazással, előkészítés
 
-Klónozzuk le a 4. gyakorlathoz tartozó kiinduló alkalmazást repositoryját a [GitHub-ról](https://github.com/bmeviauab00/lab-tobbszalu-kiindulo), és nyissuk meg _SuperCalculator.sln_ solutiont Visual Studio-ban.
+Klónozzuk le a 4. gyakorlathoz tartozó kiinduló alkalmazást [repositoryját](https://github.com/bmeviauab00/lab-tobbszalu-kiindulo).
+
+- Nyissunk egy command prompt-ot
+- Navigáljunk el egy tetszőleges mappába, például c:\work\NEPTUN
+- Adjuk ki a következő parancsot: `git clone https://github.com/bmeviauab00/lab-tobbszalu-kiindulo.git`
+- Nyissuk meg _SuperCalculator.sln_ solutiont Visual Studio-ban.
 
 A feladatunk az, hogy egy bináris formában megkapott algoritmus futtatásához Windows Forms technológiával felhasználói felületet készítsünk. A bináris forma .NET esetében egy _.dll_ kiterjesztésű fájlt jelent, ami programozói szemmel egy osztálykönyvtár.  A fájl neve esetünkben _Algorithms.dll_, megtalálható a leklónozott Git repositoryban.
 
@@ -311,7 +316,7 @@ A `DataFifo` osztály szálbiztossá tételéhez szükségünk van egy objektumr
 
 2. Egészítsük ki a `Put` és a `TryGet` függvényeket a zárolással.
 
-    ```cs hl_lines="3-4 18"
+    ```cs hl_lines="3-4 6"
     public void Put(double[] data)
     {
         lock (_syncRoot)
@@ -321,7 +326,7 @@ A `DataFifo` osztály szálbiztossá tételéhez szükségünk van egy objektumr
     }
     ```
 
-    ```cs hl_lines="3-4 6"
+    ```cs hl_lines="3-4 16"
     public bool TryGet(out double[] data)
     {
         lock (_syncRoot)
@@ -334,11 +339,9 @@ A `DataFifo` osztály szálbiztossá tételéhez szükségünk van egy objektumr
                 _innerList.RemoveAt(0);
                 return true;
             }
-            else
-            {
-                data = null;
-                return false;
-            } 
+
+            data = null;
+            return false;
         }
     }
     ```
@@ -372,7 +375,7 @@ A következőkben úgy fogjuk módosítani az alkalmazást, hogy blokkolva vára
 2. A `_hasData` alkalmazásunkban kapuként viselkedik. Amikor adat kerül a listába „kinyitjuk”, míg amikor kiürül a lista „bezárjuk”.
 
     !!! tip "Az esemény szemantikája és elnevezése"
-        Lényeges, hogy jó válasszuk meg az eseményünk szemantikáját és ezt a változónk nevével pontosan ki is fejezzük. A példánkban a `hasData` név jól kifejezi, hogy pontosan akkor és csak akkor jelzett az eseményünk (nyitott a kapu), amikor van feldolgozandó adat. Most már "csak" az a dolgunk, hogy ezt a szemantikát megvalósítsuk: jelzettbe tegyük az eseményt, mikor adat kerül a FIFO-ba, és jelzetlenbe, amikor kiürül a FIFO.
+        Lényeges, hogy jó válasszuk meg az eseményünk szemantikáját és ezt a változónk nevével pontosan ki is fejezzük. A példánkban a `_hasData` név jól kifejezi, hogy pontosan akkor és csak akkor jelzett az eseményünk (nyitott a kapu), amikor van feldolgozandó adat. Most már "csak" az a dolgunk, hogy ezt a szemantikát megvalósítsuk: jelzettbe tegyük az eseményt, mikor adat kerül a FIFO-ba, és jelzetlenbe, amikor kiürül a FIFO.
 
     ```cs hl_lines="6"
     public void Put(double[] data)
@@ -385,7 +388,7 @@ A következőkben úgy fogjuk módosítani az alkalmazást, hogy blokkolva vára
     }
     ```
 
-    ```cs hl_lines="11-14"
+    ```cs hl_lines="9-12"
     public bool TryGet(out double[] data)
     {
         lock (_syncRoot)
@@ -401,11 +404,9 @@ A következőkben úgy fogjuk módosítani az alkalmazást, hogy blokkolva vára
 
                 return true;
             }
-            else
-            {
-                data = null;
-                return false;
-            } 
+
+            data = null;
+            return false;
         }
     }
     ```
@@ -440,7 +441,7 @@ Az előző pontban megoldottuk a jelzést, ám ez önmagában nem sokat ér, his
 
     Valódi javításként cseréljük meg a `lock`-ot és a `WaitOne`-t:
 
-    ```cs hl_lines="3-6 15-21"
+    ```cs hl_lines="3-6"
     public bool TryGet(out double[] data)
     {
         if (_hasData.WaitOne())
@@ -457,11 +458,9 @@ Az előző pontban megoldottuk a jelzést, ám ez önmagában nem sokat ér, his
                 return true; 
             }
         }
-        else
-        {
-            data = null;
-            return false;
-        }
+
+        data = null;
+        return false;
     }
     ```
 
@@ -469,7 +468,7 @@ Az előző pontban megoldottuk a jelzést, ám ez önmagában nem sokat ér, his
 
 3. Javításként tegyük vissza a `lock`-on belüli üresség-vizsgálatot.
 
-    ```cs hl_lines="7-8 17-22"
+    ```cs hl_lines="7-8 17"
     public bool TryGet(out double[] data)
     {
         if (_hasData.WaitOne())
@@ -487,18 +486,11 @@ Az előző pontban megoldottuk a jelzést, ám ez önmagában nem sokat ér, his
 
                     return true;  
                 }
-                else
-                {
-                    data = null;
-                    return false;
-                }
             }
         }
-        else
-        {
-            data = null;
-            return false;
-        }
+
+        data = null;
+        return false;
     }
     ```
 
