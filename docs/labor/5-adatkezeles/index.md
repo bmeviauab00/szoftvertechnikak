@@ -161,12 +161,18 @@ A Visual Studio is vesz fel, illetve indít LocalDB példányokat, ezért érdem
 
 A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, ami használja a Northwind adatbázis `Shippers` táblájának rekordjait.
 
-1. Hozzunk létre egy C# nyelvű konzolos alkalmazást. A projekt típusa **„Console App”** legyen, és **NE** a „Console App (.NET Framework)”. A projekt neve legyen `AdoExample`, a Target Framework pedig .NET 6 legyen.
+1. Hozzunk létre egy C# nyelvű konzolos alkalmazást. A projekt típusa **„Console App”** legyen, és **NE** a „Console App (.NET Framework)”. A projekt neve legyen `AdoExample`
+    - A Target Framework pedig .NET 6 legyen.
+    - Pipáljuk be a **Do not use top-level statemanets** kapcsolót.
 2. Keressük ki a connection stringet az SSOE-ből: jobbklikk az adatbáziskapcsolatunkon (pirossal jelölve az alábbi ábrán) / Properties.
 
     ![SSOE Database](images/SSOS-database.png)
 
-3. Másoljuk a Properties ablakból *Connection String* tulajdonság értékét egy változóba a Program.cs fájlban.
+3. Másoljuk a Properties ablakból *Connection String* tulajdonság értékét egy változóba a `Program` osztályba.
+
+    ```cs
+    private const string ConnString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=neptun;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+    ```
 
     !!! tip "SQL Server connection string formátuma"
         MSSQL esetében a connection string kulcs érték párokat tartalmaz pontosvesszővel elválasztva.
@@ -176,11 +182,79 @@ A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, ami használja
     !!! tip "@-os string (C# verbatim string)"
         A `@` egy speciális karakter (verbatim indentifier), amit itt arra használunk, hogy a connection string-ben megjelenő backslash karakter (`\`) ne feloldójelként (escape character) kerüljön értelmezésre.
 
-4. Írjunk lekérdező függvényt, ami lekérdezi az összes szállítót:
+4. Vegyük fel a projektbe a `Microsoft.Data.SqlClient` NuGet csomagot. Ezt megtehetjük a NuGet UI-on (projekten jobb gomb / Manage NuGet packages) vagy másoljuk be az alábbi csomag referenciát a a projektfájlba:
+
+    ```xml
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.1" />
+    </ItemGroup>
+    ```
+
+    !!! note "NuGet csomagkezelő"
+        A NuGet egy olyan online csomagkezelő rendszer, ahonnak .NET alapú projektjeinbe tudunk külső függőségeket, osztálykönyvtárakat egyszerűen verziózottan betölteni.
+
+5. Írjunk lekérdező függvényt, ami lekérdezi az összes szállítót:
 
     ```cs
-    
+    private static void GetShippers()
+    {
+        using (var conn = new SqlConnection(ConnString))
+        using (var command = new SqlCommand("SELECT ShipperID, CompanyName, Phone FROM Shippers", conn))
+        {
+            conn.Open();
+            Console.WriteLine("{0,-10}{1,-20}{2,-20}", "ShipperID", "CompanyName", "Phone");
+            Console.WriteLine(new string('-', 60));
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine($@"{reader["ShipperID"],-10}{reader["CompanyName"],-20}{reader["Phone"],-20}");
+                }
+            }
+        }
+    }
     ```
+
+    A kapcsolat alapú modell folyamata
+
+    - Kapcsolat, parancs inicializálása
+    - Kapcsolat megnyitása
+    - Parancs futtatása
+    - Eredmény feldolgozása
+    - Kapcsolat bontása, takarítás
+
+    !!! tip "Néhány megjegyzés a kódhoz"
+        - A `DataReader`-t a parancs futtatásának eredményeként kapjuk meg, nem pedig közvetlenül példányosítjuk
+        - A parancs futtatása előtt meg kell nyitnunk a kapcsolatot
+        - A `DbConnection` példányosításakor nem nyitódik meg a kapcsolat (nem történik hálózati kommunikáció)
+        - A `DataReader.Read()` függvénye mutatja, hogy van-e még adat az eredményhalmazban
+        - A `DataReader`-t az eredményhalmazban található oszlopok nevével indexelhetjük – az eredmény `object` lesz, így, ha konkrétabb típusra van szükségünk cast-olni kell
+        - A fordító nem értelmezi az SQL parancs szövegét (az csak egy string), hanem majd csak az adatbázis, így hibás SQL esetén csak futási idejű kivételt kapunk
+        - figyeljük meg, hogy az adatbázis séma változása esetén, pl. egy oszlop átnevezése, hány helyen kell kézzel átírni string-eket a kódban
+        - `$`-ral prefixelve string interpolációt alkalmazhatunk, azaz közvetlenül a stringbe ágyazhatunk kiértékelendő kifejezéseket (C# 6-os képesség). A `$@` segítségével többsoros string interpolációs kifejezéseket írhatunk (a sortörést a {}-k között kell betennünk, különben a kimeneten is megjelenik). Érdekesség: C# 8-tól fölfele bármilyen sorrendben írhatjuk a $ és @ karaktereket, tehát a `$@` és a `@$` is helyesnek számít.
+        - A using kulcsszú blokk utasítás helyett egysoros kifejezésként is használható. Ilyen esetben a using blokk vége az tartalmazó blokkig tart (esetünkben a függvény végéig.). Ezzel csökkenthető a behúzások száma, de ne legyen automatikus reflex, mert előfordulhat, hogy hamarabb szeretnénk kikényszeríteni az erőforrások felszabadítását mint a blokkok vége.
+    
+            ```cs
+            private static void GetShippers()
+            {
+                using var conn = new SqlConnection(ConnString);
+                using var command = new SqlCommand("SELECT ShipperID, CompanyName, Phone FROM Shippers", conn);
+
+                conn.Open();
+
+                Console.WriteLine("{0,-10}{1,-20}{2,-20}", "ShipperID", "CompanyName", "Phone");
+                Console.WriteLine(new string('-', 60));
+
+                using SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Console.WriteLine($@"{reader["ShipperID"],-10}{reader["CompanyName"],-20}{reader["Phone"],-20}");
+                }
+            }
+            ``` 
+
+6. Hívjuk meg új függvényünket a `Main` függvényből.
+7. Próbáljuk ki az alkalmazást. Rontsuk el az SQL-t, és úgy is próbáljuk ki.
 
 ## 3. Feladat – Beszúrás SQL utasítással
 
