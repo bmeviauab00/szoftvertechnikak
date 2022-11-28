@@ -527,42 +527,55 @@ Korábban félretettük azt a problémát, hogy az ablakunk bezárásakor a proc
             {
     ```
 
-3. `MainForm.Designer.cs`-ben egészítsük ki a Dispose metódust, ahol elengedjük a FIFO-t:
+3. `MainForm.cs`-ban vegyünk fel egy flag tagváltozót a bezárás jelzésére:
 
-    ```cs hl_lines="7"
-    protected override void Dispose(bool disposing)
+    ```cs
+    private bool _isClosed = false;
+    ```
+
+4. A form bezárásakor állítsuk jelzettre az új eseményt és billentsünk be be a flag-et is. (A `Form` osztály `OnClosed` metódusa mindig meghívódik bezáráskor, a `Dispose`-zal ellentétben.)
+
+    ```cs
+    protected override void OnClosed(EventArgs e)
     {
-        if (disposing && (components != null))
-        {
-            components.Dispose();
-        }
-        _fifo.Release();
-        base.Dispose(disposing);
+        base.OnClosed(e);
+        _isClosed = true;
+        fifo.Release();
     }
     ```
 
-4. Írjuk át a `while` ciklust, hogy az `IsDisposed` tulajdonságot figyelje.
+5. Írjuk át a while ciklust az előző pontban felvett flag figyelésére.
 
     ```cs hl_lines="3"
     private void WorkerThread()
     {
-        while (!IsDisposed)
+        while (!_isClosed)
         {
     ```
 
-5. Futtassuk az alkalmazást, és ellenőrizzük, kilépéskor az processzünk valóban befejezi-e a futását.
+6. Végül biztosítsuk, hogy a már bezáródó ablak esetében ne próbáljunk üzeneteket kiírni
 
-!!! note "Hol hívjunk Release-t"
-    A `Designer.cs` fájlokat alapvetően nem szokás szerkeszteni, bár ezt a metódust a designer már nem piszkálja, ha létrejött a form. Ha ez zavar minket, akkor nyugodtan helyezzük át ezt a függvényt a `MainForm.cs`-be.
+    ```cs
+    if (_isClosed)
+		return;
+    ```
 
-    Egyik alternatíva lehetne, hogy a `Form` `Dispose` metódusa helyett egy másik életciklus metódust definiálunk felül pl.: `OnClosing`, `OnClosed`
+7. Futtassuk az alkalmazást, és ellenőrizzük, kilépéskor az processzünk valóban befejezi-e a futását.
 
-    Itt a `Release` művelet helyett még egy másik alternatíva lehetne, hogy az `IDisposable` mintát megvalósítjuk a `DataFifo`-ba, de ilyenkor is kézzel kellene `Dispose`-t hívni, mivel nem függvény szintű az életciklusa a FIFO objektumnak, így nem tudnánk `using` blokkban használni.
+!!! note "Hol hívjunk Release-t?"
+    Az `OnClosed` vagy `OnClosing` életciklus függvényei a Formnak jó választások, mert azokról biztosan tudjuk, hogy helyesen hívódnak meg minden esetben. Cserében egy plusz flag-et kell karbantartanunk. 
+
+    Egyik alternatíva lehetne még az életciklus események helyett a `Dispose` metúdusba rakni ezt a logikát, és akkor az `IsDisposed` beépített flag-et is használhatnánk. Ezt két okból is érdemes kerülni Formok esetében:
+
+    1. A `Dispose` metódus már létezik a `MainForm.Designer.cs` fájlban, és a `Designer.cs` fájlokat alapvetően nem szokás szerkeszteni, bár ezt a metódust a designer már nem piszkálja, ha már létrejött a form, így ezt akár nyugodtan át is helyezhetnénk a `MainForm.cs`-be.
+    2. A `Dispose` meghívása nem mindig determinisztikus Windows Forms esetében, mert előfordulhat, hogy nem a keretrendszer nyitotta a formot, hanem a fejlesztő programozottan, és elfelejtette `Dispose`-t hívni rajta, aminek a hatására, majd csak a GC fogja meghívni a `Dispose` függvényt.
+
+    A `Release` művelet helyett még egy másik alternatíva lehetne, hogy az `IDisposable` mintát megvalósítjuk a `DataFifo`-ba, de ilyenkor is kézzel kellene `Dispose`-t hívni, mivel nem függvény szintű az életciklusa a FIFO objektumnak, így nem tudnánk `using` blokkban használni.
 
     Egy összetett alkalmazásban egyénként gyakran nem kézzel kezeljük egy-egy osztálynak a függőségeit és az életciklusát. Helyette a [Dependency Injection tervezési mintát](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection) érdemes alkalmazni, ahol egy külön komponensbe szervezzük ki az objektumok példányosítását és életciklusának kezelését.
 
 ## Kitekintés: Task, async, await
 
-A tárgynak nem anyaga, de .NET alkalmazások (és más modern nyelvű alkalmazások (Swift, Kotlon, TypeScript, stb.)) esetében megkerülhetetlen az aszinkron programozás koncepciója. A C# (és más modern nyelvek) nyelvi szintre emelték az szinkron események bevárásának kezelését az `async`/`await` kulcsszavakkal ([Lásd bővebben](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/))
+A tárgynak nem anyaga, de .NET alkalmazások (és más modern nyelvű alkalmazások (Swift, Kotlin, TypeScript, stb.)) esetében megkerülhetetlen az aszinkron programozás koncepciója. A C# (és más modern nyelvek) nyelvi szintre emelték az szinkron események bevárásának kezelését az `async`/`await` kulcsszavakkal ([Lásd bővebben](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/))
 
 Mégis ehhez az anyaghoz lazán úgy kapcsolódhat ez a téma, hogy a `Task` osztály olyan aszinkron műveletet is reprezentálhat, ami akár külön szálon is futhat (de nem kötelezően futnak ezek külön szálon!), és bevárható ennek az eredménye aszinkron módon. A `Task.Run` statikus függvény pedig egyenesen a `ThreadPool`-on ütemez egy műveletet, ami így aszinkron bevárható.
