@@ -129,7 +129,7 @@ A Visual Studio telepítésének részeként kapunk is egy ilyen adatbázis engi
 - több példány is létrehozható igény szerint, a példányok alapvetően a létrehozó operációs rendszer felhasználója számára érhető el (igény esetén megosztható egy példány a felhasználók között)
 - a saját példányok kezelése (létrehozás, törlés, stb.) nem igényel adminisztrátori jogokat
   
-!!! note "ssqllocaldb parancssori eszköz"
+??? note "ssqllocaldb parancssori eszköz"
     A gyakorlat során nincs szükségünk erre, de a példányok kezelésére az `sqllocaldb` parancssori eszköz használható.  Néhány parancs, melyet az `sqllocaldb` után beírva alkalmazhatunk :
 
     | Paracs         | Leírás                                                     |
@@ -208,7 +208,10 @@ A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, ami használja
             {
                 while (reader.Read())
                 {
-                    Console.WriteLine($@"{reader["ShipperID"],-10}{reader["CompanyName"],-20}{reader["Phone"],-20}");
+                    Console.WriteLine(
+                        $"{reader["ShipperID"],-10}" +
+                        $"{reader["CompanyName"],-20}" +
+                        $"{reader["Phone"],-20}");
                 }
             }
         }
@@ -233,7 +236,7 @@ A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, ami használja
         - figyeljük meg, hogy az adatbázis séma változása esetén, pl. egy oszlop átnevezése, hány helyen kell kézzel átírni string-eket a kódban
         - `$`-ral prefixelve string interpolációt alkalmazhatunk, azaz közvetlenül a stringbe ágyazhatunk kiértékelendő kifejezéseket (C# 6-os képesség). A `$@` segítségével többsoros string interpolációs kifejezéseket írhatunk (a sortörést a {}-k között kell betennünk, különben a kimeneten is megjelenik). Érdekesség: C# 8-tól fölfele bármilyen sorrendben írhatjuk a $ és @ karaktereket, tehát a `$@` és a `@$` is helyesnek számít.
         - A using kulcsszú blokk utasítás helyett egysoros kifejezésként is használható. Ilyen esetben a using blokk vége az tartalmazó blokkig tart (esetünkben a függvény végéig.). Ezzel csökkenthető a behúzások száma, de ne legyen automatikus reflex, mert előfordulhat, hogy hamarabb szeretnénk kikényszeríteni az erőforrások felszabadítását mint a blokkok vége.
-    
+
             ```cs
             private static void GetShippers()
             {
@@ -242,40 +245,206 @@ A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, ami használja
 
                 conn.Open();
 
-                Console.WriteLine("{0,-10}{1,-20}{2,-20}", "ShipperID", "CompanyName", "Phone");
+                Console.WriteLine("{0,-10}{1,-20}{2,-20}","ShipperID", "CompanyName", "Phone");
                 Console.WriteLine(new string('-', 60));
 
-                using SqlDataReader reader = command.ExecuteReader();
+                using var reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    Console.WriteLine($@"{reader["ShipperID"],-10}{reader["CompanyName"],-20}{reader["Phone"],-20}");
+                    Console.WriteLine(
+                        $"{reader["ShipperID"],-10}" +
+                        $"{reader["CompanyName"],-20}" +
+                        $"{reader["Phone"],-20}");
                 }
             }
             ``` 
 
+            A továbbiakban ezt a módszert hasznnáljuk a behúzások és zárójelek megspórolása érdekében.
+
 6. Hívjuk meg új függvényünket a `Main` függvényből.
+
+    ```cs hl_lines="3"
+    private static void Main(string[] args)
+    {
+        GetShippers();
+    }
+    ```
+
 7. Próbáljuk ki az alkalmazást. Rontsuk el az SQL-t, és úgy is próbáljuk ki.
 
 ## 3. Feladat – Beszúrás SQL utasítással
 
-COMING SOON
+1. Írjunk függvényt, ami új szállítót szúr be az adatbázisba:
+
+    ```cs
+    private static void InsertShipper(string companyName, string phone)
+    {
+        using var conn = new SqlConnection(ConnString);
+        using var command = new SqlCommand(
+            "INSERT INTO Shippers(CompanyName, Phone) VALUES(@name,@phone)", conn);
+        command.Parameters.AddWithValue("@name", companyName);
+        command.Parameters.AddWithValue("@phone", phone);
+
+        conn.Open();
+
+        int affectedRows = command.ExecuteNonQuery();
+
+        Console.WriteLine($"{affectedRows} rows affected");
+    }
+    ```
+
+    Itt olyan SQL-t kell írnunk, aminek az összeállításánál kívülről kapott változók értékeit is felhasználtuk. A string összerakásához egyszerűen a sztring összefűzés operátort, sztring interpolációt vagy `string.Format`-ot is használhattunk volna, de ez biztonsági kockázatot (SQL Injection – bővebben lásd lentebb) rejt – **SOHA!!! ne rakjuk össze az SQL-t stringművelettel**. Helyette írjuk meg úgy az SQL-t, hogy ahová a változók értékeit írnánk, oda paraméterhivatkozásokat teszünk. SQL Server esetében a hivatkozás szintaxisa: @paramnév.
+
+    A parancs elsütéséhez a paraméterek értékeit is át kell adnunk az adatbázisnak, ugyanis az fogja elvégezni a paraméterek helyére az értékek behelyettesítését.
+
+    A beszúrási parancs kimenete nem eredményhalmaz - így másik függvénnyel (`ExecuteNonQuery`) kell elsütnünk-, viszont visszaadja beszúrt sorok számát.
+
+2. Hívjuk meg új függvényünket a `Main` függvényből.
+
+    ```cs hl_lines="2-3"
+    GetShippers();
+    InsertShipper("Super Shipper","49-98562");
+    GetShippers();
+    ```
+
+3. Próbáljuk ki az alkalmazást, ellenőrizzük a konzolban és az SSOE-ben is, hogy bekerült az új sor. SSOE-ben való gyors és kényelmes ellenőrzéshez a `Shippers` tábla context menüjéből válasszuk a *View Data* lehetőséget.
 
 ## 4. Feladat - Módosítás tárolt eljárással
 
-COMING SOON
+1. Tanulmányozzuk SSOE-ben a `Product_Update` tárolt eljárás kódját. Ehhez nyissuk le a *Programmability* alatt található Stored *Procedures* csomópontot, majd a `Product_Update` tárolt eljárás context menüjéből válasszuk a *View Code* lehetőséget.
+
+    !!! note "Programkód az adatbázisban"
+        A nagyobb adatkezelő rendszerek lehetőséget biztosítanak arra, hogy programkódot definiáljunk magában az adatkezelőben. Ezeket tárol eljárásoknak (stored procedure) nevezzük. A nyelve adatkezelő függő, de MSSQL esetében ez T-SQL.
+
+        Manapság már egyre inkább kezd kikopni az a gyakorlat az iparból, hogy komolyabb üzleti logikát az adatbázisban helyezzünk el, mivel ezeknek az SQL dialektusoknak az eszközkészlete ma már jóval korlátosabb mint egy magas szintű programozási nyelvnek (C#, Java). Ráadásul a tesztelhetőségét a rendszernek nagyban rontják a tároljt eljárások használata. Ennek ellenére néha indokolt lehet az adatbázisban tartani valamennyi logikát, amikor ki szeretnénk azt használni, hogy az adatokhoz közel futnak a programkódjaink, pl.: nem akarjuk megutaztatni a hálózaton az adatot egy egyszerű tömeges adatkarbantartás érdekében.
+
+2. Írjunk függvényt, ami ezt a tárolt eljárást hívja
+
+    ```cs
+    private static void UpdateProduct(int productID, string productName, decimal price)
+    {
+        using var conn = new SqlConnection(ConnString);
+        using var command = new SqlCommand("Product_Update", conn);
+
+        command.CommandType = CommandType.StoredProcedure;
+
+        command.Parameters.AddWithValue("@ProductID", productID);
+        command.Parameters.AddWithValue("@ProductName", productName);
+        command.Parameters.AddWithValue("@UnitPrice", price);
+
+        conn.Open();
+
+        int affectedRows = command.ExecuteNonQuery();
+        
+        Console.WriteLine($"{affectedRows} rows affected");
+    }
+    ```
+
+    A Commandban a tárolt eljárás nevét kellett megadni és a parancs típusát kellett átállítani, egyébként szerkezetileg hasonlít a beszúró kódra.
+
+3. Hívjuk meg új függvényünket a `Main` függvényből, például az alábbi paraméterezéssel:
+
+    ```cs
+    UpdateProduct(1, "MyProduct", 50);
+    ```
+
+4. Próbáljuk ki az alkalmazást, ellenőrizzük a konzolban és az SSOE-ben is, hogy módosult-e az 1-es azonosítójú termék.
 
 ## 5. Feladat - SQL Injection
 
-COMING SOON
+1. Írjuk meg a beszúró függvényt úgy, hogy string interpolációval rakja össze az SQL-t.
+
+    ```cs
+    private static void InsertShipper2(string companyName, string phone)
+    {
+        using var conn = new SqlConnection(ConnString);
+        using var command = new SqlCommand(
+            $"INSERT INTO Shippers(CompanyName, Phone) VALUES('{companyName}','{phone}')",
+            conn);
+
+        conn.Open();
+
+        int affectedRows = command.ExecuteNonQuery();
+        Console.WriteLine($"{affectedRows} row(s) inserted");
+    }
+    ```
+
+2. Hívjuk meg új függvényünket a `Main` függvényből „speciálisan” paraméterezve.
+
+    ```cs
+    InsertShipper2("Super Shipper", "49-98562'); DELETE FROM Shippers;--");
+    ```
+
+    Úgy állítottuk össze a második paramétert, hogy az lezárja az eredeti utasítást, ezután tetszőleges **(!!!)** SQL-t írhatunk, végül kikommentezzük az erdeti utasítás maradékát (`--`).
+
+3. Próbáljuk ki az alkalmazást, hibát kell kapjunk, hogy valamelyik szállító nem törölhető idegen kulcs hivatkozás miatt.
+
+    Tehát a D`ELETE FROM` is lefutott! Nézzük meg debuggerrel (pl. a `conn.Open` utasításon állva), hogy mi a végleges SQL (`command.CommandText`).
+
+    Tanulságok:
+
+    - SOSE fűzzünk össze programból SQL-t (semmilyen módszerrel), mert azzal kitesszük a kódunkat SQL Injection alapú támadásnak.
+    - az adatbázis állítsa össze a végleges SQL-t SQL paraméterek alapján, mert ilyenkor biztosított, hogy a paraméter értékek nem fognak SQL-ként értelmeződni (hiába írunk be SQL-t). Használjunk paraméterezett SQL-t vagy tárolt eljárást.
+    - használjunk adatbázis kényszereket, pl. a véletlen törlés ellen is véd
+    - konfiguráljunk adatbázisban felhasználókat különböző jogosultságokkal, a programunk connection string-jében megadott felhasználó csak a működéshez szükséges minimális jogokkal rendelkezzen. A mi esetünkben nem adtunk meg felhasználót, a windows-os felhasználóként fogunk csatlakozni.
+
+4. Hívjuk meg az eredeti (vagyis a biztonságos, SQL paramétereket használó) beszúró függvényt a „speciális” paraméterezésekkel, hogy lássuk, működik-e a védelem:
+
+    ```cs
+    InsertShipper("Super Shipper", "49-98562'); DELETE FROM Shippers;--");
+    InsertShipper("XXX');DELETE FROM Shippers;--", "49-98562");
+    ```
+
+    Az elsőnél nem férünk bele a méretkorlátba, a második lefut, de csak egy „furcsa” nevű szállító került be. A paraméter értéke tényleg értékként értelmeződött nem pedig SQL-ként. Nem úgy mint itt:
+
+    ![XKCD](images/xkcd-sql-injection.png)
 
 ## 6. Feladat - Törlés
 
-COMING SOON
+1. Írjunk egy új függvényt, ami kitöröl egy adott szállítót.
+
+    ```cs
+    private static void DeleteShipper(int shipperID)
+    {
+        using var conn = new SqlConnection(ConnString);
+        using var command = new SqlCommand("DELETE FROM Shippers WHERE ShipperID = @ShipperID", conn);
+        command.Parameters.AddWithValue("@ShipperID", shipperID);
+
+        conn.Open();
+
+        int affectedRows = command.ExecuteNonQuery();
+
+        Console.WriteLine($"{affectedRows} row(s) affected");
+    }
+    ```
+
+2. Hívjuk meg új függvényünket a `Main` függvényből, pl. 1-essel, mint paraméterrel
+3. Próbáljuk ki az alkalmazást. Valószínűleg kivételt kapunk, ugyanis van hivatkozás (idegen kulcs kényszerrel) az adott rekordra.
+4. SSOE-ből nézzük ki az azonosítóját egy olyan szállítónak, amit mi vettünk fel. Adjuk át ezt az azonosítót a törlő függvénynek – ezt már ki tudja törölni, hiszen nincs rá hivatkozás.
+
+!!! tip "Törlési stratégiák"
+    Látható, hogy a törlés igen kockázatos és kiszámíthatatlan művelet az idegen kulcs kényszerek miatt. Néhány módszer a törlés kezelésére:
+
+    - **nem engedélyezzük a törlést**: Ha hivatkoznak a törlendő rekordra, az adatbázis hibával tér vissza (ahogy fent is láthattuk).
+    - **kaszkád törlés** – az idegen kulcs kényszeren beállítható, hogy a hivatkozott rekord törlésekor a hivatkozó rekord is törlődjön. Gyakran ez oda vezet, hogy minden idegen kulcs kényszerünk ilyen lesz, és egy (véletlen) törléssel végigtörölhetjük akár a teljes adatbázist, azaz nehezen jósolható a törlés hatása.
+    - **hivatkozás NULL-ozása** – az idegen kulcs kényszeren beállítható, hogy a hivatkozott rekord törlésekor a hivatkozó rekord idegen kulcs mezője `NULL` értékű legyen. Csak akkor alkalmazható, ha a modellünkben az adott idegen kulcs mező `NULL`-ozható.
+    - **logikai törlés** (soft delete) – törlés művelet helyett csak egy flag oszlopot (pl. `IsDeleted`) állítunk be. Előnye, hogy nem kell az idegen kulcs kényszerekkel foglalkoznunk, a törölt adat rendelkezésre áll, ha szükség lenne rá (pl. undelete művelet). Ám a működés bonyolódik, mert foglalkozni kell azzal, hogy hogyan és mikor szűrjük a törölt rekordokat (pl. hogy ne jelenjenek meg a felületen, statisztikákban), vagy hogyan kezeljük, ha egy nem törölt rekord töröltre hivatkozik.
+
 
 ## Kitekintés
 
-COMING SOON
+A fenti ADO.NET alapműveleteket ebben az itt látott alapformában ritkán használják a gyengén típusosság (egy rekord adatait beolvasni egy osztály property-jeibe igen körülményes, cast-olni kell, stb.) és a stringbe kódolt SQL miatt – még akkor is, ha ez a hozzáférés adja a legjobb teljesítményt. Az előbbire megoldást jelenthetnek a különböző ADO.NET-et kiegészítő komponensek, pl.
 
-## Függelék – Adatbázisok, SQL nyelv alapok
+- [Dapper](https://github.com/DapperLib/Dapper)
+- [PetaPoco](https://github.com/CollaboratingPlatypus/PetaPoco)
 
-Az adatbáziskezelő rendszerek világába és az SQL nyelvbe betekintést a kapcsolódó előadáson, illetve az alábbi hivatkozás alatt találsz: [Adatbázisok, SQL nyelv alapok](adatbazisok-sql-alapok/index.md)
+Ezek a megoldások egy minimális teljesítményveszteségért cserébe nagyobb kényelmet kínálnak.
+
+Mindkét problémára megoldást jelentenek az ORM (Object-Relational-Mapping) rendszerek, cserébe ezek nagyobb overheaddel járnak, mint az előbb említett megoldások. Az ORM-ek leképezést alakítanak ki az adatbázis és az OO osztályaink között, és ennek a leképezésnek a segítségével egyszerűsítik az adatbázis műveleteket. Az osztályainkon végzett, típusos kóddal leírt műveleteinket automatikusan átfordítják a megfelelő adatbázis műveletekre, így a memóriabeli objektummodellünket szinkronban tartják az adatbázissal. Az ORM-ek ebből következően kapcsolat nélküli modellt használnak. Ismertebb .NET-es ORM-ek:
+
+- ADO.NET DataSet – elsőgenerációs ORM, ma már ritkán használjuk.
+- Entity Framework 6.x – (régi) .NET Framework leggyakrabban használt ORM keretrendszere
+- [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/) (EF Core) – a jelenleg elsődlegesen használt .NET ORM (open source)
+- [NHibernate](https://nhibernate.info/) – a java-s Hibernate .NET-es portja (open source)
+
+Az Entity Framework Core-ral részletesebben foglalkozunk az Adatvezérelt rendszerek spec. tárgyban illetve a Szofverfejlesztés .NET platformon választható tárgyban.
