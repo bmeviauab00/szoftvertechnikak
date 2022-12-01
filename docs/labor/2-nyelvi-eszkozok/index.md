@@ -1,8 +1,5 @@
 # 2. Nyelvi eszközök
 
-Utolsó módosítás ideje: 2022.10.31  
-Kidolgozta: Kővári Bence, Benedek Zoltán
-
 ## A gyakorlat célja
 
 A gyakorlat célja az alábbi C# nyelvi elemek megismerése:
@@ -52,7 +49,7 @@ A következő példában egy `Person` nevű osztályt fogunk elkészíteni, mely
 3. Tegyük az osztályt publikussá. Ehhez az osztály neve elé be kell írni a `public` kulcsszót. Erre a módosításra itt valójában még nem volna szükség, ugyanakkor a 4. feladat már egy publikus osztályt fog igényelni.
 4. Hozzunk létre az osztályon belül egy `int` típusú `age` nevű mezőt és egy ezt elérhetővé tevő `Age` tulajdonságot.
 
-    ```cs
+    ```csharp
     public class Person
     {
         private int age;
@@ -80,7 +77,7 @@ A következő példában egy `Person` nevű osztályt fogunk elkészíteni, mely
 
 5. Egészítsük ki a `Program.cs` fájl `Main` függvényét, hogy kipróbálhassuk az új osztályunkat.
 
-    ```cs
+    ```csharp
     static void Main(string[] args)
     {
         var p = new Person();
@@ -93,9 +90,13 @@ A következő példában egy `Person` nevű osztályt fogunk elkészíteni, mely
     !!! tip "Implicit Type (`var`) és Target-typed `new` expressions"
         A változók deklarálása során kiírhatjuk a típust is, de használhatjuk a `var` kulcsszót és az implicit típus mechanizmust. Ilyenkor a fordító a kontextusból, az egyenlőségjel jobb oldalából megpróbálja kitalálni a változó típusát, fenti esetben ez egy `Person` lesz. Fontos, hogy ettől a nyelv még statikusan tipusos marad (tehát **nem** úgy működik mint a JavaScript-es `var` kulcsszó), mert a `p` változó típusa a későbbiekben nem változhat meg, ez csak egy szintaktikai édesítőszer.
 
+        ```csharp
+        var p = new Person();
+        ```
+
         Egy másik megközelítés lehet a a C# 9-ben megjelent Target-typed `new` expressions, ahol a new operátor esetén hagyható el a típus, ha az a fordító által kitalálható a kontektusból (pl.: értékadás bal oldala, paraméter típusa, stb.). A fenti Person konstruktorunk a következőképpen nézne ki:
 
-        ```cs
+        ```csharp
         Person p = new();
         ```
 
@@ -114,7 +115,7 @@ A következő példában egy `Person` nevű osztályt fogunk elkészíteni, mely
 
 9. A setter függvények egyik fontos funkciója, hogy lehetőséget kínálnak az értékvalidációra. Egészítsük ki ennek szellemében az `Age` tulajdonság setter-ét.
 
-    ```cs
+    ```csharp
     public int Age
     {
         get { return age; }
@@ -131,13 +132,13 @@ A következő példában egy `Person` nevű osztályt fogunk elkészíteni, mely
 
 10. Az alkalmazás teszteléséhez rendeljünk hozzá negatív értéket az életkorhoz a `Program` osztály `Main` függvényében.
 
-    ```cs
+    ```csharp
     p.Age = -2;
     ```
 
 11.	Futtassuk a programot, győződjünk meg arról, hogy az ellenőrzés helyesen működik, majd a további munka kedvéért hárítsuk el a hibát azzal, hogy pozitívra cseréljük a beállított életkort.
 
-    ```cs
+    ```csharp
     p.Age = 2;
     ```
 
@@ -150,7 +151,7 @@ A következő példában egy `Person` nevű osztályt fogunk elkészíteni, mely
 
     Erre nézzünk a következőkben példát. Egészítsük ki a `Person` osztályunkat egy ilyen, ún. **„autoimplementált” tulajdonsággal (auto-implemented property)**. Készítsünk egy `string` típusú `Name` tulajdonságot.
 
-    ```cs
+    ```csharp
     public string Name { get; set; }
     ```
 
@@ -158,7 +159,7 @@ A következő példában egy `Person` nevű osztályt fogunk elkészíteni, mely
 
 2. Most ellenőrizzük a működését a `Main` függvény kiegészítésével.
 
-    ```cs hl_lines="4 6"
+    ```csharp hl_lines="4 6"
     static void Main(string[] args)
     {
         // ...
@@ -170,7 +171,7 @@ A következő példában egy `Person` nevű osztályt fogunk elkészíteni, mely
 
 3. A tulajdonságok nagy előnye a teljesen szabad implementáció mellett, hogy a getter és a setter láthatóságát külön külön is lehet állítani. Állítsuk a `Name` tulajdonság setterének a láthatóságát privátra.
 
-    ```cs
+    ```csharp
     public string Name { get; private set; }
     ```
 
@@ -178,7 +179,7 @@ A következő példában egy `Person` nevű osztályt fogunk elkészíteni, mely
 
 4. Állítsuk vissza a láthatóságot, hogy megjavuljon a fordítási hiba:
 
-    ```cs
+    ```csharp
     public string Name { get; set; }
     ```
 
@@ -186,89 +187,101 @@ A következő példában egy `Person` nevű osztályt fogunk elkészíteni, mely
 
 Ha jól állunk az idővel, akkor tekintsük át az alábbi propertyhez kapcsolódó szintaktikai édesítőszereket.
 
-1. **Default érték:** A tulajdonságok esetében megadható a kezdeti értékük is a deklaráció során. Adjunk kiinduló értéket a `Name` tulajdonságnak.
+#### Default érték
 
-    ```cs
-    public string Name { get; set; } = "anonymous";
-    ```
+A tulajdonságok esetében megadható a kezdeti értékük is a deklaráció során. Adjunk kiinduló értéket a `Name` tulajdonságnak.
 
-2. **Readonly property:** A setter elhagyható, így egy olyan readonly tulajdonságot kapunk, amit csak konstruktorban vagy az előző pont alapján default értékkel tudunk beállítani. Ellentétben a privát szetterrel rendelkező tulajdonságokkal, amiknek a settere bármely az osztályban található függvényből hívható.
+```csharp
+public string Name { get; set; } = "anonymous";
+```
 
-    ```cs
-    public string Name { get; }
-    ```
+#### Readonly property
 
-3. **Getter only property:** Készíthető getter only tulajdonság is, ami mindig kiszámol egy megadott logika alapján egy értéket, de nincs settere és nincs mögötte közvetlen tároló.
+A setter elhagyható, így egy olyan readonly tulajdonságot kapunk, amit csak konstruktorban vagy az előző pont alapján default értékkel tudunk beállítani. Ellentétben a privát szetterrel rendelkező tulajdonságokkal, amiknek a settere bármely az osztályban található függvényből hívható.
 
-    ```cs
-    public int AgeInDogYear { get { return Age * 7; } }
-    ```
+```csharp
+public string Name { get; }
+```
 
-    Ez nem összekeverendő az előző pontban lévő Csak getterrel rendelkező readonly propertyvel, ami mögött van mező.
+#### Getter only property
 
-4. **Expression body:** A getter vagy setter csak egy sorból állna, akár rendelkezik vagy sem visszatérési értékkel a kifejezés, megadható úgynevezett expression body szintaktikával is, a `=>` operátorral
+Készíthető getter only tulajdonság is, ami mindig kiszámol egy megadott logika alapján egy értéket, de nincs settere és nincs mögötte közvetlen tároló.
 
-    ```cs
-    public int AgeInDogYear { get => Age * 7; }
-    ```
+```csharp
+public int AgeInDogYear { get { return Age * 7; } }
+```
 
-    Sőt, ha csak getterje lenne a tulajdonságnak, a `get` kulcsszót és a kapcsos zárójeleket is lehagyhatjuk.
+Ez nem összekeverendő az előző pontban lévő Csak getterrel rendelkező readonly propertyvel, ami mögött van mező.
 
-    ```cs
-    public int AgeInDogYear => Age * 7;
-    ```
+#### Expression body
 
-    Ez nem összekeverendő a függvények hasonló expression body szintaktikájával, ahol kötelező a kerek zárójeleket kitenni. Tehát az alábbi egy függvény, a fentebbi pedig egy getter only property.
+A getter vagy setter csak egy sorból állna, akár rendelkezik vagy sem visszatérési értékkel a kifejezés, megadható úgynevezett expression body szintaktikával is, a `=>` operátorral
 
-    ```cs
-    public int AgeInDogYear() => Age * 7;
-    ```
+```csharp
+public int AgeInDogYear { get => Age * 7; }
+```
 
-5. **Object initializer**: A tulajdonságok setter hívása és a konstruktor hívás kombinálható egy úgynevezett object initializez szintaxis segítségével. Elég csak a konstruktor után kapcsos zárójelekkel blokkot nyissunk, ahol a propertyk értéke adható meg, az alábbi szintaktikával.
+Sőt, ha csak getterje lenne a tulajdonságnak, a `get` kulcsszót és a kapcsos zárójeleket is lehagyhatjuk.
 
-    ```cs
-    var p = new Person()
-    {
-        Age = 17,
-        Name = "Luke",
-    };
-    ```
-  
-    Ez a szintaktika azért is előnyös, mert egy kifejezésnek számít a példában szereplő három helyett, így akár közvetlenül függvényhívás paramétereként átadható egy objektum, anélkül, hogy változót kellene deklarálni.
+```csharp
+public int AgeInDogYear => Age * 7;
+```
 
-    ```cs
-    void Foo(Person p)
-    {
-        // do something with p
-    }
-    ```
+Ez nem összekeverendő a függvények hasonló expression body szintaktikájával, ahol kötelező a kerek zárójeleket kitenni. Tehát az alábbi egy függvény, a fentebbi pedig egy getter only property.
 
-    ```cs
-    Foo(new Person() { Age = 17, Name = "Luke" });
-    ```
+```csharp
+public int AgeInDogYear() => Age * 7;
+```
 
-    A szintaxis ráadásul copy-paste barát, mert a fenti példában is látszik, hogy nem számít, hogy az utolsó property után van-e vessző vagy nincs.
+#### Object initializer
 
-6. **Init only setter**: Az előző pontban lévő object initializer szintaxis nagyon kényelmes viszont azt követeli meg a tulajdonságtól, hogy publikus legyen. Ha azt akarjuk, hogy egy tulajdonság értéke csak konstruktor időben változhasson meg, ahol konstruktor paramétert kell bevezessünk, és egy readonly propertybe kell azt értékül adjuk. Erre a problémára ad megoldást az *Init only setter* szintaxis, ahol olyan settert tudunk készíteni az `init` kulcsszóval, ami csak konstruktor időben és az objektum inicializáló szintaxis során engedélyezett.
+A tulajdonságok setter hívása és a konstruktor hívás kombinálható egy úgynevezett object initializez szintaxis segítségével. Elég csak a konstruktor után kapcsos zárójelekkel blokkot nyissunk, ahol a propertyk értéke adható meg, az alábbi szintaktikával.
 
-    ```cs
-    public string Name { get; init; }
-    ```
+```csharp
+var p = new Person()
+{
+    Age = 17,
+    Name = "Luke",
+};
+```
 
-    ```cs
-    var p = new Person()
-    {
-        Age = 17,
-        Name = "Luke",
-    };
+Ez a szintaktika azért is előnyös, mert egy kifejezésnek számít a példában szereplő három helyett, így akár közvetlenül függvényhívás paramétereként átadható egy objektum, anélkül, hogy változót kellene deklarálni.
 
-    p.Name = "Test"; // build error
-    ```
+```csharp
+void Foo(Person p)
+{
+    // do something with p
+}
+```
+
+```csharp
+Foo(new Person() { Age = 17, Name = "Luke" });
+```
+
+A szintaxis ráadásul copy-paste barát, mert a fenti példában is látszik, hogy nem számít, hogy az utolsó property után van-e vessző vagy nincs.
+
+#### Init only setter
+
+Az előző pontban lévő object initializer szintaxis nagyon kényelmes viszont azt követeli meg a tulajdonságtól, hogy publikus legyen. Ha azt akarjuk, hogy egy tulajdonság értéke csak konstruktor időben változhasson meg, ahol konstruktor paramétert kell bevezessünk, és egy readonly propertybe kell azt értékül adjuk. Erre a problémára ad megoldást az *Init only setter* szintaxis, ahol olyan settert tudunk készíteni az `init` kulcsszóval, ami csak konstruktor időben és az objektum inicializáló szintaxis során engedélyezett.
+
+```csharp
+public string Name { get; init; }
+```
+
+```csharp
+var p = new Person()
+{
+    Age = 17,
+    Name = "Luke",
+};
+
+p.Name = "Test"; // build error
+```
+
+## 2. Feladat – Delegát (delegate, metódusreferencia)
 
 !!! danger "Forduljon a kód!"
     A további feladatok építeni fognak az előző feladatok végeredményeire. Ha programod nem fordul le, vagy nem megfelelően működik, jelezd ezt a gyakorlatvezetődnek a feladatok végén, és segít elhárítani a hibát.
-
-## 2. Feladat – Delegát (delegate, metódusreferencia)
 
 A delegátok típusos metódusreferenciákat jelentenek .NET-ben, a C/C++ függvénypointerek modern megfelelői. Egy delegát definiálásával egy olyan változót definiálunk, amellyel rámutathatunk egy olyan metódusra, amely típusa (paraméterlistája és visszatérési értéke) megfelel a delegát típusának. A delegát meghívásával az értékül adott (beregisztrált) metódus automatikusan meghívódik. A delegátok használatának egyik előnye az, hogy futási időben dönthetjük el, hogy több metódus közül éppen melyiket szeretnénk meghívni.
 
@@ -282,7 +295,7 @@ A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `P
 
 1. Hozzunk létre egy új **delegát típust**, mely `void` visszatérési értékű, és két darab `int` paramétert elváró függvényre tud hivatkozni. Figyeljünk rá, hogy az új típust a `Person` osztály előtt, közvetlenül a névtér scope-jában definiáljuk!
 
-    ```cs
+    ```csharp
     namespace PropertyDemo
     {
         public delegate void AgeChangingDelegate(int oldAge, int newAge);
@@ -296,7 +309,7 @@ A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `P
 
 2. Tegyük lehetővé, hogy a `Person` objektumai rámutathassanak tetszőleges, a fenti szignatúrának megfelelő függvényre. Ehhez hozzunk létre egy `AgeChangingDelegate` típusú mezőt a `Person` osztályban!
 
-    ```cs
+    ```csharp
     public class Person
     {
         public AgeChangingDelegate AgeChanging;
@@ -307,7 +320,7 @@ A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `P
 
 3. Hívjuk meg a függvényt minden alkalommal, amikor az emberünk kora megváltozik. Ehhez egészítsük ki az `Age` tulajdonság setterét a következőkkel.
 
-    ```cs hl_lines="8-9"
+    ```csharp hl_lines="8-9"
     public int Age
     {
         get { return age; }
@@ -329,14 +342,14 @@ A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `P
     - Fel kell készülnünk rá, hogy a delegate típusú mezőnkhöz még senki nem rendelt értéket (nincs egy subscriber/előfizető sem). Ilyen esetekben a meghívásuk kivételt okozna, ezért meghívás előtt mindig ellenőrizni kell, hogy a mező értéke `null`-e.
     - Az esemény elsütésekor a `null` vizsgálatot és az esemény elsütést elegánsabb, tömörebb, és szálbiztosabb formában is meg tudjuk tenni a „`?.`” null-conditional operátorral (C# 6-tól):
 
-    ```cs
+    ```csharp
     if (AgeChanging != null)
         AgeChanging(age, value);
     ```
 
     helyett
 
-    ```cs
+    ```csharp
     AgeChanging?.Invoke(age, value);
     ```
 
@@ -344,7 +357,7 @@ A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `P
 
    - Ha szigorúan nézzük, akkor csak akkor kellene elsütni az eseményt, ha a kor valóban változik is, vagyis a property set ágában meg kellene vizsgálni, az új érték egyezik-e a régivel. Megoldás lehet, ha a setter első sorában azonnal visszatérünk, ha az új érték egyezik a régivel:
 
-    ```cs
+    ```csharp
     if (age == value) 
         return;
     …
@@ -352,7 +365,7 @@ A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `P
 
 4. Kész vagyunk a `Person` osztály kódjával. Térjünk át az előfizetőre! Ehhez mindenek előtt a `Program` osztályt kell kiegészítenünk egy újabb függvénnyel.
 
-    ```cs
+    ```csharp
     class Program
     {
         // ...
@@ -369,7 +382,7 @@ A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `P
 
 5. Végezetül iratkozzunk fel a változáskövetésre a `Main` függvényben!
 
-    ```cs
+    ```csharp
     static void Main(string[] args)
     {
       Person p = new Person();
@@ -383,7 +396,7 @@ A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `P
 
 7. Egészítsük ki a Main függvényt többszöri feliratkozással, majd futtassuk a programot.
 
-    ```cs
+    ```csharp
     p.AgeChanging = new AgeChangingDelegate(PersonAgeChanging);
     p.AgeChanging += new AgeChangingDelegate(PersonAgeChanging);
     p.AgeChanging += PersonAgeChanging; // Tömörebb szintaktika
@@ -395,7 +408,7 @@ A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `P
 
 8. Próbáljuk ki a leiratkozást is (szabadon választott ponton), majd futtassuk a programot.
 
-    ```cs
+    ```csharp
     p.AgeChanging -= PersonAgeChanging;
     ```
 
@@ -405,7 +418,7 @@ Ahogyan a tulajdonságok a getter és setter metódusoknak, addig a fent látott
 
 1. Az eseményt valójában kívülről (más osztályok műveletiből) is ki tudjuk váltani. Ez szerencsétlen, hisz így az eseményre feliratkozott függvényeken keresztül az osztály nevében hamis adatokat közölhetünk. Ennek demonstrálására szúrjuk be a következő sort a `Main` függvény végére.
 
-    ```cs
+    ```csharp
     p.AgeChanging(67, 12);
     ```
 
@@ -413,13 +426,13 @@ Ahogyan a tulajdonságok a getter és setter metódusoknak, addig a fent látott
 
 2. Bár a `+=` és a `-=` tekintettel vannak a listába feliratkozott többi függvényre, valójában az `=` operátorral bármikor felülírhatjuk (kitörölhetjük) mások feliratkozásait. Próbáljuk ki ezt is, a következő sor beszúrásával (közvetlenül a fel és leiratkozások után szúrjuk be).
 
-    ```cs
+    ```csharp
     p.AgeChanging = null;
     ```
 
 3. Lássuk el az `event` kulcsszóval az `AgeChanging` mezőt `Person.cs`-ben!
 
-    ```cs title="Person.cs"
+    ```csharp title="Person.cs"
     public event AgeChangingDelegate AgeChanging;
     ```
 
@@ -433,6 +446,8 @@ Ahogyan a tulajdonságok a getter és setter metódusoknak, addig a fent látott
 
 ## 4. Feladat – Attribútumok
 
+### Sorosítás testreszabása Attribútummal
+
 **Az attribútumok segítségével deklaratív módon metaadatokkal láthatjuk el forráskódunkat**. Az attribútum is tulajdonképpen egy osztály, melyet hozzákötünk a program egy megadott eleméhez (típushoz, osztályhoz, interfészhez, metódushoz, stb.). Ezeket a metainformációkat a program futása közben bárki (akár mi magunk is) kiolvashatja az úgynevezett reflection mechanizmus segítségével. Az attribútumok a Java annotációk .NET-beli megfelelőinek is tekinthetők.
 
 !!! note "property vs. attribútum vs. static"
@@ -444,7 +459,7 @@ A NET számos **beépített** attribútumot definiál, melyek funkciója a legk�
 
 1. Szúrjuk be a `Main` függvény végére a következő kódrészletet, majd futtassuk a programunkat!
 
-    ```cs
+    ```csharp
     var serializer = new XmlSerializer(typeof(Person));
     var stream = new FileStream("person.txt", FileMode.Create);
     serializer.Serialize(stream, p);
@@ -462,7 +477,7 @@ A NET számos **beépített** attribútumot definiál, melyek funkciója a legk�
 
 3. .NET attribútumok segítségével olyan metaadatokkal láthatjuk el a `Person` osztályunkat, melyek közvetlenül módosítják a sorosító viselkedését. Az `XmlRoot` attribútum lehetőséget kínál a gyökérelem átnevezésére. Helyezzük el a `Person` osztály fölé!
 
-    ```cs
+    ```csharp
     [XmlRoot("Személy")]
     public class Person 
     {
@@ -472,19 +487,81 @@ A NET számos **beépített** attribútumot definiál, melyek funkciója a legk�
 
 4. Az `XmlAttribute` attribútum jelzi a sorosító számára, hogy a jelölt tulajdonságot ne xml elemre, hanem xml attribútumra képezze le. Lássuk el ezzel az `Age` tulajdonságot (és ne a mezőt!)!
 
-    ```cs
+    ```csharp
     [XmlAttribute("Kor")]
     public int Age
     ```
 
 5. Az `XmlIgnore` attribútum jelzi a sorosítónak, hogy a jelölt tulajdonság teljesen elhagyandó az eredményből. Próbáljuk ki a `Name` tulajdonság fölött.
 
-    ```cs
+    ```csharp
     [XmlIgnore]
     public string Name { get; set; }
     ```
 
 6. Futtassuk az alkalmazásunkat! Hasonlítsuk össze az eredményt a korábbiakkal.
+
+### Kitekités: Saját attribútum készítése és használata
+
+Ha jól állunk idővel Móricka példaként készítsünk egy saját attribútum osztályt, ami csak propertyre rakható rá, és befolyásholatjuk vele a konzolra kiíratást a `Person` osztályban felüldefiniált `ToString` metódusban.
+
+1. Az attribútumhoz hozzunk létre egy új osztályt a projektben `WriteInToStringAttribute`.
+   1. Az attribútum osztályok neve konvenció szerint `Attribute`-ra végződik
+   2. `Attribute` osztályból kell származzanak
+   3. Az Attribútumok is rendes osztályok, tartalmazhatnak konstruktort, propertyt, függvényeket stb.
+      1. Kkészítsünk egy olyan proertyt, amivek ki/be kapcsolatható lesz a működése
+   4. Definiálható, hogy milyen nyelvi elemre kerülhet rá az `[AttributeUsage]` attribútummal. (ami viccesen maga is egy attribútum, amin saját maga van rajta)
+
+    ```csharp
+    [AttributeUsage(AttributeTargets.Property)]
+    public class WriteInToStringAttribute : Attribute
+    {
+        public bool IsEnabled { get; set; }
+    }
+    ```
+
+    !!! tip "Flags enum"
+        Ha megvizsgáljuk az AttributeTargets enum-ot akkor láthatjuk, hogy `[Flags]` attribútummal rendelkezik és az enum tagjai kettőhatvény értékeket vesznek fel. Ezzel oldható meg C#-ban is, hogy egy enum változóban több enum értéket is tárolhassunk, ahol az int-ben a bit-et reprezentálnak egy enum értéket. Pl.: `Property` és `Field` értéket az alábbi bitművelettel lehet "összefűzni":
+
+        ```csharp
+        [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
+        ```
+
+2. Definiáljuk felül a `Person` `ToString` metódusát, ahol reflection segítségével iteráljunk végig az összes tulajdonságon és írjuk ki a property nevét és értékét, ha megtalálható rajta ez az attribútum és engedélyezett állapotban van.
+
+    ```csharp
+    public override string ToString()
+    {
+        var s = new StringBuilder();
+        s.AppendLine(base.ToString());
+
+        foreach (var property in typeof(Person).GetProperties())
+        {
+            if (property.GetCustomAttribute<WriteInToStringAttribute>()?.IsEnabled ?? false)
+            {
+                s.AppendLine($"\t{property.Name} = {property.GetValue(this)}");
+            }
+        }
+
+        return s.ToString();
+    }
+    ```
+
+    !!! tip "`GetCustomAttribute<T>`"
+        A `GetCustomAttribute<T>` generikus metódus a `System.Reflection` névtérben található.
+
+3. Rakjuk rá az `Age` tulajdonságra az attribútumonkat
+
+    ```csharp
+    [WriteInToString(IsEnabled = true)]
+    public int Age { get; set; }
+    ```
+
+4. Írjuk ki a konzolra a `Main`-ben a `Person` `ToString`-jét, és próbáljuk ki az alkalmazást.
+
+    ```csharp
+    Console.WriteLine(p);
+    ```
 
 ## 5. Feladat – Delegát 2.
 
@@ -494,7 +571,7 @@ A generikus lista osztály (`List<T>`) `FindAll` függvénye például képes ar
 
 Figyeljük meg (F12-vel belelépve), hogy a függvény paraméterének a típusa a következő előre definiált delegate típus (**nem kell létrehozni**):
 
-```cs
+```csharp
 public delegate bool Predicate<T>(T obj)
 ```
 
@@ -502,7 +579,7 @@ Vagyis bemenetként egy olyan típusú változót vár, mint a listaelemek típu
 
 1. Valósítsunk meg egy olyan szűrőfüggvényt az alkalmazásunkban, amely a páratlan számokat adja vissza:
 
-    ```cs
+    ```csharp
     private static bool MyFilter(int n)
     {
         return n % 2 == 1;
@@ -511,7 +588,7 @@ Vagyis bemenetként egy olyan típusú változót vár, mint a listaelemek típu
 
 2. Egészítsük ki a korábban írt kódunkat a szűrő függvényünk használatával:
 
-    ```cs hl_lines="5"
+    ```csharp hl_lines="5"
     var list = new List<int>();
     list.Add(1);
     list.Add(2);
@@ -530,7 +607,7 @@ Vagyis bemenetként egy olyan típusú változót vár, mint a listaelemek típu
 !!! tip "Collection initializer szintaxis"
     Az object initializer szintaxis mellett elérhető minden `Add` metódussal rendelkező osztályra (tipikusan kollekciók) a collection initializer szintaxis az alábbi módon:
 
-    ```cs
+    ```csharp
     var list = new List<int>()
     {
         1,
@@ -550,7 +627,7 @@ Az előző, 5. feladatot oldjuk meg a következőképpen: ne adjunk meg külön 
 
 Ehhez mindössze egy sort kell megváltoztatni:
 
-```cs
+```csharp
 list = list.FindAll((int n) => { return n % 2 == 1; });
 ```
 
@@ -562,7 +639,7 @@ Egy név nélküli függvényt definiáltunk és adtunk át a `FindAll` művelet
 
 A fenti sort jóval egyszerűbb és áttekinthetőbb formába is írhatjuk:
 
-```cs
+```csharp
 list = list.FindAll(n => n % 2 == 1);
 ```
 
@@ -578,7 +655,7 @@ Megjegyzés: erre a feladatra jó eséllyel nem marad idő. Ez esetben célszer�
 
 A .NET generikus osztályai hasonlítanak C++ nyelv template osztályaihoz, de közelebb állnak a Java-ban már megismert generikus osztályokhoz. A segítségükkel általános (több típusra is működő), de ugyanakkor típusbiztos osztályokat hozhatunk létre. Generikus osztályok nélkül, ha általánosan szeretnénk kezelni egy problémát, akkor `object` típusú adatokat használunk (mert .NET-ben minden osztály az `object` osztályból származik). Ez a helyzet például az `ArrayList`-tel is, ami egy általános célú gyűjtemény, tetszőleges, `object` típusú elemek tárolására alkalmas. Lássunk egy példát az `ArrayList` használatára:
 
-```cs
+```csharp
 var list = new ArrayList();
 list.Add(1);
 list.Add(2);
@@ -600,7 +677,7 @@ A fenti megoldással a következő problémák adódnak:
 
 A fenti probléma megoldása egy generikus lista használatával a következőképpen néz ki (a gyakorlat során csak a kiemelt sort módosítsuk a korábban begépelt példában):
 
-```cs hl_lines="1 7"
+```csharp hl_lines="1 7"
 var list = new List<int>();
 list.Add(1);
 list.Add(2);

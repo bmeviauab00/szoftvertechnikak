@@ -91,7 +91,7 @@ Futtassuk az alkalmazást. Valahogy ki kell alakítsuk egy adott oldal (tabpage)
 
 Önálló feladat a hallgatóknak. Keressék meg azt a függvényt, ahol az egész folyamat elindul. A `FontEditorView.FontEditorView_MouseClick`-be kellene eljutni. Itt egy sor a lényeg:
 
-```cs hl_lines="8"
+```csharp hl_lines="8"
 private void FontEditorView_MouseClick(object sender, MouseEventArgs e)
 {
     int x = e.X/zoom;
@@ -105,7 +105,7 @@ private void FontEditorView_MouseClick(object sender, MouseEventArgs e)
 
 Nézzük meg a `FontEditorDocument.InvertCharDefPixel`-t. Invertálja a megfelelő CharDef pixelét, de a lényeg az utolsó sor:
 
-```cs hl_lines="5"
+```csharp hl_lines="5"
 public void InvertCharDefPixel(char c, int x, int y)
 {
     CharDef fd = GetCharDef(c);
@@ -116,13 +116,13 @@ public void InvertCharDefPixel(char c, int x, int y)
 
 A `FontEditorDocument`-ben vethetünk még egy pillantást a `CharDef`-ek szótárára:
 
-```cs
+```csharp
 Dictionary<char, CharDef> charDefs = new Dictionary<char, CharDef>();
 ```
 
 Az `UpdateAllViews` a `Document` ősben van, `Update`-et hív minden nézetre. Ami érdekes, hogy az `Update` hogy van megírva az egyes nézetekben. Nézzük meg pl. a `FontEditView`-t:
 
-```cs hl_lines="6"
+```csharp hl_lines="6"
 /// <summary>
 /// Az IView interfész Update műveletánek implementációja.
 /// </summary>
@@ -136,7 +136,7 @@ Az `Update` hatására a nézetek újra kell rajzolják magukat az aktuális dok
 
 Zárásképpen nézzük meg a FontEditView.Paint megvalósítását. Egyetlen  lényeges dolog van itt: a megjelenítéshez le kell kérni a dokumentumtól az aktuális `CharDef`-et (mert a nézet a D-V architektúrának megfelelően nem tárolja).
 
-```cs hl_lines="8"
+```csharp hl_lines="8"
 /// <summary>
 /// A UserControl.Paint felüldefiniálása, ebben rajzolunk.
 /// </summary>
@@ -167,7 +167,7 @@ Azt nézzük meg, hogyan történik egy új dokumentum létrehozása, vagyis mi 
 
 Nyissuk meg a MainForm-ot tervezői nézetben, válaszuk a *File/New* menüelemet, hogy ugorjunk el a Click eseménykezelőhöz. Arra látunk példát, hogy az App osztály, mint Singleton, hogy érhető el:
 
-```cs
+```csharp
 App.Instance.NewDocument();
 ```
 
@@ -175,7 +175,7 @@ Az összes többi menüelem eseménykezelője hasonló, nincs semmi logika a GUI
 
 Tekintsük át az az `App.NewDocument` törzsét, és egy-egy mondatban tekintsük át (a gyakorlat során szóban ismertessük) a fontosabb lépéseket. Azt, hogy a `TabControl`-lal mit ügyeskedünk, nem kell elmondani, nem kell tudni.
 
-```cs
+```csharp
 /// <summary>
 /// Létrehoz egy új dokumentumot.
 /// </summary>
