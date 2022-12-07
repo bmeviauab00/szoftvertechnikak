@@ -438,3 +438,5 @@ private void MainForm_Load(object sender, EventArgs e)
 ```
 
 A `DllImport` attribútummal egy natív C DLL-ből lehet függvényeket behivatkozni és C#-ból meghívni azokat. Első paraméterként a vezérlők `Handle`-jét kell átadni, második paraméterként pedig a process nevét, amiről másolni akarunk.
+
+![Windows style](images/windows-style.png)
