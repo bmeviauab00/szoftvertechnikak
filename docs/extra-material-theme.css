@@ -25,6 +25,10 @@ article ul ul ul {
 	--md-accent-fg-color: #e57171; /* link hoover*/
 }
 
+.md-tabs__link {
+	opacity: 0.85;
+}
+
 /* img	{
 	height: 50%;
     width: 50%;
