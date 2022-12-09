@@ -211,7 +211,17 @@ A kezdeti egyeztetések során a megrendelőnktől a következő információt k
 
 ### Class Diagram
 
-Nyissuk meg a megrendelőnktől kapott forráskód solution-jét **TODO: Kiinduló git clone** (EquipmentPélda – Kiindulás mappa) Visual Studio alatt (EquipmentInventory.sln). A Solution Explorerben szemmel fussuk át a fájlokat. Az megértést segítené, ha egy osztálydiagramon megjelenítenénk az osztályok közötti kapcsolatokat. Vegyünk is fel egy osztálydiagramot a projektünkbe. A Solution Explorerben a **projekten** (és nem a solution-ön!) jobb gombbal kattintva a felugró menüben az *Add/New Item* elemet választva, majd a megjelenő ablakban a Class Diagram elemet válasszuk ki, az ablak alján a diagram nevének a Main.cd-t adjuk meg, és OK-zuk le az ablakot.
+Nyissuk meg a megrendelőnktől kapott [forráskód](https://github.com/bmeviauab00/lab-modellkod-kiindulo) solution-jét.
+
+Ehhez klónozzuk le a kiinduló projekt GET repositoryját a `C:\Work` mappán belül egy új saját mappába: pl.: `C:\Work\NEPTUN\lab1`. Ebben az új mappában nyissunk meg egy command line-t vagy powershellt és futtassuk az alábbi git parancsot:
+
+```cmd
+git clone https://github.com/bmeviauab00/lab-modellkod-kiindulo.git
+```
+
+Nyissuk meg a leklónozott mappában található src/EquipmentInventory.sln Visual Studio solutiont. 
+
+A Solution Explorerben szemmel fussuk át a fájlokat. Az megértést segítené, ha egy osztálydiagramon megjelenítenénk az osztályok közötti kapcsolatokat. Vegyünk is fel egy osztálydiagramot a projektünkbe. A Solution Explorerben a **projekten** (és nem a solution-ön!) jobb gombbal kattintva a felugró menüben az *Add/New Item* elemet választva, majd a megjelenő ablakban a Class Diagram elemet válasszuk ki, az ablak alján a diagram nevének a Main.cd-t adjuk meg, és OK-zuk le az ablakot.
 
 !!! warning "Class Diagram hiányzó sablon"
     Ha a *Class Diagram* elem nem jelenik meg a listában, akkor nincs telepítve a VS megfelelő komponense. Erről jelen dokumentum [Előfeltételek](#elofeltetelek) fejezetében olvashatsz bővebben.
