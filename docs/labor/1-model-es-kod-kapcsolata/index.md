@@ -331,8 +331,6 @@ static void Main( string[] args )
     ei.AddEquipment(new SoundCard(2020, 6000));
 
     ei.ListAll();
-
-    Console.ReadKey();
 }
 ```
 
@@ -501,14 +499,14 @@ A következőkben lépésben a `GetDescription` műveletet írjuk meg a `HardDis
 ```cs title="HardDisk.cs"
 public override string GetDescription()
 {
-    return "HardDisk";
+    return "Hard Disk";
 }
 ```
 
 ```cs title="SoundCard.cs"
 public override string GetDescription()
 {
-    return "SoundCard";
+    return "Sound Card";
 }
 ```
 
@@ -526,7 +524,7 @@ A `LedDisplay` osztályunk őse meg van kötve, annak kódja nem módosítható,
 ```cs title="LedDisplay.cs"
 public string GetDescription()
 {
-    return "LedDisplay";
+    return "Led Display";
 }
 ```
 
