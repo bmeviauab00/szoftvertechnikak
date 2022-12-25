@@ -190,12 +190,12 @@ Az anyag itt elérhető: [Interfész és absztrakt (ős)osztály](../../egyeb/in
 Témakörök:
 
 - Absztrakt osztály fogalma és definiálása C# nyelven
-- Interfész fogalma és definiálása C# nyel
+- Interfész fogalma és definiálása C# nyelven
 - Absztrakt ős és interfész összehasonlítása
 
 ## 2. Feladat - Az UML és a kód kapcsolatának szemléltetése
 
-### Feladat leírása - Equipment invetory
+### Feladat leírása - Equipment inventory
 
 Feladat: Egy számítógépalkatrész nyilvántartó alkalmazás kifejlesztésével bíztak meg bennünket. Bővebben:
 
@@ -211,15 +211,18 @@ A kezdeti egyeztetések során a megrendelőnktől a következő információt k
 
 ### Class Diagram
 
-Nyissuk meg a megrendelőnktől kapott [forráskód](https://github.com/bmeviauab00/lab-modellkod-kiindulo) solution-jét.
+Nyissuk meg a megrendelőnktől kapott [forráskód](https://github.com/bmeviauab00/lab-modellkod-kiindulo) solution-jét, melyet a következő lépéseket követve tudunk megtenni.
 
-Ehhez klónozzuk le a kiinduló projekt GET repositoryját a `C:\Work` mappán belül egy új saját mappába: pl.: `C:\Work\NEPTUN\lab1`. Ebben az új mappában nyissunk meg egy command line-t vagy powershellt és futtassuk az alábbi git parancsot:
+Ehhez klónozzuk le a kiinduló projekt online GitHub rendszerben elérhető Git repositoryját a `C:\Work` mappán belül egy új saját mappába: pl.: `C:\Work\NEPTUN\lab1`. Ebben az új mappában nyissunk meg egy command line-t vagy powershellt és futtassuk az alábbi git parancsot:
 
 ```cmd
 git clone https://github.com/bmeviauab00/lab-modellkod-kiindulo.git
 ```
 
-Nyissuk meg a leklónozott mappában található src/EquipmentInventory.sln Visual Studio solutiont. 
+!!! note Git és GitHub
+    A Git-ről, mint forráskódkezelő rendszerről, az első házi feladat kontextusában olvashatunk majd bővebben.
+
+Nyissuk meg a leklónozott mappában található src/EquipmentInventory.sln Visual Studio solutiont.
 
 A Solution Explorerben szemmel fussuk át a fájlokat. Az megértést segítené, ha egy osztálydiagramon megjelenítenénk az osztályok közötti kapcsolatokat. Vegyünk is fel egy osztálydiagramot a projektünkbe. A Solution Explorerben a **projekten** (és nem a solution-ön!) jobb gombbal kattintva a felugró menüben az *Add/New Item* elemet választva, majd a megjelenő ablakban a Class Diagram elemet válasszuk ki, az ablak alján a diagram nevének a Main.cd-t adjuk meg, és OK-zuk le az ablakot.
 
@@ -530,7 +533,7 @@ public string GetDescription()
 
 Figyeljük meg, hogy itt NEM adtuk meg az `override` kulcsszót. Mikor egy interfész függvényt implementálunk, az `override`-ot nem kell/szabad kiírni.
 
-### GetDesciption használata
+### GetDescription használata
 
 Módosítsuk az `EquipmentInventory.ListAll` műveletét, hogy az elemek leírását is írja ki a kimenetre:
 
