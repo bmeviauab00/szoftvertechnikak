@@ -31,25 +31,25 @@ A Window Forms alkalmazások legfontosabb koncepcióit a tárgy 3.-4. előadása
 
 ## 1. Feladat – „Hello world” Windows Forms technológiával
 
-A feladat során egy olyan Windows Forms alkalmazást készítünk el, ami egy egyszerű ablakban kiírja a „Hello world!” szöveget.
+A feladat során egy olyan Windows Forms alkalmazást készítünk el, amely egy egyszerű ablakban kiírja a „Hello world!” szöveget.
 
 1. Indítsuk el a Visual Studio 2022-t
 
 2. Hozzunk létre egy C# nyelvű, *Windows Forms* típusú alkalmazást, mégpedig **.NET 6** platformra.
-    1. Ehhez a VS indítóablakában jobb oldalt a *Create new project* gombon kell kattintani, majd a projekt létrehozó varázslóban a *Windows Forms App* sablont kell kiválasztani. Lényeges, hogy **NE** a Windows Forms App (.NETFramework) legyen! A sablon kikereséséhez használjuk az ablak kereső/szűrőmezőit, amennyiben szükséges. Kattintsunk a Next gombra.
+    1. Ehhez a VS indítóablakában jobb oldalt a *Create new project* gombon kell kattintani, majd a projekt létrehozó varázslóban a *Windows Forms App* sablont kell kiválasztani. Lényeges, hogy **NE** a *Windows Forms App (.NETFramework)* legyen! A sablon kikereséséhez használjuk az ablak kereső/szűrőmezőit, amennyiben szükséges. Kattintsunk a Next gombra.
     2. A megjelenő oldalon
         1. A *Projekt name* és *Solution name* legyen `HelloWorldWF`
         2. Az útvonal a laborgépeken: `C:\Work\` alatt egy mappa, mely a saját nevünk vagy Neptun kódunk szerint van nevezve.
         3. Next gombbal következő oldalra váltás
     3. A Framework mezőben válasszuk ki a *.NET 6.0 (Long term support)*-ot.
 
-    Futtassuk a kiinduló projektet, hogy lássuk, mit biztosít a kiinduló alkalmazáskeret (gyakorlatilag semmit, van egy egyszerű ablak). Állítsuk le a futó alkalmazást.
+    Futtassuk a kiinduló projektet, hogy lássuk, mit biztosít a kiinduló alkalmazáskeret (nem sokat, van egy egyszerű ablak). Állítsuk le a futó alkalmazást.
 
 3. Kattintsunk duplán a `Form1.cs` fájlra! Ezt követően a felületen megjelenik egy szürke ablak. Amennyiben a Solution Explorerben a `Form1.cs` fájl elemet kibontjuk, látni fogjuk, hogy egy `Form1.designer.cs` nevű fájl is tartozik hozzá.
 
     A fenti egyszerű program felépítését könnyen végig követhetjük korábbi ismereteink alapján. A program belépési pontja itt is a `Program.cs` fájlban található `Main` függvény. A függvény létrehoz egy példányt a `Form1` osztályból, majd az `Application.Run` függvény segítségével elindítja az üzenetkezelő ciklust és megjeleníti az ablakot (a Windows Forms világában „Form”-nak hívjuk az ablakokat).
 
-    A `Form1` osztály kódja két fájlban van definiálva (ezt a C# `partial` kulcsszava teszi lehetővé). A `Form1.cs` a felhasználó által kezelt kódrészleteket, míg a `Form1.designer.cs` a grafikus *Form designer* által generált kódot tartalmazza. Ez utóbbi mindig teljes szinkronban van a design nézettel, közvetlen módosítására ugyan van lehetőség, de a speciális hibaelhárítási eseteket leszámítva felesleges és kerülendő. Figyeljük meg, hogy a két fájl között alapból kapcsolat van, hiszen a `Form1` konstruktora áthív a másik fájlban definiált `InitializeComponent()` függvénybe.
+    A `Form1` osztály kódja két fájlban van definiálva (ezt a C# `partial` kulcsszava teszi lehetővé). A `Form1.cs` a felhasználó által kezelt kódrészleteket, míg a `Form1.designer.cs` a grafikus *Form designer* által generált kódot tartalmazza. Ez utóbbi mindig teljes szinkronban van a design nézettel, közvetlen módosítására ugyan van lehetőség, de a speciális hibaelhárítási eseteket leszámítva felesleges és kerülendő. Figyeljük meg, hogy a két fájl között már a generált kód alapján is kapcsolat van, hiszen a `Form1` konstruktora áthív a másik fájlban definiált `InitializeComponent()` függvénybe.
 
     !!! tip "Designer nézet és kód között váltás"
         Amennyiben a `Form1.cs` fájlra duplán kattintunk, alapértelmezésben nem a forráskód, hanem a tervező nézet (Form designer) jelenik meg. Innen a forráskód nézetre a felületen jobb kattintva, a *View Code* menüponttal, vagy az F7 billentyű megnyomásával juthatunk.
@@ -73,15 +73,15 @@ A feladat során egy olyan Windows Forms alkalmazást készítünk el, ami egy e
 9. Ugyanitt a Properties ablakban állítsuk be gombunk **referenciáját tartalmazó osztályváltozó** nevét, vagyis a `Name` tulajdonságát `button1`-ről `bUpdateText`-re. Lényeges, hogy a vezérlőinket a funkciójuknak megfelelő nevekkel lássuk el, ez nagyban segíti a kódunk olvashatóságát. A `b` prefix a vezérlő `Button` típusára utal.
 
     !!! note "Hungarian Notation"
-        A fenti prefixelt elnevezési konvenciót [Hungarian Notation](https://en.wikipedia.org/wiki/Hungarian_notation)nek hívják, mert Charles Simonyi (Simonyi Károly fia) találta ki mikor az Excel csapatban dolgozott a Micorosftnál.
+        A fenti prefixelt elnevezési konvenciót [Hungarian Notation](https://en.wikipedia.org/wiki/Hungarian_notation)nek hívják, mert Charles Simonyi (Simonyi Károly fia) találta ki, amikor az Excel csapatban dolgozott a Micorosftnál.
 
         A koncepció elsősorban C++-hoz készült, olyan időkben, amikor még nem voltak gazdag funkcionalitású fejelsztőkörnyezetek, és egy egyszerű szövegszerkesztővel is ránézésre meg kellett tudni mondani, hogy a változó milyen típusú. Ez manapság már nem releváns, mert a Visual Studio is pl. az egérkurzor segítségével visszajelzést ad a változó típusáról.
 
 10. Az előző lépés mintájára nevezzük át a `TextBox` vezérlőnket `tbDemoText`-re. A `tb` prefix a vezérlő `TextBox` típusára utal.
 
-11. Az űrlapunk neve jelenleg `Form1`, ami szintén elég semmitmondó. Nevezzük át `MainForm`-ra, az alábbi lépéseket követve. Az átnevezést a Solution Explorerben tudjuk megtenni, itt több technikát is használhatunk.
+11. Az űrlapunk neve jelenleg `Form1`, mely szintén elég semmitmondó. Nevezzük át `MainForm`-ra, az alábbi lépéseket követve. Az átnevezést a Solution Explorerben tudjuk megtenni, itt több technikát is használhatunk.
 
-    - Válasszuk ki a `Form1` elemet, majd még egyszer kattintsunk rajta bal gombbal: ekkor a név szerkeszthetővé válik (pont úgy dolgozunk, ahogy egy fájlt is átnevezünk Windows Explorerben).
+    - Válasszuk ki a `Form1` elemet, majd még egyszer kattintsunk rajta bal gombbal: ekkor a név szerkeszthetővé válik (pont úgy dolgozunk, ahogy egy fájlt is átnevezünk Windows Fájlkezelőben/File Explorerben).
 
     - Vagy egyszerűen csak megnyomjuk az F2 billentyűt az átnevezés elindításához.
 
@@ -105,10 +105,10 @@ A feladat során egy olyan Windows Forms alkalmazást készítünk el, ami egy e
 
     Az eseménylistában látható, hogy a `Button` osztálynak számos eseménye van. Számunkra most a `Click` esemény az érdekes. Erre kétféleképpen tudunk feliratkozni:
 
-    - Az eseménylistában a `Click` elemen duplán kattintunk
-    - A designer felületen a gombon duplán kattintva. A designer felületen a duplán kattintás mindig a vezérlő alapértelmezett eseményére iratkozik fel. Mivel a `Click` esemény a `Button` osztály alapértelemezett eseménye.
+    - Az eseménylistában a `Click` elemen duplán kattintunk.
+    - A designer felületen a gombon duplán kattintva. A designer felületen a duplán kattintás mindig a vezérlő - a vezérlő típusától függő - alapértelmezett eseményére iratkozik fel. Mivel a `Click` esemény a `Button` osztály alapértelemezett eseménye, ez nekünk most pont meg is felel.
 
-    Válasszuk most a második lehetőséget, kattintsunk duplán a gomb vezérlőn, ami létrehoz egy eseménykezelő függvénytami. Az implementációbab a `tbDemoText` objektum `Text` tulajdonságát állítsuk be "Helló"-ra.
+    Válasszuk most a második lehetőséget, kattintsunk duplán a gomb vezérlőn. Ez létrehoz egy eseménykezelő függvényt, mely akkor kivódik futás közben, amikor a felhasználó kattint a gombon (akár egérrel, akár a Tab billentyűvel ránavigálva a Space billentyű lenyomásával). A függvény törzsében a `tbDemoText` objektum `Text` tulajdonságát állítsuk be "Helló"-ra.
 
     ```csharp
     private void bUpdateText_Click(object sender, EventArgs e)
@@ -120,51 +120,51 @@ A feladat során egy olyan Windows Forms alkalmazást készítünk el, ami egy e
     !!! tip "Eseménykezelők fejléce"
         Ha nem tetszik a dupla klikkes generált név (a hungarian notation miatt kisbetűvel kezdődik, ami nem túl C#-os), akkor egyszerűen kezdjük el begépelni a Properties ablak kívánt eseményéhez a függvény nevét, majd nyomjunk Entert.
 
-        Az eseménykezelőket tipikusan úgy szoktuk elnevezni, ami utal a vezérlőre (alapértelmezetten a neve) majd alulvonás után az esemény neve.
+        Az eseménykezelőket tipikusan úgy szoktuk elnevezni, hogy utaljon a vezérlőre (alapértelmezetten a neve) majd alulvonás után az esemény neve következik.
 
-        A Windows Forms vezérlőinek eseménykezelőiben szinte mindig 2 paramétert kapunk:
+        A Windows Forms vezérlőinek eseménykezelőiben szinte mindig két paramétert kapunk:
         
         - `object sender`: A kiváltó objektum (sajnos nem erősen típusosan)
-        - `EventArgs e`: valamilyen `EventArgs` leszármazott, az eseményt extra paramétereivel. Az `EventArgs` itt egy üres paramétert reprezentál. A későbbiekben láthatunk majd összetettebb esemény paraméterre is példát.
+        - `EventArgs e`: Az eseményhez tartozó paramétereket tartalmazza. Típusa `EventArgs`, vagy annak leszármazottja. Az `EventArgs` itt egy üres paramétert reprezentál, mert a gombkattintáshoz nem tartozik semmi extra adat. `EventArgs` leszármazott olyan események esetén használt, melyekhez valamilyen plusz adat is tartozik (pl. billentyű lenyomásnál a lenyomott billentyű kódja).
 
 13. Futtassuk az alkalmazást (F5)! Nyomjuk meg a gombot!
 
 14. Nézzünk bele újra a `MainForm.Designer.cs`-be. Megtaláljuk az újonnan generált kódot: az űrlapon elhelyezett vezérlőkből tagváltozók lesznek, melyek az `InitializeComponent` függvényben kerülnek inicializálásra, itt találjuk a tulajdonságaik beállítását, valamint az eseményekre való feliratkozást.
 
-    Figyeljük meg azt is, hogy a gomb lenyomására tulajdonképpen egy eseménykezelővel iratkoztunk fel.
+    Figyeljük meg azt is, hogy a gomb lenyomására tulajdonképpen egy C# eseménykezelő függvényt regisztráltunk be a már ismert `+=` operátor alkalmazásával.
 
-    Láthatjuk, hogy a designer csak olyan kódot generál, amit akár mi is meg tudnánk írni, de persze így egyszerűbb azt elkészíteni.
+    Láthatjuk, hogy a designer csak olyan kódot generál, melyet akár mi is meg tudnánk írni, de persze így egyszerűbb azt elkészíteni.
 
-## Alapfogalmak megismerése
+## Néhány alapfogalom áttekintése
 
 ### Form - felülettervezés
 
-A `Form` osztály az ablakot reprezentálja, és egyben a konténer-vezérlő kapcsolatban a legfelső konténer.
+A `Form` osztály az ablakot reprezentálja, és egyben a konténer-vezérlő kapcsolatban a legfelső szintű konténer (tartalmazó).
 
 A felület kialakítása szempontjából az alkalmazásunk lehet:
 
-- Dialógus alapú: Kizárólag vezérlőket helyezünk el a formon, mintha egy dialógus ablak lenne. Ha szükséges, új ablakot nyitunk az egyes funkcióknak. Pl. Üzleti alkalmazások.
-- SDI, vagy MDI: Dokumentum alapú alkalmazás, amelyben a form a dokumentum megjelenítője, és esetleg szerkesztője, az egyéb vezérlőket/funkciókat a menübe és a toolbarra tesszük. Az SDI (Single Document Interface) egy objektumot kezel egy időben, az MDI (Multiple Document Interface) pedig többet. Pl. szövegszerkesztők.
-- Vegyes: Az ilyen jellegű alkalmazásokban a dokumentum szerkesztése a cél csakúgy, mint az SDI/MDI változatokban, azonban az ablak egy része fenn van tartva vezérlők számára, ahol könnyen elérhetjük a funkciókat. Pl. CAD alkalmazások.
+- Dialógus alapú: Kizárólag vezérlőket helyezünk el az űrlapon, mintha egy dialógus ablak lenne. Ha szükséges, új ablakot nyitunk az egyes funkcióknak. Pl. sokszor ilyenek az üzleti/vállalati alkalmazások.
+- SDI, vagy MDI: Dokumentum alapú alkalmazás, mely esetben az űrlap a dokumentum megjelenítője és esetleg szerkesztője. Az egyéb vezérlőket/funkciókat a menübe és a toolbarra (eszközsáv) tesszük. Az SDI (Single Document Interface) egy dokumentumot kezel egy időben, az MDI (Multiple Document Interface) pedig többet. Pl. ilyenek szövegszerkesztők, vagy maga a Visual Studio is.
+- Vegyes: Az ilyen jellegű alkalmazásokban a dokumentum szerkesztése a cél csakúgy, mint az SDI/MDI változatokban, azonban az ablak egy része fenn van tartva vezérlők számára, ahol könnyen elérhetjük a funkciókat. Pl. ilyenek a CAD alkalmazások.
 
 ### Konténer-vezérlő tartalmazási hierarchia
 
 Egy ablak/űrlap hierarchikus (fa) felépítésű, amelyben a gyökérobjektum maga a `Form`. **Lényeges, hogy itt nem származtatási, hanem tartalmazási hierarchiáról van szó**. Alatta újabb konténerek lehetnek egymásba ágyazva, vagy csak egymás mellett.  A hierarchia alján vannak az egyszerű vezérlők, de lehetnek vezérlő nélküli konténerek is.
 
-Az egymásba ágyazás azért szükséges, hogy egységként lehessen kezelni a konténereket és a gyerekeiket, így például odébb húzva a konténert mennek vele a vezérlők is. A másik fontos ok a tulajdonságöröklés, amely lehetővé teszi, hogy ha megváltoztatjuk valamelyik konténer örökölhető tulajdonságát (pl. `Font`), akkor azt a gyerekei is megörököljék. Ez nem a szokásos objektum-orientált öröklés, de a szülő-gyermek viszony azonos elvre épül.
+Az egymásba ágyazás azért szükséges, hogy egységként lehessen kezelni a konténereket és a gyerekeiket, így például odébb húzva a konténert vele mozognak az általa tartalmazott vezérlők is. A másik fontos ok a tulajdonságöröklés, amely lehetővé teszi, hogy ha megváltoztatjuk valamelyik konténer örökölhető tulajdonságát (pl. `Font`), akkor azt a gyerekei is megörököljék. Ez nem a szokásos objektum-orientált öröklés, de a szülő-gyermek viszony azonos elvre épül.
 
 ### Üzenetkezelés
 
-A WinForms alapú alkalmazások üzenetkezelésre épülnek, amelynek a hátterében az operációs rendszer felépítése áll. Az üzenetkezelő ciklus a `Main` függvényben van (`Application.Run`), amely csak akkor lép ki, ha bezárjuk az alkalmazásunkat.
+A Windows Forms alapú alkalmazások üzenetkezelésre épülnek, amelynek a hátterében az operációs rendszer üzenetkezelő mechanizmusa áll. Az üzenetkezelő ciklus a `Main` függvényben van (`Application.Run`), amely csak akkor lép ki, ha bezárjuk az alkalmazásunkat.
 
 ### Visual Studio Designer
 
-A designer a felhasználói felület szerkesztője, amelyben lehetőségünk van új elemeket felvenni, a meglévőket módosítani és törölni. A designer fontosabb elemei/kellékei:
+A designer a felhasználói felület szerkesztője, amelyben lehetőségünk van új elemeket felvenni, illetve a meglévőket módosítani és törölni. A designer fontosabb elemei/kellékei:
 
-- **Toolbox**: Erről lehet a konténereket és vezérlőket ráhúzni a formra.
-- **Properties ablak/Property Editor**: A kijelölt vezérlő tulajdonságait és eseményeit mutatja, és itt lehet szerkeszteni is őket. F4 billentyűvel is elérhető.
-- **Smart tag**: Minden vezérlő jobb felső sarkában található egy kis nyíl, amely előhozza. Ebben vannak a fontosabb tulajdonságok összegyűjtve.
-- **Document outline ablak**: A konténer-vezérlő hierarchiát mutatja. Itt ki lehet jelölni az elemeket és mozgatni is lehet őket a hierarchiában, átrendezve ezzel őket a formon is.
+- **Toolbox**: Erről lehet a konténereket és vezérlőket ráhúzni az űrlapra.
+- **Properties ablak/Property Editor**: A kijelölt vezérlő tulajdonságait és eseményeit mutatja, illetve itt lehet ezeket módosítani is. Az F4 billentyűvel is elérhető.
+- **Smart tag**: A legtöbb vezérlő típus esetén támogatott. A vezérlőt kiválasztva annak jobb felső sarkában megjelenik egy kis nyíl, amelyre kattintva megjelenik. Ebben néhány kiemelt tulajdonság és kényelmi funkció érhető el.
+- **Document outline ablak**: A konténer-vezérlő hierarchiát mutatja. Itt ki lehet jelölni az egyes vezérlőket, illetve mozgatni is lehet őket a hierarchiában, mely érvényesül az űrlapon is.
 
 ## 2. Feladat - Menük, Horgonyzás, Dokkolás
 
@@ -172,14 +172,14 @@ A designer a felhasználói felület szerkesztője, amelyben lehetőségünk van
 
 A felülettervezés következő feladata a menük megszerkesztése. Ehhez végezzük el a következő lépéssorozatot.
 
-1. A Toolboxról húzzunk rá a `Form`-ra egy `MenuStrip`-et (*Menus & Toolbars* kategóriában van)
-2. A `MenuStrip` smart tag-jét kinyitva (kicsi nyíl a jobb felső sarkában) nyomjunk rá az *Insert Standard Items*-re.
+1. A Toolboxról húzzunk rá a `Form`-ra egy `MenuStrip`-et (*Menus & Toolbars* kategóriában van).
+2. A `MenuStrip` smart tag-jét kinyitva (kicsi nyíl a jobb felső sarkában) kattintsunk az *Insert Standard Items*-re.
 3. Ismételjük az első két lépést a `ToolStrip` vezérlővel is.
 4. Majd helyezzünk fel alulra egy `StatusStrip` vezérlőt is.
 
-Teszteljük az alkalmazást, vegyük észre, hogy a `ToolStrip`-nek van kis fogantyúja, azonban azt hiába fogjuk meg, nem mozog. Ekkor jön segítségünkre a `ToolStripContainer`, amely egyben jól szemlélteti a konténer-vezérlő felépítést is.
+Teszteljük az alkalmazást, vegyük észre, hogy a `ToolStrip`-nek van kis fogantyúja, azonban azt hiába fogjuk meg, nem mozog. Ekkor jön segítségünkre a `ToolStripContainer`. A `ToolStripContainer` egy olyan konténer vezérlő, mely öt panelt tartalmaz: egy Top, Bottom, Left, Right és egy középen elhelyezkedő Content panelt.
 
-1. A menü smart tag-ében válasszuk ki az *Embed In ToolStripContainer* parancsot, amely feltesz egy `ToolStripContainer`-t, és a menüt egyből bele is teszi. A form káoszossá válik, mivel a többi strip nem került bele.
+1. A menü smart tag-ében válasszuk ki az *Embed In ToolStripContainer* parancsot, amely feltesz egy `ToolStripContainer`-t, és a menüt áthelyezi ennek felső paneljébe. Az űrlapunk megjelenése kaotikussá válik, mivel a többi strip egyelőre nem került a `ToolStripContainer`-be.
 
 2. A `ToolStripContainer` smart tag-jén válasszuk a *Dock Fill in Form* funkciót. Akkor látszólag minden a helyére kerül, leszámítva, hogy a menü és a toolbar fel vannak cserélve.
 
@@ -188,17 +188,17 @@ Teszteljük az alkalmazást, vegyük észre, hogy a `ToolStrip`-nek van kis foga
 
         ![Select on designer](images/select-on-designer.png)
 
-3. Rendezzük a konténer-vezérlő hierarchiát! Nyissuk meg a *Document Outline* ablakot (*View / Other Windows / Document Outline*) és korrigáljuk a hierarchiát. 
+3. Rendezzük a konténer-vezérlő hierarchiát! Nyissuk meg a *Document Outline* ablakot (*View / Other Windows / Document Outline*) és korrigáljuk a hierarchiát:
 
-4. Húzzuk át a `ToolStrip`-et és a `StatusStrip`-et a `ToolStripContainer` felső, illetve alsó paneljébe, továbbá a `TextBox` és `Button` vezérlőket `ContentPanel`-re. A végeredmény így néz ki:
+    - Húzzuk át a `ToolStrip`-et és a `StatusStrip`-et a `ToolStripContainer` felső, illetve alsó paneljébe, továbbá a `TextBox` és `Button` vezérlőket `ContentPanel`-re. A végeredmény így néz ki:
 
-    ![Document Outline](images/document-outline.png)
+        ![Document Outline](images/document-outline.png)
 
-5. A `MenuStrip` smart tag-jében állítsuk át a *Grip Style*-t *Visible*-re, ekkor már a menü is mozgatható.
+    - A `MenuStrip` smart tag-jében állítsuk át a *Grip Style*-t *Visible*-re, ekkor már a menü is mozgatható.
 
     Próbáljuk ki az alkalmazást, a `ToolStrip` és a `MenuStrip` mozgatható lett (oldalra és alulra is).
 
-6. Példaként implementáljuk a File/Exit menüelemet: duplán klikkeljünk a menüelemen, majd a kódban adjuk ki a `Close()` parancsot, mely bezárja az ablakot és ezzel leállítja az alkalmazást.
+4. Példaként adjunk eseménykezelőt a File/Exit menüelemhez: duplán klikkeljünk a menüelemen, majd a kódban adjuk ki a `Close()` parancsot, mely bezárja az ablakot és ezzel leállítja az alkalmazást.
 
     ```csharp
     private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -207,9 +207,9 @@ Teszteljük az alkalmazást, vegyük észre, hogy a `ToolStrip`-nek van kis foga
     }
     ```
 
-7. Futtassuk és teszteljük az alkalmazást.
+5. Futtassuk és teszteljük az alkalmazást.
 
-### Horgonyzás
+### Horgonyzás (anchor)
 
 !!! example "Horgonyzás, dokkolás demók"
     A horgonyzáshoz és dokkoláshoz GitHub-on a tárgy alatt található szemléletes demó.
@@ -220,9 +220,9 @@ Teszteljük az alkalmazást, vegyük észre, hogy a `ToolStrip`-nek van kis foga
         git clone https://github.com/bmeviauab00/AnchorAndDockDemo 
         ```
 
-    - [Futtatható verzió](https://github.com/bmeviauab00/AnchorAndDockDemo/blob/master/AnchorAndDockDemo/bin/Debug/AnchorAndDockDemo.exe) a download gombbal tölthető le.
+    - [Futtatható verzió](https://github.com/bmeviauab00/AnchorAndDockDemo/releases/latest/download/AnchorAndDockDemo.exe) a download gombbal tölthető le.
 
-**Anchor**: A horgonyzás segítségével elérhető, hogy a vezérlő széle állandó távolságot tartson a szülő konténer megfelelő szélétől. A horgonyzás hatása a szülő konténer átméretezésekor válik láthatóvá: ez a távolság akkor is megmarad, ha a szülő konténert átméretezik. Alapértelmezésben a vezérlők bal széle és teteje van lehorgonyozva, de ez bármelyik szélre egymástól függetlenül ki- vagy bekapcsolható. Ha két ellentétes szél is le van horgonyozva (például a bal és a jobb oldal), akkor a szülő vízszintes átméretezésekor a vezérlő nőni vagy zsugorodni fog, hogy a két széle megtartsa a távolságot a szülő széleitől.
+**Anchor**: A horgonyzás segítségével elérhető, hogy a vezérlő adott oldala állandó távolságot tartson a szülő konténer ugyanazon oldalától. Egy vezérlőre egymástól függetlenül beállítható a felülre, alulra, balra és jobbra horgonyzás. Ha pl. a jobbra horgonyzás be van állítva egy vezérlőre, akkor a jobb oldala fix távolságot tart a konténerének jobb oldalától. Ez a konténer átméretezésekor válik láthatóvá: amikor a konténer jobb oldala futás közben az átméretezés során elmozdul, akkor a tartalmazott vezérlő jobb oldala ezt automatikusan leköveti, a távolság a kettő között állandó marad. Ugyanez áll fent a jobbra, felülre és alulra horgonyzás esetén is (értelemszerűen a jobb, felső és alsó oldalakra vonatkoztatva). Alapértelmezésben a vezérlők bal oldala és teteje van lehorgonyozva. Ha két ellentétes oldal is le van horgonyozva (például a bal és a jobb oldal), akkor a szülő vízszintes átméretezésekor a vezérlő nőni vagy zsugorodni fog, hogy a két széle megtartsa a távolságot a szülő széleitől.
 
 Térjünk vissza az alkalmazásunkhoz:
 
@@ -236,17 +236,17 @@ Térjünk vissza az alkalmazásunkhoz:
 
 4. Teszteljük a változtatás hatását!
 
-    Mivel a horgonyok már tervezési időben is működnek, ehhez az alkalmazást sem kell elindítani. Elég a tervezési nézetben átméretezni a formot. Figyeljük meg, hogy immár a gomb jobb széle együtt mozog a form jobb szélével!
+    Mivel a horgonyok már tervezési időben is működnek, ehhez az alkalmazást sem kell elindítani. Elég a tervezési nézetben átméretezni a formot. Figyeljük meg, hogy immár a gomb jobb oldala együtt mozog a form jobb szélével!
 
-5. Módosítsuk a horgonyt úgy, hogy a jobb és az alsó széle legyen rögzítve a gombnak, a teteje és a bal széle nem. Teszteljük a megoldást!
+5. Módosítsuk a horgonyt úgy, hogy a jobb és az alsó oldala legyen rögzítve a gombnak, a teteje és a bal oldala nem. Teszteljük a megoldást!
 
     Utóbbi megoldás használható például arra, hogy egy dialógusablak bezáró gombját mindig a jobb alsó sarokban tartsuk.
 
 6. A gombra a továbbiakban nem lesz szükségünk, töröljük a felületről.
 
-### Dokkolás
+### Dokkolás (dock)
 
-**Dock**: A dokkolás segítségével egy vezérlő hozzácsatolható az őt tartalmazó konténer valamelyik széléhez, vagy beállítható, hogy töltse ki a rendelkezésre álló helyet. Lehetséges értékei: `None`, `Top`, `Left`, `Right`, `Bottom` és `Fill`. Ahhoz, hogy egy vezérlő kitöltse a neki szánt teret a dokkolást `Fill`-re kell állítani, így a szülő átméretezésekor a vezérlő is automatikusan átméreteződik.
+**Dock**: A dokkolás (szokás még csatolásnak vagy ragasztásnak is nevezni) segítségével egy vezérlő hozzácsatolható az őt tartalmazó konténer valamelyik széléhez, vagy beállítható, hogy töltse ki a rendelkezésre álló helyet. Lehetséges értékei: `None`, `Top`, `Left`, `Right`, `Bottom` és `Fill`. Egy felülre vagy alulra dokkolt vezérlő a szülő átméretezésekor megtartja a magasságát, a szélességváltozást pedig leköveti (pl. egy menü vagy státuszsáv tipikusan így viselkedik). Ahhoz, hogy egy vezérlő kitöltse a teljes maradó teret, a dokkolást `Fill`-re kell állítani.
 
 Itt is érdemes a GitHub demót futtatva, az űrlapot átméretezve kipróbálni, íme a kép az űrlap átméretezése előtt és után:
 
@@ -272,13 +272,13 @@ Az ablak három részből álljon:
 
 A címsorban mindig az aktuálisan kiválasztott mappa teljes elérési útvonalát láthatjuk. Kezdetben legyenek a csomópontok összecsukott állapotban („+” ikon mellettük a fában), lenyitva őket jelenjenek meg a gyerek csomópontok, ha van mappa az adott mappán belül. Elfogadható, hogy először minden csomópont lenyitható, és csak akkor tűnik el a lenyitásra/összecsukásra szolgáló ikon, ha a felhasználó megpróbálta lenyitni és nincs benne mappa. Ha a felhasználó kiválaszt egy mappát a `TreeView`-ban (itt nem a lenyit/összecsuk műveletre kell gondolni), akkor a `ListView`-ban jelenjenek meg a mappában található fájlok. A `ListView` három oszlopban jelenítse meg a fájlok nevét, méretét és az utolsó módosítás dátumát.
 
-1. Válasszuk ki a formon lévő `TextBox`-ot (amit az első példában raktunk ki) és állítsuk a `Dock` tulajdonságát `Top`-ra. Ezzel a címsort az ablak tetejéhez igazítottuk.
+1. Válasszuk ki a formon lévő `TextBox`-ot (melyet az első példában raktunk ki), és állítsuk a `Dock` tulajdonságát `Top`-ra. Ezzel a címsort az ablak tetejéhez igazítottuk.
 2. Tegyünk a formra egy `SplitContainer`-t (ToolBox / Containers).
 
     !!! note "SplitContainer"
-        *SplitContainer**: Figyeljük meg, hogy ez egy speciális vezérlő, mely két egymás mellé rendezett panelből áll és lehetőséget ad a panelok közti arány változtatására. Ez egy olyan konténer típusú vezérlő, mely az őt tartalmazó konténert két panelre osztja függőleges vagy vízszintes irányban. A két panel közé egy splittert helyez el, mellyel akár futásidőben is átméretezhető a két panel. A splitter mozgatása letiltható, és a két panel közül az egyikre beállítható, hogy a szülő konténer méretezésekor a megadott panel mérete ne változzon. (Fixed nevű tulajdonságoknál érdemes keresni.)
+        **SplitContainer**: Figyeljük meg, hogy ez egy speciális vezérlő, mely két egymás mellé rendezett panelből áll és lehetőséget ad a panelok közti arány változtatására. Ez egy olyan konténer típusú vezérlő, mely az őt tartalmazó konténert két panelre osztja függőleges vagy vízszintes irányban. A két panel közé egy splittert helyez el, mellyel akár futásidőben is átméretezhető a két panel. A splitter mozgatása letiltható, és a két panel közül az egyikre beállítható, hogy a szülő konténer méretezésekor a megadott panel mérete ne változzon. (Fixed nevű tulajdonságoknál érdemes keresni.)
 
-3. A SplitContainer elvileg már `Fill` Dock módon került fel az előző lépésben (kitölti a teret). Ha mégsem így lenne: Válasszuk ki a *Dock in parent container* opciót a SplitPanel smart tag-jében!
+3. A SplitContainer elvileg már `Fill` Dock módon került fel az előző lépésben (kitölti a teret). Ha mégsem így lenne: válasszuk ki a *Dock in parent container* opciót a SplitPanel smart tag-jében!
 4. A bal oldali panel-re rakjunk rá egy `TreeView` vezérlőt. A smart tag-jében válasszuk a *Dock in parent container* funkciót.
 5. A jobb oldali panelre rakjunk egy `ListView` vezérlőt. A smart tag-jében válasszuk itt is a *Dock in parent container* funkciót.
 
@@ -299,11 +299,11 @@ Mivel készen van a felület, a következő feladat azt kitölteni.
     }
     ```
 
-    A `TreeView` vezérlő `TreeNode` objektumokat tud megjeleníteni (ezek a fa csomópontjait jelképezik). A tényleges információt (vagyis, hogy melyik könyvtár tartozik hozzá) a `TreeNode` `Tag` tulajdonságban tároljuk el. Ez egy `object` típusú tulajdonság, amivel a legtöbb vezérlő rendelkezik és pont azt a célt szolgálják, hogy a fejlesztők tetszőleges, számukra releváns és az adott vezérlőhöz kötődő információt tároljanak benne. A megoldásunkban a csomóponthoz tartozó könyvtár információt tároljuk el benne egy `DirectoryInfo` objektum formájában. Rövidesen meglátjuk, miért van erre szükség.
+    A `TreeView` vezérlő `TreeNode` objektumokat tud megjeleníteni (ezek a fa csomópontjait jelképezik). A tényleges információt (vagyis, hogy melyik könyvtár tartozik hozzá) a `TreeNode` `Tag` tulajdonságban tároljuk el. Ez egy `object` típusú tulajdonság, amivel a legtöbb vezérlő rendelkezik, és pont azt a célt szolgálja, hogy a fejlesztők tetszőleges, számukra releváns és az adott vezérlőhöz kötődő információt tároljanak benne. A megoldásunkban a csomóponthoz tartozó könyvtár információt tároljuk el benne egy `DirectoryInfo` objektum formájában. Rövidesen meglátjuk, miért van erre szükség.
 
     A függvény utolsó sorában létrehozunk egy „üres” gyerek csomópontot. Ennek köszönhetően a szülő mellett meg fog jelenni a kibontás jele (+).
 
-2. A következő lépésben a csomópontok kibontását valósítjuk meg: amikor a felhasználó kibont (expand) egy csomópontot, le kell kérdezzük a csomópont által reprezentált könyvtárban található alkönyvtárakat, és a lenyitott `TreeNode` csomóponthoz tartozó könyvtár minden alkönyvtárhoz egy gyerek `TreeNode` csomópontot kell felvegyünk. Egy csomópont kibontásáról a `TreeView` vezérlő a `BeforeExpand` és `AfterExpand` eseményekben értesít, számunkra az előző lesz megfelelő. Azt, hogy melyik csomópont került kibontásra az eseménykezelő paraméterében kapjuk meg. Azt pedig, hogy melyik könyvtár tartozik egy csomóponthoz, a `TreeNode` `Tag` tulajdonságában mi magunk tároljuk el!
+2. A következő lépésben a csomópontok kibontását valósítjuk meg: amikor a felhasználó kibont (expand) egy csomópontot, le kell kérdezzük a csomópont által reprezentált könyvtárban található alkönyvtárakat, és a lenyitott `TreeNode` csomóponthoz tartozó könyvtár minden alkönyvtárhoz egy gyerek `TreeNode` csomópontot kell felvegyünk. Egy csomópont kibontásáról a `TreeView` vezérlő a `BeforeExpand` és `AfterExpand` eseményekben értesít. Számunkra most a `BeforeExpand` a megfelelő választás. Azt, hogy melyik csomópont került kibontásra, az eseménykezelő paraméterében kapjuk meg. Azt pedig, hogy melyik könyvtár tartozik egy csomóponthoz, a `TreeNode` `Tag` tulajdonságában mi magunk tároljuk el!
 
     Menjünk vissza a designer-be, válasszuk ki a `TreeView`-t, majd a *Properties* ablakban váltsunk esemény nézetre (villám ikon). Duplán klikkeljünk a `BeforeExpand` eseményen, hogy implementálhassuk:
 
@@ -331,6 +331,9 @@ Mivel készen van a felület, a következő feladat azt kitölteni.
         }
     }
     ```
+
+    !!! note "A `?.` operátor"
+        A `?.`, vagyis a null-conditional operátor működése hasonló a klasszikus `.`, vagyis taghozzáférés operátorhoz, de a taghozzáférés csak akkor történik meg, ha a kifejezés bal oldala nem null (egyébként pedig a kifejezés értéke null lesz). Tulajdonképpen ezt használtuk korábban a C# események feltételes elsütésekor az `<esemény>?.Invoke()` során is.
 
 3. Teszteljük az alkalmazást.
 
@@ -363,7 +366,7 @@ Mivel készen van a felület, a következő feladat azt kitölteni.
     !!! warning "Hibakezelés"
         Vegyük észre, hogy a fenti két függvényben mindkét esetben egy try-catch blokkot használtunk. Ez azért van, mert a laborgépeken átlagos felhasználóként sokszor nincs jogunk egyes mappák/fájlok elérésére, ami a listázó függvények esetében kivételt vált ki. Egy valós alkalmazásban semmiképpen nem hagynánk üresen a `catch` blokkot, mindenképpen naplóznánk, vagy a felhasználó tudomására hoznánk a hibát.
 
-        Legegyszerűbb `MessageBox` alapú megoldás ez lenne
+        A legegyszerűbb `MessageBox` alapú megoldás ez lenne:
 
         ```csharp
         catch (UnatuhorizedAccessExceotion ex)
@@ -378,7 +381,7 @@ Mivel készen van a felület, a következő feladat azt kitölteni.
     tbDemoText.Text = parentDI.FullName;
     ```
 
-6. Következő lépésben valósítsuk meg a többoszlopos nézetet a jobboldali panelen. A kódot módosítsuk, hogy ne csak a nevét adja meg a fájlnak, hanem egyéb paramétereit is. Az `Add` függvényt paraméterezzük így:
+6. Következő lépésben valósítsuk meg a többoszlopos nézetet a jobboldali panelen. A kódot módosítsuk úgy, hogy ne csak a nevét adja meg a fájlnak, hanem egyéb paramétereit is. Az `Add` függvényt paraméterezzük így:
 
     ```csharp
     listView1.Items.Add(
@@ -395,10 +398,10 @@ Mivel készen van a felület, a következő feladat azt kitölteni.
 
 8. Az oszlopokat nekünk kell létrehoznunk, amihez a smart tag-jében válasszuk az *Edit Columns* funkciót, majd a megjelenő listát töltsük fel 3 új elemmel, amelyeknek a `Text` tulajdonsága legyen: `Name`, `Size`, `Modified`.
 
-    Rendezzük el szépen az oszlopok szélességét, hogy minden kiférjen majd a feltöltés után is. Ezekben az oszlopokban az adatok pont olyan sorrendben fognak megjelenni, mint ahogy a 6. pontban a listaelemhez hozzárendeltük azokat.
+    Rendezzük el szépen az oszlopok szélességét olyan módon, hogy minden kiférjen majd a feltöltés után is. Ezekben az oszlopokban az adatok pont olyan sorrendben fognak megjelenni, mint ahogy a 6. pontban a listaelemhez hozzárendeltük azokat.
 
 !!! note "ListView oszlopok"
-    Sajnos a `ListView` beépítetten elég törékeny megoldást nyújt csak az oszlopok és azok értékeinek összerendelésére. Modernebb UI keretrendszerek (pl.: WPF, WinUI, .NET MAUI) ezt az adatkötés mechanizmusán keresztül egy kényelmesebb, deklaratívabb és robusztusabb megoldást nyújtanak nekünk.
+    Sajnos a `ListView` beépítetten elég törékeny megoldást nyújt csak az oszlopok és azok értékeinek összerendelésére. A modernebb UI keretrendszerek (pl.: WPF, WinUI, .NET MAUI) az adatkötés mechanizmusán keresztül egy kényelmesebb, deklaratívabb és robusztusabb megoldást nyújtanak erre.
 
 ### Futtatás
 
@@ -418,11 +421,11 @@ private void listView1_DoubleClick(object sender, EventArgs e)
 }
 ```
 
-### Windows stílusok
+### Windows stílusok (nem tanagyag)
 
-Ha zavar minket, hogy nem a rendszer stílusát használják a `TreeView` és a `ListView` vezérlők. Az alábbi Win32 API C függvényét meghívva ki tudjuk kényszeríteni az explorer process stílusának használatát.
+Ha zavar minket, hogy nem a rendszer stílusát használják a `TreeView` és a `ListView` vezérlők, akkor a `SetWindowTheme` Win32 API függvényt meghívva ki tudjuk kényszeríteni, hogy a *File Explorer/Fájlkezelő* alkalmazásban megszokott stílusban jelenjenek meg.
 
-```csharp hl_lines="1-2 9-10"
+```csharp hl_lines="1-2 10-11 13-14"
 [DllImport("uxtheme.dll", ExactSpelling = true, CharSet = CharSet.Unicode)]
 private static extern int SetWindowTheme(IntPtr hwnd, string pszSubAppName, string? pszSubIdList);
 
@@ -434,9 +437,12 @@ private void MainForm_Load(object sender, EventArgs e)
 
     SetWindowTheme(treeView1.Handle, "explorer", null);
     SetWindowTheme(listView1.Handle, "explorer", null);
+
+    // Eltünteti a csomópontokat összekötő vonalakat
+    treeView1.ShowLines = false;
 }
 ```
 
-A `DllImport` attribútummal egy natív C DLL-ből lehet függvényeket behivatkozni és C#-ból meghívni azokat. Első paraméterként a vezérlők `Handle`-jét kell átadni, második paraméterként pedig a process nevét, amiről másolni akarunk.
+A megoldásunkban a .NET platform ún. P/Invoke (Platform Invoke) mechanizmusát vetjük be. Ez lehetővé teszi, hogy a `DllImport` attribútummal natív DLL-ekből függvényeket hivatkozzunk be, megfelelő paraméterezésű statikus C# függvénydeklarációkhoz rendeljük, majd ezek segítségével a natív függvényeket meghívjuk. A `SetWindowTheme` függvény első paramétereként a vezérlő `Handle`-jét kell átadni, második paramétereként pedig a process nevét, amelyről másolni akarjuk a stílusokat. A fenti kód utolsó sorában a `treeView1.ShowLines` `false`-ra állításával kikapcsoljuk a fastruktúrában az összekötő vonalak alkalmazását. Íme a végeredmény:
 
 ![Windows style](images/windows-style.png)
