@@ -541,13 +541,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#fuggelek-adatbazisok-sql-nyelv-alapok" class="md-nav__link">
-    Függelék – Adatbázisok, SQL nyelv alapok
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -866,13 +859,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#fuggelek-adatbazisok-sql-nyelv-alapok" class="md-nav__link">
-    Függelék – Adatbázisok, SQL nyelv alapok
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -894,8 +880,6 @@
 
 
 <h1 id="5-adatkezeles">5. Adatkezelés<a class="headerlink" href="#5-adatkezeles" title="Permanent link">&para;</a></h1>
-<p>Utolsó módosítás ideje: 2022.10.31<br />
-Kidolgozta: Kaszó Márk, Simon Gábor</p>
 <h2 id="a-gyakorlat-celja">A gyakorlat célja<a class="headerlink" href="#a-gyakorlat-celja" title="Permanent link">&para;</a></h2>
 <p>A gyakorlat célja az ADO.NET programozási modelljének megismerése és a leggyakoribb adatkezelési problémák, buktatók szemléltetése alapvető CRUD műveletek megírásán keresztül.</p>
 <p>Kapcsolódó előadások: Adatkezelés, ADO.NET alapismeretek.</p>
@@ -903,14 +887,19 @@ Kidolgozta: Kaszó Márk, Simon Gábor</p>
 <p>A gyakorlat elvégzéséhez szükséges eszközök:</p>
 <ul>
 <li>Visual Studio 2022</li>
-<li>Windows 10 vagy Windows 11 operációs rendszer (Linux és macOS nem alkalmas)</li>
-<li>A gyakorlat során az <em>SQL Server Object Explorer</em>-t fogjuk használni az adatbázis objektumok közötti navigálására és a lekérdezések futtatására. Ehhez szükség lehet az <em>SQL Server Data Tools</em> komponensre, melyet legegyszerűbben az <em>Individual Components</em> oldalon tudunk telepíteni a Visual Studio Installer-ben.</li>
+<li>Windows 10 vagy Windows 11 operációs rendszer</li>
+<li>A gyakorlat során az <em>SQL Server Object Explorer</em>-t fogjuk használni az adatbázis objektumok közötti navigálására és a lekérdezések futtatására. Ehhez szükség lehet az <em>SQL Server Data Tools</em> komponensre, melyet legegyszerűbben az <em>Individual Components</em> oldalon tudunk telepíteni a Visual Studio Installer-ben, de a <em>Data Storage and Processing</em> workload is tartalmazza ezt.</li>
 </ul>
-<h2 id="bevezeto">Bevezető<a class="headerlink" href="#bevezeto" title="Permanent link">&para;</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Megjegyzés gyakorlatvezetőknek</p>
-<p>Ezt a fejezetet gyakorlaton nem kell a leírtaknak megfelelő részletességgel ismertetni, a fontosabb fogalmakat azonban mindenképpen ismertessük röviden.</p>
+<div class="admonition tip">
+<p class="admonition-title">Gyakorlat Linuxon vagy Macen</p>
+<p>A gyakorlat anyag alapvetően Windowsra és Visual Studiora készült, de az elvégezhető más operációs rendszereken is egy szövegszerkesztővel (pl.: VSCode) és CLI eszközökkel, mivel a .NET 6 SDK és az MS SQL Server is támogatott Linuxon és Macen. Linuxon az MSSQL szerver futtatásának talán a legkényelmesebb módja a Dockerben történő futtatás.</p>
+<p>Az adatok vizualizációjára használható a szintén keresztplatformos <em>Azure Data Studio</em> eszköz.</p>
 </div>
+<h2 id="bevezeto">Bevezető<a class="headerlink" href="#bevezeto" title="Permanent link">&para;</a></h2>
+<details class="warning">
+<summary>Megjegyzés gyakorlatvezetőknek</summary>
+<p>Ezt a fejezetet gyakorlaton nem kell a leírtaknak megfelelő részletességgel ismertetni, a fontosabb fogalmakat azonban mindenképpen ismertessük röviden.</p>
+</details>
 <h3 id="adonet">ADO.NET<a class="headerlink" href="#adonet" title="Permanent link">&para;</a></h3>
 <p>Alacsony szintű adatbáziskezelésre a .NET platformon az ADO.NET áll rendelkezésre, segítségével relációs adatbázisokat tudunk elérni.</p>
 <p>Az ADO.NET használata során két eltérő adathozzáférési modellt alkalmazhatunk:</p>
@@ -936,7 +925,7 @@ Kidolgozta: Kaszó Márk, Simon Gábor</p>
 </details>
 <details class="abstract">
 <summary>A Kapcsolatnélküli modell alapelvei</summary>
-<p>A kapcsolatalapú modellel ellentétben az adatok megjelenítése és memóriában történő módosítása során nem tartunk fent adatbázis kapcsolatot. Ennek megfelelően a főbb lépések a következők: a kapcsolat felvételét és az adatok lekérdezését követően azonnal bontjuk a kapcsolatot. Az adatokat ezt követően tipikusan megjelenítjük és lehetőséget biztosítunk a felhasználónak az adatok módosítására (rekordok felvétele, módosítása, törlése igény szerint). A módosítások mentése során újra felvesszük az adatkapcsolatot, mentjük az adatbázisba a változtatásokat és zárjuk a kapcsolatot. Természetesen a modell megköveteli, hogy a lekérdezése és a módosítások visszaírása között – amikor nincs kapcsolatunk az adatbázissal – az adatokat és a változtatásokat a memóriában nyilvántartsuk. Erre az ADO.NET környezetben nagyon kényelmes megoldást nyújt a DataSet objektumok alkalmazása.</p>
+<p>A kapcsolatalapú modellel ellentétben az adatok megjelenítése és memóriában történő módosítása során nem tartunk fent adatbázis kapcsolatot. Ennek megfelelően a főbb lépések a következők: a kapcsolat felvételét és az adatok lekérdezését követően azonnal bontjuk a kapcsolatot. Az adatokat ezt követően tipikusan megjelenítjük és lehetőséget biztosítunk a felhasználónak az adatok módosítására (rekordok felvétele, módosítása, törlése igény szerint). A módosítások mentése során újra felvesszük az adatkapcsolatot, mentjük az adatbázisba a változtatásokat és zárjuk a kapcsolatot. Természetesen a modell megköveteli, hogy a lekérdezése és a módosítások visszaírása között – amikor nincs kapcsolatunk az adatbázissal – az adatokat és a változtatásokat a memóriában nyilvántartsuk. Erre az ADO.NET környezetben nagyon kényelmes megoldást nyújt a <code>DataSet</code> objektumok alkalmazása.</p>
 <p>A modell előnyei:</p>
 <ul>
 <li>Nem szükséges folyamatos hálózati kapcsolat</li>
@@ -947,7 +936,7 @@ Kidolgozta: Kaszó Márk, Simon Gábor</p>
 <li>Az adatok nem mindig a legfrissebbek</li>
 <li>Ütközések lehetségesek</li>
 </ul>
-<p>Megjegyzés: Számos lehetőségünk van arra, hogy az objektumokat és kapcsolódó változásokat nyilvántartsuk a memóriában. A DataSet csak az egyik lehetséges technika. De használhatunk erre a célra közönséges objektumokat, illetve ezek menedzselését megkönnyítő ADO.NET-nél korszerűbb .NET technológiákat (pl. Entity Framework).</p>
+<p>Megjegyzés: Számos lehetőségünk van arra, hogy az objektumokat és kapcsolódó változásokat nyilvántartsuk a memóriában. A <code>DataSet</code> csak az egyik lehetséges technika. De használhatunk erre a célra közönséges objektumokat, illetve ezek menedzselését megkönnyítő ADO.NET-nél korszerűbb .NET technológiákat (pl. Entity Framework Core).</p>
 </details>
 <h3 id="a-kapcsolatalapu-modell">A kapcsolatalapú modell<a class="headerlink" href="#a-kapcsolatalapu-modell" title="Permanent link">&para;</a></h3>
 <p>A mérés keretében a kapcsolatalapú modellt ismerjük meg.</p>
@@ -965,12 +954,18 @@ Kidolgozta: Kaszó Márk, Simon Gábor</p>
 <li>Command</li>
 <li>Data Reader</li>
 </ul>
-<p>Ezek az összetevők egy-egy osztályként jelennek meg, adatbáziskezelőfüggetlen részük a <em>System.Data.dll</em>-ben található <code>DbConnection</code>, <code>DbCommand</code>, illetve <code>DbDataReader</code> néven. Ezek absztrakt osztályok, az adatbáziskezelők gyártóinak feladata, hogy ezekből leszármazva megírják a konkrét adatbáziskezelőket támogató változatokat. A Microsoftt SQL Servert támogató változatok szintén a <em>System.Data.dll</em>-ben, „Sql” prefixű osztályokban találhatók (<code>SqlConnection</code>, <code>SqlCommand</code> és <code>SqlDataReader</code>).
-A többi gyártó külön dll-(ek)be teszi a saját változatát, az így létrejött komponenst data providernek nevezik. Található még a <em>System.Data.dll</em>-ben Oracle adatbáziskezelőt támogató provider is, azonban ez már elavult. Néhány további gyártó ADO.NET adatbázis providere a teljesség igénye nélkül: ODP.NET (Oracle), MySqlConnector/Net (MySQL), Npgsql (PostgreSQL), System.Data.SQLite (SQLite)</p>
-<p>Mindhárom ADO.NET összetevő támogatja a <em>Dispose</em> mintát, így using blokkban használható – használjuk is így, amikor csak tudjuk. Az adatbáziskezelő általában másik gépen található, mint ahol a kódunk fut (a mérés során pont nem :)), így tekintsünk ezekre, mint távoli hálózati erőforrásokra.</p>
+<p>Ezek az összetevők egy-egy osztályként jelennek meg, adatbáziskezelőfüggetlen részük a BCL <em>System.Data.Common</em> névterében található <code>DbConnection</code>, <code>DbCommand</code>, illetve <code>DbDataReader</code> néven. Ezek absztrakt osztályok, az adatbáziskezelők gyártóinak feladata, hogy ezekből leszármazva megírják a konkrét adatbáziskezelőket támogató változatokat.</p>
+<p>Mindhárom ADO.NET összetevő támogatja a <em>Dispose</em> mintát, így <code>using</code> blokkban használható – használjuk is így, amikor csak tudjuk. Az adatbáziskezelő általában másik gépen található, mint ahol a kódunk fut (a mérés során pont nem :)), így tekintsünk ezekre, mint távoli hálózati erőforrásokra.</p>
+<p>A Microsoft SQL Servert támogató változat a <em>Microsoft.Data.SqlClient</em> NuGet csomagban, az „Sql” prefixű osztályokban találhatók (<code>SqlConnection</code>, <code>SqlCommand</code> és <code>SqlDataReader</code>).</p>
+<p>A többi gyártó külön dll-(ek)be teszi a saját változatát, az így létrejött komponenst data providernek nevezik. Teljesség igénye nélkül néhány példa:</p>
+<ul>
+<li><a href="https://www.npgsql.org/">PostgreSQL</a></li>
+<li><a href="https://learn.microsoft.com/en-us/dotnet/standard/data/sqlite/?tabs=netcore-cli">SQLite</a> </li>
+<li><a href="https://www.oracle.com/database/technologies/appdev/dotnet/odp.html">Oracle</a></li>
+</ul>
 <h4 id="connection">Connection<a class="headerlink" href="#connection" title="Permanent link">&para;</a></h4>
-<p>Ez teremti meg a kapcsolatot a programunk, illetve az adatbáziskezelő-rendszer között
-Inicializálásához szükség van egy connection string-re, ami a kapcsolat felépítéséhez szükséges adatokat adja meg a driver számára. Adatbázisgyártónként eltérő belső formátuma van (bővebben: <a href="http://www.connectionstrings.com">http://www.connectionstrings.com</a>).</p>
+<p>Ez teremti meg a kapcsolatot a programunk, illetve az adatbáziskezelő-rendszer között.
+Inicializálásához szükség van egy connection string-re, ami a kapcsolat felépítéséhez szükséges adatokat adja meg a driver számára. Adatbázisgyártónként eltérő belső formátuma van (<a href="http://www.connectionstrings.com">bővebben</a>).</p>
 <p>Új <code>Connection</code> példányosításakor nem biztos, hogy tényleg új kapcsolat fog létrejönni az adatbázis felé, a driverek általában connection pooling-ot alkalmaznak, hasonlóan, mint a thread pool esetében, újrahasználhatják a korábbi (éppen nem használt) kapcsolatokat.</p>
 <h4 id="command">Command<a class="headerlink" href="#command" title="Permanent link">&para;</a></h4>
 <p>Ennek segítségével vagyunk képesek „utasításokat” megfogalmazni az adatbázis kezelő számára. Ezeket SQL nyelven kell megfogalmaznunk.
@@ -993,9 +988,9 @@ A Visual Studio telepítésének részeként kapunk is egy ilyen adatbázis engi
 <li>több példány is létrehozható igény szerint, a példányok alapvetően a létrehozó operációs rendszer felhasználója számára érhető el (igény esetén megosztható egy példány a felhasználók között)</li>
 <li>a saját példányok kezelése (létrehozás, törlés, stb.) nem igényel adminisztrátori jogokat</li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">ssqllocaldb parancssori eszköz</p>
-<p>Érdekesség, (ezeket a gyakorlaton nem kell elmondani), csak a lehetőséget említsük meg. A példányok kezelésére az sqllocaldb parancssori eszköz használható.  Néhány parancs, melyet az sqllocaldb után beírva alkalmazhatunk :</p>
+<details class="note">
+<summary>ssqllocaldb parancssori eszköz</summary>
+<p>A gyakorlat során nincs szükségünk erre, de a példányok kezelésére az <code>sqllocaldb</code> parancssori eszköz használható.  Néhány parancs, melyet az <code>sqllocaldb</code> után beírva alkalmazhatunk :</p>
 <table>
 <thead>
 <tr>
@@ -1022,7 +1017,7 @@ A Visual Studio telepítésének részeként kapunk is egy ilyen adatbázis engi
 </tr>
 </tbody>
 </table>
-</div>
+</details>
 <p>A Visual Studio is vesz fel, illetve indít LocalDB példányokat, ezért érdemes megnézni, hogy a Visual Studio alapból milyen példányokat lát.</p>
 <ol>
 <li>Indítsuk el a Visual Studio-t, a View menüből válasszuk az SQL Server Object Explorer-t (SSOE).</li>
@@ -1030,32 +1025,304 @@ A Visual Studio telepítésének részeként kapunk is egy ilyen adatbázis engi
 <li>Ha nem jelent meg semmi, akkor parancssorból az <code>mssqllocaldb info</code> parancs megadja a létező példányokat. Válasszuk az SQL Server csomóponton jobbklikkelve az <em>Add SQL Server</em> opciót, majd adjuk meg valamelyik létező példányt, pl.: <em>(localdb)\MSSQLLocalDB</em></li>
 <li>A megjelenő <em>Databases</em> csomóponton válasszuk a <em>New Database</em> opciót, itt adjunk meg egy adatbázisnevet. (Laboron, mivel több hallgató is használhatja ugyanazt az operációs rendszer felhasználót, így javasolt a neptunkód mint név használata.)</li>
 <li>Az új adatbázis csomópontján jobbklikkelve válasszuk a <em>New Query</em> opciót, ami egy új query ablakot nyit</li>
-<li>A tárgyhonlapról nyissuk meg vagy töltsük le a <em>Northwind</em> adatbázis inicializáló szkriptet (a publikus anyagok között található, <a href="https://www.aut.bme.hu/Upload/Course/ujgen/publikus_anyagok/instnwndEx.sql">„Northwind példaadatbázis”</a> néven)</li>
+<li>Nyissuk meg vagy töltsük le a <em>Northwind</em> adatbázis inicializáló <a href="northwind.sql">szkriptet</a></li>
 <li>Másoljuk be a teljes szkriptet a query ablakba</li>
-<li>A szkript elején a megadott helyen írjuk be az adatbázisunk nevét</li>
-<li>Futtassuk le a szkriptet a kis zöld nyíllal (<em>Execute</em>)</li>
+<li>Futtassuk le a szkriptet a kis zöld nyíllal (<em>Execute</em>). Figyeljünk oda, hogy jó adatbázis legyen kiválasztva a query ablak tetején a legördülőben!</li>
 <li>Ellenőrizzük, hogy az adatbázisunk ban megjelentek-e táblák, nézetek</li>
 <li>Fedezzük fel az SSOE legfontosabb funkcióit (táblák adatainak, sémájának lekérdezése stb.)</li>
 </ol>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
+<p class="admonition-title">MSSQL menedzsment eszközök</p>
 <p>A Visual Studio-ban két eszközzel is kezelhetünk adatbázisokat: a Server Explorer-rel és az SQL Server Object Explorer-rel is. Előbbi egy általánosabb eszköz, mely nem csak adatbázis, hanem egyéb szerver erőforrások (pl. Azure szerverek) kezelésére is alkalmas, míg a másik kifejezetten csak adatbáziskezelésre van kihegyezve. Mindkettő elérhető a View menüből és mindkettő hasonló funkciókat ad adatbáziskezeléshez, ezért ebben a mérésben csak az egyiket (SQL Server Object Explorer) használjuk.</p>
-<p>Amikor nem áll rendelkezésünkre a Visual Studio fejlesztőkörnyezet, akkor az adatbázisunk menedzselésére az (ingyenes) SQL Server Management Studio-t tudjuk használni.</p>
+<p>Amikor nem áll rendelkezésünkre a Visual Studio fejlesztőkörnyezet, akkor az adatbázisunk menedzselésére az (ingyenes) SQL Server Management Studio-t vagy a szintén ingyenes és multiplatform Azure Data Studio-t tudjuk használni.</p>
 </div>
 <h2 id="2-feladat-lekerdezes-adonet-sqldatareader-rel">2. Feladat – Lekérdezés ADO.NET SqlDataReader-rel<a class="headerlink" href="#2-feladat-lekerdezes-adonet-sqldatareader-rel" title="Permanent link">&para;</a></h2>
-<p>COMING SOON</p>
+<p>A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, ami használja a Northwind adatbázis <code>Shippers</code> táblájának rekordjait.</p>
+<ol>
+<li>Hozzunk létre egy C# nyelvű konzolos alkalmazást. A projekt típusa <strong>„Console App”</strong> legyen, és <strong>NE</strong> a „Console App (.NET Framework)”. A projekt neve legyen <code>AdoExample</code><ul>
+<li>A Target Framework pedig .NET 6 legyen.</li>
+<li>Pipáljuk be a <strong>Do not use top-level statemanets</strong> kapcsolót.</li>
+</ul>
+</li>
+<li>
+<p>Keressük ki a connection stringet az SSOE-ből: jobbklikk az adatbáziskapcsolatunkon (pirossal jelölve az alábbi ábrán) / Properties.</p>
+<p><img alt="SSOE Database" src="images/SSOS-database.png" /></p>
+</li>
+<li>
+<p>Másoljuk a Properties ablakból <em>Connection String</em> tulajdonság értékét egy változóba a <code>Program</code> osztályba.</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">ConnString</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">@&quot;Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=neptun;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False&quot;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">SQL Server connection string formátuma</p>
+<p>MSSQL esetében a connection string kulcs érték párokat tartalmaz pontosvesszővel elválasztva.
+A <code>Data Source</code> kulcs alatt az SQL szerver példány neve, az<code>Initial Catalog</code> kulcs alatt az adatbázis neve szerepel.
+Az <code>Integrated Security=true</code> kapcsoló pedig a Windows authentikációt jelenti.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">@-os string (C# verbatim string)</p>
+<p>A <code>@</code> egy speciális karakter (verbatim indentifier), amit itt arra használunk, hogy a connection string-ben megjelenő backslash karakter (<code>\</code>) ne feloldójelként (escape character) kerüljön értelmezésre.</p>
+</div>
+</li>
+<li>
+<p>Vegyük fel a projektbe a <code>Microsoft.Data.SqlClient</code> NuGet csomagot. Ezt megtehetjük a NuGet UI-on (projekten jobb gomb / Manage NuGet packages) vagy másoljuk be az alábbi csomag referenciát a a projektfájlba:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;ItemGroup&gt;</span>
+    <span class="nt">&lt;PackageReference</span> <span class="na">Include=</span><span class="s">&quot;Microsoft.Data.SqlClient&quot;</span> <span class="na">Version=</span><span class="s">&quot;5.0.1&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/ItemGroup&gt;</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">NuGet csomagkezelő</p>
+<p>A NuGet egy olyan online csomagkezelő rendszer, ahonnak .NET alapú projektjeinbe tudunk külső függőségeket, osztálykönyvtárakat egyszerűen verziózottan betölteni.</p>
+</div>
+</li>
+<li>
+<p>Írjunk lekérdező függvényt, ami lekérdezi az összes szállítót:</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">GetShippers</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnString</span><span class="p">))</span><span class="w"></span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlCommand</span><span class="p">(</span><span class="s">&quot;SELECT ShipperID, CompanyName, Phone FROM Shippers&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">conn</span><span class="p">))</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;{0,-10}{1,-20}{2,-20}&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ShipperID&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CompanyName&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Phone&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">string</span><span class="p">(</span><span class="sc">&#39;-&#39;</span><span class="p">,</span><span class="w"> </span><span class="m">60</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="p">(</span><span class="n">SqlDataReader</span><span class="w"> </span><span class="n">reader</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">ExecuteReader</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">reader</span><span class="p">.</span><span class="n">Read</span><span class="p">())</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="w"></span>
+<span class="w">                    </span><span class="s">$&quot;{reader[&quot;</span><span class="n">ShipperID</span><span class="s">&quot;],-10}&quot;</span><span class="w"> </span><span class="p">+</span><span class="w"></span>
+<span class="w">                    </span><span class="s">$&quot;{reader[&quot;</span><span class="n">CompanyName</span><span class="s">&quot;],-20}&quot;</span><span class="w"> </span><span class="p">+</span><span class="w"></span>
+<span class="w">                    </span><span class="s">$&quot;{reader[&quot;</span><span class="n">Phone</span><span class="s">&quot;],-20}&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>A kapcsolat alapú modell folyamata</p>
+<ul>
+<li>Kapcsolat, parancs inicializálása</li>
+<li>Kapcsolat megnyitása</li>
+<li>Parancs futtatása</li>
+<li>Eredmény feldolgozása</li>
+<li>Kapcsolat bontása, takarítás</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Néhány megjegyzés a kódhoz</p>
+<ul>
+<li>A <code>DataReader</code>-t a parancs futtatásának eredményeként kapjuk meg, nem pedig közvetlenül példányosítjuk</li>
+<li>A parancs futtatása előtt meg kell nyitnunk a kapcsolatot</li>
+<li>A <code>DbConnection</code> példányosításakor nem nyitódik meg a kapcsolat (nem történik hálózati kommunikáció)</li>
+<li>A <code>DataReader.Read()</code> függvénye mutatja, hogy van-e még adat az eredményhalmazban</li>
+<li>A <code>DataReader</code>-t az eredményhalmazban található oszlopok nevével indexelhetjük – az eredmény <code>object</code> lesz, így, ha konkrétabb típusra van szükségünk cast-olni kell</li>
+<li>A fordító nem értelmezi az SQL parancs szövegét (az csak egy string), hanem majd csak az adatbázis, így hibás SQL esetén csak futási idejű kivételt kapunk</li>
+<li>figyeljük meg, hogy az adatbázis séma változása esetén, pl. egy oszlop átnevezése, hány helyen kell kézzel átírni string-eket a kódban</li>
+<li><code>$</code>-ral prefixelve string interpolációt alkalmazhatunk, azaz közvetlenül a stringbe ágyazhatunk kiértékelendő kifejezéseket (C# 6-os képesség). A <code>$@</code> segítségével többsoros string interpolációs kifejezéseket írhatunk (a sortörést a {}-k között kell betennünk, különben a kimeneten is megjelenik). Érdekesség: C# 8-tól fölfele bármilyen sorrendben írhatjuk a $ és @ karaktereket, tehát a <code>$@</code> és a <code>@$</code> is helyesnek számít.</li>
+<li>
+<p>A using kulcsszú blokk utasítás helyett egysoros kifejezésként is használható. Ilyen esetben a using blokk vége az tartalmazó blokkig tart (esetünkben a függvény végéig.). Ezzel csökkenthető a behúzások száma, de ne legyen automatikus reflex, mert előfordulhat, hogy hamarabb szeretnénk kikényszeríteni az erőforrások felszabadítását mint a blokkok vége.</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">GetShippers</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnString</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlCommand</span><span class="p">(</span><span class="s">&quot;SELECT ShipperID, CompanyName, Phone FROM Shippers&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">conn</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;{0,-10}{1,-20}{2,-20}&quot;</span><span class="p">,</span><span class="s">&quot;ShipperID&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CompanyName&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Phone&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">string</span><span class="p">(</span><span class="sc">&#39;-&#39;</span><span class="p">,</span><span class="w"> </span><span class="m">60</span><span class="p">));</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">reader</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">ExecuteReader</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">reader</span><span class="p">.</span><span class="n">Read</span><span class="p">())</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="s">$&quot;{reader[&quot;</span><span class="n">ShipperID</span><span class="s">&quot;],-10}&quot;</span><span class="w"> </span><span class="p">+</span><span class="w"></span>
+<span class="w">            </span><span class="s">$&quot;{reader[&quot;</span><span class="n">CompanyName</span><span class="s">&quot;],-20}&quot;</span><span class="w"> </span><span class="p">+</span><span class="w"></span>
+<span class="w">            </span><span class="s">$&quot;{reader[&quot;</span><span class="n">Phone</span><span class="s">&quot;],-20}&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>A továbbiakban ezt a módszert hasznnáljuk a behúzások és zárójelek megspórolása érdekében.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Hívjuk meg új függvényünket a <code>Main</code> függvényből.</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="n">GetShippers</span><span class="p">();</span><span class="w"></span>
+</span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</li>
+<li>
+<p>Próbáljuk ki az alkalmazást. Rontsuk el az SQL-t, és úgy is próbáljuk ki.</p>
+</li>
+</ol>
 <h2 id="3-feladat-beszuras-sql-utasitassal">3. Feladat – Beszúrás SQL utasítással<a class="headerlink" href="#3-feladat-beszuras-sql-utasitassal" title="Permanent link">&para;</a></h2>
-<p>COMING SOON</p>
+<ol>
+<li>
+<p>Írjunk függvényt, ami új szállítót szúr be az adatbázisba:</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">InsertShipper</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">companyName</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">phone</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnString</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlCommand</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="s">&quot;INSERT INTO Shippers(CompanyName, Phone) VALUES(@name,@phone)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">conn</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">command</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="n">AddWithValue</span><span class="p">(</span><span class="s">&quot;@name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">companyName</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">command</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="n">AddWithValue</span><span class="p">(</span><span class="s">&quot;@phone&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">phone</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">affectedRows</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">ExecuteNonQuery</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;{affectedRows} rows affected&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Itt olyan SQL-t kell írnunk, aminek az összeállításánál kívülről kapott változók értékeit is felhasználtuk. A string összerakásához egyszerűen a sztring összefűzés operátort, sztring interpolációt vagy <code>string.Format</code>-ot is használhattunk volna, de ez biztonsági kockázatot (SQL Injection – bővebben lásd lentebb) rejt – <strong>SOHA!!! ne rakjuk össze az SQL-t stringművelettel</strong>. Helyette írjuk meg úgy az SQL-t, hogy ahová a változók értékeit írnánk, oda paraméterhivatkozásokat teszünk. SQL Server esetében a hivatkozás szintaxisa: @paramnév.</p>
+<p>A parancs elsütéséhez a paraméterek értékeit is át kell adnunk az adatbázisnak, ugyanis az fogja elvégezni a paraméterek helyére az értékek behelyettesítését.</p>
+<p>A beszúrási parancs kimenete nem eredményhalmaz - így másik függvénnyel (<code>ExecuteNonQuery</code>) kell elsütnünk-, viszont visszaadja beszúrt sorok számát.</p>
+</li>
+<li>
+<p>Hívjuk meg új függvényünket a <code>Main</code> függvényből.</p>
+<div class="highlight"><pre><span></span><code><span class="n">GetShippers</span><span class="p">();</span><span class="w"></span>
+<span class="hll"><span class="n">InsertShipper</span><span class="p">(</span><span class="s">&quot;Super Shipper&quot;</span><span class="p">,</span><span class="s">&quot;49-98562&quot;</span><span class="p">);</span><span class="w"></span>
+</span><span class="hll"><span class="n">GetShippers</span><span class="p">();</span><span class="w"></span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Próbáljuk ki az alkalmazást, ellenőrizzük a konzolban és az SSOE-ben is, hogy bekerült az új sor. SSOE-ben való gyors és kényelmes ellenőrzéshez a <code>Shippers</code> tábla context menüjéből válasszuk a <em>View Data</em> lehetőséget.</p>
+</li>
+</ol>
 <h2 id="4-feladat-modositas-tarolt-eljarassal">4. Feladat - Módosítás tárolt eljárással<a class="headerlink" href="#4-feladat-modositas-tarolt-eljarassal" title="Permanent link">&para;</a></h2>
-<p>COMING SOON</p>
+<ol>
+<li>
+<p>Tanulmányozzuk SSOE-ben a <code>Product_Update</code> tárolt eljárás kódját. Ehhez nyissuk le a <em>Programmability</em> alatt található Stored <em>Procedures</em> csomópontot, majd a <code>Product_Update</code> tárolt eljárás context menüjéből válasszuk a <em>View Code</em> lehetőséget.</p>
+<div class="admonition note">
+<p class="admonition-title">Programkód az adatbázisban</p>
+<p>A nagyobb adatkezelő rendszerek lehetőséget biztosítanak arra, hogy programkódot definiáljunk magában az adatkezelőben. Ezeket tárol eljárásoknak (stored procedure) nevezzük. A nyelve adatkezelő függő, de MSSQL esetében ez T-SQL.</p>
+<p>Manapság már egyre inkább kezd kikopni az a gyakorlat az iparból, hogy komolyabb üzleti logikát az adatbázisban helyezzünk el, mivel ezeknek az SQL dialektusoknak az eszközkészlete ma már jóval korlátosabb mint egy magas szintű programozási nyelvnek (C#, Java). Ráadásul a tesztelhetőségét a rendszernek nagyban rontják a tároljt eljárások használata. Ennek ellenére néha indokolt lehet az adatbázisban tartani valamennyi logikát, amikor ki szeretnénk azt használni, hogy az adatokhoz közel futnak a programkódjaink, pl.: nem akarjuk megutaztatni a hálózaton az adatot egy egyszerű tömeges adatkarbantartás érdekében.</p>
+</div>
+</li>
+<li>
+<p>Írjunk függvényt, ami ezt a tárolt eljárást hívja</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">UpdateProduct</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">productID</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">productName</span><span class="p">,</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">price</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnString</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlCommand</span><span class="p">(</span><span class="s">&quot;Product_Update&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">conn</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">command</span><span class="p">.</span><span class="n">CommandType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">CommandType</span><span class="p">.</span><span class="n">StoredProcedure</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">command</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="n">AddWithValue</span><span class="p">(</span><span class="s">&quot;@ProductID&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">productID</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">command</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="n">AddWithValue</span><span class="p">(</span><span class="s">&quot;@ProductName&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">productName</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">command</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="n">AddWithValue</span><span class="p">(</span><span class="s">&quot;@UnitPrice&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">price</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">affectedRows</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">ExecuteNonQuery</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;{affectedRows} rows affected&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>A Commandban a tárolt eljárás nevét kellett megadni és a parancs típusát kellett átállítani, egyébként szerkezetileg hasonlít a beszúró kódra.</p>
+</li>
+<li>
+<p>Hívjuk meg új függvényünket a <code>Main</code> függvényből, például az alábbi paraméterezéssel:</p>
+<div class="highlight"><pre><span></span><code><span class="n">UpdateProduct</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MyProduct&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">50</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+</li>
+<li>
+<p>Próbáljuk ki az alkalmazást, ellenőrizzük a konzolban és az SSOE-ben is, hogy módosult-e az 1-es azonosítójú termék.</p>
+</li>
+</ol>
 <h2 id="5-feladat-sql-injection">5. Feladat - SQL Injection<a class="headerlink" href="#5-feladat-sql-injection" title="Permanent link">&para;</a></h2>
-<p>COMING SOON</p>
+<ol>
+<li>
+<p>Írjuk meg a beszúró függvényt úgy, hogy string interpolációval rakja össze az SQL-t.</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">InsertShipper2</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">companyName</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">phone</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnString</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlCommand</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="s">$&quot;INSERT INTO Shippers(CompanyName, Phone) VALUES(&#39;{companyName}&#39;,&#39;{phone}&#39;)&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">conn</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">affectedRows</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">ExecuteNonQuery</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;{affectedRows} row(s) inserted&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</li>
+<li>
+<p>Hívjuk meg új függvényünket a <code>Main</code> függvényből „speciálisan” paraméterezve.</p>
+<div class="highlight"><pre><span></span><code><span class="n">InsertShipper2</span><span class="p">(</span><span class="s">&quot;Super Shipper&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;49-98562&#39;); DELETE FROM Shippers;--&quot;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>Úgy állítottuk össze a második paramétert, hogy az lezárja az eredeti utasítást, ezután tetszőleges <strong>(!!!)</strong> SQL-t írhatunk, végül kikommentezzük az erdeti utasítás maradékát (<code>--</code>).</p>
+</li>
+<li>
+<p>Próbáljuk ki az alkalmazást, hibát kell kapjunk, hogy valamelyik szállító nem törölhető idegen kulcs hivatkozás miatt.</p>
+<p>Tehát a D<code>ELETE FROM</code> is lefutott! Nézzük meg debuggerrel (pl. a <code>conn.Open</code> utasításon állva), hogy mi a végleges SQL (<code>command.CommandText</code>).</p>
+<p>Tanulságok:</p>
+<ul>
+<li>SOSE fűzzünk össze programból SQL-t (semmilyen módszerrel), mert azzal kitesszük a kódunkat SQL Injection alapú támadásnak.</li>
+<li>az adatbázis állítsa össze a végleges SQL-t SQL paraméterek alapján, mert ilyenkor biztosított, hogy a paraméter értékek nem fognak SQL-ként értelmeződni (hiába írunk be SQL-t). Használjunk paraméterezett SQL-t vagy tárolt eljárást.</li>
+<li>használjunk adatbázis kényszereket, pl. a véletlen törlés ellen is véd</li>
+<li>konfiguráljunk adatbázisban felhasználókat különböző jogosultságokkal, a programunk connection string-jében megadott felhasználó csak a működéshez szükséges minimális jogokkal rendelkezzen. A mi esetünkben nem adtunk meg felhasználót, a windows-os felhasználóként fogunk csatlakozni.</li>
+</ul>
+</li>
+<li>
+<p>Hívjuk meg az eredeti (vagyis a biztonságos, SQL paramétereket használó) beszúró függvényt a „speciális” paraméterezésekkel, hogy lássuk, működik-e a védelem:</p>
+<div class="highlight"><pre><span></span><code><span class="n">InsertShipper</span><span class="p">(</span><span class="s">&quot;Super Shipper&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;49-98562&#39;); DELETE FROM Shippers;--&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">InsertShipper</span><span class="p">(</span><span class="s">&quot;XXX&#39;);DELETE FROM Shippers;--&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;49-98562&quot;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>Az elsőnél nem férünk bele a méretkorlátba, a második lefut, de csak egy „furcsa” nevű szállító került be. A paraméter értéke tényleg értékként értelmeződött nem pedig SQL-ként. Nem úgy mint itt:</p>
+<p><img alt="XKCD" src="images/xkcd-sql-injection.png" /></p>
+</li>
+</ol>
 <h2 id="6-feladat-torles">6. Feladat - Törlés<a class="headerlink" href="#6-feladat-torles" title="Permanent link">&para;</a></h2>
-<p>COMING SOON</p>
+<ol>
+<li>
+<p>Írjunk egy új függvényt, ami kitöröl egy adott szállítót.</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">DeleteShipper</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">shipperID</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnString</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlCommand</span><span class="p">(</span><span class="s">&quot;DELETE FROM Shippers WHERE ShipperID = @ShipperID&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">conn</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">command</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="n">AddWithValue</span><span class="p">(</span><span class="s">&quot;@ShipperID&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">shipperID</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">affectedRows</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">ExecuteNonQuery</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;{affectedRows} row(s) affected&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</li>
+<li>
+<p>Hívjuk meg új függvényünket a <code>Main</code> függvényből, pl. 1-essel, mint paraméterrel</p>
+</li>
+<li>Próbáljuk ki az alkalmazást. Valószínűleg kivételt kapunk, ugyanis van hivatkozás (idegen kulcs kényszerrel) az adott rekordra.</li>
+<li>SSOE-ből nézzük ki az azonosítóját egy olyan szállítónak, amit mi vettünk fel. Adjuk át ezt az azonosítót a törlő függvénynek – ezt már ki tudja törölni, hiszen nincs rá hivatkozás.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Törlési stratégiák</p>
+<p>Látható, hogy a törlés igen kockázatos és kiszámíthatatlan művelet az idegen kulcs kényszerek miatt. Néhány módszer a törlés kezelésére:</p>
+<ul>
+<li><strong>nem engedélyezzük a törlést</strong>: Ha hivatkoznak a törlendő rekordra, az adatbázis hibával tér vissza (ahogy fent is láthattuk).</li>
+<li><strong>kaszkád törlés</strong> – az idegen kulcs kényszeren beállítható, hogy a hivatkozott rekord törlésekor a hivatkozó rekord is törlődjön. Gyakran ez oda vezet, hogy minden idegen kulcs kényszerünk ilyen lesz, és egy (véletlen) törléssel végigtörölhetjük akár a teljes adatbázist, azaz nehezen jósolható a törlés hatása.</li>
+<li><strong>hivatkozás NULL-ozása</strong> – az idegen kulcs kényszeren beállítható, hogy a hivatkozott rekord törlésekor a hivatkozó rekord idegen kulcs mezője <code>NULL</code> értékű legyen. Csak akkor alkalmazható, ha a modellünkben az adott idegen kulcs mező <code>NULL</code>-ozható.</li>
+<li><strong>logikai törlés</strong> (soft delete) – törlés művelet helyett csak egy flag oszlopot (pl. <code>IsDeleted</code>) állítunk be. Előnye, hogy nem kell az idegen kulcs kényszerekkel foglalkoznunk, a törölt adat rendelkezésre áll, ha szükség lenne rá (pl. undelete művelet). Ám a működés bonyolódik, mert foglalkozni kell azzal, hogy hogyan és mikor szűrjük a törölt rekordokat (pl. hogy ne jelenjenek meg a felületen, statisztikákban), vagy hogyan kezeljük, ha egy nem törölt rekord töröltre hivatkozik.</li>
+</ul>
+</div>
 <h2 id="kitekintes">Kitekintés<a class="headerlink" href="#kitekintes" title="Permanent link">&para;</a></h2>
-<p>COMING SOON</p>
-<h2 id="fuggelek-adatbazisok-sql-nyelv-alapok">Függelék – Adatbázisok, SQL nyelv alapok<a class="headerlink" href="#fuggelek-adatbazisok-sql-nyelv-alapok" title="Permanent link">&para;</a></h2>
-<p>Az adatbáziskezelő rendszerek világába és az SQL nyelvbe betekintést a kapcsolódó előadáson, illetve az alábbi hivatkozás alatt találsz: <a href="adatbazisok-sql-alapok/">Adatbázisok, SQL nyelv alapok</a></p>
+<p>A fenti ADO.NET alapműveleteket ebben az itt látott alapformában ritkán használják a gyengén típusosság (egy rekord adatait beolvasni egy osztály property-jeibe igen körülményes, cast-olni kell, stb.) és a stringbe kódolt SQL miatt – még akkor is, ha ez a hozzáférés adja a legjobb teljesítményt. Az előbbire megoldást jelenthetnek a különböző ADO.NET-et kiegészítő komponensek, pl.</p>
+<ul>
+<li><a href="https://github.com/DapperLib/Dapper">Dapper</a></li>
+<li><a href="https://github.com/CollaboratingPlatypus/PetaPoco">PetaPoco</a></li>
+</ul>
+<p>Ezek a megoldások egy minimális teljesítményveszteségért cserébe nagyobb kényelmet kínálnak.</p>
+<p>Mindkét problémára megoldást jelentenek az ORM (Object-Relational-Mapping) rendszerek, cserébe ezek nagyobb overheaddel járnak, mint az előbb említett megoldások. Az ORM-ek leképezést alakítanak ki az adatbázis és az OO osztályaink között, és ennek a leképezésnek a segítségével egyszerűsítik az adatbázis műveleteket. Az osztályainkon végzett, típusos kóddal leírt műveleteinket automatikusan átfordítják a megfelelő adatbázis műveletekre, így a memóriabeli objektummodellünket szinkronban tartják az adatbázissal. Az ORM-ek ebből következően kapcsolat nélküli modellt használnak. Ismertebb .NET-es ORM-ek:</p>
+<ul>
+<li>ADO.NET DataSet – elsőgenerációs ORM, ma már ritkán használjuk.</li>
+<li>Entity Framework 6.x – (régi) .NET Framework leggyakrabban használt ORM keretrendszere</li>
+<li><a href="https://learn.microsoft.com/en-us/ef/core/">Entity Framework Core</a> (EF Core) – a jelenleg elsődlegesen használt .NET ORM (open source)</li>
+<li><a href="https://nhibernate.info/">NHibernate</a> – a java-s Hibernate .NET-es portja (open source)</li>
+</ul>
+<p>Az Entity Framework Core-ral részletesebben foglalkozunk az Adatvezérelt rendszerek spec. tárgyban illetve a Szofverfejlesztés .NET platformon választható tárgyban.</p>
 
 
 
