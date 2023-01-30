@@ -13,6 +13,10 @@ article ul ul ul {
 	list-style-type:  square !important;
 }
 
+.red {
+	color: #ff0000;
+  }
+
 /* img	{
 	height: 50%;
     width: 50%;
