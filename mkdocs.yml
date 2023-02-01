@@ -6,11 +6,12 @@ repo_url: https://github.com/bmeviauab00/szoftvertechnikak
 
 theme:
   name: material
+  custom_dir: overrides
   language: hu
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: aut
-      primary: red
+      primary: aut
       accent: red
       toggle:
         icon: material/lightbulb-outline
@@ -58,6 +59,7 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tabbed
   - pymdownx.tilde
+  - pymdownx.keys
   - md_in_html
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
@@ -68,6 +70,15 @@ markdown_extensions:
 plugins:
   - search:
       prebuild_index: true
+  - glightbox
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+      timezone: Europe/Budapest
+      locale: hu
+  - git-committers:
+      repository: bmeviauab00/szoftvertechnikak
+      branch: main
 
 nav:
   - index.md
