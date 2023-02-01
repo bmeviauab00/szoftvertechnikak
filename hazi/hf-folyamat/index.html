@@ -603,8 +603,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#clone-a-github-webes-feluleterol-indulva-visual-studioban" class="md-nav__link">
-    Clone a GitHub webes felületéről indulva Visual Studioban
+  <a href="#clone-a-github-webes-feluleterol-indulva-visual-studio-ban" class="md-nav__link">
+    Clone a GitHub webes felületéről indulva Visual Studio-ban
   </a>
   
 </li>
@@ -612,6 +612,54 @@
           <li class="md-nav__item">
   <a href="#clone-parancssorbol" class="md-nav__link">
     Clone parancssorból
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#napi-git-munka-visual-studio-segitsegevel-commit-push" class="md-nav__link">
+    Napi Git munka Visual Studio segítségével (commit, push)
+  </a>
+  
+    <nav class="md-nav" aria-label="Napi Git munka Visual Studio segítségével (commit, push)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commit" class="md-nav__link">
+    Commit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push-pull-git-history" class="md-nav__link">
+    Push, Pull, Git history
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-history" class="md-nav__link">
+    Git history
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#egyeb-iranyelvek" class="md-nav__link">
+    Egyéb irányelvek
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-hasznalata-parancssorbol" class="md-nav__link">
+    Git használata parancssorból
   </a>
   
 </li>
@@ -660,17 +708,19 @@
 <li>A házi feladatot külön explicit beadni nem kell, csak legyen fent GitHub-on határidőre a megoldás.</li>
 <li><img alt="❗" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/2757.svg" title=":exclamation:" /> Amikor a házi feladatod beadottnak tekinted,  célszerű ellenőrizni a böngészőben a GitHub webes felületén a repository-ban a fájlokra való rápillantással, hogy valóban minden változtatást push-oltál-e, és hogy a neptun.txt valóban ki van-e töltve.</li>
 </ol>
-<p>A fenti lépések kapcsán két kérdés fogalmazódat meg bennünk:
-• Hogyan klónozzuk (clone) a repónkat (mely a házi feladat kiinduló keretét tartalmazza)?
-• Hogyan commit-áljunk és push-oljunk a Visual Studio segítségével GitHub-ra?
-Az alábbiakban ezekre is kitérünk.</p>
+<p>A fenti lépések kapcsán két kérdés fogalmazódat meg bennünk:</p>
+<ul>
+<li>Hogyan klónozzuk (clone) a repónkat (mely a házi feladat kiinduló keretét tartalmazza)?</li>
+<li>Hogyan commit-áljunk és push-oljunk a Visual Studio segítségével GitHub-ra?</li>
+</ul>
+<p>Az alábbiakban ezekre is kitérünk.</p>
 <h2 id="github-repository-klonozasa">GitHub repository klónozása<a class="headerlink" href="#github-repository-klonozasa" title="Permanent link">&para;</a></h2>
 <p>Két lehetőséget nézünk meg alább:</p>
 <ul>
 <li>Clone a GitHub webes felületéről indulva Visual Studioban</li>
 <li>Clone parancssorból</li>
 </ul>
-<h3 id="clone-a-github-webes-feluleterol-indulva-visual-studioban">Clone a GitHub webes felületéről indulva Visual Studioban<a class="headerlink" href="#clone-a-github-webes-feluleterol-indulva-visual-studioban" title="Permanent link">&para;</a></h3>
+<h3 id="clone-a-github-webes-feluleterol-indulva-visual-studio-ban">Clone a GitHub webes felületéről indulva Visual Studio-ban<a class="headerlink" href="#clone-a-github-webes-feluleterol-indulva-visual-studio-ban" title="Permanent link">&para;</a></h3>
 <p>Egy (házi feladathoz tartozó) repository klónozásra számos mód van, egy lehetőség a következő. Nyissuk meg az elkészült repository online oldalát, melyre több módon eljuthatunk. Lehetőségek pl.:</p>
 <ul>
 <li>A repo létrehozásakor megjelenik a GitHub felületen az url, csak kattintani kell rajta.</li>
@@ -684,7 +734,7 @@ Az alábbiakban ezekre is kitérünk.</p>
 <p>A böngészőnk ekkor jó eséllyel feldob egy ablakot (pl. a Chrome/Edge esetében a címsor alatt) melyben egy külön gombkattintással (<em>Open…</em>) tudjuk indítani a Visual Studio-t. A felkínált lehetőségnek lehet, kissé fura a neve, ha <em>"Microsoft Visual Studio Web Protocol Handler Selector"</em> néven hivatkozik rá, válasszuk ki bátran.
 Ha minden jól megy, a Visual Studio elindul, és indulás után feldob egy ablakot, melyben a "Repository location" ki is van töltve a repository-nk URL-jével. A Path alatt adjuk meg, hogy hova szeretnénk a háttértárunkon clone-ozni, majd kattintsunk a <em>Clone</em> gombra:</p>
 <p><img alt="Repository clone Visual Studionban" src="images/vs-clone-a-repository.png" /></p>
-<p>Megjegyzés: ha nem működik a böngészőablakban az <em>"Open in Visual Studio"</em> vagy <em>"Microsoft Visual Studio Web Protocol Handler Selector"</em> hivatkozás, akkor indulhatunk egyből a Visual Studio-ból is. Csak indítsuk el a Visual Studio-t, és a startup ablakban válasszuk jobboldalt a <em>"Clone Repository"</em> gombot (vagy a startup ablakot átugorva válasszuk ki a <em>"Git/Clone Repository menüt"</em> a VS főablakában), melynek hatására a fenti ablak jelenik meg, a Repository URL-be pedig írjuk be a repónk URL-jét. A <em>Clone</em>-ra kattintva néhány másodperc alatt leklónozódik a repository a megadott célmappába. Pl. Windows Explorer-ben meg tudjuk tekinteni a létrehozott mappákat és fájlokat:</p>
+<p>Megjegyzés: ha nem működik a böngészőablakban az <em>"Open in Visual Studio"</em> vagy <em>"Microsoft Visual Studio Web Protocol Handler Selector"</em> hivatkozás, akkor indulhatunk egyből a Visual Studio-ból is. Csak indítsuk el a Visual Studio-t, és a startup ablakban válasszuk jobboldalt a <em>"Clone Repository"</em> gombot (vagy a startup ablakot átugorva válasszuk ki a <em>"Git/Clone Repository menüt"</em> a VS főablakában), melynek hatására a fenti ablak jelenik meg, a Repository URL-be pedig írjuk be a repónk URL-jét. A <em>Clone</em>-ra kattintva néhány másodperc alatt a repository a megadott célmappába klónozódik. Pl. Windows Explorer-ben meg tudjuk tekinteni a létrehozott mappákat és fájlokat:</p>
 <p><img alt="Git repository a fájlrendszerben" src="images/git-folder-in-explorer.png" /></p>
 <p>Ebből jól látható, hogy egy Git repository nem más, mint mappák és fájlok gyűjteménye, valamint egy a gyökérben található .git mappa, mely (némi egyszerűsítéssel élve) az egyes fájlok verziótörténetét tartalmazza.
 Az első házi feladat kivételesen két fő részből áll, melyekhez eltérő solution tartozik. Az elsőhöz a Feladat1 mappában található MusicApp.sln fájlt, a másodikhoz a Feladat2-ben található Shapes.sln-t kell megnyitni. A megnyitást megtehetjük Explorerből, az adott .sln fájlon duplán kattintva. Ugyanakkor van erre más mód is: amennyiben Visual Studio-ban a Git gyökérmappát nyitottuk meg (a <em>Clone</em>-t követően is ez a helyzet állt elő) a Solution Explorer nézet fejlécében <em>"Switch View"</em> gombot lenyomva a Solution Explorer listázza a Git gyökérmappa alatti solution-öket, és ezek bármelyikén duplán kattintva az adott solution megnyílik:</p>
@@ -698,24 +748,24 @@ Az első házi feladat kivételesen két fő részből áll, melyekhez eltérő 
 <p>Ne féljünk a parancssori git-et használni, egy repository clone-ozásának tulajdonképpen ez a legegyszerűbb módja.</p>
 <p>Amennyiben a parancs futtatása során azt tapasztaljuk, hogy a git parancsot nem ismeri fel a környezet, annak oka valószínűleg az, hogy nem telepítettünk még a parancssori gitet a gépünkre. Erről bővebben <a href="../git-github-github-classroom/#git-telepitese">itt</a>.</p>
 </div>
-<h1 id="napi-git-munka-visual-studio-segitsegevel-commit-push">Napi Git munka Visual Studio segítségével (commit, push)<a class="headerlink" href="#napi-git-munka-visual-studio-segitsegevel-commit-push" title="Permanent link">&para;</a></h1>
+<h2 id="napi-git-munka-visual-studio-segitsegevel-commit-push">Napi Git munka Visual Studio segítségével (commit, push)<a class="headerlink" href="#napi-git-munka-visual-studio-segitsegevel-commit-push" title="Permanent link">&para;</a></h2>
 <p>Miután leklónoztuk az adott házi feladathoz tartozó GitHub repository-t a számítógépünkre, és ennek során létrejött a lokális Git repository-nk, a benne levő .sln fájlokat Visual Studioban megnyitva pont úgy dolgozunk – veszünk fel új fájlokat, módosítunk/törlünk meglévőket – mintha a fájlok nem is tartoznának semmiféle Git repóhoz. Ugyanakkor, legkésőbb a feladat beadásakor a változtatásainkat commit-olni kell, majd push-olni GitHub-ra. A munka során akárhányszor commit-álhatjuk/push-olhatjuk az előző commit óta eszközölt módosításainkat: a házi feladat ellenőrzésekor a határidő pillanatában a GitHub-on található állapot kerül elbírálásra, teljesen mindegy, hány commit tartozik hozzá.
-A commit és push műveletek végrehajtásához a Visual Studio "Git" menüjében levő parancsokat használjuk.</p>
-<h2 id="commit">Commit<a class="headerlink" href="#commit" title="Permanent link">&para;</a></h2>
-<p>Az előző commit óta eszközölt változtatások megtekintéséhez válasszuk ki a "View\Git Changes" menüt. Ennek hatására megjelenik a „Git Changes” nézet a változások listájával:</p>
+A commit és push műveletek végrehajtásához a Visual Studio <em>"Git"</em> menüjében levő parancsokat használjuk.</p>
+<h3 id="commit">Commit<a class="headerlink" href="#commit" title="Permanent link">&para;</a></h3>
+<p>Az előző commit óta eszközölt változtatások megtekintéséhez válasszuk ki a <em>"View\Git Changes"</em> menüt. Ennek hatására megjelenik a <em>"Git Changes"</em> nézet a változások listájával:</p>
 <p><img alt="VS Git changes" src="images/vs-git-changes.png" /></p>
 <p>A változtatások commit-álásához írjunk a fenti szövegmezőbe egy a változtatásokra jellemző egy-két soros leírást (pl. "Végső megoldás", "Az xyz hiba javítása", stb.). A lehetőségeink ezt követően a következők:</p>
 <ul>
 <li><strong>"Commit All"</strong> gomb: Csak helyben commit-olja a változtatásokat (a központi Git repóban mindaddig nem jelenik meg a commit, amíg egy külön Push paranccsal fel nem "toljuk".</li>
 <li><strong>"Commit All and Push"</strong>, mely a "Commit All" gomb melletti nyíl lenyitásával érhető el. Hatása: commit, majd utána push. Ha a változtatásainkat egyből publikálni is szeretnénk a GitHub-on levő központi repóba, akkor használjuk bátran parancsot. <strong>A házi feladatok tekintetében célszerű is ezt használni, mert ekkor nincs szükség a commit-ot követően külön push műveletre.</strong>
 Megjegyzés: ha a parancs az "Unable to push to the remote repository because your local branch is behind the remote branch" hibával zárul, előbb pull-oljuk, majd ismételjük meg a push-t. Erre még alább visszatérünk.</li>
-<li><strong>"Commit All and Sync"</strong>, mely a "Commit All" gomb melletti nyíl lenyitásával érhető el. Hatása: commit után pull (leszedi a saját helyi repónkba mások esetleges változtatásait a központi repóból), majd push. Így a központi repóban levő esetleges változásokat lehozza a helyi repónkba, a ezt követően a változtatásainkat egyből publikálja is ide.</li>
+<li><strong>"Commit All and Sync"</strong>, mely a "Commit All" gomb melletti nyíl lenyitásával érhető el. Hatása: commit után pull (leszedi a saját helyi repónkba mások esetleges változtatásait a központi repóból), majd push. Így a központi repóban levő esetleges változásokat lehozza a helyi repónkba, az ezt követően a változtatásainkat egyből publikálja is ide.</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>A git commit-ot mindig meg kell előzze egy ún. <strong>stage</strong> lépés, mely során kiválasztjuk azokat a helyi változtatásokat, melyeket a következő commit-ba be kívánunk tenni. Ez az ún. <strong>staging area</strong> területre teszi az általunk kiválasztott változásokat (a féjlrendszerben nem mozgat semmiféle fájlt, ez csak a git a belső nyilvántartásában jelenik meg). Ez azért jó, mert plusz rugalmasságot biztosít, hiszen nem biztos, mindig minden változtatást bele kívánunk tenni a következő commit-ba. A fenti "Commit all" stb. parancsok nevében nem véletlen van benne az "all": ezek a színfalak mögött a commit előtt egy megfelelő git paranccsal valamennyi változást a git staging area-ra tesznek, így ezt nekünk nem kell külön megtennünk.</p>
 </div>
-<h2 id="push-pull-git-history">Push, Pull, Git history<a class="headerlink" href="#push-pull-git-history" title="Permanent link">&para;</a></h2>
+<h3 id="push-pull-git-history">Push, Pull, Git history<a class="headerlink" href="#push-pull-git-history" title="Permanent link">&para;</a></h3>
 <p>A commit művelet csak a helyi repository-ban "érvényesíti" a változtatásokat. Ezt követően a változtatásokat a GitHub központi repository-nkba fel kell tölteni a push művelettel. Erre a lépésre csak akkor van szükség, ha a commit során nem használtuk a <em>"Commit All and Push"</em> vagy <em>"Commit All and Sync"</em> parancsokat. A push művelet VS-ben a <em>"Git/Push"</em> menü segítésével indítható. 
 Ha többen dolgozunk, a központi repository-ban lehetnek mások által pusholt, hozzánk még le nem töltött commitok (vagy akár olyanok, melyeket mi magunk push-oltunk egy másik lokális clone-ból, vagy ha a GitHub online felületén eszközöltünk a kódon változásokat). Ezeket a pull művelettel tudjuk a helyi repónkba merge-elni (Git/Pull menü). A házi feladat vonatkozásában ezt nem használjuk, hiszen mindenki saját dedikált központi repositoryval rendelkezik, melyben egyedül dolgozik (kivéve, ha esetleg valaki a GitHub felületének segítségével változtatott a kódon, akkor ezt egy pull-lal tudja a helyi repójába lehozni).</p>
 <div class="admonition note">
@@ -735,7 +785,7 @@ Ha többen dolgozunk, a központi repository-ban lehetnek mások által pusholt,
 <p class="admonition-title">Commit előtt pull</p>
 <p>A amennyiben a jövőben egy Git repository-n többen dolgozunk, a változtatásaink commitolása előtt célszerű kiadni egy Pull parancsot (Git/Pull menü). Ez lehozza a központi Git repositoryból a többi fejlesztő változtatásait és összemerge-eli a saját változtatásainkkal (a helyi repónkban). Így, ha valaki netán pont azokon a fájlokon dolgozott az előző pullunk óta, melyeken mi is változtattunk, ezek hatása megjelenik a kódunkban, az esetleges ütközéseket már idejekorán fel tudjuk oldani, és a tisztázott, minden változást egyben és konzisztensen tartalmazó kódot tudjuk commitolni.</p>
 </div>
-<h2 id="git-history">Git history<a class="headerlink" href="#git-history" title="Permanent link">&para;</a></h2>
+<h3 id="git-history">Git history<a class="headerlink" href="#git-history" title="Permanent link">&para;</a></h3>
 <p>A Git egy változáskövető rendszer. A változás egysége a commit (melyben testszőleges számú fájlt érintő változás lehet), a Git historyban a commitok egymásutániságát láthatjuk. Minden fájlokat érintő változásokon túlmenően minden commithoz tartozik egy egyedi azonosító (commit hash), időbélyeg, illetve egy szerző (a felhasználó, aki a változásokat commitolta). Visual Studioban a historyt a View/Git Repository menüvel tudjuk megjeleníteni, de a history természetesen a GitHubon is megjeleníthető.
 A Visual Studioban a <em>"Git Repository"</em> nézetet a View/Git Repository menüvel tudjuk megjeleníteni.</p>
 <ul>
@@ -748,11 +798,11 @@ A Visual Studioban a <em>"Git Repository"</em> nézetet a View/Git Repository me
 <p class="admonition-title">Tip</p>
 <p>Amíg nem vagyunk rutinosak a Visual Studio Git szolgáltatásainak használatában, a push-t követően (legkésőbb akkor, amikor a házi feladatot beadottnak tekintjük) célszerű ellenőrizni a GitHub webes felületén a repository-ban a fájlokra való rápillantással, hogy valóban minden változtatást feltöltöttünk-e.</p>
 </div>
-<h2 id="egyeb-iranyelvek">Egyéb irányelvek<a class="headerlink" href="#egyeb-iranyelvek" title="Permanent link">&para;</a></h2>
+<h3 id="egyeb-iranyelvek">Egyéb irányelvek<a class="headerlink" href="#egyeb-iranyelvek" title="Permanent link">&para;</a></h3>
 <p>A Git commit és push során megfigyelhetjük, hogy a solution-jeink köztes és kimeneti állományai (.dll, .exe, stb. fájlok) nem kerülnek bele a commitba és így nem kerülnek fel GitHubra sem. Ez így is van jól, ezen állományok bármikor reprodukálhatók, a verziókezelő rendszernek nem feladata ezek tárolása, csak felesleges és zavaró helyfoglalók lennének. Felmerül a kérdés, honnan tudja a Git, hogy mely állományokat szükséges figyelmen kívül hagyni a commit során. Erre szolgál a repository-ban (tipikusan annak gyökérmappájában) található <strong>.gitignore</strong> fájl, mely felsorolja azon mappákat, fájlkiterjesztéseket, illetve egyedi fájlokat, melyeket a commit során figyelmen kívül szeretnénk hagyni. A .gitignore fájl tartalma teljes egészében a kezünk alá tartozik, szabadon szerkeszthető/commitálható/pusholható.
 A tárgy keretében minden kiinduló repónak része egy .gitignore fájl, ne változtassuk a tartalmát! Így a commit/push során a kimeneti állományok a házi feladatok esetében sem kerülnek fel GitHub-ra, és egy így is van rendjén.</p>
 <p>A félévben a feladatok megoldása során az egyes osztályok, interfészek, stb. forráskódját külön fájlba kell tenni, vagyis egy C# forrásfájlban egy osztály/interfész/stb. definíciója legyen.</p>
-<h2 id="git-hasznalata-parancssorbol">Git használata parancssorból<a class="headerlink" href="#git-hasznalata-parancssorbol" title="Permanent link">&para;</a></h2>
+<h3 id="git-hasznalata-parancssorbol">Git használata parancssorból<a class="headerlink" href="#git-hasznalata-parancssorbol" title="Permanent link">&para;</a></h3>
 <p>Bár sokan ódzkodnak a git parancssori alkalmazásától, az egyszerűbb műveleteket gyakran gyorsabban végre tudjuk hajtani parancssorból, mint a felületeken történő kattintgatásokkal. Az alábbiakban egy egyszerű lépéssorozattal illusztráljuk ezt. Ezeket a tárgy keretében nem kell tudni, de hosszabb távon mindenképpen hasznos (és az iparágban elvárás is) az ismeretük.</p>
 <ol>
 <li>
@@ -786,7 +836,7 @@ A tárgy keretében minden kiinduló repónak része egy .gitignore fájl, ne v�
 <li>
 <p>Mint korábban említettük, a commit során az commithoz hozzárendelődik egy felhasználónév és e-mail cím. Ha ezek nincsenek a git számára bekonfigurálva, akkor a git a commit során ezt hibaüzenetben jelzi. Ekkor az alábbi parancsokkal - értelemszerűen a saját usernevünket és e-mail címünket megadva - tudjuk ezeket a git globális konfigurációjában beállítani (ezt csak egyszer kell megtenni):</p>
 <div class="highlight"><pre><span></span><code>git config --global user.email &quot;you@example.com&quot;
-git config --global user.name &quot;cameronmcnz&quot;
+git config --global user.name &quot;myusername&quot;
 </code></pre></div>
 </li>
 <li>
