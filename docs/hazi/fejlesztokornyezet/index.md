@@ -33,7 +33,8 @@ Bizonyos házi feladatok esetén (már az elsőnél is) szükség van Visual Stu
 3. A megjelenő ablakban "Individual components" fül kiválasztása
 4. A keresőmezőbe "class designer" begépelése, majd győződjünk meg, hogy a szűrt listában a "Class Designer" elem ki van pipálva.
 5. Ha nincs, pipáljuk ki, majd a jobb alsó sarokban a *Modify* gombra kattintva telepítsük.
-![Osztálydiagram támogatás telepítés](images/install-vs-class-diagram.png.png)
+
+    ![Osztálydiagram támogatás telepítés](images/install-vs-class-diagram.png)
 
 ### MacBook és Linux használók számára információk
 
