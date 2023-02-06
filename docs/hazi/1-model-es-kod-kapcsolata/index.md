@@ -207,9 +207,85 @@ A következő kód egy lehetséges megoldást mutat, a megoldás részleteit a k
 
     A `c:\temp` mappába másoljuk ki a `music.txt` fájlt, és futtassuk az alkalmazást. A megvalósítás során az egyszerűségre törekedve mindent beleöntöttünk a 7 függvénybe, „éles” környezetben mindenképp célszerű a kódot egy külön feldolgozó osztályba kiszervezni.
 
-## Továbbiak
+## Feladat 2 - Az UML és a kód kapcsolata, interfész és absztrakt ős alkalmazástechnikája
 
-Ellenőrzőlista, pár jótanács, ismétlésképpen:
+### Kiinduló környezet
+
+A kiindulási környezet a `Feladat2` mappában található, az ebben levő `Shapes.sln` fájlt nyissuk meg Visual Studioban és ebben a solutionben dolgozzunk.
+
+!!! warning "Figyelem!"
+    Új solution és/vagy projektfájl létrehozása, vagy a projekt más/újabb .NET verziókra targetelése tilos.
+
+A `Feladat2\Shapes` mappában található egy `Controls.dll` fájl, ezt a feladat megoldása során kell majd felhasználni.
+
+### Beadandó (a forráskódon túlmenően)
+
+2-3 bekezdésben a Feladat 2 megoldása során hozott tervezői döntések, a megoldás legfontosabb alapelveinek rövid szöveges összefoglalása, indoklása. Ezt a `Feladat2` mappában található `Readme.md` szövegfájlba kell beleírni (markdown formátumban, de jó formázás nélkül is a nyers szöveg).
+
+### Feladat
+
+Egy síkbeli vektorgrafikus alakzatokat kezelni képes CAD tervezőalkalmazás első változatának kifejlesztésével bíznak meg bennünket. Bővebben:
+
+- Különböző típusú alakzatokat kell tudni kezelni. Kezdetben a `Square` (négyzet), `Circle` (kör) és `TextArea` típusú alakzatokat kell támogatni, de a kód legyen könnyen bővíthető új típusokkal. Az `TextArea` egy szerkeszthető szövegdoboz.
+
+    !!! warning "Elnevezések"
+        Az osztályokat mindenképpen a fentieknek megfelelően nevezzük el!
+
+- Az alakzatokhoz tartozó adatok: x és y koordináta, valamint olyan adatok, melyek a megjelenítéshez és az alakzatok területének kiszámításához szükségesek. Pl. négyzet esetében oldalhosszúság, `TextArea` esetében szélesség és magasság, kör esetében a sugár.
+
+- Minden alakzatnak biztosítania kell műveleteket típusának, koordinátái és területének lekérdezéséhez. A típus lekérdező művelet `string`-gel térjen vissza, illetve a beépített `Type` osztály `GetType` művelete nem használható a megvalósítás során.
+
+- Listázni kell tudni a memóriában nyilvántartott alakzatokat a szabványos kimenetre (konzolra). Ennek során a következő adatokat írjuk ki: alakzat típusa (pl. négyzet esetén `Square`, stb.), a két koordináta, alakzat területe. (beépített `Type` osztály `GetType` művelete nem használható a típus kiírás során)
+
+- Az `TextArea` osztálynak osztálynak kötelezően a jelen feladathoz tartozó `Controls.dll` osztálykönyvtár `Textbox` osztályából kell származnia. A `Controls.dll` egy .NET szerelvény, lefordított formában tartalmaz osztályokat.
+
+- A megvalósítás során törekedjen egységbezárásra: pl. az alakzatok menedzselése legyen egy **erre dedikált osztály** feladata.
+  
+    !!! failure
+        Az nem elfogadható, ha a `Main` függvényben egy helyben létrehozott egyszerű listába kerülnek az alakzatok tárolásra! Ezen felül a menedzselésért felelős osztály NE származzon beépített `List` vagy hasonló osztályból, hanem a tartalmazza azt. Az adatok szabványos kimentre történő listázásáért ez az osztály legyen a felelős.
+
+- A megvalósítás során törekedjen a könnyű bővíthetőségre, karbantarthatóságra, kerülje el a kódduplikációt (tagváltozók, műveletek, konstruktorok esetében egyaránt). A megoldás elfogadásában ezek kiemelt szempontjai!
+
+- A `Main` függvényben mutasson példát az osztályok használatára.
+
+- Legkésőbb a megvalósítás végére készítsen a Visual Studio solutionben egy osztálydiagramot, melyen a solution osztályait jól áttekinthető formában rendezze el. Az asszociációs kapcsolatokat asszociáció formájában jelenítse meg, ne tagváltozóként (*Show as Association* ill. *Show as Collection Association*, lásd [1. gyakorlat útmutatója](../../labor/index.md)).
+
+    !!! tip "Class Diagram komponens"
+        A Visual Studio 20222 nem teszik fel minden esetben a *Class Designer* komponenst a telepítés során. Ha nem lehet Class Diagram-ot felvenni a Visual Studio projektbe (mert a *Class Diagram* nem szerepel a listában az *Add / New Item* parancs során megjelenő ablak listájában), akkor a *Class Diagram* komponenst utólag kell telepíteni. Erről bővebben jelen útmutató [Fejlesztőkörnyezet](../fejlesztokornyezet/index.md) oldalán lehet olvasni.
+
+A megvalósítás során jelentős egyszerűsítéssel élünk:
+
+- Az alakzatok kirajzolását nem valósítjuk meg (az ehhez szükséges ismeretek a félév során később szerepelnek).
+- Az alakzatokat csak a memóriában kell nyilvántartani.
+
+### Osztálykönyvtárak használata
+
+A megoldás az [1. gyakorlat - A modell és a kód kapcsolata laborgyakorlat](../../labor/1-model-es-kod-kapcsolata/index.md) mintájára kidolgozható. Jelen feladat egy lényeges részletében különbözik tőle: míg abban csak szóban kötöttük ki, hogy a `DisplayBase` ősosztály forráskódja nem megváltoztató, jelen esetben a `Textbox` ősosztályunk esetében ez adott, hiszen csak egy lefodított dll formájában áll rendelkezésre. A következőkben nézzük meg, milyen lépésekben lehet egy ilyen dll-ben levő osztályokat kódunkban felhasználni:
+
+1. A Visual Studio Solution Explorer ablakában jobb gombbal kattintsunk a *Dependencies* elemen, és válasszuk az *Add Reference*-t vagy *Add Project Reference*-t (amelyik létezik).
+2. A megjelenő ablak bal oldalán válasszuk ki a *Browse* elemet,
+   1. Ha az ablak közepén a listában megjelenik a `Controls.dll`, pipáljuk ki az elemet.
+   2. Ha nem jelenik meg, akkor kattintsunk az ablakunk jobb alsó részében levő *Browse...* gombon.
+        1. A megjelenő fájlböngésző ablakban navigáljunk el a `Controls.dll` fájlhoz, és kattintsunk rajta duplán, ami bezárja az ablakot.
+        2. A *Reference Manager* ablakunk középső részén a `Controls.dll` látható kipipálva, az OK gombbal zárjuk be az ablakot.
+3. OK gombbal zárjuk be az ablakot.
+
+Ezzel a projektünkben felvettünk egy referenciát a `Controls.dll`-re, így a benne levő osztályok használhatók (pl. lehet példányosítani őket, vagy lehet belőlük származtatni). A Solution Explorer-ben a *Dependencies* majd *Assemblies* csomópontot lenyitva a *Controls* megjelenik:
+
+![Controls.dll](images/controlsdll.png)
+
+A `Textbox` osztály, melyből az `TextArea` osztályunkat származtatni kell, a `Controls` névtérben található. A `TextBox` osztálynak egy konstruktora van, melynek négy paramétere van, az x és y koordináták, valamint a szélesség és a magasság.
+Amennyiben szükség lenne rá, a többi művelet felderítésében az *Object Browser* segít. Az *Object Browser* a *View* menüből az *Object Browser* menü kiválasztásával nyitható meg. Az *Object Browser* egy új tabfülön jelenik meg.
+A `Controls` komponenst lenyitogatva az egyes csomópontokat kiválasztva (névtér, osztály) az adott csomópont jellemzői jelennek meg: pl. az osztály nevén állva az osztály tagjait látjuk.
+
+![Object Browser](images/object-browser.png)
+
+Most már minden információ rendelkezésünkre áll a feladat megvalósításához.
+
+## Beadás
+
+Ellenőrzőlista ismétlésképpen:
 
 - :exclamation: Van pár pont, melyet minden házi beadásának végén érdemes ellenőrizni: lásd [itt](../beadas-ellenorzes/index.md)
-- A 2. feladat során ne felejtsd el a "Megoldás bemutatása.txt"-ben a megoldásod bemutatni.
+- A 2. feladat során ne felejtsd el a "Readme.md"-ben a megoldásod bemutatni.
+
