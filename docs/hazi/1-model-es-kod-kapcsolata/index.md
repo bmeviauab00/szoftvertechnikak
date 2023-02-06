@@ -54,7 +54,158 @@ Ha valamelyik lépés sikertelen, pipa helyett piros x van a csomópont elején,
 
 ## Feladat 1 – Egy egyszerű .NET konzol alkalmazás elkészítése
 
-TODO
+### Kiinduló projekt
+
+A kiindulási környezet a `Feladat1` mappában található, az ebben levő `MusicApp.sln` fájlt nyissuk meg Visual Studioban és ebben a solutionben dolgozzunk.
+
+!!! warning "Figyelem!"
+    Új solution és/vagy projektfájl létrehozása, vagy a projekt más/újabb .NET verziókra targetelése tilos.
+
+A `Feladat1\Input` mappában található egy `music.txt` fájl, mely a feladat bemeneteként használandó.
+
+### Feladat
+
+Egy szövegfáljban zeneszerzők/előadók/együttesek számainak címeit tároljuk a következő formátumban.
+
+- Minden szerzőhöz külön sor tartozik.
+- Minden sorban először a szerző neve szerepel, majd `;`-t követve `;`-vel elválasztva számok címei.
+- A fájl tartalma érvényesnek tekintendő, ha üres, vagy csak whitespace (space, tab) karaktereket tartalmazó sorok is vannak.
+
+A mellékelt music.txt fájl tartalma a következőhöz hasonló:
+
+```csv
+Adele; Hello; Rolling in the Deep; Skyfall
+Ennio Morricone;	A Fistful Of Dollars; Man with a Harmonica
+AC/DC; Thunderstruck; T.N.T
+```
+
+Olvassuk be a fájlt `Song` osztálybeli objektumok listájába. Egy `Song` objektum egy dal adatait tárolja (szerző és cím). A beolvasást követően írjuk ki formázott módon az objektumok adatait a szabványos kimenetre az alábbi formában:
+
+```text
+szerző1: szerző1_dalcím1
+szerző1: szerző1_dalcím2
+...
+szerző2: szerző2_dalcím1
+...
+stb.
+```
+
+A mintafájlunk esetében a következő (a fájl tartalmának függvényében lehet eltérés) kimenetet szeretnénk látni:
+
+![Eredmény a konzolon](images/music-store-console.png)
+
+### A megvalósítás lépései
+
+Vegyünk fel egy `Song` nevű osztályt a projektbe (jobb katt a Solution Explorerben a projekten, a menüben *Add / Class*).
+
+Vegyük fel a szükséges tagokat és egy ezekhez passzoló konstruktort:
+
+```csharp
+public class Song
+{
+    public readonly string Artist;
+    public readonly string Title;
+
+    public Song(string artist, string title)
+    {
+        Artist = artist;
+        Title = title;
+    }
+}
+```
+
+A tagváltozókat `readonly`-ként vettük fel, mert nem akartuk, hogy utólag ezek a konstruktor lefutását követően megváltoztathatók legyenek.
+
+!!! note "Property"
+    A félév elején fogunk tanulni egy igen hasznos C#-os nyelvi elemről a Propertykről, ami szebb megoldás lenne a readonly mezők helyett, de a félév ezen pontján még nem biztos, hogy minden csoport ismeri ezt, így most maradjunk a mezőknél.
+
+A következőkben a `Song` osztályunkban definiáljuk felül az implicit `System.Object` ősből örökölt `ToString` műveletet, hogy az az előírt formában adja vissza objektum adatait. A megoldásban sztring interpolációt használjunk (ezt már alkalmaztuk az első labor keretében):
+
+```csharp
+public override string ToString()
+{
+    return $"{Artist}: {Title}";
+}
+```
+
+Szövegfájl feldolgozására legkényelmesebben a `System.I`O névtérben levő [`StreamReader`](https://learn.microsoft.com/en-us/dotnet/api/system.io.streamreader?redirectedfrom=MSDN&view=net-6.0) osztályt tudjuk használni.
+
+A `Main` függvényünkben olvassuk fel soronként a fájlt, hozzuk létre a `Song` objektumokat és tegyük be egy `List<Song>` dinamikusan nyújtózkodó tömbbe. Figyeljünk arra, hogy a fájlban a `;`-vel elválasztott elemek előtt/után whitespace karakterek (space, tab) lehetnek, ezektől szabaduljunk meg!
+
+A következő kód egy lehetséges megoldást mutat, a megoldás részleteit a kódkommentek magyarázzák. A félév során ez az első önálló feladat, valamint a hallgatók többségének ez első .NET/C# alkalmazása, így itt még adunk mintamegoldást, de a rutinosabb hallgatók önállóan is próbálkozhatnak.
+
+??? tip "Megoldás"
+
+    ```csharp
+    namespace MusicApp;
+
+    public class Program
+    {
+        // A Main függvény a Program osztályon belül található, ezt itt nem jelüljük
+        public static void Main(string[] args)
+        {
+            // Ebben tároljuk a dal objektumokat
+            List<Song> songs = new List<Song>();
+
+            // Fájl beolvasása soronként, songs lista feltöltése
+            StreamReader sr = null;
+            try
+            {
+                // A @ jelentése a string konstans előtt:
+                // kikapcsolja a string escape-elést,
+                // így nem kell a '\' helyett '\\'-t írni.
+                sr = new StreamReader(@"C:\Work\BME\sznikak-hazi1-template-2022\Feladat1\Input\music.txt");
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    // Ha üres volt a sor
+                    if (string.IsNullOrWhiteSpace(line))
+                        continue;
+
+                    // A line változóban benne van az egész sor,
+                    // a Split-tel a ;-k mentén feldaraboljuk
+                    string[] lineItems = line.Split(';');
+
+                    // Első elem, amiben az szerző nevét várjuk
+                    // A Trim eltávolítja a vezető és záró whitespace karaktereket
+                    string artist = lineItems[0].Trim();
+
+                    // Menjünk végig a dalokon, és vegyük fel a listába
+                    foreach (string lineItem in lineItems)
+                    {
+                        Song song = new Song(artist, lineItem.Trim());
+                        songs.Add(song);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("A fájl feldolgozása sikertelen.");
+                // Az e.Message csak a kivétel szövegét tartalmazza. 
+                // Ha minden kivétel információt ki szeretnénk írni (pl. stack trace), 
+                // akkor az e.ToString()-et írjuk ki.
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                // Lényeges, hogy finally blokkban zárjuk le a fájlt, 
+                // hogy egy esetleges kivétel esetén se maradjon mögöttünk lezáratlan állomány.
+                // try-finally helyett használhattunk volna using blokkot,
+                // azt egyelőre nem kell tudni (a félév derekán tanuljuk).
+                if (sr != null)
+                    sr.Close();
+            }
+
+            // A songs lista elemeinek kiírása a konzolra
+            foreach (Song song in songs)
+            {
+                Console.WriteLine(song.ToString());
+            }
+        }
+    }
+    ```
+
+    A `c:\temp` mappába másoljuk ki a `music.txt` fájlt, és futtassuk az alkalmazást. A megvalósítás során az egyszerűségre törekedve mindent beleöntöttünk a 7 függvénybe, „éles” környezetben mindenképp célszerű a kódot egy külön feldolgozó osztályba kiszervezni.
 
 ## Továbbiak
 
