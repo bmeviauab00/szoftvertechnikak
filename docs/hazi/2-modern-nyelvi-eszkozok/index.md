@@ -2,7 +2,7 @@
 
 ## Bevezetés
 
-Az önálló feladat a 2. előadáson elhangzottakra épít. A feladatok elméleti hátteréül az [TODO Előadás 02 - Modern nyelvi eszközök.pdf](TODO) leírás, gyakorlati hátteréül a [2. gyakorlat - Modern nyelvi eszközök](../labor/../2-modern-nyelvi-eszkozok/index.md) laborgyakorlat szolgál.
+Az önálló feladat a 2. előadáson elhangzottakra épít. A feladatok elméleti hátteréül az [TODO Előadás 02 - Modern nyelvi eszközök.pdf](TODO) leírás, gyakorlati hátteréül a [2. gyakorlat - Modern nyelvi eszközök](../../labor/2-nyelvi-eszkozok/index.md) laborgyakorlat szolgál.
 
 A fentiekre építve, jelen önálló gyakorlat feladatai a feladatleírást követő rövidebb iránymutatás segítségével elvégezhetők.
 
@@ -101,12 +101,9 @@ Külön értesítés jelezze, ha a tanács teljesen kiürül.
 
 A tanácstagok (`members`) nyilvántartását egy `List<Jedi>` típusú tagváltozóban tároljuk, az `Add` függvény ehhez a listához fűzze hozzá az új elemeket, míg a `Remove` függvény generikus lista `RemoveAt` utasításával mindig a **legutoljára** felvett tagot távolítsa el (az utolsó elem indexét a lista hossza alapján tudjuk meghatározni, amit a `Count` property ad vissza).
 
-Az értesítés egy C# eseményen (C# event) keresztül történjen.
-Az eseményhez tartozó delegate típus paraméterként egy egyszerű `string`-et kapjon.
-Az új tag hozzáadását, az egyes tagok eltávolítását, illetve az utolsó tag eltávolítását más-más szövegű üzenet jelezze.
+Az értesítés egy C# eseményen (C# event) keresztül történjen. Az eseményhez tartozó delegate típus paraméterként egy egyszerű `string`-et kapjon. Az új tag hozzáadását, az egyes tagok eltávolítását, illetve az utolsó tag eltávolítását más-más szövegű üzenet jelezze. Az esemény elsütését közvetlenül az `Add` és a `Remove` műveletekben végezze (ne vezessen be erre segédfüggvényt).
 
 Az esemény típusának ne használjon beépített delegate típust, hanem vezessen be egy sajátot.
-Az esemény elsütését közvetlenül az `Add` és a `Remove` műveletekben végezze (ne vezessen be erre segédfüggvényt).
 
 !!! danger "Fontos"
       A Jeditanács objektumot létrehozó és azt tesztelő (C# eseményére való feliratkozás, `Add` és `Remove` hívása) kód kerüljön egy közös, önálló függvénybe, ezt a függvényt pedig lásd el a `[Description("Feladat3")]` C# attribútummal.
@@ -303,11 +300,10 @@ Bővítsük ki a `JediCouncil` osztályt.
 
 - Készíts egy `CountIf` nevű függvényt, amely szintén a tanácstagok megszámlálására való, de csak bizonyos feltételnek eleget tevő tanácstagokat vesz figyelembe. A függvény visszatérési értéke `int`, és a feltételt, amelynek megfelelő tanácstagok számát visszaadja, egy delegate segítségével kap meg paraméterként (tehát a `CountIf`-nek kell legyen paramétere).
 
-    !!! warning "foreach"
-        Itt NEM használhatod a beépített `List<T>.FindAll` műveletét: a tagokon egy `foreach` ciklusban végigiterálva dolgozz!
-
     !!! warning "Delegate típusa"
         A delegate típusa kötelezően a beépített generikus `Action` / `Func` delegate típusok közül a megfelelő kell legyen (vagyis saját delegate típus, ill. a beépített `Predicate` típus nem használható).
+
+        Emiatt a listán NEM használhatod a beépített `FindAll` műveletét, mivel az általunk használt delegate típus nem lenne kompatibilis a `FindAll` által várt paraméterrel. A tagokon egy `foreach` ciklusban végigiterálva dolgozz!
 
 - A property és a függvény működését demonstráld egy erre dedikált közös függvényben, amit láss el a `[Description("Feladat6")]` attribútummal. Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, viszont a Jeditanács feltöltéséhez az előző feladatban bevezetett segédfüggvényt hívd. A függvényt hívd meg a `Program` osztály `Main` függvényéből. 
 
