@@ -315,3 +315,9 @@ Bővítsük ki a `JediCouncil` osztályt.
 - A `Count` nevű property esetében csak a `get` ágnak van értelme, ezért a `set` ágat meg se írjuk. Ez egy csak olvasható tulajdonság legyen.
 - A `CountIf` függvény megírásában a 4-es feladat nyújt segítséget. A különbség, hogy a `CountIf` nem a tanácstagokat, csak a darabszámot adja vissza.
     - A `CountIf` függvény a feltételt paraméterként egy `bool Függvénynév(Jedi jedi)` szignatúrájú szűrőfüggvényt várjon.
+
+## Beadás
+
+Ellenőrzőlista ismétlésképpen:
+
+--8<-- "docs/hazi/beadas-ellenorzes/index.md:3"
