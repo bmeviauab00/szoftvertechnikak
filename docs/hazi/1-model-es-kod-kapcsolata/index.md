@@ -248,7 +248,7 @@ Egy síkbeli vektorgrafikus alakzatokat kezelni képes CAD tervezőalkalmazás e
 
 - A `Main` függvényben mutasson példát az osztályok használatára.
 
-- Legkésőbb a megvalósítás végére készítsen a Visual Studio solutionben egy osztálydiagramot, melyen a solution osztályait jól áttekinthető formában rendezze el. Az asszociációs kapcsolatokat asszociáció formájában jelenítse meg, ne tagváltozóként (*Show as Association* ill. *Show as Collection Association*, lásd [1. gyakorlat útmutatója](../../labor/index.md)).
+- Legkésőbb a megvalósítás végére készítsen a Visual Studio solutionben egy osztálydiagramot, melyen a solution osztályait jól áttekinthető formában rendezze el. Az asszociációs kapcsolatokat asszociáció formájában jelenítse meg, ne tagváltozóként (*Show as Association* ill. *Show as Collection Association*, lásd [1. gyakorlat útmutatója](../../labor/1-model-es-kod-kapcsolata/index.md)).
 
     !!! tip "Class Diagram komponens"
         A Visual Studio 20222 nem teszik fel minden esetben a *Class Designer* komponenst a telepítés során. Ha nem lehet Class Diagram-ot felvenni a Visual Studio projektbe (mert a *Class Diagram* nem szerepel a listában az *Add / New Item* parancs során megjelenő ablak listájában), akkor a *Class Diagram* komponenst utólag kell telepíteni. Erről bővebben jelen útmutató [Fejlesztőkörnyezet](../fejlesztokornyezet/index.md) oldalán lehet olvasni.
@@ -286,6 +286,6 @@ Most már minden információ rendelkezésünkre áll a feladat megvalósítás�
 
 Ellenőrzőlista ismétlésképpen:
 
-- :exclamation: Van pár pont, melyet minden házi beadásának végén érdemes ellenőrizni: lásd [itt](../beadas-ellenorzes/index.md)
-- A 2. feladat során ne felejtsd el a "Readme.md"-ben a megoldásod bemutatni.
+--8<-- "docs/hazi/beadas-ellenorzes/index.md:3"
 
+- A 2. feladat során ne felejtsd el a `Readme.md`-ben a megoldásod bemutatni.
