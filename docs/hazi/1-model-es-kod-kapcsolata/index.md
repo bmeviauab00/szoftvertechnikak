@@ -134,7 +134,7 @@ A `Main` függvényünkben olvassuk fel soronként a fájlt, hozzuk létre a `So
 
 A következő kód egy lehetséges megoldást mutat, a megoldás részleteit a kódkommentek magyarázzák. A félév során ez az első önálló feladat, valamint a hallgatók többségének ez első .NET/C# alkalmazása, így itt még adunk mintamegoldást, de a rutinosabb hallgatók önállóan is próbálkozhatnak.
 
-??? tip "Megoldás"
+??? example "Megoldás"
 
     ```csharp
     namespace MusicApp;
@@ -154,7 +154,7 @@ A következő kód egy lehetséges megoldást mutat, a megoldás részleteit a k
                 // A @ jelentése a string konstans előtt:
                 // kikapcsolja a string escape-elést,
                 // így nem kell a '\' helyett '\\'-t írni.
-                sr = new StreamReader(@"C:\Work\BME\sznikak-hazi1-template-2022\Feladat1\Input\music.txt");
+                sr = new StreamReader(@"C:\temp\music.txt");
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
