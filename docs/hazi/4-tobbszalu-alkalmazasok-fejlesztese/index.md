@@ -12,7 +12,7 @@ Az önálló gyakorlat a következő ismeretek elmélyítését célozza
 - Közös erőforrás közös szálból történő elérése (`lock` használata)
 - `ManualResetEvent`, `AutoResetEvent`
 
-Szükséges fejlesztőeszköz: Visual Studio **2022**.
+Szükséges fejlesztőeszköz: Visual Studio 2022.
 
 A feladat publikálásának és beadásának alapelvei megegyeznek az előző feladatéval, pár kiemelt követelmény:
 
@@ -23,25 +23,30 @@ A feladat publikálásának és beadásának alapelvei megegyeznek az előző fe
 
 A következők is fontosak, ugyanazok, mint az 1. házi feladat esetében voltak:
 
-TODO ez legyen snippet?
+1. A kiinduló projektben van egy `.github/workflows` mappa, ennek tartalmát tilos megváltoztatni, törölni, stb.
+2. A munka során a kiindulási repóban levő solutionben/projektben kell dolgozni: új solution és/vagy projektfájl létrehozása, vagy a projekt más/újabb .NET verziókra targetelése tilos.
+3. A repository gyökérmappájában található neptun.txt fájlba írd bele a Neptun kódod, csupa nagybetűvel. A fájlban csak ez a hat karakter legyen, semmi más.
+4. Oldd meg a feladatot. Pushold a határidőig. Akárhány commitod lehet, a legutolsó állapotot fogjuk nézni.
+5. A megoldást a tanszéki portálra nem kell feltölteni, de az eredményt itt fogjuk meghirdetni a kapcsolódó számonkérés alatt.
+6. A házi feladatot külön explicit beadni nem kell, csak legyen fent GitHub-on határidőre a megoldás.
+7. Amikor a házi feladatod beadottnak tekinted, célszerű ellenőrizni a GitHub webes felületén a repository-ban a fájlokra való rápillantással, hogy valóban minden változtatást push-oltál-e.
+8. Szokásosan az előellenőrző pozitív kimenetele nem jelenti a feladat automatikus elfogadását, a végső oktatói ellenőrzés plusz szempontokat is figyelembe vesz.
 
-## Előellenőrző futtatása
+??? tip "Ha nem nyílna meg a Form Designer."
+    A Visual Studio 2022 a Git-ből frissen kiklónozott forrás esetén (amikor még nem létezik egy .csproj.user kiterjesztésű fájl) az űrlapokat - valószínűsíthetően egy bug miatt – nem hajlandó megnyitni szerkesztő módban. A solution megnyitása után jó eséllyel ezt látjuk a Solution Explorerben:
 
-Ehhez a feladathoz érdemi előellenőrző nem tartozik: minden push után lefut ugyan, de csak a Neptun.txt kitöltöttségét ellenőrzi és azt, van-e fordítási hiba. Az érdemi ellenőrzést a határidő lejárta után a laborvezetők teszik majd meg.
+    ![Form Designer Error](images/form-designer-error.png)
 
-## Feladat 0 – Űrlap megnyitása
+    A probléma az, hogy a Form1.cs előtti ikon (pirossal bekeretezve) nem egy űrlap, hanem egy zöld C# ikon. Ez esetben hiába kattintunk duplán a fájlon, nem az űrlap szerkesztő nyílik meg, hanem csak a forrásfájl. A megoldás ez esetben a következő: a *Build* menüben válasszuk ki a *Rebuild soultion* parancsot, majd a *Build* menüben a *Clean solution* parancsot, és várjunk egy kicsit. Ekkor pár másodperc múlva a Solution Explorerben az űrlapunk ikonja megváltozik:
 
-A Visual Studio 2022 a Git-ből frissen kiklónozott forrás esetén (amikor még nem létezik egy .csproj.user kiterjesztésű fájl) az űrlapokat - valószínűsíthetően egy bug miatt – nem hajlandó megnyitni szerkesztő módban. A solution megnyitása után jó eséllyel ezt látjuk a Solution Explorerben:
+    ![Form Designer](images/form-designer-ok.png)
 
-TODO img
+    Most már meg tudjuk nyitni az űrlapot szerkesztésre, ha duplán kattintunk a Solution Explorerben a fenti csomóponton.
 
-A probléma az, hogy a Form1.cs előtti ikon (pirossal bekeretezve) nem egy űrlap, hanem egy zöld C# ikon. Ez esetben hiába kattintunk duplán a fájlon, nem az űrlap szerkesztő nyílik meg, hanem csak a forrásfájl. A megoldás ez esetben a következő: a *Build* menüben válasszuk ki a *Rebuild soultion* parancsot, majd a *Build* menüben a *Clean solution* parancsot, és várjunk egy kicsit. Ekkor pár másodperc múlva a Solution Explorerben az űrlapunk ikonja megváltozik:
+    Ha valakinél ez nem működne, akkor a tárgy Teams csoportjában a *Házi feladat konzultáció* csatornára váltva a Fájlok tabfül alatti `MultiThreadedApp.csproj.user` fájlt másold be a `MultiThreadedApp.csproj` mellé és utána nyisd meg a solutiont.
 
-TODO img
-
-Most már meg tudjuk nyitni az űrlapot szerkesztésre, ha duplán kattintunk a Solution Explorerben a fenti csomóponton.
-
-Ha valakinél ez nem működne, akkor a tárgy Teams csoportjában a *Házi feladat konzultáció* csatornára váltva a Fájlok tabfül alatti `MultiThreadedApp.csproj.user` fájlt másold be a `MultiThreadedApp.csproj` mellé és utána nyisd meg a solutiont.
+!!! note "Ellenőrző futtatása"
+    Ehhez a feladathoz érdemi előellenőrző nem tartozik: minden push után lefut ugyan, de csak a Neptun.txt kitöltöttségét ellenőrzi és azt, van-e fordítási hiba. Az érdemi ellenőrzést a határidő lejárta után a laborvezetők teszik majd meg.
 
 ## Feladat 1 – Bicikli
 
@@ -71,7 +76,7 @@ Készítsünk egy Windows Forms alkalmazást. Az alkalmazás felületének bal o
 
 2. Rendezzük be a vezérlőket a következőképpen:
 
-    TODO img
+    ![Kiinduló UI](images/f1.png)
 
 3. A bicikli mozgatására definiáljuk az alábbi segédfüggvényeket
 
@@ -109,10 +114,10 @@ Készítsünk egy Windows Forms alkalmazást. Az alkalmazás felületének bal o
     ```csharp
     private void bStart_Click(object sender, EventArgs e)
     {
-        startBike(bBike1);
+        StartBike(bBike1);
     }
 
-    private void startBike(Button bBike)
+    private void StartBike(Button bBike)
     {
         var t = new Thread(BikeThreadFunction)
         {
@@ -128,8 +133,6 @@ Készítsünk egy Windows Forms alkalmazást. Az alkalmazás felületének bal o
 
     !!! tip "Előrehozás"
         Ha jelen vagy egy későbbi feladatban a biciklit reprezentáló gomb nem a panel előtt, hanem mögötte jelenik meg, akkor jobb gombbal kattintsunk a panelen és válasszuk ki a *Send to back* menüt.
-
-### Beadandó
 
 !!! example "BEADANDÓ"
     Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
@@ -147,7 +150,7 @@ Készítsünk egy Windows Forms alkalmazást. Az alkalmazás felületének bal o
 
 Valósítsuk meg a rajtvonalat. Egészítsük ki az alkalmazásunkat két további biciklivel, melyek mozgatásáért két további szál fog felelni, illetve egy új panellal (*start panel*) és egy gombbal (*Step1*) a következő elrendezésben.
 
-TODO img
+![Rajtvonal](images/rajtvonal.png)
 
 A *Start* gomb megnyomását követően mindhárom bicikli induljon el véletlenszerű tempóban. Amikor egy bicikli a start panelre érkezik, az őt vezérlő szál blokkolva várakozzon. Amikor a *Step1* gombot megnyomjuk, a biciklik folytassák útjukat a célig.
 
@@ -161,3 +164,132 @@ A feladat megoldásához a kapcsolódó gyakorlatban már alkalmazott, illetve a
 - A feladat megoldása során gombonként egy szálfüggvényt használj, vagyis a *Step1* gomb megnyomásakor ne új szálakat indítsunk minden gombhoz, hanem oldjuk meg, hogy meglévő szálak várakozzanak, majd a gombnyomást követően folytassák futásukat
 
 ## Feladat 3 – Pihenő
+
+### Feladat
+
+Egészítsük ki az alkalmazásunkat egy további panellal (depo panel), mely egy pihenőt jelképez. A pihenőhelyre beérkezve a biciklik megállnak, majd egyesével tovább indulnak. A továbbindításért egy új gomb (*Step2*) felel, melynek minden gombnyomására egy-egy bicikli elindul. A pihenő alatt a bicikliket mozgató szálak blokkolva várakozzanak.
+
+![Pihenő](images/piheno.png)
+
+### Megoldás
+
+A feladat megoldása analóg az előzőével, ám ezúttal `AutoResetEvent`-et kell használni.
+
+!!! example "BEADANDÓ"
+    Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
+
+    Készíts egy képernyőmentést `Feladat3.png` néven az alábbiak szerint:
+
+    - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
+    - a „háttérben” a Visual Studio legyen, a `MainForm_<neptun>.cs` megnyitva,
+    - a VS *View/Full Screen* menüjével kapcsolj ideiglenesen *Full Screen* nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
+    - görgess le a forrásfájlod legaljára, használj kb. normál zoom vagy kicsit kisebb értéket, fontos, hogy ami a képernyődön lesz, legyen jól olvasható (az nem baj, ha nem fér ki minden), az előtérben pedig az alkalmazásod ablaka.
+
+## Feladat 4 – Kilométeróra
+
+### Feladat
+
+Egészítsük ki a `Form`-ot egy `long` típusú mezővel. Minden egyes bicikli, minden megtett lépés után növelje meg ezt a számlálót a lépés során megtett pixelek számával. A cél-panel alatt legyen egy gomb, melyet megnyomva a gomb szövege a számláló aktuális értékére változik. Ügyeljen a kölcsönös kizárásra, melyet `lock` utasítás segítségével valósítson meg.
+
+### Megoldás
+
+A megoldás menete:
+
+- Készítsen egy új függvényt, amely a megtett utat számláló változót megnöveli a paraméterben kapott pixel számmal (`void IncreasePixels(long step)`). Ügyeljen arra, hogy ezt a függvényt bárhonnan, bármely szálból lehessen hívni.
+- Készítsen egy másik függvényt, amellyel biztonságosan kiolvasható az aktuális számláló értéke, bármilyen szálból is hívják (`long GetPixels()`).
+- A biciklik mozgatásakor hívja meg a lépést hozzáadó `IncreasePixels` függvényt.
+- A célpanel alatt levő gomb kattintásakor kérdezze le az aktuális számláló értéket a `GetPixels` függvénnyel, és írja ki a gombra az értéket.
+
+!!! warning "Lényeges"
+    A megoldás csak akkor elfogadható, ha a `lock` utasítással a kölcsönös kizárás megvalósításra kerül (`IncreasePixels` és `GetPixels` függvények).
+
+!!! example "BEADANDÓ"
+    Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
+
+    Készíts egy képernyőmentést `Feladat4.png` néven az alábbiak szerint:
+
+    - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
+    - a „háttérben” a Visual Studio legyen, a `MainForm_<neptun>.cs` megnyitva,
+    - a VS *View/Full Screen* menüjével kapcsolj ideiglenesen *Full Screen* nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
+    - görgess le a forrásfájlod legaljára, használj kb. normál zoom vagy kicsit kisebb értéket, fontos, hogy ami a képernyődön lesz, legyen jól olvasható (az nem baj, ha nem fér ki minden), az előtérben pedig az alkalmazásod ablaka.
+
+## Feladat 5 – Újrakezdés
+
+### Feladat
+
+Egészítsük ki az alkalmazásunkat úgy, hogy bármelyik biciklit újra tudjuk indítani. Az újra indításhoz elég a biciklit jelképező gombra kattintani. Ilyenkor a bicikli visszakerül a kiinduló pozícióba és újra kezdi a futamot. Az új futam során a bicikli *Step1*-nél és *Step2*-nél is ismét meg kell álljon.
+
+### Megoldás
+
+A következőkben megadjuk a feladat megoldásának néhány fontos elemét.
+
+A feladat megoldásához meg kell tudnunk szakítani az aktuálisan futó szálat, legalábbis `WaitSleepJoin` állapotban (`Thread.Interrupt` metódus). Ehhez minden egyes gombhoz tárolnunk kell az aktuálisan őt vezérlő szál objektumot. Ezt (hasonlóan a [3. gyakorlat 3. feladatához](../../labor/3-felhasznaloi-felulet/index.md#miniexplorer-logika)) megtehetjük a vezérlő `Tag` tulajdonságában. A `Tag` tulajdonság beállítására vagy a szál létrehozása után a `StartBike` műveletben, vagy a szálfüggvényben (az aktuális szál `Thread.CurrentThread`-del való lekérdezésével) kerítsünk sort. Példa az utóbbira:
+
+```csharp hl_lines="4"
+public void BikeThreadFunction(object param)
+{
+    Button bike = (Button)param;
+    bike.Tag = Thread.CurrentThread;
+    // ...
+}
+```
+
+Ezt az információt aztán kiolvashatjuk a gombnyomás eseménykezelőjében:
+
+```csharp
+private void bike_Click(object sender, EventArgs e)
+{
+    Button bike = (Button)sender;
+    Thread thread = (Thread)bike.Tag;
+    
+    // Ha még nem indítottuk ez a szálat, ez null.
+    if (thread == null)
+        return;
+
+    // Megszakítjuk a szál várakozását,
+    // ez az adott szálban egy ThreadInterruptedException-t fog kiváltani
+    // A függvény leírásáról részleteket az előadás anyagaiban találsz
+    thread.Interrupt();
+
+    // Megvárjuk, amíg a szál leáll
+    thread.Join();
+    
+    // ...
+}
+```
+
+Érdemes észrevenni, hogy a gomb eseménykezelőjében a `sender` paraméterből kiolvasható, hogy konkrétan melyik gombtól származik az esemény. Ezt kihasználva nem szükséges mindhárom gombhoz külön eseménykezelő függvényt írnunk, hanem használhatja mindhárom gomb ugyanazt a függvényt. Egy eseményhez a következőképpen tudunk Visual Studioban egy már létező függvényt hozzárendelni: a *Properties* ablak események oldalán ne duplán kattintsunk az eseményen, hanem kattintsunk egyszer az esemény során, majd nyissuk le az esemény sorában a jobboldali oszlopman megjelenő legördülőmezőt, és válasszuk ki a listából a megfelelő függvényt.
+
+A `thread.Interrupt()` hívás a `BikeThreadFunction` függvényen belül egy `ThreadInterruptedException` kivételt fog kiváltani (amikor a szál `WaitSleepJoin` állapotba kerül, vagyis a `Sleep` és `WaitOne` művelethívások során). Fontos, hogy a kivételre fel legyünk készülve, vagyis a függvény teljes törzse `try-catch` blokkal számítson az ilyen típusú hibára. Például így:
+
+```csharp
+try
+{
+    // Teljes függvénytörzs
+    // ...
+}
+catch (ThreadInterruptedException)
+{ 
+    // Lenyeljük, de szigorúan kizárólag a ThreadInterruptedException-t.
+    // Ha nem kezelnénk az Interrupt hatására a szállfüggvényünk
+    // és az alkalmazásunk is csúnyán "elszállna".
+}
+```
+
+A feladat további megoldása önállóan elvégezhető a korábbi ismeretek alapján.
+
+## Opcionális feladat – 2 IMsc pontért
+
+### Feladat
+
+Tegyük lehetővé a biciklik megállítását. Tegyen ki egy új gombot a *Start* gomb alá *Stop* felirattal. A *Stop* gombra kattintás állítsa meg az összes biciklit, és állítsa le a bicikliket futtató szálakat is.
+
+### Megoldás
+
+A következőkben megadjuk a feladat megoldásának néhány fontos elemét.
+
+- Vegye fel a *Stop* gombot a felületre és készítse elő a kattintást kezelő függvényt.
+- A megállításhoz szükség lesz két jelzésre a bicikliket futtató szál felé. Ez egyik jelzés egy `bool` típusú változó, amelyet a bicikliket futtató szál ciklusa figyel. Vegye fel ezt a jelzést `stopBikes` néven, és módosítsa a szál függvényt, hogy ha a `bool` változó jelez, fejezze be a futást.
+- A másik jelzés abban az esetben kell, ha a szálak várakoznak. Ilyenkor nem tudják a `bool` változót ellenőrizni. Vegyen fel egy új `ManualResetEvent` típusú változót, amely a leállítás esemény fogja jelezni. Ezt az eseményt a `bool` változóval együtt a biciklire valókattintás eseménykezelőjében állítsa.
+- A bicikliket mozgató szál függvényben kommentezze ki (ne törölje!) az eddigi várakozást megvalósító kódrészeket, és készítsen egy új megoldást az előbb felvett leállítást jelző `ManualResetEvent` segítségével. A várakozásokra továbbra is szükség lesz, azonban várakozni nem csak a start vonalra illetve a pihenőre szükséges, hanem a leállítást is észre kell venni.
+- Ha leállítás történt, a szál futását be kell fejezni. Ha a leállást jelző esemény megtörtént, térjen vissza a szál függvénye egy `return` utasítással.
