@@ -117,7 +117,7 @@ public class Song
 A tagváltozókat `readonly`-ként vettük fel, mert nem akartuk, hogy utólag ezek a konstruktor lefutását követően megváltoztathatók legyenek.
 
 !!! note "Property"
-    A félév elején fogunk tanulni egy igen hasznos C#-os nyelvi elemről a Propertykről, ami szebb megoldás lenne a readonly mezők helyett, de a félév ezen pontján még nem biztos, hogy minden csoport ismeri ezt, így most maradjunk a mezőknél.
+    A tagváltozókat `readonly`-ként vettük fel, mert nem akartuk, hogy ezek utólag, a konstruktor lefutását követően megváltoztathatók legyenek. Alternatíva lehetne a csak olvasható tulajdonság (property) alkalmazása a readonly tagváltozók helyett (ez későbbi tanagyag).
 
 A következőkben a `Song` osztályunkban definiáljuk felül az implicit `System.Object` ősből örökölt `ToString` műveletet, hogy az az előírt formában adja vissza objektum adatait. A megoldásban sztring interpolációt használjunk (ezt már alkalmaztuk az első labor keretében):
 
@@ -128,9 +128,9 @@ public override string ToString()
 }
 ```
 
-Szövegfájl feldolgozására legkényelmesebben a `System.I`O névtérben levő [`StreamReader`](https://learn.microsoft.com/en-us/dotnet/api/system.io.streamreader?redirectedfrom=MSDN&view=net-6.0) osztályt tudjuk használni.
+Szövegfájl feldolgozására legkényelmesebben a `System.IO` névtérben levő [`StreamReader`](https://learn.microsoft.com/en-us/dotnet/api/system.io.streamreader?redirectedfrom=MSDN&view=net-6.0) osztályt tudjuk használni.
 
-A `Main` függvényünkben olvassuk fel soronként a fájlt, hozzuk létre a `Song` objektumokat és tegyük be egy `List<Song>` dinamikusan nyújtózkodó tömbbe. Figyeljünk arra, hogy a fájlban a `;`-vel elválasztott elemek előtt/után whitespace karakterek (space, tab) lehetnek, ezektől szabaduljunk meg!
+A `Main` függvényünkben olvassuk fel soronként a fájlt, hozzuk létre a `Song` objektumokat, és tegyük be egy `List<Song>` dinamikusan nyújtózkodó tömbbe. Figyeljünk arra, hogy a fájlban a `;`-vel elválasztott elemek előtt/után whitespace karakterek (space, tab) lehetnek, ezektől szabaduljunk meg!
 
 A következő kód egy lehetséges megoldást mutat, a megoldás részleteit a kódkommentek magyarázzák. A félév során ez az első önálló feladat, valamint a hallgatók többségének ez első .NET/C# alkalmazása, így itt még adunk mintamegoldást, de a rutinosabb hallgatók önállóan is próbálkozhatnak.
 
@@ -205,7 +205,7 @@ A következő kód egy lehetséges megoldást mutat, a megoldás részleteit a k
     }
     ```
 
-    A `c:\temp` mappába másoljuk ki a `music.txt` fájlt, és futtassuk az alkalmazást. A megvalósítás során az egyszerűségre törekedve mindent beleöntöttünk a 7 függvénybe, „éles” környezetben mindenképp célszerű a kódot egy külön feldolgozó osztályba kiszervezni.
+    A `c:\temp` mappába másoljuk ki a `music.txt` fájlt, és futtassuk az alkalmazást. A megvalósítás során az egyszerűségre törekedve mindent beleöntöttünk a `main` függvénybe, „éles” környezetben mindenképp célszerű a kódot egy külön feldolgozó osztályba kiszervezni.
 
 ## Feladat 2 - Az UML és a kód kapcsolata, interfész és absztrakt ős alkalmazástechnikája
 
@@ -220,7 +220,7 @@ A `Feladat2\Shapes` mappában található egy `Controls.dll` fájl, ezt a felada
 
 ### Beadandó (a forráskódon túlmenően)
 
-2-3 bekezdésben a Feladat 2 megoldása során hozott tervezői döntések, a megoldás legfontosabb alapelveinek rövid szöveges összefoglalása, indoklása. Ezt a `Feladat2` mappában található `Readme.md` szövegfájlba kell beleírni (markdown formátumban, de jó formázás nélkül is a nyers szöveg).
+Két-három bekezdésben a Feladat 2 megoldása során hozott tervezői döntések, a megoldás legfontosabb alapelveinek rövid szöveges összefoglalása, indoklása. Ezt a `Feladat2` mappában (és nem a gyökérben!) található `Readme.md` szövegfájlba kell beleírni tetszőleges markdown formátumban, vagy egyszerű nyers szövegként.
 
 ### Feladat
 
@@ -242,16 +242,16 @@ Egy síkbeli vektorgrafikus alakzatokat kezelni képes CAD tervezőalkalmazás e
 - A megvalósítás során törekedjen egységbezárásra: pl. az alakzatok menedzselése legyen egy **erre dedikált osztály** feladata.
   
     !!! failure
-        Az nem elfogadható, ha a `Main` függvényben egy helyben létrehozott egyszerű listába kerülnek az alakzatok tárolásra! Ezen felül a menedzselésért felelős osztály NE származzon beépített `List` vagy hasonló osztályból, hanem a tartalmazza azt. Az adatok szabványos kimentre történő listázásáért ez az osztály legyen a felelős.
+        Az nem elfogadható, ha a `Main` függvényben egy helyben létrehozott egyszerű listába kerülnek az alakzatok tárolásra! Ezen felül a menedzselésért felelős osztály NE származzon a beépített `List` vagy hasonló osztályból, hanem a tartalmazza azt. Az adatok szabványos kimentre történő listázásáért ez az osztály legyen a felelős.
 
-- A megvalósítás során törekedjen a könnyű bővíthetőségre, karbantarthatóságra, kerülje el a kódduplikációt (tagváltozók, műveletek, konstruktorok esetében egyaránt). A megoldás elfogadásában ezek kiemelt szempontjai!
+- A megvalósítás során törekedjen a könnyű bővíthetőségre, karbantarthatóságra, kerülje el a kódduplikációt (tagváltozók, műveletek, konstruktorok esetében egyaránt). A megoldás elfogadásának ezek kiemelt szempontjai!
 
 - A `Main` függvényben mutasson példát az osztályok használatára.
 
 - Legkésőbb a megvalósítás végére készítsen a Visual Studio solutionben egy osztálydiagramot, melyen a solution osztályait jól áttekinthető formában rendezze el. Az asszociációs kapcsolatokat asszociáció formájában jelenítse meg, ne tagváltozóként (*Show as Association* ill. *Show as Collection Association*, lásd [1. gyakorlat útmutatója](../../labor/1-model-es-kod-kapcsolata/index.md)).
 
     !!! tip "Class Diagram komponens"
-        A Visual Studio 20222 nem teszik fel minden esetben a *Class Designer* komponenst a telepítés során. Ha nem lehet Class Diagram-ot felvenni a Visual Studio projektbe (mert a *Class Diagram* nem szerepel a listában az *Add / New Item* parancs során megjelenő ablak listájában), akkor a *Class Diagram* komponenst utólag kell telepíteni. Erről bővebben jelen útmutató [Fejlesztőkörnyezet](../fejlesztokornyezet/index.md) oldalán lehet olvasni.
+        A Visual Studio 2022 nem teszi fel minden esetben a *Class Designer* komponenst a telepítés során. Ha nem lehet Class Diagram-ot felvenni a Visual Studio projektbe (mert a *Class Diagram* nem szerepel a listában az *Add / New Item* parancs során megjelenő ablak listájában), akkor a *Class Diagram* komponenst utólag kell telepíteni. Erről bővebben jelen útmutató [Fejlesztőkörnyezet](../fejlesztokornyezet/index.md) oldalán lehet olvasni.
 
 A megvalósítás során jelentős egyszerűsítéssel élünk:
 
@@ -260,7 +260,7 @@ A megvalósítás során jelentős egyszerűsítéssel élünk:
 
 ### Osztálykönyvtárak használata
 
-A megoldás az [1. gyakorlat - A modell és a kód kapcsolata laborgyakorlat](../../labor/1-model-es-kod-kapcsolata/index.md) mintájára kidolgozható. Jelen feladat egy lényeges részletében különbözik tőle: míg abban csak szóban kötöttük ki, hogy a `DisplayBase` ősosztály forráskódja nem megváltoztató, jelen esetben a `Textbox` ősosztályunk esetében ez adott, hiszen csak egy lefodított dll formájában áll rendelkezésre. A következőkben nézzük meg, milyen lépésekben lehet egy ilyen dll-ben levő osztályokat kódunkban felhasználni:
+A megoldás az [1. gyakorlat - A modell és a kód kapcsolata laborgyakorlat](../../labor/1-model-es-kod-kapcsolata/index.md) mintájára kidolgozható. Jelen feladat egy lényeges részletében különbözik tőle: míg abban csak szóban kötöttük ki, hogy a `DisplayBase` ősosztály forráskódja nem megváltoztató, jelen esetben a `Textbox` ősosztályunk esetében ez adott, hiszen csak egy lefordított dll formájában áll rendelkezésre. A következőkben nézzük meg, milyen lépésekben lehet egy ilyen dll-ben levő osztályokat a kódunkban felhasználni:
 
 1. A Visual Studio Solution Explorer ablakában jobb gombbal kattintsunk a *Dependencies* elemen, és válasszuk az *Add Reference*-t vagy *Add Project Reference*-t (amelyik létezik).
 2. A megjelenő ablak bal oldalán válasszuk ki a *Browse* elemet,
@@ -268,7 +268,7 @@ A megoldás az [1. gyakorlat - A modell és a kód kapcsolata laborgyakorlat](..
    2. Ha nem jelenik meg, akkor kattintsunk az ablakunk jobb alsó részében levő *Browse...* gombon.
         1. A megjelenő fájlböngésző ablakban navigáljunk el a `Controls.dll` fájlhoz, és kattintsunk rajta duplán, ami bezárja az ablakot.
         2. A *Reference Manager* ablakunk középső részén a `Controls.dll` látható kipipálva, az OK gombbal zárjuk be az ablakot.
-3. OK gombbal zárjuk be az ablakot.
+3. Az OK gombbal zárjuk be az ablakot.
 
 Ezzel a projektünkben felvettünk egy referenciát a `Controls.dll`-re, így a benne levő osztályok használhatók (pl. lehet példányosítani őket, vagy lehet belőlük származtatni). A Solution Explorer-ben a *Dependencies* majd *Assemblies* csomópontot lenyitva a *Controls* megjelenik:
 
