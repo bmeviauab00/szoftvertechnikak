@@ -1,17 +1,22 @@
+---
+authors: BenceKovari,bzolka
+---
 # 2. HF - Modern nyelvi eszközök
 
 ## Bevezetés
 
-Az önálló feladat a 2. előadáson elhangzottakra épít. A feladatok elméleti hátteréül az [TODO Előadás 02 - Modern nyelvi eszközök.pdf](TODO) leírás, gyakorlati hátteréül a [2. gyakorlat - Modern nyelvi eszközök](../../labor/2-nyelvi-eszkozok/index.md) laborgyakorlat szolgál.
+Az önálló feladat a 2. előadáson elhangzottakra épít. A feladatok elméleti hátteréül az [Előadás 02 - Modern nyelvi eszközök.zip](https://www.aut.bme.hu/Upload/Course/VIAUAB00/hallgatoi_jegyzetek/El%c5%91ad%c3%a1s%2002%20-%20Modern%20programoz%c3%a1si%20eszk%c3%b6z%c3%b6k.zip) leírás, gyakorlati hátteréül a [2. labor - Modern nyelvi eszközök](../../labor/2-nyelvi-eszkozok/index.md) laborgyakorlat szolgál.
 
 A fentiekre építve, jelen önálló gyakorlat feladatai a feladatleírást követő rövidebb iránymutatás segítségével elvégezhetők.
 
 Az önálló gyakorlat célja:
 
-- Tulajdonságok és események használatának gyakorlása
+- Tulajdonságok (property) és események (event) használatának gyakorlása
 - Az attribútumok használatának gyakorlása
 - Alapvető gyűjteménytípusok használatának gyakorlása
 - Lambda kifejezések gyakorlása
+
+A szükséges fejlesztőkörnyezetről [itt](../fejlesztokornyezet/index.md) található leírás.
 
 ## Beadás menete
 
@@ -24,14 +29,14 @@ Az önálló gyakorlat célja:
 Amint az közismert, a jedi lovagok erejét a sejtjeikben élő kis életformák, a midi-chlorianok adják.
 Az eddigi legmagasabb midi-chlorian szintet (20.000 fölötti értéket) Anakin Skywalkernél mérték.
 
-Készítsen egy osztályt `Jedi` néven mely egy `string` típusú `Name` és egy `int` típusú `MidiChlorianCount` tulajdonsággal rendelkezik.
-Utóbbi esetében figyeljen rá, hogy a `MidiChlorianCount` értékét ne lehessen 30-ra, vagy annál kisebb értékre állítani, ha ezzel próbálkozik valaki, az osztálynak kivételt kell dobnia.
+Készíts egy osztályt `Jedi` néven mely egy `string` típusú `Name` és egy `int` típusú `MidiChlorianCount` tulajdonsággal rendelkezik.
+Utóbbi esetében figyelj rá, hogy a `MidiChlorianCount` értékét ne lehessen 35-re, vagy annál kisebb értékre állítani, ha ezzel próbálkozik valaki, az osztálynak kivételt kell dobnia.
 A validáció során a lehető legegyszerűbb, legletisztultabb megoldást válaszd: a property setterben egyszerű `if`-et használj és dobj kivételt, ne legyen az `if`-nek `else` ága, valamint nincs szükség a `return` használatára sem.
 
 ### Megoldás
 
-A feladat megoldása a [TODOLINK 2. gyakorlat 1. feladatával](TODO) analóg módon készíthető el.
-A `MidiChlorianCount` tulajdonság setterében érvénytelen érték esetén dobjunk kivételt. Ezt például a következő utasítással tehetjük meg:
+A feladat megoldása a [2. labor 1. feladatával](../../labor/2-nyelvi-eszkozok/index.md#1-feladat-tulajdonsag-property) analóg módon készíthető el.
+A `MidiChlorianCount` tulajdonság setterében érvénytelen érték esetén dobj kivételt. Ezt például a következő utasítással tehető meg:
 
 ```csharp
 throw new ArgumentException("You are not a true jedi!");
@@ -41,7 +46,7 @@ throw new ArgumentException("You are not a true jedi!");
 
 ### Feladat
 
-Egészítsd ki az 1. feladatban elkészített osztályt attribútumokkal úgy, hogy amennyiben az `XmlSerializer` osztály segítségével, XML formátumú adatfájlt állítunk elő belőle, a tulajdonságai egy-egy XML attribútum formájában, magyarul jelenjenek meg!
+Egészítsd ki az 1. feladatban elkészített osztályt attribútumokkal úgy, hogy amennyiben az `XmlSerializer` osztály segítségével, XML formátumú adatfájlba írunk/sorosítunk ki egy `Jedi` objektumot, a tulajdonságai egy-egy XML attribútum formájában, magyarul jelenjenek meg!
 Ezt követően írjon egy függvényt, mely a `Jedi` osztály egy példányát egy szövegfájlba sorosítja, majd onnan visszaolvassa egy új objektumba (ezzel tulajdonképpen klónozva az eredeti objektumot).
 
 !!! tip "XML sorosító attribútumai"
@@ -57,15 +62,15 @@ Ezt követően írjon egy függvényt, mely a `Jedi` osztály egy példányát e
 
     Lényeges, hogy
 
-    - az attribútumot függvény, és NE osztály fölé írd
-    - az attribútumot ne a logikát megvalósító, hanem a tesztelést végző függvény fölé írd
+    - az attribútumot függvény, és NE osztály fölé írd,
+    - az attribútumot ne a logikát megvalósító, hanem a tesztelést végző függvény fölé írd,
     - **az attribútum csak egyetlen függvény fölött szerepelhet.**
 
 
 
 ### Megoldás
 
-A feladat megoldása a [TODO LINK 2. gyakorlat 4. feladatával](TODO) analóg módon készíthető el.
+A feladat megoldása a [2. labor 4. feladatával](../../labor/2-nyelvi-eszkozok/index.md#4-feladat-attributumok) analóg módon készíthető el.
 A megoldáshoz az alábbi segítségeket adjuk:
 
 - A sorosítást követően az XML fájlnak ehhez hasonlóan kell kinéznie:
@@ -94,16 +99,16 @@ A megoldáshoz az alábbi segítségeket adjuk:
 ### Feladat
 
 A Jeditanácsban az utóbbi időben nagy a fluktuáció.
-Hogy a változásokat könnyebben nyomon követhessük, készítsen egy osztályt, mely képes nyilvántartani a tanács tagjait és minden változásról egy esemény formájában szöveges értesítést küldeni!
+Hogy a változásokat könnyebben nyomon követhessük, készíts egy osztályt, mely képes nyilvántartani a tanács tagjait és minden változásról egy esemény formájában szöveges értesítést küldeni!
 A lista manipulációját két függvénnyel lehessen végezni.
 Az `Add` függvény egy új jedi lovagot regisztráljon a tanácsba, míg a `Remove` függvény távolítsa el a **legutoljára** felvett tanácstagot.
 Külön értesítés jelezze, ha a tanács teljesen kiürül.
 
-A tanácstagok (`members`) nyilvántartását egy `List<Jedi>` típusú tagváltozóban tároljuk, az `Add` függvény ehhez a listához fűzze hozzá az új elemeket, míg a `Remove` függvény generikus lista `RemoveAt` utasításával mindig a **legutoljára** felvett tagot távolítsa el (az utolsó elem indexét a lista hossza alapján tudjuk meghatározni, amit a `Count` property ad vissza).
+A tanácstagok (`members`) nyilvántartását egy `List<Jedi>` típusú tagváltozóban tároljuk, az `Add` függvény ehhez a listához fűzze hozzá az új elemeket, míg a `Remove` függvény generikus lista `RemoveAt` utasításával mindig a **legutoljára** felvett tagot távolítsa el (az utolsó elem indexét a lista hossza alapján tudjuk meghatározni, melyet a `Count` property ad vissza).
 
-Az értesítés egy C# eseményen (C# event) keresztül történjen. Az eseményhez tartozó delegate típus paraméterként egy egyszerű `string`-et kapjon. Az új tag hozzáadását, az egyes tagok eltávolítását, illetve az utolsó tag eltávolítását más-más szövegű üzenet jelezze. Az esemény elsütését közvetlenül az `Add` és a `Remove` műveletekben végezze (ne vezessen be erre segédfüggvényt).
+Az értesítés egy C# eseményen (C# event) keresztül történjen. Az eseményhez tartozó delegate típus paraméterként egy egyszerű `string`-et kapjon. Az új tag hozzáadását, az egyes tagok eltávolítását, illetve az utolsó tag eltávolítását más-más szövegű üzenet jelezze. Az esemény elsütését közvetlenül az `Add` és a `Remove` műveletekben végezd el (ne vezess be erre segédfüggvényt).
 
-Az esemény típusának ne használjon beépített delegate típust, hanem vezessen be egy sajátot.
+Az esemény típusának ne használj beépített delegate típust, hanem vezess be egy sajátot.
 
 !!! danger "Fontos"
       A Jeditanács objektumot létrehozó és azt tesztelő (C# eseményére való feliratkozás, `Add` és `Remove` hívása) kód kerüljön egy közös, önálló függvénybe, ezt a függvényt pedig lásd el a `[Description("Feladat3")]` C# attribútummal.
@@ -113,13 +118,13 @@ Az esemény típusának ne használjon beépített delegate típust, hanem vezes
 
       Lényeges, hogy
 
-      - az attribútumot függvény, és NE osztály fölé írd
-      - az attribútumot ne a logikát megvalósító, hanem a tesztelést végző függvény fölé írd
+      - az attribútumot függvény, és NE osztály fölé írd,
+      - az attribútumot ne a logikát megvalósító, hanem a tesztelést végző függvény fölé írd,
       - az attribútum csak egyetlen függvény fölött szerepelhet.
 
 ### Megoldás
 
-A feladat megoldása a 2. gyakorlat több részletére is épít. Az új esemény bevezetését a 2. és a 3. feladatban leírt módon tudjuk elvégezni, míg a tanács tagjait egy listában tudjuk nyilvántartani.
+A feladat megoldása a 2. labor több részletére is épít. Az új esemény bevezetését a 2. és a 3. feladatban leírt módon tudjuk elvégezni, míg a tanács tagjait egy listában tudjuk nyilvántartani.
 
 A fenti információk alapján próbáld meg önállóan megoldani a feladatot, majd ha készen vagy, a következő kinyitható blokkban folytasd az útmutató olvasását és vesd össze a megoldásodat a lenti referencia megoldással!
 Szükség szerint korrigáld a saját megoldásod!
@@ -131,9 +136,9 @@ Szükség szerint korrigáld a saját megoldásod!
 ??? example "Referencia megoldás"
     A referencia megoldás lépései a következők:
 
-    1. Hozzunk létre egy új osztályt, `JediCouncil` néven
-    2. Vegyünk fel egy `List<Jedi>` típusú mezőt és inicializáljuk egy üres listával
-    3. Valósítsuk meg az `Add` és a `Remove` függvényeket
+    1. Hozzunk létre egy új osztályt, `JediCouncil` néven.
+    2. Vegyünk fel egy `List<Jedi>` típusú mezőt és inicializáljuk egy üres listával.
+    3. Valósítsuk meg az `Add` és a `Remove` függvényeket.
 
         A fenti lépéseket követően az alábbi kódot kapjuk:
 
@@ -232,26 +237,26 @@ Szükség szerint korrigáld a saját megoldásod!
         A tanács elesett!
         ```
 
-    !!! note "Eseményyek null vizsgálata"
-        Amennyiben a `JediCouncil.Add` műveletben `null` vizsgálattal végezted annak ellenőrzését, hogy van-e legalább egy feliratkozó az eseményre, ezt alakítsd át korszerűbb megoldásra (mely tömörebb formában szintén elvégzi az ellenőrzést, de `null` vizsgálat nélkül – erről a kapcsolódó előadáson és laboron is volt szó).
-        Ezt elég a `JediCouncil.Add` kapcsán megtenni, a `JediCouncil.Remove` esetében mindkét megoldás elfogadható most.
+!!! tip "Események null vizsgálata"
+    Amennyiben a `JediCouncil.Add` műveletben `null` vizsgálattal végezted annak ellenőrzését, hogy van-e legalább egy feliratkozó az eseményre, ezt alakítsd át korszerűbb megoldásra (`?.Invoke` alkalmazása, mely tömörebb formában szintén elvégzi az ellenőrzést, de `null` vizsgálat nélkül – erről a kapcsolódó előadáson és laboron is volt szó).
+    Ezt elég a `JediCouncil.Add` kapcsán megtenni, a `JediCouncil.Remove` esetében mindkét megoldás elfogadható most.
 
 ## Feladat 4 – Delegátok
 
 ### Feladat
 
-Egészítsük ki a `JediCouncil` osztályt egy olyan paraméter nélküli függvénnyel (**a függvénynév végződjön `_Delegate`-re, ez kötelező**), mely visszatérési értékében visszaadja a Jedi tanács összes olyan tagját, melynek a midi-chlorian száma **600** alatt van!
-A függvényen belül a tagok kikeresésére használjuk a `List<Jedi>` osztály `FindAll()` függvényét.
+Egészítstd ki a `JediCouncil` osztályt egy olyan paraméter nélküli függvénnyel (**a függvénynév végződjön `_Delegate`-re, ez kötelező**), mely visszatérési értékében visszaadja a Jedi tanács összes olyan tagját, melynek a midi-chlorian száma **530** alatt van!
+A függvényen belül a tagok kikeresésére használd a `List<Jedi>` osztály `FindAll()` függvényét.
 Ebben a feladatban még **NEM használhatsz lambda kifejezést**!
-Írjunk egy dedikált „tesztelő” függvényt is (pl. a `Program` osztályba), mely meghívja a fenti függvényünket és kiírja a visszaadott jedi lovagok neveit! Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így más (rész)feladathoz tartozót sem.
+Írj egy dedikált „tesztelő” függvényt is (pl. a `Program` osztályba), mely meghívja a fenti függvényünket és kiírja a visszaadott jedi lovagok neveit! Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így más (rész)feladathoz tartozót sem.
 
-!!! danger "Fontos" 
+!!! danger "Fontos"
     Ezt a „tesztelő” függvényt lásd el a `[Description("Feladat4")]` C# attribútummal. A függvényt hívd meg a `Program` osztály `Main` függvényéből.
 
     Lényeges, hogy
         
-    - az attribútumot függvény, és NE osztály fölé írd
-    - az attribútumot ne a logikát megvalósító, hanem a tesztelést végző függvény fölé írd
+    - az attribútumot függvény, és NE osztály fölé írd,
+    - az attribútumot ne a logikát megvalósító, hanem a tesztelést végző függvény fölé írd,
     - az attribútum csak egyetlen függvény fölött szerepelhet.
 
 !!! tip "Inicializáció kiszervezése"
@@ -260,18 +265,18 @@ Ebben a feladatban még **NEM használhatsz lambda kifejezést**!
 
 ### Megoldás
 
-A feladat megoldásához a 2. gyakorlat 6. feladatát használhatjuk referenciaként. Segítségként megadjuk a következőket
+A feladat megoldásához a 2. labor 6. feladatát használhatjuk referenciaként. Segítségként megadjuk a következőket:
 
-- A függvényünk akár több találatot is visszaadhat, ezért a visszatérési érték típusa `List<Jedi>`
-- A `FindAll` paraméterként az esetünkben egy `bool Függvénynév(Jedi j)` szignatúrájú szűrőfüggvényt vár el.
+- a függvényünk akár több találatot is visszaadhat, ezért a visszatérési érték típusa `List<Jedi>`,
+- a `FindAll` paraméterként az esetünkben egy `bool Függvénynév(Jedi j)` szignatúrájú szűrőfüggvényt vár el.
 
 ## Feladat 5 – Lambda kifejezések
 
-A feladat megfelel az előzőnek, csak most lambda kifejezés segítségével fogunk dolgozni. Ez a témakör előadáson szerepelt, laboron nem.
+A feladat megfelel az előzőnek, csak most lambda kifejezés segítségével fogunk dolgozni. Ez a témakör szerepelt előadáson és laboron is ([2. labor 6. feladat](../../labor/2-nyelvi-eszkozok/index.md#6-feladat-lambda-kifejezesek)).
 
-Egészítsük ki a JediCouncil osztályt egy olyan paraméter nélküli függvénnyel (**a függvénynév végződjön `_Lambda`-ra, ez kötelező**), mely visszatérési értékében visszaadja a Jedi tanács összes olyan tagját, melynek a midi-chlorian száma 1000 alatt van!
-A függvényen belül a tagok kikeresésére használjuk a `List<Jedi>` osztály `FindAll()` függvényét. Ebben a feladatban kötelezően lambda kifejezést kell használj (az mindegy, hogy statement vagy expression lambdát)!
-Írjunk egy dedikált „tesztelő” függvényt is (pl. a `Program` osztályba), mely meghívja a fenti függvényünket és kiírja a visszaadott jedi lovagok neveit!
+Egészítsd ki a JediCouncil osztályt egy olyan paraméter nélküli függvénnyel (**a függvénynév végződjön `_Lambda`-ra, ez kötelező**), mely visszatérési értékében visszaadja a Jedi tanács összes olyan tagját, melynek a midi-chlorian száma 1000 alatt van!
+A függvényen belül a tagok kikeresésére használd a `List<Jedi>` osztály `FindAll()` függvényét. Ebben a feladatban kötelezően lambda kifejezést kell használj (az mindegy, hogy statement vagy expression lambdát)!
+Írj egy dedikált „tesztelő” függvényt is (pl. a `Program` osztályba), mely meghívja a fenti függvényünket és kiírja a visszaadott jedi lovagok neveit!
 Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így más (rész)feladathoz tartozót sem.
 
 !!! danger "Fontos" 
@@ -279,8 +284,8 @@ Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így 
 
     Lényeges, hogy
         
-    - az attribútumot függvény, és NE osztály fölé írd
-    - az attribútumot ne a logikát megvalósító, hanem a tesztelést végző függvény fölé írd
+    - az attribútumot függvény, és NE osztály fölé írd,
+    - az attribútumot ne a logikát megvalósító, hanem a tesztelést végző függvény fölé írd,
     - az attribútum csak egyetlen függvény fölött szerepelhet.
 
 ## Feladat 6 (iMSc) – beépített `Func`/`Action` generikus delegate típusok használata
@@ -291,7 +296,7 @@ A feladat megoldása nem kötelező, de erősen ajánlott: alapanyag, így ZH-n/
 
 ### Feladat
 
-Bővítsük ki a `JediCouncil` osztályt.
+Bővítsd ki a `JediCouncil` osztályt.
 
 - Készíts egy `Count` nevű `int` visszatérési értékű property-t (tulajdonságot), amely minden lekérdezéskor a tanácsban aktuálisan található Jedi-k számát adja vissza. Ügyelj arra, hogy ezt az értéket csak lekérdezni lehessen (beállítani nem).
 
