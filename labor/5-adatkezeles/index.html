@@ -1,889 +1,483 @@
 
-<!doctype html>
-<html lang="hu" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-      
-        <meta name="author" content="Benedek Zoltán">
-      
-      
-      <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.7">
-    
-    
-      
-        <title>5. Adatkezelés - BMEVIAUAB00 Szoftvertechnikák</title>
-      
-    
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
-      
-        
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
-        
-      
-      
+<!DOCTYPE html>
 
-    
-    
-    
-      
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-      
-    
-    
-      <link rel="stylesheet" href="../../extra-material-theme.css">
-    
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-    
-      
-
-    
-    
-    
-  </head>
-  
-  
-    
-    
-      
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red">
-  
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#5-adatkezeles" class="md-skip">
+<html class="no-js" lang="hu">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Benedek Zoltán" name="author"/>
+<link href="../4-tobbszalu/" rel="prev"/>
+<link href="../6-doc-view/" rel="next"/>
+<link href="../../img/favicon.ico" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.0.12" name="generator"/>
+<title>5. Adatkezelés - BMEVIAUAB00 Szoftvertechnikák</title>
+<link href="../../assets/stylesheets/main.0d440cfe.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../css/timeago.css" rel="stylesheet"/>
+<link href="../../extra-material-theme.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="red" data-md-color-primary="aut" data-md-color-scheme="aut" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#5-adatkezeles">
           Kihagyás
         </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-    
-      
-
+</div>
+<div data-md-component="announce">
+</div>
 <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Élőfej">
-    <a href="../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-header__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
-      
-  <img src="../../img/logo-bme-aut.png" alt="logo">
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
+<nav aria-label="Élőfej" class="md-header__inner md-grid">
+<a aria-label="BMEVIAUAB00 Szoftvertechnikák" class="md-header__button md-logo" data-md-component="logo" href="../.." title="BMEVIAUAB00 Szoftvertechnikák">
+<img alt="logo" src="../../img/logo-bme-aut.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
             BMEVIAUAB00 Szoftvertechnikák
           </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
             
               5. Adatkezelés
             
           </span>
-        </div>
-      </div>
-    </div>
-    
-      <form class="md-header__option" data-md-component="palette">
-        
-          
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red"  aria-label="Váltás sötét témára"  type="radio" name="__palette" id="__palette_1">
-          
-            <label class="md-header__button md-icon" title="Váltás sötét témára" for="__palette_2" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
-            </label>
-          
-        
-          
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent=""  aria-label="Váltás világos témára"  type="radio" name="__palette" id="__palette_2">
-          
-            <label class="md-header__button md-icon" title="Váltás világos témára" for="__palette_1" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
-            </label>
-          
-        
-      </form>
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Keresés" placeholder="Keresés" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Törlés" aria-label="Törlés" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
-        </button>
-      </nav>
-      
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Váltás sötét témára" class="md-option" data-md-color-accent="red" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="aut" data-md-color-scheme="aut" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Váltás sötét témára">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"></path></svg>
+</label>
+<input aria-label="Váltás világos témára" class="md-option" data-md-color-accent="" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="red" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Váltás világos témára">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Keresés" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Keresés" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Keresés" class="md-search__options">
+<button aria-label="Törlés" class="md-search__icon md-icon" tabindex="-1" title="Törlés" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
             Keresés inicializálása
           </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+<ol class="md-search-result__list" role="presentation"></ol>
 </div>
-    
-    
-      <div class="md-header__source">
-        <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
     bmeviauab00/szoftvertechnikak
   </div>
 </a>
-      </div>
-    
-  </nav>
-  
+</div>
+</nav>
 </header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-          
-            
-<nav class="md-tabs" aria-label="Lapok" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../.." class="md-tabs__link">
+<div class="md-container" data-md-component="container">
+<nav aria-label="Lapok" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
       Szoftvertechnikák
     </a>
-  </li>
-
-      
-        
-  
-  
-    
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../1-model-es-kod-kapcsolata/" class="md-tabs__link md-tabs__link--active">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../1-model-es-kod-kapcsolata/">
         Laborok
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../hazi/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../hazi/">
         Önálló/házi feladatok
       </a>
-    </li>
-  
-
-      
-    </ul>
-  </div>
+</li>
+</ul>
+</div>
 </nav>
-          
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-  
-
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigáció" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-nav__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
-      
-  <img src="../../img/logo-bme-aut.png" alt="logo">
-
-    </a>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigáció" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="BMEVIAUAB00 Szoftvertechnikák" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="BMEVIAUAB00 Szoftvertechnikák">
+<img alt="logo" src="../../img/logo-bme-aut.png"/>
+</a>
     BMEVIAUAB00 Szoftvertechnikák
   </label>
-  
-    <div class="md-nav__source">
-      <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
     bmeviauab00/szoftvertechnikak
   </div>
 </a>
-    </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
         Szoftvertechnikák
       </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2">
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
           Laborok
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Laborok" data-md-level="1">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
           Laborok
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../1-model-es-kod-kapcsolata/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../1-model-es-kod-kapcsolata/">
         1. A modell és a kód kapcsolata
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2-nyelvi-eszkozok/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2-nyelvi-eszkozok/">
         2. Nyelvi eszközök
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../3-felhasznaloi-felulet/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../3-felhasznaloi-felulet/">
         3. A felhasználói felület kialakítása
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../4-tobbszalu/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../4-tobbszalu/">
         4. Többszálú alkalmazások készítése
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
           5. Adatkezelés
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         5. Adatkezelés
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+<nav aria-label="Tartalomjegyzék" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       Tartalomjegyzék
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#a-gyakorlat-celja" class="md-nav__link">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#a-gyakorlat-celja">
     A gyakorlat célja
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#elofeltetelek" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#elofeltetelek">
     Előfeltételek
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#bevezeto" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bevezeto">
     Bevezető
   </a>
-  
-    <nav class="md-nav" aria-label="Bevezető">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#adonet" class="md-nav__link">
+<nav aria-label="Bevezető" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adonet">
     ADO.NET
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#a-kapcsolatalapu-modell" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#a-kapcsolatalapu-modell">
     A kapcsolatalapú modell
   </a>
-  
-    <nav class="md-nav" aria-label="A kapcsolatalapú modell">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#connection" class="md-nav__link">
+<nav aria-label="A kapcsolatalapú modell" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#connection">
     Connection
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#command" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#command">
     Command
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#data-reader" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#data-reader">
     Data Reader
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#1-feladat-adatbazis-elokeszitese" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-feladat-adatbazis-elokeszitese">
     1. Feladat – Adatbázis előkészítése
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#2-feladat-lekerdezes-adonet-sqldatareader-rel" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-feladat-lekerdezes-adonet-sqldatareader-rel">
     2. Feladat – Lekérdezés ADO.NET SqlDataReader-rel
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#3-feladat-beszuras-sql-utasitassal" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-feladat-beszuras-sql-utasitassal">
     3. Feladat – Beszúrás SQL utasítással
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#4-feladat-modositas-tarolt-eljarassal" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-feladat-modositas-tarolt-eljarassal">
     4. Feladat - Módosítás tárolt eljárással
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#5-feladat-sql-injection" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-feladat-sql-injection">
     5. Feladat - SQL Injection
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#6-feladat-torles" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-feladat-torles">
     6. Feladat - Törlés
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#kitekintes" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#kitekintes">
     Kitekintés
   </a>
-  
 </li>
-      
-    </ul>
-  
+</ul>
 </nav>
-      
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../6-doc-view/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../6-doc-view/">
         6. Document-View architektúra
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../7-tervezesi-mintak/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../7-tervezesi-mintak/">
         7. Tervezési minták
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_3">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
           Önálló/házi feladatok
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Önálló/házi feladatok" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
           Önálló/házi feladatok
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../hazi/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hazi/">
         Házi feladatok
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../hazi/1-model-es-kod-kapcsolata/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hazi/1-model-es-kod-kapcsolata/">
         1. HF - A modell és a kód kapcsolata
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../hazi/2-modern-nyelvi-eszkozok/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hazi/2-modern-nyelvi-eszkozok/">
         2. HF - Modern nyelvi eszközök
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../hazi/3-felhasznaloi-felulet-kialakitasa/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hazi/3-felhasznaloi-felulet-kialakitasa/">
         3. HF - Felhasználói felület kialakítása
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../hazi/4-tobbszalu-alkalmazasok-fejlesztese/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hazi/4-tobbszalu-alkalmazasok-fejlesztese/">
         4. HF - Többszálú alkalmazások fejlesztése
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../hazi/5-document-view-architectura/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hazi/5-document-view-architectura/">
         5. HF - Document-View architektúra
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../hazi/VisualStudio/" class="md-nav__link">
-        Visual Studio & .NET SDK telepítése
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hazi/VisualStudio/">
+        Visual Studio &amp; .NET SDK telepítése
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-  </ul>
+</li>
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Tartalomjegyzék" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       Tartalomjegyzék
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#a-gyakorlat-celja" class="md-nav__link">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#a-gyakorlat-celja">
     A gyakorlat célja
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#elofeltetelek" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#elofeltetelek">
     Előfeltételek
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#bevezeto" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bevezeto">
     Bevezető
   </a>
-  
-    <nav class="md-nav" aria-label="Bevezető">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#adonet" class="md-nav__link">
+<nav aria-label="Bevezető" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adonet">
     ADO.NET
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#a-kapcsolatalapu-modell" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#a-kapcsolatalapu-modell">
     A kapcsolatalapú modell
   </a>
-  
-    <nav class="md-nav" aria-label="A kapcsolatalapú modell">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#connection" class="md-nav__link">
+<nav aria-label="A kapcsolatalapú modell" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#connection">
     Connection
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#command" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#command">
     Command
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#data-reader" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#data-reader">
     Data Reader
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#1-feladat-adatbazis-elokeszitese" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-feladat-adatbazis-elokeszitese">
     1. Feladat – Adatbázis előkészítése
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#2-feladat-lekerdezes-adonet-sqldatareader-rel" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-feladat-lekerdezes-adonet-sqldatareader-rel">
     2. Feladat – Lekérdezés ADO.NET SqlDataReader-rel
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#3-feladat-beszuras-sql-utasitassal" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-feladat-beszuras-sql-utasitassal">
     3. Feladat – Beszúrás SQL utasítással
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#4-feladat-modositas-tarolt-eljarassal" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-feladat-modositas-tarolt-eljarassal">
     4. Feladat - Módosítás tárolt eljárással
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#5-feladat-sql-injection" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-feladat-sql-injection">
     5. Feladat - SQL Injection
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#6-feladat-torles" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-feladat-torles">
     6. Feladat - Törlés
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#kitekintes" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#kitekintes">
     Kitekintés
   </a>
-  
 </li>
-      
-    </ul>
-  
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          
-            <div class="md-content" data-md-component="content">
-              <article class="md-content__inner md-typeset">
-                
-                  
-
-  <a href="https://github.com/bmeviauab00/szoftvertechnikak/edit/master/docs/labor/5-adatkezeles/index.md" title="Oldal szerkesztése" class="md-content__button md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
-  </a>
-
-
-<h1 id="5-adatkezeles">5. Adatkezelés<a class="headerlink" href="#5-adatkezeles" title="Permanent link">&para;</a></h1>
-<h2 id="a-gyakorlat-celja">A gyakorlat célja<a class="headerlink" href="#a-gyakorlat-celja" title="Permanent link">&para;</a></h2>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/bmeviauab00/szoftvertechnikak/edit/master/docs/labor/5-adatkezeles/index.md" title="Oldal szerkesztése">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"></path></svg>
+</a>
+<h1 id="5-adatkezeles">5. Adatkezelés<a class="headerlink" href="#5-adatkezeles" title="Permanent link">¶</a></h1>
+<h2 id="a-gyakorlat-celja">A gyakorlat célja<a class="headerlink" href="#a-gyakorlat-celja" title="Permanent link">¶</a></h2>
 <p>A gyakorlat célja az ADO.NET programozási modelljének megismerése és a leggyakoribb adatkezelési problémák, buktatók szemléltetése alapvető CRUD műveletek megírásán keresztül.</p>
 <p>Kapcsolódó előadások: Adatkezelés, ADO.NET alapismeretek.</p>
-<h2 id="elofeltetelek">Előfeltételek<a class="headerlink" href="#elofeltetelek" title="Permanent link">&para;</a></h2>
+<h2 id="elofeltetelek">Előfeltételek<a class="headerlink" href="#elofeltetelek" title="Permanent link">¶</a></h2>
 <p>A gyakorlat elvégzéséhez szükséges eszközök:</p>
 <ul>
 <li>Visual Studio 2022</li>
@@ -899,12 +493,12 @@
 <li>Az adatok vizualizációjára használható a szintén keresztplatformos <em>Azure Data Studio</em> eszköz.</li>
 </ul>
 </div>
-<h2 id="bevezeto">Bevezető<a class="headerlink" href="#bevezeto" title="Permanent link">&para;</a></h2>
+<h2 id="bevezeto">Bevezető<a class="headerlink" href="#bevezeto" title="Permanent link">¶</a></h2>
 <details class="warning">
 <summary>Megjegyzés gyakorlatvezetőknek</summary>
 <p>Ezt a fejezetet gyakorlaton nem kell a leírtaknak megfelelő részletességgel ismertetni, a fontosabb fogalmakat azonban mindenképpen ismertessük röviden.</p>
 </details>
-<h3 id="adonet">ADO.NET<a class="headerlink" href="#adonet" title="Permanent link">&para;</a></h3>
+<h3 id="adonet">ADO.NET<a class="headerlink" href="#adonet" title="Permanent link">¶</a></h3>
 <p>Alacsony szintű adatbáziskezelésre a .NET platformon az ADO.NET áll rendelkezésre, segítségével relációs adatbázisokat tudunk elérni.</p>
 <p>Az ADO.NET használata során két eltérő adathozzáférési modellt alkalmazhatunk:</p>
 <ul>
@@ -942,7 +536,7 @@
 </ul>
 <p>Megjegyzés: Számos lehetőségünk van arra, hogy az objektumokat és kapcsolódó változásokat nyilvántartsuk a memóriában. A <code>DataSet</code> csak az egyik lehetséges technika. De használhatunk erre a célra közönséges objektumokat, illetve ezek menedzselését megkönnyítő ADO.NET-nél korszerűbb .NET technológiákat (pl. Entity Framework Core).</p>
 </details>
-<h3 id="a-kapcsolatalapu-modell">A kapcsolatalapú modell<a class="headerlink" href="#a-kapcsolatalapu-modell" title="Permanent link">&para;</a></h3>
+<h3 id="a-kapcsolatalapu-modell">A kapcsolatalapú modell<a class="headerlink" href="#a-kapcsolatalapu-modell" title="Permanent link">¶</a></h3>
 <p>A labor keretében a kapcsolatalapú modellt ismerjük meg.</p>
 <p>Az alapfolyamat a következő:</p>
 <ol>
@@ -967,12 +561,12 @@
 <li><a href="https://learn.microsoft.com/en-us/dotnet/standard/data/sqlite/?tabs=netcore-cli">SQLite</a> </li>
 <li><a href="https://www.oracle.com/database/technologies/appdev/dotnet/odp.html">Oracle</a></li>
 </ul>
-<h4 id="connection">Connection<a class="headerlink" href="#connection" title="Permanent link">&para;</a></h4>
+<h4 id="connection">Connection<a class="headerlink" href="#connection" title="Permanent link">¶</a></h4>
 <p>Ez teremti meg a kapcsolatot a programunk, illetve az adatbáziskezelő-rendszer között.
 Inicializálásához szükség van egy connection string-re, mely a kapcsolat felépítéséhez szükséges adatokat adja meg a driver számára. Adatbázisgyártónként eltérő a belső formátuma (<a href="http://www.connectionstrings.com">bővebben</a>).</p>
 <p>Új <code>Connection</code> példányosításakor nem biztos, hogy tényleg új kapcsolat fog létrejönni az adatbázis felé, a driverek általában connection pooling-ot alkalmaznak, hasonlóan, mint a thread pool esetében, újrahasználhatják a korábbi (éppen nem használt) kapcsolatokat.</p>
 <p>A <code>Connection</code> különösen költséges nem felügyelt erőforrásokat használ, <strong>így kiemelten fontos, hogy a lehető leghamarabb gondoskodjunk lezárásáról</strong>, amikor már nincs rá szükség (pl. a <code>Dispose()</code> hívásával, amit az esetek többségében legegyszerűbben a <code>using</code> blokk alkalmazásával tehetünk meg).</p>
-<h4 id="command">Command<a class="headerlink" href="#command" title="Permanent link">&para;</a></h4>
+<h4 id="command">Command<a class="headerlink" href="#command" title="Permanent link">¶</a></h4>
 <p>Ennek segítségével vagyunk képesek „utasításokat” megfogalmazni az adatbázis kezelő számára. Ezeket SQL nyelven kell megfogalmaznunk.
 A <code>Command</code>-nak be kell állítani egy kapcsolatot – ezen keresztül fog a parancs végrehajtódni. A parancsnak különböző eredménye lehet, ennek megfelelően különböző függvényekkel futtatjuk a parancsot:</p>
 <ul>
@@ -980,10 +574,10 @@ A <code>Command</code>-nak be kell állítani egy kapcsolatot – ezen keresztü
 <li><strong>ExecuteScalar</strong>: Skalár érték lekérdezése</li>
 <li><strong>ExecuteNonQuery</strong>: Nincs visszatérési érték (Pl: INSERT, UPDATE és DELETE), viszont a művelet következtében érintett rekordok számát visszakapjuk</li>
 </ul>
-<h4 id="data-reader">Data Reader<a class="headerlink" href="#data-reader" title="Permanent link">&para;</a></h4>
+<h4 id="data-reader">Data Reader<a class="headerlink" href="#data-reader" title="Permanent link">¶</a></h4>
 <p>Ha a parancs eredménye eredményhalmaz, akkor ennek a komponensnek a segítségével tudjuk az adatokat kiolvasni. Az eredményhalmaz egy táblázatnak tekinthető, a Data Reader ezen tud soronként végignavigálni (csak egyesével előrefelé!). A kurzor egyszerre egy soron áll, ha a sorból a szükséges adatokat kiolvastuk, a kurzort egy sorral előre léptethetjük. Csak az aktuális sorból tudunk olvasni. Kezdetben a kurzor nem az első soron áll, azt egyszer léptetnünk kell, hogy az első sorra álljon.</p>
 <p>Megjegyzés: navigálás kliens oldalon történik a memóriában, nincs köze az egyes adatkezelők által támogatott kiszolgáló oldali kurzorokhoz.</p>
-<h2 id="1-feladat-adatbazis-elokeszitese">1. Feladat – Adatbázis előkészítése<a class="headerlink" href="#1-feladat-adatbazis-elokeszitese" title="Permanent link">&para;</a></h2>
+<h2 id="1-feladat-adatbazis-elokeszitese">1. Feladat – Adatbázis előkészítése<a class="headerlink" href="#1-feladat-adatbazis-elokeszitese" title="Permanent link">¶</a></h2>
 <p>Elsőként szükségünk van egy adatbáziskezelőre. Ezt valós környezetben dedikált szerveren futó, adatbázis adminisztrátorok által felügyelt, teljesértékű adatbáziskezelők jelentik. Fejlesztési időben, lokális teszteléshez azonban kényelmesebb egy fejlesztői adatbáziskezelő használata.
 A Visual Studio telepítésének részeként kapunk is egy ilyen adatbázismotort, ez a LocalDB, mely a teljesértékű SQL Server egyszerűsített változata. Főbb tulajdonságai:</p>
 <ul>
@@ -1045,7 +639,7 @@ A Visual Studio telepítésének részeként kapunk is egy ilyen adatbázismotor
 <p>A Visual Studio-ban két eszközzel is kezelhetünk adatbázisokat: a Server Explorer-rel és az SQL Server Object Explorer-rel is. Előbbi egy általánosabb eszköz, mely nem csak adatbázis, hanem egyéb szerver erőforrások (pl. Azure szerverek) kezelésére is alkalmas, míg a másik kifejezetten csak adatbáziskezelésre van kihegyezve. Mindkettő elérhető a View menüből és mindkettő hasonló funkciókat ad adatbáziskezeléshez, ezért ebben a mérésben csak az egyiket (SQL Server Object Explorer) használjuk.</p>
 <p>Amikor nem áll rendelkezésünkre a Visual Studio fejlesztőkörnyezet, akkor az adatbázisunk menedzselésére az (ingyenes) SQL Server Management Studio-t vagy a szintén ingyenes és multiplatform Azure Data Studio-t tudjuk használni.</p>
 </div>
-<h2 id="2-feladat-lekerdezes-adonet-sqldatareader-rel">2. Feladat – Lekérdezés ADO.NET SqlDataReader-rel<a class="headerlink" href="#2-feladat-lekerdezes-adonet-sqldatareader-rel" title="Permanent link">&para;</a></h2>
+<h2 id="2-feladat-lekerdezes-adonet-sqldatareader-rel">2. Feladat – Lekérdezés ADO.NET SqlDataReader-rel<a class="headerlink" href="#2-feladat-lekerdezes-adonet-sqldatareader-rel" title="Permanent link">¶</a></h2>
 <p>A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, amely használja a Northwind adatbázis <code>Shippers</code> táblájának rekordjait.</p>
 <ol>
 <li>
@@ -1058,11 +652,11 @@ A Visual Studio telepítésének részeként kapunk is egy ilyen adatbázismotor
 </li>
 <li>
 <p>Keressük ki a connection stringet az SSOE-ből: jobbklikk az adatbáziskapcsolatunkon (pirossal jelölve az alábbi ábrán) / Properties.</p>
-<p><img alt="SSOE Database" src="images/SSOS-database.png" /></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/SSOS-database.png"><img alt="SSOE Database" src="images/SSOS-database.png"/></a></p>
 </li>
 <li>
 <p>Másoljuk a Properties ablakból <em>Connection String</em> tulajdonság értékét egy változóba a <code>Program</code> osztályba.</p>
-<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">ConnString</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">@&quot;Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=neptun;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False&quot;</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">ConnString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=neptun;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"</span><span class="p">;</span>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">SQL Server connection string formátuma</p>
@@ -1087,7 +681,7 @@ Az <code>Integrated Security=true</code> kapcsoló pedig a Windows authentikáci
 <li>
 <p>B) Bemásoljuk az alábbi csomag referenciát a a projektfájlba:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;ItemGroup&gt;</span>
-    <span class="nt">&lt;PackageReference</span> <span class="na">Include=</span><span class="s">&quot;Microsoft.Data.SqlClient&quot;</span> <span class="na">Version=</span><span class="s">&quot;5.0.1&quot;</span> <span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;PackageReference</span><span class="w"> </span><span class="na">Include=</span><span class="s">"Microsoft.Data.SqlClient"</span><span class="w"> </span><span class="na">Version=</span><span class="s">"5.0.1"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/ItemGroup&gt;</span>
 </code></pre></div>
 </li>
@@ -1099,26 +693,26 @@ Az <code>Integrated Security=true</code> kapcsoló pedig a Windows authentikáci
 </li>
 <li>
 <p>Írjunk lekérdező függvényt, mely lekérdezi az összes szállítót:</p>
-<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">GetShippers</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnString</span><span class="p">))</span><span class="w"></span>
-<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlCommand</span><span class="p">(</span><span class="s">&quot;SELECT ShipperID, CompanyName, Phone FROM Shippers&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">conn</span><span class="p">))</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span><span class="w"></span>
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;{0,-10}{1,-20}{2,-20}&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ShipperID&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CompanyName&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Phone&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">string</span><span class="p">(</span><span class="sc">&#39;-&#39;</span><span class="p">,</span><span class="w"> </span><span class="m">60</span><span class="p">));</span><span class="w"></span>
-<span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="p">(</span><span class="n">SqlDataReader</span><span class="w"> </span><span class="n">reader</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">ExecuteReader</span><span class="p">())</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">reader</span><span class="p">.</span><span class="n">Read</span><span class="p">())</span><span class="w"></span>
-<span class="w">            </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="w"></span>
-<span class="w">                    </span><span class="s">$&quot;{reader[&quot;</span><span class="n">ShipperID</span><span class="s">&quot;],-10}&quot;</span><span class="w"> </span><span class="p">+</span><span class="w"></span>
-<span class="w">                    </span><span class="s">$&quot;{reader[&quot;</span><span class="n">CompanyName</span><span class="s">&quot;],-20}&quot;</span><span class="w"> </span><span class="p">+</span><span class="w"></span>
-<span class="w">                    </span><span class="s">$&quot;{reader[&quot;</span><span class="n">Phone</span><span class="s">&quot;],-20}&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">GetShippers</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnString</span><span class="p">))</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlCommand</span><span class="p">(</span><span class="s">"SELECT ShipperID, CompanyName, Phone FROM Shippers"</span><span class="p">,</span><span class="w"> </span><span class="n">conn</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"{0,-10}{1,-20}{2,-20}"</span><span class="p">,</span><span class="w"> </span><span class="s">"ShipperID"</span><span class="p">,</span><span class="w"> </span><span class="s">"CompanyName"</span><span class="p">,</span><span class="w"> </span><span class="s">"Phone"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">string</span><span class="p">(</span><span class="sc">'-'</span><span class="p">,</span><span class="w"> </span><span class="m">60</span><span class="p">));</span>
+<span class="w">        </span><span class="k">using</span><span class="w"> </span><span class="p">(</span><span class="n">SqlDataReader</span><span class="w"> </span><span class="n">reader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">ExecuteReader</span><span class="p">())</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">reader</span><span class="p">.</span><span class="n">Read</span><span class="p">())</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span>
+<span class="w">                    </span><span class="s">$"{reader["</span><span class="n">ShipperID</span><span class="s">"],-10}"</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                    </span><span class="s">$"{reader["</span><span class="n">CompanyName</span><span class="s">"],-20}"</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                    </span><span class="s">$"{reader["</span><span class="n">Phone</span><span class="s">"],-20}"</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>A kapcsolat alapú modell folyamata</p>
 <ul>
@@ -1141,25 +735,25 @@ Az <code>Integrated Security=true</code> kapcsoló pedig a Windows authentikáci
 <li><code>$</code>-ral prefixelve string interpolációt alkalmazhatunk, azaz közvetlenül a stringbe ágyazhatunk kiértékelendő kifejezéseket (C# 6-os képesség). A <code>$@</code> segítségével többsoros string interpolációs kifejezéseket írhatunk (a sortörést a {}-k között kell betennünk, különben a kimeneten is megjelenik). Érdekesség: C# 8-tól fölfele bármilyen sorrendben írhatjuk a $ és @ karaktereket, tehát a <code>$@</code> és a <code>@$</code> is helyesnek számít.</li>
 <li>
 <p>A using kulcsszú blokk utasítás helyett egysoros kifejezésként is használható. Ilyen esetben a using blokk vége az tartalmazó blokkig tart (esetünkben a függvény végéig.). Ezzel csökkenthető a behúzások száma, de ne legyen automatikus reflex a használata, mert előfordulhat, hogy hamarabb célszerű kikényszeríteni az erőforrások felszabadítását, mint a tartalmazó blokk vége.</p>
-<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">GetShippers</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnString</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlCommand</span><span class="p">(</span><span class="s">&quot;SELECT ShipperID, CompanyName, Phone FROM Shippers&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">conn</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">GetShippers</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnString</span><span class="p">);</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlCommand</span><span class="p">(</span><span class="s">"SELECT ShipperID, CompanyName, Phone FROM Shippers"</span><span class="p">,</span><span class="w"> </span><span class="n">conn</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
 
-<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;{0,-10}{1,-20}{2,-20}&quot;</span><span class="p">,</span><span class="s">&quot;ShipperID&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CompanyName&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Phone&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">string</span><span class="p">(</span><span class="sc">&#39;-&#39;</span><span class="p">,</span><span class="w"> </span><span class="m">60</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"{0,-10}{1,-20}{2,-20}"</span><span class="p">,</span><span class="s">"ShipperID"</span><span class="p">,</span><span class="w"> </span><span class="s">"CompanyName"</span><span class="p">,</span><span class="w"> </span><span class="s">"Phone"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">string</span><span class="p">(</span><span class="sc">'-'</span><span class="p">,</span><span class="w"> </span><span class="m">60</span><span class="p">));</span>
 
-<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">reader</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">ExecuteReader</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">reader</span><span class="p">.</span><span class="n">Read</span><span class="p">())</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="s">$&quot;{reader[&quot;</span><span class="n">ShipperID</span><span class="s">&quot;],-10}&quot;</span><span class="w"> </span><span class="p">+</span><span class="w"></span>
-<span class="w">            </span><span class="s">$&quot;{reader[&quot;</span><span class="n">CompanyName</span><span class="s">&quot;],-20}&quot;</span><span class="w"> </span><span class="p">+</span><span class="w"></span>
-<span class="w">            </span><span class="s">$&quot;{reader[&quot;</span><span class="n">Phone</span><span class="s">&quot;],-20}&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">reader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">ExecuteReader</span><span class="p">();</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">reader</span><span class="p">.</span><span class="n">Read</span><span class="p">())</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span>
+<span class="w">            </span><span class="s">$"{reader["</span><span class="n">ShipperID</span><span class="s">"],-10}"</span><span class="w"> </span><span class="o">+</span>
+<span class="w">            </span><span class="s">$"{reader["</span><span class="n">CompanyName</span><span class="s">"],-20}"</span><span class="w"> </span><span class="o">+</span>
+<span class="w">            </span><span class="s">$"{reader["</span><span class="n">Phone</span><span class="s">"],-20}"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>A továbbiakban ezt a módszert használjuk a behúzások és zárójelek megspórolása érdekében.</p>
 </li>
@@ -1168,34 +762,34 @@ Az <code>Integrated Security=true</code> kapcsoló pedig a Windows authentikáci
 </li>
 <li>
 <p>Hívjuk meg új függvényünket a <code>Main</code> függvényből.</p>
-<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="hll"><span class="w">    </span><span class="n">GetShippers</span><span class="p">();</span><span class="w"></span>
-</span><span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="hll"><span class="w">    </span><span class="n">GetShippers</span><span class="p">();</span>
+</span><span class="p">}</span>
 </code></pre></div>
 </li>
 <li>
 <p>Próbáljuk ki az alkalmazást. Rontsuk el az SQL-t, és úgy is próbáljuk ki.</p>
 </li>
 </ol>
-<h2 id="3-feladat-beszuras-sql-utasitassal">3. Feladat – Beszúrás SQL utasítással<a class="headerlink" href="#3-feladat-beszuras-sql-utasitassal" title="Permanent link">&para;</a></h2>
+<h2 id="3-feladat-beszuras-sql-utasitassal">3. Feladat – Beszúrás SQL utasítással<a class="headerlink" href="#3-feladat-beszuras-sql-utasitassal" title="Permanent link">¶</a></h2>
 <ol>
 <li>
 <p>Írjunk függvényt, mely új szállítót szúr be az adatbázisba:</p>
-<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">InsertShipper</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">companyName</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">phone</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnString</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlCommand</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="s">&quot;INSERT INTO Shippers(CompanyName, Phone) VALUES(@name,@phone)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">conn</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">command</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="n">AddWithValue</span><span class="p">(</span><span class="s">&quot;@name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">companyName</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">command</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="n">AddWithValue</span><span class="p">(</span><span class="s">&quot;@phone&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">phone</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">InsertShipper</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">companyName</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">phone</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnString</span><span class="p">);</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlCommand</span><span class="p">(</span>
+<span class="w">        </span><span class="s">"INSERT INTO Shippers(CompanyName, Phone) VALUES(@name,@phone)"</span><span class="p">,</span><span class="w"> </span><span class="n">conn</span><span class="p">);</span>
+<span class="w">    </span><span class="n">command</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="n">AddWithValue</span><span class="p">(</span><span class="s">"@name"</span><span class="p">,</span><span class="w"> </span><span class="n">companyName</span><span class="p">);</span>
+<span class="w">    </span><span class="n">command</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="n">AddWithValue</span><span class="p">(</span><span class="s">"@phone"</span><span class="p">,</span><span class="w"> </span><span class="n">phone</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
 
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">affectedRows</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">ExecuteNonQuery</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">affectedRows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">ExecuteNonQuery</span><span class="p">();</span>
 
-<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;{affectedRows} rows affected&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"{affectedRows} rows affected"</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>Itt olyan SQL-t kell írnunk, melynek az összeállításánál kívülről kapott változók értékeit is felhasználtuk. A string összerakásához egyszerűen a sztring összefűzés operátort, sztring interpolációt vagy <code>string.Format</code>-ot is használhattunk volna, de ez biztonsági kockázatot (SQL Injection – bővebben lásd lentebb) rejt – <strong>SOHA!!! ne rakjuk össze az SQL-t stringművelettel</strong>. Helyette írjuk meg úgy az SQL-t, hogy ahová a változók értékeit írnánk, oda paraméterhivatkozásokat teszünk. SQL Server esetében a hivatkozás szintaxisa: @paramnév.</p>
 <p>A parancs futtatásához a paraméterek értékeit is át kell adnunk az adatbázisnak, ugyanis az fogja elvégezni a paraméterek helyére az értékek behelyettesítését.</p>
@@ -1203,16 +797,16 @@ Az <code>Integrated Security=true</code> kapcsoló pedig a Windows authentikáci
 </li>
 <li>
 <p>Hívjuk meg új függvényünket a <code>Main</code> függvényből.</p>
-<div class="highlight"><pre><span></span><code><span class="n">GetShippers</span><span class="p">();</span><span class="w"></span>
-<span class="hll"><span class="n">InsertShipper</span><span class="p">(</span><span class="s">&quot;Super Shipper&quot;</span><span class="p">,</span><span class="s">&quot;49-98562&quot;</span><span class="p">);</span><span class="w"></span>
-</span><span class="hll"><span class="n">GetShippers</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">GetShippers</span><span class="p">();</span>
+<span class="hll"><span class="n">InsertShipper</span><span class="p">(</span><span class="s">"Super Shipper"</span><span class="p">,</span><span class="s">"49-98562"</span><span class="p">);</span>
+</span><span class="hll"><span class="n">GetShippers</span><span class="p">();</span>
 </span></code></pre></div>
 </li>
 <li>
 <p>Próbáljuk ki az alkalmazást, ellenőrizzük a konzolban és az SSOE-ben is, hogy bekerült az új sor. Az SSOE-ben való gyors és kényelmes ellenőrzéshez a <code>Shippers</code> tábla context menüjéből válasszuk a <em>View Data</em> lehetőséget.</p>
 </li>
 </ol>
-<h2 id="4-feladat-modositas-tarolt-eljarassal">4. Feladat - Módosítás tárolt eljárással<a class="headerlink" href="#4-feladat-modositas-tarolt-eljarassal" title="Permanent link">&para;</a></h2>
+<h2 id="4-feladat-modositas-tarolt-eljarassal">4. Feladat - Módosítás tárolt eljárással<a class="headerlink" href="#4-feladat-modositas-tarolt-eljarassal" title="Permanent link">¶</a></h2>
 <ol>
 <li>
 <p>Tanulmányozzuk SSOE-ben a <code>Product_Update</code> tárolt eljárás kódját. Ehhez nyissuk le a <em>Programmability</em> alatt található Stored <em>Procedures</em> csomópontot, majd a <code>Product_Update</code> tárolt eljárás context menüjéből válasszuk a <em>View Code</em> lehetőséget.</p>
@@ -1224,56 +818,56 @@ Az <code>Integrated Security=true</code> kapcsoló pedig a Windows authentikáci
 </li>
 <li>
 <p>Írjunk függvényt, mely ezt a tárolt eljárást hívja</p>
-<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">UpdateProduct</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">productID</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">productName</span><span class="p">,</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">price</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnString</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlCommand</span><span class="p">(</span><span class="s">&quot;Product_Update&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">conn</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">UpdateProduct</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">productID</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">productName</span><span class="p">,</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">price</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnString</span><span class="p">);</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlCommand</span><span class="p">(</span><span class="s">"Product_Update"</span><span class="p">,</span><span class="w"> </span><span class="n">conn</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">command</span><span class="p">.</span><span class="n">CommandType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">CommandType</span><span class="p">.</span><span class="n">StoredProcedure</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">command</span><span class="p">.</span><span class="n">CommandType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CommandType</span><span class="p">.</span><span class="n">StoredProcedure</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">command</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="n">AddWithValue</span><span class="p">(</span><span class="s">&quot;@ProductID&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">productID</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">command</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="n">AddWithValue</span><span class="p">(</span><span class="s">&quot;@ProductName&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">productName</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">command</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="n">AddWithValue</span><span class="p">(</span><span class="s">&quot;@UnitPrice&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">price</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">command</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="n">AddWithValue</span><span class="p">(</span><span class="s">"@ProductID"</span><span class="p">,</span><span class="w"> </span><span class="n">productID</span><span class="p">);</span>
+<span class="w">    </span><span class="n">command</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="n">AddWithValue</span><span class="p">(</span><span class="s">"@ProductName"</span><span class="p">,</span><span class="w"> </span><span class="n">productName</span><span class="p">);</span>
+<span class="w">    </span><span class="n">command</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="n">AddWithValue</span><span class="p">(</span><span class="s">"@UnitPrice"</span><span class="p">,</span><span class="w"> </span><span class="n">price</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
 
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">affectedRows</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">ExecuteNonQuery</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">affectedRows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">ExecuteNonQuery</span><span class="p">();</span>
 
-<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;{affectedRows} rows affected&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"{affectedRows} rows affected"</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>A <code>Command</code>-nak a tárolt eljárás nevét kellett megadni, és a parancs típusát kellett átállítani, egyébként szerkezetileg hasonlít a korábbi beszúró kódra.</p>
 </li>
 <li>
 <p>Hívjuk meg az új függvényünket a <code>Main</code> függvényből, például az alábbi paraméterezéssel:</p>
-<div class="highlight"><pre><span></span><code><span class="n">UpdateProduct</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MyProduct&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">50</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">UpdateProduct</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="s">"MyProduct"</span><span class="p">,</span><span class="w"> </span><span class="m">50</span><span class="p">);</span>
 </code></pre></div>
 </li>
 <li>
 <p>Próbáljuk ki az alkalmazást, ellenőrizzük a konzolban és az SSOE-ben is, hogy módosult-e az 1-es azonosítójú termék.</p>
 </li>
 </ol>
-<h2 id="5-feladat-sql-injection">5. Feladat - SQL Injection<a class="headerlink" href="#5-feladat-sql-injection" title="Permanent link">&para;</a></h2>
+<h2 id="5-feladat-sql-injection">5. Feladat - SQL Injection<a class="headerlink" href="#5-feladat-sql-injection" title="Permanent link">¶</a></h2>
 <ol>
 <li>
 <p>Írjuk meg a beszúró függvényt úgy, hogy string interpolációval rakja össze az SQL-t.</p>
-<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">InsertShipper2</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">companyName</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">phone</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnString</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlCommand</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="s">$&quot;INSERT INTO Shippers(CompanyName, Phone) VALUES(&#39;{companyName}&#39;,&#39;{phone}&#39;)&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="n">conn</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">InsertShipper2</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">companyName</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">phone</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnString</span><span class="p">);</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlCommand</span><span class="p">(</span>
+<span class="w">        </span><span class="s">$"INSERT INTO Shippers(CompanyName, Phone) VALUES('{companyName}','{phone}')"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">conn</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
 
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">affectedRows</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">ExecuteNonQuery</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;{affectedRows} row(s) inserted&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">affectedRows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">ExecuteNonQuery</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"{affectedRows} row(s) inserted"</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
 </li>
 <li>
 <p>Hívjuk meg új függvényünket a <code>Main</code> függvényből „speciálisan” paraméterezve.</p>
-<div class="highlight"><pre><span></span><code><span class="n">InsertShipper2</span><span class="p">(</span><span class="s">&quot;Super Shipper&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;49-98562&#39;); DELETE FROM Shippers;--&quot;</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">InsertShipper2</span><span class="p">(</span><span class="s">"Super Shipper"</span><span class="p">,</span><span class="w"> </span><span class="s">"49-98562'); DELETE FROM Shippers;--"</span><span class="p">);</span>
 </code></pre></div>
 <p>Úgy állítottuk össze a második paramétert, hogy az lezárja az eredeti utasítást, ezután tetszőleges <strong>(!!!)</strong> SQL-t írhatunk, végül kikommentezzük az erdeti utasítás maradékát (<code>--</code>).</p>
 </li>
@@ -1290,29 +884,29 @@ Az <code>Integrated Security=true</code> kapcsoló pedig a Windows authentikáci
 </li>
 <li>
 <p>Hívjuk meg az eredeti (vagyis a biztonságos, SQL paramétereket használó) beszúró függvényt a „speciális” paraméterezéssel, hogy lássuk, működik-e a védelem:</p>
-<div class="highlight"><pre><span></span><code><span class="n">InsertShipper</span><span class="p">(</span><span class="s">&quot;Super Shipper&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;49-98562&#39;); DELETE FROM Shippers;--&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="n">InsertShipper</span><span class="p">(</span><span class="s">&quot;XXX&#39;);DELETE FROM Shippers;--&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;49-98562&quot;</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">InsertShipper</span><span class="p">(</span><span class="s">"Super Shipper"</span><span class="p">,</span><span class="w"> </span><span class="s">"49-98562'); DELETE FROM Shippers;--"</span><span class="p">);</span>
+<span class="n">InsertShipper</span><span class="p">(</span><span class="s">"XXX');DELETE FROM Shippers;--"</span><span class="p">,</span><span class="w"> </span><span class="s">"49-98562"</span><span class="p">);</span>
 </code></pre></div>
 <p>Az elsőnél nem férünk bele a méretkorlátba, a második lefut, de csak egy „furcsa” nevű szállító került be. A paraméter értéke tényleg értékként értelmeződött nem pedig SQL-ként. Nem úgy mint itt:</p>
-<p><img alt="XKCD" src="images/xkcd-sql-injection.png" /></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/xkcd-sql-injection.png"><img alt="XKCD" src="images/xkcd-sql-injection.png"/></a></p>
 </li>
 </ol>
-<h2 id="6-feladat-torles">6. Feladat - Törlés<a class="headerlink" href="#6-feladat-torles" title="Permanent link">&para;</a></h2>
+<h2 id="6-feladat-torles">6. Feladat - Törlés<a class="headerlink" href="#6-feladat-torles" title="Permanent link">¶</a></h2>
 <ol>
 <li>
 <p>Írjunk egy új függvényt, mely kitöröl egy adott szállítót.</p>
-<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">DeleteShipper</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">shipperID</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnString</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlCommand</span><span class="p">(</span><span class="s">&quot;DELETE FROM Shippers WHERE ShipperID = @ShipperID&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">conn</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">command</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="n">AddWithValue</span><span class="p">(</span><span class="s">&quot;@ShipperID&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">shipperID</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">DeleteShipper</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">shipperID</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnString</span><span class="p">);</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlCommand</span><span class="p">(</span><span class="s">"DELETE FROM Shippers WHERE ShipperID = @ShipperID"</span><span class="p">,</span><span class="w"> </span><span class="n">conn</span><span class="p">);</span>
+<span class="w">    </span><span class="n">command</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="n">AddWithValue</span><span class="p">(</span><span class="s">"@ShipperID"</span><span class="p">,</span><span class="w"> </span><span class="n">shipperID</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
 
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">affectedRows</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">ExecuteNonQuery</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">affectedRows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">ExecuteNonQuery</span><span class="p">();</span>
 
-<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;{affectedRows} row(s) affected&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"{affectedRows} row(s) affected"</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
 </li>
 <li>
@@ -1331,7 +925,7 @@ Az <code>Integrated Security=true</code> kapcsoló pedig a Windows authentikáci
 <li><strong>logikai törlés</strong> (soft delete) – törlés művelet helyett csak egy flag oszlopot (pl. <code>IsDeleted</code>) állítunk be. Előnye, hogy nem kell az idegen kulcs kényszerekkel foglalkoznunk, a törölt adat rendelkezésre áll, ha szükség lenne rá (pl. undelete művelet). Ám a működés bonyolódik, mert foglalkozni kell azzal, hogy hogyan és mikor szűrjük a törölt rekordokat (pl. hogy ne jelenjenek meg a felületen, statisztikákban), vagy hogyan kezeljük, ha egy nem törölt rekord töröltre hivatkozik.</li>
 </ul>
 </div>
-<h2 id="kitekintes">Kitekintés<a class="headerlink" href="#kitekintes" title="Permanent link">&para;</a></h2>
+<h2 id="kitekintes">Kitekintés<a class="headerlink" href="#kitekintes" title="Permanent link">¶</a></h2>
 <p>A fenti ADO.NET alapműveleteket ebben az itt látott alapformában ritkán használják két okból kifolyóan (még akkor is, ha ez a megközelítés adja a legjobb teljesítményt):</p>
 <ul>
 <li>Gyenge típusosság (egy rekord adatait beolvasni egy osztály property-jeibe igen körülményes, cast-olni kell stb.)</li>
@@ -1351,88 +945,60 @@ Az <code>Integrated Security=true</code> kapcsoló pedig a Windows authentikáci
 <li><a href="https://nhibernate.info/">NHibernate</a> – a java-s Hibernate .NET-es portja (open source)</li>
 </ul>
 <p>Az Entity Framework Core-ral részletesebben foglalkozunk az <em>Adatvezérelt rendszerek</em> specializáció tárgyban illetve a <em>Szofverfejlesztés .NET platformon</em> választható tárgyban.</p>
-
-
-
-
-
-                
-              </article>
-            </div>
-          
-          
-        </div>
-        
-          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
-            Back to top
-          </a>
-        
-      </main>
-      
-        <footer class="md-footer">
-  
-    
-    <nav class="md-footer__inner md-grid" aria-label="Élőláb" >
-      
-        
-        <a href="../4-tobbszalu/" class="md-footer__link md-footer__link--prev" aria-label="Előző: 4. Többszálú alkalmazások készítése" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Előző
-              </span>
-              4. Többszálú alkalmazások készítése
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../6-doc-view/" class="md-footer__link md-footer__link--next" aria-label="Következő: 6. Document-View architektúra" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Következő
-              </span>
-              6. Document-View architektúra
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
-  
-    <div class="md-copyright__highlight">
-      Copyright &copy; BME VIK AUT
-    </div>
-  
-  
+<hr/>
+<div class="md-source-file">
+<span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z">
+</path>
+</svg>
+</span>
+<span title="2022. december 28. 10:39:12">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2022-12-28T10:39:12+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2022-12-28</span>
+</span>
+</span>
+<span class="md-source-file__fact">
+<span class="md-icon" title="Szerzők">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z">
+</path>
+</svg>
+</span>
+<span>Szerzők</span>
+<nav><a class="md-author" href="https://github.com/bzolka" rel="noopener noreferrer" target="_blank" title="@bzolka">
+<img alt="@bzolka" src="https://avatars.githubusercontent.com/u/22932444?size=72"/>
+</a><a class="md-author" href="https://github.com/tibitoth" rel="noopener noreferrer" target="_blank" title="@tibitoth">
+<img alt="@tibitoth" src="https://avatars.githubusercontent.com/u/8333960?size=72"/>
+</a><a class="md-author" href="https://github.com/zbenedek-mirango" rel="noopener noreferrer" target="_blank" title="@zbenedek-mirango">
+<img alt="@zbenedek-mirango" src="https://avatars.githubusercontent.com/u/105201689?size=72"/>
+</a></nav>
+</span>
 </div>
-      
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            Vissza a tetejére
+          </a>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © BME VIK AUT
     </div>
-  </div>
+</div>
+</div>
+</div>
 </footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.config.lang": "hu", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Keres\u00e9s", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version.title": "Select version"}}</script>
-    
-    
-      <script src="../../assets/javascripts/bundle.8492ddcf.min.js"></script>
-      
-    
-  </body>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit"], "search": "../../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}}</script>
+<script src="../../assets/javascripts/bundle.4b2c34cd.min.js"></script>
+<script src="../../js/timeago.min.js"></script>
+<script src="../../js/timeago_mkdocs_material.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

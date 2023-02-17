@@ -1,984 +1,550 @@
 
-<!doctype html>
-<html lang="hu" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-      
-        <meta name="author" content="Benedek Zoltán">
-      
-      
-      <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.7">
-    
-    
-      
-        <title>1. A modell és a kód kapcsolata - BMEVIAUAB00 Szoftvertechnikák</title>
-      
-    
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
-      
-        
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
-        
-      
-      
+<!DOCTYPE html>
 
-    
-    
-    
-      
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-      
-    
-    
-      <link rel="stylesheet" href="../../extra-material-theme.css">
-    
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-    
-      
-
-    
-    
-    
-  </head>
-  
-  
-    
-    
-      
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red">
-  
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#1-a-modell-es-a-kod-kapcsolata" class="md-skip">
+<html class="no-js" lang="hu">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Benedek Zoltán" name="author"/>
+<link href="../.." rel="prev"/>
+<link href="../2-nyelvi-eszkozok/" rel="next"/>
+<link href="../../img/favicon.ico" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.0.12" name="generator"/>
+<title>1. A modell és a kód kapcsolata - BMEVIAUAB00 Szoftvertechnikák</title>
+<link href="../../assets/stylesheets/main.0d440cfe.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../css/timeago.css" rel="stylesheet"/>
+<link href="../../extra-material-theme.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="red" data-md-color-primary="aut" data-md-color-scheme="aut" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#1-a-modell-es-a-kod-kapcsolata">
           Kihagyás
         </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-    
-      
-
+</div>
+<div data-md-component="announce">
+</div>
 <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Élőfej">
-    <a href="../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-header__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
-      
-  <img src="../../img/logo-bme-aut.png" alt="logo">
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
+<nav aria-label="Élőfej" class="md-header__inner md-grid">
+<a aria-label="BMEVIAUAB00 Szoftvertechnikák" class="md-header__button md-logo" data-md-component="logo" href="../.." title="BMEVIAUAB00 Szoftvertechnikák">
+<img alt="logo" src="../../img/logo-bme-aut.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
             BMEVIAUAB00 Szoftvertechnikák
           </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
             
               1. A modell és a kód kapcsolata
             
           </span>
-        </div>
-      </div>
-    </div>
-    
-      <form class="md-header__option" data-md-component="palette">
-        
-          
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red"  aria-label="Váltás sötét témára"  type="radio" name="__palette" id="__palette_1">
-          
-            <label class="md-header__button md-icon" title="Váltás sötét témára" for="__palette_2" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
-            </label>
-          
-        
-          
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent=""  aria-label="Váltás világos témára"  type="radio" name="__palette" id="__palette_2">
-          
-            <label class="md-header__button md-icon" title="Váltás világos témára" for="__palette_1" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
-            </label>
-          
-        
-      </form>
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Keresés" placeholder="Keresés" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Törlés" aria-label="Törlés" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
-        </button>
-      </nav>
-      
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Váltás sötét témára" class="md-option" data-md-color-accent="red" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="aut" data-md-color-scheme="aut" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Váltás sötét témára">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"></path></svg>
+</label>
+<input aria-label="Váltás világos témára" class="md-option" data-md-color-accent="" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="red" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Váltás világos témára">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Keresés" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Keresés" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Keresés" class="md-search__options">
+<button aria-label="Törlés" class="md-search__icon md-icon" tabindex="-1" title="Törlés" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
             Keresés inicializálása
           </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+<ol class="md-search-result__list" role="presentation"></ol>
 </div>
-    
-    
-      <div class="md-header__source">
-        <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
     bmeviauab00/szoftvertechnikak
   </div>
 </a>
-      </div>
-    
-  </nav>
-  
+</div>
+</nav>
 </header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-          
-            
-<nav class="md-tabs" aria-label="Lapok" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../.." class="md-tabs__link">
+<div class="md-container" data-md-component="container">
+<nav aria-label="Lapok" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
       Szoftvertechnikák
     </a>
-  </li>
-
-      
-        
-  
-  
-    
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="./">
         Laborok
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../hazi/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../hazi/">
         Önálló/házi feladatok
       </a>
-    </li>
-  
-
-      
-    </ul>
-  </div>
+</li>
+</ul>
+</div>
 </nav>
-          
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-  
-
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigáció" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-nav__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
-      
-  <img src="../../img/logo-bme-aut.png" alt="logo">
-
-    </a>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigáció" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="BMEVIAUAB00 Szoftvertechnikák" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="BMEVIAUAB00 Szoftvertechnikák">
+<img alt="logo" src="../../img/logo-bme-aut.png"/>
+</a>
     BMEVIAUAB00 Szoftvertechnikák
   </label>
-  
-    <div class="md-nav__source">
-      <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
     bmeviauab00/szoftvertechnikak
   </div>
 </a>
-    </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
         Szoftvertechnikák
       </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2">
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
           Laborok
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Laborok" data-md-level="1">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
           Laborok
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
           1. A modell és a kód kapcsolata
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         1. A modell és a kód kapcsolata
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+<nav aria-label="Tartalomjegyzék" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       Tartalomjegyzék
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#a-gyakorlat-celja" class="md-nav__link">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#a-gyakorlat-celja">
     A gyakorlat célja
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#elofeltetelek" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#elofeltetelek">
     Előfeltételek
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#gyakorlat-menete" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gyakorlat-menete">
     Gyakorlat menete
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#1-feladat-hello-world-net-konzol-alkalmazas-elkeszitese" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-feladat-hello-world-net-konzol-alkalmazas-elkeszitese">
     1. Feladat - „Hello world” .NET konzol alkalmazás elkészítése
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#elmeleti-attekintes" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#elmeleti-attekintes">
     Elméleti áttekintés
   </a>
-  
-    <nav class="md-nav" aria-label="Elméleti áttekintés">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a-az-uml-osztalydiagram-es-a-kod-kapcsolatanak-elmelete-hallgato" class="md-nav__link">
+<nav aria-label="Elméleti áttekintés" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#a-az-uml-osztalydiagram-es-a-kod-kapcsolatanak-elmelete-hallgato">
     A) Az UML osztálydiagram és a kód kapcsolatának elmélete [hallgató]*
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#b-interfesz-es-absztrakt-ososztaly-hallgato" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#b-interfesz-es-absztrakt-ososztaly-hallgato">
     B) Interfész és absztrakt (ős)osztály [hallgató]*
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#2-feladat-az-uml-es-a-kod-kapcsolatanak-szemleltetese" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-feladat-az-uml-es-a-kod-kapcsolatanak-szemleltetese">
     2. Feladat - Az UML és a kód kapcsolatának szemléltetése
   </a>
-  
-    <nav class="md-nav" aria-label="2. Feladat - Az UML és a kód kapcsolatának szemléltetése">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#feladat-leirasa-equipment-inventory" class="md-nav__link">
+<nav aria-label="2. Feladat - Az UML és a kód kapcsolatának szemléltetése" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#feladat-leirasa-equipment-inventory">
     Feladat leírása - Equipment inventory
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#class-diagram" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#class-diagram">
     Class Diagram
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#equipmentinventory" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#equipmentinventory">
     EquipmentInventory
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#iequipment-megvalositok" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#iequipment-megvalositok">
     IEquipment megvalósítók
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#3-feladat-az-interfesz-es-az-absztrakt-ososztaly-alkalmazastechnikaja" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-feladat-az-interfesz-es-az-absztrakt-ososztaly-alkalmazastechnikaja">
     3. Feladat - Az interfész és az absztrakt ősosztály alkalmazástechnikája
   </a>
-  
-    <nav class="md-nav" aria-label="3. Feladat - Az interfész és az absztrakt ősosztály alkalmazástechnikája">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#interfesz-problematikaja" class="md-nav__link">
+<nav aria-label="3. Feladat - Az interfész és az absztrakt ősosztály alkalmazástechnikája" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#interfesz-problematikaja">
     Interfész problematikája
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#absztrakt-osztaly" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#absztrakt-osztaly">
     Absztrakt osztály
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#leszarmazottak" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#leszarmazottak">
     Leszármazottak
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#leddisplay-ose" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#leddisplay-ose">
     LedDisplay őse
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#getdescription-hasznalata" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#getdescription-hasznalata">
     GetDescription használata
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#konstruktor-kodduplikacio" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#konstruktor-kodduplikacio">
     Konstruktor kódduplikáció
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#ertekeles" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ertekeles">
     Értékelés
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#megjegyzes-opcionalis-hazi-gyakorlo-feladat" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#megjegyzes-opcionalis-hazi-gyakorlo-feladat">
     Megjegyzés - opcionális házi gyakorló feladat
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
+</ul>
 </nav>
-      
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2-nyelvi-eszkozok/" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2-nyelvi-eszkozok/">
         2. Nyelvi eszközök
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../3-felhasznaloi-felulet/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../3-felhasznaloi-felulet/">
         3. A felhasználói felület kialakítása
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../4-tobbszalu/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../4-tobbszalu/">
         4. Többszálú alkalmazások készítése
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../5-adatkezeles/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../5-adatkezeles/">
         5. Adatkezelés
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../6-doc-view/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../6-doc-view/">
         6. Document-View architektúra
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../7-tervezesi-mintak/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../7-tervezesi-mintak/">
         7. Tervezési minták
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_3">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
           Önálló/házi feladatok
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Önálló/házi feladatok" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
           Önálló/házi feladatok
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../hazi/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hazi/">
         Házi feladatok
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../hazi/1-model-es-kod-kapcsolata/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hazi/1-model-es-kod-kapcsolata/">
         1. HF - A modell és a kód kapcsolata
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../hazi/2-modern-nyelvi-eszkozok/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hazi/2-modern-nyelvi-eszkozok/">
         2. HF - Modern nyelvi eszközök
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../hazi/3-felhasznaloi-felulet-kialakitasa/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hazi/3-felhasznaloi-felulet-kialakitasa/">
         3. HF - Felhasználói felület kialakítása
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../hazi/4-tobbszalu-alkalmazasok-fejlesztese/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hazi/4-tobbszalu-alkalmazasok-fejlesztese/">
         4. HF - Többszálú alkalmazások fejlesztése
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../hazi/5-document-view-architectura/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hazi/5-document-view-architectura/">
         5. HF - Document-View architektúra
       </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../hazi/VisualStudio/" class="md-nav__link">
-        Visual Studio & .NET SDK telepítése
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hazi/VisualStudio/">
+        Visual Studio &amp; .NET SDK telepítése
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-  </ul>
+</li>
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Tartalomjegyzék" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       Tartalomjegyzék
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#a-gyakorlat-celja" class="md-nav__link">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#a-gyakorlat-celja">
     A gyakorlat célja
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#elofeltetelek" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#elofeltetelek">
     Előfeltételek
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#gyakorlat-menete" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gyakorlat-menete">
     Gyakorlat menete
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#1-feladat-hello-world-net-konzol-alkalmazas-elkeszitese" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-feladat-hello-world-net-konzol-alkalmazas-elkeszitese">
     1. Feladat - „Hello world” .NET konzol alkalmazás elkészítése
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#elmeleti-attekintes" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#elmeleti-attekintes">
     Elméleti áttekintés
   </a>
-  
-    <nav class="md-nav" aria-label="Elméleti áttekintés">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a-az-uml-osztalydiagram-es-a-kod-kapcsolatanak-elmelete-hallgato" class="md-nav__link">
+<nav aria-label="Elméleti áttekintés" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#a-az-uml-osztalydiagram-es-a-kod-kapcsolatanak-elmelete-hallgato">
     A) Az UML osztálydiagram és a kód kapcsolatának elmélete [hallgató]*
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#b-interfesz-es-absztrakt-ososztaly-hallgato" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#b-interfesz-es-absztrakt-ososztaly-hallgato">
     B) Interfész és absztrakt (ős)osztály [hallgató]*
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#2-feladat-az-uml-es-a-kod-kapcsolatanak-szemleltetese" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-feladat-az-uml-es-a-kod-kapcsolatanak-szemleltetese">
     2. Feladat - Az UML és a kód kapcsolatának szemléltetése
   </a>
-  
-    <nav class="md-nav" aria-label="2. Feladat - Az UML és a kód kapcsolatának szemléltetése">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#feladat-leirasa-equipment-inventory" class="md-nav__link">
+<nav aria-label="2. Feladat - Az UML és a kód kapcsolatának szemléltetése" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#feladat-leirasa-equipment-inventory">
     Feladat leírása - Equipment inventory
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#class-diagram" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#class-diagram">
     Class Diagram
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#equipmentinventory" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#equipmentinventory">
     EquipmentInventory
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#iequipment-megvalositok" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#iequipment-megvalositok">
     IEquipment megvalósítók
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#3-feladat-az-interfesz-es-az-absztrakt-ososztaly-alkalmazastechnikaja" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-feladat-az-interfesz-es-az-absztrakt-ososztaly-alkalmazastechnikaja">
     3. Feladat - Az interfész és az absztrakt ősosztály alkalmazástechnikája
   </a>
-  
-    <nav class="md-nav" aria-label="3. Feladat - Az interfész és az absztrakt ősosztály alkalmazástechnikája">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#interfesz-problematikaja" class="md-nav__link">
+<nav aria-label="3. Feladat - Az interfész és az absztrakt ősosztály alkalmazástechnikája" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#interfesz-problematikaja">
     Interfész problematikája
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#absztrakt-osztaly" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#absztrakt-osztaly">
     Absztrakt osztály
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#leszarmazottak" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#leszarmazottak">
     Leszármazottak
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#leddisplay-ose" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#leddisplay-ose">
     LedDisplay őse
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#getdescription-hasznalata" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#getdescription-hasznalata">
     GetDescription használata
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#konstruktor-kodduplikacio" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#konstruktor-kodduplikacio">
     Konstruktor kódduplikáció
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#ertekeles" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ertekeles">
     Értékelés
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#megjegyzes-opcionalis-hazi-gyakorlo-feladat" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#megjegyzes-opcionalis-hazi-gyakorlo-feladat">
     Megjegyzés - opcionális házi gyakorló feladat
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          
-            <div class="md-content" data-md-component="content">
-              <article class="md-content__inner md-typeset">
-                
-                  
-
-  <a href="https://github.com/bmeviauab00/szoftvertechnikak/edit/master/docs/labor/1-model-es-kod-kapcsolata/index.md" title="Oldal szerkesztése" class="md-content__button md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
-  </a>
-
-
-<h1 id="1-a-modell-es-a-kod-kapcsolata">1. A modell és a kód kapcsolata<a class="headerlink" href="#1-a-modell-es-a-kod-kapcsolata" title="Permanent link">&para;</a></h1>
-<p>Utolsó módosítás ideje: 2022.10.15<br />
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/bmeviauab00/szoftvertechnikak/edit/master/docs/labor/1-model-es-kod-kapcsolata/index.md" title="Oldal szerkesztése">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"></path></svg>
+</a>
+<h1 id="1-a-modell-es-a-kod-kapcsolata">1. A modell és a kód kapcsolata<a class="headerlink" href="#1-a-modell-es-a-kod-kapcsolata" title="Permanent link">¶</a></h1>
+<p>Utolsó módosítás ideje: 2022.10.15<br/>
 Kidolgozta: Benedek Zoltán</p>
-<h2 id="a-gyakorlat-celja">A gyakorlat célja<a class="headerlink" href="#a-gyakorlat-celja" title="Permanent link">&para;</a></h2>
+<h2 id="a-gyakorlat-celja">A gyakorlat célja<a class="headerlink" href="#a-gyakorlat-celja" title="Permanent link">¶</a></h2>
 <p>A gyakorlat célja:</p>
 <ul>
 <li>Ismerkedés a hallgatókkal/gyakorlatvezetővel</li>
@@ -992,7 +558,7 @@ Kidolgozta: Benedek Zoltán</p>
 <summary>Gyakorlatvezetőknek</summary>
 <p>A hallgatók korábbi tanulmányaik során C++ gyakorlaton már használták a Visual Studio környezet, így a cél jelen esetben az ismeretek felelevenítése és életünk első C# alkalmazásának elkészítése. Ugyanakkor előfordulhat, hogy a hallgatók nem emlékeznek pontosan a Visual Studio használatára, így a feladatok megoldása során ezeket folyamatosan elevenítsük fel (pl. Solution Explorer, F5-futtatás, breakpoint használat, stb.)</p>
 </details>
-<h2 id="elofeltetelek">Előfeltételek<a class="headerlink" href="#elofeltetelek" title="Permanent link">&para;</a></h2>
+<h2 id="elofeltetelek">Előfeltételek<a class="headerlink" href="#elofeltetelek" title="Permanent link">¶</a></h2>
 <p>A gyakorlat elvégzéséhez szükséges eszközök:</p>
 <ul>
 <li>Visual Studio 2022</li>
@@ -1006,7 +572,7 @@ Kidolgozta: Benedek Zoltán</p>
 <li>A megjelenő ablakban „Individual components” fül kiválasztása</li>
 <li>
 <p>A keresőmezőbe „class designer” begépelése, majd győződjünk meg, hogy a szűrt listában a „Class Designer” elem ki van pipálva.</p>
-<p><img alt="Osztálydiagram támogatás telepítés" src="images/vs-isntaller-add-class-diagram.png" /></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/vs-isntaller-add-class-diagram.png"><img alt="Osztálydiagram támogatás telepítés" src="images/vs-isntaller-add-class-diagram.png"/></a></p>
 </li>
 </ol>
 </div>
@@ -1014,7 +580,7 @@ Kidolgozta: Benedek Zoltán</p>
 <ul>
 <li>A gyakorlathoz nem kapcsolódik a tárgyból előadás. Ugyanakkor a gyakorlat épít az UML alapismeretekre, illetve az UML osztálydiagram és a kód egymásra történő leképezésének alapjaira.</li>
 </ul>
-<h2 id="gyakorlat-menete">Gyakorlat menete<a class="headerlink" href="#gyakorlat-menete" title="Permanent link">&para;</a></h2>
+<h2 id="gyakorlat-menete">Gyakorlat menete<a class="headerlink" href="#gyakorlat-menete" title="Permanent link">¶</a></h2>
 <p>A gyakorlatvezető a gyakorlat elején összefoglalja a gyakorlatokra vonatkozó követelményeket:</p>
 <ul>
 <li>A tárgyi adatlapon ezek többsége megtalálható</li>
@@ -1022,7 +588,7 @@ Kidolgozta: Benedek Zoltán</p>
 </ul>
 <p>Visual Studio fejlesztőeszközzel, .NET alkalmazásokat fogunk készíteni C# nyelven. A C#  hasonlít a Java-hoz, fokozatosan ismerjük meg a különbségeket.
 A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek elvégzésre a feladatok.</p>
-<h2 id="1-feladat-hello-world-net-konzol-alkalmazas-elkeszitese">1. Feladat - „Hello world” .NET konzol alkalmazás elkészítése<a class="headerlink" href="#1-feladat-hello-world-net-konzol-alkalmazas-elkeszitese" title="Permanent link">&para;</a></h2>
+<h2 id="1-feladat-hello-world-net-konzol-alkalmazas-elkeszitese">1. Feladat - „Hello world” .NET konzol alkalmazás elkészítése<a class="headerlink" href="#1-feladat-hello-world-net-konzol-alkalmazas-elkeszitese" title="Permanent link">¶</a></h2>
 <p>A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, amely a konzolra kiírja a „Hello world!” szöveget.</p>
 <p>Az alkalmazást C# nyelven készítjük el. A lefordított alkalmazás futtatását a .NET runtime végzi. A fordítás/futtatás elméleti hátterét, valamint a .NET alapjait az első előadás ismerteti.</p>
 <p>A solution és azon belüli projekt létrehozásának lépései Visual Studio 2022 esetén:</p>
@@ -1041,13 +607,13 @@ A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek e
 </li>
 <li>
 <p>A Create new project varázslóban a <em>Console app</em> (és <strong>NEM</strong> a <em>Console app (.NET Framework)</em> sablont válasszuk ki, ebből is a C#-osat. Azt, hogy C#-os, a sablon ikonjának bal felső sarka jelzi. Ha nem látjuk a listában, rá kell keresni/szűrni. Rákereshetünk a felső keresősávban a „console” beírásával. Vagy az alatta levő lenyíló mezők segítségével: az elsőben (nyelvkiválasztó) „C#”, a harmadikban (projekttípus kiválasztó) „Console”.</p>
-<p><img alt="Projekt létrehozása" src="images/vs-create-new-project-wizard.png" /></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/vs-create-new-project-wizard.png"><img alt="Projekt létrehozása" src="images/vs-create-new-project-wizard.png"/></a></p>
 </li>
 <li>
 <p>Next gomb az varázslóablak alján, a következő varázslóoldalon:</p>
 <ol>
 <li>Project name: <strong>Hello World</strong></li>
-<li>Location: a laborokban a <strong>c:\work\<sajátnév></strong> mappába dolgozzunk, ehhez van írási jogunk.</li>
+<li>Location: a laborokban a <strong>c:\work\<sajátnév></sajátnév></strong> mappába dolgozzunk, ehhez van írási jogunk.</li>
 <li>Solution name: <strong>Hello World</strong> (elvileg ez be is lesz írva, mire ideérünk)</li>
 <li>Place solution and project in the same directory: nincs pipa (de nincs különösebb jelentősége).</li>
 </ol>
@@ -1062,35 +628,35 @@ A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek e
 </ol>
 <p>A projekttel egy új solution is létrejön, mely struktúrája a Visual Studio <em>Solution Explorer</em> ablakában tekinthető át. Egy solution több projectből állhat, egy project pedig több fájlból. A solution a teljes munkakörnyezetet fogja össze (egy <code>.sln</code> kiterjesztésű fájl tartozik hozzá), míg egy projekt kimenete egy <code>.exe</code> vagy <code>.dll</code> fájl jellemzően, vagyis egy összetett alkalmazás/rendszer egy komponensét állítja elő. A projektfájlok kiterjesztése C# alkalmazások esetén <code>.csproj</code>.</p>
 <p>A <code>Program.cs</code> fájlunk tartalma a következő:</p>
-<div class="highlight"><span class="filename">Program.cs</span><pre><span></span><code><span class="k">namespace</span><span class="w"> </span><span class="nn">HelloWorld</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">internal</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Program</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><span class="filename">Program.cs</span><pre><span></span><code><span class="k">namespace</span><span class="w"> </span><span class="nn">HelloWorld</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">internal</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Program</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Hello World!"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>Vegyünk fel egy <code>Console.ReadKey()</code> sort:</p>
-<div class="highlight"><pre><span></span><code><span class="k">namespace</span><span class="w"> </span><span class="nn">HelloWorld</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">internal</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Program</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="hll"><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">ReadKey</span><span class="p">();</span><span class="w"></span>
-</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">namespace</span><span class="w"> </span><span class="nn">HelloWorld</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">internal</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Program</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Hello World!"</span><span class="p">);</span>
+<span class="hll"><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">ReadKey</span><span class="p">();</span>
+</span><span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <ol>
 <li>
 <p>Futtassuk az alkalmazást (pl. az <strong>F5</strong> billentyű használatával).</p>
 <p>A kód felépítése nagyon hasonlít a Java-hoz, illetve a C++-hoz. Az osztályaink névterekbe szervezettek. Névteret definiálni a <code>namespace</code> kulcsszóval tudunk. Névtereket hatókörbe „hozni” a <code>using</code> kulcsszóval tudjuk.  pl.:</p>
-<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections.Generic</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections.Generic</span><span class="p">;</span>
 </code></pre></div>
 </li>
 <li>
@@ -1102,7 +668,7 @@ A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek e
 <p class="admonition-title">Top level statements, Implicit és static usings és névterek</p>
 <p>A projekt létrehozásakor korábban bepipáltuk a "Do not use top level statements" jelölőnégyzetet. Ha ezt nem tettük volna meg, akkor a <code>Program.cs</code> fájlunkban mindössze egyetlen érdemi sort találtunk volna:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// See https://aka.ms/new-console-template for more information</span>
-<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Hello World!"</span><span class="p">);</span>
 </code></pre></div>
 <p>Ez  működésében ekvivalens a fenti <code>Program</code> osztályt és ebben <code>Main</code> függvényt tartalmazó kóddal. Nézzük, mik teszik ezt lehetővé (ezekről pl. itt <a href="https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/top-level-statements">https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/top-level-statements</a> olvashatunk bővebben, mindkettő C# 10 újdonság):</p>
 <ul>
@@ -1110,28 +676,28 @@ A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek e
 <li><strong>Implicit global usings</strong>. Annak függvényében, hogy pontosan milyen projekttípust hoztunk létre, bizonyos alapnévterek a színfalak mögött automatikusan using-olva lesznek minden forrásfájlban (ehhez a compiler a <em>global using</em> utasítást használja). A lényeg: a fejlesztőknek így bizonyos, gyakran használt névtereket (pl. <code>System.IO</code>, <code>System.Collections.Generic</code> stb.) nem kell a forrásfájlonként using-olni.</li>
 <li>
 <p><strong>Static using</strong>. Lehetőségünk van C#-ban névterek helyett statikus osztályokat is usingolni, így azokat a használatuk során nem fontos kiírni. Gyakori eset erre a <code>Console</code> vagy a <code>Math</code> osztály usingolása.</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="k">using</span><span class="w"> </span><span class="nn">static</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="k">using</span><span class="w"> </span><span class="nn">static</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">;</span>
 </span>
-<span class="k">namespace</span><span class="w"> </span><span class="nn">ConsoleApp12</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">internal</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Program</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="hll"><span class="w">            </span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span><span class="w"></span>
-</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">ConsoleApp12</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">internal</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Program</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="hll"><span class="w">            </span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Hello, World!"</span><span class="p">);</span>
+</span><span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 </li>
 <li>
 <p><strong>Fájl szintű névterek</strong>. C# 10-ben szintén egy egyszerűsítést kapunk a névterek deklarálása során, mert már nem kötelező a kapcsos zárójeleket kitenni, így az adott namespace a teljes fájlra érvényes lesz pl.:</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="k">namespace</span><span class="w"> </span><span class="nn">HelloWorld</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="k">namespace</span><span class="w"> </span><span class="nn">HelloWorld</span><span class="p">;</span>
 </span>
-<span class="k">internal</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Program</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="k">internal</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Program</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="c1">// ...</span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">}</span>
 </code></pre></div>
 </li>
 </ul>
@@ -1144,17 +710,17 @@ A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek e
 <li><code>public</code>: a típus más szerelvények/projektek számára is látható</li>
 </ul>
 <p>A hiba legegyszerűbben úgy hárítható el, ha minden típusunkat publikusnak definiáljuk, pl.:</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">HardDisk</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">HardDisk</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="c1">// ...</span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">}</span>
 </code></pre></div>
 </div>
-<h2 id="elmeleti-attekintes">Elméleti áttekintés<a class="headerlink" href="#elmeleti-attekintes" title="Permanent link">&para;</a></h2>
+<h2 id="elmeleti-attekintes">Elméleti áttekintés<a class="headerlink" href="#elmeleti-attekintes" title="Permanent link">¶</a></h2>
 <p>Az alfejezetek nem tartalmaznak feladatot, a hallgatók számára ismertetik a kapcsolódó elméleti témaköröket, példákkal illusztrálva.</p>
-<h3 id="a-az-uml-osztalydiagram-es-a-kod-kapcsolatanak-elmelete-hallgato">A) Az UML osztálydiagram és a kód kapcsolatának elmélete [hallgató]*<a class="headerlink" href="#a-az-uml-osztalydiagram-es-a-kod-kapcsolatanak-elmelete-hallgato" title="Permanent link">&para;</a></h3>
+<h3 id="a-az-uml-osztalydiagram-es-a-kod-kapcsolatanak-elmelete-hallgato">A) Az UML osztálydiagram és a kód kapcsolatának elmélete [hallgató]*<a class="headerlink" href="#a-az-uml-osztalydiagram-es-a-kod-kapcsolatanak-elmelete-hallgato" title="Permanent link">¶</a></h3>
 <p>Az anyag itt elérhető: <a href="../../egyeb/uml-kod-kapcsolata/">Az UML osztálydiagram és a kód kapcsolata</a>. Ez a témakör korábbi félévben a Szoftvertechnológia tárgy keretében került ismertetésre.</p>
-<h3 id="b-interfesz-es-absztrakt-ososztaly-hallgato">B) Interfész és absztrakt (ős)osztály [hallgató]*<a class="headerlink" href="#b-interfesz-es-absztrakt-ososztaly-hallgato" title="Permanent link">&para;</a></h3>
+<h3 id="b-interfesz-es-absztrakt-ososztaly-hallgato">B) Interfész és absztrakt (ős)osztály [hallgató]*<a class="headerlink" href="#b-interfesz-es-absztrakt-ososztaly-hallgato" title="Permanent link">¶</a></h3>
 <p>Az anyag itt elérhető: <a href="../../egyeb/interfesz-es-absztrakt-os/">Interfész és absztrakt (ős)osztály</a>.</p>
 <p>Témakörök:</p>
 <ul>
@@ -1162,8 +728,8 @@ A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek e
 <li>Interfész fogalma és definiálása C# nyelven</li>
 <li>Absztrakt ős és interfész összehasonlítása</li>
 </ul>
-<h2 id="2-feladat-az-uml-es-a-kod-kapcsolatanak-szemleltetese">2. Feladat - Az UML és a kód kapcsolatának szemléltetése<a class="headerlink" href="#2-feladat-az-uml-es-a-kod-kapcsolatanak-szemleltetese" title="Permanent link">&para;</a></h2>
-<h3 id="feladat-leirasa-equipment-inventory">Feladat leírása - Equipment inventory<a class="headerlink" href="#feladat-leirasa-equipment-inventory" title="Permanent link">&para;</a></h3>
+<h2 id="2-feladat-az-uml-es-a-kod-kapcsolatanak-szemleltetese">2. Feladat - Az UML és a kód kapcsolatának szemléltetése<a class="headerlink" href="#2-feladat-az-uml-es-a-kod-kapcsolatanak-szemleltetese" title="Permanent link">¶</a></h2>
+<h3 id="feladat-leirasa-equipment-inventory">Feladat leírása - Equipment inventory<a class="headerlink" href="#feladat-leirasa-equipment-inventory" title="Permanent link">¶</a></h3>
 <p>Feladat: Egy számítógépalkatrész nyilvántartó alkalmazás kifejlesztésével bíztak meg bennünket. Bővebben:</p>
 <ul>
 <li>Különböző típusú alkatrészeket kell tudni kezelni. Kezdetben a <code>HardDisk</code>, <code>SoundCard</code> és <code>LedDisplay</code> típusokat kell támogatni, de a rendszer legyen könnyen bővíthető új típusokkal.</li>
@@ -1174,7 +740,7 @@ A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek e
 </ul>
 <p>A megvalósítás során jelentős egyszerűsítéssel élünk: az alkatrészeket csak memóriában tarjuk nyilván, a listázás is a lehető legegyszerűbb, egyszerűen csak kiírjuk a nyilvántartott alkatrészek adatait a konzolra.</p>
 <p>A kezdeti egyeztetések során a megrendelőnktől a következő információt kapjuk: egy belső munkatársuk már elindult a fejlesztéssel, de idő hiányában csak félkész megoldásig jutott. A feladatunk részét képezi a félkész megoldás megismerése, illetve ebből kiindulva kell a feladatot megvalósítani.</p>
-<h3 id="class-diagram">Class Diagram<a class="headerlink" href="#class-diagram" title="Permanent link">&para;</a></h3>
+<h3 id="class-diagram">Class Diagram<a class="headerlink" href="#class-diagram" title="Permanent link">¶</a></h3>
 <p>Nyissuk meg a megrendelőnktől kapott <a href="https://github.com/bmeviauab00/lab-modellkod-kiindulo">forráskód</a> solution-jét, melyet a következő lépéseket követve tudunk megtenni.</p>
 <p>Ehhez klónozzuk le a kiinduló projekt online GitHub rendszerben elérhető Git repositoryját a <code>C:\Work</code> mappán belül egy új saját mappába: pl.: <code>C:\Work\NEPTUN\lab1</code>. Ebben az új mappában nyissunk meg egy command line-t vagy powershellt és futtassuk az alábbi git parancsot:</p>
 <div class="highlight"><pre><span></span><code>git clone https://github.com/bmeviauab00/lab-modellkod-kiindulo.git
@@ -1190,7 +756,7 @@ A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek e
 <p>Ha a <em>Class Diagram</em> elem nem jelenik meg a listában, akkor nincs telepítve a VS megfelelő komponense. Erről jelen dokumentum <a href="#elofeltetelek">Előfeltételek</a> fejezetében olvashatsz bővebben.</p>
 </div>
 <p>Ekkor a Solution Explorerben megjelenik a <code>Main.cd</code> diagramfájl, duplakattintással nyissuk meg. A diagramunk jelenleg üres. A Solution Explorerből drag&amp;drop-pal dobjuk rá a .cs forrásfájlokat a diagramra. Ekkor a VS megnézi, milyen osztályok vannak ezekben a forrásfájlokban, és visszafejti őket UML osztályokká. Alakítsuk ki a következő ábrának megfelelő elrendezést (az osztályok tagjainak megjelenítését a téglalapuk jobb felső sarkában levő duplanyílra kattintással érhetjük el):</p>
-<p><img alt="Kiinduló osztálydiagram" src="images/class-diagram-initial.png" /></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/class-diagram-initial.png"><img alt="Kiinduló osztálydiagram" src="images/class-diagram-initial.png"/></a></p>
 <p>Az osztályokhoz tartozó forráskódot is megnézhetjük, akár a diagramon a megfelelő osztályra duplán kattintva, akár a Solution Explorerből a .cs fájlokat megnyitva.
 A következőket tapasztaljuk:</p>
 <ul>
@@ -1199,94 +765,94 @@ A következőket tapasztaljuk:</p>
 <li>Az <code>EquipmentInventory</code> felelős ugyan a készleten levő alkatrészek nyilvántartásáért, de gyakorlatilag semmi nincs ebből megvalósítva.</li>
 <li>Találunk egy <code>IEquipment</code> interfészt, <code>GetAge</code> és <code>GetPrice</code> műveletekkel</li>
 </ul>
-<h3 id="equipmentinventory">EquipmentInventory<a class="headerlink" href="#equipmentinventory" title="Permanent link">&para;</a></h3>
+<h3 id="equipmentinventory">EquipmentInventory<a class="headerlink" href="#equipmentinventory" title="Permanent link">¶</a></h3>
 <p>Álljunk neki a megoldás kidolgozásának. Először is az alapkoncepciókat fektessük le. Az <code>EquipmentInventory</code> osztályban egy heterogén kollekcióban tároljuk a különböző alkatrész típusokat. Ez a kulcsa az alkatrészek egységes kezelésének, vagyis annak, hogy a megoldásunk új alkatrésztípusokkal könnyen bővíthető legyen.</p>
 <p>Mint korábban taglaltuk, az egységes kezelést vagy közös ősosztály, vagy közös interfész bevezetésével lehet megoldani. Esetünkben a közös ősosztály (pl. <code>EquipmentBase</code>) úgy tűnik, kiesik, mert ennek bevezetésével az <code>LedDisplay</code> osztálynak két ősosztálya is lenne: a kötelezőnek kikötött <code>DisplayBase</code>, és az általunk az egységes kezelésre bevezetett <code>EquipmentBase</code>. Ez nem lehetséges, .NET környezetben egy osztálynak csak egy őse lehet. Az a megoldás pedig, hogy a <code>DisplayBase</code>-t úgy módosítjuk, hogy ő is az <code>EquipmentBase</code>-ből származik, a követelményünknek megfelelően nem lehetséges (kikötés volt, hogy a forráskódja nem módosítható). Marad tehát az interfész alapú megközelítés. Minden bizonnyal az alkalmazás korábbi fejlesztője is erre a következtetésre jutott, ezért is vezette be az <code>IEquipment</code> interfészt.</p>
 <p>Vegyünk fel egy <code>IEquipment</code> típusú elemekből álló generikus listát (ne property-t hanem field-et!) az <code>EquipmentInventory</code> osztályba. A láthatósága – az egységbezárásra törekedve – legyen <code>private</code>. A neve legyen <code>equipment</code> (ne legyen „s” a végén, angolban az equipment többes száma is equipment). A tagváltozó felvételéhez a Visual Studio <em>Class Details</em> ablakát használjuk. Ha az ablak nem látható, a <em>View / Other Windows / Class Details</em> menü kiválasztásával jeleníthető meg.</p>
-<p><img alt="Class Details" src="images/class-details.png" /></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/class-details.png"><img alt="Class Details" src="images/class-details.png"/></a></p>
 <p>A tagváltozó típusa tehát <code>List&lt;IEquipment&gt;</code>. A .NET <code>List</code> típusa egy dinamikusan nyújtózkodó generikus tömb (mint Java-ban az <code>ArrayList</code>).
 A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk, hogy csak a tagváltozó neve jelenik meg, a típusa nem. A diagram hátterén jobb gombbal kattintva a <em>Change Members Format</em> menüből a <em>Display Full Signature</em>-t válasszuk ki. Ezt követően a diagramon láthatóvá válik a tagváltozók típusa, valamint a műveletek teljes szignatúrája.</p>
-<p><img alt="EquipmentInventory" src="images/equipmentinventory.png" /></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/equipmentinventory.png"><img alt="EquipmentInventory" src="images/equipmentinventory.png"/></a></p>
 <p>Az <code>EquipmentInventory</code> osztályon duplán kattintva elnavigálhatunk a forráskódba, és mint látható, valóban egy lista típusú tagváltozóként jelenik meg a kódban:</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">EquipmentInventory</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="hll"><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">List</span><span class="p">&lt;</span><span class="n">IEquipment</span><span class="p">&gt;</span><span class="w"> </span><span class="n">equipment</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">EquipmentInventory</span>
+<span class="p">{</span>
+<span class="hll"><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">IEquipment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">equipment</span><span class="p">;</span>
 </span></code></pre></div>
 <p>Ennek egyrészt örülünk, mert a Visual Studio támogatja a round-trip engineering technikát: <strong>a modellt érintő változásokat azonnal átvezeti a kódba, és viszont</strong>. Másrészt a korábbiakban azt taglaltuk, hogy ha egy osztályban egy gyűjtemény tag van egy másik osztály elemeiből, akkor annak az UML modellben egy 1-több típusú asszociációs kapcsolatként „illik” megjelennie a két osztály között. A modellünkben egyelőre nem ezt tapasztaljuk. Szerencsére a VS modellező felülete rávehető, hogy ilyen formában jelenítse meg ezt a kapcsolattípust. Ehhez kattintsunk a diagramon jobb gombbal az equipment tagváltozón, és a menüből válasszuk ki a <em>Show as Collection Association</em> elemet. Az <code>IEquipment</code> interfészt ezt követően mozgassuk ki jobbra, hogy kellő hely legyen a diagramon az asszociációs kapcsolat és a kapcsolaton levő szerep (role) adatainak megjelenítésére:</p>
-<p><img alt="Collection association" src="images/collection-association.png" /></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/collection-association.png"><img alt="Collection association" src="images/collection-association.png"/></a></p>
 <p>A dupla nyíl végződés a „többes” oldalon nem szabványos UML, de ne szomorodjunk el tőle különösebben, nincs semmi jelentősége. Annak mindenképpen örülünk, hogy  a kapcsolatot reprezentáló nyíl az <code>IEquipment</code> végén a szerepben a tagváltozó neve (sőt, még a pontos típusa is) fel van tüntetve.</p>
 <p>Navigáljunk el az <code>EquipmentInventory</code> forráskódjához, és írjuk meg a konstruktorát, ami inicializálja az <code>equipment</code> gyűjteményt!</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">EquipmentInventory</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">equipment</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="p">&lt;</span><span class="n">IEquipment</span><span class="p">&gt;();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">EquipmentInventory</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">equipment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">IEquipment</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>Ezután írjuk meg a <code>ListAll</code> metódust, ami kiírja az elemek életkorát, és az aktuális értéküket:</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ListAll</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="n">IEquipment</span><span class="w"> </span><span class="n">eq</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">equipment</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;Életkor: {eq.GetAge()}\tÉrtéke: {eq.GetPrice()}&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ListAll</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="n">IEquipment</span><span class="w"> </span><span class="n">eq</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">equipment</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"Életkor: {eq.GetAge()}\tÉrtéke: {eq.GetPrice()}"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>Az elemeken a <code>foreach</code> utasítással iterálunk végig. A <code>foreach</code> utasítás használata során az <code>in</code> kulcsszó után egy gyűjteménynek kell állnia, az <code>in</code> előtt pedig egy változó deklarációnak (esetünkben <code>IEquipment eq</code>), ahol a típus a gyűjtemény elemtípusa. Minden iterációban ez a változó a gyűjtemény iterációbeli értékét veszi fel.</p>
 <p>A <code>Console.WriteLine</code> műveletnek vagy egy egyszerű stringet adunk meg, vagy, mint esetünkben, egy formázási stringet. A behelyettesítéseket string interpolációval oldottuk meg: a behelyettesítendő értékeket <code>{}</code> között kell megadni. Ha string interpolációt használunk, a stringnek <code>$</code> jellel kell kezdődnie.</p>
 <p>Írjunk meg egy <code>AddEquipment</code> nevű függvényt, ami felvesz egy új eszközt a készletbe:</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">AddEquipment</span><span class="p">(</span><span class="n">IEquipment</span><span class="w"> </span><span class="n">eq</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">     </span><span class="n">equipment</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">eq</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">AddEquipment</span><span class="p">(</span><span class="n">IEquipment</span><span class="w"> </span><span class="n">eq</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">     </span><span class="n">equipment</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">eq</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
-<h3 id="iequipment-megvalositok">IEquipment megvalósítók<a class="headerlink" href="#iequipment-megvalositok" title="Permanent link">&para;</a></h3>
+<h3 id="iequipment-megvalositok">IEquipment megvalósítók<a class="headerlink" href="#iequipment-megvalositok" title="Permanent link">¶</a></h3>
 <p>Korábbi döntésünk értelmében az <code>IEquipment</code> interfészt használjuk az különböző alkatrész típusok egységes kezelésére. Estünkben mind a <code>SoundCard</code>, mind a <code>HardDisk</code> osztály rendelkezik <code>GetAge()</code> és <code>GetPrice()</code> metódussal, mégsem tudjuk őket egységesen kezelni (pl. közös listában tárolni). Ahhoz, hogy ezt meg tudjuk tenni, el kell érnünk, hogy mindkét osztály megvalósítsa az <code>IEquipment</code> interfészt. Módosítsuk a forrásukat:</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SoundCard</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SoundCard</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">HardDisk</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">HardDisk</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span>
 </code></pre></div>
 <p>Ezt követően a <code>SoundCard</code> és <code>HardDisk</code> osztályban implementálnunk kell az <code>IEquipment</code> interfészben levő metódusokat. Azt tapasztaljuk, hogy ezzel nincs most teendők, a <code>GetPrice</code> és <code>GetAge</code> függvények már meg vannak írva mindkét helyen.</p>
 <p>Próbaképpen a <code>Program.cs</code> fájlban található <code>Main</code> függvényünkben hozzunk létre egy <code>EquipmentInventory</code> objektumot, töltsük fel <code>HardDisk</code> és <code>SoundCard</code> objektumokkal, majd listázzuk a késztelet a konzolra. Ammennyiben nem 2021 az aktuális év, az alábbi soroknál a 2021-es évet írjuk át az aktuális évre, a 2020-at pedig ennél eggyel kisebb számra!</p>
-<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">EquipmentInventory</span><span class="w"> </span><span class="n">ei</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EquipmentInventory</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="w"> </span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">EquipmentInventory</span><span class="w"> </span><span class="n">ei</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EquipmentInventory</span><span class="p">();</span>
 
-<span class="w">    </span><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HardDisk</span><span class="p">(</span><span class="m">2021</span><span class="p">,</span><span class="w"> </span><span class="m">30000</span><span class="p">,</span><span class="w"> </span><span class="m">80</span><span class="p">));</span><span class="w"></span>
-<span class="w">    </span><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HardDisk</span><span class="p">(</span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">25000</span><span class="p">,</span><span class="w"> </span><span class="m">120</span><span class="p">));</span><span class="w"></span>
-<span class="w">    </span><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HardDisk</span><span class="p">(</span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">25000</span><span class="p">,</span><span class="w"> </span><span class="m">250</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HardDisk</span><span class="p">(</span><span class="m">2021</span><span class="p">,</span><span class="w"> </span><span class="m">30000</span><span class="p">,</span><span class="w"> </span><span class="m">80</span><span class="p">));</span>
+<span class="w">    </span><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HardDisk</span><span class="p">(</span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">25000</span><span class="p">,</span><span class="w"> </span><span class="m">120</span><span class="p">));</span>
+<span class="w">    </span><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HardDisk</span><span class="p">(</span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">25000</span><span class="p">,</span><span class="w"> </span><span class="m">250</span><span class="p">));</span>
 
-<span class="w">    </span><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">SoundCard</span><span class="p">(</span><span class="m">2021</span><span class="p">,</span><span class="w"> </span><span class="m">8000</span><span class="p">));</span><span class="w"></span>
-<span class="w">    </span><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">SoundCard</span><span class="p">(</span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">7000</span><span class="p">));</span><span class="w"></span>
-<span class="w">    </span><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">SoundCard</span><span class="p">(</span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">6000</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">SoundCard</span><span class="p">(</span><span class="m">2021</span><span class="p">,</span><span class="w"> </span><span class="m">8000</span><span class="p">));</span>
+<span class="w">    </span><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">SoundCard</span><span class="p">(</span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">7000</span><span class="p">));</span>
+<span class="w">    </span><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">SoundCard</span><span class="p">(</span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">6000</span><span class="p">));</span>
 
-<span class="w">    </span><span class="n">ei</span><span class="p">.</span><span class="n">ListAll</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">ei</span><span class="p">.</span><span class="n">ListAll</span><span class="p">();</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>Az alkalmazást futtatva azt tapasztaljuk, hogy bár megoldásunk kezdetleges, de működik:</p>
-<p><img alt="Console kimenet" src="images/console-out-1.png" /></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/console-out-1.png"><img alt="Console kimenet" src="images/console-out-1.png"/></a></p>
 <p>Folytassuk a munkát a <code>LedDisplay</code> osztállyal. A <code>DisplayBase</code> ős forráskódját a követelmények miatt nem módosíthatjuk. De ez semmiféle problémát nem okoz, a <code>LedDisplay</code> osztályunk fogja az <code>IEquipment</code> interfészt implementálni, módosítsuk a kódot ennek megfelelően:</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LedDisplay</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">DisplayBase</span><span class="p">,</span><span class="w"> </span><span class="n">IEquipment</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LedDisplay</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">DisplayBase</span><span class="p">,</span><span class="w"> </span><span class="n">IEquipment</span>
 </code></pre></div>
 <p>A <code>LedDisplay</code> osztályban már meg kell írni az interfészben szereplő függvényeket:</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">price</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">price</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetAge</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="p">-</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">manufacturingYear</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetAge</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">manufacturingYear</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>Bővítsük a <code>Main</code> függvényünket is, vegyünk fel két <code>LedDisplay</code> objektumot a készletünkbe (itt is él, hogy ammennyiben nem 2021 az aktuális év, az alábbi soroknál a 2021-es évet írjuk át az aktuális évre, a 2020-at pedig ennél eggyel kisebb számra!</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LedDisplay</span><span class="p">(</span><span class="w"> </span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">80000</span><span class="p">,</span><span class="w"> </span><span class="m">17</span><span class="p">,</span><span class="w"> </span><span class="m">16</span><span class="p">)</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
-</span><span class="hll"><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LedDisplay</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="m">2021</span><span class="p">,</span><span class="w"> </span><span class="m">70000</span><span class="p">,</span><span class="w"> </span><span class="m">17</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">)</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LedDisplay</span><span class="p">(</span><span class="w"> </span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">80000</span><span class="p">,</span><span class="w"> </span><span class="m">17</span><span class="p">,</span><span class="w"> </span><span class="m">16</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+</span><span class="hll"><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LedDisplay</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="m">2021</span><span class="p">,</span><span class="w"> </span><span class="m">70000</span><span class="p">,</span><span class="w"> </span><span class="m">17</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
 </span>
-<span class="n">ei</span><span class="p">.</span><span class="n">ListAll</span><span class="p">();</span><span class="w"></span>
-<span class="n">Console</span><span class="p">.</span><span class="n">ReadKey</span><span class="p">();</span><span class="w"></span>
+<span class="n">ei</span><span class="p">.</span><span class="n">ListAll</span><span class="p">();</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">ReadKey</span><span class="p">();</span>
 </code></pre></div>
 <p>Tesztelésképpen futtassuk az alkalmazást.</p>
-<h2 id="3-feladat-az-interfesz-es-az-absztrakt-ososztaly-alkalmazastechnikaja">3. Feladat - Az interfész és az absztrakt ősosztály alkalmazástechnikája<a class="headerlink" href="#3-feladat-az-interfesz-es-az-absztrakt-ososztaly-alkalmazastechnikaja" title="Permanent link">&para;</a></h2>
-<h3 id="interfesz-problematikaja">Interfész problematikája<a class="headerlink" href="#interfesz-problematikaja" title="Permanent link">&para;</a></h3>
+<h2 id="3-feladat-az-interfesz-es-az-absztrakt-ososztaly-alkalmazastechnikaja">3. Feladat - Az interfész és az absztrakt ősosztály alkalmazástechnikája<a class="headerlink" href="#3-feladat-az-interfesz-es-az-absztrakt-ososztaly-alkalmazastechnikaja" title="Permanent link">¶</a></h2>
+<h3 id="interfesz-problematikaja">Interfész problematikája<a class="headerlink" href="#interfesz-problematikaja" title="Permanent link">¶</a></h3>
 <p>Értékeljük a jelenlegi, interfész alapú megoldásunkat.</p>
 <p>Az egyik fő probléma, hogy kódunk tele van a karbantarthatóságot és bővíthetőséget romboló kódduplikációval:</p>
 <ul>
@@ -1296,38 +862,38 @@ A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk,
 </ul>
 <p>Bár ez a kódduplikáció egyelőre nem tűnik jelentősnek, új alkatrész típusok bevezetésével egyre inkább elmérgesedik a helyzet, jobb időben elejét venni a jövőbeli fájdalmaknak.</p>
 <p>A másik probléma abból adódik, hogy az alkatrész adatok listázása jelenleg fájdalmasan hiányos, nem jelenik meg az alkatrész típusa (csak a kora és az ára). A típus megjelenítéséhez az IEquipment interfészt bővíteni kell, pl. egy <code>GetDescription</code> nevű művelet bevezetésével.  Vegyünk is fel egy <code>GetDescription</code> függvényt az interfészbe!</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IEquipment</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetAge</span><span class="p">();</span><span class="w"></span>
-<span class="hll"><span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">();</span><span class="w"></span>
-</span><span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IEquipment</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetAge</span><span class="p">();</span>
+<span class="hll"><span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">();</span>
+</span><span class="p">}</span>
 </code></pre></div>
 <p>Ekkor minden <code>IEquipment</code> interfészt implementáló osztályban meg kellene valósítani ezt a metódust is, ami sok osztály esetén sok munka (valamint egy többkomponensű, vagyis több DLL-ből álló alkalmazás esetében, amikor ezek nem egy fejlesztő cég kezében vannak, sokszor nem is megoldható). A <em>Build</em> parancs futtatásával ellenőrizzük, hogy a <code>GetDescription</code> felvétele után három helyen is fordítási hibát kapunk.</p>
 <div class="admonition tip">
 <p class="admonition-title">Interfészben alapértelmezett implementáció megadása</p>
 <p>Érdemes tudni, hogy C# 8-tól (illetve .NET vagy .NET Core runtime is kell hozzá, .NET Framework alatt nem támogatott) kezdve <strong>interfész műveleteknek is lehet alapértelmezett implementációt adni (default interface methods), így a fenti probléma megoldásához nincs szükség absztrakt osztályra, de interfésznek továbbiakban sem lehet tagváltozója</strong>. Bővebben információ itt:  <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-8.0/default-interface-methods">default interface methods</a>.</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IEquipment</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetAge</span><span class="p">();</span><span class="w"></span>
-<span class="hll"><span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;EquipmentBase&quot;</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
-</span><span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IEquipment</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetAge</span><span class="p">();</span>
+<span class="hll"><span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">"EquipmentBase"</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span class="p">}</span>
 </code></pre></div>
 </div>
-<h3 id="absztrakt-osztaly">Absztrakt osztály<a class="headerlink" href="#absztrakt-osztaly" title="Permanent link">&para;</a></h3>
+<h3 id="absztrakt-osztaly">Absztrakt osztály<a class="headerlink" href="#absztrakt-osztaly" title="Permanent link">¶</a></h3>
 <p>Mindkét problémára megoldást jelent egy közös absztrakt ős bevezetése (kivéve az <code>LedDiplay</code> osztályt, amire még visszatérünk). Ebbe fel tudjuk költöztetni a leszármazottakra közös kódot, valamint az újonnan bevezetett <code>GetDescription</code> művelethez egy alapértelmezett implementációt tudunk megadni. Legyen az új absztrakt ősosztályunk neve <code>EquipmentBase</code>. Kérdés, szükség van-e a továbbiakban az <code>IEquipment</code> interfészre, vagy az teljesen kiváltható az új <code>EquipmentBase</code> osztállyal. Az <code>IEquipment</code> interfészt meg kell tartsuk, mert a LedDisplay osztályunkat nem tudjuk az <code>EquipmentBase</code>-ből származtatni: már van egy kötelezően előírt ősosztálya, a <code>DisplayBase</code>: emiatt az EquipmentInventory a továbbfejlesztett megoldásunkban is <code>IEquipment</code> interfészként hivatkozik az különböző alkatrészekre.</p>
 <p>Álljunk is neki az átalakításnak. Legyen az osztálydiagramunk az aktív tabfül. A <em>Toolbox</em>-ból drag&amp;drop-pal dobjunk fel egy <em>Abstract Class</em> elemet a diagramra, a neve legyen <code>EquipmentBase</code>.</p>
-<p><img alt="Toolbox - abstract class" src="images/toolbox-abstract-class.png" /></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/toolbox-abstract-class.png"><img alt="Toolbox - abstract class" src="images/toolbox-abstract-class.png"/></a></p>
 <p>A következőkben azt kell elérjük, hogy a <code>SoundCard</code> és a <code>HardDisk</code> osztályok származzanak az <code>EquipmentBase</code>-ből (a <code>LedDisplay</code>-nek már van másik őse, így ott ezt nem tudjuk megtenni). Ehhez válasszuk ki az <em>Inheritance</em> kapcsolatot a <em>Toolbox</em>-ban, majd húzzunk egy-egy vonalat a gyermekosztályból kiindulva az ősosztályba a <code>SoundCard</code> és <code>HardDisk</code> esetében egyaránt.</p>
 <p>A következő lépésben alakítsuk át úgy a kódot, hogy ne a <code>HardDisk</code> és <code>SoundCard</code> valósítsák meg külön-külön az <code>IEquipment</code> interfészt, hanem a közös ősük, az <code>EquipmentBase</code> egyszer. Ehhez módosítsuk az EquipmentBase osztályt úgy, hogy valósítsa meg az interfészt (akár a diagramon húzzunk be egy inheritance kapcsolatot az <code>EquipmentBase</code>-ből az <code>IEquipment</code>-be, vagy az <code>EquipmentBase</code> forráskódját módosítsuk). A <code>HardDisk</code> és <code>SoundCard</code> osztályokból töröljük az <code>IEquipment</code> megvalósítását (az ős már implementálja).</p>
 <p>A diagramunk és a forráskódunk vonatkozó részei ezt követően így néznek ki:</p>
-<p><img alt="EquipmentBase és HardDisk/SoundCard" src="images/class-diagram-eqipmentbase-sc-hd-2.png" /></p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">EquipmentBase</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span><span class="w"></span>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/class-diagram-eqipmentbase-sc-hd-2.png"><img alt="EquipmentBase és HardDisk/SoundCard" src="images/class-diagram-eqipmentbase-sc-hd-2.png"/></a></p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">EquipmentBase</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">HardDisk</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">EquipmentBase</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">HardDisk</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">EquipmentBase</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SoundCard</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">EquipmentBase</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SoundCard</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">EquipmentBase</span>
 </code></pre></div>
 <p>A kódunk még nem fordul, ennek több oka is van. Az <code>EquipmentBase</code> implementálja az <code>IEquipment</code> interfészt, de még nincsenek benne implementálva az interfész műveletei. Vagy generáltassuk le a metódusokat a smart tag használatával, vagy gépeljük be a következő elveknek megfelelően:</p>
 <ul>
@@ -1337,23 +903,23 @@ A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk,
 <li>A <code>GetDescription</code> esetében viszont pont fordítottja a helyzet: ezt virtuálisnak definiáljuk (és nem absztraktnak), vagyis már az ősben is adunk meg implementációt. Így a leszármazottak nincsenek rákényszerítve a művelet felüldefiniálására.</li>
 </ul>
 <p>A fentieknek megfelelő kód a következő:</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">EquipmentBase</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">protected</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">protected</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newPrice</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">EquipmentBase</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">protected</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">;</span>
+<span class="w">    </span><span class="k">protected</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newPrice</span><span class="p">;</span>
 
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetAge</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="p">-</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetAge</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">();</span>
 
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;EquipmentBase&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">"EquipmentBase"</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Néhány kiegészítő gondolat a kódrészletre vonatkozóan:</p>
@@ -1363,85 +929,85 @@ A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk,
 <li>.NET környezetben lehetőségünk van szabályozni, hogy egy művelet virtuális-e vagy sem. Ebből a szempontból a C++ nyelvhez hasonlít. Amennyiben egy műveletet virtuálissá szeretnénk tenni, a <code>virtual</code> kulcsszót kell a műveletre megadni. Emlékeztető: akkor definiáljunk egy műveletet virtuálisnak, ha a leszármazottak azt felüldefiniál(hat)ják. Csak ekkor garantált, hogy egy ősreferencián meghívva az adott műveletet a leszármazottbeli verzió hívódik meg.</li>
 </ul>
 </div>
-<h3 id="leszarmazottak">Leszármazottak<a class="headerlink" href="#leszarmazottak" title="Permanent link">&para;</a></h3>
+<h3 id="leszarmazottak">Leszármazottak<a class="headerlink" href="#leszarmazottak" title="Permanent link">¶</a></h3>
 <p>A következő lépésben térjünk át az <code>EquipmentBase</code> leszármazottakra. C# nyelven az absztrakt és virtuális műveletek felüldefiniálásakor a leszármazottban meg kell adni az <code>override</code> kulcsszót. Első lépésben a <code>GetPrice</code> műveletet definiáljuk felül:</p>
-<div class="highlight"><span class="filename">HardDisk.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="p">-</span><span class="w"> </span><span class="m">4</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">?</span><span class="w"> </span><span class="m">0</span><span class="w"></span>
-<span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="n">newPrice</span><span class="w"> </span><span class="p">-</span><span class="w"> </span><span class="p">(</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="p">-</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">)</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="m">5000</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><span class="filename">HardDisk.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">4</span><span class="p">)</span>
+<span class="w">        </span><span class="o">?</span><span class="w"> </span><span class="m">0</span>
+<span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="n">newPrice</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">5000</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><span class="filename">SoundCard.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="p">-</span><span class="w"> </span><span class="m">4</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">?</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>
-<span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="n">newPrice</span><span class="w"> </span><span class="p">-</span><span class="w"> </span><span class="p">(</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="p">-</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">)</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="m">2000</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><span class="filename">SoundCard.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">4</span><span class="p">)</span>
+<span class="w">        </span><span class="o">?</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>
+<span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="n">newPrice</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">2000</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>A következőkben lépésben a <code>GetDescription</code> műveletet írjuk meg a <code>HardDisk</code> és <code>SoundCard</code> osztályokban. Mivel itt az ősbeli virtuális függvényt definiáljuk felül, szintén meg kell adni az <code>override</code> kulcsszót:</p>
-<div class="highlight"><span class="filename">HardDisk.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Hard Disk&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><span class="filename">HardDisk.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"Hard Disk"</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><span class="filename">SoundCard.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Sound Card&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><span class="filename">SoundCard.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"Sound Card"</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>Felmerülhet bennünk a kérdés, miért döntöttek úgy a C# nyelv tervezői, hogy a műveletek felüldefiniálásakor egy extra kulcsszót kelljen megadni, hasonlóra pl. a C++ nyelv esetében nem volt szükség. Az ok egyszerű: a kód így kifejezőbb. A leszármazottak kódját nézve az <code>override</code> szó azonnal egyértelművé teszi, hogy valamelyik ősben ez a művelet absztrakt vagy virtuális, nem kell valamennyi ős kódját ehhez áttekinteni.</p>
-<h3 id="leddisplay-ose">LedDisplay őse<a class="headerlink" href="#leddisplay-ose" title="Permanent link">&para;</a></h3>
+<h3 id="leddisplay-ose">LedDisplay őse<a class="headerlink" href="#leddisplay-ose" title="Permanent link">¶</a></h3>
 <p>A <code>LedDisplay</code> osztályunk őse meg van kötve, annak kódja nem módosítható, így nem tudjuk az <code>EquipmentBase</code>-ből származtatni. A <code>GetAge</code> műveletet így nem tudjuk törölni, ez a kódduplikáció itt megmarad (de csak a <code>LedDisplay</code> esetében, ami csak egy osztály a sok közül!).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Valójában egy kis plusz munkával ettől a duplikációtól is meg tudnánk szabadulni. Ehhez valamelyik osztályban (pl. <code>EquipmentBase</code>) fel kellene venni egy statikus segédfüggvényt, mely paraméterben megkapná a gyártási évet, és visszaadná az életkort. Az <code>EquipmentBase.GetAge</code> és a <code>LedDisplay.GetAge</code> ezt a segédfüggvényt használná kimenete előállítására.</p>
 <p>A <code>LedDisplay</code> osztályunkban adósak vagyunk még a <code>GetDescription</code> megírásával:</p>
 </div>
-<div class="highlight"><span class="filename">LedDisplay.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Led Display&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><span class="filename">LedDisplay.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"Led Display"</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>Figyeljük meg, hogy itt NEM adtuk meg az <code>override</code> kulcsszót. Mikor egy interfész függvényt implementálunk, az <code>override</code>-ot nem kell/szabad kiírni.</p>
-<h3 id="getdescription-hasznalata">GetDescription használata<a class="headerlink" href="#getdescription-hasznalata" title="Permanent link">&para;</a></h3>
+<h3 id="getdescription-hasznalata">GetDescription használata<a class="headerlink" href="#getdescription-hasznalata" title="Permanent link">¶</a></h3>
 <p>Módosítsuk az <code>EquipmentInventory.ListAll</code> műveletét, hogy az elemek leírását is írja ki a kimenetre:</p>
-<div class="highlight"><span class="filename">EquipmentInventory.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ListAll</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="n">IEquipment</span><span class="w"> </span><span class="n">eq</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">equipment</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;Leírás: {eq.GetDescription()}\t&quot;</span><span class="w"> </span><span class="p">+</span><span class="w"></span>
-<span class="w">            </span><span class="s">$&quot;Életkor: {eq.GetAge()}\tÉrtéke: {eq.GetPrice()}&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><span class="filename">EquipmentInventory.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ListAll</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="n">IEquipment</span><span class="w"> </span><span class="n">eq</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">equipment</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"Leírás: {eq.GetDescription()}\t"</span><span class="w"> </span><span class="o">+</span>
+<span class="w">            </span><span class="s">$"Életkor: {eq.GetAge()}\tÉrtéke: {eq.GetPrice()}"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>Így már sokkal informatívabb kimetet kapunk az alkalmazás futtatásakor:</p>
-<p><img alt="Console kimenet" src="images/console-out-2.png" /></p>
-<h3 id="konstruktor-kodduplikacio">Konstruktor kódduplikáció<a class="headerlink" href="#konstruktor-kodduplikacio" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/console-out-2.png"><img alt="Console kimenet" src="images/console-out-2.png"/></a></p>
+<h3 id="konstruktor-kodduplikacio">Konstruktor kódduplikáció<a class="headerlink" href="#konstruktor-kodduplikacio" title="Permanent link">¶</a></h3>
 <p>A kódunkat áttekintve még egy helyen találunk kódduplikációt. Valamennyi <code>EquipmentBase</code> leszármazott (<code>HardDisk</code>, <code>SoundCard</code>) konstruktorában ott van ez a két sor:</p>
-<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">yearOfCreation</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">;</span><span class="w"></span>
-<span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">newPrice</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">newPrice</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">yearOfCreation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">;</span>
+<span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">newPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newPrice</span><span class="p">;</span>
 </code></pre></div>
 <p>Ha belegondolunk, ezek a <code>yearOfCreatio</code> és <code>newPrice</code> tagok az ősben vannak definiálva, így egyébként is az ő felelőssége kellene legyen ezek inicializálása. Vegyünk is fel egy megfelelő konstruktort az <code>EquipmentBase</code>-ben:</p>
-<div class="highlight"><span class="filename">EquipmentBase.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">EquipmentBase</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newPrice</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">yearOfCreation</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">newPrice</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">newPrice</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><span class="filename">EquipmentBase.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">EquipmentBase</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newPrice</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">yearOfCreation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">newPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newPrice</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>A <code>HardDisk</code> és <code>SoundCard</code> leszármazottak konstruktorának törzséből vegyük ki a két tag inicializálását, helyette a <code>base</code> kulcsszóval hivatkozva hívjuk meg az ős konstruktorát:</p>
-<div class="highlight"><span class="filename">HardDisk.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">HardDisk</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newPrice</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">capacityGB</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="k">base</span><span class="p">(</span><span class="n">yearOfCreation</span><span class="p">,</span><span class="w"> </span><span class="n">newPrice</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">capacityGB</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">capacityGB</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><span class="filename">HardDisk.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">HardDisk</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newPrice</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">capacityGB</span><span class="p">)</span>
+<span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="k">base</span><span class="p">(</span><span class="n">yearOfCreation</span><span class="p">,</span><span class="w"> </span><span class="n">newPrice</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">capacityGB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">capacityGB</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><span class="filename">SoundCard.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">SoundCard</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newPrice</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="k">base</span><span class="p">(</span><span class="n">yearOfCreation</span><span class="p">,</span><span class="w"> </span><span class="n">newPrice</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><span class="filename">SoundCard.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">SoundCard</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newPrice</span><span class="p">)</span>
+<span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="k">base</span><span class="p">(</span><span class="n">yearOfCreation</span><span class="p">,</span><span class="w"> </span><span class="n">newPrice</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="p">}</span>
 </code></pre></div>
-<h3 id="ertekeles">Értékelés<a class="headerlink" href="#ertekeles" title="Permanent link">&para;</a></h3>
+<h3 id="ertekeles">Értékelés<a class="headerlink" href="#ertekeles" title="Permanent link">¶</a></h3>
 <p>Az interfész és absztrakt ős együttes használatával sikerült a legkevesebb kompromisszummal járó megoldást kidolgoznunk:</p>
 <ul>
 <li><code>IEquipment</code> interfészként hivatkozva egységesen tudjuk kezelni az alkatrészek valamennyi típusát, még azokat is, melyeknél az ősosztály meg volt kötve (pusztán absztrakt ős használatával ezt nem tudtuk volna elérni).</li>
@@ -1449,100 +1015,72 @@ A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk,
 <li>Az <code>EquipmentBase</code> absztrakt ős bevezetésével alapértelmezett implementációt tudunk megadni az újonnan bevezetett <code>IEquipment</code> műveletek esetében (pl. <code>GetDescripton</code>), így nem vagyunk rákényszerítve, hogy minden <code>IEquipment</code> implementációs osztályban meg kelljen azt adni.</li>
 </ul>
 <p>Zárásképpen vessünk egy pillantást megoldásunk UML (szerű) osztálydiagramjára:</p>
-<p><img alt="Végső osztálydiagram" src="images/class-diagram-final.png" /></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/class-diagram-final.png"><img alt="Végső osztálydiagram" src="images/class-diagram-final.png"/></a></p>
 <div class="admonition note">
 <p class="admonition-title">Statikus interfészek</p>
 <p>A C# 11 legújabb újdonsága a statikus interfész tagok definiálása, amivel olyan tagokat követelhetünk meg az implementáló osztálytól, amelyek nem az objektum példányra vonatkoznak, hanem az osztálynak kell egy adott statikus taggal rendelkeznie. <a href="https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/static-virtual-interface-members">Bővebben</a></p>
 </div>
-<h3 id="megjegyzes-opcionalis-hazi-gyakorlo-feladat">Megjegyzés - opcionális házi gyakorló feladat<a class="headerlink" href="#megjegyzes-opcionalis-hazi-gyakorlo-feladat" title="Permanent link">&para;</a></h3>
+<h3 id="megjegyzes-opcionalis-hazi-gyakorlo-feladat">Megjegyzés - opcionális házi gyakorló feladat<a class="headerlink" href="#megjegyzes-opcionalis-hazi-gyakorlo-feladat" title="Permanent link">¶</a></h3>
 <p>Jelen megoldásunk nem támogatja az alkatrészspecifikus adatok (pl. <code>HardDisk</code> esetében a kapacitás) megjelenítését a listázás során. Ahhoz, hogy ezt meg tudjuk tenni, az alkatrész adatok formázott stringbe írását az <code>EqipmentInventory</code> osztályból az alkatrész osztályokba kellene vinni, a következő elveknek megfelelően:</p>
 <ul>
 <li>Bevezethetünk ehhez az <code>IEquipment</code> interfészbe egy <code>GetFormattedString</code> műveletet, mely egy <code>string</code> típusú objektummal tér vissza. Alternatív megoldás lehet, ha a <code>System.Object ToString()</code> műveletét definiáljuk felül. .NET-ben ugyanis minden típus implicit módon a <code>System.Object</code>-ből származik, aminek van egy virtuális <code>ToString()</code> művelete.</li>
 <li>Az <code>EquipmentBase</code>-ben megírjuk a közös tagok (leírás, ár, kor) stringbe formázását.</li>
 <li>Amennyiben egy alkatrész típusspecifikus adattal is rendelkezik, akkor osztályában override-oljuk a stringbe formázó függvényt: ennek a függvénynek egyrészt meg kell hívnia az ős változatát (a <code>base</code> kulcsszó használatával), majd ehhez hozzá kell fűzni a saját formázott adatait, és ezzel a stringgel kell visszatérnie.</li>
 </ul>
-
-
-
-
-
-                
-              </article>
-            </div>
-          
-          
-        </div>
-        
-          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
-            Back to top
-          </a>
-        
-      </main>
-      
-        <footer class="md-footer">
-  
-    
-    <nav class="md-footer__inner md-grid" aria-label="Élőláb" >
-      
-        
-        <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="Előző: Szoftvertechnikák" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Előző
-              </span>
-              Szoftvertechnikák
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../2-nyelvi-eszkozok/" class="md-footer__link md-footer__link--next" aria-label="Következő: 2. Nyelvi eszközök" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Következő
-              </span>
-              2. Nyelvi eszközök
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
-  
-    <div class="md-copyright__highlight">
-      Copyright &copy; BME VIK AUT
-    </div>
-  
-  
+<hr/>
+<div class="md-source-file">
+<span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z">
+</path>
+</svg>
+</span>
+<span title="2022. december 25. 15:58:40">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2022-12-25T15:58:40+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2022-12-25</span>
+</span>
+</span>
+<span class="md-source-file__fact">
+<span class="md-icon" title="Szerzők">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z">
+</path>
+</svg>
+</span>
+<span>Szerzők</span>
+<nav><a class="md-author" href="https://github.com/bzolka" rel="noopener noreferrer" target="_blank" title="@bzolka">
+<img alt="@bzolka" src="https://avatars.githubusercontent.com/u/22932444?size=72"/>
+</a><a class="md-author" href="https://github.com/tibitoth" rel="noopener noreferrer" target="_blank" title="@tibitoth">
+<img alt="@tibitoth" src="https://avatars.githubusercontent.com/u/8333960?size=72"/>
+</a><a class="md-author" href="https://github.com/zbenedek-mirango" rel="noopener noreferrer" target="_blank" title="@zbenedek-mirango">
+<img alt="@zbenedek-mirango" src="https://avatars.githubusercontent.com/u/105201689?size=72"/>
+</a></nav>
+</span>
 </div>
-      
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            Vissza a tetejére
+          </a>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © BME VIK AUT
     </div>
-  </div>
+</div>
+</div>
+</div>
 </footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.config.lang": "hu", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Keres\u00e9s", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version.title": "Select version"}}</script>
-    
-    
-      <script src="../../assets/javascripts/bundle.8492ddcf.min.js"></script>
-      
-    
-  </body>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit"], "search": "../../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}}</script>
+<script src="../../assets/javascripts/bundle.4b2c34cd.min.js"></script>
+<script src="../../js/timeago.min.js"></script>
+<script src="../../js/timeago_mkdocs_material.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
