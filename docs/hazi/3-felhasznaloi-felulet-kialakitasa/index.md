@@ -2,7 +2,7 @@
 
 ## Bevezetés
 
-Az önálló feladat a 3-5. előadásokon elhangzottakra épít. A feladatok gyakorlati hátteréül a [3. gyakorlat – Felhasználói felületek kialakítása](../../labor/3-felhasznaloi-felulet/index.md) laborgyakorlat szolgál.
+Az önálló feladat a 3-5. előadásokon elhangzottakra épít. A feladatok gyakorlati hátteréül a [3. labor – Felhasználói felületek kialakítása](../../labor/3-felhasznaloi-felulet/index.md) laborgyakorlat szolgál.
 
 A fentiekre építve, jelen önálló gyakorlat feladatai a feladatleírást követő rövidebb iránymutatás segítségével elvégezhetők.
 
@@ -41,34 +41,25 @@ A következők is fontosak, ugyanazok, mint az 1. házi feladat esetében voltak
 
 Jelen házi feladathoz kapcsolódó tesztek futtatása időigényes. Sajnos a GitHub limitek nem teszik lehetővé, hogy a szokásos módon automatizáltan GitHub alapokon futtassuk. A tesztek futtatására mindenkinek a saját számítógépén van mód a következőknek megfelelően.
 
-### Telepítendő eszközök 
+### Telepítendő eszközök
 
 ==TODO ezt a rész revidiálni kell!==
 
 ### Futtatás
 
+## Elnevezések
+
+:exclamation: Az alábbiakban, a feladatok leírása során bizonyos elnevezések ==ennek a mintának== megfelelő kiemelt szövegstílussal szerepelnek. Lényeges, hogy ezeknél pontosan kövesd az elnevezést, máskülönben a megoldás nem lesz elfogadható (pl. az ellenőrző máskülönben nem találja meg az adott felületelemet, vagy egyéb ellenőrzési probléma származhat belőle).
+
 ## Feladat 1- Menü
 
 ### Bevezető feladat
 
-??? tip "Ha nem nyílna meg a Form Designer."
-    A Visual Studio 2022 a Git-ből frissen kiklónozott forrás esetén (amikor még nem létezik egy .csproj.user kiterjesztésű fájl) az űrlapokat - valószínűsíthetően egy bug miatt – nem hajlandó megnyitni szerkesztő módban. A solution megnyitása után jó eséllyel ezt látjuk a Solution Explorerben:
+:exclamation: A főablak fejléce a "==MiniExplorer==" szöveg legyen, hozzáfűzve a saját Neptun kódod: (pl. "ABCDEF" Neptun kód esetén "MiniExplorer - ABCDEF”), fontos, hogy ez legyen a szöveg! Ehhez az űrlapunk `Text` tulajdonságát állítsuk be erre a szövegre.
 
-    ![Form Designer Error](images/form-designer-error.png.png)
+:exclamation: Az űrlapunk neve jelenleg "Form1", ami szintén elég semmitmondó. Nevezzük át Neptun kódunknak megfelelően (pl. "ABCDEF" Neptun kód esetén "MainForm_ABCDEF”-re).
 
-    A probléma az, hogy a Form1.cs előtti ikon (pirossal bekeretezve) nem egy űrlap, hanem egy zöld C# ikon. Ez esetben hiába kattintunk duplán a fájlon, nem az űrlap szerkesztő nyílik meg, hanem csak a forrásfájl. A megoldás ez esetben a következő: a *Build* menüben válasszuk ki a *Rebuild soultion* parancsot, majd a *Build* menüben a *Clean solution* parancsot, és várjunk egy kicsit. Ekkor pár másodperc múlva a Solution Explorerben az űrlapunk ikonja megváltozik:
-
-    ![Form Designer Ok](images/form-designer-ok.png.png)
-
-    Most már meg tudjuk nyitni az űrlapot szerkesztésre, ha duplán kattintunk a Solution Explorerben a fenti csomóponton.
-
-    Ha valakinél ez nem működne, akkor a tárgy Teams csoportjában a *Házi feladat konzultáció* csatornára váltva a Fájlok tabfül alatti `WinFormExpl.csproj.user` fájlt másold be a `WinFormExpl.csproj` mellé és utána nyisd meg a solutiont.
-
-A főablak fejléce a "==MiniExplorer==" szöveg legyen, hozzáfűzve a saját Neptun kódod: (pl. "ABCDEF" Neptun kód esetén "MiniExplorer - ABCDEF”), fontos, hogy ez legyen a szöveg! Ehhez az űrlapunk `Text` tulajdonságát állítsuk be erre a szövegre.
-
-Az űrlapunk neve jelenleg "Form1", ami szintén elég semmitmondó. Nevezzük át Neptun kódunknak megfelelően (pl. "ABCDEF" Neptun kód esetén "MainForm_ABCDEF”-re.
-
-Az átnevezést a Solution Explorerben tudjuk megtenni, itt több technikát is használhatunk. Válasszuk ki a `Form1` elemet, majd még egyszer kattintsunk rajta bal gombbal: ekkor a név szerkeszthetővé válik (pont úgy dolgozunk, ahogy egy fájlt is átnevezünk Windows Explorerben). Vagy egyszerűen csak megnyomjuk az ++F2++ billentyűt az átnevezés elindításához. Vagy akár használhatjuk a jobb gombos menü *Rename* funkcióját. Akárhogy is indultunk, írjuk be új névnek a `MainForm.cs`-t, majd nyomjuk meg az Enter billentyűt. Ekkor a Visual Studio rákérdez egy felugró ablakban, hogy minden kapcsolódó elemet nevezzen-e át ennek megfelelően: itt mindenképpen **Yes**-t válasszunk:
+Az átnevezést a Solution Explorerben tudjuk megtenni, itt több technikát is használhatunk. Válasszuk ki a `Form1` elemet, majd még egyszer kattintsunk rajta bal gombbal: ekkor a név szerkeszthetővé válik (pont úgy dolgozunk, ahogy egy fájlt is átnevezünk Windows Explorerben). Vagy egyszerűen csak megnyomjuk az **F2** billentyűt az átnevezés elindításához. Vagy akár használhatjuk a jobb gombos menü *Rename* funkcióját. Akárhogy is indultunk, írjuk be új névnek a `MainForm.cs`-t, majd nyomjuk meg az Enter billentyűt. Ekkor a Visual Studio rákérdez egy felugró ablakban, hogy minden kapcsolódó elemet nevezzen-e át ennek megfelelően: itt mindenképpen **Yes**-t válasszunk:
 
 ![Rename](images/rename.png)
 
@@ -82,33 +73,31 @@ Vezessünk be egy menüsort a főablakunk (`Form1`) tetején. A menüben egyetle
 - ==Open==: később adunk neki funkciót
 - ==Exit==: kilép az alkalmazásból
 
-!!! danger "Elnevezések"
-    Lényeges, hogy a menük szövegei a fent megadottak legyenek!
+:exclamation: Lényeges, hogy a menük szövegei a fent megadottak legyenek!
 
 ### Megoldás
 
-1. Húzzunk be a felületre egy `MenuStrip` vezérlőt
-2. A `MenuStrip` vezérlő bal szélén megjelenő szövegdobozba írjuk be, hogy "File”, ezzel létrehoztuk a főmenüt
+1. Húzzunk be a felületre egy `MenuStrip` vezérlőt.
+2. A `MenuStrip` vezérlő bal szélén megjelenő szövegdobozba írjuk be, hogy "File”, ezzel létrehoztuk a főmenüt.
 3. Az újonnan létrehozott főmenüt kijelölve hozzuk létre a két almenüt.
 4. Egyesével kijelölgetve a menüelemeket, töltsük ki a nevüket (`miOpen`, `miExit`).
 
-    !!! Warning "Csak a `Name`-et állítsd!"
-        A vezérlőknek csak a `Name` tulajdonságát állítsd, az `AccessibleName`-t ne. Ez a későbbi feladatokra is vonatkozik.
+    :exclamation: A vezérlőknek csak a `Name` tulajdonságát állítsd, az `AccessibleName`-t ne. Ez a későbbi feladatokra is vonatkozik.
 
 5. Valósítsuk meg a kilépés funkciót a kapcsolódó gyakorlathoz hasonlóan.
 
 ## Feladat 2 – Dialógusablak
 
-A Windows Forms világban gyakran fordul elő, hogy egyedi vezérlőket, vagy ablak típusokat akarunk definiálni, továbbá ezek és a programunk többi része között információkat akarunk átadni. A következő feladat erre mutat példát.
+A Windows Forms világban gyakran fordul elő, hogy egyedi vezérlőket, vagy űrlap típusokat akarunk definiálni, továbbá ezek és a programunk többi része között információt akarunk átadni. A következő feladat erre mutat példát.
 
 ### Feladat
 
-Készíts egy új ablak (`Form`) típust ==InputDialog== néven (a fejléce is legyen ==InputDialog==), mely egy szövegdobozt (`TextBox`), továbbá egy ==Ok== és egy ==Cancel== feliratú gombot tartalmaz. A két gomb bezáráskor állítsa be a `Form` `DialogResult` tulajdonságát `DialogResult.OK`, illetve `DialogResult.Cancel` értékre. Az ablak ezen felül tartalmazzon egy publikus, `string` típusú, `Path` nevű tulajdonságot!
+Készíts egy új űrlap/ablak (`Form`) típust ==InputDialog== néven (a fejléce is legyen ==InputDialog==), mely egy szövegdobozt (`TextBox`), továbbá egy ==Ok== és egy ==Cancel== feliratú gombot tartalmaz. A két gomb bezáráskor állítsd be a `Form` `DialogResult` tulajdonságát `DialogResult.OK`, illetve `DialogResult.Cancel` értékre. Az űrlap ezen felül tartalmazzon egy publikus, `string` típusú, `Path` nevű tulajdonságot!
 
-Az ablak tartalma arányosan változzon az átméretezés során:
+Az űrlap tartalma arányosan változzon az átméretezés során:
 
-- `TextBox` szélessége növekedjen (a helye ne változzon),
-- A gombok a hozzájuk közelebbi sarokhoz képest rögzített pozícióban maradjanak (mind x mind y koordináta tekintetében, az ablak szélességének és magasságának állításakor is). Az *Ok* gomb legyen bal, a *Cancel* pedig jobb oldalon.
+- `TextBox` szélessége növekedjen (a helye ne változzon).
+- A gombok a hozzájuk közelebbi sarokhoz képest rögzített pozícióban maradjanak (mind x mind y koordináta tekintetében, az ablak szélességének és magasságának állításakor is). Az *Ok* gomb legyen bal alsó, a *Cancel* pedig jobb alsó sarokhoz rögzítve.
 
 ### Megoldás
 
@@ -116,9 +105,9 @@ A feladatot próbáld meg önállóan megoldani, majd a lenti leírás alapján 
 
 ??? success "Megoldás"
 
-    1. Adjunk hozzá a projektünkhöz egy új ablak típust (projekten jobb klikk, majd *Add / Form (Windows Forms)*, a neve legyen InputDialog.
+    1. Adjunk hozzá a projektünkhöz egy új űrlap típust (projekten jobb klikk, majd *Add / Form (Windows Forms)*, a neve legyen InputDialog.
 
-    2. Adjunk az ablakhoz egy `TextBox`, egy `Label` és két `Button` vezérlőt. Rendezzük el őket a felületen és állítsuk be a tulajdonságaikat:
+    2. Adjunk az űrlaphoz egy `TextBox`, egy `Label` és két `Button` vezérlőt. Rendezzük el őket a felületen és állítsuk be a tulajdonságaikat:
         - `TextBox`
             - `Name`: `tPath`
         - `Button`
@@ -137,9 +126,9 @@ A feladatot próbáld meg önállóan megoldani, majd a lenti leírás alapján 
 
         A dialógusablak elkészítésekor kihasználjuk azt, hogy egy modális dialógusablakot nem csak a `Close` utasítással lehet bezárni, hanem úgy is, ha értéket adunk a `DialogResult` tulajdonságának. Ezt kódból is megtehettük volna, de mi most a gombok erre szolgáló mechanizmusát használtuk a `Form` `Accept` és `Cancel` button tulajdonságaival.
 
-    3. Az egyes vezérlők `Anchor` tulajdonságainak beállításaival érjük el, hogy az ablak tartalma arányosan változzon az átméretezés során: a `TextBox` szélessége növekedjen, a gombok pedig a hozzájuk közelebbi sarokhoz képest rögzített pozícióban maradjanak (mind x mind y koordináta tekintetében, az ablak szélességének és magasságának állításakor is)
+    3. Az egyes vezérlők `Anchor` tulajdonságainak beállításaival érjük el, hogy az ablak tartalma arányosan változzon az átméretezés során: a `TextBox` szélessége növekedjen, a gombok pedig a hozzájuk közelebbi sarokhoz képest rögzített pozícióban maradjanak (mind x mind y koordináta tekintetében, az ablak szélességének és magasságának állításakor is).
 
-    4. Vegyünk fel egy `Path` nevű tulajdonságot az `InputDialog.cs` fájlba, mely a `TextBox` tartalmát teszi elérhetővé az osztályon kívülről is. (A tervezői nézet és a forrásnézet között az ++F7++ billentyűvel válthatunk)
+    4. Vegyünk fel egy `Path` nevű tulajdonságot az `InputDialog.cs` fájlba, mely a `TextBox` tartalmát teszi elérhetővé az osztályon kívülről is. (A tervezői nézet és a forrásnézet között az **F7** billentyűvel válthatunk.)
 
         ```csharp
         public string Path
@@ -149,7 +138,7 @@ A feladatot próbáld meg önállóan megoldani, majd a lenti leírás alapján 
         }
         ```
 
-    5. Kössük be a dialógusablakot a főablakba! Ehhez kattintsunk duplán a *Open* menüelemre és írjuk meg a dialógusablak megnyitásának kódját.
+    5. Kössük be a dialógusablakot a főablakba! Ehhez kattintsunk duplán a *Open* menüelemre és írjuk meg a dialógusablak létrehozásának és megjelenítésének kódját.
 
         ```csharp
         private void miOpen_Click(object sender, EventArgs e)
@@ -165,18 +154,17 @@ A feladatot próbáld meg önállóan megoldani, majd a lenti leírás alapján 
         ```
     
         !!! tip "Elnevezések"
-            A WinForms világban rendkívül gyakori, hogy egy adott információ különböző szintű elérésért egy vezérlő és egy tulajdonság is felel (mint esetünkben a `tPath` szövegdoboz és a Path tulajdonság). A vezérlők neveinek prefixálásával (amit itt is alkalmaztunk) elkerülhetjük a nem kívánt névütközéseket.
+            A WinForms világban rendkívül gyakori, hogy egy adott információ különböző szintű elérésért egy vezérlő és egy tulajdonság is felel (mint esetünkben a `tPath` szövegdoboz és a `Path` tulajdonság). A vezérlők neveinek prefixálásával (amit itt is alkalmaztunk) elkerülhetjük a nem kívánt névütközéseket.
 
-        !!! danger "Fontos"
-            A `MessageBox.Show(result);` sort kommentezzük is ki, a későbbiekben zavaró lenne.
+        :exclamation: A `MessageBox.Show(result);` sort kommentezzük is ki, a későbbiekben zavaró lenne.
 
 !!! example "BEADANDÓ"
-    Mielőbb továbbmennél a következő feladatra, egy képernyőmentést kell készítened `Feladat2.png` néven, ennek módját az alábbi.
+    :exclamation: Mielőbb továbbmennél a következő feladatra, egy képernyőmentést kell készítened `Feladat2.png` néven az alábbiaknak megfelelően:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `MainForm_<neptun>.cs` megnyitva,
     - a VS *View / Full Screen* menüjével kapcsolj ideiglenesen *Full Screen* nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
-    - VS-ben zoomolj úgy, hogy a fájl teljes tartalma látható legyen, az előtérben pedig az alkalmazásod ablaka.
+    - VS-ben zoomolj úgy, hogy a fájl teljes tartalma, az előtérben pedig az alkalmazásod ablaka legyen látható.
     
     Amiatt ne aggódj, ha a képen a szöveg esetleg nehezen kiolvasható.
 
@@ -184,7 +172,7 @@ A feladatot próbáld meg önállóan megoldani, majd a lenti leírás alapján 
 
 ### Feladat
 
-A meglévő kódunkból kiindulva valósítsunk meg egy fájl nézegető alkalmazást.
+A meglévő kódunkból kiindulva valósíts meg egy fájl nézegető alkalmazást.
 
 - Az alkalmazás felületét osszuk két részre (erre `SplitContainer`-t használjunk, a neve maradjon az alapértelmezett ==splitContainer1==).
 
@@ -194,7 +182,7 @@ A meglévő kódunkból kiindulva valósítsunk meg egy fájl nézegető alkalma
 
 - A panelen mindig az aktuálisan kiválasztott fájl nevét és létrehozásának dátumát mutassuk egy ==lName== illetve ==lCreated== nevű `Label` típusú vezérlő segítségével.
 
-    Lényeges, hogy a kiválasztás nem dupla egérkattintást jelent (egy elemet ki lehet választani pl. szimpla egér kattintással, billentyűvel stb.). Az `lName` szövege pontosan a fájl neve legye, mindenféle prefix (pl. "Name:” és hasonlók nélkül. Ugyanez igaz az `lCreated` vonatkozásában. A "prefixek”-hez külön `Label` vezérlőt használj a name és a created vonatkozásában is.
+    Lényeges, hogy a kiválasztás nem dupla egérkattintást jelent (egy elemet ki lehet választani pl. szimpla egér kattintással, billentyűvel stb.). Az `lName` szövege pontosan a fájl neve legyen, mindenféle prefix (pl. "Name:” és hasonlók) nélkül. Ugyanez igaz az `lCreated` vonatkozásában. A "prefixek”-hez külön `Label` vezérlőt használj a name és a created vonatkozásában is.
 
 - A `ListView` `FullRowSelect` tulajdonságát állítsd `true` ra (enélkül a tesztek nem futnak le jól majd).
 
@@ -212,7 +200,7 @@ A feladat megoldásához a kapcsolódó gyakorlatban már alkalmazott, illetve a
 - Ahhoz, hogy a `TextBox` vezérlő kitölthesse a rendelkezésére álló teret, nem elég a `Dock` tulajdonságát `Fill`-re állítani, szükséges a `Multiline` tulajdonság `true`-ra állítása is.
 
     !!! tip "Tipp"
-        Ha az ablak jobb oldalán a `Textbox` teteje bekerül a panel mögé, annak valószínűleg az oka az, hogy a `SplitContainer` kettes paneljéhez a `detailsPanel` és a `tContent` szövegdoboz nem jó sorrendben kerül hozzáadásra (a jó sorrend a `tContent`, utána `detailsPanel`). A vezérlők hozzáadási sorrendje a *Document Outline* ablakban ellenőrizhető, és a sorrend itt változtatható be drag&droppal.
+        Ha az ablak jobb oldalán a `Textbox` teteje bekerül a panel mögé, annak valószínűleg az oka az, hogy a `SplitContainer` kettes paneljéhez a `detailsPanel` és a `tContent` szövegdoboz nem jó sorrendben kerül hozzáadásra (a jó sorrend a `tContent`, utána `detailsPanel`). A vezérlők hozzáadási sorrendje a *Document Outline* ablakban ellenőrizhető, és a sorrend itt változtatható meg drag&droppal.
 
 - Egy fájl tartalmát egyszerűen betölthetjük egy stringbe a `File` statikus osztály` ReadAllText(filename)` függvényével.
 - A `FileInfo` osztály `Name` tulajdonsága megadja egy fájl teljes nevét, a `CreationTime` pedig létrehozásának idejét (melyet a `ToString()` művelettel alakítsunk stringé).
@@ -229,12 +217,12 @@ Az elkészült alkalmazás képe:
     Ha a létrehozási dátumnak nagyon régi (1601-es évhez tartozó) dátumot kapsz, akkor lehet, hogy a `FileInfo` objektumot nem a fájl teljes útvonalával, hanem csak a fájl nevével hozod létre, és ez okozza.
 
 !!! example "BEADANDÓ"
-    Mielőbb továbbmennél a következő feladatra, egy képernyőmentést kell készítened, ennek módját az alábbi.
+    :exclamation: Mielőbb továbbmennél a következő feladatra, egy képernyőmentést kell készítened, ennek módját az alábbi.
 
     Készíts egy képernyőmentést `Feladat3.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
-    - a „háttérben” a Visual Studio legyen, a M`ainForm_<neptun>.cs` megnyitva,
+    - a „háttérben” a Visual Studio legyen, a `MainForm_<neptun>.cs` megnyitva,
     - a VS *View / Full Screen* menüjével kapcsolj ideiglenesen *Full Screen* nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
     - görgess le a forrásfájlod legaljára, használj kb. normál zoom értéket, most fontos, hogy ami a képernyődön lesz, legyen jól olvasható (az nem baj, ha nem fér ki minden, nem is fog), az előtérben pedig az alkalmazásod ablaka.
 
@@ -242,15 +230,14 @@ Az elkészült alkalmazás képe:
 
 ### Feladat
 
-Amennyiben a felhasználó megnyitott egy fájlt, akkor a megnyitott fájl tartalmát adott időközönként frissítsük, a frissítési időköz ==5== másodperc.
-A frissítés jelzésére a kijelölt fájl adatait (név és létrehozás dátuma) tartalmazó panel felső felére (0,0 koordinátából kezdve) rajzoljunk ki ==barna== ()==Color.Brown==) színnel egy ==6== pixel magas, kezdetben ==120== pixel széles kitöltött téglalapot.
+Amennyiben a felhasználó megnyitott egy fájlt, akkor a megnyitott fájl tartalmát adott időközönként frissítsük. A frissítési időköz ==6== másodperc legyen.
+A frissítés jelzésére a kijelölt fájl adatait (név és létrehozás dátuma) tartalmazó panel felső felére (0,0 koordinátából kezdve) rajzoljunk ki ==barna== (==Color.Brown==) színnel egy ==5== pixel magas, kezdetben ==125== pixel széles kitöltött téglalapot.
 A téglalap hossza a következő frissítésig hátralevő idővel legyen arányos: ennek megfelelően minden tizedmásodpercben arányosan csökkentsük a hosszát.
 Így minden frissítési időköz végén a téglalap hossza nulla lesz.
-A frissítési időköz végén (amikor a téglalap hossza elérte a 0-t) a korábban kiválasztott fájl tartalmát töltsük be újból és kezdjük elejéről a folyamatot.
+A frissítési időköz végén (amikor a téglalap hossza elérte a 0-t) a korábban kiválasztott fájl tartalmát töltsük be újból, és kezdjük elejéről a folyamatot.
 Az időzítésre `Timer` komponenst használjunk!
 
-!!! danger "Fontos"
-    A feladat csak akkor elfogadható, ha a fenti, félkövérrel kiemelt paraméterekkel dolgozol. Arra figyelj, hogy vezérlőket a kirajzolt téglalap ne lógjon bele vezérlőkbe és ne lógjon túl az űrlapon (ha szükséges, mozgasd kicsit lentebb a vezérlőket, illetve vedd kicsit szélesebbre az űrlap alapértelmezett méretét).
+:exclamation: A feladat csak akkor elfogadható, ha a fenti, kiemelt szövegstílussal jelölt paraméterekkel dolgozol. Arra figyelj, hogy a kirajzolt téglalap ne lógjon bele vezérlőkbe és ne lógjon túl az űrlapon (ha szükséges, mozgasd kicsit lentebb a vezérlőket, illetve vedd kicsit szélesebbre az űrlap alapértelmezett méretét).
 
 ### Megoldás
 
@@ -269,8 +256,8 @@ A feladatot próbáld meg önállóan megoldani, majd a lenti leírás alapján 
     3. Állítsuk a `Name` tulajdonságot `reloadTimer`-re!
     
     4. Vezessünk be néhány új tagváltozót a `Form1` osztályban:
-        - `loadedFile` az utoljára betöltött fájl adatait tartalmazni
-        - `counter` az újratöltésig szükséges tizedmásodpercek számát tartalmazza, a későbbiekben minden tizedmásodpercben eggyel csökkentjük egy időzítő segítségével, míg el nem éri a nullát
+        - `loadedFile` az utoljára betöltött fájl adatait tartalmazza,
+        - `counter` az újratöltésig szükséges tizedmásodpercek számát tartalmazza, a későbbiekben minden tizedmásodpercben eggyel csökkentjük az értékét egy időzítő segítségével, míg el nem éri a nullát,
         - `counterInitialValue` a `counter` számláló kezdőértéke (ahonnan visszaszámol).
         
         A tagváltozókat az osztály elejére szoktuk beszúrni:
@@ -299,14 +286,14 @@ A feladatot próbáld meg önállóan megoldani, majd a lenti leírás alapján 
         ```
 
     6. Egészítsük ki a duplakattintást kezelő eseménykezelőnket, hogy ne csak betöltse a fájlt, hanem:
-        1. Indítsa el a `Timer`-t a `reloadTimer.Start()` hívással
-        2. Állítsa be `counter` értékét `counterInitialValue`-ra
-        3. Állítsa be `loadedFile` értékét a mindenkori kiválasztott fájl leírójára
+        1. Indítsa el a `Timer`-t a `reloadTimer.Start()` hívással,
+        2. állítsa be `counter` értékét `counterInitialValue`-ra,
+        3. állítsa be `loadedFile` értékét a mindenkori kiválasztott fájl leírójára.
 
         !!! tip "Megjegyzés"
             A megoldás minden egyes új fájl megnyitásakor meghívja a `Timer` osztály `Start` függvényét. Ez nem jelent gondot, mivel ilyenkor a már elindított `Timer` egyszerűen fut tovább és figyelmen kívül hagyja a további `Start` hívásokat.
 
-    7. Iratkozzunk fel `Timer` komponens `Tick` eseményére. Ehhez `reloadTimer` kijelölése után a *Property Editor*-ban az *Events* fülön kattintsunk duplán a `Tick` eseményre, ezzel létrejön a kapcsolódó eseménykezelő (`reloadTimer_Tick`). Töltsük ki a kódját:
+    7. Iratkozzunk fel a `Timer` komponens `Tick` eseményére. Ehhez a `reloadTimer` kijelölése után a *Property Editor*-ban az *Events* fülön kattintsunk duplán a `Tick` eseményre, ezzel létrejön a kapcsolódó eseménykezelő (`reloadTimer_Tick`). Töltsük ki a kódját:
 
         ```csharp
         private void reloadTimer_Tick(object sender, EventArgs e)
@@ -325,11 +312,11 @@ A feladatot próbáld meg önállóan megoldani, majd a lenti leírás alapján 
         }
         ```
 
-        A fenti megoldás minden egyes `Tick` eseményre csökkenti `counter` értékét, egészen addig, amíg el nem éri a 0 értéket, ilyenkor ugyanis visszaállítjuk a kezdőértékre és újra betöltjük a fájlt.
+        A fenti megoldás minden egyes `Tick` eseményre csökkenti a `counter` értékét, egészen addig, amíg el nem éri a 0 értéket, ilyenkor ugyanis visszaállítjuk a kezdőértékre, és újra betöltjük a fájlt.
 
         A megoldás jól szemlélteti a Windows Forms alkalmazásokban a grafikus megjelenítés tipikus mechanizmusát:
 
-        - Tényleges rajzolást az állapotot megváltoztató műveletben nem végzünk, hanem a form/vezérlő (esetünkben panel) `Invalidate` műveletének váltjuk ki a `Paint` eseményt
+        - Tényleges rajzolást az állapotot megváltoztató műveletben nem végzünk, hanem a form/vezérlő (esetünkben panel) `Invalidate` műveletében váltjuk ki a `Paint` eseményt.
         - A konkrét téglalap (aktuális állapotnak megfelelő) megjelenítéséért/kirajzolásáért az űrlap/vezérlő (esetünkben a panel) `Paint` eseménye felelős.
 
     8. Iratkozzunk fel a `detailsPanel` komponens `Paint` eseményére. Ehhez a panel kijelölése után a *Property Editor*-ban az *Events* fülön kattintsunk duplán a `Paint` eseményre, ezzel létrejön a kapcsolódó eseménykezelő (`detailsPanel _Paint`). Töltsük ki a kódját:
@@ -346,19 +333,19 @@ A feladatot próbáld meg önállóan megoldani, majd a lenti leírás alapján 
         }
         ```
 
-        A `FillRectangle` pontos paraméterezést a példakódban szereplő segítség alapján tudod meghatározni.
+        A `FillRectangle` pontos paraméterezést a fenti példakód megjegyzésben szereplő segítség alapján tudod meghatározni.
 
         !!! warning "Lebegőpontos számítások"
-            Tipikus probléma szokott lenni, ha egész értékű osztást végzel a szélesség számításakor (ekkor az eredmény jó eséllyel nulla lesz): az osztót vagy osztandót castold lebegőpontos számra.
+            Tipikus probléma szokott lenni, ha egész értékű osztást végzel a szélesség számításakor (ekkor az eredmény jó eséllyel nulla lesz): az osztót vagy osztandót castold előbb lebegőpontos számra és így dolgozz.
 
-    9. Teszteljük a megoldásunkat (az alábbi ábrán a színes téglalap lehet eltér a feladatban elvártaktól)
+    9. Teszteljük a megoldásunkat (az alábbi ábrán a színes téglalap lehet eltér a feladatban elvártaktól):
 
         ![Feladat 4 Megoldás](images/f4-done.png)
 
 ## Opcionális plusz feladat – 3 iMsc pontért
 
-Egészítsük ki az alkalmazásunkat úgy, hogy fájlok közt "Total Commander"-szerűen tudjunk mozogni, vagyis:
+Egészítsük ki az alkalmazásunkat úgy, hogy a fájlok közt "Total Commander"-szerűen tudjunk mozogni, vagyis:
 
 - A listában jelenjenek meg a mappák nevei is. Ezekre duplán kattintva a teljes fájl lista cserélődjön le az aktuális mappa tartalmára. A mappanevek eredeti formájukban jelenjenek meg (pl. ne legyenek körbevéve szögletes vagy egyéb zárójelekkel).
-- A lista elejére kerüljön be egy speciális "".." nevű elem, mely mindig az aktuális mappa szülőmappájának tartalmát listázza ki.
-- Amikor gyökérelemben vagyunk (pl.: "C:\”), ne jelenjen meg a "..” elem.
+- A lista elejére kerüljön be egy speciális ".." nevű elem, mely mindig az aktuális mappa szülőmappájának tartalmát listázza ki.
+- Amikor gyökérelemben vagyunk (pl.: "C:\"), ne jelenjen meg a ".." elem.
