@@ -575,13 +575,14 @@ Az önálló gyakorlat a következő ismeretek elmélyítését célozza:</p>
 <p>A feladat publikálásának és beadásának alapelvei megegyeznek az előző feladatéval, pár kiemelt követelmény:</p>
 <ul>
 <li>A munkamenet megegyezik az előző házi feladatéval: a fenti hivatkozással mindenkinek születik egy privát repója, abban kell dolgozni és a határidőig a feladatot beadni.</li>
-<li>A kiklónozott fájlok között több csproj fájl is található. Ne ezeket nyisd meg, hanem a <code>MultiThreadedApp.sln</code>-t és ebben dolgozz!</li>
+<li>A kiklónozott fájlok között a <code>MultiThreadedApp.sln</code>-t megnyitva kell dolgozni.</li>
 <li><img alt="❗" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2757.svg" title=":exclamation:"> A feladatok kérik, hogy készíts <strong>képernyőképet</strong> a megoldás egy-egy részéről, mert ezzel bizonyítod, hogy a megoldásod saját magad készítetted. <strong>A képernyőképek elvárt tartalmát a feladat minden esetben pontosan megnevezi.</strong> A képernyőképeket a megoldás részeként kell beadni, a repository-d gyökérmappájába tedd (a Neptun.txt mellé). A képernyőképek így felkerülnek GitHub-ra git repository tartalmával együtt. Mivel a repository privát, azt az oktatókon kívül más nem látja. Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltölteni, kitakarhatod a képről.</img></li>
 <li><img alt="❗" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2757.svg" title=":exclamation:"> A beadott megoldások mellé külön indoklást, illetve leírást nem várunk el, ugyanakkor az elfogadás feltétele, hogy a beadott kódban a feladat megoldása szempontjából relevánsabb részek <strong>kommentekkel legyenek ellátva</strong>.</img></li>
 </ul>
+<p>TODO Az alábbi közös részek snippetként legyenek inkább:</p>
 <p>A következők is fontosak (ugyanazok, mint az 1. házi feladat esetében voltak):</p>
 <ol>
-<li><img alt="❗" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2757.svg" title=":exclamation:"/> A kiinduló projektben van egy <code>.github/workflows</code> mappa, ennek tartalmát tilos megváltoztatni, törölni, stb.</li>
+<li><img alt="❗" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2757.svg" title=":exclamation:"/> A kiinduló projektben van egy <code>.github/workflows</code> mappa, ennek tartalmát tilos megváltoztatni, törölni stb.</li>
 <li><img alt="❗" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2757.svg" title=":exclamation:"/> A munka során a kiindulási repóban levő solutionben/projektben kell dolgozni: új solution és/vagy projektfájl létrehozása, vagy a projekt más/újabb .NET verziókra targetelése tilos.</li>
 <li><img alt="❗" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2757.svg" title=":exclamation:"/> A repository gyökérmappájában található neptun.txt fájlba írd bele a Neptun kódod, csupa nagybetűvel. A fájlban csak ez a hat karakter legyen, semmi más.</li>
 <li>Oldd meg a feladatot. Pushold a határidőig. Akárhány commitod lehet, a legutolsó állapotot fogjuk nézni.</li>
@@ -593,8 +594,8 @@ Az önálló gyakorlat a következő ismeretek elmélyítését célozza:</p>
 <h2 id="feladat-1-bicikli">Feladat 1 – Bicikli<a class="headerlink" href="#feladat-1-bicikli" title="Permanent link">¶</a></h2>
 <h3 id="bevezeto-feladatok">Bevezető feladatok<a class="headerlink" href="#bevezeto-feladatok" title="Permanent link">¶</a></h3>
 <ol>
-<li>A főablak fejléce a "Tour de France" szöveg legyen, hozzáfűzve a saját Neptun kódod: (pl. "ABCDEF" Neptun kód esetén "Tour de France - ABCDEF"), fontos, hogy ez legyen a szöveg! Ehhez az űrlapunk <code>Text</code> tulajdonságát állítsuk be erre a szövegre.</li>
-<li>Az űrlapunk neve jelenleg "Form1", mely szintén elég semmitmondó. Nevezzük át Neptun kódunknak megfelelően (pl. "ABCDEF" Neptun kód esetén "MainForm_ABCDEF"-re).</li>
+<li><img alt="❗" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2757.svg" title=":exclamation:"/> A főablak fejléce a "Tour de France" szöveg legyen, hozzáfűzve a saját Neptun kódod: (pl. "ABCDEF" Neptun kód esetén "Tour de France - ABCDEF"), fontos, hogy ez legyen a szöveg! Ehhez az űrlapunk <code>Text</code> tulajdonságát állítsuk be erre a szövegre.</li>
+<li><img alt="❗" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2757.svg" title=":exclamation:"/> Az űrlapunk neve jelenleg "Form1", mely szintén elég semmitmondó. Nevezzük át Neptun kódunknak megfelelően (pl. "ABCDEF" Neptun kód esetén "MainForm_ABCDEF"-re).</li>
 </ol>
 <h3 id="feladat">Feladat<a class="headerlink" href="#feladat" title="Permanent link">¶</a></h3>
 <p>A Windows Forms alkalmazásunk főablakának bal oldalán egy gomb legyen (ez egy biciklit jelképez), a jobb oldalán egy kék színű panel (ez a célt jelképezi), továbbá legyen egy "start" feliratú gomb a felület alján. A gomb megnyomásakor indítsunk egy új háttérszálat, mely a biciklit jelképező gombot <mark><strong>2</strong></mark> és <mark><strong>8</strong></mark> közötti (véletlenszerűen választott) lépésközönként átmozgatja a jobb oldalon található panelig!</p>
@@ -817,8 +818,8 @@ Az önálló gyakorlat a következő ismeretek elmélyítését célozza:</p>
 </path>
 </svg>
 </span>
-<span title="2023. február 18. 10:31:56">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-18T10:31:56+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-18</span>
+<span title="2023. február 18. 12:31:12">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-18T12:31:12+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-18</span>
 </span>
 </span>
 <span class="md-source-file__fact">
