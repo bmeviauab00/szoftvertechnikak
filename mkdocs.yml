@@ -6,10 +6,14 @@ repo_url: https://github.com/bmeviauab00/szoftvertechnikak
 
 theme:
   name: material
+  custom_dir: overrides
+  icon:
+    repo: fontawesome/brands/github
   language: hu
   palette:
     - media: "(prefers-color-scheme: light)"
-      primary: red
+      scheme: aut
+      primary: aut
       accent: red
       toggle:
         icon: material/lightbulb-outline
@@ -27,7 +31,8 @@ theme:
     - navigation.tabs
     - navigation.instant
     - navigation.top
-    - search.suggest   
+    - search.suggest
+    - content.action.edit
   logo: img/logo-bme-aut.png
   favicon: img/favicon.ico
 
@@ -53,6 +58,7 @@ markdown_extensions:
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.smartsymbols
+  - pymdownx.snippets
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tabbed
@@ -66,8 +72,16 @@ markdown_extensions:
 
 
 plugins:
-  - search:
-      prebuild_index: true
+  - search
+  - glightbox
+  - git-revision-date-localized:
+      enable_creation_date: false
+      type: timeago
+      timezone: Europe/Budapest
+      locale: hu
+  - git-committers:
+      repository: bmeviauab00/szoftvertechnikak
+      branch: main
 
 nav:
   - index.md
