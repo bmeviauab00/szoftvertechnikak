@@ -1,4 +1,4 @@
-# 1. Házi feladatok - fejlesztőkörnyezet
+# Fejlesztőkörnyezet házi feladatokhoz
 
 ## Bevezetés
 
