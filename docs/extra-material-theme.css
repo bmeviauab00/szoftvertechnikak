@@ -29,36 +29,7 @@ article ul ul ul {
 	--md-accent-fg-color: #e57171; /* link hoover*/
 }
 
-.md-tabs__link {
-	opacity: 0.85;
-}
-
-/* img	{
-	height: 50%;
-    width: 50%;
-    border: 1px solid #9f9f9f;
-} */
-
-/* img {
-	transform: scale(0.5);
-} */
-
-/* img	{
-    max-width: 50%;
-	height: auto;
-    border: 1px solid #9f9f9f;
-} */
-
-/* span.xxx  {
-	display: inline-block;
-  }
-  
- img.yyy {
-	width: 75%;
-  } */
-
-
-  /* page contributors*/
+/* page contributors*/
 .md-source-file__fact {
     align-items: center;
     color: var(--md-default-fg-color--light);
