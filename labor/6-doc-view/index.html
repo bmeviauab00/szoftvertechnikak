@@ -246,6 +246,30 @@
 <a class="md-nav__link" href="#2-feladat-az-alkalmazas-megtervezese">
     2. Feladat - Az alkalmazás megtervezése
   </a>
+<nav aria-label="2. Feladat - Az alkalmazás megtervezése" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#document-view-architektura">
+    Document-View architektúra
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#konkret-dokumentum-es-adatai">
+    Konkrét dokumentum és adatai
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dokumentumok-menedzselese-app-singleton-osztaly">
+    Dokumentumok menedzselése - App Singleton osztály
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#nezetek">
+    Nézetek
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#3-feladat-a-kesz-alkalmazas-attekintese">
@@ -265,12 +289,12 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#forgatokonyv-1-egy-pixel-invertalasa-nezetek-szinkronizalasa">
-    Forgatókönyv 1 – egy pixel invertálása, nézetek szinkronizálása
+    Forgatókönyv 1 – Egy pixel invertálása, nézetek szinkronizálása
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#forgatokonyv-2-uj-dokumentum-letrehozasa">
-    Forgatókönyv 2 – Új dokumentum létrehozása
+<a class="md-nav__link" href="#forgatokonyv-2-uj-dokumentum-letrehozasa-opcionalis">
+    Forgatókönyv 2 – Új dokumentum létrehozása (opcionális)
   </a>
 </li>
 </ul>
@@ -375,6 +399,30 @@
 <a class="md-nav__link" href="#2-feladat-az-alkalmazas-megtervezese">
     2. Feladat - Az alkalmazás megtervezése
   </a>
+<nav aria-label="2. Feladat - Az alkalmazás megtervezése" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#document-view-architektura">
+    Document-View architektúra
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#konkret-dokumentum-es-adatai">
+    Konkrét dokumentum és adatai
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dokumentumok-menedzselese-app-singleton-osztaly">
+    Dokumentumok menedzselése - App Singleton osztály
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#nezetek">
+    Nézetek
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#3-feladat-a-kesz-alkalmazas-attekintese">
@@ -394,12 +442,12 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#forgatokonyv-1-egy-pixel-invertalasa-nezetek-szinkronizalasa">
-    Forgatókönyv 1 – egy pixel invertálása, nézetek szinkronizálása
+    Forgatókönyv 1 – Egy pixel invertálása, nézetek szinkronizálása
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#forgatokonyv-2-uj-dokumentum-letrehozasa">
-    Forgatókönyv 2 – Új dokumentum létrehozása
+<a class="md-nav__link" href="#forgatokonyv-2-uj-dokumentum-letrehozasa-opcionalis">
+    Forgatókönyv 2 – Új dokumentum létrehozása (opcionális)
   </a>
 </li>
 </ul>
@@ -416,15 +464,13 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"></path></svg>
 </a>
 <h1 id="6-document-view-architektura">6. Document-View architektúra<a class="headerlink" href="#6-document-view-architektura" title="Permanent link">¶</a></h1>
-<p>Utolsó módosítás ideje: 2022.11.31<br/>
-Kidolgozta: Benedek Zoltán</p>
 <h2 id="a-gyakorlat-celja">A gyakorlat célja<a class="headerlink" href="#a-gyakorlat-celja" title="Permanent link">¶</a></h2>
 <p>A gyakorlat céljai:</p>
 <ul>
 <li>UML alapú tervezés és néhány tervezési minta alkalmazása</li>
 <li>A Document-View architektúra alkalmazása a gyakorlatban</li>
 <li>UserControl szerepének bemutatása Window Forms alkalmazásokban, Document-View architektúra esetén</li>
-<li>A grafikus megjelenítés elveinek gyakorlása Window Forms alkalmazásokban (Paint esemény, Invalidate, Graphics használata)</li>
+<li>A grafikus megjelenítés elveinek gyakorlása Window Forms alkalmazásokban (<code>Paint</code> esemény, <code>Invalidate</code>, <code>Graphics</code> használata)</li>
 </ul>
 <p>A kapcsolódó előadások és korábbi gyakorlatok anyaga:</p>
 <ul>
@@ -441,17 +487,17 @@ Kidolgozta: Benedek Zoltán</p>
 <h2 id="a-gyakorlat-menete">A gyakorlat menete<a class="headerlink" href="#a-gyakorlat-menete" title="Permanent link">¶</a></h2>
 <p>Az alábbiak szerint fogunk dolgozni:</p>
 <ul>
-<li>A feladat/célok rövid ismertetése: egy interaktív fonteditor (betűtípus-szerkesztő) megtervezése.</li>
+<li>A feladat/célok rövid ismertetése: egy interaktív fonteditor (betűtípus-szerkesztő) megtervezése</li>
 <li>A kész alkalmazást futtatva a feladat (a kész alkalmazás működésének) ismertetése</li>
 <li>Az alkalmazás architektúrájának megtervezése (osztálydiagram elkészítése)</li>
 <li>A kész alkalmazás forráskódjának alapján néhány fontosabb forgatókönyv megvalósításának áttekintése</li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Megjegyzés gyakorlatvezetők számára</p>
-<p>A gyakorlat elején töltsük le a kész alkalmazást. A hallgatók ekkor még ne töltsék le, ne ezt kattintgassák, majd csak a gyakorlat második részében. A gyakorlatvezetőknek viszont szüksége lesz rá, mert ennek segítségével történik az feladat bemutatása.</p>
-</div>
+<details class="note">
+<summary>Megjegyzés gyakorlatvezetők számára</summary>
+<p>A gyakorlat elején töltsük le a kész alkalmazást. A hallgatók ekkor még ne töltsék le, ne ezt kattintgassák, majd csak a gyakorlat második részében. A gyakorlatvezetőknek viszont szüksége lesz rá, mert ennek segítségével történik a feladat bemutatása.</p>
+</details>
 <h2 id="1-feladat-a-feladat-ismertetese">1. Feladat - A feladat ismertetése<a class="headerlink" href="#1-feladat-a-feladat-ismertetese" title="Permanent link">¶</a></h2>
-<p>Interaktív FontEditor készítése, amelyben lehet szerkeszteni a karaktereket, és a karakterekből álló fontokból tetszőleges példaszöveg jeleníthető meg. Az alkalmazás felhasználói felülete futás közben:</p>
+<p>Interaktív FontEditor (betűtípus szerkesztő) készítése, amelyben lehet szerkeszteni a karaktereket, és az aktuális betűkészlet alapján tetszőleges példaszöveg megjeleníthető. Az alkalmazás felhasználói felülete futás közben:</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/fonteditor-app-intro.png"><img alt="A FontEditor alkalmazás felülete" src="images/fonteditor-app-intro.png"/></a></p>
 <p>A következő funkciókat kell támogatnia:</p>
 <ul>
@@ -459,8 +505,8 @@ Kidolgozta: Benedek Zoltán</p>
 <li>Új betűtípus a <em>File/New</em> menüelem kiválasztásával hozható létre (meg kell adni a nevét).</li>
 <li>Ez egyes betűtípusok elmenthetők (<em>File/Save</em>), betölthetők (<em>File/Open</em>), és az aktuális dokumentum bezárható (<em>File/Close</em>). Ezek helye megvan az alkalmazásban, de nincsenek részleteiben implementálva (a függvények törzse nincs kitöltve – opcionális HF).</li>
 <li>A felhasználói felület felépítése<ul>
-<li>Az oldalak tetején egy mintaszöveg adható meg, melyet az aktuális betűtípussal az alkalmazás megjelenít.</li>
-<li>Az oldalak közepén egy karaktersáv található. Egy adott karakteren duplán kattintva alatta megjelenik egy az adott karakterhez tartozó szerkesztőnézet.</li>
+<li>Az oldal tetején (Sample text) egy mintaszöveg adható meg, melyet az aktuális betűtípussal az alkalmazás megjelenít.</li>
+<li>Az oldalak közepén egy karaktersáv található. Egy adott karakteren duplán kattintva alatta megjelenik egy, az adott karakterhez tartozó szerkesztőnézet.</li>
 <li>Az oldal alján egymás mellett az eddig szerkesztésre megnyitott karakterek szerkesztőnézetei láthatók. Egy karakter többször is megnyitható szerkesztésre, ez esetben több szerkesztőnézet jön létre hozzá. Ennek az az értelme, hogy ugyanazt a karaktert különböző nagyítással is láthatjuk/szerkeszthetjük.</li>
 </ul>
 </li>
@@ -473,121 +519,206 @@ Kidolgozta: Benedek Zoltán</p>
 </ul>
 </li>
 </ul>
-<p>Futtassuk az alkalmazást, és ismertessük működését a fentieknek megfelelően. Azt mindenképpen mutassuk meg, hogy ha egy karakter szerepel a mintaszövegben, valamint többször megnyitjuk szerkesztésre, akkor az egyik nézetben változtatva (egy pixelt invertálva) valamennyi nézete frissül.</p>
-<p>Az alkalmazás a kódmennyiség minimális értéken tartása érdekében minimalisztikus, pl. a hibakezelés nincs általánosságában kidolgozva, hiányoznak ellenőrzések. Ugyanakkor viszonylag jól kommentezett, ami segíti a kód utólagos megértését.</p>
+<p>Futtassuk az alkalmazást, és vizsgáljuk meg a működését a fentieknek megfelelően. Azt mindenképpen nézzük meg, hogy ha egy karakter szerepel a mintaszövegben, valamint többször megnyitjuk szerkesztésre, akkor <strong>az egyik nézetben változtatva (egy pixelt invertálva) valamennyi nézete frissül</strong>.</p>
+<p>Az alkalmazás a kódmennyiség minimális értéken tartása érdekében minimalisztikus, pl. a hibakezelés nincs általánosságában kidolgozva, hiányoznak ellenőrzések. Ugyanakkor kódmegjegyzésekkel el van látva, mely segíti a kód utólagos megértését.</p>
 <h2 id="2-feladat-az-alkalmazas-megtervezese">2. Feladat - Az alkalmazás megtervezése<a class="headerlink" href="#2-feladat-az-alkalmazas-megtervezese" title="Permanent link">¶</a></h2>
-<p>COMING SOON</p>
+<p>A cél az, hogy lássuk, milyen folyamatot követve, milyen lépésekben dolgozunk, mikor milyen tervezői lépéseket kell meghoznunk. Törekedjünk oktatói és hallgatói részről is az interaktivitásra, közösen hozzuk meg a döntéseket.</p>
+<p>Hozzunk létre egy új C# nyelvű „Window Form App” projektet (.NET 6-osat), legyen a neve FontEditor. Vegyünk fel egy osztálydiagramot: projekten jobb katt, <em>Add / New Item</em>, majd a megjelenő ablakban <em>Class Diagram</em> kiválasztása, a neve maradhat az alapértelmezett. Állítsuk be, hogy a diagram mutassa majd a műveletek szignatúráit is (pl. jobb katt a háttéren, <em>Change Members Format / Display Full Signature</em>). A gyakorlat nagy részében ezt a diagramot fogjuk szerkeszteni.</p>
+<p>A kész osztálydiagram a következő, eddig fogunk fokozatosan eljutni:</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/ClassDiagram.png"><img alt="ClassDiagram" src="images/ClassDiagram.png"/></a></p>
+<h3 id="document-view-architektura">Document-View architektúra<a class="headerlink" href="#document-view-architektura" title="Permanent link">¶</a></h3>
+<p>Az első tervezői döntés: architektúrát kell választani. A Document-View esetünkben egyértelmű választás: dokumentumokkal dolgozunk, és több nézettel, melyeket szinkronban kell tartani. Az alábbi ábra ismerteti a működést. A nézetek az <strong>observerek</strong>, a document pedig a <strong>subject</strong>, melynek változásaira az egyes nézetek fel vannak iratkozva.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/DocView.png"><img alt="DocView" src="images/DocView.png"/></a></p>
+<p>A D-V architektúrából adódóan szükségünk lesz dokumentum osztályra, amely a dokumentum adatait tárolja (tagváltozókban), mint pl. a név, elérési út, pixelmátrix. Tegyük fel, hogy a későbbiekben több dokumentum típust is támogatni kell majd: pl. megnyithatunk egy olyan tabfület, melyen a BKK járművekhez tudjuk rendelni a betűtípusokat (elektronikus kijelző). Vannak olyan dokumentum adatok, melyek minden dokumentum típusban megjelennek (pl. név, elérési út). <strong>Az egyes dokumentum típusoknak a közös tulajdonságait/műveleteit célszerű egy <code>Document</code> ősosztályba kiszervezni</strong>, hogy ne legyenek duplikálva az egyes dokumentum típusokat reprezentáló dokumentum osztályokban.</p>
+<ul>
+<li>Vegyük fel a <code>Document</code> osztályt (ez az absztrakt ős).</li>
+<li>Vegyünk fel bele egy <code>string Name</code> property-t (ez jelenik meg a tabfüleken).</li>
+</ul>
+<p>A Document-View architektúrából adódóan szükség van egy <strong>nézet interfészre</strong> (egy <code>Update</code> művelettel a nézet értesítéséhez), valamint a dokumentumoknak nyilván kell tartaniuk egy listában a nézeteiket:</p>
+<ul>
+<li>Vegyük fel az <code>IView</code> interfészt.</li>
+<li>Vegyünk fel bele egy <code>Update</code> műveletet.</li>
+<li>A <code>Document</code> osztályba vegyünk fel egy <code>List&lt;IView&gt; views</code> mezőt (a Fields-nél). Jobb gombbal kattintsunk a mező nevén a diagramon, és a menüből <em>Show as collection association</em> kiválasztása.</li>
+<li>A <code>Document</code> osztályba vegyünk fel a <code>void AttachView(IView view)</code> műveletet, mellyel új nézetet lehet beregisztrálni.</li>
+<li>Végül vegyünk fel egy <code>void DetachView(IView view)</code>-t, mert nézetet bezárni is lehet.</li>
+</ul>
+<p>Támogatnunk kell az egyes <strong>dokumentumok tartalmának perzisztálását</strong> (mentés/betöltés). Ezekhez vegyünk fel a <code>Document</code> ősbe a megfelelő műveleteket:</p>
+<ul>
+<li><code>Document</code>-be <code>LoadDocument(string path)</code> felvétele.</li>
+<li><code>Document</code>-be <code>SaveDocument(string path)</code> felvétele.</li>
+<li>Mindkettő legyen absztrakt, hiszen csak az egyes dokumentum leszármazottakban tudunk implementációt megadni: szelektáljuk ki a két műveletet, és a <em>Properties</em> ablakban az <em>Inheritence modifier</em> legyen <em>Abstract</em>.</li>
+</ul>
+<p>Az egyes <strong>dokumentumoknak támogatniuk kell a nézeteik frissítését</strong>, ez minden dokumentum típusra közös:</p>
+<ul>
+<li>A <code>Document</code>-be vegyük fel az <code>UpdateAllViews()</code>-t (ez felel meg az Observer minta Notify műveletének).</li>
+</ul>
+<h3 id="konkret-dokumentum-es-adatai">Konkrét dokumentum és adatai<a class="headerlink" href="#konkret-dokumentum-es-adatai" title="Permanent link">¶</a></h3>
+<p>Szükség van egy <strong>olyan dokumentum típusra, ami a betűtípusok szerkesztéséhez tartozik</strong>, amely a tagváltozóiban nyilvántartja a szükséges adatokat: legyen a neve <code>FontEditorDocument</code>.</p>
+<ul>
+<li>Vegyük fel a <code>FontEditorDocument</code> osztályt.</li>
+<li>Származtassuk a <code>Document</code>-ből (Toolbox – Inheritence kapcsolat).</li>
+<li>Ekkor a <code>LoadDocument</code> és <code>SaveDocument</code> műveletekre automatikusan megszületik az override-oló művelet. Ha mégsem lenne így<ul>
+<li>Jelöljük ki az ősben a két műveletet.</li>
+<li>Copy</li>
+<li>Jelöljük ki a <code>FontEditorDocument</code> osztályt.</li>
+<li>Paste</li>
+<li>Jelöljük itt ki a két műveletet, és a <em>Properties</em> ablakban a <em>Instance Modifier</em> legyen <code>override</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>A dokumentumunk tagváltozókban tárolja az adatokat.</strong> Gondoljuk át, hogy ezt hogyan célszerű megvalósítani. Lehetne egy háromdimenziós tömb (karakter – x – y), de inkább emeljük ki egy <strong>külön osztályba az egy adott karakter pixeleinek tárolását/menedzselését</strong>: vezessük be a <code>CharDef</code> osztályt.</p>
+<div class="admonition note">
+<p class="admonition-title">Pixel tömb helyett</p>
+<p>Azért nem a pixeltömböt használjuk közvetlenül, mert csak egy új osztály bevezetésével van lehetőségünk kifejezetten ide tartozó műveletek bevezetésére, vagyis az egységbezárás korrekt megvalósítására.</p>
+</div>
+<ul>
+<li>Vegyük fel a <code>CharDef</code> osztályt.</li>
+<li>
+<p><code>CharDef</code>-be <code>bool[,] Pixels</code> tulajdonság felvétele.</p>
+<div class="admonition tip">
+<p class="admonition-title">többdimenzoós tömbök C#-ban</p>
+<p>A fenti példában egy többdimenziós tömböt használtunk <code>bool[,]</code> és nem tömbök tömbjét <code>bool[][]</code>, mivel ezt nyelvi szinten is támogatja a C# és jobb teljesítményt nyújt, mint a tömbök tömbje, mert egy objektumként törolódik a heapen.</p>
+</div>
+</li>
+<li>
+<p><code>CharDef</code>-be <code>char Character</code> felvétele: az egyes <code>CharDef</code> osztályok tárolják magukról, hogy mely karakter pixeleit reprezentálják.</p>
+</li>
+</ul>
+<p>A dokumentumnak lesz egy gyűjteménye <code>CharDef</code> objektumokból: minden karakterhez pontosan egy darab. Gondoljuk át, hogy a legcélszerűbb ezt megvalósítani. Az egyes karakterdefiníciókat a karakterkódjukkal akarjuk címezni, így a <code>Dictionary&lt;char, CharDef&gt;</code> ideális választás: a karakterkód a kulcs, az hozzá tartozó <code>CharDef</code> pedig az érték.</p>
+<ul>
+<li><code>FontEditorDocument</code>-be: <code>Dictionary&lt;char, CharDef&gt; charDefs</code> mező felvétele. Jobb katt, <em>Show as collection association</em>.</li>
+</ul>
+<h3 id="dokumentumok-menedzselese-app-singleton-osztaly">Dokumentumok menedzselése - App Singleton osztály<a class="headerlink" href="#dokumentumok-menedzselese-app-singleton-osztaly" title="Permanent link">¶</a></h3>
+<p>Az alkalmazásban nyilván kell tartani a megnyitott dokumentumok listáját. Mely osztály felelőssége legyen? Vezessünk be rá egy <strong>alkalmazásszintű osztályt</strong>: legyen a neve <code>App</code> (Windows Forms alatt már van <code>Application</code>, nem célszerű ezt a nevet választani). Ez lesz az alkalmazásunk „gyökérosztálya”.</p>
+<ul>
+<li>Vegyük fel az <code>App</code> osztályt.</li>
+<li><code>App</code>-ba <code>List&lt;FontEditorDocument&gt; documents</code> mező felvétele, majd <em>Show as collection association</em>.</li>
+</ul>
+<p>Gondoljuk végig, hogyan történik majd egy <strong>új dokumentum létrehozása</strong> (mi történik a <em>File/New</em> menüelem kiválasztásakor): be kell kérni a felhasználótól a dokumentum nevét, létre kell hozni egy <code>FontEditorDocument</code> objektumot, fel kell venni a megnyitott dokumentumok listájába stb. Ezt a logikát ne tegyük a GUI-ba (menüelem click eseménykezelő): tegyük abba az osztályba, melynek a felelőssége a megnyitott dokumentumok menedzselése, amely tárolja a szükséges adatokat hozzá (dokumentum lista). Így legyen ez az <code>App</code> osztályunk feladata, benne vegyük fel a szükséges műveleteket:</p>
+<ul>
+<li><code>App</code>-ba <code>NewDocument</code> és <code>OpenDocument</code> műveletek felvétele.</li>
+</ul>
+<p>Most a <strong>dokumentum mentést</strong> gondoljuk végig: a <em>File/Save</em> mindig az aktív dokumentumra vonatkozik. Valakinek <strong>nyilván kell tartani, melyik az aktív dokumentum</strong>: legyen ez az <code>App</code>, hiszen ő tárolja a dokumentumok listáját is.</p>
+<ul>
+<li>A Toolbox-on válasszuk ki az Association kapcsolatot. Az <code>App</code>-ból húzzunk egy nyilat a <code>FontEditorDocument</code>-be. Válasszuk ki az újonnan létrehozott kapcsolatot, és nevezzük át <code>ActiveDocument</code>-re.</li>
+<li><code>App</code>-ba <code>void SaveActiveDocument()</code> felvétele.</li>
+<li><code>App</code>-ba <code>void CloseActiveDocumentá()</code> felvétele.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Konkrét dokumentumra vagy absztrakt ősre hivatkozzunk?</p>
+<p>Mivel az <code>App</code> osztályunk alkalmazás specifikus funkciókat lát el, nyugodtan hivatkozhat a konkrét dokumentum típusra, és felesleges az absztrakt őstől függenünk, mert az csak nem kívánt castolásokhoz vezetne.</p>
+</div>
+<p>Az <code>App</code> objektumból <strong>értelemszerűen csak egyet kell/szabad létrehozni</strong>, amely a futó alkalmazást reprezentálja. Van még egy problémánk: a <em>File/Save</em> stb. menüelem click eseménykezelőben el kell érjük ezt az egy objektumot. Illetve, majd több más helyen is. Jó lenne, ha nem kellene minden osztályban külön elérhetővé tenni (tagváltozó vagy függvényparaméter formájában), hanem <strong>bárhonnan egyszerűen</strong> elérhető lenne. Erre nyújt megoldást a <strong>Singleton tervezési minta</strong>. Egy osztályból csak egy objektumot enged létrehozni, és ahhoz globális hozzáférést biztosít, mégpedig az osztály nevén és egy statikus <code>Instance</code> property-n keresztül, pl. így:
+<code>App.Instance.SaveDocument</code>, stb. Nem valósítjuk meg teljes értékűen, de tegyük meg az alábbiakat:</p>
+<ul>
+<li><code>App</code>-ba <code>App Instance</code> property felvétele. Properties ablakban <em>static: true</em>.</li>
+<li><code>App</code>-ba privát konstruktor felvétele.</li>
+</ul>
+<p>Az <code>App</code>-osztállyal végeztünk.</p>
+<h3 id="nezetek">Nézetek<a class="headerlink" href="#nezetek" title="Permanent link">¶</a></h3>
+<p>A nézetekkel eddig nem foglalkoztunk, ez a következő lépés. Futtassuk a kész alkalmazást, és nézzük meg, hogy <strong>hány típusú nézetre van szükség</strong>, melyikből hány <strong>példány</strong> lesz:</p>
+<ul>
+<li>Két <strong>típusú</strong> nézetre van szükség: az egyik a mintaszöveget jeleníti meg, a másik egy adott karakter szerkesztését teszi lehetővé.</li>
+<li>Legyen az előző neve <code>SampleTextView</code>, az utóbbié <code>FontEditorView</code>.</li>
+<li><code>SampleTextView</code>-ból mindig egy van (egy adott dokumentumra vonatkozóan), a <code>FontEditorView</code> objektumok igény szerint jönnek létre, 0..n példány létezhet.</li>
+<li>Vegyük fel a két osztályt.</li>
+<li>Implementáltassuk velük az <code>IView</code> interfészt (<em>Toolbox / Inheritence</em> kapcsolat). Az <code>Update</code> művelet automatikusan implementálva lesz.</li>
+</ul>
 <h2 id="3-feladat-a-kesz-alkalmazas-attekintese">3. Feladat - A kész alkalmazás áttekintése<a class="headerlink" href="#3-feladat-a-kesz-alkalmazas-attekintese" title="Permanent link">¶</a></h2>
-<p>Az alábbiakra min. 15 perc kell maradjon, abba szűken bele lehet férni.</p>
-<p>Idő hiányában nem valósítjuk meg az alkalmazást, hanem a kész megoldást nézzük át, annak is csak néhány lényeges használati esetét (forgatókönyv).</p>
-<p>Most már a hallgatók is töltsék le a kész megoldást, nyissák meg a kész solution-t, futtassák/próbálják ki az alkalmazást.</p>
+<p>Idő hiányában nem valósítjuk meg az alkalmazást, hanem a kész megoldást nézzük át (laboron kb. 15 percben), annak is csak néhány lényeges használati esetét.</p>
+<p>Töltsük le  a kész <a href="https://github.com/bmeviauab00/lab-docview-megoldas">megoldást</a>, nyissuk meg a kész solution-t, futtassuk és próbáljuk ki az alkalmazás alapfunkcióit.</p>
 <h3 id="nezetek-megvalositasa">Nézetek megvalósítása<a class="headerlink" href="#nezetek-megvalositasa" title="Permanent link">¶</a></h3>
-<p>Nyissuk meg a <code>FontEditorView</code>-t, először a kódot nézzük. A <code>FontEditorView</code> egyrészt implementálja az IV<code>i</code>ew interfészt, de másrészt a <code>UserControl</code>-ból származik. Mégpedig azért, mert így a tervezőben (designer) tudjuk kialakítani a felhasználói felületét, pont úgy, mint egy űrlapnak. Nyissuk most meg tervezői nézetben, és mondjuk el, hogy a címkét és gombokat a Toolboxról tettük rá. Rendezzük is át egy kicsit őket, majd futtassuk az alkalmazást (elég, ha mi megtesszük, a hallgatók nem kell kövessék), hogy érezhető legyen, miről van szó.</p>
-<p>A <code>SampleTextView</code> is így van megvalósítva, bár annak egyszerű a felülete, lehetett volna közönséges Control leszármazott is.</p>
-<p>Vonjuk le a tanulságot: <strong>Windows Forms környezetben a nézeteket tipikusan <code>UserControl</code>-ként (esetleg <code>Control</code>-ként) célszerű megvalósítani.</strong></p>
+<p>Nyissuk meg a <code>FontEditorView</code>-t, először a kódot nézzük. A <code>FontEditorView</code> egyrészt implementálja az <code>IView</code> interfészt, másrészt a <code>UserControl</code>-ból származik. Mégpedig azért, mert így a tervezőben (designer) tudjuk kialakítani a felhasználói felületét, pont úgy, mint egy űrlapnak. A Visual Studio designer felületén akár bele is módosíthatnánk a layoutba és a vezérlők tulajdonságaiba. Ha kíváncsiak vagyunk, ki is próbálhatjuk ezt (pl. a nagyítás és a kicsinyítés gombok helyének megváltoztatásával).</p>
+<p>A <code>SampleTextView</code> is <code>UserControl</code> leszármazott, bár annak egyszerű a felülete (nincsenek rajta más vezérlők), így lehetett volna közönséges <code>Control</code> leszármazott is.</p>
+<p><img alt="❗" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2757.svg" title=":exclamation:"/> Vonjuk le a tanulságot: <strong>Windows Forms környezetben a nézeteket tipikusan <code>UserControl</code>-ként (esetleg <code>Control</code>-ként) célszerű megvalósítani.</strong></p>
 <h3 id="egy-oldal-tab-elrendezese">Egy oldal (tab) elrendezése<a class="headerlink" href="#egy-oldal-tab-elrendezese" title="Permanent link">¶</a></h3>
-<p>Futtassuk az alkalmazást. Valahogy ki kell alakítsuk egy adott oldal (tabpage) elrendezését. Lehetőleg tervezői nézetben, és nem futás közben, kódból pozícionálva az elemeket (legalábbis ahol nem muszáj). A <code>UserControl</code>-ok alkalmazása jelenti számunkra a megoldást. Nyissuk meg a <code>FontDocumentControl</code>-t tervezői nézetben. Ez egy olyan control, amely egy taboldalra kerül fel, azt tölti ki teljesen. Az oldalt a már ismert layout technikákkal alakítottuk ki (<code>Label</code>, <code>TextBox</code>, <code>Panel</code>-ek Dock-kolva). Ha van időnk, akkor nézzük meg a <em>Document Outline</em> ablakban. Az igazi „poén” pedig az, hogy a <code>SampleTextView</code>-t is a Toolbox-ról drag&amp;drop-pal tettük fel. Annyit nézzünk meg, hogy valóban ott van a Toolbox tetején.</p>
-<h3 id="forgatokonyv-1-egy-pixel-invertalasa-nezetek-szinkronizalasa">Forgatókönyv 1 – egy pixel invertálása, nézetek szinkronizálása<a class="headerlink" href="#forgatokonyv-1-egy-pixel-invertalasa-nezetek-szinkronizalasa" title="Permanent link">¶</a></h3>
-<p>Önálló feladat a hallgatóknak. Keressék meg azt a függvényt, ahol az egész folyamat elindul. A <code>FontEditorView.FontEditorView_MouseClick</code>-be kellene eljutni. Itt egy sor a lényeg:</p>
+<p>Futtassuk az alkalmazást. Valahogy ki kell alakítsuk egy adott oldal (tabpage) elrendezését. Lehetőleg tervezői nézetben, és nem futás közben, kódból pozícionálva az elemeket (legalábbis ahol nem muszáj). A <code>UserControl</code>-ok alkalmazása jelenti számunkra a megoldást. Nyissuk meg a <code>FontDocumentControl</code>-t tervezői nézetben. Ez egy olyan vezérlő, amely egy taboldalra kerül fel, azt tölti ki teljesen. Az oldalt a már ismert layout technikákkal alakítottuk ki (<code>Label</code>, <code>TextBox</code>, <code>Panel</code>-ek Dock-kolva). Ha van időnk, akkor nézzük meg a <em>Document Outline</em> ablakban. Az igazi érdekesség pedig az, hogy a <code>SampleTextView</code>-t is a <em>Toolbox</em>-ról <em>drag&amp;drop</em>-pal került felhelyezésre (pont úgy, mintha egy beépített vezérlő lenne). Annyit nézzünk meg, hogy a <code>SampleTextView</code> valóban ott van a <em>Toolbox</em> tetején.</p>
+<h3 id="forgatokonyv-1-egy-pixel-invertalasa-nezetek-szinkronizalasa">Forgatókönyv 1 – Egy pixel invertálása, nézetek szinkronizálása<a class="headerlink" href="#forgatokonyv-1-egy-pixel-invertalasa-nezetek-szinkronizalasa" title="Permanent link">¶</a></h3>
+<p><img alt="❗" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2757.svg" title=":exclamation:"/> Ez egy kiemelt jelentőségű forgatókönyv, mert ezt illusztrálja a D-V architektúra alapmechanizmusát, a nézetek frissítését és konzisztensen tartását.
+Keressük meg azt a függvényt, ahol az egész pixel invertálás folyamat elindul. A <code>FontEditorView.FontEditorView_MouseClick</code> a kiindulópont. Itt az alább kiemelt sor a lényeg:</p>
 <div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">FontEditorView_MouseClick</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">MouseEventArgs</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">X</span><span class="o">/</span><span class="n">zoom</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">offsetY</span><span class="p">)</span><span class="o">/</span><span class="n">zoom</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">X</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">zoom</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">offsetY</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">zoom</span><span class="p">;</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">CharDef</span><span class="p">.</span><span class="n">FontSize</span><span class="p">.</span><span class="n">Width</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
 
 <span class="hll"><span class="w">    </span><span class="n">document</span><span class="p">.</span><span class="n">InvertCharDefPixel</span><span class="p">(</span><span class="n">editedChar</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
 </span><span class="p">}</span>
 </code></pre></div>
-<p>Nézzük meg a <code>FontEditorDocument.InvertCharDefPixel</code>-t. Invertálja a megfelelő CharDef pixelét, de a lényeg az utolsó sor:</p>
+<p>Nézzük meg a <code>FontEditorDocument.InvertCharDefPixel</code>-t. Az invertálja a megfelelő <code>CharDef</code> pixelét, de a lényeg az utolsó sor:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">InvertCharDefPixel</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">CharDef</span><span class="w"> </span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetCharDef</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
-<span class="w">    </span><span class="n">fd</span><span class="p">.</span><span class="n">Pixels</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">fd</span><span class="p">.</span><span class="n">Pixels</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">charDef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetCharDefCore</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">charDef</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">charDef</span><span class="p">.</span><span class="n">Pixels</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">charDef</span><span class="p">.</span><span class="n">Pixels</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">];</span>
+
 <span class="hll"><span class="w">    </span><span class="n">UpdateAllViews</span><span class="p">();</span>
 </span><span class="p">}</span>
 </code></pre></div>
-<p>A <code>FontEditorDocument</code>-ben vethetünk még egy pillantást a <code>CharDef</code>-ek szótárára:</p>
-<div class="highlight"><pre><span></span><code><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">char</span><span class="p">,</span><span class="w"> </span><span class="n">CharDef</span><span class="o">&gt;</span><span class="w"> </span><span class="n">charDefs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">char</span><span class="p">,</span><span class="w"> </span><span class="n">CharDef</span><span class="o">&gt;</span><span class="p">();</span>
-</code></pre></div>
-<p>Az <code>UpdateAllViews</code> a <code>Document</code> ősben van, <code>Update</code>-et hív minden nézetre. Ami érdekes, hogy az <code>Update</code> hogy van megírva az egyes nézetekben. Nézzük meg pl. a <code>FontEditView</code>-t:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">/// &lt;summary&gt;</span>
-<span class="c1">/// Az IView interfész Update műveletánek implementációja.</span>
-<span class="c1">/// &lt;/summary&gt;</span>
-<span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+<p>Az <code>UpdateAllViews</code> a <code>Document</code> ősben van, <code>Update</code>-et hív minden nézetre. Ami érdekes, hogy az <code>Update</code> hogyan van megírva az egyes nézetekben. Nézzük meg pl. a <code>FontEditView</code>-t:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="hll"><span class="w">    </span><span class="n">Invalidate</span><span class="p">();</span>
 </span><span class="p">}</span>
 </code></pre></div>
-<p>Az <code>Update</code> hatására a nézetek újra kell rajzolják magukat az aktuális dokumentum állapot alapján. De az <code>Update</code>-ben nem tudunk rajzolni, csak a „Paint”-ben. Így itt az <code>Invalidate</code> hívással kiváltjuk a Paint eseményt. Ez megint egy tanulság: Windows Forms alkalmazásokban az <code>Update</code> függvényben tipikusan <code>Invalidate</code> hívás szokott lenni.</p>
-<p>Zárásképpen nézzük meg a FontEditView.Paint megvalósítását. Egyetlen  lényeges dolog van itt: a megjelenítéshez le kell kérni a dokumentumtól az aktuális <code>CharDef</code>-et (mert a nézet a D-V architektúrának megfelelően nem tárolja).</p>
-<div class="highlight"><pre><span></span><code><span class="c1">/// &lt;summary&gt;</span>
-<span class="c1">/// A UserControl.Paint felüldefiniálása, ebben rajzolunk.</span>
-<span class="c1">/// &lt;/summary&gt;</span>
-<span class="k">protected</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnPaint</span><span class="p">(</span><span class="n">PaintEventArgs</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<p>Az <code>Update</code> hatására a nézetek újra kell rajzolják magukat az aktuális dokumentum állapot alapján. De az <code>Update</code>-ben nem tudunk rajzolni, csak az <code>OnPaint</code>-ben. Így itt az <code>Invalidate</code> hívással kiváltjuk a <code>Paint</code> eseményt. Ez megint egy tanulság: <strong>Windows Forms alkalmazásokban a nézetek <code>Update</code> függvényében tipikusan egy <code>Invalidate</code> hívás szokott lenni.</strong></p>
+<p>Zárásképpen nézzük meg a <code>FontEditView.OnPaint</code> megvalósítását. Egyetlen lényeges dolog van itt: a megjelenítéshez le kell kérni a dokumentumtól az aktuális <code>CharDef</code>-et (mert a nézet a D-V architektúra alapelveinek megfelelően nem tárolja), majd ki kell azt rajzolni.</p>
+<div class="highlight"><pre><span></span><code><span class="k">protected</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnPaint</span><span class="p">(</span><span class="n">PaintEventArgs</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">base</span><span class="p">.</span><span class="n">OnPaint</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
 
-<span class="hll"><span class="w">    </span><span class="n">CharDef</span><span class="w"> </span><span class="n">editedCharDef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">document</span><span class="p">.</span><span class="n">GetCharDef</span><span class="p">(</span><span class="n">editedChar</span><span class="p">);</span>
+<span class="hll"><span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">editedCharDef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">document</span><span class="p">.</span><span class="n">GetCharDef</span><span class="p">(</span><span class="n">editedChar</span><span class="p">);</span>
 </span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">CharDef</span><span class="p">.</span><span class="n">FontSize</span><span class="p">.</span><span class="n">Height</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="o">++</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">CharDef</span><span class="p">.</span><span class="n">FontSize</span><span class="p">.</span><span class="n">Width</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="o">++</span><span class="p">)</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="n">Graphics</span><span class="p">.</span><span class="n">FillRectangle</span><span class="p">(</span>
-<span class="w">                </span><span class="n">editedCharDef</span><span class="p">.</span><span class="n">Pixels</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">Brushes</span><span class="p">.</span><span class="n">Yellow</span><span class="p">:</span><span class="w"> </span><span class="n">Brushes</span><span class="p">.</span><span class="n">Black</span><span class="p">,</span>
-<span class="w">                </span><span class="n">zoom</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">offsetY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">zoom</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">zoom</span><span class="p">,</span><span class="w"> </span><span class="n">zoom</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
+<span class="hll"><span class="w">    </span><span class="n">CharDefViewModel</span><span class="p">.</span><span class="n">DrawFont</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Graphics</span><span class="p">,</span><span class="w"> </span><span class="n">editedCharDef</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">offsetY</span><span class="p">,</span><span class="w"> </span><span class="n">zoom</span><span class="p">);</span>
+</span><span class="p">}</span>
 </code></pre></div>
-<h3 id="forgatokonyv-2-uj-dokumentum-letrehozasa">Forgatókönyv 2 – Új dokumentum létrehozása<a class="headerlink" href="#forgatokonyv-2-uj-dokumentum-letrehozasa" title="Permanent link">¶</a></h3>
-<p>Erre a feladatra valószínűleg nem marad már idő.</p>
+<div class="admonition tip">
+<p class="admonition-title">Kirajzolás logikája</p>
+<p>Mivel a kirajzolás logikája a <code>FontEditorView</code>-ban és a <code>SampleTextView</code>-ban is azonosan működik a <code>Graphics</code> osztály használatával, kiszerveztük ezt egy <code>CharDefViewModel</code> segédosztályba az újrafelhasználhatóság kedvéért.</p>
+<p>A <code>CharDef</code>-be nem célszerű rakni ezt a logikát, mivel az egy nézet független adatreprezentáció, és sokkal inkább a dokumentumhoz tartozik, mint a nézethez.</p>
+</div>
+<h3 id="forgatokonyv-2-uj-dokumentum-letrehozasa-opcionalis">Forgatókönyv 2 – Új dokumentum létrehozása (opcionális)<a class="headerlink" href="#forgatokonyv-2-uj-dokumentum-letrehozasa-opcionalis" title="Permanent link">¶</a></h3>
 <p>Azt nézzük meg, hogyan történik egy új dokumentum létrehozása, vagyis mi történik a <em>File/New</em> menüelem kiválasztásakor.</p>
-<p>Nyissuk meg a MainForm-ot tervezői nézetben, válaszuk a <em>File/New</em> menüelemet, hogy ugorjunk el a Click eseménykezelőhöz. Arra látunk példát, hogy az App osztály, mint Singleton, hogy érhető el:</p>
+<p>Nyissuk meg a <code>MainForm</code>-ot tervezői nézetben, válaszuk a <em>File/New</em> menüelemet, majd ugorjunk el a <code>Click</code> eseménykezelőhöz. Arra látunk példát, hogy az <code>App</code> osztály, mint Singleton, hogy érhető el:</p>
 <div class="highlight"><pre><span></span><code><span class="n">App</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">NewDocument</span><span class="p">();</span>
 </code></pre></div>
 <p>Az összes többi menüelem eseménykezelője hasonló, nincs semmi logika a GUI-ban, csak egyszerű továbbhívás az <code>App</code>-ba.</p>
-<p>Tekintsük át az az <code>App.NewDocument</code> törzsét, és egy-egy mondatban tekintsük át (a gyakorlat során szóban ismertessük) a fontosabb lépéseket. Azt, hogy a <code>TabControl</code>-lal mit ügyeskedünk, nem kell elmondani, nem kell tudni.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">/// &lt;summary&gt;</span>
-<span class="c1">/// Létrehoz egy új dokumentumot.</span>
-<span class="c1">/// &lt;/summary&gt;</span>
-<span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">NewDocument</span><span class="p">()</span>
+<p>Tekintsük át az <code>App.NewDocument</code> törzsét, és egy-egy mondatban fussuk át a fontosabb lépéseket.</p>
+<ol>
+<li><code>NewDocForm</code> nézet megnyitása és várakozás a válaszra.</li>
+<li>Sikeres válasz esetén új <code>FontEditorDocument</code> létrehozása és felvétele a dokumentumok közé, valamint aktívvá tétele.</li>
+<li>Új tab létrehozása a nézetekkel.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">NewDocument</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="c1">// Bekérdezzük az új font típus (dokumentum) nevét a </span>
+<span class="w">    </span><span class="c1">// Bekérjükk az új font típus (dokumentum) nevét a</span>
 <span class="w">    </span><span class="c1">// felhasználótól egy modális dialógs ablakban.</span>
-<span class="w">    </span><span class="n">NewDocForm</span><span class="w"> </span><span class="n">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">NewDocForm</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">NewDocForm</span><span class="p">(</span><span class="n">GetDocumentNames</span><span class="p">());</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">form</span><span class="p">.</span><span class="n">ShowDialog</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">DialogResult</span><span class="p">.</span><span class="n">OK</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
 
-<span class="w">    </span><span class="c1">// Új dokumentum objektum létrehozása és felvétele a </span>
-<span class="w">    </span><span class="c1">// dokumentum listába.</span>
-<span class="w">    </span><span class="n">Document</span><span class="w"> </span><span class="n">doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FontEditorDocument</span><span class="p">(</span><span class="n">form</span><span class="p">.</span><span class="n">FontName</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Új dokumentum objektum létrehozása és felvétele a dokumentum listába.</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FontEditorDocument</span><span class="p">(</span><span class="n">form</span><span class="p">.</span><span class="n">FontName</span><span class="p">);</span>
 <span class="w">    </span><span class="n">documents</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">doc</span><span class="p">);</span>
-<span class="w">    </span><span class="c1">// Az első paraméter egy kulcs, a második a tab felirata</span>
 
-<span class="w">    </span><span class="c1">// Egy új tabra felteszi a dokumentumhoz tartozó felületelemeket.</span>
-<span class="w">    </span><span class="c1">// Ezeket egy UserControl, a FontDocumentControl fogja össze.</span>
-<span class="w">    </span><span class="c1">// Így csak ebből kell egy példányt az új tabpage-re feltenni.</span>
-<span class="w">    </span><span class="n">mainForm</span><span class="p">.</span><span class="n">TabControl</span><span class="p">.</span><span class="n">TabPages</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">form</span><span class="p">.</span><span class="n">FontName</span><span class="p">,</span><span class="w"> </span><span class="n">form</span><span class="p">.</span><span class="n">FontName</span><span class="p">);</span>
-<span class="w">    </span><span class="n">FontDocumentControl</span><span class="w"> </span><span class="n">documentControl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FontDocumentControl</span><span class="p">();</span>
-<span class="w">    </span><span class="n">TabPage</span><span class="w"> </span><span class="n">tp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mainForm</span><span class="p">.</span><span class="n">TabControl</span><span class="p">.</span><span class="n">TabPages</span><span class="p">[</span><span class="n">form</span><span class="p">.</span><span class="n">FontName</span><span class="p">];</span>
-<span class="w">    </span><span class="n">tp</span><span class="p">.</span><span class="n">Controls</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">documentControl</span><span class="p">);</span>
-<span class="w">    </span><span class="n">documentControl</span><span class="p">.</span><span class="n">Dock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DockStyle</span><span class="p">.</span><span class="n">Fill</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Az új tab lesz az aktív, az activeDocument tagváltozót erre kell állítani.</span>
+<span class="w">    </span><span class="n">UpdateActiveDocument</span><span class="p">(</span><span class="n">doc</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// SampleTextView beregisztrálása a documentnál, hogy</span>
-<span class="w">    </span><span class="c1">// értesüljön majd a dokumentum változásairól.</span>
-<span class="w">    </span><span class="n">documentControl</span><span class="p">.</span><span class="n">SampleTextView</span><span class="p">.</span><span class="n">AttachToDoc</span><span class="p">(</span><span class="n">doc</span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// Az új tab legyen a kiválasztott. </span>
-<span class="w">    </span><span class="n">mainForm</span><span class="p">.</span><span class="n">TabControl</span><span class="p">.</span><span class="n">SelectTab</span><span class="p">(</span><span class="n">tp</span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// Az új tab lesz az aktív, az activeDocument</span>
-<span class="w">    </span><span class="c1">// tagváltozót erre kell állítani.</span>
-<span class="w">    </span><span class="n">UpdateActiveDocument</span><span class="p">();</span>
+<span class="w">    </span><span class="n">CreateTabForNewDocument</span><span class="p">(</span><span class="n">doc</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Az <code>App.OpenDocument</code> nincs kitöltve, de a lépések be vannak írva, remek gyakorlási lehetőség a hallgatóknak otthon megírni.</p>
+<div class="admonition tip">
+<p class="admonition-title">App osztály felelősségi köre</p>
+<p>Az egyszerűség érdekében az <code>App</code> osztály most több felelősséggel is rendelkezik, de ideális esetben szét lenne szedve pl. a következő osztályokra a felelősségi köröknek megfelelően:</p>
+<ul>
+<li><code>DocumentManager</code>: a megjelenítéstől függetlenül a dokumentumokat tárolná.</li>
+<li><code>ViewManager</code>: feladata a nézetek menedzselése, tabcontrolokhoz hozzáadása stb. lenne.</li>
+</ul>
+</div>
+<p>Az <code>App.OpenDocument</code> művelet törzse nincs implementálva, de a lépések kódmegjegyzések formájában adottak, remek otthoni gyakorlási lehetőség a művelet tényleges megvalósítása.</p>
 <hr/>
 <div class="md-source-file">
 <span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -595,8 +726,8 @@ Kidolgozta: Benedek Zoltán</p>
 </path>
 </svg>
 </span>
-<span title="2022. november 1. 11:25:41">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2022-11-01T11:25:41+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2022-11-01</span>
+<span title="2023. február 19. 19:00:22">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-19T19:00:22+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-19</span>
 </span>
 </span>
 <span class="md-source-file__fact">
@@ -607,7 +738,11 @@ Kidolgozta: Benedek Zoltán</p>
 </svg>
 </span>
 <span>Szerzők</span>
-<nav><a class="md-author" href="https://github.com/zbenedek-mirango" rel="noopener noreferrer" target="_blank" title="@zbenedek-mirango">
+<nav><a class="md-author" href="https://github.com/bzolka" rel="noopener noreferrer" target="_blank" title="@bzolka">
+<img alt="@bzolka" src="https://avatars.githubusercontent.com/bzolka?size=72"/>
+</a><a class="md-author" href="https://github.com/tibitoth" rel="noopener noreferrer" target="_blank" title="@tibitoth">
+<img alt="@tibitoth" src="https://avatars.githubusercontent.com/u/8333960?size=72"/>
+</a><a class="md-author" href="https://github.com/zbenedek-mirango" rel="noopener noreferrer" target="_blank" title="@zbenedek-mirango">
 <img alt="@zbenedek-mirango" src="https://avatars.githubusercontent.com/u/105201689?size=72"/>
 </a></nav>
 </span>
