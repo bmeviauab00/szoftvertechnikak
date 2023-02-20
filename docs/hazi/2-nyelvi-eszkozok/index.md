@@ -1,11 +1,11 @@
 ---
 authors: BenceKovari,bzolka
 ---
-# 2. HF - Modern nyelvi eszközök
+# 2. HF - Nyelvi eszközök
 
 ## Bevezetés
 
-Az önálló feladat a 2. előadáson elhangzottakra épít. A feladatok elméleti hátteréül az [Előadás 02 - Modern nyelvi eszközök.zip](https://www.aut.bme.hu/Upload/Course/VIAUAB00/hallgatoi_jegyzetek/El%c5%91ad%c3%a1s%2002%20-%20Modern%20programoz%c3%a1si%20eszk%c3%b6z%c3%b6k.zip) leírás, gyakorlati hátteréül a [2. labor - Modern nyelvi eszközök](../../labor/2-nyelvi-eszkozok/index.md) laborgyakorlat szolgál.
+Az önálló feladat a 2. előadáson elhangzottakra épít. A feladatok elméleti hátteréül az [Előadás 02 - Modern nyelvi eszközök.zip](https://www.aut.bme.hu/Upload/Course/VIAUAB00/hallgatoi_jegyzetek/El%c5%91ad%c3%a1s%2002%20-%20Modern%20programoz%c3%a1si%20eszk%c3%b6z%c3%b6k.zip) leírás, gyakorlati hátteréül a [2. labor - Nyelvi eszközök](../../labor/2-nyelvi-eszkozok/index.md) laborgyakorlat szolgál.
 
 A fentiekre építve, jelen önálló gyakorlat feladatai a feladatleírást követő rövidebb iránymutatás segítségével elvégezhetők.
 

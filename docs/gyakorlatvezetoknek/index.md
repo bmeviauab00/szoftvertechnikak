@@ -1,3 +1,0 @@
-# Gyakorlatvezetőknek
-
-COMING SOON

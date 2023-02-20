@@ -94,10 +94,10 @@ nav:
       - labor/6-doc-view/index.md
       - labor/7-tervezesi-mintak/index.md      
   - "Önálló/házi feladatok":
-      - hazi/index.md
-      - hazi/1-model-es-kod-kapcsolata/index.md
-      - hazi/2-modern-nyelvi-eszkozok/index.md
-      - hazi/3-felhasznaloi-felulet-kialakitasa/index.md
-      - hazi/4-tobbszalu-alkalmazasok-fejlesztese/index.md
-      - hazi/5-document-view-architectura/index.md
-      - hazi/VisualStudio.md
+      - 'Útmutató': hazi/index.md
+      - '1. HF - A modell és a kód kapcsolata': hazi/meghirdetes-elott.md
+      - '2. HF - Nyelvi eszközök': hazi/meghirdetes-elott.md
+      - '3. HF - Felhasználói felület kialakítása': hazi/meghirdetes-elott.md
+      - '4. HF - Többszálú alkalmazások fejlesztése': hazi/meghirdetes-elott.md
+      - '5. HF - Document-View architektúra': hazi/meghirdetes-elott.md
+      - 'Fejlesztőkörnyezet': hazi/fejlesztokornyezet/index.md
