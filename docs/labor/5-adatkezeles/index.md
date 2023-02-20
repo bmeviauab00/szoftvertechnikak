@@ -1,3 +1,6 @@
+---
+authors: kaszomark,kszicsillag
+---
 # 5. Adatkezelés
 
 ## A gyakorlat célja

@@ -1,7 +1,8 @@
+---
+authors: BenceKovari,bzolka
+---
 # 2. Nyelvi eszközök
 
-Utolsó módosítás ideje: 2022.10.31  
-Kidolgozta: Kővári Bence, Benedek Zoltán
 
 ## A gyakorlat célja
 

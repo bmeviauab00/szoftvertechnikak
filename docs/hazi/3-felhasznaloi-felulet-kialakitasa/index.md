@@ -1,3 +1,6 @@
+---
+authors: BenceKovari,bzolka
+---
 # 3. HF - Felhasználói felület kialakítása
 
 ## Bevezetés

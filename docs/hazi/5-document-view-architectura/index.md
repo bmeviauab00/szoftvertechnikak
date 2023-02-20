@@ -1,3 +1,6 @@
+---
+authors: bzolka
+---
 # 5. HF - Document-View architektúra
 
 ## Bevezetés

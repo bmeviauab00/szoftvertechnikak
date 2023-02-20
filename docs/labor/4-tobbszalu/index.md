@@ -1,3 +1,6 @@
+---
+authors: Szabó Zoltán,bzolka
+---
 # 4. Többszálú alkalmazások készítése
 
 ## A gyakorlat célja
