@@ -1,3 +1,7 @@
+---
+authors: BenceKovari,bzolka
+---
+
 # 2. Nyelvi eszközök
 
 ## A gyakorlat célja
