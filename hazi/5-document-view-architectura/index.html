@@ -6,8 +6,6 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="Benedek Zoltán" name="author"/>
-<link href="../4-tobbszalu-alkalmazasok-fejlesztese/" rel="prev"/>
-<link href="../VisualStudio/" rel="next"/>
 <link href="../../img/favicon.ico" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-9.0.12" name="generator"/>
 <title>5. HF - Document-View architektúra - BMEVIAUAB00 Szoftvertechnikák</title>
@@ -135,7 +133,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link md-tabs__link--active" href="../">
+<a class="md-tabs__link" href="../">
         Önálló/házi feladatok
       </a>
 </li>
@@ -220,13 +218,13 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
 <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
           Önálló/házi feladatok
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_3">
 <span class="md-nav__icon md-icon"></span>
           Önálló/házi feladatok
@@ -234,185 +232,37 @@
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../">
-        Házi feladatok
+        Útmutató
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../1-model-es-kod-kapcsolata/">
+<a class="md-nav__link" href="../meghirdetes-elott/">
         1. HF - A modell és a kód kapcsolata
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../2-modern-nyelvi-eszkozok/">
-        2. HF - Modern nyelvi eszközök
+<a class="md-nav__link" href="../meghirdetes-elott/">
+        2. HF - Nyelvi eszközök
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../3-felhasznaloi-felulet-kialakitasa/">
+<a class="md-nav__link" href="../meghirdetes-elott/">
         3. HF - Felhasználói felület kialakítása
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../4-tobbszalu-alkalmazasok-fejlesztese/">
+<a class="md-nav__link" href="../meghirdetes-elott/">
         4. HF - Többszálú alkalmazások fejlesztése
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          5. HF - Document-View architektúra
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../meghirdetes-elott/">
         5. HF - Document-View architektúra
       </a>
-<nav aria-label="Tartalomjegyzék" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Tartalomjegyzék
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#bevezetes">
-    Bevezetés
-  </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#feladatok-attekintese">
-    Feladatok áttekintése
-  </a>
-<nav aria-label="Feladatok áttekintése" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#feladatleiras">
-    Feladatleírás
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#iranyelvek">
-    Irányelvek
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#feladat-1-a-kiindulasi-kornyezet-megismerese">
-    Feladat 1 - A kiindulási környezet megismerése
-  </a>
-<nav aria-label="Feladat 1 - A kiindulási környezet megismerése" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#bevezeto-feladatok">
-    Bevezető feladatok
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#kiindulo-alkalmazas-mukodese">
-    Kiinduló alkalmazás működése
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#kiindulo-projekt">
-    Kiinduló projekt
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#feladat-2-meresi-ertekek-kezelese-dokumentum-logikak">
-    Feladat 2 – Mérési értékek kezelése (dokumentum logikák)
-  </a>
-<nav aria-label="Feladat 2 – Mérési értékek kezelése (dokumentum logikák)" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#meresi-ertekek-reprezentalasa">
-    Mérési értékek reprezentálása
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#sajat-dokumentum-osztaly">
-    Saját dokumentum osztály
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#adatok-mentese">
-    Adatok mentése
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#adatok-betoltese">
-    Adatok betöltése
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#betoltes-ellenorzese">
-    Betöltés ellenőrzése
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#feladat-3-jelek-grafikus-megjelenitese-sajat-nezet-osztaly">
-    Feladat 3 – Jelek grafikus megjelenítése, saját nézet osztály
-  </a>
-<nav aria-label="Feladat 3 – Jelek grafikus megjelenítése, saját nézet osztály" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#uj-nezet-osztaly">
-    Új nézet osztály
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#a-koordinata-tengelyek-kirajzolasa">
-    A koordináta tengelyek kirajzolása
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#jelek-megjelenitese">
-    Jelek megjelenítése
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#nagyitas-kicsinyites">
-    Nagyítás, kicsinyítés
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#opcionalis-imsc-feladatok">
-    Opcionális iMSc feladatok
-  </a>
-<nav aria-label="Opcionális iMSc feladatok" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#iview-kodduplikacioja-1-imsc-pont">
-    IView kódduplikációja (1 iMSc pont)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#grafikon-gorgetese-1-imsc-pont">
-    Grafikon görgetése (1 iMSc pont)
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#jelek-elo-generalasa-3-imsc-pont">
-    Jelek élő generálása (3 iMSc pont)
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../VisualStudio/">
-        Visual Studio &amp; .NET SDK telepítése
+<a class="md-nav__link" href="../fejlesztokornyezet/">
+        Fejlesztőkörnyezet
       </a>
 </li>
 </ul>
