@@ -1,7 +1,8 @@
-# 1. A modell és a kód kapcsolata
+---
+authors: bzolka
+---
 
-Utolsó módosítás ideje: 2022.10.15  
-Kidolgozta: Benedek Zoltán
+# 1. A modell és a kód kapcsolata
 
 ## A gyakorlat célja
 
