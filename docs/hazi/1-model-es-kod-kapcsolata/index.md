@@ -1,4 +1,8 @@
 ---
+search:
+  exclude: true
+---
+---
 authors: bzolka
 ---
 

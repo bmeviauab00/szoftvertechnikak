@@ -1,3 +1,7 @@
+---
+search:
+  exclude: true
+---
 # Laborvezetőknek
 
 ## A házi feladatok anyagai

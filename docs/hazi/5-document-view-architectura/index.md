@@ -1,4 +1,8 @@
 ---
+search:
+  exclude: true
+---
+---
 authors: bzolka
 ---
 # 5. HF - Document-View architektúra

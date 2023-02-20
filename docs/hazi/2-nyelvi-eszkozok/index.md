@@ -1,4 +1,8 @@
 ---
+search:
+  exclude: true
+---
+---
 authors: BenceKovari,bzolka
 ---
 # 2. HF - Nyelvi eszközök
