@@ -174,7 +174,11 @@ A nézetekkel eddig nem foglalkoztunk, ez a következő lépés. Futtassuk a ké
 
 Idő hiányában nem valósítjuk meg az alkalmazást, hanem a kész megoldást nézzük át (laboron kb. 15 percben), annak is csak néhány lényeges használati esetét.
 
-Töltsük le  a kész [megoldást](https://github.com/bmeviauab00/lab-docview-megoldas), nyissuk meg a kész solution-t, futtassuk és próbáljuk ki az alkalmazás alapfunkcióit.
+Töltsük le  a kész [megoldást](https://github.com/bmeviauab00/lab-docview-megoldas). Ehhez parancssorban navigáljunk a c:\work\<sajátnev> mappába (ha a laborban dolgozunk), és adjuk ki a következő parancsot:
+
+```git clone https://github.com/bmeviauab00/lab-docview-megoldas```
+
+Nyissuk meg a kész solution-t, futtassuk és próbáljuk ki az alkalmazás alapfunkcióit.
 
 ### Nézetek megvalósítása
 

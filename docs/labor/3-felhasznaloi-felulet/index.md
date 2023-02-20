@@ -32,6 +32,17 @@ A Window Forms alkalmazások legfontosabb koncepcióit a tárgy 3.-4. előadása
 !!! tip "IntelliSense"
     A következő példákban számos generált (és emiatt hosszú) elnevezéssel fogunk találkozni. Programjaink megvalósításakor használjuk ki az automatikus kódkiegészítés (IntelliSense) nyújtotta lehetőségeket és ne kézzel gépeljük be az egyes elnevezéseket.
 
+## Megoldás
+
+??? "A kész megoldás letöltése"
+    :exclamation: Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, tilos (és értelmetlen) a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.
+
+    A megoldás GitHubon érhető el [itt](https://github.com/bmeviauab00/lab-winforms-megoldas). A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre:
+
+    ```git clone https://github.com/bmeviauab00/lab-lab-winforms-megoldas```
+
+    Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ [itt](../hazi/git-github-github-classroom/#git-telepitese).
+
 ## 1. Feladat – „Hello world” Windows Forms technológiával
 
 A feladat során egy olyan Windows Forms alkalmazást készítünk el, amely egy egyszerű ablakban kiírja a „Hello world!” szöveget.

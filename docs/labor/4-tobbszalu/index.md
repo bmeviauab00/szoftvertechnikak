@@ -25,6 +25,17 @@ A gyakorlat elvégzéséhez szükséges eszközök:
 - Visual Studio 2022
 - Windows 10 vagy Windows 11 operációs rendszer (Linux és macOS nem alkalmas)
 
+## Megoldás
+
+??? "A kész megoldás letöltése"
+    :exclamation: Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, tilos (és értelmetlen) a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.
+
+    A megoldás GitHubon érhető el [itt](https://github.com/bmeviauab00/lab-tobbszalu-kiindulo/tree/megoldas). A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre:
+
+    ```git clone https://github.com/bmeviauab00/lab-tobbszalu-kiindulo -b megoldas```
+
+    Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ [itt](../hazi/git-github-github-classroom/#git-telepitese).
+
 ## Bevezető
 
 A párhuzamosan futó szálak kezelése kiemelt fontosságú terület, melyet miden szoftverfejlesztőnek legalább alapszinten ismernie kell. A gyakorlat során alapszintű, de kiemelt fontosságú problémákat oldunk meg, ezért törekednünk kell arra, hogy ne csak a végeredményt, hanem az elvégzett módosítások értelmét és indokait is megértsük.

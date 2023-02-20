@@ -49,6 +49,17 @@ A gyakorlatvezető a gyakorlat elején összefoglalja a gyakorlatokra vonatkozó
 Visual Studio fejlesztőeszközzel, .NET alkalmazásokat fogunk készíteni C# nyelven. A C#  hasonlít a Java-hoz, fokozatosan ismerjük meg a különbségeket.
 A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek elvégzésre a feladatok.
 
+## Megoldás
+
+??? "A kész megoldás letöltése"
+    :exclamation: Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, tilos (és értelmetlen) a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.
+
+    A megoldás GitHubon érhető el [itt](https://github.com/bmeviauab00/lab-modellkod-kiindulo/tree/megoldas). A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre:
+
+    ```git clone https://github.com/bmeviauab00/lab-modellkod-kiindulo -b megoldas```
+
+    Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ [itt](../hazi/git-github-github-classroom/#git-telepitese).
+
 ## 1. Feladat - „Hello world” .NET konzol alkalmazás elkészítése
 
 A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, amely a konzolra kiírja a „Hello world!” szöveget.

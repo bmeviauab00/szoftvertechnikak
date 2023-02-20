@@ -24,6 +24,17 @@ A gyakorlat elvégzéséhez szükséges eszközök:
     - Az SQL szervernek van Linuxos változata, Mac-en pedig Dockerben futtatható (de Linuxon is talán a Docker legkényelmesebb mód a futtatására).
     - Az adatok vizualizációjára használható a szintén keresztplatformos *Azure Data Studio* eszköz.
 
+## Megoldás
+
+??? "A kész megoldás letöltése"
+    :exclamation: Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, tilos (és értelmetlen) a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.
+
+    A megoldás GitHubon érhető el [itt](https://github.com/bmeviauab00/lab-adatkezeles-megoldas). A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre:
+
+    ```git clone https://github.com/bmeviauab00/lab-adatkezeles-megoldas```
+
+    Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ [itt](../hazi/git-github-github-classroom/#git-telepitese).
+
 ## Bevezető
 
 ??? warning "Megjegyzés gyakorlatvezetőknek"
