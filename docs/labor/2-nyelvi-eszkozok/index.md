@@ -1,6 +1,9 @@
 ---
 authors: BenceKovari,bzolka
 ---
+
+# !!! JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES !!!
+
 # 2. Nyelvi eszközök
 
 

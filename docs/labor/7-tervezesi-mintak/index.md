@@ -1,6 +1,9 @@
 ---
 authors: bzolka
 ---
+
+# !!! JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES !!!
+
 # 7. Tervezési minták
 
 Utolsó módosítás ideje: 2022.11.01  
