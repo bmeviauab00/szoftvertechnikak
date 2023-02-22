@@ -1,4 +1,6 @@
-# A kiinduló alkalmazáskeret letöltésének és a feladat beadásának lépései
+# Házi feladat munkafolyamat és a Git/GitHub használata
+
+Ha még nem olvastad, célszerű itt kezdeni: [Git, GitHub, GitHub Classroom](../git-github-github-classroom/index.md)
 
 ## Lépések
 

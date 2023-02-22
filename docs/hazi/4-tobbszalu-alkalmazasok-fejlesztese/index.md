@@ -1,10 +1,9 @@
 ---
 search:
   exclude: true
----
----
 authors: BenceKovari
 ---
+
 # 4. HF - Többszálú alkalmazások fejlesztése
 
 ## Bevezetés

@@ -1,8 +1,6 @@
 ---
 search:
   exclude: true
----
----
 authors: bzolka
 ---
 
@@ -36,7 +34,7 @@ A házi feladat kiindulási környezetének publikálása, valamint a megoldás 
 Ezekhez itt található részletesebb leírás:
 
 - [Git, GitHub, GitHub Classroom](../git-github-github-classroom/index.md)
-- [A kiinduló alkalmazáskeret letöltésének és a feladat beadásának részletes lépései](../hf-folyamat/index.md)
+- [Házi feladat munkafolyamat és a Git/GitHub használata](../hf-folyamat/index.md)
 
 ## A házi feladat előellenőrzése
 

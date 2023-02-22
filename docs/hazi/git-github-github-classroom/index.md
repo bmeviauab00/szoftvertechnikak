@@ -30,7 +30,12 @@ A tárgy keretében a GitHub Classroom segítségével kap minden hallgató mind
 
 ## Visual Studio és a Git
 
-A Git egy elosztott verziókezelő rendszer. Ahhoz, hogy a saját gépünkön dolgozni tudjunk vele, a Git-nek telepítve kell lennie. A Git önmagában is telepíthető, és parancssorból is ki tudjuk adni a szükséges clone, commit, push stb. parancsokat. Az egyszerűség kedvéért a tárgy keretében a Git telepítésére és még inkább a parancsok kiadására egy grafikus felülettel rendelkező eszköz javasolt (de a rutinosak nyugodtan dolgozhatnak parancssorból is). A célnak tökéletesen megfelel a Visual Studio, mely integrált grafikus Git szolgáltatásokat is biztosít, de ha valaki esetleg otthonosan használja már a parancssort, vagy valamilyen más grafikus eszközt (pl. GitExtensions, GitHub Desktop), természetesen ezek is tökéletesen megfelelnek a célnak. Jelen útmutató mindenesetre a Visual Studio Git szolgáltatásait ismerteti.
+A Git egy elosztott verziókezelő rendszer. Ahhoz, hogy a saját gépünkön dolgozni tudjunk vele, a Git-nek telepítve kell lennie. Kétféle módon tudjuk használni:
+
+- A Git önmagában is telepíthető, és parancssorból is ki tudjuk adni a szükséges clone, commit, push stb. parancsokat.
+- Használhatunk a parancsok kiadására egy grafikus felülettel rendelkező eszközt. Ilyenek pl. a GitHub Desktop, a GitExtensions, vagy maga a Visual Studio is (mely integrált grafikus Git szolgáltatásokat is biztosít).
+
+A két megközelítést a mindennapokban kombináltan szoktuk használni. Egy repo leklónozása sokszor parancssorból a legegyszerűbb/leggyorsabb. A változások commit-álására, a központi repositoryval való szinkronizációra (push, pull), a verziótörtének megjelenítésére már célszerűbb egy grafikus eszközt használni, különösen akkor, ha még kevésbé vagyunk rutinosak. A tárgy keretében a klónozásra a parancssor vagy a Visual Studio, az egyéb parancsok kiadására a Visual Studio javasolt. A git használatról (a házi feladatok kontextusában) [itt](../hf-folyamat/index.md) található bővebb leírás.
 
 ## Git telepítése
 
