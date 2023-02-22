@@ -58,7 +58,7 @@ A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek e
 
     ```git clone https://github.com/bmeviauab00/lab-modellkod-kiindulo -b megoldas```
 
-    Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ [itt](../../hazi/git-github-github-classroom/#git-telepitese).
+    Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ [itt](../../hazi/git-github-github-classroom#git-telepitese).
 
 ## 1. Feladat - „Hello world” .NET konzol alkalmazás elkészítése
 
