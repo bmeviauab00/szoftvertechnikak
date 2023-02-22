@@ -343,7 +343,12 @@ A fentieken túlmenően a GIT számos további szolgáltatást biztosít (pl. te
 <h2 id="git-github-es-github-classroom-a-targy-kontextusaban">Git, GitHub és GitHub Classroom a tárgy kontextusában<a class="headerlink" href="#git-github-es-github-classroom-a-targy-kontextusaban" title="Permanent link">¶</a></h2>
 <p>A tárgy keretében a GitHub Classroom segítségével kap minden hallgató minden házi feladatához egy dedikált, a GitHub-on hostolt repository-t, mely a megfelelő kiindulási környezettel (kiinduló Visual Studio solution-ök) inicializálásra kerül. Mindenkinek a számára dedikált repository-t kell a saját gépére <code>clone</code>-oznia, ebbe a változtatásait <code>commit</code>-álni, és a határidőig az elkészült megoldását <code>push</code>-olni. A pontos lépésekre rövidesen visszatérünk.</p>
 <h2 id="visual-studio-es-a-git">Visual Studio és a Git<a class="headerlink" href="#visual-studio-es-a-git" title="Permanent link">¶</a></h2>
-<p>A Git egy elosztott verziókezelő rendszer. Ahhoz, hogy a saját gépünkön dolgozni tudjunk vele, a Git-nek telepítve kell lennie. A Git önmagában is telepíthető, és parancssorból is ki tudjuk adni a szükséges clone, commit, push stb. parancsokat. Az egyszerűség kedvéért a tárgy keretében a Git telepítésére és még inkább a parancsok kiadására egy grafikus felülettel rendelkező eszköz javasolt (de a rutinosak nyugodtan dolgozhatnak parancssorból is). A célnak tökéletesen megfelel a Visual Studio, mely integrált grafikus Git szolgáltatásokat is biztosít, de ha valaki esetleg otthonosan használja már a parancssort, vagy valamilyen más grafikus eszközt (pl. GitExtensions, GitHub Desktop), természetesen ezek is tökéletesen megfelelnek a célnak. Jelen útmutató mindenesetre a Visual Studio Git szolgáltatásait ismerteti.</p>
+<p>A Git egy elosztott verziókezelő rendszer. Ahhoz, hogy a saját gépünkön dolgozni tudjunk vele, a Git-nek telepítve kell lennie. Kétféle módon tudjuk használni:</p>
+<ul>
+<li>A Git önmagában is telepíthető, és parancssorból is ki tudjuk adni a szükséges clone, commit, push stb. parancsokat.</li>
+<li>Használhatunk a parancsok kiadására egy grafikus felülettel rendelkező eszközt. Ilyenek pl. a GitHub Desktop, a GitExtensions, vagy maga a Visual Studio is (mely integrált grafikus Git szolgáltatásokat is biztosít).</li>
+</ul>
+<p>A két megközelítést a mindennapokban kombináltan szoktuk használni. Egy repo leklónozása sokszor parancssorból a legegyszerűbb/leggyorsabb. A változások commit-álására, a központi repositoryval való szinkronizációra (push, pull), a verziótörtének megjelenítésére már célszerűbb egy grafikus eszközt használni, különösen akkor, ha még kevésbé vagyunk rutinosak. A tárgy keretében a klónozásra a parancssor vagy a Visual Studio, az egyéb parancsok kiadására a Visual Studio javasolt. A git használatról (a házi feladatok kontextusában) <a href="../hf-folyamat/">itt</a> található bővebb leírás.</p>
 <h2 id="git-telepitese">Git telepítése<a class="headerlink" href="#git-telepitese" title="Permanent link">¶</a></h2>
 <p>Amennyiben a számítógépünkre nincs még a Git telepítve, és szeretnénk azt parancssorból is használni, akkor innen telepíthető Windows operációs rendszerre: <a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a>. Egyéb operációs rendszerekhez pedig innen érdemes indulni: <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a>.</p>
 <hr/>
@@ -353,8 +358,8 @@ A fentieken túlmenően a GIT számos további szolgáltatást biztosít (pl. te
 </path>
 </svg>
 </span>
-<span title="2023. január 30. 14:34:40">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-01-30T14:34:40+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-01-30</span>
+<span title="2023. február 22. 12:41:42">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-22T12:41:42+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-22</span>
 </span>
 </span>
 <span class="md-source-file__fact">
