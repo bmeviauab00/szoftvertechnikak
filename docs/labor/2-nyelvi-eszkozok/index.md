@@ -2,9 +2,14 @@
 authors: BenceKovari,bzolka
 ---
 
-# !!! JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES !!!
-
 # 2. Nyelvi eszközök
+
+!!! danger "FONTOS"
+    **JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES**
+
+    **JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES**
+    
+    **JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES**
 
 
 ## A gyakorlat célja

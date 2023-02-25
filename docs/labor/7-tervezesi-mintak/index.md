@@ -2,12 +2,14 @@
 authors: bzolka
 ---
 
-# !!! JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES !!!
-
 # 7. Tervezési minták
 
-Utolsó módosítás ideje: 2022.11.01  
-Kidolgozta: Benedek Zoltán
+!!! danger "FONTOS"
+    **JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES**
+
+    **JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES**
+    
+    **JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES**
 
 ## A gyakorlat célja
 
