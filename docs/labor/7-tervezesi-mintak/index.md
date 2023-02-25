@@ -1,7 +1,15 @@
+---
+authors: bzolka
+---
+
 # 7. Tervezési minták
 
-Utolsó módosítás ideje: 2022.11.01  
-Kidolgozta: Benedek Zoltán
+!!! danger "FONTOS"
+    **JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES**
+
+    **JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES**
+    
+    **JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES**
 
 ## A gyakorlat célja
 
@@ -24,6 +32,17 @@ A gyakorlat elvégzéséhez szükséges eszközök:
 
 - Visual Studio 2022
 - Windows 10 vagy Windows 11 operációs rendszer (Linux és macOS nem alkalmas)
+
+## Megoldás
+
+??? "A kész megoldás letöltése"
+    :exclamation: Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, tilos (és értelmetlen) a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.
+
+    A megoldás GitHubon érhető el [itt](https://github.com/bmeviauab00/lab-designpattern-kiindulo). A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre:
+
+    ```git clone https://github.com/bmeviauab00/lab-designpattern-kiindulo -b megoldas```
+
+    Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ [itt](../hazi/git-github-github-classroom/#git-telepitese).
 
 ## Bevezető
 

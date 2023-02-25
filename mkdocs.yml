@@ -6,10 +6,14 @@ repo_url: https://github.com/bmeviauab00/szoftvertechnikak
 
 theme:
   name: material
+  custom_dir: overrides
+  icon:
+    repo: fontawesome/brands/github
   language: hu
   palette:
     - media: "(prefers-color-scheme: light)"
-      primary: red
+      scheme: aut
+      primary: aut
       accent: red
       toggle:
         icon: material/lightbulb-outline
@@ -27,7 +31,8 @@ theme:
     - navigation.tabs
     - navigation.instant
     - navigation.top
-    - search.suggest   
+    - search.suggest
+    - content.action.edit
   logo: img/logo-bme-aut.png
   favicon: img/favicon.ico
 
@@ -53,16 +58,30 @@ markdown_extensions:
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.smartsymbols
+  - pymdownx.snippets
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tabbed
   - pymdownx.tilde
+  - pymdownx.keys
   - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
   - attr_list
 
+
 plugins:
-  - search:
-      prebuild_index: true
+  - search
+  - glightbox
+  - git-revision-date-localized:
+      enable_creation_date: false
+      type: timeago
+      timezone: Europe/Budapest
+      locale: hu
+  - git-committers:
+      repository: bmeviauab00/szoftvertechnikak
+      branch: main
 
 nav:
   - index.md
@@ -75,10 +94,10 @@ nav:
       - labor/6-doc-view/index.md
       - labor/7-tervezesi-mintak/index.md      
   - "Önálló/házi feladatok":
-      - hazi/index.md
-      - hazi/1-model-es-kod-kapcsolata/index.md
-      - hazi/2-modern-nyelvi-eszkozok/index.md
-      - hazi/3-felhasznaloi-felulet-kialakitasa/index.md
-      - hazi/4-tobbszalu-alkalmazasok-fejlesztese/index.md
-      - hazi/5-document-view-architectura/index.md
-      - hazi/VisualStudio.md
+      - 'Útmutató': hazi/index.md
+      - '1. HF - A modell és a kód kapcsolata': hazi/meghirdetes-elott.md
+      - '2. HF - Nyelvi eszközök': hazi/meghirdetes-elott.md
+      - '3. HF - Felhasználói felület kialakítása': hazi/meghirdetes-elott.md
+      - '4. HF - Többszálú alkalmazások fejlesztése': hazi/meghirdetes-elott.md
+      - '5. HF - Document-View architektúra': hazi/meghirdetes-elott.md
+      - 'Fejlesztőkörnyezet': hazi/fejlesztokornyezet/index.md

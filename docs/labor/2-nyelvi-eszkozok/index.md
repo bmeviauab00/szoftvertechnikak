@@ -4,6 +4,14 @@ authors: BenceKovari,bzolka
 
 # 2. Nyelvi eszközök
 
+!!! danger "FONTOS"
+    **JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES**
+
+    **JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES**
+    
+    **JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES**
+
+
 ## A gyakorlat célja
 
 A gyakorlat célja az alábbi C# nyelvi elemek megismerése:
