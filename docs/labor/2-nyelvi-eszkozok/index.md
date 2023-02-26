@@ -1,5 +1,5 @@
 ---
-authors: BenceKovari,bzolka
+authors: BenceKovari, bzolka, tibitoth
 ---
 
 # 2. Nyelvi eszközök
@@ -7,10 +7,9 @@ authors: BenceKovari,bzolka
 !!! danger "FONTOS"
     **JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES**
 
-    **JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES**
+    ** De már közelít :) **
     
     **JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES**
-
 
 ## A gyakorlat célja
 
@@ -20,10 +19,11 @@ A gyakorlat célja az alábbi C# nyelvi elemek megismerése:
 - Delegát (delegate, metódusreferencia)
 - Esemény (event)
 - Attribútum (attribute)
-- Lambda kifejezés
+- Lambda kifejezés (lambda expression)
 - Generikus típus (generic type)
+- Néhány további nyelvi konstrukció
 
-Kapcsolódó előadások: a 2. előadás és a 3. előadás eleje – (Modern) programozási eszközök.
+Kapcsolódó előadások: a 2. előadás és a 3. előadás eleje – (Modern) nyelvi eszközök.
 
 ## Előfeltételek
 
@@ -32,7 +32,7 @@ A gyakorlat elvégzéséhez szükséges eszközök:
 - Visual Studio 2022
 
 !!! tip "Gyakorlat Linuxon vagy Macen"
-    A gyakorlat anyag alapvetően Windowsra és Visual Studiora készült, de az elvégezhető más operációs rendszereken is egy szövegszerkesztővel (pl.: VSCode) és CLI eszközökkel, mivel a .NET 6 SDK támogatott Linuxon és Macen. [Hello World linuxon](https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code?pivots=dotnet-6-0)
+    A gyakorlat anyag alapvetően Windowsra és Visual Studiora készült, de az elvégezhető más operációs rendszereken is egy szövegszerkesztővel (pl.: VSCode) és CLI eszközökkel, mivel példák egyszerű Console alkalmazás kontextusában kerülnek ismertetésre (nincsenek Windows specifikus elemek), és a .NET 6 SDK támogatott Linuxon és Macen. [Hello World linuxon](https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code?pivots=dotnet-6-0)
 
 ## Bevezető
 
@@ -42,8 +42,12 @@ A gyakorlat során a hallgatók megismerkednek a legfontosabb modern, a .NET kö
 - Delegátok (delegates)
 - Események (events)
 - Attribútumok (attributes)
+- Lambda kifejezések (lambda expressions)
 - Generikus osztályok (generics)
-- Lambda kifejezések
+- Néhány további nyelvi konstrukció
+
+!!! Tip "Kitekintő részek"
+    Jelen útmutató több helyen is bővített ismeretanyagot, illetve extra magyarázatot ad meg jelen megjegyzéssel egyező színnel keretezett és ugyanilyen ikonnal ellátott formában. Ezek hasznos kitekintések, de nem képezik az alap tananyag részét.
 
 ## 1. Feladat – Tulajdonság (property)
 
@@ -59,7 +63,7 @@ A következő példában egy `Person` nevű osztályt fogunk elkészíteni, mely
 2. Adjunk hozzá egy új osztályt az alkalmazásunkhoz `Person` néven.
     (Új osztály hozzáadásához a Solution Explorerben kattintsunk jobb egérgombbal a projekt fájlra és válasszuk az *Add / Class* menüpontot. Az előugró ablakban a létrehozandó fájl nevét módosítsuk `Person.cs`-re, majd nyomjuk meg az Add gombot.)
 3. Tegyük az osztályt publikussá. Ehhez az osztály neve elé be kell írni a `public` kulcsszót. Erre a módosításra itt valójában még nem volna szükség, ugyanakkor a 4. feladat már egy publikus osztályt fog igényelni.
-4. Hozzunk létre az osztályon belül egy `int` típusú `age` nevű mezőt és egy ezt elérhetővé tevő `Age` tulajdonságot.
+4. Hozzunk létre az osztályon belül egy `int` típusú `age` nevű tagváltozót és egy ezt elérhetővé tevő `Age` tulajdonságot.
 
     ```csharp
     public class Person
@@ -99,29 +103,31 @@ A következő példában egy `Person` nevű osztályt fogunk elkészíteni, mely
     }
     ```
 
-    !!! tip "Implicit Type (`var`) és Target-typed `new` expressions"
-        A változók deklarálása során kiírhatjuk a típust is, de használhatjuk a `var` kulcsszót és az implicit típus mechanizmust. Ilyenkor a fordító a kontextusból, az egyenlőségjel jobb oldalából megpróbálja kitalálni a változó típusát, fenti esetben ez egy `Person` lesz. Fontos, hogy ettől a nyelv még statikusan tipusos marad (tehát **nem** úgy működik mint a JavaScript-es `var` kulcsszó), mert a `p` változó típusa a későbbiekben nem változhat meg, ez csak egy szintaktikai édesítőszer.
+    A **lokális** változók típusnának explicit megadása helyett használhatjuk a `var` kulcsszót is, ahogy a fenti példában is tettük:
 
-        ```csharp
-        var p = new Person();
-        ```
+    ```csharp
+    var p = new Person();
+    ```
 
-        Egy másik megközelítés lehet a a C# 9-ben megjelent Target-typed `new` expressions, ahol a new operátor esetén hagyható el a típus, ha az a fordító által kitalálható a kontektusból (pl.: értékadás bal oldala, paraméter típusa, stb.). A fenti Person konstruktorunk a következőképpen nézne ki:
+    Ezt **implicitly typed local variables**-nek, magyarul **implicit típusú lokális változó**-nak nevezzük. Ilyenkor a fordító a kontextusból, az egyenlőségjel jobb oldalából megpróbálja kitalálni a változó típusát, fenti esetben ez egy `Person` lesz. Fontos, hogy ettől a nyelv még statikusan tipusos marad (tehát **nem** úgy működik mint a JavaScript-es `var` kulcsszó), mert a `p` változó típusa a későbbiekben nem változhat meg, ez csak egy egyszerű szintaktikai édesítőszer annek érdekében, hogy tömörebben tudjunk lokális változókat definiálni (ne kelljen a típust "duplán", az `=` bal és jobb oldalán is megadni).
+
+    !!! tip "Target-typed `new` expressions"
+        Egy másik megközelítés lehet a a C# 9-ben megjelent Target-typed `new` expressions, ahol a new operátor esetén hagyható el a típus, ha az a fordító által kitalálható a kontektusból (pl.: értékadás bal oldala, paraméter típusa, stb.). A fenti `Person` konstruktorunk a következőképpen nézne ki:
 
         ```csharp
         Person p = new();
         ```
 
-        Fontos, hogy ezt ne keverjük össze a C# anoním típusaival (`new {}`, kerekzárójel nélkül), amit ez a tantárgy nem fog érinteni.
+        Ennek a megközelítésnek az előnye a `var`-ral szemben, hogy tagváltozók esetében is alkalmazható. Fontos, hogy ezt ne keverjük össze a C# anoním típusaival (`new {}`, kerekzárójel nélkül), mely témakört ez a tantárgy nem fog érinteni.
 
-6. Futtassuk a programunkat (F5)
+6. Futtassuk a programunkat (++f5++)
 
     Láthatjuk, hogy a tulajdonság a tagváltozókhoz hasonlóan használható. A tulajdonság lekérdezése esetén a tulajdonságban definiált **`get`** rész fog lefutni, és a tulajdonság értéke a return által visszaadott érték lesz. A tulajdonság beállítása esetén a tulajdonságban definiált **`set`** rész fog lefutni, és a speciális `value` változó értéke ebben a szakaszban megfelel a tulajdonságnak értékül adott kifejezéssel.
 
-    Figyeljük meg a fenti megoldásban azt, hogy milyen elegánsan tudjuk egy évvel megemelni az ember életkorát. Java, vagy C++ kódban egy hasonló műveletet a `p.setAge(p.getAge() + 1)` formában írhattunk volna le, amely jelentősen körülményesebb és nehezen olvashatóbb szintaktika a fentinél. A tulajdonságok használatának legfőbb hozadéka, hogy kódunk szintaktikailag tisztább lesz, az értékadások illetve lekérdezések pedig az esetek többségében jól elválnak a tényleges függvényhívásoktól.
+    Figyeljük meg a fenti megoldásban azt, hogy milyen elegánsan tudjuk egy évvel megemelni az ember életkorát. Java, vagy C++ kódban egy hasonló műveletet a `p.setAge(p.getAge() + 1)` formában írhattunk volna le, amely jelentősen körülményesebb és nehezen olvashatóbb szintaktika a fentinél. A tulajdonságok használatának legfőbb hozadéka, hogy kódunk szintaktikailag tisztább lesz, az értékadások/lekérdezések pedig az esetek többségében jól elválnak a tényleges függvényhívásoktól.
 
 7. Győződjünk meg róla, hogy a programunk valóban elvégzi a `get` és `set` részek hívását. Ehhez helyezzünk töréspontokat (breakpoint) a getter és setter blokkok belsejébe a kódszerkesztő bal szélén látható szürke sávra kattintva.
-8. Futtassuk a programot lépésről lépésre. Ehhez a programot F5 helyett az F11 billentyűvel indítsuk, majd az F11 további megnyomásaival engedjük sorról sorra a végrehajtást.
+8. Futtassuk a programot lépésről lépésre. Ehhez a programot ++f5++ helyett az ++f11++ billentyűvel indítsuk, majd az ++f11++ további megnyomásaival engedjük sorról sorra a végrehajtást.
 
     Láthatjuk, hogy a programunk valóban minden egyes alkalommal meghívja a gettert, amikor értéklekérdezés, illetve a settert, amikor értékbeállítás történik.
 
@@ -154,20 +160,22 @@ A következő példában egy `Person` nevű osztályt fogunk elkészíteni, mely
     p.Age = 2;
     ```
 
-### Autoimplementált tulajdonság
+### Autoimplementált tulajdonság (auto-implemented property)
 
-1. A mindennapi munkánk során találkozhatunk a tulajdonságoknak egy sokkal tömörebb szintaktikájával is. Ez a szintaktika akkor alkalmazható, ha egy olyan tulajdonságot szeretnénk létrehozni, melyben:
+A mindennapi munkánk során találkozhatunk a tulajdonságoknak egy sokkal tömörebb szintaktikájával is. Ez a szintaktika akkor alkalmazható, ha egy olyan tulajdonságot szeretnénk létrehozni, melyben:
 
-    - nincs szükségünk a privát tagváltozó közvetlen elérésére
-    - nem szeretnénk semmilyen kiegészítő logikával ellátni a getter és setter metódusokat
+- nem szeretnénk semmilyen kiegészítő logikával ellátni a getter és setter metódusokat
+- nincs szükségünk a privát tagváltozó közvetlen elérésére
 
-    Erre nézzünk a következőkben példát. Egészítsük ki a `Person` osztályunkat egy ilyen, ún. **„autoimplementált” tulajdonsággal (auto-implemented property)**. Készítsünk egy `string` típusú `Name` tulajdonságot.
+Erre nézzünk a következőkben példát.
+
+1. Egészítsük ki a `Person` osztályunkat egy ilyen, ún. **„autoimplementált” tulajdonsággal (auto-implemented property)**. Készítsünk egy `string` típusú `Name` nevű tulajdonságot.
 
     ```csharp
     public string Name { get; set; }
     ```
 
-    Autoimplemetált tulajdonság esetén a fordító egy rejtett, kódból nem elérhető változót generál az osztályba, mely a tulajdonság aktuális értékének tárolására szolgál.
+    A szintaktikai külömnbség a korábbiakhoz képest: a get és a set ágnak sem adtunk implementációt (nincsenek kapcsos zárójelek). Autoimplemetált tulajdonság esetén a fordító egy rejtett, kódból nem elérhető változót generál az osztályba, mely a tulajdonság aktuális értékének tárolására szolgál.
 
 2. Most ellenőrizzük a működését a `Main` függvény kiegészítésével.
 
@@ -181,113 +189,55 @@ A következő példában egy `Person` nevű osztályt fogunk elkészíteni, mely
     }
     ```
 
-3. A tulajdonságok nagy előnye a teljesen szabad implementáció mellett, hogy a getter és a setter láthatóságát külön külön is lehet állítani. Állítsuk a `Name` tulajdonság setterének a láthatóságát privátra.
+### Alapértelmezett érték (default value)
+
+Az autoimplementált tulajdonságok esetében megadható a kezdeti értékük is a deklaráció során.
+
+1. Adjunk kiinduló értéket a `Name` tulajdonságnak.
+
+    ```csharp
+    public string Name { get; set; } = "anonymous";
+    ```
+
+### Tulajdonságok láthatósága
+
+A tulajdonságok nagy előnye a teljesen szabad implementáció mellett, hogy a getter és a setter láthatóságát külön külön is lehet állítani.
+
+1. Állítsuk a `Name` tulajdonság setterének a láthatóságát privátra.
 
     ```csharp
     public string Name { get; private set; }
     ```
 
-    Ilyenkor a `Program` osztékyban fordítási hibát kapunk a `p.Name = "Luke";` utasításra. Az alapvető szabály az, hogy a getter és a setter örökli a property láthatóságát, ami tovább szűkíthető, de nem lazítható.
+    Ilyenkor a `Program` osztályban fordítási hibát kapunk a `p.Name = "Luke";` utasításra. Az alapvető szabály az, hogy a getter és a setter örökli a property láthatóságát, mely tovább szűkíthető, de nem lazítható.
+    A láthatóság szabályozása autoimplementált és nem autoimplementált tulajdonságok esetén is használható.
 
-4. Állítsuk vissza a láthatóságot, hogy megjavuljon a fordítási hiba:
+2. Állítsuk vissza a láthatóságot (távolítsuk el a `private` kulcsszót a `Name` tulajdonság settere elől), hogy megszűnjön a fordítási hiba.
 
-    ```csharp
-    public string Name { get; set; }
-    ```
+### Csak olvasható tulajdonság (readonly property)
 
-### Kitekintés: Egyéb propertyhez kapcsolódó nyelvi elemek
+A setter elhagyható, így egy olyan tulajdonságot kapunk, melyet csak konstruktorban, vagy alapértelmezett értékkel tudunk beállítani (ellentétben a privát szetterrel rendelkező tulajdonságokkal, melyek settere bármely, az osztályban található tagfüggvényből hívható). Ezt a következő kódrészletek illusztrálják (a kódunkba NE vezessük be):
 
-Ha jól állunk az idővel, akkor tekintsük át az alábbi propertyhez kapcsolódó szintaktikai édesítőszereket.
-
-#### Default érték
-
-A tulajdonságok esetében megadható a kezdeti értékük is a deklaráció során. Adjunk kiinduló értéket a `Name` tulajdonságnak.
-
-```csharp
-public string Name { get; set; } = "anonymous";
-```
-
-#### Readonly property
-
-A setter elhagyható, így egy olyan readonly tulajdonságot kapunk, amit csak konstruktorban vagy az előző pont alapján default értékkel tudunk beállítani. Ellentétben a privát szetterrel rendelkező tulajdonságokkal, amiknek a settere bármely az osztályban található függvényből hívható.
+a) Autoimplementált eset
 
 ```csharp
 public string Name { get; }
 ```
 
-#### Getter only property
+b) Nem autoimplementált eset
 
-Készíthető getter only tulajdonság is, ami mindig kiszámol egy megadott logika alapján egy értéket, de nincs settere és nincs mögötte közvetlen tároló.
+```csharp
+private string name;
+...
+public string Name { get {return name; } }
+```
+
+### Számított érték (calculated value)
+
+A csak getterrel rendelkező tulajdonságoknak van még egy használati módja. Vbalamilyen számított érték meghatározására is használható, mely mindig kiszámol egy megadott logika alapján egy értéket (de a "csak olvasható tulajdonság"-gal szemben nincs mögötte közvetlenül a tulajdonsághoz tartozó adattag). Ezt a következő kódrészlet illusztrálja (a kódunkba NE vezessük be):
 
 ```csharp
 public int AgeInDogYear { get { return Age * 7; } }
-```
-
-Ez nem összekeverendő az előző pontban lévő Csak getterrel rendelkező readonly propertyvel, ami mögött van mező.
-
-#### Expression body
-
-A getter vagy setter csak egy sorból állna, akár rendelkezik vagy sem visszatérési értékkel a kifejezés, megadható úgynevezett expression body szintaktikával is, a `=>` operátorral
-
-```csharp
-public int AgeInDogYear { get => Age * 7; }
-```
-
-Sőt, ha csak getterje lenne a tulajdonságnak, a `get` kulcsszót és a kapcsos zárójeleket is lehagyhatjuk.
-
-```csharp
-public int AgeInDogYear => Age * 7;
-```
-
-Ez nem összekeverendő a függvények hasonló expression body szintaktikájával, ahol kötelező a kerek zárójeleket kitenni. Tehát az alábbi egy függvény, a fentebbi pedig egy getter only property.
-
-```csharp
-public int AgeInDogYear() => Age * 7;
-```
-
-#### Object initializer
-
-A tulajdonságok setter hívása és a konstruktor hívás kombinálható egy úgynevezett object initializez szintaxis segítségével. Elég csak a konstruktor után kapcsos zárójelekkel blokkot nyissunk, ahol a propertyk értéke adható meg, az alábbi szintaktikával.
-
-```csharp
-var p = new Person()
-{
-    Age = 17,
-    Name = "Luke",
-};
-```
-
-Ez a szintaktika azért is előnyös, mert egy kifejezésnek számít a példában szereplő három helyett, így akár közvetlenül függvényhívás paramétereként átadható egy objektum, anélkül, hogy változót kellene deklarálni.
-
-```csharp
-void Foo(Person p)
-{
-    // do something with p
-}
-```
-
-```csharp
-Foo(new Person() { Age = 17, Name = "Luke" });
-```
-
-A szintaxis ráadásul copy-paste barát, mert a fenti példában is látszik, hogy nem számít, hogy az utolsó property után van-e vessző vagy nincs.
-
-#### Init only setter
-
-Az előző pontban lévő object initializer szintaxis nagyon kényelmes viszont azt követeli meg a tulajdonságtól, hogy publikus legyen. Ha azt akarjuk, hogy egy tulajdonság értéke csak konstruktor időben változhasson meg, ahol konstruktor paramétert kell bevezessünk, és egy readonly propertybe kell azt értékül adjuk. Erre a problémára ad megoldást az *Init only setter* szintaxis, ahol olyan settert tudunk készíteni az `init` kulcsszóval, ami csak konstruktor időben és az objektum inicializáló szintaxis során engedélyezett.
-
-```csharp
-public string Name { get; init; }
-```
-
-```csharp
-var p = new Person()
-{
-    Age = 17,
-    Name = "Luke",
-};
-
-p.Name = "Test"; // build error
 ```
 
 ## 2. Feladat – Delegát (delegate, metódusreferencia)
@@ -303,7 +253,7 @@ Néhány példa delegátok használatára:
 - egy általános gyűjteményen univerzális szűrési logika megvalósítása, melynek paraméterben egy delegát formájában adjuk át azt a függvényt, amely eldönti, hogy egy elemet bele kell-e venni a szűrt listába,
 - a publish-subscribe minta megvalósítása, amikor bizonyos objektumok más objektumokat értesítenek bizonyos magukkal kapcsolatos események bekövetkezéséről.
 
-A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `Person` osztály objektumai szabadon értesíthessék más osztályok objektumait arról, ha egy személy életkora megváltozott. Ennek érdekében bevezetünk egy delegát típust (`AgeChangingDelegate`), mely paraméterlistájában át tudja adni az emberünk életkorának aktuális, illetve új értékét. Ezt követően létrehozunk egy publikus `AgeChangingDelegate` típusú mezőt a `Person` osztályban, mely lehetővé teszi, hogy egy külső fél megadhassa azt a függvényt, amelyen keresztül az adott `Person` példány változásairól értesítést kér.
+A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `Person` osztály objektumai szabadon értesíthessék más osztályok objektumait arról, ha egy személy életkora megváltozott. Ennek érdekében bevezetünk egy delegát típust (`AgeChangingDelegate`), mely paraméterlistájában át tudja adni az emberünk életkorának aktuális, illetve új értékét. Ezt követően létrehozunk egy publikus `AgeChangingDelegate` típusú tagváltozót a `Person` osztályban, mely lehetővé teszi, hogy egy külső fél megadhassa azt a függvényt, amelyen keresztül az adott `Person` példány változásairól értesítést kér.
 
 1. Hozzunk létre egy új **delegát típust**, mely `void` visszatérési értékű, és két darab `int` paramétert elváró függvényre tud hivatkozni. Figyeljünk rá, hogy az új típust a `Person` osztály előtt, közvetlenül a névtér scope-jában definiáljuk!
 
@@ -317,9 +267,9 @@ A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `P
             // ...
     ```
 
-    Az `AgeChangingDelegate` egy típus (fogyeljük a VS színezését is), mely bárhol szerepelhet, ahol típus állhat (pl. lehet létrehozni ez alapján tagváltozót, lokális változót, függvény paramétert stb.).
+    Az `AgeChangingDelegate` egy típus (figyeljük a VS színezését is), mely bárhol szerepelhet, ahol típus állhat (pl. lehet létrehozni ez alapján tagváltozót, lokális változót, függvény paramétert stb.).
 
-2. Tegyük lehetővé, hogy a `Person` objektumai rámutathassanak tetszőleges, a fenti szignatúrának megfelelő függvényre. Ehhez hozzunk létre egy `AgeChangingDelegate` típusú mezőt a `Person` osztályban!
+2. Tegyük lehetővé, hogy a `Person` objektumai rámutathassanak tetszőleges, a fenti szignatúrának megfelelő függvényre. Ehhez hozzunk létre egy `AgeChangingDelegate` típusú tagváltozót a `Person` osztályban!
 
     ```csharp
     public class Person
@@ -327,8 +277,8 @@ A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `P
         public AgeChangingDelegate AgeChanging;
     ```
 
-    !!! warning "Ez így most OO?"
-        A publikus mezőként létrehozott metódusreferencia valójában (egyelőre) sérti az OO elveket. Erre később visszatérünk még.
+    !!! warning "Ez így most mennyire objektumorientált?"
+        A publikus tagváltozóként létrehozott metódusreferencia valójában (egyelőre) sérti az objektumorintált egységbezárási/információrejtési elveket. Erre később visszatérünk még.
 
 3. Hívjuk meg a függvényt minden alkalommal, amikor az emberünk kora megváltozik. Ehhez egészítsük ki az `Age` tulajdonság setterét a következőkkel.
 
@@ -350,9 +300,9 @@ A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `P
     A  fenti kódrészlet számos fontos szabályt demonstrál:
 
     - A validációs logika általában megelőzi az értesítési logikát.
-    - Az értesítési logika jellegétől függ, hogy az értékadás előtt, vagy után futtatjuk le (ebben az esetben, mivel a „changing” szó egy folyamatban lévő dologra utal, az értesítés megelőzi az értékadást, a bekövetkezést múlt idő jelezni: "changed")
-    - Fel kell készülnünk rá, hogy a delegate típusú mezőnkhöz még senki nem rendelt értéket (nincs egy subscriber/előfizető sem). Ilyen esetekben a meghívásuk kivételt okozna, ezért meghívás előtt mindig ellenőrizni kell, hogy a mező értéke `null`-e.
-    - Az esemény elsütésekor a `null` vizsgálatot és az esemény elsütést elegánsabb, tömörebb, és szálbiztosabb formában is meg tudjuk tenni a „`?.`” null-conditional operátorral (C# 6-tól):
+    - Az értesítési logika jellegétől függ, hogy az értékadás előtt, vagy után futtatjuk le (ebben az esetben, mivel a "changing" szó egy folyamatban lévő dologra utal, az értesítés megelőzi az értékadást, a bekövetkezést múlt idő jelezni: "changed")
+    - Fel kell készülnünk rá, hogy a delegate típusú tagváltozóhoz még senki nem rendelt értéket (nincs egy subscriber/előfizető sem). Ilyen esetekben a meghívásuk kivételt okozna, ezért meghívás előtt mindig ellenőrizni kell, hogy a tagváltozó értéke `null`-e.
+    - Az esemény elsütésekor a `null` vizsgálatot és az esemény elsütést elegánsabb, tömörebb, és szálbiztosabb formában is meg tudjuk tenni a "`?.`" null-conditional operátorral (C# 6-tól):
 
     ```csharp
     if (AgeChanging != null)
@@ -389,7 +339,7 @@ A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `P
     }
     ```
 
-    !!! warning "Tip"
+    !!! warning "Tipp"
         Fokozottan ügyeljünk rá, hogy az új függvény a megfelelő scope-ba kerüljön! Míg a delegate típust az osztályon kívülre (de namespace-en belülre) helyeztük el, a függvényt az osztályon belülre helyezzük!
 
 5. Végezetül iratkozzunk fel a változáskövetésre a `Main` függvényben!
@@ -404,9 +354,9 @@ A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `P
 
 6. Futtassuk a programot!
 
-    Figyeljük meg, hogy az esemény minden egyes setter futáskor, így az első értékadáskor és az inkrementáláskor egyaránt lefut. A megoldásunk azonban még fejleszthető.
+    Pl. az AgeChanging?.Invoke(age, value); sorra töréspontot helyezve, az alkalmazást debuggolva futtatva, és a kódot léptetve figyeljük meg, hogy az esemény minden egyes setter futáskor, így az első értékadáskor és az inkrementáláskor egyaránt lefut.
 
-7. Egészítsük ki a Main függvényt többszöri feliratkozással, majd futtassuk a programot.
+7. Egészítsük ki a Main függvényt többszöri feliratkozással (a += operátorral lehet új feliratkozót felvenni a meglévők mellé), majd futtassuk a programot.
 
     ```csharp
     p.AgeChanging = new AgeChangingDelegate(PersonAgeChanging);
@@ -414,9 +364,9 @@ A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `P
     p.AgeChanging += PersonAgeChanging; // Tömörebb szintaktika
     ```
 
-    Láthatóan minden egyes értékváltozáskor mind a három beregisztrált/„feliratkozott” függvény lefut. Ez azért lehetséges, mert a delegate típusú mezők valójában nem csupán egy függvény-referenciát, hanem egy **függvény-referencia listát** tartalmaznak (és tartanak karban).
+    Láthatóan minden egyes értékváltozáskor mind a három beregisztrált/„feliratkozott” függvény lefut. Ez azért lehetséges, mert a delegate típusú tagváltozók valójában nem csupán egy függvény-referenciát, hanem egy **függvény-referencia listát** tartalmaznak (és tartanak karban).
 
-    Figyeljük meg a fenti harmadik sorban, hogy a függvényreferenciákat az először látottnál tömörebb szintaxissal is leírhatjuk: csak a függvény nevét adjuk meg a `+=` operátor után, a `new AgeChangingDelegate(...)` nélkül. Ettől függetlenül ekkor is egy `AgeChangingDelegate` objektum fogja becsomagolni a `PersonAgeChanging` függvényeket a színfalak mögött.
+    Figyeljük meg a fenti harmadik sorban, hogy a függvényreferenciákat az először látottnál tömörebb szintaxissal is leírhatjuk: csak a függvény nevét adjuk meg a `+=` operátor után, a `new AgeChangingDelegate(...)` nélkül. Ettől függetlenül ekkor is egy `AgeChangingDelegate` objektum fogja becsomagolni a `PersonAgeChanging` függvényeket a színfalak mögött. A  gyakorlatban ezt a tömörebb szintaktikát szoktuk használni.
 
 8. Próbáljuk ki a leiratkozást is (szabadon választott ponton), majd futtassuk a programot.
 
@@ -434,7 +384,7 @@ Ahogyan a tulajdonságok a getter és setter metódusoknak, addig a fent látott
     p.AgeChanging(67, 12);
     ```
 
-    Itt a `p` személy objektum vonatkozásában egy "kamu" életkorváltozás eseményt váltottunk ki a `Person` objektumból, becsapva minden előfizetőt. A jó megoldás az lenne, ha az eseményt csak a `Person` osztály műveletei tudnák kiváltani.
+    Itt a `p` személy objektum vonatkozásában egy "kamu" életkorváltozás eseményt váltottunk ki a `Person` objektum vonatkozásában, becsapva minden előfizetőt. A jó megoldás az lenne, ha az eseményt csak a `Person` osztály műveletei tudnák kiváltani.
 
 2. Bár a `+=` és a `-=` tekintettel vannak a listába feliratkozott többi függvényre, valójában az `=` operátorral bármikor felülírhatjuk (kitörölhetjük) mások feliratkozásait. Próbáljuk ki ezt is, a következő sor beszúrásával (közvetlenül a fel és leiratkozások után szúrjuk be).
 
@@ -442,7 +392,7 @@ Ahogyan a tulajdonságok a getter és setter metódusoknak, addig a fent látott
     p.AgeChanging = null;
     ```
 
-3. Lássuk el az `event` kulcsszóval az `AgeChanging` mezőt `Person.cs`-ben!
+3. Lássuk el az `event` kulcsszóval az `AgeChanging` tagváltozót `Person.cs`-ben!
 
     ```csharp title="Person.cs"
     public event AgeChangingDelegate AgeChanging;
@@ -462,7 +412,7 @@ Ahogyan a tulajdonságok a getter és setter metódusoknak, addig a fent látott
 
 **Az attribútumok segítségével deklaratív módon metaadatokkal láthatjuk el forráskódunkat**. Az attribútum is tulajdonképpen egy osztály, melyet hozzákötünk a program egy megadott eleméhez (típushoz, osztályhoz, interfészhez, metódushoz, stb.). Ezeket a metainformációkat a program futása közben bárki (akár mi magunk is) kiolvashatja az úgynevezett reflection mechanizmus segítségével. Az attribútumok a Java annotációk .NET-beli megfelelőinek is tekinthetők.
 
-!!! note "property vs. attribútum vs. static"
+!!! tip "property vs. attribútum vs. static"
     Felmerül a kérdés, hogy milyen attribútumok kerüljenek tulajdonságokba és melyek attribútumokra egy osztály esetében. A tulajdonságok magára az objektum példányra vonatkoznak, míg az attribútum az azt leíró osztályra (vagy annak valamilyen tagjára).
 
     Ilyen szempontból az attribútumok közelebb állnak a statikus tulajdonságokhoz, mégis megfontolandó, hogy egy adott adatot statikus tagként vagy attribútumként definiálnánk. Attribútummal sokkal deklaratívabb a leírás, és nem szennyezzük olyan részletekkel a kódot, aminek nem kellene az osztály publikus interfészén megjelennie.
@@ -497,7 +447,7 @@ A NET számos **beépített** attribútumot definiál, melyek funkciója a legk�
     }
     ```
 
-4. Az `XmlAttribute` attribútum jelzi a sorosító számára, hogy a jelölt tulajdonságot ne xml elemre, hanem xml attribútumra képezze le. Lássuk el ezzel az `Age` tulajdonságot (és ne a mezőt!)!
+4. Az `XmlAttribute` attribútum jelzi a sorosító számára, hogy a jelölt tulajdonságot ne xml elemre, hanem xml attribútumra képezze le. Lássuk el ezzel az `Age` tulajdonságot (és ne a tagváltozót!)!
 
     ```csharp
     [XmlAttribute("Kor")]
@@ -513,79 +463,18 @@ A NET számos **beépített** attribútumot definiál, melyek funkciója a legk�
 
 6. Futtassuk az alkalmazásunkat! Hasonlítsuk össze az eredményt a korábbiakkal.
 
-### Kitekités: Saját attribútum készítése és használata
-
-Ha jól állunk idővel Móricka példaként készítsünk egy saját attribútum osztályt, ami csak propertyre rakható rá, és befolyásholatjuk vele a konzolra kiíratást a `Person` osztályban felüldefiniált `ToString` metódusban.
-
-1. Az attribútumhoz hozzunk létre egy új osztályt a projektben `WriteInToStringAttribute`.
-   1. Az attribútum osztályok neve konvenció szerint `Attribute`-ra végződik
-   2. `Attribute` osztályból kell származzanak
-   3. Az Attribútumok is rendes osztályok, tartalmazhatnak konstruktort, propertyt, függvényeket stb.
-      1. Kkészítsünk egy olyan proertyt, amivek ki/be kapcsolatható lesz a működése
-   4. Definiálható, hogy milyen nyelvi elemre kerülhet rá az `[AttributeUsage]` attribútummal. (ami viccesen maga is egy attribútum, amin saját maga van rajta)
-
-    ```csharp
-    [AttributeUsage(AttributeTargets.Property)]
-    public class WriteInToStringAttribute : Attribute
-    {
-        public bool IsEnabled { get; set; }
-    }
-    ```
-
-    !!! tip "Flags enum"
-        Ha megvizsgáljuk az AttributeTargets enum-ot akkor láthatjuk, hogy `[Flags]` attribútummal rendelkezik és az enum tagjai kettőhatvény értékeket vesznek fel. Ezzel oldható meg C#-ban is, hogy egy enum változóban több enum értéket is tárolhassunk, ahol az int-ben a bit-et reprezentálnak egy enum értéket. Pl.: `Property` és `Field` értéket az alábbi bitművelettel lehet "összefűzni":
-
-        ```csharp
-        [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
-        ```
-
-2. Definiáljuk felül a `Person` `ToString` metódusát, ahol reflection segítségével iteráljunk végig az összes tulajdonságon és írjuk ki a property nevét és értékét, ha megtalálható rajta ez az attribútum és engedélyezett állapotban van.
-
-    ```csharp
-    public override string ToString()
-    {
-        var s = new StringBuilder();
-        s.AppendLine(base.ToString());
-
-        foreach (var property in typeof(Person).GetProperties())
-        {
-            if (property.GetCustomAttribute<WriteInToStringAttribute>()?.IsEnabled ?? false)
-            {
-                s.AppendLine($"\t{property.Name} = {property.GetValue(this)}");
-            }
-        }
-
-        return s.ToString();
-    }
-    ```
-
-    !!! tip "`GetCustomAttribute<T>`"
-        A `GetCustomAttribute<T>` generikus metódus a `System.Reflection` névtérben található.
-
-3. Rakjuk rá az `Age` tulajdonságra az attribútumonkat
-
-    ```csharp
-    [WriteInToString(IsEnabled = true)]
-    public int Age { get; set; }
-    ```
-
-4. Írjuk ki a konzolra a `Main`-ben a `Person` `ToString`-jét, és próbáljuk ki az alkalmazást.
-
-    ```csharp
-    Console.WriteLine(p);
-    ```
-
 ## 5. Feladat – Delegát 2.
 
 A 2. és 3. feladatokban a delegátokkal esemény alapú üzenetküldést valósítottunk meg. **A delegátok használatának másik tipikus esetében a függvényreferenciákat arra használjuk, hogy egy algoritmus vagy összetettebb művelet számára egy előre nem definiált lépés implementációját átadjuk**.
 
-A generikus lista osztály (`List<T>`) `FindAll` függvénye például képes arra, hogy visszaadjon egy új listában minden olyan elemet, mely egy adott feltételnek eleget tesz. A konkrét szűrési feltételt egy függvény formájában adhatjuk meg paraméterben (melyet a `FindAll` minden elemre meghív), mely igazat ad minden olyan elemre, amit az eredménylistában szeretnénk látni.
-
-Figyeljük meg (F12-vel belelépve), hogy a függvény paraméterének a típusa a következő előre definiált delegate típus (**nem kell létrehozni**):
+A generikus lista osztály (`List<T>`) `FindAll` függvénye például képes arra, hogy visszaadjon egy új listában minden olyan elemet, mely egy adott feltételnek eleget tesz. A konkrét szűrési feltételt egy függvény, pontosabban delegate formájában adhatjuk meg paraméterben (melyet a `FindAll` minden elemre meghív), mely igazat ad minden olyan elemre, amit az eredménylistában szeretnénk látni. A függvény paraméterének a típusa a következő előre definiált delegate típus (**nem kell begépelni/létrehozni**):
 
 ```csharp
 public delegate bool Predicate<T>(T obj)
 ```
+
+!!! note
+    A fenti teljes definíció megjelenítéséhez csak gépeljük be valahova, pl. a `Main` függvény végére a `Predicate` típusnevet, kattintsunk rajta egérrel, és az ++f12++ billentyűvel navigáljunk el a definíciójához.
 
 Vagyis bemenetként egy olyan típusú változót vár, mint a listaelemek típusa, kimenetként pedig egy logikai értéket. A fentiek demonstrálására kiegészítjük a korábbi programunkat egy szűréssel, mely a listából csak a páratlan elemeket fogja megtartani.
 
@@ -614,10 +503,10 @@ Vagyis bemenetként egy olyan típusú változót vár, mint a listaelemek típu
     ```
 
 3. Futtassuk az alkalmazásunkat. Figyeljük meg, hogy a konzolon valóban csak a páratlan számok jelennek meg.
-4. Érdekességként elhelyezhetünk egy töréspontot (breakpoint) a `MyFilter` függvényünk belsejében és megfigyelhetjük, hogy a függvény valóban minden egyes listaelemre külön-külön meghívódik.
+4. Érdekességként elhelyezhetünk egy töréspontot (breakpoint) a `MyFilter` függvényünk belsejében, és megfigyelhetjük, hogy a függvény valóban minden egyes listaelemre külön-külön meghívódik.
 
 !!! tip "Collection initializer szintaxis"
-    Az object initializer szintaxis mellett elérhető minden `Add` metódussal rendelkező osztályra (tipikusan kollekciók) a collection initializer szintaxis az alábbi módon:
+    Minden `Add` metódussal rendelkező, az `IEnumerable` interfészt implementáló osztályra (tipikusan kollekciók) a collection initializer szintaxis az alábbi módon:
 
     ```csharp
     var list = new List<int>()
@@ -630,10 +519,10 @@ Vagyis bemenetként egy olyan típusú változót vár, mint a listaelemek típu
 
 ## 6. Feladat – Lambda kifejezések
 
-Az érintett témakörök az előadásanyagban részletesen szerepelnek, itt nem ismételjük meg őket Lásd „Előadás 02 - Modern nyelvi eszközök.pdf” dokumentum „Lambda expression (lambda kifejezés)” fejezete. A kulcselem a `=>` (lambda operátor) segítségével **lambda kifejezések**, vagyis névtelen függvények definiálása.
+Az érintett témakörök az előadásanyagban részletesen szerepelnek, itt nem ismételjük meg őket Lásd „Előadás 02 - Nyelvi eszközök.pdf” dokumentum "Lambda expression (lambda kifejezés)" fejezete. A kulcselem a `=>` (lambda operátor) segítségével **lambda kifejezések**, vagyis névtelen függvények definiálására van lehetőség.
 
-!!! note "`Action<T>`"
-      A .NET beépített `Func` és `Action` generikus delegate típusokra itt idő hiányáéban nem térünk ki.
+!!! note "`Action és Func`"
+      A .NET beépített `Func` és `Action` generikus delegate típusokra itt idő hiányában nem térünk ki.
 
 Az előző, 5. feladatot oldjuk meg a következőképpen: ne adjunk meg külön szűrőfüggvényt, hanem a szűrési logikát egy lambda kifejezés formájában adjuk meg a `FindAll` műveletnek.
 
@@ -657,7 +546,7 @@ list = list.FindAll(n => n % 2 == 1);
 
 A következő egyszerűsítéseket eszközöltük:
 
-- A paraméter típusát nem írtuk ki (a fordító ki tudja következtetni a `FindAll` delegate paraméter típusából)
+- A paraméter típusát nem írtuk ki: a fordító ki tudja következtetni a `FindAll` delegate paraméteraméterének típusából, mely a korábban vizsgált `Predicate`.
 - A paraméter körüli zárójelet elhagyhattuk (mert csak egy paraméter van)
 - A `=>` jobb oldalán elhagyhattuk a {} zárójeleket és a `return`-t (mert egyetlen kifejezésből állt a függvény törzse, mellyel a függvény visszatér)
 
@@ -700,3 +589,154 @@ for (int n = 0; n < list.Count; n++)
     Console.WriteLine($"Value: {i}");
 }
 ```
+
+## Kitekintés 1 - További nyelvi konstrukciók
+
+Az alábbiakban kitekintünk néhány olyan C# nyelvi elemre, melyek a napi programozási feladatok során egyre gyakrabban használtak. A labor során jó eséllyel már nem marad idő ezek áttekintésére.
+
+### Objektuminicializáló (Object initializer)
+
+A publikus tulajdonságok/tagváltozók inicializálása és a konstruktorhívás kombinálható egy úgynevezett objektuminicializáló (object initializer) szintaxis segítségével. Elég csak a konstruktorhívás után kapcsos zárójelekkel blokkot nyissunk, ahol a publikus tulajdonságok/tagváltozók értéke adható meg, az alábbi szintaktikával.
+
+```csharp
+var p = new Person()
+{
+    Age = 17,
+    Name = "Luke",
+};
+```
+
+Az tulajdonságok/tagok inicializálása a konstruktor lefutása után történik (amennyiben tartozik az osztályhoz konstruktor). Ez a szintaktika azért is előnyös, mert egy kifejezésnek számít (azon hárommal szemben, mintha létrehoznánk egy inicializálatlan, `Person` objektumot, és két további lépésben adnánk értéket az `Age` és `Name` tagoknak). Így akár közvetlenül függvényhívás paramétereként átadható egy inicializált objektum, anélkül, hogy külön változót kellene deklarálni.
+
+```csharp
+void Foo(Person p)
+{
+    // do something with p
+}
+```
+
+```csharp
+Foo(new Person() { Age = 17, Name = "Luke" });
+```
+
+A szintaxis ráadásul copy-paste barát, mert ahogy a fenti példákban is látszik, hogy nem számít, hogy az utolsó tulajdonság megadása után van-e vessző, vagy nincs.
+
+### Tulajdonságok - Init only setter
+
+Az előző pontban lévő objektuminicializáló szintaxis nagyon kényelmes, viszont azt követeli meg a tulajdonságtól, hogy publikus legyen. Ha azt akarjuk, hogy egy tulajdonság értéke csak az objektum létrehozásakor legyen megadható, ahhoz konstruktor paramétert kell bevezessünk, és egy csak olvasható (csak getterrel rendelkező) tulajdonságnak kell azt értékül adjuk. Erre a problémára ad egyszerűbb megoldást az ún. *Init only setter* szintaxis, ahol olyan "settert" tudunk készíteni az **`init`** kulcsszóval, mely állítása  csak a konstruktorban és az előző fejezetben ismertetett objektuminicializáló szintaxis alkalmazása során engedélyezett, ezt követően már nem.
+
+```csharp
+public string Name { get; init; }
+```
+
+```csharp
+var p = new Person()
+{
+    Age = 17,
+    Name = "Luke",
+};
+
+p.Name = "Test"; // build hiba, utólag nem megváltoztatható
+```
+
+### Kifejezéstörzsű tagok (Expression-bodied members)
+
+Időnként olyan rövid függvényeket, illetve tulajdonságok esetén kifejezetten gyakran olyan rövid get/set/init definíciókat írunk, melyek **egyetlen kifejezésből** állnak. Ez esetben a függvény, illetve tulajdonság esetén a get/set/init törzse megadható ún. **kifejezéstörzsű tagok (expression-bodied members)** szintaktikával is, a `=>` alkalmazásával. Ez akkor is megtehető, ha az adott kontextusban van visszatérési érték (return utasítás), akár nincs.
+
+A példákban látni fogjuk, hogy a kifejezéstestű tagok alkalmazása nem több, mint egy kisebb szintaktikai "csavar" annak érdekében, hogy ilyen egyszerű esetekben minél kevesebb körítő kódot kelljen írni.
+
+Nézzünk először egy függvény példát (feltesszük, hogy az osztályban van egy `Age` tagváltozó vagy tulajdonság):
+
+```csharp 
+public int GetAgeInDogYear() => Age * 7; 
+public void DisplayName() => Console.WriteLine(ToString());
+```
+Mint látható, elhagytuk a {} zárójeleket és a `return` utasítást, így tömörebb a szintaktika.
+
+!!! tip "Fontos"
+    Bár az alábbiakban a `=>` tokent használjuk, ennek semmi köze nincs a korábban tárgyalt lambda kifejezésekhez: egyszerűen csak arról van szó, hogy ugyanazt a `=>` tokent (szimbólumpárt) két teljesen eltérő dologra használja a C# nyelv.
+
+Példa tulajdonság getter megadására:
+
+```csharp
+public int AgeInDogYear { get => Age * 7; }
+```
+
+Sőt, ha csak getterje van a tulajdonságnak, a `get` kulcsszót és a kapcsos zárójeleket is lehagyhatjuk.
+
+```csharp
+public int AgeInDogYear => Age * 7;
+```
+
+Ezt az különbözteti meg a korábban látott függvények hasonló szintaktikájától, hogy itt nem írtuk ki a kerek zárójeleket.
+
+```csharp
+public int AgeInDogYear() => Age * 7;
+```
+
+!!! Note
+    A Microsoft hivatalos dokumentációjának magyar fordításában az "expression-bodied members" nem "kifejezéstörzsű", hanem "kifejezéstestű" tagként szerepel. Köszönjük szépen, de a függvényeknek sokkal inkább törzse, mint teste van a magyar terminológiában, így ezt nem vesszük át...
+
+## Kitekintés 2 - Saját attribútum (custom attribute) készítése és használata
+
+Az alábbi nem tananyag, kitekintésként szolgál a témakörben érdeklődők számára.
+
+Készítsünk egy saját attribútum osztályt, amely csak tulajdonságok esetében alkalmazható, és befolyásolhatjuk vele `Person` objektumok string reprezentációba történő alakítását a `Person` osztályban felüldefiniált `ToString` metódusban.
+
+1. Az attribútumhoz hozzunk létre egy új osztályt a projektben `WriteInToStringAttribute` néven.
+   1. Az attribútum osztályok neve konvenció szerint `Attribute`-ra végződik
+   2. `Attribute` osztályból kell származzanak
+   3. Az Attribútumok is rendes osztályok, tartalmazhatnak konstruktort, tulajdonságokat, függvényeket stb.
+      1. Készítsünk egy olyan tulajdonságot, mellyel ki/be kapcsolatható lesz a működése
+   4. Definiálható, hogy milyen nyelvi elemre kerülhet rá az `[AttributeUsage]` attribútummal. (ami viccesen maga is egy attribútum, melyen saját maga van rajta)
+
+    ```csharp
+    [AttributeUsage(AttributeTargets.Property)]
+    public class WriteInToStringAttribute : Attribute
+    {
+        public bool IsEnabled { get; set; }
+    }
+    ```
+
+    !!! tip "Flags enum"
+        Ha megvizsgáljuk az AttributeTargets enum-ot akkor láthatjuk, hogy `[Flags]` attribútummal rendelkezik és az enum tagjai kettőhatvány értékeket vesznek fel. Ezzel oldható meg C#-ban is, hogy egy enum változóban több enum értéket is tárolhassunk, ahol az int-ben a adott pozíciójú bit-et reprezentálnak az egyes enum értékek. Pl.: a `Property` és `Field` értéket az alábbi bitművelettel lehet "összefűzni":
+
+        ```csharp
+        [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
+        ```
+
+2. Definiáljuk felül a `Person` `ToString` metódusát, ahol reflection segítségével iteráljunk végig az összes tulajdonságon, és írjuk ki a tulajdonság nevét és értékét, ha megtalálható rajta ez az attribútum és az engedélyezett állapotban van (az `IsEnabled` értéke igaz).
+
+    ```csharp
+    public override string ToString()
+    {
+        var s = new StringBuilder();
+        s.AppendLine(base.ToString());
+
+        foreach (var property in typeof(Person).GetProperties())
+        {
+            if (property.GetCustomAttribute<WriteInToStringAttribute>()?.IsEnabled ?? false)
+            {
+                s.AppendLine($"\t{property.Name} = {property.GetValue(this)}");
+            }
+        }
+
+        return s.ToString();
+    }
+    ```
+
+    !!! tip "`GetCustomAttribute<T>`"
+        A `GetCustomAttribute<T>` generikus metódus a `System.Reflection` névtérben található.
+
+3. Rakjuk rá az `Age` tulajdonságra az attribútumunkat.
+
+    ```csharp
+    [WriteInToString(IsEnabled = true)]
+    public int Age { get; set; }
+    ```
+
+4. Írjuk ki a konzolra a `Main`-ben a `Person` `ToString`-jét, és próbáljuk ki az alkalmazást.
+
+    ```csharp
+    Console.WriteLine(p);
+    ```
