@@ -92,7 +92,7 @@ A projekttel egy új solution is létrejön, mely struktúrája a Visual Studio 
 
 A `Program.cs` fájlunk tartalma a következő:
 
-```cs title="Program.cs"
+```csharp title="Program.cs"
 namespace HelloWorld
 {
     internal class Program
@@ -107,7 +107,7 @@ namespace HelloWorld
 
 Vegyünk fel egy `Console.ReadKey()` sort:
 
-```cs hl_lines="8"
+```csharp hl_lines="8"
 namespace HelloWorld
 {
     internal class Program
@@ -121,11 +121,11 @@ namespace HelloWorld
 }
 ```
 
-1. Futtassuk az alkalmazást (pl. az **F5** billentyű használatával).
+1. Futtassuk az alkalmazást (pl. az ==f5== billentyű használatával).
 
     A kód felépítése nagyon hasonlít a Java-hoz, illetve a C++-hoz. Az osztályaink névterekbe szervezettek. Névteret definiálni a `namespace` kulcsszóval tudunk. Névtereket hatókörbe „hozni” a `using` kulcsszóval tudjuk.  pl.:
 
-    ```cs
+    ```csharp
     using System.Collections.Generic;
     ```
 
@@ -146,7 +146,7 @@ namespace HelloWorld
     - **Implicit global usings**. Annak függvényében, hogy pontosan milyen projekttípust hoztunk létre, bizonyos alapnévterek a színfalak mögött automatikusan using-olva lesznek minden forrásfájlban (ehhez a compiler a *global using* utasítást használja). A lényeg: a fejlesztőknek így bizonyos, gyakran használt névtereket (pl. `System.IO`, `System.Collections.Generic` stb.) nem kell a forrásfájlonként using-olni.
     - **Static using**. Lehetőségünk van C#-ban névterek helyett statikus osztályokat is usingolni, így azokat a használatuk során nem fontos kiírni. Gyakori eset erre a `Console` vagy a `Math` osztály usingolása.
 
-        ```cs hl_lines="1 9"
+        ```csharp hl_lines="1 9"
         using static System.Console;
 
         namespace ConsoleApp12
@@ -163,7 +163,7 @@ namespace HelloWorld
 
     - **Fájl szintű névterek**. C# 10-ben szintén egy egyszerűsítést kapunk a névterek deklarálása során, mert már nem kötelező a kapcsos zárójeleket kitenni, így az adott namespace a teljes fájlra érvényes lesz pl.:
 
-        ```cs hl_lines="1"
+        ```csharp hl_lines="1"
         namespace HelloWorld;
 
         internal class Program
@@ -180,7 +180,7 @@ namespace HelloWorld
     
     A hiba legegyszerűbben úgy hárítható el, ha minden típusunkat publikusnak definiáljuk, pl.:
 
-    ```cs
+    ```csharp
     public class HardDisk
     {
         // ...
@@ -270,7 +270,7 @@ A diagramon az `EquipmentInventory` osztályra pillantva azt látjuk, hogy csak 
 
 Az `EquipmentInventory` osztályon duplán kattintva elnavigálhatunk a forráskódba, és mint látható, valóban egy lista típusú tagváltozóként jelenik meg a kódban:
 
-```cs hl_lines="3"
+```csharp hl_lines="3"
 class EquipmentInventory
 {
     private List<IEquipment> equipment;
@@ -284,7 +284,7 @@ A dupla nyíl végződés a „többes” oldalon nem szabványos UML, de ne szo
 
 Navigáljunk el az `EquipmentInventory` forráskódjához, és írjuk meg a konstruktorát, ami inicializálja az `equipment` gyűjteményt!
 
-```cs
+```csharp
 public EquipmentInventory()
 {
     equipment = new List<IEquipment>();
@@ -293,7 +293,7 @@ public EquipmentInventory()
 
 Ezután írjuk meg a `ListAll` metódust, ami kiírja az elemek életkorát, és az aktuális értéküket:
 
-```cs
+```csharp
 public void ListAll()
 {
     foreach (IEquipment eq in equipment)
@@ -309,7 +309,7 @@ A `Console.WriteLine` műveletnek vagy egy egyszerű stringet adunk meg, vagy, m
 
 Írjunk meg egy `AddEquipment` nevű függvényt, ami felvesz egy új eszközt a készletbe:
 
-```cs
+```csharp
 public void AddEquipment(IEquipment eq)
 {
      equipment.Add(eq);
@@ -320,11 +320,11 @@ public void AddEquipment(IEquipment eq)
 
 Korábbi döntésünk értelmében az `IEquipment` interfészt használjuk az különböző alkatrész típusok egységes kezelésére. Estünkben mind a `SoundCard`, mind a `HardDisk` osztály rendelkezik `GetAge()` és `GetPrice()` metódussal, mégsem tudjuk őket egységesen kezelni (pl. közös listában tárolni). Ahhoz, hogy ezt meg tudjuk tenni, el kell érnünk, hogy mindkét osztály megvalósítsa az `IEquipment` interfészt. Módosítsuk a forrásukat:
 
-```cs
+```csharp
 public class SoundCard : IEquipment
 ```
 
-```cs
+```csharp
 public class HardDisk : IEquipment
 ```
 
@@ -332,7 +332,7 @@ Ezt követően a `SoundCard` és `HardDisk` osztályban implementálnunk kell az
 
 Próbaképpen a `Program.cs` fájlban található `Main` függvényünkben hozzunk létre egy `EquipmentInventory` objektumot, töltsük fel `HardDisk` és `SoundCard` objektumokkal, majd listázzuk a késztelet a konzolra. Ammennyiben nem 2021 az aktuális év, az alábbi soroknál a 2021-es évet írjuk át az aktuális évre, a 2020-at pedig ennél eggyel kisebb számra!
 
-```cs
+```csharp
 static void Main( string[] args )
 {
     EquipmentInventory ei = new EquipmentInventory();
@@ -355,13 +355,13 @@ Az alkalmazást futtatva azt tapasztaljuk, hogy bár megoldásunk kezdetleges, d
 
 Folytassuk a munkát a `LedDisplay` osztállyal. A `DisplayBase` ős forráskódját a követelmények miatt nem módosíthatjuk. De ez semmiféle problémát nem okoz, a `LedDisplay` osztályunk fogja az `IEquipment` interfészt implementálni, módosítsuk a kódot ennek megfelelően:
 
-```cs
+```csharp
 public class LedDisplay : DisplayBase, IEquipment
 ```
 
 A `LedDisplay` osztályban már meg kell írni az interfészben szereplő függvényeket:
 
-```cs
+```csharp
 public double GetPrice()
 {
     return this.price;
@@ -375,7 +375,7 @@ public int GetAge()
 
 Bővítsük a `Main` függvényünket is, vegyünk fel két `LedDisplay` objektumot a készletünkbe (itt is él, hogy ammennyiben nem 2021 az aktuális év, az alábbi soroknál a 2021-es évet írjuk át az aktuális évre, a 2020-at pedig ennél eggyel kisebb számra!
 
-```cs hl_lines="1 2"
+```csharp hl_lines="1 2"
 ei.AddEquipment( new LedDisplay( 2020, 80000, 17, 16) );
 ei.AddEquipment( new LedDisplay ( 2021, 70000, 17, 12) );
         
@@ -401,7 +401,7 @@ Bár ez a kódduplikáció egyelőre nem tűnik jelentősnek, új alkatrész tí
 
 A másik probléma abból adódik, hogy az alkatrész adatok listázása jelenleg fájdalmasan hiányos, nem jelenik meg az alkatrész típusa (csak a kora és az ára). A típus megjelenítéséhez az IEquipment interfészt bővíteni kell, pl. egy `GetDescription` nevű művelet bevezetésével.  Vegyünk is fel egy `GetDescription` függvényt az interfészbe!
 
-```cs hl_lines="5"
+```csharp hl_lines="5"
 public interface IEquipment
 {
     double GetPrice();
@@ -415,7 +415,7 @@ Ekkor minden `IEquipment` interfészt implementáló osztályban meg kellene val
 !!! tip "Interfészben alapértelmezett implementáció megadása"
     Érdemes tudni, hogy C# 8-tól (illetve .NET vagy .NET Core runtime is kell hozzá, .NET Framework alatt nem támogatott) kezdve **interfész műveleteknek is lehet alapértelmezett implementációt adni (default interface methods), így a fenti probléma megoldásához nincs szükség absztrakt osztályra, de interfésznek továbbiakban sem lehet tagváltozója**. Bővebben információ itt:  [default interface methods](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-8.0/default-interface-methods).
 
-    ```cs hl_lines="5"
+    ```csharp hl_lines="5"
     public interface IEquipment
     {
         double GetPrice();
@@ -440,15 +440,15 @@ A diagramunk és a forráskódunk vonatkozó részei ezt követően így néznek
 
 ![EquipmentBase és HardDisk/SoundCard](images/class-diagram-eqipmentbase-sc-hd-2.png)
 
-```cs
+```csharp
 public abstract class EquipmentBase : IEquipment
 ```
 
-```cs
+```csharp
 public class HardDisk : EquipmentBase
 ```
 
-```cs
+```csharp
 public class SoundCard : EquipmentBase
 ```
 
@@ -461,7 +461,7 @@ A kódunk még nem fordul, ennek több oka is van. Az `EquipmentBase` implement�
 
 A fentieknek megfelelő kód a következő:
 
-```cs
+```csharp
 public abstract class EquipmentBase : IEquipment
 {
     protected int yearOfCreation;
@@ -491,7 +491,7 @@ public abstract class EquipmentBase : IEquipment
 
 A következő lépésben térjünk át az `EquipmentBase` leszármazottakra. C# nyelven az absztrakt és virtuális műveletek felüldefiniálásakor a leszármazottban meg kell adni az `override` kulcsszót. Első lépésben a `GetPrice` műveletet definiáljuk felül:
 
-```cs title="HardDisk.cs"
+```csharp title="HardDisk.cs"
 public override double GetPrice()
 {
     return yearOfCreation < (DateTime.Today.Year - 4)
@@ -500,7 +500,7 @@ public override double GetPrice()
 }
 ```
 
-```cs title="SoundCard.cs"
+```csharp title="SoundCard.cs"
 public override double GetPrice()
 {
     return yearOfCreation < (DateTime.Today.Year - 4)
@@ -511,14 +511,14 @@ public override double GetPrice()
 
 A következőkben lépésben a `GetDescription` műveletet írjuk meg a `HardDisk` és `SoundCard` osztályokban. Mivel itt az ősbeli virtuális függvényt definiáljuk felül, szintén meg kell adni az `override` kulcsszót:
 
-```cs title="HardDisk.cs"
+```csharp title="HardDisk.cs"
 public override string GetDescription()
 {
     return "Hard Disk";
 }
 ```
 
-```cs title="SoundCard.cs"
+```csharp title="SoundCard.cs"
 public override string GetDescription()
 {
     return "Sound Card";
@@ -536,7 +536,7 @@ A `LedDisplay` osztályunk őse meg van kötve, annak kódja nem módosítható,
 
     A `LedDisplay` osztályunkban adósak vagyunk még a `GetDescription` megírásával:
 
-```cs title="LedDisplay.cs"
+```csharp title="LedDisplay.cs"
 public string GetDescription()
 {
     return "Led Display";
@@ -549,7 +549,7 @@ Figyeljük meg, hogy itt NEM adtuk meg az `override` kulcsszót. Mikor egy inter
 
 Módosítsuk az `EquipmentInventory.ListAll` műveletét, hogy az elemek leírását is írja ki a kimenetre:
 
-```cs title="EquipmentInventory.cs"
+```csharp title="EquipmentInventory.cs"
 public void ListAll()
 {
     foreach (IEquipment eq in equipment)
@@ -568,14 +568,14 @@ public void ListAll()
 
 A kódunkat áttekintve még egy helyen találunk kódduplikációt. Valamennyi `EquipmentBase` leszármazott (`HardDisk`, `SoundCard`) konstruktorában ott van ez a két sor:
 
-```cs
+```csharp
  this.yearOfCreation = yearOfCreation;
  this.newPrice = newPrice;
 ```
 
 Ha belegondolunk, ezek a `yearOfCreatio` és `newPrice` tagok az ősben vannak definiálva, így egyébként is az ő felelőssége kellene legyen ezek inicializálása. Vegyünk is fel egy megfelelő konstruktort az `EquipmentBase`-ben:
 
-```cs title="EquipmentBase.cs"
+```csharp title="EquipmentBase.cs"
 public EquipmentBase(int yearOfCreation, int newPrice)
 {
     this.yearOfCreation = yearOfCreation;
@@ -585,7 +585,7 @@ public EquipmentBase(int yearOfCreation, int newPrice)
 
 A `HardDisk` és `SoundCard` leszármazottak konstruktorának törzséből vegyük ki a két tag inicializálását, helyette a `base` kulcsszóval hivatkozva hívjuk meg az ős konstruktorát:
 
-```cs title="HardDisk.cs"
+```csharp title="HardDisk.cs"
 public HardDisk(int yearOfCreation, int newPrice, int capacityGB)
     : base(yearOfCreation, newPrice)
 {
@@ -593,7 +593,7 @@ public HardDisk(int yearOfCreation, int newPrice, int capacityGB)
 }
 ```
 
-```cs title="SoundCard.cs"
+```csharp title="SoundCard.cs"
 public SoundCard(int yearOfCreation, int newPrice)
     : base(yearOfCreation, newPrice)
 {

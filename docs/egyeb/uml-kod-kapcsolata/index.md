@@ -37,7 +37,7 @@ Egy példa:
 
 , mely a következő kódnak felel meg C# nyelven:
 
-```cs
+```csharp
 public abstract class Shape
 {
     private int x;
@@ -61,7 +61,7 @@ Ennél izgalmasabb kérdéskör, hogy milyen módon történik az osztályok kö
 
 C# leképezés:
 
-```cs
+```csharp
 public class Base
 { };
 public class Derived : Base
@@ -94,7 +94,7 @@ class WindowManager
 
 C# leképezés (nincsenek pointerek, csak referenciák):
 
-```cs
+```csharp
 class Application
 {
    WindowManager windowManager;
@@ -129,7 +129,7 @@ class WindowManager
 
 Illetve C# nyelven:
 
-```cs
+```csharp
 class WindowManager
 {
   List<Window> windows; 

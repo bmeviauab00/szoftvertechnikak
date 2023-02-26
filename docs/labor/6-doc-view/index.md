@@ -197,7 +197,7 @@ Futtassuk az alkalmazást. Valahogy ki kell alakítsuk egy adott oldal (tabpage)
 :exclamation: Ez egy kiemelt jelentőségű forgatókönyv, mert ezt illusztrálja a D-V architektúra alapmechanizmusát, a nézetek frissítését és konzisztensen tartását.
 Keressük meg azt a függvényt, ahol az egész pixel invertálás folyamat elindul. A `FontEditorView.FontEditorView_MouseClick` a kiindulópont. Itt az alább kiemelt sor a lényeg:
 
-```cs hl_lines="8"
+```csharp hl_lines="8"
 private void FontEditorView_MouseClick(object sender, MouseEventArgs e)
 {
     int x = e.X / zoom;
@@ -211,7 +211,7 @@ private void FontEditorView_MouseClick(object sender, MouseEventArgs e)
 
 Nézzük meg a `FontEditorDocument.InvertCharDefPixel`-t. Az invertálja a megfelelő `CharDef` pixelét, de a lényeg az utolsó sor:
 
-```cs hl_lines="9"
+```csharp hl_lines="9"
 public void InvertCharDefPixel(char c, int x, int y)
 {
     var charDef = GetCharDefCore(c);
@@ -226,7 +226,7 @@ public void InvertCharDefPixel(char c, int x, int y)
 
 Az `UpdateAllViews` a `Document` ősben van, `Update`-et hív minden nézetre. Ami érdekes, hogy az `Update` hogyan van megírva az egyes nézetekben. Nézzük meg pl. a `FontEditView`-t:
 
-```cs hl_lines="3"
+```csharp hl_lines="3"
 public void Update()
 {
     Invalidate();
@@ -237,7 +237,7 @@ Az `Update` hatására a nézetek újra kell rajzolják magukat az aktuális dok
 
 Zárásképpen nézzük meg a `FontEditView.OnPaint` megvalósítását. Egyetlen lényeges dolog van itt: a megjelenítéshez le kell kérni a dokumentumtól az aktuális `CharDef`-et (mert a nézet a D-V architektúra alapelveinek megfelelően nem tárolja), majd ki kell azt rajzolni.
 
-```cs hl_lines="5 7"
+```csharp hl_lines="5 7"
 protected override void OnPaint(PaintEventArgs e)
 {
     base.OnPaint(e);
@@ -259,7 +259,7 @@ Azt nézzük meg, hogyan történik egy új dokumentum létrehozása, vagyis mi 
 
 Nyissuk meg a `MainForm`-ot tervezői nézetben, válaszuk a _File/New_ menüelemet, majd ugorjunk el a `Click` eseménykezelőhöz. Arra látunk példát, hogy az `App` osztály, mint Singleton, hogy érhető el:
 
-```cs
+```csharp
 App.Instance.NewDocument();
 ```
 
@@ -271,7 +271,7 @@ Tekintsük át az `App.NewDocument` törzsét, és egy-egy mondatban fussuk át 
 2. Sikeres válasz esetén új `FontEditorDocument` létrehozása és felvétele a dokumentumok közé, valamint aktívvá tétele.
 3. Új tab létrehozása a nézetekkel.
 
-```cs
+```csharp
 public void NewDocument()
 {
     // Bekérjükk az új font típus (dokumentum) nevét a

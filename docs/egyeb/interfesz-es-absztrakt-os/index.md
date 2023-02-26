@@ -11,13 +11,13 @@ A fogalmak korábbi tárgyak keretében már ismertetésre kerültek, így most 
 Absztrakt osztály
 Olyan osztály, mely nem példányosítható. C# nyelven az osztálydefinícióban az abstract kulcsszót kell kiírni, pl.:
 
-```cs
+```csharp
 abstract class Shape { … }
 ```
 
 Absztrakt osztályoknak lehetnek absztrakt metódusaik, melyeknek nem adjuk meg a törzsét, ezeknél is az abstract kulcsszót kell használni:
 
-```cs
+```csharp
 …
 abstract void Draw();
 …
@@ -36,7 +36,7 @@ Az interfész nem más, mint egy művelethalmaz. Tulajdonképpen egy olyan abszt
 
 C# nyelven az `interface` kulcsszóval tudunk interfészt definiálni:
 
-```cs
+```csharp
 public interface ISerializable 
 {
    void WriteToStream(Stream s);
@@ -51,7 +51,7 @@ public interface IComparable
 
 Míg egy osztálynak csak egy őse lehet, akárhány interfészt implementálhat:
 
-```cs
+```csharp
 public class Rect : Shape, ISerializable, IComparable
 {
     …
