@@ -216,7 +216,7 @@ A tulajdonságok nagy előnye a teljesen szabad implementáció mellett, hogy a 
 
 ### Csak olvasható tulajdonság (readonly property)
 
-A setter elhagyható, így egy olyan tulajdonságot kapunk, melyet csak konstruktorban, vagy alapértelmezett értékkel tudunk beállítani (ellentétben a privát szetterrel rendelkező tulajdonságokkal, melyek settere bármely, az osztályban található tagfüggvényből hívható). Ezt a következő kódrészletek illusztrálják (a kódunkba NE vezessük be):
+A setter elhagyható, így egy olyan tulajdonságot kapunk, melyet csak konstruktorban, vagy alapértelmezett értékkel tudunk beállítani (ellentétben a privát setterrel rendelkező tulajdonságokkal, melyek settere bármely, az osztályban található tagfüggvényből hívható). Ezt a következő kódrészletek illusztrálják (a kódunkba NE vezessük be):
 
 a) Autoimplementált eset
 
@@ -234,7 +234,7 @@ public string Name { get {return name; } }
 
 ### Számított érték (calculated value)
 
-A csak getterrel rendelkező tulajdonságoknak van még egy használati módja. Vbalamilyen számított érték meghatározására is használható, mely mindig kiszámol egy megadott logika alapján egy értéket (de a "csak olvasható tulajdonság"-gal szemben nincs mögötte közvetlenül a tulajdonsághoz tartozó adattag). Ezt a következő kódrészlet illusztrálja (a kódunkba NE vezessük be):
+A csak getterrel rendelkező tulajdonságoknak van még egy használati módja. Valamilyen számított érték meghatározására is használható, mely mindig kiszámol egy megadott logika alapján egy értéket, de a "csak olvasható tulajdonság"-gal szemben nincs mögötte közvetlenül a tulajdonsághoz tartozó adattag. Ezt a következő kódrészlet illusztrálja (a kódunkba NE vezessük be):
 
 ```csharp
 public int AgeInDogYear { get { return Age * 7; } }
@@ -408,7 +408,7 @@ Ahogyan a tulajdonságok a getter és setter metódusoknak, addig a fent látott
 
 ## 4. Feladat – Attribútumok
 
-### Sorosítás testreszabása Attribútummal
+### Sorosítás testreszabása attribútummal
 
 **Az attribútumok segítségével deklaratív módon metaadatokkal láthatjuk el forráskódunkat**. Az attribútum is tulajdonképpen egy osztály, melyet hozzákötünk a program egy megadott eleméhez (típushoz, osztályhoz, interfészhez, metódushoz, stb.). Ezeket a metainformációkat a program futása közben bárki (akár mi magunk is) kiolvashatja az úgynevezett reflection mechanizmus segítségével. Az attribútumok a Java annotációk .NET-beli megfelelőinek is tekinthetők.
 
@@ -550,53 +550,13 @@ A következő egyszerűsítéseket eszközöltük:
 - A paraméter körüli zárójelet elhagyhattuk (mert csak egy paraméter van)
 - A `=>` jobb oldalán elhagyhattuk a {} zárójeleket és a `return`-t (mert egyetlen kifejezésből állt a függvény törzse, mellyel a függvény visszatér)
 
-## 7. Feladat – Generikus osztályok
+## 7. További nyelvi konstrukciók
 
-Megjegyzés: erre a feladatra jó eséllyel nem marad idő. Ez esetben célszerű a feladatot gyakorlásképpen otthon elvégezni.
-
-A .NET generikus osztályai hasonlítanak C++ nyelv template osztályaihoz, de közelebb állnak a Java-ban már megismert generikus osztályokhoz. A segítségükkel általános (több típusra is működő), de ugyanakkor típusbiztos osztályokat hozhatunk létre. Generikus osztályok nélkül, ha általánosan szeretnénk kezelni egy problémát, akkor `object` típusú adatokat használunk (mert .NET-ben minden osztály az `object` osztályból származik). Ez a helyzet például az `ArrayList`-tel is, ami egy általános célú gyűjtemény, tetszőleges, `object` típusú elemek tárolására alkalmas. Lássunk egy példát az `ArrayList` használatára:
-
-```csharp
-var list = new ArrayList();
-list.Add(1);
-list.Add(2);
-list.Add(3);
-for (int n = 0; n < list.Count; n++)
-{
-    // Castolni kell, különben nem fordul
-    int i = (int)list[n];
-    Console.WriteLine($"Value: {i}");
-}
-```
-
-A fenti megoldással a következő problémák adódnak:
-
-- Az `ArrayList` minden egyes elemet `object`-ként tárol.
-- Amikor hozzá szeretnénk férni a lista egy eleméhez, mindig a megfelelő típusúvá kell cast-olni.
-- Nem típusbiztos. A fenti példában semmi nem akadályoz meg abban (és semmilyen hibaüzenet sem jelzi), hogy az `int` típusú adatok mellé  beszúrjunk a listába egy másik típusú objektumot. Ilyenkor csak a lista bejárása során kapnánk hibát, amikor a nem `int` típust `int` típusúra próbálunk castolni. Generikus gyűjtemények használatakor az ilyen hibák már a fordítás során kiderülnek.
-- Érték típusú adatok tárolásakor a lista lassabban működik, mert az érték típust először be kell dobozolni (boxing), hogy az `object`-ként (azaz referencia típusként) tárolható legyen.
-
-A fenti probléma megoldása egy generikus lista használatával a következőképpen néz ki (a gyakorlat során csak a kiemelt sort módosítsuk a korábban begépelt példában):
-
-```csharp hl_lines="1 7"
-var list = new List<int>();
-list.Add(1);
-list.Add(2);
-list.Add(3);
-for (int n = 0; n < list.Count; n++)
-{
-    int i = list[n]; // Nem kell cast-olni
-    Console.WriteLine($"Value: {i}");
-}
-```
-
-## Kitekintés 1 - További nyelvi konstrukciók
-
-Az alábbiakban kitekintünk néhány olyan C# nyelvi elemre, melyek a napi programozási feladatok során egyre gyakrabban használtak. A labor során jó eséllyel már nem marad idő ezek áttekintésére.
+Az alábbiakban kitekintünk néhány olyan C# nyelvi elemre, melyek a napi programozási feladatok során egyre gyakrabban használatosak. A gyakorlat során jó eséllyel már nem marad idő ezek áttekintésére.
 
 ### Objektuminicializáló (Object initializer)
 
-A publikus tulajdonságok/tagváltozók inicializálása és a konstruktorhívás kombinálható egy úgynevezett objektuminicializáló (object initializer) szintaxis segítségével. Elég csak a konstruktorhívás után kapcsos zárójelekkel blokkot nyissunk, ahol a publikus tulajdonságok/tagváltozók értéke adható meg, az alábbi szintaktikával.
+A publikus tulajdonságok/tagváltozók inicializálása és a konstruktorhívás kombinálható egy úgynevezett objektuminicializáló (object initializer) szintaxis segítségével. Ennek alkalmazása során a konstruktorhívás után kapcsos zárójelekkel blokkot nyitunk, ahol a publikus tulajdonságok/tagváltozók értéke adható meg, az alábbi szintaktikával.
 
 ```csharp
 var p = new Person()
@@ -676,6 +636,46 @@ public int AgeInDogYear() => Age * 7;
 
 !!! Note
     A Microsoft hivatalos dokumentációjának magyar fordításában az "expression-bodied members" nem "kifejezéstörzsű", hanem "kifejezéstestű" tagként szerepel. Köszönjük szépen, de a függvényeknek sokkal inkább törzse, mint teste van a magyar terminológiában, így ezt nem vesszük át...
+
+## 8. Feladat – Generikus osztályok
+
+Megjegyzés: erre a feladatra jó eséllyel nem marad idő. Ez esetben célszerű a feladatot gyakorlásképpen otthon elvégezni.
+
+A .NET generikus osztályai hasonlítanak C++ nyelv template osztályaihoz, de közelebb állnak a Java-ban már megismert generikus osztályokhoz. A segítségükkel általános (több típusra is működő), de ugyanakkor típusbiztos osztályokat hozhatunk létre. Generikus osztályok nélkül, ha általánosan szeretnénk kezelni egy problémát, akkor `object` típusú adatokat használunk (mert .NET-ben minden osztály az `object` osztályból származik). Ez a helyzet például az `ArrayList`-tel is, ami egy általános célú gyűjtemény, tetszőleges, `object` típusú elemek tárolására alkalmas. Lássunk egy példát az `ArrayList` használatára:
+
+```csharp
+var list = new ArrayList();
+list.Add(1);
+list.Add(2);
+list.Add(3);
+for (int n = 0; n < list.Count; n++)
+{
+    // Castolni kell, különben nem fordul
+    int i = (int)list[n];
+    Console.WriteLine($"Value: {i}");
+}
+```
+
+A fenti megoldással a következő problémák adódnak:
+
+- Az `ArrayList` minden egyes elemet `object`-ként tárol.
+- Amikor hozzá szeretnénk férni a lista egy eleméhez, mindig a megfelelő típusúvá kell cast-olni.
+- Nem típusbiztos. A fenti példában semmi nem akadályoz meg abban (és semmilyen hibaüzenet sem jelzi), hogy az `int` típusú adatok mellé  beszúrjunk a listába egy másik típusú objektumot. Ilyenkor csak a lista bejárása során kapnánk hibát, amikor a nem `int` típust `int` típusúra próbálunk castolni. Generikus gyűjtemények használatakor az ilyen hibák már a fordítás során kiderülnek.
+- Érték típusú adatok tárolásakor a lista lassabban működik, mert az érték típust először be kell dobozolni (boxing), hogy az `object`-ként (azaz referencia típusként) tárolható legyen.
+
+A fenti probléma megoldása egy generikus lista használatával a következőképpen néz ki (a gyakorlat során csak a kiemelt sort módosítsuk a korábban begépelt példában):
+
+```csharp hl_lines="1 7"
+var list = new List<int>();
+list.Add(1);
+list.Add(2);
+list.Add(3);
+for (int n = 0; n < list.Count; n++)
+{
+    int i = list[n]; // Nem kell cast-olni
+    Console.WriteLine($"Value: {i}");
+}
+```
 
 ## Kitekintés 2 - Saját attribútum (custom attribute) készítése és használata
 
