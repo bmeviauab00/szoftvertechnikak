@@ -218,6 +218,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#megoldas">
+    Megoldás
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#1-feladat-tulajdonsag-property">
     1. Feladat – Tulajdonság (property)
   </a>
@@ -435,6 +440,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#megoldas">
+    Megoldás
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#1-feladat-tulajdonsag-property">
     1. Feladat – Tulajdonság (property)
   </a>
@@ -559,7 +569,7 @@
 <p><strong>JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES</strong></p>
 </div>
 <h2 id="a-gyakorlat-celja">A gyakorlat célja<a class="headerlink" href="#a-gyakorlat-celja" title="Permanent link">¶</a></h2>
-<p>A gyakorlat célja az alábbi C# nyelvi elemek megismerése:</p>
+<p>A gyakorlat során a hallgatók megismerkednek a legfontosabb modern, a .NET környezetben is rendelkezésre álló nyelvi eszközökkel. Feltételezzük, hogy a hallgató a korábbi tanulmányai során elsajátította az objektum-orientált szemléletmódot, és tisztában van az objektum-orientált alapfogalmakkal. Jelen gyakorlat során azokra a .NET-es nyelvi elemekre koncentrálunk, amelyek túlmutatnak az általános objektum-orientált szemléleten, ugyanakkor nagyban hozzájárulnak a jól átlátható és könnyen karbantartható kód elkészítéséhez. Ezek a következők:</p>
 <ul>
 <li>Tulajdonság (property)</li>
 <li>Delegát (delegate, metódusreferencia)</li>
@@ -580,20 +590,18 @@
 <p>A gyakorlat anyag alapvetően Windowsra és Visual Studiora készült, de az elvégezhető más operációs rendszereken is egy szövegszerkesztővel (pl.: VSCode) és CLI eszközökkel, mivel példák egyszerű Console alkalmazás kontextusában kerülnek ismertetésre (nincsenek Windows specifikus elemek), és a .NET 6 SDK támogatott Linuxon és Macen. <a href="https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code?pivots=dotnet-6-0">Hello World linuxon</a></p>
 </div>
 <h2 id="bevezeto">Bevezető<a class="headerlink" href="#bevezeto" title="Permanent link">¶</a></h2>
-<p>A gyakorlat során a hallgatók megismerkednek a legfontosabb modern, a .NET környezetben is rendelkezésre álló nyelvi eszközökkel. Feltételezzük, hogy a hallgató a korábbi tanulmányai során elsajátította az objektum-orientált szemléletmódot, és tisztában van az objektum-orientált alapfogalmakkal. Jelen gyakorlat során azokra a .NET-es nyelvi elemekre koncentrálunk, amelyek túlmutatnak az általános objektum-orientált szemléleten, ugyanakkor nagyban hozzájárulnak a jól átlátható és könnyen karbantartható kód elkészítéséhez. Ezek a következők:</p>
-<ul>
-<li>Tulajdonságok (properties)</li>
-<li>Delegátok (delegates)</li>
-<li>Események (events)</li>
-<li>Attribútumok (attributes)</li>
-<li>Lambda kifejezések (lambda expressions)</li>
-<li>Generikus osztályok (generics)</li>
-<li>Néhány további nyelvi konstrukció</li>
-</ul>
 <div class="admonition tip">
 <p class="admonition-title">Kitekintő részek</p>
 <p>Jelen útmutató több helyen is bővített ismeretanyagot, illetve extra magyarázatot ad meg jelen megjegyzéssel egyező színnel keretezett és ugyanilyen ikonnal ellátott formában. Ezek hasznos kitekintések, de nem képezik az alap tananyag részét.</p>
 </div>
+<h2 id="megoldas">Megoldás<a class="headerlink" href="#megoldas" title="Permanent link">¶</a></h2>
+<details>
+<summary>A kész megoldás letöltése</summary>
+<p><img alt="❗" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2757.svg" title=":exclamation:"> Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, tilos (és értelmetlen) a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.</img></p>
+<p>A megoldás GitHubon érhető el <a href="https://github.com/bmeviauab00/lab-nyelvieszkozok-megoldas">itt</a>. A legegyszerűbb mód a letöltésére, ha parancssorból a <code>git clone</code> utasítással leklónozzuk a gépünkre:</p>
+<p><code>git clone https://github.com/bmeviauab00/lab-nyelvieszkozok-megoldas</code></p>
+<p>Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ <a href="../../hazi/git-github-github-classroom#git-telepitese">itt</a>.</p>
+</details>
 <h2 id="1-feladat-tulajdonsag-property">1. Feladat – Tulajdonság (property)<a class="headerlink" href="#1-feladat-tulajdonsag-property" title="Permanent link">¶</a></h2>
 <p>A tulajdonságok segítségével tipikusan (de nem kizárólagosan) osztályok tagváltozóihoz férhetünk hozzá szintaktikailag hasonló módon, mintha egy hagyományos tagváltozót érnénk el. A hozzáférés során azonban lehetőségünk van arra,  hogy az egyszerű érték lekérdezés vagy beállítás helyett metódusszerűen implementáljuk a változó elérésének a módját, sőt külön külön is meghatározhatjuk a lekérdezés és a beállítás láthatóságát.</p>
 <h3 id="tulajdonsag-szintaktikaja">Tulajdonság szintaktikája<a class="headerlink" href="#tulajdonsag-szintaktikaja" title="Permanent link">¶</a></h3>
@@ -1186,8 +1194,8 @@ Mint látható, elhagytuk a {} zárójeleket és a <code>return</code> utasítá
 </path>
 </svg>
 </span>
-<span title="2023. február 26. 22:54:51">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-26T22:54:51+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-26</span>
+<span title="2023. február 28. 22:37:40">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-28T22:37:40+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-28</span>
 </span>
 </span>
 <span class="md-source-file__fact">
