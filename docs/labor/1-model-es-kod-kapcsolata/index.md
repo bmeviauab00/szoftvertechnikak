@@ -573,7 +573,7 @@ A kódunkat áttekintve még egy helyen találunk kódduplikációt. Valamennyi 
  this.newPrice = newPrice;
 ```
 
-Ha belegondolunk, ezek a `yearOfCreatio` és `newPrice` tagok az ősben vannak definiálva, így egyébként is az ő felelőssége kellene legyen ezek inicializálása. Vegyünk is fel egy megfelelő konstruktort az `EquipmentBase`-ben:
+Ha belegondolunk, ezek a `yearOfCreation` és `newPrice` tagok az ősben vannak definiálva, így egyébként is az ő felelőssége kellene legyen ezek inicializálása. Vegyünk is fel egy megfelelő konstruktort az `EquipmentBase`-ben:
 
 ```csharp title="EquipmentBase.cs"
 public EquipmentBase(int yearOfCreation, int newPrice)
