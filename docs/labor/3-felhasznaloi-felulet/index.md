@@ -39,7 +39,7 @@ A Window Forms alkalmazások legfontosabb koncepcióit a tárgy 3.-4. előadása
 
     A megoldás GitHubon érhető el [itt](https://github.com/bmeviauab00/lab-winforms-megoldas). A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre:
 
-    ```git clone https://github.com/bmeviauab00/lab-lab-winforms-megoldas```
+    ```git clone https://github.com/bmeviauab00/lab-winforms-megoldas```
 
     Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ [itt](../hazi/git-github-github-classroom/#git-telepitese).
 
