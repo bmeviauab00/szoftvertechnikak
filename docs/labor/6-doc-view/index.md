@@ -35,7 +35,7 @@ Az alábbiak szerint fogunk dolgozni:
 - A kész alkalmazás forráskódjának alapján néhány fontosabb forgatókönyv megvalósításának áttekintése
 
 ??? note "Megjegyzés gyakorlatvezetők számára"
-    A gyakorlat elején töltsük le a kész alkalmazást. A hallgatók ekkor még ne töltsék le, ne ezt kattintgassák, majd csak a gyakorlat második részében. A gyakorlatvezetőknek viszont szüksége lesz rá, mert ennek segítségével történik a feladat bemutatása.
+    A gyakorlat elején töltsük le a kész alkalmazást (innen klónozzuk ki: https://github.com/bmeviauab00/lab-docview-megoldas). A hallgatók ekkor még ne töltsék le, ne ezt kattintgassák, majd csak a gyakorlat második részében. A gyakorlatvezetőknek viszont szüksége lesz rá, mert ennek segítségével történik a feladat bemutatása.
 
 ## 1. Feladat - A feladat ismertetése
 
