@@ -630,9 +630,6 @@ public int AgeInDogYear => Age * 7;
 
 Ezt az különbözteti meg a korábban látott függvények hasonló szintaktikájától, hogy itt nem írtuk ki a kerek zárójeleket.
 
-```csharp
-public int AgeInDogYear() => Age * 7;
-```
 
 !!! Note
     A Microsoft hivatalos dokumentációjának magyar fordításában az "expression-bodied members" nem "kifejezéstörzsű", hanem "kifejezéstestű" tagként szerepel. Köszönjük szépen, de a függvényeknek sokkal inkább törzse, mint teste van a magyar terminológiában, így ezt nem vesszük át...
