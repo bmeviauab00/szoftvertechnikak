@@ -614,7 +614,7 @@ public void DisplayName() => Console.WriteLine(ToString());
 Mint látható, elhagytuk a {} zárójeleket és a `return` utasítást, így tömörebb a szintaktika.
 
 !!! tip "Fontos"
-    Bár az alábbiakban a `=>` tokent használjuk, ennek semmi köze nincs a korábban tárgyalt lambda kifejezésekhez: egyszerűen csak arról van szó, hogy ugyanazt a `=>` tokent (szimbólumpárt) két teljesen eltérő dologra használja a C# nyelv.
+    Bár itt is a `=>` tokent használjuk, ennek semmi köze nincs a korábban tárgyalt lambda kifejezésekhez: egyszerűen csak arról van szó, hogy ugyanazt a `=>` tokent (szimbólumpárt) két teljesen eltérő dologra használja a C# nyelv.
 
 Példa tulajdonság getter megadására:
 
