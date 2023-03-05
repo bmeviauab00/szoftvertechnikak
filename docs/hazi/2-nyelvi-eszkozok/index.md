@@ -8,14 +8,15 @@ authors: BenceKovari,bzolka
 
 ## Bevezetés
 
-Az önálló feladat a 2. előadáson elhangzottakra épít. A feladatok elméleti hátteréül az [Előadás 02 - Modern nyelvi eszközök.zip](https://www.aut.bme.hu/Upload/Course/VIAUAB00/hallgatoi_jegyzetek/El%c5%91ad%c3%a1s%2002%20-%20Modern%20programoz%c3%a1si%20eszk%c3%b6z%c3%b6k.zip) leírás, gyakorlati hátteréül a [2. labor - Nyelvi eszközök](../../labor/2-nyelvi-eszkozok/index.md) laborgyakorlat szolgál.
+Az önálló feladat a 2. előadáson és a 3. előadás első felében elhangzottakra épít (ezek a "Előadás 02 - Nyelvi eszközök" előadásanyagban szerepelnek). Gyakorlati hátteréül a [2. labor - Nyelvi eszközök](../../labor/2-nyelvi-eszkozok/index.md) laborgyakorlat szolgál.
 
 A fentiekre építve, jelen önálló gyakorlat feladatai a feladatleírást követő rövidebb iránymutatás segítségével elvégezhetők.
 
 Az önálló gyakorlat célja:
 
-- Tulajdonságok (property) és események (event) használatának gyakorlása
-- Az attribútumok használatának gyakorlása
+- Tulajdonságok (property) használatának gyakorlása
+- Delagátok (delegate) és események (event) alkalmazása
+- .NET attribútumok használatának gyakorlása
 - Alapvető gyűjteménytípusok használatának gyakorlása
 - Lambda kifejezések gyakorlása
 
