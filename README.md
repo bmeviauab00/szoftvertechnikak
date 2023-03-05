@@ -18,7 +18,7 @@ A GitHub Codespaces funkciója jelentős mennyiségű virtuális gép időt ad a
 
 Ehhez elegendő a repository (akár a forkon) Code gombját lenyitni majd létrehozni egy új codespace-t. Ez lényegében egy böngészős VSCode, ami egy konténerben fut, és az alkalmazás által nyitott portokat egy port forwardinggal el is érhetjük a böngészőnkből.
 
-### Dockerfile elindítása (Helyi gépen van Codespaces-ben)
+### Dockerfile elindítása (helyi gépen vagy Codespaces-ben)
 
 A repository tartalmaz egy Dockerfile-t, mely az MKDocs keretrendszer és függőségeinek konfigurációját tartalmazza. Ezt a konténert le kell buildelni, majd futtatni, ami lebuildeli az MKDocs alapú dokumentációt, és egyben egy fejlesztési idejű webservert is elindít a dokumentáció "futtatásához".
 
