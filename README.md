@@ -2,7 +2,7 @@
 
 ![Build docs](https://github.com/bmeviauab00/szoftvertechnikak/workflows/Build%20docs/badge.svg?branch=main)
 
-[BMEVIAUAB00 Szoftvertechnikák](https://www.aut.bme.hu/Course/VIAUAB00/) tárgy jegyzetei, gyakorlati anyagai, házi feladatai.
+[BMEVIAUAB00 Szoftvertechnikák](https://www.aut.bme.hu/Course/VIAUAB00/) tárgy jegyzetei, labor anyagai, házi feladatai.
 
 A jegyzetek MkDocs segítségével készülnek és GitHub Pages-en kerülnek publikálásra: <https://bmeviauab00.github.io/szoftvertechnikak/>
 
@@ -20,7 +20,7 @@ Ehhez elegendő a repository (akár a forkon) Code gombját lenyitni majd létre
 
 ### Dockerfile elindítása (Helyi gépen van Codespaces-ben)
 
-A repository tartalmaz egy Dockerfile-t, ami at MKDocs keretrendszer és függőségeinek konfigurációját tartalmazza. Ezt a konténert le kell buildelni, majd futtatni, ami lebuildeli az MKDocs doksinkat, és egyben egy fejlesztési idejű webservert is elindít.
+A repository tartalmaz egy Dockerfile-t, mely az MKDocs keretrendszer és függőségeinek konfigurációját tartalmazza. Ezt a konténert le kell buildelni, majd futtatni, ami lebuildeli az MKDocs alapú dokumentációt, és egyben egy fejlesztési idejű webservert is elindít a dokumentáció "futtatásához".
 
 1. Terminál nyitása a repository gyökerébe.
 2. Adjuk ki ezt a parancsot Windows (PowerShell), Linux és MacOS esetén:
