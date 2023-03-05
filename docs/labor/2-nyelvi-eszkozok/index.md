@@ -1,5 +1,5 @@
 ---
-authors: BenceKovari, bzolka, tibitoth
+authors: BenceKovari,bzolka,tibitoth
 ---
 
 # 2. Nyelvi eszközök

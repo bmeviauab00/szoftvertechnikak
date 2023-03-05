@@ -13,16 +13,16 @@ Az önálló/házi feladatokra vonatkozó pontos követelmények Moodle-ben, a [
 
 ## A feladatok beadása
 
-Minden házi feladat megoldását egy személyre szóló git repository-ban kell beadni. Ennek pontos [folyamatát lásd itt](./hf-folyamat/index.md). Kérünk, hogy alaposan olvasd végig a leírást!
+Minden házi feladat megoldását egy személyre szóló git repository-ban kell beadni. Ennek pontos [folyamatát lásd itt](./hf-folyamat/index.md). Kérünk, alaposan olvasd végig a leírást!
 
 !!!danger "FONTOS"
-    A házik elkészítése és beadás során az itt leírtak szerint kell eljárnod. A nem ilyen formában beadott házikat nem értékeljük.
+    A házik elkészítése és beadás során az itt leírtak szerint kell eljárnod. A nem ilyen formában beadott házi feladatokat nem értékeljük.
 
 ## Képernyőképek
 
 Bizonyos házi feladatok kérik, hogy készíts képernyőképet a megoldás egy-egy részéről, mert ezzel bizonyítod, hogy a megoldásod saját magad készítetted. A képernyőképek elvárt tartalmát a feladat minden esetben pontosan megnevezi.
 
-!!! info "" A képernyőképeket a megoldás részeként kell beadni, így felkerülnek a git repository tartalmával együtt. Mivel a repository privát, azt az oktatókon kívül más nem látja. Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltölteni, kitakarhatod a képről.
+!!!info "" A képernyőképeket a megoldás részeként kell beadni, így felkerülnek a git repository tartalmával együtt. Mivel a repository privát, azt az oktatókon kívül más nem látja. Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltölteni, kitakarhatod a képről.
 
 ## Szükséges eszközök
 
