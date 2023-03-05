@@ -376,8 +376,8 @@ public int GetAge()
 Bővítsük a `Main` függvényünket is, vegyünk fel két `LedDisplay` objektumot a készletünkbe (itt is él, hogy ammennyiben nem 2021 az aktuális év, az alábbi soroknál a 2021-es évet írjuk át az aktuális évre, a 2020-at pedig ennél eggyel kisebb számra!
 
 ```csharp hl_lines="1 2"
-ei.AddEquipment( new LedDisplay( 2020, 80000, 17, 16) );
-ei.AddEquipment( new LedDisplay ( 2021, 70000, 17, 12) );
+ei.AddEquipment(new LedDisplay(2020, 80000, 17, 16));
+ei.AddEquipment(new LedDisplay (2021, 70000, 17, 12));
         
 ei.ListAll();
 Console.ReadKey();
