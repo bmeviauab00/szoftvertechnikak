@@ -22,7 +22,8 @@ Minden házi feladat megoldását egy személyre szóló git repository-ban kell
 
 Bizonyos házi feladatok kérik, hogy készíts képernyőképet a megoldás egy-egy részéről, mert ezzel bizonyítod, hogy a megoldásod saját magad készítetted. A képernyőképek elvárt tartalmát a feladat minden esetben pontosan megnevezi.
 
-!!!info "" A képernyőképeket a megoldás részeként kell beadni, így felkerülnek a git repository tartalmával együtt. Mivel a repository privát, azt az oktatókon kívül más nem látja. Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltölteni, kitakarhatod a képről.
+!!!info ""
+    A képernyőképeket a megoldás részeként kell beadni, így felkerülnek a git repository tartalmával együtt. Mivel a repository privát, azt az oktatókon kívül más nem látja. Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltölteni, kitakarhatod a képről.
 
 ## Szükséges eszközök
 
