@@ -293,23 +293,9 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#a-hazi-feladat-eloellenorzese">
-    A házi feladat előellenőrzése
-  </a>
-<nav aria-label="A házi feladat előellenőrzése" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
 <a class="md-nav__link" href="#a-hazi-feladat-eloellenorzese-es-hivatalos-ertekelese">
     A házi feladat előellenőrzése és hivatalos értékelése
   </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#a-github-altal-futtatott-ellenorzesek-megtekintese">
-    A GitHub által futtatott ellenőrzések megtekintése
-  </a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#feladat-1-egy-egyszeru-net-konzol-alkalmazas-elkeszitese">
@@ -397,7 +383,7 @@
 <h2 id="a-kiindulasi-keret-letoltese-az-elkeszult-megoldas-feltoltese">A kiindulási keret letöltése, az elkészült megoldás feltöltése<a class="headerlink" href="#a-kiindulasi-keret-letoltese-az-elkeszult-megoldas-feltoltese" title="Permanent link">¶</a></h2>
 <p>A házi feladat kiindulási környezetének publikálása, valamint a megoldás beadása Git, GitHub és GitHub Classroom segítségével történik. Főbb lépések:</p>
 <ol>
-<li>GitHub Classroom segítségével hozz létre magadnak egy repository-t. A meghívó URL-t a tárgy AUT honlapján találod.</li>
+<li>GitHub Classroom segítségével hozz létre magadnak egy repository-t. A meghívó URL-t Moodle-ben találod.</li>
 <li>Klónozd le az így elkészült repository-t. Ez tartalmazni fogja a megoldás elvárt szerkezetét.</li>
 <li>A feladatok elkészítése után commit-old és push-old a megoldásod. </li>
 </ol>
@@ -406,29 +392,8 @@
 <li><a href="../git-github-github-classroom/">Git, GitHub, GitHub Classroom</a></li>
 <li><a href="../hf-folyamat/">Házi feladat munkafolyamat és a Git/GitHub használata</a></li>
 </ul>
-<h2 id="a-hazi-feladat-eloellenorzese">A házi feladat előellenőrzése<a class="headerlink" href="#a-hazi-feladat-eloellenorzese" title="Permanent link">¶</a></h2>
-<h3 id="a-hazi-feladat-eloellenorzese-es-hivatalos-ertekelese">A házi feladat előellenőrzése és hivatalos értékelése<a class="headerlink" href="#a-hazi-feladat-eloellenorzese-es-hivatalos-ertekelese" title="Permanent link">¶</a></h3>
-<ul>
-<li>Minden egyes alkalommal, miután a GitHub-ra push-oltál kódot, a GitHub-on automatikusan lefut a feltöltött kód (elő)ellenőrzése, és meg lehet nézni a kimenetét! Az ellenőrzőt maga a GitHub futtatja. A push-t követően a feladat egy várakozási sorba kerül, majd adott idő után lefutnak az ellenőrző tesztek. Azt nem lehet tudni, mennyi ez az idő, a GitHub-on múlik. Amikor csak egy-két feladat van a sorban a szervezetre (ez nálunk a tárgy), akkor a tapasztalatok alapján az ellenőrzés 1-2 percen belül elindul. De ha a tárgy alatt egyszerre sokan kezdik majd feltölteni a megoldást, akkor ez jó eséllyel belassul. Nem érdemes ezért sem az utolsó pillanatra hagyni a beadást: lehet, hogy ekkor a késleltetések miatt már nem kapsz esetleg időben visszajelzést.</li>
-<li><img alt="❗" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2757.svg" title=":exclamation:"> <strong>Hivatalosan a feladat azon állapota kerül értékelésre, amely a határidő lejártakor GitHub-on fent van.</strong> A hivatalos ellenőrzést szokásos módon, saját, oktatói környezetben végezzük és az eredményt a tárgy honlapján publikáljuk a számonkérésnél. Vagyis a hivatalos eredmény tekintetében teljesen mindegy, hogy a GitHub-on a határidő lejárta lefutott-e már bármiféle (elő)ellenőrzés, vagy hogy az ellenőrzés estleg csak később tudott elindulni. A GitHub általi ellenőrzés csak azt a célt szolgálja, hogy még a határidő lejárta előtt visszajelzést kaphasson mindenki. A hivatalos ellenőrzés tartalmaz még plusz lépéseket a GitHub alapú előellenőrzéshez lépest, az előellenőrzés ilyen értelemben részleges, de azért sok problémát segíthet megfogni!</img></li>
-<li><img alt="❗" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2757.svg" title=":exclamation:"> <strong>Arra kérünk, hogy ne apránként push-olj, csak a kész, átnézett, forduló megoldást tedd fel!</strong> Ez nem a legszerencsésebb, de a GitHub korlátozott időt biztosít az ellenőrzők futtatására:   ha elfogy a havi keret, akkor már nem fogtok visszajelzést kapni, csak a határidő utáni hivatalos ellenőrzés kimenetét kapja meg mindenki.</img></li>
-<li>A (fél)automata ellenőrző, most még egy részben kísérleti projekt. Ha valaki az útmutatóban inkonzisztenciát talál, vagy az ellenőrző adott helyzetet nem kezel és indokolatlanul panaszkodik, Benedek Zoltán felelős oktató felé legyen szíves jelezni! Ugyanakkor ezeket nagy tömegben nem fogjuk tudni kezelni. Ha jó a megoldásod, és az ellenőrző indokolatlanul panaszkodik, a hivatalos ellenőrzés során természetesen el fogjuk fogadni.</li>
-<li>Az előellenőrző – különösen az első házi feladat esetében – sokszor eléggé "gépközeli megfogalmazásban" jelzi az esetleges problémákat. Ha semmiképpen nem tudod értelmezni, írj Benedek Zoltánnak Teams-ben, a hibaüzenet megadásával, <strong>illetve egy linkkel a repository-dra</strong>.</li>
-</ul>
-<h3 id="a-github-altal-futtatott-ellenorzesek-megtekintese">A GitHub által futtatott ellenőrzések megtekintése<a class="headerlink" href="#a-github-altal-futtatott-ellenorzesek-megtekintese" title="Permanent link">¶</a></h3>
-<ol>
-<li>GitHub-on a navigálás a repository-hoz</li>
-<li><em>Actions</em> tabfülre váltás</li>
-<li>Itt megjelenik egy táblázat, minden push által futtatott ellenőrzéshez egy külön sor, a tetején van legfrissebb. A sor elején levő ikon jelzi a státuszt: vár, fut, sikeres, sikertelen lehet. A sor szövege a Git commit neve.</li>
-<li>
-<p>Egy sorban a commit nevén kattintva jelenik meg egy átfogó oldal az ellenőrző futásáról, ez sok információt nem tartalmaz. Ezen az oldalon baloldalt kell a <em>"build"</em> vagy <em>"build-and-check"</em> (vagy hasonló nevű) linken  kattintani, ez átnavigál az ellenőrzés részletes nézetére. Ez egy „élő” nézet, ha fut a teszt, folyamatosan frissül. Ha végzett, a csomópontokat lenyitva lehet megnézni az adott lépés kimenetét.  Ha minden sikerült, egy ehhez hasonló nézet látható:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/eloellenorzo-github-actions.png"><img alt="GitHub actions kimenet" src="images/eloellenorzo-github-actions.png"/></a></p>
-</li>
-<li>
-<p>Itt a legfontosabb talán a <em>"Run tests"</em> lépés.
-Ha valamelyik lépés sikertelen, pipa helyett piros x van a csomópont elején, és a csomópontot kibontva a teszt kimenete utal a hiba okára. A "Error Message"-re, ill. az "Assert"-re érdemes szövegesen keresni a kimentben, ennek a környékén szokott lenni hivatkozás a hiba okára.</p>
-</li>
-</ol>
+<h2 id="a-hazi-feladat-eloellenorzese-es-hivatalos-ertekelese">A házi feladat előellenőrzése és hivatalos értékelése<a class="headerlink" href="#a-hazi-feladat-eloellenorzese-es-hivatalos-ertekelese" title="Permanent link">¶</a></h2>
+<p>Minden egyes alkalommal, miután a GitHub-ra push-oltál kódot, a GitHub-on automatikusan lefut a feltöltött kód (elő)ellenőrzése, és meg lehet nézni a kimenetét! Erről bővebb információ itt található (mindenképpen olvasd el): <a href="../eloellenorzes-ertekeles/">A házi feladat előellenőrzése és hivatalos értékelése</a>.</p>
 <h2 id="feladat-1-egy-egyszeru-net-konzol-alkalmazas-elkeszitese">Feladat 1 – Egy egyszerű .NET konzol alkalmazás elkészítése<a class="headerlink" href="#feladat-1-egy-egyszeru-net-konzol-alkalmazas-elkeszitese" title="Permanent link">¶</a></h2>
 <h3 id="kiindulo-projekt">Kiinduló projekt<a class="headerlink" href="#kiindulo-projekt" title="Permanent link">¶</a></h3>
 <p>A kiindulási környezet a <code>Feladat1</code> mappában található, az ebben levő <code>MusicApp.sln</code> fájlt nyissuk meg Visual Studioban és ebben a solutionben dolgozzunk.</p>
@@ -474,7 +439,6 @@ stb.
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>A tagváltozókat <code>readonly</code>-ként vettük fel, mert nem akartuk, hogy utólag ezek a konstruktor lefutását követően megváltoztathatók legyenek.</p>
 <div class="admonition note">
 <p class="admonition-title">Property</p>
 <p>A tagváltozókat <code>readonly</code>-ként vettük fel, mert nem akartuk, hogy ezek utólag, a konstruktor lefutását követően megváltoztathatók legyenek. Alternatíva lehetne a csak olvasható tulajdonság (property) alkalmazása a readonly tagváltozók helyett (ez későbbi tanagyag).</p>
@@ -561,7 +525,7 @@ stb.
 </details>
 <h2 id="feladat-2-az-uml-es-a-kod-kapcsolata-interfesz-es-absztrakt-os-alkalmazastechnikaja">Feladat 2 - Az UML és a kód kapcsolata, interfész és absztrakt ős alkalmazástechnikája<a class="headerlink" href="#feladat-2-az-uml-es-a-kod-kapcsolata-interfesz-es-absztrakt-os-alkalmazastechnikaja" title="Permanent link">¶</a></h2>
 <h3 id="kiindulo-kornyezet">Kiinduló környezet<a class="headerlink" href="#kiindulo-kornyezet" title="Permanent link">¶</a></h3>
-<p>A kiindulási környezet a <code>Feladat2</code> mappában található, az ebben levő <code>Shapes.sln</code> fájlt nyissuk meg Visual Studioban és ebben a solutionben dolgozzunk.</p>
+<p>A kiindulási környezet a <code>Feladat2</code> mappában található, az ebben levő <code>Shapes.sln</code> fájlt nyissuk meg Visual Studioban, és ebben a solutionben dolgozzunk.</p>
 <div class="admonition warning">
 <p class="admonition-title">Figyelem!</p>
 <p>Új solution és/vagy projektfájl létrehozása, vagy a projekt más/újabb .NET verziókra targetelése tilos.</p>
@@ -586,10 +550,14 @@ stb.
 <p>Minden alakzatnak biztosítania kell műveleteket típusának, koordinátái és területének lekérdezéséhez. A típus lekérdező művelet <code>string</code>-gel térjen vissza, illetve a beépített <code>Type</code> osztály <code>GetType</code> művelete nem használható a megvalósítás során.</p>
 </li>
 <li>
-<p>Listázni kell tudni a memóriában nyilvántartott alakzatokat a szabványos kimenetre (konzolra). Ennek során a következő adatokat írjuk ki: alakzat típusa (pl. négyzet esetén <code>Square</code>, stb.), a két koordináta, alakzat területe. (beépített <code>Type</code> osztály <code>GetType</code> művelete nem használható a típus kiírás során)</p>
+<p>Listázni kell tudni a memóriában nyilvántartott alakzatokat a szabványos kimenetre (konzolra). Ennek során a következő adatokat írjuk ki: alakzat típusa (pl. négyzet esetén <code>Square</code> stb.), a két koordináta, alakzat területe. A beépített <code>Type</code> osztály <code>GetType</code> művelete nem használható a típus kiírás során.</p>
 </li>
 <li>
 <p>Az <code>TextArea</code> osztálynak osztálynak kötelezően a jelen feladathoz tartozó <code>Controls.dll</code> osztálykönyvtár <code>Textbox</code> osztályából kell származnia. A <code>Controls.dll</code> egy .NET szerelvény, lefordított formában tartalmaz osztályokat.</p>
+<div class="admonition failure">
+<p class="admonition-title">Interfészben alapértelmezett implementáció</p>
+<p>Bár C# 8-tól támogatott .NET interfészben alapértelmezett implementáció megadása. Ez sokszor hasznos technika, de a megoldásban nem alkalmazható, ennél "klasszikusabb" megközelítést kell választani.</p>
+</div>
 </li>
 <li>
 <p>A megvalósítás során törekedjen egységbezárásra: pl. az alakzatok menedzselése legyen egy <strong>erre dedikált osztály</strong> feladata.</p>
@@ -605,7 +573,7 @@ stb.
 <p>A <code>Main</code> függvényben mutasson példát az osztályok használatára.</p>
 </li>
 <li>
-<p>Legkésőbb a megvalósítás végére készítsen a Visual Studio solutionben egy osztálydiagramot, melyen a solution osztályait jól áttekinthető formában rendezze el. Az asszociációs kapcsolatokat asszociáció formájában jelenítse meg, ne tagváltozóként (<em>Show as Association</em> ill. <em>Show as Collection Association</em>, lásd <a href="../../labor/1-model-es-kod-kapcsolata/">1. gyakorlat útmutatója</a>).</p>
+<p>Legkésőbb a megvalósítás végére készítsen a Visual Studio solutionben egy osztálydiagramot, melyen a solution osztályait jól áttekinthető formában rendezze el. Az asszociációs kapcsolatokat asszociáció formájában jelenítse meg, ne tagváltozóként (<em>Show as Association</em> ill. <em>Show as Collection Association</em>, lásd <a href="../../labor/1-model-es-kod-kapcsolata/">1. labor útmutatója</a>).</p>
 <div class="admonition tip">
 <p class="admonition-title">Class Diagram komponens</p>
 <p>A Visual Studio 2022 nem teszi fel minden esetben a <em>Class Designer</em> komponenst a telepítés során. Ha nem lehet Class Diagram-ot felvenni a Visual Studio projektbe (mert a <em>Class Diagram</em> nem szerepel a listában az <em>Add / New Item</em> parancs során megjelenő ablak listájában), akkor a <em>Class Diagram</em> komponenst utólag kell telepíteni. Erről bővebben jelen útmutató <a href="../fejlesztokornyezet/">Fejlesztőkörnyezet</a> oldalán lehet olvasni.</p>
@@ -618,7 +586,7 @@ stb.
 <li>Az alakzatokat csak a memóriában kell nyilvántartani.</li>
 </ul>
 <h3 id="osztalykonyvtarak-hasznalata">Osztálykönyvtárak használata<a class="headerlink" href="#osztalykonyvtarak-hasznalata" title="Permanent link">¶</a></h3>
-<p>A megoldás az <a href="../../labor/1-model-es-kod-kapcsolata/">1. gyakorlat - A modell és a kód kapcsolata laborgyakorlat</a> mintájára kidolgozható. Jelen feladat egy lényeges részletében különbözik tőle: míg abban csak szóban kötöttük ki, hogy a <code>DisplayBase</code> ősosztály forráskódja nem megváltoztató, jelen esetben a <code>Textbox</code> ősosztályunk esetében ez adott, hiszen csak egy lefordított dll formájában áll rendelkezésre. A következőkben nézzük meg, milyen lépésekben lehet egy ilyen dll-ben levő osztályokat a kódunkban felhasználni:</p>
+<p>A megoldás az <a href="../../labor/1-model-es-kod-kapcsolata/">1. A modell és a kód kapcsolata</a> laborgyakorlat mintájára kidolgozható. Jelen feladat egy lényeges részletében különbözik tőle: míg abban csak szóban kötöttük ki, hogy a <code>DisplayBase</code> ősosztály forráskódja nem megváltoztató, jelen esetben a <code>Textbox</code> ősosztályunk esetében ez adott, hiszen csak egy lefordított dll formájában áll rendelkezésre. A következőkben nézzük meg, milyen lépésekben lehet egy ilyen dll-ben levő osztályokat a kódunkban felhasználni:</p>
 <ol>
 <li>A Visual Studio Solution Explorer ablakában jobb gombbal kattintsunk a <em>Dependencies</em> elemen, és válasszuk az <em>Add Reference</em>-t vagy <em>Add Project Reference</em>-t (amelyik létezik).</li>
 <li>A megjelenő ablak bal oldalán válasszuk ki a <em>Browse</em> elemet,</li>
@@ -631,8 +599,12 @@ stb.
 <p>Ezzel a projektünkben felvettünk egy referenciát a <code>Controls.dll</code>-re, így a benne levő osztályok használhatók (pl. lehet példányosítani őket, vagy lehet belőlük származtatni). A Solution Explorer-ben a <em>Dependencies</em> majd <em>Assemblies</em> csomópontot lenyitva a <em>Controls</em> megjelenik:</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/controlsdll.png"><img alt="Controls.dll" src="images/controlsdll.png"/></a></p>
 <p>A <code>Textbox</code> osztály, melyből az <code>TextArea</code> osztályunkat származtatni kell, a <code>Controls</code> névtérben található. A <code>TextBox</code> osztálynak egy konstruktora van, melynek négy paramétere van, az x és y koordináták, valamint a szélesség és a magasság.
-Amennyiben szükség lenne rá, a többi művelet felderítésében az <em>Object Browser</em> segít. Az <em>Object Browser</em> a <em>View</em> menüből az <em>Object Browser</em> menü kiválasztásával nyitható meg. Az <em>Object Browser</em> egy új tabfülön jelenik meg.
-A <code>Controls</code> komponenst lenyitogatva az egyes csomópontokat kiválasztva (névtér, osztály) az adott csomópont jellemzői jelennek meg: pl. az osztály nevén állva az osztály tagjait látjuk.</p>
+Amennyiben szükség lenne rá, a többi művelet felderítésében az <em>Object Browser</em> segít. Az <em>Object Browser</em> a <em>View</em> menüből az <em>Object Browser</em> menü kiválasztásával nyitható meg. Az <em>Object Browser</em> egy új tabfülön jelenik meg.</p>
+<div class="admonition note">
+<p class="admonition-title">Ha üres az Object Browser nézet</p>
+<p>A Visual Studio 2022 hajlamos arra, hogy mindaddig, amíg nincs egy forrásfájl megnyitva, az Object Browserben nem jelenít meg semmit (csak egy "No information" kezdetű szöveg látszik). Ha azt tapasztaljuk, hogy üres az Object Browser nézet, csak nyissuk meg a Program.cs fájl a Solution Explorerben, majd váltsunk vissza az Object Browser tabfülre, ahol így már megjelennek a komponensek. </p>
+</div>
+<p>Az Object Browserben a <code>Controls</code> komponenst lenyitogatva az egyes csomópontokat kiválasztva (névtér, osztály) az adott csomópont jellemzői jelennek meg: pl. az osztály nevén állva az osztály tagjait látjuk.</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/object-browser.png"><img alt="Object Browser" src="images/object-browser.png"/></a></p>
 <p>Most már minden információ rendelkezésünkre áll a feladat megvalósításához.</p>
 <h2 id="beadas">Beadás<a class="headerlink" href="#beadas" title="Permanent link">¶</a></h2>
@@ -657,8 +629,8 @@ A <code>Controls</code> komponenst lenyitogatva az egyes csomópontokat kiválas
 </path>
 </svg>
 </span>
-<span title="2023. február 22. 12:41:42">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-22T12:41:42+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-22</span>
+<span title="2023. március 5. 20:59:46">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-05T20:59:46+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-05</span>
 </span>
 </span>
 <span class="md-source-file__fact">
