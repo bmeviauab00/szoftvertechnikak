@@ -16,7 +16,7 @@ A gyakorlat célja:
 - Az interfész és az absztrakt ősosztály alkalmazástechnikája
 
 ??? note "Gyakorlatvezetőknek"
-    A hallgatók korábbi tanulmányaik során C++ gyakorlaton már használták a Visual Studio környezet, így a cél jelen esetben az ismeretek felelevenítése és életünk első C# alkalmazásának elkészítése. Ugyanakkor előfordulhat, hogy a hallgatók nem emlékeznek pontosan a Visual Studio használatára, így a feladatok megoldása során ezeket folyamatosan elevenítsük fel (pl. Solution Explorer, F5-futtatás, breakpoint használat, stb.)
+    Bár a hallgatók között biztosan vannak olyanok, akik korábban, a Prog2 (C++) tárgy keretében vagy más okból kifolyólag már használták a Visual Studio környezetet, szinte biztosan lesznek olyanok is, akik még nem használták, vagy már kevésbé emlékeznek rá. A cél jelen esetben a felülettel való ismerkedés, ezért a feladatok megoldása során folyamatosan ismertessük a használt dolgokat (pl. Solution Explorer, F5-futtatás, breakpoint használat, stb.), hogy elkészítsük életünk első C# alkalmazását.
 
 ## Előfeltételek
 
