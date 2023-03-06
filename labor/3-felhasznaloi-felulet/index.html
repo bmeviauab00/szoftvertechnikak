@@ -605,7 +605,7 @@
 <p>Ugyanitt a Properties ablakban állítsuk be gombunk <strong>referenciáját tartalmazó osztályváltozó</strong> nevét, vagyis a <code>Name</code> tulajdonságát <code>button1</code>-ről <code>bUpdateText</code>-re. Lényeges, hogy a vezérlőinket a funkciójuknak megfelelő nevekkel lássuk el, ez nagyban segíti a kódunk olvashatóságát. A <code>b</code> prefix a vezérlő <code>Button</code> típusára utal.</p>
 <div class="admonition note">
 <p class="admonition-title">Hungarian Notation</p>
-<p>A fenti prefixelt elnevezési konvenciót <a href="https://en.wikipedia.org/wiki/Hungarian_notation">Hungarian Notation</a>nek hívják, mert Charles Simonyi (Simonyi Károly fia) találta ki, amikor az Excel csapatban dolgozott a Micorosftnál.</p>
+<p>A fenti prefixelt elnevezési konvenciót <a href="https://en.wikipedia.org/wiki/Hungarian_notation">Hungarian Notation</a>nek hívják, mert Charles Simonyi (Simonyi Károly fia) találta ki, amikor az Excel csapatban dolgozott a Microsoftnál.</p>
 <p>A koncepció elsősorban C++-hoz készült, olyan időkben, amikor még nem voltak gazdag funkcionalitású fejelsztőkörnyezetek, és egy egyszerű szövegszerkesztővel is ránézésre meg kellett tudni mondani, hogy a változó milyen típusú. Ez manapság már nem releváns, mert a Visual Studio is pl. az egérkurzor segítségével visszajelzést ad a változó típusáról.</p>
 </div>
 </li>
@@ -645,7 +645,7 @@
 <li>Az eseménylistában a <code>Click</code> elemen duplán kattintunk.</li>
 <li>A designer felületen a gombon duplán kattintva. A designer felületen a duplán kattintás mindig a vezérlő - a vezérlő típusától függő - alapértelmezett eseményére iratkozik fel. Mivel a <code>Click</code> esemény a <code>Button</code> osztály alapértelemezett eseménye, ez nekünk most pont meg is felel.</li>
 </ul>
-<p>Válasszuk most a második lehetőséget, kattintsunk duplán a gomb vezérlőn. Ez létrehoz egy eseménykezelő függvényt, mely akkor kivódik futás közben, amikor a felhasználó kattint a gombon (akár egérrel, akár a Tab billentyűvel ránavigálva a Space billentyű lenyomásával). A függvény törzsében a <code>tbDemoText</code> objektum <code>Text</code> tulajdonságát állítsuk be "Helló"-ra.</p>
+<p>Válasszuk most a második lehetőséget, kattintsunk duplán a gomb vezérlőn. Ez létrehoz egy eseménykezelő függvényt, mely akkor hívódik futás közben, amikor a felhasználó kattint a gombon (akár egérrel, akár a Tab billentyűvel ránavigálva a <span class="keys"><kbd class="key-space">Space</kbd></span> billentyű lenyomásával). A függvény törzsében a <code>tbDemoText</code> objektum <code>Text</code> tulajdonságát állítsuk be "Helló"-ra.</p>
 <div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">bUpdateText_Click</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">EventArgs</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">tbDemoText</span><span class="p">.</span><span class="n">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Hello"</span><span class="p">;</span>
@@ -968,8 +968,8 @@
 </path>
 </svg>
 </span>
-<span title="2023. március 1. 22:34:35">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-01T22:34:35+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-01</span>
+<span title="2023. március 6. 13:52:33">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-06T13:52:33+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-06</span>
 </span>
 </span>
 <span class="md-source-file__fact">
