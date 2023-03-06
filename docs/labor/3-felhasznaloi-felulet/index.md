@@ -87,7 +87,7 @@ A feladat során egy olyan Windows Forms alkalmazást készítünk el, amely egy
 9. Ugyanitt a Properties ablakban állítsuk be gombunk **referenciáját tartalmazó osztályváltozó** nevét, vagyis a `Name` tulajdonságát `button1`-ről `bUpdateText`-re. Lényeges, hogy a vezérlőinket a funkciójuknak megfelelő nevekkel lássuk el, ez nagyban segíti a kódunk olvashatóságát. A `b` prefix a vezérlő `Button` típusára utal.
 
     !!! note "Hungarian Notation"
-        A fenti prefixelt elnevezési konvenciót [Hungarian Notation](https://en.wikipedia.org/wiki/Hungarian_notation)nek hívják, mert Charles Simonyi (Simonyi Károly fia) találta ki, amikor az Excel csapatban dolgozott a Micorosftnál.
+        A fenti prefixelt elnevezési konvenciót [Hungarian Notation](https://en.wikipedia.org/wiki/Hungarian_notation)nek hívják, mert Charles Simonyi (Simonyi Károly fia) találta ki, amikor az Excel csapatban dolgozott a Microsoftnál.
 
         A koncepció elsősorban C++-hoz készült, olyan időkben, amikor még nem voltak gazdag funkcionalitású fejelsztőkörnyezetek, és egy egyszerű szövegszerkesztővel is ránézésre meg kellett tudni mondani, hogy a változó milyen típusú. Ez manapság már nem releváns, mert a Visual Studio is pl. az egérkurzor segítségével visszajelzést ad a változó típusáról.
 
@@ -122,7 +122,7 @@ A feladat során egy olyan Windows Forms alkalmazást készítünk el, amely egy
     - Az eseménylistában a `Click` elemen duplán kattintunk.
     - A designer felületen a gombon duplán kattintva. A designer felületen a duplán kattintás mindig a vezérlő - a vezérlő típusától függő - alapértelmezett eseményére iratkozik fel. Mivel a `Click` esemény a `Button` osztály alapértelemezett eseménye, ez nekünk most pont meg is felel.
 
-    Válasszuk most a második lehetőséget, kattintsunk duplán a gomb vezérlőn. Ez létrehoz egy eseménykezelő függvényt, mely akkor kivódik futás közben, amikor a felhasználó kattint a gombon (akár egérrel, akár a Tab billentyűvel ránavigálva a Space billentyű lenyomásával). A függvény törzsében a `tbDemoText` objektum `Text` tulajdonságát állítsuk be "Helló"-ra.
+    Válasszuk most a második lehetőséget, kattintsunk duplán a gomb vezérlőn. Ez létrehoz egy eseménykezelő függvényt, mely akkor hívódik futás közben, amikor a felhasználó kattint a gombon (akár egérrel, akár a Tab billentyűvel ránavigálva a ++space++ billentyű lenyomásával). A függvény törzsében a `tbDemoText` objektum `Text` tulajdonságát állítsuk be "Helló"-ra.
 
     ```csharp
     private void bUpdateText_Click(object sender, EventArgs e)
