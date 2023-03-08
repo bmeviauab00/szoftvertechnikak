@@ -1,6 +1,4 @@
 ---
-search:
-  exclude: true
 authors: bzolka
 ---
 
@@ -27,9 +25,9 @@ A szükséges fejlesztőkörnyezetről [itt](../fejlesztokornyezet/index.md) tal
 
 A házi feladat kiindulási környezetének publikálása, valamint a megoldás beadása Git, GitHub és GitHub Classroom segítségével történik. Főbb lépések:
 
-1. GitHub Classroom segítségével hozz létre magadnak egy repository-t. A meghívó URL-t Moodle-ben találod.
+1. GitHub Classroom segítségével hozz létre magadnak egy repository-t. A meghívó URL-t Moodle-ben találod (a tárgy nyitóoldalán a "*GitHub classroom hivatkozások a házi feladatokhoz*" hivatkozásra kattintva megjelenő oldalon látható).
 2. Klónozd le az így elkészült repository-t. Ez tartalmazni fogja a megoldás elvárt szerkezetét.
-3. A feladatok elkészítése után commit-old és push-old a megoldásod. 
+3. A feladatok elkészítése után commit-old és push-old a megoldásod.
 
 Ezekhez itt található részletesebb leírás:
 
