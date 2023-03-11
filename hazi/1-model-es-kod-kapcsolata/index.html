@@ -576,9 +576,9 @@ stb.
 <span class="w">                </span><span class="kt">string</span><span class="w"> </span><span class="n">artist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lineItems</span><span class="p">[</span><span class="m">0</span><span class="p">].</span><span class="n">Trim</span><span class="p">();</span>
 
 <span class="w">                </span><span class="c1">// Menjünk végig a dalokon, és vegyük fel a listába</span>
-<span class="w">                </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">lineItem</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">lineItems</span><span class="p">)</span>
+<span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">lineItems</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="n">Song</span><span class="w"> </span><span class="n">song</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Song</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span><span class="w"> </span><span class="n">lineItem</span><span class="p">.</span><span class="n">Trim</span><span class="p">());</span>
+<span class="w">                    </span><span class="n">Song</span><span class="w"> </span><span class="n">song</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Song</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span><span class="w"> </span><span class="n">lineItems</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">Trim</span><span class="p">());</span>
 <span class="w">                    </span><span class="n">songs</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">song</span><span class="p">);</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">}</span>
@@ -603,9 +603,7 @@ stb.
 
 <span class="w">        </span><span class="c1">// A songs lista elemeinek kiírása a konzolra</span>
 <span class="w">        </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="n">Song</span><span class="w"> </span><span class="n">song</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">songs</span><span class="p">)</span>
-<span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">song</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
-<span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -717,8 +715,8 @@ Amennyiben szükség lenne rá, a többi művelet felderítésében az <em>Objec
 </path>
 </svg>
 </span>
-<span title="2023. március 8. 17:43:29">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-08T17:43:29+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-08</span>
+<span title="2023. március 11. 08:52:31">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-11T08:52:31+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-11</span>
 </span>
 </span>
 <span class="md-source-file__fact">
