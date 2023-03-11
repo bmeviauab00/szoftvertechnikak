@@ -259,7 +259,7 @@ Ezzel a projektünkben felvettünk egy referenciát a `Controls.dll`-re, így a 
 
 ![Controls.dll](images/controlsdll.png)
 
-A `Textbox` osztály, melyből az `TextArea` osztályunkat származtatni kell, a `Controls` névtérben található. A `TextBox` osztálynak egy konstruktora van, melynek négy paramétere van, az x és y koordináták, valamint a szélesség és a magasság.
+A `Textbox` osztály, melyből a `TextArea` osztályunkat származtatni kell, a `Controls` névtérben található. A `TextBox` osztálynak egy konstruktora van, melynek négy paramétere van, az x és y koordináták, valamint a szélesség és a magasság.
 Amennyiben szükség lenne rá, a többi művelet felderítésében az *Object Browser* segít. Az *Object Browser* a *View* menüből az *Object Browser* menü kiválasztásával nyitható meg. Az *Object Browser* egy új tabfülön jelenik meg.
 
 !!!Note "Ha üres az Object Browser nézet"
