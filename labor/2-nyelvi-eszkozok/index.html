@@ -780,7 +780,8 @@ A láthatóság szabályozása autoimplementált és nem autoimplementált tulaj
 </li>
 </ol>
 <h3 id="csak-olvashato-tulajdonsag-readonly-property">Csak olvasható tulajdonság (readonly property)<a class="headerlink" href="#csak-olvashato-tulajdonsag-readonly-property" title="Permanent link">¶</a></h3>
-<p>A setter elhagyható, így egy olyan tulajdonságot kapunk, melyet csak konstruktorban, vagy alapértelmezett értékkel tudunk beállítani (ellentétben a privát setterrel rendelkező tulajdonságokkal, melyek settere bármely, az osztályban található tagfüggvényből hívható). Ezt a következő kódrészletek illusztrálják (a kódunkba NE vezessük be):</p>
+<p>A setter elhagyható, így egy olyan tulajdonságot kapunk, mely csak olvasható. Autoimplementált tulajdonság esetén ennek is adható kezdőérték: erre csak konstruktorban, vagy alapértelmezett értékkel való ellátással (lásd fent) van lehetőség, ellentétben a privát setterrel rendelkező tulajdonságokkal, melyek settere bármely, az osztályban található tagfüggvényből hívható.</p>
+<p>Csak olvasható tulajdonság definiálását a következő kódrészletek illusztrálják (a kódunkba NE vezessük be):</p>
 <p>a) Autoimplementált eset</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
@@ -1220,8 +1221,8 @@ Mint látható, elhagytuk a {} zárójeleket és a <code>return</code> utasítá
 </path>
 </svg>
 </span>
-<span title="2023. március 5. 13:10:15">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-05T13:10:15+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-05</span>
+<span title="2023. március 11. 17:44:51">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-11T17:44:51+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-11</span>
 </span>
 </span>
 <span class="md-source-file__fact">
