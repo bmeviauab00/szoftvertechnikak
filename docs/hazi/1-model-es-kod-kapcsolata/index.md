@@ -227,7 +227,7 @@ Egy síkbeli vektorgrafikus alakzatokat kezelni képes CAD tervezőalkalmazás e
 - A megvalósítás során törekedjen egységbezárásra: pl. az alakzatok menedzselése legyen egy **erre dedikált osztály** feladata.
   
     !!! failure
-        Az nem elfogadható, ha a `Main` függvényben egy helyben létrehozott egyszerű listába kerülnek az alakzatok tárolásra! Ezen felül a menedzselésért felelős osztály NE származzon a beépített `List` vagy hasonló osztályból, hanem a tartalmazza azt. Az adatok szabványos kimentre történő listázásáért ez az osztály legyen a felelős.
+        Az nem elfogadható, ha a `Main` függvényben egy helyben létrehozott egyszerű listába kerülnek az alakzatok tárolásra! Ezen felül a menedzselésért felelős osztály NE származzon a beépített `List` vagy hasonló osztályból, hanem tartalmazza azt. Az adatok szabványos kimentre történő listázásáért ez az osztály legyen a felelős.
 
 - A megvalósítás során törekedjen a könnyű bővíthetőségre, karbantarthatóságra, kerülje el a kódduplikációt (tagváltozók, műveletek, konstruktorok esetében egyaránt). A megoldás elfogadásának ezek kiemelt szempontjai!
 
