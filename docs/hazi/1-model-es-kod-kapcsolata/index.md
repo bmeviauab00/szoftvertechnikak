@@ -155,9 +155,9 @@ A következő kód egy lehetséges megoldást mutat, a megoldás részleteit a k
                     string artist = lineItems[0].Trim();
 
                     // Menjünk végig a dalokon, és vegyük fel a listába
-                    foreach (string lineItem in lineItems)
+                    for (int i = 1; i < lineItems.Length; i++)
                     {
-                        Song song = new Song(artist, lineItem.Trim());
+                        Song song = new Song(artist, lineItems[i].Trim());
                         songs.Add(song);
                     }
                 }
@@ -182,9 +182,7 @@ A következő kód egy lehetséges megoldást mutat, a megoldás részleteit a k
 
             // A songs lista elemeinek kiírása a konzolra
             foreach (Song song in songs)
-            {
                 Console.WriteLine(song.ToString());
-            }
         }
     }
     ```
