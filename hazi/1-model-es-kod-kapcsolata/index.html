@@ -623,7 +623,7 @@ stb.
 <p>Egy síkbeli vektorgrafikus alakzatokat kezelni képes CAD tervezőalkalmazás első változatának kifejlesztésével bíznak meg bennünket. Bővebben:</p>
 <ul>
 <li>
-<p>Különböző típusú alakzatokat kell tudni kezelni. Kezdetben a <code>Square</code> (négyzet), <code>Circle</code> (kör) és <code>TextArea</code> típusú alakzatokat kell támogatni, de a kód legyen könnyen bővíthető új típusokkal. Az <code>TextArea</code> egy szerkeszthető szövegdoboz.</p>
+<p>Különböző típusú alakzatokat kell tudni kezelni. Kezdetben a <code>Square</code> (négyzet), <code>Circle</code> (kör) és <code>TextArea</code> típusú alakzatokat kell támogatni, de a kód legyen könnyen bővíthető új típusokkal. A <code>TextArea</code> egy szerkeszthető szövegdoboz.</p>
 <div class="admonition warning">
 <p class="admonition-title">Elnevezések</p>
 <p>Az osztályokat mindenképpen a fentieknek megfelelően nevezzük el!</p>
@@ -639,7 +639,7 @@ stb.
 <p>Listázni kell tudni a memóriában nyilvántartott alakzatokat a szabványos kimenetre (konzolra). Ennek során a következő adatokat írjuk ki: alakzat típusa (pl. négyzet esetén <code>Square</code> stb.), a két koordináta, alakzat területe. A beépített <code>Type</code> osztály <code>GetType</code> művelete nem használható a típus kiírás során.</p>
 </li>
 <li>
-<p>Az <code>TextArea</code> osztálynak osztálynak kötelezően a jelen feladathoz tartozó <code>Controls.dll</code> osztálykönyvtár <code>Textbox</code> osztályából kell származnia. A <code>Controls.dll</code> egy .NET szerelvény, lefordított formában tartalmaz osztályokat.</p>
+<p>A <code>TextArea</code> osztálynak kötelezően a jelen feladathoz tartozó <code>Controls.dll</code> osztálykönyvtár <code>Textbox</code> osztályából kell származnia. A <code>Controls.dll</code> egy .NET szerelvény, lefordított formában tartalmaz osztályokat.</p>
 <div class="admonition failure">
 <p class="admonition-title">Interfészben alapértelmezett implementáció</p>
 <p>Bár C# 8-tól támogatott .NET interfészben alapértelmezett implementáció megadása. Ez sokszor hasznos technika, de a megoldásban nem alkalmazható, ennél "klasszikusabb" megközelítést kell választani.</p>
@@ -684,7 +684,7 @@ stb.
 </ol>
 <p>Ezzel a projektünkben felvettünk egy referenciát a <code>Controls.dll</code>-re, így a benne levő osztályok használhatók (pl. lehet példányosítani őket, vagy lehet belőlük származtatni). A Solution Explorer-ben a <em>Dependencies</em> majd <em>Assemblies</em> csomópontot lenyitva a <em>Controls</em> megjelenik:</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/controlsdll.png"><img alt="Controls.dll" src="images/controlsdll.png"/></a></p>
-<p>A <code>Textbox</code> osztály, melyből az <code>TextArea</code> osztályunkat származtatni kell, a <code>Controls</code> névtérben található. A <code>TextBox</code> osztálynak egy konstruktora van, melynek négy paramétere van, az x és y koordináták, valamint a szélesség és a magasság.
+<p>A <code>Textbox</code> osztály, melyből a <code>TextArea</code> osztályunkat származtatni kell, a <code>Controls</code> névtérben található. A <code>TextBox</code> osztálynak egy konstruktora van, melynek négy paramétere van, az x és y koordináták, valamint a szélesség és a magasság.
 Amennyiben szükség lenne rá, a többi művelet felderítésében az <em>Object Browser</em> segít. Az <em>Object Browser</em> a <em>View</em> menüből az <em>Object Browser</em> menü kiválasztásával nyitható meg. Az <em>Object Browser</em> egy új tabfülön jelenik meg.</p>
 <div class="admonition note">
 <p class="admonition-title">Ha üres az Object Browser nézet</p>
@@ -715,8 +715,8 @@ Amennyiben szükség lenne rá, a többi művelet felderítésében az <em>Objec
 </path>
 </svg>
 </span>
-<span title="2023. március 11. 11:57:09">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-11T11:57:09+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-11</span>
+<span title="2023. március 11. 14:34:56">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-11T14:34:56+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-11</span>
 </span>
 </span>
 <span class="md-source-file__fact">
@@ -729,6 +729,8 @@ Amennyiben szükség lenne rá, a többi művelet felderítésében az <em>Objec
 <span>Szerzők</span>
 <nav><a class="md-author" href="https://github.com/bzolka" rel="noopener noreferrer" target="_blank" title="@bzolka">
 <img alt="@bzolka" src="https://avatars.githubusercontent.com/bzolka?size=72"/>
+</a><a class="md-author" href="https://github.com/berci9ke101" rel="noopener noreferrer" target="_blank" title="@berci9ke101">
+<img alt="@berci9ke101" src="https://avatars.githubusercontent.com/u/92692400?size=72"/>
 </a><a class="md-author" href="https://github.com/tibitoth" rel="noopener noreferrer" target="_blank" title="@tibitoth">
 <img alt="@tibitoth" src="https://avatars.githubusercontent.com/u/8333960?size=72"/>
 </a><a class="md-author" href="https://github.com/zbenedek-mirango" rel="noopener noreferrer" target="_blank" title="@zbenedek-mirango">
