@@ -233,7 +233,9 @@ A tulajdonságok nagy előnye a teljesen szabad implementáció mellett, hogy a 
 
 ### Csak olvasható tulajdonság (readonly property)
 
-A setter elhagyható, így egy olyan tulajdonságot kapunk, melyet csak konstruktorban, vagy alapértelmezett értékkel tudunk beállítani (ellentétben a privát setterrel rendelkező tulajdonságokkal, melyek settere bármely, az osztályban található tagfüggvényből hívható). Ezt a következő kódrészletek illusztrálják (a kódunkba NE vezessük be):
+A setter elhagyható, így egy olyan tulajdonságot kapunk, mely csak olvasható. Autoimplementált tulajdonság esetén ennek is adható kezdőérték: erre csak konstruktorban, vagy alapértelmezett értékkel való ellátással (lásd fent) van lehetőség, ellentétben a privát setterrel rendelkező tulajdonságokkal, melyek settere bármely, az osztályban található tagfüggvényből hívható.
+
+Csak olvasható tulajdonság definiálását a következő kódrészletek illusztrálják (a kódunkba NE vezessük be):
 
 a) Autoimplementált eset
 
