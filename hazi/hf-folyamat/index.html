@@ -370,7 +370,7 @@
 <li>A házi feladatot külön explicit beadni nem kell, csak legyen fent GitHub-on határidőre a megoldás.</li>
 <li><img alt="❗" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2757.svg" title=":exclamation:"/> Amikor a házi feladatod beadottnak tekinted,  célszerű ellenőrizni a böngészőben a GitHub webes felületén a repository-ban a fájlokra való rápillantással, hogy valóban minden változtatást push-oltál-e, és hogy a neptun.txt valóban ki van-e töltve.</li>
 </ol>
-<p>A fenti lépések kapcsán két kérdés vár még meválaszolásra:</p>
+<p>A fenti lépések kapcsán két kérdés vár még megválaszolásra:</p>
 <ul>
 <li>Hogyan klónozzuk (clone) a repónkat (mely a házi feladat kiinduló keretét tartalmazza)?</li>
 <li>Hogyan commit-áljunk és push-oljunk a Visual Studio segítségével GitHub-ra?</li>
@@ -402,7 +402,7 @@ Ha minden jól megy, a Visual Studio elindul, és indulás után feldob egy abla
 </div>
 <p>A klónozást követően pl. Windows Explorer-ben meg tudjuk tekinteni a létrehozott mappákat és fájlokat:</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/git-folder-in-explorer.png"><img alt="Git repository a fájlrendszerben" src="images/git-folder-in-explorer.png"/></a></p>
-<p>Ebből jól látható, hogy egy Git repository nem más, mint mappák és fájlok gyűjteménye, valamint egy a gyökérben található .git mappa, mely (némi egyszerűsítéssel élve) az egyes fájlok verziótörténetét tartalmazza. A munka megkezdéséhez csak meg kell nyissuk az adott házi feladathoz tartozó .sln kirejesztésű solution fájlt (pl. duplakatt Windows Explorerben).</p>
+<p>Ebből jól látható, hogy egy Git repository nem más, mint mappák és fájlok gyűjteménye, valamint egy a gyökérben található .git mappa, mely (némi egyszerűsítéssel élve) az egyes fájlok verziótörténetét tartalmazza. A munka megkezdéséhez csak meg kell nyissuk az adott házi feladathoz tartozó .sln kiterjesztésű solution fájlt (pl. duplakatt Windows Explorerben).</p>
 <div class="admonition note">
 <p class="admonition-title">Az első házi feladat speciális (két solution is van)!</p>
 <p>Az első házi feladat kivételesen két fő részből áll, melyekhez eltérő solution tartozik. Az elsőhöz a Feladat1 mappában található MusicApp.sln fájlt, a másodikhoz a Feladat2-ben található Shapes.sln-t kell megnyitni. A megnyitást megtehetjük Explorerből, az adott .sln fájlon duplán kattintva. Ugyanakkor van erre más mód is: amennyiben Visual Studio-ban a Git gyökérmappát nyitottuk meg (a <em>Clone</em>-t követően is ez a helyzet állt elő) a Solution Explorer nézet fejlécében <em>"Switch View"</em> gombot lenyomva a Solution Explorer listázza a Git gyökérmappa alatti solution-öket, és ezek bármelyikén duplán kattintva az adott solution megnyílik:</p>
@@ -432,7 +432,7 @@ Megjegyzés: ha a parancs az "Unable to push to the remote repository because yo
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>A git commit-ot mindig meg kell előzze egy ún. <strong>stage</strong> lépés, mely során kiválasztjuk azokat a helyi változtatásokat, melyeket a következő commit-ba be kívánunk tenni. Ez az ún. <strong>staging area</strong> területre teszi az általunk kiválasztott változásokat (a féjlrendszerben nem mozgat semmiféle fájlt, ez csak a git a belső nyilvántartásában jelenik meg). Ez azért jó, mert plusz rugalmasságot biztosít, hiszen nem biztos, mindig minden változtatást bele kívánunk tenni a következő commit-ba. A fenti "Commit all" stb. parancsok nevében nem véletlen van benne az "all": ezek a színfalak mögött a commit előtt egy megfelelő git paranccsal valamennyi változást a git staging area-ra tesznek, így ezt nekünk nem kell külön megtennünk.</p>
+<p>A git commit-ot mindig meg kell előzze egy ún. <strong>stage</strong> lépés, mely során kiválasztjuk azokat a helyi változtatásokat, melyeket a következő commit-ba be kívánunk tenni. Ez az ún. <strong>staging area</strong> területre teszi az általunk kiválasztott változásokat (a fájlrendszerben nem mozgat semmiféle fájlt, ez csak a git a belső nyilvántartásában jelenik meg). Ez azért jó, mert plusz rugalmasságot biztosít, hiszen nem biztos, mindig minden változtatást bele kívánunk tenni a következő commit-ba. A fenti "Commit all" stb. parancsok nevében nem véletlen van benne az "all": ezek a színfalak mögött a commit előtt egy megfelelő git paranccsal valamennyi változást a git staging area-ra tesznek, így ezt nekünk nem kell külön megtennünk.</p>
 </div>
 <h3 id="push-pull">Push, Pull<a class="headerlink" href="#push-pull" title="Permanent link">¶</a></h3>
 <p>A commit művelet csak a helyi repository-ban "érvényesíti" a változtatásokat. Ezt követően a változtatásokat a GitHub központi repository-nkba fel kell tölteni a push művelettel. Erre a lépésre csak akkor van szükség, ha a commit során nem használtuk a <em>"Commit All and Push"</em> vagy <em>"Commit All and Sync"</em> parancsokat. A push művelet VS-ben a <em>"Git/Push"</em> menü segítésével indítható. 
@@ -451,7 +451,7 @@ Ha többen dolgozunk, a központi repository-ban lehetnek mások által pusholt,
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/vs-git-changes-push-pull.png"><img alt="VS pull push" src="images/vs-git-changes-push-pull.png"/></a></p>
 </div>
 <h3 id="git-history">Git history<a class="headerlink" href="#git-history" title="Permanent link">¶</a></h3>
-<p>A Git egy változáskövető rendszer. A változás egysége a commit (melyben testszőleges számú fájlt érintő változás lehet), a Git historyban a commitok egymásutániságát láthatjuk. A fájlokat érintő változásokon túlmenően minden commithoz tartozik egy egyedi azonosító (commit hash), időbélyeg, illetve egy szerző. A szerző felhasználó, aki a változásokat eszközölte (valójában van külön Author és Commiter, de a kettő általában ugyanaz). Visual Studioban a historyt a View/Git Repository menüvel tudjuk megjeleníteni, de a history természetesen a GitHub online felületén is megjeleníthető.
+<p>A Git egy változáskövető rendszer. A változás egysége a commit (melyben tetszőleges számú fájlt érintő változás lehet), a Git historyban a commitok egymásutániságát láthatjuk. A fájlokat érintő változásokon túlmenően minden commithoz tartozik egy egyedi azonosító (commit hash), időbélyeg, illetve egy szerző. A szerző felhasználó, aki a változásokat eszközölte (valójában van külön Author és Commiter, de a kettő általában ugyanaz). Visual Studioban a historyt a View/Git Repository menüvel tudjuk megjeleníteni, de a history természetesen a GitHub online felületén is megjeleníthető.
 A Visual Studioban a <em>"Git Repository"</em> nézetet a View/Git Repository menüvel tudjuk megjeleníteni.</p>
 <ul>
 <li>Outgoing commits: Megmutatja, hogy milyen, a lokális repository-nkba már létező, de a központi repóba még nem push-olt commitok vannak. Ezeket a Push művelettel tudjuk feltölteni.</li>
@@ -499,7 +499,7 @@ A tárgy keretében minden kiinduló repónak része egy .gitignore fájl, ne v�
 <ul>
 <li>Ha többen is dolgozunk az adott git ágon, akkor a 6. push előtt szükség lehet/van egy <code>git pull</code>-ra, hogy mások változtatásai megjelenjenek a mi helyi repónkban (enélkül nem fogunk tudni push-olni). A pull-nak célszerű lehet megadni a <code>--rebase</code> opciót is, hogy ne szülessen a merge-hez egy plusz merge commit, ennek magyarázatára itt nem térünk ki.</li>
 <li>
-<p>Mint korábban említettük, a commit során a commithoz hozzárendelődik egy felhasználónév és e-mail cím. Ha ezek nincsenek a git számára bekonfigurálva, akkor a git a commit során ezt hibaüzenetben jelzi. Ekkor az alábbi parancsokkal - értelemszerűen a saját usernevünket és e-mail címünket megadva - tudjuk ezeket a git globális konfigurációjában beállítani (ezt csak egyszer kell megtenni):</p>
+<p>Mint korábban említettük, a commit során a commithoz hozzárendelődik egy felhasználónév és e-mail cím. Ha ezek nincsenek a git számára bekonfigurálva, akkor a git a commit során ezt hibaüzenetben jelzi. Ekkor az alábbi parancsokkal - értelemszerűen a saját felhasználónevünket és e-mail címünket megadva - tudjuk ezeket a git globális konfigurációjában beállítani (ezt csak egyszer kell megtenni):</p>
 <div class="highlight"><pre><span></span><code>git config --global user.email "you@example.com"
 git config --global user.name "myusername"
 </code></pre></div>
@@ -517,8 +517,8 @@ git config --global user.name "myusername"
 </path>
 </svg>
 </span>
-<span title="2023. március 5. 20:59:46">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-05T20:59:46+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-05</span>
+<span title="2023. március 12. 14:50:31">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-12T14:50:31+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-12</span>
 </span>
 </span>
 <span class="md-source-file__fact">
