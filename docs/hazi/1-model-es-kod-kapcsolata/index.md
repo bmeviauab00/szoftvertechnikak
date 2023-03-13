@@ -202,7 +202,7 @@ A `Feladat2\Shapes` mappában található egy `Controls.dll` fájl, ezt a felada
 
 ### Beadandó (a forráskódon túlmenően)
 
-Két-három bekezdésben a Feladat 2 megoldása során hozott tervezői döntések, a megoldás legfontosabb alapelveinek rövid szöveges összefoglalása, indoklása. Ezt a `Feladat2` mappában (és nem a gyökérben!) található `readme.md` szövegfájlba kell beleírni tetszőleges markdown formátumban, vagy egyszerű nyers szövegként.
+Két-három bekezdésben a Feladat 2 megoldása során hozott tervezői döntések, a megoldás legfontosabb alapelveinek rövid szöveges összefoglalása, indoklása. Ezt a kiinduló keret `Feladat2` mappájában már megtalálható `readme.md` szövegfájlba kell beleírni tetszőleges markdown formátumban, vagy egyszerű nyers szövegként.
 
 ### Feladat
 
