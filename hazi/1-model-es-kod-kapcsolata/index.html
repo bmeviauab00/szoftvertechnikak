@@ -678,10 +678,14 @@ stb.
 <li>A megjelenő ablak bal oldalán válasszuk ki a <em>Browse</em> elemet,</li>
 <li>Ha az ablak közepén a listában megjelenik a <code>Controls.dll</code>, pipáljuk ki az elemet.</li>
 <li>Ha nem jelenik meg, akkor kattintsunk az ablakunk jobb alsó részében levő <em>Browse...</em> gombon.
-        1. A megjelenő fájlböngésző ablakban navigáljunk el a <code>Controls.dll</code> fájlhoz, és kattintsunk rajta duplán, ami bezárja az ablakot.
+        1. A megjelenő fájlböngésző ablakban navigáljunk el a <code>Controls.dll</code> fájlhoz, és kattintsunk rajta  duplán, ami bezárja az ablakot.
         2. A <em>Reference Manager</em> ablakunk középső részén a <code>Controls.dll</code> látható kipipálva, az OK gombbal zárjuk be az ablakot.</li>
 <li>Az OK gombbal zárjuk be az ablakot.</li>
 </ol>
+<details>
+<summary>Ha esetleg 'Reference is invalid or unsupported' hibaüzenetet kapsz</summary>
+<p>Nagyon ritkán, de előfordulhat, hogy a fenti lépések során a Visual Studio a "Reference is invalid or unsupported" hibaüzenetet jelzi. Ilyenkor az esetek többségében a Visual Studio újratelepítése segít.</p>
+</details>
 <p>Ezzel a projektünkben felvettünk egy referenciát a <code>Controls.dll</code>-re, így a benne levő osztályok használhatók (pl. lehet példányosítani őket, vagy lehet belőlük származtatni). A Solution Explorer-ben a <em>Dependencies</em> majd <em>Assemblies</em> csomópontot lenyitva a <em>Controls</em> megjelenik:</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/controlsdll.png"><img alt="Controls.dll" src="images/controlsdll.png"/></a></p>
 <p>A <code>Textbox</code> osztály, melyből a <code>TextArea</code> osztályunkat származtatni kell, a <code>Controls</code> névtérben található. A <code>TextBox</code> osztálynak egy konstruktora van, melynek négy paramétere van, az x és y koordináták, valamint a szélesség és a magasság.
@@ -715,8 +719,8 @@ Amennyiben szükség lenne rá, a többi művelet felderítésében az <em>Objec
 </path>
 </svg>
 </span>
-<span title="2023. március 14. 17:53:21">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-14T17:53:21+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-14</span>
+<span title="2023. március 15. 18:00:26">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-15T18:00:26+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-15</span>
 </span>
 </span>
 <span class="md-source-file__fact">
