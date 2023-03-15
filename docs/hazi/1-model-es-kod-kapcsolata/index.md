@@ -251,9 +251,12 @@ A megoldás az [1. A modell és a kód kapcsolata](../../labor/1-model-es-kod-ka
 2. A megjelenő ablak bal oldalán válasszuk ki a *Browse* elemet,
    1. Ha az ablak közepén a listában megjelenik a `Controls.dll`, pipáljuk ki az elemet.
    2. Ha nem jelenik meg, akkor kattintsunk az ablakunk jobb alsó részében levő *Browse...* gombon.
-        1. A megjelenő fájlböngésző ablakban navigáljunk el a `Controls.dll` fájlhoz, és kattintsunk rajta duplán, ami bezárja az ablakot.
+        1. A megjelenő fájlböngésző ablakban navigáljunk el a `Controls.dll` fájlhoz, és kattintsunk rajta  duplán, ami bezárja az ablakot.
         2. A *Reference Manager* ablakunk középső részén a `Controls.dll` látható kipipálva, az OK gombbal zárjuk be az ablakot.
 3. Az OK gombbal zárjuk be az ablakot.
+
+??? "Ha esetleg 'Reference is invalid or unsupported' hibaüzenetet kapsz"
+    Nagyon ritkán, de előfordulhat, hogy a fenti lépések során a Visual Studio a "Reference is invalid or unsupported" hibaüzenetet jelzi. Ilyenkor az esetek többségében a Visual Studio újratelepítése segít.
 
 Ezzel a projektünkben felvettünk egy referenciát a `Controls.dll`-re, így a benne levő osztályok használhatók (pl. lehet példányosítani őket, vagy lehet belőlük származtatni). A Solution Explorer-ben a *Dependencies* majd *Assemblies* csomópontot lenyitva a *Controls* megjelenik:
 
