@@ -498,7 +498,7 @@
 </details>
 <h2 id="1-feladat-a-feladat-ismertetese">1. Feladat - A feladat ismertetése<a class="headerlink" href="#1-feladat-a-feladat-ismertetese" title="Permanent link">¶</a></h2>
 <p>Interaktív FontEditor (betűtípus szerkesztő) készítése, amelyben lehet szerkeszteni a karaktereket, és az aktuális betűkészlet alapján tetszőleges példaszöveg megjeleníthető. Az alkalmazás felhasználói felülete futás közben:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/fonteditor-app-intro.png"><img alt="A FontEditor alkalmazás felülete" src="images/fonteditor-app-intro.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/fonteditor-app-intro.png"><img alt="A FontEditor alkalmazás felülete" src="images/fonteditor-app-intro.png"/></a></p>
 <p>A következő funkciókat kell támogatnia:</p>
 <ul>
 <li>Több betűtípus egyidejű szerkesztése. Ez egyes betűtípusok külön tab oldalakon szerkeszthetők (MDI – Multiple Document Interface).</li>
@@ -525,10 +525,10 @@
 <p>A cél az, hogy lássuk, milyen folyamatot követve, milyen lépésekben dolgozunk, mikor milyen tervezői lépéseket kell meghoznunk. Törekedjünk oktatói és hallgatói részről is az interaktivitásra, közösen hozzuk meg a döntéseket.</p>
 <p>Hozzunk létre egy új C# nyelvű „Window Form App” projektet (.NET 6-osat), legyen a neve FontEditor. Vegyünk fel egy osztálydiagramot: projekten jobb katt, <em>Add / New Item</em>, majd a megjelenő ablakban <em>Class Diagram</em> kiválasztása, a neve maradhat az alapértelmezett. Állítsuk be, hogy a diagram mutassa majd a műveletek szignatúráit is (pl. jobb katt a háttéren, <em>Change Members Format / Display Full Signature</em>). A gyakorlat nagy részében ezt a diagramot fogjuk szerkeszteni.</p>
 <p>A kész osztálydiagram a következő, eddig fogunk fokozatosan eljutni:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/ClassDiagram.png"><img alt="ClassDiagram" src="images/ClassDiagram.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/ClassDiagram.png"><img alt="ClassDiagram" src="images/ClassDiagram.png"/></a></p>
 <h3 id="document-view-architektura">Document-View architektúra<a class="headerlink" href="#document-view-architektura" title="Permanent link">¶</a></h3>
 <p>Az első tervezői döntés: architektúrát kell választani. A Document-View esetünkben egyértelmű választás: dokumentumokkal dolgozunk, és több nézettel, melyeket szinkronban kell tartani. Az alábbi ábra ismerteti a működést. A nézetek az <strong>observerek</strong>, a document pedig a <strong>subject</strong>, melynek változásaira az egyes nézetek fel vannak iratkozva.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/DocView.png"><img alt="DocView" src="images/DocView.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/DocView.png"><img alt="DocView" src="images/DocView.png"/></a></p>
 <p>A D-V architektúrából adódóan szükségünk lesz dokumentum osztályra, amely a dokumentum adatait tárolja (tagváltozókban), mint pl. a név, elérési út, pixelmátrix. Tegyük fel, hogy a későbbiekben több dokumentum típust is támogatni kell majd: pl. megnyithatunk egy olyan tabfület, melyen a BKK járművekhez tudjuk rendelni a betűtípusokat (elektronikus kijelző). Vannak olyan dokumentum adatok, melyek minden dokumentum típusban megjelennek (pl. név, elérési út). <strong>Az egyes dokumentum típusoknak a közös tulajdonságait/műveleteit célszerű egy <code>Document</code> ősosztályba kiszervezni</strong>, hogy ne legyenek duplikálva az egyes dokumentum típusokat reprezentáló dokumentum osztályokban.</p>
 <ul>
 <li>Vegyük fel a <code>Document</code> osztályt (ez az absztrakt ős).</li>

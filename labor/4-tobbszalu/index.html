@@ -561,7 +561,7 @@
 </ul>
 <p>A feladatunk az, hogy egy bináris formában megkapott algoritmus futtatásához Windows Forms technológiával felhasználói felületet készítsünk. A bináris forma .NET esetében egy <em>.dll</em> kiterjesztésű fájlt jelent, ami programozói szemmel egy osztálykönyvtár.  A fájl neve esetünkben <em>Algorithms.dll</em>, megtalálható a leklónozott Git repositoryban.</p>
 <p>A kiinduló alkalmazásban a felhasználói felület elő is van készítve. Futtassuk az alkalmazást:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/starter.png"><img alt="starter" src="images/starter.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/starter.png"><img alt="starter" src="images/starter.png"/></a></p>
 <p>Az alkalmazás felületén meg tudjuk adni az algoritmus bemenő paramétereit (<code>double</code> számok tömbje): a példánkban mindig két <code>double</code> szám paraméterrel hívjuk az algoritmust, ezt a két felső szövegmezőben lehet megadni.
 A feladatunk az, hogy a <em>Calculate Result</em> gombra kattintás során futtassuk az algoritmust a megadott paraméterekkel, majd, ha végzett, akkor a <em>Result</em> alatti listázó mező új sorában jelenítsük meg a kapott eredményt a bemenő paraméterekkel együtt.</p>
 <p>Következő lépésben ismerkedjünk meg a letöltött Visual Studio solutionnel:</p>
@@ -576,7 +576,7 @@ A feladatunk az, hogy a <em>Calculate Result</em> gombra kattintás során futta
 <ol>
 <li>
 <p>Solution Explorerben a projektünk <em>Dependencies</em> node-jára jobbklikkelve válasszuk az <em>Add Project reference</em> opciót!</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/add-project-ref.png"><img alt="Add project reference" src="images/add-project-ref.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/add-project-ref.png"><img alt="Add project reference" src="images/add-project-ref.png"/></a></p>
 <div class="admonition note">
 <p class="admonition-title">Külső referenciák</p>
 <p>Itt valójában nem egy másik Visual Studio projektre adunk referenciát, de így a legegyszerűbb előhozni ezt az ablakot.</p>
@@ -588,10 +588,10 @@ A feladatunk az, hogy a <em>Calculate Result</em> gombra kattintás során futta
 </li>
 </ol>
 <p>A Solution Explorerben egy projekt alatti <em>Dependencies</em> csomópontot lenyitva láthatjuk a hivatkozott külső függőségeket. Itt most már megjelenik az Assemblyk között előbb felvett Algorithms referencia is. A Frameworks kategóriában a .NET keretrendszer csomagjait találjuk. Az Analyzerek pedig statikus kódelemző eszközök fordítás időben. Illetve itt lennének még a projekt vagy a NuGet referenciák is.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/dependencies.png"><img alt="Dependencies" src="images/dependencies.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/dependencies.png"><img alt="Dependencies" src="images/dependencies.png"/></a></p>
 <p>Kattintsunk Algorithms referencián jobb gombbal és válasszuk a <em>View in Object Browser</em> funkciót. Ekkor megnyílik az Object Browser tabfül, ahol megtekinthetjük, hogy az adott DLL-ben milyen névterek, osztályok találhatók, illetve ezeknek milyen tagjaik (tagváltozó, tagfüggvény, property, event) vannak. Ezeket a Visual Studio a DLL metaadataiból az ún. reflection mechanizmus segítségével olvassa ki (ilyen kódot akár mi is írhatunk).</p>
 <p>Az alábbi ábrának megfelelően az Object Browserben baloldalt keressük ki az Algorithms csomópontot, nyissuk le, és láthatóvá válik, hogy egy <code>Algorithms</code> névtér van benne, abban pedig egy <code>SuperAlgorithm</code> osztály. Ezt kiválasztva középen megjelennek az osztály függvényei, itt egy függvényt kiválasztva pedig az adott függvény pontos szignatúrája:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/object-browser.png"><img alt="Object browser" src="images/object-browser.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/object-browser.png"><img alt="Object browser" src="images/object-browser.png"/></a></p>
 <h2 id="1-feladat-muvelet-futtatasa-a-foszalon">1. Feladat – Művelet futtatása a főszálon<a class="headerlink" href="#1-feladat-muvelet-futtatasa-a-foszalon" title="Permanent link">¶</a></h2>
 <p>Most már rátérhetünk az algoritmus futtatására. Első lépésben ezt az alkalmazásunk fő szálán tesszük meg.</p>
 <ol>
@@ -712,7 +712,7 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>listViewResult</code> v
 <p>Próbáljuk ki az alkalmazást, és vegyük észre, hogy az alkalmazás az ablak bezárásakor azonnal leáll, nem foglalkozik az esetlegesen még futó szálakkal (mert a threadpool szálak háttér szálak).</p>
 <h2 id="5-feladat-termelo-fogyaszto-alapu-megoldas">5. Feladat – Termelő-fogyasztó alapú megoldás<a class="headerlink" href="#5-feladat-termelo-fogyaszto-alapu-megoldas" title="Permanent link">¶</a></h2>
 <p>Az előző feladatok megoldása során önmagában egy jól működő komplett megoldását kaptuk az eredeti problémának, mely lehetővé teszi, hogy akár több munkaszál is párhuzamosan dolgozzon a háttérben a számításon, ha a gombot sokszor egymás után megnyomjuk. A következőkben úgy fogjuk módosítani az alkalmazásunkat, hogy a gombnyomásra ne mindig keletkezzen új szál, hanem a feladatok bekerüljenek egy feladatsorba, ahonnan több, a háttérben folyamatosan futó szál egymás után fogja kivenni őket és végrehajtani. Ez a feladat a klasszikus termelő-fogyasztó probléma, mely a gyakorlatban is sokszor előfordul, a működését az alábbi ábra szemlélteti.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/termelo-fogyaszto.png"><img alt="Termelő fogyasztó" src="images/termelo-fogyaszto.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/termelo-fogyaszto.png"><img alt="Termelő fogyasztó" src="images/termelo-fogyaszto.png"/></a></p>
 <div class="admonition tip">
 <p class="admonition-title">Termelő fogyasztó vs <code>ThreadPool</code></p>
 <p>Ha belegondolunk, a <code>ThreadPool</code> is egy speciális, a .NET által számunkra biztosított termelő-fogyasztó és ütemező mechanizmus. A következőkben egy más jellegű termelő-fogyasztó megoldást dolgozunk ki annak érdekében, hogy bizonyos szálkezeléssel kapcsolatos konkurencia problémákkal találkozhassunk.</p>
@@ -764,7 +764,7 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>listViewResult</code> v
 </li>
 <li>
 <p>Indítsuk el az alkalmazást, majd zárjuk is be azonnal anélkül, hogy a Calculate Result gombra kattintanánk. Az tapasztaljuk, hogy az ablakunk bezáródik ugyan, de a processzünk tovább fut, az alkalmazás bezárására csak a Visual Studioból, vagy a Task Managerből van lehetőség:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/stop-debugging.png"><img alt="Stop Debugging" src="images/stop-debugging.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/stop-debugging.png"><img alt="Stop Debugging" src="images/stop-debugging.png"/></a></p>
 <p>A feldolgozó szálak előtérszálak, kilépéskor megakadályozzák a processz megszűnését. Az egyik megoldás az lehetne, ha a szálak <code>IsBackground</code> tulajdonságát <code>true</code>-ra állítanánk a létrehozásukat követően. A másik megoldás, hogy kilépéskor gondoskodunk a feldolgozó szálak kiléptetéséről. Egyelőre tegyük félre ezt a problémát, később visszatérünk rá.</p>
 </li>
 <li>

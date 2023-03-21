@@ -589,7 +589,7 @@
 </li>
 <li>
 <p>Kattintsunk az űrlap hátterén, hogy az űrlap legyen kiválasztva. A Visual Studio <em>Properties</em> ablakában láthatjuk az űrlapunk aktuális tulajdonságait. Amennyiben a Properties ablak nem látható, az F4 billentyűvel tudjuk előcsalni (vagy View menü / Properties). A Properties ablakban keressük meg a <code>Text</code> tulajdonságot, és írjuk át „Hello World” -re. Ez az űrlapunk fejlécének a szövegét állítja be.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/text-property.png"><img alt="Text Property" src="images/text-property.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/text-property.png"><img alt="Text Property" src="images/text-property.png"/></a></p>
 <p>Mint látható, az űrlapunk számos tulajdonsággal rendelkezik, ezek mindegyikét a Properties ablakban be tudjuk állítani az aktuális igényeknek megfelelően.</p>
 </li>
 <li>
@@ -626,7 +626,7 @@
 </li>
 </ul>
 <p>Ekkor a Visual Studio rákérdez egy felugró ablakban, hogy minden kapcsolódó elemet nevezzen-e át ennek megfelelően: itt mindenképpen <strong>Yes</strong>-t válasszunk:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/rename-confirm.png"><img alt="Rename Confirm" src="images/rename-confirm.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/rename-confirm.png"><img alt="Rename Confirm" src="images/rename-confirm.png"/></a></p>
 <div class="admonition warning">
 <p class="admonition-title">Hiba átnevezés után</p>
 <p>Ekkor a VS2022 hajlamos egy hibaüzenetet megjeleníteni az űrlapunk helyén, amennyiben meg volt nyitva a designerben. Ne ijedjünk meg tőle, zárjuk be az űrlap tabfülét (vagy valamennyi megnyitott fájl tabfülét), és nyissuk meg újra a Solution Explorerben az űrlapot: ekkor a hiba eltűnik.</p>
@@ -634,11 +634,11 @@
 </li>
 <li>
 <p>A következő lépésben a gombkattintás eseményt fogjuk lekezelni: ennek hatására a <code>tbDemoText</code> <code>TextBox</code> vezérlőbe beírjuk a „Hello” szöveget. Egy űrlap/vezérlő eseményeinek megjelenítésére is a Properties ablak szolgál, csak át kell váltsunk az eseménymegjelenítő nézetére. Ehhez a Properties ablak felső részén található villám ikonon kell kattintanunk:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/events.png"><img alt="Events" src="images/events.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/events.png"><img alt="Events" src="images/events.png"/></a></p>
 <div class="admonition note">
 <p class="admonition-title">Tulajdonságok</p>
 <p>A tulajdonságok megjelenítésére úgy tudunk a későbbiekben majd visszaváltani, ha a villám ikontól balra elhelyezkedő villáskulcs ikonra kattintunk (ezt egyelőre ne tegyük meg).</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/properties.png"><img alt="Properties" src="images/properties.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/properties.png"><img alt="Properties" src="images/properties.png"/></a></p>
 </div>
 <p>Az eseménylistában látható, hogy a <code>Button</code> osztálynak számos eseménye van. Számunkra most a <code>Click</code> esemény az érdekes. Erre kétféleképpen tudunk feliratkozni:</p>
 <ul>
@@ -712,7 +712,7 @@
 <div class="admonition tip">
 <p class="admonition-title">Kiválasztás a designerben</p>
 <p>A <code>ToolStripContainer</code> kijelölése kicsit trükkös a takarási viszonyok miatt. Ehhez használjuk a Document Outline ablakot, vagy használjuk a context menü <em>Select</em> menüpontját.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/select-on-designer.png"><img alt="Select on designer" src="images/select-on-designer.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/select-on-designer.png"><img alt="Select on designer" src="images/select-on-designer.png"/></a></p>
 </div>
 </li>
 <li>
@@ -720,7 +720,7 @@
 <ul>
 <li>
 <p>Húzzuk át a <code>ToolStrip</code>-et és a <code>StatusStrip</code>-et a <code>ToolStripContainer</code> felső, illetve alsó paneljébe, továbbá a <code>TextBox</code> és <code>Button</code> vezérlőket <code>ContentPanel</code>-re. A végeredmény így néz ki:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/document-outline.png"><img alt="Document Outline" src="images/document-outline.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/document-outline.png"><img alt="Document Outline" src="images/document-outline.png"/></a></p>
 </li>
 <li>
 <p>A <code>MenuStrip</code> smart tag-jében állítsuk át a <em>Grip Style</em>-t <em>Visible</em>-re, ekkor már a menü is mozgatható.</p>
@@ -785,13 +785,13 @@
 <h3 id="dokkolas-dock">Dokkolás (dock)<a class="headerlink" href="#dokkolas-dock" title="Permanent link">¶</a></h3>
 <p><strong>Dock</strong>: A dokkolás (szokás még csatolásnak vagy ragasztásnak is nevezni) segítségével egy vezérlő hozzácsatolható az őt tartalmazó konténer valamelyik széléhez, vagy beállítható, hogy töltse ki a rendelkezésre álló helyet. Lehetséges értékei: <code>None</code>, <code>Top</code>, <code>Left</code>, <code>Right</code>, <code>Bottom</code> és <code>Fill</code>. Egy felülre vagy alulra dokkolt vezérlő a szülő átméretezésekor megtartja a magasságát, a szélességváltozást pedig leköveti (pl. egy menü vagy státuszsáv tipikusan így viselkedik). Ahhoz, hogy egy vezérlő kitöltse a teljes maradó teret, a dokkolást <code>Fill</code>-re kell állítani.</p>
 <p>Itt is érdemes a GitHub demót futtatva, az űrlapot átméretezve kipróbálni, íme a kép az űrlap átméretezése előtt és után:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/dock-before.png"><img alt="Dock before" src="images/dock-before.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/dock-before.png"><img alt="Dock before" src="images/dock-before.png"/></a></p>
 <p>Átméretezés után (szélesebbre és alacsonyabbra méretezve az ablakot):</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/dock-after.png"><img alt="Dock after" src="images/dock-after.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/dock-after.png"><img alt="Dock after" src="images/dock-after.png"/></a></p>
 <h2 id="3-feladat-miniexplorer">3. Feladat - MiniExplorer<a class="headerlink" href="#3-feladat-miniexplorer" title="Permanent link">¶</a></h2>
 <h3 id="miniexplorer-layout">MiniExplorer layout<a class="headerlink" href="#miniexplorer-layout" title="Permanent link">¶</a></h3>
 <p>A feladat során egy Windows Forms alapú fájlrendszer böngésző (MiniExplorer) alkalmazást kell elkészíteni. A program kinézetét a következő ábra szemlélteti. </p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/mini-explorer.png"><img alt="Mini Explorer" src="images/mini-explorer.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/mini-explorer.png"><img alt="Mini Explorer" src="images/mini-explorer.png"/></a></p>
 <p>Az ablak három részből álljon:</p>
 <ul>
 <li>címsor az ablak tetején (<code>TextBox</code>)</li>
@@ -960,7 +960,7 @@
 </span><span class="p">}</span>
 </code></pre></div>
 <p>A megoldásunkban a .NET platform ún. P/Invoke (Platform Invoke) mechanizmusát vetjük be. Ez lehetővé teszi, hogy a <code>DllImport</code> attribútummal natív DLL-ekből függvényeket hivatkozzunk be, megfelelő paraméterezésű statikus C# függvénydeklarációkhoz rendeljük, majd ezek segítségével a natív függvényeket meghívjuk. A <code>SetWindowTheme</code> függvény első paramétereként a vezérlő <code>Handle</code>-jét kell átadni, második paramétereként pedig a process nevét, amelyről másolni akarjuk a stílusokat. A fenti kód utolsó sorában a <code>treeView1.ShowLines</code> <code>false</code>-ra állításával kikapcsoljuk a fastruktúrában az összekötő vonalak alkalmazását. Íme a végeredmény:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/windows-style.png"><img alt="Windows style" src="images/windows-style.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/windows-style.png"><img alt="Windows style" src="images/windows-style.png"/></a></p>
 <hr/>
 <div class="md-source-file">
 <span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

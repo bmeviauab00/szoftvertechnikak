@@ -373,7 +373,7 @@ Kidolgozta: Benedek Zoltán</p>
 <li>UML művelet -&gt; művelet/metódus</li>
 </ul>
 <p>Egy példa:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/shapeclass.png"><img alt="Shape osztály" src="images/shapeclass.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/shapeclass.png"><img alt="Shape osztály" src="images/shapeclass.png"/></a></p>
 <p>, mely a következő kódnak felel meg C# nyelven:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Shape</span>
 <span class="p">{</span>
@@ -391,7 +391,7 @@ Kidolgozta: Benedek Zoltán</p>
 </ul>
 <p>Ennél izgalmasabb kérdéskör, hogy milyen módon történik az osztályok közötti kapcsolatok leképezése, ezt a következő fejezetek ismertetik.</p>
 <h3 id="i-altalanositas-specializacio-kapcsolat">I. Általánosítás, specializáció kapcsolat<a class="headerlink" href="#i-altalanositas-specializacio-kapcsolat" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/alt-spec.png"><img alt="Általánosítás, specializáció" src="images/alt-spec.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/alt-spec.png"><img alt="Általánosítás, specializáció" src="images/alt-spec.png"/></a></p>
 <p>C# leképezés:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Base</span>
 <span class="p">{</span><span class="w"> </span><span class="p">};</span>
@@ -403,7 +403,7 @@ Kidolgozta: Benedek Zoltán</p>
 <h4 id="a-lekepezes-01-multiplicitasu-asszociacios-kapcsolat-eseten">A) Leképezés 0..1 multiplicitású asszociációs kapcsolat esetén<a class="headerlink" href="#a-lekepezes-01-multiplicitasu-asszociacios-kapcsolat-eseten" title="Permanent link">¶</a></h4>
 <p>Ebben az esetben egy pointert vagy referenciát tartalmaz a kliens osztály, melyen keresztül igénybe tudja venni a célosztály szolgáltatásait (meg tudja hívni annak műveleteit).
 Példa:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/association-single.png"><img alt="Általánosítás, specializáció, egyes kapcsolat" src="images/association-single.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/association-single.png"><img alt="Általánosítás, specializáció, egyes kapcsolat" src="images/association-single.png"/></a></p>
 <p>C++ leképezés:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Application</span>
 <span class="p">{</span>
@@ -429,7 +429,7 @@ A leképezés logikus, hiszen a kliens ezen pointeren/referencián keresztül tu
 <p>Megjegyzés. Előfordulhat, hogy az asszociáció kétirányú, mindkét osztály igénybe veszi a másik szolgáltatásait. Ilyenkor sokszor nem tesszük ki az asszociáció mindkét végére a nyilat, hanem mindkét végéről elhagyjuk azt. Ilyen kétirányú kapcsolat esetén a szerepet (role) a kapcsolat mindkét végén meg kell adni. A leképezés során mindkét osztályba felveszünk egy pointert/referenciát a másikra.</p>
 <h4 id="b-lekepezes-0n-multiplicitasu-asszociacios-kapcsolat-eseten">B) Leképezés 0..n multiplicitású asszociációs kapcsolat esetén<a class="headerlink" href="#b-lekepezes-0n-multiplicitasu-asszociacios-kapcsolat-eseten" title="Permanent link">¶</a></h4>
 <p>Ebben az esetben egy kliensoldali objektum több céloldali objektummal van kapcsolatban. Példa:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/association-multiple.png"><img alt="Általánosítás, specializáció, többes kapcsolat" src="images/association-multiple.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/association-multiple.png"><img alt="Általánosítás, specializáció, többes kapcsolat" src="images/association-multiple.png"/></a></p>
 <p>Egy <code>WindowManager</code> objektum több <code>Window</code> objektumot menedzsel. <strong>A leképezés során a kliens osztályba a célosztálybeli objektumok valamilyen gyűjteményét vesszük fel.</strong> Ez lehet tömb, lista, stb., ami a célunknak az adott helyzetben leginkább megfelel.</p>
 <p>Egy leképzési lehetőség a fenti példára C++ nyelven:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">WindowManager</span>
@@ -447,7 +447,7 @@ A leképezés logikus, hiszen a kliens ezen pointeren/referencián keresztül tu
 <p>Általában a leképezése pontosan úgy történik, mint az asszociáció esetében.</p>
 <h3 id="iv-fuggoseg-dependency">IV. Függőség (dependency)<a class="headerlink" href="#iv-fuggoseg-dependency" title="Permanent link">¶</a></h3>
 <p>A leglazább kapcsolatot jelenti osztályok között. Példa:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/dependency.png"><img alt="Dependency" src="images/dependency.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/dependency.png"><img alt="Dependency" src="images/dependency.png"/></a></p>
 <p>A jelentése: a <code>Window</code> osztály függ a <code>Graphics</code> osztálytól. Vagyis, ha a <code>Graphics</code> osztály megváltozik, akkor lehet, hogy a Window osztályt is meg kell változtatni.
 Ezt a kapcsolattípust akkor szoktuk használni, ha a függőségi kapcsolat elején levő osztály metódusai paraméterlistájában/visszatérési értékében szerepel a kapcsolat végén levő osztály. A példában a Window osztály onDraw művelete paraméterként megkapja a Graphics osztály egy objektumát, így függ tőle, hiszen a metódus törzsében így meg tudja hívni a <code>Graphics</code> osztály metódusait. Ha pl. a <code>Graphics</code> osztály <code>FillRect</code> metódusának nevét megváltoztatjuk, akkor ezt a változást át kell vezetni a hívások helyén, vagyis a Window osztály onDraw metódusának törzsében is.</p>
 <hr/>

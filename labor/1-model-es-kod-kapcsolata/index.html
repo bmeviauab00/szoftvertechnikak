@@ -580,7 +580,7 @@
 <li>A megjelenő ablakban „Individual components” fül kiválasztása</li>
 <li>
 <p>A keresőmezőbe „class designer” begépelése, majd győződjünk meg, hogy a szűrt listában a „Class Designer” elem ki van pipálva.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/vs-isntaller-add-class-diagram.png"><img alt="Osztálydiagram támogatás telepítés" src="images/vs-isntaller-add-class-diagram.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/vs-isntaller-add-class-diagram.png"><img alt="Osztálydiagram támogatás telepítés" src="images/vs-isntaller-add-class-diagram.png"/></a></p>
 </li>
 </ol>
 </div>
@@ -623,7 +623,7 @@ A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek e
 </li>
 <li>
 <p>A Create new project varázslóban a <em>Console app</em> (és <strong>NEM</strong> a <em>Console app (.NET Framework)</em> sablont válasszuk ki, ebből is a C#-osat. Azt, hogy C#-os, a sablon ikonjának bal felső sarka jelzi. Ha nem látjuk a listában, rá kell keresni/szűrni. Rákereshetünk a felső keresősávban a „console” beírásával. Vagy az alatta levő lenyíló mezők segítségével: az elsőben (nyelvkiválasztó) „C#”, a harmadikban (projekttípus kiválasztó) „Console”.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/vs-create-new-project-wizard.png"><img alt="Projekt létrehozása" src="images/vs-create-new-project-wizard.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/vs-create-new-project-wizard.png"><img alt="Projekt létrehozása" src="images/vs-create-new-project-wizard.png"/></a></p>
 </li>
 <li>
 <p>Next gomb az varázslóablak alján, a következő varázslóoldalon:</p>
@@ -772,7 +772,7 @@ A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek e
 <p>Ha a <em>Class Diagram</em> elem nem jelenik meg a listában, akkor nincs telepítve a VS megfelelő komponense. Erről jelen dokumentum <a href="#elofeltetelek">Előfeltételek</a> fejezetében olvashatsz bővebben.</p>
 </div>
 <p>Ekkor a Solution Explorerben megjelenik a <code>Main.cd</code> diagramfájl, duplakattintással nyissuk meg. A diagramunk jelenleg üres. A Solution Explorerből drag&amp;drop-pal dobjuk rá a .cs forrásfájlokat a diagramra. Ekkor a VS megnézi, milyen osztályok vannak ezekben a forrásfájlokban, és visszafejti őket UML osztályokká. Alakítsuk ki a következő ábrának megfelelő elrendezést (az osztályok tagjainak megjelenítését a téglalapuk jobb felső sarkában levő duplanyílra kattintással érhetjük el):</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/class-diagram-initial.png"><img alt="Kiinduló osztálydiagram" src="images/class-diagram-initial.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/class-diagram-initial.png"><img alt="Kiinduló osztálydiagram" src="images/class-diagram-initial.png"/></a></p>
 <p>Az osztályokhoz tartozó forráskódot is megnézhetjük, akár a diagramon a megfelelő osztályra duplán kattintva, akár a Solution Explorerből a .cs fájlokat megnyitva.
 A következőket tapasztaljuk:</p>
 <ul>
@@ -785,17 +785,17 @@ A következőket tapasztaljuk:</p>
 <p>Álljunk neki a megoldás kidolgozásának. Először is az alapkoncepciókat fektessük le. Az <code>EquipmentInventory</code> osztályban egy heterogén kollekcióban tároljuk a különböző alkatrész típusokat. Ez a kulcsa az alkatrészek egységes kezelésének, vagyis annak, hogy a megoldásunk új alkatrésztípusokkal könnyen bővíthető legyen.</p>
 <p>Mint korábban taglaltuk, az egységes kezelést vagy közös ősosztály, vagy közös interfész bevezetésével lehet megoldani. Esetünkben a közös ősosztály (pl. <code>EquipmentBase</code>) úgy tűnik, kiesik, mert ennek bevezetésével az <code>LedDisplay</code> osztálynak két ősosztálya is lenne: a kötelezőnek kikötött <code>DisplayBase</code>, és az általunk az egységes kezelésre bevezetett <code>EquipmentBase</code>. Ez nem lehetséges, .NET környezetben egy osztálynak csak egy őse lehet. Az a megoldás pedig, hogy a <code>DisplayBase</code>-t úgy módosítjuk, hogy ő is az <code>EquipmentBase</code>-ből származik, a követelményünknek megfelelően nem lehetséges (kikötés volt, hogy a forráskódja nem módosítható). Marad tehát az interfész alapú megközelítés. Minden bizonnyal az alkalmazás korábbi fejlesztője is erre a következtetésre jutott, ezért is vezette be az <code>IEquipment</code> interfészt.</p>
 <p>Vegyünk fel egy <code>IEquipment</code> típusú elemekből álló generikus listát (ne property-t hanem field-et!) az <code>EquipmentInventory</code> osztályba. A láthatósága – az egységbezárásra törekedve – legyen <code>private</code>. A neve legyen <code>equipment</code> (ne legyen „s” a végén, angolban az equipment többes száma is equipment). A tagváltozó felvételéhez a Visual Studio <em>Class Details</em> ablakát használjuk. Ha az ablak nem látható, a <em>View / Other Windows / Class Details</em> menü kiválasztásával jeleníthető meg.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/class-details.png"><img alt="Class Details" src="images/class-details.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/class-details.png"><img alt="Class Details" src="images/class-details.png"/></a></p>
 <p>A tagváltozó típusa tehát <code>List&lt;IEquipment&gt;</code>. A .NET <code>List</code> típusa egy dinamikusan nyújtózkodó generikus tömb (mint Java-ban az <code>ArrayList</code>).
 A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk, hogy csak a tagváltozó neve jelenik meg, a típusa nem. A diagram hátterén jobb gombbal kattintva a <em>Change Members Format</em> menüből a <em>Display Full Signature</em>-t válasszuk ki. Ezt követően a diagramon láthatóvá válik a tagváltozók típusa, valamint a műveletek teljes szignatúrája.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/equipmentinventory.png"><img alt="EquipmentInventory" src="images/equipmentinventory.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/equipmentinventory.png"><img alt="EquipmentInventory" src="images/equipmentinventory.png"/></a></p>
 <p>Az <code>EquipmentInventory</code> osztályon duplán kattintva elnavigálhatunk a forráskódba, és mint látható, valóban egy lista típusú tagváltozóként jelenik meg a kódban:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">EquipmentInventory</span>
 <span class="p">{</span>
 <span class="hll"><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">IEquipment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">equipment</span><span class="p">;</span>
 </span></code></pre></div>
 <p>Ennek egyrészt örülünk, mert a Visual Studio támogatja a round-trip engineering technikát: <strong>a modellt érintő változásokat azonnal átvezeti a kódba, és viszont</strong>. Másrészt a korábbiakban azt taglaltuk, hogy ha egy osztályban egy gyűjtemény tag van egy másik osztály elemeiből, akkor annak az UML modellben egy 1-több típusú asszociációs kapcsolatként „illik” megjelennie a két osztály között. A modellünkben egyelőre nem ezt tapasztaljuk. Szerencsére a VS modellező felülete rávehető, hogy ilyen formában jelenítse meg ezt a kapcsolattípust. Ehhez kattintsunk a diagramon jobb gombbal az equipment tagváltozón, és a menüből válasszuk ki a <em>Show as Collection Association</em> elemet. Az <code>IEquipment</code> interfészt ezt követően mozgassuk ki jobbra, hogy kellő hely legyen a diagramon az asszociációs kapcsolat és a kapcsolaton levő szerep (role) adatainak megjelenítésére:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/collection-association.png"><img alt="Collection association" src="images/collection-association.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/collection-association.png"><img alt="Collection association" src="images/collection-association.png"/></a></p>
 <p>A dupla nyíl végződés a „többes” oldalon nem szabványos UML, de ne szomorodjunk el tőle különösebben, nincs semmi jelentősége. Annak mindenképpen örülünk, hogy  a kapcsolatot reprezentáló nyíl az <code>IEquipment</code> végén a szerepben a tagváltozó neve (sőt, még a pontos típusa is) fel van tüntetve.</p>
 <p>Navigáljunk el az <code>EquipmentInventory</code> forráskódjához, és írjuk meg a konstruktorát, ami inicializálja az <code>equipment</code> gyűjteményt!</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">EquipmentInventory</span><span class="p">()</span>
@@ -844,7 +844,7 @@ A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk,
 <span class="p">}</span>
 </code></pre></div>
 <p>Az alkalmazást futtatva azt tapasztaljuk, hogy bár megoldásunk kezdetleges, de működik:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/console-out-1.png"><img alt="Console kimenet" src="images/console-out-1.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/console-out-1.png"><img alt="Console kimenet" src="images/console-out-1.png"/></a></p>
 <p>Folytassuk a munkát a <code>LedDisplay</code> osztállyal. A <code>DisplayBase</code> ős forráskódját a követelmények miatt nem módosíthatjuk. De ez semmiféle problémát nem okoz, a <code>LedDisplay</code> osztályunk fogja az <code>IEquipment</code> interfészt implementálni, módosítsuk a kódot ennek megfelelően:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LedDisplay</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">DisplayBase</span><span class="p">,</span><span class="w"> </span><span class="n">IEquipment</span>
 </code></pre></div>
@@ -900,11 +900,11 @@ A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk,
 <h3 id="absztrakt-osztaly">Absztrakt osztály<a class="headerlink" href="#absztrakt-osztaly" title="Permanent link">¶</a></h3>
 <p>Mindkét problémára megoldást jelent egy közös absztrakt ős bevezetése (kivéve az <code>LedDiplay</code> osztályt, amire még visszatérünk). Ebbe fel tudjuk költöztetni a leszármazottakra közös kódot, valamint az újonnan bevezetett <code>GetDescription</code> művelethez egy alapértelmezett implementációt tudunk megadni. Legyen az új absztrakt ősosztályunk neve <code>EquipmentBase</code>. Kérdés, szükség van-e a továbbiakban az <code>IEquipment</code> interfészre, vagy az teljesen kiváltható az új <code>EquipmentBase</code> osztállyal. Az <code>IEquipment</code> interfészt meg kell tartsuk, mert a LedDisplay osztályunkat nem tudjuk az <code>EquipmentBase</code>-ből származtatni: már van egy kötelezően előírt ősosztálya, a <code>DisplayBase</code>: emiatt az EquipmentInventory a továbbfejlesztett megoldásunkban is <code>IEquipment</code> interfészként hivatkozik az különböző alkatrészekre.</p>
 <p>Álljunk is neki az átalakításnak. Legyen az osztálydiagramunk az aktív tabfül. A <em>Toolbox</em>-ból drag&amp;drop-pal dobjunk fel egy <em>Abstract Class</em> elemet a diagramra, a neve legyen <code>EquipmentBase</code>.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/toolbox-abstract-class.png"><img alt="Toolbox - abstract class" src="images/toolbox-abstract-class.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/toolbox-abstract-class.png"><img alt="Toolbox - abstract class" src="images/toolbox-abstract-class.png"/></a></p>
 <p>A következőkben azt kell elérjük, hogy a <code>SoundCard</code> és a <code>HardDisk</code> osztályok származzanak az <code>EquipmentBase</code>-ből (a <code>LedDisplay</code>-nek már van másik őse, így ott ezt nem tudjuk megtenni). Ehhez válasszuk ki az <em>Inheritance</em> kapcsolatot a <em>Toolbox</em>-ban, majd húzzunk egy-egy vonalat a gyermekosztályból kiindulva az ősosztályba a <code>SoundCard</code> és <code>HardDisk</code> esetében egyaránt.</p>
 <p>A következő lépésben alakítsuk át úgy a kódot, hogy ne a <code>HardDisk</code> és <code>SoundCard</code> valósítsák meg külön-külön az <code>IEquipment</code> interfészt, hanem a közös ősük, az <code>EquipmentBase</code> egyszer. Ehhez módosítsuk az EquipmentBase osztályt úgy, hogy valósítsa meg az interfészt (akár a diagramon húzzunk be egy inheritance kapcsolatot az <code>EquipmentBase</code>-ből az <code>IEquipment</code>-be, vagy az <code>EquipmentBase</code> forráskódját módosítsuk). A <code>HardDisk</code> és <code>SoundCard</code> osztályokból töröljük az <code>IEquipment</code> megvalósítását (az ős már implementálja).</p>
 <p>A diagramunk és a forráskódunk vonatkozó részei ezt követően így néznek ki:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/class-diagram-eqipmentbase-sc-hd-2.png"><img alt="EquipmentBase és HardDisk/SoundCard" src="images/class-diagram-eqipmentbase-sc-hd-2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/class-diagram-eqipmentbase-sc-hd-2.png"><img alt="EquipmentBase és HardDisk/SoundCard" src="images/class-diagram-eqipmentbase-sc-hd-2.png"/></a></p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">EquipmentBase</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">HardDisk</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">EquipmentBase</span>
@@ -998,7 +998,7 @@ A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk,
 <span class="p">}</span>
 </code></pre></div>
 <p>Így már sokkal informatívabb kimetet kapunk az alkalmazás futtatásakor:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/console-out-2.png"><img alt="Console kimenet" src="images/console-out-2.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/console-out-2.png"><img alt="Console kimenet" src="images/console-out-2.png"/></a></p>
 <h3 id="konstruktor-kodduplikacio">Konstruktor kódduplikáció<a class="headerlink" href="#konstruktor-kodduplikacio" title="Permanent link">¶</a></h3>
 <p>A kódunkat áttekintve még egy helyen találunk kódduplikációt. Valamennyi <code>EquipmentBase</code> leszármazott (<code>HardDisk</code>, <code>SoundCard</code>) konstruktorában ott van ez a két sor:</p>
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">yearOfCreation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">;</span>
@@ -1031,7 +1031,7 @@ A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk,
 <li>Az <code>EquipmentBase</code> absztrakt ős bevezetésével alapértelmezett implementációt tudunk megadni az újonnan bevezetett <code>IEquipment</code> műveletek esetében (pl. <code>GetDescripton</code>), így nem vagyunk rákényszerítve, hogy minden <code>IEquipment</code> implementációs osztályban meg kelljen azt adni.</li>
 </ul>
 <p>Zárásképpen vessünk egy pillantást megoldásunk UML (szerű) osztálydiagramjára:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="100%" href="images/class-diagram-final.png"><img alt="Végső osztálydiagram" src="images/class-diagram-final.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/class-diagram-final.png"><img alt="Végső osztálydiagram" src="images/class-diagram-final.png"/></a></p>
 <div class="admonition note">
 <p class="admonition-title">Statikus interfészek</p>
 <p>A C# 11 legújabb újdonsága a statikus interfész tagok definiálása, amivel olyan tagokat követelhetünk meg az implementáló osztálytól, amelyek nem az objektum példányra vonatkoznak, hanem az osztálynak kell egy adott statikus taggal rendelkeznie. <a href="https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/static-virtual-interface-members">Bővebben</a></p>
