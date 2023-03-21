@@ -13,7 +13,7 @@ Az önálló/házi feladatokra vonatkozó pontos követelmények Moodle-ben, a [
 
 ## A feladatok beadása
 
-Minden házi feladat megoldását egy személyre szóló git repository-ban kell beadni. Ennek pontos [folyamatát lásd itt](./eloellenorzes-ertekeles/index.md). Kérünk, alaposan olvasd végig a leírást!
+Minden házi feladat megoldását egy személyre szóló git repository-ban kell beadni. Ennek pontos [folyamatát lásd itt](./hf-folyamat/index.md). Kérünk, alaposan olvasd végig a leírást!
 
 !!!danger "FONTOS"
     A házik elkészítése és beadás során az itt leírtak szerint kell eljárnod. A nem ilyen formában beadott házi feladatokat nem értékeljük.
