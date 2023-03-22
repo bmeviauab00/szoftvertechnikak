@@ -6,6 +6,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="Benedek Zoltán" name="author"/>
+<link href="../1-model-es-kod-kapcsolata/" rel="prev"/>
+<link href="../meghirdetes-elott/" rel="next"/>
 <link href="../../img/favicon.ico" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-9.0.12" name="generator"/>
 <title>2. HF - Nyelvi eszközök - BMEVIAUAB00 Szoftvertechnikák</title>
@@ -133,7 +135,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../">
+<a class="md-tabs__link md-tabs__link--active" href="../">
         Önálló/házi feladatok
       </a>
 </li>
@@ -218,13 +220,13 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
 <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
           Önálló/házi feladatok
           <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_3">
 <span class="md-nav__icon md-icon"></span>
           Önálló/házi feladatok
@@ -240,10 +242,138 @@
         1. HF - A modell és a kód kapcsolata
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../meghirdetes-elott/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          2. HF - Nyelvi eszközök
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         2. HF - Nyelvi eszközök
       </a>
+<nav aria-label="Tartalomjegyzék" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Tartalomjegyzék
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bevezetes">
+    Bevezetés
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#beadas-menete-eloellezorzo">
+    Beadás menete, előellezőrző
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#feladat-1-baljos-arnyak">
+    Feladat 1 – Baljós árnyak
+  </a>
+<nav aria-label="Feladat 1 – Baljós árnyak" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#feladat">
+    Feladat
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#megoldas">
+    Megoldás
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#feladat-2-a-klonok-tamadasa">
+    Feladat 2 – A klónok támadása
+  </a>
+<nav aria-label="Feladat 2 – A klónok támadása" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#feladat_1">
+    Feladat
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#megoldas_1">
+    Megoldás
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#feladat-3-a-sith-ek-bosszuja">
+    Feladat 3 – A Sith-ek bosszúja
+  </a>
+<nav aria-label="Feladat 3 – A Sith-ek bosszúja" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#feladat_2">
+    Feladat
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#megoldas_2">
+    Megoldás
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#feladat-4-delegatok">
+    Feladat 4 – Delegátok
+  </a>
+<nav aria-label="Feladat 4 – Delegátok" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#feladat_3">
+    Feladat
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#megoldas_3">
+    Megoldás
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#feladat-5-lambda-kifejezesek">
+    Feladat 5 – Lambda kifejezések
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#feladat-6-imsc-beepitett-funcaction-generikus-delegate-tipusok-hasznalata">
+    Feladat 6 (iMSc) – beépített Func/Action generikus delegate típusok használata
+  </a>
+<nav aria-label="Feladat 6 (iMSc) – beépített Func/Action generikus delegate típusok használata" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#feladat_4">
+    Feladat
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#megoldas_4">
+    Megoldás
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#beadas">
+    Beadás
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../meghirdetes-elott/">
@@ -288,8 +418,8 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#beadas-menete">
-    Beadás menete
+<a class="md-nav__link" href="#beadas-menete-eloellezorzo">
+    Beadás menete, előellezőrző
   </a>
 </li>
 <li class="md-nav__item">
@@ -414,14 +544,20 @@
 <p>Az önálló gyakorlat célja:</p>
 <ul>
 <li>Tulajdonságok (property) használatának gyakorlása</li>
-<li>Delagátok (delegate) és események (event) alkalmazása</li>
+<li>Delegátok (delegate) és események (event) alkalmazása</li>
 <li>.NET attribútumok használatának gyakorlása</li>
 <li>Alapvető gyűjteménytípusok használatának gyakorlása</li>
 <li>Lambda kifejezések gyakorlása</li>
 </ul>
 <p>A szükséges fejlesztőkörnyezetről <a href="../fejlesztokornyezet/">itt</a> található leírás.</p>
-<h2 id="beadas-menete">Beadás menete<a class="headerlink" href="#beadas-menete" title="Permanent link">¶</a></h2>
-<p><strong>TODO linkelni a közös leírást.</strong></p>
+<h2 id="beadas-menete-eloellezorzo">Beadás menete, előellezőrző<a class="headerlink" href="#beadas-menete-eloellezorzo" title="Permanent link">¶</a></h2>
+<p>A beadás menete megegyezik az első házi feladatéval (részletes leírás a szokásos helyen, lásd <a href="../hf-folyamat/">Házi feladat munkafolyamat és a Git/GitHub használata</a>):</p>
+<ol>
+<li>GitHub Classroom segítségével hozz létre magadnak egy repository-t. A meghívó URL-t Moodle-ben találod (a tárgy nyitóoldalán a "<em>GitHub classroom hivatkozások a házi feladatokhoz</em>" hivatkozásra kattintva megjelenő oldalon látható). Fontos, hogy a megfelelő, ezen házi feladathoz tartozó meghívó URL-t használd (minden házi feladathoz más URL tartozik).</li>
+<li>Klónozd le az így elkészült repository-t. Ez tartalmazni fogja a megoldás elvárt szerkezetét.</li>
+<li>A feladatok elkészítése után commit-old és push-old a megoldásod.</li>
+</ol>
+<p>Az előellenőrző is a szokásos módon működik. Részletes leírás: <a href="../eloellenorzes-ertekeles/">A házi feladat előellenőrzése és hivatalos értékelése</a>.</p>
 <h2 id="feladat-1-baljos-arnyak">Feladat 1 – Baljós árnyak<a class="headerlink" href="#feladat-1-baljos-arnyak" title="Permanent link">¶</a></h2>
 <h3 id="feladat">Feladat<a class="headerlink" href="#feladat" title="Permanent link">¶</a></h3>
 <p>Amint az közismert, a jedi lovagok erejét a sejtjeikben élő kis életformák, a midi-chlorianok adják.
@@ -615,7 +751,7 @@ Ezt elég a <code>JediCouncil.Add</code> kapcsán megtenni, a <code>JediCouncil.
 </div>
 <h2 id="feladat-4-delegatok">Feladat 4 – Delegátok<a class="headerlink" href="#feladat-4-delegatok" title="Permanent link">¶</a></h2>
 <h3 id="feladat_3">Feladat<a class="headerlink" href="#feladat_3" title="Permanent link">¶</a></h3>
-<p>Egészítstd ki a <code>JediCouncil</code> osztályt egy olyan paraméter nélküli függvénnyel (<strong>a függvénynév végződjön <code>_Delegate</code>-re, ez kötelező</strong>), mely visszatérési értékében visszaadja a Jedi tanács összes olyan tagját, melynek a midi-chlorian száma <strong>530</strong> alatt van!
+<p>Egészítsd ki a <code>JediCouncil</code> osztályt egy olyan paraméter nélküli függvénnyel (<strong>a függvénynév végződjön <code>_Delegate</code>-re, ez kötelező</strong>), mely visszatérési értékében visszaadja a Jedi tanács összes olyan tagját, melynek a midi-chlorian száma <strong>530</strong> alatt van!
 A függvényen belül a tagok kikeresésére használd a <code>List&lt;Jedi&gt;</code> osztály <code>FindAll()</code> függvényét.
 Ebben a feladatban még <strong>NEM használhatsz lambda kifejezést</strong>!
 Írj egy dedikált „tesztelő” függvényt is (pl. a <code>Program</code> osztályba), mely meghívja a fenti függvényünket és kiírja a visszaadott jedi lovagok neveit! Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így más (rész)feladathoz tartozót sem.</p>
@@ -710,8 +846,8 @@ Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így 
 </path>
 </svg>
 </span>
-<span title="2023. március 5. 20:59:46">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-05T20:59:46+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-05</span>
+<span title="2023. március 22. 22:21:48">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-22T22:21:48+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-22</span>
 </span>
 </span>
 <span class="md-source-file__fact">
