@@ -1,6 +1,4 @@
 ---
-search:
-  exclude: true
 authors: BenceKovari,bzolka
 ---
 
@@ -15,16 +13,22 @@ A fentiekre építve, jelen önálló gyakorlat feladatai a feladatleírást kö
 Az önálló gyakorlat célja:
 
 - Tulajdonságok (property) használatának gyakorlása
-- Delagátok (delegate) és események (event) alkalmazása
+- Delegátok (delegate) és események (event) alkalmazása
 - .NET attribútumok használatának gyakorlása
 - Alapvető gyűjteménytípusok használatának gyakorlása
 - Lambda kifejezések gyakorlása
 
 A szükséges fejlesztőkörnyezetről [itt](../fejlesztokornyezet/index.md) található leírás.
 
-## Beadás menete
+## Beadás menete, előellezőrző
 
-**TODO linkelni a közös leírást.**
+A beadás menete megegyezik az első házi feladatéval (részletes leírás a szokásos helyen, lásd [Házi feladat munkafolyamat és a Git/GitHub használata](../hf-folyamat/index.md)):
+
+1. GitHub Classroom segítségével hozz létre magadnak egy repository-t. A meghívó URL-t Moodle-ben találod (a tárgy nyitóoldalán a "*GitHub classroom hivatkozások a házi feladatokhoz*" hivatkozásra kattintva megjelenő oldalon látható). Fontos, hogy a megfelelő, ezen házi feladathoz tartozó meghívó URL-t használd (minden házi feladathoz más URL tartozik).
+2. Klónozd le az így elkészült repository-t. Ez tartalmazni fogja a megoldás elvárt szerkezetét.
+3. A feladatok elkészítése után commit-old és push-old a megoldásod.
+
+Az előellenőrző is a szokásos módon működik. Részletes leírás: [A házi feladat előellenőrzése és hivatalos értékelése](../eloellenorzes-ertekeles/index.md).
 
 ## Feladat 1 – Baljós árnyak
 
@@ -249,7 +253,7 @@ Szükség szerint korrigáld a saját megoldásod!
 
 ### Feladat
 
-Egészítstd ki a `JediCouncil` osztályt egy olyan paraméter nélküli függvénnyel (**a függvénynév végződjön `_Delegate`-re, ez kötelező**), mely visszatérési értékében visszaadja a Jedi tanács összes olyan tagját, melynek a midi-chlorian száma **530** alatt van!
+Egészítsd ki a `JediCouncil` osztályt egy olyan paraméter nélküli függvénnyel (**a függvénynév végződjön `_Delegate`-re, ez kötelező**), mely visszatérési értékében visszaadja a Jedi tanács összes olyan tagját, melynek a midi-chlorian száma **530** alatt van!
 A függvényen belül a tagok kikeresésére használd a `List<Jedi>` osztály `FindAll()` függvényét.
 Ebben a feladatban még **NEM használhatsz lambda kifejezést**!
 Írj egy dedikált „tesztelő” függvényt is (pl. a `Program` osztályba), mely meghívja a fenti függvényünket és kiírja a visszaadott jedi lovagok neveit! Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így más (rész)feladathoz tartozót sem.
