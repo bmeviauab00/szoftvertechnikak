@@ -621,7 +621,7 @@ A beolvasást egy <code>jedi.txt</code> nevű fájlból fogjuk végezni, amelyet
 Hogy a változásokat könnyebben nyomon követhessük, készíts egy osztályt, mely képes nyilvántartani a tanács tagjait és minden változásról egy esemény formájában szöveges értesítést küldeni!
 A lista manipulációját két függvénnyel lehessen végezni.
 Az <code>Add</code> függvény egy új jedi lovagot regisztráljon a tanácsba, míg a <code>Remove</code> függvény távolítsa el a <strong>legutoljára</strong> felvett tanácstagot.
-Külön értesítés jelezze, ha a tanács teljesen kiürül.</p>
+Külön értesítés jelezze, ha a tanács teljesen kiürül (ehhez ugyanazt az eseményt használd, mint a többi változás esetén, csak más szöveggel jelezze).</p>
 <p>A tanácstagok (<code>members</code>) nyilvántartását egy <code>List&lt;Jedi&gt;</code> típusú tagváltozóban tároljuk, az <code>Add</code> függvény ehhez a listához fűzze hozzá az új elemeket, míg a <code>Remove</code> függvény generikus lista <code>RemoveAt</code> utasításával mindig a <strong>legutoljára</strong> felvett tagot távolítsa el (az utolsó elem indexét a lista hossza alapján tudjuk meghatározni, melyet a <code>Count</code> property ad vissza).</p>
 <p>Az értesítés egy C# eseményen (C# event) keresztül történjen. Az eseményhez tartozó delegate típus paraméterként egy egyszerű <code>string</code>-et kapjon. Az új tag hozzáadását, az egyes tagok eltávolítását, illetve az utolsó tag eltávolítását más-más szövegű üzenet jelezze. Az esemény elsütését közvetlenül az <code>Add</code> és a <code>Remove</code> műveletekben végezd el (ne vezess be erre segédfüggvényt).</p>
 <p>Az esemény típusának ne használj beépített delegate típust, hanem vezess be egy sajátot.</p>
@@ -846,8 +846,8 @@ Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így 
 </path>
 </svg>
 </span>
-<span title="2023. március 22. 22:21:48">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-22T22:21:48+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-22</span>
+<span title="2023. március 23. 19:08:29">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-23T19:08:29+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-23</span>
 </span>
 </span>
 <span class="md-source-file__fact">
