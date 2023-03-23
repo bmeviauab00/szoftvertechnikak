@@ -608,7 +608,7 @@ A megoldáshoz az alábbi segítségeket adjuk:</p>
 <p>A sorosított objektumok visszatöltésére a labor során nem néztünk példakódot, ezért ezt itt megadjuk:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">serializer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XmlSerializer</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">Jedi</span><span class="p">));</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileStream</span><span class="p">(</span><span class="s">"jedi.txt"</span><span class="p">,</span><span class="w"> </span><span class="n">FileMode</span><span class="p">.</span><span class="n">Open</span><span class="p">);</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Jedi</span><span class="p">)</span><span class="n">ser</span><span class="p">.</span><span class="n">Deserialize</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Jedi</span><span class="p">)</span><span class="n">serializer</span><span class="p">.</span><span class="n">Deserialize</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span>
 <span class="n">stream</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
 </code></pre></div>
 <p>Az előző műveletsor először létrehoz egy sorosítót (<code>serializer</code>), mellyel majd a beolvasást később elvégezzük.
@@ -846,8 +846,8 @@ Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így 
 </path>
 </svg>
 </span>
-<span title="2023. március 23. 19:08:29">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-23T19:08:29+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-23</span>
+<span title="2023. március 23. 19:14:06">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-23T19:14:06+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-23</span>
 </span>
 </span>
 <span class="md-source-file__fact">
