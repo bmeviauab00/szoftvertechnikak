@@ -254,8 +254,11 @@ Szükség szerint korrigáld a saját megoldásod!
 ### Feladat
 
 Egészítsd ki a `JediCouncil` osztályt egy olyan paraméter nélküli függvénnyel (**a függvénynév végződjön `_Delegate`-re, ez kötelező**), mely visszatérési értékében visszaadja a Jedi tanács összes olyan tagját, melynek a midi-chlorian száma **530** alatt van!
-A függvényen belül a tagok kikeresésére használd a `List<Jedi>` osztály `FindAll()` függvényét.
-Ebben a feladatban még **NEM használhatsz lambda kifejezést**!
+
+- Függvényt használj, ne tulajdonságot a lekérdezésre.
+- A függvényen belül a tagok kikeresésére használd a `List<Jedi>` osztály `FindAll()` függvényét.
+- Ebben a feladatban még **NEM használhatsz lambda kifejezést**!
+  
 Írj egy dedikált „tesztelő” függvényt is (pl. a `Program` osztályba), mely meghívja a fenti függvényünket és kiírja a visszaadott jedi lovagok neveit! Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így más (rész)feladathoz tartozót sem.
 
 !!! danger "Fontos"
@@ -283,7 +286,11 @@ A feladat megoldásához a 2. labor 6. feladatát használhatjuk referenciaként
 A feladat megfelel az előzőnek, csak most lambda kifejezés segítségével fogunk dolgozni. Ez a témakör szerepelt előadáson és laboron is ([2. labor 6. feladat](../../labor/2-nyelvi-eszkozok/index.md#6-feladat-lambda-kifejezesek)).
 
 Egészítsd ki a JediCouncil osztályt egy olyan paraméter nélküli függvénnyel (**a függvénynév végződjön `_Lambda`-ra, ez kötelező**), mely visszatérési értékében visszaadja a Jedi tanács összes olyan tagját, melynek a midi-chlorian száma 1000 alatt van!
-A függvényen belül a tagok kikeresésére használd a `List<Jedi>` osztály `FindAll()` függvényét. Ebben a feladatban kötelezően lambda kifejezést kell használj (az mindegy, hogy statement vagy expression lambdát)!
+
+- Függvényt használj, ne tulajdonságot a lekérdezésre.
+- A függvényen belül a tagok kikeresésére használd a `List<Jedi>` osztály `FindAll()` függvényét.
+- Ebben a feladatban kötelezően lambda kifejezést kell használj (az mindegy, hogy statement vagy expression lambdát)!
+  
 Írj egy dedikált „tesztelő” függvényt is (pl. a `Program` osztályba), mely meghívja a fenti függvényünket és kiírja a visszaadott jedi lovagok neveit!
 Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így más (rész)feladathoz tartozót sem.
 
