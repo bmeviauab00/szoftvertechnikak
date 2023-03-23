@@ -110,7 +110,7 @@ A Jeditanácsban az utóbbi időben nagy a fluktuáció.
 Hogy a változásokat könnyebben nyomon követhessük, készíts egy osztályt, mely képes nyilvántartani a tanács tagjait és minden változásról egy esemény formájában szöveges értesítést küldeni!
 A lista manipulációját két függvénnyel lehessen végezni.
 Az `Add` függvény egy új jedi lovagot regisztráljon a tanácsba, míg a `Remove` függvény távolítsa el a **legutoljára** felvett tanácstagot.
-Külön értesítés jelezze, ha a tanács teljesen kiürül.
+Külön értesítés jelezze, ha a tanács teljesen kiürül (ehhez ugyanazt az eseményt használd, mint a többi változás esetén, csak más szöveggel jelezze).
 
 A tanácstagok (`members`) nyilvántartását egy `List<Jedi>` típusú tagváltozóban tároljuk, az `Add` függvény ehhez a listához fűzze hozzá az új elemeket, míg a `Remove` függvény generikus lista `RemoveAt` utasításával mindig a **legutoljára** felvett tagot távolítsa el (az utolsó elem indexét a lista hossza alapján tudjuk meghatározni, melyet a `Count` property ad vissza).
 
