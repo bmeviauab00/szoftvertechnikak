@@ -95,7 +95,7 @@ A megoldáshoz az alábbi segítségeket adjuk:
     ```csharp
     var serializer = new XmlSerializer(typeof(Jedi));
     var stream = new FileStream("jedi.txt", FileMode.Open);
-    var clone = (Jedi)ser.Deserialize(stream);
+    var clone = (Jedi)serializer.Deserialize(stream);
     stream.Close();
     ```
 
