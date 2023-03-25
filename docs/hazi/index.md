@@ -6,14 +6,14 @@ Az önálló/házi feladatokra vonatkozó pontos követelmények Moodle-ben, a [
 ## A feladatok
 
 - [1. HF - A modell és a kód kapcsolata](../hazi/1-model-es-kod-kapcsolata/index.md)
-- [2. HF - Nyelvi eszközök](../hazi/meghirdetes-elott.md)
+- [2. HF - Nyelvi eszközök](../hazi/2-nyelvi-eszkozok/index.md)
 - [3. HF - Felhasználói felület kialakítása](../hazi/meghirdetes-elott.md)
 - [4. HF - Többszálú alkalmazások fejlesztése](../hazi/meghirdetes-elott.md)
 - [5. HF - Document-View architektúra](../hazi/meghirdetes-elott.md)
 
 ## A feladatok beadása
 
-Minden házi feladat megoldását egy személyre szóló git repository-ban kell beadni. Ennek pontos [folyamatát lásd itt](./eloellenorzes-ertekeles/index.md). Kérünk, alaposan olvasd végig a leírást!
+Minden házi feladat megoldását egy személyre szóló git repository-ban kell beadni. Ennek pontos [folyamatát lásd itt](./hf-folyamat/index.md). Kérünk, alaposan olvasd végig a leírást!
 
 !!!danger "FONTOS"
     A házik elkészítése és beadás során az itt leírtak szerint kell eljárnod. A nem ilyen formában beadott házi feladatokat nem értékeljük.

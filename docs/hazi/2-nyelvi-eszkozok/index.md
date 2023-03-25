@@ -1,6 +1,4 @@
 ---
-search:
-  exclude: true
 authors: BenceKovari,bzolka
 ---
 
@@ -15,16 +13,22 @@ A fentiekre építve, jelen önálló gyakorlat feladatai a feladatleírást kö
 Az önálló gyakorlat célja:
 
 - Tulajdonságok (property) használatának gyakorlása
-- Delagátok (delegate) és események (event) alkalmazása
+- Delegátok (delegate) és események (event) alkalmazása
 - .NET attribútumok használatának gyakorlása
 - Alapvető gyűjteménytípusok használatának gyakorlása
 - Lambda kifejezések gyakorlása
 
 A szükséges fejlesztőkörnyezetről [itt](../fejlesztokornyezet/index.md) található leírás.
 
-## Beadás menete
+## Beadás menete, előellezőrző
 
-**TODO linkelni a közös leírást.**
+A beadás menete megegyezik az első házi feladatéval (részletes leírás a szokásos helyen, lásd [Házi feladat munkafolyamat és a Git/GitHub használata](../hf-folyamat/index.md)):
+
+1. GitHub Classroom segítségével hozz létre magadnak egy repository-t. A meghívó URL-t Moodle-ben találod (a tárgy nyitóoldalán a "*GitHub classroom hivatkozások a házi feladatokhoz*" hivatkozásra kattintva megjelenő oldalon látható). Fontos, hogy a megfelelő, ezen házi feladathoz tartozó meghívó URL-t használd (minden házi feladathoz más URL tartozik).
+2. Klónozd le az így elkészült repository-t. Ez tartalmazni fogja a megoldás elvárt szerkezetét.
+3. A feladatok elkészítése után commit-old és push-old a megoldásod.
+
+Az előellenőrző is a szokásos módon működik. Részletes leírás: [A házi feladat előellenőrzése és hivatalos értékelése](../eloellenorzes-ertekeles/index.md).
 
 ## Feladat 1 – Baljós árnyak
 
@@ -91,7 +95,7 @@ A megoldáshoz az alábbi segítségeket adjuk:
     ```csharp
     var serializer = new XmlSerializer(typeof(Jedi));
     var stream = new FileStream("jedi.txt", FileMode.Open);
-    var clone = (Jedi)ser.Deserialize(stream);
+    var clone = (Jedi)serializer.Deserialize(stream);
     stream.Close();
     ```
 
@@ -106,7 +110,7 @@ A Jeditanácsban az utóbbi időben nagy a fluktuáció.
 Hogy a változásokat könnyebben nyomon követhessük, készíts egy osztályt, mely képes nyilvántartani a tanács tagjait és minden változásról egy esemény formájában szöveges értesítést küldeni!
 A lista manipulációját két függvénnyel lehessen végezni.
 Az `Add` függvény egy új jedi lovagot regisztráljon a tanácsba, míg a `Remove` függvény távolítsa el a **legutoljára** felvett tanácstagot.
-Külön értesítés jelezze, ha a tanács teljesen kiürül.
+Külön értesítés jelezze, ha a tanács teljesen kiürül (ehhez ugyanazt az eseményt használd, mint a többi változás esetén, csak más szöveggel jelezze).
 
 A tanácstagok (`members`) nyilvántartását egy `List<Jedi>` típusú tagváltozóban tároljuk, az `Add` függvény ehhez a listához fűzze hozzá az új elemeket, míg a `Remove` függvény generikus lista `RemoveAt` utasításával mindig a **legutoljára** felvett tagot távolítsa el (az utolsó elem indexét a lista hossza alapján tudjuk meghatározni, melyet a `Count` property ad vissza).
 
@@ -249,9 +253,12 @@ Szükség szerint korrigáld a saját megoldásod!
 
 ### Feladat
 
-Egészítstd ki a `JediCouncil` osztályt egy olyan paraméter nélküli függvénnyel (**a függvénynév végződjön `_Delegate`-re, ez kötelező**), mely visszatérési értékében visszaadja a Jedi tanács összes olyan tagját, melynek a midi-chlorian száma **530** alatt van!
-A függvényen belül a tagok kikeresésére használd a `List<Jedi>` osztály `FindAll()` függvényét.
-Ebben a feladatban még **NEM használhatsz lambda kifejezést**!
+Egészítsd ki a `JediCouncil` osztályt egy olyan paraméter nélküli függvénnyel (**a függvénynév végződjön `_Delegate`-re, ez kötelező**), mely visszatérési értékében visszaadja a Jedi tanács összes olyan tagját, melynek a midi-chlorian száma **530** alatt van!
+
+- Függvényt használj, ne tulajdonságot a lekérdezésre.
+- A függvényen belül a tagok kikeresésére használd a `List<Jedi>` osztály `FindAll()` függvényét.
+- Ebben a feladatban még **NEM használhatsz lambda kifejezést**!
+  
 Írj egy dedikált „tesztelő” függvényt is (pl. a `Program` osztályba), mely meghívja a fenti függvényünket és kiírja a visszaadott jedi lovagok neveit! Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így más (rész)feladathoz tartozót sem.
 
 !!! danger "Fontos"
@@ -279,7 +286,11 @@ A feladat megoldásához a 2. labor 6. feladatát használhatjuk referenciaként
 A feladat megfelel az előzőnek, csak most lambda kifejezés segítségével fogunk dolgozni. Ez a témakör szerepelt előadáson és laboron is ([2. labor 6. feladat](../../labor/2-nyelvi-eszkozok/index.md#6-feladat-lambda-kifejezesek)).
 
 Egészítsd ki a JediCouncil osztályt egy olyan paraméter nélküli függvénnyel (**a függvénynév végződjön `_Lambda`-ra, ez kötelező**), mely visszatérési értékében visszaadja a Jedi tanács összes olyan tagját, melynek a midi-chlorian száma 1000 alatt van!
-A függvényen belül a tagok kikeresésére használd a `List<Jedi>` osztály `FindAll()` függvényét. Ebben a feladatban kötelezően lambda kifejezést kell használj (az mindegy, hogy statement vagy expression lambdát)!
+
+- Függvényt használj, ne tulajdonságot a lekérdezésre.
+- A függvényen belül a tagok kikeresésére használd a `List<Jedi>` osztály `FindAll()` függvényét.
+- Ebben a feladatban kötelezően lambda kifejezést kell használj (az mindegy, hogy statement vagy expression lambdát)!
+  
 Írj egy dedikált „tesztelő” függvényt is (pl. a `Program` osztályba), mely meghívja a fenti függvényünket és kiírja a visszaadott jedi lovagok neveit!
 Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így más (rész)feladathoz tartozót sem.
 
