@@ -891,7 +891,7 @@
 <p class="admonition-title">Hibakezelés</p>
 <p>Vegyük észre, hogy a fenti két függvényben mindkét esetben egy try-catch blokkot használtunk. Ez azért van, mert a laborgépeken átlagos felhasználóként sokszor nincs jogunk egyes mappák/fájlok elérésére, ami a listázó függvények esetében kivételt vált ki. Egy valós alkalmazásban semmiképpen nem hagynánk üresen a <code>catch</code> blokkot, mindenképpen naplóznánk, vagy a felhasználó tudomására hoznánk a hibát.</p>
 <p>A legegyszerűbb <code>MessageBox</code> alapú megoldás ez lenne:</p>
-<div class="highlight"><pre><span></span><code><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">UnatuhorizedAccessExceotion</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">UnauthorizedAccessException</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">,</span><span class="w"> </span><span class="s">"Error"</span><span class="p">,</span><span class="w"> </span><span class="n">MessageBoxButtons</span><span class="p">.</span><span class="n">OK</span><span class="p">,</span><span class="w"> </span><span class="n">MessageBoxIcon</span><span class="p">.</span><span class="n">Error</span><span class="p">))</span>
 <span class="p">}</span>
@@ -968,8 +968,8 @@
 </path>
 </svg>
 </span>
-<span title="2023. március 6. 13:52:33">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-06T13:52:33+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-06</span>
+<span title="2023. március 27. 20:54:22">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-27T20:54:22+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-27</span>
 </span>
 </span>
 <span class="md-source-file__fact">
