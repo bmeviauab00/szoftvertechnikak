@@ -383,7 +383,7 @@ Mivel készen van a felület, a következő feladat azt kitölteni.
         A legegyszerűbb `MessageBox` alapú megoldás ez lenne:
 
         ```csharp
-        catch (UnatuhorizedAccessExceotion ex)
+        catch (UnauthorizedAccessException ex)
         {
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error))
         }
