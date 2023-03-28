@@ -93,7 +93,10 @@ A feladat során egy olyan Windows Forms alkalmazást készítünk el, amely egy
 
 10. Az előző lépés mintájára nevezzük át a `TextBox` vezérlőnket `tbDemoText`-re. A `tb` prefix a vezérlő `TextBox` típusára utal.
 
-11. Az űrlapunk neve jelenleg `Form1`, mely szintén elég semmitmondó. Nevezzük át `MainForm`-ra, az alábbi lépéseket követve. Az átnevezést a Solution Explorerben tudjuk megtenni, itt több technikát is használhatunk.
+11. Az űrlapunk neve jelenleg `Form1`, mely szintén elég semmitmondó. Nevezzük át `MainForm`-ra, az alábbi lépéseket követve. Az átnevezést a Solution Explorerben tudjuk megtenni, itt több technikát is használhatunk. 
+
+    !!! warning "Mielőtt átnevezzük az űrlapot"
+        Egy VS2022-es bug miatt fontos, hogy átnevezés előtt mindenképpen zárjuk be az űrlap designer felületét, és minden, az űrlaphoz tartozó fájlt. Ha nem tesszük meg, akkor az átnevezést követően különböző kellemetlen anomáliákat tapasztalhatunk (eltűnnek a vezérlők a felületről, nem lehet eseménykezelőket felvenni, furcsa hibákat jelez a designer stb.)
 
     - Válasszuk ki a `Form1` elemet, majd még egyszer kattintsunk rajta bal gombbal: ekkor a név szerkeszthetővé válik (pont úgy dolgozunk, ahogy egy fájlt is átnevezünk Windows Fájlkezelőben/File Explorerben).
 
