@@ -329,11 +329,6 @@
     8. Feladat – Generikus osztályok
   </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#kitekintes-sajat-attributum-custom-attribute-keszitese-es-hasznalata">
-    Kitekintés - Saját attribútum (custom attribute) készítése és használata
-  </a>
-</li>
 </ul>
 </nav>
 </li>
@@ -554,11 +549,6 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#8-feladat-generikus-osztalyok">
     8. Feladat – Generikus osztályok
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#kitekintes-sajat-attributum-custom-attribute-keszitese-es-hasznalata">
-    Kitekintés - Saját attribútum (custom attribute) készítése és használata
   </a>
 </li>
 </ul>
@@ -1153,67 +1143,6 @@ Mint látható, elhagytuk a {} zárójeleket és a <code>return</code> utasítá
 </span><span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"Value: {i}"</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="kitekintes-sajat-attributum-custom-attribute-keszitese-es-hasznalata">Kitekintés - Saját attribútum (custom attribute) készítése és használata<a class="headerlink" href="#kitekintes-sajat-attributum-custom-attribute-keszitese-es-hasznalata" title="Permanent link">¶</a></h2>
-<p>Az alábbi nem tananyag, kitekintésként szolgál a témakörben érdeklődők számára.</p>
-<p>Készítsünk egy saját attribútum osztályt, amely csak tulajdonságok esetében alkalmazható, és befolyásolhatjuk vele <code>Person</code> objektumok string reprezentációba történő alakítását a <code>Person</code> osztályban felüldefiniált <code>ToString</code> metódusban.</p>
-<ol>
-<li>Az attribútumhoz hozzunk létre egy új osztályt a projektben <code>WriteInToStringAttribute</code> néven.</li>
-<li>Az attribútum osztályok neve konvenció szerint <code>Attribute</code>-ra végződik</li>
-<li><code>Attribute</code> osztályból kell származzanak.</li>
-<li>Az Attribútumok is rendes osztályok, tartalmazhatnak konstruktort, tulajdonságokat, függvényeket stb.<ol>
-<li>Készítsünk egy olyan tulajdonságot, mellyel ki/be kapcsolatható lesz a működése.</li>
-</ol>
-</li>
-<li>
-<p>Definiálható, hogy milyen nyelvi elemre kerülhet rá az <code>[AttributeUsage]</code> attribútummal. (ami vicces módon maga is egy attribútum, melyen saját maga van rajta).</p>
-<div class="highlight"><pre><span></span><code><span class="na">[AttributeUsage(AttributeTargets.Property)]</span>
-<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">WriteInToStringAttribute</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Attribute</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">IsEnabled</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Flags enum</p>
-<p>Ha megvizsgáljuk az AttributeTargets enum-ot akkor láthatjuk, hogy <code>[Flags]</code> attribútummal rendelkezik és az enum tagjai kettőhatvány értékeket vesznek fel. Ezzel oldható meg C#-ban is, hogy egy enum változóban több enum értéket is tárolhassunk, ahol az int-ben a adott pozíciójú bit-et reprezentálnak az egyes enum értékek. Pl.: a <code>Property</code> és <code>Field</code> értéket az alábbi bitművelettel lehet "összefűzni":</p>
-<div class="highlight"><pre><span></span><code><span class="na">[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]</span>
-</code></pre></div>
-</div>
-</li>
-<li>
-<p>Definiáljuk felül a <code>Person</code> <code>ToString</code> metódusát, ahol reflection segítségével iteráljunk végig az összes tulajdonságon, és írjuk ki a tulajdonság nevét és értékét, ha megtalálható rajta ez az attribútum és az engedélyezett állapotban van (az <code>IsEnabled</code> értéke igaz).</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">ToString</span><span class="p">()</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringBuilder</span><span class="p">();</span>
-<span class="w">    </span><span class="n">s</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="k">base</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
-
-<span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">property</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">typeof</span><span class="p">(</span><span class="n">Person</span><span class="p">).</span><span class="n">GetProperties</span><span class="p">())</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">property</span><span class="p">.</span><span class="n">GetCustomAttribute</span><span class="o">&lt;</span><span class="n">WriteInToStringAttribute</span><span class="o">&gt;</span><span class="p">()</span><span class="o">?.</span><span class="n">IsEnabled</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="k">false</span><span class="p">)</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="n">s</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$"\t{property.Name} = {property.GetValue(this)}"</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title"><code>GetCustomAttribute&lt;T&gt;</code></p>
-<p>A <code>GetCustomAttribute&lt;T&gt;</code> generikus metódus a <code>System.Reflection</code> névtérben található.</p>
-</div>
-</li>
-<li>
-<p>Rakjuk rá az <code>Age</code> tulajdonságra az attribútumunkat.</p>
-<div class="highlight"><pre><span></span><code><span class="na">[WriteInToString(IsEnabled = true)]</span>
-<span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Age</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-</code></pre></div>
-</li>
-<li>
-<p>Írjuk ki a konzolra a <code>Main</code>-ben a <code>Person</code> <code>ToString</code>-jét, és próbáljuk ki az alkalmazást.</p>
-<div class="highlight"><pre><span></span><code><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
-</code></pre></div>
-</li>
-</ol>
 <hr/>
 <div class="md-source-file">
 <span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1221,8 +1150,8 @@ Mint látható, elhagytuk a {} zárójeleket és a <code>return</code> utasítá
 </path>
 </svg>
 </span>
-<span title="2023. március 11. 17:44:51">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-11T17:44:51+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-11</span>
+<span title="2023. április 1. 19:48:54">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-01T19:48:54+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-01</span>
 </span>
 </span>
 <span class="md-source-file__fact">
