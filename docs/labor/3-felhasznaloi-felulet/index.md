@@ -388,7 +388,7 @@ Mivel készen van a felület, a következő feladat azt kitölteni.
         ```csharp
         catch (UnauthorizedAccessException ex)
         {
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error))
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         ```
 
