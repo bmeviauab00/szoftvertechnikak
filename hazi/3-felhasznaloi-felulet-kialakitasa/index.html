@@ -596,12 +596,11 @@ A Windows alapesetben blokkolja az ebben a mappában található dll-eket, ezt f
 </ol>
 <h3 id="futtatas-amikor-tesztelni-szeretned-a-megoldasod">Futtatás (amikor tesztelni szeretnéd a megoldásod)<a class="headerlink" href="#futtatas-amikor-tesztelni-szeretned-a-megoldasod" title="Permanent link">¶</a></h3>
 <ol>
-<li>Indítsd el a WinAppDrivert, alapértelmezett telepítés esetén itt található: c:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe. Ez egy parancssor ablakban indul, és futnia is kell végig, amíg a tesztelsz, ne zárd be:</li>
+<li>Indítsd el a WinAppDrivert, alapértelmezett telepítés esetén itt található: c:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe. Ez egy parancssor ablakban indul, és futnia is kell végig, amíg a tesztelsz, ne zárd be:
+   <a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/winappdriver.png"><img alt="Unblock file" src="images/winappdriver.png"/></a></li>
 <li>Győződj meg, hogy a solution-öd a legfrissebb formában le van fordítva (pl. VS alatt build) és minden forrásfájlod el van mentve (ctrl+shift+S).</li>
 <li>Győződj meg, hogy nem fut az alkalmazásod egyetlen példányban sem.</li>
-<li>Indítsd egy új parancssort (erre ne fenti WinAppDriveres parancssori ablakot használd, hanem egy másikat indíts), navigálj a megoldásod gyökérmappájába, és az itt található</li>
-<li>RunBaseTest.bat-tal tudod futtatni az alap (nem IMSc) teszteket</li>
-<li>RunIMScTest.bat-tal pedig az IMSc teszteket</li>
+<li>Indítsd egy új parancssort (erre ne fenti WinAppDriveres parancssori ablakot használd, hanem egy másikat indíts), navigálj a megoldásod gyökérmappájába, és az itt található <code>RunBaseTest.bat</code>-tal tudod futtatni az alap (nem IMSc) teszteket, a <code>RunIMScTest.bat</code>-tal pedig az IMSc teszteket.</li>
 </ol>
 <p>A tesztek elindítják az alkalmazást, látni fogod a felületét, a gépelést és a kattintásokat. Amíg fut a teszt, <strong>ne mozgasd az egeret, ne használd a billentyűzetet</strong>, ezek megzavarják a tesztet és sikertelen lesz! Ha meg akarod szakítani a tesztet, akkor zárd be az alkalmazást és a parancssorban nyomj egy Ctrl+C-t.</p>
 <p><strong>Ha változtatsz a forráskódodon, és szeretnéd a módosítások alapján tesztelni</strong>, akkor csak annyi a teendő, hogy újra futtatod a fenti bat fájl valamelyikét a fent előkészített parancssorból (feltéve, hogy a WinAppDriver is fut a háttérben). Tipp: ha csak egy adott feladathoz kapcsolódó teszteket szeretnéd futtatni, akkor ideiglenesen módosíthatod a RunBaseTest.bat tartalmát, hogy csak az adott feladathoz tartozó „dotnet test” kezdetű sor legyen benne, a másik három „dotnet test” sor kitörlésével.</p>
@@ -928,8 +927,8 @@ Az időzítésre <code>Timer</code> komponenst használjunk!</p>
 </path>
 </svg>
 </span>
-<span title="2023. április 6. 20:53:38">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-06T20:53:38+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-06</span>
+<span title="2023. április 6. 21:45:37">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-06T21:45:37+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-06</span>
 </span>
 </span>
 <span class="md-source-file__fact">
