@@ -57,11 +57,10 @@ A beállítástól nem kell tartani, a legtöbb fejlesztői gépen ezt egyébké
 ### Futtatás (amikor tesztelni szeretnéd a megoldásod)
 
 1. Indítsd el a WinAppDrivert, alapértelmezett telepítés esetén itt található: c:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe. Ez egy parancssor ablakban indul, és futnia is kell végig, amíg a tesztelsz, ne zárd be:
+   ![Unblock file](images/winappdriver.png)
 2. Győződj meg, hogy a solution-öd a legfrissebb formában le van fordítva (pl. VS alatt build) és minden forrásfájlod el van mentve (ctrl+shift+S).
 3. Győződj meg, hogy nem fut az alkalmazásod egyetlen példányban sem.
-4. Indítsd egy új parancssort (erre ne fenti WinAppDriveres parancssori ablakot használd, hanem egy másikat indíts), navigálj a megoldásod gyökérmappájába, és az itt található
-   - RunBaseTest.bat-tal tudod futtatni az alap (nem IMSc) teszteket
-   - RunIMScTest.bat-tal pedig az IMSc teszteket
+4. Indítsd egy új parancssort (erre ne fenti WinAppDriveres parancssori ablakot használd, hanem egy másikat indíts), navigálj a megoldásod gyökérmappájába, és az itt található `RunBaseTest.bat`-tal tudod futtatni az alap (nem IMSc) teszteket, a `RunIMScTest.bat`-tal pedig az IMSc teszteket.
 
 A tesztek elindítják az alkalmazást, látni fogod a felületét, a gépelést és a kattintásokat. Amíg fut a teszt, **ne mozgasd az egeret, ne használd a billentyűzetet**, ezek megzavarják a tesztet és sikertelen lesz! Ha meg akarod szakítani a tesztet, akkor zárd be az alkalmazást és a parancssorban nyomj egy Ctrl+C-t.
 
