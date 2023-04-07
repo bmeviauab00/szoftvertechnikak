@@ -632,7 +632,7 @@
 <p>Ezt <strong>implicitly typed local variables</strong>-nek, magyarul <strong>implicit típusú lokális változó</strong>-nak nevezzük. Ilyenkor a fordító a kontextusból, az egyenlőségjel jobb oldalából megpróbálja kitalálni a változó típusát, fenti esetben ez egy <code>Person</code> lesz. Fontos, hogy ettől a nyelv még statikusan tipusos marad (tehát <strong>nem</strong> úgy működik mint a JavaScript-es <code>var</code> kulcsszó), mert a <code>p</code> változó típusa a későbbiekben nem változhat meg, ez csak egy egyszerű szintaktikai édesítőszer annek érdekében, hogy tömörebben tudjunk lokális változókat definiálni (ne kelljen a típust "duplán", az <code>=</code> bal és jobb oldalán is megadni).</p>
 <div class="admonition tip">
 <p class="admonition-title">Target-typed <code>new</code> expressions</p>
-<p>Egy másik megközelítés lehet a a C# 9-ben megjelent Target-typed <code>new</code> expressions, ahol a new operátor esetén hagyható el a típus, ha az a fordító által kitalálható a kontektusból (pl.: értékadás bal oldala, paraméter típusa, stb.). A fenti <code>Person</code> konstruktorunk a következőképpen nézne ki:</p>
+<p>Egy másik megközelítés lehet a a C# 9-ben megjelent Target-typed <code>new</code> expressions, ahol a new operátor esetén hagyható el a típus, ha az a fordító által kitalálható a kontextusból (pl.: értékadás bal oldala, paraméter típusa, stb.). A fenti <code>Person</code> konstruktorunk a következőképpen nézne ki:</p>
 <div class="highlight"><pre><span></span><code><span class="n">Person</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
 </code></pre></div>
 <p>Ennek a megközelítésnek az előnye a <code>var</code>-ral szemben, hogy tagváltozók esetében is alkalmazható. Fontos, hogy ezt ne keverjük össze a C# anoním típusaival (<code>new {}</code>, kerekzárójel nélkül), mely témakört ez a tantárgy nem fog érinteni.</p>
@@ -1150,8 +1150,8 @@ Mint látható, elhagytuk a {} zárójeleket és a <code>return</code> utasítá
 </path>
 </svg>
 </span>
-<span title="2023. április 1. 19:48:54">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-01T19:48:54+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-01</span>
+<span title="2023. április 7. 16:36:07">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-07T16:36:07+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-07</span>
 </span>
 </span>
 <span class="md-source-file__fact">
