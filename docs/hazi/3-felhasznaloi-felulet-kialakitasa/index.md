@@ -69,7 +69,7 @@ A tesztek elindítják az alkalmazást, látni fogod a felületét, a gépelést
 !!! note "Alternatív lehetőség a tesztek futtatására"
     A szokásos GitHub alapú teszt futtatása is elő van készítve. Ha valakinek a fenti lépéseket követve nem sikerül a tesztelés, akkor használhatja az online, GitHub alapú ellenőrzést. Magától ez nem fog futni a push során, manuálisan kell indítani a push-t követően:
 
-    1. A GitHub meg kell nyitni a házi feladatodhoz tartozó repository oldalt.
+    1. GitHubon meg kell nyitni a házi feladatodhoz tartozó repository oldalt.
     2. Az Actions oldalra navigálni (kattintás az "Actions" hivatkozáson).
     3. Baloldalt a Build&Check-OnGitHub kiválasztása.
     4. Jobb oldalon a "Run workflow" gombra kattintva a lenyílt panelon a "Run workflow" zöld gombon kattintás.
@@ -111,12 +111,12 @@ A Windows Forms világban gyakran fordul elő, hogy egyedi vezérlőket, vagy ű
 
 ### Feladat
 
-Készíts egy új űrlap/ablak (`Form`) típust ==InputDialog== néven (a fejléce is legyen ==InputDialog==), mely egy szövegdobozt (`TextBox`), továbbá egy ==Ok== és egy ==Cancel== feliratú gombot tartalmaz. A két gomb bezáráskor állítsd be a `Form` `DialogResult` tulajdonságát `DialogResult.OK`, illetve `DialogResult.Cancel` értékre. Az űrlap ezen felül tartalmazzon egy publikus, `string` típusú, `Path` nevű tulajdonságot!
+Készíts egy új űrlap/ablak (`Form`) típust ==InputDialog== néven (a fejléce is legyen ==InputDialog==), mely egy szövegdobozt (`TextBox`), továbbá egy ==Ok== és egy ==Cancel== feliratú gombot tartalmaz. Az űrlap gombokkal történő bezáráshoz állítsd be a `Form` `DialogResult` tulajdonságát `DialogResult.OK`, illetve `DialogResult.Cancel` értékre. Az űrlap ezen felül tartalmazzon egy publikus, `string` típusú, `Path` nevű tulajdonságot!
 
 Az űrlap tartalma arányosan változzon az átméretezés során:
 
-- `TextBox` szélessége növekedjen (a helye ne változzon).
-- A gombok a hozzájuk közelebbi sarokhoz képest rögzített pozícióban maradjanak (mind x mind y koordináta tekintetében, az ablak szélességének és magasságának állításakor is). Az *Ok* gomb legyen bal alsó, a *Cancel* pedig jobb alsó sarokhoz rögzítve.
+- `TextBox` szélessége növekedjen (a helye és magassága ne változzon).
+- Az űrlap átméretezésekor a gombok a hozzájuk közelebbi sarokhoz képest rögzített pozícióban maradjanak (mind x mind y koordináta tekintetében, az ablak szélességének és magasságának állításakor is). Az *Ok* gomb legyen bal alsó, a *Cancel* pedig jobb alsó sarokhoz rögzítve.
 
 ### Megoldás
 
