@@ -60,6 +60,12 @@ Ezt követően írjon egy függvényt, mely a `Jedi` osztály egy példányát e
 !!! tip "XML sorosító attribútumai"
     Az XML sorosítást szabályozó attribútumokat ne tagváltozók, hanem a property-k felett helyezd el!
 
+!!! tip "A Jedi osztály legyen publikus"
+    Az XML sorosító csak publikus osztályokon tud dolgozni, ennek megfelelően a Jedi osztály legyen publikus:
+    ```csharp
+    public class Jedi { ...}
+    ```
+
 !!! danger "Fontos"
     A mentést és betöltést végző/demonstráló kódot írd egy közös, erre dedikált függvénybe, a függvényt pedig lásd el a `[Description("Feladat2")]` C# attribútummal (a függvény előtti sorba kell beírni).
     A mentett/betöltött objektum lokális változóként legyen ebben a függvényben megvalósítva.
