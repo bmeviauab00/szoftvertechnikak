@@ -111,7 +111,7 @@ A Windows Forms világban gyakran fordul elő, hogy egyedi vezérlőket, vagy ű
 
 ### Feladat
 
-Készíts egy új űrlap/ablak (`Form`) típust ==InputDialog== néven (a fejléce is legyen ==InputDialog==), mely egy szövegdobozt (`TextBox`), továbbá egy ==Ok== és egy ==Cancel== feliratú gombot tartalmaz. Az űrlap gombokkal történő bezáráshoz állítsd be a `Form` `DialogResult` tulajdonságát `DialogResult.OK`, illetve `DialogResult.Cancel` értékre. Az űrlap ezen felül tartalmazzon egy publikus, `string` típusú, `Path` nevű tulajdonságot!
+Készíts egy új űrlap/ablak (`Form`) típust ==InputDialog== néven (a fejléce is legyen ==InputDialog==), mely egy szövegdobozt (`TextBox`), továbbá egy ==Ok== és egy ==Cancel== feliratú gombot tartalmaz. Az űrlap gombokkal történő bezáráshoz állítsd be a `Form` `DialogResult` tulajdonságát `DialogResult.OK`, illetve `DialogResult.Cancel` értékre a gombkattintás eseménykezelőkben. Az űrlap ezen felül tartalmazzon egy publikus, `string` típusú, `Path` nevű tulajdonságot!
 
 Az űrlap tartalma arányosan változzon az átméretezés során:
 
@@ -266,7 +266,7 @@ A feladatot próbáld meg önállóan megoldani, majd a lenti leírás alapján 
 
     A megoldás alapját egy `Timer` komponens fogja adni. Ez egy olyan vezérlő, mely nem rendelkezik vizuális felülettel, csupán néhány testre szabható tulajdonsággal és egy `Tick` eseménnyel, mely az `Interval` tulajdonságban (milliszekundumban) megadott időközönként automatikusan meghívódik. Első lépésként ezt az ütemezést állítjuk be.
 
-    1. Húzzunk egy `Timer` komponenst (*Toolbox / Componensts*) `Form1`-re! Figyeljük meg, hogy a komponens csupán a `Form` alatti szürke területen jelenik meg. Itt tudjuk kijelölni a későbbi lépésekhez.
+    1. Húzzunk egy `Timer` komponenst (*Toolbox / Componensts*) `MainForm`-ra! Figyeljük meg, hogy a komponens csupán a `Form` alatti szürke területen jelenik meg. Itt tudjuk kijelölni a későbbi lépésekhez.
 
         ![Timer](images/timer.png)
 
@@ -274,7 +274,7 @@ A feladatot próbáld meg önállóan megoldani, majd a lenti leírás alapján 
 
     3. Állítsuk a `Name` tulajdonságot `reloadTimer`-re!
     
-    4. Vezessünk be néhány új tagváltozót a `Form1` osztályban:
+    4. Vezessünk be néhány új tagváltozót a `MainForm` osztályban:
         - `loadedFile` az utoljára betöltött fájl adatait tartalmazza,
         - `counter` az újratöltésig szükséges tizedmásodpercek számát tartalmazza, a későbbiekben minden tizedmásodpercben eggyel csökkentjük az értékét egy időzítő segítségével, míg el nem éri a nullát,
         - `counterInitialValue` a `counter` számláló kezdőértéke (ahonnan visszaszámol).
@@ -282,7 +282,7 @@ A feladatot próbáld meg önállóan megoldani, majd a lenti leírás alapján 
         A tagváltozókat az osztály elejére szoktuk beszúrni:
 
         ```csharp hl_lines="3-5"
-        public partial class Form1: Form
+        public partial class MainForm: Form
         {
             private FileInfo loadedFile = null;
             int counter;
@@ -297,7 +297,7 @@ A feladatot próbáld meg önállóan megoldani, majd a lenti leírás alapján 
         A `counterInitialValue` értékét a fenti kódban neked kell meghatározni: számítsd ki a frissítési időköz és az `timer` `Interval` alapján!
 
         ```csharp hl_lines="4"
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             counterInitialValue = ; // TODO a frissítési időköznek megfelelő érték
@@ -338,7 +338,7 @@ A feladatot próbáld meg önállóan megoldani, majd a lenti leírás alapján 
         - Tényleges rajzolást az állapotot megváltoztató műveletben nem végzünk, hanem a form/vezérlő (esetünkben panel) `Invalidate` műveletében váltjuk ki a `Paint` eseményt.
         - A konkrét téglalap (aktuális állapotnak megfelelő) megjelenítéséért/kirajzolásáért az űrlap/vezérlő (esetünkben a panel) `Paint` eseménye felelős.
 
-    8. Iratkozzunk fel a `detailsPanel` komponens `Paint` eseményére. Ehhez a panel kijelölése után a *Property Editor*-ban az *Events* fülön kattintsunk duplán a `Paint` eseményre, ezzel létrejön a kapcsolódó eseménykezelő (`detailsPanel _Paint`). Töltsük ki a kódját:
+    8. Iratkozzunk fel a `detailsPanel` komponens `Paint` eseményére. Ehhez a panel kijelölése után a *Property Editor*-ban az *Events* fülön kattintsunk duplán a `Paint` eseményre, ezzel létrejön a kapcsolódó eseménykezelő (`detailsPanel_Paint`). Töltsük ki a kódját:
 
         ```csharp
         private void detailsPanel_Paint(object sender, PaintEventArgs e)
