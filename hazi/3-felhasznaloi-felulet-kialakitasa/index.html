@@ -643,7 +643,7 @@ A Windows alapesetben blokkolja az ebben a mappában található dll-eket, ezt f
 <h2 id="feladat-2-dialogusablak">Feladat 2 – Dialógusablak<a class="headerlink" href="#feladat-2-dialogusablak" title="Permanent link">¶</a></h2>
 <p>A Windows Forms világban gyakran fordul elő, hogy egyedi vezérlőket, vagy űrlap típusokat akarunk definiálni, továbbá ezek és a programunk többi része között információt akarunk átadni. A következő feladat erre mutat példát.</p>
 <h3 id="feladat_1">Feladat<a class="headerlink" href="#feladat_1" title="Permanent link">¶</a></h3>
-<p>Készíts egy új űrlap/ablak (<code>Form</code>) típust <mark>InputDialog</mark> néven (a fejléce is legyen <mark>InputDialog</mark>), mely egy szövegdobozt (<code>TextBox</code>), továbbá egy <mark>Ok</mark> és egy <mark>Cancel</mark> feliratú gombot tartalmaz. Az űrlap gombokkal történő bezáráshoz állítsd be a <code>Form</code> <code>DialogResult</code> tulajdonságát <code>DialogResult.OK</code>, illetve <code>DialogResult.Cancel</code> értékre. Az űrlap ezen felül tartalmazzon egy publikus, <code>string</code> típusú, <code>Path</code> nevű tulajdonságot!</p>
+<p>Készíts egy új űrlap/ablak (<code>Form</code>) típust <mark>InputDialog</mark> néven (a fejléce is legyen <mark>InputDialog</mark>), mely egy szövegdobozt (<code>TextBox</code>), továbbá egy <mark>Ok</mark> és egy <mark>Cancel</mark> feliratú gombot tartalmaz. Az űrlap gombokkal történő bezáráshoz állítsd be a <code>Form</code> <code>DialogResult</code> tulajdonságát <code>DialogResult.OK</code>, illetve <code>DialogResult.Cancel</code> értékre a gombkattintás eseménykezelőkben. Az űrlap ezen felül tartalmazzon egy publikus, <code>string</code> típusú, <code>Path</code> nevű tulajdonságot!</p>
 <p>Az űrlap tartalma arányosan változzon az átméretezés során:</p>
 <ul>
 <li><code>TextBox</code> szélessége növekedjen (a helye és magassága ne változzon).</li>
@@ -816,7 +816,7 @@ Az időzítésre <code>Timer</code> komponenst használjunk!</p>
 <p>A megoldás alapját egy <code>Timer</code> komponens fogja adni. Ez egy olyan vezérlő, mely nem rendelkezik vizuális felülettel, csupán néhány testre szabható tulajdonsággal és egy <code>Tick</code> eseménnyel, mely az <code>Interval</code> tulajdonságban (milliszekundumban) megadott időközönként automatikusan meghívódik. Első lépésként ezt az ütemezést állítjuk be.</p>
 <ol>
 <li>
-<p>Húzzunk egy <code>Timer</code> komponenst (<em>Toolbox / Componensts</em>) <code>Form1</code>-re! Figyeljük meg, hogy a komponens csupán a <code>Form</code> alatti szürke területen jelenik meg. Itt tudjuk kijelölni a későbbi lépésekhez.</p>
+<p>Húzzunk egy <code>Timer</code> komponenst (<em>Toolbox / Componensts</em>) <code>MainForm</code>-ra! Figyeljük meg, hogy a komponens csupán a <code>Form</code> alatti szürke területen jelenik meg. Itt tudjuk kijelölni a későbbi lépésekhez.</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/timer.png"><img alt="Timer" src="images/timer.png"/></a></p>
 </li>
 <li>
@@ -826,14 +826,14 @@ Az időzítésre <code>Timer</code> komponenst használjunk!</p>
 <p>Állítsuk a <code>Name</code> tulajdonságot <code>reloadTimer</code>-re!</p>
 </li>
 <li>
-<p>Vezessünk be néhány új tagváltozót a <code>Form1</code> osztályban:</p>
+<p>Vezessünk be néhány új tagváltozót a <code>MainForm</code> osztályban:</p>
 <ul>
 <li><code>loadedFile</code> az utoljára betöltött fájl adatait tartalmazza,</li>
 <li><code>counter</code> az újratöltésig szükséges tizedmásodpercek számát tartalmazza, a későbbiekben minden tizedmásodpercben eggyel csökkentjük az értékét egy időzítő segítségével, míg el nem éri a nullát,</li>
 <li><code>counterInitialValue</code> a <code>counter</code> számláló kezdőértéke (ahonnan visszaszámol).</li>
 </ul>
 <p>A tagváltozókat az osztály elejére szoktuk beszúrni:</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">partial</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Form1</span><span class="p">:</span><span class="w"> </span><span class="n">Form</span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">partial</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">MainForm</span><span class="p">:</span><span class="w"> </span><span class="n">Form</span>
 <span class="p">{</span>
 <span class="hll"><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">FileInfo</span><span class="w"> </span><span class="n">loadedFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
 </span><span class="hll"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">counter</span><span class="p">;</span>
@@ -846,7 +846,7 @@ Az időzítésre <code>Timer</code> komponenst használjunk!</p>
 <li>
 <p>A konstruktorban állítsuk be a <code>counterInitialValue</code> értékét (később ez nem is változik). </p>
 <p>A <code>counterInitialValue</code> értékét a fenti kódban neked kell meghatározni: számítsd ki a frissítési időköz és az <code>timer</code> <code>Interval</code> alapján!</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">Form1</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">MainForm</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">InitializeComponent</span><span class="p">();</span>
 <span class="hll"><span class="w">    </span><span class="n">counterInitialValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">// TODO a frissítési időköznek megfelelő érték</span>
@@ -890,7 +890,7 @@ Az időzítésre <code>Timer</code> komponenst használjunk!</p>
 </ul>
 </li>
 <li>
-<p>Iratkozzunk fel a <code>detailsPanel</code> komponens <code>Paint</code> eseményére. Ehhez a panel kijelölése után a <em>Property Editor</em>-ban az <em>Events</em> fülön kattintsunk duplán a <code>Paint</code> eseményre, ezzel létrejön a kapcsolódó eseménykezelő (<code>detailsPanel _Paint</code>). Töltsük ki a kódját:</p>
+<p>Iratkozzunk fel a <code>detailsPanel</code> komponens <code>Paint</code> eseményére. Ehhez a panel kijelölése után a <em>Property Editor</em>-ban az <em>Events</em> fülön kattintsunk duplán a <code>Paint</code> eseményre, ezzel létrejön a kapcsolódó eseménykezelő (<code>detailsPanel_Paint</code>). Töltsük ki a kódját:</p>
 <div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">detailsPanel_Paint</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">PaintEventArgs</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">loadedFile</span><span class="o">!=</span><span class="k">null</span><span class="p">)</span>
@@ -927,8 +927,8 @@ Az időzítésre <code>Timer</code> komponenst használjunk!</p>
 </path>
 </svg>
 </span>
-<span title="2023. április 8. 09:40:11">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-08T09:40:11+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-08</span>
+<span title="2023. április 8. 09:59:47">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-08T09:59:47+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-08</span>
 </span>
 </span>
 <span class="md-source-file__fact">
