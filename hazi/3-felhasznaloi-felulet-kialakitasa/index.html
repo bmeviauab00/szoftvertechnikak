@@ -297,6 +297,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#visual-studio-designer-hiba">
+    Visual Studio designer hiba
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#feladat-1-menu">
     Feladat 1- Menü
   </a>
@@ -449,6 +454,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#elnevezesek">
     Elnevezések
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#visual-studio-designer-hiba">
+    Visual Studio designer hiba
   </a>
 </li>
 <li class="md-nav__item">
@@ -617,6 +627,16 @@ A Windows alapesetben blokkolja az ebben a mappában található dll-eket, ezt f
 </div>
 <h2 id="elnevezesek">Elnevezések<a class="headerlink" href="#elnevezesek" title="Permanent link">¶</a></h2>
 <p><img alt="❗" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2757.svg" title=":exclamation:"/> Az alábbiakban, a feladatok leírása során bizonyos elnevezések <mark>ennek a mintának</mark> megfelelő kiemelt szövegstílussal szerepelnek. Lényeges, hogy ezeknél pontosan kövesd az elnevezést, máskülönben a megoldás nem lesz elfogadható (pl. az ellenőrző máskülönben nem találja meg az adott felületelemet, vagy egyéb ellenőrzési probléma származhat belőle).</p>
+<h2 id="visual-studio-designer-hiba">Visual Studio designer hiba<a class="headerlink" href="#visual-studio-designer-hiba" title="Permanent link">¶</a></h2>
+<p>Az alábbiakat csak akkor érdemes kinyitni és megnézni, ha valamiért nem nyílik meg Visual Studioban az űrlap szerkesztőfelülete.</p>
+<details>
+<summary>Ha nem nyílik meg az űrlap szerkesztésre</summary>
+<p>A Visual Studio 2022 a Git-ből frissen kiklónozott forrás esetén (amikor még nem létezik egy .csproj.user kiterjesztésű fájl) az űrlapokat  - valószínűsíthetően egy bug miatt – időnként nem hajlandó megnyitni szerkesztő módban (szerencsére ez nagyon ritka). A solution megnyitása után ez esetben ezt látjuk:</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/vs-designer-issue-1.png"><img alt="VS designer probléma" src="images/vs-designer-issue-1.png"/></a></p>
+<p>A probléma az, hogy a <code>Form1.cs</code> előtti ikon (pirossal bekeretezve) nem egy űrlap, hanem egy zöld C# ikon. Ez esetben hiába kattintunk duplán a fájlon, nem az űrlap szerkesztő nyílik meg, hanem csak a forrásfájl. A megoldás ez esetben a következő: a Build menüben válasszuk ki a „Rebuild solution” menüt, majd a Build menüben a „Clean solution” menüt, és várjunk egy kicsit. Ekkor pár másodperc múlva a Solution Explorerben az űrlapunk ikonja megváltozik:</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="100%" href="images/vs-designer-issue-2.png"><img alt="VS designer probléma javítva" src="images/vs-designer-issue-2.png"/></a></p>
+<p>Most már meg tudjuk nyitni az űrlapot szerkesztésre, ha duplán kattintunk a Solution Explorerben a fenti csomóponton.</p>
+</details>
 <h2 id="feladat-1-menu">Feladat 1- Menü<a class="headerlink" href="#feladat-1-menu" title="Permanent link">¶</a></h2>
 <h3 id="bevezeto-feladat">Bevezető feladat<a class="headerlink" href="#bevezeto-feladat" title="Permanent link">¶</a></h3>
 <p><img alt="❗" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2757.svg" title=":exclamation:"/> A főablak fejléce a "<mark>MiniExplorer</mark>" szöveg legyen, hozzáfűzve a saját Neptun kódod: (pl. "ABCDEF" Neptun kód esetén "MiniExplorer - ABCDEF”), fontos, hogy ez legyen a szöveg! Ehhez az űrlapunk <code>Text</code> tulajdonságát állítsuk be erre a szövegre.</p>
@@ -927,8 +947,8 @@ Az időzítésre <code>Timer</code> komponenst használjunk!</p>
 </path>
 </svg>
 </span>
-<span title="2023. április 8. 09:59:47">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-08T09:59:47+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-08</span>
+<span title="2023. április 14. 13:27:17">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-14T13:27:17+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-14</span>
 </span>
 </span>
 <span class="md-source-file__fact">
