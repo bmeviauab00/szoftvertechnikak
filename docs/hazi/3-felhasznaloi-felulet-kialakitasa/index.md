@@ -79,6 +79,21 @@ A tesztek elindítják az alkalmazást, látni fogod a felületét, a gépelést
 
 :exclamation: Az alábbiakban, a feladatok leírása során bizonyos elnevezések ==ennek a mintának== megfelelő kiemelt szövegstílussal szerepelnek. Lényeges, hogy ezeknél pontosan kövesd az elnevezést, máskülönben a megoldás nem lesz elfogadható (pl. az ellenőrző máskülönben nem találja meg az adott felületelemet, vagy egyéb ellenőrzési probléma származhat belőle).
 
+## Visual Studio designer hiba
+
+Az alábbiakat csak akkor érdemes kinyitni és megnézni, ha valamiért nem nyílik meg Visual Studioban az űrlap szerkesztőfelülete.
+
+??? "Ha nem nyílik meg az űrlap szerkesztésre"
+    A Visual Studio 2022 a Git-ből frissen kiklónozott forrás esetén (amikor még nem létezik egy .csproj.user kiterjesztésű fájl) az űrlapokat  - valószínűsíthetően egy bug miatt – időnként nem hajlandó megnyitni szerkesztő módban (szerencsére ez nagyon ritka). A solution megnyitása után ez esetben ezt látjuk:
+
+    ![VS designer probléma](images/vs-designer-issue-1.png)
+
+    A probléma az, hogy a `Form1.cs` előtti ikon (pirossal bekeretezve) nem egy űrlap, hanem egy zöld C# ikon. Ez esetben hiába kattintunk duplán a fájlon, nem az űrlap szerkesztő nyílik meg, hanem csak a forrásfájl. A megoldás ez esetben a következő: a Build menüben válasszuk ki a „Rebuild solution” menüt, majd a Build menüben a „Clean solution” menüt, és várjunk egy kicsit. Ekkor pár másodperc múlva a Solution Explorerben az űrlapunk ikonja megváltozik:
+    
+    ![VS designer probléma javítva](images/vs-designer-issue-2.png)
+
+    Most már meg tudjuk nyitni az űrlapot szerkesztésre, ha duplán kattintunk a Solution Explorerben a fenti csomóponton.
+
 ## Feladat 1- Menü
 
 ### Bevezető feladat
