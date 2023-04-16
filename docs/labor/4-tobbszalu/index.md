@@ -63,7 +63,7 @@ A feladatunk az, hogy a _Calculate Result_ gombra kattintás során futtassuk az
 Következő lépésben ismerkedjünk meg a letöltött Visual Studio solutionnel:
 
 1. Nézzük végig a `MainForm` osztályt.
-   - Az látjuk, hogy a felület alapvetően kész, csak az algoritmus futtatása hiányzik. 
+   - Azt látjuk, hogy a felület alapvetően kész, csak az algoritmus futtatása hiányzik. 
    - Az eredmény és a paraméterei naplózásához is találunk egy `ShowResult` nevű segédfüggvényt.
 2. A `DataFifo` osztályt egyelőre hagyjuk ki, csak a gyakorlat második felében fogjuk használni, majd később megismerkedünk vele.
 
