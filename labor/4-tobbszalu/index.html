@@ -1039,7 +1039,7 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>listViewResult</code> v
 <li>A <code>Dispose</code> meghívása nem mindig determinisztikus Windows Forms esetében, mert előfordulhat, hogy nem a keretrendszer nyitotta a formot, hanem a fejlesztő programozottan, és elfelejtette <code>Dispose</code>-t hívni rajta, aminek a hatására, majd csak a GC fogja meghívni a <code>Dispose</code> függvényt.</li>
 </ol>
 <p>A <code>Release</code> művelet helyett még egy másik alternatíva lehetne, hogy az <code>IDisposable</code> mintát megvalósítjuk a <code>DataFifo</code>-ba, de ilyenkor is kézzel kellene <code>Dispose</code>-t hívni, mivel nem függvény szintű az életciklusa a FIFO objektumnak, így nem tudnánk <code>using</code> blokkban használni.</p>
-<p>Egy összetett alkalmazásban egyénként gyakran nem kézzel kezeljük egy-egy osztálynak a függőségeit és az életciklusát. Helyette a <a href="https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection">Dependency Injection tervezési mintát</a> érdemes alkalmazni, ahol egy külön komponensbe szervezzük ki az objektumok példányosítását és életciklusának kezelését.</p>
+<p>Egy összetett alkalmazásban egyébként gyakran nem kézzel kezeljük egy-egy osztálynak a függőségeit és az életciklusát. Helyette a <a href="https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection">Dependency Injection tervezési mintát</a> érdemes alkalmazni, ahol egy külön komponensbe szervezzük ki az objektumok példányosítását és életciklusának kezelését.</p>
 </div>
 <h2 id="kitekintes-task-async-await">Kitekintés: Task, async, await<a class="headerlink" href="#kitekintes-task-async-await" title="Permanent link">¶</a></h2>
 <p>A tárgynak nem anyaga, de .NET alkalmazások (és más modern nyelvű alkalmazások (Swift, Kotlin, TypeScript, stb.)) esetében megkerülhetetlen az aszinkron programozás koncepciója. A C# (és más modern nyelvek) nyelvi szintre emelték az szinkron események bevárásának kezelését az <code>async</code>/<code>await</code> kulcsszavakkal (<a href="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/">Lásd bővebben</a>)</p>
@@ -1051,8 +1051,8 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>listViewResult</code> v
 </path>
 </svg>
 </span>
-<span title="2023. február 21. 18:44:58">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-21T18:44:58+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-21</span>
+<span title="2023. április 17. 13:28:18">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-17T13:28:18+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-17</span>
 </span>
 </span>
 <span class="md-source-file__fact">
