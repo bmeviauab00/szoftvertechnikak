@@ -77,7 +77,7 @@ A Windows Forms alkalmazásunk főablakának bal oldalán egy gomb legyen (ez eg
     { 
         if (InvokeRequired)
         {
-            Invoke(new BikeAction(MoveBike), bike);
+            Invoke(MoveBike, bike);
         }
         else
         {
