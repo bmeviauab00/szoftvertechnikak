@@ -906,10 +906,10 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>listViewResult</code> v
 <li>
 <p>Ezzel a <code>Thread.Sleep</code> a <code>WorkerThread</code>-ben feleslegessé vált, kommentezzük ki!</p>
 <p>A fenti megoldás futtatásakor azt tapasztaljuk, hogy az alkalmazásunk felülete az első gombnyomást követően befagy. Az előző megoldásunkban ugyanis egy amatőr hibát követtünk el. A lock-olt kódrészleten belül várakozunk a <code>_hasData</code> jelzésére, így a főszálnak lehetősége sincs arra, hogy a <code>Put</code> műveletben (egy szintén <code>lock</code>-kal védett részen belül) jelzést küldjön <code>_hasData</code>-val. <strong>Gyakorlatilag egy holtpont (deadlock) helyzet alakult ki.</strong></p>
-<p>Gyors hibajavításként megadhatunk egy időkorlátot (ms) a várakozásnál:</p>
+<p>Próbálkozhatnánk egy időkorlát megadásával (ms) a várakozásnál:</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_hasData</span><span class="p">.</span><span class="n">WaitOne</span><span class="p">(</span><span class="m">100</span><span class="p">))</span>
 </code></pre></div>
-<p>Teszteljük az alkalmazást! A megoldás ugyan fut, de az elegáns és követendő minta az, hogy lock-on belül kerüljük a blokkolva várakozást.</p>
+<p>Ez önmagában sem lenne elegáns megoldás, ráadásul a folyamatosan pollozó munkaszálak jelentősen kiéheztetnék a Put-ot hívó szálat! Helyette, az elegáns és követendő minta az, hogy lock-on belül kerüljük a blokkolva várakozást.</p>
 <p>Valódi javításként cseréljük meg a <code>lock</code>-ot és a <code>WaitOne</code>-t, illetve a <code>WaitOne</code> paraméter eltávolításával szüntessük meg a várakozási időkorlátot:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">TryGet</span><span class="p">(</span><span class="k">out</span><span class="w"> </span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
 <span class="p">{</span>
@@ -1051,8 +1051,8 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>listViewResult</code> v
 </path>
 </svg>
 </span>
-<span title="2023. április 17. 13:43:44">
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-17T13:43:44+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-17</span>
+<span title="2023. április 19. 08:15:48">
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-19T08:15:48+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-19</span>
 </span>
 </span>
 <span class="md-source-file__fact">
