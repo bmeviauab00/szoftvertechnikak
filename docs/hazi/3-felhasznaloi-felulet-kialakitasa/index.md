@@ -27,7 +27,7 @@ A szükséges fejlesztőkörnyezetről [itt](../fejlesztokornyezet/index.md) tal
 - A kiklónozott fájlok között a `WinFormExpl.sln`-t megnyitva kell dolgozni.
 - :exclamation: Az egyes feladatok leírásánál ==Külön megjelöltük== (olyan stílusban, mint ahogy itt az előző szövegrészt látod) azokat az azonosítókat, szövegeket, melyeknél fontos, hogy a beadott feladatban a megadott érték szerepeljen.
 - :exclamation: A feladatok kérik, hogy készíts **képernyőképet** a megoldás egy-egy részéről, mert ezzel bizonyítod, hogy a megoldásod saját magad készítetted. **A képernyőképek elvárt tartalmát a feladat minden esetben pontosan megnevezi.**
-A képernyőképeket a megoldás részeként kell beadni, a repository-d gyökérmappájába tedd (a Neptun.txt mellé). A képernyőképek így felkerülnek GitHub-ra a git repository tartalmával együtt. Mivel a repository privát, azt az oktatókon kívül más nem látja. Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltölteni, kitakarhatod a képről.
+A képernyőképeket a megoldás részeként kell beadni, a repository-d gyökérmappájába tedd (a neptun.txt mellé). A képernyőképek így felkerülnek GitHub-ra a git repository tartalmával együtt. Mivel a repository privát, azt az oktatókon kívül más nem látja. Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltölteni, kitakarhatod a képről.
 - :exclamation: A beadott megoldások mellé külön indoklást, illetve leírást nem várunk el, ugyanakkor az elfogadás feltétele, hogy a beadott kódban a feladat megoldása szempontjából relevánsabb részek kommentekkel legyenek ellátva.
 - Ha valakinél az előellenőrző csak az opcionális feladatok esetében jelez hibát, az nem jelent problémát az alapfeladatok vonatkozásában.
 
@@ -56,11 +56,11 @@ A beállítástól nem kell tartani, a legtöbb fejlesztői gépen ezt egyébké
 
 ### Futtatás (amikor tesztelni szeretnéd a megoldásod)
 
-1. Indítsd el a WinAppDrivert, alapértelmezett telepítés esetén itt található: c:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe. Ez egy parancssor ablakban indul, és futnia is kell végig, amíg a tesztelsz, ne zárd be:
+1. Indítsd el a WinAppDrivert, alapértelmezett telepítés esetén itt található: c:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe. Ez egy parancssor ablakban indul, és futnia is kell végig, ne zárd be amíg tesztelsz:
    ![Unblock file](images/winappdriver.png)
 2. Győződj meg, hogy a solution-öd a legfrissebb formában le van fordítva (pl. VS alatt build) és minden forrásfájlod el van mentve (ctrl+shift+S).
 3. Győződj meg, hogy nem fut az alkalmazásod egyetlen példányban sem.
-4. Indítsd egy új parancssort (erre ne fenti WinAppDriveres parancssori ablakot használd, hanem egy másikat indíts), navigálj a megoldásod gyökérmappájába, és az itt található `RunBaseTest.bat`-tal tudod futtatni az alap (nem IMSc) teszteket, a `RunIMScTest.bat`-tal pedig az IMSc teszteket.
+4. Indítsd egy új parancssort (erre ne a fenti WinAppDriveres parancssori ablakot használd, hanem egy másikat indíts), navigálj a megoldásod gyökérmappájába, és az itt található `RunBaseTest.bat`-tal tudod futtatni az alap (nem IMSc) teszteket, a `RunIMScTest.bat`-tal pedig az IMSc teszteket.
 
 A tesztek elindítják az alkalmazást, látni fogod a felületét, a gépelést és a kattintásokat. Amíg fut a teszt, **ne mozgasd az egeret, ne használd a billentyűzetet**, ezek megzavarják a tesztet és sikertelen lesz! Ha meg akarod szakítani a tesztet, akkor zárd be az alkalmazást és a parancssorban nyomj egy Ctrl+C-t.
 
@@ -228,6 +228,7 @@ A feladat megoldásához a kapcsolódó gyakorlatban már alkalmazott, illetve a
 
 - Az ablak területének kettéosztására használjuk ismét a `SplitContainer` vezérlőt (a neve maradjon az alapértelmezett `splitContainer1`)
 - A `ListView` oszlopainak felvételekor csak a `Text` tulajdonságot változtasd, a `Name`-et ne. Ugyanitt, az oszlopok szélességét is növeld meg.
+- Ha a `ListView` nem mutatja a 2 oszlopot, csak a fájlok neveit, a `View` tulajdonságát állítsd át `Details`-re.
 - A `ListView` `FullRowSelect` tulajdonságát állítsd `true` ra (enélkül a tesztek nem futnak le jól majd).
 - Az aktuálisan kiválasztott elem adatainak megjelenítését a `ListView` `SelectedIndexChanged` eseményével célszerű megoldani.
 - A `detailsPanel` `Dock` tulajdonságát megfelelően be kell állítani.
