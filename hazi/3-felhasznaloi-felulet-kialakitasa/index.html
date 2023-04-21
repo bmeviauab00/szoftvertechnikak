@@ -1040,7 +1040,7 @@
 <li>A kiklónozott fájlok között a <code>WinFormExpl.sln</code>-t megnyitva kell dolgozni.</li>
 <li><img alt="❗" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2757.svg" title=":exclamation:" /> Az egyes feladatok leírásánál <mark>Külön megjelöltük</mark> (olyan stílusban, mint ahogy itt az előző szövegrészt látod) azokat az azonosítókat, szövegeket, melyeknél fontos, hogy a beadott feladatban a megadott érték szerepeljen.</li>
 <li><img alt="❗" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2757.svg" title=":exclamation:" /> A feladatok kérik, hogy készíts <strong>képernyőképet</strong> a megoldás egy-egy részéről, mert ezzel bizonyítod, hogy a megoldásod saját magad készítetted. <strong>A képernyőképek elvárt tartalmát a feladat minden esetben pontosan megnevezi.</strong>
-A képernyőképeket a megoldás részeként kell beadni, a repository-d gyökérmappájába tedd (a Neptun.txt mellé). A képernyőképek így felkerülnek GitHub-ra a git repository tartalmával együtt. Mivel a repository privát, azt az oktatókon kívül más nem látja. Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltölteni, kitakarhatod a képről.</li>
+A képernyőképeket a megoldás részeként kell beadni, a repository-d gyökérmappájába tedd (a neptun.txt mellé). A képernyőképek így felkerülnek GitHub-ra a git repository tartalmával együtt. Mivel a repository privát, azt az oktatókon kívül más nem látja. Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltölteni, kitakarhatod a képről.</li>
 <li><img alt="❗" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2757.svg" title=":exclamation:" /> A beadott megoldások mellé külön indoklást, illetve leírást nem várunk el, ugyanakkor az elfogadás feltétele, hogy a beadott kódban a feladat megoldása szempontjából relevánsabb részek kommentekkel legyenek ellátva.</li>
 <li>Ha valakinél az előellenőrző csak az opcionális feladatok esetében jelez hibát, az nem jelent problémát az alapfeladatok vonatkozásában.</li>
 </ul>
@@ -1070,11 +1070,11 @@ A Windows alapesetben blokkolja az ebben a mappában található dll-eket, ezt f
 </ol>
 <h3 id="futtatas-amikor-tesztelni-szeretned-a-megoldasod">Futtatás (amikor tesztelni szeretnéd a megoldásod)<a class="headerlink" href="#futtatas-amikor-tesztelni-szeretned-a-megoldasod" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Indítsd el a WinAppDrivert, alapértelmezett telepítés esetén itt található: c:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe. Ez egy parancssor ablakban indul, és futnia is kell végig, amíg a tesztelsz, ne zárd be:
+<li>Indítsd el a WinAppDrivert, alapértelmezett telepítés esetén itt található: c:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe. Ez egy parancssor ablakban indul, és futnia is kell végig, ne zárd be amíg tesztelsz:
    <a class="glightbox" href="images/winappdriver.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Unblock file" src="images/winappdriver.png" /></a></li>
 <li>Győződj meg, hogy a solution-öd a legfrissebb formában le van fordítva (pl. VS alatt build) és minden forrásfájlod el van mentve (ctrl+shift+S).</li>
 <li>Győződj meg, hogy nem fut az alkalmazásod egyetlen példányban sem.</li>
-<li>Indítsd egy új parancssort (erre ne fenti WinAppDriveres parancssori ablakot használd, hanem egy másikat indíts), navigálj a megoldásod gyökérmappájába, és az itt található <code>RunBaseTest.bat</code>-tal tudod futtatni az alap (nem IMSc) teszteket, a <code>RunIMScTest.bat</code>-tal pedig az IMSc teszteket.</li>
+<li>Indítsd egy új parancssort (erre ne a fenti WinAppDriveres parancssori ablakot használd, hanem egy másikat indíts), navigálj a megoldásod gyökérmappájába, és az itt található <code>RunBaseTest.bat</code>-tal tudod futtatni az alap (nem IMSc) teszteket, a <code>RunIMScTest.bat</code>-tal pedig az IMSc teszteket.</li>
 </ol>
 <p>A tesztek elindítják az alkalmazást, látni fogod a felületét, a gépelést és a kattintásokat. Amíg fut a teszt, <strong>ne mozgasd az egeret, ne használd a billentyűzetet</strong>, ezek megzavarják a tesztet és sikertelen lesz! Ha meg akarod szakítani a tesztet, akkor zárd be az alkalmazást és a parancssorban nyomj egy Ctrl+C-t.</p>
 <p><strong>Ha változtatsz a forráskódodon, és szeretnéd a módosítások alapján tesztelni</strong>, akkor csak annyi a teendő, hogy újra futtatod a fenti bat fájl valamelyikét a fent előkészített parancssorból (feltéve, hogy a WinAppDriver is fut a háttérben). Tipp: ha csak egy adott feladathoz kapcsolódó teszteket szeretnéd futtatni, akkor ideiglenesen módosíthatod a RunBaseTest.bat tartalmát, hogy csak az adott feladathoz tartozó „dotnet test” kezdetű sor legyen benne, a másik három „dotnet test” sor kitörlésével.</p>
@@ -1245,6 +1245,7 @@ A Windows alapesetben blokkolja az ebben a mappában található dll-eket, ezt f
 <ul>
 <li>Az ablak területének kettéosztására használjuk ismét a <code>SplitContainer</code> vezérlőt (a neve maradjon az alapértelmezett <code>splitContainer1</code>)</li>
 <li>A <code>ListView</code> oszlopainak felvételekor csak a <code>Text</code> tulajdonságot változtasd, a <code>Name</code>-et ne. Ugyanitt, az oszlopok szélességét is növeld meg.</li>
+<li>Ha a <code>ListView</code> nem mutatja a 2 oszlopot, csak a fájlok neveit, a <code>View</code> tulajdonságát állítsd át <code>Details</code>-re.</li>
 <li>A <code>ListView</code> <code>FullRowSelect</code> tulajdonságát állítsd <code>true</code> ra (enélkül a tesztek nem futnak le jól majd).</li>
 <li>Az aktuálisan kiválasztott elem adatainak megjelenítését a <code>ListView</code> <code>SelectedIndexChanged</code> eseményével célszerű megoldani.</li>
 <li>A <code>detailsPanel</code> <code>Dock</code> tulajdonságát megfelelően be kell állítani.</li>
@@ -1414,8 +1415,8 @@ Az időzítésre <code>Timer</code> komponenst használjunk!</p>
         </path>
       </svg>
     </span>
-    <span title="2023. április 14. 13:27:17">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-14T13:27:17+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-14</span>
+    <span title="2023. április 20. 15:26:33">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-20T15:26:33+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-20</span>
     </span>
   </span>
 
@@ -1434,6 +1435,8 @@ Az időzítésre <code>Timer</code> komponenst használjunk!</p>
         <img src="https://avatars.githubusercontent.com/BenceKovari?size=72" alt="@BenceKovari">
       </a><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@bzolka">
         <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
+      </a><a href="https://github.com/gabor7d2" target="_blank" rel="noopener noreferrer" class="md-author" title="@gabor7d2">
+        <img src="https://avatars.githubusercontent.com/u/12859334?size=72" alt="@gabor7d2">
       </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@tibitoth">
         <img src="https://avatars.githubusercontent.com/u/8333960?size=72" alt="@tibitoth">
       </a><a href="https://github.com/zbenedek-mirango" target="_blank" rel="noopener noreferrer" class="md-author" title="@zbenedek-mirango">
