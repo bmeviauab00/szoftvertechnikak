@@ -449,13 +449,13 @@ Az előző pontban megoldottuk a jelzést, ám ez önmagában nem sokat ér, his
 
     A fenti megoldás futtatásakor azt tapasztaljuk, hogy az alkalmazásunk felülete az első gombnyomást követően befagy. Az előző megoldásunkban ugyanis egy amatőr hibát követtünk el. A lock-olt kódrészleten belül várakozunk a `_hasData` jelzésére, így a főszálnak lehetősége sincs arra, hogy a `Put` műveletben (egy szintén `lock`-kal védett részen belül) jelzést küldjön `_hasData`-val. **Gyakorlatilag egy holtpont (deadlock) helyzet alakult ki.**
 
-    Gyors hibajavításként megadhatunk egy időkorlátot (ms) a várakozásnál:
+    Próbálkozhatnánk egy időkorlát megadásával (ms) a várakozásnál:
 
     ```cs
     if (_hasData.WaitOne(100))
     ```
 
-    Teszteljük az alkalmazást! A megoldás ugyan fut, de az elegáns és követendő minta az, hogy lock-on belül kerüljük a blokkolva várakozást.
+    Ez önmagában sem lenne elegáns megoldás, ráadásul a folyamatosan pollozó munkaszálak jelentősen kiéheztetnék a Put-ot hívó szálat! Helyette, az elegáns és követendő minta az, hogy lock-on belül kerüljük a blokkolva várakozást.
 
     Valódi javításként cseréljük meg a `lock`-ot és a `WaitOne`-t, illetve a `WaitOne` paraméter eltávolításával szüntessük meg a várakozási időkorlátot:
 
@@ -596,7 +596,7 @@ Korábban félretettük azt a problémát, hogy az ablakunk bezárásakor a proc
 
     A `Release` művelet helyett még egy másik alternatíva lehetne, hogy az `IDisposable` mintát megvalósítjuk a `DataFifo`-ba, de ilyenkor is kézzel kellene `Dispose`-t hívni, mivel nem függvény szintű az életciklusa a FIFO objektumnak, így nem tudnánk `using` blokkban használni.
 
-    Egy összetett alkalmazásban egyénként gyakran nem kézzel kezeljük egy-egy osztálynak a függőségeit és az életciklusát. Helyette a [Dependency Injection tervezési mintát](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection) érdemes alkalmazni, ahol egy külön komponensbe szervezzük ki az objektumok példányosítását és életciklusának kezelését.
+    Egy összetett alkalmazásban egyébként gyakran nem kézzel kezeljük egy-egy osztálynak a függőségeit és az életciklusát. Helyette a [Dependency Injection tervezési mintát](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection) érdemes alkalmazni, ahol egy külön komponensbe szervezzük ki az objektumok példányosítását és életciklusának kezelését.
 
 ## Kitekintés: Task, async, await
 
