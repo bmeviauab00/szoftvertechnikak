@@ -1272,7 +1272,7 @@ Az önálló gyakorlat a következő ismeretek elmélyítését célozza:</p>
 <ul>
 <li>Tegyél fel egy <em>Stop</em> gombot a felületre és készítsd elő a kattintást kezelő függvényt.</li>
 <li>A megállításhoz szükség lesz két jelzésre a bicikliket futtató szál felé. Ez egyik jelzés egy <code>bool</code> típusú változó, amelyet a bicikliket futtató szál ciklusa figyel. Vedd fel ezt <code>stopBikes</code> néven, és módosítsd a szálfüggvényt, hogy ha a <code>bool</code> változó jelez, fejezze be a futást.</li>
-<li>A másik jelzés abban az esetben kell, ha a szálak várakoznak. Ilyenkor nem tudják a <code>bool</code> változót ellenőrizni. Vegyél fel egy új <code>ManualResetEvent</code> típusú változót, amely a leállítás eseményt fogja jelezni. Ezt az eseményt a <code>bool</code> változóval együtt a biciklire valókattintás eseménykezelőjében kell jelzettbe állítani.</li>
+<li>A másik jelzés abban az esetben kell, ha a szálak várakoznak. Ilyenkor nem tudják a <code>bool</code> változót ellenőrizni. Vegyél fel egy új <code>ManualResetEvent</code> típusú változót, amely a leállítás eseményt fogja jelezni. Ezt az eseményt a <code>bool</code> változóval együtt a <em>Stop</em> gombra való kattintás eseménykezelőjében kell jelzettbe állítani.</li>
 <li>A bicikliket mozgató szálfüggvényben kommentezd ki (ne töröld!) az eddigi várakozást megvalósító kódrészeket, és készíts egy új megoldást az előbb felvett leállítást jelző <code>ManualResetEvent</code> segítségével. A várakozásokra továbbra is szükség lesz, azonban várakozni nem csak a start vonalra illetve a pihenőre szükséges, hanem a leállítást is észre kell venni.</li>
 <li>Ha leállítás történt, a szál futását be kell fejezni. Ha a leállást jelző esemény megtörtént, térjen vissza a szál függvénye egy <code>return</code> utasítással.</li>
 </ul>
@@ -1286,8 +1286,8 @@ Az önálló gyakorlat a következő ismeretek elmélyítését célozza:</p>
         </path>
       </svg>
     </span>
-    <span title="2023. április 20. 08:25:01">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-20T08:25:01+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-20</span>
+    <span title="2023. április 21. 21:39:02">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-21T21:39:02+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-21</span>
     </span>
   </span>
 
