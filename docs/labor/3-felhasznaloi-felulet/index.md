@@ -89,7 +89,7 @@ A feladat során egy olyan Windows Forms alkalmazást készítünk el, amely egy
     !!! note "Hungarian Notation"
         A fenti prefixelt elnevezési konvenciót [Hungarian Notation](https://en.wikipedia.org/wiki/Hungarian_notation)nek hívják, mert Charles Simonyi (Simonyi Károly fia) találta ki, amikor az Excel csapatban dolgozott a Microsoftnál.
 
-        A koncepció elsősorban C++-hoz készült, olyan időkben, amikor még nem voltak gazdag funkcionalitású fejelsztőkörnyezetek, és egy egyszerű szövegszerkesztővel is ránézésre meg kellett tudni mondani, hogy a változó milyen típusú. Ez manapság már nem releváns, mert a Visual Studio is pl. az egérkurzor segítségével visszajelzést ad a változó típusáról.
+        A koncepció elsősorban C++-hoz készült, olyan időkben, amikor még nem voltak gazdag funkcionalitású fejlesztőkörnyezetek, és egy egyszerű szövegszerkesztővel is ránézésre meg kellett tudni mondani, hogy a változó milyen típusú. Ez manapság már nem releváns, mert a Visual Studio is pl. az egérkurzor segítségével visszajelzést ad a változó típusáról.
 
 10. Az előző lépés mintájára nevezzük át a `TextBox` vezérlőnket `tbDemoText`-re. A `tb` prefix a vezérlő `TextBox` típusára utal.
 

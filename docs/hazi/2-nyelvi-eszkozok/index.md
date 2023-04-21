@@ -324,7 +324,7 @@ Bővítsd ki a `JediCouncil` osztályt.
     !!! tip "Tipp"
         A `JediCouncil`-ban található members nevű tagváltozónak van egy `Count` nevű property-je, a megoldás építsen erre.
 
-- Készíts egy `CountIf` nevű függvényt, amely szintén a tanácstagok megszámlálására való, de csak bizonyos feltételnek eleget tevő tanácstagokat vesz figyelembe. A függvény visszatérési értéke `int`, és a feltételt, amelynek megfelelő tanácstagok számát visszaadja, egy delegate segítségével kap meg paraméterként (tehát a `CountIf`-nek kell legyen paramétere).
+- Készíts egy `CountIf` nevű függvényt, amely szintén a tanácstagok megszámlálására való, de csak bizonyos feltételnek eleget tevő tanácstagokat vesz figyelembe. A függvény visszatérési értéke `int`, és a feltételt, amelynek megfelelő tanácstagok számát visszaadja, egy delegate segítségével kapja meg paraméterként (tehát a `CountIf`-nek kell legyen paramétere).
 
     !!! warning "Delegate típusa"
         A delegate típusa kötelezően a beépített generikus `Action` / `Func` delegate típusok közül a megfelelő kell legyen (vagyis saját delegate típus, ill. a beépített `Predicate` típus nem használható).
