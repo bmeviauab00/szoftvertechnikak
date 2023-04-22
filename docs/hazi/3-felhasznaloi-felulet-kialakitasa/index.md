@@ -73,7 +73,7 @@ A tesztek elindítják az alkalmazást, látni fogod a felületét, a gépelést
     2. Az Actions oldalra navigálni (kattintás az "Actions" hivatkozáson).
     3. Baloldalt a Build&Check-OnGitHub kiválasztása.
     4. Jobb oldalon a "Run workflow" gombra kattintva a lenyílt panelon a "Run workflow" zöld gombon kattintás.
-    5. Ekkor elindul az ellenőrző, a gomb alatti listában megjelenik a futó példány. Ha ez nem jelenik meg azonnal, akkor várni kell, néha kell pár másodperc, fél-egy perc is, mire elindul. Ha nagyon nem akarna megjeleni, akkor érdemes az oldal frissítésével is próbálkozni.
+    5. Ekkor elindul az ellenőrző, a gomb alatti listában megjelenik a futó példány. Ha ez nem jelenik meg azonnal, akkor várni kell, néha kell pár másodperc, fél-egy perc is, mire elindul. Ha nagyon nem akarna megjelenni, akkor érdemes az oldal frissítésével is próbálkozni.
 
 ## Elnevezések
 
