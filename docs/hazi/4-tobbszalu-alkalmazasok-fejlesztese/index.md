@@ -133,6 +133,7 @@ Valósítsuk meg a rajtvonalat. Egészítsük ki az alkalmazásunkat két továb
 ![Rajtvonal](images/rajtvonal.png)
 
 A *Start* gomb megnyomását követően mindhárom bicikli induljon el véletlenszerű tempóban. Amikor egy bicikli a start panelre érkezik, az őt vezérlő szál blokkolva várakozzon. Amikor a *Step1* gombot megnyomjuk, a biciklik folytassák útjukat a célig.
+Ha a felhasználó azelőtt nyomja meg a Start gombot, hogy a biciklik elérnék a startvonalat, akkor a bicikliknek már nem kell megállni a startvonalon (de az is teljesen jó megoldás, ha ilyen esetben a Start lenyomását még figyelmen kívül hagyja az alkalmazás).
 
 ### Megoldás
 
