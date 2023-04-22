@@ -114,6 +114,9 @@ A Windows Forms alkalmazásunk főablakának bal oldalán egy gomb legyen (ez eg
     !!! tip "Előrehozás"
         Ha a jelen vagy egy későbbi feladatban a biciklit reprezentáló gomb nem a panel előtt, hanem mögötte jelenik meg, akkor jobb gombbal kattintsunk a panelen, és válasszuk ki a *Send to back* menüt.
 
+    ??? tip "Bezáráskori ObjectDisposedException"  
+        Ha a megoldásunkat Visual Studioban debuggolva futtatjuk, akkor kilépéskor `ObjectDisposedException`-t kaphatunk. Az `Invoke` csak akkor hívható, amikor a űrlapunk mögötti natív ablak még létezik. Kilépéskor ez megszűnik, ebből ered a "hiba". Ez inkább csak egyfajta figyelmeztetés a keretrendszer részéről, de esetünkben nem igazi hiba: ha nem debuggolva indítjuk az alkalmazást, akkor kilépéskor nem is jelentkezik, lenyelődik. Szép, de kicsit körülményesebb megoldás lehetne, ha pl. a `Form` `OnClosing` függvényét felüldefiniálva vagy a `FormClosing` eseménykezelőben leállítanánk a szálakat (vagy egy flag-gel jeleznénk feléjük, hogy most már nem szabad `Invoke`-ot hívni). Kevésbé szép megoldás lehet az `ObjectDisposedException` elkapása és lenyelése.
+
 !!! example "BEADANDÓ"
     Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
 
