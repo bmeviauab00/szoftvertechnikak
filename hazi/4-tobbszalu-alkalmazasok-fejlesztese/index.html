@@ -1222,7 +1222,7 @@ Ha a felhasználó azelőtt nyomja meg a Step1 gombot, hogy a biciklik elérnék
 </div>
 <h2 id="feladat-5-ujrakezdes">Feladat 5 – Újrakezdés<a class="headerlink" href="#feladat-5-ujrakezdes" title="Permanent link">&para;</a></h2>
 <h3 id="feladat_4">Feladat<a class="headerlink" href="#feladat_4" title="Permanent link">&para;</a></h3>
-<p>Egészítsük ki az alkalmazásunkat úgy, hogy bármelyik biciklit újra tudjuk indítani. Az újra indításhoz elég a biciklit jelképező gombra kattintani. Ilyenkor a bicikli visszakerül a kiinduló pozícióba, és újra kezdi a futamot (az újrakezdéshez nem kell a Start gombot megnyomni, a Start gombot célszerű is az első kattintás során letiltani, hogy csak egyszer lehessen kattintani rajta). Az új futam során a bicikli <em>Step1</em>-nél és <em>Step2</em>-nél is ismét meg kell álljon.</p>
+<p>Egészítsük ki az alkalmazásunkat úgy, hogy bármelyik biciklit újra tudjuk indítani. Az újra indításhoz elég a biciklit jelképező gombra kattintani. Ilyenkor a bicikli visszakerül a kiinduló pozícióba, és újra kezdi a futamot (az újrakezdéshez nem kell a Start gombot megnyomni, a Start gombot célszerű is az első kattintás során letiltani, hogy csak egyszer lehessen kattintani rajta). Az új futam során a bicikli <em>Step2</em>-nél ismét meg kell álljon (a <em>Step1</em> kapcsán szabadon lehet választani).</p>
 <h3 id="megoldas_4">Megoldás<a class="headerlink" href="#megoldas_4" title="Permanent link">&para;</a></h3>
 <p>A következőkben megadjuk a feladat megoldásának néhány fontos elemét.</p>
 <p>A feladat megoldásához meg kell tudnunk szakítani az aktuálisan futó szálat, legalábbis <code>WaitSleepJoin</code> állapotban (<code>Thread.Interrupt</code> művelettel). Ehhez minden egyes gombhoz tárolnunk kell az aktuálisan őt vezérlő szál objektumot. Ezt (hasonlóan a <a href="../../labor/3-felhasznaloi-felulet/#miniexplorer-logika">3. gyakorlat 3. feladatához</a>) megtehetjük a vezérlő <code>Tag</code> tulajdonságában. A <code>Tag</code> tulajdonság beállítására vagy a szál létrehozása után a <code>StartBike</code> műveletben, vagy a szálfüggvényben (az aktuális szál <code>Thread.CurrentThread</code>-del való lekérdezésével) kerítsünk sort. Példa az utóbbira:</p>
@@ -1291,8 +1291,8 @@ Ha a felhasználó azelőtt nyomja meg a Step1 gombot, hogy a biciklik elérnék
         </path>
       </svg>
     </span>
-    <span title="2023. április 22. 16:18:17">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-22T16:18:17+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-22</span>
+    <span title="2023. április 22. 16:31:47">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-22T16:31:47+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-22</span>
     </span>
   </span>
 
