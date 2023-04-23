@@ -1207,7 +1207,8 @@ Ha a felhasználó azelőtt nyomja meg a Step1 gombot, hogy a biciklik elérnék
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Lényeges</p>
-<p>A megoldás csak akkor elfogadható, ha a <code>lock</code> utasítással a kölcsönös kizárás megvalósításra kerül (<code>IncreasePixels</code> és <code>GetPixels</code> függvények).</p>
+<p>A megoldás csak akkor elfogadható, ha a <code>lock</code> utasítással a kölcsönös kizárás megvalósításra kerül (<code>IncreasePixels</code> és <code>GetPixels</code> függvények).
+Magyarázat. Ha csak zártan a feladatot nézzük, nem is lenne a lock-ra szükség, hiszen az <code>Invoke</code> miatt a számlálót módosító hívások mind a fő szálra kerülnek. De nem véletlen köti ki feladat, hogy a <code>GetPixel</code>-nek bármilyen szálról biztonságosan hívhatónak kell lennie. Tehát, ha valaki indítana az appban egy háttérszálat, mely másodpercenként naplózná a számláló értékét, annak is jól kellene működnie.</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">BEADANDÓ</p>
@@ -1291,8 +1292,8 @@ Ha a felhasználó azelőtt nyomja meg a Step1 gombot, hogy a biciklik elérnék
         </path>
       </svg>
     </span>
-    <span title="2023. április 22. 16:31:47">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-22T16:31:47+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-22</span>
+    <span title="2023. április 23. 16:21:48">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-23T16:21:48+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-23</span>
     </span>
   </span>
 
