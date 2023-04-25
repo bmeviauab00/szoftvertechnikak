@@ -1,6 +1,4 @@
 ---
-search:
-  exclude: true
 authors: BenceKovari,bzolka
 ---
 
@@ -21,43 +19,80 @@ Az önálló gyakorlat célja:
 
 A szükséges fejlesztőkörnyezetről [itt](../fejlesztokornyezet/index.md) található leírás.
 
-A feladat publikálásának, elkészítésének alapelvei és követelményei:
+## A beadás menete
 
-- A feladathoz tartozó GitHub Classroom hivatkozás: **TODO**
-  A munkamenet megegyezik az előző házi feladatéval: a fenti hivatkozással mindenkinek születik egy privát repója, abban kell dolgozni és a határidőig a feladatot beadni.
+:exclamation: Bár az alapok hasonlók, vannak lényeges, a folyamatra és követelményekre vonatkozó eltérések a korábbi házi feladatokhoz képest, így mindenképpen figyelmesen olvasd el a következőket.
+
+- Az alapfolyamat megegyezik a korábbiakkal. GitHub Classroom segítségével hozz létre magadnak egy repository-t. A meghívó URL-t Moodle-ben találod (a tárgy nyitóoldalán a "*GitHub classroom hivatkozások a házi feladatokhoz*" hivatkozásra kattintva megjelenő oldalon látható). Fontos, hogy a megfelelő, ezen házi feladathoz tartozó meghívó URL-t használd (minden házi feladathoz más URL tartozik). Klónozd le az így elkészült repository-t. Ez tartalmazni fogja a megoldás elvárt szerkezetét. A feladatok elkészítése után commit-old és push-old a megoldásod.
 - A kiklónozott fájlok között a `WinFormExpl.sln`-t megnyitva kell dolgozni.
-- Az egyes feladatok leírásánál ==Külön megjelöltük== azokat az azonosítókat, szövegeket, melyeknél fontos, hogy a beadott feladatban a megadott érték szerepeljen
-- A feladatok kérik, hogy készíts **képernyőképet** a megoldás egy-egy részéről, mert ezzel bizonyítod, hogy a megoldásod saját magad készítetted. **A képernyőképek elvárt tartalmát a feladat minden esetben pontosan megnevezi.**
-A képernyőképeket a megoldás részeként kell beadni, a repository-d gyökérmappájába tedd (a Neptun.txt mellé). A képernyőképek így felkerülnek GitHub-ra git repository tartalmával együtt. Mivel a repository privát, azt az oktatókon kívül más nem látja. Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltölteni, kitakarhatod a képről.
-- A beadott megoldások mellé külön indoklást, illetve leírást nem várunk el, ugyanakkor az elfogadás feltétele, hogy a beadott kódban a feladat megoldása szempontjából relevánsabb részek kommentekkel legyenek ellátva.
+- :exclamation: Az egyes feladatok leírásánál ==Külön megjelöltük== (olyan stílusban, mint ahogy itt az előző szövegrészt látod) azokat az azonosítókat, szövegeket, melyeknél fontos, hogy a beadott feladatban a megadott érték szerepeljen.
+- :exclamation: A feladatok kérik, hogy készíts **képernyőképet** a megoldás egy-egy részéről, mert ezzel bizonyítod, hogy a megoldásod saját magad készítetted. **A képernyőképek elvárt tartalmát a feladat minden esetben pontosan megnevezi.**
+A képernyőképeket a megoldás részeként kell beadni, a repository-d gyökérmappájába tedd (a neptun.txt mellé). A képernyőképek így felkerülnek GitHub-ra a git repository tartalmával együtt. Mivel a repository privát, azt az oktatókon kívül más nem látja. Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltölteni, kitakarhatod a képről.
+- :exclamation: A beadott megoldások mellé külön indoklást, illetve leírást nem várunk el, ugyanakkor az elfogadás feltétele, hogy a beadott kódban a feladat megoldása szempontjából relevánsabb részek kommentekkel legyenek ellátva.
 - Ha valakinél az előellenőrző csak az opcionális feladatok esetében jelez hibát, az nem jelent problémát az alapfeladatok vonatkozásában.
-
-TODO Az alábbi közös részek snippetként legyenek inkább:
-
-A következők is fontosak (ugyanazok, mint az 1. házi feladat esetében voltak):
-
-1. :exclamation: A kiinduló projektben van egy `.github/workflows` mappa, ennek tartalmát tilos megváltoztatni, törölni stb.
-2. :exclamation: A munka során a kiindulási repóban levő solutionben/projektben kell dolgozni: új solution és/vagy projektfájl létrehozása, vagy a projekt más/újabb .NET verziókra targetelése tilos.
-3. :exclamation: A repository gyökérmappájában található neptun.txt fájlba írd bele a Neptun kódod, csupa nagybetűvel. A fájlban csak ez a hat karakter legyen, semmi más.
-4. Oldd meg a feladatot. Pushold a határidőig. Akárhány commitod lehet, a legutolsó állapotot fogjuk nézni.
-5. A megoldást a tanszéki portálra nem kell feltölteni, de az eredményt itt fogjuk meghirdetni a kapcsolódó számonkérés alatt.
-6. A házi feladatot külön explicit beadni nem kell, csak legyen fent GitHub-on határidőre a megoldás.
-7. Amikor a házi feladatod beadottnak tekinted, célszerű ellenőrizni a GitHub webes felületén a repository-ban a fájlokra való rápillantással, hogy valóban minden változtatást push-oltál-e.
-8. Szokásosan az előellenőrző pozitív kimenetele nem jelenti a feladat automatikus elfogadását, a végső oktatói ellenőrzés plusz szempontokat is figyelembe vesz.
 
 ## Ellenőrző futtatása
 
-Jelen házi feladathoz kapcsolódó tesztek futtatása időigényes. Sajnos a GitHub limitek nem teszik lehetővé, hogy a szokásos módon automatizáltan GitHub alapokon futtassuk. A tesztek futtatására mindenkinek a saját számítógépén van mód a következőknek megfelelően.
+Jelen házi feladathoz kapcsolódó tesztek futtatása időigényes. Sajnos a GitHub limitek nem teszik lehetővé, hogy a szokásos módon automatizáltan nagyon nagy számban, GitHub alapokon futtassuk. A tesztek futtatására elsődlegesen mindenkinek a saját számítógépén van mód a következőknek megfelelően.
 
 ### Telepítendő eszközök
 
-==TODO ezt a rész revidiálni kell!==
+1. Töltsd le innen és telepítsd a WinAppDriver alkalmazást: https://github.com/microsoft/WinAppDriver/releases/download/v1.2.1/WindowsApplicationDriver_1.2.1.msi
+2. A WinAppDriver csak akkor tud futni, ha a gépeden engedélyezed a Developer mode (magyarul Fejlesztői mód)-ot. Angol Windows-on a Start keresőben be kell gépelni a „developer settings” szöveget és így talál oda, talán magyar Windows alatt is megtalálja ugyanígy (ha nem, akkor: Gépház -> Frissítés és Biztonság -> Fejlesztőknek -> Fejlesztői mód).
+   ![Rename](images/developer-mode.png)
+A beállítástól nem kell tartani, a legtöbb fejlesztői gépen ezt egyébként is be kell/szokás kapcsolni a gyakorlatban.
+1. Hozzd létre a c:\Sznikak mappát (ékezet nélküli!).
+2. Le kell tölteni a https://github.com/bmeviauab00/winforms-hf-uitest-binaries repó tartalmát a fenti mappába. Két lehetőség pl.:
+    - Lehetőség 1. Ez a legegyszerűbb, ha telepítve van a gépedre a parancssori git (ha nem tudod, csak próbáld ki az alábbiakat, legfeljebb nem működik). Parancssorból navigálj be a c:\Sznikák mappába, és add ki a következő parancsot:
+    git clone --depth 1 https://github.com/bmeviauab00/winforms-hf-uitest-binaries
+    Ekkor létrejön a c:\Sznikak\winforms-hf-uitest-binaries\ mappa és ebbe letöltődnek a teszt specifikus fájlok GitHub-ról.
+    - Lehetőség 2. A c:\Sznikak mappában hozz létre egy winforms-hf-uitest-binaries nevű almappát.
+    A GitHub felületén fenti link megnyitása, majd a zöld „Code” gomb lenyit és alul „Download zip” kiválaszt. A zip-et csomagold ki valahova és tartalmát másold a 
+    c:\Sznikak\winforms-hf-uitest-binaries
+    mappába úgy, hogy ebben a mappában közvetlenül legyen a „TestFiles” almappa, az appium-dotnet-driver.dll és a több dll fájl is.
+    A Windows alapesetben blokkolja az ebben a mappában található dll-eket, ezt fel kell oldani erre a két fájlra: WinFormExpl-Test.dll és Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll. Ehhez nyisd meg a két fájlra egyesével a fájl tulajdonságait (pl. Windows Fájl Intézőben), és az oldal alján pipáld be az Unblock (magyar Windows-on ennek értelemszerű fordítása) jelölőnégyzetet majd OK:
+    
+        ![Unblock file](images/unblock-file.png)
 
-### Futtatás
+### Futtatás (amikor tesztelni szeretnéd a megoldásod)
+
+1. Indítsd el a WinAppDrivert, alapértelmezett telepítés esetén itt található: c:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe. Ez egy parancssor ablakban indul, és futnia is kell végig, ne zárd be amíg tesztelsz:
+   ![Unblock file](images/winappdriver.png)
+2. Győződj meg, hogy a solution-öd a legfrissebb formában le van fordítva (pl. VS alatt build) és minden forrásfájlod el van mentve (ctrl+shift+S).
+3. Győződj meg, hogy nem fut az alkalmazásod egyetlen példányban sem.
+4. Indítsd egy új parancssort (erre ne a fenti WinAppDriveres parancssori ablakot használd, hanem egy másikat indíts), navigálj a megoldásod gyökérmappájába, és az itt található `RunBaseTest.bat`-tal tudod futtatni az alap (nem IMSc) teszteket, a `RunIMScTest.bat`-tal pedig az IMSc teszteket.
+
+A tesztek elindítják az alkalmazást, látni fogod a felületét, a gépelést és a kattintásokat. Amíg fut a teszt, **ne mozgasd az egeret, ne használd a billentyűzetet**, ezek megzavarják a tesztet és sikertelen lesz! Ha meg akarod szakítani a tesztet, akkor zárd be az alkalmazást és a parancssorban nyomj egy Ctrl+C-t.
+
+**Ha változtatsz a forráskódodon, és szeretnéd a módosítások alapján tesztelni**, akkor csak annyi a teendő, hogy újra futtatod a fenti bat fájl valamelyikét a fent előkészített parancssorból (feltéve, hogy a WinAppDriver is fut a háttérben). Tipp: ha csak egy adott feladathoz kapcsolódó teszteket szeretnéd futtatni, akkor ideiglenesen módosíthatod a RunBaseTest.bat tartalmát, hogy csak az adott feladathoz tartozó „dotnet test” kezdetű sor legyen benne, a másik három „dotnet test” sor kitörlésével.
+
+!!! note "Alternatív lehetőség a tesztek futtatására"
+    A szokásos GitHub alapú teszt futtatása is elő van készítve. Ha valakinek a fenti lépéseket követve nem sikerül a tesztelés, akkor használhatja az online, GitHub alapú ellenőrzést. Magától ez nem fog futni a push során, manuálisan kell indítani a push-t követően:
+
+    1. GitHubon meg kell nyitni a házi feladatodhoz tartozó repository oldalt.
+    2. Az Actions oldalra navigálni (kattintás az "Actions" hivatkozáson).
+    3. Baloldalt a Build&Check-OnGitHub kiválasztása.
+    4. Jobb oldalon a "Run workflow" gombra kattintva a lenyílt panelon a "Run workflow" zöld gombon kattintás.
+    5. Ekkor elindul az ellenőrző, a gomb alatti listában megjelenik a futó példány. Ha ez nem jelenik meg azonnal, akkor várni kell, néha kell pár másodperc, fél-egy perc is, mire elindul. Ha nagyon nem akarna megjelenni, akkor érdemes az oldal frissítésével is próbálkozni.
 
 ## Elnevezések
 
 :exclamation: Az alábbiakban, a feladatok leírása során bizonyos elnevezések ==ennek a mintának== megfelelő kiemelt szövegstílussal szerepelnek. Lényeges, hogy ezeknél pontosan kövesd az elnevezést, máskülönben a megoldás nem lesz elfogadható (pl. az ellenőrző máskülönben nem találja meg az adott felületelemet, vagy egyéb ellenőrzési probléma származhat belőle).
+
+## Visual Studio designer hiba
+
+Az alábbiakat csak akkor érdemes kinyitni és megnézni, ha valamiért nem nyílik meg Visual Studioban az űrlap szerkesztőfelülete.
+
+??? "Ha nem nyílik meg az űrlap szerkesztésre"
+    A Visual Studio 2022 a Git-ből frissen kiklónozott forrás esetén (amikor még nem létezik egy .csproj.user kiterjesztésű fájl) az űrlapokat  - valószínűsíthetően egy bug miatt – időnként nem hajlandó megnyitni szerkesztő módban (szerencsére ez nagyon ritka). A solution megnyitása után ez esetben ezt látjuk:
+
+    ![VS designer probléma](images/vs-designer-issue-1.png)
+
+    A probléma az, hogy a `Form1.cs` előtti ikon (pirossal bekeretezve) nem egy űrlap, hanem egy zöld C# ikon. Ez esetben hiába kattintunk duplán a fájlon, nem az űrlap szerkesztő nyílik meg, hanem csak a forrásfájl. A megoldás ez esetben a következő: a Build menüben válasszuk ki a „Rebuild solution” menüt, majd a Build menüben a „Clean solution” menüt, és várjunk egy kicsit. Ekkor pár másodperc múlva a Solution Explorerben az űrlapunk ikonja megváltozik:
+    
+    ![VS designer probléma javítva](images/vs-designer-issue-2.png)
+
+    Most már meg tudjuk nyitni az űrlapot szerkesztésre, ha duplán kattintunk a Solution Explorerben a fenti csomóponton.
 
 ## Feladat 1- Menü
 
@@ -65,18 +100,9 @@ Jelen házi feladathoz kapcsolódó tesztek futtatása időigényes. Sajnos a Gi
 
 :exclamation: A főablak fejléce a "==MiniExplorer==" szöveg legyen, hozzáfűzve a saját Neptun kódod: (pl. "ABCDEF" Neptun kód esetén "MiniExplorer - ABCDEF”), fontos, hogy ez legyen a szöveg! Ehhez az űrlapunk `Text` tulajdonságát állítsuk be erre a szövegre.
 
-:exclamation: Az űrlapunk neve jelenleg "Form1", ami szintén elég semmitmondó. Nevezzük át Neptun kódunknak megfelelően (pl. "ABCDEF" Neptun kód esetén "MainForm_ABCDEF”-re).
-
-Az átnevezést a Solution Explorerben tudjuk megtenni, itt több technikát is használhatunk. Válasszuk ki a `Form1` elemet, majd még egyszer kattintsunk rajta bal gombbal: ekkor a név szerkeszthetővé válik (pont úgy dolgozunk, ahogy egy fájlt is átnevezünk Windows Explorerben). Vagy egyszerűen csak megnyomjuk az ++f2++ billentyűt az átnevezés elindításához. Vagy akár használhatjuk a jobb gombos menü *Rename* funkcióját. Akárhogy is indultunk, írjuk be új névnek a `MainForm.cs`-t, majd nyomjuk meg az ++enter++ billentyűt. Ekkor a Visual Studio rákérdez egy felugró ablakban, hogy minden kapcsolódó elemet nevezzen-e át ennek megfelelően: itt mindenképpen **Yes**-t válasszunk:
-
-![Rename](images/rename.png)
-
-!!! tip "Ha hiba van"
-    Ha netán ekkor valami furcsa hibával mutatja a Visual Studio az űrlapunkat, akkor zárjuk be az űrlap tabfülét (vagy az összes tabfület), majd nyissuk meg újra, a hiba ekkor várhatóan megszűnik.
-
 ### Feladat
 
-Vezessünk be egy menüsort a főablakunk (`Form1`) tetején. A menüben egyetlen elem legyen "File” néven, két almenüvel:
+Vezessünk be egy menüsort a főablakunk (`MainForm`) tetején. A menüben egyetlen elem legyen "File” néven, két almenüvel:
 
 - ==Open==: később adunk neki funkciót
 - ==Exit==: kilép az alkalmazásból
@@ -100,12 +126,12 @@ A Windows Forms világban gyakran fordul elő, hogy egyedi vezérlőket, vagy ű
 
 ### Feladat
 
-Készíts egy új űrlap/ablak (`Form`) típust ==InputDialog== néven (a fejléce is legyen ==InputDialog==), mely egy szövegdobozt (`TextBox`), továbbá egy ==Ok== és egy ==Cancel== feliratú gombot tartalmaz. A két gomb bezáráskor állítsd be a `Form` `DialogResult` tulajdonságát `DialogResult.OK`, illetve `DialogResult.Cancel` értékre. Az űrlap ezen felül tartalmazzon egy publikus, `string` típusú, `Path` nevű tulajdonságot!
+Készíts egy új űrlap/ablak (`Form`) típust ==InputDialog== néven (a fejléce is legyen ==InputDialog==), mely egy szövegdobozt (`TextBox`), továbbá egy ==Ok== és egy ==Cancel== feliratú gombot tartalmaz. Az űrlap gombokkal történő bezáráshoz állítsd be a `Form` `DialogResult` tulajdonságát `DialogResult.OK`, illetve `DialogResult.Cancel` értékre a gombkattintás eseménykezelőkben. Az űrlap ezen felül tartalmazzon egy publikus, `string` típusú, `Path` nevű tulajdonságot!
 
 Az űrlap tartalma arányosan változzon az átméretezés során:
 
-- `TextBox` szélessége növekedjen (a helye ne változzon).
-- A gombok a hozzájuk közelebbi sarokhoz képest rögzített pozícióban maradjanak (mind x mind y koordináta tekintetében, az ablak szélességének és magasságának állításakor is). Az *Ok* gomb legyen bal alsó, a *Cancel* pedig jobb alsó sarokhoz rögzítve.
+- `TextBox` szélessége növekedjen (a helye és magassága ne változzon).
+- Az űrlap átméretezésekor a gombok a hozzájuk közelebbi sarokhoz képest rögzített pozícióban maradjanak (mind x mind y koordináta tekintetében, az ablak szélességének és magasságának állításakor is). Az *Ok* gomb legyen bal alsó, a *Cancel* pedig jobb alsó sarokhoz rögzítve.
 
 ### Megoldás
 
@@ -170,7 +196,7 @@ A feladatot próbáld meg önállóan megoldani, majd a lenti leírás alapján 
     :exclamation: Mielőbb továbbmennél a következő feladatra, egy képernyőmentést kell készítened `Feladat2.png` néven az alábbiaknak megfelelően:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
-    - a „háttérben” a Visual Studio legyen, a `MainForm_<neptun>.cs` megnyitva,
+    - a „háttérben” a Visual Studio legyen, a `MainForm.cs` megnyitva,
     - a VS *View / Full Screen* menüjével kapcsolj ideiglenesen *Full Screen* nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
     - VS-ben zoomolj úgy, hogy a fájl teljes tartalma, az előtérben pedig az alkalmazásod ablaka legyen látható.
     
@@ -202,6 +228,7 @@ A feladat megoldásához a kapcsolódó gyakorlatban már alkalmazott, illetve a
 
 - Az ablak területének kettéosztására használjuk ismét a `SplitContainer` vezérlőt (a neve maradjon az alapértelmezett `splitContainer1`)
 - A `ListView` oszlopainak felvételekor csak a `Text` tulajdonságot változtasd, a `Name`-et ne. Ugyanitt, az oszlopok szélességét is növeld meg.
+- Ha a `ListView` nem mutatja a 2 oszlopot, csak a fájlok neveit, a `View` tulajdonságát állítsd át `Details`-re.
 - A `ListView` `FullRowSelect` tulajdonságát állítsd `true` ra (enélkül a tesztek nem futnak le jól majd).
 - Az aktuálisan kiválasztott elem adatainak megjelenítését a `ListView` `SelectedIndexChanged` eseményével célszerű megoldani.
 - A `detailsPanel` `Dock` tulajdonságát megfelelően be kell állítani.
@@ -230,7 +257,7 @@ Az elkészült alkalmazás képe:
     Készíts egy képernyőmentést `Feladat3.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
-    - a „háttérben” a Visual Studio legyen, a `MainForm_<neptun>.cs` megnyitva,
+    - a „háttérben” a Visual Studio legyen, a `MainForm.cs` megnyitva,
     - a VS *View / Full Screen* menüjével kapcsolj ideiglenesen *Full Screen* nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
     - görgess le a forrásfájlod legaljára, használj kb. normál zoom értéket, most fontos, hogy ami a képernyődön lesz, legyen jól olvasható (az nem baj, ha nem fér ki minden, nem is fog), az előtérben pedig az alkalmazásod ablaka.
 
@@ -255,7 +282,7 @@ A feladatot próbáld meg önállóan megoldani, majd a lenti leírás alapján 
 
     A megoldás alapját egy `Timer` komponens fogja adni. Ez egy olyan vezérlő, mely nem rendelkezik vizuális felülettel, csupán néhány testre szabható tulajdonsággal és egy `Tick` eseménnyel, mely az `Interval` tulajdonságban (milliszekundumban) megadott időközönként automatikusan meghívódik. Első lépésként ezt az ütemezést állítjuk be.
 
-    1. Húzzunk egy `Timer` komponenst (*Toolbox / Componensts*) `Form1`-re! Figyeljük meg, hogy a komponens csupán a `Form` alatti szürke területen jelenik meg. Itt tudjuk kijelölni a későbbi lépésekhez.
+    1. Húzzunk egy `Timer` komponenst (*Toolbox / Componensts*) `MainForm`-ra! Figyeljük meg, hogy a komponens csupán a `Form` alatti szürke területen jelenik meg. Itt tudjuk kijelölni a későbbi lépésekhez.
 
         ![Timer](images/timer.png)
 
@@ -263,7 +290,7 @@ A feladatot próbáld meg önállóan megoldani, majd a lenti leírás alapján 
 
     3. Állítsuk a `Name` tulajdonságot `reloadTimer`-re!
     
-    4. Vezessünk be néhány új tagváltozót a `Form1` osztályban:
+    4. Vezessünk be néhány új tagváltozót a `MainForm` osztályban:
         - `loadedFile` az utoljára betöltött fájl adatait tartalmazza,
         - `counter` az újratöltésig szükséges tizedmásodpercek számát tartalmazza, a későbbiekben minden tizedmásodpercben eggyel csökkentjük az értékét egy időzítő segítségével, míg el nem éri a nullát,
         - `counterInitialValue` a `counter` számláló kezdőértéke (ahonnan visszaszámol).
@@ -271,7 +298,7 @@ A feladatot próbáld meg önállóan megoldani, majd a lenti leírás alapján 
         A tagváltozókat az osztály elejére szoktuk beszúrni:
 
         ```csharp hl_lines="3-5"
-        public partial class Form1: Form
+        public partial class MainForm: Form
         {
             private FileInfo loadedFile = null;
             int counter;
@@ -286,7 +313,7 @@ A feladatot próbáld meg önállóan megoldani, majd a lenti leírás alapján 
         A `counterInitialValue` értékét a fenti kódban neked kell meghatározni: számítsd ki a frissítési időköz és az `timer` `Interval` alapján!
 
         ```csharp hl_lines="4"
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             counterInitialValue = ; // TODO a frissítési időköznek megfelelő érték
@@ -327,7 +354,7 @@ A feladatot próbáld meg önállóan megoldani, majd a lenti leírás alapján 
         - Tényleges rajzolást az állapotot megváltoztató műveletben nem végzünk, hanem a form/vezérlő (esetünkben panel) `Invalidate` műveletében váltjuk ki a `Paint` eseményt.
         - A konkrét téglalap (aktuális állapotnak megfelelő) megjelenítéséért/kirajzolásáért az űrlap/vezérlő (esetünkben a panel) `Paint` eseménye felelős.
 
-    8. Iratkozzunk fel a `detailsPanel` komponens `Paint` eseményére. Ehhez a panel kijelölése után a *Property Editor*-ban az *Events* fülön kattintsunk duplán a `Paint` eseményre, ezzel létrejön a kapcsolódó eseménykezelő (`detailsPanel _Paint`). Töltsük ki a kódját:
+    8. Iratkozzunk fel a `detailsPanel` komponens `Paint` eseményére. Ehhez a panel kijelölése után a *Property Editor*-ban az *Events* fülön kattintsunk duplán a `Paint` eseményre, ezzel létrejön a kapcsolódó eseménykezelő (`detailsPanel_Paint`). Töltsük ki a kódját:
 
         ```csharp
         private void detailsPanel_Paint(object sender, PaintEventArgs e)

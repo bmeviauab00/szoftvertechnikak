@@ -1,6 +1,4 @@
 ---
-search:
-  exclude: true
 authors: BenceKovari
 ---
 
@@ -24,32 +22,18 @@ A szükséges fejlesztőkörnyezet a szokásos, [itt](../fejlesztokornyezet/inde
 !!! warning "Ellenőrző futtatása"
     Ehhez a feladathoz érdemi előellenőrző nem tartozik: minden push után lefut ugyan, de csak a Neptun.txt kitöltöttségét ellenőrzi és azt, van-e fordítási hiba. Az érdemi ellenőrzést a határidő lejárta után a laborvezetők teszik majd meg.
 
-A feladat publikálásának és beadásának alapelvei megegyeznek az előző feladatéval, pár kiemelt követelmény:
+## A beadás menete
 
-- A munkamenet megegyezik az előző házi feladatéval: a fenti hivatkozással mindenkinek születik egy privát repója, abban kell dolgozni és a határidőig a feladatot beadni.
+- Az alapfolyamat megegyezik a korábbiakkal. GitHub Classroom segítségével hozz létre magadnak egy repository-t. A meghívó URL-t Moodle-ben találod (a tárgy nyitóoldalán a "*GitHub classroom hivatkozások a házi feladatokhoz*" hivatkozásra kattintva megjelenő oldalon látható). Fontos, hogy a megfelelő, ezen házi feladathoz tartozó meghívó URL-t használd (minden házi feladathoz más URL tartozik). Klónozd le az így elkészült repository-t. Ez tartalmazni fogja a megoldás elvárt szerkezetét. A feladatok elkészítése után commit-old és push-old a megoldásod.
 - A kiklónozott fájlok között a `MultiThreadedApp.sln`-t megnyitva kell dolgozni.
 - :exclamation: A feladatok kérik, hogy készíts **képernyőképet** a megoldás egy-egy részéről, mert ezzel bizonyítod, hogy a megoldásod saját magad készítetted. **A képernyőképek elvárt tartalmát a feladat minden esetben pontosan megnevezi.** A képernyőképeket a megoldás részeként kell beadni, a repository-d gyökérmappájába tedd (a Neptun.txt mellé). A képernyőképek így felkerülnek GitHub-ra git repository tartalmával együtt. Mivel a repository privát, azt az oktatókon kívül más nem látja. Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltölteni, kitakarhatod a képről.
 - :exclamation: A beadott megoldások mellé külön indoklást, illetve leírást nem várunk el, ugyanakkor az elfogadás feltétele, hogy a beadott kódban a feladat megoldása szempontjából relevánsabb részek **kommentekkel legyenek ellátva**.
-
-TODO Az alábbi közös részek snippetként legyenek inkább:
-
-A következők is fontosak (ugyanazok, mint az 1. házi feladat esetében voltak):
-
-1. :exclamation: A kiinduló projektben van egy `.github/workflows` mappa, ennek tartalmát tilos megváltoztatni, törölni stb.
-2. :exclamation: A munka során a kiindulási repóban levő solutionben/projektben kell dolgozni: új solution és/vagy projektfájl létrehozása, vagy a projekt más/újabb .NET verziókra targetelése tilos.
-3. :exclamation: A repository gyökérmappájában található neptun.txt fájlba írd bele a Neptun kódod, csupa nagybetűvel. A fájlban csak ez a hat karakter legyen, semmi más.
-4. Oldd meg a feladatot. Pushold a határidőig. Akárhány commitod lehet, a legutolsó állapotot fogjuk nézni.
-5. A megoldást a tanszéki portálra nem kell feltölteni, de az eredményt itt fogjuk meghirdetni a kapcsolódó számonkérés alatt.
-6. A házi feladatot külön explicit beadni nem kell, csak legyen fent GitHub-on határidőre a megoldás.
-7. Amikor a házi feladatod beadottnak tekinted, célszerű ellenőrizni a GitHub webes felületén a repository-ban a fájlokra való rápillantással, hogy valóban minden változtatást push-oltál-e.
-8. Szokásosan az előellenőrző pozitív kimenetele nem jelenti a feladat automatikus elfogadását, a végső oktatói ellenőrzés plusz szempontokat is figyelembe vesz.
 
 ## Feladat 1 – Bicikli
 
 ### Bevezető feladatok
 
 1. :exclamation: A főablak fejléce a "Tour de France" szöveg legyen, hozzáfűzve a saját Neptun kódod: (pl. "ABCDEF" Neptun kód esetén "Tour de France - ABCDEF"), fontos, hogy ez legyen a szöveg! Ehhez az űrlapunk `Text` tulajdonságát állítsuk be erre a szövegre.
-2. :exclamation: Az űrlapunk neve jelenleg "Form1", mely szintén elég semmitmondó. Nevezzük át Neptun kódunknak megfelelően (pl. "ABCDEF" Neptun kód esetén "MainForm_ABCDEF"-re).
 
 ### Feladat
 
@@ -93,7 +77,7 @@ A Windows Forms alkalmazásunk főablakának bal oldalán egy gomb legyen (ez eg
     { 
         if (InvokeRequired)
         {
-            Invoke(new BikeAction(MoveBike), bike);
+            Invoke(MoveBike, bike);
         }
         else
         {
@@ -130,13 +114,16 @@ A Windows Forms alkalmazásunk főablakának bal oldalán egy gomb legyen (ez eg
     !!! tip "Előrehozás"
         Ha a jelen vagy egy későbbi feladatban a biciklit reprezentáló gomb nem a panel előtt, hanem mögötte jelenik meg, akkor jobb gombbal kattintsunk a panelen, és válasszuk ki a *Send to back* menüt.
 
+    ??? tip "Bezáráskori ObjectDisposedException"  
+        Ha a megoldásunkat Visual Studioban debuggolva futtatjuk, akkor kilépéskor `ObjectDisposedException`-t kaphatunk. Az `Invoke` csak akkor hívható, amikor a űrlapunk mögötti natív ablak még létezik. Kilépéskor ez megszűnik, ebből ered a "hiba". Ez inkább csak egyfajta figyelmeztetés a keretrendszer részéről, de esetünkben nem igazi hiba: ha nem debuggolva indítjuk az alkalmazást, akkor kilépéskor nem is jelentkezik, lenyelődik. Szép, de kicsit körülményesebb megoldás lehetne, ha pl. a `Form` `OnClosing` függvényét felüldefiniálva vagy a `FormClosing` eseménykezelőben leállítanánk a szálakat (vagy egy flag-gel jeleznénk feléjük, hogy most már nem szabad `Invoke`-ot hívni). Kevésbé szép megoldás lehet az `ObjectDisposedException` elkapása és lenyelése.
+
 !!! example "BEADANDÓ"
     Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
 
     Készíts egy képernyőmentést `Feladat1.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
-    - a „háttérben” a Visual Studio legyen, a `MainForm_<neptun>.cs` megnyitva,
+    - a „háttérben” a Visual Studio legyen, a `MainForm.cs` megnyitva,
     - a VS *View/Full Screen* menüjével kapcsolj ideiglenesen *Full Screen* nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
     - VS-ben zoomolj úgy, hogy a fájl teljes tartalma látható legyen, az előtérben pedig az alkalmazásod ablaka.
 
@@ -149,6 +136,7 @@ Valósítsuk meg a rajtvonalat. Egészítsük ki az alkalmazásunkat két továb
 ![Rajtvonal](images/rajtvonal.png)
 
 A *Start* gomb megnyomását követően mindhárom bicikli induljon el véletlenszerű tempóban. Amikor egy bicikli a start panelre érkezik, az őt vezérlő szál blokkolva várakozzon. Amikor a *Step1* gombot megnyomjuk, a biciklik folytassák útjukat a célig.
+Ha a felhasználó azelőtt nyomja meg a Step1 gombot, hogy a biciklik elérnék a startvonalat, akkor a bicikliknek már nem kell megállni a startvonalon (de az is teljesen jó megoldás, ha ilyen esetben a Step1 lenyomását még figyelmen kívül hagyja az alkalmazás).
 
 ### Megoldás
 
@@ -177,7 +165,7 @@ A feladat megoldása analóg az előzőével, ám ezúttal `AutoResetEvent`-et k
     Készíts egy képernyőmentést `Feladat3.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
-    - a „háttérben” a Visual Studio legyen, a `MainForm_<neptun>.cs` megnyitva,
+    - a „háttérben” a Visual Studio legyen, a `MainForm.cs` megnyitva,
     - a VS *View/Full Screen* menüjével kapcsolj ideiglenesen *Full Screen* nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
     - görgess le a forrásfájlod legaljára, használj kb. normál zoom vagy kicsit kisebb értéket, fontos, hogy ami a képernyődön lesz, legyen jól olvasható (az nem baj, ha nem fér ki minden), az előtérben pedig az alkalmazásod ablaka.
 
@@ -198,6 +186,7 @@ A megoldás menete:
 
 !!! warning "Lényeges"
     A megoldás csak akkor elfogadható, ha a `lock` utasítással a kölcsönös kizárás megvalósításra kerül (`IncreasePixels` és `GetPixels` függvények).
+    Magyarázat. Ha csak zártan a feladatot nézzük, nem is lenne a lock-ra szükség, hiszen az `Invoke` miatt a számlálót módosító hívások mind a fő szálra kerülnek. De nem véletlen köti ki feladat, hogy a `GetPixel`-nek bármilyen szálról biztonságosan hívhatónak kell lennie. Tehát, ha valaki indítana az appban egy háttérszálat, mely másodpercenként naplózná a számláló értékét, annak is jól kellene működnie.
 
 !!! example "BEADANDÓ"
     Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
@@ -205,7 +194,7 @@ A megoldás menete:
     Készíts egy képernyőmentést `Feladat4.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
-    - a „háttérben” a Visual Studio legyen, a `MainForm_<neptun>.cs` megnyitva,
+    - a „háttérben” a Visual Studio legyen, a `MainForm.cs` megnyitva,
     - a VS *View/Full Screen* menüjével kapcsolj ideiglenesen *Full Screen* nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
     - görgess le a forrásfájlod legaljára, használj kb. normál zoom vagy kicsit kisebb értéket, fontos, hogy ami a képernyődön lesz, legyen jól olvasható (az nem baj, ha nem fér ki minden), az előtérben pedig az alkalmazásod ablaka.
 
@@ -213,7 +202,7 @@ A megoldás menete:
 
 ### Feladat
 
-Egészítsük ki az alkalmazásunkat úgy, hogy bármelyik biciklit újra tudjuk indítani. Az újra indításhoz elég a biciklit jelképező gombra kattintani. Ilyenkor a bicikli visszakerül a kiinduló pozícióba és újra kezdi a futamot. Az új futam során a bicikli *Step1*-nél és *Step2*-nél is ismét meg kell álljon.
+Egészítsük ki az alkalmazásunkat úgy, hogy bármelyik biciklit újra tudjuk indítani. Az újra indításhoz elég a biciklit jelképező gombra kattintani. Ilyenkor a bicikli visszakerül a kiinduló pozícióba, és újra kezdi a futamot (az újrakezdéshez nem kell a Start gombot megnyomni, a Start gombot célszerű is az első kattintás során letiltani, hogy csak egyszer lehessen kattintani rajta). Az új futam során a bicikli *Step2*-nél ismét meg kell álljon (a *Step1* kapcsán szabadon lehet választani).
 
 ### Megoldás
 
@@ -286,6 +275,6 @@ A következőkben megadjuk a feladat megoldásának néhány fontos elemét:
 
 - Tegyél fel egy *Stop* gombot a felületre és készítsd elő a kattintást kezelő függvényt.
 - A megállításhoz szükség lesz két jelzésre a bicikliket futtató szál felé. Ez egyik jelzés egy `bool` típusú változó, amelyet a bicikliket futtató szál ciklusa figyel. Vedd fel ezt `stopBikes` néven, és módosítsd a szálfüggvényt, hogy ha a `bool` változó jelez, fejezze be a futást.
-- A másik jelzés abban az esetben kell, ha a szálak várakoznak. Ilyenkor nem tudják a `bool` változót ellenőrizni. Vegyél fel egy új `ManualResetEvent` típusú változót, amely a leállítás eseményt fogja jelezni. Ezt az eseményt a `bool` változóval együtt a biciklire valókattintás eseménykezelőjében kell jelzettbe állítani.
+- A másik jelzés abban az esetben kell, ha a szálak várakoznak. Ilyenkor nem tudják a `bool` változót ellenőrizni. Vegyél fel egy új `ManualResetEvent` típusú változót, amely a leállítás eseményt fogja jelezni. Ezt az eseményt a `bool` változóval együtt a *Stop* gombra való kattintás eseménykezelőjében kell jelzettbe állítani.
 - A bicikliket mozgató szálfüggvényben kommentezd ki (ne töröld!) az eddigi várakozást megvalósító kódrészeket, és készíts egy új megoldást az előbb felvett leállítást jelző `ManualResetEvent` segítségével. A várakozásokra továbbra is szükség lesz, azonban várakozni nem csak a start vonalra illetve a pihenőre szükséges, hanem a leállítást is észre kell venni.
 - Ha leállítás történt, a szál futását be kell fejezni. Ha a leállást jelző esemény megtörtént, térjen vissza a szál függvénye egy `return` utasítással.

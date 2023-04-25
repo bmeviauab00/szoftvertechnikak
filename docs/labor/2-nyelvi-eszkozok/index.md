@@ -81,7 +81,7 @@ Egy egyszerű, bemelegítő feladattal kezdünk. A következő példában egy `P
     Ezt **implicitly typed local variables**-nek, magyarul **implicit típusú lokális változó**-nak nevezzük. Ilyenkor a fordító a kontextusból, az egyenlőségjel jobb oldalából megpróbálja kitalálni a változó típusát, fenti esetben ez egy `Person` lesz. Fontos, hogy ettől a nyelv még statikusan tipusos marad (tehát **nem** úgy működik mint a JavaScript-es `var` kulcsszó), mert a `p` változó típusa a későbbiekben nem változhat meg, ez csak egy egyszerű szintaktikai édesítőszer annek érdekében, hogy tömörebben tudjunk lokális változókat definiálni (ne kelljen a típust "duplán", az `=` bal és jobb oldalán is megadni).
 
     !!! tip "Target-typed `new` expressions"
-        Egy másik megközelítés lehet a a C# 9-ben megjelent Target-typed `new` expressions, ahol a new operátor esetén hagyható el a típus, ha az a fordító által kitalálható a kontektusból (pl.: értékadás bal oldala, paraméter típusa, stb.). A fenti `Person` konstruktorunk a következőképpen nézne ki:
+        Egy másik megközelítés lehet a a C# 9-ben megjelent Target-typed `new` expressions, ahol a new operátor esetén hagyható el a típus, ha az a fordító által kitalálható a kontextusból (pl.: értékadás bal oldala, paraméter típusa, stb.). A fenti `Person` konstruktorunk a következőképpen nézne ki:
 
         ```csharp
         Person p = new();
@@ -691,67 +691,3 @@ for (int n = 0; n < list.Count; n++)
     Console.WriteLine($"Value: {i}");
 }
 ```
-
-## Kitekintés - Saját attribútum (custom attribute) készítése és használata
-
-Az alábbi nem tananyag, kitekintésként szolgál a témakörben érdeklődők számára.
-
-Készítsünk egy saját attribútum osztályt, amely csak tulajdonságok esetében alkalmazható, és befolyásolhatjuk vele `Person` objektumok string reprezentációba történő alakítását a `Person` osztályban felüldefiniált `ToString` metódusban.
-
-1. Az attribútumhoz hozzunk létre egy új osztályt a projektben `WriteInToStringAttribute` néven.
-   1. Az attribútum osztályok neve konvenció szerint `Attribute`-ra végződik
-   2. `Attribute` osztályból kell származzanak.
-   3. Az Attribútumok is rendes osztályok, tartalmazhatnak konstruktort, tulajdonságokat, függvényeket stb.
-      1. Készítsünk egy olyan tulajdonságot, mellyel ki/be kapcsolatható lesz a működése.
-   4. Definiálható, hogy milyen nyelvi elemre kerülhet rá az `[AttributeUsage]` attribútummal. (ami vicces módon maga is egy attribútum, melyen saját maga van rajta).
-
-    ```csharp
-    [AttributeUsage(AttributeTargets.Property)]
-    public class WriteInToStringAttribute : Attribute
-    {
-        public bool IsEnabled { get; set; }
-    }
-    ```
-
-    !!! tip "Flags enum"
-        Ha megvizsgáljuk az AttributeTargets enum-ot akkor láthatjuk, hogy `[Flags]` attribútummal rendelkezik és az enum tagjai kettőhatvány értékeket vesznek fel. Ezzel oldható meg C#-ban is, hogy egy enum változóban több enum értéket is tárolhassunk, ahol az int-ben a adott pozíciójú bit-et reprezentálnak az egyes enum értékek. Pl.: a `Property` és `Field` értéket az alábbi bitművelettel lehet "összefűzni":
-
-        ```csharp
-        [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
-        ```
-
-2. Definiáljuk felül a `Person` `ToString` metódusát, ahol reflection segítségével iteráljunk végig az összes tulajdonságon, és írjuk ki a tulajdonság nevét és értékét, ha megtalálható rajta ez az attribútum és az engedélyezett állapotban van (az `IsEnabled` értéke igaz).
-
-    ```csharp
-    public override string ToString()
-    {
-        var s = new StringBuilder();
-        s.AppendLine(base.ToString());
-
-        foreach (var property in typeof(Person).GetProperties())
-        {
-            if (property.GetCustomAttribute<WriteInToStringAttribute>()?.IsEnabled ?? false)
-            {
-                s.AppendLine($"\t{property.Name} = {property.GetValue(this)}");
-            }
-        }
-
-        return s.ToString();
-    }
-    ```
-
-    !!! tip "`GetCustomAttribute<T>`"
-        A `GetCustomAttribute<T>` generikus metódus a `System.Reflection` névtérben található.
-
-3. Rakjuk rá az `Age` tulajdonságra az attribútumunkat.
-
-    ```csharp
-    [WriteInToString(IsEnabled = true)]
-    public int Age { get; set; }
-    ```
-
-4. Írjuk ki a konzolra a `Main`-ben a `Person` `ToString`-jét, és próbáljuk ki az alkalmazást.
-
-    ```csharp
-    Console.WriteLine(p);
-    ```

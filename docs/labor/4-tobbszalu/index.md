@@ -38,7 +38,7 @@ A gyakorlat elvégzéséhez szükséges eszközök:
 
 ## Bevezető
 
-A párhuzamosan futó szálak kezelése kiemelt fontosságú terület, melyet miden szoftverfejlesztőnek legalább alapszinten ismernie kell. A gyakorlat során alapszintű, de kiemelt fontosságú problémákat oldunk meg, ezért törekednünk kell arra, hogy ne csak a végeredményt, hanem az elvégzett módosítások értelmét és indokait is megértsük.
+A párhuzamosan futó szálak kezelése kiemelt fontosságú terület, melyet minden szoftverfejlesztőnek legalább alapszinten ismernie kell. A gyakorlat során alapszintű, de kiemelt fontosságú problémákat oldunk meg, ezért törekednünk kell arra, hogy ne csak a végeredményt, hanem az elvégzett módosítások értelmét és indokait is megértsük.
 
 A feladat során egyszerű Windows Forms alkalmazást fogunk felruházni többszálas képességekkel, egyre komplexebb feladatokat megoldva. Az alapprobléma a következő: van egy függvényünk, mely hosszú ideig fut, s mint látni fogjuk, ennek „direktben” történő hívása a felületről kellemetlen következményekkel jár. A megoldás során egy meglévő alkalmazást fogunk kiegészíteni saját kódrészletekkel. Az újonnan beszúrandó sorokat az útmutatóban kiemelt háttér jelzi.
 
@@ -63,7 +63,7 @@ A feladatunk az, hogy a _Calculate Result_ gombra kattintás során futtassuk az
 Következő lépésben ismerkedjünk meg a letöltött Visual Studio solutionnel:
 
 1. Nézzük végig a `MainForm` osztályt.
-   - Az látjuk, hogy a felület alapvetően kész, csak az algoritmus futtatása hiányzik. 
+   - Azt látjuk, hogy a felület alapvetően kész, csak az algoritmus futtatása hiányzik. 
    - Az eredmény és a paraméterei naplózásához is találunk egy `ShowResult` nevű segédfüggvényt.
 2. A `DataFifo` osztályt egyelőre hagyjuk ki, csak a gyakorlat második felében fogjuk használni, majd később megismerkedünk vele.
 
@@ -315,7 +315,7 @@ Ezt a problémát csak úgy tudjuk elkerülni, ha a sor ürességének a vizsgá
 
 ### Probléma 2
 
-A `DataFifo` osztály egyidőben több szálból is hozzáférhet a `List<double[]>` típusú `_innerList` tagváltozóhoz. Ugyanakkor, ha megnézzük a `List<T>` dokumentációját, azt találjuk, hogy az osztály nem szálbiztos (not thread safe). Ez esetben viszont ez nem tehetjük meg, nekünk kell zárakkal biztosítanunk, hogy a kódunk egyidőben csak egy metódusához / tulajdonságához / tagváltozójához fér hozzá (pontosabban inkonzisztencia csak egyidejű írás, illetve egyidejű írás és olvasás esetén léphet fel, de az írókat és az olvasókat a legtöbb esetben nem szoktuk megkülönböztetni, itt sem tesszük).
+A `DataFifo` osztály egyidőben több szálból is hozzáférhet a `List<double[]>` típusú `_innerList` tagváltozóhoz. Ugyanakkor, ha megnézzük a `List<T>` dokumentációját, azt találjuk, hogy az osztály nem szálbiztos (not thread safe). Ez esetben viszont ezt nem tehetjük meg, nekünk kell zárakkal biztosítanunk, hogy a kódunk egyidőben csak egy metódusához / tulajdonságához / tagváltozójához fér hozzá (pontosabban inkonzisztencia csak egyidejű írás, illetve egyidejű írás és olvasás esetén léphet fel, de az írókat és az olvasókat a legtöbb esetben nem szoktuk megkülönböztetni, itt sem tesszük).
 
 A következő lépésben a `DataFifo` osztályunkat szálbiztossá tesszük, amivel megakadályozzuk, hogy a fenti két probléma bekövetkezhessen.
 
@@ -449,13 +449,13 @@ Az előző pontban megoldottuk a jelzést, ám ez önmagában nem sokat ér, his
 
     A fenti megoldás futtatásakor azt tapasztaljuk, hogy az alkalmazásunk felülete az első gombnyomást követően befagy. Az előző megoldásunkban ugyanis egy amatőr hibát követtünk el. A lock-olt kódrészleten belül várakozunk a `_hasData` jelzésére, így a főszálnak lehetősége sincs arra, hogy a `Put` műveletben (egy szintén `lock`-kal védett részen belül) jelzést küldjön `_hasData`-val. **Gyakorlatilag egy holtpont (deadlock) helyzet alakult ki.**
 
-    Gyors hibajavításként megadhatunk egy időkorlátot (ms) a várakozásnál:
+    Próbálkozhatnánk egy időkorlát megadásával (ms) a várakozásnál:
 
     ```cs
     if (_hasData.WaitOne(100))
     ```
 
-    Teszteljük az alkalmazást! A megoldás ugyan fut, de az elegáns és követendő minta az, hogy lock-on belül kerüljük a blokkolva várakozást.
+    Ez önmagában sem lenne elegáns megoldás, ráadásul a folyamatosan pollozó munkaszálak jelentősen kiéheztetnék a Put-ot hívó szálat! Helyette, az elegáns és követendő minta az, hogy lock-on belül kerüljük a blokkolva várakozást.
 
     Valódi javításként cseréljük meg a `lock`-ot és a `WaitOne`-t, illetve a `WaitOne` paraméter eltávolításával szüntessük meg a várakozási időkorlátot:
 
@@ -596,7 +596,7 @@ Korábban félretettük azt a problémát, hogy az ablakunk bezárásakor a proc
 
     A `Release` művelet helyett még egy másik alternatíva lehetne, hogy az `IDisposable` mintát megvalósítjuk a `DataFifo`-ba, de ilyenkor is kézzel kellene `Dispose`-t hívni, mivel nem függvény szintű az életciklusa a FIFO objektumnak, így nem tudnánk `using` blokkban használni.
 
-    Egy összetett alkalmazásban egyénként gyakran nem kézzel kezeljük egy-egy osztálynak a függőségeit és az életciklusát. Helyette a [Dependency Injection tervezési mintát](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection) érdemes alkalmazni, ahol egy külön komponensbe szervezzük ki az objektumok példányosítását és életciklusának kezelését.
+    Egy összetett alkalmazásban egyébként gyakran nem kézzel kezeljük egy-egy osztálynak a függőségeit és az életciklusát. Helyette a [Dependency Injection tervezési mintát](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection) érdemes alkalmazni, ahol egy külön komponensbe szervezzük ki az objektumok példányosítását és életciklusának kezelését.
 
 ## Kitekintés: Task, async, await
 
