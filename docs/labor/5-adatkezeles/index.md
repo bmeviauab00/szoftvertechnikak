@@ -401,16 +401,16 @@ A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, amely használ
     InsertShipper2("Super Shipper", "49-98562'); DELETE FROM Shippers;--");
     ```
 
-    Úgy állítottuk össze a második paramétert, hogy az lezárja az eredeti utasítást, ezután tetszőleges **(!!!)** SQL-t írhatunk, végül kikommentezzük az erdeti utasítás maradékát (`--`).
+    Úgy állítottuk össze a második paramétert, hogy az lezárja az eredeti utasítást, ezután tetszőleges **(!!!)** SQL-t írhatunk, végül kikommentezzük az eredeti utasítás maradékát (`--`).
 
 3. Próbáljuk ki az alkalmazást, hibát kell kapjunk, mely arra utal, hogy valamelyik szállító nem törölhető idegen kulcs hivatkozás miatt.
 
-    Tehát a `DELETE FROM` is lefutott! Nézzük meg debuggerrel (pl. a `conn.Open` utasításon állva), hogy mi a végleges SQL (`command.CommandText`).
+    Tehát a `DELETE FROM` is lefutott! Nézzük meg debugger-rel (pl. a `conn.Open` utasításon állva), hogy mi a végleges SQL (`command.CommandText`).
 
     Tanulságok:
 
     - SOSE fűzzünk össze programozottan SQL-t (semmilyen módszerrel), mert azzal kitesszük a kódunkat SQL Injection alapú támadásnak.
-    - Az adatbázis állítsa össze a végleges SQL-t SQL paraméterek alapján, mert ilyenkor biztosított, hogy a paraméter értékek nem fognak SQL-ként értelmeződni (hiába írunk be SQL-t). Használjunk paraméterezett SQL-t vagy tárolt eljárást.
+    - Az adatbázis állítsa össze a végleges SQL-t az SQL paraméterek alapján, mert ilyenkor biztosított, hogy a paraméter értékek nem fognak SQL-ként értelmeződni (hiába írunk be SQL-t). Használjunk paraméterezett SQL-t vagy tárolt eljárást.
     - Használjunk adatbázis kényszereket, pl. a véletlen törlés ellen is véd.
     - Konfiguráljunk adatbázisban felhasználókat különböző jogosultságokkal, a programunk connection string-jében megadott felhasználó csak a működéshez szükséges minimális jogokkal rendelkezzen. A mi esetünkben nem adtunk meg felhasználót, a windows-os felhasználóként fogunk csatlakozni.
 
@@ -454,14 +454,14 @@ A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, amely használ
     - **nem engedélyezzük a törlést**: Ha hivatkoznak a törlendő rekordra, az adatbázis hibával tér vissza (ahogy fent is láthattuk).
     - **kaszkád törlés** – az idegen kulcs kényszeren beállítható, hogy a hivatkozott rekord törlésekor a hivatkozó rekord is törlődjön. Gyakran ez oda vezet, hogy minden idegen kulcs kényszerünk ilyen lesz, és egy (véletlen) törléssel végigtörölhetjük akár a teljes adatbázist, azaz nehezen jósolható a törlés hatása.
     - **hivatkozás NULL-ozása** – az idegen kulcs kényszeren beállítható, hogy a hivatkozott rekord törlésekor a hivatkozó rekord idegen kulcs mezője `NULL` értékű legyen. Csak akkor alkalmazható, ha a modellünkben az adott idegen kulcs mező `NULL`-ozható.
-    - **logikai törlés** (soft delete) – törlés művelet helyett csak egy flag oszlopot (pl. `IsDeleted`) állítunk be. Előnye, hogy nem kell az idegen kulcs kényszerekkel foglalkoznunk, a törölt adat rendelkezésre áll, ha szükség lenne rá (pl. undelete művelet). Ám a működés bonyolódik, mert foglalkozni kell azzal, hogy hogyan és mikor szűrjük a törölt rekordokat (pl. hogy ne jelenjenek meg a felületen, statisztikákban), vagy hogyan kezeljük, ha egy nem törölt rekord töröltre hivatkozik.
+    - **logikai törlés** (soft delete) – törlés művelet helyett csak egy flag oszlopot (pl. `IsDeleted`) állítunk be. Előnye, hogy nem kell az idegen kulcs kényszerekkel foglalkoznunk, a törölt adat rendelkezésre áll, ha szükség lenne rá (pl. undelete művelet). Ám a működés bonyolódik, mert foglalkozni kell azzal, hogy hogyan és mikor szűrjük a törölt rekordokat (pl. hogy ne jelenjenek meg a felületen, statisztikákban), vagy hogyan kezeljük, ha egy nem törölt rekord törölt rekordra hivatkozik.
 
 ## Kitekintés
 
 A fenti ADO.NET alapműveleteket ebben az itt látott alapformában ritkán használják két okból kifolyóan (még akkor is, ha ez a megközelítés adja a legjobb teljesítményt):
 
 - Gyenge típusosság (egy rekord adatait beolvasni egy osztály property-jeibe igen körülményes, cast-olni kell stb.)
-- Stringbe kódolt SQL (az elgépelésből eredő hibák csak futási időben derülnek ki)
+- String-be kódolt SQL (az elgépelésből eredő hibák csak futási időben derülnek ki)
   
 Az előbbire megoldást jelenthetnek a különböző ADO.NET-et kiegészítő komponensek, pl.:
 
@@ -472,9 +472,9 @@ Ezek a megoldások egy minimális teljesítményveszteségért cserébe nagyobb 
 
 Mindkét problémára megoldást jelentenek az ORM (Object-Relational-Mapping) rendszerek, cserébe ezek nagyobb overheaddel járnak, mint az előbb említett megoldások. Az ORM-ek leképezést alakítanak ki az adatbázis és az OO osztályaink között, és ennek a leképezésnek a segítségével egyszerűsítik az adatbázis műveleteket. Az osztályainkon végzett, típusos kóddal leírt műveleteinket automatikusan átfordítják a megfelelő adatbázis műveletekre, így a memóriabeli objektummodellünket szinkronban tartják az adatbázissal. Az ORM-ek ebből következően kapcsolat nélküli modellt használnak. Ismertebb .NET-es ORM-ek:
 
-- ADO.NET DataSet – elsőgenerációs ORM, ma már nagyon ritkán használjuk.
+- ADO.NET DataSet – első generációs ORM, ma már nagyon ritkán használjuk
 - Entity Framework 6.x – (régi) .NET Framework leggyakrabban használt ORM keretrendszere
 - [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/) (EF Core) – a jelenleg elsődlegesen használt .NET ORM (open source)
-- [NHibernate](https://nhibernate.info/) – a java-s Hibernate .NET-es portja (open source)
+- [NHibernate](https://nhibernate.info/) – a Java-s Hibernate .NET-es portja (open source)
 
-Az Entity Framework Core-ral részletesebben foglalkozunk az *Adatvezérelt rendszerek* specializáció tárgyban illetve a *Szofverfejlesztés .NET platformon* választható tárgyban.
+Az Entity Framework Core-ral részletesebben foglalkozunk az *Adatvezérelt rendszerek* specializáció tárgyban illetve a *Szoftverfejlesztés .NET platformon* választható tárgyban.
