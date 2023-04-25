@@ -15,12 +15,12 @@ A gyakorlat elvégzéséhez szükséges eszközök:
 
 - Visual Studio 2022
 - Windows 10 vagy Windows 11 operációs rendszer
-- A gyakorlat során  Visual Studioban az *SQL Server Object Explorer*-t fogjuk használni az adatbázis objektumok közötti navigálására és a lekérdezések futtatására. Ehhez szükség lehet az *SQL Server Data Tools* komponensre, melyet legegyszerűbben az *Individual Components* oldalon tudunk telepíteni a Visual Studio Installer-ben, de a *Data Storage and Processing* workload is tartalmazza ezt.
+- A gyakorlat során Visual Studio-ban az *SQL Server Object Explorer*-t fogjuk használni az adatbázis objektumok közötti navigálására és a lekérdezések futtatására. Ehhez szükség lehet az *SQL Server Data Tools* komponensre, melyet legegyszerűbben az *Individual Components* oldalon tudunk telepíteni a Visual Studio Installer-ben, de a *Data Storage and Processing* workload is tartalmazza ezt.
 
 !!! tip "Gyakorlat Linuxon vagy Macen"
-    A gyakorlat anyag alapvetően Windowsra és Visual Studiora készült, de - némiképpen más úton - elvégezhető más operációs rendszereken is, mivel a .NET 6 SDK támogatott Linuxon és Mac-en, Linuxon:
+    A gyakorlat anyag alapvetően Windowsra és Visual Studio-ra készült, de - némiképpen más úton - elvégezhető más operációs rendszereken is, mivel a .NET 6 SDK támogatott Linuxon és Mac-en is, Linuxon:
 
-    - Visual Studio helyett szövegszerkesztővel (pl.: VSCode) és CLI eszközökkel.
+    - Visual Studio helyett, szövegszerkesztővel (pl.: VSCode) és CLI eszközökkel.
     - Az SQL szervernek van Linuxos változata, Mac-en pedig Dockerben futtatható (de Linuxon is talán a Docker legkényelmesebb mód a futtatására).
     - Az adatok vizualizációjára használható a szintén keresztplatformos *Azure Data Studio* eszköz.
 
@@ -42,7 +42,7 @@ A gyakorlat elvégzéséhez szükséges eszközök:
 
 ### ADO.NET
 
-Alacsony szintű adatbáziskezelésre a .NET platformon az ADO.NET áll rendelkezésre, segítségével relációs adatbázisokat tudunk elérni.
+Alacsony szintű adatbázis-kezelésre a .NET platformon az ADO.NET áll rendelkezésre, segítségével relációs adatbázisokat tudunk elérni.
 
 Az ADO.NET használata során két eltérő adathozzáférési modellt alkalmazhatunk:
 
@@ -52,21 +52,21 @@ Az ADO.NET használata során két eltérő adathozzáférési modellt alkalmazh
 Az alábbi két blokkot lenyitva áttekintést kaphatunk a két modell alapelvéről.
 
 ??? abstract "A Kapcsolatalapú modell alapelvei"
-    Lényege az, hogy az adatbáziskapcsolatot végig nyitva tartjuk, amíg az adatokat lekérdezzük, módosítjuk, majd a változtatásokat az adatbázisba visszaírjuk. A megoldásra DataReader objektumokat használhatunk (lásd később). A megoldás előnye az egyszerűségében rejlik (egyszerűbb programozási modell és konkurenciakezelés). A megoldás hátránya, hogy a folyamatosan fenntartott hálózati kapcsolat miatt skálázhatósági problémák adódhatnak. Ez azt jelenti, hogy az adatkezelőhöz történő nagyszámú párhuzamos felhasználói hozzáférés esetén folyamatosan nagyszámú adatbázis kapcsolat él, ami adatkezelő rendszerek esetén a teljesítmény szempontjából költséges erőforrásnak számít. Így a fejlesztés során célszerű arra törekedni, hogy az adatbázis kapcsolatokat mielőbb zárjuk le.
+    Lényege az, hogy az adatbázis-kapcsolatot végig nyitva tartjuk, amíg az adatokat lekérdezzük, módosítjuk, majd a változtatásokat az adatbázisba visszaírjuk. A megoldásra DataReader objektumokat használhatunk (lásd később). A megoldás előnye az egyszerűségében rejlik (egyszerűbb programozási modell és konkurenciakezelés). A megoldás hátránya, hogy a folyamatosan fenntartott hálózati kapcsolat miatt skálázhatósági problémák adódhatnak. Ez azt jelenti, hogy az adatkezelőhöz történő nagyszámú párhuzamos felhasználói hozzáférés esetén folyamatosan nagyszámú adatbázis kapcsolat él, ami adatkezelő rendszerek esetén a teljesítmény szempontjából költséges erőforrásnak számít. Így a fejlesztés során célszerű arra törekedni, hogy az adatbázis kapcsolatokat mielőbb zárjuk le.
 
     A modell előnyei:
 
     - Egyszerűbb a konkurencia kezelése
     - Az adatok mindenhol a legfrissebbek
 
-    Megjegyzés: ezek az előnyök akkor jelentkeznek, ha az adatbázis hozzáférés az adatkezelő szigorú zárakat használ – ezt mi a hozzáférés során megfelelő tranzakció izolációs szint megadásával tudjuk szabályozni. Ennek technikái későbbi tanulmányok során kerülnek ismertetésre).
+    Megjegyzés: ezek az előnyök akkor jelentkeznek, ha az adatbázis hozzáféréshez az adatkezelő szigorú zárakat használ – ezt mi a hozzáférés során megfelelő tranzakció izolációs szint megadásával tudjuk szabályozni. (Ennek technikái későbbi tanulmányok során kerülnek ismertetésre.)
 
     Hátrányok:
 
     - Folyamatos hálózati kapcsolat
-    - Skálázhatóság
+    - Skálázhatóság hiánya
 
-??? abstract "A Kapcsolatnélküli modell alapelvei"
+??? abstract "A Kapcsolat-nélküli modell alapelvei"
     A kapcsolatalapú modellel ellentétben az adatok megjelenítése és memóriában történő módosítása során nem tartunk fent adatbázis kapcsolatot. Ennek megfelelően a főbb lépések a következők: a kapcsolat felvételét és az adatok lekérdezését követően azonnal bontjuk a kapcsolatot. Az adatokat ezt követően tipikusan megjelenítjük és lehetőséget biztosítunk a felhasználónak az adatok módosítására (rekordok felvétele, módosítása, törlése igény szerint). A módosítások mentése során újra felvesszük az adatkapcsolatot, mentjük az adatbázisba a változtatásokat és zárjuk a kapcsolatot. Természetesen a modell megköveteli, hogy a lekérdezése és a módosítások visszaírása között – amikor nincs kapcsolatunk az adatbázissal – az adatokat és a változtatásokat a memóriában nyilvántartsuk. Erre az ADO.NET környezetben nagyon kényelmes megoldást nyújt a `DataSet` objektumok alkalmazása.
 
     A modell előnyei:
@@ -79,7 +79,7 @@ Az alábbi két blokkot lenyitva áttekintést kaphatunk a két modell alapelvé
     - Az adatok nem mindig a legfrissebbek
     - Ütközések lehetségesek
       
-    Megjegyzés: Számos lehetőségünk van arra, hogy az objektumokat és kapcsolódó változásokat nyilvántartsuk a memóriában. A `DataSet` csak az egyik lehetséges technika. De használhatunk erre a célra közönséges objektumokat, illetve ezek menedzselését megkönnyítő ADO.NET-nél korszerűbb .NET technológiákat (pl. Entity Framework Core).
+    Megjegyzés: Számos lehetőségünk van arra, hogy az objektumokat és kapcsolódó változásokat nyilvántartsuk a memóriában. A `DataSet` csak az egyik lehetséges technika. De használhatunk erre a célra közönséges objektumokat, illetve ezek menedzselését megkönnyítő - az ADO.NET-nél korszerűbb - .NET technológiákat (pl. Entity Framework Core).
 
 ### A kapcsolatalapú modell
 
@@ -88,7 +88,7 @@ A labor keretében a kapcsolatalapú modellt ismerjük meg.
 Az alapfolyamat a következő:
 
 1. Kapcsolat létrehozása az alkalmazás, illetve az adatbázis kezelő rendszer között (`Connection` objektum felhasználásával).
-2. A futtatandó SQL utasítás összeállítás (`Command` objektum felhasználásával).
+2. A futtatandó SQL utasítás összeállítása (`Command` objektum felhasználásával).
 3. Utasítás futtatása (`Command` objektum felhasználásával).
 4. Lekérdezések esetén a visszakapott rekordhalmaz feldolgozása (`DataReader` objektum felhasználásával). Erre a módosító parancsok esetén értelemszerűen nincs szükség.
 5. Kapcsolat lezárása.
@@ -99,13 +99,13 @@ Mint a fentiekből kiderül, az adatbázissal való kommunikációnak ebben a mo
 - Command
 - Data Reader
 
-Ezek az összetevők egy-egy osztályként jelennek meg, adatbáziskezelőfüggetlen részük a BCL *System.Data.Common* névterében található `DbConnection`, `DbCommand`, illetve `DbDataReader` néven. Ezek absztrakt osztályok, az adatbáziskezelők gyártóinak feladata, hogy ezekből leszármazva megírják a konkrét adatbáziskezelőket támogató változatokat.
+Ezek az összetevők egy-egy osztályként jelennek meg, adatbázis-kezelő-független részük a BCL *System.Data.Common* névterében található `DbConnection`, `DbCommand`, illetve `DbDataReader` néven. Ezek absztrakt osztályok, az adatbázis-kezelők gyártóinak feladata, hogy ezekből leszármazva megírják a konkrét adatbázis-kezelőket támogató változatokat.
 
-Mindhárom ADO.NET összetevő támogatja a *Dispose* mintát, így `using` blokkban használható – használjuk is így, amikor csak tudjuk. Az adatbáziskezelő általában másik gépen található, mint ahol a kódunk fut (a labor során pont nem :)), így tekintsünk ezekre, mint távoli hálózati erőforrásokra.
+Mindhárom ADO.NET összetevő támogatja a *Dispose* mintát, így `using` blokkban használhatók – használjuk is így, amikor csak tudjuk. Az adatbázis-kezelő általában másik gépen található, mint ahol a kódunk fut (a labor során pont nem :)), így tekintsünk ezekre, mint távoli hálózati erőforrásokra.
 
-A Microsoft SQL Servert támogató változat a *Microsoft.Data.SqlClient* NuGet csomagban, az „Sql” prefixű osztályokban találhatók (`SqlConnection`, `SqlCommand` és `SqlDataReader`).
+A Microsoft SQL Server-t támogató változat a *Microsoft.Data.SqlClient* NuGet csomagban, az „Sql” prefixű osztályokban találhatók (`SqlConnection`, `SqlCommand` és `SqlDataReader`).
 
-A többi gyártó külön dll-(ek)be teszi a saját változatát, az így létrejött komponenst data providernek nevezik. Teljesség igénye nélkül néhány példa:
+A többi gyártó külön dll-(ek)be teszi a saját változatát, az így létrejött komponenst *data provider*-nek nevezik. Teljesség igénye nélkül néhány példa:
 
 - [PostgreSQL](https://www.npgsql.org/)
 - [SQLite](https://learn.microsoft.com/en-us/dotnet/standard/data/sqlite/?tabs=netcore-cli) 
@@ -113,7 +113,7 @@ A többi gyártó külön dll-(ek)be teszi a saját változatát, az így létre
 
 #### Connection
 
-Ez teremti meg a kapcsolatot a programunk, illetve az adatbáziskezelő-rendszer között.
+Ez teremti meg a kapcsolatot a programunk, illetve az adatbázis-kezelő-rendszer között.
 Inicializálásához szükség van egy connection string-re, mely a kapcsolat felépítéséhez szükséges adatokat adja meg a driver számára. Adatbázisgyártónként eltérő a belső formátuma ([bővebben](http://www.connectionstrings.com)).
 
 Új `Connection` példányosításakor nem biztos, hogy tényleg új kapcsolat fog létrejönni az adatbázis felé, a driverek általában connection pooling-ot alkalmaznak, hasonlóan, mint a thread pool esetében, újrahasználhatják a korábbi (éppen nem használt) kapcsolatokat.
@@ -131,17 +131,17 @@ A `Command`-nak be kell állítani egy kapcsolatot – ezen keresztül fog a par
 
 #### Data Reader
 
-Ha a parancs eredménye eredményhalmaz, akkor ennek a komponensnek a segítségével tudjuk az adatokat kiolvasni. Az eredményhalmaz egy táblázatnak tekinthető, a Data Reader ezen tud soronként végignavigálni (csak egyesével előrefelé!). A kurzor egyszerre egy soron áll, ha a sorból a szükséges adatokat kiolvastuk, a kurzort egy sorral előre léptethetjük. Csak az aktuális sorból tudunk olvasni. Kezdetben a kurzor nem az első soron áll, azt egyszer léptetnünk kell, hogy az első sorra álljon.
+Ha a parancs eredménye eredményhalmaz, akkor ennek a komponensnek a segítségével tudjuk az adatokat kiolvasni. Az eredményhalmaz egy táblázatnak tekinthető, a `Data Reader` ezen tud soronként végignavigálni (csak egyesével előrefelé!). A kurzor egyszerre egy soron áll, ha a sorból a szükséges adatokat kiolvastuk, a kurzort egy sorral előre léptethetjük. Csak az aktuális sorból tudunk olvasni. Kezdetben a kurzor nem az első soron áll, azt egyszer léptetnünk kell, hogy az első sorra álljon.
 
 Megjegyzés: navigálás kliens oldalon történik a memóriában, nincs köze az egyes adatkezelők által támogatott kiszolgáló oldali kurzorokhoz.
 
 ## 1. Feladat – Adatbázis előkészítése
 
-Elsőként szükségünk van egy adatbáziskezelőre. Ezt valós környezetben dedikált szerveren futó, adatbázis adminisztrátorok által felügyelt, teljesértékű adatbáziskezelők jelentik. Fejlesztési időben, lokális teszteléshez azonban kényelmesebb egy fejlesztői adatbáziskezelő használata.
-A Visual Studio telepítésének részeként kapunk is egy ilyen adatbázismotort, ez a LocalDB, mely a teljesértékű SQL Server egyszerűsített változata. Főbb tulajdonságai:
+Elsőként szükségünk van egy adatbázis-kezelőre. Ezt valós környezetben dedikált szerveren futó, adatbázis adminisztrátorok által felügyelt, teljes-értékű adatbázis-kezelők jelentik. Fejlesztési időben, lokális teszteléshez azonban kényelmesebb egy fejlesztői adatbázis-kezelő használata.
+A Visual Studio telepítésének részeként kapunk is egy ilyen adatbázismotort, ez a LocalDB, mely a teljes-értékű SQL Server egyszerűsített változata. Főbb tulajdonságai:
 
 - nem csak a Visual Studio-val, hanem külön is telepíthető,
-- az adatbázismotor szinte teljes mértékben kompatibilis a teljesértékű Microsoft SQL Serverrel,
+- az adatbázismotor szinte teljes mértékben kompatibilis a teljes-értékű Microsoft SQL Server-rel,
 - alapvetően arról a gépről érhető el, melyre telepítettük,
 - több példány is létrehozható igény szerint, a példányok alapvetően a létrehozó operációs rendszer felhasználója számára érhetők el (igény esetén megosztható egy példány a felhasználók között),
 - a saját példányok kezelése (létrehozás, törlés, stb.) nem igényel adminisztrátori jogokat.
@@ -151,7 +151,7 @@ A Visual Studio telepítésének részeként kapunk is egy ilyen adatbázismotor
 
     | Paracs         | Leírás                                                     |
     |----------------|------------------------------------------------------------|
-    | info           | az aktuális felhasznááló számára látható példányok listája |
+    | info           | az aktuális felhasználó számára látható példányok listája  |
     | create „locdb” | új példány létrehozása „locdb” névvel                      |
     | delete „locdb” | „locdb” nevű példány törlése                               |
     | start „locdb”  | „locdb” nevű példány indítása                              |
@@ -171,7 +171,7 @@ A Visual Studio is telepít, illetve indít LocalDB példányokat, ezért érdem
 10. Fedezzük fel az SSOE legfontosabb funkcióit (táblák adatainak, sémájának lekérdezése stb.).
 
 !!! Note "MSSQL menedzsment eszközök"
-    A Visual Studio-ban két eszközzel is kezelhetünk adatbázisokat: a Server Explorer-rel és az SQL Server Object Explorer-rel is. Előbbi egy általánosabb eszköz, mely nem csak adatbázis, hanem egyéb szerver erőforrások (pl. Azure szerverek) kezelésére is alkalmas, míg a másik kifejezetten csak adatbáziskezelésre van kihegyezve. Mindkettő elérhető a View menüből és mindkettő hasonló funkciókat ad adatbáziskezeléshez, ezért ebben a mérésben csak az egyiket (SQL Server Object Explorer) használjuk.
+    A Visual Studio-ban két eszközzel is kezelhetünk adatbázisokat: a Server Explorer-rel és az SQL Server Object Explorer-rel is. Előbbi egy általánosabb eszköz, mely nem csak adatbázis, hanem egyéb szerver erőforrások (pl. Azure szerverek) kezelésére is alkalmas, míg a másik kifejezetten csak adatbázis-kezelésre van kihegyezve. Mindkettő elérhető a View menüből és mindkettő hasonló funkciókat ad adatbázis-kezeléshez, ezért ebben a mérésben csak az egyiket (SQL Server Object Explorer) használjuk.
 
     Amikor nem áll rendelkezésünkre a Visual Studio fejlesztőkörnyezet, akkor az adatbázisunk menedzselésére az (ingyenes) SQL Server Management Studio-t vagy a szintén ingyenes és multiplatform Azure Data Studio-t tudjuk használni.
 
@@ -184,30 +184,30 @@ A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, amely használ
     - A Target Framework legyen *.NET 6*
     - Pipáljuk be a *Do not use top-level statements* kapcsolót
   
-2. Keressük ki a connection stringet az SSOE-ből: jobbklikk az adatbáziskapcsolatunkon (pirossal jelölve az alábbi ábrán) / Properties.
+2. Keressük ki a connection string-et az SSOE-ből: jobbklikk az adatbázis-kapcsolatunkon (pirossal jelölve az alábbi ábrán) / Properties.
 
     ![SSOE Database](images/SSOS-database.png)
 
-3. Másoljuk a Properties ablakból *Connection String* tulajdonság értékét egy változóba a `Program` osztályba.
+3. Másoljuk a Properties ablakból a *Connection String* tulajdonság értékét egy változóba, a `Program` osztályba.
 
     ```cs
     private const string ConnString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=neptun;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
     ```
 
     !!! tip "SQL Server connection string formátuma"
-        MSSQL esetében a connection string kulcs érték párokat tartalmaz pontosvesszővel elválasztva.
-        A `Data Source` kulcs alatt az SQL szerver példány neve, az` Initial Catalog` kulcs alatt az adatbázis neve szerepel.
-        Az `Integrated Security=true` kapcsoló pedig a Windows authentikációt jelenti.
+        MSSQL esetében a connection string kulcs értékpárokat tartalmaz pontosvesszővel elválasztva.
+        A `Data Source` kulcs alatt az SQL szerver példány neve, az` Initial Catalog` kulcs alatt pedig az adatbázis neve szerepel.
+        Az `Integrated Security=true` kapcsoló pedig a Windows autentikációt jelenti.
 
     !!! tip "@-os string (C# verbatim string)"
-        A `@` egy speciális karakter (verbatim indentifier), amit itt arra használunk, hogy a connection string-ben megjelenő backslash karakter (`\`) ne feloldójelként (escape character) kerüljön értelmezésre.
+        A `@` egy speciális karakter (verbatim identifier), amit itt arra használunk, hogy a connection string-ben megjelenő backslash karakter (`\`) ne feloldójelként (escape character) kerüljön értelmezésre.
 
 4. Vegyük fel a projektbe a `Microsoft.Data.SqlClient` NuGet csomagot. Ezt kétféleképpen tehetjük meg:
   
       - A) Visual Studio NuGet kezelőben:
         1. Projekten jobb gomb / *Manage NuGet Packages...*, a megjelenő oldalon *Browse* oldalra váltás.
         2. A keresőbe *Microsoft.Data.SqlClient* beírása.
-        3. A *Version* mezőben az 5.0.1 kiválasztása (laboron azért válaszuk ki ezt a verziót, mert ez szerepel a gépeken a NuGet cache-ben, otthoni gyakorlás során válasszuk inkább a *Latest stable*-t).
+        3. A *Version* mezőben az 5.0.1 kiválasztása (laboron azért választjuk ki ezt a verziót, mert ez szerepel a gépeken a NuGet cache-ben, otthoni gyakorlás során válasszuk inkább a *Latest stable*-t).
       - B) Bemásoljuk az alábbi csomag referenciát a a projektfájlba:
 
         ```xml
@@ -217,7 +217,7 @@ A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, amely használ
         ```
 
     !!! note "NuGet csomagkezelő"
-        A NuGet egy olyan online csomagkezelő rendszer, ahonnan .NET alapú projektjeinbe tudunk külső függőségeket, osztálykönyvtárakat egyszerűen, verziózott formában behivatkozni. Bővebben az első előadáson szerepel.
+        A NuGet egy olyan online csomagkezelő rendszer, ahonnan .NET alapú projektjeinkbe tudunk külső függőségeket, osztálykönyvtárakat egyszerűen, verziózott formában behivatkozni. Bővebben az első előadáson szerepel.
 
 5. Írjunk lekérdező függvényt, mely lekérdezi az összes szállítót:
 
@@ -244,7 +244,7 @@ A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, amely használ
     }
     ```
 
-    A kapcsolat alapú modell folyamata
+    A kapcsolat alapú modell folyamata:
 
     - Kapcsolat, parancs inicializálása
     - Kapcsolat megnyitása
@@ -260,8 +260,8 @@ A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, amely használ
         - A `DataReader`-t az eredményhalmazban található oszlopok nevével indexelhetjük – az eredmény `object` lesz, így, ha konkrétabb típusra van szükségünk cast-olni kell
         - A fordító nem értelmezi az SQL parancs szövegét (az csak egy string), hanem majd csak az adatbázis, így hibás SQL esetén csak futási idejű kivételt kapunk
         - Figyeljük meg, hogy az adatbázis séma változása esetén, pl. egy oszlop átnevezése után, hány helyen kell kézzel átírni string-eket a kódban
-        - `$`-ral prefixelve string interpolációt alkalmazhatunk, azaz közvetlenül a stringbe ágyazhatunk kiértékelendő kifejezéseket (C# 6-os képesség). A `$@` segítségével többsoros string interpolációs kifejezéseket írhatunk (a sortörést a {}-k között kell betennünk, különben a kimeneten is megjelenik). Érdekesség: C# 8-tól fölfele bármilyen sorrendben írhatjuk a $ és @ karaktereket, tehát a `$@` és a `@$` is helyesnek számít.
-        - A using kulcsszú blokk utasítás helyett egysoros kifejezésként is használható. Ilyen esetben a using blokk vége az tartalmazó blokkig tart (esetünkben a függvény végéig.). Ezzel csökkenthető a behúzások száma, de ne legyen automatikus reflex a használata, mert előfordulhat, hogy hamarabb célszerű kikényszeríteni az erőforrások felszabadítását, mint a tartalmazó blokk vége.
+        - `$`-ral prefixelve string interpolációt alkalmazhatunk, azaz közvetlenül a string-be ágyazhatunk kiértékelendő kifejezéseket (C# 6-os képesség). A `$@` segítségével többsoros string interpolációs kifejezéseket írhatunk (a sortörést a {}-k között kell betennünk, különben a kimeneten is megjelenik). Érdekesség: C# 8-tól fölfele bármilyen sorrendben írhatjuk a $ és @ karaktereket, tehát a `$@` és a `@$` is helyesnek számít.
+        - A using kulcsszú blokk utasítás helyett egysoros kifejezésként is használható. Ilyen esetben a using blokk vége a tartalmazó blokkig tart (esetünkben a függvény végéig). Ezzel csökkenthető a behúzások száma, de ne legyen automatikus reflex a használata, mert előfordulhat, hogy hamarabb célszerű kikényszeríteni az erőforrások felszabadítását, mint a tartalmazó blokk vége.
 
             ```cs
             private static void GetShippers()
@@ -319,7 +319,7 @@ A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, amely használ
     }
     ```
 
-    Itt olyan SQL-t kell írnunk, melynek az összeállításánál kívülről kapott változók értékeit is felhasználtuk. A string összerakásához egyszerűen a sztring összefűzés operátort, sztring interpolációt vagy `string.Format`-ot is használhattunk volna, de ez biztonsági kockázatot (SQL Injection – bővebben lásd lentebb) rejt – **SOHA!!! ne rakjuk össze az SQL-t stringművelettel**. Helyette írjuk meg úgy az SQL-t, hogy ahová a változók értékeit írnánk, oda paraméterhivatkozásokat teszünk. SQL Server esetében a hivatkozás szintaxisa: @paramnév.
+    Itt olyan SQL-t kell írnunk, melynek az összeállításánál kívülről kapott változók értékeit is felhasználtuk. A string összerakásához egyszerűen a string összefűzés operátort, string interpolációt vagy `string.Format`-ot is használhattunk volna, de ez biztonsági kockázatot (SQL Injection – bővebben lásd lentebb) rejt – **SOHA!!! ne rakjuk össze az SQL-t string művelettel**. Helyette írjuk meg úgy az SQL-t, hogy ahová a változók értékeit írnánk, oda paraméterhivatkozásokat teszünk. SQL Server esetében a hivatkozás szintaxisa: @paraméternév.
 
     A parancs futtatásához a paraméterek értékeit is át kell adnunk az adatbázisnak, ugyanis az fogja elvégezni a paraméterek helyére az értékek behelyettesítését.
 
@@ -333,7 +333,7 @@ A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, amely használ
     GetShippers();
     ```
 
-3. Próbáljuk ki az alkalmazást, ellenőrizzük a konzolban és az SSOE-ben is, hogy bekerült az új sor. Az SSOE-ben való gyors és kényelmes ellenőrzéshez a `Shippers` tábla context menüjéből válasszuk a *View Data* lehetőséget.
+3. Próbáljuk ki az alkalmazást, ellenőrizzük a konzolban és az SSOE-ben is, hogy bekerült-e az új sor. Az SSOE-ben való gyors és kényelmes ellenőrzéshez a `Shippers` tábla context menüjéből válasszuk a *View Data* lehetőséget.
 
 ## 4. Feladat - Módosítás tárolt eljárással
 
