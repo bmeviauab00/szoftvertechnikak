@@ -186,6 +186,7 @@ A megoldás menete:
 
 !!! warning "Lényeges"
     A megoldás csak akkor elfogadható, ha a `lock` utasítással a kölcsönös kizárás megvalósításra kerül (`IncreasePixels` és `GetPixels` függvények).
+    Magyarázat. Ha csak zártan a feladatot nézzük, nem is lenne a lock-ra szükség, hiszen az `Invoke` miatt a számlálót módosító hívások mind a fő szálra kerülnek. De nem véletlen köti ki feladat, hogy a `GetPixel`-nek bármilyen szálról biztonságosan hívhatónak kell lennie. Tehát, ha valaki indítana az appban egy háttérszálat, mely másodpercenként naplózná a számláló értékét, annak is jól kellene működnie.
 
 !!! example "BEADANDÓ"
     Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
