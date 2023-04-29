@@ -227,7 +227,7 @@ private void bike_Click(object sender, EventArgs e)
     Button bike = (Button)sender;
     Thread thread = (Thread)bike.Tag;
     
-    // Ha még nem indítottuk ez a szálat, ez null.
+    // Ha még nem indítottuk ezt a szálat, ez null.
     if (thread == null)
         return;
 
