@@ -170,6 +170,33 @@ A nézetekkel eddig nem foglalkoztunk, ez a következő lépés. Futtassuk a ké
 - Vegyük fel a két osztályt.
 - Implementáltassuk velük az `IView` interfészt (_Toolbox / Inheritence_ kapcsolat). Az `Update` művelet automatikusan implementálva lesz.
 
+Az egyes nézetek a dokumentumukból „táplálkoznak”, a a dokumentumukban tárolt adatokat jelenítik meg, azokat módosítják. Ehhez, a D-V architektúrának megfelelően el kell érjék a dokumentumukat.
+
+- A `SampleTextView` és `FontEditorView`-ban vegyünk fel egy `FontEditorDocument` típusú `document` nevű mezőt (ha felvettük az egyikben, lehet copy-paste-tel másolni a másikba), majd "Show as Association".
+Megjegyzés: azért nem célszerű általános `Document` típusút felvenni (és az interfészbe felvinni), mert a view-knak a konkrét dokumentum adatait (lásd alább) el kell érniük.
+
+Gondoljuk végig, milyen adattagokkal rendelkeznek az egyes nézetek. Ehhez futtassuk az alkalmazást, és nézzük meg ismét a felhasználói felületét.
+
+- A `SampleTextView` tárolja a mintaszöveget, melyet meg kell jeleníteni. Vegyünk fel egy `sampleText:string` mezőt. Ha el kellene menteni a mintaszöveget is, akkor a `FontEditorDocument`-ben kellene tárolni (és onnan mindig lekérdezni), mert az adatok mentéséért a dokumentum osztályunk a felelős.
+- A `FontEditorView` két dolgot tárol:
+    - A karakter kódja, melynek pixeleit megjeleníti. Vegyünk fel egy `editedChar: char` mezőt.
+    - A nagyítási tényezőt (`zoom: double` felvétele)
+
+A nézetek maguk felelősek a kirajzolásukért:
+
+- `Draw (g:Grapics)` felvétele mindkét nézetbe.
+
+### FontEditorDocument műveletek
+
+A `FontEditorDocument`-ben egy privát listában van egyelőre jelen a `CharDef`-ek listája. A nézetek így nem tudják elérni, pedig a megjelenítéshez szükségük lenne rá. **A dokumentumunkban be kell vezessünk olyan műveleteket, melyek a dokumentum által tárolt adatokat a nézetek számára elérhetővé teszik, és lehetőséget biztosítanak a módosításra is**.
+
+- Mindkét nézet el kell érje a megjelenített karakterek pixeleit tároló `CharDef` objektumokat. Ehhez vezessük be a `FontEditorDocument`-ben a `GetCharDef(c:char):CharDef` műveletet. Ezt hosszú távon majd úgy lesz célszerű megvalósítani, hogy a `GetCharDef` nem az eredeti objektumot adja vissza, hanem annak egy másolatát (clone). Ha az eredetit adná vissza, akkor a nézetek KÖZVETLENÜL tudnák módosítani a pixelek értékét, ezt mi nem akarjuk (bár a funkciók bővítésével rákényszerülhetünk).
+- A `FontEditorView`-nak képesnek kell lennie egy adott `CharDef` adott koordinátában levő pixel értékét invertálni (egér kattintáskor). Ehhez vezessük be a `FontEditorDocument`-ben az `InvertCharDefPixel(c:char, x: int, y: int)` műveletet.
+
+### A tervezés zárása
+
+Eljutottunk oda, hogy megterveztük az architektúrát, minden igazán lényeges döntést meghoztunk. Az UML diagram alapján megszületett az osztályok váza. Ezt természetesen jelentősen bővíteni kell, még születnek új osztályok is (pl. Form-ok, vezérlők).
+
 ## 3. Feladat - A kész alkalmazás áttekintése
 
 Idő hiányában nem valósítjuk meg az alkalmazást, hanem a kész megoldást nézzük át (laboron kb. 15 percben), annak is csak néhány lényeges használati esetét.
