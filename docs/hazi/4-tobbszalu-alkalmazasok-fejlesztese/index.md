@@ -263,7 +263,7 @@ catch (ThreadInterruptedException)
 
 A feladat további megoldása önállóan elvégezhető a korábbi ismeretek alapján.
 
-## Opcionális feladat – 2 IMsc pontért
+## Opcionális feladat – 2 IMSc pontért
 
 ### Feladat
 
