@@ -1,6 +1,4 @@
 ---
-search:
-  exclude: true
 authors: bzolka
 ---
 
@@ -33,27 +31,15 @@ Az önálló gyakorlat célja:
 A szükséges fejlesztőkörnyezet a szokásos, [itt](../fejlesztokornyezet/index.md) található leírás.
 
 !!! warning "Ellenőrző futtatása"
-    Ehhez a feladathoz érdemi előellenőrző nem tartozik: minden push után lefut ugyan, de csak a Neptun.txt kitöltöttségét ellenőrzi és azt, van-e fordítási hiba. Az érdemi ellenőrzést a határidő lejárta után a laborvezetők teszik majd meg.
+    Ehhez a feladathoz érdemi előellenőrző nem tartozik: minden push után lefut ugyan, de csak a neptun.txt kitöltöttségét ellenőrzi és azt, van-e fordítási hiba. Az érdemi ellenőrzést a határidő lejárta után a laborvezetők teszik majd meg.
 
-A feladat publikálásának és beadásának alapelvei megegyeznek az előző feladatéval, pár kiemelt követelmény:
+## A beadás menete
 
-- A munkamenet megegyezik az előző házi feladatéval: a fenti hivatkozással mindenkinek születik egy privát repója, abban kell dolgozni és a határidőig a feladatot beadni.
+- Az alapfolyamat megegyezik a korábbiakkal. GitHub Classroom segítségével hozz létre magadnak egy repository-t. A meghívó URL-t Moodle-ben találod (a tárgy nyitóoldalán a "*GitHub classroom hivatkozások a házi feladatokhoz*" hivatkozásra kattintva megjelenő oldalon látható). Fontos, hogy a megfelelő, ezen házi feladathoz tartozó meghívó URL-t használd (minden házi feladathoz más URL tartozik). Klónozd le az így elkészült repository-t. Ez tartalmazni fogja a megoldás elvárt szerkezetét. A feladatok elkészítése után commit-old és push-old a megoldásod.
+- A neptun.txt fájlba írd bele a Neptun kódod!
 - A kiklónozott fájlok között a `Signals.sln`-t megnyitva kell dolgozni.
-- :exclamation: A feladatok kérik, hogy készíts **képernyőképet** a megoldás egy-egy részéről, mert ezzel bizonyítod, hogy a megoldásod saját magad készítetted. **A képernyőképek elvárt tartalmát a feladat minden esetben pontosan megnevezi.** A képernyőképeket a megoldás részeként kell beadni, a repository-d gyökérmappájába tedd (a Neptun.txt mellé). A képernyőképek így felkerülnek GitHub-ra git repository tartalmával együtt. Mivel a repository privát, azt az oktatókon kívül más nem látja. Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltölteni, kitakarhatod a képről.
-- :exclamation: A beadott megoldások mellé külön indoklást, illetve leírást nem várunk el, ugyanakkor az elfogadás feltétele, hogy a beadott kódban a **Feladat 3 – Jelek grafikus megjelenítése, saját nézet osztály**”** fejezet feladatainak a megoldását **kommentekkel kell ellátni**. A többi fejezet feladatainak megoldását NEM kell kommentezni.
-
-TODO Az alábbi közös részek snippetként legyenek inkább:
-
-A következők is fontosak (ugyanazok, mint az 1. házi feladat esetében voltak):
-
-1. :exclamation: A kiinduló projektben van egy `.github/workflows` mappa, ennek tartalmát tilos megváltoztatni, törölni stb.
-2. :exclamation: A munka során a kiindulási repóban levő solutionben/projektben kell dolgozni: új solution és/vagy projektfájl létrehozása, vagy a projekt más/újabb .NET verziókra targetelése tilos.
-3. :exclamation: A repository gyökérmappájában található neptun.txt fájlba írd bele a Neptun kódod, csupa nagybetűvel. A fájlban csak ez a hat karakter legyen, semmi más.
-4. Oldd meg a feladatot. Pushold a határidőig. Akárhány commitod lehet, a legutolsó állapotot fogjuk nézni.
-5. A megoldást a tanszéki portálra nem kell feltölteni, de az eredményt itt fogjuk meghirdetni a kapcsolódó számonkérés alatt.
-6. A házi feladatot külön explicit beadni nem kell, csak legyen fent GitHub-on határidőre a megoldás.
-7. Amikor a házi feladatod beadottnak tekinted, célszerű ellenőrizni a GitHub webes felületén a repository-ban a fájlokra való rápillantással, hogy valóban minden változtatást push-oltál-e.
-8. Szokásosan az előellenőrző pozitív kimenetele nem jelenti a feladat automatikus elfogadását, a végső oktatói ellenőrzés plusz szempontokat is figyelembe vesz.
+- :exclamation: A feladatok kérik, hogy készíts **képernyőképet** a megoldás egy-egy részéről, mert ezzel bizonyítod, hogy a megoldásod saját magad készítetted. **A képernyőképek elvárt tartalmát a feladat minden esetben pontosan megnevezi.** A képernyőképeket a megoldás részeként kell beadni, a repository-d gyökérmappájába tedd (a neptun.txt mellé). A képernyőképek így felkerülnek GitHub-ra git repository tartalmával együtt. Mivel a repository privát, azt az oktatókon kívül más nem látja. Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltölteni, kitakarhatod a képről.
+- :exclamation: A beadott megoldások mellé külön indoklást, illetve leírást nem várunk el, ugyanakkor az elfogadás feltétele, hogy a beadott kódban a **Feladat 3 – Jelek grafikus megjelenítése, saját nézet osztály** fejezet feladatainak a megoldását **kommentekkel kell ellátni**. A többi fejezet feladatainak megoldását NEM kell kommentezni.
 
 ## Feladatok áttekintése
 
@@ -154,7 +140,7 @@ Módosítsuk az `App.NewDocument` függvényt, hogy a leszármazott `SignalDocum
 
 Gondoskodjunk a dokumentum által tárolt adatok elmentéséről.
 
-A tesztelést segítendő inicializáljuk a `SignalDocument`-ben tárolt jelérték listát úgy, hogy mindig legyen benne néhány elem. Célszerű ezeket egy külön tagváltozóban felvenni. Az alábbi kód arra is példát mutat, hogyan lehet C# nyelven a tömb elemeit az inicializás során egyszerűen megadni (collection initializer).
+A tesztelést segítendő inicializáljuk a `SignalDocument`-ben tárolt jelérték listát úgy, hogy mindig legyen benne néhány elem. Célszerű ezeket egy külön tagváltozóban felvenni. Az alábbi kód arra is példát mutat, hogyan lehet C# nyelven a tömb elemeit az inicializálás során egyszerűen megadni (collection initializer).
 
 !!! warning "Figyelem"
     A megvalósítás során NE az alábbi példában szereplő értékeket használd:
@@ -365,7 +351,7 @@ Számos pontban nagyon hasonlítanak az űrlapokhoz, pl.:
 
 Abban természetesen különbözik az űrlapoktól, hogy míg az űrlapok, mint önálló ablakok a `Show` vagy `ShowDialog` műveletekkel megjeleníthetők, a `UserControl`-ok vezérlők, melyeket űrlapokon vagy más vezérlőkön kell elhelyezni.
 
-Visszetérve a feladatra a megvalósítás főbb lépései a következők:
+Visszatérve a feladatra a megvalósítás főbb lépései a következők:
 
 - Az új nézet a fentieknek megfelelően egy `UserControl` legyen. Saját `UserControl`-t felvenni pl. a _Project/Add UserControl_ menüvel lehet. Legyen a neve `GraphicsSignalView` (jelezve, hogy ez egy grafikus nézet, és nem karakteresen jeleníti meg a jeleket).
 - Bővítsük az osztályt a `DemoView` mintájára (többek között implementálja az `IView` interfészt). A `DemoView` a dokumentumra ős `Document` típusként hivatkozik, lásd `Document document;` tagváltozó. A `GraphicsSignalView`-ban célszerű a specifikusabb, `SignalDocument` típusúnak definiálni a tagváltozót!
