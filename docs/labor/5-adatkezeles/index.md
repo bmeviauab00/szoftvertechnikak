@@ -261,7 +261,7 @@ A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, amely használ
         - A fordító nem értelmezi az SQL parancs szövegét (az csak egy string), hanem majd csak az adatbázis, így hibás SQL esetén csak futási idejű kivételt kapunk
         - Figyeljük meg, hogy az adatbázis séma változása esetén, pl. egy oszlop átnevezése után, hány helyen kell kézzel átírni string-eket a kódban
         - `$`-ral prefixelve string interpolációt alkalmazhatunk, azaz közvetlenül a stringbe ágyazhatunk kiértékelendő kifejezéseket (C# 6-os képesség). A `$@` segítségével többsoros string interpolációs kifejezéseket írhatunk (a sortörést a {}-k között kell betennünk, különben a kimeneten is megjelenik). Érdekesség: C# 8-tól fölfele bármilyen sorrendben írhatjuk a $ és @ karaktereket, tehát a `$@` és a `@$` is helyesnek számít.
-        - A using kulcsszú blokk utasítás helyett egysoros kifejezésként is használható. Ilyen esetben a using blokk vége az tartalmazó blokkig tart (esetünkben a függvény végéig.). Ezzel csökkenthető a behúzások száma, de ne legyen automatikus reflex a használata, mert előfordulhat, hogy hamarabb célszerű kikényszeríteni az erőforrások felszabadítását, mint a tartalmazó blokk vége.
+        - A using kulcsszó blokk utasítás helyett egysoros kifejezésként is használható. Ilyen esetben a using blokk vége a tartalmazó blokkig tart (esetünkben a függvény végéig.). Ezzel csökkenthető a behúzások száma, de ne legyen automatikus reflex a használata, mert előfordulhat, hogy hamarabb célszerű kikényszeríteni az erőforrások felszabadítását, mint a tartalmazó blokk vége.
 
             ```cs
             private static void GetShippers()
