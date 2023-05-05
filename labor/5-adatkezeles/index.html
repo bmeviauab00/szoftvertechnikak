@@ -1184,7 +1184,7 @@ Az <code>Integrated Security=true</code> kapcsoló pedig a Windows authentikáci
 <li>Figyeljük meg, hogy az adatbázis séma változása esetén, pl. egy oszlop átnevezése után, hány helyen kell kézzel átírni string-eket a kódban</li>
 <li><code>$</code>-ral prefixelve string interpolációt alkalmazhatunk, azaz közvetlenül a stringbe ágyazhatunk kiértékelendő kifejezéseket (C# 6-os képesség). A <code>$@</code> segítségével többsoros string interpolációs kifejezéseket írhatunk (a sortörést a {}-k között kell betennünk, különben a kimeneten is megjelenik). Érdekesség: C# 8-tól fölfele bármilyen sorrendben írhatjuk a $ és @ karaktereket, tehát a <code>$@</code> és a <code>@$</code> is helyesnek számít.</li>
 <li>
-<p>A using kulcsszú blokk utasítás helyett egysoros kifejezésként is használható. Ilyen esetben a using blokk vége az tartalmazó blokkig tart (esetünkben a függvény végéig.). Ezzel csökkenthető a behúzások száma, de ne legyen automatikus reflex a használata, mert előfordulhat, hogy hamarabb célszerű kikényszeríteni az erőforrások felszabadítását, mint a tartalmazó blokk vége.</p>
+<p>A using kulcsszó blokk utasítás helyett egysoros kifejezésként is használható. Ilyen esetben a using blokk vége a tartalmazó blokkig tart (esetünkben a függvény végéig.). Ezzel csökkenthető a behúzások száma, de ne legyen automatikus reflex a használata, mert előfordulhat, hogy hamarabb célszerű kikényszeríteni az erőforrások felszabadítását, mint a tartalmazó blokk vége.</p>
 <div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">GetShippers</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="nn">var</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnString</span><span class="p">);</span>
@@ -1405,8 +1405,8 @@ Az <code>Integrated Security=true</code> kapcsoló pedig a Windows authentikáci
         </path>
       </svg>
     </span>
-    <span title="2023. február 20. 23:57:35">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-20T23:57:35+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-20</span>
+    <span title="2023. május 5. 08:18:44">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-05T08:18:44+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-05</span>
     </span>
   </span>
 
