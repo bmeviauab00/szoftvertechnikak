@@ -44,7 +44,7 @@ A feladat során egyszerű Windows Forms alkalmazást fogunk felruházni többsz
 
 ## 0. Feladat - Ismerkedés a kiinduló alkalmazással, előkészítés
 
-Klónozzuk le a 4. gyakorlathoz tartozó kiinduló alkalmazást [repositoryját](https://github.com/bmeviauab00/lab-tobbszalu-kiindulo).
+Klónozzuk le a 4. gyakorlathoz tartozó kiinduló alkalmazás [repositoryját](https://github.com/bmeviauab00/lab-tobbszalu-kiindulo).
 
 - Nyissunk egy command prompt-ot
 - Navigáljunk el egy tetszőleges mappába, például c:\work\NEPTUN
