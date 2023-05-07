@@ -153,7 +153,7 @@ Most a **dokumentum mentést** gondoljuk végig: a *File/Save* mindig az aktív 
     Mivel az `App` osztályunk alkalmazás specifikus funkciókat lát el, nyugodtan hivatkozhat a konkrét dokumentum típusra, és felesleges az absztrakt őstől függenünk, mert az csak nem kívánt castolásokhoz vezetne.
 
 Az `App` objektumból **értelemszerűen csak egyet kell/szabad létrehozni**, amely a futó alkalmazást reprezentálja. Van még egy problémánk: a *File/Save* stb. menüelem click eseménykezelőben el kell érjük ezt az egy objektumot. Illetve, majd több más helyen is. Jó lenne, ha nem kellene minden osztályban külön elérhetővé tenni (tagváltozó vagy függvényparaméter formájában), hanem **bárhonnan egyszerűen** elérhető lenne. Erre nyújt megoldást a **Singleton tervezési minta**. Egy osztályból csak egy objektumot enged létrehozni, és ahhoz globális hozzáférést biztosít, mégpedig az osztály nevén és egy statikus `Instance` property-n keresztül, pl. így:
-`App.Instance.SaveDocument`, stb. Nem valósítjuk meg teljes értékűen, de tegyük meg az alábbiakat:
+`App.Instance.SaveDocument` stb. Nem valósítjuk meg teljes értékűen, de tegyük meg az alábbiakat:
 
 - `App`-ba `App Instance` property felvétele. Properties ablakban _static: true_.
 - `App`-ba privát konstruktor felvétele.

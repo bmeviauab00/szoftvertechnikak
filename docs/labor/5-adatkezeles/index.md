@@ -144,7 +144,7 @@ A Visual Studio telepítésének részeként kapunk is egy ilyen adatbázismotor
 - az adatbázismotor szinte teljes mértékben kompatibilis a teljesértékű Microsoft SQL Serverrel,
 - alapvetően arról a gépről érhető el, melyre telepítettük,
 - több példány is létrehozható igény szerint, a példányok alapvetően a létrehozó operációs rendszer felhasználója számára érhetők el (igény esetén megosztható egy példány a felhasználók között),
-- a saját példányok kezelése (létrehozás, törlés, stb.) nem igényel adminisztrátori jogokat.
+- a saját példányok kezelése (létrehozás, törlés stb.) nem igényel adminisztrátori jogokat.
   
 ??? note "ssqllocaldb parancssori eszköz"
     A gyakorlat során nincs szükségünk erre, de a példányok kezelésére az `sqllocaldb` parancssori eszköz használható.  Néhány parancs, melyet az `sqllocaldb` után beírva alkalmazhatunk:

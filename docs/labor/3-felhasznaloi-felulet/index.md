@@ -144,7 +144,7 @@ A feladat során egy olyan Windows Forms alkalmazást készítünk el, amely egy
         - `object sender`: A kiváltó objektum (sajnos nem erősen típusosan)
         - `EventArgs e`: Az eseményhez tartozó paramétereket tartalmazza. Típusa `EventArgs`, vagy annak leszármazottja. Az `EventArgs` itt egy üres paramétert reprezentál, mert a gombkattintáshoz nem tartozik semmi extra adat. `EventArgs` leszármazott olyan események esetén használt, melyekhez valamilyen plusz adat is tartozik (pl. billentyű lenyomásnál a lenyomott billentyű kódja).
 
-13. Futtassuk az alkalmazást (F5)! Nyomjuk meg a gombot!
+13. Futtassuk az alkalmazást (++f5++)! Nyomjuk meg a gombot!
 
 14. Nézzünk bele újra a `MainForm.Designer.cs`-be. Megtaláljuk az újonnan generált kódot: az űrlapon elhelyezett vezérlőkből tagváltozók lesznek, melyek az `InitializeComponent` függvényben kerülnek inicializálásra, itt találjuk a tulajdonságaik beállítását, valamint az eseményekre való feliratkozást.
 

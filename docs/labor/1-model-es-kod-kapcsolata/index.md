@@ -16,7 +16,7 @@ A gyakorlat célja:
 - Az interfész és az absztrakt ősosztály alkalmazástechnikája
 
 ??? note "Gyakorlatvezetőknek"
-    Bár a hallgatók között biztosan vannak olyanok, akik korábban, a Prog2 (C++) tárgy keretében vagy más okból kifolyólag már használták a Visual Studio környezetet, szinte biztosan lesznek olyanok is, akik még nem használták, vagy már kevésbé emlékeznek rá. A cél jelen esetben a felülettel való ismerkedés, ezért a feladatok megoldása során folyamatosan ismertessük a használt dolgokat (pl. Solution Explorer, F5-futtatás, breakpoint használat, stb.), hogy elkészítsük életünk első C# alkalmazását.
+    Bár a hallgatók között biztosan vannak olyanok, akik korábban, a Prog2 (C++) tárgy keretében vagy más okból kifolyólag már használták a Visual Studio környezetet, szinte biztosan lesznek olyanok is, akik még nem használták, vagy már kevésbé emlékeznek rá. A cél jelen esetben a felülettel való ismerkedés, ezért a feladatok megoldása során folyamatosan ismertessük a használt dolgokat (pl. Solution Explorer, ++f5++-futtatás, breakpoint használat stb.), hogy elkészítsük életünk első C# alkalmazását.
 
 ## Előfeltételek
 
@@ -121,7 +121,7 @@ namespace HelloWorld
 }
 ```
 
-1. Futtassuk az alkalmazást (pl. az ==f5== billentyű használatával).
+1. Futtassuk az alkalmazást (pl. az ++f5++ billentyű használatával).
 
     A kód felépítése nagyon hasonlít a Java-hoz, illetve a C++-hoz. Az osztályaink névterekbe szervezettek. Névteret definiálni a `namespace` kulcsszóval tudunk. Névtereket hatókörbe „hozni” a `using` kulcsszóval tudjuk.  pl.:
 
@@ -173,7 +173,7 @@ namespace HelloWorld
         ```
 
 !!! warning "Inconsistent visibility vagy inconsistent accessibility hiba"
-    A félév során a programozási feladatok megvalósítása során találkozhatunk *inconsistent visibility*-re vagy *inconsistent accessibility*-re panaszkodó fordítási hibaüzenetekkel. A jelenség hátterében az áll, hogy .NET környezetben lehetőség van az egyes típusok (osztály, interfész, stb.) láthatóságának szabályozására:
+    A félév során a programozási feladatok megvalósítása során találkozhatunk *inconsistent visibility*-re vagy *inconsistent accessibility*-re panaszkodó fordítási hibaüzenetekkel. A jelenség hátterében az áll, hogy .NET környezetben lehetőség van az egyes típusok (osztály, interfész stb.) láthatóságának szabályozására:
 
     - `internal` vagy nem adjuk meg a láthatóságot: a típus csak az adott szerelvényen (.exe, .dll)/projekten,  belül látható
     - `public`: a típus más szerelvények/projektek számára is látható
