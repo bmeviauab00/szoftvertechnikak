@@ -116,7 +116,7 @@ Ebben az esetben egy kliensoldali objektum több céloldali objektummal van kapc
 
 ![Általánosítás, specializáció, többes kapcsolat](images/association-multiple.png)
 
-Egy `WindowManager` objektum több `Window` objektumot menedzsel. **A leképezés során a kliens osztályba a célosztálybeli objektumok valamilyen gyűjteményét vesszük fel.** Ez lehet tömb, lista, stb., ami a célunknak az adott helyzetben leginkább megfelel.
+Egy `WindowManager` objektum több `Window` objektumot menedzsel. **A leképezés során a kliens osztályba a célosztálybeli objektumok valamilyen gyűjteményét vesszük fel.** Ez lehet tömb, lista stb., ami a célunknak az adott helyzetben leginkább megfelel.
 
 Egy leképzési lehetőség a fenti példára C++ nyelven:
 
