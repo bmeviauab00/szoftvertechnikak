@@ -465,7 +465,7 @@ Az egyes feladatok egymástól függetlenül is megoldhatók!
 
 ### `IView` kódduplikációja (1 iMSc pont)
 
-Az `IView` egy interfész, ezért a `GetDocument`/`Update`, stb. kódját nem lehet implementálni benne. Helyette minden nézetben „copy-paste”-tel duplikálni kell a megfelelő kódot. Szüntessük meg ezt a kódduplikációt az alkalmazásban! A megoldást előbb mindenképpen magad próbáld kitalálni, csak ha elakadsz, akkor fordulj az alábbi kinyitható segítséghez:
+Az `IView` egy interfész, ezért a `GetDocument`/`Update` stb. kódját nem lehet implementálni benne. Helyette minden nézetben „copy-paste”-tel duplikálni kell a megfelelő kódot. Szüntessük meg ezt a kódduplikációt az alkalmazásban! A megoldást előbb mindenképpen magad próbáld kitalálni, csak ha elakadsz, akkor fordulj az alábbi kinyitható segítséghez:
 ??? tip "Segítség"
     Egy `ViewBase` nevű osztályt kell írni, mely a `UserControl`-ból származik, és implementálja az `IView` interfészt. A nézeteinket a `UserControl` helyett a `ViewBase` osztályból kell származtatni.
 
@@ -498,7 +498,7 @@ Biztosítsunk lehetőséget jelek élő generálására és megjelenítésére.
 
 Az átalakítást olyan módon kell végrehajtani, hogy a korábbi feladatok megoldása működőképes maradjon az alapértelmezett, nem élő módban.
 
-Vezessünk be egy _Data_ menüelem alatti _Change To Live Data Source Mode_ menüelemet. Amikor a felhasználó erre kattint, indítsunk egy szálat, mely véletlenszerű jelértékeket generál (azt szimulálva, hogy valamilyen adatforrásból, pl. soros port, hálózat, stb. adatok érkeznek) a következőknek megfelelően:
+Vezessünk be egy _Data_ menüelem alatti _Change To Live Data Source Mode_ menüelemet. Amikor a felhasználó erre kattint, indítsunk egy szálat, mely véletlenszerű jelértékeket generál (azt szimulálva, hogy valamilyen adatforrásból, pl. soros port, hálózat stb. adatok érkeznek) a következőknek megfelelően:
 
 - A _Change To Live Data Source Mode_ az aktuális dokumentumra vonatkozik. Vagyis minden dokumentum egymástól függetlenül élő adatforrás módba kapcsolható. Ennek megfelelően a jelek generálását dokumentum szinten célszerű megvalósítani (dokumentumonként külön szál).
 - Másodpercenként nagyságrendileg 4 jelérték érkezzen véletlen időközönként (pl. szál altatása véletlen időközig, 500 ms max értékkel), melyek időbélyege legyen az aktuális idő (`DateTime.Now`).

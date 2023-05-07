@@ -44,12 +44,12 @@ A feladat során egyszerű Windows Forms alkalmazást fogunk felruházni többsz
 
 ## 0. Feladat - Ismerkedés a kiinduló alkalmazással, előkészítés
 
-Klónozzuk le a 4. gyakorlathoz tartozó kiinduló alkalmazás [repositoryját](https://github.com/bmeviauab00/lab-tobbszalu-kiindulo).
+Klónozzuk le a 4. gyakorlathoz tartozó kiinduló alkalmazás [repositoryját](https://github.com/bmeviauab00/lab-tobbszalu-kiindulo):
 
 - Nyissunk egy command prompt-ot
 - Navigáljunk el egy tetszőleges mappába, például c:\work\NEPTUN
 - Adjuk ki a következő parancsot: `git clone https://github.com/bmeviauab00/lab-tobbszalu-kiindulo.git`
-- Nyissuk meg _SuperCalculator.sln_ solutiont Visual Studio-ban.
+- Nyissuk meg a _SuperCalculator.sln_ solutiont Visual Studio-ban.
 
 A feladatunk az, hogy egy bináris formában megkapott algoritmus futtatásához Windows Forms technológiával felhasználói felületet készítsünk. A bináris forma .NET esetében egy _.dll_ kiterjesztésű fájlt jelent, ami programozói szemmel egy osztálykönyvtár.  A fájl neve esetünkben _Algorithms.dll_, megtalálható a leklónozott Git repositoryban.
 
@@ -600,6 +600,6 @@ Korábban félretettük azt a problémát, hogy az ablakunk bezárásakor a proc
 
 ## Kitekintés: Task, async, await
 
-A tárgynak nem anyaga, de .NET alkalmazások (és más modern nyelvű alkalmazások (Swift, Kotlin, TypeScript, stb.)) esetében megkerülhetetlen az aszinkron programozás koncepciója. A C# (és más modern nyelvek) nyelvi szintre emelték az szinkron események bevárásának kezelését az `async`/`await` kulcsszavakkal ([Lásd bővebben](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/))
+A tárgynak nem anyaga, de .NET alkalmazások (és más modern nyelvű alkalmazások (Swift, Kotlin, TypeScript stb.)) esetében megkerülhetetlen az aszinkron programozás koncepciója. A C# (és más modern nyelvek) nyelvi szintre emelték az szinkron események bevárásának kezelését az `async`/`await` kulcsszavakkal ([Lásd bővebben](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/))
 
 Mégis ehhez az anyaghoz lazán úgy kapcsolódhat ez a téma, hogy a `Task` osztály olyan aszinkron műveletet is reprezentálhat, ami akár külön szálon is futhat (de nem kötelezően futnak ezek külön szálon!), és bevárható ennek az eredménye aszinkron módon. A `Task.Run` statikus függvény pedig egyenesen a `ThreadPool`-on ütemez egy műveletet, ami így aszinkron bevárható.
