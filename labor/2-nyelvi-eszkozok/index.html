@@ -1096,7 +1096,7 @@
 <p>Ezt <strong>implicitly typed local variables</strong>-nek, magyarul <strong>implicit típusú lokális változó</strong>-nak nevezzük. Ilyenkor a fordító a kontextusból, az egyenlőségjel jobb oldalából megpróbálja kitalálni a változó típusát, fenti esetben ez egy <code>Person</code> lesz. Fontos, hogy ettől a nyelv még statikusan tipusos marad (tehát <strong>nem</strong> úgy működik mint a JavaScript-es <code>var</code> kulcsszó), mert a <code>p</code> változó típusa a későbbiekben nem változhat meg, ez csak egy egyszerű szintaktikai édesítőszer annek érdekében, hogy tömörebben tudjunk lokális változókat definiálni (ne kelljen a típust "duplán", az <code>=</code> bal és jobb oldalán is megadni).</p>
 <div class="admonition tip">
 <p class="admonition-title">Target-typed <code>new</code> expressions</p>
-<p>Egy másik megközelítés lehet a a C# 9-ben megjelent Target-typed <code>new</code> expressions, ahol a new operátor esetén hagyható el a típus, ha az a fordító által kitalálható a kontextusból (pl.: értékadás bal oldala, paraméter típusa, stb.). A fenti <code>Person</code> konstruktorunk a következőképpen nézne ki:</p>
+<p>Egy másik megközelítés lehet a a C# 9-ben megjelent Target-typed <code>new</code> expressions, ahol a new operátor esetén hagyható el a típus, ha az a fordító által kitalálható a kontextusból (pl.: értékadás bal oldala, paraméter típusa stb.). A fenti <code>Person</code> konstruktorunk a következőképpen nézne ki:</p>
 <div class="highlight"><pre><span></span><code><span class="n">Person</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
 </code></pre></div>
 <p>Ennek a megközelítésnek az előnye a <code>var</code>-ral szemben, hogy tagváltozók esetében is alkalmazható. Fontos, hogy ezt ne keverjük össze a C# anoním típusaival (<code>new {}</code>, kerekzárójel nélkül), mely témakört ez a tantárgy nem fog érinteni.</p>
@@ -1397,7 +1397,7 @@ A láthatóság szabályozása autoimplementált és nem autoimplementált tulaj
 </ol>
 <h2 id="4-feladat-attributumok">4. Feladat – Attribútumok<a class="headerlink" href="#4-feladat-attributumok" title="Permanent link">&para;</a></h2>
 <h3 id="sorositas-testreszabasa-attributummal">Sorosítás testreszabása attribútummal<a class="headerlink" href="#sorositas-testreszabasa-attributummal" title="Permanent link">&para;</a></h3>
-<p><strong>Az attribútumok segítségével deklaratív módon metaadatokkal láthatjuk el forráskódunkat</strong>. Az attribútum is tulajdonképpen egy osztály, melyet hozzákötünk a program egy megadott eleméhez (típushoz, osztályhoz, interfészhez, metódushoz, stb.). Ezeket a metainformációkat a program futása közben bárki (akár mi magunk is) kiolvashatja az úgynevezett reflection mechanizmus segítségével. Az attribútumok a Java annotációk .NET-beli megfelelőinek is tekinthetők.</p>
+<p><strong>Az attribútumok segítségével deklaratív módon metaadatokkal láthatjuk el forráskódunkat</strong>. Az attribútum is tulajdonképpen egy osztály, melyet hozzákötünk a program egy megadott eleméhez (típushoz, osztályhoz, interfészhez, metódushoz stb.). Ezeket a metainformációkat a program futása közben bárki (akár mi magunk is) kiolvashatja az úgynevezett reflection mechanizmus segítségével. Az attribútumok a Java annotációk .NET-beli megfelelőinek is tekinthetők.</p>
 <div class="admonition tip">
 <p class="admonition-title">property vs. attribútum vs. static</p>
 <p>Felmerül a kérdés, hogy milyen osztályjellemzők kerüljenek tulajdonságokba és melyek attribútumokba egy osztály esetében. A tulajdonságok magára az objektum példányra vonatkoznak, míg az attribútum az azt leíró osztályra (vagy annak valamilyen tagjára).</p>
@@ -1617,8 +1617,8 @@ Mint látható, elhagytuk a {} zárójeleket és a <code>return</code> utasítá
         </path>
       </svg>
     </span>
-    <span title="2023. április 7. 16:36:07">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-07T16:36:07+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-07</span>
+    <span title="2023. május 7. 11:11:49">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-07T11:11:49+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-07</span>
     </span>
   </span>
 
