@@ -1385,7 +1385,7 @@
 <h3 id="a-koordinata-tengelyek-kirajzolasa">A koordináta tengelyek kirajzolása<a class="headerlink" href="#a-koordinata-tengelyek-kirajzolasa" title="Permanent link">&para;</a></h3>
 <p>Rajzoljuk ki a koordináta tengelyeket. Legyen az alapelv a következő:</p>
 <ul>
-<li>A rajzolófelületünk (vagyis a <code>GrapicsSignalView</code> <code>UserControl</code>) kliens területének szélességét a <code>ClientSize.Width</code>, a magasságát a <code>ClientSize.Height</code> lekérdezésével kaphatjuk meg. Vonalat rajzolni a <code>Graphics</code> osztály <code>DrawLine</code> műveletével lehet.</li>
+<li>A rajzolófelületünk (vagyis a <code>GraphicsSignalView</code> <code>UserControl</code>) kliens területének szélességét a <code>ClientSize.Width</code>, a magasságát a <code>ClientSize.Height</code> lekérdezésével kaphatjuk meg. Vonalat rajzolni a <code>Graphics</code> osztály <code>DrawLine</code> műveletével lehet.</li>
 <li>Az Y tengelyt a nulla y pixelpozícióba rajzoljuk.</li>
 <li>Az X tengelyt mindig a rajzolófelületünk közepére igazítva rajzoljuk, akárhogy méretezi is a felhasználó az ablakot (segítségképpen: a teljes aktuális magasságot a <code>ClientSize.Height</code> adja meg számunkra).</li>
 <li>
@@ -1408,7 +1408,7 @@
 <p>Készíts egy képernyőmentést <code>Feladat3-2.png</code> néven az alábbiak szerint:</p>
 <ul>
 <li>Indítsd el az alkalmazást. Nyiss meg vagy hozz létre egy dokumentumot, hogy látszódjanak a koordináta tengelyek. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,</li>
-<li>a „háttérben” a Visual Studio legyen, az <code>GrapicsSignalView.cs</code> megnyitva, melyben látszik a koordináta tengelyek kirajzolása,</li>
+<li>a „háttérben” a Visual Studio legyen, az <code>GraphicsSignalView.cs</code> megnyitva, melyben látszik a koordináta tengelyek kirajzolása,</li>
 <li>a VS <em>View/Full Screen</em> menüjével kapcsolj ideiglenesen <em>Full Screen</em> nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,</li>
 <li>az előtérben pedig az alkalmazásod ablaka.</li>
 </ul>
@@ -1433,7 +1433,7 @@
 <p>Két <code>DateTime</code> érték különbsége egy <code>TimeSpan</code> (időtartam) típusú objektumot eredményez.</p>
 </li>
 <li>Egy <code>DateTime</code> objektum a <code>Ticks</code> property-jében adja vissza legjobb felbontással az általa tárolt időértéket (1 tick = 100 nsec felbontás).</li>
-<li>A rajzolófelületünk (vagyis a <code>GrapicsSignalView</code> <code>UserControl</code>) nulla x koordinátájában jelenítsük meg a listánkban levő első jelet.</li>
+<li>A rajzolófelületünk (vagyis a <code>GraphicsSignalView</code> <code>UserControl</code>) nulla x koordinátájában jelenítsük meg a listánkban levő első jelet.</li>
 <li>A megjelenítés során semmiféle követelmény nincs arra vonatkozóan, hogy a jeleket olyan skálatényezőkkel jelenítsük meg, hogy pont kiférjenek a rajzolás során. Helyette a nézet osztályunkban vezessünk be és használjunk olyan <code>pixelPerSec</code> és <code>pixelPerValue</code> skálatényezőket, melyek érzésre, vagy pár próbálkozás után úgy jelenítsék meg a jeleket, hogy a nézetbe beférjenek, de ne is legyen a rajz túl kicsi.</li>
 <li>Amennyiben a rajzunk „nem akar” megjelenni, tegyünk töréspontot az <code>OnPaint</code> műveletbe, és a kódunkat lépésenként végrehajva a változók értékét tooltipben vagy a <em>Watch</em> ablakban megjelenítve nyomozzuk, hol csúszik félre a számításunk.</li>
 </ul>
@@ -1458,7 +1458,7 @@
 <p>Készíts egy képernyőmentést <code>Feladat3-4.png</code> néven az alábbiak szerint:</p>
 <ul>
 <li>Indítsd el az alkalmazást. Nyiss meg vagy hozz létre egy dokumentumot, hogy látszódjanak a koordináta tengelyek és a kirajzolt jelek. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,</li>
-<li>a „háttérben” a Visual Studio legyen, az <code>GrapicsSignalView.cs</code> megnyitva, melyben látszik a jelek kirajzolása,</li>
+<li>a „háttérben” a Visual Studio legyen, az <code>GraphicsSignalView.cs</code> megnyitva, melyben látszik a jelek kirajzolása,</li>
 <li>a VS <em>View/Full Screen</em> menüjével kapcsolj ideiglenesen <em>Full Screen</em> nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,</li>
 <li>az előtérben pedig az alkalmazásod ablaka.</li>
 </ul>
@@ -1488,7 +1488,7 @@
 <p>Készíts egy képernyőmentést <code>FeladatIMSc-2.png</code> néven az alábbiak szerint:</p>
 <ul>
 <li>Indítsd el az alkalmazást. Nyiss meg vagy hozz létre egy dokumentumot, hogy látszódjanak a koordináta tengelyek és a kirajzolt jelek, valamint a görgetősáv (scrollbar). Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,</li>
-<li>a „háttérben” a Visual Studio legyen, az <code>GrapicsSignalView.cs</code> releváns releváns része megnyitva,</li>
+<li>a „háttérben” a Visual Studio legyen, az <code>GraphicsSignalView.cs</code> releváns releváns része megnyitva,</li>
 <li>a VS <em>View/Full Screen</em> menüjével kapcsolj ideiglenesen <em>Full Screen</em> nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,</li>
 <li>az előtérben pedig az alkalmazásod ablaka.</li>
 </ul>
@@ -1525,8 +1525,8 @@
         </path>
       </svg>
     </span>
-    <span title="2023. május 7. 11:11:49">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-07T11:11:49+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-07</span>
+    <span title="2023. május 12. 18:06:17">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-12T18:06:17+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-12</span>
     </span>
   </span>
 
