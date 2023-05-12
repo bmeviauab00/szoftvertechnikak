@@ -375,7 +375,7 @@ Visszatérve a feladatra a megvalósítás főbb lépései a következők:
 
 Rajzoljuk ki a koordináta tengelyeket. Legyen az alapelv a következő:
 
-- A rajzolófelületünk (vagyis a `GrapicsSignalView` `UserControl`) kliens területének szélességét a `ClientSize.Width`, a magasságát a `ClientSize.Height` lekérdezésével kaphatjuk meg. Vonalat rajzolni a `Graphics` osztály `DrawLine` műveletével lehet.
+- A rajzolófelületünk (vagyis a `GraphicsSignalView` `UserControl`) kliens területének szélességét a `ClientSize.Width`, a magasságát a `ClientSize.Height` lekérdezésével kaphatjuk meg. Vonalat rajzolni a `Graphics` osztály `DrawLine` műveletével lehet.
 - Az Y tengelyt a nulla y pixelpozícióba rajzoljuk.
 - Az X tengelyt mindig a rajzolófelületünk közepére igazítva rajzoljuk, akárhogy méretezi is a felhasználó az ablakot (segítségképpen: a teljes aktuális magasságot a `ClientSize.Height` adja meg számunkra).
 - :exclamation: **A koordináta tengelyek színe legyen kék, és legyenek 2 pixel vastagok. A tengelyeket pontozott vonallal rajzoljuk, és a végükön legyen egy kisméretű nyíl.** Erre a beépített `Pen` támogatást nyújt:
@@ -398,7 +398,7 @@ A munkánk eredményeképpen valami hasonlót kell lássunk futás közben (a sz
     Készíts egy képernyőmentést `Feladat3-2.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Nyiss meg vagy hozz létre egy dokumentumot, hogy látszódjanak a koordináta tengelyek. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
-    - a „háttérben” a Visual Studio legyen, az `GrapicsSignalView.cs` megnyitva, melyben látszik a koordináta tengelyek kirajzolása,
+    - a „háttérben” a Visual Studio legyen, az `GraphicsSignalView.cs` megnyitva, melyben látszik a koordináta tengelyek kirajzolása,
     - a VS _View/Full Screen_ menüjével kapcsolj ideiglenesen _Full Screen_ nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
     - az előtérben pedig az alkalmazásod ablaka.
 
@@ -425,7 +425,7 @@ Az `GraphicsSignalView`-ban az `OnPaint`-t felüldefiniálva valósítsuk meg a 
 
     - Két `DateTime` érték különbsége egy `TimeSpan` (időtartam) típusú objektumot eredményez.
     - Egy `DateTime` objektum a `Ticks` property-jében adja vissza legjobb felbontással az általa tárolt időértéket (1 tick = 100 nsec felbontás).
-    - A rajzolófelületünk (vagyis a `GrapicsSignalView` `UserControl`) nulla x koordinátájában jelenítsük meg a listánkban levő első jelet.
+    - A rajzolófelületünk (vagyis a `GraphicsSignalView` `UserControl`) nulla x koordinátájában jelenítsük meg a listánkban levő első jelet.
     - A megjelenítés során semmiféle követelmény nincs arra vonatkozóan, hogy a jeleket olyan skálatényezőkkel jelenítsük meg, hogy pont kiférjenek a rajzolás során. Helyette a nézet osztályunkban vezessünk be és használjunk olyan `pixelPerSec` és `pixelPerValue` skálatényezőket, melyek érzésre, vagy pár próbálkozás után úgy jelenítsék meg a jeleket, hogy a nézetbe beférjenek, de ne is legyen a rajz túl kicsi.
     - Amennyiben a rajzunk „nem akar” megjelenni, tegyünk töréspontot az `OnPaint` műveletbe, és a kódunkat lépésenként végrehajva a változók értékét tooltipben vagy a _Watch_ ablakban megjelenítve nyomozzuk, hol csúszik félre a számításunk.
 
@@ -455,7 +455,7 @@ Az alkalmazást futtatva a _Window_ menüből ugyanahhoz a dokumentumhoz hozzunk
     Készíts egy képernyőmentést `Feladat3-4.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Nyiss meg vagy hozz létre egy dokumentumot, hogy látszódjanak a koordináta tengelyek és a kirajzolt jelek. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
-    - a „háttérben” a Visual Studio legyen, az `GrapicsSignalView.cs` megnyitva, melyben látszik a jelek kirajzolása,
+    - a „háttérben” a Visual Studio legyen, az `GraphicsSignalView.cs` megnyitva, melyben látszik a jelek kirajzolása,
     - a VS _View/Full Screen_ menüjével kapcsolj ideiglenesen _Full Screen_ nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
     - az előtérben pedig az alkalmazásod ablaka.
 
@@ -488,7 +488,7 @@ A megközelítés előnye a viszonylagos egyszerűsége. Hátránya, hogy ha nag
     Készíts egy képernyőmentést `FeladatIMSc-2.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Nyiss meg vagy hozz létre egy dokumentumot, hogy látszódjanak a koordináta tengelyek és a kirajzolt jelek, valamint a görgetősáv (scrollbar). Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
-    - a „háttérben” a Visual Studio legyen, az `GrapicsSignalView.cs` releváns releváns része megnyitva,
+    - a „háttérben” a Visual Studio legyen, az `GraphicsSignalView.cs` releváns releváns része megnyitva,
     - a VS _View/Full Screen_ menüjével kapcsolj ideiglenesen _Full Screen_ nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
     - az előtérben pedig az alkalmazásod ablaka.
 
