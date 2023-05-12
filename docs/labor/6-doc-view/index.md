@@ -184,7 +184,7 @@ Gondoljuk végig, milyen adattagokkal rendelkeznek az egyes nézetek. Ehhez futt
 
 A nézetek maguk felelősek a kirajzolásukért:
 
-- `Draw (g:Grapics)` felvétele mindkét nézetbe.
+- `Draw (g:Graphics)` felvétele mindkét nézetbe.
 
 ### FontEditorDocument műveletek
 
