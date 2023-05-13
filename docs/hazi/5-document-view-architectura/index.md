@@ -192,8 +192,8 @@ Következő lépésben írja meg az `App.SaveActiveDocument` függvényt a forr�
         {
             // Megjelenítés előtt paramlterezzük fel a dialógus ablakot
             Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*",
-            saveFileDialog.FilterIndex = 0,
-            saveFileDialog.RestoreDirectory = true,
+            FilterIndex = 0,
+            RestoreDirectory = true,
         };
         
         // Modálisan megjelenítjük a dialógusablakot.
