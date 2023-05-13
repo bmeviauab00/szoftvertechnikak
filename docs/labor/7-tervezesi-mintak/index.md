@@ -4,13 +4,6 @@ authors: bzolka
 
 # 7. Tervezési minták
 
-!!! danger "FONTOS"
-    **JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES**
-
-    **JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES**
-    
-    **JELEN LABOR LEÍRÁSA MÉG NEM VÉGLEGES**
-
 ## A gyakorlat célja
 
 A gyakorlat céljai:
