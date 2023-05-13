@@ -20,7 +20,7 @@ Az önálló gyakorlat célja:
 
 A szükséges fejlesztőkörnyezetről [itt](../fejlesztokornyezet/index.md) található leírás.
 
-## Beadás menete, előellezőrző
+## Beadás menete, előellenőrző
 
 A beadás menete megegyezik az első házi feladatéval (részletes leírás a szokásos helyen, lásd [Házi feladat munkafolyamat és a Git/GitHub használata](../hf-folyamat/index.md)):
 
