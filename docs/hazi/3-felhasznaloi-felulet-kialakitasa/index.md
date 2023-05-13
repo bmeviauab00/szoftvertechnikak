@@ -126,12 +126,14 @@ A Windows Forms világban gyakran fordul elő, hogy egyedi vezérlőket, vagy ű
 
 ### Feladat
 
-Készíts egy új űrlap/ablak (`Form`) típust ==InputDialog== néven (a fejléce is legyen ==InputDialog==), mely egy szövegdobozt (`TextBox`), továbbá egy ==Ok== és egy ==Cancel== feliratú gombot tartalmaz. Az űrlap gombokkal történő bezáráshoz állítsd be a `Form` `DialogResult` tulajdonságát `DialogResult.OK`, illetve `DialogResult.Cancel` értékre a gombkattintás eseménykezelőkben. Az űrlap ezen felül tartalmazzon egy publikus, `string` típusú, `Path` nevű tulajdonságot!
+Készíts egy új űrlap/ablak (`Form`) típust ==InputDialog== néven (a fejléce is legyen ==InputDialog==), mely egy szövegdobozt (`TextBox`) és ==Path== feliratú `Label`-t, továbbá egy ==Ok== és egy ==Cancel== feliratú gombot tartalmaz. Az űrlap gombokkal történő bezáráshoz állítsd be a két gomb `DialogResult` tulajdonságát `DialogResult.OK` és `DialogResult.Cancel` értékre, majd az űrlap `AcceptButton` és `CancelButton` tulajdonságait a nekik megfelelő értékekre. Az űrlap ezen felül tartalmazzon egy publikus, `string` típusú, `Path` nevű tulajdonságot, (mellyel a szövegdoboz szövegét lehet lekérni és változtatni)!
 
 Az űrlap tartalma arányosan változzon az átméretezés során:
 
 - `TextBox` szélessége növekedjen (a helye és magassága ne változzon).
 - Az űrlap átméretezésekor a gombok a hozzájuk közelebbi sarokhoz képest rögzített pozícióban maradjanak (mind x mind y koordináta tekintetében, az ablak szélességének és magasságának állításakor is). Az *Ok* gomb legyen bal alsó, a *Cancel* pedig jobb alsó sarokhoz rögzítve.
+
+Kössük be az elkészített ablakunkat a főablakba! Az ==Open== feliratú almenü kattintásra nyisson meg egy példányt az új ablakból.
 
 ### Megoldás
 
