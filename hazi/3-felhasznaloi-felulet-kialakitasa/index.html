@@ -1127,12 +1127,13 @@ A Windows alapesetben blokkolja az ebben a mappában található dll-eket, ezt f
 <h2 id="feladat-2-dialogusablak">Feladat 2 – Dialógusablak<a class="headerlink" href="#feladat-2-dialogusablak" title="Permanent link">&para;</a></h2>
 <p>A Windows Forms világban gyakran fordul elő, hogy egyedi vezérlőket, vagy űrlap típusokat akarunk definiálni, továbbá ezek és a programunk többi része között információt akarunk átadni. A következő feladat erre mutat példát.</p>
 <h3 id="feladat_1">Feladat<a class="headerlink" href="#feladat_1" title="Permanent link">&para;</a></h3>
-<p>Készíts egy új űrlap/ablak (<code>Form</code>) típust <mark>InputDialog</mark> néven (a fejléce is legyen <mark>InputDialog</mark>), mely egy szövegdobozt (<code>TextBox</code>), továbbá egy <mark>Ok</mark> és egy <mark>Cancel</mark> feliratú gombot tartalmaz. Az űrlap gombokkal történő bezáráshoz állítsd be a <code>Form</code> <code>DialogResult</code> tulajdonságát <code>DialogResult.OK</code>, illetve <code>DialogResult.Cancel</code> értékre a gombkattintás eseménykezelőkben. Az űrlap ezen felül tartalmazzon egy publikus, <code>string</code> típusú, <code>Path</code> nevű tulajdonságot!</p>
+<p>Készíts egy új űrlap/ablak (<code>Form</code>) típust <mark>InputDialog</mark> néven (a fejléce is legyen <mark>InputDialog</mark>), mely egy szövegdobozt (<code>TextBox</code>) és <mark>Path</mark> feliratú <code>Label</code>-t, továbbá egy <mark>Ok</mark> és egy <mark>Cancel</mark> feliratú gombot tartalmaz. Az űrlap gombokkal történő bezáráshoz állítsd be a két gomb <code>DialogResult</code> tulajdonságát <code>DialogResult.OK</code> és <code>DialogResult.Cancel</code> értékre, majd az űrlap <code>AcceptButton</code> és <code>CancelButton</code> tulajdonságait a nekik megfelelő értékekre. Az űrlap ezen felül tartalmazzon egy publikus, <code>string</code> típusú, <code>Path</code> nevű tulajdonságot, (mellyel a szövegdoboz szövegét lehet lekérni és változtatni)!</p>
 <p>Az űrlap tartalma arányosan változzon az átméretezés során:</p>
 <ul>
 <li><code>TextBox</code> szélessége növekedjen (a helye és magassága ne változzon).</li>
 <li>Az űrlap átméretezésekor a gombok a hozzájuk közelebbi sarokhoz képest rögzített pozícióban maradjanak (mind x mind y koordináta tekintetében, az ablak szélességének és magasságának állításakor is). Az <em>Ok</em> gomb legyen bal alsó, a <em>Cancel</em> pedig jobb alsó sarokhoz rögzítve.</li>
 </ul>
+<p>Kössük be az elkészített ablakunkat a főablakba! Az <mark>Open</mark> feliratú almenü kattintásra nyisson meg egy példányt az új ablakból.</p>
 <h3 id="megoldas_1">Megoldás<a class="headerlink" href="#megoldas_1" title="Permanent link">&para;</a></h3>
 <p>A feladatot próbáld meg önállóan megoldani, majd a lenti leírás alapján ellenőrizd a megoldásod!</p>
 <details class="success">
@@ -1415,8 +1416,8 @@ Az időzítésre <code>Timer</code> komponenst használjunk!</p>
         </path>
       </svg>
     </span>
-    <span title="2023. április 22. 16:12:34">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-04-22T16:12:34+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-04-22</span>
+    <span title="2023. május 13. 11:11:22">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-13T11:11:22+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-13</span>
     </span>
   </span>
 
@@ -1437,6 +1438,8 @@ Az időzítésre <code>Timer</code> komponenst használjunk!</p>
         <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
       </a><a href="https://github.com/gabor7d2" target="_blank" rel="noopener noreferrer" class="md-author" title="@gabor7d2">
         <img src="https://avatars.githubusercontent.com/u/12859334?size=72" alt="@gabor7d2">
+      </a><a href="https://github.com/n0F4x" target="_blank" rel="noopener noreferrer" class="md-author" title="@n0F4x">
+        <img src="https://avatars.githubusercontent.com/u/71129946?size=72" alt="@n0F4x">
       </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@tibitoth">
         <img src="https://avatars.githubusercontent.com/u/8333960?size=72" alt="@tibitoth">
       </a><a href="https://github.com/zbenedek-mirango" target="_blank" rel="noopener noreferrer" class="md-author" title="@zbenedek-mirango">
