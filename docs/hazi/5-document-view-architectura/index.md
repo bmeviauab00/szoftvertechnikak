@@ -365,7 +365,7 @@ Visszatérve a feladatra a megvalósítás főbb lépései a következők:
     }
     ```
 
-    Az `App.CreateView` módosításának van még egy trükkje. Mivel a `doc` referenciánk típusa `Document`, a `GraphicsSignalView` pedig a leszármazottját várja, a konstruktor hívásakor exlicit le kell castoljuk `SignalDocument`-re:
+    Az `App.CreateView` módosításának van még egy trükkje. Mivel a `doc` referenciánk típusa `Document`, a `GraphicsSignalView` pedig a leszármazottját várja, a konstruktor hívásakor explicit le kell castoljuk `SignalDocument`-re:
 
     ```csharp
     var view = new GraphicsSignalView((SignalDocument)doc);
