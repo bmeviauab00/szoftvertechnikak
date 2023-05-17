@@ -65,7 +65,6 @@ public class MyClass
 ### Bevezető feladatok
 
 1. :exclamation: A főablak fejléce a "Signals" szöveg legyen, hozzáfűzve a saját Neptun kódod: (pl. "ABCDEF" Neptun kód esetén "Signals - ABCDEF"), fontos, hogy ez legyen a szöveg! Ehhez az űrlapunk `Text` tulajdonságát állítsuk be erre a szövegre.
-2. :exclamation: Az űrlapunk neve jelenleg "Form1", ami szintén elég semmitmondó. Nevezzük át Neptun kódunknak megfelelően (pl. "ABCDEF" Neptun kód esetén "MainForm_ABCDEF"-re.
 
 ### Kiinduló alkalmazás működése
 
