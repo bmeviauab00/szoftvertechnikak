@@ -1377,7 +1377,7 @@
 <span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">document</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">document</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Az <code>App.CreateView</code> módosításának van még egy trükkje. Mivel a <code>doc</code> referenciánk típusa <code>Document</code>, a <code>GraphicsSignalView</code> pedig a leszármazottját várja, a konstruktor hívásakor exlicit le kell castoljuk <code>SignalDocument</code>-re:</p>
+<p>Az <code>App.CreateView</code> módosításának van még egy trükkje. Mivel a <code>doc</code> referenciánk típusa <code>Document</code>, a <code>GraphicsSignalView</code> pedig a leszármazottját várja, a konstruktor hívásakor explicit le kell castoljuk <code>SignalDocument</code>-re:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">view</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GraphicsSignalView</span><span class="p">((</span><span class="n">SignalDocument</span><span class="p">)</span><span class="n">doc</span><span class="p">);</span>
 </code></pre></div>
 </li>
@@ -1525,8 +1525,8 @@
         </path>
       </svg>
     </span>
-    <span title="2023. május 13. 20:54:00">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-13T20:54:00+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-13</span>
+    <span title="2023. május 17. 23:31:58">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-17T23:31:58+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-17</span>
     </span>
   </span>
 
