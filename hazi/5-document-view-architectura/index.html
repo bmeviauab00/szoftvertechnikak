@@ -1433,7 +1433,7 @@
 </li>
 <li>Egy <code>DateTime</code> objektum a <code>Ticks</code> property-jében adja vissza legjobb felbontással az általa tárolt időértéket (1 tick = 100 nsec felbontás).</li>
 <li>A rajzolófelületünk (vagyis a <code>GraphicsSignalView</code> <code>UserControl</code>) nulla x koordinátájában jelenítsük meg a listánkban levő első jelet.</li>
-<li>A megjelenítés során semmiféle követelmény nincs arra vonatkozóan, hogy a jeleket olyan skálatényezőkkel jelenítsük meg, hogy pont kiférjenek a rajzolás során. Helyette a nézet osztályunkban vezessünk be és használjunk olyan <code>pixelPerSec</code> és <code>pixelPerValue</code> skálatényezőket, melyek érzésre, vagy pár próbálkozás után úgy jelenítsék meg a jeleket, hogy a nézetbe beférjenek, de ne is legyen a rajz túl kicsi.</li>
+<li>A megjelenítés során semmiféle követelmény nincs arra vonatkozóan, hogy a jeleket mindig olyan skálatényezőkkel jelenítsük meg, hogy pont kiférjenek a rajzolás során. Helyette a nézet osztályunkban vezessünk be és használjunk olyan <code>pixelPerSec</code> és <code>pixelPerValue</code> skálatényezőket, melyek érzésre, vagy pár próbálkozás után úgy jelenítsék meg a jeleket az alapértelmezett megjelenítés során, hogy a nézetbe beférjenek, de ne is legyen a rajz túl kicsi (de az ablak átméretezésekor már nem kell beférjenek a jelek az ablakba).</li>
 <li>Amennyiben a rajzunk „nem akar” megjelenni, tegyünk töréspontot az <code>OnPaint</code> műveletbe, és a kódunkat lépésenként végrehajva a változók értékét tooltipben vagy a <em>Watch</em> ablakban megjelenítve nyomozzuk, hol csúszik félre a számításunk.</li>
 </ul>
 </details>
@@ -1524,8 +1524,8 @@
         </path>
       </svg>
     </span>
-    <span title="2023. május 17. 23:50:38">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-17T23:50:38+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-17</span>
+    <span title="2023. május 21. 16:31:44">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-21T16:31:44+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-21</span>
     </span>
   </span>
 
