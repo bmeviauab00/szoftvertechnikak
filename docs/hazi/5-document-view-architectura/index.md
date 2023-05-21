@@ -189,7 +189,7 @@ Következő lépésben írja meg az `App.SaveActiveDocument` függvényt a forr�
         // Útvonal bekérése a felhasználótól a SaveFileDialog segítségével.
         var saveFileDialog = new SaveFileDialog()
         {
-            // Megjelenítés előtt paramlterezzük fel a dialógus ablakot
+            // Megjelenítés előtt paraméterezzük fel a dialógus ablakot
             Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*",
             FilterIndex = 0,
             RestoreDirectory = true,
@@ -216,7 +216,7 @@ A következő lépésben definiáljuk felül a `SignalDocument` osztályban az �
 10  2022-12-31T23:00:03.2320000Z
 ```
 
-Az első oszlopban a jelérték, a másodikban az időpont található, az oszlopok tabulátor karakterrel szeparáltak (`\t`). Az időpont legyen UTC idő annak érdekében, hogy ha a fájlt más időzónában töltik be, akkor is a helyes helyi időt mutassa. Az megfelelő `string` konverzió a következő:
+Az első oszlopban a jelérték, a másodikban az időpont található, az oszlopok tabulátor karakterrel szeparáltak (`\t`). Az időpont legyen UTC idő annak érdekében, hogy ha a fájlt más időzónában töltik be, akkor is a helyes helyi időt mutassa. A megfelelő `string` konverzió a következő:
 
 ```csharp
 var dt = myDateTime.ToUniversalTime().ToString("o");
