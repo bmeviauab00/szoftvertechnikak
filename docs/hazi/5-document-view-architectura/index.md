@@ -425,7 +425,7 @@ Az `GraphicsSignalView`-ban az `OnPaint`-t felüldefiniálva valósítsuk meg a 
     - Két `DateTime` érték különbsége egy `TimeSpan` (időtartam) típusú objektumot eredményez.
     - Egy `DateTime` objektum a `Ticks` property-jében adja vissza legjobb felbontással az általa tárolt időértéket (1 tick = 100 nsec felbontás).
     - A rajzolófelületünk (vagyis a `GraphicsSignalView` `UserControl`) nulla x koordinátájában jelenítsük meg a listánkban levő első jelet.
-    - A megjelenítés során semmiféle követelmény nincs arra vonatkozóan, hogy a jeleket olyan skálatényezőkkel jelenítsük meg, hogy pont kiférjenek a rajzolás során. Helyette a nézet osztályunkban vezessünk be és használjunk olyan `pixelPerSec` és `pixelPerValue` skálatényezőket, melyek érzésre, vagy pár próbálkozás után úgy jelenítsék meg a jeleket, hogy a nézetbe beférjenek, de ne is legyen a rajz túl kicsi.
+    - A megjelenítés során semmiféle követelmény nincs arra vonatkozóan, hogy a jeleket mindig olyan skálatényezőkkel jelenítsük meg, hogy pont kiférjenek a rajzolás során. Helyette a nézet osztályunkban vezessünk be és használjunk olyan `pixelPerSec` és `pixelPerValue` skálatényezőket, melyek érzésre, vagy pár próbálkozás után úgy jelenítsék meg a jeleket az alapértelmezett megjelenítés során, hogy a nézetbe beférjenek, de ne is legyen a rajz túl kicsi (de az ablak átméretezésekor már nem kell beférjenek a jelek az ablakba).
     - Amennyiben a rajzunk „nem akar” megjelenni, tegyünk töréspontot az `OnPaint` műveletbe, és a kódunkat lépésenként végrehajva a változók értékét tooltipben vagy a _Watch_ ablakban megjelenítve nyomozzuk, hol csúszik félre a számításunk.
 
 Ha jól dolgoztunk, a következőhöz hasonló kimenetet kapunk:
