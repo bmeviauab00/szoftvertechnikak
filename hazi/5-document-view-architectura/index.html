@@ -1221,7 +1221,7 @@
 <span class="w">    </span><span class="c1">// Útvonal bekérése a felhasználótól a SaveFileDialog segítségével.</span>
 <span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">saveFileDialog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SaveFileDialog</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// Megjelenítés előtt paramlterezzük fel a dialógus ablakot</span>
+<span class="w">        </span><span class="c1">// Megjelenítés előtt paraméterezzük fel a dialógus ablakot</span>
 <span class="w">        </span><span class="n">Filter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;txt files (*.txt)|*.txt|All files (*.*)|*.*&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="n">FilterIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span>
 <span class="w">        </span><span class="n">RestoreDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
@@ -1245,7 +1245,7 @@
 30  2022-12-31T23:00:02.3000000Z
 10  2022-12-31T23:00:03.2320000Z
 </code></pre></div>
-<p>Az első oszlopban a jelérték, a másodikban az időpont található, az oszlopok tabulátor karakterrel szeparáltak (<code>\t</code>). Az időpont legyen UTC idő annak érdekében, hogy ha a fájlt más időzónában töltik be, akkor is a helyes helyi időt mutassa. Az megfelelő <code>string</code> konverzió a következő:</p>
+<p>Az első oszlopban a jelérték, a másodikban az időpont található, az oszlopok tabulátor karakterrel szeparáltak (<code>\t</code>). Az időpont legyen UTC idő annak érdekében, hogy ha a fájlt más időzónában töltik be, akkor is a helyes helyi időt mutassa. A megfelelő <code>string</code> konverzió a következő:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myDateTime</span><span class="p">.</span><span class="n">ToUniversalTime</span><span class="p">().</span><span class="n">ToString</span><span class="p">(</span><span class="s">&quot;o&quot;</span><span class="p">);</span>
 </code></pre></div>
 <p>Szöveges adatok fájlba írására a <code>StreamWriter</code> osztályt használjuk.</p>
@@ -1524,8 +1524,8 @@
         </path>
       </svg>
     </span>
-    <span title="2023. május 21. 16:31:44">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-21T16:31:44+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-21</span>
+    <span title="2023. május 21. 19:36:59">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-21T19:36:59+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-21</span>
     </span>
   </span>
 
