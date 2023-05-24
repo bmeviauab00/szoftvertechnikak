@@ -25,8 +25,8 @@ Az önálló gyakorlat célja:
 
 - UML alapú tervezés és néhány tervezési minta alkalmazása
 - A Document-View architektúra alkalmazása a gyakorlatban
-- A `UserControl` szerepének bemutatása Window Forms alkalmazásokban, Document-View architektúra esetén
-- A grafikus megjelenítés elveinek gyakorlása Window Forms alkalmazásokban (`Paint` esemény, `Invalidate`, `Graphics` használata)
+- A `UserControl` szerepének bemutatása Windows Forms alkalmazásokban, Document-View architektúra esetén
+- A grafikus megjelenítés elveinek gyakorlása Windows Forms alkalmazásokban (`Paint` esemény, `Invalidate`, `Graphics` használata)
 
 A szükséges fejlesztőkörnyezet a szokásos, [itt](../fejlesztokornyezet/index.md) található leírás.
 
