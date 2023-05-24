@@ -48,7 +48,7 @@ A szükséges fejlesztőkörnyezet a szokásos, [itt](../fejlesztokornyezet/inde
 - Egy olyan vastagkliens (Windows Forms) alkalmazást kell elkészíteni, amely képes fájlban időbélyeggel tárolt mérési értékek grafikus megjelenítésére. Az alkalmazásnak a Document-View architektúrát kell követnie.
 - Egyszerre több dokumentum is meg lehet nyitva, illetve egy dokumentumnak több nézete is lehet. A főablak egy `TabControl`-t tartalmaz, melyen minden nézet egy külön tabfülön jelenik meg.
 - Egy dokumentum létrehozásakor/megnyitásakor egy nézet (tabfül) jön létre hozzá, de utólag a _Window / New View_ menüelem kiválasztásával új nézet/tabfül is létrehozható. Egy dokumentumhoz azért van értelme több nézetet megjeleníteni, mert az egyes nézetek eltérő nagyításban képesek az adott dokumentum jeleit megjeleníteni.
-- A jelek kirajzolása mellett meg kell jeleníteni a koordináta tengelyeket is.
+- A jelek kirajzolása mellett meg kell jeleníteni a koordinátatengelyeket is.
 
 ### Irányelvek
 
@@ -95,7 +95,7 @@ A fontosabb osztályok a következők:
     - `CloseActiveView`: Bezárja az aktív nézetet.
 - `Document` osztály: Az egyes dokumentum típusok ősosztálya. Bár esetünkben csak egy dokumentum típus létezik, a későbbi bővíthetőség miatt célszerű külön választani. Tartalmazza a nézetek listáját, melyek a dokumentumot megjelenítik. Az `UpdateAllViews` művelete valamennyi nézetet értesít annak érdekében, hogy frissítsék magukat. A `LoadDocument` és `SaveDocument` üres virtuális függvények, melyek a dokumentum betöltésekor és mentésekor kerülnek meghívásra. A `Document` leszármazott osztályunkban kell felüldefiniálni és értelemszerűen megvalósítani őket.
 - `IView`: Az egyes nézetek közös interfésze. Azért nem osztály, mert a nézetek tipikusan a `UserControl`-ból származnak le, és egy osztálynak nem lehet több ősosztálya .NET környezetben.
-- `DemoView`: Egy demo nézet implementáció nézetre. Mintaként szolgálhat saját nézet létrehozásához. A `UserControl` osztályból származik, és implementálja az `IView` interfészt.
+- `DemoView`: Egy demo nézet implementáció, mintaként szolgálhat saját nézet létrehozásához. A `UserControl` osztályból származik, és implementálja az `IView` interfészt.
 
 Az osztályok közötti kapcsolatok jobb megértését segíti a solutionben található `ClassDiagram1.cd` UML osztálydiagram.
 
@@ -405,7 +405,7 @@ A munkánk eredményeképpen valami hasonlót kell lássunk futás közben (a sz
 
 Valósítsuk meg a jelek megjelenítését!
 
-Az `GraphicsSignalView`-ban az `OnPaint`-t felüldefiniálva valósítsuk meg a jelek kirajzolását. Először 3*3 pixeles „pontokat” rajzoljunk (pl. `Graphics`.`FillRectangle`-lel), majd a pontokat kössük össze vonalakkal (`Graphics.DrawLine`).
+Az `GraphicsSignalView`-ban az `OnPaint`-et felüldefiniálva valósítsuk meg a jelek kirajzolását. Először 3*3 pixeles „pontokat” rajzoljunk (pl. `Graphics.FillRectangle`-lel), majd a pontokat kössük össze vonalakkal (`Graphics.DrawLine`).
 
 ??? tip "Segítségképpen"
 
