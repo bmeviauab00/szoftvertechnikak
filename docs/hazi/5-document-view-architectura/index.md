@@ -6,7 +6,7 @@ authors: bzolka
 
 ## Bevezetés
 
-A feladat megértése szempontjából kulcsfontosságú a document-view architektúra részletekbe menő ismerete, pl. az előadásanyag alapján.
+A feladat megértése szempontjából kulcsfontosságú a Document-View architektúra részletekbe menő ismerete, pl. az előadásanyag alapján.
 
 Kapcsolódó előadások:
 
