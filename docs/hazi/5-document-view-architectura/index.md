@@ -487,7 +487,7 @@ A megközelítés előnye a viszonylagos egyszerűsége. Hátránya, hogy ha nag
     Készíts egy képernyőmentést `FeladatIMSc-2.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Nyiss meg vagy hozz létre egy dokumentumot, hogy látszódjanak a koordinátatengelyek és a kirajzolt jelek, valamint a görgetősáv (scrollbar). Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
-    - a „háttérben” a Visual Studio legyen, a `GraphicsSignalView.cs` releváns releváns része megnyitva,
+    - a „háttérben” a Visual Studio legyen, a `GraphicsSignalView.cs` releváns része megnyitva,
     - a VS _View/Full Screen_ menüjével kapcsolj ideiglenesen _Full Screen_ nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
     - az előtérben pedig az alkalmazásod ablaka.
 
@@ -510,6 +510,6 @@ Vezessünk be egy _Data_ menüelem alatti _Change To Live Data Source Mode_ men�
     Készíts egy képernyőmentést `FeladatIMSc-3.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Nyiss meg vagy hozz létre egy dokumentumot és válts élő módba, hogy látszódjanak a random generált értékek is.
-    - a „háttérben” a Visual Studio legyen, a `SignalDocument.cs` releváns releváns része megnyitva,
+    - a „háttérben” a Visual Studio legyen, a `SignalDocument.cs` releváns része megnyitva,
     - a VS _View/Full Screen_ menüjével kapcsolj ideiglenesen _Full Screen_ nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
     - az előtérben pedig az alkalmazásod ablaka.
