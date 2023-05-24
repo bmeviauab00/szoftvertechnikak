@@ -10,7 +10,7 @@ A feladat megértése szempontjából kulcsfontosságú a Document-View architek
 
 Kapcsolódó előadások:
 
-- Document-View architektúra elméleti ismerete (09-10 Architektúrák előadás része) és alkalmazása egyszerű környezetben
+- Document-View architektúra elméleti ismerete (09-10 Architekturális tervezés előadás része) és alkalmazása egyszerű környezetben
 - C# property, delegate, event alkalmazástechnikája
 - Windows Forms alkalmazások fejlesztésének alapjai (`Form`, vezérlőelemek, eseménykezelés)
 - Grafikus megjelenítés Windows Forms alkalmazásokban
