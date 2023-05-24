@@ -322,7 +322,7 @@ Hívjuk meg a `TraceValues`-t a betöltő függvényünk (`LoadDocument`) végé
     Készíts egy képernyőmentést `Feladat2-5.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
-    - a „háttérben” a Visual Studio legyen, az `SignalDocument.cs` megnyitva, melyben látszik a `TraceValues` implementációja, valamint az _Output_ ablakban a trace-elt jelértékek,
+    - a „háttérben” a Visual Studio legyen, a `SignalDocument.cs` megnyitva, melyben látszik a `TraceValues` implementációja, valamint az _Output_ ablakban a trace-elt jelértékek,
     - a VS _View/Full Screen_ menüjével kapcsolj ideiglenesen _Full Screen_ nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
     - az előtérben pedig az alkalmazásod ablaka.
 
@@ -396,8 +396,8 @@ A munkánk eredményeképpen valami hasonlót kell lássunk futás közben (a sz
 !!! example "BEADANDÓ"
     Készíts egy képernyőmentést `Feladat3-2.png` néven az alábbiak szerint:
 
-    - Indítsd el az alkalmazást. Nyiss meg vagy hozz létre egy dokumentumot, hogy látszódjanak a koordináta tengelyek. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
-    - a „háttérben” a Visual Studio legyen, az `GraphicsSignalView.cs` megnyitva, melyben látszik a koordináta tengelyek kirajzolása,
+    - Indítsd el az alkalmazást. Nyiss meg vagy hozz létre egy dokumentumot, hogy látszódjanak a koordinátatengelyek. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
+    - a „háttérben” a Visual Studio legyen, a `GraphicsSignalView.cs` megnyitva, melyben látszik a koordinátatengelyek kirajzolása,
     - a VS _View/Full Screen_ menüjével kapcsolj ideiglenesen _Full Screen_ nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
     - az előtérben pedig az alkalmazásod ablaka.
 
@@ -453,8 +453,8 @@ Az alkalmazást futtatva a _Window_ menüből ugyanahhoz a dokumentumhoz hozzunk
 !!! example "BEADANDÓ"
     Készíts egy képernyőmentést `Feladat3-4.png` néven az alábbiak szerint:
 
-    - Indítsd el az alkalmazást. Nyiss meg vagy hozz létre egy dokumentumot, hogy látszódjanak a koordináta tengelyek és a kirajzolt jelek. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
-    - a „háttérben” a Visual Studio legyen, az `GraphicsSignalView.cs` megnyitva, melyben látszik a jelek kirajzolása,
+    - Indítsd el az alkalmazást. Nyiss meg vagy hozz létre egy dokumentumot, hogy látszódjanak a koordinátatengelyek és a kirajzolt jelek. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
+    - a „háttérben” a Visual Studio legyen, a `GraphicsSignalView.cs` megnyitva, melyben látszik a jelek kirajzolása,
     - a VS _View/Full Screen_ menüjével kapcsolj ideiglenesen _Full Screen_ nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
     - az előtérben pedig az alkalmazásod ablaka.
 
@@ -486,8 +486,8 @@ A megközelítés előnye a viszonylagos egyszerűsége. Hátránya, hogy ha nag
 !!! example "BEADANDÓ"
     Készíts egy képernyőmentést `FeladatIMSc-2.png` néven az alábbiak szerint:
 
-    - Indítsd el az alkalmazást. Nyiss meg vagy hozz létre egy dokumentumot, hogy látszódjanak a koordináta tengelyek és a kirajzolt jelek, valamint a görgetősáv (scrollbar). Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
-    - a „háttérben” a Visual Studio legyen, az `GraphicsSignalView.cs` releváns releváns része megnyitva,
+    - Indítsd el az alkalmazást. Nyiss meg vagy hozz létre egy dokumentumot, hogy látszódjanak a koordinátatengelyek és a kirajzolt jelek, valamint a görgetősáv (scrollbar). Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
+    - a „háttérben” a Visual Studio legyen, a `GraphicsSignalView.cs` releváns releváns része megnyitva,
     - a VS _View/Full Screen_ menüjével kapcsolj ideiglenesen _Full Screen_ nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
     - az előtérben pedig az alkalmazásod ablaka.
 
@@ -510,6 +510,6 @@ Vezessünk be egy _Data_ menüelem alatti _Change To Live Data Source Mode_ men�
     Készíts egy képernyőmentést `FeladatIMSc-3.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Nyiss meg vagy hozz létre egy dokumentumot és válts élő módba, hogy látszódjanak a random generált értékek is.
-    - a „háttérben” a Visual Studio legyen, az `SignalDocument.cs` releváns releváns része megnyitva,
+    - a „háttérben” a Visual Studio legyen, a `SignalDocument.cs` releváns releváns része megnyitva,
     - a VS _View/Full Screen_ menüjével kapcsolj ideiglenesen _Full Screen_ nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
     - az előtérben pedig az alkalmazásod ablaka.
