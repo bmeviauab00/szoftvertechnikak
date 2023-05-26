@@ -323,7 +323,6 @@ Hívjuk meg a `TraceValues`-t a betöltő függvényünk (`LoadDocument`) végé
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `SignalDocument.cs` megnyitva, melyben látszik a `TraceValues` implementációja, valamint az _Output_ ablakban a trace-elt jelértékek,
-    - a VS _View/Full Screen_ menüjével kapcsolj ideiglenesen _Full Screen_ nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
     - az előtérben pedig az alkalmazásod ablaka.
 
 ## Feladat 3 – Jelek grafikus megjelenítése, saját nézet osztály
