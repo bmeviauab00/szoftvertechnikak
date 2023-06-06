@@ -54,8 +54,7 @@ A feladatunk egy vektorgrafikus rajzolóprogram kifejlesztése:
 - A már létrehozott alakzatok fontosabb paramétereit, úgymint koordináták, befoglaló téglalap meg kell jeleníteni egy listában egy információs panelen.
 - Windows Forms technológiára építve dolgozunk.
 - Document-View architektúrát követjük, de egyszerre csak egy dokumentum lehet megnyitva (nincsenek dokumentumonként tabfülek vagy ablakok).
-- Egy adott pontig előkészített környezetet viszünk tovább. A munka mennyiségének kezelhető szinten tartása végett csak bizonyos pontig visszük tovább a fejlesztést, nem valósítjuk meg a teljes értékű megoldást.
-kiemelt háttér jelzi.
+- Egy adott pontig előkészített környezetet viszünk tovább. A munka mennyiségének kezelhető szinten tartása végett csak bizonyos pontig visszük tovább a fejlesztést, nem valósítjuk meg a teljes értékű megoldást. Az újonnan beszúrandó sorokat az útmutatóban kiemelt háttér jelzi.
 
 ## 1. Feladat - A kiindulási környezet megismerése
 
