@@ -60,7 +60,7 @@ A feladatunk egy vektorgrafikus rajzolóprogram kifejlesztése:
 
 Klónozzuk le a gyakorlathoz tartozó kiinduló alkalmazás [repositoryját](https://github.com/bmeviauab00/lab-designpattern-kiindulo):
 
-- Nyissunk egy command prompt-ot
+- Nyissunk egy command prompt-ot,
 - Navigáljunk el egy tetszőleges mappába, például c:\work\NEPTUN
 - Adjuk ki a következő parancsot: `git clone https://github.com/bmeviauab00/lab-designpattern-kiindulo`
 - Nyissuk meg a _DesignPatternApp.sln_ solutiont Visual Studio-ban.
@@ -75,8 +75,8 @@ Ismerkedjünk meg működésének néhány aspektusával:
 - A *File/New* menüelem valamint a toolbar első gombja egy új dokumentumot hoz létre. Ez már működik, próbáljuk ki.
 - Mivel új alakzatot jelen pillanatban még nem tudunk létrehozni, a dokumentum a létrejöttét követően nem üres, tartalmaz némi tesztelést szolgáló adatot (két téglalapot és egy ellipszist).
 - Az alakzatok kirajzolása is meg van valósítva. Ezen felül a jobb oldali információs panelen láthatjuk a már létező alakzatok paramétereit.
-- Az alakzatok közül egy ki lehet választva: ez piros színnel és szaggatott kék kerettel kerül kirajzolásra, illetve az információs panelen ki is van választva az alakzathoz tartozó sor. Új alakzat kijelölésére az információs panelen a megfelelő sor kiválasztásával van mód. Ezt próbáljuk is ki. Azt tapasztaljuk, hogy változtatáskor a baloldali grafikus felület is frissül, a kiválasztott alakzat színe piros lesz. Hangsúlyozzuk, hogy ez bizony a klasszikus dokumentum-nézet architektúra alapú megközelítés igényét veti fel: a dokumentumunkhoz két nézet kapcsolódik, melyeket konzisztensen kell tartani.
-Megjegyzés: a teljes értékű megoldásban a baloldali grafikus nézetben is megvalósíthatnánk az egérkattintásra történő kijelölést. Ez jelentősen komplexebbé tenné a későbbi feladataink megvalósítását, így ezt szándékosan kihagyjuk.
+- Az alakzatok közül egy ki lehet választva: ez piros színnel és szaggatott kék kerettel kerül kirajzolásra, illetve az információs panelen ki is van választva az alakzathoz tartozó sor. Új alakzat kijelölésére az információs panelen a megfelelő sor kiválasztásával van mód. Ezt próbáljuk is ki. Azt tapasztaljuk, hogy változtatáskor a bal oldali grafikus felület is frissül, a kiválasztott alakzat színe piros lesz. Hangsúlyozzuk, hogy ez bizony a klasszikus dokumentum-nézet architektúra alapú megközelítés igényét veti fel: a dokumentumunkhoz két nézet kapcsolódik, melyeket konzisztensen kell tartani.
+Megjegyzés: a teljes értékű megoldásban a bal oldali grafikus nézetben is megvalósíthatnánk az egérkattintásra történő kijelölést. Ez jelentősen komplexebbé tenné a későbbi feladataink megvalósítását, így ezt szándékosan kihagyjuk.
 
 ### Megvalósítandó funkciók
 
@@ -110,7 +110,7 @@ A következőkben a `DesignPatternApp` projekt kapcsolódó osztályait tekintj�
 - `DrawingDocument` osztály
     - Egy `shapes` nevű listában tárolja az alakzatokat.
     - A `selectedShape` az aktuálisan kiválasztott alakzatra mutat.
-    - A `dokumentum` adatai a `Shapes`, `SelectedShape` és `SelectedShapeIndex` tulajdonságokon keresztül érhetők el a külvilág (pl. nézetek) számára.
+    - A dokumentum adatai a `Shapes`, `SelectedShape` és `SelectedShapeIndex` tulajdonságokon keresztül érhetők el a külvilág (pl. nézetek) számára.
     - A korábban ismertetett koncepciónknak megfelelően a dokumentumunk két eseményt is publikál, melyek C# eseményként vannak megvalósítva:
         - `ShapesChanged`: azt jelzi, hogy az alakzatok listája megváltozott, pl. új alakzattal bővült, vagy kikerült egy alakzat a listából, vagy akár egy alakzat adatai változtak meg a listában.
         - `SelectionChanged`: azt jelzi, hogy egy korábbitól eltérő alakzat került kiválasztásra (mely piros színnel jelenik meg rajzoláskor).
@@ -122,12 +122,12 @@ A következőkben a `DesignPatternApp` projekt kapcsolódó osztályait tekintj�
     - A `document` tagváltozóban tárolja a nézetet.
     - A dokumentum megfelelő eseményeire való fel/leiratkozáshoz bevezeti a `RegisterToDocEvents` és `UnRegisterToDocEvents` virtuális műveleteket, a leszármazottakban igény szerint kell implementálni.
 - `GraphicsView` osztály
-    - Az alkalmazásunk baloldali, grafikus nézetének implementációja.
+    - Az alkalmazásunk bal oldali, grafikus nézetének implementációja.
     - A `ViewBase`-ből származik, így közvetve ezen osztályunk is egy `UserControl`.
-    - A `RegisterToDocEvents` műveletében a dokumentum mindkét eseményére (`ShapesChanged` és `SelectionChanged`) előfizet, ugyanazt a `DocumentOnShapesChanged` eseménykezelő függvényt regisztrálja be. Az eseménykezelőben egy egyszerű `Invalidate` hívást találnunk, mely kikényszeríti a nézetünk újrarajzolását.
-    - Az `OnPaint` megvalósításának alapelve: minden alakzatra meghívjuk a `Draw` művelet, mely gondoskodik a tényleges megjelenítésről.
+    - A `RegisterToDocEvents` műveletében a dokumentum mindkét eseményére (`ShapesChanged` és `SelectionChanged`) előfizet, ugyanazt a `DocumentOnShapesChanged` eseménykezelő függvényt regisztrálja be. Az eseménykezelőben egy egyszerű `Invalidate` hívást találunk, mely kikényszeríti a nézetünk újrarajzolását.
+    - Az `OnPaint` megvalósításának alapelve: minden alakzatra meghívjuk a `Draw` műveletet, mely gondoskodik a tényleges megjelenítésről.
 - `InfoPanel` osztály
-    - Az alkalmazásunk jobboldali információs panel nézetének implementációja.
+    - Az alkalmazásunk jobb oldali információs panel nézetének implementációja.
     - Szintén a `ViewBase`-ből származik, így közvetve ezen osztályunk is egy UserControl.
     - Az információk megjelenítésére egy `ListBox` vezérlőt használ.
     - A `RegisterToDocEvents` műveletében ő is feliratkozik a dokumentum mindkét eseményére:
@@ -210,12 +210,12 @@ A következőkben áttekintjük a minta működését. Első lépésben még nem
 
 ![Kiinduló felület](images/command-processor-class-diagram.png)
 
-- Bevezetünk egy `Command` ősosztályt vagy interfészt, melynek van egy `Execute` és egy Un`Execute` absztrakt művelete (vagy nevezhetjük `Do` és `Undo`-nak is őket, ha úgy tartja kedvünk).
+- Bevezetünk egy `Command` ősosztályt vagy interfészt, melynek van egy `Execute` és egy `UnExecute` absztrakt művelete (vagy nevezhetjük `Do` és `Undo`-nak is őket, ha úgy tartja kedvünk).
 - Az egyes felhasználói parancsokhoz bevezetünk egy Command leszármazott osztályt.
     - Első körben a New Rect és New Ellipse parancsokra vonatkozóan kívánunk Undo támogatást bevezetni, így ezekhez vezetünk majd rövidesen be egy-egy új osztályt, pl. `NewRectCommand` és `NewEllipseCommand` néven.
-    - Ezen osztályokban a parancsspecifikusan megírjuk az `Execute` műveletet (pl. a `NewRectCommand`.`Execute`-ban felveszünk a dokumentumunkban egy új téglalapot), az `Unexecute`-ban pedig visszacsináljuk a művelet hatását. 
+    - Ezen osztályokban a parancsspecifikusan megírjuk az `Execute` műveletet (pl. a `NewRectCommand.Execute`-ban felveszünk a dokumentumunkban egy új téglalapot), az `UnExecute`-ban pedig visszacsináljuk a művelet hatását. 
     - A `Command` leszármazott osztályok sokszor nem maguk valósítják meg funkciójukat, hanem delegálják azt egy vagy több másik osztálynak. Ezt az osztályt az UML diagramon Receiver néven tüntettük fel. A gyakorlatban nem így szoktuk hívni. Alkalmazásunkban a Command-ok tipikusan az `App` osztályba hívnak tovább, vagyis esetünkben az `App` felel meg legtöbb esetben az ábrán szereplő Receiver osztálynak.
-- Bevezetünk egy központi CommandProcessor osztályt két művelettel:
+- Bevezetünk egy központi `CommandProcessor` osztályt két művelettel:
     - `ExecuteCommand`: végrehajtja a paraméterül kapott parancsot (meghívja az `Execute` műveletét), majd eltárolja egy belső stack gyűjteményben.
     - `UnExecuteLastCommand`: kiveszi az utoljára végrehajtott parancsot a command stack-ből, és meghívja annak `UnExecute` műveletét. Ezzel gyakorlatilag a parancs visszavonás funkcióját (Undo) valósítja meg.
 
@@ -262,7 +262,7 @@ A megvalósítás során a .NET beépített `Stack<T>` osztályát használjuk a
 readonly CommandProcessor commandProcessor = new CommandProcessor();
 ```
 Annak érdekében, hogy ez forduljon, a forrásfájlban az `AppFx.Command` névteret „using-olni” kell.
-4. Az `App.CommandHandlers.cs`-be `CloseDocument` végére vegyük fel ezt a sort:
+4. Az `App.CommandHandlers.cs`-be a `CloseDocument` végére vegyük fel ezt a sort:
 ```csharp
 commandProcessor.Clear();
 ```
@@ -313,7 +313,7 @@ class NewRectCommand : Command
     }
 }
 ```
-Az `Execute` művelet meghívja az `App` singleton `CreateRandomRect` műveletét, amely felvesz egy új `Rectangle` objektumot a dokumentumban, véletlenszerűen generált befoglaló téglalapban, és visszatér vele. Az újonnan létrehozott `Rect` objektumra a `NewRectCommand` eltárolja az alakzat azonosítóját a `shapeId` tagváltozóban. (Jelen pillatanban egy referencia tárolása is elég lenne, de mikor később a **Memento** megvalósítása során másolatot készítünk az alakzat objektumokról, a referencia használata már nem jelentene megoldást.)
+Az `Execute` művelet meghívja az `App` singleton `CreateRandomRect` műveletét, amely felvesz egy új `Rectangle` objektumot a dokumentumban, véletlenszerűen generált befoglaló téglalapban, és visszatér vele. Az újonnan létrehozott `Rect` objektumra a `NewRectCommand` eltárolja az alakzat azonosítóját a `shapeId` tagváltozóban. (Jelen pillanatban egy referencia tárolása is elég lenne, de mikor később a **Memento** megvalósítása során másolatot készítünk az alakzat objektumokról, a referencia használata már nem jelentene megoldást.)
 Az `UnExecute` műveletben az App singleton `RemoveShape` műveletének segítségével eltávolítjuk a parancs által létrehozott alakzatot, így visszavonjuk annak hatását (nézzük meg a kódban, hogyan van megvalósítva).
 8. Vegyünk fel a `Commands` mappába egy `NewEllipseCommand` osztályt, és implementáljuk a `NewRectCommand`-hoz hasonló elveknek megfelelően:
 ```csharp
@@ -356,7 +356,7 @@ Elkészültünk, teszteljük a megoldásunkat:
 
 1. Futtassuk az alkalmazást, és hozzunk létre egy dokumentumot.
 2. Figyeljük meg, hogy az Undo parancs (toolbar és menü is) tiltva van.
-3. A *New rect* paranccsal hozzunk létre egy új téglalapot. A téglalap megjelenik, és az Undo parancs engedélyezett lesz.
+3. A *New Rect* paranccsal hozzunk létre egy új téglalapot. A téglalap megjelenik, és az Undo parancs engedélyezett lesz.
 4. Hozzunk létre néhány további alakzatot, téglalapot és ellipszist vegyesen.
 5. Az *Undo* funkció használatával vonjuk vissza a műveleteket mindaddig, amíg nem marad alakzat: ekkor az Undo parancs letiltásra kerül.
 
@@ -367,13 +367,13 @@ Amennyiben a gyakorlat során jól állunk idővel, a kódot lépésenként futt
 3. Hozzunk létre egy dokumentumot, majd egy téglalapot. A `NewRect` kódjából kiindulva az ++f11++ billentyűvel az `executeCommand` és a `CommandProcessor` műveleteibe belelépve „értelmezzük” megoldásunkat.
 4. Ezt követően vonjuk vissza az utolsó műveletet. Ekkor az `UndoLast` műveletből kiindulva lépkedjünk végig a kódunkon.
 
-## 3- Feladat – Memento minta
+## 3. Feladat – Memento minta
 
 A feladatban a **Memento** minta megvalósítását gyakoroljuk. A minta teljes elméleti háttere – UML diagramokkal illusztrálva - előadáson kerül ismertetésre, itt a minta legfontosabb elemeire koncentrálunk.
 
 ### A Memento minta koncepciója
 
-Előző feladatunkban a *New rect* és *New ellips*e parancsok visszavonását könnyen meg tudtuk valósítani: mindössze el kellett távolítani a parancs által létrehozott alakzatot a dokumentum alakzatlistájából. A command objektumainkban ehhez elég volt egy azonosítót eltárolni az újonnan létrehozott alakzatra.
+Előző feladatunkban a *New Rect* és *New Ellipse* parancsok visszavonását könnyen meg tudtuk valósítani: mindössze el kellett távolítani a parancs által létrehozott alakzatot a dokumentum alakzatlistájából. A command objektumainkban ehhez elég volt egy azonosítót eltárolni az újonnan létrehozott alakzatra.
 
 Az alkalmazások többségénél azonban számos olyan parancs felbukkanhat, mely a dokumentum állapotát jelentős mértékben befolyásolja. Ilyenkor a parancsnak a végrehajtás előtt a dokumentum állapotának jelentős részéhez, vagy akár a teljes állapotához is hozzá kell férnie, hogy eltudja azt menteni az UnExecute megvalósításához. Ez úgy lehetséges, ha a dokumentum teljes állapotát publikussá tesszük. Ez viszont nem szerencsés, mert ellentmond az egységbezárás elvének. Nem szeretnénk a teljes állapotot – ráadásul módosításra vonatkozóan is – hozzáférhetővé tenni a külvilág számára, csak a visszavonás kedvéért.  Erre a problémára nyújt megoldást a **Memento** tervezési minta.
 
@@ -387,7 +387,7 @@ Alapelve részletesebben:
 - Az `Originator` azon osztály, melynek az állapotához hozzá szeretnénk férni. Esetünkben ez a `DrawingDocument` osztály tölti be az `Originator` szerepét. Az állapotot összefogóan az ábra a `state:State` taggal jelöli. Esetünkben ez a `shapes` lista, valamint a `selectedShape` tag lesz.  A következő lépésektől a mintát az alkalmazásunkra vetítjük.
 - A dokumentumunk állapotát (esetünkben ez a `shapes` lista, valamit a `selectedShape` tag) **NEM** tesszük publikussá.
 - A dokumentumunkban bevezetünk egy `CreateMemento` műveletet, mely egy ún. `Memento` objektumot hoz létre. A `Memento` tagváltozóiban a dokumentum állapotának pillanatnyi képét tartalmazza (vagyis tulajdonképpen egy csomagoló objektum a dokumentum aktuális állapotához).
-- A dokumentum állapotának visszaállítására bevezetünk a dokumentumban egy `SetMemento` műveletet, mely paraméterként egy `Memento` objektumot kap. A dokumentum ebben a műveletben visszaállítja saját állapotát a paraméterként kapott `Memento` objektum alapján.
+- A dokumentum állapotának visszaállítására bevezetünk a dokumentumban egy `RestoreFromMemento` műveletet, mely paraméterként egy `Memento` objektumot kap. A dokumentum ebben a műveletben visszaállítja saját állapotát a paraméterként kapott `Memento` objektum alapján.
 
 ### A Memento minta megvalósítása alkalmazásunkban
 
@@ -512,8 +512,8 @@ public void ClearDocument()
 
 Teszteljük megoldásunkat:
 
-- Futtassuk az alkalmazást
-- Hozzunk létre pár alakzatot
+- Futtassuk az alkalmazást,
+- Hozzunk létre pár alakzatot,
 - A File/Clear menüből futtassuk a *Clear* parancsot: az alakzataink eltűnnek.
 - Az *Undo* paranccsal vonjuk vissza a parancsot: az alakzatok újra megjelennek.
 
@@ -525,6 +525,6 @@ Lépésenként futtatva is teszteljük a megoldást:
 
 Példánkban a Memento minta arra épít, hogy a dokumentum teljes állapotáról másolatot készítünk. Sok alkalmazás, illetve nagyméretű dokumentum esetében ennek nagyon nagy lehet a memóriaigénye. Milyen megoldásokban gondolkozhatunk a probléma elkerülésére?
 
-- A kisebb változások hatását inkább „inverz” művelettel próbáljuk visszacsinálni. Ezt alkalmaztuk pl. a *New rect* parancs esetében.
+- A kisebb változások hatását inkább „inverz” művelettel próbáljuk visszacsinálni. Ezt alkalmaztuk pl. a *New Rect* parancs esetében.
 - A Memento-ba nem mentjük bele a teljes állapotot, hanem csak módosult állapotot. Sajnos ez nem mindig tehető meg, valamint nehezebben karbantartható megoldást eredményez.
 - Korlátozzuk a visszavonható lépések számát.
