@@ -502,7 +502,7 @@ Ezzel a Memento támogatás beépítésével végeztünk. Ugyanakkor jelen pilla
 ```csharp
 using AppFx.Command;
 ```
-- Az `App.CommandHandlers.cs` fájlban a `ClearDocument` műveletet írjuk át, hogy most már az újonnan létrehozott `ClearCommand` parancsunkat „futtassa.”:
+- Az `App.CommandHandlers.cs` fájlban a `ClearDocument` műveletet írjuk át, hogy most már az újonnan létrehozott `ClearCommand` parancsunkat „futtassa”:
 ```csharp
 public void ClearDocument()
 {
