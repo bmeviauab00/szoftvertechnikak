@@ -587,10 +587,10 @@
       
         <li class="md-nav__item">
   <a href="#3-feladat-memento-minta" class="md-nav__link">
-    3- Feladat – Memento minta
+    3. Feladat – Memento minta
   </a>
   
-    <nav class="md-nav" aria-label="3- Feladat – Memento minta">
+    <nav class="md-nav" aria-label="3. Feladat – Memento minta">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -904,10 +904,10 @@
       
         <li class="md-nav__item">
   <a href="#3-feladat-memento-minta" class="md-nav__link">
-    3- Feladat – Memento minta
+    3. Feladat – Memento minta
   </a>
   
-    <nav class="md-nav" aria-label="3- Feladat – Memento minta">
+    <nav class="md-nav" aria-label="3. Feladat – Memento minta">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -995,13 +995,12 @@ Ugyanakkor ne essünk át a ló túloldalára: csak akkor érdemes egy adott ter
 <li>A már létrehozott alakzatok fontosabb paramétereit, úgymint koordináták, befoglaló téglalap meg kell jeleníteni egy listában egy információs panelen.</li>
 <li>Windows Forms technológiára építve dolgozunk.</li>
 <li>Document-View architektúrát követjük, de egyszerre csak egy dokumentum lehet megnyitva (nincsenek dokumentumonként tabfülek vagy ablakok).</li>
-<li>Egy adott pontig előkészített környezetet viszünk tovább. A munka mennyiségének kezelhető szinten tartása végett csak bizonyos pontig visszük tovább a fejlesztést, nem valósítjuk meg a teljes értékű megoldást.
-kiemelt háttér jelzi.</li>
+<li>Egy adott pontig előkészített környezetet viszünk tovább. A munka mennyiségének kezelhető szinten tartása végett csak bizonyos pontig visszük tovább a fejlesztést, nem valósítjuk meg a teljes értékű megoldást. Az újonnan beszúrandó sorokat az útmutatóban kiemelt háttér jelzi.</li>
 </ul>
 <h2 id="1-feladat-a-kiindulasi-kornyezet-megismerese">1. Feladat - A kiindulási környezet megismerése<a class="headerlink" href="#1-feladat-a-kiindulasi-kornyezet-megismerese" title="Permanent link">&para;</a></h2>
 <p>Klónozzuk le a gyakorlathoz tartozó kiinduló alkalmazás <a href="https://github.com/bmeviauab00/lab-designpattern-kiindulo">repositoryját</a>:</p>
 <ul>
-<li>Nyissunk egy command prompt-ot</li>
+<li>Nyissunk egy command prompt-ot,</li>
 <li>Navigáljunk el egy tetszőleges mappába, például c:\work\NEPTUN</li>
 <li>Adjuk ki a következő parancsot: <code>git clone https://github.com/bmeviauab00/lab-designpattern-kiindulo</code></li>
 <li>Nyissuk meg a <em>DesignPatternApp.sln</em> solutiont Visual Studio-ban.</li>
@@ -1014,8 +1013,8 @@ kiemelt háttér jelzi.</li>
 <li>A <em>File/New</em> menüelem valamint a toolbar első gombja egy új dokumentumot hoz létre. Ez már működik, próbáljuk ki.</li>
 <li>Mivel új alakzatot jelen pillanatban még nem tudunk létrehozni, a dokumentum a létrejöttét követően nem üres, tartalmaz némi tesztelést szolgáló adatot (két téglalapot és egy ellipszist).</li>
 <li>Az alakzatok kirajzolása is meg van valósítva. Ezen felül a jobb oldali információs panelen láthatjuk a már létező alakzatok paramétereit.</li>
-<li>Az alakzatok közül egy ki lehet választva: ez piros színnel és szaggatott kék kerettel kerül kirajzolásra, illetve az információs panelen ki is van választva az alakzathoz tartozó sor. Új alakzat kijelölésére az információs panelen a megfelelő sor kiválasztásával van mód. Ezt próbáljuk is ki. Azt tapasztaljuk, hogy változtatáskor a baloldali grafikus felület is frissül, a kiválasztott alakzat színe piros lesz. Hangsúlyozzuk, hogy ez bizony a klasszikus dokumentum-nézet architektúra alapú megközelítés igényét veti fel: a dokumentumunkhoz két nézet kapcsolódik, melyeket konzisztensen kell tartani.
-Megjegyzés: a teljes értékű megoldásban a baloldali grafikus nézetben is megvalósíthatnánk az egérkattintásra történő kijelölést. Ez jelentősen komplexebbé tenné a későbbi feladataink megvalósítását, így ezt szándékosan kihagyjuk.</li>
+<li>Az alakzatok közül egy ki lehet választva: ez piros színnel és szaggatott kék kerettel kerül kirajzolásra, illetve az információs panelen ki is van választva az alakzathoz tartozó sor. Új alakzat kijelölésére az információs panelen a megfelelő sor kiválasztásával van mód. Ezt próbáljuk is ki. Azt tapasztaljuk, hogy változtatáskor a bal oldali grafikus felület is frissül, a kiválasztott alakzat színe piros lesz. Hangsúlyozzuk, hogy ez bizony a klasszikus dokumentum-nézet architektúra alapú megközelítés igényét veti fel: a dokumentumunkhoz két nézet kapcsolódik, melyeket konzisztensen kell tartani.
+Megjegyzés: a teljes értékű megoldásban a bal oldali grafikus nézetben is megvalósíthatnánk az egérkattintásra történő kijelölést. Ez jelentősen komplexebbé tenné a későbbi feladataink megvalósítását, így ezt szándékosan kihagyjuk.</li>
 </ul>
 <h3 id="megvalositando-funkciok">Megvalósítandó funkciók<a class="headerlink" href="#megvalositando-funkciok" title="Permanent link">&para;</a></h3>
 <p>A következő funkciókat fogjuk a gyakorlat során megvalósítani:</p>
@@ -1051,7 +1050,7 @@ Megjegyzés: a teljes értékű megoldásban a baloldali grafikus nézetben is m
 <ul>
 <li>Egy <code>shapes</code> nevű listában tárolja az alakzatokat.</li>
 <li>A <code>selectedShape</code> az aktuálisan kiválasztott alakzatra mutat.</li>
-<li>A <code>dokumentum</code> adatai a <code>Shapes</code>, <code>SelectedShape</code> és <code>SelectedShapeIndex</code> tulajdonságokon keresztül érhetők el a külvilág (pl. nézetek) számára.</li>
+<li>A dokumentum adatai a <code>Shapes</code>, <code>SelectedShape</code> és <code>SelectedShapeIndex</code> tulajdonságokon keresztül érhetők el a külvilág (pl. nézetek) számára.</li>
 <li>A korábban ismertetett koncepciónknak megfelelően a dokumentumunk két eseményt is publikál, melyek C# eseményként vannak megvalósítva:<ul>
 <li><code>ShapesChanged</code>: azt jelzi, hogy az alakzatok listája megváltozott, pl. új alakzattal bővült, vagy kikerült egy alakzat a listából, vagy akár egy alakzat adatai változtak meg a listában.</li>
 <li><code>SelectionChanged</code>: azt jelzi, hogy egy korábbitól eltérő alakzat került kiválasztásra (mely piros színnel jelenik meg rajzoláskor).</li>
@@ -1070,14 +1069,14 @@ Megjegyzés: a teljes értékű megoldásban a baloldali grafikus nézetben is m
 </ul>
 </li>
 <li><code>GraphicsView</code> osztály<ul>
-<li>Az alkalmazásunk baloldali, grafikus nézetének implementációja.</li>
+<li>Az alkalmazásunk bal oldali, grafikus nézetének implementációja.</li>
 <li>A <code>ViewBase</code>-ből származik, így közvetve ezen osztályunk is egy <code>UserControl</code>.</li>
-<li>A <code>RegisterToDocEvents</code> műveletében a dokumentum mindkét eseményére (<code>ShapesChanged</code> és <code>SelectionChanged</code>) előfizet, ugyanazt a <code>DocumentOnShapesChanged</code> eseménykezelő függvényt regisztrálja be. Az eseménykezelőben egy egyszerű <code>Invalidate</code> hívást találnunk, mely kikényszeríti a nézetünk újrarajzolását.</li>
-<li>Az <code>OnPaint</code> megvalósításának alapelve: minden alakzatra meghívjuk a <code>Draw</code> művelet, mely gondoskodik a tényleges megjelenítésről.</li>
+<li>A <code>RegisterToDocEvents</code> műveletében a dokumentum mindkét eseményére (<code>ShapesChanged</code> és <code>SelectionChanged</code>) előfizet, ugyanazt a <code>DocumentOnShapesChanged</code> eseménykezelő függvényt regisztrálja be. Az eseménykezelőben egy egyszerű <code>Invalidate</code> hívást találunk, mely kikényszeríti a nézetünk újrarajzolását.</li>
+<li>Az <code>OnPaint</code> megvalósításának alapelve: minden alakzatra meghívjuk a <code>Draw</code> műveletet, mely gondoskodik a tényleges megjelenítésről.</li>
 </ul>
 </li>
 <li><code>InfoPanel</code> osztály<ul>
-<li>Az alkalmazásunk jobboldali információs panel nézetének implementációja.</li>
+<li>Az alkalmazásunk jobb oldali információs panel nézetének implementációja.</li>
 <li>Szintén a <code>ViewBase</code>-ből származik, így közvetve ezen osztályunk is egy UserControl.</li>
 <li>Az információk megjelenítésére egy <code>ListBox</code> vezérlőt használ.</li>
 <li>A <code>RegisterToDocEvents</code> műveletében ő is feliratkozik a dokumentum mindkét eseményére:<ul>
@@ -1160,14 +1159,14 @@ Mindkét minta elméleti hátterét a kapcsolódó előadás ismerteti részlete
 A következőkben áttekintjük a minta működését. Első lépésben még nem valósítjuk meg, csak az alapelveire koncentrálunk (bár hogy könnyebben megérthető legyen, a mintát az alkalmazásunkra vetítve mutatjuk be). Következzen egy ábra, majd a hozzá kapcsolódó gondolatok. </p>
 <p><a class="glightbox" href="images/command-processor-class-diagram.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Kiinduló felület" src="images/command-processor-class-diagram.png" /></a></p>
 <ul>
-<li>Bevezetünk egy <code>Command</code> ősosztályt vagy interfészt, melynek van egy <code>Execute</code> és egy Un<code>Execute</code> absztrakt művelete (vagy nevezhetjük <code>Do</code> és <code>Undo</code>-nak is őket, ha úgy tartja kedvünk).</li>
+<li>Bevezetünk egy <code>Command</code> ősosztályt vagy interfészt, melynek van egy <code>Execute</code> és egy <code>UnExecute</code> absztrakt művelete (vagy nevezhetjük <code>Do</code> és <code>Undo</code>-nak is őket, ha úgy tartja kedvünk).</li>
 <li>Az egyes felhasználói parancsokhoz bevezetünk egy Command leszármazott osztályt.<ul>
 <li>Első körben a New Rect és New Ellipse parancsokra vonatkozóan kívánunk Undo támogatást bevezetni, így ezekhez vezetünk majd rövidesen be egy-egy új osztályt, pl. <code>NewRectCommand</code> és <code>NewEllipseCommand</code> néven.</li>
-<li>Ezen osztályokban a parancsspecifikusan megírjuk az <code>Execute</code> műveletet (pl. a <code>NewRectCommand</code>.<code>Execute</code>-ban felveszünk a dokumentumunkban egy új téglalapot), az <code>Unexecute</code>-ban pedig visszacsináljuk a művelet hatását. </li>
+<li>Ezen osztályokban a parancsspecifikusan megírjuk az <code>Execute</code> műveletet (pl. a <code>NewRectCommand.Execute</code>-ban felveszünk a dokumentumunkban egy új téglalapot), az <code>UnExecute</code>-ban pedig visszacsináljuk a művelet hatását. </li>
 <li>A <code>Command</code> leszármazott osztályok sokszor nem maguk valósítják meg funkciójukat, hanem delegálják azt egy vagy több másik osztálynak. Ezt az osztályt az UML diagramon Receiver néven tüntettük fel. A gyakorlatban nem így szoktuk hívni. Alkalmazásunkban a Command-ok tipikusan az <code>App</code> osztályba hívnak tovább, vagyis esetünkben az <code>App</code> felel meg legtöbb esetben az ábrán szereplő Receiver osztálynak.</li>
 </ul>
 </li>
-<li>Bevezetünk egy központi CommandProcessor osztályt két művelettel:<ul>
+<li>Bevezetünk egy központi <code>CommandProcessor</code> osztályt két művelettel:<ul>
 <li><code>ExecuteCommand</code>: végrehajtja a paraméterül kapott parancsot (meghívja az <code>Execute</code> műveletét), majd eltárolja egy belső stack gyűjteményben.</li>
 <li><code>UnExecuteLastCommand</code>: kiveszi az utoljára végrehajtott parancsot a command stack-ből, és meghívja annak <code>UnExecute</code> műveletét. Ezzel gyakorlatilag a parancs visszavonás funkcióját (Undo) valósítja meg.</li>
 </ul>
@@ -1212,7 +1211,7 @@ A megvalósítás során a .NET beépített <code>Stack&lt;T&gt;</code> osztály
 <div class="highlight"><pre><span></span><code><span class="k">readonly</span><span class="w"> </span><span class="n">CommandProcessor</span><span class="w"> </span><span class="n">commandProcessor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CommandProcessor</span><span class="p">();</span>
 </code></pre></div>
 Annak érdekében, hogy ez forduljon, a forrásfájlban az <code>AppFx.Command</code> névteret „using-olni” kell.</li>
-<li>Az <code>App.CommandHandlers.cs</code>-be <code>CloseDocument</code> végére vegyük fel ezt a sort:
+<li>Az <code>App.CommandHandlers.cs</code>-be a <code>CloseDocument</code> végére vegyük fel ezt a sort:
 <div class="highlight"><pre><span></span><code><span class="n">commandProcessor</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
 </code></pre></div>
 Ennek az a szerepe, hogy amikor bezárjuk a dokumentumot, kipucoljuk az undo sort, hiszen a benne levő elemek egy már bezárt, nem létező dokumentumra vonatkoznak.</li>
@@ -1257,7 +1256,7 @@ Az <code>unexecuteLastCommand</code> műveletet akkor kell meghívni, amikor a f
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-Az <code>Execute</code> művelet meghívja az <code>App</code> singleton <code>CreateRandomRect</code> műveletét, amely felvesz egy új <code>Rectangle</code> objektumot a dokumentumban, véletlenszerűen generált befoglaló téglalapban, és visszatér vele. Az újonnan létrehozott <code>Rect</code> objektumra a <code>NewRectCommand</code> eltárolja az alakzat azonosítóját a <code>shapeId</code> tagváltozóban. (Jelen pillatanban egy referencia tárolása is elég lenne, de mikor később a <strong>Memento</strong> megvalósítása során másolatot készítünk az alakzat objektumokról, a referencia használata már nem jelentene megoldást.)
+Az <code>Execute</code> művelet meghívja az <code>App</code> singleton <code>CreateRandomRect</code> műveletét, amely felvesz egy új <code>Rectangle</code> objektumot a dokumentumban, véletlenszerűen generált befoglaló téglalapban, és visszatér vele. Az újonnan létrehozott <code>Rect</code> objektumra a <code>NewRectCommand</code> eltárolja az alakzat azonosítóját a <code>shapeId</code> tagváltozóban. (Jelen pillanatban egy referencia tárolása is elég lenne, de mikor később a <strong>Memento</strong> megvalósítása során másolatot készítünk az alakzat objektumokról, a referencia használata már nem jelentene megoldást.)
 Az <code>UnExecute</code> műveletben az App singleton <code>RemoveShape</code> műveletének segítségével eltávolítjuk a parancs által létrehozott alakzatot, így visszavonjuk annak hatását (nézzük meg a kódban, hogyan van megvalósítva).</li>
 <li>Vegyünk fel a <code>Commands</code> mappába egy <code>NewEllipseCommand</code> osztályt, és implementáljuk a <code>NewRectCommand</code>-hoz hasonló elveknek megfelelően:
 <div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">AppFx.Command</span><span class="p">;</span>
@@ -1297,7 +1296,7 @@ Ehhez hasonlóan alakítsuk át a <code>NewRect</code> mellett található <code
 <ol>
 <li>Futtassuk az alkalmazást, és hozzunk létre egy dokumentumot.</li>
 <li>Figyeljük meg, hogy az Undo parancs (toolbar és menü is) tiltva van.</li>
-<li>A <em>New rect</em> paranccsal hozzunk létre egy új téglalapot. A téglalap megjelenik, és az Undo parancs engedélyezett lesz.</li>
+<li>A <em>New Rect</em> paranccsal hozzunk létre egy új téglalapot. A téglalap megjelenik, és az Undo parancs engedélyezett lesz.</li>
 <li>Hozzunk létre néhány további alakzatot, téglalapot és ellipszist vegyesen.</li>
 <li>Az <em>Undo</em> funkció használatával vonjuk vissza a műveleteket mindaddig, amíg nem marad alakzat: ekkor az Undo parancs letiltásra kerül.</li>
 </ol>
@@ -1308,10 +1307,10 @@ Ehhez hasonlóan alakítsuk át a <code>NewRect</code> mellett található <code
 <li>Hozzunk létre egy dokumentumot, majd egy téglalapot. A <code>NewRect</code> kódjából kiindulva az <span class="keys"><kbd class="key-f11">F11</kbd></span> billentyűvel az <code>executeCommand</code> és a <code>CommandProcessor</code> műveleteibe belelépve „értelmezzük” megoldásunkat.</li>
 <li>Ezt követően vonjuk vissza az utolsó műveletet. Ekkor az <code>UndoLast</code> műveletből kiindulva lépkedjünk végig a kódunkon.</li>
 </ol>
-<h2 id="3-feladat-memento-minta">3- Feladat – Memento minta<a class="headerlink" href="#3-feladat-memento-minta" title="Permanent link">&para;</a></h2>
+<h2 id="3-feladat-memento-minta">3. Feladat – Memento minta<a class="headerlink" href="#3-feladat-memento-minta" title="Permanent link">&para;</a></h2>
 <p>A feladatban a <strong>Memento</strong> minta megvalósítását gyakoroljuk. A minta teljes elméleti háttere – UML diagramokkal illusztrálva - előadáson kerül ismertetésre, itt a minta legfontosabb elemeire koncentrálunk.</p>
 <h3 id="a-memento-minta-koncepcioja">A Memento minta koncepciója<a class="headerlink" href="#a-memento-minta-koncepcioja" title="Permanent link">&para;</a></h3>
-<p>Előző feladatunkban a <em>New rect</em> és *New ellips*e parancsok visszavonását könnyen meg tudtuk valósítani: mindössze el kellett távolítani a parancs által létrehozott alakzatot a dokumentum alakzatlistájából. A command objektumainkban ehhez elég volt egy azonosítót eltárolni az újonnan létrehozott alakzatra.</p>
+<p>Előző feladatunkban a <em>New Rect</em> és <em>New Ellipse</em> parancsok visszavonását könnyen meg tudtuk valósítani: mindössze el kellett távolítani a parancs által létrehozott alakzatot a dokumentum alakzatlistájából. A command objektumainkban ehhez elég volt egy azonosítót eltárolni az újonnan létrehozott alakzatra.</p>
 <p>Az alkalmazások többségénél azonban számos olyan parancs felbukkanhat, mely a dokumentum állapotát jelentős mértékben befolyásolja. Ilyenkor a parancsnak a végrehajtás előtt a dokumentum állapotának jelentős részéhez, vagy akár a teljes állapotához is hozzá kell férnie, hogy eltudja azt menteni az UnExecute megvalósításához. Ez úgy lehetséges, ha a dokumentum teljes állapotát publikussá tesszük. Ez viszont nem szerencsés, mert ellentmond az egységbezárás elvének. Nem szeretnénk a teljes állapotot – ráadásul módosításra vonatkozóan is – hozzáférhetővé tenni a külvilág számára, csak a visszavonás kedvéért.  Erre a problémára nyújt megoldást a <strong>Memento</strong> tervezési minta.</p>
 <p>Alapelve egy mondatban: <strong>dokumentumunk állapotát egy ún. Memento objektumba csomagoljuk be, hogy az később a visszavonás során visszaállítható legyen</strong>.</p>
 <p>Következzen egy ábra, majd a hozzá kapcsolódó gondolatok.</p>
@@ -1320,7 +1319,7 @@ Ehhez hasonlóan alakítsuk át a <code>NewRect</code> mellett található <code
 - Az <code>Originator</code> azon osztály, melynek az állapotához hozzá szeretnénk férni. Esetünkben ez a <code>DrawingDocument</code> osztály tölti be az <code>Originator</code> szerepét. Az állapotot összefogóan az ábra a <code>state:State</code> taggal jelöli. Esetünkben ez a <code>shapes</code> lista, valamint a <code>selectedShape</code> tag lesz.  A következő lépésektől a mintát az alkalmazásunkra vetítjük.
 - A dokumentumunk állapotát (esetünkben ez a <code>shapes</code> lista, valamit a <code>selectedShape</code> tag) <strong>NEM</strong> tesszük publikussá.
 - A dokumentumunkban bevezetünk egy <code>CreateMemento</code> műveletet, mely egy ún. <code>Memento</code> objektumot hoz létre. A <code>Memento</code> tagváltozóiban a dokumentum állapotának pillanatnyi képét tartalmazza (vagyis tulajdonképpen egy csomagoló objektum a dokumentum aktuális állapotához).
-- A dokumentum állapotának visszaállítására bevezetünk a dokumentumban egy <code>SetMemento</code> műveletet, mely paraméterként egy <code>Memento</code> objektumot kap. A dokumentum ebben a műveletben visszaállítja saját állapotát a paraméterként kapott <code>Memento</code> objektum alapján.</p>
+- A dokumentum állapotának visszaállítására bevezetünk a dokumentumban egy <code>RestoreFromMemento</code> műveletet, mely paraméterként egy <code>Memento</code> objektumot kap. A dokumentum ebben a műveletben visszaállítja saját állapotát a paraméterként kapott <code>Memento</code> objektum alapján.</p>
 <h3 id="a-memento-minta-megvalositasa-alkalmazasunkban">A Memento minta megvalósítása alkalmazásunkban<a class="headerlink" href="#a-memento-minta-megvalositasa-alkalmazasunkban" title="Permanent link">&para;</a></h3>
 <p>Alkalmazásunkban a <em>Clear</em> funkciót valósítjuk meg a Memento mintára építve. A <em>Clear</em> parancs törli a dokumentumból az összes alakzatot. Annak érdekéken, hogy ez visszavonható legyen, a dokumentumunk teljes állapotát el kell menteni a parancs végrehajtása előtt. Ehhez a <code>DrawingDocument</code> osztályunk állapotát jelentő shapes tagot NEM fogjuk publikussá tenni. Még közvetve, property-n/műveleten keresztül sem tesszük módosíthatóvá!</p>
 <div class="admonition warning">
@@ -1446,7 +1445,7 @@ Forráskód szintjén viszont igyekszünk leválasztani, így a DrawingDocument 
 <div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">AppFx.Command</span><span class="p">;</span>
 </code></pre></div></p>
 </li>
-<li>Az <code>App.CommandHandlers.cs</code> fájlban a <code>ClearDocument</code> műveletet írjuk át, hogy most már az újonnan létrehozott <code>ClearCommand</code> parancsunkat „futtassa.”:
+<li>Az <code>App.CommandHandlers.cs</code> fájlban a <code>ClearDocument</code> műveletet írjuk át, hogy most már az újonnan létrehozott <code>ClearCommand</code> parancsunkat „futtassa”:
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ClearDocument</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">executeCommand</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ClearCommand</span><span class="p">());</span>
@@ -1455,8 +1454,8 @@ Forráskód szintjén viszont igyekszünk leválasztani, így a DrawingDocument 
 </ul>
 <p>Teszteljük megoldásunkat:</p>
 <ul>
-<li>Futtassuk az alkalmazást</li>
-<li>Hozzunk létre pár alakzatot</li>
+<li>Futtassuk az alkalmazást,</li>
+<li>Hozzunk létre pár alakzatot,</li>
 <li>A File/Clear menüből futtassuk a <em>Clear</em> parancsot: az alakzataink eltűnnek.</li>
 <li>Az <em>Undo</em> paranccsal vonjuk vissza a parancsot: az alakzatok újra megjelennek.</li>
 </ul>
@@ -1468,7 +1467,7 @@ Forráskód szintjén viszont igyekszünk leválasztani, így a DrawingDocument 
 </ul>
 <p>Példánkban a Memento minta arra épít, hogy a dokumentum teljes állapotáról másolatot készítünk. Sok alkalmazás, illetve nagyméretű dokumentum esetében ennek nagyon nagy lehet a memóriaigénye. Milyen megoldásokban gondolkozhatunk a probléma elkerülésére?</p>
 <ul>
-<li>A kisebb változások hatását inkább „inverz” művelettel próbáljuk visszacsinálni. Ezt alkalmaztuk pl. a <em>New rect</em> parancs esetében.</li>
+<li>A kisebb változások hatását inkább „inverz” művelettel próbáljuk visszacsinálni. Ezt alkalmaztuk pl. a <em>New Rect</em> parancs esetében.</li>
 <li>A Memento-ba nem mentjük bele a teljes állapotot, hanem csak módosult állapotot. Sajnos ez nem mindig tehető meg, valamint nehezebben karbantartható megoldást eredményez.</li>
 <li>Korlátozzuk a visszavonható lépések számát.</li>
 </ul>
@@ -1482,8 +1481,8 @@ Forráskód szintjén viszont igyekszünk leválasztani, így a DrawingDocument 
         </path>
       </svg>
     </span>
-    <span title="2023. május 13. 11:43:39">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-13T11:43:39+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-13</span>
+    <span title="2023. augusztus 19. 09:49:03">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-08-19T09:49:03+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-19</span>
     </span>
   </span>
 
@@ -1500,8 +1499,6 @@ Forráskód szintjén viszont igyekszünk leválasztani, így a DrawingDocument 
     <span>Szerzők</span>
     <nav><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@bzolka">
         <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
-      </a><a href="https://github.com/zbenedek-mirango" target="_blank" rel="noopener noreferrer" class="md-author" title="@zbenedek-mirango">
-        <img src="https://avatars.githubusercontent.com/u/105201689?size=72" alt="@zbenedek-mirango">
       </a></nav>      
   </span>
 </div>

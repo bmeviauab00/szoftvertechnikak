@@ -1065,10 +1065,10 @@
 
 <h1 id="5-hf-document-view-architektura">5. HF - Document-View architektúra<a class="headerlink" href="#5-hf-document-view-architektura" title="Permanent link">&para;</a></h1>
 <h2 id="bevezetes">Bevezetés<a class="headerlink" href="#bevezetes" title="Permanent link">&para;</a></h2>
-<p>A feladat megértése szempontjából kulcsfontosságú a document-view architektúra részletekbe menő ismerete, pl. az előadásanyag alapján.</p>
+<p>A feladat megértése szempontjából kulcsfontosságú a Document-View architektúra részletekbe menő ismerete, pl. az előadásanyag alapján.</p>
 <p>Kapcsolódó előadások:</p>
 <ul>
-<li>Document-View architektúra elméleti ismerete (09-10 Architektúrák előadás része) és alkalmazása egyszerű környezetben</li>
+<li>Document-View architektúra elméleti ismerete (09-10 Architekturális tervezés előadás része) és alkalmazása egyszerű környezetben</li>
 <li>C# property, delegate, event alkalmazástechnikája</li>
 <li>Windows Forms alkalmazások fejlesztésének alapjai (<code>Form</code>, vezérlőelemek, eseménykezelés)</li>
 <li>Grafikus megjelenítés Windows Forms alkalmazásokban</li>
@@ -1083,8 +1083,8 @@
 <ul>
 <li>UML alapú tervezés és néhány tervezési minta alkalmazása</li>
 <li>A Document-View architektúra alkalmazása a gyakorlatban</li>
-<li>A <code>UserControl</code> szerepének bemutatása Window Forms alkalmazásokban, Document-View architektúra esetén</li>
-<li>A grafikus megjelenítés elveinek gyakorlása Window Forms alkalmazásokban (<code>Paint</code> esemény, <code>Invalidate</code>, <code>Graphics</code> használata)</li>
+<li>A <code>UserControl</code> szerepének bemutatása Windows Forms alkalmazásokban, Document-View architektúra esetén</li>
+<li>A grafikus megjelenítés elveinek gyakorlása Windows Forms alkalmazásokban (<code>Paint</code> esemény, <code>Invalidate</code>, <code>Graphics</code> használata)</li>
 </ul>
 <p>A szükséges fejlesztőkörnyezet a szokásos, <a href="../fejlesztokornyezet/">itt</a> található leírás.</p>
 <div class="admonition warning">
@@ -1105,7 +1105,7 @@
 <li>Egy olyan vastagkliens (Windows Forms) alkalmazást kell elkészíteni, amely képes fájlban időbélyeggel tárolt mérési értékek grafikus megjelenítésére. Az alkalmazásnak a Document-View architektúrát kell követnie.</li>
 <li>Egyszerre több dokumentum is meg lehet nyitva, illetve egy dokumentumnak több nézete is lehet. A főablak egy <code>TabControl</code>-t tartalmaz, melyen minden nézet egy külön tabfülön jelenik meg.</li>
 <li>Egy dokumentum létrehozásakor/megnyitásakor egy nézet (tabfül) jön létre hozzá, de utólag a <em>Window / New View</em> menüelem kiválasztásával új nézet/tabfül is létrehozható. Egy dokumentumhoz azért van értelme több nézetet megjeleníteni, mert az egyes nézetek eltérő nagyításban képesek az adott dokumentum jeleit megjeleníteni.</li>
-<li>A jelek kirajzolása mellett meg kell jeleníteni a koordináta tengelyeket is.</li>
+<li>A jelek kirajzolása mellett meg kell jeleníteni a koordinátatengelyeket is.</li>
 </ul>
 <h3 id="iranyelvek">Irányelvek<a class="headerlink" href="#iranyelvek" title="Permanent link">&para;</a></h3>
 <ul>
@@ -1146,7 +1146,7 @@
 </li>
 <li><code>Document</code> osztály: Az egyes dokumentum típusok ősosztálya. Bár esetünkben csak egy dokumentum típus létezik, a későbbi bővíthetőség miatt célszerű külön választani. Tartalmazza a nézetek listáját, melyek a dokumentumot megjelenítik. Az <code>UpdateAllViews</code> művelete valamennyi nézetet értesít annak érdekében, hogy frissítsék magukat. A <code>LoadDocument</code> és <code>SaveDocument</code> üres virtuális függvények, melyek a dokumentum betöltésekor és mentésekor kerülnek meghívásra. A <code>Document</code> leszármazott osztályunkban kell felüldefiniálni és értelemszerűen megvalósítani őket.</li>
 <li><code>IView</code>: Az egyes nézetek közös interfésze. Azért nem osztály, mert a nézetek tipikusan a <code>UserControl</code>-ból származnak le, és egy osztálynak nem lehet több ősosztálya .NET környezetben.</li>
-<li><code>DemoView</code>: Egy demo nézet implementáció nézetre. Mintaként szolgálhat saját nézet létrehozásához. A <code>UserControl</code> osztályból származik, és implementálja az <code>IView</code> interfészt.</li>
+<li><code>DemoView</code>: Egy demo nézet implementáció, mintaként szolgálhat saját nézet létrehozásához. A <code>UserControl</code> osztályból származik, és implementálja az <code>IView</code> interfészt.</li>
 </ul>
 <p>Az osztályok közötti kapcsolatok jobb megértését segíti a solutionben található <code>ClassDiagram1.cd</code> UML osztálydiagram.</p>
 <h2 id="feladat-2-meresi-ertekek-kezelese-dokumentum-logikak">Feladat 2 – Mérési értékek kezelése (dokumentum logikák)<a class="headerlink" href="#feladat-2-meresi-ertekek-kezelese-dokumentum-logikak" title="Permanent link">&para;</a></h2>
@@ -1337,7 +1337,7 @@
 <p>Készíts egy képernyőmentést <code>Feladat2-5.png</code> néven az alábbiak szerint:</p>
 <ul>
 <li>Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,</li>
-<li>a „háttérben” a Visual Studio legyen, az <code>SignalDocument.cs</code> megnyitva, melyben látszik a <code>TraceValues</code> implementációja, valamint az <em>Output</em> ablakban a trace-elt jelértékek,</li>
+<li>a „háttérben” a Visual Studio legyen, a <code>SignalDocument.cs</code> megnyitva, melyben látszik a <code>TraceValues</code> implementációja, valamint az <em>Output</em> ablakban a trace-elt jelértékek,</li>
 <li>az előtérben pedig az alkalmazásod ablaka.</li>
 </ul>
 </div>
@@ -1375,8 +1375,8 @@
 <span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">document</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">document</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Az <code>App.CreateView</code> módosításának van még egy trükkje. Mivel a <code>doc</code> referenciánk típusa <code>Document</code>, a <code>GraphicsSignalView</code> pedig a leszármazottját várja, a konstruktor hívásakor explicit le kell castoljuk <code>SignalDocument</code>-re:</p>
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">view</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GraphicsSignalView</span><span class="p">((</span><span class="n">SignalDocument</span><span class="p">)</span><span class="n">doc</span><span class="p">);</span>
+<p>Az <code>App.CreateView</code> módosításának van még egy trükkje. Mivel a <code>document</code> referenciánk típusa <code>Document</code>, a <code>GraphicsSignalView</code> pedig a leszármazottját várja, a konstruktor hívásakor explicit le kell castoljuk <code>SignalDocument</code>-re:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">view</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GraphicsSignalView</span><span class="p">((</span><span class="n">SignalDocument</span><span class="p">)</span><span class="n">document</span><span class="p">);</span>
 </code></pre></div>
 </li>
 </ul>
@@ -1405,15 +1405,15 @@
 <p class="admonition-title">BEADANDÓ</p>
 <p>Készíts egy képernyőmentést <code>Feladat3-2.png</code> néven az alábbiak szerint:</p>
 <ul>
-<li>Indítsd el az alkalmazást. Nyiss meg vagy hozz létre egy dokumentumot, hogy látszódjanak a koordináta tengelyek. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,</li>
-<li>a „háttérben” a Visual Studio legyen, az <code>GraphicsSignalView.cs</code> megnyitva, melyben látszik a koordináta tengelyek kirajzolása,</li>
+<li>Indítsd el az alkalmazást. Nyiss meg vagy hozz létre egy dokumentumot, hogy látszódjanak a koordinátatengelyek. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,</li>
+<li>a „háttérben” a Visual Studio legyen, a <code>GraphicsSignalView.cs</code> megnyitva, melyben látszik a koordinátatengelyek kirajzolása,</li>
 <li>a VS <em>View/Full Screen</em> menüjével kapcsolj ideiglenesen <em>Full Screen</em> nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,</li>
 <li>az előtérben pedig az alkalmazásod ablaka.</li>
 </ul>
 </div>
 <h3 id="jelek-megjelenitese">Jelek megjelenítése<a class="headerlink" href="#jelek-megjelenitese" title="Permanent link">&para;</a></h3>
 <p>Valósítsuk meg a jelek megjelenítését!</p>
-<p>Az <code>GraphicsSignalView</code>-ban az <code>OnPaint</code>-t felüldefiniálva valósítsuk meg a jelek kirajzolását. Először 3*3 pixeles „pontokat” rajzoljunk (pl. <code>Graphics</code>.<code>FillRectangle</code>-lel), majd a pontokat kössük össze vonalakkal (<code>Graphics.DrawLine</code>).</p>
+<p>Az <code>GraphicsSignalView</code>-ban az <code>OnPaint</code>-et felüldefiniálva valósítsuk meg a jelek kirajzolását. Először 3*3 pixeles „pontokat” rajzoljunk (pl. <code>Graphics.FillRectangle</code>-lel), majd a pontokat kössük össze vonalakkal (<code>Graphics.DrawLine</code>).</p>
 <details class="tip">
 <summary>Segítségképpen</summary>
 <p>A megvalósításban segíthet a következő:</p>
@@ -1455,8 +1455,8 @@
 <p class="admonition-title">BEADANDÓ</p>
 <p>Készíts egy képernyőmentést <code>Feladat3-4.png</code> néven az alábbiak szerint:</p>
 <ul>
-<li>Indítsd el az alkalmazást. Nyiss meg vagy hozz létre egy dokumentumot, hogy látszódjanak a koordináta tengelyek és a kirajzolt jelek. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,</li>
-<li>a „háttérben” a Visual Studio legyen, az <code>GraphicsSignalView.cs</code> megnyitva, melyben látszik a jelek kirajzolása,</li>
+<li>Indítsd el az alkalmazást. Nyiss meg vagy hozz létre egy dokumentumot, hogy látszódjanak a koordinátatengelyek és a kirajzolt jelek. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,</li>
+<li>a „háttérben” a Visual Studio legyen, a <code>GraphicsSignalView.cs</code> megnyitva, melyben látszik a jelek kirajzolása,</li>
 <li>a VS <em>View/Full Screen</em> menüjével kapcsolj ideiglenesen <em>Full Screen</em> nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,</li>
 <li>az előtérben pedig az alkalmazásod ablaka.</li>
 </ul>
@@ -1485,8 +1485,8 @@
 <p class="admonition-title">BEADANDÓ</p>
 <p>Készíts egy képernyőmentést <code>FeladatIMSc-2.png</code> néven az alábbiak szerint:</p>
 <ul>
-<li>Indítsd el az alkalmazást. Nyiss meg vagy hozz létre egy dokumentumot, hogy látszódjanak a koordináta tengelyek és a kirajzolt jelek, valamint a görgetősáv (scrollbar). Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,</li>
-<li>a „háttérben” a Visual Studio legyen, az <code>GraphicsSignalView.cs</code> releváns releváns része megnyitva,</li>
+<li>Indítsd el az alkalmazást. Nyiss meg vagy hozz létre egy dokumentumot, hogy látszódjanak a koordinátatengelyek és a kirajzolt jelek, valamint a görgetősáv (scrollbar). Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,</li>
+<li>a „háttérben” a Visual Studio legyen, a <code>GraphicsSignalView.cs</code> releváns része megnyitva,</li>
 <li>a VS <em>View/Full Screen</em> menüjével kapcsolj ideiglenesen <em>Full Screen</em> nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,</li>
 <li>az előtérben pedig az alkalmazásod ablaka.</li>
 </ul>
@@ -1508,7 +1508,7 @@
 <p>Készíts egy képernyőmentést <code>FeladatIMSc-3.png</code> néven az alábbiak szerint:</p>
 <ul>
 <li>Indítsd el az alkalmazást. Nyiss meg vagy hozz létre egy dokumentumot és válts élő módba, hogy látszódjanak a random generált értékek is.</li>
-<li>a „háttérben” a Visual Studio legyen, az <code>SignalDocument.cs</code> releváns releváns része megnyitva,</li>
+<li>a „háttérben” a Visual Studio legyen, a <code>SignalDocument.cs</code> releváns része megnyitva,</li>
 <li>a VS <em>View/Full Screen</em> menüjével kapcsolj ideiglenesen <em>Full Screen</em> nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,</li>
 <li>az előtérben pedig az alkalmazásod ablaka.</li>
 </ul>
@@ -1523,8 +1523,8 @@
         </path>
       </svg>
     </span>
-    <span title="2023. május 25. 23:45:38">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-25T23:45:38+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-25</span>
+    <span title="2023. augusztus 19. 09:49:03">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-08-19T09:49:03+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-19</span>
     </span>
   </span>
 
@@ -1541,12 +1541,6 @@
     <span>Szerzők</span>
     <nav><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@bzolka">
         <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
-      </a><a href="https://github.com/Kisbogyi" target="_blank" rel="noopener noreferrer" class="md-author" title="@Kisbogyi">
-        <img src="https://avatars.githubusercontent.com/u/55801726?size=72" alt="@Kisbogyi">
-      </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@tibitoth">
-        <img src="https://avatars.githubusercontent.com/u/8333960?size=72" alt="@tibitoth">
-      </a><a href="https://github.com/zbenedek-mirango" target="_blank" rel="noopener noreferrer" class="md-author" title="@zbenedek-mirango">
-        <img src="https://avatars.githubusercontent.com/u/105201689?size=72" alt="@zbenedek-mirango">
       </a></nav>      
   </span>
 </div>
