@@ -1,5 +1,5 @@
 ---
-authors: BenceKovari
+authors: BenceKovari,bzolka
 ---
 
 # 4. HF - Többszálú alkalmazások fejlesztése
@@ -12,10 +12,11 @@ A fentiekre építve, jelen önálló gyakorlat feladatai a feladatleírást kö
 Az önálló gyakorlat a következő ismeretek elmélyítését célozza:
 
 - Szálak indítása és leállítása, szálfüggvény
-- Munkaszálakból windows-os vezérlők manipulálása
+- Thread-pool
+- WinUI-os vezérlőkhöz hozzáférés munkaszálakból
 - Kölcsönös kizárás megvalósítása (`lock` használata)
 - Jelzés és jelzésre várakozás (`ManualResetEvent`, `AutoResetEvent`)
-- Windows Forms tervező használata
+- Felhasználói felület kialakításának gyakorlása: időzítő használata, felületelemek manipulálása code behind fájlból (ez nem kapcsolódik a szálkezeléshez)
 
 A szükséges fejlesztőkörnyezet a szokásos, [itt](../fejlesztokornyezet/index.md) található leírás.
 
@@ -30,11 +31,156 @@ A szükséges fejlesztőkörnyezet a szokásos, [itt](../fejlesztokornyezet/inde
 - :exclamation: A feladatok kérik, hogy készíts **képernyőképet** a megoldás egy-egy részéről, mert ezzel bizonyítod, hogy a megoldásod saját magad készítetted. **A képernyőképek elvárt tartalmát a feladat minden esetben pontosan megnevezi.** A képernyőképeket a megoldás részeként kell beadni, a repository-d gyökérmappájába tedd (a neptun.txt mellé). A képernyőképek így felkerülnek GitHub-ra git repository tartalmával együtt. Mivel a repository privát, azt az oktatókon kívül más nem látja. Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltölteni, kitakarhatod a képről.
 - :exclamation: A beadott megoldások mellé külön indoklást, illetve leírást nem várunk el, ugyanakkor az elfogadás feltétele, hogy a beadott kódban a feladat megoldása szempontjából relevánsabb részek **kommentekkel legyenek ellátva**.
 
+## Feladat 0 – A feladat áttekintése, ismerkedés a kiinduló kerettel
+
+A feladat egy bicikliversenyt szimuláló alkalmazás elkészítése. A megvalósítás alappillére az alkalmazáslogika és a megjelenítés különválasztása: az alkalmazáslogika semmilyen szinten nem függhet a megjelenítéstől, a megjelenítés pedig függ az alkalmazáslogikától (értelemszerűen, hiszen annak aktuális állapotát jeleníti meg).
+
+A kiinduló keret már tartalmaz némi alkalmazás és megjelenítéshez kapcsolódó logikát. Futtassuk az alkalmazást, és tekintsük át a felületét:
+
+![Kiinduló UI](images/app-ui.png)
+
+- Az ablak felső részén található a versenypálya. Bal oldalon sorakoznak a biciklik, majd látható a startvonal, a pálya közepe felé egy köztes megálló (depó), ill. a célvonal.
+- Az ablak alsó részén a verseny vezérlésére szolgáló gombok találhatók. Még nem kapcsolódik hozzájuk logika, a következő viselkedést fogjuk a későbbiekben megvalósítani:
+    - `Prepare Race`: A verseny előkészítése (biciklik létrehozása és felsorakoztatása a startvonalhoz).
+    - `Start Race`: A verseny indítása, mely hatására a biciklik egymással versenyezve elérnek a depóba, és ott várakoznak.
+    - `Start Next Bike From Depo`: A depóban várakozó biciklik közül elindít egyet (mely bicikli egészen a célvonalig halad). A gombon többször is lehet kattintani, minden alkalommal egy biciklit enged tovább.
+
+A szimuláció alapelvelve a következő (még nincs megvalósítva):
+
+- Minden egyes biciklihez egy külön szál tartozik.
+- A szimuláció iterációkra bontott: minden iterációban a biciklihez tartozó szál (amennyiben az éppen nem várakozik a verseny indítására vagy a depóban) egy véletlenszerű számértékkel lép előre a pályán, egészen addig, amíg el nem éri a célvonalat.
+
+Egy extra megvalósított funkció (ez már működik): a világos és sötét téma közötti váltásra lehetőség van a ++ctrl+t++ billentyűkombinációval.
+
+### Alkalmazáslogika
+
+A kiinduló keretben az **alkalmazáslogika** osztályai csak kezdetleges állapotban vannak megvalósítva. Az osztályok az `AppLogic` mappában/névtérben találhatók, nézzük meg ezek kódját:
+
+- `Bike`: Egy biciklit reprezentál, melyhez hozzátartozik a bicikli rajtszáma, pozíciója és azon információ, hogy az adott bicikli nyerte-e meg a versenyt. A `Step` művelete a bicikli véletlenszerű léptékkel történő léptetésére szolgál a verseny közben.
+- `Game`: A játék vezérlésének logikája (ezt tovább lehetne darabolni, de az egyszerűség kedvéért alapvetően ebbe az osztályba fogunk dolgozni).
+    - Definiálja az egyes versenypálya elemek, úgymint startvonal, köztes megálló (depó) és célvonal pozícióit: `StartLinePosition`, `DepoPosition` és `FinishLinePosition` konstansok.
+    - Tárolja a versenyző bicikliket (`Bikes` tagváltozó).
+    - `PrepareRace` művelet: Előkészíti a versenyt. Egyelőre a `CreateBike` segédfüggvény felhasználásával létrehoz 3 biciklit. A feladata lesz még a biciklik felsorakoztatása a startvonalhoz.
+    - `StartBikes` művelet: Verseny indítása (mely hatására a biciklik egymással versenyezve elérnek a depóba, és ott várakoznak). Nincs megvalósítva.
+    - `StartNextBikeFromDepo` művelet: A depóban várakozó biciklik közül elindít egyet (de csak egyet). Nincs megvalósítva.
+
+### Megjelenítés
+
+A kiinduló keretben a **megjelenítés** viszonylag jól elő van készítve, de ezen is fogunk még dolgozni.
+
+A felület kialakítása a `MainWindow.xaml`-ben található, a következő alapelvek szerint:
+
+- Az ablak alapelrendezésének kialakítására "szokásosan" egy `Grid`-et használtunk, mely két sorból áll. Az első sorában a versenypálya a biciklikkel (`*` sormagasság), az alsó részben egy `StackPanel` a gombokkal (`Auto` sormagasság).
+- A pálya kialakítására `Rectangle` objektumokat (startvonal, depo, célegyenes), a szövegelemek elrendezésére pedig (részben elfogatott) `TextBlock` objektumokat használtunk.
+- Az egyes bicikliket egy vertikális `StackPanel`-en helyeztük el. A bicikliket egy-egy `TextBlock` objektummal jelenítjük meg (`Webdings` betűtípus, `b` betű). Használhattunk volna `FontIcon`-t is, a `TextBlock`-ra csak azért esett a választásunk, mert ezzel már korábban megismerkedtünk.
+- A pálya valamennyi elemét és a bicikliket tartalmazó `StackPanel`-t is a `Grid` első (0-dik) sorában helyeztük el. Ezek a definiálásuk sorrendjében rajzolódnak ki, az igazítások és margók által meghatározott helyen. A biciklik `TextBlock`-jának pozícionálására is a margót használjuk majd. Egy alternatíva megoldás lett volna, ha miden felületelemet egy `Canvas`-re helyeztünk volna el, és azon állítottuk volna be az elemek abszolút pozícióját és méretét (Left, Top, Width, Height) a margók alkalmazása helyett.
+
+Az ablakhoz tartozó `MainWindow.cs` code behind fájlt is nézzük meg, főbb elemei a következők:
+
+- `game` tagváltozó: Maga a `Game` játékobjektum, melynek állapotát a főablak megjeleníti.
+- `bikeTextBlocks` tagváltozó: Ebben a listában tároljuk majd a bicikliket megjelenítő `TextBlock` objektumokat. Egyelőre üres, a karbantartását nekünk kell majd megvalósítani.
+- Konstruktor: Beállítja a startvonal, depó és célvonal felületelemek x koordinátáját a `Game` által meghatározott konstans értékek alapján. Az x koordináta beállítása a baloldali margó (`Margin`) megfelelő beállításával történik. Ezen felül a `AddKeyboardAcceleratorToChangeTheme` segédfüggvény segítségével beregisztrálja a ++ctrl+t++ gyorsítóbillentyűt a világos/sötét téma közötti váltásra.
+- `PrepareRaceButton_Click`, `StartRaceButton_Click`, `StartNextFromDepoButton_Click`: a három gomb eseménykezelője.
+- `UpdateUI` művelet: Kulcsfontosságú logikát tartalmaz. A játék állapotának megfelelően frissíti a felületet. Végig iterál a játék összes biciklijén, és a biciklikhez tartozó `TextBlock`-ok x pozícióját beállítja a bicikli pozíciója alapján (a baloldali margó megfelelő beállításával). Az `UpdateUI` művelet egyelőre soha nem hívódik, így a felület nem frissül.
+
+
+## Feladat 1 – A felület frissítése
+
+Jelen pillanatban hiába módosítanánk futás közben a játék állapotát: a felületbe be van égetve a három bicikli fix pozícióban, ezen felül a felületet frissítő `UpdateUI` művelet egyelőre soha nem hívódik. Mielőtt belevágnánk a játéklogika megvalósításába, módosítsuk a felülethez tartozó logikát, hogy az képes legyen folyamatosan a játék friss állapotát megjeleníteni.
+
+### A biciklik dinamikus kezelése
+
+Az első probléma: a `MainWindow.xaml`-be be van égetve a három, biciklit megjelenítő TextBlock. Így a felületünk csak olyan játék megjelenítésére lenne képes, melyben pontosan három versenyző szerepel. Készítsük elő a megjelenítést tetszőleges számú bicikli megjelenítésére.
+Első lépésben távolítsuk el a `MainWindow.xaml`-ből a három biciklihez tartozó "beégetett" `TextBlock` definíciót (kommentezzük ki a három sort). Ezt követően, a code behind fájlban, a `PrepareRaceButton_Click` eseménykezelőben a verseny előkészítése (`game.PrepareRace()` hívás) után:
+
+1. Dinamikusan hozzunk létre minden, a `game` objektumban szereplő biciklihez egy megfelelő `TextBlock` objektumot. A létrehozott `TextBlock` tulajdonságai pontosan feleljenek meg annak, mint amit a xaml fájlban kiiktattunk (`FontFamily`, `FontSize`, `Margin`, `Text`)
+2. A létrehozott `TextBlock` objektumokat fel kell venni a `bikesPanel` nevű `StackPanel` gyerekei közé (a xaml fájlban kikommentezett `TextBlock`-ok is ennek gyerekei voltak) a bikesPanel.Children.Add hívásával.
+3. A létrehozott `TextBlock` objektumokat vegyük fel a `bikeTextBlocks` listába is. Ez azért fontos - nézzük is meg a kódban - mert az `UpdateUI` felületfrissítő függvény a biciklikhez tartozó `TextBlock`-okat a `bikeTextBlocks` listában keresi (tömbindex alapján párosítja a bicikliket és a `TextBlock`-okat).
+
+Annyiban megváltozik az alkalmazás működése (de ez szándékos), hogy induláskor nem jelennek meg biciklik, hanem csak a `Prepare Race` gombon kattintáskor.
+
+Próbáljuk a megoldást magunktól megvalósítani a fenti pontokat követve, majd ellenőrizzük, hogy alapvetően megfelel-e az alábbi megoldásnak.
+
+??? tip "Megoldás"
+    
+    ```csharp
+    foreach (var bike in game.Bikes)
+    {
+        var bikeTextBlock = new TextBlock()
+        {
+            Text = "b",
+            FontFamily = new FontFamily("Webdings"),
+            FontSize = 64,
+            Margin = new Thickness(10, 0, 0, 0)
+        };
+
+        bikesPanel.Children.Add(bikeTextBlock);
+        bikeTextBlocks.Add(bikeTextBlock);
+    }
+    ```
+
+### A felületfrissítés megvalósítása
+
+Most már pontosan annyi `TextBlock`-unk lesz, ahány bicikli van a game objektumban. Sőt, az `UpdateUI` művelettel tudjuk is a felületet bármikor frissíteni. A következő kardinális kérdés: mikor hívjuk ez a függvényt, vagyis mikor frissítsük a felületet. Több megoldás közül választhatunk:
+
+- a) Mindig, amikor a `Game` állapota megváltozik.
+- b) Adott időközönként (pl. 100 ms) folyamatosan.
+
+Általánosságában mindkét megoldásban lehetnek előnyei és hátrányai. A b) bizonyos tekintetben egyszerűbb (nem kell tudni, mikor változik a `Game` állapota), ugyanakkor felesleges frissítés is történhet (ha nem változott az állapot két frissítés között). De hatékonyabb is lehet, ha az állapot nagyon gyakran változik, és nem akarjuk minden változáskor a felületet frissíteni, elég adott időközönként egyszer (pl. a szemünk úgysem tudja lekövetni).
+Esetünkben - elsősorban egyszerűsége miatt - a b), időzítő alapú megoldást választjuk.
+
+WinUI 3 környezetben periodikus események kezelésére a `DispatchTimer` osztály alkalmazása javasolt (különösen, ha a felületelemekhez is hozzá kívánunk férni) az időzített műveletben.
+
+A `MainWindow` osztályban vezessünk be egy tagváltozót:
+ 
+ ```csharp
+    private DispatcherTimer timer;
+ ```
+
+Ezt követően a kontruktorban példányosítsuk a timert, rendeljünk a Tick eseményéhez egy eseménykezelő függvényt (ez hívódik adott időközönként), állítsuk be az időközt 100 ms-ra (Interval tulajdonság), és indítsuk el a timert:
+
+ ```csharp
+public MainWindow()
+{
+    ...
+    
+    timer = new DispatcherTimer();
+    timer.Tick += Timer_Tick;
+    timer.Interval = new TimeSpan(100);
+    timer.Start();
+}
+
+private void Timer_Tick(object sender, object e)
+{
+    UpdateUI();
+}
+ ```
+
+ Mint látható, az időzítő eseménykezelőben az UpdateUI hívásával frissítjük a felületet.
+
+Kérdés, hogyan tudjuk a megoldásunkat tesztelni, vagyis azt ellenőrizni, hogy a Timer-Tick eseménykezelő valóban meghívódik-e 100 ms-ként. Ehhez Trace-eljük ki ideiglenesen a Visual Studio Output ablakába az aktuális időt megfelelően formázva az eseménykezelőben:
+
+ ```csharp
+private void Timer_Tick(object sender, object e)
+{
+    System.Diagnostics.Trace.WriteLine($"Time: {DateTime.Now.ToString("hh:mm:ss.fff")}");
+
+    UpdateUI();
+}
+ ```
+
+A Trace.WriteLine művelet a Visual Studio Output ablakába ír egy sort, a `DateTime.Now`-val pedig az aktuális időt lehet lekérdeni. Ezt alakítjuk a `ToString` hívással megfelelő formátumú szöveggé.
+Futtassuk az alkalmazást (lényeges, hogy debuggolva, vagyis az ++f5++ billentyűvel) és ellenőrizzük a Visual Studio Output ablakát, hogy valóban megjelenik egy új sor 100 ms-ként. Ha minden jól működik, a Trace-elő sort kommentezzük ki.
+
+El is készültünk a megjelenítési logikával, most a fókuszunkat most már az alkalmazáslogikára, és az ahhoz kapcsolódó szálkezelési témakörre helyezzük át.
+
 ## Feladat 1 – Bicikli
+
+
 
 ### Bevezető feladatok
 
-1. :exclamation: A főablak fejléce a "Tour de France" szöveg legyen, hozzáfűzve a saját Neptun kódod: (pl. "ABCDEF" Neptun kód esetén "Tour de France - ABCDEF"), fontos, hogy ez legyen a szöveg! Ehhez az űrlapunk `Text` tulajdonságát állítsuk be erre a szövegre.
+1. :exclamation: A főablak fejléce a "Tour de France" szöveg legyen, hozzáfűzve a saját Neptun kódod: (pl. "ABCDEF" Neptun kód esetén "Tour de France - ABCDEF"), fontos, hogy ez legyen a szöveg! Ehhez a főablakunk `Title` tulajdonságát állítsuk be erre a szövegre a `MainWindow.xaml` fájlban.
 
 ### Feladat
 
