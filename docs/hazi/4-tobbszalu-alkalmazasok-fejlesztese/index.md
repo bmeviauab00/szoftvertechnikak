@@ -45,10 +45,10 @@ A kiinduló keret már tartalmaz némi alkalmazás és megjelenítéshez kapcsol
     - `Start Race`: A verseny indítása, mely hatására a biciklik egymással versenyezve elérnek a depóba, és ott várakoznak.
     - `Start Next Bike From Depo`: A depóban várakozó biciklik közül elindít egyet (mely bicikli egészen a célvonalig halad). A gombon többször is lehet kattintani, minden alkalommal egy biciklit enged tovább.
 
-A szimuláció alapelvelve a következő (még nincs megvalósítva):
+A játék/szimuláció alapelvelve a következő (még nincs megvalósítva):
 
 - Minden egyes biciklihez egy külön szál tartozik.
-- A szimuláció iterációkra bontott: minden iterációban a biciklihez tartozó szál (amennyiben az éppen nem várakozik a verseny indítására vagy a depóban) egy véletlenszerű számértékkel lép előre a pályán, egészen addig, amíg el nem éri a célvonalat.
+- A játék/szimuláció iterációkra bontott: minden iterációban a biciklihez tartozó szál (amennyiben az éppen nem várakozik a verseny indítására vagy a depóban) egy véletlenszerű számértékkel lép előre a pályán, egészen addig, amíg el nem éri a célvonalat.
 
 Egy extra megvalósított funkció (ez már működik): a világos és sötét téma közötti váltásra lehetőség van a ++ctrl+t++ billentyűkombinációval.
 
@@ -172,15 +172,199 @@ private void Timer_Tick(object sender, object e)
 A Trace.WriteLine művelet a Visual Studio Output ablakába ír egy sort, a `DateTime.Now`-val pedig az aktuális időt lehet lekérdeni. Ezt alakítjuk a `ToString` hívással megfelelő formátumú szöveggé.
 Futtassuk az alkalmazást (lényeges, hogy debuggolva, vagyis az ++f5++ billentyűvel) és ellenőrizzük a Visual Studio Output ablakát, hogy valóban megjelenik egy új sor 100 ms-ként. Ha minden jól működik, a Trace-elő sort kommentezzük ki.
 
-El is készültünk a megjelenítési logikával, most a fókuszunkat most már az alkalmazáslogikára, és az ahhoz kapcsolódó szálkezelési témakörre helyezzük át.
+### Főablak fejléce
 
-## Feladat 1 – Bicikli
+:exclamation: A főablak fejléce a "Tour de France" szöveg legyen, hozzáfűzve a saját Neptun kódod: (pl. "ABCDEF" Neptun kód esetén "Tour de France - ABCDEF"), fontos, hogy ez legyen a szöveg! Ehhez a főablakunk `Title` tulajdonságát állítsuk be erre a szövegre a `MainWindow.xaml` fájlban.
+
+## Feladat 2 – A verseny előkészítése
+
+A fentiek során el is készültünk a megjelenítési logikával, a fókuszunkat most már az alkalmazáslogikára, és az ahhoz kapcsolódó szálkezelési témakörre helyezzük át. Ennek megfelelően mostantól elsődlegesen a `Game` osztályban fogunk dolgozni.
+
+Emlékeztetőként, a megoldásunk alapelve a következő lesz:
+
+- Minden egyes biciklihez egy külön szálat indítunk.
+- A játék/szimuláció iterációkra bontott: minden iterációban a biciklihez tartozó szál (amennyiben az éppen nem várakozik a verseny indítására vagy a depóban) egy véletlenszerű számértékkel lép előre a pályán, egészen addig, amíg el nem éri a célvonalat.
+
+A következő lépéseknek megfelelően alakítsuk ki a kereteket:
+
+1. A `Game` osztály `CreateBike` függvényének a végén indítsunk el egy a kerékpárhoz tartozó szálat.
+2. A szálfüggvény a `Game` osztályban legyen.
+3. A szálfüggvénynek a `CreateBike` adja át paraméterként a bicikli objektumot, melyet az adott szál mozgatni fog.
+4. A futó szálak ne blokkolják az alkalmazás bezárását (vagyis, amikor bezárjuk a főablakot, de van még futó szál, a process azonnal szűnjön meg, ne várja be ezeket a szálakat)
+5. A szálfüggvény megvalósítása első körben a következőkre terjedjen ki.
+   
+    Egy ciklusban minden iterációban:
+       
+       - véletlenszerű lépéssel (Bike osztály `Step` függvényének hívása) léptesse a biciklit,
+       - majd altassa a szálat 100 ms-ig.
+    
+    Mindez a mozgatás addig tartson, míg a bicikli el nem éri a startvonalat (a pozíciója el nem éri a `StartLinePosition` tagváltozó által meghatározott értéket).
+
+Próbáld a fentieket önállóan megvalósítani az előadáson és a laboron tanultak alapján. A megoldásod debuggolással tudod tesztelni, illetve mivel a felület logikát korábban megvalósítottuk, az alkalmazást futtatva a `Prepare Race` gombra kattintva is, ekkor a biciklik el kell gördüljenek fokozatosan haladva egészen a startvonalig.
+
+Ezekhez a lépésekhez még adunk megoldást (de többet tanulsz belőle, ha magad próbálkozol):
+
+??? tip "Megoldás"
+    A `Game` osztályban a szálfüggvény:
+
+    ```csharp
+    void BikeThreadFunction(object bikeAsObject)
+    {
+        Bike bike = (Bike)bikeAsObject;
+        while (bike.Position <= StartLinePosition)
+        {
+            bike.Step();
+
+            Thread.Sleep(100);
+        }
+    }
+    ```
+
+    Mint látható, szálfüggvénynél nem a paraméter nélküli, hanem az object paraméterű lehetőséget választottuk, hiszen a szálfüggvénynek át kell adni az általa mozgatott biciklit.
+
+    A szál indítása a `CreateBike` függvény végén:
+
+    ```csharp
+    private void CreateBike()
+    {
+        ...
+
+        var thread = new Thread(BikeThreadFunction);
+        thread.IsBackground = true; // Ne blokkolja a szál a processz megszűnését
+        thread.Start(bike); // itt adjuk át paraméterben a szálfüggvénynek a biciklit
+    }
+    ```
+
+!!! example "BEADANDÓ"
+    Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
+
+    Készíts egy képernyőmentést `Feladat1.png` néven az alábbiak szerint:
+
+    - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
+    - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
+    - a VS *View/Full Screen* menüjével kapcsolj ideiglenesen *Full Screen* nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
+    - VS-ben zoomolj úgy, hogy a `Game` osztály `CreateBike` és `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
+
+## Feladat 2 – A verseny indítása
+
+Valósítsd meg a verseny indítását a rajtvonalról és futtatását mindaddig, amíg a biciklik meg nem érkeznek a depóba, a következő irányelveknek megfelelően:
+
+- A versenyt a `Start Race` gombkattintás során már hívott `Game` osztálybeli `StartBikes` függvény indítsa.
+- Fontos, hogy a `StartBikes` műveletben ne új szálakat indítsunk, hanem meg kell oldani, hogy meglévő szálak várakozzanak, majd a `StartBikes` függvény hívásának "hatására" folytassák futásukat.
+- Ha a felhasználó azelőtt nyomja meg a `Start Race` gombot, hogy a biciklik elérnék a startvonalat, akkor a bicikliknek már nem kell megállni a startvonalon (de az is teljesen jó megoldás, ha ilyen esetben a gomb lenyomását még figyelmen kívül hagyja az alkalmazás).
+- A biciklik egészen a depóig haladjanak el (míg pozíciójuk el nem éri a `DepoPosition` tagváltozó által meghatározott értéket).
+- A `Game` osztályban dolgozz.
+
+!!! tip "Tipp a megoldáshoz"
+    Mivel a várakozást követően a versenyzőknek egyszerre kell indulniuk, a várakozás és indítás megvalósítására egy `ManualResetEvent` objektumot célszerű használni.
 
 
+!!! example "BEADANDÓ"
+    Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
 
-### Bevezető feladatok
+    Készíts egy képernyőmentést `Feladat2.png` néven az alábbiak szerint:
 
-1. :exclamation: A főablak fejléce a "Tour de France" szöveg legyen, hozzáfűzve a saját Neptun kódod: (pl. "ABCDEF" Neptun kód esetén "Tour de France - ABCDEF"), fontos, hogy ez legyen a szöveg! Ehhez a főablakunk `Title` tulajdonságát állítsuk be erre a szövegre a `MainWindow.xaml` fájlban.
+    - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
+    - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
+    - a VS *View/Full Screen* menüjével kapcsolj ideiglenesen *Full Screen* nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
+    - VS-ben zoomolj úgy, hogy a `Game` osztály `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
+
+## Feladat 3 – A versenyzők indítása a depóból
+
+Valósítsd meg a versenyzők indítását a depóból és futtatását mindaddig, amíg a biciklik meg nem érkeznek a célba, a következő irányelveknek megfelelően:
+
+- Az egyes versenyzőket a `Start Next Bike From Depo` gombkattintás során már hívott `Game` osztálybeli `StartNextBikeFromDepo` függvény indítsa a depóból.
+- Minden gombkattintásra csak egyetlen versenyző indulhat el a depóból.
+- Fontos, hogy a `StartNextBikeFromDepo` műveletben ne új szálakat indítsunk, hanem meg kell oldani, hogy meglévő szálak várakozzanak, majd a `StartNextBikeFromDepo` függvény hívásának "hatására" folytassák futásukat.
+- Ha a felhasználó azelőtt nyomja meg a `Start Next Bike From Depo` gombot, hogy a biciklik elérnék a depót, akkor egy bicikli már továbbmehet a depóból, amikor megérkezik oda (de az is teljesen jó megoldás, ha ilyen esetben a a gomb lenyomását még figyelmen kívül hagyja az alkalmazás).
+- A biciklik egészen a célegyenesig haladjanak el (míg pozíciójuk el nem éri a `FinishLinePosition` tagváltozó által meghatározott értéket). Amikor egy bicikli eléri a célvonalat, a biciklihez tartozó szál fejezze be a futását.
+- A `Game` osztályban dolgozz.
+
+!!! tip "Tipp a megoldáshoz"
+    A feladat megoldása analóg az előzőével, ám ezúttal `AutoResetEvent`-et kell használni.
+
+!!! example "BEADANDÓ"
+    Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
+
+    Készíts egy képernyőmentést `Feladat3.png` néven az alábbiak szerint:
+
+    - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
+    - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
+    - a VS *View/Full Screen* menüjével kapcsolj ideiglenesen *Full Screen* nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
+    - VS-ben zoomolj úgy, hogy a `Game` osztály `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
+
+## Feladat 4 – Győztes bicikli megvalósítása
+
+Valósítsd meg a győztes bicikli meghatározásának és megjelenítésének logikáját, a következő irányelveknek megfelelően:
+
+- A biciklik közül az a győztes, mely először éri ez a célvonala (a pozíciója először éri el a `FinishLinePosition` tagváltozó által meghatározott értéket).
+- A megoldás során használd fel, hogy a `Bike` osztályban már van egy `isWinner` változó, mely értéke kezdetben hamis, és a `SetAsWinner` művelettel igazzá tehető, illetve az értéke az `IsWinner` tulajdonsággal lekérdezhető.
+- Annak eldöntése, hogy az adott bicikli lett-e a győztes, a `Game` osztályban biciklihez tartozó szálfüggvény feladata, ide tedd a döntési logikát.
+- Kulcsfontosságú, hogy pontosan egy győztes lehet. Ha egynél több bicikli kerül győztesnek megjelölésre a `Bike` osztály `SetAsWinner` műveletével, az nagyon súlyos hiba!
+- A `Game` osztályban dolgozz.
+
+A logika megvalósítása előtt egy kicsit finomítunk a megjelenítésen, annak érdekében, hogy a győztes bicikli megkülönböztethető legyen a többitől a felületen. Ehhez a `MainWindow` osztály `UpdateUI` függvényébe tegyünk be egy olyan logikát, hogy ha az adott bicikli győztes lett, akkor a megjelenítését változtassuk át egy serlegre. Ehhez a biciklihez tartozó `TextBlock` szövegét kell "%"-ra változtatni:
+
+```csharp
+private void UpdateUI()
+{
+    for (int i = 0; i < game.Bikes.Count;i++)
+    {
+        ...
+
+        if (bike.IsWinner)
+            tbBike.Text = "%";
+    }
+}
+```
+
+A logikát ezt követően önállóan valósítsd meg, az alábbi irányleveknek és tippeknek megfelelően.
+
+!!! tip "Irányelvek és tippek a megoldáshoz"
+
+    - Annak eldöntésére, hogy volt-e már győztes, a `Game` osztályban vezess be egy `bool hasWinner` segédváltozót (ez azt jelezze, volt-e már győztes hirdetve).
+    - Előadáson egy nagyon hasonló példa szerepelt a "A lock használata" témakörben, részletes magyarázattal.
+    - A megoldásnak akkor is jól kell működnie (egy győztes lehet és nem több), ha a `hasWinner` feltételvizsgálat és a `hasWinner` igazba állítása közé egy hosszabb mesterséges késleltetés kerül, azt szimulálva, hogy a szál "pechesen" itt veszti el a futási jogát, és a depóból a biciklik "azonnal" tovább vannak engedve (vagyis közel egyszerre érnek a célba). A tesztelés idejére tegyél ide egy `Thread.Sleep(2000)` sort, melyet tesztelés után kommentezz ki.
+
+!!! example "BEADANDÓ"
+    Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
+
+    Készíts egy képernyőmentést `Feladat4.png` néven az alábbiak szerint:
+
+    - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
+    - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
+    - a VS *View/Full Screen* menüjével kapcsolj ideiglenesen *Full Screen* nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
+    - VS-ben zoomolj úgy, hogy a `Game` osztály `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
+
+## Feladat 5 – Kölcsönös kizárás, valamint volatile
+
+Az előző feladatban láttuk, hogy a hasWinner lekérdezését és beállítását "oszthatatlanná", "atomivá" kellett tegyük, vagyis ennek során meg kellett valósítsuk a kölcsönös kizárást. Kérdés, van-e esetleg már olyan más logika is az alkalmazásban, ahol ezt meg kellet volna tenni a konzisztencia garantálásának érdekében. Ehhez azt kell megvizsgáljuk, melyek azok a változók, melyeket több szálból is írunk (vagy egyikből írunk és másikból olvasunk). A következők érintettek:
+
+- `Bike` osztály `position` tagja. Ezt a biciklik szálfüggvénye módosítja a `+=` operátorral, a főszál pedig olvassa a `Position` property segítségével a megjelenítés során. Kérdés, lehet-e ebből bármiféle inkonzisztencia (mert ha igen, akkor meg kellene valósítani a kölcsönös kizárást, pl. a `lock` utasítás segítségével). Ez mélyebb átgondolást igényel. Az int típusú változók olvasása és írása (sima `=` operátor) atomi, így ez rendben is volna. Csakhogy itt módosításra nem az `=`, hanem `+=` operátort használjuk. A += operátor nem atomi, több lépésből áll (változó kiolvassása, növelése, majd visszaírása). Így, ha több szál is használja "egyszerre" a `+=` operátort ugyanazon a változón, akkor abból inkonzisztencia lehet. De gondoljunk bele jobban: a mi esetünkben egyszerre egy szál hív `+=`-t, a másik szálunk csak olvassa a position értékét. Ebből nem lehet inkonzisztencia, mert egyszerűen csak arról van szó, hogy az olvasás előtt vagy a növelés előtti értéket, vagy az utáni értéket kapja meg az olvasó szál, ha szinte pont egyszerre olvas a += operátor végrehajtásával. Így kijelenthetjük, nincs szükség kölcsönös kizárás megvalósítására.
+- `Bike` osztály `isWinner` tagja. Ezt a biciklik szálfüggvénye módosítja a `SetAsWinner` hívásával, a főszál pedig olvassa a `Position` property segítségével a megjelenítés során. Típusa bool, melynek írása és olvasása atomi, így nincs szükség kölcsönös kizárás megvalósítására.
+- `Game` osztály `hasWinner` tagja. Típusa bool, melynek írása és olvasása atomi, így amiatt szükség kölcsönös kizárás megvalósítására. De volt egy plusz feltételünk: csak egy győztes lehet versenyben, emiatt mégis szükség volt kölcsönös kizárás megvalósítására, amit az előző feladatban meg is tettünk.
+
+Azt is mondhatnánk, hogy a fenti három változó tekintetében akkor minden rendben is van, de ez nincs így. Amikor a változók értékét az egyik szál módosítja, előfordulhat, hogy a változók értékét a rendszer cache-eli (pl. regiszterben), így a másik szál a változtatás után is a korábbi értéket látja. Ennek megakadályozására ezeket a változókat volatile-nak kell definiálni a `volatile` kulcsszóval, mely a változó megváltoztatása után garantálja, hogy annak kiírása megtörténik a memóriába, és a másik szál friss értéket olvas (a `volatile` működése ennél valamivel összetettebb, előadáson bővebben kifejtésre kerül).
+Fontos megjegyzés: a `volatile` alkalmazására nincs szükség, ha az adott változót `lock` blokkból írjuk és olvassuk, vagy az `Interlocked` osztály segítségével módosítjuk. Amiatt csak a `position` és az `isWinner` esetében vezessük be:
+
+```csharp
+class Bike
+{
+    private volatile int position = 65;
+    private volatile bool isWinner;
+```
+
+## Feladat 5 – Lépések naplózása (nem szálbiztos .NET osztályok, lock alkalmazása)
+
+Valósítsd meg a verseny során a biciklik által megtett valamennyi lépés naplózását a `Game` osztályban egy `List<int>` típusú változóba. A naplózott értékekkel nem kell semmit csinálni (pl. megjeleníteni sem). A megoldás során ki kell használni, hogy a `Bike` osztály `Step` művelete visszaadja a megtett lépést egy `int` változó formájában, ezt kell naplózni.
+
+!!! tip "Tipp a megoldáshoz"
+    Mivel a `List<T>` osztály nem szálbiztos (nem thread safe), és több szálból is írunk bele, meg kell valósítani a hozzáférés során a kölcsönös kizárást a `lock` utasítás segítségével.
+
+    
+Megjegyzés: ha a `List<T>` helyett egy a célnak megfelelő, `System.Collections.Concurrent` névtérbeli osztály objektumába tennénk (pl. `ConcurrentQueue`), akkor nem lenne szükség a kölcsönös kizárás megvalósítására, mert ebben a névtérben szálbiztos gyűjteményosztályok találhatók.
+
+
 
 ### Feladat
 
@@ -256,23 +440,9 @@ A Windows Forms alkalmazásunk főablakának bal oldalán egy gomb legyen (ez eg
     }
     ```
 
+    
+
     A fenti felület tulajdonképpeni célja, hogy szálak futását és szinkronizációját (Windows Forms űrlapok/vezérlők vonatkozásában) demonstrálja. A későbbi, immár önállóan megvalósítandó feladatokban további szálakat (és bicikliket) fogunk létrehozni, és a futásukat összehangolni.
-
-    !!! tip "Előrehozás"
-        Ha a jelen vagy egy későbbi feladatban a biciklit reprezentáló gomb nem a panel előtt, hanem mögötte jelenik meg, akkor jobb gombbal kattintsunk a panelen, és válasszuk ki a *Send to back* menüt.
-
-    ??? tip "Bezáráskori ObjectDisposedException"  
-        Ha a megoldásunkat Visual Studioban debuggolva futtatjuk, akkor kilépéskor `ObjectDisposedException`-t kaphatunk. Az `Invoke` csak akkor hívható, amikor a űrlapunk mögötti natív ablak még létezik. Kilépéskor ez megszűnik, ebből ered a "hiba". Ez inkább csak egyfajta figyelmeztetés a keretrendszer részéről, de esetünkben nem igazi hiba: ha nem debuggolva indítjuk az alkalmazást, akkor kilépéskor nem is jelentkezik, lenyelődik. Szép, de kicsit körülményesebb megoldás lehetne, ha pl. a `Form` `OnClosing` függvényét felüldefiniálva vagy a `FormClosing` eseménykezelőben leállítanánk a szálakat (vagy egy flag-gel jeleznénk feléjük, hogy most már nem szabad `Invoke`-ot hívni). Kevésbé szép megoldás lehet az `ObjectDisposedException` elkapása és lenyelése.
-
-!!! example "BEADANDÓ"
-    Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
-
-    Készíts egy képernyőmentést `Feladat1.png` néven az alábbiak szerint:
-
-    - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
-    - a „háttérben” a Visual Studio legyen, a `MainForm.cs` megnyitva,
-    - a VS *View/Full Screen* menüjével kapcsolj ideiglenesen *Full Screen* nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
-    - VS-ben zoomolj úgy, hogy a fájl teljes tartalma látható legyen, az előtérben pedig az alkalmazásod ablaka.
 
 ## Feladat 2 – Rajtvonal
 
