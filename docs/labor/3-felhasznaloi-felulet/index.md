@@ -258,24 +258,390 @@ Beépített layout vezérlők például:
 * `Canvas`: tetszőleges elrendezés (koordinátarendszer).
 * `RelativePanel`: elemek egymáshoz képesti viszonyát határozhatjuk meg kényszerekkel
 
-A `Grid`-et fogjuk kipróbálni. Egy személy nevét és életkorát fogjuk szerkeszthetővé tenni.
+A `Grid`-et fogjuk kipróbálni. Egy személy nevét és életkorát fogjuk szerkeszthetővé tenni egy űrlapon.
 
-Vegyünk fel 3 sort és 2 oszlopot a `Grid`-ünkbe:
+Vegyünk fel egy 3 soros és 2 oszlopos új `Grid`-et a gyökér `Grid`-ünkbe. Az első oszlopába kerüljenek a címkék, a második oszlopba pedig a beviteli mezők. A meglévő gombunkat is rakjuk a 3. sorba, és írjuk át a tartalmát _Add_-ra, az kör helyett pedig vegyünk fel egy `SymbolIcon`-t.
 
 ```xml
+<Grid>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
 
+    <TextBlock Grid.Row="0" Grid.Column="0" Text="Name"/>
+    <TextBox Grid.Row="0" Grid.Column="1" />
+    <TextBlock Grid.Row="1" Grid.Column="0" Text="Age"/>
+    <TextBox Grid.Row="1" Grid.Column="1" />
+
+    <Button Grid.Row="2" Grid.Column="1">
+        <StackPanel Orientation="Horizontal">
+            <SymbolIcon Symbol="Add" />
+            <TextBlock Text="Add" Margon="5,0,0,0"/>
+        </StackPanel>
+    </Button>
+</Grid>
+```
+
+A sor és oszlopdefiniciók esetében megadhatjuk, hogy az adott sor vegye fel a tartalmának a méretét (`Auto`), vagy töltse ki a maradék helyet (`*`), de akár fix szélességet is megadhatnánk pixelben.
+Ha több `*` is szerepel a definíciókban, akkor azok arányosíthatóak pl.: `*` és `*` 1:1-es arányt jelent, míg a `*` és `3*` 1:3-at.
+
+A `Grid.Row`, `Grid.Column` úgynevezett **Attached Property**-k (csatolt tulajdonságok). Ez azt jelenti, hogy az adott tulajdonság nem egy másik vezérlőhöz tartozik, és ezt az információt „hozzácsatoljuk” egy másik objektumhoz / vezérlőhöz. Ez az információ jelenleg a `Grid`-nek lesz fontos, hogy el tudja helyezni a gyerekeit. Az alapértelmezett értéke a 0, tehát azt ki sem kéne írnunk.
+
+!!! note "Imperatív UI leírás"
+    Más UI keretrendszerekben, ahol imperatív a felület összeállítása, ezt egyszerűen megoldják függvényparaméterekkel – pl.: `myPanel.Add(new TextBox(), 0, 1)`.
+
+Ez még nem pont olyan, amit szeretnénk, finomítsunk kicsit a kinézetén:
+
+* Ne töltse ki az egész képernyőt a táblázat, hanem legyen középen felül.
+    * `HorizontalAlignment="Center" VerticalAlignment="Top"`
+* Legyen 300px széles
+    * `Width="300"`
+* Legyen a sorok között 10px, az oszlopok között 5px távolság és tartsunk 20px távolságot a konténer szélétől
+    * `RowSpacing="5" ColumnSpacing="10" Margin="20"`
+* Igazítsuk a labelt függőlegesen középre
+    * `VerticalAlignment="Center"`
+* Igazítsuk a gombot jobbra
+    * `HorizontalAlignment="Right"`
+
+```xml hl_lines="1-6 17 19 22"
+<Grid Width="300"
+      HorizontalAlignment="Center"
+      VerticalAlignment="Top"
+      Margin="20"
+      RowSpacing="5"
+      ColumnSpacing="10">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+
+    <TextBlock Grid.Row="0" Grid.Column="0" Text="Name" VerticalAlignment="Center"/>
+    <TextBox Grid.Row="0" Grid.Column="1" x:Name="tbName" />
+    <TextBlock Grid.Row="1" Grid.Column="0" Text="Age" VerticalAlignment="Center"/>
+    <TextBox Grid.Row="1" Grid.Column="1" x:Name="tbAge"/>
+
+    <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right">
+        <StackPanel Orientation="Horizontal">
+            <SymbolIcon Symbol="Add"/>
+            <TextBlock Text="Add" Margin="5,0,0,0" />
+        </StackPanel>
+    </Button>
+</Grid>
+```
+
+Bővítsük ki még két gombbal az űrlapunkat: +/- gomb az életkorhoz: `TextBox` bal oldalán ’-’ jobb oldalán ’+’).
+Ehhez fel kell vegyünk még két oszlopot.
+A felső `TextBox`-ra és `Button`-re be kell állítanunk `ColumSpan`-t, hogy 3 illetve 2 oszlopnyi helyet töltsenek ki.
+Az alsó `TextBox`-ot  pedig egy oszloppal odébb kell rakni.
+
+```xml hl_lines="3 5 9 11-15"
+<Grid.ColumnDefinitions>
+    <ColumnDefinition Width="Auto" />
+    <ColumnDefinition Width="Auto" />
+    <ColumnDefinition Width="*" />
+    <ColumnDefinition Width="Auto" />
+</Grid.ColumnDefinitions>
+
+<TextBlock Grid.Row="0" Grid.Column="0" Text="Name" VerticalAlignment="Center"/>
+<TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" />
+<TextBlock Grid.Row="1" Grid.Column="0" Text="Age" VerticalAlignment="Center"/>
+<TextBox Grid.Row="1" Grid.Column="2" />
+<Button Grid.Row="1" Grid.Column="1" Content="-"/>
+<Button Grid.Row="1" Grid.Column="3" Content="+"/>
+
+<Button Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Right">
+    <StackPanel Orientation="Horizontal">
+        <SymbolIcon Symbol="Add"/>
+        <TextBlock Text="Add" Margin="5,0,0,0" />
+    </StackPanel>
+</Button>
+```
+
+Készen is vagyunk az egyszerű formunk kinézetével.
+
+## Adatkötés
+
+### Binding
+
+Csináljuk meg, hogy az előbb elkészített kis űrlapon lehessen egy személy adatait megadni, módosítani.
+Ehhez először csinálunk egy adatosztályt `Person` néven a project egy újonnan létrehozott `Models` mappájába.
+
+```csharp
+public class Person
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+}
+```
+
+Azt itt lévő két tulajdonságot akarjuk a `TextBox` vezérlőkhöz kötni, ehhez adatkötést fogunk alkalmazni. 
+A nézet codebehindjában csináljunk egy propertyt, ami tartalmaz egy `Person` objektumot.
+Példányosítsuk meg a `Person`-t konstruktorban, majd rendeljük hozzá az oldal adatkontextusához (`DataContext`).
+Azzel adjuk meg, hogy az adott nézet / adatkötés honnan veszi majd az adatait.
+
+```csharp
+public Person NewPerson { get; set; }
+
+public MainWindow()
+{
+    InitializeComponent();
+
+    NewPerson = new Person()
+    {
+        Name = "Eric Cartman",
+        Age = 8
+    };
+
+    rootGrid.DataContext = NewPerson;
+}
+```
+
+A `Person` tulajdonságait rendeljük hozzá a két `TextBox` `Text` mezőihez adatkötéssel.
+
+```xml
+Text="{Binding Name}"
+Text="{Binding Age}"
+```
+
+!!! danger "Fontos"
+    Az adatkötésnek az a lényege, hogy nem kézzel a codebehindból állítgatjuk a felületen megjelenő szöveget például, hanem kvázi összerendeljük a tulajdonságokat. Így azt is elérhetjük, hogyha az egyik tulajdonság megváltozik, akkor a másik is változzon meg!
+
+A `Text="{Binding}"` szintaktika az úgynevezett markup extension, ami egy speciális objektum példányosítást jelent. Elsősorban emiatt használunk XAML és nem sima XML-t. 
+Van lehetőségünk saját Markup Extension-t is készíteni, de ez nem tananyag.
+
+Futtassuk! Látható, hogy bekerült a `Person`-ban megadott név és életkor.
+
+!!! tip "Binding.Path"
+    Itt valójában a `Binding` `Path` tulajdonságát állítjuk be, ami lehet tetszőleges mélységű is. Pl.: `Person.Address.Street`
+
+    A teljes szintaktika így nézne ki, de a `Path=` elhagyhaó, ha az az első paraméter: `Text="{Binding Path=Name}"`
+
+!!! tip "Design DataContext"
+    A kódszerkesztőben észrevehetjük, hogy nincs IntelliSense az adatkötés során. Ezt az alábbi névtérrel és attribútummal javíthatjuk a gyökér Grid-ünkön:
+
+    ```xml
+    xmlns:model="using:HelloXaml.Models" d:DataContext="{d:DesignInstance Type=models:Person}"
+    ```
+
+    A névtér deklarációt rakhatjuk a `Window`-ra is.
+
+Készítsünk egy `Click` eseménykezelőt az _Add_ gombunkra:
+
+```xml
+<Button ... Click="AddButton_Click">
+```
+
+```csharp
+private void AddButton_Click(object sender, RoutedEventArgs e)
+{
+}
+```
+
+Rakjunk egy breakpointot az eseménykezelőbe, és próbáljuk, hogy vissza irányba is működik-e az adatkötés, ha megváltoztatjuk az egyik `TextBox` értékét.
+
+**Nem íródott vissza!** Ez azért történik, mert WinUI esetében az alapértelmezett adatkötési mód a `OneWay`, ami csak a forrás => cél irányt támogatja változásértesítéssel. A vissza irányhoz `TwoWay`-re kell állítsuk az adatkötés módját.
+
+```xml
+Text="{Binding Name, Mode=TwoWay}"
+Text="{Binding Age, Mode=TwoWay}"
+```
+
+Próbáljuk ki! Így már működik a vissza irányú adatkötés is.
+
+### Változásértesítés
+
+Implementáljuk a +/- gombok Click eseménykezelőit.
+
+```xml
+<Button Grid.Row="1" Grid.Column="1" Content="-" Click="DecreaseButton_Click"/>
+<Button Grid.Row="1" Grid.Column="3" Content="+" Click="IncreaseButton_Click"/>
+```
+
+```csharp
+private void DecreaseButton_Click(object sender, RoutedEventArgs e)
+{
+    NewPerson.Age--;
+}
+
+private void IncreaseButton_Click(object sender, RoutedEventArgs e)
+{
+    NewPerson.Age++;
+}
+```
+
+Próbáljuk ki!
+
+Mi történik, ha az adatosztályban írjuk át code behindból az értéket, esetünkben a +/- gombok megnyomásának hatására? A felület frissülni fog? Most nem, de ezt egyszerűen megoldhatjuk.
+
+Implementáljuk az `INotifyPropertyChanged` interfészt a `Person` osztályunkba. Ha adatkötünk ehhez az osztályhoz, akkor a rendszer a `PropertyChanged` eseményre fog feliratkozni, ennek az eseménynek a elsütésével tudjuk értesíteni a `Binding`-ot, ha egy property megváltozott.
+
+```csharp
+public class Person : INotifyPropertyChanged
+{
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    private string name;
+    public string Name
+    {
+        get { return name; }
+        set
+        {
+            if (name != value)
+            {
+                name = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)))
+            }
+        }
+    }
+
+    private int age;
+    public int Age
+    {
+        get { return age; }
+        set
+        {
+            if (age != value)
+            {
+                age = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Age)));
+            }
+        }
+    }
+}
+```
+
+Próbáljuk ki!
+
+!!! tip "Terjengős a kód?"
+    A későbbiekben ezt a logikát ki is szervezhetnénk egy ősosztályba, de ez már az MVVM mintát vezetné elő. Tehát ne ijedjünk meg ettől a csúnya kódtól.
+
+## Listák
+
+Csináljunk listás adatkötést.
+Vegyük fel a `Person`-ök listáját a nézetünk code-behindjába.
+A konstruktor elején pedig példányosítsuk, és állítsuk a `MainWindow` aktuális példányát a `rootGrid` `DataContext`-jének.
+
+```csharp hl_lines="1 "13-19"
+public List<Person> People { get; set; }
+
+public MainWindow()
+{
+    InitializeComponent();
+
+    NewPerson = new Person()
+    {
+        Name = "Eric Cartman",
+        Age = 8
+    };
+
+    People = new List<Person>()
+    {
+      new Person() { Name = "Peter Griffin", Age = 40 },
+      new Person() { Name = "Homer Simpson", Age = 42 },
+    };
+
+    rootGrid.DataContext = this;
+}
+```
+
+!!! warning "DataContext"
+    Nem szokás a `DataContext`-nek a `this` objektumot beállítani, jelen esetben csak a demonstráció célját szolgálja, és itt valójában az MVVM minta szerint egy ViewModel objektumnak kellene lennie.
+
+Vegyünk fel egy új sort a `Grid`-be, amibe majd a lista fog kerülni. Az eddigi 3. sor legyen `Auto` magas, míg az új 4. sor töltse ki a maradék helyet.
+
+```xml hl_lines="4-5"
 <Grid.RowDefinitions>
+    <RowDefinition Height="Auto" />
     <RowDefinition Height="Auto" />
     <RowDefinition Height="Auto" />
     <RowDefinition Height="*" />
 </Grid.RowDefinitions>
-<Grid.ColumnDefinitions>
-    <ColumnDefinition Width="Auto" />
-    <ColumnDefinition Width="*" />
-</Grid.ColumnDefinitions>
-
-<TextBlock Grid.Row="0" Grid.Column="0" Text="Name" />
-<TextBox Grid.Row="0" Grid.Column="1" x:Name="tbName" />
-<TextBlock Grid.Row="1" Grid.Column="0" Text="Age" />
-<TextBox Grid.Row="1" Grid.Column="1" x:Name="tbAge" />
 ```
+
+Rakjuk a 4. sorba (és az összes oszlopba) a `ListView` vezérlőnket, ahol adatkötéssel állítsuk be az `ItemsSource` tulajdonságán keresztül, milyen adatforrásból dolgozzon.
+
+```xml
+<ListView Grid.Row="3" Grid.ColumnSpan="4" ItemsSource="{Binding People}"/>
+```
+
+Sajnos a fenti `DataContext` módosításunkkal elrontottuk az űrlap adatkötéseit, javítsuk ezeket meg.
+
+```xml
+Text="{Binding NewPerson.Name, Mode=TwoWay}"
+Text="{Binding NewPerson.Age, Mode=TwoWay}"
+```
+
+Próbáljuk ki!
+
+Látjuk, hogy megjelent két elem. Persze nem az van kiírva, amit mi szeretnénk, de ezen könnyen változtathatunk.
+Alapértelmezetten a `ListView` a `ToString()`-et hívja a listaelemen, ami ha nem definiáljuk felül, akkor az osztály típusának `FullName`-je.
+
+Állítsunk be `ItemTemplate`-et, ami a listaelem megjelenését adja meg egy sablon segítségével: amiben egy több elemből (`Run`) álló `TextBlock` kerüljön.
+
+```xml
+<ListView Grid.Row="3" Grid.ColumnSpan="4" ItemsSource="{Binding People}">
+    <ListView.ItemTemplate>
+        <DataTemplate>
+            <TextBlock><Run Text="{Binding Name}"/> (<Run Text="{Binding Age}"/>)</TextBlock>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>
+```
+
+Próbáljuk ki!
+
+Az _Add_ gomb hatására rakjuk bele a listába az űrlapon található személyt.
+
+```csharp hl_lines="3"
+private void AddButton_Click(object sender, RoutedEventArgs e)
+{
+    People.Add(NewPerson);
+}
+```
+
+Nem jelenik meg a listában az új elem, mert a `ListView` nem értesül arról, hogy új elem került a listába. Ezt könnyen orvosolhatjuk: a `List<Persont>`-t cseréljük le `ObservableCollection<Person>`-re:
+
+```csharp
+public ObservableCollection<Person> People { get; set; }
+```
+
+!!! tip ObservableCollection
+    A kollekció implementálja az `INotifyCollectionChanged` interfészt.
+
+    Tehát már két változáskezelést támogató interfészünk van, amit a `Binding` figyel: `INotifyPropertyChanged` és `INotifyCollectionChanged`.
+
+## Önálló feladat
+
+Az előző feladatot teszteljük a következő módon:
+
+Adjunk a listához az új elemet, majd módosítsuk a beviteli mezők valamelyikét. Adjuk hozzá ismét a listához a személy adatait és ismét módosítsuk az adatoat.
+
+1. Mit tapasztalunk és miért?
+2. Próbáljuk megjavítani az eddig tanultak alapján!
+
+## Kitekintés: Fordítás idejű adatkötés (x:Bind)
+
+A Binding markup extension futás időben dolgozik reflection segítségével, így egyrészt nem kapunk fordítás idejű hibákat, ha valamit elírtunk volna, másrészt pedig sok adatkötés (1000-es nagyságrend) jelentésen lassíthatja az alkalmazásunkat.
+
+Ennek megoldására megjelent a fordítás idejű adatkötés támogatása, amit WinUI platformon az `x:Bind` szintaktikával érhetünk el.
+
+Van viszont néhány eltérés a sima Binding-hoz képest:
+
+* Nem a `DataContext`-ből dolgozik és nem is lehet állítani az adatkötés forrását, mivel mindig az adott nézetből köt
+    * Olyan, mint amikor megadtuk a a nézetben, hogy `DataContext = this;`
+* Alapértelmezett módja a `OneTime` és nem a `OneWay`: tehát nem figyeli a változásokat!
+* Adatsablonokban is használható, de olyankor nyilatkozni kell a `DataTemplate`-en, hogy az milyen adatokon fog dolgozni az `x:DataType` attribútummal.
+
+Írjuk át a nézetünben az adatkötéseket `x:Bind`-ra.
+
