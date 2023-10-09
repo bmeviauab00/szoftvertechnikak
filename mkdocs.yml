@@ -41,6 +41,8 @@ extra_css:
 
 extra:
   generator: false
+  version:
+    provider: mike
 
 markdown_extensions:
   - admonition
