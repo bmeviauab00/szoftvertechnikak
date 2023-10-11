@@ -33,7 +33,7 @@ A gyakorlat elvégzéséhez szükséges eszközök:
 
     ```git clone https://github.com/bmeviauab00/lab-adatkezeles-megoldas```
 
-    Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ [itt](../hazi/git-github-github-classroom/#git-telepitese).
+    Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ [itt](../../hazi/git-github-github-classroom/index.md#git-telepitese).
 
 ## Bevezető
 

@@ -41,7 +41,7 @@ A Window Forms alkalmazások legfontosabb koncepcióit a tárgy 3.-4. előadása
 
     ```git clone https://github.com/bmeviauab00/lab-winforms-megoldas```
 
-    Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ [itt](../hazi/git-github-github-classroom/#git-telepitese).
+    Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ [itt](../../hazi/git-github-github-classroom/index.md#git-telepitese).
 
 ## 1. Feladat – „Hello world” Windows Forms technológiával
 
