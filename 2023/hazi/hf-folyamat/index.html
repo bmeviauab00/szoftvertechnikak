@@ -1,0 +1,1091 @@
+
+<!doctype html>
+<html lang="hu" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Benedek Zoltán">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.5">
+    
+    
+      
+        <title>Házi feladat munkafolyamat és a Git/GitHub használata - BMEVIAUAB00 Szoftvertechnikák</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6a10b989.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../extra-material-theme.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="aut" data-md-color-primary="aut" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hazi-feladat-munkafolyamat-es-a-gitgithub-hasznalata" class="md-skip">
+          Kihagyás
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Élőfej">
+    <a href="../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-header__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
+      
+  <img src="../../img/logo-bme-aut.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BMEVIAUAB00 Szoftvertechnikák
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Házi feladat munkafolyamat és a Git/GitHub használata
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="aut" data-md-color-primary="aut" data-md-color-accent="red"  aria-label="Váltás sötét témára"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Váltás sötét témára" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="indigo"  aria-label="Váltás világos témára"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Váltás világos témára" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Keresés" placeholder="Keresés" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Keresés">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Törlés" aria-label="Törlés" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Keresés inicializálása
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bmeviauab00/szoftvertechnikak
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Lapok" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Szoftvertechnikák
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labor/1-model-es-kod-kapcsolata/" class="md-tabs__link">
+          
+  
+  Laborok
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Önálló/házi feladatok
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigáció" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-nav__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
+      
+  <img src="../../img/logo-bme-aut.png" alt="logo">
+
+    </a>
+    BMEVIAUAB00 Szoftvertechnikák
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bmeviauab00/szoftvertechnikak
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Szoftvertechnikák
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Laborok
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Laborok
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/1-model-es-kod-kapcsolata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. A modell és a kód kapcsolata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/2-nyelvi-eszkozok/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Nyelvi eszközök
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/3-felhasznaloi-felulet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. A felhasználói felület kialakítása
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/4-tobbszalu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Többszálú alkalmazások készítése
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/5-adatkezeles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Adatkezelés
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/6-doc-view/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Document-View architektúra
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/7-tervezesi-mintak/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Tervezési minták
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Önálló/házi feladatok
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Önálló/házi feladatok
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Útmutató
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-model-es-kod-kapcsolata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. HF - A modell és a kód kapcsolata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-nyelvi-eszkozok/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. HF - Nyelvi eszközök
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-felhasznaloi-felulet-kialakitasa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. HF - Felhasználói felület kialakítása
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-tobbszalu-alkalmazasok-fejlesztese/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. HF - Többszálú alkalmazások fejlesztése
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-document-view-architectura/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. HF - Document-View architektúra
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fejlesztokornyezet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fejlesztőkörnyezet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tartalomjegyzék
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lepesek" class="md-nav__link">
+    Lépések
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-repository-klonozasa" class="md-nav__link">
+    GitHub repository klónozása
+  </a>
+  
+    <nav class="md-nav" aria-label="GitHub repository klónozása">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clone-a-github-webes-feluleterol-indulva-visual-studio-ban" class="md-nav__link">
+    Clone a GitHub webes felületéről indulva Visual Studio-ban
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clone-parancssorbol" class="md-nav__link">
+    Clone parancssorból
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#napi-git-munka-visual-studio-segitsegevel-commit-push" class="md-nav__link">
+    Napi Git munka Visual Studio segítségével (commit, push)
+  </a>
+  
+    <nav class="md-nav" aria-label="Napi Git munka Visual Studio segítségével (commit, push)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commit" class="md-nav__link">
+    Commit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push-pull" class="md-nav__link">
+    Push, Pull
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-history" class="md-nav__link">
+    Git history
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#egyeb-iranyelvek" class="md-nav__link">
+    Egyéb irányelvek
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-hasznalata-parancssorbol" class="md-nav__link">
+    Git használata parancssorból
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/bmeviauab00/szoftvertechnikak/edit/master/docs/hazi/hf-folyamat/index.md" title="Oldal szerkesztése" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="hazi-feladat-munkafolyamat-es-a-gitgithub-hasznalata">Házi feladat munkafolyamat és a Git/GitHub használata<a class="headerlink" href="#hazi-feladat-munkafolyamat-es-a-gitgithub-hasznalata" title="Permanent link">&para;</a></h1>
+<p>Ha még nem olvastad, célszerű itt kezdeni: <a href="../git-github-github-classroom/">Git, GitHub, GitHub Classroom</a></p>
+<h2 id="lepesek">Lépések<a class="headerlink" href="#lepesek" title="Permanent link">&para;</a></h2>
+<p>Az egyes házi feladatok kiinduló keretét GitHub/GitHub Classroom segítségével publikáljuk. Az így publikált házi feladatok kiinduló környezet letöltésének és a megoldás beadásának lépései a következők:</p>
+<ol>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2757.svg" title=":exclamation:" /> Az elindulással ne várd meg a határidő közeledtét, legalább a saját repository létrehozásáig juss el mielőbb. Így, ha bármi elakadás lenne, még időben tudunk segíteni.</li>
+<li>Regisztrálj egy GitHub accountot (<a href="https://github.com/">https://github.com/</a>), ha még nem regisztráltál, és lépj be vele GitHub-ra.</li>
+<li>A feladathoz tartozó linket nyisd meg. Ez minden feladathoz más lesz, Moodle-ben kerülnek meghirdetésre fokozatosan a félév folyamán. A formátuma a következőhöz hasonló: <a href="https://classroom.github.com/abcdefgh">https://classroom.github.com/abcdefgh</a>. Ha a hivatkozásra kattintva hibát kapsz ("There was a problem authenticating with GitHub, please try again."), copy-paste-tel másold be közvetlenül a böngésző címsorába a címet.</li>
+<li>Ha kéri, adj engedélyt a GitHub Classroom alkalmazásnak, hogy használja az account adataidat.</li>
+<li>Látni fogsz egy oldalt, ahol elfogadhatod a feladatot ("Accept this assignment"). Kattints a gombra.</li>
+<li>Várd meg, amíg elkészül a repository. A GitHub nem mindig frissíti az oldalt magától, célszerű az oldal időnkénti kézi frissítésével próbálkozni (pl. F5 billentyű). Ha elkészült a repository, az oldal kiírja az új repository url-jét, amin kattintva a repository-ra lehet navigálni (ehhez hasonló: <a href="https://github.com/bmeviauab00/hazi1-2023-username">https://github.com/bmeviauab00/hazi1-2023-username</a>).  De nem is feltétlen szükséges az url elmentése, a GitHub nyitóoldalán (<a href="https://github.com/">https://github.com/</a>) baloldalt a saját repository-k közt bármikor meg lehet később is találni.</li>
+<li>Klónozd le a repository-t (ennek mikéntjére rövidesen visszatérünk). Ebben találni fogsz egy keretet, vagy kiinduló kódot. Ezen dolgozz, ezt változtasd. Az alapértelmezett git ágon/branchen dolgozz (ha ez nem mond semmit, nem baj: ez csak azoknak szól, akik a git használatában jártasak és több ágon szoktak dolgozni).</li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2757.svg" title=":exclamation:" /> A kiinduló projektben van egy .github/workflows mappa, ennek tartalmát tilos megváltoztatni, törölni stb.</li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2757.svg" title=":exclamation:" /> A munka során a kiindulási repóban levő solutionben/projektben kell dolgozni, új projektet/solutiont ne hozz létre.</li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2757.svg" title=":exclamation:" /> A repository gyökérmappájában található neptun.txt fájlba írd bele a Neptun kódod, csupa nagybetűvel. A fájlban csak ez a hat karakter legyen, semmi más.</li>
+<li>Oldd meg a feladatot. Pushold a határidőig. Akárhány commitod lehet, a legutolsó állapotot fogjuk nézni.</li>
+<li>Az eredmények Moodle-ben kerülnek meghirdetésre (a nyitóoldalon kapcsolódó házi feladat oldalát Moodle-ben megnyitva az oldal alján a "Visszajelzés" szekcióban látható). Eredmények az adott feladatra vonatkozó határidőt követő pár napon belül várhatók.</li>
+<li>A házi feladatot külön explicit beadni nem kell, csak legyen fent GitHub-on határidőre a megoldás.</li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2757.svg" title=":exclamation:" /> Amikor a házi feladatod beadottnak tekinted,  célszerű ellenőrizni a böngészőben a GitHub webes felületén a repository-ban a fájlokra való rápillantással, hogy valóban minden változtatást push-oltál-e, és hogy a neptun.txt valóban ki van-e töltve.</li>
+</ol>
+<p>A fenti lépések kapcsán két kérdés vár még megválaszolásra:</p>
+<ul>
+<li>Hogyan klónozzuk (clone) a repónkat (mely a házi feladat kiinduló keretét tartalmazza)?</li>
+<li>Hogyan commit-áljunk és push-oljunk a Visual Studio segítségével GitHub-ra?</li>
+</ul>
+<p>Az alábbiakban ezekre is kitérünk.</p>
+<h2 id="github-repository-klonozasa">GitHub repository klónozása<a class="headerlink" href="#github-repository-klonozasa" title="Permanent link">&para;</a></h2>
+<p>Két lehetőséget nézünk meg alább:</p>
+<ul>
+<li>Klónozás a GitHub webes felületéről indulva Visual Studioban</li>
+<li>Klónozás parancssorból</li>
+</ul>
+<h3 id="clone-a-github-webes-feluleterol-indulva-visual-studio-ban">Clone a GitHub webes felületéről indulva Visual Studio-ban<a class="headerlink" href="#clone-a-github-webes-feluleterol-indulva-visual-studio-ban" title="Permanent link">&para;</a></h3>
+<p>Egy (házi feladathoz tartozó) repository klónozásra számos mód van, egy lehetőség a következő. Nyissuk meg az elkészült repository online oldalát, melyre több módon eljuthatunk. Lehetőségek pl.:</p>
+<ul>
+<li>A repo létrehozásakor megjelenik a GitHub felületen az url, csak kattintani kell rajta.</li>
+<li>A GitHub nyitóoldalon (<a href="https://github.com">https://github.com</a>) - ha be vagyunk lépve - listázódnak baloldalt azon repository-k, melyekhez van hozzáférésünk, csak kattintsunk a megfelelőn.</li>
+<li>Amikor elkészül a repónk (a GitHub classroom feladat elfogadása során), e-mail értesítést is kapunk róla, ebben is megtalálható a link.</li>
+</ul>
+<p>Az oldal képe nagyjából megfelel a következőnek (az mindenképpen különbség, hogy a repó url végén mindenkinél a saját felhasználóneve szerepel):</p>
+<p><a class="glightbox" href="images/github-repo-page.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="GitHub repo oldal" src="images/github-repo-page.png" /></a></p>
+<p>Kattintsunk a zöld színű <em>Code</em> gombon, majd a lenyíló menüben az <em>"Open in Visual Studio"</em> linkre:</p>
+<p><a class="glightbox" href="images/github-code-button-open.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="GitHub repo oldal - Code gomb" src="images/github-code-button-open.png" /></a></p>
+<p>A böngészőnk ekkor jó eséllyel feldob egy ablakot (pl. a Chrome/Edge esetében a címsor alatt) melyben egy külön gombkattintással (<em>Open…</em>) tudjuk indítani a Visual Studio-t. A felkínált lehetőségnek lehet, kissé fura a neve, ha <em>"Microsoft Visual Studio Web Protocol Handler Selector"</em> néven hivatkozik rá, válasszuk/engedélyezzük ki bátran. Illetve, itt célszerű az "Always allow github.com to open links ..." vagy hasonló szövegű jelölőnégyzetet is pipálni.
+Ha minden jól megy, a Visual Studio elindul, és indulás után feldob egy ablakot, melyben a "Repository location" ki is van töltve a repository-nk URL-jével. A Path alatt adjuk meg, hogy hova szeretnénk a háttértárunkon clone-ozni, majd kattintsunk a <em>Clone</em> gombra:</p>
+<p><a class="glightbox" href="images/vs-clone-a-repository.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Repository clone Visual Studionban" src="images/vs-clone-a-repository.png" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Alternatív klónozási lehetőség Visual Studioban</p>
+<p>Ha nem működik a böngészőablakban az <em>"Open in Visual Studio"</em> vagy <em>"Microsoft Visual Studio Web Protocol Handler Selector"</em> hivatkozás, akkor indulhatunk egyből a Visual Studio-ból is. Csak indítsuk el a Visual Studio-t, és a startup ablakban válasszuk jobboldalt a <em>"Clone Repository"</em> gombot (vagy a startup ablakot átugorva válasszuk ki a <em>"Git/Clone Repository menüt"</em> a VS főablakában), melynek hatására a fenti ablak jelenik meg, a Repository URL-be pedig írjuk be a repónk URL-jét. A <em>Clone</em>-ra kattintva néhány másodperc alatt a repository a megadott célmappába klónozódik.</p>
+</div>
+<p>A klónozást követően pl. Windows Explorer-ben meg tudjuk tekinteni a létrehozott mappákat és fájlokat:</p>
+<p><a class="glightbox" href="images/git-folder-in-explorer.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Git repository a fájlrendszerben" src="images/git-folder-in-explorer.png" /></a></p>
+<p>Ebből jól látható, hogy egy Git repository nem más, mint mappák és fájlok gyűjteménye, valamint egy a gyökérben található .git mappa, mely (némi egyszerűsítéssel élve) az egyes fájlok verziótörténetét tartalmazza. A munka megkezdéséhez csak meg kell nyissuk az adott házi feladathoz tartozó .sln kiterjesztésű solution fájlt (pl. duplakatt Windows Explorerben).</p>
+<div class="admonition note">
+<p class="admonition-title">Az első házi feladat speciális (két solution is van)!</p>
+<p>Az első házi feladat kivételesen két fő részből áll, melyekhez eltérő solution tartozik. Az elsőhöz a Feladat1 mappában található MusicApp.sln fájlt, a másodikhoz a Feladat2-ben található Shapes.sln-t kell megnyitni. A megnyitást megtehetjük Explorerből, az adott .sln fájlon duplán kattintva. Ugyanakkor van erre más mód is: amennyiben Visual Studio-ban a Git gyökérmappát nyitottuk meg (a <em>Clone</em>-t követően is ez a helyzet állt elő) a Solution Explorer nézet fejlécében <em>"Switch View"</em> gombot lenyomva a Solution Explorer listázza a Git gyökérmappa alatti solution-öket, és ezek bármelyikén duplán kattintva az adott solution megnyílik:</p>
+<p><a class="glightbox" href="images/vs-switch-view.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Visual Studio Solution Explorer Switch View" src="images/vs-switch-view.png" /></a></p>
+</div>
+<h3 id="clone-parancssorbol">Clone parancssorból<a class="headerlink" href="#clone-parancssorbol" title="Permanent link">&para;</a></h3>
+<p>Alternatív lehetőség a parancssor használata. Parancssorban navigáljunk abba a mappába, ahová a forráskódot ki szeretnénk clone-ozni, és itt adjuk ki a következő parancsot:
+<code>git clone &lt;repo url&gt;</code>
+, ahol a <code>&lt;repo url&gt;</code> a repositorynk címe (pl. böngésző címsávjából bemásolva, ehhez hasonló: <a href="https://github.com/bmeviauab00/hazi1-2022-myusername">https://github.com/bmeviauab00/hazi1-2022-myusername</a>). A parancs lefutása után egy a repository nevének megfelelő alkönyvtárban találjuk az új helyi repónkat.</p>
+<div class="admonition note">
+<p class="admonition-title">Parancssori git</p>
+<p>Ne féljünk a parancssori git-et használni, egy repository clone-ozásának tulajdonképpen ez a legegyszerűbb módja.</p>
+<p>Amennyiben a parancs futtatása során azt tapasztaljuk, hogy a git parancsot nem ismeri fel a környezet, annak oka valószínűleg az, hogy nem telepítettünk még a parancssori gitet a gépünkre. Erről bővebben <a href="../git-github-github-classroom/#git-telepitese">itt</a>.</p>
+</div>
+<h2 id="napi-git-munka-visual-studio-segitsegevel-commit-push">Napi Git munka Visual Studio segítségével (commit, push)<a class="headerlink" href="#napi-git-munka-visual-studio-segitsegevel-commit-push" title="Permanent link">&para;</a></h2>
+<p>Miután leklónoztuk az adott házi feladathoz tartozó GitHub repository-t a számítógépünkre, és ennek során létrejött a lokális Git repository-nk, a benne levő .sln fájlokat Visual Studioban megnyitva pont úgy dolgozunk – veszünk fel új fájlokat, módosítunk/törlünk meglévőket – mintha a fájlok nem is tartoznának semmiféle Git repóhoz. Ugyanakkor, legkésőbb a feladat beadásakor a változtatásainkat commit-olni kell, majd push-olni GitHub-ra. A munka során akárhányszor commit-álhatjuk/push-olhatjuk az előző commit óta eszközölt módosításainkat: a házi feladat ellenőrzésekor a határidő pillanatában a GitHub-on található állapot kerül elbírálásra, teljesen mindegy, hány commit tartozik hozzá.
+A commit és push műveletek végrehajtásához a Visual Studio <em>"Git"</em> menüjében levő parancsokat használjuk.</p>
+<h3 id="commit">Commit<a class="headerlink" href="#commit" title="Permanent link">&para;</a></h3>
+<p>Az előző commit óta eszközölt változtatások megtekintéséhez válasszuk ki a <em>"View\Git Changes"</em> menüt. Ennek hatására megjelenik a <em>"Git Changes"</em> nézet a változások listájával:</p>
+<p><a class="glightbox" href="images/vs-git-changes.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="VS Git changes" src="images/vs-git-changes.png" /></a></p>
+<p>A változtatások commit-álásához írjunk a fenti szövegmezőbe egy a változtatásokra jellemző egy-két soros leírást (pl. "Végső megoldás", "Az xyz hiba javítása" stb.). A lehetőségeink ezt követően a következők:</p>
+<ul>
+<li><strong>"Commit All"</strong> gomb: Csak helyben commit-olja a változtatásokat (a központi Git repóban mindaddig nem jelenik meg a commit, amíg egy külön Push paranccsal fel nem "toljuk").</li>
+<li><strong>"Commit All and Push"</strong>, mely a "Commit All" gomb melletti nyíl lenyitásával érhető el. Hatása: commit, majd utána push. Ha a változtatásainkat egyből publikálni is szeretnénk a GitHub-on levő központi repóba, akkor használjuk bátran parancsot. <strong>A házi feladatok tekintetében célszerű is ezt használni, mert ekkor nincs szükség a commit-ot követően külön push műveletre.</strong>
+Megjegyzés: ha a parancs az "Unable to push to the remote repository because your local branch is behind the remote branch" hibával zárul, előbb pull-oljuk, majd ismételjük meg a push-t. Erre még alább visszatérünk.</li>
+<li><strong>"Commit All and Sync"</strong>, mely a "Commit All" gomb melletti nyíl lenyitásával érhető el. Hatása: commit után pull (leszedi a saját helyi repónkba mások esetleges változtatásait a központi repóból), majd push. Így a központi repóban levő esetleges változásokat lehozza a helyi repónkba, az ezt követően a változtatásainkat egyből publikálja is ide.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A git commit-ot mindig meg kell előzze egy ún. <strong>stage</strong> lépés, mely során kiválasztjuk azokat a helyi változtatásokat, melyeket a következő commit-ba be kívánunk tenni. Ez az ún. <strong>staging area</strong> területre teszi az általunk kiválasztott változásokat (a fájlrendszerben nem mozgat semmiféle fájlt, ez csak a git a belső nyilvántartásában jelenik meg). Ez azért jó, mert plusz rugalmasságot biztosít, hiszen nem biztos, mindig minden változtatást bele kívánunk tenni a következő commit-ba. A fenti "Commit all" stb. parancsok nevében nem véletlen van benne az "all": ezek a színfalak mögött a commit előtt egy megfelelő git paranccsal valamennyi változást a git staging area-ra tesznek, így ezt nekünk nem kell külön megtennünk.</p>
+</div>
+<h3 id="push-pull">Push, Pull<a class="headerlink" href="#push-pull" title="Permanent link">&para;</a></h3>
+<p>A commit művelet csak a helyi repository-ban "érvényesíti" a változtatásokat. Ezt követően a változtatásokat a GitHub központi repository-nkba fel kell tölteni a push művelettel. Erre a lépésre csak akkor van szükség, ha a commit során nem használtuk a <em>"Commit All and Push"</em> vagy <em>"Commit All and Sync"</em> parancsokat. A push művelet VS-ben a <em>"Git/Push"</em> menü segítésével indítható. 
+Ha többen dolgozunk, a központi repository-ban lehetnek mások által pusholt, hozzánk még le nem töltött commitok (vagy akár olyanok, melyeket mi magunk push-oltunk egy másik lokális clone-ból, vagy ha a GitHub online felületén eszközöltünk a kódon változásokat). Ezeket a pull művelettel tudjuk a helyi repónkba merge-elni (Git/Pull menü). A házi feladat vonatkozásában ezt nem használjuk, hiszen mindenki saját dedikált központi repositoryval rendelkezik, melyben egyedül dolgozik (kivéve, ha esetleg valaki a GitHub felületének segítségével változtatott a kódon, akkor ezt egy pull-lal tudja a helyi repójába lehozni).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A push csak akkor hajtható végre, ha a központi repóban nincs olyan változás, melyet még a pull paranccsal nem hoztunk le és merge-eltünk a saját lokális repónkba. Ha ez nincs így, egy ehhez hasonló hibaüzenet kapunk: "Unable to push to the remote repository because your local branch is behind the remote branch". Ekkor pull-oljunk, utána ismételjük meg a pusht.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A pull művelet csak akkor hajtható végre, ha nincs olyan változtatásunk helyben, melyeket még nem commitáltunk. Ha van ilyen, akkor azokat vagy commitáljuk (vagy ha ezt nem akarjuk megtenni még, akkor stash-eljük a pull idejére).</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A Pull és Push parancsok a „Git Changes” (View/Git Changes menü jeleníti meg) panel tetején elérhető le és fel nyilakkal is végrehajthatók:</p>
+<p><a class="glightbox" href="images/vs-git-changes-push-pull.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="VS pull push" src="images/vs-git-changes-push-pull.png" /></a></p>
+</div>
+<h3 id="git-history">Git history<a class="headerlink" href="#git-history" title="Permanent link">&para;</a></h3>
+<p>A Git egy változáskövető rendszer. A változás egysége a commit (melyben tetszőleges számú fájlt érintő változás lehet), a Git historyban a commitok egymásutániságát láthatjuk. A fájlokat érintő változásokon túlmenően minden commithoz tartozik egy egyedi azonosító (commit hash), időbélyeg, illetve egy szerző. A szerző felhasználó, aki a változásokat eszközölte (valójában van külön Author és Commiter, de a kettő általában ugyanaz). Visual Studioban a historyt a View/Git Repository menüvel tudjuk megjeleníteni, de a history természetesen a GitHub online felületén is megjeleníthető.
+A Visual Studioban a <em>"Git Repository"</em> nézetet a View/Git Repository menüvel tudjuk megjeleníteni.</p>
+<ul>
+<li>Outgoing commits: Megmutatja, hogy milyen, a lokális repository-nkba már létező, de a központi repóba még nem push-olt commitok vannak. Ezeket a Push művelettel tudjuk feltölteni.</li>
+<li>Incoming commits: Megmutatja, hogy a központi repository-ban milyen mások által pusholt, hozzánk még le nem töltött commitok vannak. Ezek akkor jelennek meg, ha a Fetch paranccsal lehozzuk a helyi repóba (ez még nem merge-el). Ezeket a Pull művelettel tudjuk a helyi repónkba merge-elni. A fetch parancsot ritkán használjuk: általában a pullt használjuk magában, ami egy fetch + merge (változások merge-elése a helyi repóba) kombinációja.</li>
+</ul>
+<p>Példa:</p>
+<p><a class="glightbox" href="images/vs-git-history.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="VS git history" src="images/vs-git-history.png" /></a></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Amíg nem vagyunk rutinosak a Visual Studio Git szolgáltatásainak használatában, a push-t követően (legkésőbb akkor, amikor a házi feladatot beadottnak tekintjük) célszerű ellenőrizni a GitHub webes felületén a repository-ban a fájlokra való rápillantással, hogy valóban minden változtatást feltöltöttünk-e.</p>
+</div>
+<h3 id="egyeb-iranyelvek">Egyéb irányelvek<a class="headerlink" href="#egyeb-iranyelvek" title="Permanent link">&para;</a></h3>
+<p>A Git commit és push során megfigyelhetjük, hogy a solution-jeink köztes és kimeneti állományai (.dll, .exe stb. fájlok) nem kerülnek bele a commitba, és így nem kerülnek fel GitHubra sem. Ez így is van jól, ezen állományok bármikor reprodukálhatók, a verziókezelő rendszernek nem feladata ezek tárolása, csak felesleges és zavaró helyfoglalók lennének. Felmerül a kérdés, honnan tudja a Git, hogy mely állományokat szükséges figyelmen kívül hagyni a commit során. Erre szolgál a repository-ban (tipikusan annak gyökérmappájában) található <strong>.gitignore</strong> fájl, mely felsorolja azon mappákat, fájlkiterjesztéseket, illetve egyedi fájlokat, melyeket a commit során figyelmen kívül szeretnénk hagyni. A .gitignore fájl tartalma teljes egészében a kezünk alá tartozik, szabadon szerkeszthető/commitálható/pusholható.
+A tárgy keretében minden kiinduló repónak része egy .gitignore fájl, ne változtassuk a tartalmát! Így a commit/push során a kimeneti állományok a házi feladatok esetében sem kerülnek fel GitHub-ra, és egy így is van rendjén.</p>
+<p>A félévben a feladatok megoldása során az egyes osztályok, interfészek stb. forráskódját külön fájlba kell tenni, vagyis egy C# forrásfájlban egy osztály/interfész/stb. definíciója legyen.</p>
+<h3 id="git-hasznalata-parancssorbol">Git használata parancssorból<a class="headerlink" href="#git-hasznalata-parancssorbol" title="Permanent link">&para;</a></h3>
+<p>Bár sokan ódzkodnak a git parancssori alkalmazásától, az egyszerűbb műveleteket gyakran gyorsabban végre tudjuk hajtani parancssorból, mint a GUI felületeken történő kattintgatásokkal. Az alábbiakban egy egyszerű lépéssorozattal illusztráljuk ezt. Ezeket a tárgy keretében nem kell tudni, de hosszabb távon mindenképpen hasznos (és az iparágban elvárás is) az ismeretük.</p>
+<ol>
+<li>
+<p>Repository clone (ezt csak egyszer)</p>
+<p><code>git clone https://github.com/bmeviauab00/hazi1-2022-myusername</code></p>
+</li>
+<li>
+<p>Változtatások végrehajtása a helyi repóban (fájlrendszerben, fejlesztőeszközben).</p>
+</li>
+<li>
+<p>Változtatások megtekintése, mutatja melyek az új/törölt/módosult fájlok (nem kötelező, csak ha kíváncsiak vagyunk rá)*</p>
+<p><code>git status</code></p>
+</li>
+<li>
+<p>Minden változtatás feltétele a staging area-ra</p>
+<p><code>git add -A</code></p>
+<p>Ha ezt követően ismét kiadjuk <code>git status</code> parancsot (nem kötelező), látjuk, hogy minden változás stage-elve van.</p>
+</li>
+<li>
+<p>Commit</p>
+<p><code>git commit -m "megjegyzés a commithoz"</code></p>
+</li>
+<li>
+<p>Push</p>
+<p><code>git push</code></p>
+</li>
+</ol>
+<p>Megjegyzések:</p>
+<ul>
+<li>Ha többen is dolgozunk az adott git ágon, akkor a 6. push előtt szükség lehet/van egy <code>git pull</code>-ra, hogy mások változtatásai megjelenjenek a mi helyi repónkban (enélkül nem fogunk tudni push-olni). A pull-nak célszerű lehet megadni a <code>--rebase</code> opciót is, hogy ne szülessen a merge-hez egy plusz merge commit, ennek magyarázatára itt nem térünk ki.</li>
+<li>
+<p>Mint korábban említettük, a commit során a commithoz hozzárendelődik egy felhasználónév és e-mail cím. Ha ezek nincsenek a git számára bekonfigurálva, akkor a git a commit során ezt hibaüzenetben jelzi. Ekkor az alábbi parancsokkal - értelemszerűen a saját felhasználónevünket és e-mail címünket megadva - tudjuk ezeket a git globális konfigurációjában beállítani (ezt csak egyszer kell megtenni):</p>
+<div class="highlight"><pre><span></span><code>git config --global user.email &quot;you@example.com&quot;
+git config --global user.name &quot;myusername&quot;
+</code></pre></div>
+</li>
+<li>
+<p>Windows parancssorban összevonhatunk több parancsot is egy sorba, pl. egy lépésben minden változásra stage/commit/push:</p>
+<p><code>git add -A &amp; git commit -m "All tests run" &amp; git push</code></p>
+<p>Powershell használatakor a <code>&amp;</code> helyett <code>;</code>-t kell szeparátorként használni.</p>
+</li>
+</ul>
+
+  <hr>
+<div class="md-source-file">
+  <span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg
+        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z">
+        </path>
+      </svg>
+    </span>
+    <span title="2023. május 7. 11:11:49">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-07T11:11:49+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-07</span>
+    </span>
+  </span>
+
+  
+
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Szerzők">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z">
+        </path>
+      </svg>
+    </span>
+    <span>Szerzők</span>
+    <nav></nav>      
+  </span>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Vissza a tetejére
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; BME VIK AUT
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+        <script src="../../js/timeago.min.js"></script>
+      
+        <script src="../../js/timeago_mkdocs_material.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
