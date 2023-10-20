@@ -651,16 +651,20 @@ ListView:
           ItemsSource="{x:Bind People, Mode=OneWay}">
     <ListView.ItemTemplate>
         <DataTemplate x:DataType="model:Person">
-            <TextBlock>
-                <Run Text="{x:Bind Name, Mode=OneWay}" /> (<Run Text="{x:Bind Age, Mode=OneWay}" />)
-            </TextBlock>
+            <TextBlock Text="{x:Bind local:MainWindow.FormatPerson(Name, Age)}" />
         </DataTemplate>
     </ListView.ItemTemplate>
 </ListView>
 ```
 
-!!! danger "TODO BUG"
-    TODO talán ezt kijavítják, de majd laborgépen is ki kell próbálni: https://github.com/microsoft/microsoft-ui-xaml/issues/8853
+Fentebb említettük, hogy `x:Bind`-ban lehet függvényeket is kötni. Ezek lehetne példányhoz kötött függvények, amik ebben az esetben a `Person` osztályon keresne, mivel a `DataTemplate`-ben most ez a kontextus. Mi most viszont egy statikus függvényt fogunk kötni, ami a `MainWindow` osztályon keresendő.
+
+```csharp
+private static string FormatPerson(string name, int age)
+{
+    return $"{name} ({age})";
+}
+```
 
 ## Önálló feladat
 
