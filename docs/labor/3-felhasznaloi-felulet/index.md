@@ -288,7 +288,7 @@ Vegyünk fel egy 3 soros és 2 oszlopos új `Grid`-et a gyökér `Grid`-ünkbe. 
 </Grid>
 ```
 
-A sor és oszlopdefiniciók esetében megadhatjuk, hogy az adott sor vegye fel a tartalmának a méretét (`Auto`), vagy töltse ki a maradék helyet (`*`), de akár fix szélességet is megadhatnánk pixelben.
+A sor- és oszlopdefiniciók esetében megadhatjuk, hogy az adott sor vegye fel a tartalmának a méretét (`Auto`), vagy töltse ki a maradék helyet (`*`), de akár fix szélességet is megadhatnánk pixelben.
 Ha több `*` is szerepel a definíciókban, akkor azok arányosíthatóak pl.: `*` és `*` 1:1-es arányt jelent, míg a `*` és `3*` 1:3-at.
 
 A `Grid.Row`, `Grid.Column` úgynevezett **Attached Property**-k (csatolt tulajdonságok). Ez azt jelenti, hogy az adott tulajdonság nem egy másik vezérlőhöz tartozik, és ezt az információt „hozzácsatoljuk” egy másik objektumhoz / vezérlőhöz. Ez az információ jelenleg a `Grid`-nek lesz fontos, hogy el tudja helyezni a gyerekeit. Az alapértelmezett értéke a 0, tehát azt ki sem kéne írnunk.
@@ -616,32 +616,57 @@ Nem jelenik meg a listában az új elem, mert a `ListView` nem értesül arról,
 public ObservableCollection<Person> People { get; set; }
 ```
 
-!!! tip ObservableCollection
+!!! tip `ObservableCollection``
     A kollekció implementálja az `INotifyCollectionChanged` interfészt.
 
     Tehát már két változáskezelést támogató interfészünk van, amit a `Binding` figyel: `INotifyPropertyChanged` és `INotifyCollectionChanged`.
 
-## Önálló feladat
+## Fordítás idejű adatkötés (x:Bind)
 
-Az előző feladatot teszteljük a következő módon:
-
-Adjunk a listához az új elemet, majd módosítsuk a beviteli mezők valamelyikét. Adjuk hozzá ismét a listához a személy adatait és ismét módosítsuk az adatoat.
-
-1. Mit tapasztalunk és miért?
-2. Próbáljuk megjavítani az eddig tanultak alapján!
-
-## Kitekintés: Fordítás idejű adatkötés (x:Bind)
-
-A Binding markup extension futás időben dolgozik reflection segítségével, így egyrészt nem kapunk fordítás idejű hibákat, ha valamit elírtunk volna, másrészt pedig sok adatkötés (1000-es nagyságrend) jelentésen lassíthatja az alkalmazásunkat.
+A `Binding` markup extension futás időben dolgozik reflection segítségével, így egyrészt nem kapunk fordítás idejű hibákat, ha valamit elírtunk volna, másrészt pedig sok adatkötés (1000-es nagyságrend) jelentésen lassíthatja az alkalmazásunkat.
 
 Ennek megoldására megjelent a fordítás idejű adatkötés támogatása, amit WinUI platformon az `x:Bind` szintaktikával érhetünk el.
 
 Van viszont néhány eltérés a sima Binding-hoz képest:
 
-* Nem a `DataContext`-ből dolgozik és nem is lehet állítani az adatkötés forrását, mivel mindig az adott nézetből köt
-    * Olyan, mint amikor megadtuk a a nézetben, hogy `DataContext = this;`
-* Alapértelmezett módja a `OneTime` és nem a `OneWay`: tehát nem figyeli a változásokat!
+* Nem a `DataContext`-ből dolgozik és nem is lehet állítani az adatkötés forrását, mivel mindig az adott nézetből (xaml.cs) köt. Olyan, mint amikor megadtuk a a nézetben, hogy `DataContext = this;`
+* Alapértelmezett módja a `OneTime` és nem a `OneWay`: tehát nem figyeli a változásokat alapértelmezetten!
 * Adatsablonokban is használható, de olyankor nyilatkozni kell a `DataTemplate`-en, hogy az milyen adatokon fog dolgozni az `x:DataType` attribútummal.
+* Lehetőség van függvényeket is kötni, amivel kiváltható a konverterek használata. Függvények kötése esetén a változásértesítés a paraméterek változására is működik.
 
-Írjuk át a nézetünben az adatkötéseket `x:Bind`-ra.
+Írjuk át a nézetünkben az adatkötéseket `x:Bind`-ra.
 
+NewPerson form:
+
+```xml
+Text="{x:Bind NewPerson.Name, Mode=TwoWay}"
+Text="{x:Bind NewPerson.Age, Mode=TwoWay}"
+```
+
+ListView:
+
+```xml hl_lines="3 5 6"
+<ListView Grid.Row="3"
+          Grid.ColumnSpan="4"
+          ItemsSource="{x:Bind People, Mode=OneWay}">
+    <ListView.ItemTemplate>
+        <DataTemplate x:DataType="model:Person">
+            <TextBlock>
+                <Run Text="{x:Bind Name, Mode=OneWay}" /> (<Run Text="{x:Bind Age, Mode=OneWay}" />)
+            </TextBlock>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>
+```
+
+!!! danger "TODO BUG"
+    TODO talán ezt kijavítják, de majd laborgépen is ki kell próbálni: https://github.com/microsoft/microsoft-ui-xaml/issues/8853
+
+## Önálló feladat
+
+Az előző feladatot teszteljük a következő módon:
+
+Adjunk a listához az új elemet, majd módosítsuk a beviteli mezők valamelyikét. Adjuk hozzá ismét a listához a személyt és ismét módosítsuk az adatait.
+
+1. Mit tapasztalunk és miért?
+2. Próbáljuk megjavítani az eddig tanultak alapján!
