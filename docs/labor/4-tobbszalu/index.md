@@ -168,14 +168,13 @@ Következő lépésben a számítás elvégzésére egy külön szálat fogunk i
 
 3. Futtassuk az alkalmazást ++f5++-tel (most fontos, hogy így, a debuggerben futtassuk)! _The application called an interface that was marshalled for a different thread. (0x8001010E (RPC_E_WRONG_THREAD))_ hibaüzenetet kapunk a `ShowResult` metódusban, ugyanis nem abból a szálból próbálunk hozzáférni a UI elemhez / vezérlőhöz, amelyik létrehozta (a vezérlőt). A következő feladatban ezt a problémát analizáljuk és oldjuk meg.
 
-## 3. Feladat – az `DispatcherQueue.HasThreadAccess` és `DispatcherQueue.TryEnqueue` használata
+## 3. Feladat – a `DispatcherQueue.HasThreadAccess` és `DispatcherQueue.TryEnqueue` használata
 
-Az előző pontban a problémát a következő okozza. WinUI alkalmazásoknál él az alábbi szabály: az ablakok/felületelemek/vezérlőelemek alapvetően nem szálvédett objektumok, így **egy ablakhoz/felületelemhez/vezérlőhöz csak abból a szálból szabad hozzáférni (pl. propertyjét olvasni, állítani, műveletét meghívni), amelyik szál az adott ablakot/felületelemet/vezérlőt létrehozta**, máskülönben kivételt kapunk.
-Alkalmazásunkban azért kaptunk kivételt, mert a `resultListBox` vezérlőt a fő szálban hoztuk létre, a `ShowResult` metódusban az eredmény megjelenítésekor viszont egy másik szálból férünk hozzá (`resultListBox.Items.Add`).
+Az előző pontban a problémát a következő okozza. WinUI alkalmazásoknál él az alábbi szabály: az ablakok/felületelemek/vezérlőelemek alapvetően nem szálvédett (thread safe) objektumok, így **egy ablakhoz/felületelemhez/vezérlőhöz csak abból a szálból szabad hozzáférni (pl. propertyjét olvasni, állítani, műveletét meghívni), amelyik szál az adott ablakot/felületelemet/vezérlőt létrehozta**, máskülönben kivételt kapunk.
+Alkalmazásunkban azért kaptunk kivételt, mert a `resultListBox` vezérlőt a fő szálban hoztuk létre, a `ShowResult` metódusban az eredmény megjelenítésekor viszont egy másik szálból férünk hozzá (`resultListBox.Items.Add` művelet hívása).
 
-Kérdés, hogyan lehet mégis valamilyen módon ezekhez a felületelemekhez/vezérlőkhöz egy másik szálból hozzáférni. A megoldást a `DispatcherQueue` alkalmazása jelenti, mely abban nyújt segítséget, hogy a vezérlőkhöz mindig a megfelelő szálból férjünk hozzá:
+Kérdés, hogyan lehet mégis valamilyen módon ezekhez a felületelemekhez/vezérlőkhöz egy másik szálból hozzáférni. A megoldást a `DispatcherQueue` alkalmazása jelenti, mely abban nyújt segítséget, hogy a vezérlőkhöz mindig a megfelelő szálból történjen a hozzáférés:
 
-- Ha `DispatcherQueue` objektum `HasThreadAccess` tulajdonságának értéke hamis, akkor a szál (mely a `HasThreadAccess` tulajdonságot lekérdezi) a hívás helyén nem egyezik a vezérlőt létrehozó szállal, és ilyenkor csak a `DispatcherQueue` objektum `TryEnqueue` műveletének segítségével "kerülő úton" férhetünk vezérlőnkhöz. Vagyis egy vezérlőhöz való hozzáférés során a `HasThreadAccess` segítségével tudjuk eldönteni, közvetlenül hozzáférhetünk-e egy adott helyen a szálunkból egy vezérlőhöz, vagy csak a `DispatcherQueue.TryEnqueue` segítségével.
 - `DispatcherQueue` objektum `TryEnqueue` függvénye a vezérlőelemet létrehozó szálon futtatja le a számára paraméterként megadott függvényt (mely függvényből így már közvetlenül hozzáférhetünk a vezérlőhöz).
 - A `DispatcherQueue` objektum `HasThreadAccess` tulajdonsága azt segít eldönteni, szükség van-e egyáltalán az előző pontban említett `TryEnqueue` alkalmazására. Ha a tulajdonság értéke
     - igaz, akkor a vezérlőhöz közvetlenül is hozzáférhetünk (mert az aktuális szál megegyezik a vezérlőt létrehozó szállal), ellenben ha
@@ -215,7 +214,7 @@ Próbáljuk ki!
 
 Ez a megoldás már működőképes, főbb elemei a következők:
 
-- A `DispatcherQueue` null vizsgálat szerepe: a főablak bezárása után a `DispatcherQueue` már null, nem használható.
+- A `DispatcherQueue` `null` vizsgálat szerepe: a főablak bezárása után a `DispatcherQueue` már `null`, nem használható.
 - A `DispatcherQueue.HasThreadAccess` segítségével megnézzük, hogy a hívó szál hozzáférhet-e közvetlenül a vezérlőkhöz (esetünkben a `ListBox`-hoz):
     - Ha igen, minden úgy történik, mint eddig, a `ListBox`-ot kezelő kód változatlan.
     - Ha nem, a `DispatcherQueue.TryEnqueue` segítségével férünk hozzá a vezérlőhöz. A következő trükköt alkalmazzuk. A `TryEnqueue` függvénynek egy olyan paraméter nélküli, egysoros függvényt adunk meg lambda kifejezés formájában, mellyel a `ShowResult` függvényünket hívja meg (gyakorlatilag rekurzívan), a paramétereket tovább passzolva számára. Ez nekünk azért jó, mert ez a `ShowResult` hívás már azon a szálon történik, mely a vezérlőt létrehozta (az alkalmazás fő szála), ebben a `HasThreadAccess` értéke már igaz, és hozzá tudunk férni közvetlenül a `ListBox`-unkhoz. Ez a rekurzív megközelítés egy bevett minta a redundáns kódok elkerülésére.
@@ -231,7 +230,7 @@ Az előző megoldás egy jellemzője, hogy mindig új szálat hoz létre a műve
 - Ha a szálfüggvény gyorsan lefut (egy kliens kiszolgálása gyors), akkor a CPU nagy részét arra pazaroljuk, hogy szálakat indítsunk és állítsunk le, ezek ugyanis önmagukban is erőforrásigényesek.
 - Túl nagy számú szál is létrejöhet, ennyit kell ütemeznie az operációs rendszernek, ami feleslegesen pazarolja az erőforrásokat.
   
-Egy másik probléma jelen megoldásunkkal: mivel a számítás ún. **előtérszálon** fut (az újonnan létrehozott szálak alapértelmezésben előtérszálak), hiába zárjuk be az alkalmazást, a program tovább fut a háttérben mindaddig, amíg végre nem hajtódik az utoljára indított számolás is: egy processz futása ugyanis csak akkor fejeződik csak be, ha már nincs futó előtérszála.
+Egy másik probléma jelen megoldásunkkal: mivel a számítás ún. **előtérszálon** fut (az újonnan létrehozott szálak alapértelmezésben előtérszálak), hiába zárjuk be az alkalmazást, a program tovább fut a háttérben mindaddig, amíg végre nem hajtódik az utoljára indított számolás is: egy processz futása ugyanis akkor fejeződik csak be, ha már nincs futó előtérszála.
 
 Módosítsuk a gomb eseménykezelőjét, hogy új szál indítása helyett **threadpool** szálon futtassa a számítást. Ehhez csak a gombnyomás eseménykezelőjét kell ismét átírni.
 
@@ -260,7 +259,7 @@ Az előző feladatok megoldása során önmagában egy jól működő komplett m
 !!! tip "Termelő fogyasztó vs `ThreadPool`"
     Ha belegondolunk, a `ThreadPool` is egy speciális, a .NET által számunkra biztosított termelő-fogyasztó és ütemező mechanizmus. A következőkben egy más jellegű termelő-fogyasztó megoldást dolgozunk ki annak érdekében, hogy bizonyos szálkezeléssel kapcsolatos konkurencia problémákkal találkozhassunk.
 
-A főszálunk a termelő, a _Calculate result_ gombra kattintva hoz létre egy új feladatot. Fogyasztó/feldolgozó/munkaszálból azért indítunk majd többet, mert így több CPU magot is ki tudunk használni, valamint a feladatok végrehajtását párhuzamosítani tudjuk.
+A főszálunk a termelő, a _Calculate result_ gombra kattintva hoz létre egy új feladatot. Fogyasztó/feldolgozó munkaszálból azért indítunk majd többet, mert így több CPU magot is ki tudunk használni, valamint a feladatok végrehajtását párhuzamosítani tudjuk.
 
 A feladatok ideiglenes tárolására a kiinduló projektünkben már némiképpen előkészített `DataFifo` osztályt tudjuk használni (a Solution Explorerben a `Data` mappában található). Nézzük meg a forráskódját. Egy egyszerű FIFO sort valósít meg, melyben `double[]` elemeket tárol. A `Put` metódus hozzáfűzi a belső lista végéhez az új párokat, míg a `TryGet` metódus visszaadja (és eltávolítja) a belső lista első elemét. Amennyiben a lista üres, a függvény nem tud visszaadni elemet. Ilyenkor a `false` visszatérési értékkel jelzi ezt.
 
