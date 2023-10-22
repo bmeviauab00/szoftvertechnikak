@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - mike-test
+      - pub-2023
 
 jobs:
   build-docs:
@@ -35,4 +36,4 @@ jobs:
       - name: Build and deploy docs with mike
         uses: ./
         with:
-          args: sh -c "git config --global  user.name github-actions[bot];git config --global user.email "github-actions[bot]@users.noreply.github.com";mike deploy --push 2024" # the git config is still not available for mike
+          args: sh -c "git config --global  user.name github-actions[bot];git config --global user.email "github-actions[bot]@users.noreply.github.com";mike deploy --push 2023"
