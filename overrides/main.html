@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block outdated %}
+  Nem a legfrissebb verziót látod.
+  <a href="{{ '../' ~ base_url }}">
+    <strong>Kattints ide a legfrissebb verzió megtekintéséhez.</strong>
+  </a>
+{% endblock %}
