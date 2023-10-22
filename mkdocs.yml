@@ -3,6 +3,7 @@ site_author: Benedek Zoltán
 copyright: Copyright &copy; BME VIK AUT
 repo_name: bmeviauab00/szoftvertechnikak
 repo_url: https://github.com/bmeviauab00/szoftvertechnikak
+site_url: https://bmeviauab00.github.io/szoftvertechnikak/
 
 theme:
   name: material
