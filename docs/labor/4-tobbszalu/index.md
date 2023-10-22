@@ -30,9 +30,9 @@ A gyakorlat elvégzéséhez szükséges eszközök:
 ??? "A kész megoldás letöltése"
     :exclamation: Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, tilos (és értelmetlen) a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.
 
-    A megoldás GitHubon érhető el [itt](https://github.com/bmeviauab00/lab-tobbszalu-kiindulo/tree/megoldas). A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre:
+    A megoldás GitHubon érhető el [itt](https://github.com/bmeviauab00/lab-tobbszalu-kiindulo-winforms/tree/megoldas). A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre:
 
-    ```git clone https://github.com/bmeviauab00/lab-tobbszalu-kiindulo -b megoldas```
+    ```git clone https://github.com/bmeviauab00/lab-tobbszalu-kiindulo-winforms -b megoldas```
 
     Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ [itt](../../hazi/git-github-github-classroom/index.md#git-telepitese).
 
@@ -48,7 +48,7 @@ Klónozzuk le a 4. gyakorlathoz tartozó kiinduló alkalmazás [repositoryját](
 
 - Nyissunk egy command prompt-ot
 - Navigáljunk el egy tetszőleges mappába, például c:\work\NEPTUN
-- Adjuk ki a következő parancsot: `git clone https://github.com/bmeviauab00/lab-tobbszalu-kiindulo.git`
+- Adjuk ki a következő parancsot: `git clone https://github.com/bmeviauab00/lab-tobbszalu-kiindulo-winforms.git`
 - Nyissuk meg a _SuperCalculator.sln_ solutiont Visual Studio-ban.
 
 A feladatunk az, hogy egy bináris formában megkapott algoritmus futtatásához Windows Forms technológiával felhasználói felületet készítsünk. A bináris forma .NET esetében egy _.dll_ kiterjesztésű fájlt jelent, ami programozói szemmel egy osztálykönyvtár.  A fájl neve esetünkben _Algorithms.dll_, megtalálható a leklónozott Git repositoryban.
