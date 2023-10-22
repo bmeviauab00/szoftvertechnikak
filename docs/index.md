@@ -1,4 +1,4 @@
-# Szoftvertechnikák 2024-től
+# Szoftvertechnikák (2024-től)
 
 Gyakorlati anyagok és házi feladatok a BMEVIAUAB00 Szoftvertechnikák c. tárgyhoz, 2024 évtől kezdődően. A korábbi évek anyagának megtekintéséhez az oldal fejlécében található lenyíló mezőben a megfelelő évet kell kiválasztani (pl. "2023-ig").
 
