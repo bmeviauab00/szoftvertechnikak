@@ -21,8 +21,10 @@ jobs:
 
       - name: Build and deploy docs with mike
         uses: ./
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          IsRevisionDatePluginEnabled: "true"
+          IsAuthorsPluginEnabled: "true"
         with:
           args: sh -c "git config --global  user.name github-actions[bot];git config --global user.email "github-actions[bot]@users.noreply.github.com";mike deploy --push 2024" # the git config is still not available for mike
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          IsRevisionDatePluginEnabled: true
-          IsAuthorsPluginEnabled: true
+          
