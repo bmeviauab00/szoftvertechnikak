@@ -78,11 +78,17 @@ plugins:
   - search
   - glightbox
   - git-revision-date-localized:
+      # override from docker environment variables
+      # not a vanilla yaml syntax, only works with mkdocs.yaml because of pyyaml_env_tag
+      enabled: !ENV [INPUT_IsRevisionDatePluginEnabled, false]
       enable_creation_date: false
       type: timeago
       timezone: Europe/Budapest
       locale: hu
   - git-committers:
+      # override from docker environment variables
+      # not a vanilla yaml syntax, only works with mkdocs.yaml because of pyyaml_env_tag
+      enabled: !ENV [INPUT_IsAuthorsPluginEnabled, false]
       repository: bmeviauab00/szoftvertechnikak
       branch: main
 
