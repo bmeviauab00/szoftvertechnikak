@@ -80,7 +80,7 @@ plugins:
   - git-revision-date-localized:
       # override from docker environment variables
       # not a vanilla yaml syntax, only works with mkdocs.yaml because of pyyaml_env_tag
-      enabled: !ENV [INPUT_ISREVISIONDATEPLUGINENABLED, false]
+      enabled: !ENV [IsRevisionDatePluginEnabled, false]
       enable_creation_date: false
       type: timeago
       timezone: Europe/Budapest
@@ -88,7 +88,7 @@ plugins:
   - git-committers:
       # override from docker environment variables
       # not a vanilla yaml syntax, only works with mkdocs.yaml because of pyyaml_env_tag
-      enabled: !ENV [INPUT_ISAUTHORSPLUGINENABLED, false]
+      enabled: !ENV [IsAuthorsPluginEnabled, false]
       repository: bmeviauab00/szoftvertechnikak
       branch: main
 
