@@ -3,6 +3,7 @@ site_author: Benedek Zoltán
 copyright: Copyright &copy; BME VIK AUT
 repo_name: bmeviauab00/szoftvertechnikak
 repo_url: https://github.com/bmeviauab00/szoftvertechnikak
+site_url: https://bmeviauab00.github.io/szoftvertechnikak/
 
 theme:
   name: material
@@ -41,6 +42,8 @@ extra_css:
 
 extra:
   generator: false
+  version:
+    provider: mike
 
 markdown_extensions:
   - admonition
@@ -75,11 +78,18 @@ plugins:
   - search
   - glightbox
   - git-revision-date-localized:
+      # override from docker environment variables
+      # not a vanilla yaml syntax, only works with mkdocs.yaml because of pyyaml_env_tag
+      enabled: !ENV [IsRevisionDatePluginEnabled, false]
       enable_creation_date: false
       type: timeago
       timezone: Europe/Budapest
       locale: hu
   - git-committers:
+      # override from docker environment variables
+      # not a vanilla yaml syntax, only works with mkdocs.yaml because of pyyaml_env_tag
+      enabled: !ENV [IsAuthorsPluginEnabled, false]
+      github_token: !ENV [GITHUB_TOKEN, '']
       repository: bmeviauab00/szoftvertechnikak
       branch: main
 

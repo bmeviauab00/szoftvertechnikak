@@ -1,9 +1,10 @@
 name: Build docs
 
 on:
+  workflow_dispatch:
   push:
-    branches:
-      - main
+      branches:
+        - main
 
 jobs:
   build-docs:
@@ -19,13 +20,12 @@ jobs:
       - name: Fix git safe.directory in container
         run: mkdir -p /home/runner/work/_temp/_github_home && printf "[safe]\n\tdirectory = /github/workspace" > /home/runner/work/_temp/_github_home/.gitconfig
 
-      - name: Build docs
+      - name: Build and deploy docs with mike
         uses: ./
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          IsRevisionDatePluginEnabled: "true"
+          IsAuthorsPluginEnabled: "true"
         with:
-          args: build
-
-      - name: Deploy docs to gh-pages branch
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
+          args: sh -c "git config --global  user.name github-actions[bot];git config --global user.email "github-actions[bot]@users.noreply.github.com";mike deploy --push 2024" # the git config is still not available for mike
+          
