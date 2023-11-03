@@ -371,11 +371,12 @@ Pár lényeges viselkedésbeli megkötés:
 * Az Age sorban a + gombbal növelhető, a - gombbal csökkenthető az életkor.
 * Az Add gombbal a fent meghatározott adatokkal felveszi a személyt az alsó listába (az ábrán az alsó listában két személy adatai láthatók).
 
-Vegyünk fel egy 3 soros és 2 oszlopos új `Grid`-et a gyökér `Grid`-ünkbe. Az első oszlopába kerüljenek a címkék, a második oszlopba pedig a beviteli mezők. A meglévő gombunkat is rakjuk a 3. sorba, és írjuk át a tartalmát _Add_-ra, a kör helyett pedig vegyünk fel egy `SymbolIcon`-t.
+Definiáljunk a gyökér `Grid`-en 4 sort és 2 oszlopot. Az első oszlopába kerüljenek a címkék, a második oszlopba pedig a beviteli mezők. A meglévő gombunkat is rakjuk a 3. sorba, és írjuk át a tartalmát _Add_-ra, a kör helyett pedig vegyünk fel egy `SymbolIcon`-t. A 4. sorban pedig listát helyezzünk el, ami 2 oszlopot is foglaljon el.
 
 ```xml
-<Grid>
+<Grid x:Name="rootGrid">
     <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
         <RowDefinition Height="Auto" />
         <RowDefinition Height="Auto" />
         <RowDefinition Height="*" />
@@ -396,6 +397,8 @@ Vegyünk fel egy 3 soros és 2 oszlopos új `Grid`-et a gyökér `Grid`-ünkbe. 
             <TextBlock Text="Add" Margin="5,0,0,0"/>
         </StackPanel>
     </Button>
+    
+    <ListView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
 </Grid>
 ```
 
@@ -409,8 +412,8 @@ A `Grid.Row`, `Grid.Column` úgynevezett **Attached Property**-k (csatolt tulajd
 
 A felületünk még nem pont olyan, mint amit szeretnénk, finomítsunk kicsit a kinézetén:
 
-* Ne töltse ki az egész képernyőt a táblázat, hanem legyen középen felül.
-    * `HorizontalAlignment="Center" VerticalAlignment="Top"`
+* Ne töltse ki az egész képernyőt a táblázat, hanem legyen vízszintesen középen.
+    * `HorizontalAlignment="Center"`
 * Legyen 300px széles
     * `Width="300"`
 * Legyen a sorok között 10px, az oszlopok között 5px távolság és tartsunk 20px távolságot a konténer szélétől
@@ -419,15 +422,18 @@ A felületünk még nem pont olyan, mint amit szeretnénk, finomítsunk kicsit a
     * `VerticalAlignment="Center"`
 * Igazítsuk a gombot jobbra
     * `HorizontalAlignment="Right"`
+* Tegyük beazonosíthatóvá a listát
+  * `BorderThickness="1"` és `BorderBrush="DarkGray"`
 
-```xml hl_lines="1-6 17 19 22"
-<Grid Width="300"
+```xml hl_lines="2-5 18 20 23 33-34"
+<Grid x:Name="rootGrid"
+      Width="300"
       HorizontalAlignment="Center"
-      VerticalAlignment="Top"
       Margin="20"
       RowSpacing="5"
       ColumnSpacing="10">
     <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
         <RowDefinition Height="Auto" />
         <RowDefinition Height="Auto" />
         <RowDefinition Height="*" />
@@ -448,36 +454,47 @@ A felületünk még nem pont olyan, mint amit szeretnénk, finomítsunk kicsit a
             <TextBlock Text="Add" Margin="5,0,0,0" />
         </StackPanel>
     </Button>
+
+    <ListView Grid.Row="3"
+              Grid.Column="0"
+              Grid.ColumnSpan="2"
+              BorderThickness="1"
+              BorderBrush="DarkGray"/>
 </Grid>
 ```
 
 Bővítsük ki még két gombbal az űrlapunkat: +/- gomb az életkorhoz: `TextBox` bal oldalán ’-’ jobb oldalán ’+’.
-Ehhez fel kell vegyünk még két oszlopot.
-A felső `TextBox`-ra és `Button`-re be kell állítanunk `ColumSpan`-t, hogy 3 illetve 2 oszlopnyi helyet töltsenek ki.
-Az alsó `TextBox`-ot  pedig egy oszloppal odébb kell rakni.
+Ehhez vegyünk fel a 2. sor 2. oszlopba egy új `Grid`-et, aminek 1 sora és 3 oszlopa legyen.
 
-```xml hl_lines="3 5 9 11-15"
-<Grid.ColumnDefinitions>
-    <ColumnDefinition Width="Auto" />
-    <ColumnDefinition Width="Auto" />
-    <ColumnDefinition Width="*" />
-    <ColumnDefinition Width="Auto" />
-</Grid.ColumnDefinitions>
+```xml
+<Grid Grid.Row="1"
+      Grid.Column="1"
+      ColumnSpacing="5">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="Auto" />
+    </Grid.ColumnDefinitions>
 
-<TextBlock Grid.Row="0" Grid.Column="0" Text="Name" VerticalAlignment="Center"/>
-<TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" />
-<TextBlock Grid.Row="1" Grid.Column="0" Text="Age" VerticalAlignment="Center"/>
-<TextBox Grid.Row="1" Grid.Column="2" />
-<Button Grid.Row="1" Grid.Column="1" Content="-"/>
-<Button Grid.Row="1" Grid.Column="3" Content="+"/>
-
-<Button Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Right">
-    <StackPanel Orientation="Horizontal">
-        <SymbolIcon Symbol="Add"/>
-        <TextBlock Text="Add" Margin="5,0,0,0" />
-    </StackPanel>
-</Button>
+    <Button Grid.Row="0"
+            Grid.Column="0"
+            Click="DecreaseButton_Click"
+            Content="-" />
+    <TextBox Grid.Row="0"
+             Grid.Column="1"
+             Text="{x:Bind NewPerson.Age, Mode=TwoWay}" />
+    <Button Grid.Row="0"
+            Grid.Column="2"
+            Click="IncreaseButton_Click"
+            Content="+" />
+</Grid>
 ```
+
+!!! tip "Több layout vezérlő egymásba ágyazása"
+    Feltehetjük a kérdést, hogy miért nem a külső `Grid`-ben vettünk fel plusz oszlopokat és sorokat.
+    Most az egységbezárás elvét követtük, és mert ezek alapvetően egybe tartozó elemek.
+    Ha a külső `Grid`-ben vettünk volna fel plusz oszlopokat, akkor a `TextBox`-ot és a gombokat is a megfelelő oszlopba kellett volna tenni, és a `TextBox`-ot a megfelelő sorba.
+    A külső `Grid` bővítése akkor lenne indokolt, ha spórolni akarnánk a vezérlők létrehozásával, teljesítményokok miatt.
 
 Készen is vagyunk az egyszerű űrlapunk kinézetével.
 
@@ -575,8 +592,9 @@ Próbáljuk ki! Így már működik a vissza irányú adatkötés is.
 Implementáljuk a +/- gombok Click eseménykezelőit.
 
 ```xml
-<Button Grid.Row="1" Grid.Column="1" Content="-" Click="DecreaseButton_Click"/>
-<Button Grid.Row="1" Grid.Column="3" Content="+" Click="IncreaseButton_Click"/>
+<Button Grid.Row="1" Grid.Column="0" Content="-" Click="DecreaseButton_Click"/>
+<!-- ... -->
+<Button Grid.Row="1" Grid.Column="2" Content="+" Click="IncreaseButton_Click"/>
 ```
 
 ```csharp
@@ -669,21 +687,10 @@ public MainWindow()
 !!! warning "DataContext"
     Nem szokás a `DataContext`-nek a `this` objektumot beállítani, jelen esetben csak a demonstráció célját szolgálja, és itt valójában az MVVM minta szerint egy ViewModel objektumnak kellene lennie.
 
-Vegyünk fel egy új sort a `Grid`-be, amibe majd a lista fog kerülni. Az eddigi 3. sor legyen `Auto` magas, míg az új 4. sor töltse ki a maradék helyet.
-
-```xml hl_lines="4-5"
-<Grid.RowDefinitions>
-    <RowDefinition Height="Auto" />
-    <RowDefinition Height="Auto" />
-    <RowDefinition Height="Auto" />
-    <RowDefinition Height="*" />
-</Grid.RowDefinitions>
-```
-
-Rakjuk a 4. sorba (és az összes oszlopba) a `ListView` vezérlőnket, ahol adatkötéssel állítsuk be az `ItemsSource` tulajdonságán keresztül, milyen adatforrásból dolgozzon.
+Adatkötéssel állítsuk be a a `ListView` vezérlő `ItemsSource` tulajdonságán keresztül, milyen adatforrásból dolgozzon.
 
 ```xml
-<ListView Grid.Row="3" Grid.ColumnSpan="4" ItemsSource="{Binding People}"/>
+<ListView Grid.Row="3" Grid.ColumnSpan="2" ItemsSource="{Binding People}"/>
 ```
 
 Sajnos a fenti `DataContext` módosításunkkal elrontottuk az űrlap adatkötéseit, javítsuk ezeket meg.
@@ -701,7 +708,7 @@ Alapértelmezetten a `ListView` a `ToString()`-et hívja a listaelemen, ami ha n
 Állítsunk be `ItemTemplate`-et, ami a listaelem megjelenését adja meg egy sablon segítségével: amiben egy több elemből (`Run`) álló `TextBlock` kerüljön.
 
 ```xml
-<ListView Grid.Row="3" Grid.ColumnSpan="4" ItemsSource="{Binding People}">
+<ListView Grid.Row="3" Grid.ColumnSpan="2" ItemsSource="{Binding People}">
     <ListView.ItemTemplate>
         <DataTemplate>
             <TextBlock><Run Text="{Binding Name}"/> (<Run Text="{Binding Age}"/>)</TextBlock>
