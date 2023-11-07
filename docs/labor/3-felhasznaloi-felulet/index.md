@@ -515,8 +515,7 @@ public class Person
 
 Azt itt lévő két tulajdonságot akarjuk a `TextBox` vezérlőkhöz kötni, ehhez adatkötést fogunk alkalmazni.
 A nézet code-behindjában csináljunk egy propertyt, ami tartalmaz (pontosabban hivatkozik) egy `Person` objektumot.
-Példányosítsuk meg a `Person`-t konstruktorban, majd rendeljük hozzá az oldal adatkontextusához (`DataContext`).
-Ezzel adjuk meg, hogy az adott nézet / adatkötés honnan veszi majd az adatait.
+Példányosítsuk meg a `Person`-t konstruktorban.
 
 ```csharp
 public Person NewPerson { get; set; }
@@ -530,62 +529,23 @@ public MainWindow()
         Name = "Eric Cartman",
         Age = 8
     };
-
-    rootGrid.DataContext = NewPerson;
 }
 ```
 
-A `Person` tulajdonságait rendeljük hozzá a két `TextBox` `Text` mezőihez adatkötéssel.
+A `NewPerson` tulajdonságait rendeljük hozzá a két `TextBox` `Text` mezőihez adatkötéssel.
 
 ```xml
-Text="{Binding Name}"
-Text="{Binding Age}"
+Text="{x:Bind NewPerson.Name}"
+Text="{x:Bind NewPerson.Age}"
 ```
 
 !!! danger "Fontos"
     Az adatkötésnek az a lényege, hogy nem kézzel a code-behindból állítgatjuk a felületen megjelenő szöveget például, hanem kvázi összerendeljük a tulajdonságokat. Így azt is elérhetjük, hogyha az egyik tulajdonság megváltozik, akkor a másik is változzon meg!
 
-A `Text="{Binding}"` szintaktika az úgynevezett markup extension, ami egy speciális objektum példányosítást jelent. Elsősorban emiatt használunk XAML és nem sima XML-t. 
+A `Text="{x:Bind}"` szintaktika az úgynevezett markup extension, ami egy speciális jelentéssel rendelkezik a XAML feldolgozó számára. Elsősorban emiatt használunk XAML és nem sima XML-t.
 Van lehetőségünk saját Markup Extension-t is készíteni, de ez nem tananyag.
 
 Futtassuk! Látható, hogy az adatkötés miatt automatikusan bekerült a két `TextBox`-ba a `NewPerson` objektum (mint adatforrás) `Name` és `Age` tulajdonságaiban megadott név és életkor.
-
-!!! tip "Binding.Path"
-    Itt valójában a `Binding` `Path` tulajdonságát állítjuk be, ami lehet tetszőleges mélységű is. Pl.: `Person.Address.Street`
-
-    A teljes szintaktika így nézne ki, de a `Path=` elhagyhaó, ha az az első paraméter: `Text="{Binding Path=Name}"`
-
-!!! tip "Design DataContext"
-    A kódszerkesztőben észrevehetjük, hogy nincs IntelliSense az adatkötés során. Ezt az alábbi névtérrel és attribútummal javíthatjuk a gyökér Grid-ünkön:
-
-    ```xml
-    xmlns:model="using:HelloXaml.Models" d:DataContext="{d:DesignInstance Type=models:Person}"
-    ```
-
-    A névtér deklarációt rakhatjuk a `Window`-ra is.
-
-Készítsünk egy `Click` eseménykezelőt az _Add_ gombunkra:
-
-```xml
-<Button ... Click="AddButton_Click">
-```
-
-```csharp
-private void AddButton_Click(object sender, RoutedEventArgs e)
-{
-}
-```
-
-Rakjunk egy breakpointot az eseménykezelőbe, és próbáljuk, hogy vissza irányba is működik-e az adatkötés, ha megváltoztatjuk az egyik `TextBox` értékét.
-
-**Nem íródott vissza!** Ez azért történik, mert WinUI esetében az alapértelmezett adatkötési mód a `OneWay`, ami csak a forrás => cél irányt támogatja változásértesítéssel. A vissza irányhoz `TwoWay`-re kell állítsuk az adatkötés módját.
-
-```xml
-Text="{Binding Name, Mode=TwoWay}"
-Text="{Binding Age, Mode=TwoWay}"
-```
-
-Próbáljuk ki! Így már működik a vissza irányú adatkötés is.
 
 ### Változásértesítés
 
@@ -613,55 +573,87 @@ Próbáljuk ki!
 
 Mi történik, ha az adatosztályban írjuk át code-behindból az értéket, esetünkben a +/- gombok megnyomásának hatására? A felület frissülni fog? Most nem, de ezt egyszerűen megoldhatjuk.
 
-Implementáljuk az `INotifyPropertyChanged` interfészt a `Person` osztályunkban. Ha adatkötünk ehhez az osztályhoz, akkor a rendszer a `PropertyChanged` eseményre fog feliratkozni, ennek az eseménynek a elsütésével tudjuk értesíteni a `Binding`-ot, ha egy property megváltozott.
+1. Implementáljuk az `INotifyPropertyChanged` interfészt a `Person` osztályunkban. Ha adatkötünk ehhez az osztályhoz, akkor a rendszer a `PropertyChanged` eseményre fog feliratkozni, ennek az eseménynek a elsütésével tudjuk értesíteni a `Binding`-ot, ha egy property megváltozott.
 
-```csharp
-public class Person : INotifyPropertyChanged
-{
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    private string name;
-    public string Name
+    ```csharp
+    public class Person : INotifyPropertyChanged
     {
-        get { return name; }
-        set
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private string name;
+        public string Name
         {
-            if (name != value)
+            get { return name; }
+            set
             {
-                name = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)))
+                if (name != value)
+                {
+                    name = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)))
+                }
+            }
+        }
+
+        private int age;
+        public int Age
+        {
+            get { return age; }
+            set
+            {
+                if (age != value)
+                {
+                    age = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Age)));
+                }
             }
         }
     }
+    ```
 
-    private int age;
-    public int Age
-    {
-        get { return age; }
-        set
-        {
-            if (age != value)
-            {
-                age = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Age)));
-            }
-        }
-    }
-}
-```
+    !!! tip "Terjengős a kód?"
+        A későbbiekben ezt a logikát ki is szervezhetnénk egy ősosztályba, de ez már az MVVM mintát vezetné elő. Tehát ne ijedjünk meg ettől a csúnya kódtól.
+
+1. Az adatkötésen kapcsoljuk be a változásértesítést a `Mode` `OneWay`-re történő módosításával:
+
+    ```xml
+    Text="{x:Bind NewPerson.Age, Mode=OneWay}"
+    ```
 
 Próbáljuk ki!
 
-!!! tip "Terjengős a kód?"
-    A későbbiekben ezt a logikát ki is szervezhetnénk egy ősosztályba, de ez már az MVVM mintát vezetné elő. Tehát ne ijedjünk meg ettől a csúnya kódtól.
+## Vissza irányú adatkötés
+
+Készítsünk egy `Click` eseménykezelőt az _Add_ gombunkra:
+
+```xml
+<Button ... Click="AddButton_Click">
+```
+
+```csharp
+private void AddButton_Click(object sender, RoutedEventArgs e)
+{
+}
+```
+
+Rakjunk egy breakpointot az eseménykezelőbe, és próbáljuk, hogy vissza irányba is működik-e az adatkötés, ha megváltoztatjuk az egyik `TextBox` értékét.
+
+**Nem íródott vissza!** Ez azért történik, mert `x:Bind` esetében az alapértelmezett adatkötési mód a `OneTime`, ami csak a forrás => cél irányt támogatja változásértesítés nélkül.
+Az előző pontban már láttuk, hogy hogyan működik a `OneWay` változásértesítéssel.
+A vissza irányhoz `TwoWay`-re kell állítsuk az adatkötés módját.
+
+```xml
+Text="{Binding Name, Mode=TwoWay}"
+Text="{Binding Age, Mode=TwoWay}"
+```
+
+Próbáljuk ki! Így már működik a vissza irányú adatkötés is.
 
 ## Listák
 
 Csináljunk listás adatkötést.
-Vegyük fel a `Person`-ök listáját a nézetünk code-behindjába.
-A konstruktor elején pedig példányosítsuk, és állítsuk a `MainWindow` aktuális példányát a `rootGrid` `DataContext`-jének.
+Vegyük fel a `Person`-ök listáját a nézetünk code-behindjába, a konstruktor elején pedig példányosítsuk.
 
-```csharp hl_lines="1 "13-19"
+```csharp hl_lines="1 "13-17"
 public List<Person> People { get; set; }
 
 public MainWindow()
@@ -679,25 +671,13 @@ public MainWindow()
       new Person() { Name = "Peter Griffin", Age = 40 },
       new Person() { Name = "Homer Simpson", Age = 42 },
     };
-
-    rootGrid.DataContext = this;
 }
 ```
-
-!!! warning "DataContext"
-    Nem szokás a `DataContext`-nek a `this` objektumot beállítani, jelen esetben csak a demonstráció célját szolgálja, és itt valójában az MVVM minta szerint egy ViewModel objektumnak kellene lennie.
 
 Adatkötéssel állítsuk be a a `ListView` vezérlő `ItemsSource` tulajdonságán keresztül, milyen adatforrásból dolgozzon.
 
 ```xml
-<ListView Grid.Row="3" Grid.ColumnSpan="2" ItemsSource="{Binding People}"/>
-```
-
-Sajnos a fenti `DataContext` módosításunkkal elrontottuk az űrlap adatkötéseit, javítsuk ezeket meg.
-
-```xml
-Text="{Binding NewPerson.Name, Mode=TwoWay}"
-Text="{Binding NewPerson.Age, Mode=TwoWay}"
+<ListView Grid.Row="3" Grid.ColumnSpan="2" ItemsSource="{x:Bind People}"/>
 ```
 
 Próbáljuk ki!
@@ -705,13 +685,16 @@ Próbáljuk ki!
 Látjuk, hogy megjelent két elem. Persze nem az van kiírva, amit mi szeretnénk, de ezen könnyen változtathatunk.
 Alapértelmezetten a `ListView` a `ToString()`-et hívja a listaelemen, ami ha nem definiáljuk felül, akkor az osztály típusának `FullName`-je.
 
-Állítsunk be `ItemTemplate`-et, ami a listaelem megjelenését adja meg egy sablon segítségével: amiben egy több elemből (`Run`) álló `TextBlock` kerüljön.
+Állítsunk be `ItemTemplate`-et, ami a listaelem megjelenését adja meg egy sablon segítségével: egy cellás `Grid`-et, ahol a `TextBlock`-ok a `Person` tulajdonságait jelenítik meg, az életkort jobbra igazítva.
 
 ```xml
-<ListView Grid.Row="3" Grid.ColumnSpan="2" ItemsSource="{Binding People}">
+<ListView Grid.Row="3" Grid.ColumnSpan="2" ItemsSource="{x:Bind People}">
     <ListView.ItemTemplate>
-        <DataTemplate>
-            <TextBlock><Run Text="{Binding Name}"/> (<Run Text="{Binding Age}"/>)</TextBlock>
+        <DataTemplate x:DataType="model:Person">
+            <Grid>
+                <TextBlock Text="{x:Bind Name}" />
+                <TextBlock Text="{x:Bind Age}" HorizontalAlignment="Right" />
+            </Grid>
         </DataTemplate>
     </ListView.ItemTemplate>
 </ListView>
@@ -719,12 +702,19 @@ Alapértelmezetten a `ListView` a `ToString()`-et hívja a listaelemen, ami ha n
 
 Próbáljuk ki!
 
-Az _Add_ gomb hatására rakjuk bele a listába az űrlapon található személyt.
+Az _Add_ gomb hatására rakjuk bele a listába az űrlapon található személy adataival egy új `Person` másolatát, majd töröljük ki az űrlap adatait a `NewPerson` objektumunkban.
 
 ```csharp hl_lines="3"
 private void AddButton_Click(object sender, RoutedEventArgs e)
 {
-    People.Add(NewPerson);
+    People.Add(new Person()
+    { 
+        Name = NewPerson.Name,
+        Age = NewPerson.Age,
+    });
+
+    NewPerson.Name = string.Empty;
+    NewPerson.Age = 0;
 }
 ```
 
@@ -734,10 +724,12 @@ Nem jelenik meg a listában az új elem, mert a `ListView` nem értesül arról,
 public ObservableCollection<Person> People { get; set; }
 ```
 
-!!! tip `ObservableCollection``
-    A kollekció implementálja az `INotifyCollectionChanged` interfészt.
+Fontos, hogy itt nem maga a People tulajdonság értéke változott, hanem a `People` objektum tartalma, ezért nem az `INotifyPropertyChanged` interfész segít, hanem az `INotifyCollectionChanged` interfész, amit az `ObservableCollection` implementál.
 
-    Tehát már két változáskezelést támogató interfészünk van, amit a `Binding` figyel: `INotifyPropertyChanged` és `INotifyCollectionChanged`.
+!!! tip `ObservableCollection`
+    Fontos, hogy itt nem maga a `People` tulajdonság értéke változott, hanem a `People` (`List<T>`) objektum tartalma, ezért nem az `INotifyPropertyChanged` interfész a megoldás itt, hanem az `INotifyCollectionChanged` interfész, ami a kollekció változásairól küld értesítést. Ezt az `ObservableCollection` implementálja.
+
+    Tehát már két változáskezelést támogató interfészünk van, amit az adatkötés figyel: `INotifyPropertyChanged` és `INotifyCollectionChanged`.
 
 ## Fordítás idejű adatkötés (x:Bind)
 
