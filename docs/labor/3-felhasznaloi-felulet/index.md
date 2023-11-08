@@ -363,7 +363,7 @@ Beépített layout vezérlők például:
 
 A `Grid`-et fogjuk kipróbálni (általában ezt használjuk az ablakunk/oldalunk alapelrendezésének kialakítására). Egy személy nevét és életkorát fogjuk szerkeszthetővé tenni egy űrlap jellegű elrendezés kialakításával. A következő elrendezés kialakítása a végső célunk:
 
-![record button](images/app-ui.gif)
+![app ui](images/app-ui.gif)
 
 Pár lényeges viselkedésbeli megkötés:
 
@@ -423,9 +423,9 @@ A felületünk még nem pont olyan, mint amit szeretnénk, finomítsunk kicsit a
 * Igazítsuk a gombot jobbra
     * `HorizontalAlignment="Right"`
 * Tegyük beazonosíthatóvá a listát
-  * `BorderThickness="1"` és `BorderBrush="DarkGray"`
+    * `BorderThickness="1"` és `BorderBrush="DarkGray"`
 
-```xml hl_lines="2-5 18 20 23 33-34"
+```xml hl_lines="2-6 18 20 23 33-34"
 <Grid x:Name="rootGrid"
       Width="300"
       HorizontalAlignment="Center"
@@ -573,7 +573,7 @@ Próbáljuk ki!
 
 Mi történik, ha az adatosztályban írjuk át code-behindból az értéket, esetünkben a +/- gombok megnyomásának hatására? A felület frissülni fog? Most nem, de ezt egyszerűen megoldhatjuk.
 
-1. Implementáljuk az `INotifyPropertyChanged` interfészt a `Person` osztályunkban. Ha adatkötünk ehhez az osztályhoz, akkor a rendszer a `PropertyChanged` eseményre fog feliratkozni, ennek az eseménynek a elsütésével tudjuk értesíteni a `Binding`-ot, ha egy property megváltozott.
+1. Implementáljuk az `INotifyPropertyChanged` interfészt a `Person` osztályunkban. Ha adatkötünk ehhez az osztályhoz, akkor a rendszer a `PropertyChanged` eseményre fog feliratkozni, ennek az eseménynek a elsütésével tudjuk értesíteni a bindingot, ha egy property megváltozott.
 
     ```csharp
     public class Person : INotifyPropertyChanged
@@ -613,7 +613,7 @@ Mi történik, ha az adatosztályban írjuk át code-behindból az értéket, es
     !!! tip "Terjengős a kód?"
         A későbbiekben ezt a logikát ki is szervezhetnénk egy ősosztályba, de ez már az MVVM mintát vezetné elő. Tehát ne ijedjünk meg ettől a csúnya kódtól.
 
-1. Az adatkötésen kapcsoljuk be a változásértesítést a `Mode` `OneWay`-re történő módosításával:
+1. Az adatkötésen kapcsoljuk be a változásértesítést a `Mode` `OneWay`-re történő módosításával, mivel az `x:Bind` alapértelmezett módja a `OneTime`, ami csak egyszeri adatkötést jelent.
 
     ```xml
     Text="{x:Bind NewPerson.Age, Mode=OneWay}"
@@ -635,15 +635,13 @@ private void AddButton_Click(object sender, RoutedEventArgs e)
 }
 ```
 
-Rakjunk egy breakpointot az eseménykezelőbe, és próbáljuk, hogy vissza irányba is működik-e az adatkötés, ha megváltoztatjuk az egyik `TextBox` értékét.
+Rakjunk egy breakpointot az eseménykezelőbe, és próbáljuk, hogy vissza irányba is működik-e az adatkötés: ha megváltoztatjuk az egyik `TextBox` értékét, megváltozik-e a `NewPerson` objektum `Name` tulajdonsága?
 
-**Nem íródott vissza!** Ez azért történik, mert `x:Bind` esetében az alapértelmezett adatkötési mód a `OneTime`, ami csak a forrás => cél irányt támogatja változásértesítés nélkül.
-Az előző pontban már láttuk, hogy hogyan működik a `OneWay` változásértesítéssel.
-A vissza irányhoz `TwoWay`-re kell állítsuk az adatkötés módját.
+**Nem íródott vissza!** Ez azért történik, mert fentebb `OneWay` adatkötést használtunk, ami csak az adatforrásból a felületre irányú adatkötést jelent. A vissza irányhoz `TwoWay`-re kell állítsuk az adatkötés módját.
 
 ```xml
-Text="{Binding Name, Mode=TwoWay}"
-Text="{Binding Age, Mode=TwoWay}"
+Text="{x:Bind Name, Mode=TwoWay}"
+Text="{x:Bind Age, Mode=TwoWay}"
 ```
 
 Próbáljuk ki! Így már működik a vissza irányú adatkötés is.
@@ -653,7 +651,7 @@ Próbáljuk ki! Így már működik a vissza irányú adatkötés is.
 Csináljunk listás adatkötést.
 Vegyük fel a `Person`-ök listáját a nézetünk code-behindjába, a konstruktor elején pedig példányosítsuk.
 
-```csharp hl_lines="1 "13-17"
+```csharp hl_lines="1 13-17"
 public List<Person> People { get; set; }
 
 public MainWindow()
@@ -685,7 +683,10 @@ Próbáljuk ki!
 Látjuk, hogy megjelent két elem. Persze nem az van kiírva, amit mi szeretnénk, de ezen könnyen változtathatunk.
 Alapértelmezetten a `ListView` a `ToString()`-et hívja a listaelemen, ami ha nem definiáljuk felül, akkor az osztály típusának `FullName`-je.
 
-Állítsunk be `ItemTemplate`-et, ami a listaelem megjelenését adja meg egy sablon segítségével: egy cellás `Grid`-et, ahol a `TextBlock`-ok a `Person` tulajdonságait jelenítik meg, az életkort jobbra igazítva.
+Állítsunk be `ItemTemplate`-et, ami a listaelem megjelenését adja meg egy sablon segítségével: egy egy cellás `Grid`-et, ahol a `TextBlock`-ok a `Person` tulajdonságait jelenítik meg, a nevet balra, az életkort jobbra igazítva.
+
+A `DataTemplate` egy olyan UI sablon, amit a `ListView` minden elemére alkalmazni fog a kirajzolás során.
+Mivel az `x:Bind` fordítás idejű adatkötés, ezért az adatok típusát is meg kell adnunk az adatsablonban az `x:DataType` attribútummal.
 
 ```xml
 <ListView Grid.Row="3" Grid.ColumnSpan="2" ItemsSource="{x:Bind People}">
@@ -724,63 +725,22 @@ Nem jelenik meg a listában az új elem, mert a `ListView` nem értesül arról,
 public ObservableCollection<Person> People { get; set; }
 ```
 
-Fontos, hogy itt nem maga a People tulajdonság értéke változott, hanem a `People` objektum tartalma, ezért nem az `INotifyPropertyChanged` interfész segít, hanem az `INotifyCollectionChanged` interfész, amit az `ObservableCollection` implementál.
-
-!!! tip `ObservableCollection`
-    Fontos, hogy itt nem maga a `People` tulajdonság értéke változott, hanem a `People` (`List<T>`) objektum tartalma, ezért nem az `INotifyPropertyChanged` interfész a megoldás itt, hanem az `INotifyCollectionChanged` interfész, ami a kollekció változásairól küld értesítést. Ezt az `ObservableCollection` implementálja.
+!!! tip "`ObservableCollection<T>`"
+    Fontos, hogy itt nem maga a `People` tulajdonság értéke változott, hanem a `List<Person>` objektum tartalma, ezért nem az `INotifyPropertyChanged` interfész a megoldás, hanem az `INotifyCollectionChanged` interfész, amit az `ObservableCollection` implementál.
 
     Tehát már két változáskezelést támogató interfészünk van, amit az adatkötés figyel: `INotifyPropertyChanged` és `INotifyCollectionChanged`.
 
-## Fordítás idejű adatkötés (x:Bind)
+## Kitekintés: Klasszikus Binding
 
-A `Binding` markup extension futás időben dolgozik reflection segítségével, így egyrészt nem kapunk fordítás idejű hibákat, ha valamit elírtunk volna, másrészt pedig sok adatkötés (1000-es nagyságrend) jelentésen lassíthatja az alkalmazásunkat.
+Az adatkötésnek a klasszikus formáját a `Binding` markup extension jelenti.
 
-Ennek megoldására megjelent a fordítás idejű adatkötés támogatása, amit WinUI platformon az `x:Bind` szintaktikával érhetünk el.
+A legfontosabb különbségek az `x:Bind`-hoz képest:
 
-Van viszont néhány eltérés a sima Binding-hoz képest:
+* A `Binding` alapértelmezett módja a `OneWay` és nem a `OneTime`: tehát figyeli a változásokat alapértelmezetten, míg az `x:Bind`-nél ezt explicit meg kell adni.
+* A `Binding` alapértelmezetten a `DataContext`-ből dolgozik, de lehetőség van állítani az adatkötés forrását. Míg az `x:Bind` alapértelmezetten a nézetből (xaml.cs) köt.
+* A `Binding` futásidőben dolgozik reflection segítségével, így egyrészt nem kapunk fordítás idejű hibákat, ha valamit elírtunk volna, másrészt pedig sok adatkötés (1000-es nagyságrend) jelentésen lassíthatja az alkalmazásunkat.
+* Az `x:Bind` fordítás idejű, így a fordító ellenőrzi, hogy a megadott tulajdonságok léteznek-e. Adatsablonokban nyilatkozni kell a `DataTemplate`-en, hogy az milyen adatokon fog dolgozni az `x:DataType` attribútummal.
+* Az `x:Bind` esetében lehetőség van metódusokat is kötni, míg a `Binding`-nél csak konvertereket lehet használni. Függvények kötése esetén a változásértesítés a paraméterek változására is működik.
 
-* Nem a `DataContext`-ből dolgozik és nem is lehet állítani az adatkötés forrását, mivel mindig az adott nézetből (xaml.cs) köt. Olyan, mint amikor megadtuk a a nézetben, hogy `DataContext = this;`
-* Alapértelmezett módja a `OneTime` és nem a `OneWay`: tehát nem figyeli a változásokat alapértelmezetten!
-* Adatsablonokban is használható, de olyankor nyilatkozni kell a `DataTemplate`-en, hogy az milyen adatokon fog dolgozni az `x:DataType` attribútummal.
-* Lehetőség van függvényeket is kötni, amivel kiváltható a konverterek használata. Függvények kötése esetén a változásértesítés a paraméterek változására is működik.
-
-Írjuk át a nézetünkben az adatkötéseket `x:Bind`-ra.
-
-NewPerson form:
-
-```xml
-Text="{x:Bind NewPerson.Name, Mode=TwoWay}"
-Text="{x:Bind NewPerson.Age, Mode=TwoWay}"
-```
-
-ListView:
-
-```xml hl_lines="3 5 6"
-<ListView Grid.Row="3"
-          Grid.ColumnSpan="4"
-          ItemsSource="{x:Bind People, Mode=OneWay}">
-    <ListView.ItemTemplate>
-        <DataTemplate x:DataType="model:Person">
-            <TextBlock Text="{x:Bind local:MainWindow.FormatPerson(Name, Age)}" />
-        </DataTemplate>
-    </ListView.ItemTemplate>
-</ListView>
-```
-
-Fentebb említettük, hogy `x:Bind`-ban lehet függvényeket is kötni. Ezek lehetne példányhoz kötött függvények, amik ebben az esetben a `Person` osztályon keresne, mivel a `DataTemplate`-ben most ez a kontextus. Mi most viszont egy statikus függvényt fogunk kötni, ami a `MainWindow` osztályon keresendő.
-
-```csharp
-private static string FormatPerson(string name, int age)
-{
-    return $"{name} ({age})";
-}
-```
-
-## Önálló feladat
-
-Az előző feladatot teszteljük a következő módon:
-
-Adjunk a listához az új elemet, majd módosítsuk a beviteli mezők valamelyikét. Adjuk hozzá ismét a listához a személyt és ismét módosítsuk az adatait.
-
-1. Mit tapasztalunk és miért?
-2. Próbáljuk megjavítani az eddig tanultak alapján!
+!!! tip "Ajánlás"
+    Ökölszabályként elmondható, hogy próbáljunk preferáltan `x:Bind`-ot használni, mert gyorsabb, és fordítás idejű hibákat kapunk, viszont ha valamiért problémába ütköznénk az `x:Bind`-dal, akkor `Binding`-ra érdemes áttérni.
