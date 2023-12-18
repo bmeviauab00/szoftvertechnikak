@@ -198,7 +198,7 @@ Tekintsük át most részletesebben ezeket a lehetőségeket:
     <Grid Background="#FFF0FFFF">
     ```
 
-    A margó (`Margin`) is egy összetett érték, a hozzá tartozó típuskonveter vesszővel (vagy szóközzel) elválasztva várja a négy oldalra vonatkozó értékeket (bal, fent, jobb, lent). Már használtuk is a `Record` feliratú TextBlockunk esetében.
+    A margó (`Margin`) is egy összetett érték, a hozzá tartozó típuskonveter **vesszővel (vagy szóközzel) elválasztva várja a négy oldalra vonatkozó értékeket (bal, fent, jobb, lent)**. Már használtuk is a `Record` feliratú TextBlockunk esetében. Megjegyzés: margónak egyetlen szám is megadható, akkor mind a négy oldalra ugyanazt fogja alkalmazni.
 
 1. **Property ELEMENT syntax**. Segítségével egy tulajdonságot típuskonverterek nélkül tudjuk egy összetett módon példányosított/felparaméterezett objektumra állítani. Nézzük egy példán keresztül.
     * A fenti példában `Background` tulajdonság beállításakor az `Azure` valójában egy `SolidColorBrush`-t hoz létre, melynek a színét világoskékre állítja. Ezt típuskonverter alkalmazása nélkül az alábbi módon lehet megadni:
@@ -234,11 +234,10 @@ Tekintsük át most részletesebben ezeket a lehetőségeket:
 
     `LinearGradientBrush`-ra nincs típuskonverter, ezt csak az element syntax segítségével tudtuk megadni!
 
-     Kérdés, hogyan lehetséges az, hogy a `Grid` vezérlő `Background` tulajdonságának `SolidColorBrush` és `LinearGradientBrush` típusú ecsetet is meg tudtunk adni? A válasz nagyon egyszerű:
+     Kérdés, hogyan lehetséges az, hogy a `Grid` vezérlő `Background` tulajdonságának `SolidColorBrush` és `LinearGradientBrush` típusú ecsetet is meg tudtunk adni? A válasz nagyon egyszerű, a polimorfizmus teszi ezt lehetővé:
 
-     *  A `Background` tulajdonság egy `Brush` típusú property.
-     *  Ennek a `Brush` osztálynak leszármazottai a `SolidColorBrush` (egyszerű "tele" ecset) és a `LinearGradientBrush` (lineáris színátmenet alapú ecset) osztályok.
-     * Így a fenti példák mindegyikében fennáll (a polimorfizmus miatt).
+     *  A `SolidColorBrush` és `LinearGradientBrush` osztályok a beépített `Brush` osztály leszármazottai.
+     *  A `Background` tulajdonság egy `Brush` típusú property, így a polimorfizmus miatt bármely leszármazottját lehet használni.
 
     ??? note Megjegyzések
         * A fenti példákban a `Color` (szín) megadásánál pl. a `Color="Azure"` esetben az `Azure` szóból is típuskonverter készít kék `Color` példányt. Így nézne a korábbi, `SolidColorBrush` alapú példánk teljesen kifejtve:
@@ -280,7 +279,7 @@ Tekintsük át most részletesebben ezeket a lehetőségeket:
        ```xml
        <Button>Hello WinUI App!</Button>
        ```
-       Ezt ismerős, láttuk a bevezető példánkban: ez az ún. **Property CONTENT syntax** alapú tulajdonságmegadás. Az elnevezés is sugallja, hogy ezt az egy tulajdonságot a vezérlő "tartalmi" részében, contentjében is megadhatjuk. Nem minden vezérlő esetében `Content` ezen kitüntetett tulajdonság neve:  `StackPanel`-nél és `Grid`-nél `Children` a neve. Emlékezzünk vissza, ill. nézzük meg a kódot: ezeket már használtuk is:  ugyanakkor, nem írtuk ki a `StackPanel.Children`, ill. `Grid.Children` XML elemeket a `StackPanel`, ill. `Grid` belsejének megadásakor (de megtehettük volna!)
+       Ez ismerős, láttuk a bevezető példánkban: ez az ún. **Property CONTENT syntax** alapú tulajdonságmegadás. Az elnevezés is sugallja, hogy ezt az egy tulajdonságot a vezérlő "tartalmi" részében, contentjében is megadhatjuk. Nem minden vezérlő esetében `Content` ezen kitüntetett tulajdonság neve:  `StackPanel`-nél és `Grid`-nél `Children` a neve. Emlékezzünk vissza, ill. nézzük meg a kódot: ezeket már használtuk is:  ugyanakkor, nem írtuk ki a `StackPanel.Children`, ill. `Grid.Children` XML elemeket a `StackPanel`, ill. `Grid` belsejének megadásakor (de megtehettük volna!)
 
 Írjuk vissza a `Grid` hátterét valami szimpatikusan egyszerűre, vagy töröljük ki a háttérszín megadását.
 
@@ -319,7 +318,7 @@ private void RecordButton_Click(object sender, RoutedEventArgs e)
 !!! tip "Eseménykezelők létrehozása"
     Ha az eseménykezelőknél nem a _New Event Handler_-t választjuk, hanem beírjuk kézzel a kívánt nevet, majd ++f12++-t nyomunk, vagy a jobb gomb / Go to Definition-t választjuk, az eseménykezelő legenerálásra kerül a code-behind fájlban.
 
-Az eseménykezelőnek két paramétere van: a küldő objektum (`sender`) és az esemény paramétereit/körülményeit tartalmazó `EventArgs` (`e`) példány. Nézzük ezeket részletesebben:
+Az eseménykezelőnek két paramétere van: a küldő objektum (`object sender`) és az esemény paramétereit/körülményeit tartalmazó paraméter (`EventArgs e`). Nézzük ezeket részletesebben:
 
 * `object sender`: Az esemény kiváltója. Esetünkben ez maga a gomb, `Button`-ra kasztolva használhatnánk is. Ritkán használjuk ez a paramétert.
 * A második paraméter mindig `EventArgs` típusú, vagy annak leszármazottja (ez az esemény típusától függ), melyben az esemény paramétereit kapjuk meg. A `Click` esemény esetében ez `RoutedEventArgs` típusú.
@@ -347,6 +346,8 @@ Button b = new Button();
 b.Click += RecordButton_Click;
 ```
 
+
+
 ## Layout, elrendezés
 
 A vezérlők elrendezését két dolog határozza meg:
@@ -361,7 +362,7 @@ Beépített layout vezérlők például:
 * `Canvas`: explicit pozícionálhatók az elemek az X és Y koordinátájuk megadásával
 * `RelativePanel`: elemek egymáshoz képesti viszonyát határozhatjuk meg kényszerekkel
 
-A `Grid`-et fogjuk kipróbálni (általában ezt használjuk az ablakunk/oldalunk alapelrendezésének kialakítására). Egy személy nevét és életkorát fogjuk szerkeszthetővé tenni egy űrlap jellegű elrendezés kialakításával. A következő elrendezés kialakítása a végső célunk:
+A `Grid`-et fogjuk kipróbálni (általában ezt használjuk az ablakunk/oldalunk alapelrendezésének kialakítására). Egy olyan felületet készítünk el, melyen személyeket lehet egy listába felvenni, nevük és életkoruk megadásával. A következő elrendezés kialakítása a végső célunk:
 
 ![app ui](images/app-ui.gif)
 
@@ -405,14 +406,27 @@ Definiáljunk a gyökér `Grid`-en 4 sort és 2 oszlopot. Az első oszlopába ke
 A sor- és oszlopdefiníciók esetében megadhatjuk, hogy az adott sor vegye fel a tartalmának a méretét (`Auto`), vagy töltse ki a maradék helyet (`*`), de akár fix szélességet is megadhatnánk pixelben (`Width` tulajdonság).
 Ha több `*` is szerepel a definíciókban, akkor azok arányosíthatóak pl.: `*` és `*` 1:1-es arányt jelent, míg a `*` és `3*` 1:3-at.
 
-A `Grid.Row`, `Grid.Column` úgynevezett **Attached Property**-k (csatolt tulajdonságok). Ez azt jelenti, hogy az adott tulajdonság nem egy másik vezérlőhöz tartozik, és ezt az információt „hozzácsatoljuk” egy másik objektumhoz / vezérlőhöz. Ez az információ jelenleg a `Grid`-nek lesz fontos, hogy el tudja helyezni a gyerekeit. A `Grid.Row` és `Grid.Column` alapértelmezett értéke a 0, tehát ezt ki sem kéne írnunk.
+A `Grid.Row`, `Grid.Column` úgynevezett **Attached Property**-k (csatolt tulajdonságok). Ez azt jelenti, hogy a vezérlő, melynél alkalmazzuk, nem rendelkezik ilyen tulajdonsággal, és ezt az információt csak „hozzácsatoljuk”. Ez az információ esetünkben a `Grid`-nek lesz fontos, hogy el tudja helyezni a gyerekeit. A `Grid.Row` és `Grid.Column` alapértelmezett értéke a 0, tehát ezt ki sem kéne írnunk.
 
 !!! note "Imperatív UI leírás"
     Más UI keretrendszerekben, ahol imperatív a felület összeállítása, ezt egyszerűen megoldják függvényparaméterekkel – pl.: `myPanel.Add(new TextBox(), 0, 1)`.
 
-A felületünk még nem pont olyan, mint amit szeretnénk, finomítsunk kicsit a kinézetén:
+Még magyarázatra szorulhat a `ListView`-nál megadott `Grid.ColumnSpan="2"` csatolt tulajdonság: a `ColumnSpan` és `RowSpan` azt határozzák meg, hány oszlopon illetve soron "átívelően" helyezkedjen el a vezérlő. A példánkban a `ListView` mindkét oszlopot kitölti.
 
-* Ne töltse ki az egész képernyőt a táblázat, hanem legyen vízszintesen középen.
+Próbáljuk ki az alkalmazást (ha nem fordul a kód, akkor töröljük a code behind fájlban a `RecordButton_Click` eseménykezelőt).
+
+Jelen állapotában a `Grid` kitölti a teljes teret vízszintesen és függőlegesen is. Mi ennek az oka? A vezérlők elrendezésének egyik alapilére a `HorizontalAlignment` és `VerticalAlignment`  tulajdonságuk. **Ezek azt határozzák meg, hogy vízszintesen és függőlegesen hol helyezkedjen el az adott vezérlő az őt tartalmazó konténerben (vagyis a szülő vezérlőben)**. A lehetséges értékek:
+
+* `HorizontalAlignment`: `Top`, `Center`, `Bottom`, `Stretch` (felülre, középre, alulra igazítva, vagy tér kitöltése függőlegesen)
+* `VerticalAlignment`: `Left`, `Center`, `Right`, `Stretch` (balra, középre, jobbra igazítva, vagy tér kitöltése vízszintesen)
+
+(Megjegyzés: a Stretch esetében szükséges, hogy ne legyen a `Height` ill. `Width` tujadonság megadva a vezérlőre.)
+
+A `Grid`-ünknek nem adtunk meg `HorizontalAlignment` és `VerticalAlignment` tulajdonságot, így annak értéke a Grid esetében alapértelmezett `Stretch`, emiatt a `Grid` mindkét irányban kitölti a teret a szülő konténerében, vagyis az ablakban.
+
+A felületünk még nem úgy néz ki, mint amit szeretnénk, finomítsunk kicsit a kinézetén. Az eszközlendő változások:
+
+* Ne töltse ki az egész képernyőt a táblázat, hanem legyen vízszintesen középen
     * `HorizontalAlignment="Center"`
 * Legyen 300px széles
     * `Width="300"`
@@ -463,47 +477,46 @@ A felületünk még nem pont olyan, mint amit szeretnénk, finomítsunk kicsit a
 </Grid>
 ```
 
-Bővítsük ki még két gombbal az űrlapunkat: +/- gomb az életkorhoz: `TextBox` bal oldalán ’-’ jobb oldalán ’+’.
-Ehhez vegyünk fel a 2. sor 2. oszlopba egy új `Grid`-et, aminek 1 sora és 3 oszlopa legyen.
+Bővítsük ki még két gombbal az űrlapunkat (+/- gombok az életkorhoz, lásd korábbi animált képernyőkép):
+
+* ’-’: a `TextBox` bal oldalán
+* ’+’ a`TextBox` jobb oldalán
+  
+Ehhez vegyünk fel a
 
 ```xml
-<Grid Grid.Row="1"
-      Grid.Column="1"
-      ColumnSpacing="5">
+<TextBox Grid.Row="1" Grid.Column="1" x:Name="tbAge"/>
+```
+
+sor helyére (azt kitörölve) egy 1 soros, 3 oszloppal rendelkező `Grid`-et:
+
+```xml
+<Grid Grid.Row="1" Grid.Column="1" ColumnSpacing="5">
     <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto" />
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="Auto" />
     </Grid.ColumnDefinitions>
 
-    <Button Grid.Row="0"
-            Grid.Column="0"
-            Click="DecreaseButton_Click"
-            Content="-" />
-    <TextBox Grid.Row="0"
-             Grid.Column="1"
-             Text="{x:Bind NewPerson.Age, Mode=TwoWay}" />
-    <Button Grid.Row="0"
-            Grid.Column="2"
-            Click="IncreaseButton_Click"
-            Content="+" />
+    <Button Grid.Row="0" Grid.Column="0" Content="-" />
+    <TextBox Grid.Row="0" Grid.Column="1" x:Name="tbAge" />
+    <Button Grid.Row="0" Grid.Column="2" Content="+" />
 </Grid>
 ```
 
 !!! tip "Több layout vezérlő egymásba ágyazása"
-    Feltehetjük a kérdést, hogy miért nem a külső `Grid`-ben vettünk fel plusz oszlopokat és sorokat.
-    Most az egységbezárás elvét követtük, és mert ezek alapvetően egybe tartozó elemek.
-    Ha a külső `Grid`-ben vettünk volna fel plusz oszlopokat, akkor a `TextBox`-ot és a gombokat is a megfelelő oszlopba kellett volna tenni, és a `TextBox`-ot a megfelelő sorba.
-    A külső `Grid` bővítése akkor lenne indokolt, ha spórolni akarnánk a vezérlők létrehozásával, teljesítményokok miatt.
+    Feltehetjük a kérdést, hogy miért nem a külső `Grid`-ben vettünk fel plusz oszlopokat és sorokat (a `ColumnSpan` megfelelő alkalmazásával a meglévő vezérlőkre).
+    Helyette egységbezárás elvét követtük: az újonnan bevezetett vezérlők alapvetően egybe tartozó elemek, így átláthatóbb megoldást kaptunk azáltal, hogy külön `Grid` vezérlőbe tettük őket.
+    A külső `Grid` bővítése akkor lenne indokolt, ha spórolni akarnánk a vezérlők létrehozásával, teljesítményokok miatt. Esetünkben ez nem indokolt.
 
-Készen is vagyunk az egyszerű űrlapunk kinézetével.
+Készen is vagyunk az egyszerű űrlapunk kinézetének kialakításával.
 
 ## Adatkötés
 
 ### Binding
 
-Csináljuk meg, hogy az előbb elkészített kis űrlapon lehessen egy személy adatait megadni, módosítani.
-Ehhez először csinálunk egy adatosztályt `Person` néven a project egy újonnan létrehozott `Models` mappájába.
+A következő lépésben azt oldjuk meg, hogy az előbb elkészített kis űrlapon egy személy adatait lehessen megadni, módosítani.
+Ehhez először készítsünk egy adatosztályt `Person` néven a project egy újonnan létrehozott `Models` mappájába.
 
 ```csharp
 public class Person
@@ -514,8 +527,7 @@ public class Person
 ```
 
 Azt itt lévő két tulajdonságot akarjuk a `TextBox` vezérlőkhöz kötni, ehhez adatkötést fogunk alkalmazni.
-A nézet code-behindjában csináljunk egy propertyt, ami tartalmaz (pontosabban hivatkozik) egy `Person` objektumot.
-Példányosítsuk meg a `Person`-t konstruktorban.
+Az ablakunk code-behind fájljában vezessünk be egy propertyt, mely egy `Person` objektumra hivatkozik, és adjunk ennek kezdőértéket a konstruktorban:
 
 ```csharp
 public Person NewPerson { get; set; }
@@ -532,24 +544,29 @@ public MainWindow()
 }
 ```
 
-A `NewPerson` tulajdonságait rendeljük hozzá a két `TextBox` `Text` mezőihez adatkötéssel.
+A következő lépésben a fenti `NewPerson` objektum
+
+* `Name` tulajdonságát kössük hozzá a `tbName` `Textbox` `Text` tulajdonságához
+* `Age` tulajdonságát kössük hozzá a `tbAge` `Textbox` `Text` tulajdonságához
+, mégpedig adatkötéssel (data binding):
 
 ```xml
 Text="{x:Bind NewPerson.Name}"
 Text="{x:Bind NewPerson.Age}"
 ```
+(a `tbName` ill. `tbAge` `TextBox`-ok soraiba vegyük fel a fenti 1-1 tulajdonság beállítást)
 
 !!! danger "Fontos"
-    Az adatkötésnek az a lényege, hogy nem kézzel a code-behindból állítgatjuk a felületen megjelenő szöveget például, hanem kvázi összerendeljük a tulajdonságokat. Így azt is elérhetjük, hogyha az egyik tulajdonság megváltozik, akkor a másik is változzon meg!
+    Az adatkötésnek az a lényege, hogy nem kézzel, a code-behind fájlból állítgatjuk a felületen megjelenő vezérlők tulajdonságait (esetünkben a szövegét), hanem összerendeljük/ összekötjük a tulajdonságokat a platform adatkötés mechanizmusával. Így azt is elérhetjük, hogyha az egyik tulajdonság megváltozik, akkor a másik is automatikusan változzon meg!
 
-A `Text="{x:Bind}"` szintaktika az úgynevezett markup extension, ami egy speciális jelentéssel rendelkezik a XAML feldolgozó számára. Elsősorban emiatt használunk XAML és nem sima XML-t.
-Van lehetőségünk saját Markup Extension-t is készíteni, de ez nem tananyag.
+A `Text="{x:Bind}"` szintaktika az úgynevezett markup extension: ez speciális jelentéssel rendelkezik a XAML feldolgozó számára. Elsősorban emiatt használunk XAML és nem sima XML-t.
+Lehetőségünk van akár saját Markup Extension-t is készíteni, de ez nem tananyag.
 
-Futtassuk! Látható, hogy az adatkötés miatt automatikusan bekerült a két `TextBox`-ba a `NewPerson` objektum (mint adatforrás) `Name` és `Age` tulajdonságaiban megadott név és életkor.
+Futtassuk! Látható, hogy az adatkötés miatt automatikusan bekerült a két `TextBox` `Text` tulajdonságába a `NewPerson` objektum (mint adatforrás) `Name` és `Age` tulajdonságaiban megadott név és életkor.
 
 ### Változásértesítés
 
-Implementáljuk a +/- gombok Click eseménykezelőit.
+Implementáljuk a +/- gombok `Click` eseménykezelőit.
 
 ```xml
 <Button Grid.Row="1" Grid.Column="0" Content="-" Click="DecreaseButton_Click"/>
@@ -569,9 +586,7 @@ private void IncreaseButton_Click(object sender, RoutedEventArgs e)
 }
 ```
 
-Próbáljuk ki!
-
-Mi történik, ha az adatosztályban írjuk át code-behindból az értéket, esetünkben a +/- gombok megnyomásának hatására? A felület frissülni fog? Most nem, de ezt egyszerűen megoldhatjuk.
+A korábbi pontban bevezetett adatkötés miatt azt várnánk, hogy ha a `NewPerson` adatforrás `Age` tulajdonságát változtatjuk a fenti eseménykezelőkben, akkor a felületünkön a `tbAge` `Textbox` vezérlőnk ezt leköveti. Próbáljuk ki! Ez még egyelőre nem működik, ugyanis ehhez **szükség van még az `INotifyPropertyChanged` interfész megvalósítására** is.
 
 1. Implementáljuk az `INotifyPropertyChanged` interfészt a `Person` osztályunkban. Ha adatkötünk ehhez az osztályhoz, akkor a rendszer a `PropertyChanged` eseményre fog feliratkozni, ennek az eseménynek a elsütésével tudjuk értesíteni a bindingot, ha egy property megváltozott.
 
@@ -589,7 +604,7 @@ Mi történik, ha az adatosztályban írjuk át code-behindból az értéket, es
                 if (name != value)
                 {
                     name = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)))
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
                 }
             }
         }
@@ -611,45 +626,39 @@ Mi történik, ha az adatosztályban írjuk át code-behindból az értéket, es
     ```
 
     !!! tip "Terjengős a kód?"
-        A későbbiekben ezt a logikát ki is szervezhetnénk egy ősosztályba, de ez már az MVVM mintát vezetné elő. Tehát ne ijedjünk meg ettől a csúnya kódtól.
+        A későbbiekben ezt a logikát ki is szervezhetnénk egy ősosztályba, de ez már az MVVM mintát vezetné elő, mely egy későbbi tematikához kapcsolódik. Tehát ne ijedjünk meg ettől a kissé csúnyányka kódtól.
 
-1. Az adatkötésen kapcsoljuk be a változásértesítést a `Mode` `OneWay`-re történő módosításával, mivel az `x:Bind` alapértelmezett módja a `OneTime`, ami csak egyszeri adatkötést jelent.
+2. Az adatkötésen kapcsoljuk be a változásértesítést a `Mode` `OneWay`-re történő módosításával, mivel az `x:Bind` alapértelmezett módja a `OneTime`, mely csak egyszeri adatkötést jelent.
 
     ```xml
     Text="{x:Bind NewPerson.Age, Mode=OneWay}"
     ```
 
-Próbáljuk ki!
+Próbáljuk ki! Az eseménykezelők változtatják az adatforrást (`NewPerson`), ennek hatására most már változik a felület is a megfelelően előkészített adatkötés miatt.
 
-## Vissza irányú adatkötés
+## Vissza (vezérlőből adatforrásba) irányú adatkötés
 
-Készítsünk egy `Click` eseménykezelőt az _Add_ gombunkra:
+Az Age mintájára, a Name tulajdonságra vonatkozó adatkötést is állítsuk egyirányúra:
 
 ```xml
-<Button ... Click="AddButton_Click">
+Text="{x:Bind NewPerson.Name, Mode=OneWay}"
 ```
 
-```csharp
-private void AddButton_Click(object sender, RoutedEventArgs e)
-{
-}
-```
+Indítsuk ez az alkalmazást, majd ezt követően tegyünk egy töréspontot a `Person` osztály `Name` tulajdonságának setterébe (`if (name != value)` sor) , és próbáljuk, hogy vissza irányba is működik-e az adatkötés: ha megváltoztatjuk az egyik `TextBox` értékét, megváltozik-e a `NewPerson` objektum `Name` tulajdonsága? Gépeljünk valamit a Name-hez tartozó szövegdobozba, majd kattintsunk át egy másik mezőbe: ekkor a Textbox tartalma "véglegesítődik", tartalma vissza kellene íródjon az adatforrásba, de mégsem történik meg, nem fut rá a kód a töréspontunkra.
 
-Rakjunk egy breakpointot az eseménykezelőbe, és próbáljuk, hogy vissza irányba is működik-e az adatkötés: ha megváltoztatjuk az egyik `TextBox` értékét, megváltozik-e a `NewPerson` objektum `Name` tulajdonsága?
-
-**Nem íródott vissza!** Ez azért történik, mert fentebb `OneWay` adatkötést használtunk, ami csak az adatforrásból a felületre irányú adatkötést jelent. A vissza irányhoz `TwoWay`-re kell állítsuk az adatkötés módját.
+Ez azért van így, mert fentebb `OneWay` adatkötést használtunk, mely csak az adatforrásból a felületre irányú adatkötést jelent. **A vissza irányhoz `TwoWay`-re kell állítsuk az adatkötés módját.**
 
 ```xml
 Text="{x:Bind Name, Mode=TwoWay}"
 Text="{x:Bind Age, Mode=TwoWay}"
 ```
 
-Próbáljuk ki! Így már működik a vissza irányú adatkötés is.
+Próbáljuk ki! Így már működik a vissza irányú adatkötés is: a vezérlő adott tulajdonsága (esetünkben szövege) és az adatforrás bármely irányú változás esetén szinkronban marad.
 
 ## Listák
 
-Csináljunk listás adatkötést.
-Vegyük fel a `Person`-ök listáját a nézetünk code-behindjába, a konstruktor elején pedig példányosítsuk.
+A következőkben a listás adatkötés alkalmazását fogjuk gyakorolni.
+Vegyük fel a `Person`-ök listáját a nézetünk code-behind fájljába, a konstruktor elején pedig adjunk neki kezdőértéket.
 
 ```csharp hl_lines="1 13-17"
 public List<Person> People { get; set; }
@@ -672,7 +681,7 @@ public MainWindow()
 }
 ```
 
-Adatkötéssel állítsuk be a a `ListView` vezérlő `ItemsSource` tulajdonságán keresztül, milyen adatforrásból dolgozzon.
+Adatkötéssel állítsuk be a `ListView` vezérlő `ItemsSource` tulajdonságán keresztül, milyen adatforrásból dolgozzon.
 
 ```xml
 <ListView Grid.Row="3" Grid.ColumnSpan="2" ItemsSource="{x:Bind People}"/>
@@ -680,13 +689,10 @@ Adatkötéssel állítsuk be a a `ListView` vezérlő `ItemsSource` tulajdonság
 
 Próbáljuk ki!
 
-Látjuk, hogy megjelent két elem. Persze nem az van kiírva, amit mi szeretnénk, de ezen könnyen változtathatunk.
-Alapértelmezetten a `ListView` a `ToString()`-et hívja a listaelemen, ami ha nem definiáljuk felül, akkor az osztály típusának `FullName`-je.
+Látjuk, hogy megjelent két elem a listában. Persze nem az van kiírva, amit mi szeretnénk, de ezen könnyen segíthetünk.
+Alapértelmezetten ugyanis a `ListView` a `ToString()`-et hív a listaelemeken, ami ha nem definiáljuk felül, akkor az osztály típusának `FullName` tulajdonsága (vagyis a típus neve).
 
-Állítsunk be `ItemTemplate`-et, ami a listaelem megjelenését adja meg egy sablon segítségével: egy egy cellás `Grid`-et, ahol a `TextBlock`-ok a `Person` tulajdonságait jelenítik meg, a nevet balra, az életkort jobbra igazítva.
-
-A `DataTemplate` egy olyan UI sablon, amit a `ListView` minden elemére alkalmazni fog a kirajzolás során.
-Mivel az `x:Bind` fordítás idejű adatkötés, ezért az adatok típusát is meg kell adnunk az adatsablonban az `x:DataType` attribútummal.
+Állítsunk be a `ListView`-nk **`ItemTemplate` tulajdonságát** (a már jól ismert property element syntax-szal), mely a listaelem megjelenését adja meg egy sablon segítségével: esetünkben legyen ez egycellás `Grid`, ahol a `TextBlock`-ok a `Person` tulajdonságait jelenítik meg, a nevet balra, az életkort jobbra igazítva.
 
 ```xml
 <ListView Grid.Row="3" Grid.ColumnSpan="2" ItemsSource="{x:Bind People}">
@@ -701,9 +707,21 @@ Mivel az `x:Bind` fordítás idejű adatkötés, ezért az adatok típusát is m
 </ListView>
 ```
 
-Próbáljuk ki!
+**A `DataTemplate` egy olyan felületsablon, melyet a `ListView` (he megadjuk az `ItemTemplate` tulajdonságának) minden elemére alkalmazni fog a megjelenítés során.**
+
+Mivel az `x:Bind` fordítás idejű adatkötés, ezért az adatok típusát is meg kell adnunk az adatsablonban az `x:DataType` attribútummal. A fenti példában a `model:Person`-t adtuk meg, vagyis azt szeretnénk, hogy a `model` **prefix** a kódunk `HelloXaml.Models` névterére képződjön le (hiszen ebben van a `Person` osztály). Ehhez a XAML fájlunk elején a `Window` tag attribútumaihoz fel kell vegyük a következő **névtér deklarációt** is:
+`xmlns:model="using:HelloXaml.Models"` (ezt követően a `model` prefix használható lesz). Ezt megtehetjük kézzel, vagy a Visual Studio segítségével is: csak kattintsunk bele az aláhúzott (hibásnak megjelölt) `model:Person`szövegbe, majd kattintsuk a sor elején megjelenő lámpácskán (vagy `Ctrl` + `.` billentyűkombináció), és válasszuk ki a megjelenő *"Add xmlns using:HelloXaml.Models"* elemet.
+
+
+Próbáljuk ki! Most már jól jelennek meg a listában az elemek.
 
 Az _Add_ gomb hatására rakjuk bele a listába az űrlapon található személy adataival egy új `Person` másolatát, majd töröljük ki az űrlap adatait a `NewPerson` objektumunkban.
+
+Ehhez vezessünk be egy `Click` eseménykezelőt az _Add_ gombunkra:
+
+```xml
+<Button ... Click="AddButton_Click">
+```
 
 ```csharp hl_lines="3"
 private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -726,9 +744,9 @@ public ObservableCollection<Person> People { get; set; }
 ```
 
 !!! tip "`ObservableCollection<T>`"
-    Fontos, hogy itt nem maga a `People` tulajdonság értéke változott, hanem a `List<Person>` objektum tartalma, ezért nem az `INotifyPropertyChanged` interfész a megoldás, hanem az `INotifyCollectionChanged` interfész, amit az `ObservableCollection` implementál.
+    Fontos, hogy itt nem maga a `People` tulajdonság értéke változott, hanem a `List<Person>` objektum tartalma, ezért nem az `INotifyPropertyChanged` interfész a megoldás, hanem az `INotifyCollectionChanged` interfész, melyet az `ObservableCollection` implementál.
 
-    Tehát már két változáskezelést támogató interfészünk van, amit az adatkötés figyel: `INotifyPropertyChanged` és `INotifyCollectionChanged`.
+    Tehát már két változáskezelést támogató interfészt ismerünk és használunk, melyek az adatkötést támogatják: `INotifyPropertyChanged` és `INotifyCollectionChanged`.
 
 ## Kitekintés: Klasszikus Binding
 
@@ -737,9 +755,9 @@ Az adatkötésnek a klasszikus formáját a `Binding` markup extension jelenti.
 A legfontosabb különbségek az `x:Bind`-hoz képest:
 
 * A `Binding` alapértelmezett módja a `OneWay` és nem a `OneTime`: tehát figyeli a változásokat alapértelmezetten, míg az `x:Bind`-nél ezt explicit meg kell adni.
-* A `Binding` alapértelmezetten a `DataContext`-ből dolgozik, de lehetőség van állítani az adatkötés forrását. Míg az `x:Bind` alapértelmezetten a nézetből (xaml.cs) köt.
+* A `Binding` alapértelmezetten a `DataContext`-ből dolgozik, de lehetőség van állítani az adatkötés forrását. Míg az `x:Bind` alapértelmezetten a nézetünk osztályából (xaml.cs) köt.
 * A `Binding` futásidőben dolgozik reflection segítségével, így egyrészt nem kapunk fordítás idejű hibákat, ha valamit elírtunk volna, másrészt pedig sok adatkötés (1000-es nagyságrend) jelentésen lassíthatja az alkalmazásunkat.
-* Az `x:Bind` fordítás idejű, így a fordító ellenőrzi, hogy a megadott tulajdonságok léteznek-e. Adatsablonokban nyilatkozni kell a `DataTemplate`-en, hogy az milyen adatokon fog dolgozni az `x:DataType` attribútummal.
+* Az `x:Bind` fordítás idejű, így a fordító ellenőrzi, hogy a megadott tulajdonságok léteznek-e. Adatsablonokban nyilatkozni kell a `DataTemplate` megadása során, hogy az milyen adatokon fog dolgozni az `x:DataType` attribútummal.
 * Az `x:Bind` esetében lehetőség van metódusokat is kötni, míg a `Binding`-nél csak konvertereket lehet használni. Függvények kötése esetén a változásértesítés a paraméterek változására is működik.
 
 !!! tip "Ajánlás"
