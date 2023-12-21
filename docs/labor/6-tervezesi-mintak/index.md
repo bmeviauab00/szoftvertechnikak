@@ -2,6 +2,6 @@
 authors: bzolka
 ---
 
-# 7. Tervezési minták
+# 6. Tervezési minták
 
 COMING SOON...
