@@ -12,7 +12,7 @@ A gyakorlat célja, hogy megismertesse a hallgatókat a többszálas programozá
 - Szálbiztos (thread safe) osztályok készítése a `lock` kulcsszó alkalmazásával
 - `ThreadPool` használata
 - Jelzés és jelzésre várakozás szál szinkronizáció `ManualResetEvent` segítségével (`WaitHandle`)
-- Windows Forms szálkezelési sajátosságok (`Invoke`)
+- WinUI szálkezelési sajátosságok (`DispatcherQueue`)
 
 Természetesen, mivel a témakör hatalmas, csak alapszintű tudást fogunk szerezni, de e tudás birtokában már képesek leszünk önállóan is elindulni a bonyolultabb feladatok megvalósításában.
 
@@ -23,6 +23,7 @@ A kapcsolódó előadások: Konkurens (többszálú) alkalmazások fejlesztése.
 A gyakorlat elvégzéséhez szükséges eszközök:
 
 - Visual Studio 2022
+- WindowsAppSDK 1.4 (csak a felhasználó felület miatt) (TODO)
 - Windows 10 vagy Windows 11 operációs rendszer (Linux és macOS nem alkalmas)
 
 ## Megoldás
@@ -40,7 +41,7 @@ A gyakorlat elvégzéséhez szükséges eszközök:
 
 A párhuzamosan futó szálak kezelése kiemelt fontosságú terület, melyet minden szoftverfejlesztőnek legalább alapszinten ismernie kell. A gyakorlat során alapszintű, de kiemelt fontosságú problémákat oldunk meg, ezért törekednünk kell arra, hogy ne csak a végeredményt, hanem az elvégzett módosítások értelmét és indokait is megértsük.
 
-A feladat során egyszerű Windows Forms alkalmazást fogunk felruházni többszálas képességekkel, egyre komplexebb feladatokat megoldva. Az alapprobléma a következő: van egy függvényünk, mely hosszú ideig fut, s mint látni fogjuk, ennek „direktben” történő hívása a felületről kellemetlen következményekkel jár. A megoldás során egy meglévő alkalmazást fogunk kiegészíteni saját kódrészletekkel. Az újonnan beszúrandó sorokat az útmutatóban kiemelt háttér jelzi.
+A feladat során egyszerű WinUI alkalmazást fogunk felruházni többszálas képességekkel, egyre komplexebb feladatokat megoldva. Az alapprobléma a következő: van egy függvényünk, mely hosszú ideig fut, s mint látni fogjuk, ennek „direktben” történő hívása a felületről kellemetlen következményekkel jár. A megoldás során egy meglévő alkalmazást fogunk kiegészíteni saját kódrészletekkel. Az újonnan beszúrandó sorokat az útmutatóban kiemelt háttér jelzi.
 
 ## 0. Feladat - Ismerkedés a kiinduló alkalmazással, előkészítés
 
@@ -51,7 +52,7 @@ Klónozzuk le a 4. gyakorlathoz tartozó kiinduló alkalmazás [repositoryját](
 - Adjuk ki a következő parancsot: `git clone https://github.com/bmeviauab00/lab-tobbszalu-kiindulo.git`
 - Nyissuk meg a _SuperCalculator.sln_ solutiont Visual Studio-ban.
 
-A feladatunk az, hogy egy bináris formában megkapott algoritmus futtatásához Windows Forms technológiával felhasználói felületet készítsünk. A bináris forma .NET esetében egy _.dll_ kiterjesztésű fájlt jelent, ami programozói szemmel egy osztálykönyvtár.  A fájl neve esetünkben _Algorithms.dll_, megtalálható a leklónozott Git repositoryban.
+A feladatunk az, hogy egy bináris formában megkapott algoritmus futtatásához WinUI technológiával felhasználói felületet készítsünk. A bináris forma .NET esetében egy _.dll_ kiterjesztésű fájlt jelent, ami programozói szemmel egy osztálykönyvtár.  A fájl neve esetünkben _Algorithms.dll_, megtalálható a leklónozott Git repositoryban.
 
 A kiinduló alkalmazásban a felhasználói felület elő is van készítve. Futtassuk az alkalmazást:
 
@@ -62,10 +63,24 @@ A feladatunk az, hogy a _Calculate Result_ gombra kattintás során futtassuk az
 
 Következő lépésben ismerkedjünk meg a letöltött Visual Studio solutionnel:
 
-1. Nézzük végig a `MainForm` osztályt.
-   - Azt látjuk, hogy a felület alapvetően kész, csak az algoritmus futtatása hiányzik. 
-   - Az eredmény és a paraméterei naplózásához is találunk egy `ShowResult` nevű segédfüggvényt.
-2. A `DataFifo` osztályt egyelőre hagyjuk ki, csak a gyakorlat második felében fogjuk használni, majd később megismerkedünk vele.
+A keretalkalmazás egy WinUI 3 alapú alkalmazás. A felület alapvetően kész, definíciója a `MainWindow.xaml` fájlban található. Ez számunkra a gyakorlat célját tekintve kevésbé izgalmas, de otthon a gyakorlás kedvéért érdemes áttekinteni.
+
+??? note "Felület kialakítása a `MainWindow.xaml`-ben"
+
+       Az ablakfelület kialakításának alapjai:
+       
+       - A gyökérelem (root) "szokásosan" egy `Grid`. 
+       - A gyökér `Grid`  felső sorában található a két `TextBox`-ot és a `Button`-t tartalmazó `StackPanel`.
+       - A gyökér `Grid` alsó sorában egy másik `Grid` található. A `TextBox`-szal ellentétben a `ListBox` nem rendelkezik `Header` tulajdonsággal, így ezt nekünk kellett egy különálló "Result" szövegű `TextBlock` formájában bevezetni. Ezt a `Grid`-et azért vezettük be (egy "egyszerűbb" `StackPanel` helyett), mert így lehetett elérni, hogy a felső sorában a "Result" `TextBlock` fix magasságú legyen, az alsó sorban pedig a `ListBox` töltse ki a teljes maradó helyet (a felső sor magassága `Auto`, az alsó sor magassága `*`).
+       - A "Calculate Result" szövegű gomb szép példa arra, hogy a `Button` `Content`-jének sokszor nemcsak egy egyszerű szöveget adunk meg. A példában egy `SymbolIcon` és a `TextBlock` kompozíciója (`StackPanel` segítségével megvalósítva), ezáltal tudjunk a egy megfelelő ikont/szimbólumot rendelni, mely feldobja a megjelenését.
+       - Arra is látunk példát, hogy a `ListBox` hogyan tehető görgethetővé, ha már sok elem van benne (vagy túl szélesek az elemek). Ehhez a `ScrollViewer`-ét kell megfelelően paraméterezni.
+       - A `ListBox` `ItemContainerStyle` tulajdonságával a `ListBox` elemre adhatunk meg stílusokat. A példában a `Padding`-et vettük kisebbre az alapértelmezettnél, enélkül a `ListBox` elemek magassága helypazarlóan nagy lenne.
+
+A `MainWindow.xaml.cs` forrásfájl a főablakhoz tartozó code behind fájl, ezt tekintsük át, főbb elemei a következők:
+
+- Az eredmény és a paraméterek `ListBox`-ba történő naplózásához találunk egy `ShowResult` nevű segédfüggvényt.
+- A `CalculateResultButton_Click` a gomb a _Calculate Result_ gomb kattintásához tartozó eseménykezelő. Azt látjuk, hogy a két szövegdobozból kiolvassa a paraméterek értékét, és megpróbálja számmá alakítani. Ha sikerül, akkor itt történik majd az algoritmus hívása (ez nincs még megvalósítva), illetve, ha nem sikerül, akkor a `DisplayInvalidElementDialog` segítségével egy üzenetablakban tájékoztatja a felhasználót az érvénytelen paraméterekről.
+- A konstruktorból hívott `AddKeyboardAcceleratorToChangeTheme` függvény számunkra nem releváns, a világos és sötét téma közötti váltást teszi lehetővé (futás közben érdemes kipróbálni, ++ctrl+t++ billentyűkombináció).
 
 ### A DLL-ben levő kód felhasználása
 
@@ -97,12 +112,12 @@ Az alábbi ábrának megfelelően az Object Browserben baloldalt keressük ki az
 
 Most már rátérhetünk az algoritmus futtatására. Első lépésben ezt az alkalmazásunk fő szálán tesszük meg.
 
-1. A főablakon lévő gomb `Click` eseménykezelőjében hívjuk meg a számoló függvényünket. Ehhez kattintsunk a Solution Explorerben duplán a `MainForm.cs` fájlra, majd a megjelenő Form Designer-ben a _Calculate Result_ gombra. Egészítsük ki a kódot az újonnan behivatkozott algoritmus meghívásával.
+1. A főablakon lévő gomb `Click` eseménykezelőjében hívjuk meg a számoló függvényünket. Ehhez a Solution Explorerben nyissuk meg a `MainWindow.xaml.cs` code behind fájlt, és keressük meg a `CalculateResultButton_Click` eseménykezelőt. Egészítsük ki a kódot az újonnan behivatkozott algoritmus meghívásával.
 
     ```cs hl_lines="7-8"
-    private void buttonCalcResult_Click(object sender, EventArgs e)
+    private void CalculateResultButton_Click(object sender, RoutedEventArgs e)
     {
-        if (double.TryParse(textBoxParam1.Text, out var p1) && double.TryParse(textBoxParam2.Text, out var p2))
+        if (double.TryParse(param1TextBox.Text, out var p1) && double.TryParse(param2TextBox.Text, out var p2))
         {
             var parameters = new double[] { p1, p2 };
 
@@ -110,21 +125,19 @@ Most már rátérhetünk az algoritmus futtatására. Első lépésben ezt az al
             ShowResult(parameters, result);
         }
         else
-        {
-            MessageBox.Show(this, "Invalid parameter!", "Error");
-        }
+            DisplayInvalidElementDialog();
     }
     ```
 
 2. Próbáljuk ki az alkalmazást, és vegyük észre, hogy az ablak a számolás ideje alatt nem reagál a mozgatásra, átméretezésre, a felület gyakorlatilag befagy.
 
-Az alkalmazásunk eseményvezérelt, mint minden Windows alkalmazás. Az operációs rendszer a különböző interakciókról (pl. mozgatás, átméretezés) üzenetekben értesíti az alkalmazásunkat. Mivel a gombnyomást követően az alkalmazásunk egyetlen szála a kalkulációval van elfoglalva, nem tudja azonnal feldolgozni a további felhasználói utasításokat. Amint a számítás lefutott (és az eredmények megjelennek a listában) a korábban kapott parancsok is végrehajtásra kerülnek.
+Az alkalmazásunk eseményvezérelt, mint minden Windows alkalmazás. Az operációs rendszer a különböző interakciókról (pl. mozgatás, átméretezés, egérkattintás) értesíti az alkalmazásunkat: mivel a gombnyomást követően az alkalmazásunk egyetlen szála a kalkulációval van elfoglalva, nem tudja azonnal feldolgozni a további felhasználói utasításokat. Amint a számítás lefutott (és az eredmények megjelennek a listában) a korábban kapott parancsok is végrehajtásra kerülnek.
 
 ## 2. Feladat – Végezzük a számítást külön szálban
 
 Következő lépésben a számítás elvégzésére egy külön szálat fogunk indítani, hogy az ne blokkolja a felhasználói felületet.
 
-1. Készítsünk egy új függvényt a `MainForm` osztályban, mely a feldolgozó szál belépési pontja lesz.
+1. Készítsünk egy új függvényt a `MainWindow` osztályban, mely a feldolgozó szál belépési pontja lesz.
 
     ```cs
     private void CalculatorThread(object arg)
@@ -138,9 +151,9 @@ Következő lépésben a számítás elvégzésére egy külön szálat fogunk i
 2. Indítsuk el a szálat a gomb `Click` eseménykezelőjében. Ehhez cseréljük le a korábban hozzáadott kódot:
 
     ```cs hl_lines="7-8"
-    private void buttonCalcResult_Click(object sender, EventArgs e)
+    private void CalculateResultButton_Click(object sender, RoutedEventArgs e)
     {
-        if (double.TryParse(textBoxParam1.Text, out var p1) && double.TryParse(textBoxParam2.Text, out var p2))
+        if (double.TryParse(param1TextBox.Text, out var p1) && double.TryParse(param2TextBox.Text, out var p2))
         {
             var parameters = new double[] { p1, p2 };
 
@@ -148,59 +161,68 @@ Következő lépésben a számítás elvégzésére egy külön szálat fogunk i
             th.Start(parameters);
         }
         else
-        {
-            MessageBox.Show(this, "Invalid parameter!", "Error");
-        }
+            DisplayInvalidElementDialog();
     }
     ```
 
     A Thread objektum `Start` műveletében átadott paramétert kapja meg a `CalculatorThread` szálfüggvényünk.
 
-3. Futtassuk az alkalmazást F5-tel (most fontos, hogy így, a debuggerben futtassuk)! _InvalidOperationException, Cross-thread operation not valid_ hibaüzenetet kapunk a `ShowResult` metódusban, ugyanis nem abból a szálból próbálunk hozzáférni a UI elemhez / vezérlőhöz, amelyik létrehozta (a vezérlőt). A következő feladatban ezt a problémát analizáljuk és oldjuk meg.
+3. Futtassuk az alkalmazást ++f5++-tel (most fontos, hogy így, a debuggerben futtassuk)! _The application called an interface that was marshalled for a different thread. (0x8001010E (RPC_E_WRONG_THREAD))_ hibaüzenetet kapunk a `ShowResult` metódusban, ugyanis nem abból a szálból próbálunk hozzáférni a UI elemhez / vezérlőhöz, amelyik létrehozta (a vezérlőt). A következő feladatban ezt a problémát analizáljuk és oldjuk meg.
 
-## 3. Feladat – az `Invoke` és `InvokeRequired` használata
+## 3. Feladat – a `DispatcherQueue.HasThreadAccess` és `DispatcherQueue.TryEnqueue` használata
 
-Az előző pontban a problémát a következő okozza. Windows Forms alkalmazásoknál él az alábbi szabály: az űrlapok/vezérlőelemek alapvetően nem szálvédett objektumok, így **egy űrlaphoz/vezérlőhöz csak abból a szálból szabad hozzáférni (pl. propertyjét olvasni, állítani, műveletét meghívni), amelyik szál az adott űrlapot/vezérlőt létrehozta**, máskülönben kivételt kapunk.
-Alkalmazásunkban azért kaptunk kivételt, mert a `listViewResult` vezérlőt a fő szálban hoztuk létre, a `ShowResult` metódusban az eredmény megjelenítésekor viszont egy másik szálból férünk hozzá (`listViewResult.Items.Add`).
+Az előző pontban a problémát a következő okozza. WinUI alkalmazásoknál él az alábbi szabály: az ablakok/felületelemek/vezérlőelemek alapvetően nem szálvédett (thread safe) objektumok, így **egy ablakhoz/felületelemhez/vezérlőhöz csak abból a szálból szabad hozzáférni (pl. propertyjét olvasni, állítani, műveletét meghívni), amelyik szál az adott ablakot/felületelemet/vezérlőt létrehozta**, máskülönben kivételt kapunk.
+Alkalmazásunkban azért kaptunk kivételt, mert a `resultListBox` vezérlőt a fő szálban hoztuk létre, a `ShowResult` metódusban az eredmény megjelenítésekor viszont egy másik szálból férünk hozzá (`resultListBox.Items.Add` művelet hívása).
 
-A fenti szabály alól van pár kivétel: ilyen pl. a `Control` osztályban definiált `InvokeRequired` property és `Invoke` metódus, melyek bármely szálból biztonságosan elérhetők. Ezek pont abban nyújtanak segítséget, hogy a vezérlőkhöz mindig a megfelelő szálból férjünk hozzá:
+Kérdés, hogyan lehet mégis valamilyen módon ezekhez a felületelemekhez/vezérlőkhöz egy másik szálból hozzáférni. A megoldást a `DispatcherQueue` alkalmazása jelenti, mely abban nyújt segítséget, hogy a vezérlőkhöz mindig a megfelelő szálból történjen a hozzáférés:
 
-- Ha az `InvokeRequired` tulajdonság értéke igaz, akkor a szál (mely az `InvokeRequired`-et hívja) a hívás helyén nem egyezik a vezérlőt létrehozó szállal, és ilyenkor csak az `Invoke` művelet segítségével "kerülő úton" férhetünk vezérlőnkhöz. Vagyis egy vezérlőhöz való hozzáférés során ezzel tudjuk eldönteni, közvetlenül hozzáférhetünk-e egy adott helyen a szálunkból, vagy csak az `Invoke` segítségével.
-- Az `Invoke` metódus a vezérlőelemet létrehozó szálon futtatja le a számára paraméterként megadott metódust (melyből már közvetlenül hozzáférhetünk a vezérlőhöz).
+- `DispatcherQueue` objektum `TryEnqueue` függvénye a vezérlőelemet létrehozó szálon futtatja le a számára paraméterként megadott függvényt (mely függvényből így már közvetlenül hozzáférhetünk a vezérlőhöz).
+- A `DispatcherQueue` objektum `HasThreadAccess` tulajdonsága azt segít eldönteni, szükség van-e egyáltalán az előző pontban említett `TryEnqueue` alkalmazására. Ha a tulajdonság értéke
+    - igaz, akkor a vezérlőhöz közvetlenül is hozzáférhetünk (mert az aktuális szál megegyezik a vezérlőt létrehozó szállal), ellenben ha
+    - hamis, akkor a vezérlőhöz csak "kerülő úton", a `DispatcherQueue` objektum `TryEnqueue` segítségével férhetünk hozzá (mert az aktuális szál NEM egyezik a vezérlőt létrehozó szállal).
 
-Az `InvokeRequired` és az `Invoke` felhasználásával el tudjuk kerülni korábbi kivételünket (a vezérlőhöz, esetünkben a listViewResult-hoz való hozzáférést a megfelelő szálra tudjuk "irányítani"). Ezt fogjuk a következőkben megtenni.
+A `DispatcherQueue` segítségével tehát el tudjuk kerülni korábbi kivételünket (a vezérlőhöz, esetünkben a `resultListBox`-hoz való hozzáférést a megfelelő szálra tudjuk "irányítani"). Ezt fogjuk a következőkben megtenni.
 
-!!! warning "Csak debuggerben futtatva jön az `InvalidOperationException`?"
-    Ha kipróbálnánk, hogy debugger nélkül indítjuk el az alkalmazást (VS-ben Start without debugging vagy magát az exe-t), akkor azt tapasztalnánk, hogy nem jön a fenti kivétel. Ennek az az oka, hogy, fejlesztés időben, debuggerrel vizsgálva az alkalmazást, sokkal szigorúbban figyeli a keretrendszer a UI szál sértést, hogy már fejlesztés időben előjöjjenek olyan potenciális hibák, melyek amúgy még nem jelentenék az alkalmazás összeomlását.
-
-    A fenti esetben a `ListView` `Invoke` nélküli manipulálását jó eséllyel az esetek többségében még túlélné az app, de a keretrendszer a debuggeren keresztül futtatás során jelzi a hibás gyakorlatot.
-
+!!! Note
+    A `DispatcherQueue` objektum a Window osztály leszármazottakban érhető el a`DispatcherQueue` tulajdonságán keresztül (más osztályokban pedig a `DispatcherQueue.GetForCurrentThread()` statikus művelet segítségével szerezhető meg).
 
 Módosítanunk kell a `ShowResult` metódust annak érdekében, hogy mellékszálból történő hívás esetén se dobjon kivételt.
 
-```cs hl_lines="3-8 12"
+```cs hl_lines="3-5 7 18-19"
 private void ShowResult(double[] parameters, double result)
 {
-    if (InvokeRequired)
+    // Closing the window the DispatcherQueue property may return null, so we have to perform a null check
+    if (this.DispatcherQueue == null)
+        return;
+
+    if (this.DispatcherQueue.HasThreadAccess)
     {
-        Invoke(ShowResult, new object[] { parameters, result });
+        var item = new ListBoxItem()
+        {
+            Content = $"{parameters[0]} #  {parameters[1]} = {result}"
+        };
+        resultListBox.Items.Add(item);
+        resultListBox.ScrollIntoView(item);
     }
-    else if (!IsDisposed)
+    else
     {
-        var lvi = listViewResult.Items.Add($"{parameters[0]} #  {parameters[1]} = {result}");
-        listViewResult.EnsureVisible(lvi.Index);
-        listViewResult.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+        this.DispatcherQueue.TryEnqueue( () => ShowResult(parameters, result) );
     }
 }
 ```
 
 Próbáljuk ki!
 
-Ez a megoldás már működőképes. A `Form` osztály `InvokeRequired` metódusa igazat ad vissza, amennyiben nem az őt létrehozó szálból hívjuk meg. Ilyen esetekben a `Form`ot az `Invoke` metódusán keresztül tudjuk megkérni, hogy egy adott műveletet a saját szálán (amelyik a `Form`ot létrehozta, ez a legtöbb alkalmazásban a fő szál) hajtson végre. A fenti példában tulajdonképpen a `ShowResult` függvény önmagát hívja meg még egyszer, csak második esetben már a `Form` saját szálán. Ez egy bevett minta a redundáns kódok elkerülésére.
+Ez a megoldás már működőképes, főbb elemei a következők:
 
-Tegyünk töréspontot a `ShowResult` művelet első sorára, és az alkalmazást futtatva győződjünk meg, hogy a `ShowResult` művelet – különösen az `Invoke` tekintetében – a fentiekben ismertetetteknek megfelelően működik.
+- A `DispatcherQueue` `null` vizsgálat szerepe: a főablak bezárása után a `DispatcherQueue` már `null`, nem használható.
+- A `DispatcherQueue.HasThreadAccess` segítségével megnézzük, hogy a hívó szál hozzáférhet-e közvetlenül a vezérlőkhöz (esetünkben a `ListBox`-hoz):
+    - Ha igen, minden úgy történik, mint eddig, a `ListBox`-ot kezelő kód változatlan.
+    - Ha nem, a `DispatcherQueue.TryEnqueue` segítségével férünk hozzá a vezérlőhöz. A következő trükköt alkalmazzuk. A `TryEnqueue` függvénynek egy olyan paraméter nélküli, egysoros függvényt adunk meg lambda kifejezés formájában, mellyel a `ShowResult` függvényünket hívja meg (gyakorlatilag rekurzívan), a paramétereket tovább passzolva számára. Ez nekünk azért jó, mert ez a `ShowResult` hívás már azon a szálon történik, mely a vezérlőt létrehozta (az alkalmazás fő szála), ebben a `HasThreadAccess` értéke már igaz, és hozzá tudunk férni közvetlenül a `ListBox`-unkhoz. Ez a rekurzív megközelítés egy bevett minta a redundáns kódok elkerülésére.
+  
+Tegyünk töréspontot a `ShowResult` művelet első sorára, és az alkalmazást futtatva győződjünk meg arról, hogy a `ShowResult` művelet első hívásakor `HasThreadAccess` még hamis (így megtörténik a `TryEnqueue` hívása), majd ennek hatására még egyszer meghívódik a `ShowResult`, de ekkor a `HasThreadAccess` értéke már igaz.
 
-Vegyük ki a töréspontot, így futtassuk az alkalmazást: vegyük észre, hogy amíg egy számítás fut, újabbakat is indíthatunk, hiszen a felületünk végig reszponzív maradt.
+Vegyük ki a töréspontot, így futtassuk az alkalmazást: vegyük észre, hogy amíg egy számítás fut, újabbakat is indíthatunk, hiszen a felületünk végig reszponzív maradt (a korábban tapasztalt hiba pedig már nem jelentkezik).
 
 ## 4. feladat – Művelet végzése Threadpool szálon
 
@@ -208,24 +230,22 @@ Az előző megoldás egy jellemzője, hogy mindig új szálat hoz létre a műve
 
 - Ha a szálfüggvény gyorsan lefut (egy kliens kiszolgálása gyors), akkor a CPU nagy részét arra pazaroljuk, hogy szálakat indítsunk és állítsunk le, ezek ugyanis önmagukban is erőforrásigényesek.
 - Túl nagy számú szál is létrejöhet, ennyit kell ütemeznie az operációs rendszernek, ami feleslegesen pazarolja az erőforrásokat.
-- 
-Egy másik probléma jelen megoldásunkkal: mivel a számítás ún. **előtérszálon** fut (az újonnan létrehozott szálak alapértelmezésben előtérszálak), hiába zárjuk be az alkalmazást, a program tovább fut a háttérben mindaddig, amíg végre nem hajtódik az utoljára indított számolás is: egy processz futása ugyanis csak akkor fejeződik csak be, ha már nincs futó előtérszála.
+  
+Egy másik probléma jelen megoldásunkkal: mivel a számítás ún. **előtérszálon** fut (az újonnan létrehozott szálak alapértelmezésben előtérszálak), hiába zárjuk be az alkalmazást, a program tovább fut a háttérben mindaddig, amíg végre nem hajtódik az utoljára indított számolás is: egy processz futása ugyanis akkor fejeződik csak be, ha már nincs futó előtérszála.
 
 Módosítsuk a gomb eseménykezelőjét, hogy új szál indítása helyett **threadpool** szálon futtassa a számítást. Ehhez csak a gombnyomás eseménykezelőjét kell ismét átírni.
 
 ```cs hl_lines="7"
-private void buttonCalcResult_Click(object sender, EventArgs e)
+private void CalculateResultButton_Click(object sender, RoutedEventArgs e)
 {
-    if (double.TryParse(textBoxParam1.Text, out var p1) && double.TryParse(textBoxParam2.Text, out var p2))
+    if (double.TryParse(param1TextBox.Text, out var p1) && double.TryParse(param2TextBox.Text, out var p2))
     {
         var parameters = new double[] { p1, p2 };
 
         ThreadPool.QueueUserWorkItem(CalculatorThread, parameters);
     }
     else
-    {
-        MessageBox.Show(this, "Invalid parameter!", "Error");
-    }
+        DisplayInvalidElementDialog();
 }
 ```
 
@@ -240,25 +260,23 @@ Az előző feladatok megoldása során önmagában egy jól működő komplett m
 !!! tip "Termelő fogyasztó vs `ThreadPool`"
     Ha belegondolunk, a `ThreadPool` is egy speciális, a .NET által számunkra biztosított termelő-fogyasztó és ütemező mechanizmus. A következőkben egy más jellegű termelő-fogyasztó megoldást dolgozunk ki annak érdekében, hogy bizonyos szálkezeléssel kapcsolatos konkurencia problémákkal találkozhassunk.
 
-A főszálunk a termelő, a _Calculate result_ gombra kattintva hoz létre egy új feladatot. Fogyasztó/feldolgozó/munkaszálból azért indítunk majd többet, mert így több CPU magot is ki tudunk használni, valamint a feladatok végrehajtását párhuzamosítani tudjuk.
+A főszálunk a termelő, a _Calculate result_ gombra kattintva hoz létre egy új feladatot. Fogyasztó/feldolgozó munkaszálból azért indítunk majd többet, mert így több CPU magot is ki tudunk használni, valamint a feladatok végrehajtását párhuzamosítani tudjuk.
 
-A feladatok ideiglenes tárolására a kiinduló projektünkben már némiképpen előkészített `DataFifo` osztályt tudjuk használni. Nézzük meg a forráskódját. Egy egyszerű FIFO sort valósít meg, melyben `double[]` elemeket tárol. A `Put` metódus hozzáfűzi a belső lista végéhez az új párokat, míg a `TryGet` metódus visszaadja (és eltávolítja) a belső lista első elemét. Amennyiben a lista üres, a függvény nem tud visszaadni elemet. Ilyenkor a `false` visszatérési értékkel jelzi ezt.
+A feladatok ideiglenes tárolására a kiinduló projektünkben már némiképpen előkészített `DataFifo` osztályt tudjuk használni (a Solution Explorerben a `Data` mappában található). Nézzük meg a forráskódját. Egy egyszerű FIFO sort valósít meg, melyben `double[]` elemeket tárol. A `Put` metódus hozzáfűzi a belső lista végéhez az új párokat, míg a `TryGet` metódus visszaadja (és eltávolítja) a belső lista első elemét. Amennyiben a lista üres, a függvény nem tud visszaadni elemet. Ilyenkor a `false` visszatérési értékkel jelzi ezt.
 
 1. Módosítsuk a gomb eseménykezelőjét, hogy ne `ThreadPool`ba dolgozzon, hanem a FIFO-ba:
 
     ```cs hl_lines="7"
-    private void buttonCalcResult_Click(object sender, EventArgs e)
+    private void CalculateResultButton_Click(object sender, RoutedEventArgs e)
     {
-        if (double.TryParse(textBoxParam1.Text, out var p1) && double.TryParse(textBoxParam2.Text, out var p2))
+        if (double.TryParse(param1TextBox.Text, out var p1) && double.TryParse(param2TextBox.Text, out var p2))
         {
             var parameters = new double[] { p1, p2 };
 
             _fifo.Put(parameters);
         }
         else
-        {
-            MessageBox.Show(this, "Invalid parameter!", "Error");
-        }
+            DisplayInvalidElementDialog();
     }
     ```
 
@@ -290,7 +308,7 @@ A feladatok ideiglenes tárolására a kiinduló projektünkben már némiképpe
     new Thread(WorkerThread) { Name = "Szal3" }.Start();
     ```
 
-4. Indítsuk el az alkalmazást, majd zárjuk is be azonnal anélkül, hogy a Calculate Result gombra kattintanánk. Az tapasztaljuk, hogy az ablakunk bezáródik ugyan, de a processzünk tovább fut, az alkalmazás bezárására csak a Visual Studioból, vagy a Task Managerből van lehetőség:
+4. Indítsuk el az alkalmazást, majd zárjuk is be azonnal anélkül, hogy a _Calculate Result_ gombra kattintanánk. Az tapasztaljuk, hogy az ablakunk bezáródik ugyan, de a processzünk tovább fut, az alkalmazás bezárására csak a Visual Studioból, vagy a Task Managerből van lehetőség:
 
     ![Stop Debugging](images/stop-debugging.png)
 
@@ -370,7 +388,7 @@ Most már nem szabad kivételt kapnunk.
 Ki is vehetjük a `TryGet` metódusból a mesterséges késleltetést (`Thread.Sleep(500);` sor).
 
 !!! error "Lockolás `this`-en"
-    Felmerülhet a kérdés, hogy miért vezettünk be egy külön `_syncRoot` tagváltozót és használtuk ezt zárolásra a `lock` paramétereként, amikor a `this`-t is használhattuk volna helyette (a `DataFifo` referencia típus, így ennek nem lenne akadálya). A `this` alkalmazása azonban **sértené az osztályunk egységbezárását**! Ne feledjük: a `this` egy referencia az objektumunkra, de más osztályoknak is van ugyanerre az objektumra referenciájuk (pl. esetünkben a `MainForm`-nak van referenciája a `DataFifo`-ra), és ha ezek a külső osztályok zárat tesznek a `lock` segítségével az objektumra, akkor az "interferál" az általunk az osztályon belük használt zárolással (mivel `this` alkalmazása miatt a külső és belső `lock`-ok paramétere ugyanaz lesz). Így pl. egy külső zárral teljesen meg lehet "bénítani" a `TryGet` és `Put` művelet működését. Ezzel szemben az általunk választott megoldásban a `lock` paramétere, a `_syncRoot` változó privát, ehhez már külső osztályok nem férhetnek hozzá, így nem is zavarhatják meg az osztályunk belső működését.
+    Felmerülhet a kérdés, hogy miért vezettünk be egy külön `_syncRoot` tagváltozót és használtuk ezt zárolásra a `lock` paramétereként, amikor a `this`-t is használhattuk volna helyette (a `DataFifo` referencia típus, így ennek nem lenne akadálya). A `this` alkalmazása azonban **sértené az osztályunk egységbezárását**! Ne feledjük: a `this` egy referencia az objektumunkra, de más osztályoknak is van ugyanerre az objektumra referenciájuk (pl. esetünkben a `MainWindow`-nak van referenciája a `DataFifo`-ra), és ha ezek a külső osztályok zárat tesznek a `lock` segítségével az objektumra, akkor az "interferál" az általunk az osztályon belük használt zárolással (mivel `this` alkalmazása miatt a külső és belső `lock`-ok paramétere ugyanaz lesz). Így pl. egy külső zárral teljesen meg lehet "bénítani" a `TryGet` és `Put` művelet működését. Ezzel szemben az általunk választott megoldásban a `lock` paramétere, a `_syncRoot` változó privát, ehhez már külső osztályok nem férhetnek hozzá, így nem is zavarhatják meg az osztályunk belső működését.
 
 ## 7. feladat – Hatékony jelzés megvalósítása
 
@@ -549,18 +567,24 @@ Korábban félretettük azt a problémát, hogy az ablakunk bezárásakor a proc
             {
     ```
 
-3. `MainForm.cs`-ban vegyünk fel egy flag tagváltozót a bezárás jelzésére:
+3. `MainWindow.xaml.cs`-ban vegyünk fel egy flag tagváltozót a bezárás jelzésére:
 
     ```cs
     private bool _isClosed = false;
     ```
 
-4. A form bezárásakor állítsuk jelzettre az új eseményt és billentsünk be be a flag-et is. (A `Form` osztály `OnClosed` metódusa mindig meghívódik bezáráskor, a `Dispose`-zal ellentétben.)
+4. A főablak bezárásakor állítsuk jelzettre az új eseményt és billentsünk be be a flag-et is: a `MainWindow` osztály `Closed` eseményére iratkozzunk fel a konstruktorban, és írjuk meg a megfelelő eseménykezelő függvényt:
 
     ```cs
-    protected override void OnClosed(EventArgs e)
+    public MainWindow()
     {
-        base.OnClosed(e);
+        ...
+
+        Closed += MainWindow_Closed;
+    }
+
+    private void MainWindow_Closed(object sender, WindowEventArgs args)
+    {
         _isClosed = true;
         _fifo.Release();
     }
@@ -586,20 +610,6 @@ Korábban félretettük azt a problémát, hogy az ablakunk bezárásakor a proc
 
 7. Futtassuk az alkalmazást, és ellenőrizzük, kilépéskor az processzünk valóban befejezi-e a futását.
 
-!!! note "Hol hívjunk Release-t? (kitekintés - nem kötelező anyag)"
-    Az `OnClosed` vagy `OnClosing` életciklus függvényei a Formnak jó választások, mert azokról biztosan tudjuk, hogy helyesen hívódnak meg minden esetben. Cserében egy plusz flag-et kell karbantartanunk. 
-
-    Egyik alternatíva lehetne még az életciklus események helyett a `Dispose` metúdusba rakni ezt a logikát, és akkor az `IsDisposed` beépített flag-et is használhatnánk. Ezt két okból is érdemes kerülni Formok esetében:
-
-    1. A `Dispose` metódus már létezik a `MainForm.Designer.cs` fájlban, és a `Designer.cs` fájlokat alapvetően nem szokás szerkeszteni, bár ezt a metódust a designer már nem piszkálja, ha már létrejött a form, így ezt akár nyugodtan át is helyezhetnénk a `MainForm.cs`-be.
-    2. A `Dispose` meghívása nem mindig determinisztikus Windows Forms esetében, mert előfordulhat, hogy nem a keretrendszer nyitotta a formot, hanem a fejlesztő programozottan, és elfelejtette `Dispose`-t hívni rajta, aminek a hatására, majd csak a GC fogja meghívni a `Dispose` függvényt.
-
-    A `Release` művelet helyett még egy másik alternatíva lehetne, hogy az `IDisposable` mintát megvalósítjuk a `DataFifo`-ba, de ilyenkor is kézzel kellene `Dispose`-t hívni, mivel nem függvény szintű az életciklusa a FIFO objektumnak, így nem tudnánk `using` blokkban használni.
-
-    Egy összetett alkalmazásban egyébként gyakran nem kézzel kezeljük egy-egy osztálynak a függőségeit és az életciklusát. Helyette a [Dependency Injection tervezési mintát](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection) érdemes alkalmazni, ahol egy külön komponensbe szervezzük ki az objektumok példányosítását és életciklusának kezelését.
-
 ## Kitekintés: Task, async, await
 
-A tárgynak nem anyaga, de .NET alkalmazások (és más modern nyelvű alkalmazások (Swift, Kotlin, TypeScript stb.)) esetében megkerülhetetlen az aszinkron programozás koncepciója. A C# (és más modern nyelvek) nyelvi szintre emelték az szinkron események bevárásának kezelését az `async`/`await` kulcsszavakkal ([Lásd bővebben](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/))
-
-Mégis ehhez az anyaghoz lazán úgy kapcsolódhat ez a téma, hogy a `Task` osztály olyan aszinkron műveletet is reprezentálhat, ami akár külön szálon is futhat (de nem kötelezően futnak ezek külön szálon!), és bevárható ennek az eredménye aszinkron módon. A `Task.Run` statikus függvény pedig egyenesen a `ThreadPool`-on ütemez egy műveletet, ami így aszinkron bevárható.
+A gyakorlat során az alacsonyabb szintű szálkezelési technikákkal kívántunk megismerkedni. Ugyanakkor megoldásunkat (legalábbis részben) építhettük volna a .NET aszinkron programozást támogató magasabb szintű eszközeire és mechanizmusaira, úgymint `Task`/`Task<T>` osztályok és `async`/`await` kulcsszavak.
