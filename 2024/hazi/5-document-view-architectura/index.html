@@ -13,10 +13,6 @@
         <link rel="canonical" href="https://bmeviauab00.github.io/szoftvertechnikak/2024/hazi/5-document-view-architectura/">
       
       
-        <link rel="prev" href="../4-tobbszalu-alkalmazasok-fejlesztese/">
-      
-      
-        <link rel="next" href="../fejlesztokornyezet/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -270,12 +266,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../" class="md-tabs__link">
           
   
@@ -475,11 +469,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../labor/5-adatkezeles/" class="md-nav__link">
+      <a href="../../labor/5-mvvm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    5. Adatkezelés
+    7. MVVM
   </span>
   
 
@@ -495,31 +489,31 @@
   
   
     <li class="md-nav__item">
-      <a href="../../labor/6-doc-view/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    6. Document-View architektúra
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../labor/7-tervezesi-mintak/" class="md-nav__link">
+      <a href="../../labor/6-tervezesi-mintak/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     7. Tervezési minták
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/7-adatkezeles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Adatkezelés
   </span>
   
 
@@ -540,8 +534,6 @@
       
   
   
-    
-  
   
     
     
@@ -551,12 +543,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -570,7 +562,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Önálló/házi feladatok
@@ -681,255 +673,17 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    5. HF - Document-View architektúra
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../5-mvvm/index.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    5. HF - Document-View architektúra
+    5. HF - MVVM
   </span>
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tartalomjegyzék
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#bevezetes" class="md-nav__link">
-    Bevezetés
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#a-beadas-menete" class="md-nav__link">
-    A beadás menete
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#feladatok-attekintese" class="md-nav__link">
-    Feladatok áttekintése
-  </a>
-  
-    <nav class="md-nav" aria-label="Feladatok áttekintése">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#feladatleiras" class="md-nav__link">
-    Feladatleírás
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iranyelvek" class="md-nav__link">
-    Irányelvek
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#feladat-1-a-kiindulasi-kornyezet-megismerese" class="md-nav__link">
-    Feladat 1 - A kiindulási környezet megismerése
-  </a>
-  
-    <nav class="md-nav" aria-label="Feladat 1 - A kiindulási környezet megismerése">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bevezeto-feladatok" class="md-nav__link">
-    Bevezető feladatok
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kiindulo-alkalmazas-mukodese" class="md-nav__link">
-    Kiinduló alkalmazás működése
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kiindulo-projekt" class="md-nav__link">
-    Kiinduló projekt
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#feladat-2-meresi-ertekek-kezelese-dokumentum-logikak" class="md-nav__link">
-    Feladat 2 – Mérési értékek kezelése (dokumentum logikák)
-  </a>
-  
-    <nav class="md-nav" aria-label="Feladat 2 – Mérési értékek kezelése (dokumentum logikák)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#meresi-ertekek-reprezentalasa" class="md-nav__link">
-    Mérési értékek reprezentálása
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sajat-dokumentum-osztaly" class="md-nav__link">
-    Saját dokumentum osztály
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adatok-mentese" class="md-nav__link">
-    Adatok mentése
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adatok-betoltese" class="md-nav__link">
-    Adatok betöltése
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#betoltes-ellenorzese" class="md-nav__link">
-    Betöltés ellenőrzése
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#feladat-3-jelek-grafikus-megjelenitese-sajat-nezet-osztaly" class="md-nav__link">
-    Feladat 3 – Jelek grafikus megjelenítése, saját nézet osztály
-  </a>
-  
-    <nav class="md-nav" aria-label="Feladat 3 – Jelek grafikus megjelenítése, saját nézet osztály">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#uj-nezet-osztaly" class="md-nav__link">
-    Új nézet osztály
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#a-koordinata-tengelyek-kirajzolasa" class="md-nav__link">
-    A koordináta tengelyek kirajzolása
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#jelek-megjelenitese" class="md-nav__link">
-    Jelek megjelenítése
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nagyitas-kicsinyites" class="md-nav__link">
-    Nagyítás, kicsinyítés
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#opcionalis-imsc-feladatok" class="md-nav__link">
-    Opcionális iMSc feladatok
-  </a>
-  
-    <nav class="md-nav" aria-label="Opcionális iMSc feladatok">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#iview-kodduplikacioja-1-imsc-pont" class="md-nav__link">
-    IView kódduplikációja (1 iMSc pont)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#grafikon-gorgetese-1-imsc-pont" class="md-nav__link">
-    Grafikon görgetése (1 iMSc pont)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#jelek-elo-generalasa-3-imsc-pont" class="md-nav__link">
-    Jelek élő generálása (3 iMSc pont)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1223,7 +977,7 @@
 <p>Kapcsolódó laborgyakorlatok:</p>
 <ul>
 <li><a href="../../labor/3-felhasznaloi-felulet/">3. Felhasználói felület kialakítása</a> laborgyakorlat</li>
-<li><a href="../../labor/6-doc-view/">6. Document-View architektúra</a> laborgyakorlat</li>
+<li><a href="../../labor/6-doc-view/index.md">6. Document-View architektúra</a> laborgyakorlat</li>
 </ul>
 <p>Az önálló gyakorlat célja:</p>
 <ul>

@@ -10,13 +10,9 @@
         <meta name="author" content="Benedek Zoltán">
       
       
-        <link rel="canonical" href="https://bmeviauab00.github.io/szoftvertechnikak/2024/labor/6-doc-view/">
+        <link rel="canonical" href="https://bmeviauab00.github.io/szoftvertechnikak/2024/labor/old-6-doc-view/">
       
       
-        <link rel="prev" href="../5-adatkezeles/">
-      
-      
-        <link rel="next" href="../7-tervezesi-mintak/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -252,12 +248,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../1-model-es-kod-kapcsolata/" class="md-tabs__link">
           
   
@@ -354,8 +348,6 @@
       
   
   
-    
-  
   
     
     
@@ -365,12 +357,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -384,7 +376,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Laborok
@@ -477,199 +469,15 @@
   
   
     <li class="md-nav__item">
-      <a href="../5-adatkezeles/" class="md-nav__link">
+      <a href="../5-mvvm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    5. Adatkezelés
+    7. MVVM
   </span>
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    6. Document-View architektúra
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    6. Document-View architektúra
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tartalomjegyzék
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#a-gyakorlat-celja" class="md-nav__link">
-    A gyakorlat célja
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#elofeltetelek" class="md-nav__link">
-    Előfeltételek
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#a-gyakorlat-menete" class="md-nav__link">
-    A gyakorlat menete
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-feladat-a-feladat-ismertetese" class="md-nav__link">
-    1. Feladat - A feladat ismertetése
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-feladat-az-alkalmazas-megtervezese" class="md-nav__link">
-    2. Feladat - Az alkalmazás megtervezése
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Feladat - Az alkalmazás megtervezése">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#document-view-architektura" class="md-nav__link">
-    Document-View architektúra
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#konkret-dokumentum-es-adatai" class="md-nav__link">
-    Konkrét dokumentum és adatai
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dokumentumok-menedzselese-app-singleton-osztaly" class="md-nav__link">
-    Dokumentumok menedzselése - App Singleton osztály
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nezetek" class="md-nav__link">
-    Nézetek
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fonteditordocument-muveletek" class="md-nav__link">
-    FontEditorDocument műveletek
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#a-tervezes-zarasa" class="md-nav__link">
-    A tervezés zárása
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-feladat-a-kesz-alkalmazas-attekintese" class="md-nav__link">
-    3. Feladat - A kész alkalmazás áttekintése
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Feladat - A kész alkalmazás áttekintése">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nezetek-megvalositasa" class="md-nav__link">
-    Nézetek megvalósítása
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#egy-oldal-tab-elrendezese" class="md-nav__link">
-    Egy oldal (tab) elrendezése
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#forgatokonyv-1-egy-pixel-invertalasa-nezetek-szinkronizalasa" class="md-nav__link">
-    Forgatókönyv 1 – Egy pixel invertálása, nézetek szinkronizálása
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#forgatokonyv-2-uj-dokumentum-letrehozasa-opcionalis" class="md-nav__link">
-    Forgatókönyv 2 – Új dokumentum létrehozása (opcionális)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -681,11 +489,31 @@
   
   
     <li class="md-nav__item">
-      <a href="../7-tervezesi-mintak/" class="md-nav__link">
+      <a href="../6-tervezesi-mintak/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     7. Tervezési minták
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-adatkezeles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Adatkezelés
   </span>
   
 
@@ -847,11 +675,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hazi/5-document-view-architectura/" class="md-nav__link">
+      <a href="../../hazi/5-mvvm/index.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    5. HF - Document-View architektúra
+    5. HF - MVVM
   </span>
   
 
@@ -1053,7 +881,7 @@
                   
 
   
-    <a href="https://github.com/bmeviauab00/szoftvertechnikak/edit/master/docs/labor/6-doc-view/index.md" title="Oldal szerkesztése" class="md-content__button md-icon">
+    <a href="https://github.com/bmeviauab00/szoftvertechnikak/edit/master/docs/labor/old-6-doc-view/index.md" title="Oldal szerkesztése" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -1355,8 +1183,8 @@ Keressük meg azt a függvényt, ahol az egész pixel invertálás folyamat elin
         </path>
       </svg>
     </span>
-    <span title="2023. május 12. 18:06:17">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-12T18:06:17+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-12</span>
+    <span title="2023. december 21. 11:38:40">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-12-21T11:38:40+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-21</span>
     </span>
   </span>
 
