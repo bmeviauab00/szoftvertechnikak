@@ -23,6 +23,7 @@ A kapcsolódó előadások: Konkurens (többszálú) alkalmazások fejlesztése.
 A gyakorlat elvégzéséhez szükséges eszközök:
 
 - Visual Studio 2022
+- WindowsAppSDK 1.4 (csak a felhasználó felület miatt) (TODO)
 - Windows 10 vagy Windows 11 operációs rendszer (Linux és macOS nem alkalmas)
 
 ## Megoldás
