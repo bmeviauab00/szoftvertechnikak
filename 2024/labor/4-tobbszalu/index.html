@@ -565,8 +565,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-feladat-az-invoke-es-invokerequired-hasznalata" class="md-nav__link">
-    3. Feladat – az Invoke és InvokeRequired használata
+  <a href="#3-feladat-a-dispatcherqueuehasthreadaccess-es-dispatcherqueuetryenqueue-hasznalata" class="md-nav__link">
+    3. Feladat – a DispatcherQueue.HasThreadAccess és DispatcherQueue.TryEnqueue használata
   </a>
   
 </li>
@@ -1004,8 +1004,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-feladat-az-invoke-es-invokerequired-hasznalata" class="md-nav__link">
-    3. Feladat – az Invoke és InvokeRequired használata
+  <a href="#3-feladat-a-dispatcherqueuehasthreadaccess-es-dispatcherqueuetryenqueue-hasznalata" class="md-nav__link">
+    3. Feladat – a DispatcherQueue.HasThreadAccess és DispatcherQueue.TryEnqueue használata
   </a>
   
 </li>
@@ -1124,7 +1124,7 @@
 <li>Szálbiztos (thread safe) osztályok készítése a <code>lock</code> kulcsszó alkalmazásával</li>
 <li><code>ThreadPool</code> használata</li>
 <li>Jelzés és jelzésre várakozás szál szinkronizáció <code>ManualResetEvent</code> segítségével (<code>WaitHandle</code>)</li>
-<li>Windows Forms szálkezelési sajátosságok (<code>Invoke</code>)</li>
+<li>WinUI szálkezelési sajátosságok (<code>DispatcherQueue</code>)</li>
 </ul>
 <p>Természetesen, mivel a témakör hatalmas, csak alapszintű tudást fogunk szerezni, de e tudás birtokában már képesek leszünk önállóan is elindulni a bonyolultabb feladatok megvalósításában.</p>
 <p>A kapcsolódó előadások: Konkurens (többszálú) alkalmazások fejlesztése.</p>
@@ -1132,6 +1132,7 @@
 <p>A gyakorlat elvégzéséhez szükséges eszközök:</p>
 <ul>
 <li>Visual Studio 2022</li>
+<li>WindowsAppSDK 1.4 (csak a felhasználó felület miatt) (TODO)</li>
 <li>Windows 10 vagy Windows 11 operációs rendszer (Linux és macOS nem alkalmas)</li>
 </ul>
 <h2 id="megoldas">Megoldás<a class="headerlink" href="#megoldas" title="Permanent link">&para;</a></h2>
@@ -1144,7 +1145,7 @@
 </details>
 <h2 id="bevezeto">Bevezető<a class="headerlink" href="#bevezeto" title="Permanent link">&para;</a></h2>
 <p>A párhuzamosan futó szálak kezelése kiemelt fontosságú terület, melyet minden szoftverfejlesztőnek legalább alapszinten ismernie kell. A gyakorlat során alapszintű, de kiemelt fontosságú problémákat oldunk meg, ezért törekednünk kell arra, hogy ne csak a végeredményt, hanem az elvégzett módosítások értelmét és indokait is megértsük.</p>
-<p>A feladat során egyszerű Windows Forms alkalmazást fogunk felruházni többszálas képességekkel, egyre komplexebb feladatokat megoldva. Az alapprobléma a következő: van egy függvényünk, mely hosszú ideig fut, s mint látni fogjuk, ennek „direktben” történő hívása a felületről kellemetlen következményekkel jár. A megoldás során egy meglévő alkalmazást fogunk kiegészíteni saját kódrészletekkel. Az újonnan beszúrandó sorokat az útmutatóban kiemelt háttér jelzi.</p>
+<p>A feladat során egyszerű WinUI alkalmazást fogunk felruházni többszálas képességekkel, egyre komplexebb feladatokat megoldva. Az alapprobléma a következő: van egy függvényünk, mely hosszú ideig fut, s mint látni fogjuk, ennek „direktben” történő hívása a felületről kellemetlen következményekkel jár. A megoldás során egy meglévő alkalmazást fogunk kiegészíteni saját kódrészletekkel. Az újonnan beszúrandó sorokat az útmutatóban kiemelt háttér jelzi.</p>
 <h2 id="0-feladat-ismerkedes-a-kiindulo-alkalmazassal-elokeszites">0. Feladat - Ismerkedés a kiinduló alkalmazással, előkészítés<a class="headerlink" href="#0-feladat-ismerkedes-a-kiindulo-alkalmazassal-elokeszites" title="Permanent link">&para;</a></h2>
 <p>Klónozzuk le a 4. gyakorlathoz tartozó kiinduló alkalmazás <a href="https://github.com/bmeviauab00/lab-tobbszalu-kiindulo">repositoryját</a>:</p>
 <ul>
@@ -1153,18 +1154,31 @@
 <li>Adjuk ki a következő parancsot: <code>git clone https://github.com/bmeviauab00/lab-tobbszalu-kiindulo.git</code></li>
 <li>Nyissuk meg a <em>SuperCalculator.sln</em> solutiont Visual Studio-ban.</li>
 </ul>
-<p>A feladatunk az, hogy egy bináris formában megkapott algoritmus futtatásához Windows Forms technológiával felhasználói felületet készítsünk. A bináris forma .NET esetében egy <em>.dll</em> kiterjesztésű fájlt jelent, ami programozói szemmel egy osztálykönyvtár.  A fájl neve esetünkben <em>Algorithms.dll</em>, megtalálható a leklónozott Git repositoryban.</p>
+<p>A feladatunk az, hogy egy bináris formában megkapott algoritmus futtatásához WinUI technológiával felhasználói felületet készítsünk. A bináris forma .NET esetében egy <em>.dll</em> kiterjesztésű fájlt jelent, ami programozói szemmel egy osztálykönyvtár.  A fájl neve esetünkben <em>Algorithms.dll</em>, megtalálható a leklónozott Git repositoryban.</p>
 <p>A kiinduló alkalmazásban a felhasználói felület elő is van készítve. Futtassuk az alkalmazást:</p>
 <p><a class="glightbox" href="images/starter.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="starter" src="images/starter.png" /></a></p>
 <p>Az alkalmazás felületén meg tudjuk adni az algoritmus bemenő paramétereit (<code>double</code> számok tömbje): a példánkban mindig két <code>double</code> szám paraméterrel hívjuk az algoritmust, ezt a két felső szövegmezőben lehet megadni.
 A feladatunk az, hogy a <em>Calculate Result</em> gombra kattintás során futtassuk az algoritmust a megadott paraméterekkel, majd, ha végzett, akkor a <em>Result</em> alatti listázó mező új sorában jelenítsük meg a kapott eredményt a bemenő paraméterekkel együtt.</p>
 <p>Következő lépésben ismerkedjünk meg a letöltött Visual Studio solutionnel:</p>
-<ol>
-<li>Nézzük végig a <code>MainForm</code> osztályt.</li>
-<li>Azt látjuk, hogy a felület alapvetően kész, csak az algoritmus futtatása hiányzik. </li>
-<li>Az eredmény és a paraméterei naplózásához is találunk egy <code>ShowResult</code> nevű segédfüggvényt.</li>
-<li>A <code>DataFifo</code> osztályt egyelőre hagyjuk ki, csak a gyakorlat második felében fogjuk használni, majd később megismerkedünk vele.</li>
-</ol>
+<p>A keretalkalmazás egy WinUI 3 alapú alkalmazás. A felület alapvetően kész, definíciója a <code>MainWindow.xaml</code> fájlban található. Ez számunkra a gyakorlat célját tekintve kevésbé izgalmas, de otthon a gyakorlás kedvéért érdemes áttekinteni.</p>
+<details class="note">
+<summary>Felület kialakítása a <code>MainWindow.xaml</code>-ben</summary>
+<p>Az ablakfelület kialakításának alapjai:</p>
+<ul>
+<li>A gyökérelem (root) "szokásosan" egy <code>Grid</code>. </li>
+<li>A gyökér <code>Grid</code>  felső sorában található a két <code>TextBox</code>-ot és a <code>Button</code>-t tartalmazó <code>StackPanel</code>.</li>
+<li>A gyökér <code>Grid</code> alsó sorában egy másik <code>Grid</code> található. A <code>TextBox</code>-szal ellentétben a <code>ListBox</code> nem rendelkezik <code>Header</code> tulajdonsággal, így ezt nekünk kellett egy különálló "Result" szövegű <code>TextBlock</code> formájában bevezetni. Ezt a <code>Grid</code>-et azért vezettük be (egy "egyszerűbb" <code>StackPanel</code> helyett), mert így lehetett elérni, hogy a felső sorában a "Result" <code>TextBlock</code> fix magasságú legyen, az alsó sorban pedig a <code>ListBox</code> töltse ki a teljes maradó helyet (a felső sor magassága <code>Auto</code>, az alsó sor magassága <code>*</code>).</li>
+<li>A "Calculate Result" szövegű gomb szép példa arra, hogy a <code>Button</code> <code>Content</code>-jének sokszor nemcsak egy egyszerű szöveget adunk meg. A példában egy <code>SymbolIcon</code> és a <code>TextBlock</code> kompozíciója (<code>StackPanel</code> segítségével megvalósítva), ezáltal tudjunk a egy megfelelő ikont/szimbólumot rendelni, mely feldobja a megjelenését.</li>
+<li>Arra is látunk példát, hogy a <code>ListBox</code> hogyan tehető görgethetővé, ha már sok elem van benne (vagy túl szélesek az elemek). Ehhez a <code>ScrollViewer</code>-ét kell megfelelően paraméterezni.</li>
+<li>A <code>ListBox</code> <code>ItemContainerStyle</code> tulajdonságával a <code>ListBox</code> elemre adhatunk meg stílusokat. A példában a <code>Padding</code>-et vettük kisebbre az alapértelmezettnél, enélkül a <code>ListBox</code> elemek magassága helypazarlóan nagy lenne.</li>
+</ul>
+</details>
+<p>A <code>MainWindow.xaml.cs</code> forrásfájl a főablakhoz tartozó code behind fájl, ezt tekintsük át, főbb elemei a következők:</p>
+<ul>
+<li>Az eredmény és a paraméterek <code>ListBox</code>-ba történő naplózásához találunk egy <code>ShowResult</code> nevű segédfüggvényt.</li>
+<li>A <code>CalculateResultButton_Click</code> a gomb a <em>Calculate Result</em> gomb kattintásához tartozó eseménykezelő. Azt látjuk, hogy a két szövegdobozból kiolvassa a paraméterek értékét, és megpróbálja számmá alakítani. Ha sikerül, akkor itt történik majd az algoritmus hívása (ez nincs még megvalósítva), illetve, ha nem sikerül, akkor a <code>DisplayInvalidElementDialog</code> segítségével egy üzenetablakban tájékoztatja a felhasználót az érvénytelen paraméterekről.</li>
+<li>A konstruktorból hívott <code>AddKeyboardAcceleratorToChangeTheme</code> függvény számunkra nem releváns, a világos és sötét téma közötti váltást teszi lehetővé (futás közben érdemes kipróbálni, <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-t">T</kbd></span> billentyűkombináció).</li>
+</ul>
 <h3 id="a-dll-ben-levo-kod-felhasznalasa">A DLL-ben levő kód felhasználása<a class="headerlink" href="#a-dll-ben-levo-kod-felhasznalasa" title="Permanent link">&para;</a></h3>
 <p>A kiinduló projektben megtaláljuk a <em>Algorithm.dll</em>-t. Ebben lefordított formában egy <code>Algorithms</code> névtérben levő <code>SuperAlgorithm</code> nevű osztály található, melynek egy <code>Calculate</code> nevű statikus művelete van. Ahhoz, hogy egy projektben fel tudjuk használni a DLL-ben levő osztályokat, a DLL-re a projektünkben egy ún. referenciát kell felvegyünk.</p>
 <ol>
@@ -1190,10 +1204,10 @@ A feladatunk az, hogy a <em>Calculate Result</em> gombra kattintás során futta
 <p>Most már rátérhetünk az algoritmus futtatására. Első lépésben ezt az alkalmazásunk fő szálán tesszük meg.</p>
 <ol>
 <li>
-<p>A főablakon lévő gomb <code>Click</code> eseménykezelőjében hívjuk meg a számoló függvényünket. Ehhez kattintsunk a Solution Explorerben duplán a <code>MainForm.cs</code> fájlra, majd a megjelenő Form Designer-ben a <em>Calculate Result</em> gombra. Egészítsük ki a kódot az újonnan behivatkozott algoritmus meghívásával.</p>
-<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">buttonCalcResult_Click</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">EventArgs</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<p>A főablakon lévő gomb <code>Click</code> eseménykezelőjében hívjuk meg a számoló függvényünket. Ehhez a Solution Explorerben nyissuk meg a <code>MainWindow.xaml.cs</code> code behind fájlt, és keressük meg a <code>CalculateResultButton_Click</code> eseménykezelőt. Egészítsük ki a kódot az újonnan behivatkozott algoritmus meghívásával.</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CalculateResultButton_Click</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">RoutedEventArgs</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">textBoxParam1</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">textBoxParam2</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p2</span><span class="p">))</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">param1TextBox</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">param2TextBox</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p2</span><span class="p">))</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">parameters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="p">};</span>
 
@@ -1201,9 +1215,7 @@ A feladatunk az, hogy a <em>Calculate Result</em> gombra kattintás során futta
 </span><span class="hll"><span class="w">        </span><span class="n">ShowResult</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">);</span>
 </span><span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">else</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Invalid parameter!&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Error&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">        </span><span class="nf">DisplayInvalidElementDialog</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
 </li>
@@ -1211,12 +1223,12 @@ A feladatunk az, hogy a <em>Calculate Result</em> gombra kattintás során futta
 <p>Próbáljuk ki az alkalmazást, és vegyük észre, hogy az ablak a számolás ideje alatt nem reagál a mozgatásra, átméretezésre, a felület gyakorlatilag befagy.</p>
 </li>
 </ol>
-<p>Az alkalmazásunk eseményvezérelt, mint minden Windows alkalmazás. Az operációs rendszer a különböző interakciókról (pl. mozgatás, átméretezés) üzenetekben értesíti az alkalmazásunkat. Mivel a gombnyomást követően az alkalmazásunk egyetlen szála a kalkulációval van elfoglalva, nem tudja azonnal feldolgozni a további felhasználói utasításokat. Amint a számítás lefutott (és az eredmények megjelennek a listában) a korábban kapott parancsok is végrehajtásra kerülnek.</p>
+<p>Az alkalmazásunk eseményvezérelt, mint minden Windows alkalmazás. Az operációs rendszer a különböző interakciókról (pl. mozgatás, átméretezés, egérkattintás) értesíti az alkalmazásunkat: mivel a gombnyomást követően az alkalmazásunk egyetlen szála a kalkulációval van elfoglalva, nem tudja azonnal feldolgozni a további felhasználói utasításokat. Amint a számítás lefutott (és az eredmények megjelennek a listában) a korábban kapott parancsok is végrehajtásra kerülnek.</p>
 <h2 id="2-feladat-vegezzuk-a-szamitast-kulon-szalban">2. Feladat – Végezzük a számítást külön szálban<a class="headerlink" href="#2-feladat-vegezzuk-a-szamitast-kulon-szalban" title="Permanent link">&para;</a></h2>
 <p>Következő lépésben a számítás elvégzésére egy külön szálat fogunk indítani, hogy az ne blokkolja a felhasználói felületet.</p>
 <ol>
 <li>
-<p>Készítsünk egy új függvényt a <code>MainForm</code> osztályban, mely a feldolgozó szál belépési pontja lesz.</p>
+<p>Készítsünk egy új függvényt a <code>MainWindow</code> osztályban, mely a feldolgozó szál belépési pontja lesz.</p>
 <div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CalculatorThread</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="n">arg</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">parameters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">[])</span><span class="n">arg</span><span class="p">;</span>
@@ -1227,9 +1239,9 @@ A feladatunk az, hogy a <em>Calculate Result</em> gombra kattintás során futta
 </li>
 <li>
 <p>Indítsuk el a szálat a gomb <code>Click</code> eseménykezelőjében. Ehhez cseréljük le a korábban hozzáadott kódot:</p>
-<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">buttonCalcResult_Click</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">EventArgs</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CalculateResultButton_Click</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">RoutedEventArgs</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">textBoxParam1</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">textBoxParam2</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p2</span><span class="p">))</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">param1TextBox</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">param2TextBox</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p2</span><span class="p">))</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">parameters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="p">};</span>
 
@@ -1237,70 +1249,84 @@ A feladatunk az, hogy a <em>Calculate Result</em> gombra kattintás során futta
 </span><span class="hll"><span class="w">        </span><span class="n">th</span><span class="p">.</span><span class="n">Start</span><span class="p">(</span><span class="n">parameters</span><span class="p">);</span>
 </span><span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">else</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Invalid parameter!&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Error&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">        </span><span class="nf">DisplayInvalidElementDialog</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>A Thread objektum <code>Start</code> műveletében átadott paramétert kapja meg a <code>CalculatorThread</code> szálfüggvényünk.</p>
 </li>
 <li>
-<p>Futtassuk az alkalmazást F5-tel (most fontos, hogy így, a debuggerben futtassuk)! <em>InvalidOperationException, Cross-thread operation not valid</em> hibaüzenetet kapunk a <code>ShowResult</code> metódusban, ugyanis nem abból a szálból próbálunk hozzáférni a UI elemhez / vezérlőhöz, amelyik létrehozta (a vezérlőt). A következő feladatban ezt a problémát analizáljuk és oldjuk meg.</p>
+<p>Futtassuk az alkalmazást <span class="keys"><kbd class="key-f5">F5</kbd></span>-tel (most fontos, hogy így, a debuggerben futtassuk)! <em>The application called an interface that was marshalled for a different thread. (0x8001010E (RPC_E_WRONG_THREAD))</em> hibaüzenetet kapunk a <code>ShowResult</code> metódusban, ugyanis nem abból a szálból próbálunk hozzáférni a UI elemhez / vezérlőhöz, amelyik létrehozta (a vezérlőt). A következő feladatban ezt a problémát analizáljuk és oldjuk meg.</p>
 </li>
 </ol>
-<h2 id="3-feladat-az-invoke-es-invokerequired-hasznalata">3. Feladat – az <code>Invoke</code> és <code>InvokeRequired</code> használata<a class="headerlink" href="#3-feladat-az-invoke-es-invokerequired-hasznalata" title="Permanent link">&para;</a></h2>
-<p>Az előző pontban a problémát a következő okozza. Windows Forms alkalmazásoknál él az alábbi szabály: az űrlapok/vezérlőelemek alapvetően nem szálvédett objektumok, így <strong>egy űrlaphoz/vezérlőhöz csak abból a szálból szabad hozzáférni (pl. propertyjét olvasni, állítani, műveletét meghívni), amelyik szál az adott űrlapot/vezérlőt létrehozta</strong>, máskülönben kivételt kapunk.
-Alkalmazásunkban azért kaptunk kivételt, mert a <code>listViewResult</code> vezérlőt a fő szálban hoztuk létre, a <code>ShowResult</code> metódusban az eredmény megjelenítésekor viszont egy másik szálból férünk hozzá (<code>listViewResult.Items.Add</code>).</p>
-<p>A fenti szabály alól van pár kivétel: ilyen pl. a <code>Control</code> osztályban definiált <code>InvokeRequired</code> property és <code>Invoke</code> metódus, melyek bármely szálból biztonságosan elérhetők. Ezek pont abban nyújtanak segítséget, hogy a vezérlőkhöz mindig a megfelelő szálból férjünk hozzá:</p>
+<h2 id="3-feladat-a-dispatcherqueuehasthreadaccess-es-dispatcherqueuetryenqueue-hasznalata">3. Feladat – a <code>DispatcherQueue.HasThreadAccess</code> és <code>DispatcherQueue.TryEnqueue</code> használata<a class="headerlink" href="#3-feladat-a-dispatcherqueuehasthreadaccess-es-dispatcherqueuetryenqueue-hasznalata" title="Permanent link">&para;</a></h2>
+<p>Az előző pontban a problémát a következő okozza. WinUI alkalmazásoknál él az alábbi szabály: az ablakok/felületelemek/vezérlőelemek alapvetően nem szálvédett (thread safe) objektumok, így <strong>egy ablakhoz/felületelemhez/vezérlőhöz csak abból a szálból szabad hozzáférni (pl. propertyjét olvasni, állítani, műveletét meghívni), amelyik szál az adott ablakot/felületelemet/vezérlőt létrehozta</strong>, máskülönben kivételt kapunk.
+Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> vezérlőt a fő szálban hoztuk létre, a <code>ShowResult</code> metódusban az eredmény megjelenítésekor viszont egy másik szálból férünk hozzá (<code>resultListBox.Items.Add</code> művelet hívása).</p>
+<p>Kérdés, hogyan lehet mégis valamilyen módon ezekhez a felületelemekhez/vezérlőkhöz egy másik szálból hozzáférni. A megoldást a <code>DispatcherQueue</code> alkalmazása jelenti, mely abban nyújt segítséget, hogy a vezérlőkhöz mindig a megfelelő szálból történjen a hozzáférés:</p>
 <ul>
-<li>Ha az <code>InvokeRequired</code> tulajdonság értéke igaz, akkor a szál (mely az <code>InvokeRequired</code>-et hívja) a hívás helyén nem egyezik a vezérlőt létrehozó szállal, és ilyenkor csak az <code>Invoke</code> művelet segítségével "kerülő úton" férhetünk vezérlőnkhöz. Vagyis egy vezérlőhöz való hozzáférés során ezzel tudjuk eldönteni, közvetlenül hozzáférhetünk-e egy adott helyen a szálunkból, vagy csak az <code>Invoke</code> segítségével.</li>
-<li>Az <code>Invoke</code> metódus a vezérlőelemet létrehozó szálon futtatja le a számára paraméterként megadott metódust (melyből már közvetlenül hozzáférhetünk a vezérlőhöz).</li>
+<li><code>DispatcherQueue</code> objektum <code>TryEnqueue</code> függvénye a vezérlőelemet létrehozó szálon futtatja le a számára paraméterként megadott függvényt (mely függvényből így már közvetlenül hozzáférhetünk a vezérlőhöz).</li>
+<li>A <code>DispatcherQueue</code> objektum <code>HasThreadAccess</code> tulajdonsága azt segít eldönteni, szükség van-e egyáltalán az előző pontban említett <code>TryEnqueue</code> alkalmazására. Ha a tulajdonság értéke<ul>
+<li>igaz, akkor a vezérlőhöz közvetlenül is hozzáférhetünk (mert az aktuális szál megegyezik a vezérlőt létrehozó szállal), ellenben ha</li>
+<li>hamis, akkor a vezérlőhöz csak "kerülő úton", a <code>DispatcherQueue</code> objektum <code>TryEnqueue</code> segítségével férhetünk hozzá (mert az aktuális szál NEM egyezik a vezérlőt létrehozó szállal).</li>
 </ul>
-<p>Az <code>InvokeRequired</code> és az <code>Invoke</code> felhasználásával el tudjuk kerülni korábbi kivételünket (a vezérlőhöz, esetünkben a listViewResult-hoz való hozzáférést a megfelelő szálra tudjuk "irányítani"). Ezt fogjuk a következőkben megtenni.</p>
-<div class="admonition warning">
-<p class="admonition-title">Csak debuggerben futtatva jön az <code>InvalidOperationException</code>?</p>
-<p>Ha kipróbálnánk, hogy debugger nélkül indítjuk el az alkalmazást (VS-ben Start without debugging vagy magát az exe-t), akkor azt tapasztalnánk, hogy nem jön a fenti kivétel. Ennek az az oka, hogy, fejlesztés időben, debuggerrel vizsgálva az alkalmazást, sokkal szigorúbban figyeli a keretrendszer a UI szál sértést, hogy már fejlesztés időben előjöjjenek olyan potenciális hibák, melyek amúgy még nem jelentenék az alkalmazás összeomlását.</p>
-<p>A fenti esetben a <code>ListView</code> <code>Invoke</code> nélküli manipulálását jó eséllyel az esetek többségében még túlélné az app, de a keretrendszer a debuggeren keresztül futtatás során jelzi a hibás gyakorlatot.</p>
+</li>
+</ul>
+<p>A <code>DispatcherQueue</code> segítségével tehát el tudjuk kerülni korábbi kivételünket (a vezérlőhöz, esetünkben a <code>resultListBox</code>-hoz való hozzáférést a megfelelő szálra tudjuk "irányítani"). Ezt fogjuk a következőkben megtenni.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A <code>DispatcherQueue</code> objektum a Window osztály leszármazottakban érhető el a<code>DispatcherQueue</code> tulajdonságán keresztül (más osztályokban pedig a <code>DispatcherQueue.GetForCurrentThread()</code> statikus művelet segítségével szerezhető meg).</p>
 </div>
 <p>Módosítanunk kell a <code>ShowResult</code> metódust annak érdekében, hogy mellékszálból történő hívás esetén se dobjon kivételt.</p>
 <div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ShowResult</span><span class="p">(</span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="n">parameters</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">result</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="hll"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">InvokeRequired</span><span class="p">)</span>
-</span><span class="hll"><span class="w">    </span><span class="p">{</span>
-</span><span class="hll"><span class="w">        </span><span class="n">Invoke</span><span class="p">(</span><span class="n">ShowResult</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">object</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">parameters</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="p">});</span>
+<span class="hll"><span class="w">    </span><span class="c1">// Closing the window the DispatcherQueue property may return null, so we have to perform a null check</span>
+</span><span class="hll"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">DispatcherQueue</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+</span><span class="hll"><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+</span>
+<span class="hll"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">DispatcherQueue</span><span class="p">.</span><span class="n">HasThreadAccess</span><span class="p">)</span>
+</span><span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ListBoxItem</span><span class="p">()</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">$&quot;{parameters[0]} #  {parameters[1]} = {result}&quot;</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="n">resultListBox</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="w">        </span><span class="n">resultListBox</span><span class="p">.</span><span class="n">ScrollIntoView</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="hll"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">DispatcherQueue</span><span class="p">.</span><span class="n">TryEnqueue</span><span class="p">(</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">ShowResult</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
 </span><span class="hll"><span class="w">    </span><span class="p">}</span>
-</span><span class="hll"><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">IsDisposed</span><span class="p">)</span>
-</span><span class="hll"><span class="w">    </span><span class="p">{</span>
-</span><span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">lvi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listViewResult</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">$&quot;{parameters[0]} #  {parameters[1]} = {result}&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">listViewResult</span><span class="p">.</span><span class="n">EnsureVisible</span><span class="p">(</span><span class="n">lvi</span><span class="p">.</span><span class="n">Index</span><span class="p">);</span>
-<span class="w">        </span><span class="n">listViewResult</span><span class="p">.</span><span class="n">AutoResizeColumns</span><span class="p">(</span><span class="n">ColumnHeaderAutoResizeStyle</span><span class="p">.</span><span class="n">ColumnContent</span><span class="p">);</span>
-<span class="hll"><span class="w">    </span><span class="p">}</span>
 </span><span class="p">}</span>
 </code></pre></div>
 <p>Próbáljuk ki!</p>
-<p>Ez a megoldás már működőképes. A <code>Form</code> osztály <code>InvokeRequired</code> metódusa igazat ad vissza, amennyiben nem az őt létrehozó szálból hívjuk meg. Ilyen esetekben a <code>Form</code>ot az <code>Invoke</code> metódusán keresztül tudjuk megkérni, hogy egy adott műveletet a saját szálán (amelyik a <code>Form</code>ot létrehozta, ez a legtöbb alkalmazásban a fő szál) hajtson végre. A fenti példában tulajdonképpen a <code>ShowResult</code> függvény önmagát hívja meg még egyszer, csak második esetben már a <code>Form</code> saját szálán. Ez egy bevett minta a redundáns kódok elkerülésére.</p>
-<p>Tegyünk töréspontot a <code>ShowResult</code> művelet első sorára, és az alkalmazást futtatva győződjünk meg, hogy a <code>ShowResult</code> művelet – különösen az <code>Invoke</code> tekintetében – a fentiekben ismertetetteknek megfelelően működik.</p>
-<p>Vegyük ki a töréspontot, így futtassuk az alkalmazást: vegyük észre, hogy amíg egy számítás fut, újabbakat is indíthatunk, hiszen a felületünk végig reszponzív maradt.</p>
+<p>Ez a megoldás már működőképes, főbb elemei a következők:</p>
+<ul>
+<li>A <code>DispatcherQueue</code> <code>null</code> vizsgálat szerepe: a főablak bezárása után a <code>DispatcherQueue</code> már <code>null</code>, nem használható.</li>
+<li>A <code>DispatcherQueue.HasThreadAccess</code> segítségével megnézzük, hogy a hívó szál hozzáférhet-e közvetlenül a vezérlőkhöz (esetünkben a <code>ListBox</code>-hoz):<ul>
+<li>Ha igen, minden úgy történik, mint eddig, a <code>ListBox</code>-ot kezelő kód változatlan.</li>
+<li>Ha nem, a <code>DispatcherQueue.TryEnqueue</code> segítségével férünk hozzá a vezérlőhöz. A következő trükköt alkalmazzuk. A <code>TryEnqueue</code> függvénynek egy olyan paraméter nélküli, egysoros függvényt adunk meg lambda kifejezés formájában, mellyel a <code>ShowResult</code> függvényünket hívja meg (gyakorlatilag rekurzívan), a paramétereket tovább passzolva számára. Ez nekünk azért jó, mert ez a <code>ShowResult</code> hívás már azon a szálon történik, mely a vezérlőt létrehozta (az alkalmazás fő szála), ebben a <code>HasThreadAccess</code> értéke már igaz, és hozzá tudunk férni közvetlenül a <code>ListBox</code>-unkhoz. Ez a rekurzív megközelítés egy bevett minta a redundáns kódok elkerülésére.</li>
+</ul>
+</li>
+</ul>
+<p>Tegyünk töréspontot a <code>ShowResult</code> művelet első sorára, és az alkalmazást futtatva győződjünk meg arról, hogy a <code>ShowResult</code> művelet első hívásakor <code>HasThreadAccess</code> még hamis (így megtörténik a <code>TryEnqueue</code> hívása), majd ennek hatására még egyszer meghívódik a <code>ShowResult</code>, de ekkor a <code>HasThreadAccess</code> értéke már igaz.</p>
+<p>Vegyük ki a töréspontot, így futtassuk az alkalmazást: vegyük észre, hogy amíg egy számítás fut, újabbakat is indíthatunk, hiszen a felületünk végig reszponzív maradt (a korábban tapasztalt hiba pedig már nem jelentkezik).</p>
 <h2 id="4-feladat-muvelet-vegzese-threadpool-szalon">4. feladat – Művelet végzése Threadpool szálon<a class="headerlink" href="#4-feladat-muvelet-vegzese-threadpool-szalon" title="Permanent link">&para;</a></h2>
 <p>Az előző megoldás egy jellemzője, hogy mindig új szálat hoz létre a művelethez. Esetünkben ennek nincs különösebb jelentősége, de ez a megközelítés egy olyan kiszolgáló alkalmazás esetében, amely nagyszámú kérést szolgál ki úgy, hogy minden kéréshez külön szálat indít, már problémás lehet. Két okból is:</p>
 <ul>
 <li>Ha a szálfüggvény gyorsan lefut (egy kliens kiszolgálása gyors), akkor a CPU nagy részét arra pazaroljuk, hogy szálakat indítsunk és állítsunk le, ezek ugyanis önmagukban is erőforrásigényesek.</li>
 <li>Túl nagy számú szál is létrejöhet, ennyit kell ütemeznie az operációs rendszernek, ami feleslegesen pazarolja az erőforrásokat.</li>
-<li>Egy másik probléma jelen megoldásunkkal: mivel a számítás ún. <strong>előtérszálon</strong> fut (az újonnan létrehozott szálak alapértelmezésben előtérszálak), hiába zárjuk be az alkalmazást, a program tovább fut a háttérben mindaddig, amíg végre nem hajtódik az utoljára indított számolás is: egy processz futása ugyanis csak akkor fejeződik csak be, ha már nincs futó előtérszála.</li>
 </ul>
+<p>Egy másik probléma jelen megoldásunkkal: mivel a számítás ún. <strong>előtérszálon</strong> fut (az újonnan létrehozott szálak alapértelmezésben előtérszálak), hiába zárjuk be az alkalmazást, a program tovább fut a háttérben mindaddig, amíg végre nem hajtódik az utoljára indított számolás is: egy processz futása ugyanis akkor fejeződik csak be, ha már nincs futó előtérszála.</p>
 <p>Módosítsuk a gomb eseménykezelőjét, hogy új szál indítása helyett <strong>threadpool</strong> szálon futtassa a számítást. Ehhez csak a gombnyomás eseménykezelőjét kell ismét átírni.</p>
-<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">buttonCalcResult_Click</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">EventArgs</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CalculateResultButton_Click</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">RoutedEventArgs</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">textBoxParam1</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">textBoxParam2</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p2</span><span class="p">))</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">param1TextBox</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">param2TextBox</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p2</span><span class="p">))</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">parameters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="p">};</span>
 
 <span class="hll"><span class="w">        </span><span class="n">ThreadPool</span><span class="p">.</span><span class="n">QueueUserWorkItem</span><span class="p">(</span><span class="n">CalculatorThread</span><span class="p">,</span><span class="w"> </span><span class="n">parameters</span><span class="p">);</span>
 </span><span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">else</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Invalid parameter!&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Error&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">        </span><span class="nf">DisplayInvalidElementDialog</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Próbáljuk ki az alkalmazást, és vegyük észre, hogy az alkalmazás az ablak bezárásakor azonnal leáll, nem foglalkozik az esetlegesen még futó szálakkal (mert a threadpool szálak háttér szálak).</p>
@@ -1311,23 +1337,21 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>listViewResult</code> v
 <p class="admonition-title">Termelő fogyasztó vs <code>ThreadPool</code></p>
 <p>Ha belegondolunk, a <code>ThreadPool</code> is egy speciális, a .NET által számunkra biztosított termelő-fogyasztó és ütemező mechanizmus. A következőkben egy más jellegű termelő-fogyasztó megoldást dolgozunk ki annak érdekében, hogy bizonyos szálkezeléssel kapcsolatos konkurencia problémákkal találkozhassunk.</p>
 </div>
-<p>A főszálunk a termelő, a <em>Calculate result</em> gombra kattintva hoz létre egy új feladatot. Fogyasztó/feldolgozó/munkaszálból azért indítunk majd többet, mert így több CPU magot is ki tudunk használni, valamint a feladatok végrehajtását párhuzamosítani tudjuk.</p>
-<p>A feladatok ideiglenes tárolására a kiinduló projektünkben már némiképpen előkészített <code>DataFifo</code> osztályt tudjuk használni. Nézzük meg a forráskódját. Egy egyszerű FIFO sort valósít meg, melyben <code>double[]</code> elemeket tárol. A <code>Put</code> metódus hozzáfűzi a belső lista végéhez az új párokat, míg a <code>TryGet</code> metódus visszaadja (és eltávolítja) a belső lista első elemét. Amennyiben a lista üres, a függvény nem tud visszaadni elemet. Ilyenkor a <code>false</code> visszatérési értékkel jelzi ezt.</p>
+<p>A főszálunk a termelő, a <em>Calculate result</em> gombra kattintva hoz létre egy új feladatot. Fogyasztó/feldolgozó munkaszálból azért indítunk majd többet, mert így több CPU magot is ki tudunk használni, valamint a feladatok végrehajtását párhuzamosítani tudjuk.</p>
+<p>A feladatok ideiglenes tárolására a kiinduló projektünkben már némiképpen előkészített <code>DataFifo</code> osztályt tudjuk használni (a Solution Explorerben a <code>Data</code> mappában található). Nézzük meg a forráskódját. Egy egyszerű FIFO sort valósít meg, melyben <code>double[]</code> elemeket tárol. A <code>Put</code> metódus hozzáfűzi a belső lista végéhez az új párokat, míg a <code>TryGet</code> metódus visszaadja (és eltávolítja) a belső lista első elemét. Amennyiben a lista üres, a függvény nem tud visszaadni elemet. Ilyenkor a <code>false</code> visszatérési értékkel jelzi ezt.</p>
 <ol>
 <li>
 <p>Módosítsuk a gomb eseménykezelőjét, hogy ne <code>ThreadPool</code>ba dolgozzon, hanem a FIFO-ba:</p>
-<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">buttonCalcResult_Click</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">EventArgs</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CalculateResultButton_Click</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">RoutedEventArgs</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">textBoxParam1</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">textBoxParam2</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p2</span><span class="p">))</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">param1TextBox</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">param2TextBox</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p2</span><span class="p">))</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">parameters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="p">};</span>
 
 <span class="hll"><span class="w">        </span><span class="n">_fifo</span><span class="p">.</span><span class="n">Put</span><span class="p">(</span><span class="n">parameters</span><span class="p">);</span>
 </span><span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">else</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Invalid parameter!&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Error&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">        </span><span class="nf">DisplayInvalidElementDialog</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
 </li>
@@ -1357,7 +1381,7 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>listViewResult</code> v
 </code></pre></div>
 </li>
 <li>
-<p>Indítsuk el az alkalmazást, majd zárjuk is be azonnal anélkül, hogy a Calculate Result gombra kattintanánk. Az tapasztaljuk, hogy az ablakunk bezáródik ugyan, de a processzünk tovább fut, az alkalmazás bezárására csak a Visual Studioból, vagy a Task Managerből van lehetőség:</p>
+<p>Indítsuk el az alkalmazást, majd zárjuk is be azonnal anélkül, hogy a <em>Calculate Result</em> gombra kattintanánk. Az tapasztaljuk, hogy az ablakunk bezáródik ugyan, de a processzünk tovább fut, az alkalmazás bezárására csak a Visual Studioból, vagy a Task Managerből van lehetőség:</p>
 <p><a class="glightbox" href="images/stop-debugging.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Stop Debugging" src="images/stop-debugging.png" /></a></p>
 <p>A feldolgozó szálak előtérszálak, kilépéskor megakadályozzák a processz megszűnését. Az egyik megoldás az lehetne, ha a szálak <code>IsBackground</code> tulajdonságát <code>true</code>-ra állítanánk a létrehozásukat követően. A másik megoldás, hogy kilépéskor gondoskodunk a feldolgozó szálak kiléptetéséről. Egyelőre tegyük félre ezt a problémát, később visszatérünk rá.</p>
 </li>
@@ -1428,7 +1452,7 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>listViewResult</code> v
 <p>Ki is vehetjük a <code>TryGet</code> metódusból a mesterséges késleltetést (<code>Thread.Sleep(500);</code> sor).</p>
 <div class="admonition error">
 <p class="admonition-title">Lockolás <code>this</code>-en</p>
-<p>Felmerülhet a kérdés, hogy miért vezettünk be egy külön <code>_syncRoot</code> tagváltozót és használtuk ezt zárolásra a <code>lock</code> paramétereként, amikor a <code>this</code>-t is használhattuk volna helyette (a <code>DataFifo</code> referencia típus, így ennek nem lenne akadálya). A <code>this</code> alkalmazása azonban <strong>sértené az osztályunk egységbezárását</strong>! Ne feledjük: a <code>this</code> egy referencia az objektumunkra, de más osztályoknak is van ugyanerre az objektumra referenciájuk (pl. esetünkben a <code>MainForm</code>-nak van referenciája a <code>DataFifo</code>-ra), és ha ezek a külső osztályok zárat tesznek a <code>lock</code> segítségével az objektumra, akkor az "interferál" az általunk az osztályon belük használt zárolással (mivel <code>this</code> alkalmazása miatt a külső és belső <code>lock</code>-ok paramétere ugyanaz lesz). Így pl. egy külső zárral teljesen meg lehet "bénítani" a <code>TryGet</code> és <code>Put</code> művelet működését. Ezzel szemben az általunk választott megoldásban a <code>lock</code> paramétere, a <code>_syncRoot</code> változó privát, ehhez már külső osztályok nem férhetnek hozzá, így nem is zavarhatják meg az osztályunk belső működését.</p>
+<p>Felmerülhet a kérdés, hogy miért vezettünk be egy külön <code>_syncRoot</code> tagváltozót és használtuk ezt zárolásra a <code>lock</code> paramétereként, amikor a <code>this</code>-t is használhattuk volna helyette (a <code>DataFifo</code> referencia típus, így ennek nem lenne akadálya). A <code>this</code> alkalmazása azonban <strong>sértené az osztályunk egységbezárását</strong>! Ne feledjük: a <code>this</code> egy referencia az objektumunkra, de más osztályoknak is van ugyanerre az objektumra referenciájuk (pl. esetünkben a <code>MainWindow</code>-nak van referenciája a <code>DataFifo</code>-ra), és ha ezek a külső osztályok zárat tesznek a <code>lock</code> segítségével az objektumra, akkor az "interferál" az általunk az osztályon belük használt zárolással (mivel <code>this</code> alkalmazása miatt a külső és belső <code>lock</code>-ok paramétere ugyanaz lesz). Így pl. egy külső zárral teljesen meg lehet "bénítani" a <code>TryGet</code> és <code>Put</code> művelet működését. Ezzel szemben az általunk választott megoldásban a <code>lock</code> paramétere, a <code>_syncRoot</code> változó privát, ehhez már külső osztályok nem férhetnek hozzá, így nem is zavarhatják meg az osztályunk belső működését.</p>
 </div>
 <h2 id="7-feladat-hatekony-jelzes-megvalositasa">7. feladat – Hatékony jelzés megvalósítása<a class="headerlink" href="#7-feladat-hatekony-jelzes-megvalositasa" title="Permanent link">&para;</a></h2>
 <h3 id="manualresetevent-hasznalata">ManualResetEvent használata<a class="headerlink" href="#manualresetevent-hasznalata" title="Permanent link">&para;</a></h3>
@@ -1590,15 +1614,21 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>listViewResult</code> v
 </code></pre></div>
 </li>
 <li>
-<p><code>MainForm.cs</code>-ban vegyünk fel egy flag tagváltozót a bezárás jelzésére:</p>
+<p><code>MainWindow.xaml.cs</code>-ban vegyünk fel egy flag tagváltozót a bezárás jelzésére:</p>
 <div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">_isClosed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
 </code></pre></div>
 </li>
 <li>
-<p>A form bezárásakor állítsuk jelzettre az új eseményt és billentsünk be be a flag-et is. (A <code>Form</code> osztály <code>OnClosed</code> metódusa mindig meghívódik bezáráskor, a <code>Dispose</code>-zal ellentétben.)</p>
-<div class="highlight"><pre><span></span><code><span class="k">protected</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnClosed</span><span class="p">(</span><span class="n">EventArgs</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<p>A főablak bezárásakor állítsuk jelzettre az új eseményt és billentsünk be be a flag-et is: a <code>MainWindow</code> osztály <code>Closed</code> eseményére iratkozzunk fel a konstruktorban, és írjuk meg a megfelelő eseménykezelő függvényt:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">MainWindow</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">base</span><span class="p">.</span><span class="n">OnClosed</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+<span class="w">    </span><span class="p">...</span>
+
+<span class="w">    </span><span class="n">Closed</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">MainWindow_Closed</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">MainWindow_Closed</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">WindowEventArgs</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="n">_isClosed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
 <span class="w">    </span><span class="n">_fifo</span><span class="p">.</span><span class="n">Release</span><span class="p">();</span>
 <span class="p">}</span>
@@ -1624,20 +1654,8 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>listViewResult</code> v
 <p>Futtassuk az alkalmazást, és ellenőrizzük, kilépéskor az processzünk valóban befejezi-e a futását.</p>
 </li>
 </ol>
-<div class="admonition note">
-<p class="admonition-title">Hol hívjunk Release-t? (kitekintés - nem kötelező anyag)</p>
-<p>Az <code>OnClosed</code> vagy <code>OnClosing</code> életciklus függvényei a Formnak jó választások, mert azokról biztosan tudjuk, hogy helyesen hívódnak meg minden esetben. Cserében egy plusz flag-et kell karbantartanunk. </p>
-<p>Egyik alternatíva lehetne még az életciklus események helyett a <code>Dispose</code> metúdusba rakni ezt a logikát, és akkor az <code>IsDisposed</code> beépített flag-et is használhatnánk. Ezt két okból is érdemes kerülni Formok esetében:</p>
-<ol>
-<li>A <code>Dispose</code> metódus már létezik a <code>MainForm.Designer.cs</code> fájlban, és a <code>Designer.cs</code> fájlokat alapvetően nem szokás szerkeszteni, bár ezt a metódust a designer már nem piszkálja, ha már létrejött a form, így ezt akár nyugodtan át is helyezhetnénk a <code>MainForm.cs</code>-be.</li>
-<li>A <code>Dispose</code> meghívása nem mindig determinisztikus Windows Forms esetében, mert előfordulhat, hogy nem a keretrendszer nyitotta a formot, hanem a fejlesztő programozottan, és elfelejtette <code>Dispose</code>-t hívni rajta, aminek a hatására, majd csak a GC fogja meghívni a <code>Dispose</code> függvényt.</li>
-</ol>
-<p>A <code>Release</code> művelet helyett még egy másik alternatíva lehetne, hogy az <code>IDisposable</code> mintát megvalósítjuk a <code>DataFifo</code>-ba, de ilyenkor is kézzel kellene <code>Dispose</code>-t hívni, mivel nem függvény szintű az életciklusa a FIFO objektumnak, így nem tudnánk <code>using</code> blokkban használni.</p>
-<p>Egy összetett alkalmazásban egyébként gyakran nem kézzel kezeljük egy-egy osztálynak a függőségeit és az életciklusát. Helyette a <a href="https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection">Dependency Injection tervezési mintát</a> érdemes alkalmazni, ahol egy külön komponensbe szervezzük ki az objektumok példányosítását és életciklusának kezelését.</p>
-</div>
 <h2 id="kitekintes-task-async-await">Kitekintés: Task, async, await<a class="headerlink" href="#kitekintes-task-async-await" title="Permanent link">&para;</a></h2>
-<p>A tárgynak nem anyaga, de .NET alkalmazások (és más modern nyelvű alkalmazások (Swift, Kotlin, TypeScript stb.)) esetében megkerülhetetlen az aszinkron programozás koncepciója. A C# (és más modern nyelvek) nyelvi szintre emelték az szinkron események bevárásának kezelését az <code>async</code>/<code>await</code> kulcsszavakkal (<a href="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/">Lásd bővebben</a>)</p>
-<p>Mégis ehhez az anyaghoz lazán úgy kapcsolódhat ez a téma, hogy a <code>Task</code> osztály olyan aszinkron műveletet is reprezentálhat, ami akár külön szálon is futhat (de nem kötelezően futnak ezek külön szálon!), és bevárható ennek az eredménye aszinkron módon. A <code>Task.Run</code> statikus függvény pedig egyenesen a <code>ThreadPool</code>-on ütemez egy műveletet, ami így aszinkron bevárható.</p>
+<p>A gyakorlat során az alacsonyabb szintű szálkezelési technikákkal kívántunk megismerkedni. Ugyanakkor megoldásunkat (legalábbis részben) építhettük volna a .NET aszinkron programozást támogató magasabb szintű eszközeire és mechanizmusaira, úgymint <code>Task</code>/<code>Task&lt;T&gt;</code> osztályok és <code>async</code>/<code>await</code> kulcsszavak.</p>
 
   <hr>
 <div class="md-source-file">
@@ -1648,8 +1666,8 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>listViewResult</code> v
         </path>
       </svg>
     </span>
-    <span title="2023. október 11. 17:53:42">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-11T17:53:42+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-11</span>
+    <span title="2023. december 21. 13:10:27">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-12-21T13:10:27+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-21</span>
     </span>
   </span>
 
