@@ -3,6 +3,7 @@ site_author: Benedek Zoltán
 copyright: Copyright &copy; BME VIK AUT
 repo_name: bmeviauab00/szoftvertechnikak
 repo_url: https://github.com/bmeviauab00/szoftvertechnikak
+site_url: https://bmeviauab00.github.io/szoftvertechnikak/
 
 theme:
   name: material
@@ -41,6 +42,8 @@ extra_css:
 
 extra:
   generator: false
+  version:
+    provider: mike
 
 markdown_extensions:
   - admonition
@@ -75,11 +78,18 @@ plugins:
   - search
   - glightbox
   - git-revision-date-localized:
+      # override from docker environment variables
+      # not a vanilla yaml syntax, only works with mkdocs.yaml because of pyyaml_env_tag
+      enabled: !ENV [IsRevisionDatePluginEnabled, false]
       enable_creation_date: false
       type: timeago
       timezone: Europe/Budapest
       locale: hu
   - git-committers:
+      # override from docker environment variables
+      # not a vanilla yaml syntax, only works with mkdocs.yaml because of pyyaml_env_tag
+      enabled: !ENV [IsAuthorsPluginEnabled, false]
+      github_token: !ENV [GITHUB_TOKEN, '']
       repository: bmeviauab00/szoftvertechnikak
       branch: main
 
@@ -90,14 +100,14 @@ nav:
       - labor/2-nyelvi-eszkozok/index.md
       - labor/3-felhasznaloi-felulet/index.md
       - labor/4-tobbszalu/index.md
-      - labor/5-adatkezeles/index.md
-      - labor/6-doc-view/index.md
-      - labor/7-tervezesi-mintak/index.md      
+      - labor/5-mvvm/index.md
+      - labor/6-tervezesi-mintak/index.md      
+      - labor/7-adatkezeles/index.md      
   - "Önálló/házi feladatok":
       - 'Útmutató': hazi/index.md
       - '1. HF - A modell és a kód kapcsolata': hazi/1-model-es-kod-kapcsolata/index.md
       - '2. HF - Nyelvi eszközök': hazi/2-nyelvi-eszkozok/index.md
       - '3. HF - Felhasználói felület kialakítása': hazi/3-felhasznaloi-felulet-kialakitasa/index.md
       - '4. HF - Többszálú alkalmazások fejlesztése': hazi/4-tobbszalu-alkalmazasok-fejlesztese/index.md
-      - '5. HF - Document-View architektúra': hazi/5-document-view-architectura/index.md
+      - '5. HF - MVVM': hazi/5-mvvm/index.md
       - 'Fejlesztőkörnyezet': hazi/fejlesztokornyezet/index.md
