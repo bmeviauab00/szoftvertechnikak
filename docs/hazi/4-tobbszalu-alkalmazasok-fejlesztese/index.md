@@ -12,10 +12,10 @@ A fentiekre építve, jelen önálló gyakorlat feladatai a feladatleírást kö
 Az önálló gyakorlat a következő ismeretek elmélyítését célozza:
 
 - Szálak indítása és leállítása, szálfüggvény
-- Thread-pool
-- WinUI-os vezérlőkhöz hozzáférés munkaszálakból
-- Kölcsönös kizárás megvalósítása (`lock` használata)
 - Jelzés és jelzésre várakozás (`ManualResetEvent`, `AutoResetEvent`)
+- Kölcsönös kizárás megvalósítása (`lock` használata)
+- WinUI felületelemekhez hozzáférés munkaszálakból
+- Delegate-ek használatának gyakorlása (`Action<T>`)
 - Felhasználói felület kialakításának gyakorlása: időzítő használata, felületelemek manipulálása code behind fájlból (ez nem kapcsolódik a szálkezeléshez)
 
 A szükséges fejlesztőkörnyezet a szokásos, [itt](../fejlesztokornyezet/index.md) található leírás.
@@ -33,7 +33,7 @@ A szükséges fejlesztőkörnyezet a szokásos, [itt](../fejlesztokornyezet/inde
 
 ## Feladat 0 – A feladat áttekintése, ismerkedés a kiinduló kerettel
 
-A feladat egy bicikliversenyt szimuláló alkalmazás elkészítése. A megvalósítás alappillére az alkalmazáslogika és a megjelenítés különválasztása: az alkalmazáslogika semmilyen szinten nem függhet a megjelenítéstől, a megjelenítés pedig függ az alkalmazáslogikától (értelemszerűen, hiszen annak aktuális állapotát jeleníti meg).
+A feladat egy bicikliversenyt szimuláló alkalmazás elkészítése. A megvalósítás alappillére **az alkalmazáslogika és a megjelenítés különválasztása**: az alkalmazáslogika semmilyen szinten nem függhet a megjelenítéstől, a megjelenítés pedig függ az alkalmazáslogikától (értelemszerűen, hiszen annak aktuális állapotát jeleníti meg).
 
 A kiinduló keret már tartalmaz némi alkalmazás és megjelenítéshez kapcsolódó logikát. Futtassuk az alkalmazást, és tekintsük át a felületét:
 
@@ -70,8 +70,8 @@ A kiinduló keretben a **megjelenítés** viszonylag jól elő van készítve, d
 
 A felület kialakítása a `MainWindow.xaml`-ben található, a következő alapelvek szerint:
 
-- Az ablak alapelrendezésének kialakítására "szokásosan" egy `Grid`-et használtunk, mely két sorból áll. Az első sorában a versenypálya a biciklikkel (`*` sormagasság), az alsó részben egy `StackPanel` a gombokkal (`Auto` sormagasság).
-- A pálya kialakítására `Rectangle` objektumokat (startvonal, depo, célegyenes), a szövegelemek elrendezésére pedig (részben elfogatott) `TextBlock` objektumokat használtunk.
+- Az ablak alapelrendezésének kialakítására "szokásosan" egy `Grid`-et használtunk, mely két sorból áll. Az első sorában található a versenypálya a biciklikkel (`*` sormagasság), az alsó részben pedig egy `StackPanel` a gombokkal (`Auto` sormagasság).
+- A pálya kialakítására `Rectangle` objektumokat (startvonal, depo, célegyenes), a szövegelemek elrendezésére pedig (részben elforgatott) `TextBlock` objektumokat használtunk.
 - Az egyes bicikliket egy vertikális `StackPanel`-en helyeztük el. A bicikliket egy-egy `TextBlock` objektummal jelenítjük meg (`Webdings` betűtípus, `b` betű). Használhattunk volna `FontIcon`-t is, a `TextBlock`-ra csak azért esett a választásunk, mert ezzel már korábban megismerkedtünk.
 - A pálya valamennyi elemét és a bicikliket tartalmazó `StackPanel`-t is a `Grid` első (0-dik) sorában helyeztük el. Ezek a definiálásuk sorrendjében rajzolódnak ki, az igazítások és margók által meghatározott helyen. A biciklik `TextBlock`-jának pozícionálására is a margót használjuk majd. Egy alternatíva megoldás lett volna, ha miden felületelemet egy `Canvas`-re helyeztünk volna el, és azon állítottuk volna be az elemek abszolút pozícióját és méretét (Left, Top, Width, Height) a margók alkalmazása helyett.
 
@@ -90,11 +90,11 @@ Jelen pillanatban hiába módosítanánk futás közben a játék állapotát: a
 
 ### A biciklik dinamikus kezelése
 
-Az első probléma: a `MainWindow.xaml`-be be van égetve a három, biciklit megjelenítő TextBlock. Így a felületünk csak olyan játék megjelenítésére lenne képes, melyben pontosan három versenyző szerepel. Készítsük elő a megjelenítést tetszőleges számú bicikli megjelenítésére.
+Az első probléma: a `MainWindow.xaml`-be be van égetve a három, biciklit megjelenítő `TextBlock`. Így a felületünk csak olyan játék megjelenítésére lenne képes, melyben pontosan három versenyző szerepel. Készítsük elő a megjelenítést tetszőleges számú bicikli kezelésére.
 Első lépésben távolítsuk el a `MainWindow.xaml`-ből a három biciklihez tartozó "beégetett" `TextBlock` definíciót (kommentezzük ki a három sort). Ezt követően, a code behind fájlban, a `PrepareRaceButton_Click` eseménykezelőben a verseny előkészítése (`game.PrepareRace()` hívás) után:
 
 1. Dinamikusan hozzunk létre minden, a `game` objektumban szereplő biciklihez egy megfelelő `TextBlock` objektumot. A létrehozott `TextBlock` tulajdonságai pontosan feleljenek meg annak, mint amit a xaml fájlban kiiktattunk (`FontFamily`, `FontSize`, `Margin`, `Text`)
-2. A létrehozott `TextBlock` objektumokat fel kell venni a `bikesPanel` nevű `StackPanel` gyerekei közé (a xaml fájlban kikommentezett `TextBlock`-ok is ennek gyerekei voltak) a bikesPanel.Children.Add hívásával.
+2. A létrehozott `TextBlock` objektumokat fel kell venni a `bikesPanel` nevű `StackPanel` gyerekei közé (a xaml fájlban kikommentezett `TextBlock`-ok is ennek gyerekei voltak) a `bikesPanel.Children.Add` hívásával.
 3. A létrehozott `TextBlock` objektumokat vegyük fel a `bikeTextBlocks` listába is. Ez azért fontos - nézzük is meg a kódban - mert az `UpdateUI` felületfrissítő függvény a biciklikhez tartozó `TextBlock`-okat a `bikeTextBlocks` listában keresi (tömbindex alapján párosítja a bicikliket és a `TextBlock`-okat).
 
 Annyiban megváltozik az alkalmazás működése (de ez szándékos), hogy induláskor nem jelennek meg biciklik, hanem csak a `Prepare Race` gombon kattintáskor.
@@ -354,244 +354,130 @@ class Bike
     private volatile bool isWinner;
 ```
 
-## Feladat 5 – Lépések naplózása (nem szálbiztos .NET osztályok, lock alkalmazása)
+## Feladat 5 – Lépések naplózása (nem szálbiztos .NET osztályok)
 
 Valósítsd meg a verseny során a biciklik által megtett valamennyi lépés naplózását a `Game` osztályban egy `List<int>` típusú változóba. A naplózott értékekkel nem kell semmit csinálni (pl. megjeleníteni sem). A megoldás során ki kell használni, hogy a `Bike` osztály `Step` művelete visszaadja a megtett lépést egy `int` változó formájában, ezt kell naplózni.
 
 !!! tip "Tipp a megoldáshoz"
     Mivel a `List<T>` osztály nem szálbiztos (nem thread safe), és több szálból is írunk bele, meg kell valósítani a hozzáférés során a kölcsönös kizárást a `lock` utasítás segítségével.
 
-    
-Megjegyzés: ha a `List<T>` helyett egy a célnak megfelelő, `System.Collections.Concurrent` névtérbeli osztály objektumába tennénk (pl. `ConcurrentQueue`), akkor nem lenne szükség a kölcsönös kizárás megvalósítására, mert ebben a névtérben szálbiztos gyűjteményosztályok találhatók.
+!!! Note "System.Collections.Concurrent névtér gyűjteményosztályai"
+    Ha a `List<T>` helyett egy a célnak megfelelő, `System.Collections.Concurrent` névtérbeli osztály objektumába tennénk (pl. `ConcurrentQueue`), akkor nem lenne szükség a kölcsönös kizárás megvalósítására, mert ebben a névtérben szálbiztos gyűjteményosztályok találhatók.
 
+## Feladat 6 – Felület frissítése minden változás esetén (felhasználói felületelemek elérése munkaszálakból)
 
+Aktuális megoldásunkban a felület frissítését periodikusan, adott időközönként valósítjuk meg egy időzítő segítségével. Alakítsd át a megoldást úgy, hogy a felület frissítése minden esetben azonnal megtörténjen, amikor a `Game` állapota megváltozik.
 
-### Feladat
+A következő fejezetben a lehetséges megoldások röviden áttekintésre kerülnek, és választunk is egyet közülük, de előbb próbáld magadtól átgondolni, milyen megoldást célszerű ehhez választani. Kulcsfontosságú, hogy csak olyan megoldás fogadható el, mely nem vezet be az alkalmazáslogikában (`Game` osztály) függőséget a felültettől. Emlékezzünk vissza, az alapelvünk az volt, hogy az alkalmazáslogika nem függhet semmilyen szinten a felület logikától!
 
-A Windows Forms alkalmazásunk főablakának bal oldalán egy gomb legyen (ez egy biciklit jelképez), a jobb oldalán egy kék színű panel (ez a célt jelképezi), továbbá legyen egy "Start" feliratú gomb a felület alján. A gomb megnyomásakor indítsunk egy új háttérszálat, mely a biciklit jelképező gombot ==**2**== és ==**8**== közötti (véletlenszerűen választott) lépésközönként átmozgatja a jobb oldalon található panelig!
+### A felület értesítésének megvalósítása
 
-### Megoldás
+Alternatívák:
 
-1. Adjunk az alkalmazás főablakához (ebben a sorrendben) egy panel és két gomb vezérlőt az alábbi tulajdonságokkal:
-    - `Panel`
-        - `Name`: `pTarget`
-        - `BackColor`: `LightSteelBlue`
-    - `Button`
-        - `Name`: `bBike1`
-        - `Text`: `b`
-        - `Font.Name`: `Webdings`
-        - `Font.Size`: `32`
-    - `Button`
-        - `Name`: `bStart`
-        - `Text`: `Start`
+1. Alkalmazhatjuk az Observer tervezési mintát. Erről a félév során később fogunk tanulni, bár érdemes megjegyezni, hogy a C# események is az Observer minta alapkoncepcióira épülnek.
+2. Kézenfekvő megoldás lehet egy C# esemény bevezetése (pl. `BikeStateChanged` néven), melyet a `Game` osztály akkor süt el, amikor egy bicikli állapota megváltozott, paraméterként átadva a bicikli objektumot. Ez egy kerek, általános megoldás lenne: bármikor, bármely osztály feliratkozhatna az eseményre. Ehhez - ha követni szeretnénk a Microsoft ajánlásokat - be kellene vezetni egy `EventArgs` leszármazott osztályt (esemény paraméter), és be kellene vezetni egy új delegate típust (vagy használhatnánk a beépített `EventHandler<TEventArgs>` generikus delegate típust).
+3. Az előző pontban említett C# esemény alapú megoldás teljesen "korrekt" lenne, ugyanakkor nekünk nem feltétlen célunk, hogy bármikor bármely osztály feliratkozhasson az állapotváltozás eseményre. Emiatt átgondolhatunk egy "célirányosabb" megoldást (és ezt is fogjuk alkalmazni), mely bár delegate-et használ, nem vezet be eseményt, és alapvetően csak egyetlen objektum számára biztosít értesítést/visszahívást (mely előkészíti a versenyt a `Game.PrepareRace` hívásával). Ezen megközelítés elemei a következők:
+  
+    - `Game` osztály, mint "értesítő":
+        - Azt a függvényt (delegate objektumot), melyet `Game` osztály a biciklik állapotának változásakor meghív (értesítés/visszahívás), a `PrepareRace` művelet paramétereként kapja meg a `Game` osztály, melyet egy delegate tagváltozóban el is tárol.
+        - Ennek a paraméternek és tagváltozónak a típusa legyen `Action<Bike>` (az `Action` és `Action<T>` típusokról már korábban tanultunk).
+        - Amikor megváltozik egy bicikli állapota (helye vagy "nyertes" állapota a szálfüggvényben), akkor a `Game` osztály hívja meg ezt a tagváltozóban tárolt függvényt (de csak ha nem null, vagyis ez a függvény már be lett állítva), paraméterként átadva neki a megváltozott bicikli objektumot.
+    - `MainWindow`, mint "előfizető":
+        - A `MainWindow` osztályban be kell vezetni egy `UpdateBikeUI(Bike bike)` függvényt, és a `Game.PrepareRace` hívásakor ezt kell átadni paraméterként (delegate objektumként). Ebben az `UpdateBikeUI` függvényben kell gondoskodni arról, hogy a paraméterként kapott bicikli objektumhoz tartozó felületelem (`TextBlock`) frissüljön.
+        - Az előző pontban válik egyértelművé, miért `Action<Bike>` típusú delegate-et használtunk, és miért nem pl. `Action`-t: a `Game` a értesítés/visszahívás során így meg tuja adja, mely bicikli változott, és a visszahívott/beregisztrált függvény (esetünkben `MainWindow.UpdateBikeUI`) így megkapja ezt paraméterben, és így tudja a megjelenését frissíteni.
+    - Az időzítő indítását (`MainWindow` konstruktorban `timer.Start()` hívás) kommentezd ki (hiszen a felület frissítését már a fenti `Action<Bike>`) alapú értesítés/visszahívás segítségével oldjuk meg.
 
-2. Rendezzük be a vezérlőket a következőképpen:
-
-    ![Kiinduló UI](images/f1.png)
-
-3. A bicikli mozgatására definiáljuk az alábbi segédfüggvényeket:
-
-    ```csharp
-    public void BikeThreadFunction(object param)
-    {
-        var bike = (Button)param;
-        while (bike.Left < pTarget.Left)
-        {
-            MoveBike(bike);
-            Thread.Sleep(100);
-        }
-    }
-    
-    Random random = new Random();
-
-    public void MoveBike(Button bike)
-    { 
-        if (InvokeRequired)
-        {
-            Invoke(MoveBike, bike);
-        }
-        else
-        {
-            bike.Left += random.Next(2, 8);
-        }
-    }
-    ```
-
-    !!! tip "Emlékeztető"
-        **Egy Windows Forms vezérlőhöz/űrlaphoz csak abból a szálból lehet hozzáférni, mely a vezérlőt létrehozta, ugyanis ezek nem szálbiztosak, és kivétel dobásával jelzik, ha mégis „rosszul” próbáljuk őket használni.** A probléma elkerülésére az **`InvokeRequired`/`Invoke`** használata nyújt megoldást.
-
-4. Iratkozzunk fel a Start gomb eseménykezelőjére (duplaklikk a Start gombra a designerben), majd teszteljük az alkalmazást.
-
-    ```csharp
-    private void bStart_Click(object sender, EventArgs e)
-    {
-        StartBike(bBike1);
-    }
-
-    private void StartBike(Button bBike)
-    {
-        var t = new Thread(BikeThreadFunction)
-        {
-            IsBackground = true, // Ne blokkolja a szál a processz megszűnését
-        };
-
-        bBike.Tag = t;
-        t.Start(bBike);
-    }
-    ```
-
-    
-
-    A fenti felület tulajdonképpeni célja, hogy szálak futását és szinkronizációját (Windows Forms űrlapok/vezérlők vonatkozásában) demonstrálja. A későbbi, immár önállóan megvalósítandó feladatokban további szálakat (és bicikliket) fogunk létrehozni, és a futásukat összehangolni.
-
-## Feladat 2 – Rajtvonal
-
-### Feladat
-
-Valósítsuk meg a rajtvonalat. Egészítsük ki az alkalmazásunkat két további biciklivel, melyek mozgatásáért két további szál fog felelni, illetve egy új panellal (*start panel*) és egy gombbal (*Step1*) a következő elrendezésben:
-
-![Rajtvonal](images/rajtvonal.png)
-
-A *Start* gomb megnyomását követően mindhárom bicikli induljon el véletlenszerű tempóban. Amikor egy bicikli a start panelre érkezik, az őt vezérlő szál blokkolva várakozzon. Amikor a *Step1* gombot megnyomjuk, a biciklik folytassák útjukat a célig.
-Ha a felhasználó azelőtt nyomja meg a Step1 gombot, hogy a biciklik elérnék a startvonalat, akkor a bicikliknek már nem kell megállni a startvonalon (de az is teljesen jó megoldás, ha ilyen esetben a Step1 lenyomását még figyelmen kívül hagyja az alkalmazás).
-
-### Megoldás
-
-A feladat megoldásához a kapcsolódó gyakorlatban már alkalmazott, illetve az itt korábban megismert elemeket kell alkalmazni és kombinálni. A megoldás lépéseit csak nagy vonalakban adjuk meg, némi kiegészítő segítséggel:
-
-- Mivel a start-panelt a biciklinél később helyeztük a `Form`-ra, alapesetben kitakarja a fölé menő biciklit. Ezen úgy segíthetünk, hogy a tervező nézetben a panelon jobb egérgombbal kattintva kiadjuk a *Send to back* parancsot.
-- Az egyszerűbb átláthatóság érdekében fontos, hogy az újabb vezérlőknek is mind beszédes neveket adjunk (pl.: `bBike2`, `bBike3`, `bStep1`)
-- Mivel a várakozást követően a versenyzőknek egyszerre kell indulniuk, a várakozás és indítás megvalósítására egy `ManualResetEvent` objektumot célszerű használni.
-- A feladat megoldása során gombonként egy szálfüggvényt kell használni, vagyis a *Step1* gomb megnyomásakor ne új szálakat indítsunk minden gombhoz, hanem meg kell oldani, hogy meglévő szálak várakozzanak, majd a gombnyomást követően folytassák futásukat.
-
-## Feladat 3 – Pihenő
-
-### Feladat
-
-Egészítsük ki az alkalmazásunkat egy további panellal (depo panel), mely egy pihenőt jelképez. A pihenőhelyre beérkezve a biciklik megállnak, majd egyesével továbbindulnak. A továbbindításért egy új gomb (*Step2*) felel, melynek minden gombnyomására egy-egy bicikli elindul. A pihenő alatt a bicikliket mozgató szálak blokkolva várakozzanak.
-
-![Pihenő](images/piheno.png)
-
-### Megoldás
-
-A feladat megoldása analóg az előzőével, ám ezúttal `AutoResetEvent`-et kell használni.
-
-!!! example "BEADANDÓ"
-    Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
-
-    Készíts egy képernyőmentést `Feladat3.png` néven az alábbiak szerint:
-
-    - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
-    - a „háttérben” a Visual Studio legyen, a `MainForm.cs` megnyitva,
-    - a VS *View/Full Screen* menüjével kapcsolj ideiglenesen *Full Screen* nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
-    - görgess le a forrásfájlod legaljára, használj kb. normál zoom vagy kicsit kisebb értéket, fontos, hogy ami a képernyődön lesz, legyen jól olvasható (az nem baj, ha nem fér ki minden), az előtérben pedig az alkalmazásod ablaka.
-
-## Feladat 4 – Kilométeróra
-
-### Feladat
-
-Egészítsük ki a `Form`-ot egy `long` típusú mezővel. Minden egyes bicikli minden megtett lépése után növeljük meg ezt a számlálót a lépés során megtett pixelek számával. A cél-panel alatt legyen egy gomb, melyet megnyomva a gomb szövege a számláló aktuális értékére változzon. Ügyeljünk a kölcsönös kizárásra, melyet `lock` utasítás segítségével valósítsunk meg.
-
-### Megoldás
-
-A megoldás menete:
-
-- Készíts egy új függvényt, amely a megtett utat számláló változót megnöveli a paraméterben kapott pixel számmal (`void IncreasePixels(long step)`). Ügyelj arra, hogy ezt a függvényt bárhonnan, bármely szálból lehessen hívni.
-- Készíts egy másik függvényt, amellyel biztonságosan kiolvasható az aktuális számláló értéke, bármilyen szálból is hívják (`long GetPixels()`).
-- A biciklik mozgatásakor hívd meg a lépést hozzáadó `IncreasePixels` függvényt.
-- A célpanel alatt levő gomb kattintásakor kérdezd le az aktuális számláló értéket a `GetPixels` függvénnyel, és írd ki a gombra az értéket.
-
-!!! warning "Lényeges"
-    A megoldás csak akkor elfogadható, ha a `lock` utasítással a kölcsönös kizárás megvalósításra kerül (`IncreasePixels` és `GetPixels` függvények).
-    Magyarázat. Ha csak zártan a feladatot nézzük, nem is lenne a lock-ra szükség, hiszen az `Invoke` miatt a számlálót módosító hívások mind a fő szálra kerülnek. De nem véletlen köti ki feladat, hogy a `GetPixel`-nek bármilyen szálról biztonságosan hívhatónak kell lennie. Tehát, ha valaki indítana az appban egy háttérszálat, mely másodpercenként naplózná a számláló értékét, annak is jól kellene működnie.
-
-!!! example "BEADANDÓ"
-    Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
-
-    Készíts egy képernyőmentést `Feladat4.png` néven az alábbiak szerint:
-
-    - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
-    - a „háttérben” a Visual Studio legyen, a `MainForm.cs` megnyitva,
-    - a VS *View/Full Screen* menüjével kapcsolj ideiglenesen *Full Screen* nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
-    - görgess le a forrásfájlod legaljára, használj kb. normál zoom vagy kicsit kisebb értéket, fontos, hogy ami a képernyődön lesz, legyen jól olvasható (az nem baj, ha nem fér ki minden), az előtérben pedig az alkalmazásod ablaka.
-
-## Feladat 5 – Újrakezdés
-
-### Feladat
-
-Egészítsük ki az alkalmazásunkat úgy, hogy bármelyik biciklit újra tudjuk indítani. Az újraindításhoz elég a biciklit jelképező gombra kattintani. Ilyenkor a bicikli visszakerül a kiinduló pozícióba, és újrakezdi a futamot (az újrakezdéshez nem kell a Start gombot megnyomni, a Start gombot célszerű is az első kattintás során letiltani, hogy csak egyszer lehessen kattintani rajta). Az új futam során a bicikli *Step2*-nél ismét meg kell álljon (a *Step1* kapcsán szabadon lehet választani).
-
-### Megoldás
-
-A következőkben megadjuk a feladat megoldásának néhány fontos elemét.
-
-A feladat megoldásához meg kell tudnunk szakítani az aktuálisan futó szálat, legalábbis `WaitSleepJoin` állapotban (`Thread.Interrupt` művelettel). Ehhez minden egyes gombhoz tárolnunk kell az aktuálisan őt vezérlő szál objektumot. Ezt (hasonlóan a [3. gyakorlat 3. feladatához](../../labor/3-felhasznaloi-felulet/index.md#miniexplorer-logika)) megtehetjük a vezérlő `Tag` tulajdonságában. A `Tag` tulajdonság beállítására vagy a szál létrehozása után a `StartBike` műveletben, vagy a szálfüggvényben (az aktuális szál `Thread.CurrentThread`-del való lekérdezésével) kerítsünk sort. Példa az utóbbira:
-
-```csharp hl_lines="4"
-public void BikeThreadFunction(object param)
-{
-    Button bike = (Button)param;
-    bike.Tag = Thread.CurrentThread;
-    // ...
-}
-```
-
-Ezt az információt a későbbiekben kiolvashatjuk a gombnyomás eseménykezelőjében:
+Valósítsd meg a fenti 3. pontban vázolt értesítést! A `MainWindow.UpdateBikeUI` implementációját megadjuk segítségképpen:
 
 ```csharp
-private void bike_Click(object sender, EventArgs e)
+private void UpdateBikeUI(Bike bike)
 {
-    Button bike = (Button)sender;
-    Thread thread = (Thread)bike.Tag;
-    
-    // Ha még nem indítottuk ezt a szálat, ez null.
-    if (thread == null)
+    // Előfordulhat, hogy az UpdateBikeUI olyan korán hívódik, hogy a
+    // bikeTextBlocks még nincs feltöltve, ilyenkor még nem tudjuk frissíteni
+    // a felületet, térjünk vissza.
+    if (bikeTextBlocks.Count != game.Bikes.Count)
         return;
 
-    // Megszakítjuk a szál várakozását,
-    // ez az adott szálban egy ThreadInterruptedException-t fog kiváltani
-    // A függvény leírásáról részleteket az előadás anyagaiban találsz
-    thread.Interrupt();
+    int marginAdjustmentForWheel = 8;
 
-    // Megvárjuk, amíg a szál leáll
-    thread.Join();
+    // Biciklihez tartozó TextBlock kikeresése (azonos tömbindex alapján).
+    var tbBike = bikeTextBlocks[game.Bikes.IndexOf(bike)];
     
-    // ...
-}
+    // Akkor még ne állítsuk a bicikli pozícióját, amikor a mérete a layout során nem
+    // került meghatározásra (különben ugrálna a bicikli, hiszen alább, a margó beállításakor
+    // "érvénytelen" 0 szélességértékkel számolnánk.
+    if (tbBike.ActualWidth == 0)
+        return;
+
+    // Az ablak 0,0 pontja az origó, ehhez képest nézzük a start/depó/finish vonalat.
+    // A gomb jobb szélén van a kerék, de ezt a gomb bal oldalára kell mozgatni: ActualWidth-et ki kell vonni.
+    tbBike.Margin = new Thickness(bike.Position - tbBike.ActualWidth + marginAdjustmentForWheel, 0, 0, 0);
+
+    if (bike.IsWinner)
+        tbBike.Text = "%"; // display a cup
+
 ```
 
-Érdemes észrevenni, hogy a gomb eseménykezelőjében a `sender` paraméterből kiolvasható, hogy konkrétan melyik gombtól származik az esemény. Ezt kihasználva nem szükséges mindhárom gombhoz külön eseménykezelő függvényt írnunk, hanem használhatja mindhárom gomb ugyanazt a függvényt. Egy eseményhez a következőképpen tudunk Visual Studioban egy már létező függvényt hozzárendelni: a *Properties* ablak események oldalán ne duplán kattintsunk az eseményen, hanem kattintsunk egyszer az esemény során, majd nyissuk le az esemény sorában a jobb oldali oszlopban megjelenő legördülő mezőt, és válasszuk ki a listából a megfelelő függvényt.
+!!! danger "Fontos"
+    A fenti lépések/elvek megfelelő követése esetén is fennáll, hogy megoldás még nem működőképes, hanem az alábbi kivétel dobódik az `UpdateBikeUI` függvényben a biciklihez tartozó `TextBlock` hozzáférés során: `System.Runtime.InteropServices.COMException: 'The application called an interface that was marshalled for a different thread. (0x8001010E (RPC_E_WRONG_THREAD))`
 
-A `thread.Interrupt()` hívás a `BikeThreadFunction` függvényen belül egy `ThreadInterruptedException` kivételt fog kiváltani (amikor a szál `WaitSleepJoin` állapotba kerül, vagyis a `Sleep` és `WaitOne` művelethívások során). Fontos, hogy a kivételre fel legyünk készülve, vagyis a függvény teljes törzse `try-catch` blokkal számítson az ilyen típusú kivételre. Például így:
+Mi ennek a a hibának az oka? Mielőtt az alábbi emlékeztetőt kinyitod, próbálj magadtól rájönni az előadáson/laboron tanultak alapján.
 
-```csharp
-try
-{
-    // Teljes függvénytörzs
-    // ...
-}
-catch (ThreadInterruptedException)
-{ 
-    // Lenyeljük, de szigorúan kizárólag a ThreadInterruptedException-t.
-    // Ha nem kezelnénk az Interrupt hatására a szállfüggvényünk
-    // és az alkalmazásunk is csúnyán "elszállna".
-}
-```
+??? tip "Emlékeztető"
+    **Egy WinUI felületelemhez csak abból a szálból lehet hozzáférni, mely az adott felületelemet létrehozta, ugyanis ezek nem szálbiztosak, és kivétel dobásával jelzik, ha mégis „rosszul” próbáljuk őket használni.**
 
-A feladat további megoldása önállóan elvégezhető a korábbi ismeretek alapján.
+A megoldást a következő részfeladatban dolgozzuk ki.
+
+### A DispatecherQueue alkalmazása
+
+Esetünkben a konkrét problémát az okozza, hogy amikor a `Game` állapota megváltozik, akkor `Game` osztályban a változásértesítő delegate hívása a biciklikhez tartozó munkaszálakon történik, így a beregisztrált `MainWindow.UpdateBikeUI` kezelőfüggvény is ezekről a szálakról hívódik. Az `UpdateBikeUI` függvényben hozzáférük a felületelemekhez (biciklihez tartozó `TextBlock`-), de ezeket a felületelemeket a főszálból hoztuk létre: így csak a fő szálból szabad hozzájuk férni.
+
+A problémára a `DispatcherQueue` alkalmazása jelent megoldást, mellyel a munkaszálakból a hívást "át tudjuk játszani" a főszálba, melyből már hozzá tudunk férni a vezérlőkhöz. A `DispacherQueue` alkalmazása előadáson és a kapcsolódó laboron is részletesen ismertetésre került.
+
+Feladat: módosítsd úgy a `MainWindow.UpdateBikeUI` függvényt, hogy a `DispacherQueue` alkalmazásával a megfelelő szálból történjen a felületelemekhez történő hozzáférés (és így a mostani kivételt el tudd kerülni).
+
+
+!!! example "BEADANDÓ"
+    Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
+
+    Készíts egy képernyőmentést `Feladat6.png` néven az alábbiak szerint:
+
+    - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
+    - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
+    - a VS *View/Full Screen* menüjével kapcsolj ideiglenesen *Full Screen* nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
+    - VS-ben zoomolj úgy, hogy a `MainWindow` osztály `UpdateBikeUI` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
+
 
 ## Opcionális feladat – 2 IMSc pontért
 
 ### Feladat
 
-Tegyük lehetővé a biciklik megállítását. Tegyünk ki egy új gombot a *Start* gomb alá *Stop* felirattal. A *Stop* gombra kattintás állítsa meg az összes biciklit, és állítsa le a bicikliket futtató szálakat is.
+Tedd lehetővé a biciklik gombkattintásra történő megállítását:
+
+- Helyezz el egy gombot jobbra a többitől, *Stop Race* felirattal.
+- A *Stop Race* gombra kattintás állítsa meg az összes biciklit, és állítsa le a bicikliket futtató szálakat is. Ehhez vezess be egy `StopRace` publikus függvényt a `Game` osztályba.
+- A verseny akár az elindítása előtt is leállítható legyen.
+- A `StopRace` művelet szálak leállítása után várja meg, míg valamennyi szál valóban be is fejezi a futását.
+- A verseny leállítása után (*Stop Race* kattintás) semelyik gombra ne lehessen kattintani (minden gomb legyen letiltva, IsEnabled tulajdonságuka állítsuk hamisba).
 
 ### Megoldás
 
 A következőkben megadjuk a feladat megoldásának néhány fontos elemét:
 
-- Tegyél fel egy *Stop* gombot a felületre, és készítsd elő a kattintást kezelő függvényt.
-- A megállításhoz szükség lesz két jelzésre a bicikliket futtató szál felé. Ez egyik jelzés egy `bool` típusú változó, amelyet a bicikliket futtató szál ciklusa figyel. Vedd fel ezt `stopBikes` néven, és módosítsd a szálfüggvényt, hogy ha a `bool` változó jelez, fejezze be a futást.
-- A másik jelzés abban az esetben kell, ha a szálak várakoznak. Ilyenkor nem tudják a `bool` változót ellenőrizni. Vegyél fel egy új `ManualResetEvent` típusú változót, amely a leállítás eseményt fogja jelezni. Ezt az eseményt a `bool` változóval együtt a *Stop* gombra való kattintás eseménykezelőjében kell jelzettbe állítani.
-- A bicikliket mozgató szálfüggvényben kommentezd ki (ne töröld!) az eddigi várakozást megvalósító kódrészeket, és készíts egy új megoldást az előbb felvett leállítást jelző `ManualResetEvent` segítségével. A várakozásokra továbbra is szükség lesz, azonban várakozni nem csak a startvonalra, illetve a pihenőre szükséges, hanem a leállítást is észre kell venni.
-- Ha leállítás történt, a szál futását be kell fejezni. Ha a leállást jelző esemény megtörtént, térjen vissza a szál függvénye egy `return` utasítással.
+- Tegyél fel egy *Stop Race* gombot a felületre, készíts hozzá kezelőfüggvényt, és ebből meg kell hívni az újonnan bevezetendő `Game.StopRace` függvényt.
+- A megállításhoz szükség lesz egy jelzésre a bicikliket futtató szál felé. Ez legyen egy `bool` típusú változó, amelyet a bicikliket futtató szál ciklusa figyel. Vedd fel ezt `raceEnded` néven, és módosítsd a szálfüggvényt, hogy ha ennek értéke igaz lesz, a szál fejezze be a futását (térjen vissza).
+- Az előbb bevezetett bool változó önmagában nem lesz elég. Hiszen, amikor a bicikli a startvonalnál vagy a depóban vár, akkor a szála blokkolt állapotban van (esemény jelzésre vár), ekkor nem tudja a `raceEnded`bool változót vizsgálni. Emiatt be kell vezetni fel egy új `ManualResetEvent` típusú változót, amely a leállítás eseményt fogja jelezni (és várakozni is lehet rá).
+- Ezt az eseményt a `bool` változóval együtt a *Stop Race* gombra való kattintás során kell jelzettbe állítani (a `Game.StopRace`-ben).
+- A bicikliket mozgató szálfüggvényben kommentezd ki (ne töröld!) az eddigi várakozást megvalósító kódrészeket, és készíts egy új megoldást az előbb felvett leállítást jelző `ManualResetEvent` segítségével. A várakozásokra továbbra is szükség lesz, azonban a várakozó állapotból akkor is ki kell lépni, ha a leállítást jelző `ManualResetEvent` esemény lesz jelzett.
+- Ha leállítás történt, a szál futását be kell fejezni (a szálfüggvényből ki kell lépni, pl. egy `return` utasítással).
+- A `Game.StopRace` műveletében a szálaknak történő jelzés után meg kell várni, míg a szálak valóban ki is lépnek. Ehhez az egyes biciklikhez tartozó szál objektumokra kel sorban `Join()`-t hívni. Ahhoz, hogy ez megtehető legyen, a szálak indításakor a szál objektumokat el kell tárolni egy tagváltozóban (pl. egy `List<Thread>` -ben)
+
+Megjegyzés: szálak kiléptetésére alternatív megoldás lett volna a bool és `ManualResetEvent` bevezetése helyett a szálakra `Interrupt` művelet hívása, és a szálfüggvényekben az ennek hatására kiváltódó `ThreadInterruptedException` elkapása. Ez a témakör előadáson került ismertetésre.
+
+!!! example "BEADANDÓ"
+    Készíts egy képernyőmentést `Feladat_IMSc.png` néven az alábbiak szerint:
+
+    - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
+    - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
+    - a VS *View/Full Screen* menüjével kapcsolj ideiglenesen *Full Screen* nézetre, hogy a zavaró panelek ne vegyenek el semmi helyet,
+    - VS-ben zoomolj úgy, hogy a `Game` osztály szálfüggvénye függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
