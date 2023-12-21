@@ -14,6 +14,16 @@ A labor elvégzéséhez szükséges eszközök:
 * Visual Studio 2022 (TODO)
 * WindowsAppSDK 1.4 (TODO)
 
+## Megoldás
+??? "A kész megoldás letöltése"
+    :exclamation: Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, tilos (és értelmetlen) a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.
+
+    A megoldás GitHubon érhető el [itt](https://github.com/bmeviauab00/lab-XAML-megoldas). A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre:
+
+    ```git clone https://github.com/bmeviauab00/lab-XAML-megoldas```
+
+    Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ [itt](../../hazi/git-github-github-classroom/index.md#git-telepitese).
+
 ## Áttekintés
 
 Az első feladatban kialakítjuk a környezetet, amelyben a továbbiakban a XAML nyelv és a WinUI keretrendszer működését vizsgáljuk.
