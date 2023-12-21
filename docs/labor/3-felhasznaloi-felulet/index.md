@@ -310,7 +310,7 @@ Az `x:Name` a XAML parsernek szól, és ezen a néven fog létrehozni egy tagvá
 !!! tip "Elnevezett vezérlők"
     Ne adjunk nevet azoknak a vezérlőknek, melyekre nem akarunk hivatkozni. (Szoktassuk magunkat arra, hogy csak arra hivatkozunk közvetlenül, amire nagyon muszáj. Ebben az adatkötés is segít majd.)
 
-    Kivétel: Ha nagyon bonyolult a vezérlőhierarchiánk, segíthetnek a nevek a kód átláthatóbbá tételében, mivel a _Document Outline_ ablakban megjelennek, illetve a generált eseménykezelő-nevek is ehhez igazodnak.
+    Kivétel: Ha nagyon bonyolult a vezérlőhierarchiánk, segíthetnek a nevek a kód átláthatóbbá tételében, mivel a _Live Visual Tree_ ablakban megjelennek, illetve a generált eseménykezelő-nevek is ehhez igazodnak.
 
 Kezeljük le a gomb `Click` eseményét, majd próbáljuk ki a kódot.
 
