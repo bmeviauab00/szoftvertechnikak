@@ -80,14 +80,14 @@ Egy egyszerű, bemelegítő feladattal kezdünk. A következő példában egy `P
 
     Ezt **implicitly typed local variables**-nek, magyarul **implicit típusú lokális változó**-nak nevezzük. Ilyenkor a fordító a kontextusból, az egyenlőségjel jobb oldalából megpróbálja kitalálni a változó típusát, fenti esetben ez egy `Person` lesz. Fontos, hogy ettől a nyelv még statikusan tipusos marad (tehát **nem** úgy működik mint a JavaScript-es `var` kulcsszó), mert a `p` változó típusa a későbbiekben nem változhat meg, ez csak egy egyszerű szintaktikai édesítőszer annek érdekében, hogy tömörebben tudjunk lokális változókat definiálni (ne kelljen a típust "duplán", az `=` bal és jobb oldalán is megadni).
 
-    !!! tip "Target-typed `new` expressions"
+    !!! note "Target-typed `new` expressions"
         Egy másik megközelítés lehet a a C# 9-ben megjelent Target-typed `new` expressions, ahol a new operátor esetén hagyható el a típus, ha az a fordító által kitalálható a kontextusból (pl.: értékadás bal oldala, paraméter típusa stb.). A fenti `Person` konstruktorunk a következőképpen nézne ki:
 
         ```csharp
         Person p = new();
         ```
 
-        Ennek a megközelítésnek az előnye a `var`-ral szemben, hogy tagváltozók esetében is alkalmazható. Fontos, hogy ezt ne keverjük össze a C# anoním típusaival (`new {}`, kerekzárójel nélkül), mely témakört ez a tantárgy nem fog érinteni.
+        Ennek a megközelítésnek az előnye a `var`-ral szemben, hogy tagváltozók esetében is alkalmazható.
 
 ## 1. Feladat – Tulajdonság (property)
 
@@ -528,12 +528,13 @@ Vagyis bemenetként egy olyan típusú változót vár, mint a listaelemek típu
     Minden `Add` metódussal rendelkező, az `IEnumerable` interfészt implementáló osztályra (tipikusan kollekciók) a collection initializer szintaxis az alábbi módon:
 
     ```csharp
-    var list = new List<int>()
-    {
-        1,
-        2,
-        3,
-    };
+    var list = new List<int>() { 1, 2, 3 };
+    ```
+
+    C# 12-től kezdve még egyszerűbb szintaxis (ún. *collection expression*) is használható egy gyűjtemény inicializálására, ha változó típusára a fordító ki tudja következtetni, hogy gyűjetményről van szó. Pl.:
+    
+    ```csharp
+    List<int> list = [1, 2, 3];
     ```
 
 ## 6. Feladat – Lambda kifejezések
