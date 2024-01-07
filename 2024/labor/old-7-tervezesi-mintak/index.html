@@ -961,7 +961,7 @@ Ugyanakkor ne essünk át a ló túloldalára: csak akkor érdemes egy adott ter
 <li>Nyissuk meg a <em>DesignPatternApp.sln</em> solutiont Visual Studio-ban.</li>
 </ul>
 <p>Futtassuk az alkalmazást, az alábbihoz hasonló felületet látunk (amennyiben a <em>File/New</em> menüelemet kiválasztjuk):</p>
-<p><a class="glightbox" href="images/app-initial-ui.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Kiinduló felület" src="images/app-initial-ui.png" /></a></p>
+<p><a class="glightbox" href="images/app-initial-ui.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Kiinduló felület" src="images/app-initial-ui.png" /></a></p>
 <p>Ismerkedjünk meg működésének néhány aspektusával:</p>
 <ul>
 <li>A legtöbb funkció nincs még megvalósítva.</li>
@@ -1112,7 +1112,7 @@ Mindkét minta elméleti hátterét a kapcsolódó előadás ismerteti részlete
 <h3 id="a-command-processor-minta-koncepcioja">A Command Processor minta koncepciója<a class="headerlink" href="#a-command-processor-minta-koncepcioja" title="Permanent link">&para;</a></h3>
 <p><strong>A minta alapelve az, hogy minden felhasználói kérést egy külön parancs (Command) objektumként zár egységbe.</strong> Ezen túlmenően a végrehajtott parancs objektumok eltárolásra kerülnek, ami <strong>lehetővé teszi a korábban végrehajtott parancsok visszavonását</strong>.
 A következőkben áttekintjük a minta működését. Első lépésben még nem valósítjuk meg, csak az alapelveire koncentrálunk (bár hogy könnyebben megérthető legyen, a mintát az alkalmazásunkra vetítve mutatjuk be). Következzen egy ábra, majd a hozzá kapcsolódó gondolatok. </p>
-<p><a class="glightbox" href="images/command-processor-class-diagram.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Kiinduló felület" src="images/command-processor-class-diagram.png" /></a></p>
+<p><a class="glightbox" href="images/command-processor-class-diagram.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Kiinduló felület" src="images/command-processor-class-diagram.png" /></a></p>
 <ul>
 <li>Bevezetünk egy <code>Command</code> ősosztályt vagy interfészt, melynek van egy <code>Execute</code> és egy <code>UnExecute</code> absztrakt művelete (vagy nevezhetjük <code>Do</code> és <code>Undo</code>-nak is őket, ha úgy tartja kedvünk).</li>
 <li>Az egyes felhasználói parancsokhoz bevezetünk egy Command leszármazott osztályt.<ul>
@@ -1269,7 +1269,7 @@ Ehhez hasonlóan alakítsuk át a <code>NewRect</code> mellett található <code
 <p>Az alkalmazások többségénél azonban számos olyan parancs felbukkanhat, mely a dokumentum állapotát jelentős mértékben befolyásolja. Ilyenkor a parancsnak a végrehajtás előtt a dokumentum állapotának jelentős részéhez, vagy akár a teljes állapotához is hozzá kell férnie, hogy eltudja azt menteni az UnExecute megvalósításához. Ez úgy lehetséges, ha a dokumentum teljes állapotát publikussá tesszük. Ez viszont nem szerencsés, mert ellentmond az egységbezárás elvének. Nem szeretnénk a teljes állapotot – ráadásul módosításra vonatkozóan is – hozzáférhetővé tenni a külvilág számára, csak a visszavonás kedvéért.  Erre a problémára nyújt megoldást a <strong>Memento</strong> tervezési minta.</p>
 <p>Alapelve egy mondatban: <strong>dokumentumunk állapotát egy ún. Memento objektumba csomagoljuk be, hogy az később a visszavonás során visszaállítható legyen</strong>.</p>
 <p>Következzen egy ábra, majd a hozzá kapcsolódó gondolatok.</p>
-<p><a class="glightbox" href="images/memento-class-diagram.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Kiinduló felület" src="images/memento-class-diagram.png" /></a></p>
+<p><a class="glightbox" href="images/memento-class-diagram.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Kiinduló felület" src="images/memento-class-diagram.png" /></a></p>
 <p>Alapelve részletesebben:
 - Az <code>Originator</code> azon osztály, melynek az állapotához hozzá szeretnénk férni. Esetünkben ez a <code>DrawingDocument</code> osztály tölti be az <code>Originator</code> szerepét. Az állapotot összefogóan az ábra a <code>state:State</code> taggal jelöli. Esetünkben ez a <code>shapes</code> lista, valamint a <code>selectedShape</code> tag lesz.  A következő lépésektől a mintát az alkalmazásunkra vetítjük.
 - A dokumentumunk állapotát (esetünkben ez a <code>shapes</code> lista, valamit a <code>selectedShape</code> tag) <strong>NEM</strong> tesszük publikussá.

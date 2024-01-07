@@ -1196,7 +1196,7 @@ A képernyőképeket a megoldás részeként kell beadni, a repository-d gyöké
 <ol>
 <li>Töltsd le innen és telepítsd a WinAppDriver alkalmazást: <a href="https://github.com/microsoft/WinAppDriver/releases/download/v1.2.1/WindowsApplicationDriver_1.2.1.msi">https://github.com/microsoft/WinAppDriver/releases/download/v1.2.1/WindowsApplicationDriver_1.2.1.msi</a></li>
 <li>A WinAppDriver csak akkor tud futni, ha a gépeden engedélyezed a Developer mode (magyarul Fejlesztői mód)-ot. Angol Windows-on a Start keresőben be kell gépelni a „developer settings” szöveget és így talál oda, talán magyar Windows alatt is megtalálja ugyanígy (ha nem, akkor: Gépház -&gt; Frissítés és Biztonság -&gt; Fejlesztőknek -&gt; Fejlesztői mód).
-   <a class="glightbox" href="images/developer-mode.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Rename" src="images/developer-mode.png" /></a>
+   <a class="glightbox" href="images/developer-mode.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Rename" src="images/developer-mode.png" /></a>
 A beállítástól nem kell tartani, a legtöbb fejlesztői gépen ezt egyébként is be kell/szokás kapcsolni a gyakorlatban.</li>
 <li>Hozzd létre a c:\Sznikak mappát (ékezet nélküli!).</li>
 <li>Le kell tölteni a <a href="https://github.com/bmeviauab00/winforms-hf-uitest-binaries">https://github.com/bmeviauab00/winforms-hf-uitest-binaries</a> repó tartalmát a fenti mappába. Két lehetőség pl.:<ul>
@@ -1209,7 +1209,7 @@ A GitHub felületén fenti link megnyitása, majd a zöld „Code” gomb lenyit
 c:\Sznikak\winforms-hf-uitest-binaries
 mappába úgy, hogy ebben a mappában közvetlenül legyen a „TestFiles” almappa, az appium-dotnet-driver.dll és a több dll fájl is.
 A Windows alapesetben blokkolja az ebben a mappában található dll-eket, ezt fel kell oldani erre a két fájlra: WinFormExpl-Test.dll és Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll. Ehhez nyisd meg a két fájlra egyesével a fájl tulajdonságait (pl. Windows Fájl Intézőben), és az oldal alján pipáld be az Unblock (magyar Windows-on ennek értelemszerű fordítása) jelölőnégyzetet majd OK:</p>
-<p><a class="glightbox" href="images/unblock-file.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Unblock file" src="images/unblock-file.png" /></a></p>
+<p><a class="glightbox" href="images/unblock-file.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Unblock file" src="images/unblock-file.png" /></a></p>
 </li>
 </ul>
 </li>
@@ -1217,7 +1217,7 @@ A Windows alapesetben blokkolja az ebben a mappában található dll-eket, ezt f
 <h3 id="futtatas-amikor-tesztelni-szeretned-a-megoldasod">Futtatás (amikor tesztelni szeretnéd a megoldásod)<a class="headerlink" href="#futtatas-amikor-tesztelni-szeretned-a-megoldasod" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Indítsd el a WinAppDrivert, alapértelmezett telepítés esetén itt található: c:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe. Ez egy parancssor ablakban indul, és futnia is kell végig, ne zárd be amíg tesztelsz:
-   <a class="glightbox" href="images/winappdriver.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Unblock file" src="images/winappdriver.png" /></a></li>
+   <a class="glightbox" href="images/winappdriver.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Unblock file" src="images/winappdriver.png" /></a></li>
 <li>Győződj meg, hogy a solution-öd a legfrissebb formában le van fordítva (pl. VS alatt build) és minden forrásfájlod el van mentve (ctrl+shift+S).</li>
 <li>Győződj meg, hogy nem fut az alkalmazásod egyetlen példányban sem.</li>
 <li>Indítsd egy új parancssort (erre ne a fenti WinAppDriveres parancssori ablakot használd, hanem egy másikat indíts), navigálj a megoldásod gyökérmappájába, és az itt található <code>RunBaseTest.bat</code>-tal tudod futtatni az alap (nem IMSc) teszteket, a <code>RunIMScTest.bat</code>-tal pedig az IMSc teszteket.</li>
@@ -1242,9 +1242,9 @@ A Windows alapesetben blokkolja az ebben a mappában található dll-eket, ezt f
 <details>
 <summary>Ha nem nyílik meg az űrlap szerkesztésre</summary>
 <p>A Visual Studio 2022 a Git-ből frissen kiklónozott forrás esetén (amikor még nem létezik egy .csproj.user kiterjesztésű fájl) az űrlapokat  - valószínűsíthetően egy bug miatt – időnként nem hajlandó megnyitni szerkesztő módban (szerencsére ez nagyon ritka). A solution megnyitása után ez esetben ezt látjuk:</p>
-<p><a class="glightbox" href="images/vs-designer-issue-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="VS designer probléma" src="images/vs-designer-issue-1.png" /></a></p>
+<p><a class="glightbox" href="images/vs-designer-issue-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="VS designer probléma" src="images/vs-designer-issue-1.png" /></a></p>
 <p>A probléma az, hogy a <code>Form1.cs</code> előtti ikon (pirossal bekeretezve) nem egy űrlap, hanem egy zöld C# ikon. Ez esetben hiába kattintunk duplán a fájlon, nem az űrlap szerkesztő nyílik meg, hanem csak a forrásfájl. A megoldás ez esetben a következő: a Build menüben válasszuk ki a „Rebuild solution” menüt, majd a Build menüben a „Clean solution” menüt, és várjunk egy kicsit. Ekkor pár másodperc múlva a Solution Explorerben az űrlapunk ikonja megváltozik:</p>
-<p><a class="glightbox" href="images/vs-designer-issue-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="VS designer probléma javítva" src="images/vs-designer-issue-2.png" /></a></p>
+<p><a class="glightbox" href="images/vs-designer-issue-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="VS designer probléma javítva" src="images/vs-designer-issue-2.png" /></a></p>
 <p>Most már meg tudjuk nyitni az űrlapot szerkesztésre, ha duplán kattintunk a Solution Explorerben a fenti csomóponton.</p>
 </details>
 <h2 id="feladat-1-menu">Feladat 1- Menü<a class="headerlink" href="#feladat-1-menu" title="Permanent link">&para;</a></h2>
@@ -1416,7 +1416,7 @@ A Windows alapesetben blokkolja az ebben a mappában található dll-eket, ezt f
 </li>
 </ul>
 <p>Az elkészült alkalmazás képe:</p>
-<p><a class="glightbox" href="images/f3-done.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Feladat 3 Megoldás" src="images/f3-done.png" /></a></p>
+<p><a class="glightbox" href="images/f3-done.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feladat 3 Megoldás" src="images/f3-done.png" /></a></p>
 <div class="admonition tip">
 <p class="admonition-title">Túl régi dátum</p>
 <p>Ha a létrehozási dátumnak nagyon régi (1601-es évhez tartozó) dátumot kapsz, akkor lehet, hogy a <code>FileInfo</code> objektumot nem a fájl teljes útvonalával, hanem csak a fájl nevével hozod létre, és ez okozza.</p>
@@ -1449,7 +1449,7 @@ Az időzítésre <code>Timer</code> komponenst használjunk!</p>
 <ol>
 <li>
 <p>Húzzunk egy <code>Timer</code> komponenst (<em>Toolbox / Componensts</em>) <code>MainForm</code>-ra! Figyeljük meg, hogy a komponens csupán a <code>Form</code> alatti szürke területen jelenik meg. Itt tudjuk kijelölni a későbbi lépésekhez.</p>
-<p><a class="glightbox" href="images/timer.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Timer" src="images/timer.png" /></a></p>
+<p><a class="glightbox" href="images/timer.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Timer" src="images/timer.png" /></a></p>
 </li>
 <li>
 <p>Ellenőrizzük, hogy az <code>Interval</code> tulajdonsága 100-ra van állítva. Ez 100 milliszekundumonként, vagyis minden tizedmásodpercben kiváltja a <code>Tick</code> eseményt.</p>
@@ -1541,7 +1541,7 @@ Az időzítésre <code>Timer</code> komponenst használjunk!</p>
 </li>
 <li>
 <p>Teszteljük a megoldásunkat (az alábbi ábrán a színes téglalap lehet eltér a feladatban elvártaktól):</p>
-<p><a class="glightbox" href="images/f4-done.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Feladat 4 Megoldás" src="images/f4-done.png" /></a></p>
+<p><a class="glightbox" href="images/f4-done.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feladat 4 Megoldás" src="images/f4-done.png" /></a></p>
 </li>
 </ol>
 </details>

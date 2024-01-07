@@ -887,23 +887,23 @@
 <li>Amikor elkészül a repónk (a GitHub classroom feladat elfogadása során), e-mail értesítést is kapunk róla, ebben is megtalálható a link.</li>
 </ul>
 <p>Az oldal képe nagyjából megfelel a következőnek (az mindenképpen különbség, hogy a repó url végén mindenkinél a saját felhasználóneve szerepel):</p>
-<p><a class="glightbox" href="images/github-repo-page.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="GitHub repo oldal" src="images/github-repo-page.png" /></a></p>
+<p><a class="glightbox" href="images/github-repo-page.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="GitHub repo oldal" src="images/github-repo-page.png" /></a></p>
 <p>Kattintsunk a zöld színű <em>Code</em> gombon, majd a lenyíló menüben az <em>"Open in Visual Studio"</em> linkre:</p>
-<p><a class="glightbox" href="images/github-code-button-open.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="GitHub repo oldal - Code gomb" src="images/github-code-button-open.png" /></a></p>
+<p><a class="glightbox" href="images/github-code-button-open.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="GitHub repo oldal - Code gomb" src="images/github-code-button-open.png" /></a></p>
 <p>A böngészőnk ekkor jó eséllyel feldob egy ablakot (pl. a Chrome/Edge esetében a címsor alatt) melyben egy külön gombkattintással (<em>Open…</em>) tudjuk indítani a Visual Studio-t. A felkínált lehetőségnek lehet, kissé fura a neve, ha <em>"Microsoft Visual Studio Web Protocol Handler Selector"</em> néven hivatkozik rá, válasszuk/engedélyezzük ki bátran. Illetve, itt célszerű az "Always allow github.com to open links ..." vagy hasonló szövegű jelölőnégyzetet is pipálni.
 Ha minden jól megy, a Visual Studio elindul, és indulás után feldob egy ablakot, melyben a "Repository location" ki is van töltve a repository-nk URL-jével. A Path alatt adjuk meg, hogy hova szeretnénk a háttértárunkon clone-ozni, majd kattintsunk a <em>Clone</em> gombra:</p>
-<p><a class="glightbox" href="images/vs-clone-a-repository.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Repository clone Visual Studionban" src="images/vs-clone-a-repository.png" /></a></p>
+<p><a class="glightbox" href="images/vs-clone-a-repository.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Repository clone Visual Studionban" src="images/vs-clone-a-repository.png" /></a></p>
 <div class="admonition note">
 <p class="admonition-title">Alternatív klónozási lehetőség Visual Studioban</p>
 <p>Ha nem működik a böngészőablakban az <em>"Open in Visual Studio"</em> vagy <em>"Microsoft Visual Studio Web Protocol Handler Selector"</em> hivatkozás, akkor indulhatunk egyből a Visual Studio-ból is. Csak indítsuk el a Visual Studio-t, és a startup ablakban válasszuk jobboldalt a <em>"Clone Repository"</em> gombot (vagy a startup ablakot átugorva válasszuk ki a <em>"Git/Clone Repository menüt"</em> a VS főablakában), melynek hatására a fenti ablak jelenik meg, a Repository URL-be pedig írjuk be a repónk URL-jét. A <em>Clone</em>-ra kattintva néhány másodperc alatt a repository a megadott célmappába klónozódik.</p>
 </div>
 <p>A klónozást követően pl. Windows Explorer-ben meg tudjuk tekinteni a létrehozott mappákat és fájlokat:</p>
-<p><a class="glightbox" href="images/git-folder-in-explorer.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Git repository a fájlrendszerben" src="images/git-folder-in-explorer.png" /></a></p>
+<p><a class="glightbox" href="images/git-folder-in-explorer.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Git repository a fájlrendszerben" src="images/git-folder-in-explorer.png" /></a></p>
 <p>Ebből jól látható, hogy egy Git repository nem más, mint mappák és fájlok gyűjteménye, valamint egy a gyökérben található .git mappa, mely (némi egyszerűsítéssel élve) az egyes fájlok verziótörténetét tartalmazza. A munka megkezdéséhez csak meg kell nyissuk az adott házi feladathoz tartozó .sln kiterjesztésű solution fájlt (pl. duplakatt Windows Explorerben).</p>
 <div class="admonition note">
 <p class="admonition-title">Az első házi feladat speciális (két solution is van)!</p>
 <p>Az első házi feladat kivételesen két fő részből áll, melyekhez eltérő solution tartozik. Az elsőhöz a Feladat1 mappában található MusicApp.sln fájlt, a másodikhoz a Feladat2-ben található Shapes.sln-t kell megnyitni. A megnyitást megtehetjük Explorerből, az adott .sln fájlon duplán kattintva. Ugyanakkor van erre más mód is: amennyiben Visual Studio-ban a Git gyökérmappát nyitottuk meg (a <em>Clone</em>-t követően is ez a helyzet állt elő) a Solution Explorer nézet fejlécében <em>"Switch View"</em> gombot lenyomva a Solution Explorer listázza a Git gyökérmappa alatti solution-öket, és ezek bármelyikén duplán kattintva az adott solution megnyílik:</p>
-<p><a class="glightbox" href="images/vs-switch-view.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Visual Studio Solution Explorer Switch View" src="images/vs-switch-view.png" /></a></p>
+<p><a class="glightbox" href="images/vs-switch-view.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Visual Studio Solution Explorer Switch View" src="images/vs-switch-view.png" /></a></p>
 </div>
 <h3 id="clone-parancssorbol">Clone parancssorból<a class="headerlink" href="#clone-parancssorbol" title="Permanent link">&para;</a></h3>
 <p>Alternatív lehetőség a parancssor használata. Parancssorban navigáljunk abba a mappába, ahová a forráskódot ki szeretnénk clone-ozni, és itt adjuk ki a következő parancsot:
@@ -919,7 +919,7 @@ Ha minden jól megy, a Visual Studio elindul, és indulás után feldob egy abla
 A commit és push műveletek végrehajtásához a Visual Studio <em>"Git"</em> menüjében levő parancsokat használjuk.</p>
 <h3 id="commit">Commit<a class="headerlink" href="#commit" title="Permanent link">&para;</a></h3>
 <p>Az előző commit óta eszközölt változtatások megtekintéséhez válasszuk ki a <em>"View\Git Changes"</em> menüt. Ennek hatására megjelenik a <em>"Git Changes"</em> nézet a változások listájával:</p>
-<p><a class="glightbox" href="images/vs-git-changes.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="VS Git changes" src="images/vs-git-changes.png" /></a></p>
+<p><a class="glightbox" href="images/vs-git-changes.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="VS Git changes" src="images/vs-git-changes.png" /></a></p>
 <p>A változtatások commit-álásához írjunk a fenti szövegmezőbe egy a változtatásokra jellemző egy-két soros leírást (pl. "Végső megoldás", "Az xyz hiba javítása" stb.). A lehetőségeink ezt követően a következők:</p>
 <ul>
 <li><strong>"Commit All"</strong> gomb: Csak helyben commit-olja a változtatásokat (a központi Git repóban mindaddig nem jelenik meg a commit, amíg egy külön Push paranccsal fel nem "toljuk").</li>
@@ -945,7 +945,7 @@ Ha többen dolgozunk, a központi repository-ban lehetnek mások által pusholt,
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>A Pull és Push parancsok a „Git Changes” (View/Git Changes menü jeleníti meg) panel tetején elérhető le és fel nyilakkal is végrehajthatók:</p>
-<p><a class="glightbox" href="images/vs-git-changes-push-pull.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="VS pull push" src="images/vs-git-changes-push-pull.png" /></a></p>
+<p><a class="glightbox" href="images/vs-git-changes-push-pull.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="VS pull push" src="images/vs-git-changes-push-pull.png" /></a></p>
 </div>
 <h3 id="git-history">Git history<a class="headerlink" href="#git-history" title="Permanent link">&para;</a></h3>
 <p>A Git egy változáskövető rendszer. A változás egysége a commit (melyben tetszőleges számú fájlt érintő változás lehet), a Git historyban a commitok egymásutániságát láthatjuk. A fájlokat érintő változásokon túlmenően minden commithoz tartozik egy egyedi azonosító (commit hash), időbélyeg, illetve egy szerző. A szerző felhasználó, aki a változásokat eszközölte (valójában van külön Author és Commiter, de a kettő általában ugyanaz). Visual Studioban a historyt a View/Git Repository menüvel tudjuk megjeleníteni, de a history természetesen a GitHub online felületén is megjeleníthető.
@@ -955,7 +955,7 @@ A Visual Studioban a <em>"Git Repository"</em> nézetet a View/Git Repository me
 <li>Incoming commits: Megmutatja, hogy a központi repository-ban milyen mások által pusholt, hozzánk még le nem töltött commitok vannak. Ezek akkor jelennek meg, ha a Fetch paranccsal lehozzuk a helyi repóba (ez még nem merge-el). Ezeket a Pull művelettel tudjuk a helyi repónkba merge-elni. A fetch parancsot ritkán használjuk: általában a pullt használjuk magában, ami egy fetch + merge (változások merge-elése a helyi repóba) kombinációja.</li>
 </ul>
 <p>Példa:</p>
-<p><a class="glightbox" href="images/vs-git-history.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="VS git history" src="images/vs-git-history.png" /></a></p>
+<p><a class="glightbox" href="images/vs-git-history.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="VS git history" src="images/vs-git-history.png" /></a></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Amíg nem vagyunk rutinosak a Visual Studio Git szolgáltatásainak használatában, a push-t követően (legkésőbb akkor, amikor a házi feladatot beadottnak tekintjük) célszerű ellenőrizni a GitHub webes felületén a repository-ban a fájlokra való rápillantással, hogy valóban minden változtatást feltöltöttünk-e.</p>
