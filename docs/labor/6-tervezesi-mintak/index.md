@@ -58,7 +58,9 @@ Egy konzol alapú alkalmazást kell készíteni.
 
 Az alkalmazás bemenete egy CSV szövegfájl, mely minden sora egy adott személyre vonatkozóan tartalmaz adatokat. A fájrendszerben nyissuk meg a *Data* mappában levő us-500.csv fájlt (duplakattal, vagy akár a Jegyezettömb/Notepad alkalmazásban). Az látjuk, hogy "" között, vesszővel elválasztva találhatók az egyes személyekre vonatkozó adatok (ezek nem valósak). Nézzük az első sort:
   
-  *"James","Butt","Benton, John B Jr","6649 N Blue Gum St","New Orleans ","Orleans","LA","70116","504-621-8927","504-845-1427","39","96","Heart-related","jbutt@gmail.com"*
+```
+"James","Butt","Benton, John B Jr","6649 N Blue Gum St","New Orleans ","Orleans","LA","70116","504-621-8927","504-845-1427","39","96","Heart-related","jbutt@gmail.com"*
+```
 
 Az első sorban levő személyt James Buttnak nevezik, a "Benton, John B Jr" cégnél dolgozik, majd néhány címre vonatkozó mező található, 39 éves, 96 kg a testsúlya. Az ezt követő mező azt mondja meg, milyen súlyosabb betegsége van (a fenti sorba ez "Heart-related"). Ezt követi még néhány, számunkra nem izgalmas mező.
 
@@ -84,13 +86,13 @@ Az alkalmazás alapfeladata, hogy ezeket az adatokat az aktuális igényeknek me
 Az alkalmazással szemben támasztott kiinduló követelmények:
 
 1. Egy adott ügyféltől kapott fájlokat (mindnek ugyanaz a formátuma) kell ugyanazzal az anonimizáló algoritmussal, ugyanabba a kimeneti formátumba konvertálni. Az anonimizálás egyszerűen a keresztnév és vezeténév "kicsillagozásából" álljon.
-2. Szükség van egy kis adattisztításra. A bemeneti adatokban a várost tartalmazó oszlop elején/végén lehetnek felesleges '\_' és '\_' karakterek, ezeket el kell távolítani (trim művelet).
+2. Szükség van egy kis adattisztításra. A bemeneti adatokban a várost tartalmazó oszlop elején/végén lehetnek felesleges `_` és `#` karakterek, ezeket el kell távolítani (trim művelet).
 3. Ki kell írni minden sor feldolgozása után a konzolra, hogy a sor feldolgozása megtörtént, ill. a minden adat feldolgozás után némi összesítő információt (Summary): hány sort dolgoztunk fel, és mennynél kellett a városnevet trimmelni.
 4. Lényeges szempont: az alkalmazásra csak rövid időre lesz szükség, nem a kívánjuk későbbiekben bővíteni.
 
 Megjegyzés: hogy a kódban kevesebb mezővel kelljen dolgozni, és a kimenet is átláthatóbb legyen, elhagyunk még néhány mezőt a feldolgozás során.
 
-A várt kimeneti formátumre egy egysoros példa:
+A várt kimeneti formátumra egy egysoros példa:
 
 ```
 ***; ***; LA; New Orleans; 39; 96; Heart-related
@@ -154,11 +156,11 @@ Nézzük, hogy kódunk mennyire tekinthető újrafelhasználhatónak és kiterje
 
 A korábbi "tervekkel" ellentétben új felhasználói igények merültek fel. Az ügyfelünk meggondolta magát, egy másik adathalmaznál másféle anonimizáló algoritmusra megvalósítását kéri: az személyek életkorát kell sávosan menteni, nem derülhet ki a személyek pontos életkora. Az egyszerűség érdekében ez esetben a személyek nevét nem fogjuk anonimizálni, így tekintsük ezt egyfajta "pszeudo" anonimizálásnak (ettől még lehet értelme, csak nem teljesen korrekt ezt anonimizálásnak nevezni).
 
-A megoldásunkat - mely egyaránt támogatja a régi és az új algoritmust - a VS solution *OrganizedToFunctions-2-TwoAlgorithms* nevű projektjében találjuk. Nézzünk rá az Anonymizer osztályra. A megoldás alapelve (ezeket tekintsük át a kódban):
+A megoldásunkat - mely egyaránt támogatja a régi és az új algoritmust - a VS solution *OrganizedToFunctions-2-TwoAlgorithms* nevű projektjében találjuk. Nézzünk rá az `Anonymizer` osztályra, a megoldás alapelve (ezeket tekintsük át a kódban):
 
-* Bevezettünk egy AnonymizerMode enum típus, mely meghatározza, hogy melyik üzemmódban használjuk az Anonymizer osztályt.
-* Az `Anonymizer` osztálynak két anonimizáló művelete van: Anonymize_MaskName, Anonymize_AgeRange
-* Az `Anonymizer` osztály a _anonymizerMode tagjában tárolja, melyik algoritmust kell használni: a két üzemmódhoz két külön konstruktort vezettünk be, ezek állítják be a _anonymizerMode értékét.
+* Bevezettünk egy `AnonymizerMode` enum típust, mely meghatározza, hogy melyik üzemmódban használjuk az `Anonymizer` osztályt.
+* Az `Anonymizer` osztálynak két anonimizáló művelete van: `Anonymize_MaskName`, `Anonymize_AgeRange`
+* Az `Anonymizer` osztály a `_anonymizerMode` tagjában tárolja, melyik algoritmust kell használni: a két üzemmódhoz két külön konstruktort vezettünk be, ezek állítják be az `_anonymizerMode` értékét.
 * Az `Anonymizer` osztály több helyen is megvizsgálja (pl. `Run`, `GetAnonymizerDescription` műveletek), hogy mi az _anonymizerMode értéke, és ennek függvényében elágazik.
 * A `GetAnonymizerDescription`-ben azért kell megtenni, mert ennek a műveletnek a feladata az anonimizáló algoritmusról egy egysoros leírás előállítása, melyet a feldolgozás végén a "summary"-ben megjelenít. Nézzünk rá a `PintSummary` kódjára, ez a művelet hívja.
 
@@ -169,9 +171,42 @@ Azzal nem volt gond, hogy korábban nem volt az algoritmus tekintetében kiterje
 
 Miért állítjuk azt, hogy a kódunk nem kiterjeszthető, amikor "csak" egy új enum értéket, és egy-egy plusz if/switch ágat kell a kód néhány pontjára bevezetni?
 
+<div class="grid cards" markdown>
+
+- :warning: __FONTOS__  
+  *Kulcsfontosságú, hogy egy kódot (osztályt) akkor tekintünk kiterjeszthetőnek, ha annak **módosítása nélkül**, pusztán a kód **bővítésével** lehet új viselkedést (esetünkben új algoritmust) bevezetni. Vagyis esetünkben az `Anonymizer` kódjához nem szabadna hozzányúlni! Ez egyértelműen nem teljesül. Ez a híres **==Open/Closed==** elv (the class should be Open for Extension, Closed for Modification). A módosítás azért probléma, mert annak során jó eséllyel új bugokat vezetünk be, ill. a módosított kódot mindig újra kell tesztelni, ez pedig jelentős idő/költségráfordítási igényt jelenthet.*
+
+</div>
+
+
+
+{==
+
 Kulcsfontosságú, hogy egy kódot (osztályt) akkor tekintünk kiterjeszthetőnek, ha annak **módosítása nélkül**, pusztán a kód **bővítésével** lehet új viselkedést (esetünkben új algoritmust) bevezetni. Vagyis esetünkben az `Anonymizer` kódjához nem szabadna hozzányúlni! Ez egyértelműen nem teljesül. Ez a híres **==Open/Closed==** elv (the class should be Open for Extension, Closed for Modification). A módosítás azért probléma, mert annak során jó eséllyel új bugokat vezetünk be, ill. a módosított kódot mindig újra kell tesztelni, ez pedig jelentős idő/költségráfordítási igényt jelenthet.
 
-Ábra ide!
+==}
+
+Vannak olyan részek az osztályban, melyeket nem szeretnénk beégetni:
+
+* Ezek nem adatok, hanem **==viselkedések (kód, logika)==**
+* Nem if/switch utasításokkal szeretnénk megoldani
+* Tegyük ezeket más osztályokba!
+
+Vagyis az esetfüggő részeket nem égetjük bele, hanem leválasztjuk az osztályról: amely rész változhat, ott "kiterjesztési pontokat" vezetünk be, valamilyen módon megoldjuk, hogy "tetszőleges" kód lefuthasson. Ne gondoljunk semmiféle varázslatra, a már ismert eszközöket fogjuk erre használni:  öröklést absztrakt/virtuális függvényekkel, vagy interfészeket vagy delegate-eket.
+
+??? Note "Az általános megoldási elv illusztrálása"
+
+    A fenti gondolatokat az alábbi ábrával lehet szemléltetni általánosságában:
+
+    ![Extensibility illustration](images/illustrate-extensibility.png)
+
+A labor keretében három konkrét tervezési mintát, ill. technikát nézünk meg a fentiek megvalósítására:
+
+* Template Method tervezési minta
+* Strategy tervezési minta
+* Delegate/Lambda funkcionális
+
+Valójában mind használtuk már a tanulmányaink során, de most mélyebben megismerkedünk velük és be fogjuk gyakorolni ezek alkalmazását.
 
 ## Tanulságok
 
