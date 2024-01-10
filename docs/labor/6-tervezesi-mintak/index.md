@@ -130,7 +130,7 @@ Próbáljuk ki, futtassuk! Ehhez a "OrganizedToFunctions-1" legyen Visual Studio
 
 A kimeneti fájt fájlkezelőben tudjuk megnézni, a "OrganizedToFunctions-1\bin\Debug\net8.0\" vagy hasonló nevű mappában találjuk, "us-500.processed.txt" néven. Nyissuk meg, és vessünk egy pillantást az adatokra.
 
-#### Értékeljük a megoldást
+### A megoldás értékelése
 
 * A megoldás alapvetően jól strukturált, könnyen megérthető.
 * Követi a **==KISS (Keep It Stupid Simple)==** elvet, nem használ felesleges bonyolításokat. Ez így jó, hiszen nem merültek fel jövőbeli potenciális jövőbeli továbbfejlesztési igények, nem kell különböző formátumokat, logikákat stb. támogatni.
@@ -146,7 +146,7 @@ A kimeneti fájt fájlkezelőben tudjuk megnézni, a "OrganizedToFunctions-1\bin
   
 * A megoldáshoz lehet írni automatizált integrációs (input-output) teszteket, de "igazi" egységteszteket nem. Arra  majd később térünk vissza, hogyan kell ezt értelmezni.
 
-Nézzük, hogy kódunk mennyire tekinthető újrafelhasználhatónak és kiterjeszthetőnek:
+Nézzük, hogy kódunk "hasraütésre" mennyire tekinthető újrafelhasználhatónak és kiterjeszthetőnek:
 
 ![Reusability and extensibility 1](images/resuse-extensibility-20.png)
 
@@ -164,7 +164,7 @@ A megoldásunkat - mely egyaránt támogatja a régi és az új algoritmust - a 
 * Az `Anonymizer` osztály több helyen is megvizsgálja (pl. `Run`, `GetAnonymizerDescription` műveletek), hogy mi az _anonymizerMode értéke, és ennek függvényében elágazik.
 * A `GetAnonymizerDescription`-ben azért kell megtenni, mert ennek a műveletnek a feladata az anonimizáló algoritmusról egy egysoros leírás előállítása, melyet a feldolgozás végén a "summary"-ben megjelenít. Nézzünk rá a `PintSummary` kódjára, ez a művelet hívja.
 
-#### A megoldás értékelése
+### A megoldás értékelése
 
 Összegészében megoldásunk a korábbinál rosszabb lett.
 Azzal nem volt gond, hogy korábban nem volt az algoritmus tekintetében kiterjeszthető (hiszen nem volt rá igény), de ha már egyszer felmerült rá az igény, akkor hiba ebben a tekintetben nem kiterjeszthetővé tenni: innen sokkal inkább számítunk arra, hogy újabb algoritmus kell bevezetni a jövőben.
@@ -178,25 +178,23 @@ Miért állítjuk azt, hogy a kódunk nem kiterjeszthető, amikor "csak" egy új
 
 </div>
 
-
-
-{==
-
-Kulcsfontosságú, hogy egy kódot (osztályt) akkor tekintünk kiterjeszthetőnek, ha annak **módosítása nélkül**, pusztán a kód **bővítésével** lehet új viselkedést (esetünkben új algoritmust) bevezetni. Vagyis esetünkben az `Anonymizer` kódjához nem szabadna hozzányúlni! Ez egyértelműen nem teljesül. Ez a híres **==Open/Closed==** elv (the class should be Open for Extension, Closed for Modification). A módosítás azért probléma, mert annak során jó eséllyel új bugokat vezetünk be, ill. a módosított kódot mindig újra kell tesztelni, ez pedig jelentős idő/költségráfordítási igényt jelenthet.
-
-==}
-
 Vannak olyan részek az osztályban, melyeket nem szeretnénk beégetni:
 
 * Ezek nem adatok, hanem **==viselkedések (kód, logika)==**
-* Nem if/switch utasításokkal szeretnénk megoldani
-* Tegyük ezeket más osztályokba!
+* Nem `if`/`switch` utasításokkal oldjuk meg: "kiterjesztési pontokat" vezetünk be, és valamilyen módon megoldjuk, hogy ezekben "tetszőleges" kód lefuthasson.
+* Ezek változó/esetfüggő részek kódját más osztályokba tesszük (az osztályunk szempontjából "lecserélhető" módon)!
 
-Vagyis az esetfüggő részeket nem égetjük bele, hanem leválasztjuk az osztályról: amely rész változhat, ott "kiterjesztési pontokat" vezetünk be, valamilyen módon megoldjuk, hogy "tetszőleges" kód lefuthasson. Ne gondoljunk semmiféle varázslatra, a már ismert eszközöket fogjuk erre használni:  öröklést absztrakt/virtuális függvényekkel, vagy interfészeket vagy delegate-eket.
+!!! Note
+    Ne gondoljunk semmiféle varázslatra, a már ismert eszközöket fogjuk erre használni:  öröklést absztrakt/virtuális függvényekkel, vagy interfészeket vagy delegate-eket.
+
+Keressük meg azokat a részeket, melyek esetfüggő, változó logikák, így nem jó beégetni az `Anonymizer` osztályba:
+
+* Az egyik maga az anonimizálási logika: `Anonymize_MaskName`/`Anonymize_AgeRange`
+* A másik a `GetAnonymizerDescription`
+
+Ezeket kell leválasztani az osztályról, ezeknél kell kiterjeszthetővé tenni az osztályt. Az alábbi ábra illusztrálja a célt általánosságában:
 
 ??? Note "Az általános megoldási elv illusztrálása"
-
-    A fenti gondolatokat az alábbi ábrával lehet szemléltetni általánosságában:
 
     ![Extensibility illustration](images/illustrate-extensibility.png)
 
@@ -206,7 +204,125 @@ A labor keretében három konkrét tervezési mintát, ill. technikát nézünk 
 * Strategy tervezési minta
 * Delegate/Lambda funkcionális
 
-Valójában mind használtuk már a tanulmányaink során, de most mélyebben megismerkedünk velük és be fogjuk gyakorolni ezek alkalmazását.
+Valójában mind használtuk már a tanulmányaink során, de most mélyebben megismerkedünk velük, és átfogóbban be fogjuk gyakorolni ezek alkalmazását.
+
+## 4. Megoldás (OrganizedToFunctions-2-TwoAlgorithms)
+
+Ebben a lépésben a **Template Method** tervezési minta alkalmazásával fogjuk a megoldásunkat a szükséges pontokban kiterjeszthetővé tenni. A mintában a következő elvek mentén valósul meg a "változatlan" és "változó" részek különválasztása:
+
+* A "közös/változatlan" részeket egy ősosztályba tesszük.
+* Ebben a kiterjesztési pontokat absztrakt/virtuális függvények bevezetése jelenti, ezeket hívjuk a kiterjesztési pontokban.
+* Ezek esetfüggő megvalósítása a leszármazott osztályokba kerül (az ősben hívott).
+
+A jól ismert "trükk" a dologban az, hogy amikor az ős meghívja az absztrakt/virtuális függvényeket, akkor a leszármazottbéli, esetfüggő kód hívódik meg.
+
+!!! Note
+    A minta neve "megtévesztő": semmi köze nincs a C++-ban tanult sablonmetódusokhoz!
+
+Alakítsuk át a korábbi `if`/`switch` alapú megoldás **Template Method** alapúra. A VS solution-ben a "3-TemplateMethod" mappában a "TemplateMethod-0-Begin" projekt tartalmazza a korábbi megoldásunk kódját, ebben a projektben dolgozzunk:
+
+1. Nevezzük át az `Anonymizer` osztályt `AnonymizerBase`-re (pl. az osztály nevére állva a forrásfájlban és ++f2++-t nyomva).
+2. Vegyünk fel az projektbe egy `NameMaskingAnonymizer` és egy `AgeAnonymizer` osztályt (projekten jobb katt, *Add*/*class*).
+3. Származtassuk az `AnonymizerBase`-ből őket
+4. Az `AnonymizerBase`-ből mozgassuk át a `NameMaskingAnonymizer`-be az ide tartozó részeket
+   1. `_mask` tag
+   2. A `string inputFileName, string mask` paraméterezésű konstruktor, átnevezve `NameMaskingAnonymizer`-re,
+      1. `_anonymizerMode = AnonymizerMode.Name;` sort törölve,
+      2. a `this` konstruktorhívás helyett `base` konstruktorhívással.
+4. Az `AnonymizerBase`-ből mozgassuk át az `AgeAnonymizer`-be az ide tartozó részeket
+   1. `_rangeSize` tag
+   2. A `string inputFileName, string rangeSize` paraméterezésű konstruktor, átnevezve `AgeAnonymizer`-re,
+      1. `_anonymizerMode = AnonymizerMode.Name;` sort törölve,
+      2. a `this` konstruktorhívás helyett `base` konstruktorhívással.
+5. Az `AnonymizerBase`-ben
+   1. Töröljük az `AnonymizerMode` enum típust
+   2. Töröljük a `_anonymizerMode` tagot
+
+Keressük meg azokat a részeket, melyek esetfüggő, változó logikák, így nem akarunk beégetni az újrafelhasználhatónak szánt `AnonymizerBase` osztályba:
+
+* Az egyik az `Anonymize_MaskName`/`Anonymize_AgeRange`,
+* a másik a `GetAnonymizerDescription`.
+
+A mintát követve ezek esetfüggő implementációit a leszármazottakba tesszük, az ősben pedig absztrakt (vagy esetleg virtuális) függvényeket vezetünk be ezekre, és ezeket hívjuk:
+
+1. Tegyük az `AnonymizerBase` osztály absztrakttá (a `class` elé `abstract` kulcsszó)
+2. Vezessünk be az `AnonymizerBase`-ben egy
+
+    ``` csharp
+    protected abstract Person Anonymize(Person person);
+    ```
+
+    műveletet.
+
+3. Az `Anonymize_MaskName` műveletet mozgassuk át a `NameMaskingAnonymizer` osztályba, és alakítsuk át a szignatúráját úgy, hogy override-olja az ősbeli `Anonymize` absztrakt függvényt:
+
+    ``` csharp
+    protected override Person Anonymize(Person person)
+    {
+        return new Person(_mask, _mask, person.CompanyName,
+            person.Address, person.City, person.State, person.Age, person.Weight, person.Decease);
+    }
+    ```
+
+    A függvény törzsét csak annyiban kell átírni, hogy ne a megszüntetett `mask` paramétert, hanem a `_mask` tagváltozót használja.
+
+4. Az előző lépéssel teljesen analóg módon az `Anonymize_AgeRange` műveletet mozgassuk át a `AgeAnonymizer` osztályba, és alakítsuk át a szignatúráját úgy, hogy override-olja az ősbeli `Anonymize` absztrakt függvényt:
+
+    ``` csharp
+    protected override Person Anonymize(Person person)
+    {
+        ...
+    }
+    ```
+
+    A függvény törzsét csak annyiban kell átírni, hogy ne a megszüntetett `rangeSize` paramétert, hanem a `_rangeSize` tagváltozót használja.
+
+5. A `AnonymizerBase` osztály Run függvényében az if/else kifejezésben található Anonymize hívásokat most már le tudjuk cserélni egy egyszerű absztrakt függvény hívásra:
+
+    {--
+
+    ``` csharp
+        Person person;
+        if (_anonymizerMode == AnonymizerMode.Name)
+            person = Anonymize_MaskName(persons[i], _mask);
+        else if (_anonymizerMode == AnonymizerMode.Age)
+            person = Anonymize_AgeRange(persons[i], _rangeSize);
+        else
+            throw new NotSupportedException("The requested anonymization mode is not supported.");
+    ```
+
+    --}
+
+    helyett:
+
+    ``` csharp
+    var person = Anonymize(persons[i]);
+    ```
+
+Az egyik kiterjesztési pontunkkal el is készültünk. De maradt még egy, a `GetAnonymizerDescription`, mely kezelése szintén esetfüggő. Ennek átalakítása nagyon hasonló az előző lépéssorozathoz. Idő hiányában ezt az átalakítást gyakorlaton nem tesszük meg (lehet otthoni gyakorló feladat), hanem a kész megoldásra ugrunk, ezt a "TemplateMethod-1" nevű projektben találjuk. Fussuk át a megoldás alapelemeit:
+
+1. Az `AnonymizerBase`-ben a `GetAnonymizerDescription` nem absztrakt, hanem virtuális függvényként került bevezetésre, hiszen itt tudtunk értelmes alapértelmezett viselkedést biztosítani: egyszerűen visszaadjuk az osztály nevét (mely pl. a `NameMaskingAnonymizer` osztály esetében "NameMaskingAnonymizer"). Mindenesetre a csúnya switch-case szerkezettől megszabadultunk.
+2. A leszármazottakban felülírjuk ezt a virtuális függvényt, belefűzzük a leírásba az osztályspecifikus adatokat (pl.`NameMaskingAnonymizer` esetében a `_mask` értékét).
+
+A "TemplateMethod-0-Begin" projektünk most nem forduló kódot tartalmaz, ezt célszerű eltávolítani a solution-ből, hogy a későbbi futtatások során ne legyen zavaró: jobb katt a projekten és `Remove` menü.
+
+El is készültünk. Ha sok időnk van, ki is próbálhatjuk, hogy jobban "érezzük", működnek az kiterjesztési pontok (de ez különösebben nem fontos, hasonlót már C++ ismereteinktől kezdve csináltunk):
+
+* Legyen a "TemplateMethod-1" projekt a startup projekt.
+* Tegyünk egy töréspontot az `AnonymizerBase` osztály `var person = Anonymize(persons[i]);` sorára.
+* Amikor futás közben itt megáll a debugger, ++F11++-gyel lépjünk bele.
+* Az tapasztaljuk, hogy a  leszármazott `AgeAnonymizer` művelete hívódik.
+
+### A megoldás értékelése
+
+Ellenőrizzük a megoldást, megvalósítja-e a céljainkat:
+
+* Az `AnonymizerBase` egy újrafelhasználható(bb) osztály lett
+* Ha új anonimizáló logikára van szükség a jövőbe, csak származtatunk belőle. Ez nem módosítás, hanem bővítés.
+* Ennek megfelelően teljesül az OPEN/CLOSED elv, vagyis a kódjának módosítása nélkül tudjuk az ősben megadott két pontban a logikát testre szabni, kiterjeszteni.
+
+!!! Note "Legyen minden pontban kiterjeszthető az osztályunk?"
+    Figyeljük meg, hogy nem tettünk az `AnonymizerBase` minden műveletét virtuálissá (így sok pontban kiterjeszthetővé az osztályt). Csak ott tettük meg, ahogy azt gondoljuk, hogy a jövőben szükség lehet a logika kiterjesztésére.
 
 ## Tanulságok
 
