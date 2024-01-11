@@ -206,7 +206,7 @@ A labor keretében három konkrét tervezési mintát, ill. technikát nézünk 
 
 Valójában mind használtuk már a tanulmányaink során, de most mélyebben megismerkedünk velük, és átfogóbban be fogjuk gyakorolni ezek alkalmazását.
 
-## 4. Megoldás (OrganizedToFunctions-2-TwoAlgorithms)
+## 4. Megoldás (TemplateMethod-1)
 
 Ebben a lépésben a **Template Method** tervezési minta alkalmazásával fogjuk a megoldásunkat a szükséges pontokban kiterjeszthetővé tenni. A mintában a következő elvek mentén valósul meg a "változatlan" és "változó" részek különválasztása:
 
@@ -219,7 +219,7 @@ A jól ismert "trükk" a dologban az, hogy amikor az ős meghívja az absztrakt/
 !!! Note
     A minta neve "megtévesztő": semmi köze nincs a C++-ban tanult sablonmetódusokhoz!
 
-Alakítsuk át a korábbi `if`/`switch` alapú megoldás **Template Method** alapúra. A VS solution-ben a "3-TemplateMethod" mappában a "TemplateMethod-0-Begin" projekt tartalmazza a korábbi megoldásunk kódját, ebben a projektben dolgozzunk:
+Alakítsuk át a korábbi `if`/`switch` alapú megoldás **Template Method** alapúra. A VS solution-ben a "3-TemplateMethod" mappában a "TemplateMethod-0-Begin" projekt tartalmazza a korábbi megoldásunk kódját (annak "másolatát"), ebben a projektben dolgozzunk:
 
 1. Nevezzük át az `Anonymizer` osztályt `AnonymizerBase`-re (pl. az osztály nevére állva a forrásfájlban és ++f2++-t nyomva).
 2. Vegyünk fel az projektbe egy `NameMaskingAnonymizer` és egy `AgeAnonymizer` osztályt (projekten jobb katt, *Add*/*class*).
@@ -282,13 +282,13 @@ A mintát követve ezek esetfüggő implementációit a leszármazottakba tessz�
     {--
 
     ``` csharp
-        Person person;
-        if (_anonymizerMode == AnonymizerMode.Name)
-            person = Anonymize_MaskName(persons[i], _mask);
-        else if (_anonymizerMode == AnonymizerMode.Age)
-            person = Anonymize_AgeRange(persons[i], _rangeSize);
-        else
-            throw new NotSupportedException("The requested anonymization mode is not supported.");
+    Person person;
+    if (_anonymizerMode == AnonymizerMode.Name)
+        person = Anonymize_MaskName(persons[i], _mask);
+    else if (_anonymizerMode == AnonymizerMode.Age)
+        person = Anonymize_AgeRange(persons[i], _rangeSize);
+    else
+        throw new NotSupportedException("The requested anonymization mode is not supported.");
     ```
 
     --}
@@ -313,17 +313,323 @@ El is készültünk. Ha sok időnk van, ki is próbálhatjuk, hogy jobban "érez
 * Amikor futás közben itt megáll a debugger, ++F11++-gyel lépjünk bele.
 * Az tapasztaljuk, hogy a  leszármazott `AgeAnonymizer` művelete hívódik.
 
+Vethetünk egy pillantást a megoldás osztálydiagramjára:
+
+??? "Template Method alapú megoldás osztálydiagram"
+    ![Template Method alapú megoldás osztálydiagram](images/template-method.png)
+
+??? "Miért Template Method a minta neve"
+    A minta azért kapta a Template Method nevet, mert - esetünket példaként használva - a `Run` és a `PrintSummary` olyan "sablonok metódus", melyek meghatároznak egy sablonszerű logikát, vázat, melyben bizonyos lépések nincsenek megkötve (ezek "kódját" absztrakt/virtuális függvényekre bízzuk, és a leszármazott osztályok határozzák meg a megvalósításukat).
+
 ### A megoldás értékelése
 
 Ellenőrizzük a megoldást, megvalósítja-e a céljainkat:
 
-* Az `AnonymizerBase` egy újrafelhasználható(bb) osztály lett
-* Ha új anonimizáló logikára van szükség a jövőbe, csak származtatunk belőle. Ez nem módosítás, hanem bővítés.
+* Az `AnonymizerBase` egy újrafelhasználható(bb) osztály lett.
+* Ha új anonimizáló logikára van szükség a jövőben, csak származtatunk belőle. Ez nem módosítás, hanem bővítés.
 * Ennek megfelelően teljesül az OPEN/CLOSED elv, vagyis a kódjának módosítása nélkül tudjuk az ősben megadott két pontban a logikát testre szabni, kiterjeszteni.
 
 !!! Note "Legyen minden pontban kiterjeszthető az osztályunk?"
     Figyeljük meg, hogy nem tettünk az `AnonymizerBase` minden műveletét virtuálissá (így sok pontban kiterjeszthetővé az osztályt). Csak ott tettük meg, ahogy azt gondoljuk, hogy a jövőben szükség lehet a logika kiterjesztésére.
 
+## 5. Megoldás (TemplateMethod-2-Progress)
+
+T.f.h új - viszonylag egyszerű - igény merül fel:
+
+* A `NameMaskinAnonimizer` esetén marad a korábbi marad ugyan a korább folyamat (angolul progress) kijelzés (minden sor után kiírjuk, hányadiknál tartottunk),
+* de az `AgeAnonymizer` esetén a folyamat (progress) kijelzés más kell legyen: azt kell kiírni - minden sor után frissítve -, hogy hány százaléknál tart a feldolgozás.
+
+A megoldás nagyon egyszerű: a Run műveletben szélesebb körben alkalmazva a Template Method mintát, a progress kiíráskor is egy kiterjesztési pontot vezetünk be, egy virtuális függvényre bízzuk.
+
+Ugorjunk egyből a kész megoldásra (*TemplateMethod-2-Progress* projekt):
+
+* `AnonymizerBase` osztályban új PrintProgress virtuális függvény (alapértelmezésben nem ír ki semmit)
+* `Run`-ban ennek hívása
+* `NameMaskingAnonymizer`-ben és `NameMaskingAnonymizer`-ben megfelelő megvalósítás (override)
+  
+Ennek egyelőre különösebb tanulsága nincs, de a következő lépésben már lesz.
+
+## 5. Megoldás (TemplateMethod-3-ProgressMultiple)
+
+Új - és teljesen logikus - igény merült fel: a jövőben bármely anonimizáló algoritmust bármely progress megjelenítéssel lehessen használni. Ez jelen pillanatban négy keresztkombinációt jelent:
+
+| Anonimizáló         | Progress          |
+| ------------------- | ----------------- |
+| Név anonimizáló     | Egyszerű progress |
+| Név anonimizáló     | Százalék progress |
+| Kor anonimizáló     | Egyszerű progress |
+| Kor anonimizáló     | Százalék progress |
+
+Ugorjunk a kész megoldásra (TemplateMethod-3-ProgressMultiple projekt). Kód helyett érdemes a Main.cd osztálydiagramot megnyitni és a megoldást az alapján áttekinteni.
+
+??? "Template Method alapú megoldás (két aspektus) osztálydiagram"
+    ![Template Method alapú megoldás (két aspektus) osztálydiagram](images/template-method-progress-multiple.png)
+
+Érezhető, hogy valami "baj van", minden keresztkombinációnak külön leszármazottat kellett létrehozni. Sőt, a kódduplikáció csökkentésére még plusz, köztes osztályok is vannak a hierarchiában. Ráadásul:
+* Ha a jövőben új anonimizáló algoritmust vezetünk be, annyi új osztályt kell írni (legalább), ahány progress típust támogatunk.
+* Ha a jövőben új progress típust vezetünk be, annyi új osztályt kell írni (legalább), ahány anonimizáló típust támogatunk.
+
+Mi okozta a problémát? Az, hogy az osztályunk viselkedését több asektuk/dimenzió mentén (példánkban az anonimizálás és progress) kell kiterjeszthetővé tenni, és ezeket sok keresztkombinációban támogatni. Ha újabb aspektusok mentén kellene ezt megtenni (pl. beolvasás módja, kimenet generálása), akkor a probléma exponenciálisan tovább "robbanna". Ilyen esetekben a Template Method tervezési minta nem alkalmazható.
+
+??? "Template Method minta további korlátai"
+
+    * A viselkedés futás közben nem megváltoztatható. Pl. ha létrehoztunk egy AgeAnonymizerWithPercentProgress típusú objektumot, akkor ez csak életkor szerint tud anonimizálni és százalék progresst megjeleníteni, ezeket a viselkedéseket nem lehez az objektumra futás közben megváltoztatni. Esetünkben ennek nincs semmi jelentősége, de vannak olyan feladatok, amikor hasonlóra szükség lehet.
+    * Körülményesen támogatja az egységtesztelhetőséget (később visszatérünk erre).
+
+## 6. Megoldás (Strategy-1)
+
+Ebben a lépésben a **Strategy** tervezési minta alkalmazásával fogjuk a kezdeti megoldásunkat a szükséges pontokban kiterjeszthetővé tenni. A mintában a következő elvek mentén valósul meg a "változatlan" és "változó" részek különválasztása:
+
+* A "közös/változatlan" részeket egy adott osztályba tesszük (de ez most nem egy "ősosztály" lesz).
+* A Template Methoddal szemben nem öröklést, hanem kompozíciót (tartalmazást) alkalmazunk: interfészként tartalmazott más objektumokra bízzuk a viselkedés megvalósítását a kiterjesztési pontokban (és nem absztrakt/virtuális függvényekre).
+* Mindezt az osztály viselkedésének minden olyan aspektusára/dimenziójára, melyet lecserélhetővé/bővíthetővé szeretnénk tenni, egymástól függetlenül megtesszük. Ezzel az előző fejezetben tapasztalt kombinatorikus robbanás elkerülhető.
+
+Ez sokkal egyszerűbb a gyakorlatban, mint amilyennel leírva érződik (már használtuk is jópárszor tanulmányaink során), értsük meg a példánkra vetítve.
+
+Kiinduló környezetünk a "4-Strategy" mappában a "Strategy-0-Begin" projektben található, ebben dolgozzunk. Ez ugyanaz, az enum-ot használó megoldás, mint amit a Template Method minta esetében is kiindulásként használtunk.
+
+A Strategy minta alkalmazásának első lépése, hogy meghatározzuk, az osztály viselkedésének hány különböző aspektusa van, melyet kiterjeszthetővé szeretnénk tenni. A példánkban ebből - egyelőre legalábbis - kettő van:
+
+* Anonimizáláshoz kötödő viselkedés, melyhez két művelet tartozik:
+    * Anonimizáló logika
+    * Aninimizáló leírásának meghatározása (description)
+* Progress kezelés, melyhez egy művelet tartozik:
+    * Progress megjelenítése
+
+A nehezével meg is vagyunk, ettől kezdve alapvetően mechanikusan lehet dolgozni:
+
+* a fenti aspektusok mindegyikéhez egy-egy interfészt kell bevezetni, a fent meghatározott műveletekkel,
+* majd ezekhez el kell készíteni a megfelelő implementációkat.
+
+Ezeket fogjuk most megtenni.
+
+Először vezessük be az **anonimizáláshoz** tartozó interfészt és implementációkat:
+
+1. Hozzunk létre a projektben egy `AnonymizerAlgorithms` nevű mappát (jobb katt a "Strategy-0-Begin" projekten, majd *Add/New Folder* menü).
+2. A következő lépésekben minden interfészt és osztály egy külön, a nevének megfelelő forrásfájlba tegyünk a szokásos módon!
+3. Vegyünk fel ebben egy `IAnonymizerAlgorithm` interfészt az alábbi kóddal:
+
+    ``` csharp title="IAnonymizerAlgorithm.cs"
+    public interface IAnonymizerAlgorithm
+    {
+        Person Anonymize(Person person);
+        string GetAnonymizerDescription() => GetType().Name;
+    }
+    ```
+
+    Azt is megfigyelhetjük a `GetAnonymizerDescription` művelet esetében, hogy a modern C# nyelven, amennyiben akarunk, tudunk az egyes interfész műveleteknek alapértelmezett implementációt adni!
+
+4. Vegyük fel ennek az interfésznek az név anonimizáláshoz tartozó megvalósítását ugyanebbe a mappába **
+
+    ??? example "Megoldás"
+
+        ``` csharp title="NameMaskingAnonymizerAlgorithm.cs"
+        public class NameMaskingAnonymizerAlgorithm: IAnonymizerAlgorithm
+        {
+            private readonly string _mask;
+
+            public NameMaskingAnonymizerAlgorithm(string mask)
+            {
+                _mask = mask;
+            }
+
+            public Person Anonymize(Person person)
+            {
+                return new Person(_mask, _mask, person.CompanyName,
+                    person.Address, person.City, person.State, person.Age, person.Weight, person.Decease);
+            }
+
+            public string GetAnonymizerDescription()
+            {
+                return $"NameMasking anonymizer with mask {_mask}";
+            }
+        }
+        ```
+
+5. Vegyük fel ennek az interfésznek az életkor anonimizáláshoz tartozó megvalósítását ugyanebbe a mappába**
+
+    ??? example "Megoldás"
+
+        ``` csharp title="AgeAnonymizerAlgorithm.cs"
+        public class AgeAnonymizerAlgorithm: IAnonymizerAlgorithm
+        {
+            private readonly int _rangeSize;
+
+            public AgeAnonymizerAlgorithm(int rangeSize)
+            {
+                _rangeSize = rangeSize;
+            }
+
+            public Person Anonymize(Person person)
+            {
+                // This is whole number integer arithmetics, e.g for 55 / 20 we get 2
+                int rangeIndex = int.Parse(person.Age) / _rangeSize;
+                string newAge = $"{rangeIndex * _rangeSize}..{(rangeIndex + 1) * _rangeSize}";
+
+                return new Person(person.FirstName, person.LastName, person.CompanyName,
+                    person.Address, person.City, person.State, newAge,
+                    person.Weight, person.Decease);
+            }
+
+            public string GetAnonymizerDescription()
+            {
+                return $"Age anonymizer with range size {_rangeSize}";
+            }
+        }
+        ```
+
+6. Fontos gondolat
+
+    !!! warning
+        Mindenképpen figyeljük meg, hogy az interfész és a megvalósításai kizárólag az anonimizálással foglalkoznak, semmiféle más logika (pl. progress kezelés) nincs itt!
+
+Második lépésben vezessük be a **progress kezeléshez** tartozó interfészt és implementációkat:
+
+1. Hozzunk létre a projektben egy `Progresses` nevű mappát.
+2. A következő lépésekben minden interfészt és osztály egy külön, a nevének megfelelő forrásfájlba tegyünk a szokásos módon.
+3. Vegyünk fel ebben egy `IProgress` interfészt az alábbi kóddal:
+
+    ``` csharp title="IProgress.cs"
+    public interface IProgress
+    {
+        void Report(int count, int index);
+    }
+    ```
+
+4. Vegyük fel ennek az interfésznek az egyszerű progresshez tartozó megvalósítását ugyanebbe a mappába**
+
+    ??? example "Megoldás"
+
+        ``` csharp title="IProgress.cs"
+        public class SimpleProgress: IProgress
+        {
+            public void Report(int count, int index)
+            {
+                Console.WriteLine($"{index + 1}. person processed");
+            }
+        }
+        ```
+
+5. Vegyük fel ennek az interfésznek az százalékos progresshez tartozó megvalósítását ugyanebbe a mappába**
+
+    ??? example "Megoldás"
+
+        ``` csharp title="IProgress.cs"
+        public class PercentProgress: IProgress
+        {
+            public void Report(int count, int index)
+            {
+                int percentage = (int)((double)(index+1) / count * 100);
+
+                var pos = Console.GetCursorPosition();
+                Console.SetCursorPosition(0, pos.Top);
+
+                Console.Write($"Processing: {percentage} %");
+
+                if (index == count - 1)
+                    Console.WriteLine();
+            }
+        }
+        ```
+
+6. Fontos gondolat
+
+    !!! warning "Fontos"
+        Mindenképpen figyeljük meg, hogy az interfész és a megvalósításai kizárólag a progress kezeléssel foglalkoznak, semmiféle más logika (pl. anonimizálás) nincs itt!
+
+
+A következő fontos lépés az anoninimizáló alaposztály újrafelhasználhatóvá és kiterjeszthetővé tétele a fent bevezetett strategy-k segítségével. Az Anonymizer.cs fájlban:
+
+1. Töröljük a következőket:
+   1. `AnonymizerMode` enum típus
+   2. `_anonymizerMode`, `_mask` és `_rangeSize` tagok
+2. Vezessünk be egy-egy strategy interfész típusú tagot:
+
+    ``` csharp
+    private readonly IProgress _progress;
+    private readonly IAnonymizerAlgorithm _anonymizerAlgorithm;
+    ```
+
+3. A fájl elejére szúrjunk be a megfelelő usingokat:
+
+    ``` csharp
+    using Lab_Extensibility.AnonymizerAlgorithms;
+    using Lab_Extensibility.Progresses;
+    ```
+
+4. Az előző pontban bevezetett `_progress` és `_anonymizerAlgorithm` kezdőértéke null, a konstruktorban állítsuk ezeket a referenciákat az igényeinknek megfelelő implementációra. Pl.:
+
+    ``` csharp
+    public Anonymizer(string inputFileName, string mask) : this(inputFileName)
+    {
+        _progress = new PercentProgress();
+        _anonymizerAlgorithm = new NameMaskingAnonymizerAlgorithm(mask);
+    }
+
+    public Anonymizer(string inputFileName, int rangeSize) : this(inputFileName)
+    {
+        _progress = new PercentProgress();
+        _anonymizerAlgorithm = new AgeAnonymizerAlgorithm(rangeSize);
+    }
+    ```
+
+Az `Anonymizer` osztályban a jelenleg beégetett anonimizálás függő logikákat bízzuk a _anonymizerAlgorithm tagváltozó által hivatkozott strategy implementációra:
+
+1. Az osztály `Run` függvényében az `if`/`else` kifejezésben található `Anonymize` hívásokat most már le delegáljuk a `_anonymizerAlgorithm` objektumnak:
+
+    {--
+
+    ``` csharp
+    Person person;
+    if (_anonymizerMode == AnonymizerMode.Name)
+        person = Anonymize_MaskName(persons[i], _mask);
+    else if (_anonymizerMode == AnonymizerMode.Age)
+        person = Anonymize_AgeRange(persons[i], _rangeSize);
+    else
+        throw new NotSupportedException("The requested anonymization mode is not supported.");
+    ```
+
+    --}
+
+    helyett:
+
+    ``` csharp
+    Person person = _anonymizerAlgorithm.Anonymize(persons[i]);
+    ```
+
+    !!! warning "Fontos"
+        Vegyük észre, hogy a viselkedés nincs beégetve a kódba, teljesen attól függ, hogy a `_anonymizerAlgorithm` interfész milyen implementációra mutat. Vagyis itt valóban egy kiterjesztési pontot vezettünk be.
+
+TODO <COMING SOON>
+
+### A megoldás értékelése
+
+Ellenőrizzük a megoldást, megvalósítja-e a céljainkat:
+
+* Az `Anonymizer` egy újrafelhasználható(bb) osztály lett.
+* Ha új anonimizáló logikára van szükség a jövőben, csak egy új `IAnonymizerAlgorithm` implementációt kell bevezetni. Ez nem módosítás, hanem bővítés.
+* Ha új progress logikára van szükség a jövőben, csak egy új `IProgress` implementációt kell bevezetni. Ez nem módosítás, hanem bővítés.
+* A fenti két pontban teljesül az OPEN/CLOSED elv, vagyis az `Anonymizer` kódjának módosítása nélkül tudjuk a logikát testre szabni, kiterjeszteni.
+* Itt nem kell tartani a Template Methodnál tapasztalt kombinatorikus robbanástól: bármely `IAnonymizerAlgorithm` implementáció bármely `IProgress` implementációban kényelmesen használható, nem kell a kombinációkhoz új osztályokat bevezetni.
+
+!!! Note "További Strategy előnyök
+    * Futás közben lecserélhető
+    * ...
+
+Keressük meg azokat a részeket, melyek esetfüggő, változó logikák, így nem akarunk beégetni az újrafelhasználhatónak szánt `Anonymizer` osztályunkba:
+
+* Az egyik az `Anonymize_MaskName`/`Anonymize_AgeRange`,
+* a másik a `GetAnonymizerDescription`.
+
+A mintát követve ezek esetfüggő implementációit a leszármazottakba tesszük, az ősben pedig absztrakt (vagy esetleg virtuális) függvényeket vezetünk be ezekre, és ezeket hívjuk:
+
+TODO NullStrategy
+
 ## Tanulságok
 
+Strategy elejére tegyük be az UML diagramot? ?????????????????????
+
  * A változó igények során organikusan jelennek meg tervezési minták és vetettünk be egyéb technikákat a refaktorálások során.
+
+A Template Method egyszerű esetben, ha a viselkedések különböző aspektusainak nem kell sok keresztkombinációját támogatni, nagyon kényelmes és egyszerű megoldást ad, különösen, ha egyébként is kell használjuk a származtatást. De nem, vagy csak nehezen egységtesztelhető.
+
