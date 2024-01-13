@@ -371,7 +371,6 @@ Ugorjunk a kész megoldásra (TemplateMethod-3-ProgressMultiple projekt). Kód h
 
 Mi okozta a problémát? Az, hogy az osztályunk viselkedését több aspektus/dimenzió mentén (példánkban az anonimizálás és progress) kell kiterjeszthetővé tenni, és ezeket sok keresztkombinációban támogatni. Ha újabb aspektusok mentén kellene ezt megtenni (pl. beolvasás módja, kimenet generálása), akkor a probléma exponenciálisan tovább "robbanna". Ilyen esetekben a Template Method tervezési minta nem alkalmazható.
 
-
 ## 7. Megoldás (Strategy-1)
 
 Ebben a lépésben a **Strategy** tervezési minta alkalmazásával fogjuk a kezdeti megoldásunkat a szükséges pontokban kiterjeszthetővé tenni. A mintában a következő elvek mentén valósul meg a "változatlan" és "változó" részek különválasztása:
@@ -396,6 +395,11 @@ A nehezével meg is vagyunk, ettől kezdve alapvetően mechanikusan lehet dolgoz
 
 1. A fenti aspektusok mindegyikéhez egy-egy strategy interfészt kell bevezetni, a fent meghatározott műveletekkel, és ezekhez el kell készíteni a megfelelő implementációkat
 2. Az Anonymizer osztályba be kell vezetni egy-egy strategy interfész tagváltozót, és a kiterjesztési pontokban ezen tagváltozókon keresztül használni az aktuálisan beállított strategy implementációs objektumokat.
+
+??? note "Strategy alapú megoldás osztálydiagram"
+    Az alábbi UML osztálydiagram illusztrálja a Strategy alapú megoldást, a lényegre fókuszálva:
+
+    ![Strategy UML osztálydiagram cél](images\strategy-goal.png)
 
 Először vezessük be az **anonimizáláshoz** tartozó interfészt és implementációkat:
 
@@ -471,7 +475,7 @@ Először vezessük be az **anonimizáláshoz** tartozó interfészt és impleme
         }
         ```
 
-6. Fontos gondolat
+5. Fontos gondolat
 
     !!! warning
         Mindenképpen figyeljük meg, hogy az interfész és a megvalósításai kizárólag az anonimizálással foglalkoznak, semmiféle más logika (pl. progress kezelés) nincs itt!
@@ -641,12 +645,19 @@ A megoldást a Dependency Injection (röviden DI) alkalmazása jelenti. Ennek l�
 
 A kész megoldást nézzük meg, ez a "Strategy-2-DI" projektben található. Csak az `Anonymizer` osztály konstruktorát kell nézni. Azt látjuk, hogy a fenti elveknek megfelelően át lett alakítva.
 
-Megjegyzés: azt egyelőre ne akarjuk megérteni, mi az újonnan felbukkanó `NullProgress` a konstruktorban. Ez a DI szempontjából irreleváns, még visszatérünk rá.
+Megjegyzés: azt egyelőre ne akarjuk megérteni, mi az újonnan felbukkanó `NullProgress` a konstruktorban. Ez a DI szempontjából irreleváns, rövidesen visszatérünk rá.
  
 Most már elkészültünk, az `Anonymizer` osztály teljesen független lett az implementációktól. Lehetőségünk van az `Anonymizer` osztály bármilyen anoniminizáló algoritmus és bármilyen progress kezelés kombinációjával használni. Erre vannak is példák a `Program.cs` fájlban, nézzük ezt meg! Itt négy `Anonymizer` objektumot hozunk létre, négy különböző anonimizáló és progress kombinációval.
 
 !!! Note "A működés ellenőrzése"
     A gyakorlat során erre valószínűleg nem lesz idő, de aki bizonytalan abban, "mitől is működik" a strategy minta, mitől lesz más a viselkedés a fenti négy esetre: érdemes töréspontokat tenni a `Program.cs` fájlban a négy `Run` függvényhívásra, és a függvényekbe a debuggerben belelépkedve megnézni, hogy mindig a megfelelő strategy implementáció hívódik meg.
+
+A projektben található egy osztálydiagram (Main.cd), ezen is megtekinthető a kész megoldás:
+
+??? note "Strategy alapú megoldás osztálydiagram"
+    Az alábbi UML osztálydiagram illusztrálja a Strategy alapú megoldásunkat:
+
+    ![Strategy DI UML osztálydiagram](images\strategy-di.png)
 
 ### Null strategy (kitérő)
 
@@ -708,7 +719,7 @@ A megoldás - a kódunk egységtesztelhetővé tételéhez - egyszerű:
 
 </div>
 
-Ennek megfelelően elkészítjük a megoldásunk egységtesztelésre is előkészített változatát, melyben a bemenet és kimenet kezelése is le van választva a Strategy minta alkalmazásával. 
+Ennek megfelelően elkészítjük a megoldásunk egységtesztelésre is előkészített változatát, melyben a bemenet és kimenet kezelése is le van választva a Strategy minta alkalmazásával.
 
 Egyből a kész megoldást nézzük ("StrategyFull-1"), hiszen itt semmi újat nem tanulunk, egyszerűen csak alkalmazzuk a Strategy mintát két aspektus mentén:
 * `InputReaders` mappa: bemenet feldolgozó strategy interfész és a korábbi logika kiszervezve egy implementációba.
@@ -718,6 +729,11 @@ Egyből a kész megoldást nézzük ("StrategyFull-1"), hiszen itt semmi újat n
   * Run függvényben `_inputReader` és `_resultWriter` használata.
 
 Az `Anonymizer` osztályunk átláthatóbb is lett: jobban követi az SRP elvet, két felelősségi kör kiszervezésre került belőle.
+
+??? note "Megoldás osztálydiagram"
+    Az alábbi UML osztálydiagram illusztrálja a Strategy alapú megoldásunkat (Main.cd diagram a projektben):
+
+    ![Megoldás osztálydiagram](images\strategy-full.png)
 
 A következő lépés egységtesztek készítése az `Anonymizer` osztályhoz. Ehhez olyan mock strategy implementációkat kell bevezetni, melyek nemcsak tesztadatokat szolgáltatnak, hanem ellenőrzéseket is végeznek (adott logikai egység valóban jól működik-e). Ez most bonyolultnak hangzik, de szerencsére a legtöbb modern keretrendszerben van rá könyvtár támogatás (.NET-ben a [moq](https://github.com/devlooped/moq)). Ennek alkalmazása túlmutat a tárgy keretein, így a feladatunk egységtesztelhetőséghez kapcsolódó vonulatát ebben a pontban lezárjuk.
 
