@@ -304,7 +304,7 @@ Az egyik kiterjesztési pontunkkal el is készültünk. De maradt még egy, a `G
 1. Az `AnonymizerBase`-ben a `GetAnonymizerDescription` nem absztrakt, hanem virtuális függvényként került bevezetésre, hiszen itt tudtunk értelmes alapértelmezett viselkedést biztosítani: egyszerűen visszaadjuk az osztály nevét (mely pl. a `NameMaskingAnonymizer` osztály esetében "NameMaskingAnonymizer"). Mindenesetre a csúnya switch-case szerkezettől megszabadultunk.
 2. A leszármazottakban felülírjuk ezt a virtuális függvényt, belefűzzük a leírásba az osztályspecifikus adatokat (pl.`NameMaskingAnonymizer` esetében a `_mask` értékét).
 
-A "TemplateMethod-0-Begin" projektünk most nem forduló kódot tartalmaz, ezt célszerű eltávolítani a solution-ből, hogy a későbbi futtatások során ne legyen zavaró: jobb katt a projekten és `Remove` menü.
+A "TemplateMethod-0-Begin" projektünk most nem forduló kódot tartalmaz, ezt célszerű eltávolítani a solution-ből, hogy a későbbi futtatások során ne legyen zavaró: jobb katt a projekten és `Remove` menü (ez fizikailag nem törli, csak kiveszi a solution-ből, később visszatehető).
 
 El is készültünk. Ha sok időnk van, ki is próbálhatjuk, hogy jobban "érezzük", működnek az kiterjesztési pontok (de ez különösebben nem fontos, hasonlót már C++ ismereteinktől kezdve csináltunk):
 
@@ -723,6 +723,149 @@ A következő lépés egységtesztek készítése az `Anonymizer` osztályhoz. E
 
 TODO: teszt projektek eltávolítása a solutionből.
 
+## 10. Megoldás (6-DelegatesAndLambdas)
+
+Napjainkban rohamosan terjed a korábban szigorúan objektumorientált nyelvekben is a funkcionális programozást támogató eszköztárral való bővítése, és az alkalmazásfejlesztők is egyre nagyobb szeretettel alkalmazzák ezeket. Egy ilyen eszköz C# nyelven a delegate (és ehhez kapcsolódóan a lambda kifejezés).
+
+Mint a félév során korábban láttuk, delegate-ek segítségével olyan kódot tudunk írni, melybe bizonyos logikák/viselkedések nincsenek beégetve, ezeket "kívülről" kap meg a kód. Pl. egy sorrendező függvénynek delegate formájában adjuk át paraméterként, hogyan kell két elemet összehasonlítani, így pl. személy objektumokra meg tudjuk határozni, mely tulajdonságok szerint szeretnénk adott esetben sorrendezni (pl. elsődlegesen név, másodlagosan kor stb.).
+
+Ennek megfelelően a delegate-ek alkalmazása egy újabb alternatíva (a Template Method és a Strategy mellett) a kód újrafelhasználhatóvá/kiterjeszthetővé tételére, kiterjesztési pontok bevezetésére.
+
+A következő lépésben a korábban Strategy mintával megvalósított progress kezelést alakítjuk át delegate alapúra (új funkciót nem vezetünk be, ez egy plusztán "technikai" átalakítás lesz).
+
+<div class="grid cards" markdown>
+
+- :warning: __A megoldás alapelve__  
+  *A delegate alapú megoldás alapelve nagyon hasonlít a Strategy-hez: csak nem strategy-ket kap és tárol az osztály tagváltozókban (interfész hivatkozásokon keresztül), hanem delegate-eket, és az ezek által hivatkozott függvényeket hívja a kiterjesztési pontokban.*
+</div>
+
+A "6-DelegatesAndLambdas" mappa "DelegatesAndLambdas-0-Begin" projektjéből indulunk ki. Ez a korábbi, négy aspektus mentén Strategy mintával már kiterjeszthetővé tett megoldás. Lépések:
+
+1. Az `IProgress` interfészt, pontosabban annak `Report` műveletét váltjuk ki delegate használattal. Ne vezessünk be saját delegate típust, használjuk a .NET által biztosított `Action` és `Func` (generikus) típusokat. A `Report` `void`-dal tér vissza, és két int paramétere van: ez egy `Action<int, int>` típussal váltható ki, ezt fogjuk az alábbiakban használni.
+2. Az `Anonymizer` osztályban a strategy tag lecserélése delgate-re:
+
+    {--
+
+    ``` csharp
+    private readonly IProgress _progress;
+    ```
+
+    --}
+
+    helyett:
+
+    ``` csharp
+    private readonly Action<int, int> _reportProgress;
+    ```
+
+3. Az `Anonymizer` osztályban a konstruktorban a strategy lecserélése delegate-re:
+
+    ``` csharp
+    public Anonymizer(..., Action<int, int> reportProgress)
+    {
+        ...
+        // If reportProgress is null, use a lambda function that does nothing (has an empty body)
+        _reportProgress = reportProgress ?? (( _,  _) => { });
+        ...
+    }
+    ```
+
+    Itt egy picit "trükköztünk" is (de ez az "alapok" tekintetében lényegtelen): ha a függvény null action-t kap, akkor a `_reportProgress` tagváltozót egy üres törzsű (semmit nem csináló) függvényre állítjuk egy lambda kifejezéssel, hogy a `_reportProgress` soha ne legyen `null`, ne kelljen `null` vizsgálatot végezni a használatakor.
+
+    Azt pedig szabadon eldönthetjük, adunk-e `null` alapértelmezett a `reportProgress` paraméternek (a fenti példában nem adtunk.)
+
+4. A Run műveletben a strategy lecserélése delegate hívásra:
+
+    {--
+
+    ``` csharp
+    _progress.Report(persons.Count,i);
+    ```
+
+    --}
+
+    helyett:
+
+    ``` csharp
+    _reportProgress(persons.Count,i);
+    ```
+
+5. A `Program.cs`-ben az `Anonymizer` példányosításakor negyedik paraméterben már nem egy `IProgress` implementációt kell átadni, hanem egy `Action<int, int>`-tel kompatibilis függvényt. A SimpleProgress esetében a Report egy egyeszerű, egysoros függvény, adjuk ezt meg egy lambda kifejezés formájában:
+
+    ``` csharp hl_lines="5"
+        Anonymizer a1 = new(
+        new CsvInputReader(inputFileName),
+        new CsvResultWriter(outputFileName),
+        new NameMaskingAnonymizerAlgorithm("***"),
+        (count, index) => Console.WriteLine($"{index + 1}. person processed")
+        a1.Run();
+    ```
+
+    A lambda törzse pontosan ugyanaz, mint a SimpleProgress esetében volt!
+
+6. Mostantól nincs szükség a progress kezeléshez kapcsolódó strategy interfészre és implementációkra!
+   
+    * Töröljük az ezeket tartalmazó "Progresses" mappát a solutionből (jobb katt rajta a Solution Explorerben, majd `Delete` menü). Megjegyzés: Ezzel ugyan kitöröltük a százalék progress logikát is, de ez nem probléma, a következő nagyobb lépésben ezt még úgyis magasabb szinten is átgondoljuk a megoldásunkat.
+    * Töröljük az Anonymizer.cs-ben a `using Lab_Extensibility.Progresses;` sort, hiszen ez a névtér a fenti törléssel megszűnt.
+   
+De általánosságában a helyzet nem ilyen egyszerű. Amennyiben a reportProgress delegate-nek mindig más és más implementációt adunk meg, akkor ez igaz. Viszont mi a helyzet akkor, ha a fenti példában szereplő "simple progress" logikát több helyen, több Anonymizer objektumnál is fel szeretnénk használni? Súlyos hiba lenne a
+`(count, index) => Console.WriteLine($"{index + 1}. person processed")`
+lambda kifejezést copy-paste-tel "szaporítani", kódduplikációhoz vezetne.
+
+Kérdés: van-e megoldás arra, hogy delegate-ek esetében is újrafelhasználható kódot adjunk meg? Természetesen igen, hiszen delegate-ek esetében nem kötelező a lambda kifejezések használata, lehet velük közönséges műveletekre (akár statikus, akár nem statikusakra is), mint azt korábban a félév során láttuk és számos esetben alkalmaztuk is.
+
+Amennyiben a "simple progress" és/vagy "percent progress" logikát/logikákat újrafelhasználhatóvá szeretnénk tenni, tegyük ezeket egy külön függvényekbe valamilyen, az adott esetben leginkább passzoló osztályba/osztályokba, és egy ilyen  műveletet adjuk meg az Anonymizer konstruktornak paraméterként:
+
+A következőkben ugorjuk az ennek megfelelően átalakított kész, "DelegatesAndLambdas-1-Progress" projektben található megoldásra:
+
+* A "simple progress" és "percent progress" logikákat egy AllProgresses statikus osztály két statikus műveletében valósítottuk meg:
+  
+    ??? example "AllProgresses.cs"
+        ``` csharp
+        public static class AllProgresses
+        {
+            public static void ReportPercent(int count, int index)
+            {
+                int percentage = (int)((double)(index+1) / count * 100);
+
+                var pos = Console.GetCursorPosition();
+                Console.SetCursorPosition(0, pos.Top);
+
+                Console.Write($"Processing: {percentage} %");
+
+                if (index == count - 1)
+                    Console.WriteLine();
+            }
+
+            public static void ReportSimple(int count, int index)
+            {
+                Console.WriteLine($"{index + 1}. person processed");
+            }
+        }
+        ```
+
+* A Program.cs fájlban az `Anonymizer a2` objektum esetében az `AllProgresses.ReportPercent`-et adtuk meg paraméternek:
+  
+    ??? example "Program.cs"
+        ``` csharp hl_lines="5"
+        Anonymizer a2 = new(
+            new CsvInputReader(inputFileName),
+            new CsvResultWriter(outputFileName),
+            new NameMaskingAnonymizerAlgorithm("***"),
+            AllProgresses.ReportPercent);
+        a2.Run();
+        ```
+
+### A megoldás érékelése
+
+Elkészültünk, értékeljük a megoldást:
+
+* Kijelenthető, hogy a delegate alapú megoldás a Strategy-nél kisebb ceremóniával járt: nem kellett interfészt és
+implementációs osztályokat bevezetni (a beépített `Action` és `Func` generikus delegate típusokat tudtuk használni).
+* A teljesen "eseti" logikát lambda kifejezés formájában legegyszerűbb megadni. Ha újrafelhasználható logikára van szükség, akkor viszont vezessünk be "hagyományos", újrafelhasználható függvényeket.
+  
+Hogy mikor érdemesebb delegate-ekkel dolgozni, illetve a Strategy mintával, alább, az útmutatót záró [Összegzés](#osszegzes) fejezetben foglaljuk össze.
+
 ## Összegzés
 
 TODO: A Strategy elejére tegyük be az UML diagramot? ?????????????????????
@@ -734,10 +877,18 @@ A munkafolyamatunk áttekintése:*
 
 Kitejesztési technikák áttekintése:*
 
-* T**emplate Method**: Egyszerű esetben, ha a viselkedések különböző aspektusainak nem kell sok keresztkombinációját támogatni, nagyon kényelmes és egyszerű megoldást ad, különösen, ha egyébként is kell használjuk a származtatást. De nem, vagy csak nehezen egységtesztelhető alaposztályt eredményez.
+* **Template Method**: Egyszerű esetben, ha a viselkedések különböző aspektusainak nem kell sok keresztkombinációját támogatni, nagyon kényelmes és egyszerű megoldást ad, különösen, ha egyébként is kell használjuk a származtatást. De nem, vagy csak nehezen egységtesztelhető alaposztályt eredményez.
 * **Strategy**: Nagyon rugalmas megoldást biztosít, és nem vezet kombinatorikus robbanáshoz, ha több aspektus mentén kell az osztályt kiterjeszteni, és több keresztkombinációban is szeretnénk ezeket használni. Sok esetben csak azért használjuk, hogy az osztályunkról interfészek segítségével leválasszuk a függőségeit, és így egységtesztelhetővé tegyük az osztályt.
-* **Delegate/lambda**: Ez a megközelítés kisebb ceremóniával jár, mint a Strategy alkalmazása, ugyanis nincs szükség interfészek és implementációs osztályok bevezetésére, emiatt egyre inkább (rohamosan) terjed a használata a modern objektumorientált nyelvekben is. Különösen akkor jönnek ki az előnyei, ha a viselkedéseket nem akarjuk újrafelhasználhatóvá tenni, mert ekkor csak egy lambda kifejezéssel megadjuk, mindenféle új osztály/külön függvény bevezetése nélkül. A Strategynek akkor van előnye a delegate-ekkel szemben, ha:
-    * Ha kiterjesztendő osztály adott aspektusához több (minél több, annál inkább) művelet tartozik. Ilyenkor a strategy interfész ezeket "magától" szépen összefogja (mint a példánkban az `IAnonymizerAlgorithm` a `Anonymize` és `GetAnonymizerDescription` műveletek), és az implementációkban is együtt jelennek meg, "csoportosítják" a kiterjesztési pontokat (delegate-ek esetében nincs ilyen csoportosítás). Ez átláthatóbbá teheti, sok művelet esetén egyértelműen azzá is teszi a megoldást.
-    * Az adott nyelv pusztább objektumorientált, nem támogatja a delegate/lambda alkalmazását. De ma már a legtöbb modern OO nyelv szerencsére támogatja valamilyen formában (Java és C++ is).
+* **Delegate/lambda**: Ez a megközelítés kisebb ceremóniával jár, mint a Strategy alkalmazása, ugyanis nincs szükség interfészek és implementációs osztályok bevezetésére, emiatt egyre inkább (rohamosan) terjed a használata a modern objektumorientált nyelvekben is. Különösen akkor jönnek ki az előnyei, ha a viselkedéseket nem akarjuk újrafelhasználhatóvá tenni, mert ekkor csak egy lambda kifejezéssel megadjuk, mindenféle új osztály/külön függvény bevezetése nélkül. 
+  
+Érdemes összeszedni, hogy a Strategynek mikor lehet/vanm van előnye a delegate-ekkel szemben:
+
+* Ha kiterjesztendő osztály adott aspektusához több (minél több, annál inkább) művelet tartozik. Ilyenkor a strategy interfész ezeket "magától" szépen összefogja (mint a példánkban az `IAnonymizerAlgorithm` a `Anonymize` és `GetAnonymizerDescription` műveletek), és az implementációkban is együtt jelennek meg, "csoportosítják" a kiterjesztési pontokat (delegate-ek esetében nincs ilyen csoportosítás). Ez átláthatóbbá teheti, sok művelet esetén egyértelműen azzá is teszi a megoldást.
+* Az adott nyelv pusztább objektumorientált, nem támogatja a delegate/lambda alkalmazását. De ma már a legtöbb modern OO nyelv szerencsére támogatja valamilyen formában (Java és C++ is).
+* A strategy implementációk a tagváltozóikban állapotot is tudnak tárolni, melyet létrehozásukkor meg tudunk adni. Ezt használtuk is (a `NameMaskingAnonymizerAlgorithm` esetében ilyen volt a `_mask`, a `AgeAnonymizerAlgorithm` esetében a `_rangeSize`). Ez nem azt jelenti, hogy ilyen esetben egyáltalán nem tudunk delegate-eket használni, hiszen:
+    * ezeket az adatokat akár újonnan bevezetett függvény paraméterben is átadhatjuk az egyes delegate hívások során,
+    * illetve, lambda használata esetén a "variable capture" mechanizmus segítségével a lambda függvények tudnak állapotot átvenni környezetükből.
+
+    De ezek a megoldások nem mindig alkalmazhatók, vagy legalábbis körülményes lehet az alkalmazásuk.
 
 Mindenképpen meg kell említeni, hogy nem csak jelen gyakorlatban említett néhány minta szolgálja a kiterjeszthetőséget és újrafelhasználhatóságot, hanem gyakorlatilag az összes. Most kiemeltünk párat, melyek (még p. az Observert/Iteratort/Adaptert ide sorolva) talán a leggyakrabban, legszélesebb körben alkalmazhatók és bukkannak is fel keretrendszerekben.
