@@ -349,7 +349,7 @@ Ugorjunk egyből a kész megoldásra (*TemplateMethod-2-Progress* projekt):
   
 Ennek egyelőre különösebb tanulsága nincs, de a következő lépésben már lesz.
 
-## 5. Megoldás (TemplateMethod-3-ProgressMultiple)
+## 6. Megoldás (TemplateMethod-3-ProgressMultiple)
 
 Új - és teljesen logikus - igény merült fel: a jövőben bármely anonimizáló algoritmust bármely progress megjelenítéssel lehessen használni. Ez jelen pillanatban négy keresztkombinációt jelent:
 
@@ -369,14 +369,10 @@ Ugorjunk a kész megoldásra (TemplateMethod-3-ProgressMultiple projekt). Kód h
 * Ha a jövőben új anonimizáló algoritmust vezetünk be, annyi új osztályt kell írni (legalább), ahány progress típust támogatunk.
 * Ha a jövőben új progress típust vezetünk be, annyi új osztályt kell írni (legalább), ahány anonimizáló típust támogatunk.
 
-Mi okozta a problémát? Az, hogy az osztályunk viselkedését több asektuk/dimenzió mentén (példánkban az anonimizálás és progress) kell kiterjeszthetővé tenni, és ezeket sok keresztkombinációban támogatni. Ha újabb aspektusok mentén kellene ezt megtenni (pl. beolvasás módja, kimenet generálása), akkor a probléma exponenciálisan tovább "robbanna". Ilyen esetekben a Template Method tervezési minta nem alkalmazható.
+Mi okozta a problémát? Az, hogy az osztályunk viselkedését több aspektus/dimenzió mentén (példánkban az anonimizálás és progress) kell kiterjeszthetővé tenni, és ezeket sok keresztkombinációban támogatni. Ha újabb aspektusok mentén kellene ezt megtenni (pl. beolvasás módja, kimenet generálása), akkor a probléma exponenciálisan tovább "robbanna". Ilyen esetekben a Template Method tervezési minta nem alkalmazható.
 
-??? "Template Method minta további korlátai"
 
-    * A viselkedés futás közben nem megváltoztatható. Pl. ha létrehoztunk egy AgeAnonymizerWithPercentProgress típusú objektumot, akkor ez csak életkor szerint tud anonimizálni és százalék progresst megjeleníteni, ezeket a viselkedéseket nem lehez az objektumra futás közben megváltoztatni. Esetünkben ennek nincs semmi jelentősége, de vannak olyan feladatok, amikor hasonlóra szükség lehet.
-    * Körülményesen támogatja az egységtesztelhetőséget (később visszatérünk erre).
-
-## 6. Megoldás (Strategy-1)
+## 7. Megoldás (Strategy-1)
 
 Ebben a lépésben a **Strategy** tervezési minta alkalmazásával fogjuk a kezdeti megoldásunkat a szükséges pontokban kiterjeszthetővé tenni. A mintában a következő elvek mentén valósul meg a "változatlan" és "változó" részek különválasztása:
 
@@ -633,36 +629,28 @@ Elkészültünk, a kész megoldás a "Strategy-1" projektben meg is található 
 
 ### A megoldás értékelése
 
-A strategy minta bevezetésével elkészültünk. Jelen formájában ugyanakkor szinte soha nem használjuk. Ellenőrizzük a megoldásunkat: valóban újrafelhasználható, és az Anomymizer osztály módosítása nélkül lehetőség van-e az anonimizáló algoritmus, illetve a progress kezelés megváltoztatására. Ehhez azt kell megnézni, bárhol az osztályban van-e olyan kód, mely implementáció függő.
+A strategy minta bevezetésével elkészültünk. Jelen formájában ugyanakkor szinte soha nem használjuk. Ellenőrizzük a megoldásunkat: valóban újrafelhasználható, és az Anomymizer osztály módosítása nélkül lehetőség van-e az anonimizáló algoritmus, illetve a progress kezelés megváltoztatására? Ehhez azt kell megnézni, bárhol az osztályban van-e olyan kód, mely implementáció függő.
 
-Sajnos találunk ilyet. A konstruktorba be van égetve, milyen algoritmus implementációt és progress implementációt hozunk létre. Ezt mindenképpen nézzük meg a kódban! Ezekben a sorokban át kell írni a `new` operátor utáni típust, mely így az osztály módosításával jár:
-
-``` csharp hl_lines="3-4 9-10"
-public Anonymizer(string inputFileName, string mask) : this(inputFileName)
-{
-    _progress = new PercentProgress();
-    _anonymizerAlgorithm = new NameMaskingAnonymizerAlgorithm(mask);
-}
-
-public Anonymizer(string inputFileName, int rangeSize) : this(inputFileName)
-{
-    _progress = new PercentProgress();
-    _anonymizerAlgorithm = new AgeAnonymizerAlgorithm(rangeSize);
-}
-```
+Sajnos találunk ilyet. A konstruktorba be van égetve, milyen algoritmus implementációt és progress implementációt hozunk létre. Ezt mindenképpen nézzük meg a kódban! Ezekben a sorokban át kell írni a `new` operátor utáni típust, mely így az osztály módosításával jár.
 
 Sokan - teljesen jogosan - ezt jelen formájában nem is tekintik igazi Strategy alapú megoldásnak. A teljes körű megoldást a következő lépésben valósítjuk meg.
 
-## 7. Megoldás (Strategy-2-DI)
+## 8. Megoldás (Strategy-2-DI)
 
 A megoldást a Dependency Injection (röviden DI) alkalmazása jelenti. Ennek lényege az, hogy nem maga az osztály példányosítja a függőségeit (ezek a strategy implementációk), hanem ezeket kívülről adjuk át neki, pl. konstruktor paraméterekben, vagy akár property-k vagy setter műveletek formájában. Természetesen interfész típusként, hivatkozva!
 
 A kész megoldást nézzük meg, ez a "Strategy-2-DI" projektben található. Csak az `Anonymizer` osztály konstruktorát kell nézni. Azt látjuk, hogy a fenti elveknek megfelelően át lett alakítva.
 
-Most már elkészültünk, az `Anonymizer` osztály teljesen független lett az implementációktól.Lehetőségünk van az `Anonymizer` osztály bármilyen anoniminizáló algoritmus és bármilyen progress kezelés kombinációjával használni. Erre vannak is példák a `Program.cs` fájlban, nézzük ezt meg! Itt négy Anonymizer objektumot hozunk létre, négy különböző anonimizáló és progress kombinációval.
+Megjegyzés: azt egyelőre ne akarjuk megérteni, mi az újonnan felbukkanó `NullProgress` a konstruktorban. Ez a DI szempontjából irreleváns, még visszatérünk rá.
+ 
+Most már elkészültünk, az `Anonymizer` osztály teljesen független lett az implementációktól. Lehetőségünk van az `Anonymizer` osztály bármilyen anoniminizáló algoritmus és bármilyen progress kezelés kombinációjával használni. Erre vannak is példák a `Program.cs` fájlban, nézzük ezt meg! Itt négy `Anonymizer` objektumot hozunk létre, négy különböző anonimizáló és progress kombinációval.
 
 !!! Note "A működés ellenőrzése"
-    A gyakorlat során erre valószínűleg nem lesz idő, de aki bizonytalan abban, "mitől is működik" a strategy minta, mitől lesz más a viselkedés a fenti négy esetre: érdemes töréspontokat tenni a `Program.cs` fájlban a négy `Run` függvényhívásra, és a függvényekbe a debuggerben belelépkedve megnézni, hogy mindig a megfelelő stategy implementáció hívódik meg.
+    A gyakorlat során erre valószínűleg nem lesz idő, de aki bizonytalan abban, "mitől is működik" a strategy minta, mitől lesz más a viselkedés a fenti négy esetre: érdemes töréspontokat tenni a `Program.cs` fájlban a négy `Run` függvényhívásra, és a függvényekbe a debuggerben belelépkedve megnézni, hogy mindig a megfelelő strategy implementáció hívódik meg.
+
+### Null strategy (kitérő)
+
+Az `Anonymizer` konstruktorában látunk egy elsőre talán kicsit fura részletet. Ha a hívó null-t ad meg `IProgress` strategy-ként paraméterben, akkor a `_progress` tagváltozóba nem `null`-t mentünk, hanem egy `NullProgress` objektumra állítjuk. A `NullProgress` is egy teljes értékű `IProgress` implementáció, csak éppen nem csinál semmit (ezt ellenőrizzük). Ezzel a megoldással azt érjük el, hogy nem kell az osztályban a `_progress` minden használatakor megvizsgálni, hogy null-e (ha elfelejtenénk, akkor `NullReferenceException`-t kapnánk!), mert az mindig egy érvényes objektumra mutat. Csak ha nincs szükség semmiféle progress kiírására, akkor `NullProgress`-t használunk strategyként, mely nem csinál semmit. Ez is egy tervezési minta, **Null Object** a neve.
 
 ### A megoldás értékelése
 
@@ -672,20 +660,71 @@ Ellenőrizzük a megoldást, megvalósítja-e a céljainkat:
 * Ha új anonimizáló logikára van szükség a jövőben, csak egy új `IAnonymizerAlgorithm` implementációt kell bevezetni. Ez nem módosítás, hanem bővítés.
 * Ha új progress logikára van szükség a jövőben, csak egy új `IProgress` implementációt kell bevezetni. Ez nem módosítás, hanem bővítés.
 * A fenti két pontban teljesül az OPEN/CLOSED elv, vagyis az `Anonymizer` kódjának módosítása nélkül tudjuk a logikáját testre szabni, kiterjeszteni.
-* Itt nem kell tartani a Template Methodnál tapasztalt kombinatorikus robbanástól: bármely `IAnonymizerAlgorithm` implementáció bármely `IProgress` implementációban kényelmesen használható, nem kell a kombinációkhoz új osztályokat bevezetni.
+* Itt nem kell tartani a Template Methodnál tapasztalt kombinatorikus robbanástól: bármely `IAnonymizerAlgorithm` implementáció bármely `IProgress` implementációval kényelmesen használható, nem kell a kombinációkhoz új osztályokat bevezetni.
 
-!!! Note "További Strategy előnyök
-    * Futás közben lecserélhető
-    * ...
+!!! Note "További Strategy előnyök a Template Methoddal szemben *"
+    * Futás közben lecserélhető viselkedés is megvalósítható. Ha szükség lenne arra, hogy egy adott Anonymizer objektumra vonatkozóan a létrehozása után meg tudjuk változtatni az anonimizáló vagy progress viselkedést, akkor azt könnyen meg tudnánk tenni (csak egy `SetAnonimizerAlgorithm`, ill. `SetProgress` műveletet kellene bevezetni, melyben a paraméterben megkapott implementációra lehetne állítani az osztály által használt strategy-ket).
+    * Egységtesztelhetőség támogatása (még visszatérünk erre).
 
-## TODO
-TODO NullStrategy
+## 9. Megoldás (StrategyFull-1)
 
-## Tanulságok
+Vegyük észre, hogy az Anonimyzer osztály működésénem van még számos aspektusa, melyeket valamelyik megoldásunkkal kiterjeszthetővé lehetne tenni. Többek között ilyen a:
+* **Bemenet** kezelése: Most csak fálj alapú, adott CSV formátumot támogatunk
+* **Kimenet** kezelése: Most csak fájl alapú, adott CSV formátumot támogatunk
+Ezt az SRP elve miatt illene az osztályról leválasztani, de nem feltételen kiterjeszthető módon, hiszen nem merült fel igény arra (és úgy látjuk, nem is lesz később sem), hogy a mostanitól eltérő logikákat alkalmazzunk.
 
-Strategy elejére tegyük be az UML diagramot? ?????????????????????
+Ugyanakkor van még egy kritikus szempont, melyről nem beszéltünk (és a régebbi, klasszikus design pattern irodalmak sem feltétlen emlegetik). Ez az egységtesztelhetőség.
 
- * A változó igények során organikusan jelennek meg tervezési minták és vetettünk be egyéb technikákat a refaktorálások során.
+Jelen pillanatban az `Anonymizer` osztályunkhoz automata **integrációs teszteket** tudunk írni, automata **egységteszteket** nem:
 
-A Template Method egyszerű esetben, ha a viselkedések különböző aspektusainak nem kell sok keresztkombinációját támogatni, nagyon kényelmes és egyszerű megoldást ad, különösen, ha egyébként is kell használjuk a származtatást. De nem, vagy csak nehezen egységtesztelhető.
+* Az integrációs tesztek a teljes működést egyben vizsgálják: ebben benne van a bemenet feldolgozása, adatfeldolgozás, kimenet előállítása. Ez példánkban egyszerű: elállítunk bizonyos bemeneti CVS állományokat, és megnézzük, a várt kimeneti állomány állítódik-e elő.
+* Az integrációs tesztek sokszor nagyon lassúak: sokszor fájlokból, adatbázisokból, felhő alapú szolgáltatásokból veszik a bemenetet, illetve ezek szolgálnak kimenetként. Egy nagyobb termék esetében - mikor sok ezer teszt van - ez a lassúság korlátozó tényező, ritkábban tudjuk futtatni és/vagy nem tudunk jó tesztlefedettséget elérni.
 
+A fentiek miatt nagyobb kódlefedettséget nagyon gyorsan futó egységtesztekkel szoktunk/tudunk elérni. Ezek mindenféle lassú fájl/adatbázis/hálózat/felhő elérés nélkül önmagában egy egy logikai egységet tesztelnek a kódban, ezt viszont így már villámgyorsan, így sokat tudunk futtatni adott idő alatt, jó tesztlefedettséggel.
+
+Nézzük meg az `Anonymizer` osztályt: ebbe be van égetve, hogy csak a lassú, fájl alapú bemenettel tud dolgozni. De amikor mi pl. a `Run` művelet logikáját szeretnénk egységtesztelni, teljesen mindegy, hogy fájlból jönnek-e az adatok (lassan), vagy egyszerűen kódból a `new` operátorral előállítunk (több nagyságrenddel gyorsabban) néhány `Person` objektumot és betesszük egy `List<Person>` objektumba.
+
+A megoldás - a kódunk egységtesztelhetővé tételéhez - egyszerű:
+
+<div class="grid cards" markdown>
+
+- :warning:
+  *A Strategy minta (vagy delegate-ek) alkalmazással válasszuk le az egységtesztelni kívánt osztályról a tesztelést akadályozó (pl. bemenet/kimenet kezelés) logikákat. Ezeknek készítünk a valódi logikát megvalósító implementációit, illetve tesztelés segítő, ún. mock implementációit.*
+- :warning:  
+  *Ennek megfelelően a Strategy mintát sokszor nem azért használjuk, mert az ügyféligények miatt többféle viselkedést kell benevezni, hanem azért, hogy a kódunk egységtesztelhető legyen.*
+
+</div>
+
+Ennek megfelelően elkészítjük a megoldásunk egységtesztelésre is előkészített változatát, melyben a bemenet és kimenet kezelése is le van választva a Strategy minta alkalmazásával. 
+
+Egyből a kész megoldást nézzük ("StrategyFull-1"), hiszen itt semmi újat nem tanulunk, egyszerűen csak alkalmazzuk a Strategy mintát két aspektus mentén:
+* `InputReaders` mappa: bemenet feldolgozó strategy interfész és a korábbi logika kiszervezve egy implementációba.
+* `ResultWriters` mappa: kimenet előállító strategy interfész és a korábbi logika kiszervezve egy implementációba.
+* `Anonymizer` osztály:
+  * Új `_inputReader` és `_resultWriter` tagok, valamint ezek inicializálása a konstruktorban.
+  * Run függvényben `_inputReader` és `_resultWriter` használata.
+
+Az `Anonymizer` osztályunk átláthatóbb is lett: jobban követi az SRP elvet, két felelősségi kör kiszervezésre került belőle.
+
+A következő lépés egységtesztek készítése az `Anonymizer` osztályhoz. Ehhez olyan mock strategy implementációkat kell bevezetni, melyek nemcsak tesztadatokat szolgáltatnak, hanem ellenőrzéseket is végeznek (adott logikai egység valóban jól működik-e). Ez most bonyolultnak hangzik, de szerencsére a legtöbb modern keretrendszerben van rá könyvtár támogatás (.NET-ben a [moq](https://github.com/devlooped/moq)). Ennek alkalmazása túlmutat a tárgy keretein, így a feladatunk egységtesztelhetőséghez kapcsolódó vonulatát ebben a pontban lezárjuk.
+
+TODO: teszt projektek eltávolítása a solutionből.
+
+## Összegzés
+
+TODO: A Strategy elejére tegyük be az UML diagramot? ?????????????????????
+
+A munkafolyamatunk áttekintése:*
+
+ * A változó igények során organikusan jelennek meg tervezési minták, és vetettünk be egyéb technikákat a refaktorálások során. Ez teljesen természetes, a gyakorlatban is sokszor így dolgozunk.
+ * Egy komplexebb feladat esetében egyébként is sokszor - különösen ha nem rendelkezünk sokéves tapasztalattal - egy egyszerűbb implementációval indulunk (ezt látjuk át elsőre), és ezt faktoráljuk át olyanra, hogy az adott kontextusban kívánt kiterjeszthetőségi/újrafelhasználhatósági paraméterekkel rendelkezzen.
+
+Kitejesztési technikák áttekintése:*
+
+* T**emplate Method**: Egyszerű esetben, ha a viselkedések különböző aspektusainak nem kell sok keresztkombinációját támogatni, nagyon kényelmes és egyszerű megoldást ad, különösen, ha egyébként is kell használjuk a származtatást. De nem, vagy csak nehezen egységtesztelhető alaposztályt eredményez.
+* **Strategy**: Nagyon rugalmas megoldást biztosít, és nem vezet kombinatorikus robbanáshoz, ha több aspektus mentén kell az osztályt kiterjeszteni, és több keresztkombinációban is szeretnénk ezeket használni. Sok esetben csak azért használjuk, hogy az osztályunkról interfészek segítségével leválasszuk a függőségeit, és így egységtesztelhetővé tegyük az osztályt.
+* **Delegate/lambda**: Ez a megközelítés kisebb ceremóniával jár, mint a Strategy alkalmazása, ugyanis nincs szükség interfészek és implementációs osztályok bevezetésére, emiatt egyre inkább (rohamosan) terjed a használata a modern objektumorientált nyelvekben is. Különösen akkor jönnek ki az előnyei, ha a viselkedéseket nem akarjuk újrafelhasználhatóvá tenni, mert ekkor csak egy lambda kifejezéssel megadjuk, mindenféle új osztály/külön függvény bevezetése nélkül. A Strategynek akkor van előnye a delegate-ekkel szemben, ha:
+    * Ha kiterjesztendő osztály adott aspektusához több (minél több, annál inkább) művelet tartozik. Ilyenkor a strategy interfész ezeket "magától" szépen összefogja (mint a példánkban az `IAnonymizerAlgorithm` a `Anonymize` és `GetAnonymizerDescription` műveletek), és az implementációkban is együtt jelennek meg, "csoportosítják" a kiterjesztési pontokat (delegate-ek esetében nincs ilyen csoportosítás). Ez átláthatóbbá teheti, sok művelet esetén egyértelműen azzá is teszi a megoldást.
+    * Az adott nyelv pusztább objektumorientált, nem támogatja a delegate/lambda alkalmazását. De ma már a legtöbb modern OO nyelv szerencsére támogatja valamilyen formában (Java és C++ is).
+
+Mindenképpen meg kell említeni, hogy nem csak jelen gyakorlatban említett néhány minta szolgálja a kiterjeszthetőséget és újrafelhasználhatóságot, hanem gyakorlatilag az összes. Most kiemeltünk párat, melyek (még p. az Observert/Iteratort/Adaptert ide sorolva) talán a leggyakrabban, legszélesebb körben alkalmazhatók és bukkannak is fel keretrendszerekben.
