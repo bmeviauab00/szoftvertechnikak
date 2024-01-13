@@ -666,12 +666,14 @@ Ellenőrizzük a megoldást, megvalósítja-e a céljainkat:
     * Futás közben lecserélhető viselkedés is megvalósítható. Ha szükség lenne arra, hogy egy adott Anonymizer objektumra vonatkozóan a létrehozása után meg tudjuk változtatni az anonimizáló vagy progress viselkedést, akkor azt könnyen meg tudnánk tenni (csak egy `SetAnonimizerAlgorithm`, ill. `SetProgress` műveletet kellene bevezetni, melyben a paraméterben megkapott implementációra lehetne állítani az osztály által használt strategy-ket).
     * Egységtesztelhetőség támogatása (még visszatérünk erre).
 
-## 9. Megoldás (StrategyFull-1)
+## 9. Megoldás (5-StrategyFull-UnitTesting/StrategyFull-1)
 
-Vegyük észre, hogy az Anonimyzer osztály működésénem van még számos aspektusa, melyeket valamelyik megoldásunkkal kiterjeszthetővé lehetne tenni. Többek között ilyen a:
+Vegyük észre, hogy az `Anonimyzer` osztály működésének van még számos aspektusa, melyeket valamelyik megoldásunkkal kiterjeszthetővé lehetne tenni. Többek között ilyen a:
+
 * **Bemenet** kezelése: Most csak fálj alapú, adott CSV formátumot támogatunk
 * **Kimenet** kezelése: Most csak fájl alapú, adott CSV formátumot támogatunk
-Ezt az SRP elve miatt illene az osztályról leválasztani, de nem feltételen kiterjeszthető módon, hiszen nem merült fel igény arra (és úgy látjuk, nem is lesz később sem), hogy a mostanitól eltérő logikákat alkalmazzunk.
+
+Ezeket az SRP elve miatt illene az osztályról leválasztani, de nem feltételen kiterjeszthető módon, hiszen nem merült fel igény arra (és úgy látjuk, nem is lesz később sem), hogy a mostanitól eltérő logikákat alkalmazzunk.
 
 Ugyanakkor van még egy kritikus szempont, melyről nem beszéltünk (és a régebbi, klasszikus design pattern irodalmak sem feltétlen emlegetik). Ez az egységtesztelhetőség.
 
@@ -682,6 +684,13 @@ Jelen pillanatban az `Anonymizer` osztályunkhoz automata **integrációs teszte
 
 A fentiek miatt nagyobb kódlefedettséget nagyon gyorsan futó egységtesztekkel szoktunk/tudunk elérni. Ezek mindenféle lassú fájl/adatbázis/hálózat/felhő elérés nélkül önmagában egy egy logikai egységet tesztelnek a kódban, ezt viszont így már villámgyorsan, így sokat tudunk futtatni adott idő alatt, jó tesztlefedettséggel.
 
+!!! Tesztpiramis
+    Ezt egy tesztpiramissal szokás szemléltetni, melynek több formája terjedt el az irodalomban, egy egyszerű variáns a következő:
+    
+    ![Tesztpiramis](https://en.wikipedia.org/wiki/Test_automation#/media/File:Testing_Pyramid.png)
+
+    Minél fentebb vagyunk a piramis rétegeiben, annál átfogóbbak ugyan a tesztek, de annál lassabbak és költségesebben futtathatók, így annál kevesebbet és készítünk, így kisebb kódlefedettséget is érünk el.
+
 Nézzük meg az `Anonymizer` osztályt: ebbe be van égetve, hogy csak a lassú, fájl alapú bemenettel tud dolgozni. De amikor mi pl. a `Run` művelet logikáját szeretnénk egységtesztelni, teljesen mindegy, hogy fájlból jönnek-e az adatok (lassan), vagy egyszerűen kódból a `new` operátorral előállítunk (több nagyságrenddel gyorsabban) néhány `Person` objektumot és betesszük egy `List<Person>` objektumba.
 
 A megoldás - a kódunk egységtesztelhetővé tételéhez - egyszerű:
@@ -690,7 +699,11 @@ A megoldás - a kódunk egységtesztelhetővé tételéhez - egyszerű:
 
 - :warning:
   *A Strategy minta (vagy delegate-ek) alkalmazással válasszuk le az egységtesztelni kívánt osztályról a tesztelést akadályozó (pl. bemenet/kimenet kezelés) logikákat. Ezeknek készítünk a valódi logikát megvalósító implementációit, illetve tesztelés segítő, ún. mock implementációit.*
-- :warning:  
+</div>
+
+<div class="grid cards" markdown>
+
+- :warning:
   *Ennek megfelelően a Strategy mintát sokszor nem azért használjuk, mert az ügyféligények miatt többféle viselkedést kell benevezni, hanem azért, hogy a kódunk egységtesztelhető legyen.*
 
 </div>
