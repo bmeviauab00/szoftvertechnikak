@@ -16,7 +16,7 @@ A gyakorlat céljai (egy összetettebb példa alapján):
 
 Kapcsolódó előadások:
 
-- Tervezési minták: kiterjeszthetőséghez kapcsolódó minták (bevezető, Template Method, Strategy), valamint a Depedency Injection "minta".
+- Tervezési minták: kiterjeszthetőséghez kapcsolódó minták (bevezető, Template Method, Strategy), valamint a Dependency Injection "minta".
 
 ## Előfeltételek
 
@@ -29,17 +29,15 @@ A gyakorlat elvégzéséhez szükséges eszközök:
 
 ### Elméleti háttér, szemléletmód *
 
-A komplexebb alkalmazások fejlesztése során számos tervezői döntést kell meghoznunk, melyek során több lehetőség közül is választhatunk. Amennyiben ezen pontokban nem tartjuk szem előtt az alkalmazásunk könnyű karbantarthatóságát, illetve egyszerűen megvalósítható továbbfejlesztési lehetőségét, könnyen hamar rémálommá válhat a fejlesztés. A megrendelői változtatási és bővítési igények a kód nagymértékű folyamatos átírását/módosítását igénylik: ennek során új hibák születnek, illetve jelentős munkát kell fektetni a kód nagyléptékű újratesztelésébe is!
+A komplexebb alkalmazások fejlesztése során számos tervezői döntést kell meghoznunk, melyek során több lehetőség közül is választhatunk. Amennyiben ezen pontokban nem tartjuk szem előtt az alkalmazásunk könnyű karbantarthatóságát, illetve egyszerűen megvalósítható továbbfejlesztési lehetőségét, könnyen hamar rémálommá válhat a fejlesztés. A megrendelői változtatási és bővítési igények a kód nagymértékű folyamatos átírását/módosítását igénylik: ennek során új hibák születnek, illetve jelentős munkát kell fektetni a kód nagy léptékű újratesztelésébe is!
 
-Ehelyett a célunk az, hogy az ilyen változtatási és bővítési igényeket a kód pár jól meghatározott pontjában történő bővítésével - a meglévő kód érdemi módosítása nélkül - meg tudjuk valósítani. A kulcsszó: **módosítással** szemben **bővítés** (meglévő kódon minél kisebb léptékben kelljen módosítani). Ehhez kapcsolódóan: amennyiben bizonyos logikáink kiterjeszthetők, így általánosabbak is leszek, könnyebben, több kontextusban is fel tudjuk használni. Így hosszabb távon gyorsabban haladunk, rövidebb a kód, elkerüljük a kódduplikációt (ezáltal karbantarthatóbb is).
+Ehelyett a célunk az, hogy az ilyen változtatási és bővítési igényeket a kód pár jól meghatározott pontjában történő bővítésével - a meglévő kód érdemi módosítása nélkül - meg tudjuk valósítani. A kulcsszó: **módosítással** szemben **bővítés**. Ehhez kapcsolódóan: amennyiben bizonyos logikáink kiterjeszthetők, így általánosabbak is leszek, könnyebben, több kontextusban is fel tudjuk ezeket használni. Így hosszabb távon gyorsabban haladunk, rövidebb a kód, elkerüljük a kódduplikációt (ezáltal könnyebben karbantartható is a kód).
 
-A tervezési minták jól bevált megoldásokat mutatnak bizonyos gyakran előforduló tervezési problémákra: ezen megoldások abban segítenek, hogy kódunk könnyebben bővíthető, karbantartható és minél nagyobb mértékben újrafelhasználható legyen. Jelen gyakorlat keretében azon mintákra, tervezési elvekre és néhány programozói eszközre fókuszálunk, melyek a fenti problémákon segítenek.
+A **tervezési minták** jól bevált megoldásokat mutatnak bizonyos gyakran előforduló tervezési problémákra: ezen megoldások abban segítenek, hogy kódunk könnyebben bővíthető, karbantartható és minél nagyobb mértékben újrafelhasználható legyen. Jelen gyakorlat keretében azon mintákra, tervezési elvekre és néhány programozói eszközre fókuszálunk, melyek a fenti problémákon segítenek.
 Ugyanakkor ne essünk át a ló túloldalára: csak akkor érdemes egy adott tervezési mintát bevetni, ha adott esetben valós előnyt jelent az alkalmazása. Ellenkező esetben csak a megvalósítás komplexitását növeli feleslegesen.
-Ennek tükrében nem is célunk (és sokszor nincs is rá lehetőségünk), hogy minden jövőbeli kiterjeszthetőségi igény előre megérezzünk, illetve nagyon előre átgondoljunk. A lényeg az, hogy akár egy egyszerű megoldásból kiindulva, az egyes problémákat felismerve, a kódunkat folyamatosan refaktoráljuk úgy, hogy az aktuális (funkcionális és nemfuncionális) követelményeknek és előrelátásunknak megfelelően, a megfelelő pontokban tegyük kódunkat könnyebben kiterjeszthetővé és újrafelhasználhatóvá.
+Ennek tükrében nem is célunk (és sokszor nincs is rá lehetőségünk), hogy minden jövőbeli kiterjeszthetőségi igény előre megérezzünk, illetve nagyon előre átgondoljunk. A lényeg az, hogy akár egy egyszerű megoldásból kiindulva, az egyes problémákat felismerve, a kódunkat folyamatosan refaktoráljuk úgy, hogy az aktuális (funkcionális és nemfunkcionális) követelményeknek és előrelátásunknak szerint a megfelelő pontokban tegyük kódunkat könnyebben kiterjeszthetővé és újrafelhasználhatóvá.
 
-Zárásképpen megvizsgáljuk, hogyan segítenek bizonyos tervezési minták és nyelvi eszközök a kódunk egységtesztelhetővé tételében: sok cégnél egy szoftvertermék fejlesztése esetén (jogos) alapelvárás a fejlesztőktől, hogy nagy kódlefedettségű egységteszteket (unit test) készítsenek. Ennek kivitelezése viszont gyakorlatilag lehetetlen, ha a kódunk egyes egységei/osztályai túl szoros csatolásban vannak egymással.
-
-### A gyakorlat menete
+Zárásképpen megvizsgáljuk, hogyan segítenek bizonyos tervezési minták és nyelvi eszközök a kódunk **egységtesztelhetővé** tételében: sok cégnél egy szoftvertermék fejlesztése esetén (jogos) alapelvárás a fejlesztőktől, hogy nagy kódlefedettségű egységteszteket (unit test) készítsenek. Ennek kivitelezése viszont gyakorlatilag lehetetlen, ha a kódunk egyes egységei/osztályai túl szoros csatolásban vannak egymással.
 
 ## 0. Feladat - Ismerkedés a feladattal és a kiinduló alkalmazással
 
@@ -52,77 +50,75 @@ Klónozzuk le a 6. gyakorlathoz tartozó kiinduló alkalmazás [repositoryját](
 
 ### A feladat ismertetése
 
-A gyakorlat során egy adatfeldolgozó (esettanulmányunkban anonimizáló) alkalmazást fogunk a folyamatosan alakuló igényeknek megfelelően - különböző pontok mentén és különböző technikákat alkalmazva - kiterjeszthetővé tenni. Az első feladat keretében az anonimizálás fogalmával is megismerkedünk.
+A gyakorlat során egy konzol alapú, adatfeldolgozó (pontosabban anonimizáló) alkalmazást fogunk a folyamatosan alakuló igényeknek megfelelően - különböző pontok mentén és különböző technikákat alkalmazva - kiterjeszthetővé tenni. Az első feladat keretében az anonimizálás fogalmával is megismerkedünk.
 
-Egy konzol alapú alkalmazást kell készíteni.
-
-Az alkalmazás bemenete egy CSV szövegfájl, mely minden sora egy adott személyre vonatkozóan tartalmaz adatokat. A fájrendszerben nyissuk meg a *Data* mappában levő us-500.csv fájlt (duplakattal, vagy akár a Jegyezettömb/Notepad alkalmazásban). Az látjuk, hogy "" között, vesszővel elválasztva találhatók az egyes személyekre vonatkozó adatok (ezek nem valósak). Nézzük az első sort:
+Az alkalmazás bemenete egy CSV szövegfájl, mely minden sora egy adott személyre vonatkozóan tartalmaz adatokat. A fájlrendszerben nyissuk meg a *Data* mappában levő us-500.csv fájlt (duplakattal, vagy akár a Jegyzettömb/Notepad alkalmazásban). Az látjuk, hogy "" között, vesszővel elválasztva találhatók az egyes személyekre vonatkozó adatok (ezek nem valósak). Nézzük az első sort:
   
 ```
-"James","Butt","Benton, John B Jr","6649 N Blue Gum St","New Orleans ","Orleans","LA","70116","504-621-8927","504-845-1427","39","96","Heart-related","jbutt@gmail.com"*
+"James","Butt","Benton, John B Jr","6649 N Blue Gum St","New Orleans ","Orleans","LA","70116","504-621-8927","504-845-1427","30","65","Heart-related","jbutt@gmail.com"
 ```
 
-Az első sorban levő személyt James Buttnak nevezik, a "Benton, John B Jr" cégnél dolgozik, majd néhány címre vonatkozó mező található, 39 éves, 96 kg a testsúlya. Az ezt követő mező azt mondja meg, milyen súlyosabb betegsége van (a fenti sorba ez "Heart-related"). Ezt követi még néhány, számunkra nem izgalmas mező.
+Az első sorban levő személyt James Buttnak nevezik, a "Benton, John B Jr" cégnél dolgozik, majd néhány címre vonatkozó mező található, 30 éves, 65 kg a testsúlya. Az ezt követő mező azt mondja meg, milyen súlyosabb betegsége van (a fenti sorba ez "Heart-related"). Az utolsó oszlop pedig a személy e-mail címét tartalmazza.
 
-??? Note Adatok forrása és pontos formátuma
-    Az adatok forrása: https://www.briandunning.com/sample-data/, pár oszloppal (kor, súly, betegség) kiegészítve. A mezők sorrendje: First Name, Company, Address, City, County (where applicable), State/Province (where applicable), ZIP/Postal Code, Phone 1, Phone 2, Age, Weight, Illness, Email, Web
+??? Note "Adatok forrása és pontos formátuma *"
+    Az adatok forrása: https://www.briandunning.com/sample-data/, pár oszloppal (kor, súly, betegség) kiegészítve. A mezők sorrendje: First Name, Last Name, Company, Address, City, County (where applicable), State/Province (where applicable), ZIP/Postal Code, Phone 1, Phone 2, Age, Weight, Illness, Email
 
 Az alkalmazás alapfeladata, hogy ezeket az adatokat az aktuális igényeknek megfelelően anonimizálja, majd egy kimeneti CSV szövegfájlba kiírja. Az anonimizálás feladata, hogy az adatokat olyan formába alakítsa, hogy agy adathalmazban levő személyeket beazonosíthatatlanná tegye, de olyan módon, hogy az adatokból mégis lehessen kimutatásokat készíteni. Az anonimizálás egy különálló, nagyon komoly, és sok kihívást rejtő adatfeldolgozási szakterület. A gyakorlat keretében nem célunk, hogy valós környezetben is használható, vagy akár minden tekintetben értelmes megoldásokat dolgozzunk ki. Számunkra tulajdonképpen csak egy valamilyen adatfeldolgozó algoritmus "bevetése" a fontos a minták bemutatásához, és ez talán kicsit "izgalmasabb" keretet ad, mint egy egyszerű adatszűrés/sorrendezés/stb. alapú adatfeldolgozás (melyeket ráadásul a .NET már eleve beépítve támogat).
 
 !!! Note "Pár gondolat az anonimizálásról"
 
-    Azt gondolhatnánk, hogy az anonimizálás egy egyszerű problémakör. Pl. csak el kell távolítani, vagy ki kell "csillagozni" a személyek neveit, lakcíméből az utca-házszámot, telefonszámokat, e-mail címet és megvagyunk. Például a bemenetünk első sorára:
+    Azt gondolhatnánk, hogy az anonimizálás egy egyszerű problémakör. Pl. csak el kell távolítani, vagy ki kell "csillagozni" a személyek neveit, lakcíméből az utca-házszámot, telefonszámokat, e-mail címet, és meg is vagyunk. Például a bemenetünk első sorára ez lenne a kimenet:
 
     ```
-    "***","***","Benton, John B Jr","***","New Orleans ","Orleans","LA","70116","***","***","39","96","Heart-related","***"
+    "***","***","Benton, John B Jr","***","New Orleans ","Orleans","LA","70116","***","***","30","65","Heart-related","***"
     ```
 
-    De ez koránt sincs így, különösen, ha igazán sok adatról van szó. Gondolunk arra, hogy van egy kisebb falu, ahol nem laknak sokan. Tegyük fel, hogy az egyik fenti módon anonimizált személy életkora 14 év (amit lehet tudni, hiszen 8. osztályba jár), de rendkívül túlsúlyos, 95 kg. Akkor, mivel ez egy ritka "kombináció", és más személy jó eséllyel nem él ilyen paraméterekkel a faluban. Azonnal lehet tudni, legalábbis sejteni, ki ő, és mindenki tudni fogja, milyen betegsége van (ami személyes adat). Vagyis az adatok összefüggésben árulkodók lehetnek.
+    De ez koránt sincs így, különösen, ha igazán sok adatról van szó. Gondoljunk arra, hogy van egy kisebb falu, ahol nem laknak sokan. Tegyük fel, hogy az egyik fenti módon anonimizált személy életkora 14 év, de rendkívül túlsúlyos, 95 kg. Ez egy ritka "kombináció", más személy jó eséllyel nem él ilyen paraméterekkel a faluban. Ha az ő osztálytársai közül (nyolcadikos, hiszen 14 éves) valaki megnézi az "anonimizált" adatokat, tudni fogja ki ő (nincs más ennyire túlsúlyos nyolcadikos az iskolában), beazonosítja a személyt, és így pl. tudni fogja, milyen betegsége van. Tanulság: az adatok összefüggésben árulkodók lehetnek.
     
-    Mi a megoldás? A várost, az életkort és a testtömeget nem törölhetjük/csillagozhatjuk, mert ezekre vonatkozóan kell kimutatást készíteni. Egy tipikus megoldás: nem pontos életkort/testsúlyt adunk meg, hanem sávokat (vagyis általánosítjuk az adatokat): pl. a fenti személy esetében az életkora 10..20 év, testsúlya 80..100 kg, és ezt adjuk meg erre a személyre vonatkozóan a fájlban. Így már nem lehet beazonosítani. Ezt a technikát mi is fogjuk később alkalmazni.
+    Mi a megoldás? A várost, az életkort és a testtömeget nem törölhetjük/csillagozhatjuk, mert ezekre vonatkozóan kell kimutatást készíteni. Egy tipikus megoldás: nem pontos életkort/testsúlyt adunk meg az anonimizálást követően, hanem sávokat (vagyis általánosítjuk az adatokat): pl. a fenti személy esetében az életkora 10..20 év, testsúlya 80..100 kg, és ezt adjuk meg erre a személyre vonatkozóan a kimeneti fájlban. Így már nem lehet beazonosítani. Ezt a technikát mi is fogjuk később alkalmazni.
 
 ### Kiinduló követelmények
 
 Az alkalmazással szemben támasztott kiinduló követelmények:
 
-1. Egy adott ügyféltől kapott fájlokat (mindnek ugyanaz a formátuma) kell ugyanazzal az anonimizáló algoritmussal, ugyanabba a kimeneti formátumba konvertálni. Az anonimizálás egyszerűen a keresztnév és vezeténév "kicsillagozásából" álljon.
-2. Szükség van egy kis adattisztításra. A bemeneti adatokban a várost tartalmazó oszlop elején/végén lehetnek felesleges `_` és `#` karakterek, ezeket el kell távolítani (trim művelet).
+1. Egy adott ügyféltől kapott fájlokat (mindnek ugyanaz a formátuma) kell ugyanazzal az anonimizáló algoritmussal, ugyanabba a kimeneti formátumba konvertálni. Az anonimizálás egyszerűen a keresztnév és vezetéknév "kicsillagozásából" álljon.
+2. Szükség van némi adattisztításra. A bemeneti adatokban a várost tartalmazó oszlop elején/végén lehetnek felesleges `_` és `#` karakterek, ezeket el kell távolítani (trim művelet).
 3. Ki kell írni minden sor feldolgozása után a konzolra, hogy a sor feldolgozása megtörtént, ill. a minden adat feldolgozás után némi összesítő információt (Summary): hány sort dolgoztunk fel, és mennynél kellett a városnevet trimmelni.
-4. Lényeges szempont: az alkalmazásra csak rövid időre lesz szükség, nem a kívánjuk későbbiekben bővíteni.
+4. **Lényeges szempont**: az alkalmazásra csak rövid időre lesz szükség, nem a kívánjuk későbbiekben bővíteni.
 
 Megjegyzés: hogy a kódban kevesebb mezővel kelljen dolgozni, és a kimenet is átláthatóbb legyen, elhagyunk még néhány mezőt a feldolgozás során.
 
-A várt kimeneti formátumra egy egysoros példa:
+Példaként a bemeneti fájlunk első sorára a várt kimenet:
 
 ```
-***; ***; LA; New Orleans; 39; 96; Heart-related
+***; ***; LA; New Orleans; 30; 65; Heart-related
 ```
 
-## 1. Megoldás - minden egyben
+## 1. Megoldás - minden egyben (1-Start/Start)
 
 A Visual Studio Solution Explorerében mappákat látunk, 1-től 6-ig számmal kezdve. Ezek az egyes munkaiterációkhoz tartozó megoldásokat tartalmazzák. Az első körös megoldás az "1-Start" mappában, "Start" projektnév alatt található. Nézzük meg a projektben található fájlokat:
 
-* Person.cs - Egy személy számunkra érdekes adatai tartalmazza, ennek objektumaiba olvassuk be egy-egy személy adatait.
-* Program.cs - Ennek Main függvényében van megvalósítva minden logika, kódmegjegyzésekkel "elválasztva". Amennyiben kicsit is bonyolultabbá válik a logika, már két nap mi is csak nehezen fogjuk áttekinteni és megérteni a saját kódunkat. Ezt a megoldást ne is nézzük.
+* `Person.cs` - Egy személy számunkra érdekes adatai tartalmazza, ennek objektumaiba olvassuk be egy-egy személy adatait.
+* `Program.cs` - Ennek Main függvényében van megvalósítva minden logika, kódmegjegyzésekkel "elválasztva". Amennyiben kicsit is bonyolultabbá válik a logika, már két nap mi is csak nehezen fogjuk áttekinteni és megérteni a saját kódunkat. Ezt a megoldást ne is nézzük.
 
-Összegészében minden nagyon egyszerű. Összegészében nem gondolkodtunk rosszul, hiszen a kódnak nem jóslunk hosszú jövőt. De az egy függvénybe öntött a "szkriptszerű" "minden egybe" megoldás ekkor sem jó irány, nagyon nehézzé teszi a kód átlátását, megértését. Ne is nézzük tovább.
+Összegészében minden nagyon egyszerű. Összegészében nem gondolkodtunk rosszul, hiszen a kódnak nem jósolunk hosszú jövőt. De az egy függvénybe öntött "szkriptszerű", "minden egybe" megoldás ekkor sem jó irány, nagyon nehézzé teszi a kód átlátását, megértését. Ne is nézzük ezt tovább.
 
-## 2. Megoldás (OrganizedToFunctions-1)
+## 2. Megoldás (2-OrganizedToFunctions/OrganizedToFunctions-1)
 
-Térjünk át Visual Studioban a "2-OrganizedToFunctions" mappában található "OrganizedToFunctions-1" projektben található megoldásra. Ez már sokkal jobb, mert függvényekre bontottuk a logikát. Tekintsük át a kódot röviden:
+Térjünk át Visual Studioban a "2-OrganizedToFunctions" mappában található "OrganizedToFunctions-1" projektben található megoldásra. Ez már sokkal szimpatikusabb, mert függvényekre bontottuk a logikát. Tekintsük át a kódot röviden:
 
 `Anonymizer.cs`
 
-  * A `Run` függvény a "gerince", ez tartalmazza a vezérlési logikát, hívja az egyes lépésekért felelős függvényeket.
-  * `ReadFromInput` művelet: beolvassa a forrásfájlt, minden sorhoz készít egy Person objektumot, és visszatér a beolvasott Person objektumok listájával.
+  * A `Run` függvény a "gerince", ez tartalmazza a vezérlési logikát, ez hívja az egyes lépésekért felelős függvényeket.
+  * `ReadFromInput` művelet: beolvassa a forrásfájlt, minden sorhoz készít egy `Person` objektumot, és visszatér a beolvasott `Person` objektumok listájával.
   * `TrimCityNames`: Az adattisztítást végzi (városnevek trimmelése).
-  * `Anonymize`: Minden egyes beolvasott Person objektummal meghívásra kerül, és feladata, hogy visszaadjon egy új `Person` objektumot, mely már az anonimizált adatokat tartalmazza.
-  * `WriteToOutput`: már anonimizált Person objektumokat kiírja a kimeneti fájlba.
+  * `Anonymize`: Minden egyes beolvasott `Person` objektummal meghívásra kerül, és feladata, hogy visszaadjon egy új `Person` objektumot, mely már az anonimizált adatokat tartalmazza.
+  * `WriteToOutput`: már anonimizált `Person` objektumokat kiírja a kimeneti fájlba.
   * `PrintSummary`: kiírja az összesítést a feldolgozás végén a konzolra.
 
 `Program.cs`
 
-  * Létrehoz egy Anonymizer-t és a `Run` hívásával futtatja. Látható, hogy az anonimizálás során maszkolásra használt sztringet konstruktor paraméterben kell megadni.
+  * Létrehoz egy `Anonymizer`-t és a `Run` hívásával futtatja. Látható, hogy az anonimizálás során maszkolásra használt stringet konstruktor paraméterben kell megadni.
 
 Próbáljuk ki, futtassuk! Ehhez a "OrganizedToFunctions-1" legyen Visual Studioban a startup projekt (Jobb katt rajta, és *Set as Startup Project*), majd futtassuk:
 
@@ -133,24 +129,18 @@ A kimeneti fájt fájlkezelőben tudjuk megnézni, a "OrganizedToFunctions-1\bin
 ### A megoldás értékelése
 
 * A megoldás alapvetően jól strukturált, könnyen megérthető.
-* Követi a **==KISS (Keep It Stupid Simple)==** elvet, nem használ felesleges bonyolításokat. Ez így jó, hiszen nem merültek fel jövőbeli potenciális jövőbeli továbbfejlesztési igények, nem kell különböző formátumokat, logikákat stb. támogatni.
-* A megoldásunk nem követi az egyik legalapvetőbb és leghíresebb tervezési elvet, mely **==Single Responsibility Principle (röviden SRP)==** néven közismert. Ez némi egyszerűsítéssel élve azt várja el, hogy egy osztálynak egy felelőssége legyen.
+* Követi a **==KISS (Keep It Stupid Simple)==** elvet, nem használ felesleges bonyolításokat. Ez így jó, hiszen nem merültek fel potenciális jövőbeli továbbfejlesztési igények, nem kell különböző formátumokat, logikákat stb. támogatni.
+* A megoldásunk nem követi az egyik legalapvetőbb és leghíresebb tervezési elvet, mely **==Single Responsibility Principle (röviden SRP)==** néven közismert. Ez (némi egyszerűsítéssel élve) azt várja el, hogy egy osztálynak egy felelőssége legyen (alapvetően egy dologgal foglalkozzon).
   
     * Kétségtelen, hogy az `Anonymizer` osztályunknak számos felelőssége van: bemenet feldolgozása, adattisztítás, anonimizálás, kimenet előállítása stb.
     * Ez a probléma nálunk azért nem feltűnő, illetve azért nem okoz gondot, mert mindegyik felelősség megvalósítása egyszerű, "belefért" egy-egy rövidebb függvénybe. De ha bármelyik is összetettebb lenne, több függvényben lennének megvalósítva, akkor mindenképpen külön osztályba illene szervezni.
 
-    ??? Note "Miért probléma, ha egy osztálynak több felelőssége van? Előadáson szerepelt, ismétlésképpen:"
+    ??? Note "Miért probléma, ha egy osztálynak több felelőssége van? *
 
-        * Ha bármelyik felelősség mentén is jön be változási igény, egy nagy osztályt kell változtatni és újra tesztelni.
-        * Ha több felelőssége van az osztálynak, akkor ezek egybefonódnak, így nehéz a kódunkat az egyes felelősségek mentén újrafelhasználhatóvá, kiterjeszthetővé és egységtesztelhetővé tenni. Látni fogjuk rövidesen.
+        * Nehezebb megérteni a működését, mert nem egy dologra fókuszál.
+        * Ha bármelyik felelősség mentén is jön be változási igény, egy nagy, sokmindennel foglalkozó osztályt kell változtatni és újra tesztelni.
   
 * A megoldáshoz lehet írni automatizált integrációs (input-output) teszteket, de "igazi" egységteszteket nem. Arra  majd később térünk vissza, hogyan kell ezt értelmezni.
-
-Nézzük, hogy kódunk "hasraütésre" mennyire tekinthető újrafelhasználhatónak és kiterjeszthetőnek:
-
-![Reusability and extensibility 1](images/resuse-extensibility-20.png)
-
-Érzésre 20 %-nál többet nem illene mondjunk: hiszen megoldásunk csak egyfajta bemeneti formátumot tud kezelni, egyfajta algoritmust támogat, egyféle kimenetet tud előállítani stb.
 
 ## 3. Megoldás (OrganizedToFunctions-2-TwoAlgorithms)
 
@@ -826,7 +816,7 @@ A "6-DelegatesAndLambdas" mappa "DelegatesAndLambdas-0-Begin" projektjéből ind
    
 De általánosságában a helyzet nem ilyen egyszerű. Amennyiben a reportProgress delegate-nek mindig más és más implementációt adunk meg, akkor ez igaz. Viszont mi a helyzet akkor, ha a fenti példában szereplő "simple progress" logikát több helyen, több Anonymizer objektumnál is fel szeretnénk használni? Súlyos hiba lenne a
 `(count, index) => Console.WriteLine($"{index + 1}. person processed")`
-lambda kifejezést copy-paste-tel "szaporítani", kódduplikációhoz vezetne.
+lambda kifejezést copy-paste-tel "szaporítani", kódduplikációhoz vezetne (ellentmondana a Do Not Repeat Yourself, röviden DRY elvnek).
 
 Kérdés: van-e megoldás arra, hogy delegate-ek esetében is újrafelhasználható kódot adjunk meg? Természetesen igen, hiszen delegate-ek esetében nem kötelező a lambda kifejezések használata, lehet velük közönséges műveletekre (akár statikus, akár nem statikusakra is), mint azt korábban a félév során láttuk és számos esetben alkalmaztuk is.
 
@@ -884,14 +874,28 @@ Hogy mikor érdemesebb delegate-ekkel dolgozni, illetve a Strategy mintával, al
 
 ## Összegzés
 
-TODO: A Strategy elejére tegyük be az UML diagramot? ?????????????????????
-
-A munkafolyamatunk áttekintése:*
+### A munkafolyamatunk áttekintése
 
  * A változó igények során organikusan jelennek meg tervezési minták, és vetettünk be egyéb technikákat a refaktorálások során. Ez teljesen természetes, a gyakorlatban is sokszor így dolgozunk.
  * Egy komplexebb feladat esetében egyébként is sokszor - különösen ha nem rendelkezünk sokéves tapasztalattal - egy egyszerűbb implementációval indulunk (ezt látjuk át elsőre), és ezt faktoráljuk át olyanra, hogy az adott kontextusban kívánt kiterjeszthetőségi/újrafelhasználhatósági paraméterekkel rendelkezzen.
 
-Kitejesztési technikák áttekintése:*
+### Újrafelhasználhatósági és kiterjeszthetőség szintjei az egyes megoldásokban
+
+Megpróbálhatjuk ábrába önteni, hogy vált a megoldásunk az egyes iterációkkal egyre inkább újrafelhasználhatóvá és kiterjeszthetővé:
+
+![Kiterjeszthetőség és újrafelhasználhatóság szintjei](images/extensibility-levels.png)
+
+Természetesen a % szinteket nem szabad túl komolyan venni. Mindenesetre a fejlődés jól megfigyelhető.
+
+??? note "Miért "csak" 70%-os a végső megoldásnál mutatónk?"
+    Felmerülhet a kérdés, miért adunk jelem megoldásra kb. 70%-ot? Többek között:
+
+    * Az `Anonymizer` osztályba az adattisztítás módja mereven be van égetve (trimmelés adott oszlopra adott módon).
+    * Nem követtünk egy nagyon fontos általános alapelvet: a UI és a logika különválasztását. A kódunk több pontban konzolra ír, így például egy grafikus felülettel nem használható!
+    * Bizonyos az anonimizáló algoritmusaink nagyon specifikusak. Lehetne olyan általánosabb algoritmusokat készíteni, melyek tetszőleges mezőket kicsillagoznak (nem csak a nevet beégetetten), illetve tetszőleges mezőket sávosítanak (nem csak az életkort).
+    * Jelen megoldás csak `Person` objektumokkal tud működni.
+
+### Kiterjesztési technikák áttekintése
 
 * **Template Method**: Egyszerű esetben, ha a viselkedések különböző aspektusainak nem kell sok keresztkombinációját támogatni, nagyon kényelmes és egyszerű megoldást ad, különösen, ha egyébként is kell használjuk a származtatást. De nem, vagy csak nehezen egységtesztelhető alaposztályt eredményez.
 * **Strategy**: Nagyon rugalmas megoldást biztosít, és nem vezet kombinatorikus robbanáshoz, ha több aspektus mentén kell az osztályt kiterjeszteni, és több keresztkombinációban is szeretnénk ezeket használni. Sok esetben csak azért használjuk, hogy az osztályunkról interfészek segítségével leválasszuk a függőségeit, és így egységtesztelhetővé tegyük az osztályt.
