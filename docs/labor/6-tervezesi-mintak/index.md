@@ -394,7 +394,7 @@ A következőkben tekintsük át a Strategy alapú megoldást illusztráló oszt
 
 A Strategy minta alkalmazásának első lépése, hogy meghatározzuk, **az osztály viselkedésének hány különböző aspektusa van**, melyet kiterjeszthetővé szeretnénk tenni. A példánkban ebből - egyelőre legalábbis - kettő van:
 
-* Anonimizáláshoz kötödő viselkedés, melyhez két művelet tartozik:
+* Anonimizáláshoz kötődő viselkedés, melyhez két művelet tartozik:
     * Anonimizáló logika
     * Anonimizáló logika leírásának meghatározása (description)
 * Progress kezelés, melyhez egy művelet tartozik:
@@ -653,7 +653,7 @@ A kész megoldást nézzük meg, ez a "Strategy-2-DI" projektben található. Cs
 
 Megjegyzés: azt egyelőre ne akarjuk megérteni, mi az újonnan felbukkanó `NullProgress` a konstruktorban (ez a DI szempontjából irreleváns, rövidesen visszatérünk rá).
 
-Most már elkészültünk, az `Anonymizer` osztály teljesen független lett az implementációktól. Lehetőségünk van az `Anonymizer` osztály bármilyen anoniminizáló algoritmus és bármilyen progress kezelés  (annak módosítása nélkül). Erre vannak is példák a `Program.cs` fájlban, nézzük ezt meg! Itt négy `Anonymizer` objektumot hozunk létre, négy különböző anonimizáló és progress kombinációval.
+Most már elkészültünk, az `Anonymizer` osztály teljesen független lett az implementációktól. Lehetőségünk van az `Anonymizer` osztály bármilyen anonimizáló algoritmus és bármilyen progress kezelés  (annak módosítása nélkül). Erre vannak is példák a `Program.cs` fájlban, nézzük ezt meg! Itt négy `Anonymizer` objektumot hozunk létre, négy különböző anonimizáló és progress kombinációval.
 
 !!! Note "A működés ellenőrzése"
     A gyakorlat során erre valószínűleg nem lesz idő, de aki bizonytalan abban, "mitől is működik" a strategy minta, mitől lesz más a viselkedés a fenti négy esetre: érdemes töréspontokat tenni a `Program.cs` fájlban a négy `Run` függvényhívásra, és a függvényekbe a debuggerben belelépkedve kipróbálni, hogy mindig a megfelelő strategy implementáció hívódik meg.
@@ -687,7 +687,7 @@ Ellenőrizzük a megoldást, megvalósítja-e a céljainkat:
 
 Vegyük észre, hogy az `Anonimyzer` osztály működésének van még számos aspektusa, melyeket valamelyik megoldásunkkal kiterjeszthetővé lehetne tenni. Többek között ilyen a:
 
-* **Bemenet** kezelése: Most csak fálj alapú, adott CSV formátumot támogatunk.
+* **Bemenet** kezelése: Most csak fájl alapú, adott CSV formátumot támogatunk.
 * **Kimenet** kezelése: Most csak fájl alapú, adott CSV formátumot támogatunk.
 
 Ezeket az SRP elve miatt illene az osztályról leválasztani, de nem feltételen kiterjeszthető módon, hiszen nem merült fel igény arra (és úgy látjuk, nem is lesz később sem), hogy a mostanitól eltérő logikákat alkalmazzunk.
@@ -763,7 +763,7 @@ A következő lépésben a korábban Strategy mintával megvalósított progress
 A "6-DelegatesAndLambdas" mappa "DelegatesAndLambdas-0-Begin" projektjéből indulunk ki. Ez a korábbi, négy aspektus mentén Strategy mintával már kiterjeszthetővé tett megoldás. Lépések:
 
 1. Az `IProgress` interfészt, pontosabban annak `Report` műveletét váltjuk ki delegate használattal. Ne vezessünk be saját delegate típust, használjuk a .NET által biztosított `Action` és `Func` (generikus) típusokat. A `Report` `void`-dal tér vissza, és két `int` paramétere van: ez egy `Action<int, int>` típussal váltható ki, ezt fogjuk az alábbiakban használni.
-2. Az `Anonymizer` osztályban a strategy tag lecserélése delgate-re:
+2. Az `Anonymizer` osztályban a strategy tag lecserélése delegate-re:
 
     {--
 
