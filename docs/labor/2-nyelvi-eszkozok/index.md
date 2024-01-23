@@ -33,7 +33,8 @@ A gyakorlat elvégzéséhez szükséges eszközök:
     Jelen útmutató több helyen is bővített ismeretanyagot, illetve extra magyarázatot ad meg jelen megjegyzéssel egyező színnel keretezett és ugyanilyen ikonnal ellátott formában. Ezek hasznos kitekintések, de nem képezik az alap tananyag részét.
 
 ## Megoldás
-??? "A kész megoldás letöltése"
+
+??? success "A kész megoldás letöltése"
     :exclamation: Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, tilos (és értelmetlen) a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.
 
     A megoldás GitHubon érhető el [itt](https://github.com/bmeviauab00/lab-nyelvieszkozok-megoldas). A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre:
@@ -56,7 +57,6 @@ Egy egyszerű, bemelegítő feladattal kezdünk. A következő példában egy `P
     ```csharp
     public class Person
     {
-
     }
     ```
 
@@ -276,7 +276,7 @@ A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `P
 
 1. Hozzunk létre egy új **delegát típust**, mely `void` visszatérési értékű, és két darab `int` paramétert elváró függvényre tud hivatkozni. Figyeljünk rá, hogy az új típust a `Person` osztály előtt, közvetlenül a névtér scope-jában definiáljuk!
 
-    ```csharp
+    ```csharp hl_lines="3"
     namespace PropertyDemo
     {
         public delegate void AgeChangingDelegate(int oldAge, int newAge);
@@ -290,7 +290,7 @@ A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `P
 
 2. Tegyük lehetővé, hogy a `Person` objektumai rámutathassanak tetszőleges, a fenti szignatúrának megfelelő függvényre. Ehhez hozzunk létre egy `AgeChangingDelegate` típusú tagváltozót a `Person` osztályban!
 
-    ```csharp
+    ```csharp hl_lines="3"
     public class Person
     {
         public AgeChangingDelegate AgeChanging;
@@ -346,7 +346,7 @@ A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `P
 
 4. Kész vagyunk a `Person` osztály kódjával. Térjünk át az előfizetőre! Ehhez mindenek előtt a `Program` osztályt kell kiegészítenünk egy újabb függvénnyel.
 
-    ```csharp
+    ```csharp hl_lines="5-8"
     class Program
     {
         // ...
@@ -363,7 +363,7 @@ A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `P
 
 5. Végezetül iratkozzunk fel a változáskövetésre a `Main` függvényben!
 
-    ```csharp
+    ```csharp hl_lines="4"
     static void Main(string[] args)
     {
       Person p = new Person();
@@ -377,7 +377,7 @@ A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `P
 
 7. Egészítsük ki a `Main` függvényt többszöri feliratkozással (a `+=` operátorral lehet új feliratkozót felvenni a meglévők mellé), majd futtassuk a programot.
 
-    ```csharp
+    ```csharp hl_lines="2-3"
     p.AgeChanging = new AgeChangingDelegate(PersonAgeChanging);
     p.AgeChanging += new AgeChangingDelegate(PersonAgeChanging);
     p.AgeChanging += PersonAgeChanging; // Tömörebb szintaktika
@@ -458,7 +458,7 @@ A NET számos **beépített** attribútumot definiál, melyek funkciója a legk�
 
 3. .NET attribútumok segítségével olyan metaadatokkal láthatjuk el a `Person` osztályunkat, melyek közvetlenül módosítják a sorosító viselkedését. Az `XmlRoot` attribútum lehetőséget kínál a gyökérelem átnevezésére. Helyezzük el a `Person` osztály fölé!
 
-    ```csharp
+    ```csharp hl_lines="1"
     [XmlRoot("Személy")]
     public class Person 
     {
@@ -468,14 +468,14 @@ A NET számos **beépített** attribútumot definiál, melyek funkciója a legk�
 
 4. Az `XmlAttribute` attribútum jelzi a sorosító számára, hogy a jelölt tulajdonságot ne xml elemre, hanem xml attribútumra képezze le. Lássuk el ezzel az `Age` tulajdonságot (és ne a tagváltozót!)!
 
-    ```csharp
+    ```csharp hl_lines="1"
     [XmlAttribute("Kor")]
     public int Age
     ```
 
 5. Az `XmlIgnore` attribútum jelzi a sorosítónak, hogy a jelölt tulajdonság teljesen elhagyandó az eredményből. Próbáljuk ki a `Name` tulajdonság fölött.
 
-    ```csharp
+    ```csharp hl_lines="1"
     [XmlIgnore]
     public string Name { get; set; }
     ```
@@ -652,6 +652,15 @@ var p = new Person()
 
 p.Name = "Test"; // build hiba, utólag nem megváltoztatható
 ```
+
+Továbbá lehetőségünk van az init only setter kötelezőségét is beállítani a tulajdonságon alkalmazott `required` kulcsszóval. Ekkor a tulajdonság értékét mindenképpen meg kell adni az objektuminicializáló szintaxisban, különben fordítási hibát kapunk.
+
+```csharp
+public required string Name { get; init; }
+```
+
+Ez azért is hasznos, mert ha egyébként is szeretnénk tulajdonságokat publikálni az osztályból, és egyébként is szeretnénk támogatni az objektum inicializáló szintaxist, akkor így meg tudjuk spórolni a kötelező konstruktor paramétereket.
+
 
 ## 8. Feladat – Generikus osztályok
 
