@@ -1199,7 +1199,7 @@
 <p>Jelen útmutató több helyen is bővített ismeretanyagot, illetve extra magyarázatot ad meg jelen megjegyzéssel egyező színnel keretezett és ugyanilyen ikonnal ellátott formában. Ezek hasznos kitekintések, de nem képezik az alap tananyag részét.</p>
 </div>
 <h2 id="megoldas">Megoldás<a class="headerlink" href="#megoldas" title="Permanent link">&para;</a></h2>
-<details>
+<details class="success">
 <summary>A kész megoldás letöltése</summary>
 <p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2757.svg" title=":exclamation:" /> Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, tilos (és értelmetlen) a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.</p>
 <p>A megoldás GitHubon érhető el <a href="https://github.com/bmeviauab00/lab-nyelvieszkozok-megoldas">itt</a>. A legegyszerűbb mód a letöltésére, ha parancssorból a <code>git clone</code> utasítással leklónozzuk a gépünkre:</p>
@@ -1220,7 +1220,6 @@
 <p>Tegyük az osztályt publikussá. Ehhez az osztály neve elé be kell írni a <code>public</code> kulcsszót. Erre a módosításra itt valójában még nem volna szükség, ugyanakkor egy későbbi feladat már egy publikus osztályt fog igényelni.</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Person</span>
 <span class="p">{</span>
-
 <span class="p">}</span>
 </code></pre></div>
 </li>
@@ -1412,8 +1411,8 @@ A láthatóság szabályozása autoimplementált és nem autoimplementált tulaj
 <p>Hozzunk létre egy új <strong>delegát típust</strong>, mely <code>void</code> visszatérési értékű, és két darab <code>int</code> paramétert elváró függvényre tud hivatkozni. Figyeljünk rá, hogy az új típust a <code>Person</code> osztály előtt, közvetlenül a névtér scope-jában definiáljuk!</p>
 <div class="highlight"><pre><span></span><code><span class="k">namespace</span><span class="w"> </span><span class="nn">PropertyDemo</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">delegate</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">AgeChangingDelegate</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">oldAge</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newAge</span><span class="p">);</span>
-
+<span class="hll"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">delegate</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">AgeChangingDelegate</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">oldAge</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newAge</span><span class="p">);</span>
+</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Person</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// ...</span>
@@ -1424,8 +1423,8 @@ A láthatóság szabályozása autoimplementált és nem autoimplementált tulaj
 <p>Tegyük lehetővé, hogy a <code>Person</code> objektumai rámutathassanak tetszőleges, a fenti szignatúrának megfelelő függvényre. Ehhez hozzunk létre egy <code>AgeChangingDelegate</code> típusú tagváltozót a <code>Person</code> osztályban!</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Person</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">AgeChangingDelegate</span><span class="w"> </span><span class="n">AgeChanging</span><span class="p">;</span>
-</code></pre></div>
+<span class="hll"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">AgeChangingDelegate</span><span class="w"> </span><span class="n">AgeChanging</span><span class="p">;</span>
+</span></code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Ez így most mennyire objektumorientált?</p>
 <p>A publikus tagváltozóként létrehozott metódusreferencia valójában (egyelőre) sérti az objektumorintált egységbezárási/információrejtési elveket. Erre később visszatérünk még.</p>
@@ -1474,11 +1473,11 @@ A láthatóság szabályozása autoimplementált és nem autoimplementált tulaj
 <span class="p">{</span>
 <span class="w">    </span><span class="c1">// ...</span>
 
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">PersonAgeChanging</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">oldAge</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newAge</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">oldAge</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; =&gt; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">newAge</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
+<span class="hll"><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">PersonAgeChanging</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">oldAge</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newAge</span><span class="p">)</span>
+</span><span class="hll"><span class="w">    </span><span class="p">{</span>
+</span><span class="hll"><span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">oldAge</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; =&gt; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">newAge</span><span class="p">);</span>
+</span><span class="hll"><span class="w">    </span><span class="p">}</span>
+</span><span class="p">}</span>
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Tipp</p>
@@ -1490,8 +1489,8 @@ A láthatóság szabályozása autoimplementált és nem autoimplementált tulaj
 <div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">  </span><span class="n">Person</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">();</span>
-<span class="w">  </span><span class="n">p</span><span class="p">.</span><span class="n">AgeChanging</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AgeChangingDelegate</span><span class="p">(</span><span class="n">PersonAgeChanging</span><span class="p">);</span>
-<span class="w">  </span><span class="c1">// ...</span>
+<span class="hll"><span class="w">  </span><span class="n">p</span><span class="p">.</span><span class="n">AgeChanging</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AgeChangingDelegate</span><span class="p">(</span><span class="n">PersonAgeChanging</span><span class="p">);</span>
+</span><span class="w">  </span><span class="c1">// ...</span>
 </code></pre></div>
 </li>
 <li>
@@ -1501,9 +1500,9 @@ A láthatóság szabályozása autoimplementált és nem autoimplementált tulaj
 <li>
 <p>Egészítsük ki a <code>Main</code> függvényt többszöri feliratkozással (a <code>+=</code> operátorral lehet új feliratkozót felvenni a meglévők mellé), majd futtassuk a programot.</p>
 <div class="highlight"><pre><span></span><code><span class="n">p</span><span class="p">.</span><span class="n">AgeChanging</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AgeChangingDelegate</span><span class="p">(</span><span class="n">PersonAgeChanging</span><span class="p">);</span>
-<span class="n">p</span><span class="p">.</span><span class="n">AgeChanging</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AgeChangingDelegate</span><span class="p">(</span><span class="n">PersonAgeChanging</span><span class="p">);</span>
-<span class="n">p</span><span class="p">.</span><span class="n">AgeChanging</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">PersonAgeChanging</span><span class="p">;</span><span class="w"> </span><span class="c1">// Tömörebb szintaktika</span>
-</code></pre></div>
+<span class="hll"><span class="n">p</span><span class="p">.</span><span class="n">AgeChanging</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AgeChangingDelegate</span><span class="p">(</span><span class="n">PersonAgeChanging</span><span class="p">);</span>
+</span><span class="hll"><span class="n">p</span><span class="p">.</span><span class="n">AgeChanging</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">PersonAgeChanging</span><span class="p">;</span><span class="w"> </span><span class="c1">// Tömörebb szintaktika</span>
+</span></code></pre></div>
 <p>Láthatóan minden egyes értékváltozáskor mind a három beregisztrált/„feliratkozott” függvény lefut. Ez azért lehetséges, mert a delegate típusú tagváltozók valójában nem csupán egy függvényreferenciát, hanem egy <strong>függvényreferencia-listát</strong> tartalmaznak (és tartanak karban).</p>
 <p>Figyeljük meg a fenti harmadik sorban, hogy a függvényreferenciákat az először látottnál tömörebb szintaxissal is leírhatjuk: csak a függvény nevét adjuk meg a <code>+=</code> operátor után, a <code>new AgeChangingDelegate(...)</code> nélkül. Ettől függetlenül ekkor is egy <code>AgeChangingDelegate</code> objektum fogja becsomagolni a <code>PersonAgeChanging</code> függvényeket a színfalak mögött. A  gyakorlatban ezt a tömörebb szintaktikát szoktuk használni.</p>
 </li>
@@ -1570,8 +1569,8 @@ A láthatóság szabályozása autoimplementált és nem autoimplementált tulaj
 </li>
 <li>
 <p>.NET attribútumok segítségével olyan metaadatokkal láthatjuk el a <code>Person</code> osztályunkat, melyek közvetlenül módosítják a sorosító viselkedését. Az <code>XmlRoot</code> attribútum lehetőséget kínál a gyökérelem átnevezésére. Helyezzük el a <code>Person</code> osztály fölé!</p>
-<div class="highlight"><pre><span></span><code><span class="na">[XmlRoot(&quot;Személy&quot;)]</span>
-<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Person</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="na">[XmlRoot(&quot;Személy&quot;)]</span>
+</span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Person</span><span class="w"> </span>
 <span class="p">{</span>
 <span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
@@ -1579,14 +1578,14 @@ A láthatóság szabályozása autoimplementált és nem autoimplementált tulaj
 </li>
 <li>
 <p>Az <code>XmlAttribute</code> attribútum jelzi a sorosító számára, hogy a jelölt tulajdonságot ne xml elemre, hanem xml attribútumra képezze le. Lássuk el ezzel az <code>Age</code> tulajdonságot (és ne a tagváltozót!)!</p>
-<div class="highlight"><pre><span></span><code><span class="na">[XmlAttribute(&quot;Kor&quot;)]</span>
-<span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Age</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="na">[XmlAttribute(&quot;Kor&quot;)]</span>
+</span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Age</span>
 </code></pre></div>
 </li>
 <li>
 <p>Az <code>XmlIgnore</code> attribútum jelzi a sorosítónak, hogy a jelölt tulajdonság teljesen elhagyandó az eredményből. Próbáljuk ki a <code>Name</code> tulajdonság fölött.</p>
-<div class="highlight"><pre><span></span><code><span class="na">[XmlIgnore]</span>
-<span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="na">[XmlIgnore]</span>
+</span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 </li>
 <li>
@@ -1719,6 +1718,10 @@ Mint látható, elhagytuk a {} zárójeleket és a <code>return</code> utasítá
 
 <span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Test&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// build hiba, utólag nem megváltoztatható</span>
 </code></pre></div>
+<p>Továbbá lehetőségünk van az init only setter kötelezőségét is beállítani a tulajdonságon alkalmazott <code>required</code> kulcsszóval. Ekkor a tulajdonság értékét mindenképpen meg kell adni az objektuminicializáló szintaxisban, különben fordítási hibát kapunk.</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">required</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="n">init</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>Ez azért is hasznos, mert ha egyébként is szeretnénk tulajdonságokat publikálni az osztályból, és egyébként is szeretnénk támogatni az objektum inicializáló szintaxist, akkor így meg tudjuk spórolni a kötelező konstruktor paramétereket.</p>
 <h2 id="8-feladat-generikus-osztalyok">8. Feladat – Generikus osztályok<a class="headerlink" href="#8-feladat-generikus-osztalyok" title="Permanent link">&para;</a></h2>
 <p>Megjegyzés: erre a feladatra jó eséllyel nem marad idő. Ez esetben célszerű a feladatot gyakorlásképpen otthon elvégezni.</p>
 <p>A .NET generikus osztályai hasonlítanak C++ nyelv template osztályaihoz, de közelebb állnak a Java-ban már megismert generikus osztályokhoz. A segítségükkel általános (több típusra is működő), de ugyanakkor típusbiztos osztályokat hozhatunk létre. Generikus osztályok nélkül, ha általánosan szeretnénk kezelni egy problémát, akkor <code>object</code> típusú adatokat használunk (mert .NET-ben minden osztály az <code>object</code> osztályból származik). Ez a helyzet például az <code>ArrayList</code>-tel is, ami egy általános célú gyűjtemény, tetszőleges, <code>object</code> típusú elemek tárolására alkalmas. Lássunk egy példát az <code>ArrayList</code> használatára:</p>
@@ -1761,8 +1764,8 @@ Mint látható, elhagytuk a {} zárójeleket és a <code>return</code> utasítá
         </path>
       </svg>
     </span>
-    <span title="2024. január 7. 11:31:21">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-07T11:31:21+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-07</span>
+    <span title="2024. január 23. 10:16:47">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-23T10:16:47+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-23</span>
     </span>
   </span>
 
