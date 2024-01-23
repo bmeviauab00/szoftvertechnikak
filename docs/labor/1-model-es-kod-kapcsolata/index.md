@@ -27,7 +27,7 @@ A gyakorlat elvégzéséhez szükséges eszközök:
 Visual Studio-ból a legfrissebb verziót célszerű feltenni. A Community Edition, Professional és az Enterprise verzió is megfelel. A Community Edition ingyenes, letölthető a Microsoft honlapjáról. A Professional fizetős, de az egyetem hallgatói számára ez is ingyenesen elérhető (<https://azureforeducation.microsoft.com/devtools> honlapon, az Azure Dev Tools for Teaching program keretében).
 
 !!! note  "Visual Studio Class Diagram támogatás"
-        Jelen gyakorlat bizonyos feladatainál (és az első házi feladat esetében is) a Visual Studio Class Designer támogatását használjuk. A Visual Studio nem teszi fel minden esetben a Class Designer komponenst a telepítés során. Ha nem lehet Class Diagram-ot felvenni a Visual Studio projektbe (mert a Class Diagram nem szerepel a listában az Add New Item parancs során megjelenő ablak listájában – erről a jelen útmutató későbbi fejezetében bővebben), akkor a Class Diagram komponenst utólag kell telepíteni:
+    Jelen gyakorlat bizonyos feladatainál (és az első házi feladat esetében is) a Visual Studio Class Designer támogatását használjuk. A Visual Studio nem teszi fel minden esetben a Class Designer komponenst a telepítés során. Ha nem lehet Class Diagram-ot felvenni a Visual Studio projektbe (mert a Class Diagram nem szerepel a listában az Add New Item parancs során megjelenő ablak listájában – erről a jelen útmutató későbbi fejezetében bővebben), akkor a Class Diagram komponenst utólag kell telepíteni:
 
     1. Visual Studio telepítő indítása (pl. a Windows Start menüben a „Visual Studio Installer” begépelésével).
     2. A megjelenő ablakban „Individual components” fül kiválasztása
@@ -51,10 +51,10 @@ A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek e
 
 ## Megoldás
 
-??? "A kész megoldás letöltése"
+??? success "A kész megoldás letöltése"
     :exclamation: Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, tilos (és értelmetlen) a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.
 
-    A megoldás GitHubon érhető el [itt](https://github.com/bmeviauab00/lab-modellkod-kiindulo/tree/megoldas). A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre:
+    A megoldás [GitHubon érhető el](https://github.com/bmeviauab00/lab-modellkod-kiindulo/tree/megoldas). A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre:
 
     ```git clone https://github.com/bmeviauab00/lab-modellkod-kiindulo -b megoldas```
 
@@ -85,7 +85,7 @@ A solution és azon belüli projekt létrehozásának lépései Visual Studio 20
     4. Place solution and project in the same directory: nincs pipa (de nincs különösebb jelentősége).
 
 4. Next gomb az varázslóablak alján, a következő varázslóoldalon:
-    1. Framework: **.NET 6 (Long-term support)**.
+    1. Framework: **.NET 8 (Long-term support)**.
     2. A "Do not use top level statements" jelölőnégyzetet pipáljuk be (ennek magyarázatára mindjárt visszatérünk).
 
 A projekttel egy új solution is létrejön, mely struktúrája a Visual Studio *Solution Explorer* ablakában tekinthető át. Egy solution több projectből állhat, egy project pedig több fájlból. A solution a teljes munkakörnyezetet fogja össze (egy `.sln` kiterjesztésű fájl tartozik hozzá), míg egy projekt kimenete egy `.exe` vagy `.dll` fájl jellemzően, vagyis egy összetett alkalmazás/rendszer egy komponensét állítja elő. A projektfájlok kiterjesztése C# alkalmazások esetén `.csproj`.
@@ -612,7 +612,7 @@ Zárásképpen vessünk egy pillantást megoldásunk UML (szerű) osztálydiagra
 
 ![Végső osztálydiagram](images/class-diagram-final.png)
 
-!!! note "Statikus interfészek"
+!!! note "C# 11 - Statikus interfészek"
     A C# 11 legújabb újdonsága a statikus interfész tagok definiálása, amivel olyan tagokat követelhetünk meg az implementáló osztálytól, amelyek nem az objektum példányra vonatkoznak, hanem az osztálynak kell egy adott statikus taggal rendelkeznie. [Bővebben](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/static-virtual-interface-members)
 
 ### Megjegyzés - opcionális házi gyakorló feladat

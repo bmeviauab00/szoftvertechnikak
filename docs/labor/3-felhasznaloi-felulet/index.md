@@ -11,26 +11,36 @@ A gyakorlat célja megismerkedni a vastagkliens alkalmazások fejlesztésének a
 
 A labor elvégzéséhez szükséges eszközök:
 
-* Visual Studio 2022 (TODO)
-* WindowsAppSDK 1.4 (TODO)
+* Windows 10 vagy Windows 11 operációs rendszer (Linux és macOS nem alkalmas)
+* Visual Studio 2022
+  * Windows Desktop Development Workload
+
+    ![desktop workload](images/desktop-workload.png)
 
 ## Megoldás
-??? "A kész megoldás letöltése"
+
+??? success "A kész megoldás letöltése"
     :exclamation: Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, tilos (és értelmetlen) a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.
 
-    A megoldás GitHubon érhető el [itt](https://github.com/bmeviauab00/lab-XAML-megoldas). A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre:
+    A megoldás [GitHubon érhető el](https://github.com/bmeviauab00/lab-XAML-kiindulo) a `megoldas` ágon. A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre a `megoldas` ágat:
 
-    ```git clone https://github.com/bmeviauab00/lab-XAML-megoldas```
+    ```git clone https://github.com/bmeviauab00/lab-xaml-kiindulo -b megoldas```
 
     Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ [itt](../../hazi/git-github-github-classroom/index.md#git-telepitese).
 
-## Áttekintés
+## Kiinduló projekt
 
-Az első feladatban kialakítjuk a környezetet, amelyben a továbbiakban a XAML nyelv és a WinUI keretrendszer működését vizsgáljuk.
+Az első feladatban kialakítjuk a környezetet, amelyben a továbbiakban a XAML nyelv és a WinUI keretrendszer működését vizsgáljuk. A kiinduló projektet a Visual Studióval is legenerálhatnánk (WinUI 3 projekt, _Blank App, Packaged (WinUI 3 in Desktop)_ típus), de az óra gördülékenysége érdekében az előre elkészített projektet fogjuk használni.
 
-Hozzunk létre egy új WinUI 3 projektet, _Blank App, Packaged (WinUI 3 in Desktop)_ típusút, a projekt neve legyen _HelloXaml_.
+A projektet a következő parancs kiadásával tudjuk leklónozni a gépünkre:
 
-Tekintsük át milyen alapértelmezett fájlokat generált a Visual Studio:
+```cmd
+git clone https://github.com/bmeviauab00/lab-xaml-kiindulo.git
+```
+
+Nyissuk meg a `HelloXaml.sln`-t.
+
+Tekintsük át milyen fájlokat tartalmaz a projekt:
 
 * App
     * Két fájl `App.xaml` és `App.xaml.cs`(később tisztázzuk két fájl tartozik hozzá)
