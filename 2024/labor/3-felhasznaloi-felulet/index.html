@@ -504,8 +504,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#attekintes" class="md-nav__link">
-    Áttekintés
+  <a href="#kiindulo-projekt" class="md-nav__link">
+    Kiinduló projekt
   </a>
   
 </li>
@@ -929,8 +929,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#attekintes" class="md-nav__link">
-    Áttekintés
+  <a href="#kiindulo-projekt" class="md-nav__link">
+    Kiinduló projekt
   </a>
   
 </li>
@@ -1053,21 +1053,27 @@
 <h2 id="elofeltetelek">Előfeltételek<a class="headerlink" href="#elofeltetelek" title="Permanent link">&para;</a></h2>
 <p>A labor elvégzéséhez szükséges eszközök:</p>
 <ul>
-<li>Visual Studio 2022 (TODO)</li>
-<li>WindowsAppSDK 1.4 (TODO)</li>
+<li>Visual Studio 2022</li>
+<li>
+<p>Windows Desktop Development Workload</p>
+<p><a class="glightbox" href="images/desktop-workload.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="desktop workload" src="images/desktop-workload.png" /></a></p>
+</li>
 </ul>
 <h2 id="megoldas">Megoldás<a class="headerlink" href="#megoldas" title="Permanent link">&para;</a></h2>
-<details>
+<details class="success">
 <summary>A kész megoldás letöltése</summary>
 <p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2757.svg" title=":exclamation:" /> Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, tilos (és értelmetlen) a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.</p>
-<p>A megoldás GitHubon érhető el <a href="https://github.com/bmeviauab00/lab-XAML-megoldas">itt</a>. A legegyszerűbb mód a letöltésére, ha parancssorból a <code>git clone</code> utasítással leklónozzuk a gépünkre:</p>
-<p><code>git clone https://github.com/bmeviauab00/lab-XAML-megoldas</code></p>
+<p>A megoldás <a href="https://github.com/bmeviauab00/lab-XAML-kiindulo">GitHubon érhető el</a> a <code>megoldas</code> ágon. A legegyszerűbb mód a letöltésére, ha parancssorból a <code>git clone</code> utasítással leklónozzuk a gépünkre a <code>megoldas</code> ágat:</p>
+<p><code>git clone https://github.com/bmeviauab00/lab-xaml-kiindulo -b megoldas</code></p>
 <p>Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ <a href="../../hazi/git-github-github-classroom/#git-telepitese">itt</a>.</p>
 </details>
-<h2 id="attekintes">Áttekintés<a class="headerlink" href="#attekintes" title="Permanent link">&para;</a></h2>
-<p>Az első feladatban kialakítjuk a környezetet, amelyben a továbbiakban a XAML nyelv és a WinUI keretrendszer működését vizsgáljuk.</p>
-<p>Hozzunk létre egy új WinUI 3 projektet, <em>Blank App, Packaged (WinUI 3 in Desktop)</em> típusút, a projekt neve legyen <em>HelloXaml</em>.</p>
-<p>Tekintsük át milyen alapértelmezett fájlokat generált a Visual Studio:</p>
+<h2 id="kiindulo-projekt">Kiinduló projekt<a class="headerlink" href="#kiindulo-projekt" title="Permanent link">&para;</a></h2>
+<p>Az első feladatban kialakítjuk a környezetet, amelyben a továbbiakban a XAML nyelv és a WinUI keretrendszer működését vizsgáljuk. A kiinduló projektet a Visual Studióval is legenerálhatnánk (WinUI 3 projekt, <em>Blank App, Packaged (WinUI 3 in Desktop)</em> típus), de az óra gördülékenysége érdekében az előre elkészített projektet fogjuk használni.</p>
+<p>A projektet a következő parancs kiadásával tudjuk leklónozni a gépünkre:</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/bmeviauab00/lab-xaml-kiindulo.git
+</code></pre></div>
+<p>Nyissuk meg a <code>HelloXaml.sln</code>-t.</p>
+<p>Tekintsük át milyen fájlokat tartalmaz a projekt:</p>
 <ul>
 <li>App<ul>
 <li>Két fájl <code>App.xaml</code> és <code>App.xaml.cs</code>(később tisztázzuk két fájl tartozik hozzá)</li>
@@ -1725,8 +1731,8 @@ Alapértelmezetten ugyanis a <code>ListView</code> a <code>ToString()</code>-et 
         </path>
       </svg>
     </span>
-    <span title="2023. december 21. 19:35:32">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-12-21T19:35:32+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-21</span>
+    <span title="2024. január 23. 11:00:36">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-23T11:00:36+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-23</span>
     </span>
   </span>
 
