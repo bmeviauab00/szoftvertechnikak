@@ -11,6 +11,7 @@ A gyakorlat célja megismerkedni a vastagkliens alkalmazások fejlesztésének a
 
 A labor elvégzéséhez szükséges eszközök:
 
+* Windows 10 vagy Windows 11 operációs rendszer (Linux és macOS nem alkalmas)
 * Visual Studio 2022
   * Windows Desktop Development Workload
 

@@ -23,15 +23,15 @@ A kapcsolódó előadások: Konkurens (többszálú) alkalmazások fejlesztése.
 A gyakorlat elvégzéséhez szükséges eszközök:
 
 - Visual Studio 2022
-- WindowsAppSDK 1.4 (csak a felhasználó felület miatt) (TODO)
+    - Windows Desktop Development Workload
 - Windows 10 vagy Windows 11 operációs rendszer (Linux és macOS nem alkalmas)
 
 ## Megoldás
 
-??? "A kész megoldás letöltése"
+??? success "A kész megoldás letöltése"
     :exclamation: Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, tilos (és értelmetlen) a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.
 
-    A megoldás GitHubon érhető el [itt](https://github.com/bmeviauab00/lab-tobbszalu-kiindulo/tree/megoldas). A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre:
+    A megoldás [GitHubon érhető el](https://github.com/bmeviauab00/lab-tobbszalu-kiindulo/tree/megoldas). A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre a `megoldas` ágat:
 
     ```git clone https://github.com/bmeviauab00/lab-tobbszalu-kiindulo -b megoldas```
 
