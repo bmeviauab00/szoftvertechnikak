@@ -6,30 +6,74 @@ authors: tibitoth
 
 A labor során egy recept böngésző alkalmazást fogunk készíteni, amelyben alkalmazzuk az MVVM tervezési mintát.
 
-## Az MVVM mintáról
+## A gyakorlat célja
 
-TBD
+A labor során egy recept böngésző alkalmazást fogunk készíteni, amelyben alkalmazzuk az MVVM tervezési mintát.
+
+## Előfeltételek
+
+A labor elvégzéséhez szükséges eszközök:
+
+* Windows 10 vagy Windows 11 operációs rendszer (Linux és macOS nem alkalmas)
+* Visual Studio 2022
+    * Windows Desktop Development Workload
 
 ## Kiinduló projekt
 
 Klónozzuk le a kiinduló projektet az alábbi paranccsal:
 
 ```cmd
-git clone https://github.com/bmeviauab00/MvvmLab
+git clone https://github.com/bmeviauab00/lab-mvvm-kiindulo
 ```
 
-### Projekt felépítése
+## Megoldás
+
+??? success "A kész megoldás letöltése"
+    :exclamation: Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, tilos (és értelmetlen) a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.
+
+    A megoldás [GitHubon érhető el](https://github.com/bmeviauab00/lab-mvvm-kiindulo) a `megoldas` ágon. A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre a `megoldas` ágat:
+
+    ```git clone https://github.com/bmeviauab00/lab-xaml-kiindulo -b megoldas```
+
+## Az MVVM mintáról
+
+Az MVVM (Model-View-ViewModel) egy architekturális tervezési minta, amelyet a XAML alkalmazások fejlesztése során használhatunk, de gyakran más kliens oldali technológiák esetében is megjelenik. Az MVVM minta célja, hogy a felhasználói felületet és a mögötte lévő üzleti logikát szétválassza, és ezzel egy lazább csatolású alkalmazást hozzon létre, ami növeli a tesztelhetőséget, a karbantarthatóságot, és az újrafelhasználhatóságot.
+
+Az MVVM minta három fő részből áll:
+
+* **Model**: Az alkalmazás üzleti logikáját tartalmazza, amelyet a ViewModel-ek használnak.
+* **View**: A felhasználói felület leírását tartalmazza, és a tisztán a nézetekhez kapcsolódó logikát (pl.: animációk kezelését).
+* **ViewModel**: A nézet **absztrakciója**, ami tartalmazza a nézet állapotát és a végrehajtható műveleteket, **nézet függetlenül**. A lazán csatolást a ViewModel és a nézet közötti adatkötés biztosítja.
+
+<figure markdown>
+![MVVM](images/mvvm.drawio.png)
+</figure>
+
+## 0. Feladat - Projekt felépítése
 
 TBD
 
-## Adatelérési szolgáltatás
+## 1. Feladat - Receptek főoldal
 
-Az alkalmazásunk adatait egy REST API-n keresztül éri el, ami a következő címen érhető el: `https://bmecookbook.azurewebsites.net/api/recipes/groups`. A szolgáltatás egy recepteket tartalmazó listát ad vissza csoportosítva JSON formátumban.
+A megoldás során "alulról", az adatok felől fogunk építkezni és fokozatosan fogunk eljutni a nézetig. Ugyan a való életben egy top-bottom fejlesztés gyakran hasznosabb, de a labor során az idő rövidsége miatt az alulról építkezés gyorsabb és egyszerűbb, mert így nem kell az adatokat mockolni.
 
-Az OpenApi specifikációban lévő `/api/recipes/groups` végpont által visszaadott példa JSON adatokból generáljuk le a szükséges osztályokat most a Visual Studio segítségével.
+### Adatelérési szolgáltatás
 
-Vegyünk fel az `MvvmLab.Core` projekt `Model` mappájába egy új osztályt `RecipeGroup` néven.
-Rakjunk a vágólapra egy RecipeGroup-nyi JSON adatot, majd a Visual Studio-ban az `Edit` menü `Paste Special` menüpontjában a `Paste JSON as Classes` menüpontot választva illesszük be a vágólap tartalmát.
+Kezdjük az adatelérési réteggel, amit most tekinthetünk az MVVM mintában a modell rétegnek is.
+
+Az alkalmazásunk adatait egy webszerverről, REST API-n, HTTP-n keresztül éri el. Ez ehhez hasonló kliens-szerver architektúrájú alkalmazások egy kifejezetten gyakori megoldás a modern alkalmazások fejlesztése során. Erről bővebben a Mobil és Webes szoftverek, illetve az Adatvezérelt alkalmazások tárgyakban lesz szó. Most elég annyit tudni, hogy a kliens alkalmazásunk HTTP kéréseket fog küldeni a szervernek, amelyekre a szerver válaszolni fog. A kérések és válaszok formátuma JSON lesz.
+
+<figure markdown>
+![Kliens-szerver architektúra](images/client-server.drawio.png)
+<figurecation>Kliens-szerver architektúra<figurecaption>
+</figure>
+
+A távoli szolgáltatás a következő címen érhető el: <https://bmecookbook.azurewebsites.net>. A szolgáltatáshoz pedig tartozik egy OpenApi alapú dokumentáció a <https://bmecookbook.azurewebsites.net/swagger> címen. Tanulmányozzuk ezt át.
+Az első feladathoz a `/api/Recipes/Groups` végpontot fogjuk használni, amely a receptek csoportosítását adja vissza.
+
+Vegyünk fel az `MvvmLab.Core` projekt `Models` mappájába egy új osztályt `RecipeGroup` néven.
+
+Az OpenApi dokumentációból rakjunk a vágólapra egy `RecipeGroup`-nyi JSON adatot, majd a Visual Studio-ban az `Edit` menü `Paste Special` menüpontjában a `Paste JSON as Classes` menüpontot választva illesszük be a vágólap tartalmát.
 
 ![Paste JSON as Classes](images/paste-json-as-classes.png)
 
@@ -52,7 +96,7 @@ public class RecipeHeader
 }
 ```
 
-Készítsünk egy `IRecipeService` interfészt az `MvvmLab.Core.Services` névtérbe, amelyen keresztül le fogjuk tudni kérdezni a recept csoportokat.
+Készítsünk egy `IRecipeService` interfészt az `MvvmLab.Core.Services` névtérbe, amelyen keresztül el fogjuk érni a szolgáltatást. Az interfészben egy `GetRecipeGroupsAsync` metódust hozzunk létre, amely a recept csoportokat adja vissza.
 
 ```csharp
 public interface IRecipeService
@@ -61,7 +105,10 @@ public interface IRecipeService
 }
 ```
 
-Az interfész implementációját a `MvvmLab.Core.Services` névtérben hozzuk létre `RecipeService` néven. A szolgáltatásunk a `HttpClient` osztályt fogja használni a REST API hívásokhoz.
+Az interfész implementációját a `MvvmLab.Core.Services` névtérben hozzuk létre `RecipeService` néven.
+A szolgáltatásunk a `HttpClient` beépített .NET osztályt fogja használni a REST API hívásokhoz.
+A `GetFromJsonAsync` indít egy HTTP GET kérést a megadott címre, és a
+választ JSON formátumban deszerializálja a megadott típusra.
 
 ```csharp
 public class RecipeService : IRecipeService
@@ -76,9 +123,13 @@ public class RecipeService : IRecipeService
 }
 ```
 
-## Főoldal ViewModel
+### Főoldal ViewModel
 
-Nyissuk meg a `MainViewModel` osztályt az `MvvmLab.ViewModels` mappából. A ViewModelünknek szüksége lesz egy `IRecipeService` interfészt implementáló osztályra, amelyen keresztül le tudja kérdezni a recept csoportokat. A `MainViewModel` konstruktorában dependency injection segítségével szerezzük be a szükséges függőséget.
+Következő lépésben a főoldal ViewModeljét fogjuk elkészíteni, amely az előbb elkészített szolgáltatást fogja használni a recept csoportok lekérdezéséhez, és azt állapotként fogja tárolni a nézet számára.
+
+Nyissuk meg a `MainViewModel` osztályt az `MvvmLab.ViewModels` mappából. A ViewModelünknek szüksége lesz egy `IRecipeService` interfészt implementáló osztályra, amelyen keresztül le tudja kérdezni a recept csoportokat.
+A `MainViewModel` konstruktorában függőség injektáláson keresztül szerezzük be a szükséges függőséget.
+Esetünkben ez annyit tesz, hogy várunk egy `IRecipeService` típusú paramétert, amelyet majd a ViewModel példányosításakor fog megkapni, és a paramétert elmentjük egy privát változóba.
 
 ```csharp
 private readonly IRecipeService _recipeService;
@@ -89,13 +140,26 @@ public MainViewModel(IRecipeService recipeService)
 }
 ```
 
+??? tip "Függőség Injektálás - Dependency Injection - DI"
+    A függőség injektálás (dependency injection (DI)), egy modern alkalmazásokban elkerülhetetlen tervezési minta, ami az objektumok életciklusát szabályozza. 
+
+    Alap esetben az osztályok szoros csatolást alakítanak ki a függőségeikkel (referencia, példányosítás). Ez a szoros csatolás nehezíti a tesztelhetőséget, a karbantarthatóságot, és az újrafelhasználhatóságot.
+    
+    ![Without DI](images/without-di.png)
+
+    A DI segítségével a függőségeket életciklusát egy kitüntetett kompoenes kezeli, a DI konténer. A DI konténer (ábrán Builder) felelős az osztályok példányosításáért, és a függőségek beinjektálásáért. A DI konténerben regisztrálni kell az osztályokat, amelyeket a DI konténer példányosítani fog. A példányosítás során pedig a függőségi gráfot bejárva beinjektálja a megfelelő implementációkat.
+
+    ![With DI](images/with-di.png)
+
 Ahhoz, hogy a Dependency Injection működjön, szükséges a `MainViewModel` osztályt regisztrálni az `App.xaml.cs` fájlban a `ConfigureServices` metódusban.
 
 ```csharp
 services.AddTransient<IRecipeService, RecipeService>();
 ```
 
-Jelenleg ezt a szolgáltatást Transient élettartamúként regisztráltuk, ami azt jelenti, hogy minden egyes `IRecipeService` függőséget egy új `RecipeService` példány fog kiszolgálni.
+Jelenleg ezt a szolgáltatást **Tranziens** élettartamúként regisztráltuk, ami azt jelenti, hogy minden egyes `IRecipeService` függőség igényt egy új `RecipeService` példány fog kielégíteni.
+
+Következő lépésben a ViewModel állapotát implementáljuk.
 
 A `MainViewModel`-ben hozzunk létre egy `_recipeGroups` nevű `List<RecipeGroup>` változót, amelyben tárolni fogjuk a recept csoportokat. A változót attributáljuk fel a `ObservableProperty` attribútummal, ami alapján az MVVM Toolkit automatikusan generálni fogja a `RecipeGroups` nevű property-t az osztály másik generált partial felében.
 Ez a generált property kihasználja az `INotidyPropertyChanged` interfészt, így a `RecipeGroups` property értékének megváltozásakor a `PropertyChanged` eseményt kiváltva értesíti a nézetet, hogy frissítse magát.
