@@ -1406,7 +1406,7 @@ The tutorial is guided, with instructions from the tutor, and the tasks are done
 <details class="success">
 <summary>Download the finished solution</summary>
 <p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2757.svg" title=":exclamation:" /> It is essential that you follow the lab guide during the lab, it is forbidden (and pointless) to download the ready-made solution. However, during subsequent self-practice, it can be useful to review the ready-made solution, so we make it available.</p>
-<p>The solution is available on <a href="https://github.com/bmeviauab00/lab-modellkod-kiindulo/tree/megoldas">GitHub</a>. The easiest way to download it is to clone it from the command line to your machine using the XXXgit cloneXXX command:</p>
+<p>The solution is available on <a href="https://github.com/bmeviauab00/lab-modellkod-kiindulo/tree/megoldas">GitHub</a>. The easiest way to download it is to clone it from the command line to your machine using the <code>git clone</code> command:</p>
 <p><code>git clone https://github.com/bmeviauab00/lab-modellkod-kiindulo -b solved</code></p>
 <p>You need to have git installed on your machine, more information <a href="../../../hazi/git-github-github-classroom/#git-telepitese">here</a>.</p>
 </details>
@@ -1448,8 +1448,8 @@ The tutorial is guided, with instructions from the tutor, and the tasks are done
 </ol>
 </li>
 </ol>
-<p>The project also creates a new solution, whose structure can be viewed in the Visual Studio <em>Solution Explorer</em> window. A solution can consist of several projects, and a project can consist of several files. A solution is a summary of the entire working environment (it includes a file with the extension XXX.slnXXX), while the output of a project is typically a file XXX.exeXXX or XXX.dllXXX, i.e. a component of a complex application/system. The project file extension for C# applications is XXX.csprojXXX.</p>
-<p>The content of our XXXProgram.csXXX file is as follows:</p>
+<p>The project also creates a new solution, whose structure can be viewed in the Visual Studio <em>Solution Explorer</em> window. A solution can consist of several projects, and a project can consist of several files. A solution is a summary of the entire working environment (it includes a file with the extension <code>.sln</code>), while the output of a project is typically a file <code>.exe</code> or <code>.dll</code>, i.e. a component of a complex application/system. The project file extension for C# applications is <code>.csproj</code>.</p>
+<p>The content of our <code>Program.cs</code> file is as follows:</p>
 <div class="highlight"><span class="filename">Program.cs</span><pre><span></span><code><span class="k">namespace</span><span class="w"> </span><span class="nn">HelloWorld</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">internal</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Program</span>
@@ -1461,7 +1461,7 @@ The tutorial is guided, with instructions from the tutor, and the tasks are done
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Take a XXXConsole.ReadKey()XXX line:</p>
+<p>Take a <code>Console.ReadKey()</code> line:</p>
 <div class="highlight"><pre><span></span><code><span class="k">namespace</span><span class="w"> </span><span class="nn">HelloWorld</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">internal</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Program</span>
@@ -1477,27 +1477,27 @@ The tutorial is guided, with instructions from the tutor, and the tasks are done
 <ol>
 <li>
 <p>Run the application (e.g. using the <span class="keys"><kbd class="key-f5">F5</kbd></span> key).</p>
-<p>The structure of the code is very similar to Java and C++. Our classes are organised into namespaces. You can define a namespace with the keyword XXXnamespaceXXX. You can "scope" namespaces with the XXXusingXXX keyword. e.g:</p>
+<p>The structure of the code is very similar to Java and C++. Our classes are organised into namespaces. You can define a namespace with the keyword <code>namespace</code>. You can "scope" namespaces with the <code>using</code> keyword. e.g:</p>
 <div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections.Generic</span><span class="p">;</span>
 </code></pre></div>
 </li>
 <li>
-<p>In a console C# application, you specify the entry point of your application by writing a static function called XXXMainXXX. Our class name can be anything, VS generated a class called XXXProgramXXX in our case. The parameter list of the XXXMainXXX function is bound: either no parameters are given, or a XXXstring[]XXX is given, in which the command line arguments are given at runtime.</p>
+<p>In a console C# application, you specify the entry point of your application by writing a static function called <code>Main</code>. Our class name can be anything, VS generated a class called <code>Program</code> in our case. The parameter list of the <code>Main</code> function is bound: either no parameters are given, or a <code>string[]</code> is given, in which the command line arguments are given at runtime.</p>
 </li>
-<li>in .NET, the XXXConsoleXXX class of the XXXSystemXXX namespace is used to handle standard input and output. With the static operation XXXWriteLineXXX you can write a line, with XXXReadKeyXXX you can wait for a key to be pressed.</li>
+<li>in .NET, the <code>Console</code> class of the <code>System</code> namespace is used to handle standard input and output. With the static operation <code>WriteLine</code> you can write a line, with <code>ReadKey</code> you can wait for a key to be pressed.</li>
 </ol>
 <div class="admonition tip">
 <p class="admonition-title">Top level statements, Implicit and static usings and namespaces</p>
-<p>When the project was created, we previously checked the "Do not use top level statements" checkbox. If we had not done this, we would have found only one meaningful line in our XXXProgram.csXXX file:</p>
+<p>When the project was created, we previously checked the "Do not use top level statements" checkbox. If we had not done this, we would have found only one meaningful line in our <code>Program.cs</code> file:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// See https://aka.ms/new-console-template for more information</span>
 <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
 </code></pre></div>
-<p>This is functionally equivalent to the code above containing the XXXProgramXXX class and its XXXMainXXX function. Let's look at what makes this possible (you can read more about them here <a href="https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/top-level-statements">https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/top-level-statements</a>, both new in C# 10):</p>
+<p>This is functionally equivalent to the code above containing the <code>Program</code> class and its <code>Main</code> function. Let's look at what makes this possible (you can read more about them here <a href="https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/top-level-statements">https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/top-level-statements</a>, both new in C# 10):</p>
 <ul>
-<li><strong>Top level statements</strong>. The idea is that you can write code directly in a single source file without any class/XXXMainXXX and other function definitions in the project. In this case, behind the scenes, the compiler puts this into a static XXXMainXXX function of a class we don't see. The motivation for its introduction was to reduce boilerplate code for very simple, "script-like" applications.</li>
-<li><strong>Implicit global usings</strong>. Depending on exactly what project type you have created, certain base namespaces will be automatically using behind the scenes in all source files (the compiler uses the <em>global using</em> directive for this). The point is: this way, developers don't have to use certain frequently used namespaces (e.g. XXXSystem.IOXXX, XXXSystem.Collections.GenericXXX, etc.) as source files.</li>
+<li><strong>Top level statements</strong>. The idea is that you can write code directly in a single source file without any class/<code>Main</code> and other function definitions in the project. In this case, behind the scenes, the compiler puts this into a static <code>Main</code> function of a class we don't see. The motivation for its introduction was to reduce boilerplate code for very simple, "script-like" applications.</li>
+<li><strong>Implicit global usings</strong>. Depending on exactly what project type you have created, certain base namespaces will be automatically using behind the scenes in all source files (the compiler uses the <em>global using</em> directive for this). The point is: this way, developers don't have to use certain frequently used namespaces (e.g. <code>System.IO</code>, <code>System.Collections.Generic</code>, etc.) as source files.</li>
 <li>
-<p><strong>Static using</strong>. It is possible to use static classes instead of namespaces in C#, so it is not important to write them when using them. A common case is the use of the XXXConsoleXXX or XXXMathXXX class.</p>
+<p><strong>Static using</strong>. It is possible to use static classes instead of namespaces in C#, so it is not important to write them when using them. A common case is the use of the <code>Console</code> or <code>Math</code> class.</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="k">using</span><span class="w"> </span><span class="nn">static</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">;</span>
 </span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">ConsoleApp12</span>
@@ -1528,8 +1528,8 @@ The tutorial is guided, with instructions from the tutor, and the tasks are done
 <p class="admonition-title">Inconsistent visibility or inconsistent accessibility error</p>
 <p>During the semester, you may encounter translation error messages complaining <em>about inconsistent visibility</em> or <em>inconsistent accessibility</em> when implementing programming tasks. This phenomenon is due to the possibility to control the visibility of each type (class, interface, etc.) in a .NET environment:</p>
 <ul>
-<li>XXXinternalXXX or no visibility is specified: the type is visible only inside the assembly (.exe, .dll)/project</li>
-<li>XXXpublicXXX: the type is visible to other assemblies/projects</li>
+<li><code>internal</code> or no visibility is specified: the type is visible only inside the assembly (.exe, .dll)/project</li>
+<li><code>public</code>: the type is visible to other assemblies/projects</li>
 </ul>
 <p>The easiest way to avoid this error is to define all our types as public, e.g.:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">HardDisk</span>
@@ -1541,9 +1541,9 @@ The tutorial is guided, with instructions from the tutor, and the tasks are done
 <h2 id="theoretical-overview">Theoretical overview<a class="headerlink" href="#theoretical-overview" title="Permanent link">&para;</a></h2>
 <p>The sub-chapters do not contain exercises, but provide students with an introduction to the related theoretical topics, illustrated with examples.</p>
 <h3 id="a-theory-of-the-relationship-between-the-uml-class-diagram-and-code-student">A) Theory of the relationship between the UML class diagram and code [student]*<a class="headerlink" href="#a-theory-of-the-relationship-between-the-uml-class-diagram-and-code-student" title="Permanent link">&para;</a></h3>
-<p>The material is available here: The relationship between the UML class diagram and code. This topic was covered in the previous semester in the Software Engineering course.</p>
+<p>The material is available here: <a href="../../egyeb/uml-kod-kapcsolata/index_eng.md">The relationship between the UML class diagram and code</a>. The relationship between the UML class diagram and code. This topic was covered in the previous semester in the Software Engineering course.</p>
 <h3 id="b-interface-and-abstract-parent-class-student">B) Interface and abstract (parent) class [student]*<a class="headerlink" href="#b-interface-and-abstract-parent-class-student" title="Permanent link">&para;</a></h3>
-<p>The material is available here: Interface and abstract (base) class.</p>
+<p>The material is available here: <a href="../../egyeb/interfesz-es-absztrakt-os/index_eng.md">Interface and abstract (base) class</a>.   Interface and abstract (base) class.</p>
 <p>Topics:</p>
 <ul>
 <li>Abstract class concept and definition in C#</li>
@@ -1554,17 +1554,17 @@ The tutorial is guided, with instructions from the tutor, and the tasks are done
 <h3 id="task-description-equipment-inventory">Task description - Equipment inventory<a class="headerlink" href="#task-description-equipment-inventory" title="Permanent link">&para;</a></h3>
 <p>Task: We were asked to develop a computer parts inventory application. Read more:</p>
 <ul>
-<li>You need to be able to handle different types of parts. Initially, XXXHardDiskXXX, XXXSoundCardXXX and XXXLedDisplayXXX types should be supported, but the system should be easily extensible to new types.</li>
-<li>The data related to the parts are: year of purchase, age (calculated), purchase price and current price (calculated), but may also include type-specific data (e.g. capacity for XXXHardDiskXXX).</li>
+<li>You need to be able to handle different types of parts. Initially, <code>HardDisk</code>, <code>SoundCard</code> and <code>LedDisplay</code> types should be supported, but the system should be easily extensible to new types.</li>
+<li>The data related to the parts are: year of purchase, age (calculated), purchase price and current price (calculated), but may also include type-specific data (e.g. capacity for <code>HardDisk</code>).</li>
 <li>The actual price depends on the type of part, the purchase price and the year of production of the part. For example, the older the part, the bigger the discount, but the discount depends on the part type.</li>
 <li>You must be able to list the parts in stock.</li>
-<li>The XXXLedDisplayXXX class must be derived from an XXXDisplayBaseXXX class, and the source code of the XXXDisplayBaseXXX class cannot be changed. In this example this does not make much sense, but in practice we often encounter similar situations where the framework/platform we are using requires us to derive from a built-in class. Typically, this is the case when working with windows, forms, custom control types: we have to derive them from the framework's built-in classes, and we don't have (or at least certainly don't want to change) the source code of the framework - e.g. Java, .NET. In our example, we simulate this situation by specifying a derivation from XXXDisplayBaseXXX.</li>
+<li>The <code>LedDisplay</code> class must be derived from an <code>DisplayBase</code> class, and the source code of the <code>DisplayBase</code> class cannot be changed. In this example this does not make much sense, but in practice we often encounter similar situations where the framework/platform we are using requires us to derive from a built-in class. Typically, this is the case when working with windows, forms, custom control types: we have to derive them from the framework's built-in classes, and we don't have (or at least certainly don't want to change) the source code of the framework - e.g. Java, .NET. In our example, we simulate this situation by specifying a derivation from <code>DisplayBase</code>.</li>
 </ul>
 <p>The implementation is simplified considerably: the parts are only stored in memory, and the listing is as simple as possible, simply by writing the data of the registered parts to the console.</p>
 <p>During the initial discussions, we receive the following information from the client: an internal staff member has already started the development, but due to lack of time, they have only reached a half-finished solution. Part of our task is to understand the semi-finished solution and to implement the task from there.</p>
 <h3 id="class-diagram">Class Diagram<a class="headerlink" href="#class-diagram" title="Permanent link">&para;</a></h3>
 <p>Let's open the source code solution from our customer, which we can do by following the steps below.</p>
-<p>To do this, clone the Git repository of the initial project, available online on GitHub, to a new folder of its own within XXXC:\WorkXXX: e.g: XXXC:\Work\NEPTUN\lab1XXX. In this new folder, open a command line or powershell and run the following git command:</p>
+<p>To do this, clone the Git repository of the initial project, available online on GitHub, to a new folder of its own within <code>C:\Work</code>: e.g: <code>C:\Work\NEPTUN\lab1</code>. In this new folder, open a command line or powershell and run the following git command:</p>
 <div class="highlight"><pre><span></span><code>git clone https://github.com/bmeviauab00/lab-modellkod-kiindulo.git
 </code></pre></div>
 <div class="admonition note git and github">
@@ -1577,39 +1577,39 @@ The tutorial is guided, with instructions from the tutor, and the tasks are done
 <p class="admonition-title">Missing Class Diagram template</p>
 <p>If the <em>Class Diagram</em> item does not appear in the list, then the appropriate component of VS is not installed. You can read more about this in the Prerequisites section of this document.</p>
 </div>
-<p>The chart file XXXMain.cdXXX will then appear in Solution Explorer, double-click on it to open it. Our chart is currently empty. From Solution Explorer, drag&amp;drop the .cs source files onto the diagram. VS then looks at what classes are in these source files and decomposes them into UML classes. Build the layout as shown in the following figure (you can display the members of the classes by clicking on the double arrow in the top right corner of their rectangle):</p>
+<p>The chart file <code>Main.cd</code> will then appear in Solution Explorer, double-click on it to open it. Our chart is currently empty. From Solution Explorer, drag&amp;drop the .cs source files onto the diagram. VS then looks at what classes are in these source files and decomposes them into UML classes. Build the layout as shown in the following figure (you can display the members of the classes by clicking on the double arrow in the top right corner of their rectangle):</p>
 <p>Starting class diagram</p>
 <p>You can also view the source code for the classes, either by double-clicking on the corresponding class on the diagram or by opening the .cs files from Solution Explorer.
 Here's what we see:</p>
 <ul>
-<li>The XXXSoundCardXXX, XXXHardDiskXXX and XXXLedDisplayXXX classes are relatively well developed, with the necessary attributes and query functions.</li>
-<li>The XXXLedDisplayXXX is derived from the XXXDisplayBaseXXX class as required.</li>
-<li>XXXEquipmentInventoryXXX is responsible for the inventory of parts in stock, but practically none of this is implemented.</li>
-<li>We find an interface XXXIEquipmentXXX with operations XXXGetAgeXXX and XXXGetPriceXXX</li>
+<li>The <code>SoundCard</code>, <code>HardDisk</code> and <code>LedDisplay</code> classes are relatively well developed, with the necessary attributes and query functions.</li>
+<li>The <code>LedDisplay</code> is derived from the <code>DisplayBase</code> class as required.</li>
+<li><code>EquipmentInventory</code> is responsible for the inventory of parts in stock, but practically none of this is implemented.</li>
+<li>We find an interface <code>IEquipment</code> with operations <code>GetAge</code> and <code>GetPrice</code></li>
 </ul>
 <h3 id="equipmentinventory">EquipmentInventory<a class="headerlink" href="#equipmentinventory" title="Permanent link">&para;</a></h3>
-<p>Let's start working on a solution. First, let's lay down the basic concepts. In the XXXEquipmentInventoryXXX class, we store a heterogeneous collection of different types of equipment. This is the key to consistent parts management, so that our solution can be easily extended with new parts types.</p>
-<p>As discussed earlier, unified management can be achieved either by implementing a common base class or a common interface. In our case, the common base class (e.g. XXXEquipmentBaseXXX) seems to be dropped, because by introducing it, the XXXLedDisplayXXX class would have two base classes: the mandatory XXXDisplayBaseXXX, and the XXXEquipmentBaseXXX that we introduce for uniform management. This is not possible, in a .NET environment a class can have only one base class. The solution to modify XXXDisplayBaseXXX to be derived from XXXEquipmentBaseXXX is not possible according to our requirement (it was a requirement that its source code cannot be modified). This leaves the interface-based approach. This was probably the conclusion of the previous developer of the application, which is why he introduced the XXXIEquipmentXXX interface.</p>
-<p>Add a generic list of items of type XXXIEquipmentXXX (not property but field!) to the XXXEquipmentInventoryXXX class. Its visibility - in an effort to be unified - should be XXXprivateXXX. The name should be XXXequipmentXXX (no "s" at the end, in English the plural of equipment is also equipment). To add a member variable, we use the Visual Studio <em>Class Details</em> window. If the window is not visible, it can be displayed by selecting <em>View / Other Windows / Class Details.</em></p>
+<p>Let's start working on a solution. First, let's lay down the basic concepts. In the <code>EquipmentInventory</code> class, we store a heterogeneous collection of different types of equipment. This is the key to consistent parts management, so that our solution can be easily extended with new parts types.</p>
+<p>As discussed earlier, unified management can be achieved either by implementing a common base class or a common interface. In our case, the common base class (e.g. <code>EquipmentBase</code>) seems to be dropped, because by introducing it, the <code>LedDisplay</code> class would have two base classes: the mandatory <code>DisplayBase</code>, and the <code>EquipmentBase</code> that we introduce for uniform management. This is not possible, in a .NET environment a class can have only one base class. The solution to modify <code>DisplayBase</code> to be derived from <code>EquipmentBase</code> is not possible according to our requirement (it was a requirement that its source code cannot be modified). This leaves the interface-based approach. This was probably the conclusion of the previous developer of the application, which is why he introduced the <code>IEquipment</code> interface.</p>
+<p>Add a generic list of items of type <code>IEquipment</code> (not property but field!) to the <code>EquipmentInventory</code> class. Its visibility - in an effort to be unified - should be <code>private</code>. The name should be <code>equipment</code> (no "s" at the end, in English the plural of equipment is also equipment). To add a member variable, we use the Visual Studio <em>Class Details</em> window. If the window is not visible, it can be displayed by selecting <em>View / Other Windows / Class Details.</em></p>
 <p>Class Details</p>
-<p>The member variable type is therefore XXXListXXX. The type of .NET XXXListXXX is a dynamically stretching generic array (like XXXArrayListXXX in Java).
-Looking at the XXXEquipmentInventoryXXX class in the diagram, we see that only the name of the member variable is displayed, not the type. Right-click on the background of the diagram and select <em>Display Full Signature</em> from the <em>Change Members Format</em> menu. The chart will then display the type of member variables and the full signature of the operations.</p>
+<p>The member variable type is therefore <code>List</code>. The type of .NET <code>List</code> is a dynamically stretching generic array (like <code>ArrayList</code> in Java).
+Looking at the <code>EquipmentInventory</code> class in the diagram, we see that only the name of the member variable is displayed, not the type. Right-click on the background of the diagram and select <em>Display Full Signature</em> from the <em>Change Members Format</em> menu. The chart will then display the type of member variables and the full signature of the operations.</p>
 <p>EquipmentInventory</p>
-<p>By double-clicking on the XXXEquipmentInventoryXXX class, you can navigate to the source code, and as you can see, it does indeed appear in the code as a member variable of type list:</p>
+<p>By double-clicking on the <code>EquipmentInventory</code> class, you can navigate to the source code, and as you can see, it does indeed appear in the code as a member variable of type list:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">EquipmentInventory</span>
 <span class="p">{</span>
 <span class="hll"><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">IEquipment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">equipment</span><span class="p">;</span>
 </span></code></pre></div>
-<p>On the one hand, we're happy about this because Visual Studio supports round-trip engineering: <strong>changes to the model are immediately reflected in the code, and vice versa</strong>. On the other hand, we have previously discussed that if a class has a collection of members from another class, then it "fits" in the UML model as a type 1-more association relation between the two classes. This is not yet the case in our model. Fortunately, the VS modelling interface can be made to display this type of connection in this form. To do this, right-click on the equipment tag variable on the diagram and select <em>Show as Collection Association</em> from the menu. The XXXIEquipmentXXX interface should then be moved to the right to allow enough space on the diagram to display the association relationship and the role on the relationship:</p>
+<p>On the one hand, we're happy about this because Visual Studio supports round-trip engineering: <strong>changes to the model are immediately reflected in the code, and vice versa</strong>. On the other hand, we have previously discussed that if a class has a collection of members from another class, then it "fits" in the UML model as a type 1-more association relation between the two classes. This is not yet the case in our model. Fortunately, the VS modelling interface can be made to display this type of connection in this form. To do this, right-click on the equipment tag variable on the diagram and select <em>Show as Collection Association</em> from the menu. The <code>IEquipment</code> interface should then be moved to the right to allow enough space on the diagram to display the association relationship and the role on the relationship:</p>
 <p>Collection association</p>
-<p>The double arrow ending on the "plural" side is not standard UML, but don't be too sad about it, it's not important. We are certainly pleased that the arrow representing the relationship at the end of the XXXIEquipmentXXX role shows the name (and even the exact type) of the member variable.</p>
-<p>Navigate to the source code of XXXEquipmentInventoryXXX and write the constructor that initializes the XXXequipmentXXX collection</p>
+<p>The double arrow ending on the "plural" side is not standard UML, but don't be too sad about it, it's not important. We are certainly pleased that the arrow representing the relationship at the end of the <code>IEquipment</code> role shows the name (and even the exact type) of the member variable.</p>
+<p>Navigate to the source code of <code>EquipmentInventory</code> and write the constructor that initializes the <code>equipment</code> collection</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">EquipmentInventory</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">equipment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">IEquipment</span><span class="o">&gt;</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Then write the XXXListAllXXX method, which prints the age of the elements and their current values:</p>
+<p>Then write the <code>ListAll</code> method, which prints the age of the elements and their current values:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ListAll</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="n">IEquipment</span><span class="w"> </span><span class="n">eq</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">equipment</span><span class="p">)</span>
@@ -1618,22 +1618,22 @@ Looking at the XXXEquipmentInventoryXXX class in the diagram, we see that only t
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Iterate through the elements using the XXXforeachXXX statement. When using the XXXforeachXXX statement, the XXXinXXX keyword should be followed by a collection and preceded by a variable declaration (in this case XXXIEquipment eqXXX), where type is the element type of the collection. In each iteration, this variable takes the iteration value of the collection.</p>
-<p>XXXConsole.WriteLineXXX is either a simple string or, as in this case, a formatting string. The substitutions are solved by string interpolation: the values to be substituted must be given between XXXXXX. If string interpolation is used, the string must start with XXX$XXX.</p>
-<p>Write a function called XXXAddEquipmentXXX that adds a new device to the inventory:</p>
+<p>Iterate through the elements using the <code>foreach</code> statement. When using the <code>foreach</code> statement, the <code>in</code> keyword should be followed by a collection and preceded by a variable declaration (in this case <code>IEquipment eq</code>), where type is the element type of the collection. In each iteration, this variable takes the iteration value of the collection.</p>
+<p><code>Console.WriteLine</code> is either a simple string or, as in this case, a formatting string. The substitutions are solved by string interpolation: the values to be substituted must be given between <code>`. If string interpolation is used, the string must start with</code>$`.</p>
+<p>Write a function called <code>AddEquipment</code> that adds a new device to the inventory:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">AddEquipment</span><span class="p">(</span><span class="n">IEquipment</span><span class="w"> </span><span class="n">eq</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">     </span><span class="n">equipment</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">eq</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="iequipment-implementers">IEquipment implementers<a class="headerlink" href="#iequipment-implementers" title="Permanent link">&para;</a></h3>
-<p>We have previously decided to use the XXXIEquipmentXXX interface to manage the different component types in a uniform way. In our example, both XXXSoundCardXXX and XXXHardDiskXXX have XXXGetAge()XXX and XXXGetPrice()XXX methods, yet we cannot manage them in a unified way (e.g., store them in a common list). To do this, we need to get both classes to implement the XXXIEquipmentXXX interface. Change their source:</p>
+<p>We have previously decided to use the <code>IEquipment</code> interface to manage the different component types in a uniform way. In our example, both <code>SoundCard</code> and <code>HardDisk</code> have <code>GetAge()</code> and <code>GetPrice()</code> methods, yet we cannot manage them in a unified way (e.g., store them in a common list). To do this, we need to get both classes to implement the <code>IEquipment</code> interface. Change their source:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SoundCard</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">HardDisk</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span>
 </code></pre></div>
-<p>Then we need to implement the methods in the XXXIEquipmentXXX interface in the XXXSoundCardXXX and XXXHardDiskXXX classes. We find that there is nothing to do with this now, the XXXGetPriceXXX and XXXGetAgeXXX functions are already written in both places.</p>
-<p>As a test, in our XXXMainXXX function in XXXProgram.csXXX, create an XXXEquipmentInventoryXXX object, populate it with XXXHardDiskXXX and XXXSoundCardXXX objects, and then list the object on the console. If 2021 is not the current year, in the following rows, copy the year 2021 to the current year and the year 2020 to a smaller number!</p>
+<p>Then we need to implement the methods in the <code>IEquipment</code> interface in the <code>SoundCard</code> and <code>HardDisk</code> classes. We find that there is nothing to do with this now, the <code>GetPrice</code> and <code>GetAge</code> functions are already written in both places.</p>
+<p>As a test, in our <code>Main</code> function in <code>Program.cs</code>, create an <code>EquipmentInventory</code> object, populate it with <code>HardDisk</code> and <code>SoundCard</code> objects, and then list the object on the console. If 2021 is not the current year, in the following rows, copy the year 2021 to the current year and the year 2020 to a smaller number!</p>
 <div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="w"> </span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">EquipmentInventory</span><span class="w"> </span><span class="n">ei</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EquipmentInventory</span><span class="p">();</span>
@@ -1651,10 +1651,10 @@ Looking at the XXXEquipmentInventoryXXX class in the diagram, we see that only t
 </code></pre></div>
 <p>Running the application, we find that although our solution is rudimentary, it works:</p>
 <p>Console output</p>
-<p>Continue with the XXXLedDisplayXXX class. The XXXDisplayBaseXXX base class source code cannot be modified due to requirements. But this doesn't cause any problems, our XXXLedDisplayXXX class will implement the XXXIEquipmentXXX interface, so modify the code accordingly:</p>
+<p>Continue with the <code>LedDisplay</code> class. The <code>DisplayBase</code> base class source code cannot be modified due to requirements. But this doesn't cause any problems, our <code>LedDisplay</code> class will implement the <code>IEquipment</code> interface, so modify the code accordingly:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LedDisplay</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">DisplayBase</span><span class="p">,</span><span class="w"> </span><span class="n">IEquipment</span>
 </code></pre></div>
-<p>In the XXXLedDisplayXXX class, the functions in the interface must already be written:</p>
+<p>In the <code>LedDisplay</code> class, the functions in the interface must already be written:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">price</span><span class="p">;</span>
@@ -1665,7 +1665,7 @@ Looking at the XXXEquipmentInventoryXXX class in the diagram, we see that only t
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">manufacturingYear</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Let's extend our XXXMainXXX function by adding two XXXLedDisplayXXX objects to our set (again, if 2021 is not the current year, we should rewrite 2021 to the current year in the following lines, and 2020 to a smaller number!</p>
+<p>Let's extend our <code>Main</code> function by adding two <code>LedDisplay</code> objects to our set (again, if 2021 is not the current year, we should rewrite 2021 to the current year in the following lines, and 2020 to a smaller number!</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">LedDisplay</span><span class="p">(</span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">80000</span><span class="p">,</span><span class="w"> </span><span class="m">17</span><span class="p">,</span><span class="w"> </span><span class="m">16</span><span class="p">));</span>
 </span><span class="hll"><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">LedDisplay</span><span class="w"> </span><span class="p">(</span><span class="m">2021</span><span class="p">,</span><span class="w"> </span><span class="m">70000</span><span class="p">,</span><span class="w"> </span><span class="m">17</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">));</span>
 </span>
@@ -1678,12 +1678,12 @@ Looking at the XXXEquipmentInventoryXXX class in the diagram, we see that only t
 <p>Evaluate our current interface-based solution.</p>
 <p>One of the main problems is that our code is full of code duplication that destroys maintainability and extensibility:</p>
 <ul>
-<li>The XXXyearOfCreationXXX and XXXnewPriceXXX tags are common to all part types (except the special XXXLedDisplayXXX), and must be copy-pasted when a new type is introduced.</li>
-<li>The implementation of the XXXGetAgeXXX function is the same for all component types (except for the special XXXLedDisplayXXX), also copy-paste "propagated".</li>
-<li>The lines of the constructors XXXyearOfCreationXXX and XXXnewPriceXXX initializing tags are also duplicated in each class.</li>
+<li>The <code>yearOfCreation</code> and <code>newPrice</code> tags are common to all part types (except the special <code>LedDisplay</code>), and must be copy-pasted when a new type is introduced.</li>
+<li>The implementation of the <code>GetAge</code> function is the same for all component types (except for the special <code>LedDisplay</code>), also copy-paste "propagated".</li>
+<li>The lines of the constructors <code>yearOfCreation</code> and <code>newPrice</code> initializing tags are also duplicated in each class.</li>
 </ul>
 <p>Although this code duplication does not seem significant at the moment, the situation is getting worse as new component types are introduced, and it is better to prevent future pains in time.</p>
-<p>The other problem is that the listing of parts data is currently painfully incomplete, with no part type (only age and price). To display the type, the IEquipment interface must be extended, e.g. by introducing an operation called XXXGetDescriptionXXX.  Let's add a XXXGetDescriptionXXX function to the interface!</p>
+<p>The other problem is that the listing of parts data is currently painfully incomplete, with no part type (only age and price). To display the type, the IEquipment interface must be extended, e.g. by introducing an operation called <code>GetDescription</code>.  Let's add a <code>GetDescription</code> function to the interface!</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IEquipment</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">();</span>
@@ -1691,7 +1691,7 @@ Looking at the XXXEquipmentInventoryXXX class in the diagram, we see that only t
 <span class="hll"><span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">();</span>
 </span><span class="p">}</span>
 </code></pre></div>
-<p>Then every class implementing the XXXIEquipmentXXX interface would have to implement this method, which is a lot of work for many classes (and often not even feasible for a multi-component application, i.e. one with several DLLs, when they are not in the hands of a single developer). Run the <em>Build</em> command to check that after adding XXXGetDescriptionXXX, you get compilation errors in three places.</p>
+<p>Then every class implementing the <code>IEquipment</code> interface would have to implement this method, which is a lot of work for many classes (and often not even feasible for a multi-component application, i.e. one with several DLLs, when they are not in the hands of a single developer). Run the <em>Build</em> command to check that after adding <code>GetDescription</code>, you get compilation errors in three places.</p>
 <div class="admonition tip">
 <p class="admonition-title">Specifying default implementation in interface</p>
 <p>It is worth knowing that starting from C# 8 (or .NET or .NET Core runtime, not supported under .NET Framework), <strong>interface operations can be given default implementation (default interface methods), so to solve the above problem you don't need an abstract class, but interface can no longer have member variables</strong>. More information here: default interface methods.</p>
@@ -1704,11 +1704,11 @@ Looking at the XXXEquipmentInventoryXXX class in the diagram, we see that only t
 </code></pre></div>
 </div>
 <h3 id="abstract-class">Abstract class<a class="headerlink" href="#abstract-class" title="Permanent link">&para;</a></h3>
-<p>A solution to both problems is the introduction of a common abstract base class (except for the XXXLedDisplayXXX class, which we will come back to). We can move the code common to descendants into it, and provide a default implementation for the newly introduced XXXGetDescriptionXXX operation. Let our new abstract base class be called XXXEquipmentBaseXXX. The question is whether the XXXIEquipmentXXX interface is still needed, or whether it can be completely replaced by the new XXXEquipmentBaseXXX class. We need to keep the XXXIEquipmentXXX interface, because we cannot derive our LedDisplay class from XXXEquipmentBaseXXX: it already has a mandatory base class, XXXDisplayBaseXXX: for this reason, EquipmentInventory in our enhanced solution also refers to the various components as XXXIEquipmentXXX interface.</p>
-<p>Let's start the transformation. Let our class diagram be the active tab. <em>From the Toolbox</em>, drag&amp;drop an <em>Abstract Class</em> element onto the diagram, name it XXXEquipmentBaseXXX.</p>
+<p>A solution to both problems is the introduction of a common abstract base class (except for the <code>LedDisplay</code> class, which we will come back to). We can move the code common to descendants into it, and provide a default implementation for the newly introduced <code>GetDescription</code> operation. Let our new abstract base class be called <code>EquipmentBase</code>. The question is whether the <code>IEquipment</code> interface is still needed, or whether it can be completely replaced by the new <code>EquipmentBase</code> class. We need to keep the <code>IEquipment</code> interface, because we cannot derive our LedDisplay class from <code>EquipmentBase</code>: it already has a mandatory base class, <code>DisplayBase</code>: for this reason, EquipmentInventory in our enhanced solution also refers to the various components as <code>IEquipment</code> interface.</p>
+<p>Let's start the transformation. Let our class diagram be the active tab. <em>From the Toolbox</em>, drag&amp;drop an <em>Abstract Class</em> element onto the diagram, name it <code>EquipmentBase</code>.</p>
 <p>Toolbox - abstract class</p>
-<p>In the following, we need to make the XXXSoundCardXXX and XXXHardDiskXXX classes derive from XXXEquipmentBaseXXX (XXXLedDisplayXXX already has another base class, so we cannot do this there). To do this, select the <em>Inheritance</em> link in the <em>Toolbox</em>, then draw a line from the child class to the base class for both XXXSoundCardXXX and XXXHardDiskXXX.</p>
-<p>In the next step, let's modify the code so that XXXHardDiskXXX and XXXSoundCardXXX do not implement the XXXIEquipmentXXX interface separately, but rather their common base class XXXEquipmentBaseXXX implement it once. To do this, modify the EquipmentBase class to implement the interface (either by drawing an inheritance link from XXXEquipmentBaseXXX to XXXIEquipmentXXX on the diagram, or by modifying the source code of XXXEquipmentBaseXXX). Delete the implementation of XXXIEquipmentXXX from the XXXHardDiskXXX and XXXSoundCardXXX classes (the base class already implements it).</p>
+<p>In the following, we need to make the <code>SoundCard</code> and <code>HardDisk</code> classes derive from <code>EquipmentBase</code> (<code>LedDisplay</code> already has another base class, so we cannot do this there). To do this, select the <em>Inheritance</em> link in the <em>Toolbox</em>, then draw a line from the child class to the base class for both <code>SoundCard</code> and <code>HardDisk</code>.</p>
+<p>In the next step, let's modify the code so that <code>HardDisk</code> and <code>SoundCard</code> do not implement the <code>IEquipment</code> interface separately, but rather their common base class <code>EquipmentBase</code> implement it once. To do this, modify the EquipmentBase class to implement the interface (either by drawing an inheritance link from <code>EquipmentBase</code> to <code>IEquipment</code> on the diagram, or by modifying the source code of <code>EquipmentBase</code>). Delete the implementation of <code>IEquipment</code> from the <code>HardDisk</code> and <code>SoundCard</code> classes (the base class already implements it).</p>
 <p>The relevant parts of our diagram and source code will then look like this:</p>
 <p>EquipmentBase and HardDisk/SoundCard</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">EquipmentBase</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span>
@@ -1717,12 +1717,12 @@ Looking at the XXXEquipmentInventoryXXX class in the diagram, we see that only t
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SoundCard</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">EquipmentBase</span>
 </code></pre></div>
-<p>Our code is not yet turning, for several reasons. The XXXEquipmentBaseXXX implements the XXXIEquipmentXXX interface, but it does not yet implement the interface operations. Either generate the methods using the smart tag, or type them according to the following principles:</p>
+<p>Our code is not yet turning, for several reasons. The <code>EquipmentBase</code> implements the <code>IEquipment</code> interface, but it does not yet implement the interface operations. Either generate the methods using the smart tag, or type them according to the following principles:</p>
 <ul>
-<li>The XXXnewPriceXXX and XXXyearOfCreationXXX are duplicated in the XXXHardDiskXXX and XXXSoundCardXXX classes: move (not copy!) them to the common XXXEquipmentBaseXXX base class and give XXXprotectedXXX visibility.</li>
-<li>The XXXGetAgeXXX operation is duplicated in the XXXHardDiskXXX and XXXSoundCardXXX classes, delete the implementation from these and move it to the XXXEquipmentBaseXXX class.</li>
-<li>The XXXGetPriceXXX operation is included in the base class as an abstract operation. This is a deliberate design decision, so we force descendant classes to override this operation anyway.</li>
-<li>In the case of XXXGetDescriptionXXX, the opposite is true: it is defined as virtual (and not abstract), i.e. we provide an implementation in the base class. This way, descendants are not forced to override the operation.</li>
+<li>The <code>newPrice</code> and <code>yearOfCreation</code> are duplicated in the <code>HardDisk</code> and <code>SoundCard</code> classes: move (not copy!) them to the common <code>EquipmentBase</code> base class and give <code>protected</code> visibility.</li>
+<li>The <code>GetAge</code> operation is duplicated in the <code>HardDisk</code> and <code>SoundCard</code> classes, delete the implementation from these and move it to the <code>EquipmentBase</code> class.</li>
+<li>The <code>GetPrice</code> operation is included in the base class as an abstract operation. This is a deliberate design decision, so we force descendant classes to override this operation anyway.</li>
+<li>In the case of <code>GetDescription</code>, the opposite is true: it is defined as virtual (and not abstract), i.e. we provide an implementation in the base class. This way, descendants are not forced to override the operation.</li>
 </ul>
 <p>The code corresponding to the above is:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">EquipmentBase</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span>
@@ -1746,13 +1746,13 @@ Looking at the XXXEquipmentInventoryXXX class in the diagram, we see that only t
 <div class="admonition tip">
 <p class="admonition-title">Some additional thoughts on the code fragment:</p>
 <ul>
-<li>For abstract classes, the keyword XXXabstractXXX must be written before the word XXXclassXXX.</li>
-<li>For abstract operations, the keyword XXXabstractXXX must be specified</li>
-<li>in a .NET environment, you can control whether an operation is virtual or not. In this respect, it is similar to C++. To make an operation virtual, the keyword XXXvirtualXXX must be specified for the operation. Reminder: define an operation as virtual if its descendants overdefine it. Only then is it guaranteed that the descendant version will be called when invoking the given operation on an ancestor reference.</li>
+<li>For abstract classes, the keyword <code>abstract</code> must be written before the word <code>class</code>.</li>
+<li>For abstract operations, the keyword <code>abstract</code> must be specified</li>
+<li>in a .NET environment, you can control whether an operation is virtual or not. In this respect, it is similar to C++. To make an operation virtual, the keyword <code>virtual</code> must be specified for the operation. Reminder: define an operation as virtual if its descendants overdefine it. Only then is it guaranteed that the descendant version will be called when invoking the given operation on an ancestor reference.</li>
 </ul>
 </div>
 <h3 id="descendants">Descendants<a class="headerlink" href="#descendants" title="Permanent link">&para;</a></h3>
-<p>In the next step, let's move on to the XXXEquipmentBaseXXX descendants. When overriding abstract and virtual operations in C#, you must specify the XXXoverrideXXX keyword in the descendant. First, the XXXGetPriceXXX operation is redefined:</p>
+<p>In the next step, let's move on to the <code>EquipmentBase</code> descendants. When overriding abstract and virtual operations in C#, you must specify the <code>override</code> keyword in the descendant. First, the <code>GetPrice</code> operation is redefined:</p>
 <div class="highlight"><span class="filename">HardDisk.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">4</span><span class="p">)</span>
@@ -1767,7 +1767,7 @@ Looking at the XXXEquipmentInventoryXXX class in the diagram, we see that only t
 <span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="n">newPrice</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">2000</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>In the next step, the XXXGetDescriptionXXX operation is written in the XXXHardDiskXXX and XXXSoundCardXXX classes. Since the virtual function of the base class is being overridden here, the XXXoverrideXXX keyword must also be specified:</p>
+<p>In the next step, the <code>GetDescription</code> operation is written in the <code>HardDisk</code> and <code>SoundCard</code> classes. Since the virtual function of the base class is being overridden here, the <code>override</code> keyword must also be specified:</p>
 <div class="highlight"><span class="filename">HardDisk.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Hard Disk&quot;</span><span class="p">;</span>
@@ -1778,22 +1778,22 @@ Looking at the XXXEquipmentInventoryXXX class in the diagram, we see that only t
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Sound Card&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>One might ask why the designers of the C# language decided to add an extra keyword to the definition of operations, which was not necessary in the case of C++. The reason is simple: the code is more expressive. Looking at the descendant code, the word XXXoverrideXXX immediately makes it clear whether this operation is abstract or virtual in one of the base classes, without having to look at the code of all the ancestors.</p>
+<p>One might ask why the designers of the C# language decided to add an extra keyword to the definition of operations, which was not necessary in the case of C++. The reason is simple: the code is more expressive. Looking at the descendant code, the word <code>override</code> immediately makes it clear whether this operation is abstract or virtual in one of the base classes, without having to look at the code of all the ancestors.</p>
 <h3 id="base-class-of-leddisplay">Base class of LedDisplay<a class="headerlink" href="#base-class-of-leddisplay" title="Permanent link">&para;</a></h3>
-<p>The base class of our XXXLedDisplayXXX class is bound, its code cannot be modified, so we cannot derive it from XXXEquipmentBaseXXX. We cannot delete the XXXGetAgeXXX operation, this code duplication is preserved here (but only for XXXLedDisplayXXX, which is only one class among many!).</p>
+<p>The base class of our <code>LedDisplay</code> class is bound, its code cannot be modified, so we cannot derive it from <code>EquipmentBase</code>. We cannot delete the <code>GetAge</code> operation, this code duplication is preserved here (but only for <code>LedDisplay</code>, which is only one class among many!).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In fact, with a little extra work we could get rid of this duplication. This would require a static helper function in one of the classes (e.g. XXXEquipmentBaseXXX), which would get the year of manufacture and return the age. XXXEquipmentBase.GetAgeXXX and XXXLedDisplay.GetAgeXXX would use this helper function to produce their output.</p>
-<p>In our XXXLedDisplayXXX class, we are yet to write XXXGetDescriptionXXX:</p>
+<p>In fact, with a little extra work we could get rid of this duplication. This would require a static helper function in one of the classes (e.g. <code>EquipmentBase</code>), which would get the year of manufacture and return the age. <code>EquipmentBase.GetAge</code> and <code>LedDisplay.GetAge</code> would use this helper function to produce their output.</p>
+<p>In our <code>LedDisplay</code> class, we are yet to write <code>GetDescription</code>:</p>
 </div>
 <div class="highlight"><span class="filename">LedDisplay.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Led Display&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Note that we have NOT specified the XXXoverrideXXX keyword here. When an interface function is implemented, XXXoverrideXXX is not required/allowed to be written.</p>
+<p>Note that we have NOT specified the <code>override</code> keyword here. When an interface function is implemented, <code>override</code> is not required/allowed to be written.</p>
 <h3 id="use-getdescription">Use GetDescription<a class="headerlink" href="#use-getdescription" title="Permanent link">&para;</a></h3>
-<p>Modify the XXXEquipmentInventory.ListAllXXX operation to also write the description of the items to the output:</p>
+<p>Modify the <code>EquipmentInventory.ListAll</code> operation to also write the description of the items to the output:</p>
 <div class="highlight"><span class="filename">EquipmentInventory.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ListAll</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="n">IEquipment</span><span class="w"> </span><span class="n">eq</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">equipment</span><span class="p">)</span>
@@ -1806,18 +1806,18 @@ Looking at the XXXEquipmentInventoryXXX class in the diagram, we see that only t
 <p>This gives a more informative output when the application is run:</p>
 <p>Console output</p>
 <h3 id="constructor-code-duplication">Constructor code duplication<a class="headerlink" href="#constructor-code-duplication" title="Permanent link">&para;</a></h3>
-<p>Looking at our code, there is one more duplication. All XXXEquipmentBaseXXX descendants (XXXHardDiskXXX, XXXSoundCardXXX) have these two lines in their constructor:</p>
+<p>Looking at our code, there is one more duplication. All <code>EquipmentBase</code> descendants (<code>HardDisk</code>, <code>SoundCard</code>) have these two lines in their constructor:</p>
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">yearOfCreation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">;</span>
 <span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">newPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newPrice</span><span class="p">;</span>
 </code></pre></div>
-<p>If you think about it, these XXXyearOfCreationXXX and XXXnewPriceXXX members are defined in the base class, so it should be his responsibility to initialize them anyway. Let's add a corresponding constructor in XXXEquipmentBaseXXX:</p>
+<p>If you think about it, these <code>yearOfCreation</code> and <code>newPrice</code> members are defined in the base class, so it should be his responsibility to initialize them anyway. Let's add a corresponding constructor in <code>EquipmentBase</code>:</p>
 <div class="highlight"><span class="filename">EquipmentBase.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">EquipmentBase</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newPrice</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">yearOfCreation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">;</span>
 <span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">newPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newPrice</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Remove the initialization of the two members from the constructor of the descendants XXXHardDiskXXX and XXXSoundCardXXX, and instead invoke the base class’s constructor by referencing the XXXbaseXXX keyword:</p>
+<p>Remove the initialization of the two members from the constructor of the descendants <code>HardDisk</code> and <code>SoundCard</code>, and instead invoke the base class’s constructor by referencing the <code>base</code> keyword:</p>
 <div class="highlight"><span class="filename">HardDisk.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">HardDisk</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newPrice</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">capacityGB</span><span class="p">)</span>
 <span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="k">base</span><span class="p">(</span><span class="n">yearOfCreation</span><span class="p">,</span><span class="w"> </span><span class="n">newPrice</span><span class="p">)</span>
 <span class="p">{</span>
@@ -1832,9 +1832,9 @@ Looking at the XXXEquipmentInventoryXXX class in the diagram, we see that only t
 <h3 id="evaluation">Evaluation<a class="headerlink" href="#evaluation" title="Permanent link">&para;</a></h3>
 <p>By using a combination of interface and abstract base class, we have managed to develop the solution with the least compromise:</p>
 <ul>
-<li>By referring to XXXIEquipmentXXX as an interface, we can uniformly handle all types of parts, even those where the base class was bound (using abstract base classes alone would not have achieved this).</li>
-<li>By introducing the XXXEquipmentBaseXXX abstract base class, we were able to put the code common to different part types into a common base, with one exception, thus avoiding code duplication.</li>
-<li>By introducing the XXXEquipmentBaseXXX abstract ancestor, we can specify a default implementation for newly introduced XXXIEquipmentXXX operations (e.g. XXXGetDescriptonXXX), so we are not forced to specify it in every XXXIEquipmentXXX implementation class.</li>
+<li>By referring to <code>IEquipment</code> as an interface, we can uniformly handle all types of parts, even those where the base class was bound (using abstract base classes alone would not have achieved this).</li>
+<li>By introducing the <code>EquipmentBase</code> abstract base class, we were able to put the code common to different part types into a common base, with one exception, thus avoiding code duplication.</li>
+<li>By introducing the <code>EquipmentBase</code> abstract ancestor, we can specify a default implementation for newly introduced <code>IEquipment</code> operations (e.g. <code>GetDescripton</code>), so we are not forced to specify it in every <code>IEquipment</code> implementation class.</li>
 </ul>
 <p>Finally, let's take a look at the UML (like) class diagram of our solution:</p>
 <p>Ultimate class diagram</p>
@@ -1843,11 +1843,11 @@ Looking at the XXXEquipmentInventoryXXX class in the diagram, we see that only t
 <p>The latest addition to C# 11 is the definition of static interface members, which allows you to require an implementing class to have members that do not refer to the object instance, but rather the class must have a specific static member. Read more</p>
 </div>
 <h3 id="note-optional-homework-exercise">Note - optional homework exercise<a class="headerlink" href="#note-optional-homework-exercise" title="Permanent link">&para;</a></h3>
-<p>Our solution does not support the display of component specific data (e.g. capacity for XXXHardDiskXXX) during listing. To do this, the writing of component data to a formatted string should be moved from the XXXEqipmentInventoryXXX class to the component classes, following the principles below:</p>
+<p>Our solution does not support the display of component specific data (e.g. capacity for <code>HardDisk</code>) during listing. To do this, the writing of component data to a formatted string should be moved from the <code>EqipmentInventory</code> class to the component classes, following the principles below:</p>
 <ul>
-<li>To do this, we can introduce an XXXGetFormattedStringXXX operation in the XXXIEquipmentXXX interface, which returns an object of type XXXstringXXX. Alternatively, you can override the ToString()XXX operation of XXXSystem.Object. indeed, in .NET, all types are implicitly derived from XXXSystem.ObjectXXX, which has a virtual XXXToString()XXX operation.</li>
-<li>In XXXEquipmentBaseXXX we write the formatting of the common tags (description, price, age) into a string.</li>
-<li>If a component also has type-specific data, then its class overrides the function that formats it into a string: this function must first call its ancestor (using the XXXbaseXXX keyword), then append its own formatted data to it, and return with this string.</li>
+<li>To do this, we can introduce an <code>GetFormattedString</code> operation in the <code>IEquipment</code> interface, which returns an object of type <code>string</code>. Alternatively, you can override the ToString()<code>operation of</code>System.Object. indeed, in .NET, all types are implicitly derived from <code>System.Object</code>, which has a virtual <code>ToString()</code> operation.</li>
+<li>In <code>EquipmentBase</code> we write the formatting of the common tags (description, price, age) into a string.</li>
+<li>If a component also has type-specific data, then its class overrides the function that formats it into a string: this function must first call its ancestor (using the <code>base</code> keyword), then append its own formatted data to it, and return with this string.</li>
 </ul>
 
   <hr>
@@ -1859,8 +1859,8 @@ Looking at the XXXEquipmentInventoryXXX class in the diagram, we see that only t
         </path>
       </svg>
     </span>
-    <span title="2024. január 25. 21:31:13">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-25T21:31:13+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-25</span>
+    <span title="2024. január 25. 21:33:37">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-25T21:33:37+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-25</span>
     </span>
   </span>
 
