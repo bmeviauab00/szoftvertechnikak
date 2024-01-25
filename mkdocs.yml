@@ -111,3 +111,11 @@ nav:
       - '4. HF - Többszálú alkalmazások fejlesztése': hazi/meghirdetes-elott.md
       - '5. HF - MVVM': hazi/meghirdetes-elott.md
       - 'Fejlesztőkörnyezet': hazi/meghirdetes-elott.md
+  - "English course labs":
+      - labor/1-model-es-kod-kapcsolata/index_eng.md
+      - labor/2-nyelvi-eszkozok/index_eng.md
+      - labor/3-felhasznaloi-felulet/index_eng.md
+      - labor/4-tobbszalu/index_eng.md
+      - labor/5-mvvm/index_eng.md
+      - labor/6-tervezesi-mintak/index_eng.md      
+      - labor/7-adatkezeles/index_eng.md 
