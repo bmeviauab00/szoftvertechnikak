@@ -1,0 +1,2155 @@
+
+<!doctype html>
+<html lang="hu" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Benedek Zoltán">
+      
+      
+        <link rel="canonical" href="https://bmeviauab00.github.io/szoftvertechnikak/2024/labor/6-tervezesi-mintak-pre/">
+      
+      
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+    
+    
+      
+        <title>6. Tervezési minták (kiterjeszthetőség) - BMEVIAUAB00 Szoftvertechnikák</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35e1ed30.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../extra-material-theme.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="aut" data-md-color-primary="aut" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#6-tervezesi-mintak-kiterjeszthetoseg" class="md-skip">
+          Kihagyás
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Élőfej">
+    <a href="../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-header__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
+      
+  <img src="../../img/logo-bme-aut.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BMEVIAUAB00 Szoftvertechnikák
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6. Tervezési minták (kiterjeszthetőség)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="aut" data-md-color-primary="aut" data-md-color-accent="red"  aria-label="Váltás sötét témára"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Váltás sötét témára" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="indigo"  aria-label="Váltás világos témára"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Váltás világos témára" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Keresés" placeholder="Keresés" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Keresés">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Törlés" aria-label="Törlés" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Keresés inicializálása
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bmeviauab00/szoftvertechnikak
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Lapok" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Szoftvertechnikák (2024-től)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../1-model-es-kod-kapcsolata/" class="md-tabs__link">
+          
+  
+  Laborok
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../hazi/" class="md-tabs__link">
+          
+  
+  Önálló/házi feladatok
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../1-model-es-kod-kapcsolata/index_eng/" class="md-tabs__link">
+          
+  
+  English course labs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigáció" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-nav__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
+      
+  <img src="../../img/logo-bme-aut.png" alt="logo">
+
+    </a>
+    BMEVIAUAB00 Szoftvertechnikák
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bmeviauab00/szoftvertechnikak
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Szoftvertechnikák (2024-től)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Laborok
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Laborok
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-model-es-kod-kapcsolata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. A modell és a kód kapcsolata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-nyelvi-eszkozok/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Nyelvi eszközök
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-felhasznaloi-felulet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. A felhasználói felület kialakítása
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-tobbszalu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Többszálú alkalmazások készítése
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-mvvm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-tervezesi-mintak/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Tervezési minták
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-adatkezeles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Adatkezelés
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Önálló/házi feladatok
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Önálló/házi feladatok
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hazi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Útmutató
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hazi/meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. HF - A modell és a kód kapcsolata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hazi/meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. HF - Nyelvi eszközök
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hazi/meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. HF - Felhasználói felület kialakítása
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hazi/meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. HF - Többszálú alkalmazások fejlesztése
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hazi/meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. HF - MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hazi/meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fejlesztőkörnyezet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    English course labs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            English course labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-model-es-kod-kapcsolata/index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Relationship between the model and the code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-nyelvi-eszkozok/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-felhasznaloi-felulet/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-tobbszalu/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-mvvm/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-tervezesi-mintak/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-adatkezeles/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tartalomjegyzék
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-gyakorlat-celja" class="md-nav__link">
+    A gyakorlat célja
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elofeltetelek" class="md-nav__link">
+    Előfeltételek
+  </a>
+  
+    <nav class="md-nav" aria-label="Előfeltételek">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#elmeleti-hatter-szemleletmod" class="md-nav__link">
+    Elméleti háttér, szemléletmód *
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0-feladat-ismerkedes-a-feladattal-es-a-kiindulo-alkalmazassal" class="md-nav__link">
+    0. Feladat - Ismerkedés a feladattal és a kiinduló alkalmazással
+  </a>
+  
+    <nav class="md-nav" aria-label="0. Feladat - Ismerkedés a feladattal és a kiinduló alkalmazással">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-feladat-ismertetese" class="md-nav__link">
+    A feladat ismertetése
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiindulo-kovetelmenyek" class="md-nav__link">
+    Kiinduló követelmények
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-megoldas-minden-egyben-1-startstart" class="md-nav__link">
+    1. Megoldás - minden egyben (1-Start/Start)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-megoldas-2-organizedtofunctionsorganizedtofunctions-1" class="md-nav__link">
+    2. Megoldás (2-OrganizedToFunctions/OrganizedToFunctions-1)
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Megoldás (2-OrganizedToFunctions/OrganizedToFunctions-1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-megoldas-ertekelese" class="md-nav__link">
+    A megoldás értékelése
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-megoldas-organizedtofunctions-2-twoalgorithms" class="md-nav__link">
+    3. Megoldás (OrganizedToFunctions-2-TwoAlgorithms)
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Megoldás (OrganizedToFunctions-2-TwoAlgorithms)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-megoldas-ertekelese_1" class="md-nav__link">
+    A megoldás értékelése
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-megoldas-3-templatemethodtemplatemethod-1" class="md-nav__link">
+    4. Megoldás (3-TemplateMethod/TemplateMethod-1)
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Megoldás (3-TemplateMethod/TemplateMethod-1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-megoldas-ertekelese_2" class="md-nav__link">
+    A megoldás értékelése
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-megoldas-3-templatemethodtemplatemethod-2-progress" class="md-nav__link">
+    5. Megoldás (3-TemplateMethod/TemplateMethod-2-Progress)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-megoldas-3-templatemethodtemplatemethod-3-progressmultiple" class="md-nav__link">
+    6. Megoldás (3-TemplateMethod/TemplateMethod-3-ProgressMultiple)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-megoldas-4-strategystrategy-1" class="md-nav__link">
+    7. Megoldás (4-Strategy/Strategy-1)
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Megoldás (4-Strategy/Strategy-1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-megoldas-ertekelese_3" class="md-nav__link">
+    A megoldás értékelése
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-megoldas-4-strategystrategy-2-di" class="md-nav__link">
+    8. Megoldás (4-Strategy/Strategy-2-DI)
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Megoldás (4-Strategy/Strategy-2-DI)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#null-strategy-kitero" class="md-nav__link">
+    Null strategy (kitérő)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-megoldas-ertekelese_4" class="md-nav__link">
+    A megoldás értékelése
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-megoldas-5-strategyfull-unittestingstrategyfull-1" class="md-nav__link">
+    9. Megoldás (5-StrategyFull-UnitTesting/StrategyFull-1)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-megoldas-6-delegatesandlambdasdelegatesandlambdas-1-progress" class="md-nav__link">
+    10. Megoldás (6-DelegatesAndLambdas/DelegatesAndLambdas-1-Progress)
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Megoldás (6-DelegatesAndLambdas/DelegatesAndLambdas-1-Progress)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-megoldas-erekelese" class="md-nav__link">
+    A megoldás érékelése
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#osszegzes" class="md-nav__link">
+    Összegzés
+  </a>
+  
+    <nav class="md-nav" aria-label="Összegzés">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-munkafolyamatunk-attekintese" class="md-nav__link">
+    A munkafolyamatunk áttekintése
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ujrafelhasznalhatosagi-es-kiterjeszthetoseg-szintjei-az-egyes-megoldasokban" class="md-nav__link">
+    Újrafelhasználhatósági és kiterjeszthetőség szintjei az egyes megoldásokban
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiterjesztesi-technikak-attekintese" class="md-nav__link">
+    Kiterjesztési technikák áttekintése
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/bmeviauab00/szoftvertechnikak/edit/master/docs/labor/6-tervezesi-mintak-pre/index.md" title="Oldal szerkesztése" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="6-tervezesi-mintak-kiterjeszthetoseg">6. Tervezési minták (kiterjeszthetőség)<a class="headerlink" href="#6-tervezesi-mintak-kiterjeszthetoseg" title="Permanent link">&para;</a></h1>
+<h2 id="a-gyakorlat-celja">A gyakorlat célja<a class="headerlink" href="#a-gyakorlat-celja" title="Permanent link">&para;</a></h2>
+<p>A gyakorlat céljai (egy összetettebb, életszerű példa alapján):</p>
+<ul>
+<li>Kiterjeszthetőséget, újrafelhasználhatóságot, kód átláthatóságot és karbantarthatóságot segítő néhány tervezési alapelv gyakorlása: SRP, OPEN-CLOSED, DRY, KISS stb.</li>
+<li>Néhány, a kiterjeszthetőséghez leginkább kapcsolódó tervezési minta alkalmazása (Template Method, Strategy, Dependency Injection).</li>
+<li>Kiterjeszthetőséget és újrafelhasználhatóságot támogató további technikák (pl. delegate/lambda kifejezés) gyakorlása és kombinálása tervezési mintákkal.</li>
+<li>Kód refaktorálás gyakorlása.</li>
+<li>Egységteszt (unit test) fogalmának pontosítása, egységtesztelhető kód kialakítása.</li>
+</ul>
+<p>Kapcsolódó előadások:</p>
+<ul>
+<li>Tervezési minták: kiterjeszthetőséghez kapcsolódó minták (bevezető, Template Method, Strategy), valamint a Dependency Injection "minta".</li>
+</ul>
+<h2 id="elofeltetelek">Előfeltételek<a class="headerlink" href="#elofeltetelek" title="Permanent link">&para;</a></h2>
+<p>A gyakorlat elvégzéséhez szükséges eszközök:</p>
+<ul>
+<li>Visual Studio 2022</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Gyakorlat Linuxon vagy macOS alatt</p>
+<p>A gyakorlat anyag alapvetően Windowsra és Visual Studiora készült, de az elvégezhető más operációs rendszereken is más fejlesztőeszközökkel (pl. VS Code, Rider, Visual Studio for Mac), vagy akár egy szövegszerkesztővel és CLI (parancssori) eszközökkel. Ezt az teszi lehetővé, hogy a példák egy egyszerű Console alkalmazás kontextusában kerülnek ismertetésre (nincsenek Windows specifikus elemek), a .NET 8 SDK pedig támogatott Linuxon és macOS alatt. <a href="https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code">Hello World Linuxon</a>.</p>
+</div>
+<h3 id="elmeleti-hatter-szemleletmod">Elméleti háttér, szemléletmód *<a class="headerlink" href="#elmeleti-hatter-szemleletmod" title="Permanent link">&para;</a></h3>
+<p>A komplexebb alkalmazások fejlesztése során számos tervezői döntést kell meghoznunk, melyek során több lehetőség közül is választhatunk. Amennyiben ezen pontokban nem tartjuk szem előtt az alkalmazásunk könnyű karbantarthatóságát, illetve egyszerűen megvalósítható továbbfejlesztési lehetőségét, könnyen hamar rémálommá válhat a fejlesztés. A megrendelői változtatási és bővítési igények a kód nagymértékű folyamatos átírását/módosítását igénylik: ennek során új hibák születnek, illetve jelentős munkát kell fektetni a kód nagy léptékű újratesztelésébe is!</p>
+<p>Ehelyett a célunk az, hogy az ilyen változtatási és bővítési igényeket a kód pár jól meghatározott pontjában történő bővítésével - a meglévő kód érdemi módosítása nélkül - meg tudjuk valósítani. A kulcsszó: <strong>módosítással</strong> szemben <strong>bővítés</strong>. Ehhez kapcsolódóan: amennyiben bizonyos logikáink kiterjeszthetők, így általánosabbak is leszek, könnyebben, több kontextusban is fel tudjuk ezeket használni. Így hosszabb távon gyorsabban haladunk, rövidebb a kód, elkerüljük a kódduplikációt (ezáltal könnyebben karbantartható is a kód).</p>
+<p>A <strong>tervezési minták</strong> jól bevált megoldásokat mutatnak bizonyos gyakran előforduló tervezési problémákra: ezen megoldások abban segítenek, hogy kódunk könnyebben bővíthető, karbantartható és minél nagyobb mértékben újrafelhasználható legyen. Jelen gyakorlat keretében azon mintákra, tervezési elvekre és néhány programozói eszközre fókuszálunk, melyek a fenti problémákon segítenek.
+Ugyanakkor ne essünk át a ló túloldalára: csak akkor érdemes egy adott tervezési mintát bevetni, ha adott esetben valós előnyt jelent az alkalmazása. Ellenkező esetben csak a megvalósítás komplexitását növeli feleslegesen.
+Ennek tükrében nem is célunk (és sokszor nincs is rá lehetőségünk), hogy minden jövőbeli kiterjeszthetőségi igény előre megérezzünk, illetve nagyon előre átgondoljunk. A lényeg az, hogy akár egy egyszerű megoldásból kiindulva, az egyes problémákat felismerve, a kódunkat folyamatosan refaktoráljuk úgy, hogy az aktuális (funkcionális és nemfunkcionális) követelményeknek és előrelátásunknak szerint a megfelelő pontokban tegyük kódunkat könnyebben kiterjeszthetővé és újrafelhasználhatóvá.</p>
+<p>Zárásképpen megvizsgáljuk, hogyan segítenek bizonyos tervezési minták és nyelvi eszközök a kódunk <strong>egységtesztelhetővé</strong> tételében: sok cégnél egy szoftvertermék fejlesztése esetén (jogos) alapelvárás a fejlesztőktől, hogy nagy kódlefedettségű egységteszteket (unit test) készítsenek. Ennek kivitelezése viszont gyakorlatilag lehetetlen, ha a kódunk egyes egységei/osztályai túl szoros csatolásban vannak egymással.</p>
+<h2 id="0-feladat-ismerkedes-a-feladattal-es-a-kiindulo-alkalmazassal">0. Feladat - Ismerkedés a feladattal és a kiinduló alkalmazással<a class="headerlink" href="#0-feladat-ismerkedes-a-feladattal-es-a-kiindulo-alkalmazassal" title="Permanent link">&para;</a></h2>
+<p>Klónozzuk le a 6. gyakorlathoz tartozó kiinduló alkalmazás <a href="https://github.com/bmeviauab00/lab-designpatterns-kiindulo">repositoryját</a>:</p>
+<ul>
+<li>Nyissunk egy command prompt-ot</li>
+<li>Navigáljunk el egy tetszőleges mappába, például c:\work\NEPTUN</li>
+<li>Adjuk ki a következő parancsot: <code>git clone https://github.com/bmeviauab00/lab-designpatterns-kiindulo.git</code></li>
+<li>Nyissuk meg a <em>Lab-Extensibility.sln</em> solutiont Visual Studio-ban.</li>
+</ul>
+<h3 id="a-feladat-ismertetese">A feladat ismertetése<a class="headerlink" href="#a-feladat-ismertetese" title="Permanent link">&para;</a></h3>
+<p>A gyakorlat során egy konzol alapú, adatfeldolgozó (pontosabban anonimizáló) alkalmazást fogunk a folyamatosan alakuló igényeknek megfelelően - különböző pontok mentén és különböző technikákat alkalmazva - kiterjeszthetővé tenni. Az első feladat keretében az anonimizálás fogalmával is megismerkedünk.</p>
+<p>Az alkalmazás bemenete egy CSV szövegfájl, mely minden sora egy adott személyre vonatkozóan tartalmaz adatokat. A fájlrendszerben nyissuk meg a <em>Data</em> mappában levő us-500.csv fájlt (duplakattal, vagy akár a Jegyzettömb/Notepad alkalmazásban). Az látjuk, hogy "" között, vesszővel elválasztva találhatók az egyes személyekre vonatkozó adatok (ezek nem valósak). Nézzük az első sort:</p>
+<div class="highlight"><pre><span></span><code>&quot;James&quot;,&quot;Butt&quot;,&quot;Benton, John B Jr&quot;,&quot;6649 N Blue Gum St&quot;,&quot;New Orleans &quot;,&quot;Orleans&quot;,&quot;LA&quot;,&quot;70116&quot;,&quot;504-621-8927&quot;,&quot;504-845-1427&quot;,&quot;30&quot;,&quot;65&quot;,&quot;Heart-related&quot;,&quot;jbutt@gmail.com&quot;
+</code></pre></div>
+<p>Az első sorban levő személyt James Buttnak nevezik, a "Benton, John B Jr" cégnél dolgozik, majd néhány címre vonatkozó mező található, 30 éves, 65 kg a testsúlya. Az ezt követő mező azt mondja meg, milyen súlyosabb betegsége van (a fenti sorba ez "Heart-related"). Az utolsó oszlop pedig a személy e-mail címét tartalmazza.</p>
+<details class="note">
+<summary>Adatok forrása és pontos formátuma *</summary>
+<p>Az adatok forrása: <a href="https://www.briandunning.com/sample-data/">https://www.briandunning.com/sample-data/</a>, pár oszloppal (kor, súly, betegség) kiegészítve. A mezők sorrendje: First Name, Last Name, Company, Address, City, County (where applicable), State/Province (where applicable), ZIP/Postal Code, Phone 1, Phone 2, Age, Weight, Illness, Email</p>
+</details>
+<p>Az alkalmazás alapfeladata, hogy ezeket az adatokat az aktuális igényeknek megfelelően anonimizálja, majd egy kimeneti CSV szövegfájlba kiírja. Az anonimizálás feladata, hogy az adatokat olyan formába alakítsa, hogy agy adathalmazban levő személyeket beazonosíthatatlanná tegye, de olyan módon, hogy az adatokból mégis lehessen kimutatásokat készíteni. Az anonimizálás egy különálló, nagyon komoly, és sok kihívást rejtő adatfeldolgozási szakterület. A gyakorlat keretében nem célunk, hogy valós környezetben is használható, vagy akár minden tekintetben értelmes megoldásokat dolgozzunk ki. Számunkra tulajdonképpen csak egy valamilyen adatfeldolgozó algoritmus "bevetése" a fontos a minták bemutatásához, és ez talán kicsit "izgalmasabb" keretet ad, mint egy egyszerű adatszűrés/sorrendezés/stb. alapú adatfeldolgozás (melyeket ráadásul a .NET már eleve beépítve támogat).</p>
+<div class="admonition note">
+<p class="admonition-title">Pár gondolat az anonimizálásról</p>
+<p>Azt gondolhatnánk, hogy az anonimizálás egy egyszerű problémakör. Pl. csak el kell távolítani, vagy ki kell "csillagozni" a személyek neveit, lakcíméből az utca-házszámot, telefonszámokat, e-mail címet, és meg is vagyunk. Például a bemenetünk első sorára ez lenne a kimenet:</p>
+<div class="highlight"><pre><span></span><code>&quot;***&quot;,&quot;***&quot;,&quot;Benton, John B Jr&quot;,&quot;***&quot;,&quot;New Orleans &quot;,&quot;Orleans&quot;,&quot;LA&quot;,&quot;70116&quot;,&quot;***&quot;,&quot;***&quot;,&quot;30&quot;,&quot;65&quot;,&quot;Heart-related&quot;,&quot;***&quot;
+</code></pre></div>
+<p>De ez koránt sincs így, különösen, ha igazán sok adatról van szó. Gondoljunk arra, hogy van egy kisebb falu, ahol nem laknak sokan. Tegyük fel, hogy az egyik fenti módon anonimizált személy életkora 14 év, de rendkívül túlsúlyos, 95 kg. Ez egy ritka "kombináció", más személy jó eséllyel nem él ilyen paraméterekkel a faluban. Ha az ő osztálytársai közül (nyolcadikos, hiszen 14 éves) valaki megnézi az "anonimizált" adatokat, tudni fogja ki ő (nincs más ennyire túlsúlyos nyolcadikos az iskolában), beazonosítja a személyt, és így pl. tudni fogja, milyen betegsége van. Tanulság: az adatok összefüggésben árulkodók lehetnek.</p>
+<p>Mi a megoldás? A várost, az életkort és a testtömeget nem törölhetjük/csillagozhatjuk, mert ezekre vonatkozóan kell kimutatást készíteni. Egy tipikus megoldás: nem pontos életkort/testsúlyt adunk meg az anonimizálást követően, hanem sávokat (vagyis általánosítjuk az adatokat): pl. a fenti személy esetében az életkora 10..20 év, testsúlya 80..100 kg, és ezt adjuk meg erre a személyre vonatkozóan a kimeneti fájlban. Így már nem lehet beazonosítani. Ezt a technikát mi is fogjuk később alkalmazni.</p>
+</div>
+<h3 id="kiindulo-kovetelmenyek">Kiinduló követelmények<a class="headerlink" href="#kiindulo-kovetelmenyek" title="Permanent link">&para;</a></h3>
+<p>Az alkalmazással szemben támasztott kiinduló követelmények:</p>
+<ol>
+<li>Egy adott ügyféltől kapott fájlokat (mindnek ugyanaz a formátuma) kell ugyanazzal az anonimizáló algoritmussal, ugyanabba a kimeneti formátumba konvertálni. Az anonimizálás egyszerűen a keresztnév és vezetéknév "kicsillagozásából" álljon.</li>
+<li>Szükség van némi adattisztításra. A bemeneti adatokban a várost tartalmazó oszlop elején/végén lehetnek felesleges <code>_</code> és <code>#</code> karakterek, ezeket el kell távolítani (trim művelet).</li>
+<li>Ki kell írni minden sor feldolgozása után a konzolra, hogy a sor feldolgozása megtörtént, ill. a minden adat feldolgozás után némi összesítő információt (Summary): hány sort dolgoztunk fel, és mennynél kellett a városnevet trimmelni.</li>
+<li><strong>Lényeges szempont</strong>: az alkalmazásra csak rövid időre lesz szükség, nem a kívánjuk későbbiekben bővíteni.</li>
+</ol>
+<p>Megjegyzés: hogy a kódban kevesebb mezővel kelljen dolgozni, és a kimenet is átláthatóbb legyen, elhagyunk még néhány mezőt a feldolgozás során.</p>
+<p>Példaként a bemeneti fájlunk első sorára a várt kimenet:</p>
+<div class="highlight"><pre><span></span><code>***; ***; LA; New Orleans; 30; 65; Heart-related
+</code></pre></div>
+<h2 id="1-megoldas-minden-egyben-1-startstart">1. Megoldás - minden egyben (1-Start/Start)<a class="headerlink" href="#1-megoldas-minden-egyben-1-startstart" title="Permanent link">&para;</a></h2>
+<p>A Visual Studio Solution Explorerében mappákat látunk, 1-től 6-ig számmal kezdve. Ezek az egyes munkaiterációkhoz tartozó megoldásokat tartalmazzák. Az első körös megoldás az "1-Start" mappában, "Start" projektnév alatt található. Nézzük meg a projektben található fájlokat:</p>
+<ul>
+<li><code>Person.cs</code> - Egy személy számunkra érdekes adatai tartalmazza, ennek objektumaiba olvassuk be egy-egy személy adatait.</li>
+<li><code>Program.cs</code> - Ennek Main függvényében van megvalósítva minden logika, kódmegjegyzésekkel "elválasztva". Amennyiben kicsit is bonyolultabbá válik a logika, már két nap mi is csak nehezen fogjuk áttekinteni és megérteni a saját kódunkat. Ezt a megoldást ne is nézzük.</li>
+</ul>
+<p>Összegészében minden nagyon egyszerű. Összegészében nem gondolkodtunk rosszul, hiszen a kódnak nem jósolunk hosszú jövőt. De az egy függvénybe öntött "szkriptszerű", "minden egybe" megoldás ekkor sem jó irány, nagyon nehézzé teszi a kód átlátását, megértését. Ne is nézzük ezt tovább.</p>
+<h2 id="2-megoldas-2-organizedtofunctionsorganizedtofunctions-1">2. Megoldás (2-OrganizedToFunctions/OrganizedToFunctions-1)<a class="headerlink" href="#2-megoldas-2-organizedtofunctionsorganizedtofunctions-1" title="Permanent link">&para;</a></h2>
+<p>Térjünk át Visual Studioban a "2-OrganizedToFunctions" mappában található "OrganizedToFunctions-1" projektben található megoldásra. Ez már sokkal szimpatikusabb, mert függvényekre bontottuk a logikát. Tekintsük át a kódot röviden:</p>
+<p><code>Anonymizer.cs</code></p>
+<ul>
+<li>A <code>Run</code> függvény a "gerince", ez tartalmazza a vezérlési logikát, ez hívja az egyes lépésekért felelős függvényeket.</li>
+<li><code>ReadFromInput</code> művelet: beolvassa a forrásfájlt, minden sorhoz készít egy <code>Person</code> objektumot, és visszatér a beolvasott <code>Person</code> objektumok listájával.</li>
+<li><code>TrimCityNames</code>: Az adattisztítást végzi (városnevek trimmelése).</li>
+<li><code>Anonymize</code>: Minden egyes beolvasott <code>Person</code> objektummal meghívásra kerül, és feladata, hogy visszaadjon egy új <code>Person</code> objektumot, mely már az anonimizált adatokat tartalmazza.</li>
+<li><code>WriteToOutput</code>: már anonimizált <code>Person</code> objektumokat kiírja a kimeneti fájlba.</li>
+<li><code>PrintSummary</code>: kiírja az összesítést a feldolgozás végén a konzolra.</li>
+</ul>
+<p><code>Program.cs</code></p>
+<ul>
+<li>Létrehoz egy <code>Anonymizer</code>-t és a <code>Run</code> hívásával futtatja. Látható, hogy az anonimizálás során maszkolásra használt stringet konstruktor paraméterben kell megadni.</li>
+</ul>
+<p>Próbáljuk ki, futtassuk! Ehhez a "OrganizedToFunctions-1" legyen Visual Studioban a startup projekt (Jobb katt rajta, és <em>Set as Startup Project</em>), majd futtassuk:</p>
+<p><a class="glightbox" href="images/OrganizedToFunctions-1-console-out.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Console output" src="images/OrganizedToFunctions-1-console-out.png" /></a></p>
+<p>A kimeneti fájt fájlkezelőben tudjuk megnézni, a "OrganizedToFunctions-1\bin\Debug\net8.0\" vagy hasonló nevű mappában találjuk, "us-500.processed.txt" néven. Nyissuk meg, és vessünk egy pillantást az adatokra.</p>
+<h3 id="a-megoldas-ertekelese">A megoldás értékelése<a class="headerlink" href="#a-megoldas-ertekelese" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A megoldás alapvetően jól strukturált, könnyen megérthető.</li>
+<li>Követi a <strong><mark>KISS (Keep It Stupid Simple)</mark></strong> elvet, nem használ felesleges bonyolításokat. Ez így jó, hiszen nem merültek fel potenciális jövőbeli továbbfejlesztési igények, nem kell különböző formátumokat, logikákat stb. támogatni.</li>
+<li>
+<p>A megoldásunk nem követi az egyik legalapvetőbb és leghíresebb tervezési elvet, mely <strong><mark>Single Responsibility Principle (röviden SRP)</mark></strong> néven közismert. Ez (némi egyszerűsítéssel élve) azt várja el, hogy egy osztálynak egy felelőssége legyen (alapvetően egy dologgal foglalkozzon).</p>
+<ul>
+<li>Kétségtelen, hogy az <code>Anonymizer</code> osztályunknak számos felelőssége van: bemenet feldolgozása, adattisztítás, anonimizálás, kimenet előállítása stb.</li>
+<li>Ez a probléma nálunk azért nem feltűnő, illetve azért nem okoz gondot, mert mindegyik felelősség megvalósítása egyszerű, "belefért" egy-egy rövidebb függvénybe. De ha bármelyik is összetettebb lenne, több függvényben lennének megvalósítva, akkor mindenképpen külön osztályba illene szervezni.</li>
+</ul>
+<details class="note">
+<summary>Miért probléma, ha egy osztálynak több felelőssége van? *</summary>
+<ul>
+<li>Nehezebb megérteni a működését, mert nem egy dologra fókuszál.</li>
+<li>Ha bármelyik felelősség mentén is jön be változási igény, egy nagy, sok mindennel foglalkozó osztályt kell változtatni és újra tesztelni.</li>
+</ul>
+</details>
+</li>
+<li>
+<p>A megoldáshoz lehet írni automatizált integrációs (input-output) teszteket, de "igazi" egységteszteket nem. Arra  majd később térünk vissza, hogyan kell ezt értelmezni.</p>
+</li>
+</ul>
+<h2 id="3-megoldas-organizedtofunctions-2-twoalgorithms">3. Megoldás (OrganizedToFunctions-2-TwoAlgorithms)<a class="headerlink" href="#3-megoldas-organizedtofunctions-2-twoalgorithms" title="Permanent link">&para;</a></h2>
+<p>A korábbi "tervekkel" ellentétben új felhasználói igények merültek fel. Az ügyfelünk meggondolta magát, egy másik adathalmaznál másféle anonimizáló algoritmus megvalósítását kéri: a személyek életkorát kell sávosan menteni, nem derülhet ki a személyek pontos életkora. Az egyszerűség érdekében ez esetben a személyek nevét nem fogjuk anonimizálni, így tekintsük ezt egyfajta "pszeudo" anonimizálásnak (ettől még lehet értelme, csak nem teljesen korrekt ezt anonimizálásnak nevezni).</p>
+<p>A megoldásunkat - mely egyaránt támogatja a régi és az új algoritmust (egyszerre csak az egyiket) - a VS solution <em>OrganizedToFunctions-2-TwoAlgorithms</em> nevű projektjében találjuk. Nézzünk rá az <code>Anonymizer</code> osztályra, a megoldás alapelve (ezeket tekintsük át a kódban):</p>
+<ul>
+<li>Bevezettünk egy <code>AnonymizerMode</code> enum típust, mely meghatározza, hogy melyik üzemmódban (algoritmussal) használjuk az <code>Anonymizer</code> osztályt.</li>
+<li>Az <code>Anonymizer</code> osztálynak két anonimizáló művelete van: <code>Anonymize_MaskName</code>, <code>Anonymize_AgeRange</code></li>
+<li>Az <code>Anonymizer</code> osztály a <code>_anonymizerMode</code> tagjában tárolja, melyik algoritmust kell használni: a két üzemmódhoz két külön konstruktort vezettünk be, ezek állítják be az <code>_anonymizerMode</code> értékét.</li>
+<li>Az <code>Anonymizer</code> osztály több helyen is megvizsgálja (pl. <code>Run</code>, <code>GetAnonymizerDescription</code> műveletek), hogy mi az <code>_anonymizerMode</code> értéke, és ennek függvényében elágazik.</li>
+<li>A <code>GetAnonymizerDescription</code>-ben azért kell ezt megtenni, mert ennek a műveletnek a feladata az anonimizáló algoritmusról egy egysoros leírás előállítása, melyet a feldolgozás végén a "summary"-ben megjelenít. Nézzünk rá a <code>PintSummary</code> kódjára, ez a művelet hívja.</li>
+</ul>
+<h3 id="a-megoldas-ertekelese_1">A megoldás értékelése<a class="headerlink" href="#a-megoldas-ertekelese_1" title="Permanent link">&para;</a></h3>
+<p>Összegészében megoldásunk kódminőség tekintetében a korábbinál rosszabb lett.
+Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem volt kiterjeszthető (hiszen nem volt rá igény), de ha már egyszer felmerült az igény új algoritmus bevezetésére, akkor hiba ebben a tekintetben nem kiterjeszthetővé tenni: ettől kezdve sokkal inkább számítunk arra, hogy újabb algoritmusokat kell bevezetni a jövőben.</p>
+<p>Miért állítjuk azt, hogy a kódunk nem kiterjeszthető, amikor "csak" egy új enum értéket, és egy-egy plusz <code>if</code>/<code>switch</code> ágat kell a kód néhány pontjára bevezetni, amikor új algoritmust kell majd bevezetni?</p>
+<div class="grid cards">
+<ul>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> <strong>Open/Closed principle</strong><br />
+<em>Kulcsfontosságú, hogy egy kódot (osztályt) akkor tekintünk kiterjeszthetőnek, ha annak <strong>módosítása nélkül</strong>, pusztán a kód <strong>bővítésével</strong> lehet új viselkedést (esetünkben új algoritmust) bevezetni. Vagyis esetünkben az <code>Anonymizer</code> kódjához nem szabadna hozzányúlni, ami egyértelműen nem teljesül. Ez a híres <strong>Open/Closed principle/elv</strong>: the class should be Open for Extension, Closed for Modification. A kód módosítása azért probléma, mert annak során jó eséllyel új bugokat vezetünk be, ill. a módosított kódot mindig újra kell tesztelni, ez pedig jelentős idő/költségráfordítási igényt jelenthet.</em></li>
+</ul>
+</div>
+<p>Mi is a pontos cél, és hogyan értjük ezt el? Vannak olyan részek az osztályunkban, melyeket nem szeretnénk beégetni:</p>
+<ul>
+<li>Ezek nem adatok, hanem <strong><mark>viselkedések (kód, logika)</mark></strong>.</li>
+<li>Nem <code>if</code>/<code>switch</code> utasításokkal oldjuk meg: "kiterjesztési pontokat" vezetünk be, és valamilyen módon megoldjuk, hogy ezekben "tetszőleges" kód lefuthasson.</li>
+<li>Ezek változó/esetfüggő részek kódját <strong>más osztályokba</strong> tesszük (az osztályunk szempontjából "lecserélhető" módon)!</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ne gondoljunk semmiféle varázslatra, a már ismert eszközöket fogjuk erre használni: öröklést absztrakt/virtuális függvényekkel, vagy interfészeket, vagy delegate-eket.</p>
+</div>
+<p>Keressük meg azokat a részeket, melyek esetfüggő, változó logikák, így nem jó beégetni az <code>Anonymizer</code> osztályba:</p>
+<ul>
+<li>Az egyik maga az anonimizálási logika: <code>Anonymize_MaskName</code>/<code>Anonymize_AgeRange</code></li>
+<li>A másik a <code>GetAnonymizerDescription</code></li>
+</ul>
+<p>Ezeket kell leválasztani az osztályról, ezekben a pontokban kell kiterjeszthetővé tenni az osztályt. Az alábbi ábra illusztrálja a célt általánosságában *:</p>
+<details class="note">
+<summary>Az általános megoldási elv illusztrálása</summary>
+<p><a class="glightbox" href="images/illustrate-extensibility.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Extensibility illustration" src="images/illustrate-extensibility.png" /></a></p>
+</details>
+<p>A labor keretében három konkrét tervezési mintát, ill. technikát nézünk meg a fentiek megvalósítására:</p>
+<ul>
+<li>Template Method tervezési minta</li>
+<li>Strategy tervezési minta</li>
+<li>Delegate (opcionálisan Lambda kifejezéssel)</li>
+</ul>
+<p>Valójában mind használtuk már a tanulmányaink során, de most mélyebben megismerkedünk velük, és átfogóbban be fogjuk gyakorolni ezek alkalmazását.</p>
+<h2 id="4-megoldas-3-templatemethodtemplatemethod-1">4. Megoldás (3-TemplateMethod/TemplateMethod-1)<a class="headerlink" href="#4-megoldas-3-templatemethodtemplatemethod-1" title="Permanent link">&para;</a></h2>
+<p>Ebben a lépésben a <strong>Template Method</strong> tervezési minta alkalmazásával fogjuk a megoldásunkat a szükséges pontokban kiterjeszthetővé tenni.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A minta neve "megtévesztő": semmi köze nincs a C++-ban tanult sablonmetódusokhoz!</p>
+</div>
+<details class="info">
+<summary>Template Method alapú megoldás osztálydiagram</summary>
+<p>Az alábbi UML osztálydiagram illusztrálja a Template Method alapú megoldást, a lényegre fókuszálva:</p>
+<p><a class="glightbox" href="images/template-method-goal.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Template Method UML osztálydiagram cél" src="images/template-method-goal.png" /></a></p>
+</details>
+<p>A mintában a következő elvek mentén valósul meg a "változatlan" és "változó" részek különválasztása (érdemes a fenti osztálydiagram alapján - a példánkra vetítve - ezeket megérteni):</p>
+<ul>
+<li>A "közös/változatlan" részeket egy ősosztályba tesszük.</li>
+<li>Ebben a kiterjesztési pontokat absztrakt/virtuális függvények bevezetése jelenti, ezeket hívjuk a kiterjesztési pontokban.</li>
+<li>Ezek esetfüggő megvalósítása a leszármazott osztályokba kerül.</li>
+</ul>
+<p>A jól ismert "trükk" a dologban az, hogy amikor az ős meghívja az absztrakt/virtuális függvényeket, akkor a leszármazottbéli, esetfüggő kód hívódik meg.</p>
+<p>Alakítsuk át a korábbi <code>if</code>/<code>switch</code> alapú megoldást <strong>Template Method</strong> alapúra. Egy ősosztályt és két, algoritmusfüggő leszármazottat vezetünk be.</p>
+<p>Alakítsuk át a kódunkat ennek megfelelően. A VS solution-ben a "3-TemplateMethod" mappában a "TemplateMethod-0-Begin" projekt tartalmazza a korábbi megoldásunk kódját (annak "másolatát"), ebben a projektben dolgozzunk:</p>
+<ol>
+<li>Nevezzük át az <code>Anonymizer</code> osztályt <code>AnonymizerBase</code>-re (pl. az osztály nevére állva a forrásfájlban és <span class="keys"><kbd class="key-f2">F2</kbd></span>-t nyomva).</li>
+<li>Vegyünk fel az projektbe egy <code>NameMaskingAnonymizer</code> és egy <code>AgeAnonymizer</code> osztályt (projekten jobb katt, <em>Add</em>/<em>Class</em>).</li>
+<li>Származtassuk az <code>AnonymizerBase</code>-ből őket</li>
+<li>Az <code>AnonymizerBase</code>-ből mozgassuk át a <code>NameMaskingAnonymizer</code>-be az ide tartozó részeket:<ol>
+<li>A <code>_mask</code> tagváltozót.</li>
+<li>A <code>string inputFileName, string mask</code> paraméterezésű konstruktort, átnevezve <code>NameMaskingAnonymizer</code>-re,<ol>
+<li><code>_anonymizerMode = AnonymizerMode.Name;</code> sort törölve,</li>
+<li>a <code>this</code> konstruktorhívás helyett <code>base</code> konstruktorhívással.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Az <code>AnonymizerBase</code>-ből mozgassuk át az <code>AgeAnonymizer</code>-be az ide tartozó részeket:</li>
+<li>A <code>_rangeSize</code> tagváltozót.</li>
+<li>A <code>string inputFileName, string rangeSize</code> paraméterezésű konstruktort, átnevezve <code>AgeAnonymizer</code>-re,<ol>
+<li><code>_anonymizerMode = AnonymizerMode.Name;</code> sort törölve,</li>
+<li>a <code>this</code> konstruktorhívás helyett <code>base</code> konstruktorhívással.</li>
+</ol>
+</li>
+<li>Az <code>AnonymizerBase</code>-ben:<ol>
+<li>Töröljük az <code>AnonymizerMode</code> enum típust.</li>
+<li>Töröljük a <code>_anonymizerMode</code> tagot.</li>
+</ol>
+</li>
+</ol>
+<p>Keressük meg azokat a részeket, melyek esetfüggő, változó logikák, így nem akarjuk beégetni az újrafelhasználhatónak szánt <code>AnonymizerBase</code> osztályba:</p>
+<ul>
+<li>Az egyik az <code>Anonymize_MaskName</code>/<code>Anonymize_AgeRange</code>,</li>
+<li>a másik a <code>GetAnonymizerDescription</code>.</li>
+</ul>
+<p>A mintát követve ezekre az ősben absztrakt (vagy esetleg virtuális) függvényeket vezetünk be, és ezeket hívjuk, az esetfüggő implementációikat pedig a leszármazott osztályokba tesszük (override):</p>
+<ol>
+<li>Tegyük az <code>AnonymizerBase</code> osztály absztrakttá (a <code>class</code> elé <code>abstract</code> kulcsszó)</li>
+<li>
+<p>Vezessünk be az <code>AnonymizerBase</code>-ben egy</p>
+<div class="highlight"><pre><span></span><code><span class="k">protected</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="nf">Anonymize</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">);</span>
+</code></pre></div>
+<p>műveletet.</p>
+</li>
+<li>
+<p>Az <code>Anonymize_MaskName</code> műveletet mozgassuk át a <code>NameMaskingAnonymizer</code> osztályba, és alakítsuk át a szignatúráját úgy, hogy override-olja az ősbeli <code>Anonymize</code> absztrakt függvényt:</p>
+<div class="highlight"><pre><span></span><code><span class="k">protected</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="nf">Anonymize</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">Person</span><span class="p">(</span><span class="n">_mask</span><span class="p">,</span><span class="w"> </span><span class="n">_mask</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">CompanyName</span><span class="p">,</span>
+<span class="w">        </span><span class="n">person</span><span class="p">.</span><span class="n">Address</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">City</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">State</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Age</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Weight</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Decease</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>A függvény törzsét csak annyiban kell átírni, hogy ne a megszüntetett <code>mask</code> paramétert, hanem a <code>_mask</code> tagváltozót használja.</p>
+</li>
+<li>
+<p>Az előző lépéssel teljesen analóg módon az <code>Anonymize_AgeRange</code> műveletet mozgassuk át a <code>AgeAnonymizer</code> osztályba, és alakítsuk át a szignatúráját úgy, hogy override-olja az ősbeli <code>Anonymize</code> absztrakt függvényt:</p>
+<div class="highlight"><pre><span></span><code><span class="k">protected</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="nf">Anonymize</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>A függvény törzsét csak annyiban kell átírni, hogy ne a megszüntetett <code>rangeSize</code> paramétert, hanem a <code>_rangeSize</code> tagváltozót használja.</p>
+</li>
+<li>
+<p>A <code>AnonymizerBase</code> osztály <code>Run</code> függvényében az <code>if</code>/<code>else</code> kifejezésben található <code>Anonymize</code> hívásokat most már le tudjuk cserélni egy egyszerű absztrakt függvény hívásra:</p>
+<del class="critic block">
+<div class="highlight"><pre><span></span><code><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_anonymizerMode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">AnonymizerMode</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span>
+<span class="w">    </span><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Anonymize_MaskName</span><span class="p">(</span><span class="n">persons</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">_mask</span><span class="p">);</span>
+<span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">_anonymizerMode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">AnonymizerMode</span><span class="p">.</span><span class="n">Age</span><span class="p">)</span>
+<span class="w">    </span><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Anonymize_AgeRange</span><span class="p">(</span><span class="n">persons</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">_rangeSize</span><span class="p">);</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">NotSupportedException</span><span class="p">(</span><span class="s">&quot;The requested anonymization mode is not supported.&quot;</span><span class="p">);</span>
+</code></pre></div>
+</del>
+<p>helyett:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Anonymize</span><span class="p">(</span><span class="n">persons</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</code></pre></div>
+</li>
+</ol>
+<p>Az egyik kiterjesztési pontunkkal el is készültünk. De maradt még egy, a <code>GetAnonymizerDescription</code>, mely kezelése szintén esetfüggő. Ennek átalakítása nagyon hasonló az előző lépéssorozathoz. Idő hiányában ezt az átalakítást gyakorlaton nem tesszük meg (lehet otthoni gyakorló feladat), hanem a kész megoldásra ugrunk: ezt a "TemplateMethod-1" nevű projektben találjuk. Fussuk át a megoldás alapelemeit:</p>
+<ol>
+<li>Az <code>AnonymizerBase</code>-ben a <code>GetAnonymizerDescription</code> nem absztrakt, hanem virtuális függvényként került bevezetésre, hiszen itt tudtunk értelmes alapértelmezett viselkedést biztosítani: egyszerűen visszaadjuk az osztály nevét (mely pl. a <code>NameMaskingAnonymizer</code> osztály esetében "NameMaskingAnonymizer"). Mindenesetre a rugalmatlan <code>switch</code> szerkezettől megszabadultunk.</li>
+<li>A leszármazottakban felülírjuk ezt a virtuális függvényt, belefűzzük a leírásba az osztályspecifikus adatokat (pl.<code>NameMaskingAnonymizer</code> esetében a <code>_mask</code> értékét).</li>
+</ol>
+<p>A "TemplateMethod-0-Begin" projektünk most nem forduló kódot tartalmaz, ezt célszerű eltávolítani a solution-ből, hogy a későbbi futtatások során ne legyen zavaró: jobb katt a projekten és <code>Remove</code> menü (ez fizikailag nem törli, csak kiveszi a solution-ből, később visszatehető).</p>
+<p>El is készültünk. Ha sok időnk van, ki is próbálhatjuk, hogy jobban "érezzük", valóban működnek az kiterjesztési pontok (de ez különösebben nem fontos, hasonlót már korábbi félévekben C++/Java nyelvek kontextusában is csináltunk):</p>
+<ul>
+<li>Legyen a "TemplateMethod-1" projekt a startup projekt.</li>
+<li>Tegyünk egy töréspontot az <code>AnonymizerBase</code> osztály <code>var person = Anonymize(persons[i]);</code> sorára.</li>
+<li>Amikor futás közben itt megáll a debugger, ++F11++-gyel lépjünk bele.</li>
+<li>Az tapasztaljuk, hogy a  leszármazott <code>AgeAnonymizer</code> művelete hívódik.</li>
+</ul>
+<p>Vethetünk egy pillantást a megoldás osztálydiagramjára:</p>
+<details>
+<summary>Template Method alapú megoldás osztálydiagram *</summary>
+<p><a class="glightbox" href="images/template-method.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Template Method alapú megoldás osztálydiagram" src="images/template-method.png" /></a></p>
+</details>
+<details>
+<summary>Miért Template Method a minta neve *</summary>
+<p>A minta azért kapta a Template Method nevet, mert - esetünket példaként használva - a <code>Run</code> és a <code>PrintSummary</code> olyan "sablon metódusok", melyek meghatároznak egy sablonszerű logikát, vázat, melyben bizonyos lépések nincsenek megkötve (ezek "kódját" absztrakt/virtuális függvényekre bízzuk, és a leszármazott osztályok határozzák meg a megvalósításukat).</p>
+</details>
+<h3 id="a-megoldas-ertekelese_2">A megoldás értékelése<a class="headerlink" href="#a-megoldas-ertekelese_2" title="Permanent link">&para;</a></h3>
+<p>Ellenőrizzük a megoldást, megvalósítja-e a céljainkat:</p>
+<ul>
+<li>Az <code>AnonymizerBase</code> egy újrafelhasználható(bb) osztály lett.</li>
+<li>Ha új anonimizáló logikára van szükség a jövőben, csak származtatunk belőle. Ez nem módosítás, hanem bővítés.</li>
+<li>Ennek megfelelően teljesül az OPEN/CLOSED elv, vagyis a kódjának módosítása nélkül tudjuk az ősben megadott két pontban a logikát testre szabni, kiterjeszteni.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Legyen minden pontban kiterjeszthető az osztályunk?</p>
+<p>Figyeljük meg, hogy nem tettünk az <code>AnonymizerBase</code> minden műveletét virtuálissá (így sok pontban kiterjeszthetővé az osztályt). Csak ott tettük meg, ahogy azt gondoljuk, hogy a jövőben szükség lehet a logika kiterjesztésére.</p>
+</div>
+<h2 id="5-megoldas-3-templatemethodtemplatemethod-2-progress">5. Megoldás (3-TemplateMethod/TemplateMethod-2-Progress)<a class="headerlink" href="#5-megoldas-3-templatemethodtemplatemethod-2-progress" title="Permanent link">&para;</a></h2>
+<p>T.f.h új - viszonylag egyszerű - igény merül fel:</p>
+<ul>
+<li>A <code>NameMaskinAnonimizer</code> esetén marad ugyan a korábbi progress kijelzés (minden sor után kiírjuk, hányadiknál tartottunk),</li>
+<li>
+<p>de az <code>AgeAnonymizer</code> esetén a progress kijelzés más kell legyen: azt kell kiírni - minden sor után frissítve -, hogy hány százaléknál tart a feldolgozás.</p>
+<details class="note">
+<summary>Százalékos progress illusztrálása</summary>
+<p><a class="glightbox" href="images/progress-percent.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Százalékos progress illusztrálása" src="images/progress-percent.gif" /></a>
+(Mivel jelenleg kevés az adat, ezt a megoldásunk végén nem így látjuk majd, pillanatok alatt 100%-ra ugrik)</p>
+</details>
+</li>
+</ul>
+<p>A megoldás nagyon egyszerű: a <code>Run</code> műveletben szélesebb körben alkalmazva a Template Method mintát, a progress kiíráskor is egy kiterjesztési pontot vezetünk be, egy virtuális függvényre bízzuk a megvalósítást.</p>
+<p>Ugorjunk egyből a kész megoldásra (<em>TemplateMethod-2-Progress</em> projekt):</p>
+<ul>
+<li><code>AnonymizerBase</code> osztályban új <code>PrintProgress</code> virtuális függvény (alapértelmezésben nem ír ki semmit)</li>
+<li><code>Run</code>-ban ennek hívása</li>
+<li><code>NameMaskingAnonymizer</code>-ben és <code>NameMaskingAnonymizer</code>-ben megfelelő megvalósítás (override)</li>
+</ul>
+<p>Ennek egyelőre különösebb tanulsága nincs, de a következő lépésben már lesz.</p>
+<h2 id="6-megoldas-3-templatemethodtemplatemethod-3-progressmultiple">6. Megoldás (3-TemplateMethod/TemplateMethod-3-ProgressMultiple)<a class="headerlink" href="#6-megoldas-3-templatemethodtemplatemethod-3-progressmultiple" title="Permanent link">&para;</a></h2>
+<p>Új - és teljesen logikus - igény merült fel: a jövőben bármely anonimizáló algoritmust bármely progress megjelenítéssel lehessen használni. Ez jelen pillanatban négy keresztkombinációt jelent:</p>
+<table>
+<thead>
+<tr>
+<th>Anonimizáló</th>
+<th>Progress</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Név anonimizáló</td>
+<td>Egyszerű progress</td>
+</tr>
+<tr>
+<td>Név anonimizáló</td>
+<td>Százalék progress</td>
+</tr>
+<tr>
+<td>Kor anonimizáló</td>
+<td>Egyszerű progress</td>
+</tr>
+<tr>
+<td>Kor anonimizáló</td>
+<td>Százalék progress</td>
+</tr>
+</tbody>
+</table>
+<p>Ugorjunk a kész megoldásra (TemplateMethod-3-ProgressMultiple projekt). Kód helyett érdemes a <code>Main.cd</code> osztálydiagramot megnyitni, és a megoldást az alapján áttekinteni.</p>
+<details>
+<summary>Template Method alapú megoldás (két aspektus) osztálydiagram</summary>
+<p><a class="glightbox" href="images/template-method-progress-multiple.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Template Method alapú megoldás (két aspektus) osztálydiagram" src="images/template-method-progress-multiple.png" /></a></p>
+</details>
+<p>Érezhető, hogy valami "baj van", minden keresztkombinációnak külön leszármazottat kellett létrehozni. Sőt, a kódduplikáció csökkentésére még plusz, köztes osztályok is vannak a hierarchiában. Ráadásul:</p>
+<ul>
+<li>Ha a jövőben új anonimizáló algoritmust vezetünk be, annyi új osztályt kell írni (legalább), ahány progress típust támogatunk.</li>
+<li>Ha a jövőben új progress típust vezetünk be, annyi új osztályt kell írni (legalább), ahány anonimizáló típust támogatunk.</li>
+</ul>
+<p>Mi okozta a problémát? Az, hogy <strong>az osztályunk viselkedését több aspektus/dimenzió mentén (példánkban az anonimizálás és progress) kell kiterjeszthetővé tenni, és ezeket sok keresztkombinációban kell támogatni</strong>. Ha újabb aspektusok mentén kellene ezt megtenni (pl. beolvasás módja, kimenet generálása), akkor a probléma exponenciálisan tovább "robbanna". Ilyen esetekben a Template Method tervezési minta nem alkalmazható.</p>
+<h2 id="7-megoldas-4-strategystrategy-1">7. Megoldás (4-Strategy/Strategy-1)<a class="headerlink" href="#7-megoldas-4-strategystrategy-1" title="Permanent link">&para;</a></h2>
+<p>Ebben a lépésben a <strong>Strategy</strong> tervezési minta alkalmazásával fogjuk a kezdeti megoldásunkat a szükséges pontokban kiterjeszthetővé tenni. A mintában a következő elvek mentén valósul meg a "változatlan/újrafelhasználható" és "változó" részek különválasztása:</p>
+<ul>
+<li>A "közös/változatlan" részeket egy adott osztályba tesszük (de ez most nem egy "ősosztály" lesz).</li>
+<li>A Template Methoddal szemben nem öröklést, hanem kompozíciót (tartalmazást) alkalmazunk: interfészként tartalmazott más objektumokra bízzuk a viselkedés megvalósítását a kiterjesztési pontokban (és nem absztrakt/virtuális függvényekre).</li>
+<li>Mindezt az osztály viselkedésének minden olyan aspektusára/dimenziójára, melyet lecserélhetővé/bővíthetővé szeretnénk tenni, egymástól függetlenül megtesszük. Ezzel az előző fejezetben tapasztalt kombinatorikus robbanás elkerülhető.</li>
+</ul>
+<p>Ez sokkal egyszerűbb a gyakorlatban, mint amilyennel leírva érződik (már használtuk is párszor korábbi tanulmányaink során), értsük meg a példánkra vetítve.</p>
+<p>A következőkben tekintsük át a Strategy alapú megoldást illusztráló osztálydiagramot, a diagramot követő magyarázatra építve.</p>
+<details class="info">
+<summary>Strategy alapú megoldás osztálydiagram</summary>
+<p>Az alábbi UML osztálydiagram illusztrálja a Strategy alapú megoldást, a lényegre fókuszálva:</p>
+<p><a class="glightbox" href="images\strategy-goal.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Strategy UML osztálydiagram cél" src="images\strategy-goal.png" /></a></p>
+</details>
+<p>A Strategy minta alkalmazásának első lépése, hogy meghatározzuk, <strong>az osztály viselkedésének hány különböző aspektusa van</strong>, melyet kiterjeszthetővé szeretnénk tenni. A példánkban ebből - egyelőre legalábbis - kettő van:</p>
+<ul>
+<li>Anonimizáláshoz kötődő viselkedés, melyhez két művelet tartozik:<ul>
+<li>Anonimizáló logika</li>
+<li>Anonimizáló logika leírásának meghatározása (description)</li>
+</ul>
+</li>
+<li>Progress kezelés, melyhez egy művelet tartozik:<ul>
+<li>Progress megjelenítése</li>
+</ul>
+</li>
+</ul>
+<p>A nehezével meg is vagyunk, ettől kezdve alapvetően mechanikusan lehet dolgozni a Strategy mintát követve:</p>
+<ol>
+<li>A fenti aspektusok mindegyikéhez egy-egy strategy interfészt kell bevezetni, a fent meghatározott műveletekkel, és ezekhez el kell készíteni a megfelelő implementációkat.</li>
+<li>Az Anonymizer osztályba be kell vezetni egy-egy strategy interfész tagváltozót, és a kiterjesztési pontokban ezen tagváltozókon keresztül használni az aktuálisan beállított strategy implementációs objektumokat.</li>
+</ol>
+<p>A fenti osztálydiagramon meg is jelennek ezek az elemek. Most térjünk át a kódra. Kiinduló környezetünk a "4-Strategy" mappában a "Strategy-0-Begin" projektben található, ebben dolgozzunk. Ez ugyanaz, az enum-ot használó megoldás, mint amelyet a Template Method minta esetében is kiindulásként használtunk. </p>
+<p>Az <strong>anonimizálási stratégia/aspektus</strong> kezelésével kezdünk: vezessük be az ehhez tartozó interfészt és implementációkat:</p>
+<ol>
+<li>Hozzunk létre a projektben egy <code>AnonymizerAlgorithms</code> nevű mappát (jobb katt a "Strategy-0-Begin" projekten, majd <em>Add/New Folder</em> menü). A következő lépésekben minden interfészt és osztályt egy külön, a nevének megfelelő forrásfájlba tegyünk a szokásos módon!</li>
+<li>
+<p>Vegyünk fel ebben a mappában egy <code>IAnonymizerAlgorithm</code> interfészt az alábbi kóddal:</p>
+<div class="highlight"><span class="filename">IAnonymizerAlgorithm.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IAnonymizerAlgorithm</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Person</span><span class="w"> </span><span class="nf">Anonymize</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetAnonymizerDescription</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Azt is megfigyelhetjük a <code>GetAnonymizerDescription</code> művelet esetében, hogy a modern C# nyelven, amennyiben akarunk, tudunk az egyes interfész műveleteknek alapértelmezett implementációt adni!</p>
+</li>
+<li>
+<p>Vegyük fel ennek az interfésznek az név anonimizáláshoz tartozó megvalósítását ugyanebbe a mappába (csak másoljuk be az alábbi kódot és értelmezzük azt):</p>
+<details class="example">
+<summary>Megoldás</summary>
+<div class="highlight"><span class="filename">NameMaskingAnonymizerAlgorithm.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">NameMaskingAnonymizerAlgorithm</span><span class="p">:</span><span class="w"> </span><span class="n">IAnonymizerAlgorithm</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">_mask</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">NameMaskingAnonymizerAlgorithm</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">mask</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mask</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="nf">Anonymize</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">Person</span><span class="p">(</span><span class="n">_mask</span><span class="p">,</span><span class="w"> </span><span class="n">_mask</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">CompanyName</span><span class="p">,</span>
+<span class="w">            </span><span class="n">person</span><span class="p">.</span><span class="n">Address</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">City</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">State</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Age</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Weight</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Decease</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetAnonymizerDescription</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;NameMasking anonymizer with mask {_mask}&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Vegyük fel ennek az interfésznek az életkor anonimizáláshoz tartozó megvalósítását ugyanebbe a mappába (csak másoljuk be az alábbi kódot és értelmezzük azt):</p>
+<details class="example">
+<summary>Megoldás</summary>
+<div class="highlight"><span class="filename">AgeAnonymizerAlgorithm.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">AgeAnonymizerAlgorithm</span><span class="p">:</span><span class="w"> </span><span class="n">IAnonymizerAlgorithm</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">_rangeSize</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">AgeAnonymizerAlgorithm</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">rangeSize</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_rangeSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rangeSize</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="nf">Anonymize</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// This is whole number integer arithmetics, e.g for 55 / 20 we get 2</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">rangeIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">person</span><span class="p">.</span><span class="n">Age</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">_rangeSize</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="n">newAge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">$&quot;{rangeIndex * _rangeSize}..{(rangeIndex + 1) * _rangeSize}&quot;</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">Person</span><span class="p">(</span><span class="n">person</span><span class="p">.</span><span class="n">FirstName</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">LastName</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">CompanyName</span><span class="p">,</span>
+<span class="w">            </span><span class="n">person</span><span class="p">.</span><span class="n">Address</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">City</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">State</span><span class="p">,</span><span class="w"> </span><span class="n">newAge</span><span class="p">,</span>
+<span class="w">            </span><span class="n">person</span><span class="p">.</span><span class="n">Weight</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Decease</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetAnonymizerDescription</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;Age anonymizer with range size {_rangeSize}&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Fontos gondolat</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Mindenképpen figyeljük meg, hogy az interfész és a megvalósításai kizárólag az anonimizálással foglalkoznak, semmiféle más logika (pl. progress kezelés) nincs itt!</p>
+</div>
+</li>
+</ol>
+<p><strong>Második</strong> lépésben vezessük be a <strong>progress kezeléshez</strong> tartozó interfészt és implementációkat:</p>
+<ol>
+<li>Hozzunk létre a projektben egy <code>Progresses</code> nevű mappát. A következő lépésekben minden interfészt és osztály egy külön, a nevének megfelelő forrásfájlba tegyünk a szokásos módon.</li>
+<li>
+<p>Vegyünk fel ebben a mappában egy <code>IProgress</code> interfészt az alábbi kóddal:</p>
+<details class="example">
+<summary>Megoldás</summary>
+<div class="highlight"><span class="filename">IProgress.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IProgress</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Report</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Vegyük fel ennek az interfésznek az egyszerű progresshez tartozó megvalósítását ugyanebbe a mappába:</p>
+<details class="example">
+<summary>Megoldás</summary>
+<div class="highlight"><span class="filename">IProgress.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SimpleProgress</span><span class="p">:</span><span class="w"> </span><span class="n">IProgress</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Report</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;{index + 1}. person processed&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Vegyük fel ennek az interfésznek az százalékos progresshez tartozó megvalósítását ugyanebbe a mappába:</p>
+<details class="example">
+<summary>Megoldás</summary>
+<div class="highlight"><span class="filename">IProgress.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PercentProgress</span><span class="p">:</span><span class="w"> </span><span class="n">IProgress</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Report</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">percentage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)((</span><span class="kt">double</span><span class="p">)(</span><span class="n">index</span><span class="o">+</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">100</span><span class="p">);</span>
+
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Console</span><span class="p">.</span><span class="n">GetCursorPosition</span><span class="p">();</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">SetCursorPosition</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">.</span><span class="n">Top</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">$&quot;Processing: {percentage} %&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Fontos gondolat</p>
+<div class="admonition warning">
+<p class="admonition-title">Fontos</p>
+<p>Mindenképpen figyeljük meg, hogy az interfész és a megvalósításai kizárólag a progress kezeléssel foglalkoznak, semmiféle más logika (pl. anonimizálás) nincs itt!</p>
+</div>
+</li>
+</ol>
+<p>A következő fontos lépés az anonimizáló alaposztály újrafelhasználhatóvá és kiterjeszthetővé tétele a fent bevezetett strategy-k segítségével. Az <code>Anonymizer.cs</code> fájlban:</p>
+<ol>
+<li>Töröljük a következőket:<ul>
+<li><code>AnonymizerMode</code> enum típus</li>
+<li><code>_anonymizerMode</code>, <code>_mask</code> és <code>_rangeSize</code> tagok</li>
+</ul>
+</li>
+<li>
+<p>Vezessünk be egy-egy strategy interfész típusú tagot:</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IProgress</span><span class="w"> </span><span class="n">_progress</span><span class="p">;</span>
+<span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IAnonymizerAlgorithm</span><span class="w"> </span><span class="n">_anonymizerAlgorithm</span><span class="p">;</span>
+</code></pre></div>
+</li>
+<li>
+<p>A fájl elejére szúrjunk be a megfelelő usingokat:</p>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">Lab_Extensibility.AnonymizerAlgorithms</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Lab_Extensibility.Progresses</span><span class="p">;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Az előző pontban bevezetett <code>_progress</code> és <code>_anonymizerAlgorithm</code> kezdőértéke null, a konstruktorban állítsuk ezeket a referenciákat az igényeinknek megfelelő implementációra. Pl.:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">Anonymizer</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">inputFileName</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">mask</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">this</span><span class="p">(</span><span class="n">inputFileName</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="hll"><span class="w">    </span><span class="n">_progress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PercentProgress</span><span class="p">();</span>
+</span><span class="hll"><span class="w">    </span><span class="n">_anonymizerAlgorithm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">NameMaskingAnonymizerAlgorithm</span><span class="p">(</span><span class="n">mask</span><span class="p">);</span>
+</span><span class="p">}</span>
+
+<span class="k">public</span><span class="w"> </span><span class="nf">Anonymizer</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">inputFileName</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rangeSize</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">this</span><span class="p">(</span><span class="n">inputFileName</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="hll"><span class="w">    </span><span class="n">_progress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PercentProgress</span><span class="p">();</span>
+</span><span class="hll"><span class="w">    </span><span class="n">_anonymizerAlgorithm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AgeAnonymizerAlgorithm</span><span class="p">(</span><span class="n">rangeSize</span><span class="p">);</span>
+</span><span class="p">}</span>
+</code></pre></div>
+</li>
+</ol>
+<p>Az <code>Anonymizer</code> osztályban a jelenleg beégetett, de <strong>anonimizálás függő</strong> logikákat bízzuk a <code>_anonymizerAlgorithm</code> tagváltozó által hivatkozott strategy implementációra:</p>
+<ol>
+<li>
+<p>Az osztály <code>Run</code> függvényében az <code>if</code>/<code>else</code> kifejezésben található <code>Anonymize</code> hívásokat most már le delegáljuk a <code>_anonymizerAlgorithm</code> objektumnak:</p>
+<del class="critic block">
+<div class="highlight"><pre><span></span><code><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_anonymizerMode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">AnonymizerMode</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span>
+<span class="w">    </span><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Anonymize_MaskName</span><span class="p">(</span><span class="n">persons</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">_mask</span><span class="p">);</span>
+<span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">_anonymizerMode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">AnonymizerMode</span><span class="p">.</span><span class="n">Age</span><span class="p">)</span>
+<span class="w">    </span><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Anonymize_AgeRange</span><span class="p">(</span><span class="n">persons</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">_rangeSize</span><span class="p">);</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">NotSupportedException</span><span class="p">(</span><span class="s">&quot;The requested anonymization mode is not supported.&quot;</span><span class="p">);</span>
+</code></pre></div>
+</del>
+<p>helyett:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_anonymizerAlgorithm</span><span class="p">.</span><span class="n">Anonymize</span><span class="p">(</span><span class="n">persons</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</code></pre></div>
+</li>
+<li>
+<p>Töröljük a <code>Anonymize_MaskName</code> és <code>Anonymize_AgeRange</code> függvényeket, hiszen ezek kódja már a strategy implementációkba került, az osztályról leválasztva.</p>
+</li>
+<li>
+<p>A <code>PrintSummary</code> függvényünk a rugalmatlan, <code>switch</code> alapokon működő <code>GetAnonymizerDescription</code>-t hívja. Ezt a <code>GetAnonymizerDescription</code> hívást cseréljük le, delegáljuk a <code>_anonymizerAlgorithm</code> objektumnak. A <code>PrintSummary</code> függvényben (csak a lényeget kiemelve):</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="n">GetAnonymizerDescription</span><span class="p">()</span><span class="w"> </span><span class="p">...</span>
+</code></pre></div>
+<p>helyett:</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="n">_anonymizerAlgorithm</span><span class="p">.</span><span class="n">GetAnonymizerDescription</span><span class="p">()</span><span class="w"> </span><span class="p">...</span>
+</code></pre></div>
+<p>Pár sorral lejjebb a <code>GetAnonymizerDescription</code> függvényt töröljük is az osztályból (ennek kódja megfelelő strategy implementációkba bekült).</p>
+</li>
+</ol>
+<p>Az utolsó lépés az <code>Anonymizer</code> osztályba beégetett <strong>progress kezelés</strong> lecserélése:</p>
+<ol>
+<li>
+<p>Itt is delegáljuk a kérést, mégpedig a korábban bevezetett <code>_progress</code> objektumunknak. A <code>Run</code> függvényben egy sort kell ehhez lecserélni:</p>
+<del class="critic block">
+<div class="highlight"><pre><span></span><code><span class="n">PrintProgress</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</code></pre></div>
+</del>
+<p>helyett:</p>
+<div class="highlight"><pre><span></span><code><span class="n">_progress</span><span class="p">.</span><span class="n">Report</span><span class="p">(</span><span class="n">persons</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+</code></pre></div>
+</li>
+<li>
+<p>Töröljük a <code>PrintProgress</code> függvényt, hiszen ennek kódja már egy megfelelő strategy implementációba került, az osztályról leválasztva.</p>
+</li>
+</ol>
+<p>Elkészültünk, a kész megoldás a "Strategy-1" projektben meg is található (ha valahol elakadtunk, vagy nem fordul a kód, ezzel össze lehet nézni).</p>
+<h3 id="a-megoldas-ertekelese_3">A megoldás értékelése<a class="headerlink" href="#a-megoldas-ertekelese_3" title="Permanent link">&para;</a></h3>
+<p>A strategy minta bevezetésével elkészültünk. Jelen formájában ugyanakkor szinte soha nem használjuk. Ellenőrizzük a megoldásunkat: valóban újrafelhasználható, és az <code>Anomymizer</code> osztály módosítása nélkül lehetőség van-e az anonimizáló algoritmus, illetve a progress kezelés megváltoztatására? Ehhez azt kell megnézni, bárhol az osztályban van-e olyan kód, mely implementáció függő.</p>
+<p>Sajnos találunk ilyet. A konstruktorba be van égetve, milyen algoritmus implementációt és progress implementációt hozunk létre. Ezt mindenképpen nézzük meg a kódban! Ha algoritmus vagy progress módot akarunk változtatni, ezekben a sorokban át kell írni a <code>new</code> operátor utáni típust, mely így az osztály módosításával jár.</p>
+<p>Sokan - teljesen jogosan - ezt jelen formájában nem is tekintik igazi Strategy alapú megoldásnak. A teljes körű megoldást a következő lépésben valósítjuk meg.</p>
+<h2 id="8-megoldas-4-strategystrategy-2-di">8. Megoldás (4-Strategy/Strategy-2-DI)<a class="headerlink" href="#8-megoldas-4-strategystrategy-2-di" title="Permanent link">&para;</a></h2>
+<p>A megoldást a <strong>Dependency Injection (röviden DI)</strong> alkalmazása jelenti. Ennek lényege az, hogy nem maga az osztály példányosítja a viselkedésbeli függőségeit (ezek a strategy implementációk), hanem ezeket kívülről adjuk át neki, pl. konstruktor paraméterekben, vagy akár property-k vagy setter műveletek formájában. Természetesen interfész típusként hivatkozva!</p>
+<p>A kész megoldást nézzük meg, ez a "Strategy-2-DI" projektben található. Csak az <code>Anonymizer</code> osztály konstruktorát kell nézni. Azt látjuk, hogy a fenti elveknek megfelelően át lett alakítva.</p>
+<p>Megjegyzés: azt egyelőre ne akarjuk megérteni, mi az újonnan felbukkanó <code>NullProgress</code> a konstruktorban (ez a DI szempontjából irreleváns, rövidesen visszatérünk rá).</p>
+<p>Most már elkészültünk, az <code>Anonymizer</code> osztály teljesen független lett az implementációktól. Lehetőségünk van az <code>Anonymizer</code> osztály bármilyen anonimizáló algoritmus és bármilyen progress kezelés  (annak módosítása nélkül). Erre vannak is példák a <code>Program.cs</code> fájlban, nézzük ezt meg! Itt négy <code>Anonymizer</code> objektumot hozunk létre, négy különböző anonimizáló és progress kombinációval.</p>
+<div class="admonition note">
+<p class="admonition-title">A működés ellenőrzése</p>
+<p>A gyakorlat során erre valószínűleg nem lesz idő, de aki bizonytalan abban, "mitől is működik" a strategy minta, mitől lesz más a viselkedés a fenti négy esetre: érdemes töréspontokat tenni a <code>Program.cs</code> fájlban a négy <code>Run</code> függvényhívásra, és a függvényekbe a debuggerben belelépkedve kipróbálni, hogy mindig a megfelelő strategy implementáció hívódik meg.</p>
+</div>
+<p>A projektben található egy osztálydiagram (<code>Main.cd</code>), ezen is megtekinthető a kész megoldás:</p>
+<details class="note">
+<summary>Strategy alapú megoldás osztálydiagram</summary>
+<p>Az alábbi UML osztálydiagram illusztrálja a Strategy alapú megoldásunkat:</p>
+<p><a class="glightbox" href="images\strategy-di.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Strategy DI UML osztálydiagram" src="images\strategy-di.png" /></a></p>
+</details>
+<h3 id="null-strategy-kitero">Null strategy (kitérő)<a class="headerlink" href="#null-strategy-kitero" title="Permanent link">&para;</a></h3>
+<p>Az <code>Anonymizer</code> konstruktorában látunk egy elsőre talán kicsit fura részletet. Ha a hívó null-t ad meg <code>IProgress</code> strategy-ként paraméterben, akkor a <code>_progress</code> tagváltozóba nem <code>null</code>-t mentünk, hanem egy <code>NullProgress</code> objektumra állítjuk. A <code>NullProgress</code> is egy teljes értékű <code>IProgress</code> implementáció, csak éppen nem csinál semmit (üres a törzse). Ezzel a megoldással azt érjük el, hogy nem kell az osztályban a <code>_progress</code> minden használatakor megvizsgálni, hogy null-e (ha elfelejtenénk, akkor <code>NullReferenceException</code>-t kapnánk!), mert az mindig egy érvényes objektumra mutat. Egyszerűen, ha nincs szükség semmiféle progress kiírására, akkor <code>NullProgress</code>-t használunk stratégiaként, mely nem csinál semmit. Ez is egy tervezési minta, <strong>Null Object</strong> a neve.</p>
+<h3 id="a-megoldas-ertekelese_4">A megoldás értékelése<a class="headerlink" href="#a-megoldas-ertekelese_4" title="Permanent link">&para;</a></h3>
+<p>Ellenőrizzük a megoldást, megvalósítja-e a céljainkat:</p>
+<ul>
+<li>Az <code>Anonymizer</code> egy újrafelhasználható(bb) osztály lett.</li>
+<li>Ha új anonimizáló logikára van szükség a jövőben, csak egy új <code>IAnonymizerAlgorithm</code> implementációt kell bevezetni. Ez nem módosítás, hanem bővítés.</li>
+<li>Ha új progress logikára van szükség a jövőben, csak egy új <code>IProgress</code> implementációt kell bevezetni. Ez nem módosítás, hanem bővítés.</li>
+<li>A fenti két pontban teljesül az OPEN/CLOSED elv, vagyis az <code>Anonymizer</code> kódjának módosítása nélkül tudjuk a logikáját testre szabni, kiterjeszteni.</li>
+<li>Itt nem kell tartani a Template Methodnál tapasztalt kombinatorikus robbanástól: bármely <code>IAnonymizerAlgorithm</code> implementáció bármely <code>IProgress</code> implementációval kényelmesen használható, nem kell a kombinációkhoz új osztályokat bevezetni (ezt láttuk a <code>Program.cs</code> fájlban).</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">További Strategy előnyök a Template Methoddal szemben *</p>
+<ul>
+<li>Futás közben lecserélhető viselkedés is megvalósítható. Ha szükség lenne arra, hogy egy adott <code>Anonymizer</code> objektumra vonatkozóan a létrehozása után meg tudjuk változtatni az anonimizáló vagy progress viselkedést, akkor azt könnyen meg tudnánk tenni (csak egy <code>SetAnonimizerAlgorithm</code>, ill. <code>SetProgress</code> műveletet kellene bevezetni, melyben a paraméterben megkapott implementációra lehetne állítani az osztály által használt strategy-t).</li>
+<li>Egységtesztelhetőség támogatása (még visszatérünk erre).</li>
+</ul>
+</div>
+<h2 id="9-megoldas-5-strategyfull-unittestingstrategyfull-1">9. Megoldás (5-StrategyFull-UnitTesting/StrategyFull-1)<a class="headerlink" href="#9-megoldas-5-strategyfull-unittestingstrategyfull-1" title="Permanent link">&para;</a></h2>
+<p>Vegyük észre, hogy az <code>Anonimyzer</code> osztály működésének van még számos aspektusa, melyeket valamelyik megoldásunkkal kiterjeszthetővé lehetne tenni. Többek között ilyen a:</p>
+<ul>
+<li><strong>Bemenet</strong> kezelése: Most csak fájl alapú, adott CSV formátumot támogatunk.</li>
+<li><strong>Kimenet</strong> kezelése: Most csak fájl alapú, adott CSV formátumot támogatunk.</li>
+</ul>
+<p>Ezeket az SRP elve miatt illene az osztályról leválasztani, de nem feltételen kiterjeszthető módon, hiszen nem merült fel igény arra (és úgy látjuk, nem is lesz később sem), hogy a mostanitól eltérő logikákat alkalmazzunk.</p>
+<p>Ugyanakkor van még egy kritikus szempont, melyről nem beszéltünk (és a régebbi, klasszikus design pattern irodalmak sem feltétlen emlegetik). Ez az egységtesztelhetőség.</p>
+<p>Jelen pillanatban az <code>Anonymizer</code> osztályunkhoz automata <strong>integrációs teszteket</strong> tudunk írni, automata <strong>egységteszteket</strong> nem:</p>
+<ul>
+<li>Az integrációs tesztek a teljes működést egyben vizsgálják: ebben benne van a bemenet feldolgozása, adatfeldolgozás, kimenet előállítása. Ez példánkban egyszerű: elállítunk bizonyos bemeneti CVS állományokat, és megnézzük, a várt kimeneti állomány állítódik-e elő.</li>
+<li>Az integrációs tesztek nagyon lassúak tudnak lenni: sokszor fájlokból, adatbázisokból, felhő alapú szolgáltatásokból veszik a bemenetet, illetve ezek szolgálnak kimenetként. Egy nagyobb termék esetében - mikor sok ezer teszt van - ez a lassúság korlátozó tényező, ritkábban tudjuk futtatni és/vagy nem tudunk jó tesztlefedettséget elérni.</li>
+</ul>
+<p>A fentiek miatt nagyobb kódlefedettséget nagyon gyorsan futó <strong>egységtesztekkel</strong> szoktunk/tudunk elérni. Ezek mindenféle <strong>lassú fájl/adatbázis/hálózat/felhő elérés nélkül önmagában egy egy logikai egységet tesztelnek a kódban</strong>, ezt viszont így már villámgyorsan, így sokat tudunk futtatni adott idő alatt, jó tesztlefedettséggel.</p>
+<div class="admonition note">
+<p class="admonition-title">Tesztpiramis *</p>
+<p>Ezt egy tesztpiramissal szokás szemléltetni, melynek több formája terjedt el az irodalomban, egy egyszerű variáns a következő:</p>
+<p><a class="glightbox" href="https://en.wikipedia.org/wiki/Test_automation#/media/File:Testing_Pyramid.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Tesztpiramis" src="https://en.wikipedia.org/wiki/Test_automation#/media/File:Testing_Pyramid.png" /></a></p>
+<p>Minél fentebb vagyunk a piramis rétegeiben, annál átfogóbbak ugyan a tesztek, de annál lassabbak és költségesebben is futtathatók. Így ezekből általában kevesebbet is készítünk (ezáltal kisebb kódlefedettséget is érünk el velük).</p>
+</div>
+<p>Nézzük meg az <code>Anonymizer</code> osztályt: ebbe be van égetve, hogy csak a lassú, fájl alapú bemenettel tud dolgozni. De amikor mi pl. a <code>Run</code> művelet logikáját szeretnénk egységtesztelni, teljesen mindegy, hogy fájlból jönnek-e az adatok (lassan), vagy egyszerűen kódból a <code>new</code> operátorral előállítunk néhány <code>Person</code> objektumot (több nagyságrenddel gyorsabban).</p>
+<p>A megoldás - a kódunk egységtesztelhetővé tételéhez - egyszerű:</p>
+<div class="grid cards">
+<ul>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" />
+  <em>A Strategy minta (vagy delegate-ek) alkalmazással válasszuk le az egységtesztelni kívánt osztályról a tesztelést akadályozó vagy lassító (pl. bemenet/kimenet kezelés) logikákat. Ezeknek készítünk a valódi logikát megvalósító implementációit, illetve tesztelést segítő, ún. mock implementációit.</em></li>
+</ul>
+</div>
+<div class="grid cards">
+<ul>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" />
+  <em>Ennek megfelelően a Strategy mintát sokszor nem azért használjuk, mert az ügyféligények miatt többféle viselkedést kell benevezni, hanem azért, hogy a kódunk egységtesztelhető legyen.</em></li>
+</ul>
+</div>
+<p>Ennek megfelelően elkészítjük a megoldásunk egységtesztelésre is előkészített változatát, melyben a bemenet és kimenet kezelése is le van választva a Strategy minta alkalmazásával.</p>
+<p>Egyből a kész megoldást nézzük ("StrategyFull-1"), hiszen itt semmi újat nem tanulunk, egyszerűen csak alkalmazzuk a Strategy mintát két aspektus mentén:</p>
+<ul>
+<li><code>InputReaders</code> mappa: bemenet feldolgozó strategy interfész, és a korábbi logika kiszervezve egy implementációba.</li>
+<li><code>ResultWriters</code> mappa: kimenet előállító strategy interfész, és a korábbi logika kiszervezve egy implementációba.</li>
+<li><code>Anonymizer</code> osztály:<ul>
+<li>Új <code>_inputReader</code> és <code>_resultWriter</code> tagok, valamint ezek inicializálása a konstruktorban.</li>
+<li>Run függvényben <code>_inputReader</code> és <code>_resultWriter</code> használata.</li>
+</ul>
+</li>
+</ul>
+<p>Az <code>Anonymizer</code> osztályunk átláthatóbb is lett: jobban követi az SRP elvet, két felelősségi kör kiszervezésre került belőle.</p>
+<details class="note">
+<summary>Megoldás osztálydiagram</summary>
+<p>Az alábbi UML osztálydiagram illusztrálja a Strategy alapú megoldásunkat (Main.cd diagram a projektben):</p>
+<p><a class="glightbox" href="images\strategy-full.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Megoldás osztálydiagram" src="images\strategy-full.png" /></a></p>
+</details>
+<p>A következő lépés egységtesztek készítése az <code>Anonymizer</code> osztályhoz. Ehhez olyan mock strategy implementációkat kell bevezetni, melyek nemcsak tesztadatokat szolgáltatnak, hanem ellenőrzéseket is végeznek (adott logikai egység valóban jól működik-e). Ez most bonyolultnak hangzik, de szerencsére a legtöbb modern keretrendszerben van rá könyvtár támogatás (.NET-ben a <a href="https://github.com/devlooped/moq">moq</a>). Ennek alkalmazása túlmutat a tárgy keretein, így a feladatunk egységtesztelhetőséghez kapcsolódó vonulatát ebben a pontban lezárjuk.</p>
+<h2 id="10-megoldas-6-delegatesandlambdasdelegatesandlambdas-1-progress">10. Megoldás (6-DelegatesAndLambdas/DelegatesAndLambdas-1-Progress)<a class="headerlink" href="#10-megoldas-6-delegatesandlambdasdelegatesandlambdas-1-progress" title="Permanent link">&para;</a></h2>
+<p>Napjainkban rohamosan terjed a korábban szigorúan objektumorientált nyelvekben is a funkcionális programozást támogató eszközök megjelenése, és az alkalmazásfejlesztők is egyre nagyobb szeretettel alkalmazzák ezeket. Egy ilyen eszköz C# nyelven a delegate (és ehhez kapcsolódóan a lambda kifejezés).</p>
+<p>Mint a félév során korábban láttuk, delegate-ek segítségével olyan kódot tudunk írni, melybe bizonyos logikák/viselkedések nincsenek beégetve, ezeket "kívülről" kap meg a kód. Pl. egy sorrendező függvénynek delegate formájában adjuk át paraméterként, hogyan kell két elemet összehasonlítani, vagy mely mezője/tulajdonsága szerint kell az összehasonlítást elvégezni (így végső soron meghatározni a kívánt sorrendet).</p>
+<p>Ennek megfelelően a delegate-ek alkalmazása egy újabb alternatíva (a Template Method és a Strategy mellett) a kód újrafelhasználhatóvá/kiterjeszthetővé tételére, kiterjesztési pontok bevezetésére.</p>
+<p>A következő lépésben a korábban Strategy mintával megvalósított progress kezelést alakítjuk át delegate alapúra (új funkciót nem vezetünk be, ez egy plusztán "technikai" átalakítás lesz).</p>
+<div class="grid cards">
+<ul>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a0.svg" title=":warning:" /> <strong>A megoldás alapelve</strong><br />
+<em>A delegate alapú megoldás alapelve nagyon hasonlít a Strategy-hez: csak nem strategy-ket kap és tárol az osztály tagváltozókban (interfész hivatkozásokon keresztül), hanem delegate-eket, és az ezek által hivatkozott függvényeket hívja a kiterjesztési pontokban.</em></li>
+</ul>
+</div>
+<p>A "6-DelegatesAndLambdas" mappa "DelegatesAndLambdas-0-Begin" projektjéből indulunk ki. Ez a korábbi, négy aspektus mentén Strategy mintával már kiterjeszthetővé tett megoldás. Lépések:</p>
+<ol>
+<li>Az <code>IProgress</code> interfészt, pontosabban annak <code>Report</code> műveletét váltjuk ki delegate használattal. Ne vezessünk be saját delegate típust, használjuk a .NET által biztosított <code>Action</code> és <code>Func</code> (generikus) típusokat. A <code>Report</code> <code>void</code>-dal tér vissza, és két <code>int</code> paramétere van: ez egy <code>Action&lt;int, int&gt;</code> típussal váltható ki, ezt fogjuk az alábbiakban használni.</li>
+<li>
+<p>Az <code>Anonymizer</code> osztályban a strategy tag lecserélése delegate-re:</p>
+<del class="critic block">
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IProgress</span><span class="w"> </span><span class="n">_progress</span><span class="p">;</span>
+</code></pre></div>
+</del>
+<p>helyett:</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">Action</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_reportProgress</span><span class="p">;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Az <code>Anonymizer</code> osztályban a konstruktorban a strategy interfész lecserélése delegate-re:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">Anonymizer</span><span class="p">(...,</span><span class="w"> </span><span class="n">Action</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">reportProgress</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// If reportProgress is null, use a lambda function that does nothing (has an empty body)</span>
+<span class="w">    </span><span class="n">_reportProgress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reportProgress</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="p">((</span><span class="w"> </span><span class="n">_</span><span class="p">,</span><span class="w">  </span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Itt egy picit "trükköztünk" is (de ez az "alapok" tekintetében lényegtelen): ha a függvény null action-t kap, akkor a <code>_reportProgress</code> tagváltozót egy üres törzsű (semmit nem csináló) függvényre állítjuk egy lambda kifejezéssel, hogy a <code>_reportProgress</code> soha ne legyen <code>null</code>, ne kelljen <code>null</code> vizsgálatot végezni a használatakor.</p>
+<p>Azt pedig szabadon eldönthetjük, adunk-e <code>null</code> alapértelmezett értéket a <code>reportProgress</code> paraméternek (a fenti példában nem adtunk).</p>
+</li>
+<li>
+<p>A Run műveletben a strategy lecserélése delegate hívásra:</p>
+<del class="critic block">
+<div class="highlight"><pre><span></span><code><span class="n">_progress</span><span class="p">.</span><span class="n">Report</span><span class="p">(</span><span class="n">persons</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+</code></pre></div>
+</del>
+<p>helyett:</p>
+<div class="highlight"><pre><span></span><code><span class="n">_reportProgress</span><span class="p">(</span><span class="n">persons</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+</code></pre></div>
+</li>
+<li>
+<p>A <code>Program.cs</code>-ben az <code>Anonymizer</code> példányosításakor negyedik paraméterben már nem egy <code>IProgress</code> implementációt kell átadni, hanem egy <code>Action&lt;int, int&gt;</code>-tel kompatibilis függvényt. A <code>SimpleProgress</code> esetében a <code>Report</code> egy egyszerű, egysoros függvény, adjuk ezt meg egy lambda kifejezés formájában:</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="n">Anonymizer</span><span class="w"> </span><span class="n">a1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">(</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">CsvInputReader</span><span class="p">(</span><span class="n">inputFileName</span><span class="p">),</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">CsvResultWriter</span><span class="p">(</span><span class="n">outputFileName</span><span class="p">),</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">NameMaskingAnonymizerAlgorithm</span><span class="p">(</span><span class="s">&quot;***&quot;</span><span class="p">),</span>
+<span class="hll"><span class="w">    </span><span class="p">(</span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;{index + 1}. person processed&quot;</span><span class="p">)</span>
+</span><span class="w">    </span><span class="n">a1</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
+</code></pre></div>
+<p>A lambda törzse pontosan ugyanaz, mint a <code>SimpleProgress</code> esetében volt!</p>
+</li>
+<li>
+<p>Mostantól nincs szükség a progress kezeléshez kapcsolódó strategy interfészre és implementációkra!</p>
+<ul>
+<li>Töröljük az ezeket tartalmazó <code>Progresses</code> mappát a solutionből (jobb katt rajta a Solution Explorerben, majd <code>Delete</code> menü). Megjegyzés: Ezzel ugyan kitöröltük a százalék progress logikát is, erre még majd visszatérünk rövidesen.</li>
+<li>Töröljük az <code>Anonymizer.cs</code>-ben a <code>using Lab_Extensibility.Progresses;</code> sort, hiszen ez a névtér a fenti törléssel megszűnt.</li>
+</ul>
+</li>
+</ol>
+<p>De általánosságában a helyzet nem ilyen egyszerű. Amennyiben az Anonymizer létrehozásakor a <code>reportProgress</code> delegate-nek mindig más és más implementációt adunk meg, akkor ez a lambda alapú megoldás tökéletes. Viszont mi a helyzet akkor, ha a fenti példában szereplő "simple progress" logikát több helyen, több <code>Anonymizer</code> objektumnál is fel szeretnénk használni? Súlyos hiba lenne a
+<code>(count, index) =&gt; Console.WriteLine($"{index + 1}. person processed")</code>
+lambda kifejezést copy-paste-tel "szaporítani", kódduplikációhoz vezetne (ellentmondana a Do Not Repeat Yourself, röviden DRY elvnek).</p>
+<p>Kérdés: van-e megoldás arra, hogy delegate-ek esetében is újrafelhasználható kódot adjunk meg? Természetesen igen, hiszen delegate-ek esetében nem kötelező a lambda kifejezések használata, lehet velük közönséges műveletekre (akár statikus, akár nem statikusakra is), mint azt korábban a félév során láttuk, és számos esetben alkalmaztuk is.</p>
+<p>Amennyiben a "simple progress" és/vagy "percent progress" logikát/logikákat újrafelhasználhatóvá szeretnénk tenni, tegyük ezeket egy külön függvényekbe valamilyen, az adott esetben leginkább passzoló osztályba/osztályokba, és egy ilyen  műveletet adjuk meg az <code>Anonymizer</code> konstruktornak paraméterként:</p>
+<p>A következőkben ugorjuk az ennek megfelelően átalakított kész, "DelegatesAndLambdas-1-Progress" projektben található megoldásra:</p>
+<ul>
+<li>
+<p>A "simple progress" és "percent progress" logikákat egy <code>AllProgresses</code> nevű statikus osztály két statikus műveletében valósítottuk meg:</p>
+<details class="example">
+<summary>AllProgresses.cs</summary>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">AllProgresses</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ReportPercent</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">percentage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)((</span><span class="kt">double</span><span class="p">)(</span><span class="n">index</span><span class="o">+</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">100</span><span class="p">);</span>
+
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Console</span><span class="p">.</span><span class="n">GetCursorPosition</span><span class="p">();</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">SetCursorPosition</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">.</span><span class="n">Top</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">$&quot;Processing: {percentage} %&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ReportSimple</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;{index + 1}. person processed&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>A <code>Program.cs</code> fájlban az <code>Anonymizer a2</code> objektum esetében az <code>AllProgresses.ReportPercent</code>-et adtuk meg paraméternek:</p>
+<details class="example">
+<summary>Program.cs</summary>
+<div class="highlight"><pre><span></span><code><span class="n">Anonymizer</span><span class="w"> </span><span class="n">a2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">(</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">CsvInputReader</span><span class="p">(</span><span class="n">inputFileName</span><span class="p">),</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">CsvResultWriter</span><span class="p">(</span><span class="n">outputFileName</span><span class="p">),</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">NameMaskingAnonymizerAlgorithm</span><span class="p">(</span><span class="s">&quot;***&quot;</span><span class="p">),</span>
+<span class="hll"><span class="w">    </span><span class="n">AllProgresses</span><span class="p">.</span><span class="n">ReportPercent</span><span class="p">);</span>
+</span><span class="n">a2</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
+</code></pre></div>
+</details>
+</li>
+</ul>
+<h3 id="a-megoldas-erekelese">A megoldás érékelése<a class="headerlink" href="#a-megoldas-erekelese" title="Permanent link">&para;</a></h3>
+<p>Elkészültünk, értékeljük a megoldást:</p>
+<ul>
+<li>Kijelenthető, hogy a delegate alapú megoldás a Strategy-nél kisebb ceremóniával járt: nem kellett interfészt és
+implementációs osztályokat bevezetni (a beépített <code>Action</code> és <code>Func</code> generikus delegate típusokat tudtuk használni).</li>
+<li>A teljesen "eseti" logikát lambda kifejezés formájában legegyszerűbb megadni. Ha újrafelhasználható logikára van szükség, akkor viszont vezessünk be "hagyományos", újrafelhasználható függvényeket.</li>
+</ul>
+<p>Hogy mikor érdemesebb delegate-ekkel dolgozni, illetve a Strategy mintával, alább, az útmutató végén a <a href="#kiterjesztesi-technikak-attekintese">Kiterjesztési technikák áttekintése</a> fejezetben foglaljuk össze.</p>
+<h2 id="osszegzes">Összegzés<a class="headerlink" href="#osszegzes" title="Permanent link">&para;</a></h2>
+<h3 id="a-munkafolyamatunk-attekintese">A munkafolyamatunk áttekintése<a class="headerlink" href="#a-munkafolyamatunk-attekintese" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A változó igények során organikusan jelentek meg tervezési minták, és vetettünk be egyéb technikákat a refaktorálások során. Ez teljesen természetes, a gyakorlatban is sokszor így dolgozunk.</li>
+<li>Egy komplexebb feladat esetében egyébként is sokszor - különösen ha nem rendelkezünk sokéves tapasztalattal - egy egyszerűbb implementációval indulunk (ezt látjuk át elsőre), és alakítjuk át olyanra, hogy az adott kontextusban kívánt kiterjeszthetőségi/újrafelhasználhatósági paraméterekkel rendelkezzen.</li>
+</ul>
+<h3 id="ujrafelhasznalhatosagi-es-kiterjeszthetoseg-szintjei-az-egyes-megoldasokban">Újrafelhasználhatósági és kiterjeszthetőség szintjei az egyes megoldásokban<a class="headerlink" href="#ujrafelhasznalhatosagi-es-kiterjeszthetoseg-szintjei-az-egyes-megoldasokban" title="Permanent link">&para;</a></h3>
+<p>Megpróbálhatjuk ábrába önteni, hogy vált a megoldásunk az egyes iterációkkal egyre inkább újrafelhasználhatóvá és kiterjeszthetővé:</p>
+<p><a class="glightbox" href="images/extensibility-levels.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Kiterjeszthetőség és újrafelhasználhatóság szintjei" src="images/extensibility-levels.png" /></a></p>
+<p>Természetesen a % szinteket nem szabad túl komolyan venni. Mindenesetre a fejlődés jól megfigyelhető.</p>
+<details class="note">
+<summary>Miért "csak" 70%-os a végső megoldásnál mutatónk?</summary>
+<p>Felmerülhet a kérdés, miért adunk jelem megoldásra kb. 70%-ot? Többek között:</p>
+<ul>
+<li>Az <code>Anonymizer</code> osztályba az adattisztítás módja mereven be van égetve (trimmelés adott oszlopra adott módon).</li>
+<li>Nem követtünk egy nagyon fontos általános alapelvet: a UI és a logika különválasztását. A kódunk több pontban konzolra ír, így például egy grafikus felülettel nem használható!</li>
+<li>Bizonyos az anonimizáló algoritmusaink nagyon specifikusak. Lehetne olyan általánosabb algoritmusokat készíteni, melyek tetszőleges mezőket kicsillagoznak (nem csak a nevet beégetetten), illetve tetszőleges mezőket sávosítanak (nem csak az életkort).</li>
+<li>Jelen megoldás csak <code>Person</code> objektumokkal tud működni.</li>
+<li>Nem lehet egyszerre alkalmazni kombinálni különböző anonimizáló algoritmusokat.</li>
+</ul>
+</details>
+<h3 id="kiterjesztesi-technikak-attekintese">Kiterjesztési technikák áttekintése<a class="headerlink" href="#kiterjesztesi-technikak-attekintese" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Template Method</strong>: Egyszerű esetben, ha a viselkedések különböző aspektusainak nem kell sok keresztkombinációját támogatni, nagyon kényelmes és egyszerű megoldást ad, különösen, ha egyébként is kell használjuk a származtatást. De nem, vagy csak nehezen egységtesztelhető alaposztályt eredményez.</li>
+<li><strong>Strategy</strong>: Nagyon rugalmas megoldást biztosít, és nem vezet kombinatorikus robbanáshoz, ha több aspektus mentén kell az osztályt kiterjeszteni, és több keresztkombinációban is szeretnénk ezeket használni. Sok esetben csak azért alkalmazzuk, hogy az osztályunkról interfészek segítségével leválasszuk a függőségeit, és így egységtesztelhetővé tegyük az osztályunkat.</li>
+<li><strong>Delegate/lambda</strong>: Ez a megközelítés kisebb ceremóniával jár, mint a Strategy alkalmazása, ugyanis nincs szükség interfészek és implementációs osztályok bevezetésére, emiatt egyre inkább (rohamosan) terjed a használata a modern objektumorientált nyelvekben is. Különösen akkor jönnek ki az előnyei, ha a viselkedéseket nem akarjuk újrafelhasználhatóvá tenni (mert ekkor csak egy-egy lambda kifejezéssel megadjuk ezeket, mindenféle új osztályok/külön függvények bevezetése nélkül). </li>
+</ul>
+<p>Érdemes összeszedni, hogy a Strategy-nek mikor lehet/van van előnye a delegate-ekkel szemben:</p>
+<ul>
+<li>Ha kiterjesztendő osztály adott aspektusához több (minél több, annál inkább) művelet tartozik. Ilyenkor a strategy interfész ezeket "magától" szépen összefogja, csoportosítja (mint a példánkban az <code>IAnonymizerAlgorithm</code> interfész az <code>Anonymize</code> és <code>GetAnonymizerDescription</code> műveleteket). Ezek értelemszerűen az interfész implementációkban is együtt jelennek meg (delegate-ek esetében nincs ilyen csoportosítás). Ez átláthatóbbá teheti, sok művelet esetén egyértelműen azzá is teszi a megoldást.</li>
+<li>Az adott nyelv pusztán objektumorientált, nem támogatja a delegate/lambda alkalmazását. De ma már a legtöbb modern OO nyelv szerencsére támogatja valamilyen formában (Java és C++ is).</li>
+<li>
+<p>A strategy implementációk a tagváltozóikban állapotot is tudnak tárolni, melyet létrehozásukkor meg tudunk adni. Ezt használtuk is (a <code>NameMaskingAnonymizerAlgorithm</code> esetében ilyen volt a <code>_mask</code>, a <code>AgeAnonymizerAlgorithm</code> esetében a <code>_rangeSize</code>). Ez nem azt jelenti, hogy ilyen esetben egyáltalán nem tudunk delegate-eket használni, hiszen:</p>
+<ul>
+<li>ezeket az adatokat akár újonnan bevezetett függvény paraméterben is átadhatjuk az egyes delegate hívások során,</li>
+<li>illetve, lambda használata esetén a "variable capture" mechanizmus segítségével a lambda függvények tudnak állapotot átvenni környezetükből.</li>
+</ul>
+<p>De ezek a megoldások nem mindig alkalmazhatók, vagy legalábbis körülményes lehet az alkalmazásuk.</p>
+</li>
+</ul>
+<p>Mindenképpen meg kell említeni, hogy nem csak jelen gyakorlatban említett néhány minta szolgálja a kiterjeszthetőséget és újrafelhasználhatóságot, hanem gyakorlatilag az összes. Most kiemeltünk párat, melyek (még p. az Observert/Iteratort/Adaptert ide sorolva) talán a leggyakrabban, legszélesebb körben alkalmazhatók és bukkannak is fel keretrendszerekben.</p>
+
+  <hr>
+<div class="md-source-file">
+  <span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg
+        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z">
+        </path>
+      </svg>
+    </span>
+    <span title="2024. január 26. 12:49:14">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-26T12:49:14+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-26</span>
+    </span>
+  </span>
+
+  
+
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Szerzők">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z">
+        </path>
+      </svg>
+    </span>
+    <span>Szerzők</span>
+    <nav><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@bzolka">
+        <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
+      </a></nav>      
+  </span>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Vissza a tetejére
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; BME VIK AUT
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+        <script src="../../js/timeago.min.js"></script>
+      
+        <script src="../../js/timeago_mkdocs_material.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
