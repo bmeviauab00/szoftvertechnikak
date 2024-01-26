@@ -3,7 +3,7 @@
 Utolsó módosítás ideje: 2022.10.15  
 Kidolgozta: Benedek Zoltán
 
-A fejezet nem tartalmaz feladatot, a hallgatók számára ismerteti a kapcsoló elméletet.
+A fejezet nem tartalmaz feladatot, a hallgatók számára ismerteti a kapcsolódó elméletet.
 
 ## Bevezető
 
@@ -147,4 +147,4 @@ A leglazább kapcsolatot jelenti osztályok között. Példa:
 ![Dependency](images/dependency.png)
 
 A jelentése: a `Window` osztály függ a `Graphics` osztálytól. Vagyis, ha a `Graphics` osztály megváltozik, akkor lehet, hogy a Window osztályt is meg kell változtatni.
-Ezt a kapcsolattípust akkor szoktuk használni, ha a függőségi kapcsolat elején levő osztály metódusai paraméterlistájában/visszatérési értékében szerepel a kapcsolat végén levő osztály. A példában a Window osztály onDraw művelete paraméterként megkapja a Graphics osztály egy objektumát, így függ tőle, hiszen a metódus törzsében így meg tudja hívni a `Graphics` osztály metódusait. Ha pl. a `Graphics` osztály `FillRect` metódusának nevét megváltoztatjuk, akkor ezt a változást át kell vezetni a hívások helyén, vagyis a Window osztály onDraw metódusának törzsében is.
+Ezt a kapcsolattípust akkor szoktuk használni, ha a függőségi kapcsolat elején levő osztály metódusai paraméterlistájában/visszatérési értékében szerepel a kapcsolat végén levő osztály. A példában a `Window` osztály `onDraw` művelete paraméterként megkapja a `Graphics` osztály egy objektumát, így függ tőle, hiszen a metódus törzsében így meg tudja hívni a `Graphics` osztály metódusait. Ha pl. a `Graphics` osztály `FillRect` metódusának nevét megváltoztatjuk, akkor ezt a változást át kell vezetni a hívások helyén, vagyis a `Window` osztály onDraw metódusának törzsében is.

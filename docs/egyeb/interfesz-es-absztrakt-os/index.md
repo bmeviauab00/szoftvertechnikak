@@ -3,7 +3,7 @@
 Utolsó módosítás ideje: 2022.10.15  
 Kidolgozta: Benedek Zoltán
 
-A fejezet nem tartalmaz feladatot, a hallgatók számára ismerteti a kapcsoló elméletet.
+A fejezet nem tartalmaz feladatot, a hallgatók számára ismerteti a kapcsolódó elméletet.
 
 ## Absztrakt osztály
 
