@@ -1,0 +1,10 @@
+{
+  version: 1,
+  mediaFileName: 'progress-percent.mp4',
+  cutSegments: [
+    {
+      end: 3,
+      name: '',
+    },
+  ],
+}
