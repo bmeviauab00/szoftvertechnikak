@@ -162,14 +162,14 @@ Jelenleg ezt a szolgáltatást **Tranziens** élettartamúként regisztráltuk, 
 Következő lépésben a ViewModel állapotát implementáljuk.
 
 A `MainViewModel`-ben hozzunk létre egy `_recipeGroups` nevű `List<RecipeGroup>` változót, amelyben tárolni fogjuk a recept csoportokat. A változót attributáljuk fel a `ObservableProperty` attribútummal, ami alapján az MVVM Toolkit automatikusan generálni fogja a `RecipeGroups` nevű property-t az osztály másik generált partial felében.
-Ez a generált property kihasználja az `INotidyPropertyChanged` interfészt, így a `RecipeGroups` property értékének megváltozásakor a `PropertyChanged` eseményt kiváltva értesíti a nézetet, hogy frissítse magát.
+Ez a generált property kihasználja az `INotifyPropertyChanged` interfészt, így a `RecipeGroups` property értékének megváltozásakor a `PropertyChanged` eseményt kiváltva értesíti a nézetet, hogy frissítse magát.
 
 ```csharp
 [ObservableProperty]
 private List<RecipeGroup>? _recipeGroups = new();
 ```
 
-A `MainViewModel` implementálja az előkészített `INavigationAware` interfészt, amelynek segítségével a nézetek közötti navigáció során tudunk adatokat átadni a ViewModel-ek között. A `OnNavigatedTo` metódusban kérdezzük le a recept csoportokat a `RecipeService`-en keresztül, majd tároljuk el a `RecipeGroups` változóban.
+A `MainViewModel` implementálja az előkészített `INavigationAware` interfészt, amelynek segítségével a nézetek közötti navigáció során tudunk adatokat átadni a ViewModel-ek között. A `OnNavigatedTo` metódusban kérdezzük le a recept csoportokat az `IRecipeService`-en keresztül, majd tároljuk el a `RecipeGroups` változóban.
 
 ```csharp
 public partial class MainViewModel : ObservableRecipient, INavigationAware
@@ -189,12 +189,15 @@ public partial class MainViewModel : ObservableRecipient, INavigationAware
 
 ## Főoldal nézet
 
-A `MainPage`-en készítsük el a nézetet, amelyen megjelenítjük a recept csoportokat. A nézetet a `MainPage.xaml` fájlban hozzuk létre, amelynek kódja a következő legyen:
+A `MainPage`-en készítsük el a nézetet, amelyen megjelenítjük a recept csoportokat.
 
-Ahhoz, hogy a csoportosítást kezelni tudja a GridView, szükségünk van egy olyan listára, ami elvégzi a coportosítást. Ezt a `CollectionViewSource` osztály segítségével tudjuk megvalósítani. A `CollectionViewSource`-nak meg kell adnunk a csoportosítandó elemeket, valamint azt, hogy a csoportokat milyen property alapján hozza létre. A `CollectionViewSource`-nak meg kell adnunk azt is, hogy a csoportokon belül milyen property alapján jelenítse meg az elemeket.
-Ezt a `CollectionViewSource` `View` propertijét kössük a `GridView` `ItemsSource` property-jére.
+Ahhoz, hogy a csoportosítást kezelni tudja a `GridView`, szükségünk van egy olyan listára, ami elvégzi a csoportosítást.
+Ezt a `CollectionViewSource` osztály segítségével tudjuk megvalósítani, ami bizonyos szempontból UI specifikus burkoló feladatokat lát el.
+A `CollectionViewSource`-nak meg kell adnunk a csoportosítandó elemeket, valamint azt, hogy a csoportokat milyen property alapján hozza létre.
+Továbbá meg kell adnunk azt is, hogy a csoportokon belül milyen property alapján jelenítse meg az elemeket.
+A `CollectionViewSource` `View` property-jét kössük a `GridView` `ItemsSource` property-jére.
 
-A `GridView`-en belül a `GridView.ItemTemplate` property-n keresztül tudjuk megadni, hogy az egyes elemeket hogyan kell megjeleníteni. A `GridView`-en belül a `GridView.GroupStyle` property-n keresztül tudjuk megadni, hogy a csoportokat hogyan kell megjeleníteni.
+A `GridView`-en belül a `GridView.ItemTemplate` property-n keresztül tudjuk megadni, hogy az egyes elemeket hogyan kell megjeleníteni. A `GridView`-n belül a `GridView.GroupStyle` property-n keresztül tudjuk megadni, hogy a csoportokat hogyan kell megjeleníteni.
 
 ```xml
 <Page.Resources>
@@ -260,12 +263,12 @@ A receptek részletes oldalának elkészítése a következő lépésekből fog 
 1. Kiegészítjük az `IRecipeService` interfészt egy `GetRecipeAsync` metódussal és létrehozzuk a szükséges osztályokat
 1. Létrehozzuk a `RecipeDetailViewModel` ViewModel-t, amiben lekérdezzük a recept adatait a `RecipeDetailViewModel`-ben az `IRecipeService`-en keresztül
 1. Létrehozzuk a `RecipeDetailPage` nézetet, építve a ViewModel adataira
-1. Regisztráljuk a ViewModel-t és a nézetet a Dependency Injectionhöz és a navigációhoz
+1. Regisztráljuk a ViewModel-t és a nézetet a Dependency Injection konfigurációhoz és a navigációhoz
 1. Navigálunk a `RecipeDetailPage`-re a `MainViewModel`-ből az `INavigationService`-en keresztül, ha egy receptre kattintunk, és átadjuk a kiválasztott recept azonosítóját (vagy recept fejlécet)
 
 ### Recept lekérdezése
 
-Generáljuk le a `Recipe` osztályt a `/api/recipes/{id}` végpont által visszaadott példa JSON adatokból, a fenti módszerrel. A `Recipe` osztályt a `MvvmLab.Core.Model` névtérbe hozzuk létre.
+Generáljuk le a `Recipe` osztályt a `MvvmLab.Core.Model` névtérbe a `/api/recipes/{id}` végpont által visszaadott példa JSON adatokból, a fenti módszerrel.
 
 ```csharp
 public class Recipe
@@ -298,7 +301,7 @@ public class StoresNearby
 }
 ```
 
-A `IRecipeService` interfészt egészítsük ki egy `GetRecipeAsync` metódussal, amely egy receptet ad vissza az azonosítója alapján.
+A `IRecipeService` interfészt egészítsük ki egy `GetRecipeAsync` metódussal, ami egy receptet ad vissza az azonosítója alapján.
 
 ```csharp
 public Task<Recipe> GetRecipeAsync(int id);
@@ -316,7 +319,9 @@ public async Task<Recipe> GetRecipeAsync(int id)
 
 ### Recept részletes ViewModel
 
-Hozzuk létre a `RecipeDetailViewModel` osztályt az `MvvmLab.ViewModels` mappában. A ViewModel-nek szüksége lesz egy `IRecipeService` interfészt implementáló osztályra, amelyen keresztül le tudja kérdezni a receptet. A `RecipeDetailViewModel` konstruktorában dependency injection segítségével szerezzük be a szükséges függőséget.
+Hozzuk létre a `RecipeDetailViewModel` osztályt az `MvvmLab.ViewModels` mappában.
+
+A ViewModel-nek szüksége lesz egy `IRecipeService` interfészt implementáló osztályra, amelyen keresztül le tudja kérdezni a receptet. A `RecipeDetailViewModel` konstruktorában DI segítségével szerezzük be a szükséges függőséget.
 
 ```csharp
 private readonly IRecipeService _recipeService;
@@ -327,15 +332,21 @@ public RecipeDetailViewModel(IRecipeService recipeService)
 }
 ```
 
-A `RecipeDetailViewModel`-ben hozzunk létre egy `_recipe` nevű `Recipe` változót, amelyben tárolni fogjuk a receptet. A változót attributáljuk fel a `ObservableProperty` attribútummal, ami alapján az MVVM Toolkit automatikusan generálni fogja a `Recipe` nevű property-t az osztály másik generált partial felében.
+A `RecipeDetailViewModel`-ben hozzunk létre egy `_recipe` nevű `Recipe` típusú változót, amelyben tárolni fogjuk a receptet.
+A változót attributáljuk fel a `ObservableProperty` attribútummal, ami alapján az MVVM Toolkit automatikusan generálni fogja a `Recipe` nevű property-t az osztály másik generált partial felében.
+Ehhez szükséges, hogy az osztály az `ObservableObject` osztályból származzon, és `partial` kulcsszóval legyen jelölve.
 
 ```csharp
-[ObservableProperty]
-private Recipe? _recipe = new();
+public partial class RecipeDetailViewModel : ObservableObject
+{
+    // ...
+
+    [ObservableProperty]
+    private Recipe? _recipe = new();
 ```
 
-A `RecipeDetailViewModel` implementálja az előkészített `INavigationAware` interfészt, amelynek segítségével a nézetek közötti navigáció során tudunk adatokat átadni a ViewModel-ek között.
-Arra készülünk, hogy a navigáció paraméterek a recept azonosítóját fogjuk megkapni.
+Implementáljuk a `RecipeDetailViewModel`-ben az előkészített `INavigationAware` interfészt.
+Arra készülünk, hogy a navigációs paraméterként a recept azonosítóját fogjuk megkapni.
 A `OnNavigatedTo` metódusban kérdezzük le a receptet a `RecipeService`-en keresztül, majd tároljuk el a `Recipe` változóban.
 
 ```csharp
@@ -354,9 +365,9 @@ public partial class RecipeDetailViewModel : ObservableRecipient, INavigationAwa
 }
 ```
 
-### Recept részletes nézet navigáció
+### Recept részletes nézet, navigáció
 
-A `RecipeDetailPage`-en készítsük el a nézetet, amelyen megjelenítjük a receptet. A nézetet a `RecipeDetailPage.xaml` fájlban hozzuk létre. Első körben csak a recept címét jelenítsük meg egy `TextBlock`-ban.
+A `RecipeDetailPage`-en készítsük el a nézetet, amelyen megjelenítjük a receptet. Első körben csak a recept címét jelenítsük meg egy `TextBlock`-ban.
 
 ```xml
 <Grid x:Name="ContentArea">
@@ -372,6 +383,7 @@ A `RecipeDetailPage`-en készítsük el a nézetet, amelyen megjelenítjük a re
 ```
 
 A `Services` mappában lévő `PageService`-ben regisztráljuk be a `RecipeDetailPage`-et a navigációhoz.
+Erre azért van szükség, mert a projekt sablonban lévő `INavigationService` alapvetően egy kulccsal azonosítja a nézeteket, hogy a ViewModel-ben ne legyen szükség a nézet típusának ismeretére.
 
 ```csharp
 Configure<RecipeDetailViewModel, RecipeDetailPage>();
