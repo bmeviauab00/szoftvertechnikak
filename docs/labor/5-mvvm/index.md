@@ -737,6 +737,6 @@ Text="{x:Bind ViewModel.NewCommentText, Mode=TwoWay, UpdateSourceTrigger=Propert
 
 Próbáljuk ki.
 
-## Vissza a főoldalra
+## Kitekintés: Vissza a főoldalra
 
 TBD
