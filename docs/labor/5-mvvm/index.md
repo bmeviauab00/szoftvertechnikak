@@ -4,8 +4,6 @@ authors: tibitoth
 
 # 5. MVVM
 
-A labor során egy recept böngésző alkalmazást fogunk készíteni, amelyben alkalmazzuk az MVVM tervezési mintát.
-
 ## A gyakorlat célja
 
 A labor során egy recept böngésző alkalmazást fogunk készíteni, amelyben alkalmazzuk az MVVM tervezési mintát.
@@ -25,8 +23,6 @@ Klónozzuk le a kiinduló projektet az alábbi paranccsal:
 ```cmd
 git clone https://github.com/bmeviauab00/lab-mvvm-kiindulo
 ```
-
-## Megoldás
 
 ??? success "A kész megoldás letöltése"
     :exclamation: Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, tilos (és értelmetlen) a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.
@@ -51,24 +47,47 @@ Az MVVM minta három fő részből áll:
 
 ## 0. Feladat - Projekt felépítése
 
-TBD
+Az alkalmazás váza már elő van készítve. Tekintsük át a projekt felépítését.
+
+Az `MvvmLab` a futtatható projekt, amely WinUI keretrendszer használ a megjelenítési rétegében a már tanult XAML nyelvvel. Az `MvvmLab.Core` projekt a teljesen nézet független üzleti logikákat tartalmazza.
+
+Ami számunkra fontos a kiinduló projektben:
+
+* `App.xaml.cs`: Az alkalmazás belépési pontja, amely használja a modern .NET alkalmazásokban alkalmazott Host Builder és Dependency Injection mintákat. A félévnek ez nem az anyaga, de a függőség injektálásról még a labor során lesz szó.
+* `Views` mappa: Az alkalmazás nézeteit tartalmazza, jelenleg a `MainPage`-et
+* `ViewModels` mappa: Az alkalmazás ViewModel-jeit tartalmazza, jelenleg a `MainViewModel`-t
+* `INagivationSerive`: oldalak közötti navigációhoz használt szolgáltatás
+
+TODO többi felesleges részt kukázni a kiinduló projektből
+
+!!! tip "MVVM és Boilerplate könyvtárak"
+    MVVM mintát ritkán szoktunk kizárólag a .NET keretrendszerre támaszkodva implementálni. Érdemes használni valamilyen MVVM könyvtárat, amelyek segítségével a kódunk tömörebb, átláthatóbb, és kevesebb boilerplate kódot fog tartalmazni. A könyvtárak közül a legelterjedtebbek a következők:
+
+    * [MVVM Toolkit](https://learn.microsoft.com/en-us/dotnet/communitytoolkit/mvvm/): Microsoft által gondozott MVVM könyvtár
+    * [Prism](https://prismlibrary.com/): Régen Microsoft gondozásában állt és nagyon elterjedt volt, de már külső fejlesztők tartják karban és fizetős lett idő közben.
+    * [ReactiveUI](https://reactiveui.net/): A Reactive Extensions (Rx) könyvtárakat használja a ViewModel állapotának kezelésére, és a nézet és ViewModel közötti adatkötésre. Ez a könyvtár nyújtja a legtöbb szolgáltatást, de a legnehezebben tanulható is.
+    * [Uno.Extensions](https://platform.uno/uno-extensions/): MVVM Toolkitre épül, de több olyan szolgáltatást is tartalmaz, amelyek a WinUI keretrendszer hiányosságait pótolják.
+
+    A labor során a Microsoft által gondozott MVVM Toolkitet fogjuk használni.
+
+    A kiinduló projekt pedig a [Windows Template Studio](https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs) Visual Studio kiegészítő segítségével készült.
 
 ## 1. Feladat - Receptek főoldal
 
 A megoldás során "alulról", az adatok felől fogunk építkezni és fokozatosan fogunk eljutni a nézetig. Ugyan a való életben egy top-bottom fejlesztés gyakran hasznosabb, de a labor során az idő rövidsége miatt az alulról építkezés gyorsabb és egyszerűbb, mert így nem kell az adatokat mockolni.
 
-### Adatelérési szolgáltatás
+### 1.1 Adatelérési szolgáltatás
 
 Kezdjük az adatelérési réteggel, amit most tekinthetünk az MVVM mintában a modell rétegnek is.
 
-Az alkalmazásunk adatait egy webszerverről, REST API-n, HTTP-n keresztül éri el. Ez ehhez hasonló kliens-szerver architektúrájú alkalmazások egy kifejezetten gyakori megoldás a modern alkalmazások fejlesztése során. Erről bővebben a Mobil és Webes szoftverek, illetve az Adatvezérelt alkalmazások tárgyakban lesz szó. Most elég annyit tudni, hogy a kliens alkalmazásunk HTTP kéréseket fog küldeni a szervernek, amelyekre a szerver válaszolni fog. A kérések és válaszok formátuma JSON lesz.
+Az alkalmazásunk adatait egy webszerverről, REST API-n, HTTP-n keresztül éri el. Ez ehhez hasonló kliens-szerver architektúrájú alkalmazások egy kifejezetten gyakori megoldás a modern alkalmazások fejlesztése során. Erről bővebben a Mobil és Webes szoftverek, illetve az Adatvezérelt alkalmazások tárgyakban lesz szó. Most elég annyit tudni, hogy a kliens alkalmazásunk HTTP kéréseket fog küldeni a szervernek, amelyekre a szerver válaszolni fog JSON formátumban.
 
 <figure markdown>
 ![Kliens-szerver architektúra](images/client-server.drawio.png)
 <figurecation>Kliens-szerver architektúra<figurecaption>
 </figure>
 
-A távoli szolgáltatás a következő címen érhető el: <https://bmecookbook.azurewebsites.net>. A szolgáltatáshoz pedig tartozik egy OpenApi alapú dokumentáció a <https://bmecookbook.azurewebsites.net/swagger> címen. Tanulmányozzuk ezt át.
+A távoli szolgáltatás a következő címen érhető el: TODO <https://bmecookbook.azurewebsites.net>. A szolgáltatáshoz pedig tartozik egy OpenApi alapú dokumentáció a <https://bmecookbook.azurewebsites.net/swagger> címen. Tanulmányozzuk ezt át.
 Az első feladathoz a `/api/Recipes/Groups` végpontot fogjuk használni, amely a receptek csoportosítását adja vissza.
 
 Vegyünk fel az `MvvmLab.Core` projekt `Models` mappájába egy új osztályt `RecipeGroup` néven.
@@ -105,10 +124,12 @@ public interface IRecipeService
 }
 ```
 
+!!! tip "Task visszatérési érték"
+    Az interfészben szükséges a tényleges visszatérési értéket `List<RecipeGroup>` becsomagolni egy `Task<T>` objektumba, mivel a hálózati műveleteket aszinkron célszerű implementálni, így ennek a függvénynem is aszinkronnak kell lennie.
+
 Az interfész implementációját a `MvvmLab.Core.Services` névtérben hozzuk létre `RecipeService` néven.
 A szolgáltatásunk a `HttpClient` beépített .NET osztályt fogja használni a REST API hívásokhoz.
-A `GetFromJsonAsync` indít egy HTTP GET kérést a megadott címre, és a
-választ JSON formátumban deszerializálja a megadott típusra.
+A `GetFromJsonAsync` indít egy HTTP GET aszinkron kérést a megadott címre, és a választ JSON formátumból deszerializálja a megadott típusra.
 
 ```csharp
 public class RecipeService : IRecipeService
@@ -123,13 +144,25 @@ public class RecipeService : IRecipeService
 }
 ```
 
-### Főoldal ViewModel
+!!! tip "async-await"
+    Az `async` és `await` kulcsszavak a legtöbb modern nyelvben az aszinkron függvényhívás nyelvi szintű kezelésére szolgálnak. A működéséről még a félév végén lesz szó, de most a használathoz az alábbiakat érdemes tudni:
 
-Következő lépésben a főoldal ViewModeljét fogjuk elkészíteni, amely az előbb elkészített szolgáltatást fogja használni a recept csoportok lekérdezéséhez, és azt állapotként fogja tárolni a nézet számára.
+    * Az `await` kulcsszóval tudunk bevárni aszinkron végrehajtású műveletet, anélkül, hogy blokkolnánk a hívót.
+    * Az `await` kulcsszót, csak `async` kulcsszóval ellátott függvényekben használhatjuk.
+    * Az `async` függvényeknek csak `Task` vagy `Task<T>` vagy `void` visszatérési értékük lehet. (Illetve "Task szerű", de ezt nem itt vesszük.)
+        * Ha egy `async` függvényt kívülről be szeretnénk várni, akkor az voiddal nem tudjuk megtenni, mindenképpen `Task` vagy `Task<T>` visszatérési értékkel kell rendelkeznie.
+        * az `async` függvényekben a `return` utasítás szintaktikája megváltozik: nem a Task objektummal kell visszatérjünk, hanem az általa tartalmazott adattal (`Task` esetében `void`, `Task<T>` esetében `T`).
 
-Nyissuk meg a `MainViewModel` osztályt az `MvvmLab.ViewModels` mappából. A ViewModelünknek szüksége lesz egy `IRecipeService` interfészt implementáló osztályra, amelyen keresztül le tudja kérdezni a recept csoportokat.
+### 1.2 Főoldal ViewModel
+
+Következő lépésben a főoldal ViewModeljét fogjuk elkészíteni, amely az előbb elkészített szolgáltatást fogja használni a recept csoportok lekérdezéséhez, és állapotként tárolja azokat a nézet számára.
+
+#### Dependency Injection
+
+Nyissuk meg a `MainViewModel` osztályt az `MvvmLab.ViewModels` mappából.
+A ViewModelünknek szüksége lesz egy `IRecipeService` interfészt implementáló osztályra, amelyen keresztül le tudja kérdezni a recept csoportokat.
 A `MainViewModel` konstruktorában függőség injektáláson keresztül szerezzük be a szükséges függőséget.
-Esetünkben ez annyit tesz, hogy várunk egy `IRecipeService` típusú paramétert, amelyet majd a ViewModel példányosításakor fog megkapni, és a paramétert elmentjük egy privát változóba.
+Esetünkben ez annyit tesz, hogy várunk egy `IRecipeService` típusú paramétert, amelyet majd a ViewModel példányosításkor fog megkapni, a paramétert pedig elmentjük egy privát változóba.
 
 ```csharp
 private readonly IRecipeService _recipeService;
@@ -143,13 +176,21 @@ public MainViewModel(IRecipeService recipeService)
 ??? tip "Függőség Injektálás - Dependency Injection - DI"
     A függőség injektálás (dependency injection (DI)), egy modern alkalmazásokban elkerülhetetlen tervezési minta, ami az objektumok életciklusát szabályozza. 
 
-    Alap esetben az osztályok szoros csatolást alakítanak ki a függőségeikkel (referencia, példányosítás). Ez a szoros csatolás nehezíti a tesztelhetőséget, a karbantarthatóságot, és az újrafelhasználhatóságot.
+    Alapesetben az osztályok szoros csatolást alakítanak ki a függőségeikkel (referencia, példányosítás). Ez a szoros csatolás nehezíti a tesztelhetőséget, a karbantarthatóságot, és az újrafelhasználhatóságot.
     
+    <figure markdown>
     ![Without DI](images/without-di.png)
+    <figurecaption>Erős csatolás DI nélkül</figurecaption>
+    </figure>
 
-    A DI segítségével a függőségeket életciklusát egy kitüntetett kompoenes kezeli, a DI konténer. A DI konténer (ábrán Builder) felelős az osztályok példányosításáért, és a függőségek beinjektálásáért. A DI konténerben regisztrálni kell az osztályokat, amelyeket a DI konténer példányosítani fog. A példányosítás során pedig a függőségi gráfot bejárva beinjektálja a megfelelő implementációkat.
 
+    A DI segítségével a függőségek életciklusát egy kitüntetett komponens kezeli, a DI konténer. A DI konténer (ábrán Builder, néhol IoC konténer) felelős az osztályok példányosításáért, és a függőségek beinjektálásáért rekurzívan.
+    Ahhoz, hogy a példányosítás során a függőségi gráfot bejárva beinjektálja a megfelelő implementációkat a konténert, A DI konténerben regisztrálni kell az osztályokat.
+
+    <figure markdown>
     ![With DI](images/with-di.png)
+    <figurecaption>DI osztálydiagramm</figurecaption>
+    </figure>
 
 Ahhoz, hogy a Dependency Injection működjön, szükséges a `MainViewModel` osztályt regisztrálni az `App.xaml.cs` fájlban a `ConfigureServices` metódusban.
 
@@ -159,19 +200,23 @@ services.AddTransient<IRecipeService, RecipeService>();
 
 Jelenleg ezt a szolgáltatást **Tranziens** élettartamúként regisztráltuk, ami azt jelenti, hogy minden egyes `IRecipeService` függőség igényt egy új `RecipeService` példány fog kielégíteni.
 
-Következő lépésben a ViewModel állapotát implementáljuk.
+#### ViewModel állapot
 
-A `MainViewModel`-ben hozzunk létre egy `_recipeGroups` nevű `List<RecipeGroup>` változót, amelyben tárolni fogjuk a recept csoportokat. A változót attributáljuk fel a `ObservableProperty` attribútummal, ami alapján az MVVM Toolkit automatikusan generálni fogja a `RecipeGroups` nevű property-t az osztály másik generált partial felében.
-Ez a generált property kihasználja az `INotifyPropertyChanged` interfészt, így a `RecipeGroups` property értékének megváltozásakor a `PropertyChanged` eseményt kiváltva értesíti a nézetet, hogy frissítse magát.
+Következő lépésben a ViewModel állapotának feltöltését implementáljuk.
+
+A `MainViewModel`-ben hozzunk létre egy `_recipeGroups` nevű `List<RecipeGroup>` **változót**, amelyben tárolni fogjuk a recept csoportokat.
+A változót attributáljuk fel a `ObservableProperty` attribútummal, ami alapján az MVVM Toolkit automatikusan generálni fog egy `RecipeGroups` nevű property-t az osztály másik generált partial felében.
+Ez a generált property kihasználja az `INotifyPropertyChanged` interfészt, így a `RecipeGroups` property értékének megváltozásakor a `PropertyChanged` eseményt kiváltva értesíti a nézetet, az adatkötések mentén.
 
 ```csharp
 [ObservableProperty]
 private List<RecipeGroup>? _recipeGroups = new();
 ```
 
-A `MainViewModel` implementálja az előkészített `INavigationAware` interfészt, amelynek segítségével a nézetek közötti navigáció során tudunk adatokat átadni a ViewModel-ek között. A `OnNavigatedTo` metódusban kérdezzük le a recept csoportokat az `IRecipeService`-en keresztül, majd tároljuk el a `RecipeGroups` változóban.
+A `MainViewModel` implementálja az előkészített `INavigationAware` interfészt, amelynek segítségével a nézetek közötti navigációs életciklus eseményt tudjuk lekezelni, és akár adatokat is tudunk átadni a ViewModel-ek között.
+A `OnNavigatedTo` metódusban kérdezzük le a recept csoportokat az `IRecipeService`-en keresztül, majd tároljuk el a `RecipeGroups` változóban.
 
-```csharp
+```csharp hl_lines="7"
 public partial class MainViewModel : ObservableRecipient, INavigationAware
 {
     // ...
@@ -187,7 +232,7 @@ public partial class MainViewModel : ObservableRecipient, INavigationAware
 }
 ```
 
-## Főoldal nézet
+### 1.3 Főoldal nézet
 
 A `MainPage`-en készítsük el a nézetet, amelyen megjelenítjük a recept csoportokat.
 
@@ -195,9 +240,8 @@ Ahhoz, hogy a csoportosítást kezelni tudja a `GridView`, szükségünk van egy
 Ezt a `CollectionViewSource` osztály segítségével tudjuk megvalósítani, ami bizonyos szempontból UI specifikus burkoló feladatokat lát el.
 A `CollectionViewSource`-nak meg kell adnunk a csoportosítandó elemeket, valamint azt, hogy a csoportokat milyen property alapján hozza létre.
 Továbbá meg kell adnunk azt is, hogy a csoportokon belül milyen property alapján jelenítse meg az elemeket.
-A `CollectionViewSource` `View` property-jét kössük a `GridView` `ItemsSource` property-jére.
 
-A `GridView`-en belül a `GridView.ItemTemplate` property-n keresztül tudjuk megadni, hogy az egyes elemeket hogyan kell megjeleníteni. A `GridView`-n belül a `GridView.GroupStyle` property-n keresztül tudjuk megadni, hogy a csoportokat hogyan kell megjeleníteni.
+Hozzuk létre az oldal erőforrásai között a `CollectionViewSource` példányt.
 
 ```xml
 <Page.Resources>
@@ -206,7 +250,36 @@ A `GridView`-en belül a `GridView.ItemTemplate` property-n keresztül tudjuk me
                             ItemsPath="Recipes"
                             Source="{x:Bind ViewModel.RecipeGroups, Mode=OneWay}" />
 </Page.Resources>
+```
 
+!!! note
+    Vegyük észre, hogy az adatkötés során a `ViewModel` tulajdonsághoz kötünk, ami a `MainPage.xaml.cs`-ben található, és egyszerűem csak átkaszolja a DataContext property-t a ViewModel-re.
+
+    ```csharp
+    public MainViewModel ViewModel => DataContext as MainViewModel;
+    ```
+
+    Az, hogy a vezérlők (oldalak) `DataContext` tulajdonságában a ViewModel-t tároljuk tipikus az MVVM mintában. Esetünkben ezt a generált projekt `NavigationService` osztálya teszi meg nekünk.
+
+??? tip "Erőforrások"
+    XAML környezetben minden vezérlő (fenti példában Page) és az `Application` osztály is, rendelkezik egy `Resources` property-vel, ami egy kulcs érték tároló (`Dictionary<string, object>`), alap esetben. Ebbe tudunk többször felhasználható objektumokat rakni, akár alkalmazás szinten is. Ehhez az erőforrások példányosításakor megadjuk az `x:Key` attribútumot, akkor az erőforrásokat a kulcs alapján tudjuk lekérdezni pl.: a `{StaticResource Key}` markup extensionnel.
+
+    Mi viszont itt kifejezetten `x:Key` helyett `x:Name`-et adtunk meg, mert az `x:Bind`-ban név szerint tudunk hivatkozni változókra.
+
+A receptek listázásához, most egy speciális GridView leszármazott vezérlőt használjunk az `AdaptiveGridView`-t a [CommunityToolkit](https://learn.microsoft.com/en-us/windows/communitytoolkit/) csomagból, amely a nézet méretének megfelelően változtatja a megjelenített elemek számát és méretét, illetve támogatja a Command-okat az elem kattintás esetében. A külső vezérlők hivatkozásához vegyük fel az oldalra a következő névteret:
+
+```xml
+xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+```
+
+Készítsük el a GridView-t, amelynek a `ItemsSource` property-jét a fenti erőforrásban lévő `RecipeGroupsCollectionSource.View`-ra kötjük.
+
+A `GridView`-en belül a megszokott módon az `ItemTemplate` property-n keresztül tudjuk megadni, hogy az egyes elemeket hogyan kell megjeleníteni.
+Esetünkben egy képet és egy szöveget rakunk ki a recpetek címe alapján egy "kártya" szerű layoutra.
+
+A `GroupStyle` property-n keresztül pedig meg tudjuk adni, hogy a csoportokat hogyan kell megjeleníteni. Esetünkben a fejlécet akarjuk testreszabni.
+
+```xml
 <Grid x:Name="ContentArea">
     <Grid.RowDefinitions>
         <RowDefinition Height="48" />
@@ -254,21 +327,21 @@ A `GridView`-en belül a `GridView.ItemTemplate` property-n keresztül tudjuk me
 </Grid>
 ```
 
-Próbáljuk ki az alkalmazást, és győződjünk meg róla, hogy a recept csoportok megjelennek a főoldalon.
+**Próbáljuk ki az alkalmazást!** Győződjünk meg róla, hogy a recept csoportok megjelennek a főoldalon.
 
-## Recept részletes oldal
+## 2. Feladat - Recept részletes oldal
 
 A receptek részletes oldalának elkészítése a következő lépésekből fog állni:
 
 1. Kiegészítjük az `IRecipeService` interfészt egy `GetRecipeAsync` metódussal és létrehozzuk a szükséges osztályokat
-1. Létrehozzuk a `RecipeDetailViewModel` ViewModel-t, amiben lekérdezzük a recept adatait a `RecipeDetailViewModel`-ben az `IRecipeService`-en keresztül
+1. Létrehozzuk a `RecipeDetailViewModel` ViewModel-t, amiben lekérdezzük a recept adatait a `RecipeDetailViewModel`-ben az `IRecipeService`-en keresztül (a VM az azonosítót kapja meg a navigáció során)
 1. Létrehozzuk a `RecipeDetailPage` nézetet, építve a ViewModel adataira
 1. Regisztráljuk a ViewModel-t és a nézetet a Dependency Injection konfigurációhoz és a navigációhoz
-1. Navigálunk a `RecipeDetailPage`-re a `MainViewModel`-ből az `INavigationService`-en keresztül, ha egy receptre kattintunk, és átadjuk a kiválasztott recept azonosítóját (vagy recept fejlécet)
+1. Navigálunk a `RecipeDetailPage`-re a `MainViewModel`-ből a receptre történő kattintésra az `INavigationService` segítségével, és átadjuk a kiválasztott recept azonosítóját a részletes oldalnak
 
-### Recept lekérdezése
+### 2.1 Recept lekérdezése
 
-Generáljuk le a `Recipe` osztályt a `MvvmLab.Core.Model` névtérbe a `/api/recipes/{id}` végpont által visszaadott példa JSON adatokból, a fenti módszerrel.
+Hozzuk létre a  `Recipe` osztályt a `MvvmLab.Core.Model` névtérbe, és generáljuk le a tartalmát a `/api/recipes/{id}` végpont által visszaadott példa JSON adatokból, a fent megismert módszerrel (copy, paste special).
 
 ```csharp
 public class Recipe
@@ -301,15 +374,13 @@ public class StoresNearby
 }
 ```
 
-A `IRecipeService` interfészt egészítsük ki egy `GetRecipeAsync` metódussal, ami egy receptet ad vissza az azonosítója alapján.
+A `IRecipeService` interfészt és implementációját egészítsük ki egy `GetRecipeAsync` metódussal, ami egy receptet ad vissza az azonosítója alapján.
 
-```csharp
+```csharp title="IRecipeService"
 public Task<Recipe> GetRecipeAsync(int id);
 ```
 
-Az interfész implementációját a `RecipeService` osztályban valósítsuk meg.
-
-```csharp
+```csharp title="RecipeService"
 public async Task<Recipe> GetRecipeAsync(int id)
 {
     using var client = new HttpClient();
@@ -317,9 +388,9 @@ public async Task<Recipe> GetRecipeAsync(int id)
 }
 ```
 
-### Recept részletes ViewModel
+### 2.2 Recept részletes ViewModel
 
-Hozzuk létre a `RecipeDetailViewModel` osztályt az `MvvmLab.ViewModels` mappában.
+A ViewModel készítése a főoldalhoz képest már ujjgyakorlat. Hozzuk létre a `RecipeDetailViewModel` osztályt az `MvvmLab.ViewModels` mappában.
 
 A ViewModel-nek szüksége lesz egy `IRecipeService` interfészt implementáló osztályra, amelyen keresztül le tudja kérdezni a receptet. A `RecipeDetailViewModel` konstruktorában DI segítségével szerezzük be a szükséges függőséget.
 
@@ -334,7 +405,7 @@ public RecipeDetailViewModel(IRecipeService recipeService)
 
 A `RecipeDetailViewModel`-ben hozzunk létre egy `_recipe` nevű `Recipe` típusú változót, amelyben tárolni fogjuk a receptet.
 A változót attributáljuk fel a `ObservableProperty` attribútummal, ami alapján az MVVM Toolkit automatikusan generálni fogja a `Recipe` nevű property-t az osztály másik generált partial felében.
-Ehhez szükséges, hogy az osztály az `ObservableObject` osztályból származzon, és `partial` kulcsszóval legyen jelölve.
+Ehhez szükséges, hogy az osztály az `ObservableObject` osztályból származzon, és `partial` kulcsszóval legyen ellátva.
 
 ```csharp
 public partial class RecipeDetailViewModel : ObservableObject
@@ -365,9 +436,9 @@ public partial class RecipeDetailViewModel : ObservableRecipient, INavigationAwa
 }
 ```
 
-### Recept részletes nézet, navigáció
+### 2.3 Recept részletes oldal, navigáció
 
-A `RecipeDetailPage`-en készítsük el a nézetet, amelyen megjelenítjük a receptet. Első körben csak a recept címét jelenítsük meg egy `TextBlock`-ban.
+Hozzunk létre egy új oldalt `RecipeDetailPage` néven a `Views` mappába (_Views mappán jobb gomb / Add New Item / Blank Page (WinUI 3)_), amelyen megjelenítjük a receptet. Első körben csak a recept címét jelenítsük meg egy `TextBlock`-ban.
 
 ```xml
 <Grid x:Name="ContentArea">
@@ -382,7 +453,28 @@ A `RecipeDetailPage`-en készítsük el a nézetet, amelyen megjelenítjük a re
 </Grid>
 ```
 
-A `Services` mappában lévő `PageService`-ben regisztráljuk be a `RecipeDetailPage`-et a navigációhoz, amihez 3 lépést kell megtegyünk:
+Az adatkötéshez vegyük fel a `RecipeDetailPage.xaml.cs`-ben a `ViewModel` property-t a főoldal mintájára.
+
+```csharp
+public RecipeDetailViewModel ViewModel => (RecipeDetailViewModel)DataContext;
+```
+
+!!! warning "Fordítási hibák"
+    Ha valamiért egzotikus hibákat kapnánk az új oldal felvétele után töröljük ki a projekt fájlból az alábbi sorokat:
+
+    ```xml
+    <ItemGroup>
+        <None Remove="Views\RecipeDetailPage.xaml" />
+    </ItemGroup>
+    ```
+    
+    ```xml
+    <Page Update="Views\RecipeDetailPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+    </Page>
+    ```
+
+A navigáció támogatásához a `Services` mappában lévő `PageService`-ben regisztráljuk be a `RecipeDetailPage`-et az alábbi 3 lépésben:
 
 1. Vegyük fel a nézet kulcsát a `Pages` osztályba.
 
@@ -427,10 +519,13 @@ public MainViewModel(IRecipeService recipeService, INavigationService navigation
 }
 ```
 
-A ViewModel a végrehajtható műveleteket XAML világban tipikusan `ICommand` interfészt megvalósító objektumokon keresztül publikálja a végrehajtható műveleteket, amelyek a konkrét művelet végrehajtásán túl kezelheti a művelet végrehajtásának feltételeit is.
+#### Command
 
-A `MainViewModel`-ben készítsünk egy Commandot, ami a receptre kattintva fog lefutni. A Command paraméterként megkapja a kiválasztott receptet fejlécet, és navigáljunk a `RecipeDetailPage`-re, és adjuk át a kiválasztott recept azonosítóját.
-Az MvvmToolkit segítségével szintén egy attribútummal (`[RelayCommand]`) tudjunk generálni a Commandot egy metódusból.
+A ViewModel a végrehajtható műveleteket az MVVM mintában tipikusan `ICommand` interfészt megvalósító objektumokon keresztül publikálja a végrehajtható műveleteket, amelyek a konkrét művelet végrehajtásán túl kezelheti a művelet végrehajtásának feltételeit is.
+
+A `MainViewModel`-ben készítsünk egy Commandot, ami a receptre kattintva fog lefutni. A Command paraméterként megkapja a kiválasztott recept fejlécet, és átnavigál a `RecipeDetailPage`-re, ahol átadásra kerül a kiválasztott recept azonosítóját.
+
+Az MvvmToolkit segítségével szintén egy attribútummal (`[RelayCommand]`) egyszerűen tudunk generálni `ICommand` típusú tulajdonságot egy metódusból.
 
 ```csharp
 [RelayCommand]
@@ -446,13 +541,14 @@ A `MainPage`-en kössük a `AdaptiveGridView` `ItemClickCommand` eseményét a `
 ItemClickCommand="{x:Bind ViewModel.RecipeSelectedCommand}"
 ```
 
-Próbáljuk ki az alkalmazást, és győződjünk meg róla, hogy a receptekre kattintva megjelenik a recept részletes oldala.
+**Próbáljuk ki az alkalmazást!** Győződjünk meg róla, hogy a receptekre kattintva megjelenik a recept részletes oldala.
 
 ??? tip "Kitekintés: Ha nincs a használni kívánt eseményre Command?"
 
-    Ha a vezérlő bizonyos eseményekre biztosít Commandot, akkor viszonylag egyszerű dolgunk van, amire fentebb láthattunk egy példát. Azonban ha a vezérlő nem biztosít Commandot, akkor több lehetőségünk is van:
+    Ha a vezérlő bizonyos eseményekre biztosít Commandot, akkor viszonylag egyszerű dolgunk van, amire fentebb láthattunk egy példát.
+    Azonban ha a vezérlő nem biztosít Commandot (pl.: a beépített `GridView.ItemClicked`), akkor több lehetőségünk is van:
 
-    1. A vezérlő eseményét kezeljük le, és a code-behindban (xaml.cs) ViewModel-ben hívjuk meg a megfelelő metódust/commadot.
+    1. **Code-Behind "ragasztó kód":** A vezérlő eseményét kezeljük le, és a code-behindban (xaml.cs) ViewModel-ben hívjuk meg a megfelelő metódust/commadot.
 
         ```xml
         <controls:AdaptiveGridView x:Name="gridView"
@@ -468,7 +564,7 @@ Próbáljuk ki az alkalmazást, és győződjünk meg róla, hogy a receptekre k
         }
         ```
 
-    2. Használjuk az `x:Bind` metódus kötési lehetőségét, amelynek segítségével a vezérlő eseményét tudjuk kötni a ViewModel-ben lévő **metódusra**.
+    2. **x:Bind metódus kötés**: használjuk az `x:Bind` metódus kötési lehetőségét, amelynek segítségével a vezérlő eseményét tudjuk kötni a ViewModel-ben lévő **metódusra**.
        A metódusnak viszont ilyenkor vagy paraméter nélkülinek kell lennie, vagy olyan paramétereket kell fogadnia, amely az esemény szignatúrájára illeszkedik.
 
         ```xml
@@ -479,9 +575,9 @@ Próbáljuk ki az alkalmazást, és győződjünk meg róla, hogy a receptekre k
         </controls:AdaptiveGridView>
         ```
 
-        Ennek a módszernek az a hátránya, hogy a esemény paramétereivel a ViewModel-be a nézet keretrendszer függőségeit is beviszi, pedig az alap gondolatunk az volt, hogy a ViewModel független legyen a nézettől. Természetesen ez a módszer is jól tud működni, ha részben feladjuk az MVVM minta szigorú betartását.
+        Ennek a módszernek a hátránya, hogy a esemény paramétereivel a ViewModel-be a nézet keretrendszer függőségeit is beviszi (eseménykezelő paraméter típusok), pedig az alap gondolatunk az volt, hogy a ViewModel független legyen a nézettől. Természetesen ez a módszer is jól tud működni, ha részben feladjuk az MVVM minta szigorú betartását.
 
-    3. A Behavior-ök segítségével, azon belül is az `EventToCommandBehavior` osztállyal tudunk Commandot kötni tetszőleges vezérlő eseményre.
+    3. A Behavior-ök segítségével, azon belül is az `EventTriggerBehavior` és `InvokeCommandAction` osztályokkal tudunk Commandot kötni tetszőleges vezérlő eseményre.
 
         ```xml
         <controls:AdaptiveGridView x:Name="gridView"
@@ -512,115 +608,145 @@ Próbáljuk ki az alkalmazást, és győződjünk meg róla, hogy a receptekre k
         }
         ```
         
-        A behavior-ök egyébként egy teljesen általános mechanizmus a XAML világban, amelyek segítségével a nézetekhez tudunk újrafelhasználható viselkedést hozzáadni. 
+        A behavior-ök egyébként egy teljesen általános mechanizmus a XAML világban, amelyek segítségével a nézetekhez tudunk újrafelhasználható viselkedést hozzáadni. TODO link 
 
-### Recept részletes nézet
+### 2.4 Recept részletes nézet
 
 A recept részletes adataihoz egy `Grid`-et használjunk, amelynek két oszlopa van.
-Az első oszlopban egy `ScrollViewer`-t helyezzünk el, amelyben egy `StackPanel`-t helyezzünk el. A `StackPanel`-ben helyezzünk el egy `FlipView`-et, amelyben a recept képeit fogjuk megjeleníteni. A `FlipView` egy listaként működik, de az elemeit egy lapozható felületen jeleníti meg.
+Az első oszlopban egy `ScrollViewer`-t helyezzünk el, amelyen belül egy `StackPanel` kerül.
+A `StackPanel`-ben helyezzünk el egy `FlipView`-et, amelyben a recept képeit fogjuk megjeleníteni.
+A `FlipView` egy listaként működik, de az elemeit egy lapozható felületen jeleníti meg.
 
-A `FlipView` alatt  helyezzünk el egy `ItemsControl`-t (lista, ami nem támogat görgetést, kiválasztás kattintást stb.), amelyben a recept hozzávalóit fogjuk megjeleníteni.Ez alatt helyezzünk el egy `TextBlock`-ot, amelyben a recept elkészítésének lépéseit fogjuk megjeleníteni.
+A `FlipView` alatt lesz található el egy `ItemsControl`-t (lista, ami nem támogat görgetést, kiválasztás kattintást stb.), amelyben a recept hozzávalóit fogjuk megjeleníteni.
 
-A második oszlopban helyezzünk el egy `Grid`-et, amelynek három sorában egy `TextBlock`-ot helyezzünk el, amelyben a recepthez fűzött kommenteket fogjuk megjeleníteni egy `ListView`-ben.
+Ez alá kerül egy `TextBlock`, amelyben a recept elkészítésének lépéseit kerülnek.
+
+A második oszlopba helyezzünk el egy `Grid`-et, amelybe a kommentek listája és beviteli mezői fognak kerülni.
 
 Az alábbi kódot a labor során nyugodtan másolhatjuk, újdonság ebben a kódban nincs az eddigiekhez képest.
 
 ```xml
-<Grid Grid.Row="1">
-    <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="Auto" />
-    </Grid.ColumnDefinitions>
+<?xml version="1.0" encoding="utf-8" ?>
+<Page x:Class="MvvmLab.Views.RecipeDetailPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:MvvmLab.Views"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:models="using:MvvmLab.Core.Models"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      mc:Ignorable="d">
 
-    <ScrollViewer Grid.Column="0">
-        <StackPanel Orientation="Vertical">
-            <StackPanel x:Name="images"
-                        Margin="0,0,24,0"
-                        Orientation="Vertical">
-                <TextBlock Margin="0,0,0,12"
-                            Style="{StaticResource SubtitleTextBlockStyle}"
-                            Text="Images" />
-                <FlipView x:Name="flipView"
-                            MaxHeight="250"
-                            VerticalAlignment="Top"
-                            ItemsSource="{x:Bind ViewModel.Recipe.ExtraImages, Mode=OneWay}">
-                    <FlipView.ItemTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding}" Stretch="Uniform" />
-                        </DataTemplate>
-                    </FlipView.ItemTemplate>
-                </FlipView>
-            </StackPanel>
-
-            <StackPanel x:Name="ingredients"
-                        Margin="0,0,24,0"
-                        Orientation="Vertical">
-                <TextBlock Margin="0,0,0,12"
-                            Style="{StaticResource SubtitleTextBlockStyle}"
-                            Text="Ingredients" />
-                <ItemsControl HorizontalAlignment="Left" ItemsSource="{x:Bind ViewModel.Recipe.Ingredients, Mode=OneWay}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Margin="0,0,0,10"
-                                        Text="{Binding}"
-                                        TextWrapping="Wrap" />
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </StackPanel>
-
-            <StackPanel x:Name="directions"
-                        Margin="0,0,24,0"
-                        Orientation="Vertical"
-                        RelativePanel.RightOf="ingredients">
-                <TextBlock Margin="0,0,0,12"
-                            Style="{StaticResource SubtitleTextBlockStyle}"
-                            Text="Directions" />
-                <TextBlock HorizontalAlignment="Left"
-                            Text="{x:Bind ViewModel.Recipe.Directions, Mode=OneWay}"
-                            TextWrapping="Wrap" />
-            </StackPanel>
-        </StackPanel>
-    </ScrollViewer>
-
-    <Grid Grid.Column="1" RowSpacing="12">
+    <Grid x:Name="ContentArea">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="48" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0"
-                    Style="{StaticResource SubtitleTextBlockStyle}"
-                    Text="Comments" />
+                   Style="{StaticResource TitleTextBlockStyle}"
+                   Text="{x:Bind ViewModel.Recipe.Title, Mode=OneWay}" />
 
-        <ListView Grid.Row="1" ItemsSource="{x:Bind ViewModel.Recipe.Comments, Mode=OneWay}">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models:Comment">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock FontWeight="Bold" Text="{x:Bind Name}" />
-                        <TextBlock Text="{x:Bind Text}" />
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <ScrollViewer Grid.Column="0">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel x:Name="images"
+                                Margin="0,0,24,0"
+                                Orientation="Vertical">
+                        <TextBlock Margin="0,0,0,12"
+                                   Style="{StaticResource SubtitleTextBlockStyle}"
+                                   Text="Images" />
+                        <FlipView x:Name="flipView"
+                                  MaxHeight="250"
+                                  VerticalAlignment="Top"
+                                  ItemsSource="{x:Bind ViewModel.Recipe.ExtraImages, Mode=OneWay}">
+                            <FlipView.ItemTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding}" Stretch="Uniform" />
+                                </DataTemplate>
+                            </FlipView.ItemTemplate>
+                        </FlipView>
                     </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+
+                    <StackPanel x:Name="ingredients"
+                                Margin="0,0,24,0"
+                                Orientation="Vertical">
+                        <TextBlock Margin="0,0,0,12"
+                                   Style="{StaticResource SubtitleTextBlockStyle}"
+                                   Text="Ingredients" />
+                        <ItemsControl HorizontalAlignment="Left" ItemsSource="{x:Bind ViewModel.Recipe.Ingredients, Mode=OneWay}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Margin="0,0,0,10"
+                                               Text="{Binding}"
+                                               TextWrapping="Wrap" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+
+                    <StackPanel x:Name="directions"
+                                Margin="0,0,24,0"
+                                Orientation="Vertical"
+                                RelativePanel.RightOf="ingredients">
+                        <TextBlock Margin="0,0,0,12"
+                                   Style="{StaticResource SubtitleTextBlockStyle}"
+                                   Text="Directions" />
+                        <TextBlock HorizontalAlignment="Left"
+                                   Text="{x:Bind ViewModel.Recipe.Directions, Mode=OneWay}"
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+
+            <Grid Grid.Column="1" RowSpacing="12">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0"
+                           Style="{StaticResource SubtitleTextBlockStyle}"
+                           Text="Comments" />
+
+                <ListView Grid.Row="1" ItemsSource="{x:Bind ViewModel.Recipe.Comments, Mode=OneWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Comment">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock FontWeight="Bold" Text="{x:Bind Name}" />
+                                <TextBlock Text="{x:Bind Text}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <StackPanel x:Name="comments"
+                            Grid.Row="2"
+                            Margin="24,0,24,0"
+                            Orientation="Vertical">
+                    <!-- TODO kommentek beviteli mezői -->
+                </StackPanel>
+            </Grid>
+        </Grid>
     </Grid>
-</Grid>
+</Page>
 ```
 
-Próbáljuk ki az alkalmazást.
+**Próbáljuk ki az alkalmazást!**
 
-## Kommentek hozzáadása
+## 3. Feladat - Kommentek hozzáadása
 
-Készítsünk funkciót a kommentek hozzáadásához a recept részletes oldalra.
+Ha jól állunk idővel készítsünk funkciót a kommentek hozzáadásához a recept részletes oldalra.
 
-Az `IRecipeService` interfészt egészítsük ki egy `SendCommentAsync` metódussal, ami egy kommentet küld a szervernek.
+### Webszolgáltatás
 
-```csharp
-public Task SendCommentAsync(int recipeId, NewComment comment);
-```
-
-A `NewComment` osztályt a `MvvmLab.Core.Models` névtérbe hozzuk létre, ami a kérés törzsében szereplő adatokat fogja tartalmazni.
+Hozzunk létre egy `NewComment` osztályt a `MvvmLab.Core.Models` névtérbe, ami a kérés törzsében szereplő adatokat fogja tartalmazni.
 
 ```csharp
 public class NewComment
@@ -630,9 +756,13 @@ public class NewComment
 }
 ```
 
-Az interfész implementációját a `RecipeService` osztályban valósítsuk meg.
+Az `IRecipeService` interfészt és implementációt egészítsük ki egy `SendCommentAsync` metódussal, ami egy kommentet küld a szervernek a `POST /Recipes/{recipeId}/Comments` végpontra.
 
-```csharp
+```csharp title="IRecipeService"
+public Task SendCommentAsync(int recipeId, NewComment comment);
+```
+
+```csharp title="RecipeService"
 public async Task SendCommentAsync(int recipeId, NewComment comment)
 {
     using var client = new HttpClient();
@@ -640,7 +770,9 @@ public async Task SendCommentAsync(int recipeId, NewComment comment)
 }
 ```
 
-A `RecipeDetailViewModel`-ben hozzunk létre egy `NewCommentText` nevű `string` típusú tulajdonságot és egy `NewCommentName` `string` tulajdonságot, amelyben tárolni fogjuk a felhasználó által megadott kommentet. Szintén használjuk ki az `ObservableProperty` attribútumot.
+### ViewModel
+
+A `RecipeDetailViewModel`-ben hozzunk létre egy `NewCommentText` nevű `string` típusú tulajdonságot és egy `NewCommentName` `string` tulajdonságot, amelyben tárolni fogjuk a felhasználó által megadott komment adatait. Szintén használjuk ki az `ObservableProperty` attribútumot.
 
 ```csharp
 [ObservableProperty]
@@ -651,7 +783,7 @@ private string _newCommentText = string.Empty;
 ```
 
 A `RecipeDetailViewModel`-ben hozzunk létre egy `SendComment` nevű függvényt, amelyen keresztül a felhasználó által megadott kommentet tudjuk elküldeni a szervernek.
-A függvényből generáltassunk egy Commandot az MVVM Toolkit segítségével.
+A függvényből generáltassunk egy Commandot az MVVM Toolkit segítségével (`[RelayCommand]`).
 
 Az implementáció egyszerű: elküldjük a kommentet a szervernek, majd frissítjük a receptet.
 
@@ -659,13 +791,11 @@ Az implementáció egyszerű: elküldjük a kommentet a szervernek, majd frissí
 [RelayCommand]
 private async Task SendComment()
 {
-    var newComment = new NewComment
+    await _recipeService.SendCommentAsync(Recipe!.Id, new NewComment
     {
         Email = NewCommentName,
         Text = NewCommentText
-    };
-
-    await _recipeService.SendCommentAsync(Recipe!.Id, newComment);
+    });
 
     NewCommentName = string.Empty;
     NewCommentText = string.Empty;
@@ -694,14 +824,13 @@ A nézeten a következő elemeket helyezzük el a kommentek hozzáadásához:
 </StackPanel>
 ```
 
-Vegyük észre, hogy a `TextBox`-ok `Text` property-jét kétirányú kötéssel kötöttük a ViewModel-ben lévő `NewCommentName` és `NewCommentText` tulajdonságokhoz, és a gomb Commandját is a ViewModel-ben lévő `SendCommentCommand` tulajdonsághoz kötöttük.
+Vegyük észre, hogy a `TextBox`-ok `Text` property-jét kétirányú kötéssel kötöttük a ViewModel-ben lévő `NewCommentName` és `NewCommentText` tulajdonságokhoz, és a gomb Command-ját is a ViewModel-ben lévő `SendCommentCommand` tulajdonsághoz kötöttük.
 
 ## Kitekintés: Commandok végrehajtásának feltételei
 
 A `SendCommentCommand` Command végrehajtásának feltétele, hogy a `NewCommentName` és a `NewCommentText` tulajdonságok ne legyenek üresek.
 A Commandok lehetőséget adnak arra, hogy a végrehajtásukat feltételekhez kössük, amelyeket a `CanExecute` metódusban tudunk megadni.
-Esetünkben egy metódus/property nevet kell megadnunk a Command generátor attribútumnak.
-A `CanExecute` metódusnak vagy property-nek `bool` típussal kell visszatérnie, és a `true` érték jelenti, hogy a Command végrehajtható, a `false` pedig azt, hogy nem.
+Esetünkben egy `bool`-lal visszatérő metódus/property nevet kell megadnunk a Command generátor attribútumnak.
 
 ```csharp
 private bool CanExecuteSendComment => !string.IsNullOrEmpty(NewCommentName) && !string.IsNullOrEmpty(NewCommentText);
@@ -710,9 +839,10 @@ private bool CanExecuteSendComment => !string.IsNullOrEmpty(NewCommentName) && !
 private async Task SendComment()
 ```
 
-Ha ezt kipróbáljuk azt tapasztaljuk, hogy a gomb nem lesz engedélyezve, viszont a TextBox-ok módosítása után sem változik a gomb állapota.
+**Próbáljuk ki.** Azt tapasztaljuk, hogy a gomb nem lesz engedélyezve, viszont a `TextBox`-ok módosítása után sem változik a gomb állapota.
 
-A `CanExecute` metódus akkor hívódik meg, amikor a Command elsüti a `CanExecuteChanged` eseményt. Esetünkben ezt az eseményt a `NewCommentName` és a `NewCommentText` tulajdonságok `PropertyChanged` eseményének kiváltásakor kell kiváltani.
+A `CanExecute` metódus akkor hívódik meg, amikor a Command elsüti a `CanExecuteChanged` eseményt.
+Esetünkben ezt az eseményt a `NewCommentName` és a `NewCommentText` tulajdonságok `PropertyChanged` eseményének kiváltásakor kell kiváltani.
 Erre az MVVM Toolkit egy külön attribútumot biztosít (`[NotifyCanExecuteChangedFor]`), amelyet a `NewCommentName` és a `NewCommentText` tulajdonságokra kell rárakni.
 
 Tehát, ha a `NewCommentName` vagy a `NewCommentText` tulajdonság értéke megváltozik, akkor a `SendCommentCommand` Command `CanExecuteChanged` eseményét is kiváltjuk, ami miatt a `CanExecute` metódus újra lefut, és a gomb állapota is frissül.
@@ -727,7 +857,10 @@ private string _newCommentName = string.Empty;
 private string _newCommentText = string.Empty;
 ```
 
-Már csak egy dolog van hátra: jelenleg a TextBox csak akkor változik, ha a felhasználó elhagyja a TextBox-otm. Ezt a viselkedést az adatkötés `UpdateSourceTrigger` tulajdonságán keresztül tudjuk módosítani.
+**Próbáljuk ki.**
+
+Már csak egy dolog van hátra: jelenleg a `TextBox` állapota csak akkor változik, ha a felhasználó elhagyja a `TextBox`-ot.
+Ezt a viselkedést az adatkötés `UpdateSourceTrigger` tulajdonságán keresztül tudjuk módosítani.
 
 ```xml
 Text="{x:Bind ViewModel.NewCommentName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -735,7 +868,7 @@ Text="{x:Bind ViewModel.NewCommentName, Mode=TwoWay, UpdateSourceTrigger=Propert
 Text="{x:Bind ViewModel.NewCommentText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 ```
 
-Próbáljuk ki.
+**Próbáljuk ki.**
 
 ## Kitekintés: Vissza a főoldalra
 
