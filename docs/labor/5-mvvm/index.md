@@ -101,7 +101,6 @@ A kapott osztályokat átnevezhetjük, hogy a C# kódolási konvencióknak megfe
 ```csharp
 public class RecipeGroup
 {
-    public string Id { get; set; }
     public string Title { get; set; }
     public List<RecipeHeader> Recipes { get; set; }
 }
@@ -111,7 +110,6 @@ public class RecipeHeader
     public int Id { get; set; }
     public string Title { get; set; }
     public string BackgroundImage { get; set; }
-    public string TileImage { get; set; }
 }
 ```
 
@@ -134,6 +132,7 @@ A `GetFromJsonAsync` indít egy HTTP GET aszinkron kérést a megadott címre, �
 ```csharp
 public class RecipeService : IRecipeService
 {
+    // TODO végleges cím
     private readonly string _baseUrl = "https://bmecookbook.azurewebsites.net/api";
 
     public async Task<List<RecipeGroup>> GetRecipeGroupsAsync()
@@ -346,31 +345,19 @@ Hozzuk létre a  `Recipe` osztályt a `MvvmLab.Core.Model` névtérbe, és gener
 ```csharp
 public class Recipe
 {
-    public List<string> ExtraImages { get; set; }
-    public List<string> Ingredients { get; set; }
-    public string Directions { get; set; }
-    public string Video { get; set; }
-    public List<Comment> Comments { get; set; }
-    public List<StoresNearby> StoresNearby { get; set; }
     public int Id { get; set; }
     public string Title { get; set; }
+    public string Directions { get; set; }
+    public List<string> Ingredients { get; set; }
     public string BackgroundImage { get; set; }
-    public string TileImage { get; set; }
+    public List<string> ExtraImages { get; set; }
+    public List<Comment> Comments { get; set; }
 }
 
 public class Comment
 {
     public string Name { get; set; }
-    public string PictureUrl { get; set; }
     public string Text { get; set; }
-}
-
-public class StoresNearby
-{
-    public string Name { get; set; }
-    public string Url { get; set; }
-    public float Longitude { get; set; }
-    public float Latitude { get; set; }
 }
 ```
 
@@ -649,8 +636,8 @@ Az alábbi kódot a labor során nyugodtan másolhatjuk, újdonság ebben a kód
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="" />
             </Grid.ColumnDefinitions>
 
             <ScrollViewer Grid.Column="0">
@@ -746,24 +733,14 @@ Ha jól állunk idővel készítsünk funkciót a kommentek hozzáadásához a r
 
 ### Webszolgáltatás
 
-Hozzunk létre egy `NewComment` osztályt a `MvvmLab.Core.Models` névtérbe, ami a kérés törzsében szereplő adatokat fogja tartalmazni.
-
-```csharp
-public class NewComment
-{
-    public string Email { get; set; }
-    public string Text { get; set; }
-}
-```
-
 Az `IRecipeService` interfészt és implementációt egészítsük ki egy `SendCommentAsync` metódussal, ami egy kommentet küld a szervernek a `POST /Recipes/{recipeId}/Comments` végpontra.
 
 ```csharp title="IRecipeService"
-public Task SendCommentAsync(int recipeId, NewComment comment);
+public Task SendCommentAsync(int recipeId, Comment comment);
 ```
 
 ```csharp title="RecipeService"
-public async Task SendCommentAsync(int recipeId, NewComment comment)
+public async Task SendCommentAsync(int recipeId, Comment comment)
 {
     using var client = new HttpClient();
     await client.PostAsJsonAsync($"{_baseUrl}/Recipes/{recipeId}/Comments", comment);
@@ -791,9 +768,9 @@ Az implementáció egyszerű: elküldjük a kommentet a szervernek, majd frissí
 [RelayCommand]
 private async Task SendComment()
 {
-    await _recipeService.SendCommentAsync(Recipe!.Id, new NewComment
+    await _recipeService.SendCommentAsync(Recipe!.Id, new Comment
     {
-        Email = NewCommentName,
+        Name = NewCommentName,
         Text = NewCommentText
     });
 
