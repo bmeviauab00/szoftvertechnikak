@@ -87,7 +87,7 @@ Az alkalmazásunk adatait egy webszerverről, REST API-n, HTTP-n keresztül éri
 <figurecation>Kliens-szerver architektúra<figurecaption>
 </figure>
 
-A távoli szolgáltatás a következő címen érhető el: TODO <https://bmecookbook.azurewebsites.net>. A szolgáltatáshoz pedig tartozik egy OpenApi alapú dokumentáció a <https://bmecookbook.azurewebsites.net/swagger> címen. Tanulmányozzuk ezt át.
+A távoli szolgáltatás a következő címen érhető el: <https://bmecookbook2.azurewebsites.net/api>. A szolgáltatáshoz pedig tartozik egy OpenApi alapú dokumentáció a <https://bmecookbook2.azurewebsites.net/swagger> címen. Tanulmányozzuk ezt át, vagy akár próbáljuk ki a végpotokat a Swagger felületén keresztül.
 Az első feladathoz a `/api/Recipes/Groups` végpontot fogjuk használni, amely a receptek csoportosítását adja vissza.
 
 Vegyünk fel az `MvvmLab.Core` projekt `Models` mappájába egy új osztályt `RecipeGroup` néven.
@@ -132,8 +132,7 @@ A `GetFromJsonAsync` indít egy HTTP GET aszinkron kérést a megadott címre, �
 ```csharp
 public class RecipeService : IRecipeService
 {
-    // TODO végleges cím
-    private readonly string _baseUrl = "https://bmecookbook.azurewebsites.net/api";
+    private readonly string _baseUrl = "https://bmecookbook2.azurewebsites.net/api";
 
     public async Task<List<RecipeGroup>> GetRecipeGroupsAsync()
     {
