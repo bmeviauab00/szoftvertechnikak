@@ -1,7 +1,7 @@
 # Önálló/házi feladatok
 
 Valamennyi házi feladat elkészítése kötelező. A megoldások beadása *GitHub Classroom* segítségével történik (bővebben [itt](./git-github-github-classroom/index.md)).
-Az önálló/házi feladatokra vonatkozó pontos követelmények Moodle-ben, a [Tárgykövetelmények](https://edu.vik.bme.hu/mod/page/view.php?id=97590) alatt olvashatók ("Önálló/házi feladatok" fejezet).
+Az önálló/házi feladatokra vonatkozó pontos követelmények Moodle-ben, a [Tárgykövetelmények](https://edu.vik.bme.hu/mod/page/view.php?id=119764) alatt olvashatók ("Önálló/házi feladatok" fejezet).
 
 ## A feladatok
 
