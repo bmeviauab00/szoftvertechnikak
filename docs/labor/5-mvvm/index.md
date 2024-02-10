@@ -33,13 +33,14 @@ git clone https://github.com/bmeviauab00/lab-mvvm-kiindulo
 
 ## Az MVVM mintáról
 
-Az MVVM (Model-View-ViewModel) egy architekturális tervezési minta, amelyet a XAML alkalmazások fejlesztése során használhatunk, de gyakran más kliens oldali technológiák esetében is megjelenik. Az MVVM minta célja, hogy a felhasználói felületet és a mögötte lévő üzleti logikát szétválassza, és ezzel egy lazább csatolású alkalmazást hozzon létre, ami növeli a tesztelhetőséget, a karbantarthatóságot, és az újrafelhasználhatóságot.
+Az MVVM (Model-View-ViewModel) egy architekturális tervezési minta, amelyet a XAML alkalmazások fejlesztése során használhatunk, de gyakran más kliens oldali technológiák esetében is megjelenik. Az MVVM minta célja, hogy a felhasználói felületet és a mögötte lévő logikát szétválassza, és ezzel egy lazább csatolású alkalmazást hozzon létre, ami növeli a tesztelhetőséget, a karbantarthatóságot, és az újrafelhasználhatóságot.
 
-Az MVVM minta három fő részből áll:
+Az MVVM minta három (+1) fő részből áll:
 
-* **Model**: Az alkalmazás üzleti logikáját tartalmazza, amelyet a ViewModel-ek használnak.
+* **Model**: Az alkalmazás üzleti modelljét tartalmazza, amelyet a ViewModel-ek használhatnak az adatok tárolására.
 * **View**: A felhasználói felület leírását tartalmazza, és a tisztán a nézetekhez kapcsolódó logikát (pl.: animációk kezelését).
-* **ViewModel**: A nézet **absztrakciója**, ami tartalmazza a nézet állapotát és a végrehajtható műveleteket, **nézet függetlenül**. A lazán csatolást a ViewModel és a nézet közötti adatkötés biztosítja.
+* **ViewModel**: A nézet **absztrakciója**, ami tartalmazza a nézet állapotát és a végrehajtható műveleteket, **nézet függetlenül**. A lazán csatolást a ViewModel és a nézet között az adatkötés biztosítja.
+* **Services** (szolgáltatások): Az alkalmazás üzleti logikáját tartalmazó osztályok, amelyeket a ViewModel-ek használnak. Ha minden üzleti logika a ViewModel-ekben lenne, azok túl bonyolultak és átláthatatlanok lennének. Ez nem az MVVM minta része, de itt említjük meg, mert mi is így fogjuk használni az alkalmazás architektúráját.
 
 <figure markdown>
 ![MVVM](images/mvvm.drawio.png)
