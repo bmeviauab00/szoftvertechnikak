@@ -19,12 +19,14 @@ A Visual Studionak több kiadása létezik:
 
 ### Telepítendő komponensek
 
-A tárgy első előadása röviden kitér a .NET különböző változataira (.NET Framework, .NET Core, .NET 5-7 és  stb.). A feladatok megoldásához a .NET 7-et használjuk a félév során. A Visual Studio ezt telepíti, de szükség van a ".NET desktop development" Visual Studio Workload telepítésére:
+A tárgy első előadása röviden kitér a .NET különböző változataira (.NET Framework, .NET Core, .NET 5-8 és  stb.). A feladatok megoldásához a .NET 8-et használjuk a félév során. A Visual Studio ezt telepíti, de szükség van a ".NET desktop development" Visual Studio Workload telepítésére:
 
 1. Visual Studio telepítő indítása (pl. a Windows Start menüben a „Visual Studio Installer” begépelésével).
 2. Modify gombra kattintás
 3. A megjelenő ablakban ellenőrizzük, hogy a **".NET desktop development"** kártya ki van-e pipálva.
 4. Ha nincs, pipáljuk ki, majd a jobb alsó sarokban a *Modify* gombra kattintva telepítsük.
+
+#### Class diagram támogatás
 
 Bizonyos házi feladatok esetén (már az elsőnél is) szükség van Visual Studio Class Diagram támogatásra. Ezt a következőképpen tudjuk utólag telepíteni a Visual Studio alá:
 
@@ -35,6 +37,10 @@ Bizonyos házi feladatok esetén (már az elsőnél is) szükség van Visual Stu
 5. Ha nincs, pipáljuk ki, majd a jobb alsó sarokban a *Modify* gombra kattintva telepítsük.
 
     ![Osztálydiagram támogatás telepítés](images/install-vs-class-diagram.png)
+
+#### WinUI támogatás
+
+XAML/WinUI technológiákhoz kapcsolódó feladatok esetén (3. házi feladattól kezdődően) szükség van Windows App SDK előzetes telepítésére. Ez innen telepíthető: //learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads. A félév során laborokon, házikban az "1.4.4 (1.4.231219000)" verziót használjuk, érdemes ezt telepíteni akkor is, ha újabb verzió jönne ki.
 
 ### MacBook és Linux használók számára információk
 
