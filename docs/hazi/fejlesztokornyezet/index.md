@@ -40,7 +40,7 @@ Bizonyos házi feladatok esetén (már az elsőnél is) szükség van Visual Stu
 
 #### WinUI támogatás
 
-XAML/WinUI technológiákhoz kapcsolódó feladatok esetén (3. házi feladattól kezdődően) szükség van Windows App SDK előzetes telepítésére. Ez innen telepíthető: //learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads. A félév során laborokon, házikban az "1.4.4 (1.4.231219000)" verziót használjuk, érdemes ezt telepíteni akkor is, ha újabb verzió jönne ki.
+XAML/WinUI technológiákhoz kapcsolódó feladatok esetén (3. házi feladattól kezdődően) szükség van Windows App SDK előzetes telepítésére. Ez innen telepíthető: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads. A félév során laborokon, házikban az "1.4.4 (1.4.231219000)" verziót használjuk, érdemes ezt telepíteni akkor is, ha újabb verzió jönne ki.
 
 ### MacBook és Linux használók számára információk
 
