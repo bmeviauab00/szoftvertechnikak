@@ -114,6 +114,8 @@ A felületen a következő struktúrában helyezkednek el az elemek:
 
         Részletekért lásd a [dokumentációt](https://docs.microsoft.com/en-us/windows/uwp/design/style/color#theme-resources) és a [WinUI 3 Gallery App Colors](winui3gallery://item/Colors) példáit.
 
+### Lista megjelenítése
+
 A `CommandBar` alatti cellában egy listába (`ListView`) kerüljenek a teendők a következő tartalommal egymás alatt. Az adatok adatkötésen keresztül hassanak a felület megjelenítésére.
 
 * Teendő címe
@@ -125,7 +127,7 @@ A `CommandBar` alatti cellában egy listába (`ListView`) kerüljenek a teendők
 * A teendő címével egy sorban jobbra rendezve egy pipa ikon, ha a teendő el van végezve
 * Teendő leírása
 * Teendő határideje `yyyy.MM.dd` formátumban
-    
+* A `ListView` háttere legyen azonos a `CommandBar`-éval, így baloldalt egy egybefüggő sávot alkotnak.
 
 ??? tip "Feltételes színezés"
     A cím színezésére használhatunk konvertert vagy `x:Bind` alapú függvény kötést is.
@@ -202,7 +204,7 @@ A `CommandBar` alatti cellában egy listába (`ListView`) kerüljenek a teendők
 
 ## 3. feladat - Új teendő hozzáadása
 
-A felületen a `Hozzáadás` gombra kattintva jelenjen a grid jobb oldalán a 2. sorban egy űrlap, ahol új teendőt lehet felvenni.
+A felületen a _Hozzáadás_ gombra kattintva jelenjen a grid jobb oldalán a 2. sorban egy űrlap, ahol új teendőt lehet felvenni.
 Az űrlap kinézete legyen a következő:
 
 <figure markdown>
@@ -224,6 +226,7 @@ További funkcionális követelmények:
 * Az űrlap csak akkor legyen látható, ha a _Hozzáadás_ gombra kattintottak, és tűnjön el, ha a teendő mentésre kerül.
 * A _Mentés_ gombra kattintva a felvitt adatok kerüljenek a listába, és az űrlap tűnjön el.
 * Az űrlap legyen görgethető, ha a tartalma nem fér ki a képernyőre (`ScrollViewer` használata).
+* A _Hozzáadás_ gombra kattintva a listában ürítsük ki az aktuálisan kiválasztott elem jelölését (`SelectedItem`)
 
 ??? success "Mentés megvalósításának lépései"
 
@@ -231,7 +234,9 @@ További funkcionális követelmények:
     2. A _Hozzáadás_ gombra kattintva legyen példányosítva az `EditedTodo`. Gondoljunk arra, hogy az adatkötéseknek frissülniük kell a felületen.
     3. A mentés során a `Todos` listához adjuk hozzá a szerkesztett teendő objektumot. Itt is gondoljunk arra, hogy az adatkötéseknek frissülniük kell a felületen a lista tartalmának változása során.
     4. Az `EditedTodo` property-t nullozzuk ki, hogy az űrlap újra üres legyen, és tűnjön el.
-          1. A megjelenítés és elrejtéshez az `EditedTodo` property `null` vagy nem `null` értékét kell konvertálni `Visibility`-re. Erre használhatunk konvertert vagy `x:Bind` alapú függvény kötést is.
+          1. A megjelenítés és elrejtéshez az `EditedTodo` property `null` vagy nem `null` értékét kell konvertálni `Visibility`-re.
+          2. Erre használhatunk konvertert vagy `x:Bind` alapú függvény kötést is. 
+          3. Itt az `x:Bind` függvény alapú adatkötés esetén a `FallbackValue='Collapsed'` beállítást is használnunk kell, mert sajnos az `x:Bind` alapértelmezetten nem hívja meg a függvényt, ha az érték `null`.
 
 ??? tip "Prioritások listája"
     A `ComboBox`-ban a `Priority` felsorolt típus értékeit jelenítsük meg. Ehhez használhatjuk a `Enum.GetValues` függvényt, amihez készítsünk egy tulajdonságot a `MainPage.xaml.cs`-ben.
