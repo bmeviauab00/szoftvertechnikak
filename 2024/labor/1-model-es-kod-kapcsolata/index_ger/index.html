@@ -1,0 +1,2134 @@
+
+<!doctype html>
+<html lang="hu" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Benedek Zoltán">
+      
+      
+        <link rel="canonical" href="https://bmeviauab00.github.io/szoftvertechnikak/2024/labor/1-model-es-kod-kapcsolata/index_ger/">
+      
+      
+        <link rel="prev" href="../index_eng/">
+      
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+    
+    
+      
+        <title>1. Beziehung zwischen dem Modell und dem Code - BMEVIAUAB00 Szoftvertechnikák</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.35e1ed30.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../extra-material-theme.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="aut" data-md-color-primary="aut" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-beziehung-zwischen-dem-modell-und-dem-code" class="md-skip">
+          Kihagyás
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Élőfej">
+    <a href="../../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-header__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
+      
+  <img src="../../../img/logo-bme-aut.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BMEVIAUAB00 Szoftvertechnikák
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. Beziehung zwischen dem Modell und dem Code
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="aut" data-md-color-primary="aut" data-md-color-accent="red"  aria-label="Váltás sötét témára"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Váltás sötét témára" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="indigo"  aria-label="Váltás világos témára"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Váltás világos témára" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Keresés" placeholder="Keresés" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Keresés">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Törlés" aria-label="Törlés" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Keresés inicializálása
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bmeviauab00/szoftvertechnikak
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Lapok" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Szoftvertechnikák (2024-től)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Laborok
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../hazi/" class="md-tabs__link">
+          
+  
+  Önálló/házi feladatok
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../index_eng/" class="md-tabs__link">
+          
+  
+  English course labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  Deutschkurs-Labore
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigáció" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-nav__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
+      
+  <img src="../../../img/logo-bme-aut.png" alt="logo">
+
+    </a>
+    BMEVIAUAB00 Szoftvertechnikák
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bmeviauab00/szoftvertechnikak
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Szoftvertechnikák (2024-től)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Laborok
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Laborok
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. A modell és a kód kapcsolata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-nyelvi-eszkozok/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Nyelvi eszközök
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-felhasznaloi-felulet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. A felhasználói felület kialakítása
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-tobbszalu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Többszálú alkalmazások készítése
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-mvvm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6-tervezesi-mintak/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Tervezési minták
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-adatkezeles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Adatkezelés
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Önálló/házi feladatok
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Önálló/házi feladatok
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Útmutató
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. HF - A modell és a kód kapcsolata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. HF - Nyelvi eszközök
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. HF - Felhasználói felület kialakítása
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. HF - Többszálú alkalmazások fejlesztése
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. HF - MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/fejlesztokornyezet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fejlesztőkörnyezet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    English course labs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            English course labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Relationship between the model and the code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-nyelvi-eszkozok/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-felhasznaloi-felulet/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-tobbszalu/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-mvvm/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6-tervezesi-mintak/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-adatkezeles/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Deutschkurs-Labore
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Deutschkurs-Labore
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    1. Beziehung zwischen dem Modell und dem Code
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    1. Beziehung zwischen dem Modell und dem Code
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tartalomjegyzék
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#das-ziel-der-ubung" class="md-nav__link">
+    Das Ziel der Übung
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voraussetzungen" class="md-nav__link">
+    Voraussetzungen
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verlauf-der-ubung" class="md-nav__link">
+    Verlauf der Übung
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#losung" class="md-nav__link">
+    Lösung
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-aufgabe-erstellen-einer-hallo-welt-net-konsolenanwendung" class="md-nav__link">
+    1. Aufgabe - Erstellen einer "Hallo Welt" .NET-Konsolenanwendung
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#theoretischer-uberblick" class="md-nav__link">
+    Theoretischer Überblick
+  </a>
+  
+    <nav class="md-nav" aria-label="Theoretischer Überblick">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-theorie-der-beziehung-zwischen-dem-uml-klassendiagramm-und-dem-code-student" class="md-nav__link">
+    A) Theorie der Beziehung zwischen dem UML-Klassendiagramm und dem Code [Student]*
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-schnittstelle-und-abstrakte-ubergeordnete-klasse-student" class="md-nav__link">
+    B) Schnittstelle und abstrakte (übergeordnete) Klasse [student]*
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-aufgabe-veranschaulichen-sie-die-beziehung-zwischen-uml-und-code" class="md-nav__link">
+    2. Aufgabe - Veranschaulichen Sie die Beziehung zwischen UML und Code
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Aufgabe - Veranschaulichen Sie die Beziehung zwischen UML und Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aufgabenbeschreibung-inventarisierung-der-ausrustung" class="md-nav__link">
+    Aufgabenbeschreibung - Inventarisierung der Ausrüstung
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#klassendiagramm" class="md-nav__link">
+    Klassendiagramm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ausrustunginventar" class="md-nav__link">
+    AusrüstungInventar
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iequipment-von-ausrustungen" class="md-nav__link">
+    IEquipment von Ausrüstungen
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-aufgabe-anwendung-der-schnittstelle-und-der-abstrakten-primitiven-klasse" class="md-nav__link">
+    3. Aufgabe - Anwendung der Schnittstelle und der abstrakten primitiven Klasse
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Aufgabe - Anwendung der Schnittstelle und der abstrakten primitiven Klasse">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schnittstellenprobleme" class="md-nav__link">
+    Schnittstellenprobleme
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstrakte-klasse" class="md-nav__link">
+    Abstrakte Klasse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nachkommenschaft" class="md-nav__link">
+    Nachkommenschaft
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vorfahre-von-leddisplay" class="md-nav__link">
+    Vorfahre von LedDisplay
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getdescription-verwenden" class="md-nav__link">
+    GetDescription verwenden
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duplizierung-von-konstruktorcode" class="md-nav__link">
+    Duplizierung von Konstruktorcode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bewertung" class="md-nav__link">
+    Bewertung
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hinweis-fakultative-hausaufgabe" class="md-nav__link">
+    Hinweis - fakultative Hausaufgabe
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-nyelvi-eszkozok/index_ger.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-felhasznaloi-felulet/index_ger.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-tobbszalu/index_ger.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-mvvm/index_ger.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6-tervezesi-mintak/index_ger.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-adatkezeles/index_ger.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tartalomjegyzék
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#das-ziel-der-ubung" class="md-nav__link">
+    Das Ziel der Übung
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voraussetzungen" class="md-nav__link">
+    Voraussetzungen
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verlauf-der-ubung" class="md-nav__link">
+    Verlauf der Übung
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#losung" class="md-nav__link">
+    Lösung
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-aufgabe-erstellen-einer-hallo-welt-net-konsolenanwendung" class="md-nav__link">
+    1. Aufgabe - Erstellen einer "Hallo Welt" .NET-Konsolenanwendung
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#theoretischer-uberblick" class="md-nav__link">
+    Theoretischer Überblick
+  </a>
+  
+    <nav class="md-nav" aria-label="Theoretischer Überblick">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-theorie-der-beziehung-zwischen-dem-uml-klassendiagramm-und-dem-code-student" class="md-nav__link">
+    A) Theorie der Beziehung zwischen dem UML-Klassendiagramm und dem Code [Student]*
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-schnittstelle-und-abstrakte-ubergeordnete-klasse-student" class="md-nav__link">
+    B) Schnittstelle und abstrakte (übergeordnete) Klasse [student]*
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-aufgabe-veranschaulichen-sie-die-beziehung-zwischen-uml-und-code" class="md-nav__link">
+    2. Aufgabe - Veranschaulichen Sie die Beziehung zwischen UML und Code
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Aufgabe - Veranschaulichen Sie die Beziehung zwischen UML und Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aufgabenbeschreibung-inventarisierung-der-ausrustung" class="md-nav__link">
+    Aufgabenbeschreibung - Inventarisierung der Ausrüstung
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#klassendiagramm" class="md-nav__link">
+    Klassendiagramm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ausrustunginventar" class="md-nav__link">
+    AusrüstungInventar
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iequipment-von-ausrustungen" class="md-nav__link">
+    IEquipment von Ausrüstungen
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-aufgabe-anwendung-der-schnittstelle-und-der-abstrakten-primitiven-klasse" class="md-nav__link">
+    3. Aufgabe - Anwendung der Schnittstelle und der abstrakten primitiven Klasse
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Aufgabe - Anwendung der Schnittstelle und der abstrakten primitiven Klasse">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schnittstellenprobleme" class="md-nav__link">
+    Schnittstellenprobleme
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstrakte-klasse" class="md-nav__link">
+    Abstrakte Klasse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nachkommenschaft" class="md-nav__link">
+    Nachkommenschaft
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vorfahre-von-leddisplay" class="md-nav__link">
+    Vorfahre von LedDisplay
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getdescription-verwenden" class="md-nav__link">
+    GetDescription verwenden
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duplizierung-von-konstruktorcode" class="md-nav__link">
+    Duplizierung von Konstruktorcode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bewertung" class="md-nav__link">
+    Bewertung
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hinweis-fakultative-hausaufgabe" class="md-nav__link">
+    Hinweis - fakultative Hausaufgabe
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/bmeviauab00/szoftvertechnikak/edit/master/docs/labor/1-model-es-kod-kapcsolata/index_ger.md" title="Oldal szerkesztése" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="1-beziehung-zwischen-dem-modell-und-dem-code">1. Beziehung zwischen dem Modell und dem Code<a class="headerlink" href="#1-beziehung-zwischen-dem-modell-und-dem-code" title="Permanent link">&para;</a></h1>
+<h2 id="das-ziel-der-ubung">Das Ziel der Übung<a class="headerlink" href="#das-ziel-der-ubung" title="Permanent link">&para;</a></h2>
+<p>Das Ziel der Übung:</p>
+<ul>
+<li>Kennenlernen der Schüler/Trainer</li>
+<li>Klärung der Anforderungen für Übungen</li>
+<li>Erste Schritte mit Visual Studio und der Entwicklung von .NET-Anwendungen.</li>
+<li>Erstellen einer einfachen Hello World .NET-Anwendung, C#-Grundlagen</li>
+<li>Veranschaulichung der Beziehung zwischen UML und Code</li>
+<li>Die Schnittstelle und die abstrakte primitive Klasse Anwendungstechnik</li>
+</ul>
+<details class="hinweis">
+<summary>Für Praktiker</summary>
+<p>Während es sicherlich einige Studenten geben wird, die die Visual Studio-Umgebung bereits in Prog2 (C++) oder aus anderen Gründen verwendet haben, wird es mit ziemlicher Sicherheit andere geben, die sie nicht verwendet haben oder sich weniger daran erinnern. Ziel ist es, sich mit der Benutzeroberfläche vertraut zu machen. Während Sie die Übungen durcharbeiten, werden Sie mit den Dingen vertraut gemacht, die Sie zum Erstellen Ihrer ersten C#-Anwendung verwenden (z. B. Lösungsexplorer, ++Ausführen von f5++, Verwenden von Haltepunkten usw.).</p>
+</details>
+<h2 id="voraussetzungen">Voraussetzungen<a class="headerlink" href="#voraussetzungen" title="Permanent link">&para;</a></h2>
+<p>Die für die Durchführung der Übung benötigten Werkzeuge:</p>
+<ul>
+<li>Visual Studio 2022</li>
+</ul>
+<p>Es sollte die neueste Version von Visual Studio installiert sein. Die Versionen Community Edition, Professional und Enterprise sind ebenfalls geeignet. Die Community Edition ist kostenlos und kann von der Microsoft-Website heruntergeladen werden. Der Professional ist kostenpflichtig, steht aber auch Studenten der Universität kostenlos zur Verfügung (auf der Website, im Rahmen des Programms Azure Dev Tools for Teaching).</p>
+<div class="admonition hinweis">
+<p class="admonition-title">Visual Studio Class Diagram support</p>
+<p>Für einige der Übungen in dieser Übung (und auch für die erste Hausaufgabe) werden wir die Unterstützung des Visual Studio Class Designer nutzen. Visual Studio fügt die Komponente Class Designer während der Installation nicht immer hinzu. Wenn es nicht möglich ist, ein Klassendiagramm zu Ihrem Visual Studio-Projekt hinzuzufügen (weil das Klassendiagramm nicht in der Liste des Fensters aufgeführt ist, das während des Befehls Neues Element hinzufügen angezeigt wird - mehr dazu später in diesem Handbuch), müssen Sie die Komponente Klassendiagramm später installieren:</p>
+<ol>
+<li>Starten Sie das Visual Studio-Installationsprogramm (z. B. durch Eingabe von "Visual Studio Installer" im Windows-Startmenü).</li>
+<li>Wählen Sie in dem nun erscheinenden Fenster die Registerkarte "Einzelne Komponenten"</li>
+<li>
+<p>Geben Sie in das Suchfeld "Klassendesigner" ein und vergewissern Sie sich, dass "Klassendesigner" in der gefilterten Liste nicht angekreuzt ist.</p>
+<p><a class="glightbox" href="../images/vs-isntaller-add-class-diagram.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Installation der Klassendiagramm-Unterstützung" src="../images/vs-isntaller-add-class-diagram.png" /></a></p>
+</li>
+</ol>
+</div>
+<p>Was Sie sich ansehen sollten:</p>
+<ul>
+<li>Die Übung beinhaltet keine Vorlesung zu diesem Thema. Gleichzeitig baut die Übung auf grundlegendem UML-Wissen und den Grundlagen der Abbildung von UML-Klassendiagrammen auf Code auf.</li>
+</ul>
+<h2 id="verlauf-der-ubung">Verlauf der Übung<a class="headerlink" href="#verlauf-der-ubung" title="Permanent link">&para;</a></h2>
+<p>Der Ausbilder fasst die Anforderungen für die Übungen zu Beginn der Übung zusammen:</p>
+<ul>
+<li>Die meisten davon finden Sie in dem Merkblatt</li>
+<li>Informationen zu den Hausaufgaben finden Sie auf der Website des Fachs.</li>
+</ul>
+<p>Mit dem Entwicklungswerkzeug Visual Studio werden wir .NET-Anwendungen in C# erstellen. C# ist ähnlich wie Java, wir lernen allmählich die Unterschiede. Die Aufgaben werden gemeinsam unter der Leitung des Übungsleiters durchgeführt.</p>
+<h2 id="losung">Lösung<a class="headerlink" href="#losung" title="Permanent link">&para;</a></h2>
+<details class="success">
+<summary>Laden Sie die fertige Lösung herunter</summary>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2757.svg" title=":exclamation:" /> Es ist wichtig, dass Sie sich während des Praktikums an die Anleitung halten. Es ist verboten (und sinnlos), die fertige Lösung herunterzuladen. Allerdings kann es bei der anschließenden Selbsteinübung nützlich sein, die fertige Lösung zu überprüfen, daher stellen wir sie zur Verfügung.</p>
+<p>Die Lösung ist [verfügbar auf GitHub] (<a href="https://github.com/bmeviauab00/lab-modellkod-kiindulo/tree/megoldas">https://github.com/bmeviauab00/lab-modellkod-kiindulo/tree/megoldas</a>). Der einfachste Weg, es herunterzuladen, ist, es von der Kommandozeile aus mit dem Befehl <code>git clone</code> auf Ihren Computer zu klonen:</p>
+<p><code>git clone https://github.com/bmeviauab00/lab-modellkod-kiindulo -b solved</code></p>
+<p>Sie müssen Git auf Ihrem Rechner installiert haben, weitere Informationen <a href="../../../hazi/git-github-github-classroom/#git-telepitese">hier</a>.</p>
+</details>
+<h2 id="1-aufgabe-erstellen-einer-hallo-welt-net-konsolenanwendung">1. Aufgabe - Erstellen einer "Hallo Welt" .NET-Konsolenanwendung<a class="headerlink" href="#1-aufgabe-erstellen-einer-hallo-welt-net-konsolenanwendung" title="Permanent link">&para;</a></h2>
+<p>Die Aufgabe besteht darin, eine C#-Konsolenanwendung zu erstellen, die den Text "Hello world!" auf der Konsole ausgibt.</p>
+<p>Die Anwendung ist in C# geschrieben. Die kompilierte Anwendung wird von der .NET-Laufzeitumgebung ausgeführt. In der ersten Vorlesung werden die theoretischen Hintergründe des Kompilierens/Ablaufens und die Grundlagen von .NET behandelt.</p>
+<p>Die Schritte zum Erstellen einer Projektmappe und eines Projekts in Visual Studio 2022:</p>
+<ol>
+<li>Starten Sie einen neuen Projektassistenten, was auf zwei Arten geschehen kann<ul>
+<li>Verwendung des Startfensters<ol>
+<li>Visual Studio starten</li>
+<li>In der rechten Seitenleiste des erscheinenden Startfensters <em>Neues Projekt erstellen</em></li>
+</ol>
+</li>
+<li>Bereits in Visual Studio ausgeführt<ol>
+<li>Datei / Neues Projekt</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>Wählen Sie im Assistenten "Neues Projekt erstellen" die Vorlage " <em>Konsolenanwendung</em> " (und <strong>NICHT</strong> die Vorlage " <em>Konsolenanwendung (.NET Framework)</em> ", einschließlich der C#-Vorlage. Dass es sich um C# handelt, ist an der oberen linken Ecke des Vorlagensymbols zu erkennen. Wenn Sie es nicht in der Liste sehen, müssen Sie es suchen/filtern. Sie können danach suchen, indem Sie in der oberen Suchleiste "Konsole" eingeben. Oder verwenden Sie die Dropdown-Felder unten: im ersten (Sprachauswahl) "C#", im dritten (Projekttypauswahl) "Konsole".</p>
+<p><a class="glightbox" href="../images/vs-create-new-project-wizard.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Ein Projekt erstellen" src="../images/vs-create-new-project-wizard.png" /></a></p>
+</li>
+<li>
+<p>Weiter am unteren Rand des Assistentenfensters, auf der nächsten Assistentenseite:</p>
+<ol>
+<li>Name des Projekts: <strong>Hallo Welt</strong></li>
+<li>Speicherort: In den Labors arbeiten Sie im Ordner <strong>c:\work\&lt;filename&gt;</strong>, auf den Sie Schreibrechte haben.</li>
+<li>Name der Lösung: <strong>Hello World</strong> (dies sollte bis zu unserer Ankunft bereits eingegeben sein)</li>
+<li>Projektmappe und Projekt in dasselbe Verzeichnis legen: kein Problem (aber nicht besonders wichtig).</li>
+</ol>
+</li>
+<li>
+<p>Weiter am unteren Rand des Assistentenfensters, auf der nächsten Assistentenseite:</p>
+<ol>
+<li>Rahmenwerk: <strong>.NET 8 (Langfristige Unterstützung)</strong>.</li>
+<li>Aktivieren Sie das Kontrollkästchen "Keine Anweisungen der obersten Ebene verwenden" (wir werden dies gleich erklären).</li>
+</ol>
+</li>
+</ol>
+<p>Das Projekt erstellt auch eine neue Projektmappe, deren Struktur im Visual Studio <em>Solution Explorer-Fenster</em> angezeigt werden kann. Eine Lösung kann aus mehreren Projekten bestehen, und ein Projekt kann aus mehreren Dateien bestehen. Eine Lösung ist eine Zusammenfassung der gesamten Arbeitsumgebung (sie hat die Dateierweiterung <code>.sln</code> ), während die Ausgabe eines Projekts typischerweise eine Datei <code>.exe</code> oder <code>.dll</code> ist, d. h. eine Komponente einer komplexen Anwendung/eines komplexen Systems. Projektdateierweiterung für C#-Anwendungen <code>.csproj</code>.</p>
+<p>Der Inhalt unserer Datei <code>Program.cs</code> lautet wie folgt:</p>
+<div class="highlight"><span class="filename">Program.cs</span><pre><span></span><code><span class="k">namespace</span><span class="w"> </span><span class="nn">HelloWorld</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">internal</span><span class="w"> </span><span class="k">class</span><span class="w">  </span><span class="nc">Program</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Hallo Welt!&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Nehmen Sie eine Zeile aus <code>Console.ReadKey()</code>: </p>
+<div class="highlight"><pre><span></span><code><span class="k">namespace</span><span class="w"> </span><span class="nn">HelloWorld</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">internal</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Program</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Hallo Welt!&quot;</span><span class="p">);</span>
+<span class="hll"><span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">ReadKey</span><span class="p">();</span>
+</span><span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>
+<p>Führen Sie die Anwendung aus (z. B. mit der Taste <span class="keys"><kbd class="key-f5">F5</kbd></span> ).</p>
+<p>Die Struktur des Codes ist der von Java und C++ sehr ähnlich. Unsere Klassen sind in Namespaces organisiert. Sie können einen Namespace mit dem Schlüsselwort <code>namespace</code> definieren. Wir können Namespaces mit dem Schlüsselwort <code>using</code> "abdecken". z.B.:</p>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections.Generic</span><span class="p">;</span>
+</code></pre></div>
+</li>
+<li>
+<p>In einer C#-Konsolenanwendung geben Sie den Einstiegspunkt Ihrer Anwendung an, indem Sie eine statische Funktion namens <code>Main</code> schreiben. Unser Klassenname kann beliebig sein, in unserem Fall hat VS eine Klasse namens <code>Program</code> erzeugt. Die Parameterliste der Funktion <code>Main</code> ist gebunden: entweder werden keine Parameter angegeben, oder es wird ein <code>string[]</code>angegeben, in dem die Befehlszeilenargumente zur Laufzeit angegeben werden.</p>
+</li>
+<li>in .NET wird die Klasse <code>Console</code> aus dem Namensraum <code>System</code> verwendet, um die Standardeingabe und -ausgabe zu verarbeiten. Mit der statischen Aktion <code>WriteLine</code> können Sie eine Zeile drucken, mit <code>ReadKey</code> können Sie auf das Drücken einer Taste warten.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Top-Level-Anweisungen, implizite und statische Verwendungen und Namespaces</p>
+<p>Bei der Projekterstellung haben wir zuvor das Kontrollkästchen "Top-Level-Anweisungen nicht verwenden" aktiviert. Hätten wir dies nicht getan, hätten wir in unserer Datei <code>Program.cs</code> nur eine einzige Zeile mit Inhalt gefunden:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// siehe https://aka.ms/new-console-template für weitere Informationen</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Hallo Welt!&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>Dies ist funktionell äquivalent zu dem obigen Code, der die Klasse "Program" und ihre Funktion "Main" enthält. Schauen wir uns an, was dies möglich macht (Sie können hier mehr darüber lesen <a href="https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/top-level-statements">https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/top-level-statements</a>, beide neu in C# 10):</p>
+<ul>
+<li><strong>Aussagen der obersten Ebene</strong>. Die Idee ist, dass Sie Code direkt in einer einzigen Quelldatei schreiben können, ohne dass Klassen/<code>Main</code> und andere Funktionsdefinitionen im Projekt vorhanden sind. In diesem Fall setzt der Compiler dies hinter den Kulissen in eine statische "Main"-Funktion einer Klasse, die wir nicht sehen. Die Motivation für seine Einführung war die Reduzierung von "Boilerplate"-Code für sehr einfache, "skriptartige" Anwendungen.</li>
+<li><strong>Implizite globale Verwendungen</strong>. Je nachdem, welchen Projekttyp Sie erstellt haben, werden bestimmte Basis-Namensräume automatisch im Hintergrund in allen Quelldateien verwendet (der Compiler verwendet dazu die <em>globale using</em>-Direktive). Der Punkt ist: Auf diese Weise müssen Entwickler bestimmte häufig verwendete Namespaces (z.B. <code>System.IO</code>, <code>System.Collections.Generic</code>, etc.) nicht als Quelldateien verwenden.</li>
+<li>
+<p><strong>Statische Verwendung</strong>. Es ist möglich, statische Klassen anstelle von Namespaces in C# zu verwenden, so dass es nicht wichtig ist, sie zu schreiben, wenn sie verwendet werden. Ein häufiger Fall ist die Verwendung der Klasse "Console" oder "Math".</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="k">using</span><span class="w"> </span><span class="nn">static</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">;</span>
+</span>
+<span class="n">namensraum</span><span class="w"> </span><span class="n">ConsoleApp12</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">internal</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Program</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="hll"><span class="w">            </span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Hallo, Welt!&quot;</span><span class="p">);</span>
+</span><span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Namensräume auf Dateiebene</strong>. In C# 10 gibt es auch eine Vereinfachung bei der Deklaration von Namespaces, da es nicht mehr zwingend erforderlich ist, Klammern zu verwenden, so dass der angegebene Namespace für die gesamte Datei gültig ist, z.B:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="k">namespace</span><span class="w"> </span><span class="nn">HelloWorld</span><span class="p">;</span>
+</span>
+<span class="k">internal</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Program</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+</ul>
+</div>
+<div class="admonition warnung">
+<p class="admonition-title">Fehler bei inkonsistenter Sichtbarkeit oder inkonsistenter Zugänglichkeit</p>
+<p>Während des Semesters können Sie bei der Durchführung von Programmieraufgaben auf Übersetzungsfehlermeldungen stoßen, die sich über <em>inkonsistente Sichtbarkeit</em> oder <em>inkonsistente Zugänglichkeit</em> beschweren. Dieses Phänomen ist auf die Möglichkeit zurückzuführen, die Sichtbarkeit der einzelnen Typen (Klassen, Schnittstellen usw.) in einer .NET-Umgebung zu steuern:</p>
+<ul>
+<li>intern" oder keine Sichtbarkeit angeben: der Typ ist nur intern in der angegebenen Assembly (.exe, .dll)/dem angegebenen Projekt sichtbar</li>
+<li>öffentlich": der Typ ist für andere Baugruppen/Projekte sichtbar</li>
+</ul>
+<p>Der einfachste Weg, diesen Fehler zu vermeiden, ist, alle unsere Typen als öffentlich zu definieren, z.B.:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">HardDisk</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<h2 id="theoretischer-uberblick">Theoretischer Überblick<a class="headerlink" href="#theoretischer-uberblick" title="Permanent link">&para;</a></h2>
+<p>Die Unterkapitel enthalten keine Übungen, sondern bieten den Studierenden eine mit Beispielen illustrierte Einführung in die entsprechenden theoretischen Themen.</p>
+<h3 id="a-theorie-der-beziehung-zwischen-dem-uml-klassendiagramm-und-dem-code-student">A) Theorie der Beziehung zwischen dem UML-Klassendiagramm und dem Code [Student]*<a class="headerlink" href="#a-theorie-der-beziehung-zwischen-dem-uml-klassendiagramm-und-dem-code-student" title="Permanent link">&para;</a></h3>
+<p>Das Material ist hier verfügbar: <a href="../../../egyeb/uml-kod-kapcsolata/index_ger/">Die Beziehung zwischen dem UML-Klassendiagramm und dem Code</a> Dieses Thema wurde im vorangegangenen Semester in der Vorlesung Softwaretechnik behandelt.</p>
+<h3 id="b-schnittstelle-und-abstrakte-ubergeordnete-klasse-student">B) Schnittstelle und abstrakte (übergeordnete) Klasse [student]*<a class="headerlink" href="#b-schnittstelle-und-abstrakte-ubergeordnete-klasse-student" title="Permanent link">&para;</a></h3>
+<p>Das Material ist hier verfügbar:  <a href="../../../egyeb/interfesz-es-absztrakt-os/index_ger/">Schnittstelle und abstrakte (angestammte) Klasse</a>.</p>
+<p>Themen:</p>
+<ul>
+<li>Konzept und Definition abstrakter Klassen in C#</li>
+<li>Schnittstellenkonzepte und -definitionen in C#</li>
+<li>Vergleich von abstraktem Vorfahren und Schnittstelle</li>
+</ul>
+<h2 id="2-aufgabe-veranschaulichen-sie-die-beziehung-zwischen-uml-und-code">2. Aufgabe - Veranschaulichen Sie die Beziehung zwischen UML und Code<a class="headerlink" href="#2-aufgabe-veranschaulichen-sie-die-beziehung-zwischen-uml-und-code" title="Permanent link">&para;</a></h2>
+<h3 id="aufgabenbeschreibung-inventarisierung-der-ausrustung">Aufgabenbeschreibung - Inventarisierung der Ausrüstung<a class="headerlink" href="#aufgabenbeschreibung-inventarisierung-der-ausrustung" title="Permanent link">&para;</a></h3>
+<p>Aufgabe: Wir wurden gebeten, eine Anwendung zur Inventarisierung von Computerteilen zu entwickeln. Lesen Sie mehr:</p>
+<ul>
+<li>Sie müssen in der Lage sein, verschiedene Arten von Teilen zu bearbeiten. Anfänglich sollten die Typen <code>HardDisk</code>, <code>SoundCard</code> und <code>LedDisplay</code> unterstützt werden, aber das System sollte leicht auf neue Typen erweiterbar sein.</li>
+<li>Daten zu den Teilen: Anschaffungsjahr, Alter (berechnet), Anschaffungspreis und aktueller Preis (berechnet), kann aber auch typspezifische Daten enthalten (z. B. Kapazität für <code>HardDisk</code> ).</li>
+<li>Der tatsächliche Preis hängt von der Art des Teils, dem Einkaufspreis und dem Produktionsjahr des Teils ab. Je älter das Teil ist, desto höher ist der Preisnachlass, aber der Preisnachlass hängt von der Art des Teils ab.</li>
+<li>Sie müssen in der Lage sein, die vorrätigen Teile aufzulisten.</li>
+<li>Die Klasse <code>LedDisplay</code> muss von einer Klasse <code>DisplayBase</code> abgeleitet sein, und der Quellcode der Klasse <code>DisplayBase</code> darf nicht verändert werden. In diesem Beispiel macht dies nicht viel Sinn, aber in der Praxis treffen wir oft auf ähnliche Situationen, in denen das von uns verwendete Framework/die Plattform verlangt, dass wir von einer eingebauten Klasse ableiten. Typischerweise ist dies der Fall, wenn wir mit Fenstern, Formularen oder benutzerdefinierten Steuerelementen arbeiten: Wir müssen sie von den eingebauten Klassen des Frameworks ableiten, und wir haben den Quellcode des Frameworks nicht (oder wollen ihn zumindest nicht ändern) - z.B. Java, .NET. In unserem Beispiel simulieren wir diese Situation, indem wir eine Ableitung von <code>DisplayBase</code>verlangen.</li>
+</ul>
+<p>Die Implementierung ist erheblich vereinfacht: Die Teile werden nur im Speicher abgelegt, und die Auflistung ist so einfach wie möglich, indem einfach die Daten der registrierten Teile in die Konsole geschrieben werden.</p>
+<p>Bei den ersten Gesprächen erhalten wir vom Kunden folgende Information: Ein interner Mitarbeiter hat bereits mit der Entwicklung begonnen, ist aber aus Zeitmangel nur zu einer halbfertigen Lösung gekommen. Ein Teil unserer Aufgabe besteht darin, die halbfertige Lösung zu verstehen und die Aufgabe von dort aus umzusetzen.</p>
+<h3 id="klassendiagramm">Klassendiagramm<a class="headerlink" href="#klassendiagramm" title="Permanent link">&para;</a></h3>
+<p>Öffnen wir die Quellcode-Lösung unseres Kunden <a href="https://github.com/bmeviauab00/lab-modellkod-kiindulo">source code</a>, indem wir die nachstehenden Schritte ausführen.</p>
+<p>Dazu klonen Sie das Git-Repository des ursprünglichen Projekts, das online auf GitHub verfügbar ist, in einen eigenen Ordner innerhalb des Ordners <code>C:\Work</code>: z. B.: <code>C:\Work\NEPTUN\lab1</code>. Öffnen Sie in diesem neuen Ordner eine Befehlszeile oder Powershell und führen Sie den folgenden git-Befehl aus:</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/bmeviauab00/lab-modellkod-kiindulo.git
+</code></pre></div>
+<div class="admonition hinweis">
+<p class="admonition-title">Git und GitHub</p>
+<p>Sie werden mehr über Git als Quellcode-Verwaltungssystem im Rahmen der ersten Hausaufgabe erfahren.</p>
+</div>
+<p>Öffnen Sie die Visual Studio-Lösung src/EquipmentInventory.sln im geklonten Ordner.</p>
+<p>Gehen Sie im Solution Explorer die Dateien nach Augenmaß durch. Es wäre hilfreich, die Beziehungen zwischen den Klassen in einem Klassendiagramm darzustellen, um sie zu verstehen. Wir wollen ein Klassendiagramm in unser Projekt einfügen. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das <strong>Projekt</strong> (nicht auf die Projektmappe!), wählen Sie im Popup-Menü die Option <em>Hinzufügen/Neues Element</em>, wählen Sie im daraufhin angezeigten Fenster die Option Klassendiagramm, geben Sie unten im Fenster den Namen Main.cd als Diagramm ein, und schließen Sie das Fenster mit OK.</p>
+<p>!!! Warnung "Fehlende Klassendiagramm-Vorlage" Wenn das Element <em>Klassendiagramm</em> nicht in der Liste erscheint, ist die entsprechende Komponente von VS nicht installiert. Weitere Informationen hierzu finden Sie im Abschnitt Voraussetzungen in diesem Dokument.</p>
+<p>Die Diagrammdatei <code>Main.cd</code> wird dann im Projektmappen-Explorer angezeigt. Doppelklicken Sie darauf, um sie zu öffnen. Unsere Karte ist derzeit leer. Ziehen Sie im Projektmappen-Explorer\&amp;die .cs-Quelldateien auf das Diagramm. VS prüft dann, welche Klassen in diesen Quelldateien enthalten sind, und zerlegt sie in UML-Klassen. Erstellen Sie das Layout wie in der folgenden Abbildung gezeigt (Sie können die Mitglieder der Klassen anzeigen, indem Sie auf den Doppelpfeil in der oberen rechten Ecke ihres Rechtecks klicken):</p>
+<p><a class="glightbox" href="../images/class-diagram-initial.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Beginnendes Klassendiagramm" src="../images/class-diagram-initial.png" /></a></p>
+<p>Sie können auch den Quellcode für die Klassen anzeigen, indem Sie entweder auf die entsprechende Klasse im Diagramm doppelklicken oder die .cs-Dateien im Projektmappen-Explorer öffnen. Wir haben folgende Erfahrungen gemacht:</p>
+<ul>
+<li>Die Klassen <code>SoundCard</code>, <code>HardDisk</code> und <code>LedDisplay</code> sind relativ gut entwickelt und verfügen über die notwendigen Attribute und Abfragefunktionen.</li>
+<li><code>LedDisplay</code> wird bei Bedarf von <code>DisplayBase</code> abgeleitet.</li>
+<li>Obwohl <code>EquipmentInventory</code> für die Bestandsaufnahme der auf Lager befindlichen Teile zuständig ist, wird praktisch nichts davon umgesetzt.</li>
+<li>Wir finden eine Schnittstelle <code>IEquipment</code>, mit <code>GetAge</code> und <code>GetPrice</code> Operationen</li>
+</ul>
+<h3 id="ausrustunginventar">AusrüstungInventar<a class="headerlink" href="#ausrustunginventar" title="Permanent link">&para;</a></h3>
+<p>Lassen Sie uns an einer Lösung arbeiten. Lassen Sie uns zunächst die grundlegenden Konzepte erläutern. In der Klasse <code>EquipmentInventory</code> speichern wir eine heterogene Sammlung verschiedener Teiletypen. Dies ist der Schlüssel zu einer konsistenten Teileverwaltung, so dass unsere Lösung problemlos um neue Teiletypen erweitert werden kann.</p>
+<p>Wie bereits erwähnt, kann eine einheitliche Verwaltung entweder durch die Implementierung einer gemeinsamen Vorläuferklasse oder einer gemeinsamen Schnittstelle erreicht werden. In unserem Fall scheint die gemeinsame Vorgängerklasse (z. B. <code>EquipmentBase</code>) eliminiert zu werden, denn durch ihre Einführung hätte die Klasse <code>LedDisplay</code> zwei Vorgängerklassen: <code>DisplayBase</code>, die obligatorisch ist, und <code>EquipmentBase</code>, die wir zur einheitlichen Verwaltung einführen. Dies ist nicht möglich, in einer .NET-Umgebung kann eine Klasse nur einen Vorgänger haben. Die Lösung, <code>DisplayBase</code>so zu ändern, dass es von <code>EquipmentBase</code>stammt, ist nach unseren Anforderungen nicht möglich (es war eine Anforderung, dass der Quellcode nicht geändert werden durfte). Es bleibt also der schnittstellenbasierte Ansatz. Dies ist sicherlich die Schlussfolgerung des vorherigen Entwicklers der Anwendung, weshalb er die Schnittstelle <code>IEquipment</code> eingeführt hat.</p>
+<p>Fügen Sie eine generische Liste von Elementen des Typs <code>IEquipment</code> (keine Eigenschaft, sondern ein Feld!) zur Klasse <code>EquipmentInventory</code> hinzu. Ihre Sichtbarkeit sollte - in dem Bemühen um Integration - <code>private</code>sein. Der Name sollte <code>equipment</code> lauten (ohne "s" am Ende, im Englischen ist der Plural von equipment auch equipment). Um eine Member-Variable hinzuzufügen, verwenden wir das Fenster Visual Studio <em>Class Details</em>. Wenn das Fenster nicht sichtbar ist, kann es durch Auswahl von <em>Ansicht / Andere Fenster / Klassendetails</em> angezeigt werden.</p>
+<p><a class="glightbox" href="../images/class-details.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Details zur Klasse" src="../images/class-details.png" /></a></p>
+<p>Der Typ der Mitgliedsvariablen ist <code>List&lt;IEquipment&gt;</code>. Der .NET-Typ <code>List</code> ist ein dynamisch dehnbares generisches Array (wie <code>ArrayList</code>in Java). Betrachtet man die Klasse <code>EquipmentInventory</code> im Diagramm, so sieht man, dass nur der Name der Mitgliedsvariablen angezeigt wird, nicht aber der Typ. Klicken Sie mit der rechten Maustaste auf den Hintergrund des Diagramms und wählen Sie im Menü <em>Mitgliederformat ändern</em> die Option <em>Vollständige Signatur anzeigen</em>. Das Diagramm zeigt dann den Typ der Mitgliedsvariablen und die vollständige Signatur der Operationen.</p>
+<p><a class="glightbox" href="../images/equipmentinventory.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="AusrüstungInventar" src="../images/equipmentinventory.png" /></a></p>
+<p>Wenn Sie auf die Klasse <code>EquipmentInventory</code> doppelklicken, können Sie zum Quellcode navigieren, und wie Sie sehen können, erscheint sie im Code tatsächlich als Mitgliedsvariable vom Typ Liste:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">EquipmentInventory</span>
+<span class="p">{</span>
+<span class="hll"><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">IEquipment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">equipment</span><span class="p">;</span>
+</span></code></pre></div>
+<p>Einerseits freuen wir uns darüber, weil Visual Studio Round-Trip-Engineering unterstützt: <strong>Änderungen am Modell spiegeln sich sofort im Code wider und umgekehrt</strong>. Andererseits haben wir bereits erörtert, dass eine Klasse, die eine Sammlung von Mitgliedern einer anderen Klasse hat, in das UML-Modell als eine Assoziationsbeziehung vom Typ 1-more zwischen den beiden Klassen "passt". Dies ist in unserem Modell noch nicht der Fall. Glücklicherweise kann die VS-Modellierungsschnittstelle dazu gebracht werden, diese Art von Verbindung in dieser Form anzuzeigen. Klicken Sie dazu im Diagramm mit der rechten Maustaste auf die Variable Equipment-Tag und wählen Sie im Menü die Option <em>Als Sammelassoziation anzeigen</em> aus. Die Schnittstelle <code>IEquipment</code> sollte dann nach rechts verschoben werden, damit im Diagramm genügend Platz für die Darstellung der Assoziationsverbindung und der Rolle der Verbindung bleibt:</p>
+<p><a class="glightbox" href="../images/collection-association.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Sammlungsverband" src="../images/collection-association.png" /></a></p>
+<p>Der Doppelpfeil, der auf der "Plural"-Seite endet, entspricht nicht dem UML-Standard, aber seien Sie nicht zu traurig darüber, es ist nicht wichtig. Wir sind sehr erfreut, dass der Pfeil, der den Link am Ende von <code>IEquipment</code> darstellt, den Namen (und sogar den genauen Typ) der Mitgliedsvariablen in der Rolle anzeigt.</p>
+<p>Navigieren Sie zum Quellcode von <code>EquipmentInventory</code> und schreiben Sie den Konstruktor, der die Sammlung <code>equipment</code> initialisiert!</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">EquipmentInventory</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">equipment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">IEquipment</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Schreiben Sie dann die Methode <code>ListAll</code>, die das Alter der Elemente und ihren aktuellen Wert ausgibt:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ListAll</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="n">IEquipment</span><span class="w"> </span><span class="n">eq</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">equipment</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;Alter: {eq.GetAge()}\tÉrtéke: {eq.GetPrice()}&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Mit dem Befehl <code>foreach</code> durchlaufen Sie die Elemente. Bei der Verwendung der Richtlinie <code>foreach</code> sollte <code>in</code> von einer Sammlung gefolgt werden, und <code>in</code> sollte eine Variablendeklaration vorangestellt werden (in diesem Fall <code>IEquipment eq</code>), wobei type der Elementtyp der Sammlung ist. Bei jeder Iteration nimmt diese Variable den Iterationswert der Sammlung an.</p>
+<p>Der Operation <code>Console.WriteLine</code> wird entweder eine einfache Zeichenfolge oder, wie in unserem Fall, eine Formatierungszeichenfolge übergeben. Die Ersetzungen werden durch String-Interpolation gelöst: Die zu ersetzenden Werte müssen zwischen <code>{}</code> angegeben werden. Bei der String-Interpolation muss der String mit <code>$</code> beginnen.</p>
+<p>Schreiben Sie eine Funktion mit der Bezeichnung <code>AddEquipment</code>, die ein neues Gerät zu der Menge hinzufügt:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">AddEquipment</span><span class="p">(</span><span class="n">IEquipment</span><span class="w"> </span><span class="n">eq</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">     </span><span class="n">equipment</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">eq</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="iequipment-von-ausrustungen">IEquipment von Ausrüstungen<a class="headerlink" href="#iequipment-von-ausrustungen" title="Permanent link">&para;</a></h3>
+<p>Wir haben beschlossen, die Schnittstelle <code>IEquipment</code> zu verwenden, um die verschiedenen Komponententypen einheitlich zu verwalten. In unserem Fall haben sowohl die Klassen <code>SoundCard</code> als auch <code>HardDisk</code> die Methoden <code>GetAge()</code> und <code>GetPrice()</code>, aber wir können sie nicht einheitlich verwalten (z. B. in einer gemeinsamen Liste speichern). Zu diesem Zweck müssen wir beide Klassen dazu bringen, die Schnittstelle <code>IEquipment</code> zu implementieren. Ändern Sie ihre Quelle:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SoundCard</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">HardDisk</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span>
+</code></pre></div>
+<p>Dann müssen wir die Methoden der Schnittstelle <code>IEquipment</code> in den Klassen <code>SoundCard</code> und <code>HardDisk</code> implementieren. Wir stellen fest, dass es damit nichts mehr zu tun gibt, die Funktionen <code>GetPrice</code> und <code>GetAge</code> sind bereits an beiden Stellen geschrieben.</p>
+<p>Erstellen Sie testweise ein Objekt <code>EquipmentInventory</code> in unserer Funktion <code>Main</code> in <code>Program.cs</code>, füllen Sie es mit den Objekten <code>HardDisk</code> und <code>SoundCard</code> und listen Sie das Objekt dann in der Konsole auf. Wenn 2021 nicht das aktuelle Jahr ist, kopieren Sie in den folgenden Zeilen das Jahr 2021 in das aktuelle Jahr und das Jahr 2020 in eine kleinere Zahl!</p>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="w"> </span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">EquipmentInventory</span><span class="w"> </span><span class="n">ei</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EquipmentInventory</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HardDisk</span><span class="p">(</span><span class="m">2021</span><span class="p">,</span><span class="w"> </span><span class="m">30000</span><span class="p">,</span><span class="w"> </span><span class="m">80</span><span class="p">));</span>
+<span class="w">    </span><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HardDisk</span><span class="p">(</span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">25000</span><span class="p">,</span><span class="w"> </span><span class="m">120</span><span class="p">));</span>
+<span class="w">    </span><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HardDisk</span><span class="p">(</span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">25000</span><span class="p">,</span><span class="w"> </span><span class="m">250</span><span class="p">));</span>
+
+<span class="w">    </span><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">SoundCard</span><span class="p">(</span><span class="m">2021</span><span class="p">,</span><span class="w"> </span><span class="m">8000</span><span class="p">));</span>
+<span class="w">    </span><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">SoundCard</span><span class="p">(</span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">7000</span><span class="p">));</span>
+<span class="w">    </span><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">SoundCard</span><span class="p">(</span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">6000</span><span class="p">));</span>
+
+<span class="w">    </span><span class="n">ei</span><span class="p">.</span><span class="n">ListAll</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Wenn wir die Anwendung ausführen, stellen wir fest, dass unsere Lösung zwar rudimentär ist, aber funktioniert:</p>
+<p><a class="glightbox" href="../images/console-out-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Ausgabe auf der Konsole" src="../images/console-out-1.png" /></a></p>
+<p>Arbeiten Sie weiter mit der Klasse <code>LedDisplay</code>.  Der Quellcode von <code>DisplayBase</code> kann aufgrund der Anforderungen nicht geändert werden. Aber das ist kein Problem, unsere Klasse <code>LedDisplay</code> wird die Schnittstelle <code>IEquipment</code> implementieren, lassen Sie uns den Code entsprechend ändern:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LedDisplay</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">DisplayBase</span><span class="p">,</span><span class="w"> </span><span class="n">IEquipment</span>
+</code></pre></div>
+<p>In der Klasse <code>LedDisplay</code> müssen die Funktionen der Schnittstelle bereits geschrieben sein:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">price</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetAge</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">manufacturingYear</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Erweitern wir unsere Funktion <code>Main</code>, fügen wir zwei <code>LedDisplay</code> Objekte zu unserer Menge hinzu (auch hier gilt: Wenn 2021 nicht das aktuelle Jahr ist, sollten wir in den folgenden Zeilen 2021 in das aktuelle Jahr und 2020 in eine kleinere Zahl schreiben!</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">LedDisplay</span><span class="p">(</span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">80000</span><span class="p">,</span><span class="w"> </span><span class="m">17</span><span class="p">,</span><span class="w"> </span><span class="m">16</span><span class="p">));</span>
+</span><span class="hll"><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">LedDisplay</span><span class="w"> </span><span class="p">(</span><span class="m">2021</span><span class="p">,</span><span class="w"> </span><span class="m">70000</span><span class="p">,</span><span class="w"> </span><span class="m">17</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">));</span>
+</span>
+<span class="n">ei</span><span class="p">.</span><span class="n">ListAll</span><span class="p">();</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">ReadKey</span><span class="p">();</span>
+</code></pre></div>
+<p>Führen Sie die Anwendung testweise aus.</p>
+<h2 id="3-aufgabe-anwendung-der-schnittstelle-und-der-abstrakten-primitiven-klasse">3. Aufgabe - Anwendung der Schnittstelle und der abstrakten primitiven Klasse<a class="headerlink" href="#3-aufgabe-anwendung-der-schnittstelle-und-der-abstrakten-primitiven-klasse" title="Permanent link">&para;</a></h2>
+<h3 id="schnittstellenprobleme">Schnittstellenprobleme<a class="headerlink" href="#schnittstellenprobleme" title="Permanent link">&para;</a></h3>
+<p>Bewerten Sie unsere aktuelle schnittstellenbasierte Lösung.</p>
+<p>Eines der Hauptprobleme ist, dass unser Code voller Code-Duplikationen ist, die die Wartbarkeit und Erweiterbarkeit zerstören:</p>
+<ul>
+<li>Die Tags <code>yearOfCreation</code> und <code>newPrice</code> gelten für alle Komponententypen (mit Ausnahme des speziellen <code>LedDisplay</code>) und müssen eingefügt werden, wenn ein neuer Typ eingeführt wird.</li>
+<li>Die Implementierungsebene der Funktion <code>GetAge</code> ist für alle Komponententypen (mit Ausnahme der speziellen <code>LedDisplay</code>) gleich, auch Copy-Paste wird "propagiert".</li>
+<li>Die Zeilen in den Konstruktoren, die die Mitglieder <code>yearOfCreation</code> und <code>newPrice</code> initialisieren, werden ebenfalls in jeder Klasse dupliziert.</li>
+</ul>
+<p>Auch wenn diese Codeduplizierung im Moment noch unbedeutend zu sein scheint, wird die Situation mit der Einführung neuer Komponententypen immer schlimmer, und es ist besser, künftigen Problemen rechtzeitig vorzubeugen.</p>
+<p>Ein weiteres Problem besteht darin, dass die Auflistung der Teiledaten derzeit schmerzlich unvollständig ist, da es keine Teileart gibt (nur Alter und Preis). Um den Typ anzuzeigen, muss die Schnittstelle IEquipment erweitert werden, z. B. durch Einführung einer Operation namens <code>GetDescription</code>.   Fügen wir der Schnittstelle eine Funktion <code>GetDescription</code> hinzu!</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IEquipment</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetAge</span><span class="p">();</span>
+<span class="hll"><span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">();</span>
+</span><span class="p">}</span>
+</code></pre></div>
+<p>Dann müsste jede Klasse, die die Schnittstelle <code>IEquipment</code> implementiert, diese Methode implementieren, was für viele Klassen eine Menge Arbeit bedeutet (und für eine Mehrkomponenten-Anwendung, d.h. eine Anwendung, die aus mehreren DLLs besteht, oft gar nicht machbar ist, wenn sie nicht in den Händen eines einzigen Entwicklers liegen). Führen Sie den Befehl <em>Build</em> aus, um zu überprüfen, ob Sie nach dem Hinzufügen von <code>GetDescription</code> an drei Stellen Übersetzungsfehler erhalten.</p>
+<p>tipp "Standardimplementierung in der Schnittstelle festlegen" Es ist wichtig zu wissen, dass ab C# 8 (oder .NET oder .NET Core Runtime, nicht unterstützt unter .NET Framework) <strong>Schnittstellenoperationen eine Standardimplementierung erhalten können (Standardschnittstellenmethoden), so dass Sie zur Lösung des obigen Problems keine abstrakte Klasse benötigen, aber die Schnittstelle kann keine Mitgliedsvariablen mehr haben</strong>. Weitere Informationen finden Sie hier: Standardschnittstellenmethoden.</p>
+<div class="highlight"><pre><span></span><code>```csharp hl_lines=&quot;5&quot;
+public interface IEquipment
+{
+    double GetPrice();
+    int GetAge();
+    string GetDescription() { return &quot;EquipmentBase&quot;; }
+}
+```
+</code></pre></div>
+<h3 id="abstrakte-klasse">Abstrakte Klasse<a class="headerlink" href="#abstrakte-klasse" title="Permanent link">&para;</a></h3>
+<p>Eine Lösung für beide Probleme ist die Einführung eines gemeinsamen abstrakten Vorgängers (mit Ausnahme der Klasse <code>LedDisplay</code>, auf die wir noch zurückkommen werden). Wir können den Code, der allen Nachkommen gemeinsam ist, dorthin verschieben und eine Standardimplementierung für die neu eingeführte Operation <code>GetDescription</code> bereitstellen. Nennen wir unsere neue abstrakte Meisterklasse <code>EquipmentBase</code>. Die Frage ist, ob die Schnittstelle <code>IEquipment</code> noch benötigt wird oder ob sie vollständig durch die neue Klasse <code>EquipmentBase</code> ersetzt werden kann. Wir müssen die Schnittstelle <code>IEquipment</code> beibehalten, weil wir unsere Klasse LedDisplay nicht von <code>EquipmentBase</code>ableiten können: Sie hat bereits eine obligatorische Vorgängerklasse, <code>DisplayBase</code>: Deshalb bezieht sich EquipmentInventory in unserer erweiterten Lösung auf die verschiedenen Komponenten als Schnittstelle <code>IEquipment</code>. </p>
+<p>Beginnen wir mit der Umwandlung. Unser Klassendiagramm soll die aktive Registerkarte sein. Ziehen Sie <em>aus der Toolbox\&amp;*ein Element *Abstrakte Klasse</em> auf das Diagramm und benennen Sie es <code>EquipmentBase</code>.</p>
+<p><a class="glightbox" href="../images/toolbox-abstract-class.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Toolbox - abstrakte Klasse" src="../images/toolbox-abstract-class.png" /></a></p>
+<p>Im Folgenden müssen wir die Klassen <code>SoundCard</code> und <code>HardDisk</code> von <code>EquipmentBase</code>ableiten ( <code>LedDisplay</code>hat bereits einen anderen Vorfahren, so dass wir dies dort nicht tun können). Wählen Sie dazu die Verknüpfung <em>Vererbung</em> in der <em>Toolbox</em> und ziehen Sie dann eine Linie von der untergeordneten Klasse zur Vorgängerklasse sowohl für <code>SoundCard</code> als auch für <code>HardDisk</code>. </p>
+<p>Im nächsten Schritt ändern wir den Code so, dass <code>HardDisk</code> und <code>SoundCard</code> die Schnittstelle <code>IEquipment</code> nicht separat implementieren, sondern ihr gemeinsamer Vorfahre <code>EquipmentBase</code> dies tut. Ändern Sie dazu die Klasse EquipmentBase so, dass sie die Schnittstelle implementiert (entweder durch Einfügen eines Vererbungslinks von <code>EquipmentBase</code>zu <code>IEquipment</code>im Diagramm oder durch Ändern des Quellcodes von <code>EquipmentBase</code> ). Entfernen Sie die Implementierung von <code>IEquipment</code> aus den Klassen <code>HardDisk</code> und <code>SoundCard</code> (der Vorgänger implementiert sie bereits).</p>
+<p>Die relevanten Teile unseres Diagramms und des Quellcodes sehen dann wie folgt aus:</p>
+<p><a class="glightbox" href="../images/class-diagram-eqipmentbase-sc-hd-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="EquipmentBase und HardDisk/SoundCard" src="../images/class-diagram-eqipmentbase-sc-hd-2.png" /></a></p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">EquipmentBase</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">HardDisk</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">EquipmentBase</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SoundCard</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">EquipmentBase</span>
+</code></pre></div>
+<p>Unser Code ist aus mehreren Gründen noch nicht in Betrieb.  <code>EquipmentBase</code> implementiert die Schnittstelle <code>IEquipment</code>, aber sie implementiert noch nicht die Operationen der Schnittstelle. Erzeugen Sie die Methoden entweder mit Hilfe des Smarttags oder geben Sie sie nach den folgenden Grundsätzen ein:</p>
+<ul>
+<li>Die Klassen <code>newPrice</code> und <code>yearOfCreation</code> sind in den Klassen <code>HardDisk</code> und <code>SoundCard</code> dupliziert: verschieben (nicht kopieren!) Sie sie in den gemeinsamen Vorfahren <code>EquipmentBase</code> und geben Sie <code>protected</code> Sichtbarkeit.</li>
+<li>Die Operation <code>GetAge</code> wird in den Klassen <code>HardDisk</code> und <code>SoundCard</code> dupliziert, löschen Sie die Implementierung aus diesen Klassen und verschieben Sie sie in die Klasse <code>EquipmentBase</code>. </li>
+<li>Die Operation <code>GetPrice</code> wird als abstrakte Operation in den Vorgänger aufgenommen. Dies ist eine bewusste Design-Entscheidung, so dass wir nachkommende Klassen zwingen, diesen Vorgang trotzdem zu überschreiben.</li>
+<li>Für <code>GetDescription</code> gilt das Gegenteil: Wir definieren es als virtuell (und nicht abstrakt), d. h. wir geben eine Implementierung im Vorgänger an. Auf diese Weise sind die Nachkommen nicht gezwungen, den Vorgang außer Kraft zu setzen.</li>
+</ul>
+<p>Der entsprechende Code lautet:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">EquipmentBase</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">protected</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">;</span>
+<span class="w">    </span><span class="k">protected</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newPrice</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetAge</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">rückgabe</span><span class="w"> </span><span class="s">&quot;EquipmentBase&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Einige zusätzliche Gedanken zum Codefragment:</p>
+<ul>
+<li>Bei abstrakten Klassen muss das Schlüsselwort "abstrakt" vor das Wort "Klasse" geschrieben werden.</li>
+<li>Für abstrakte Operationen muss das Schlüsselwort <code>abstract</code> angegeben werden</li>
+<li>in einer .NET-Umgebung können Sie steuern, ob ein Vorgang virtuell ist oder nicht. In dieser Hinsicht ist es ähnlich wie C++. Wenn Sie eine Operation virtuell machen wollen, müssen Sie das Schlüsselwort <code>virtual</code> für die Operation angeben. Zur Erinnerung: Definieren Sie eine Operation als virtuell, wenn ihre Nachkommen sie überdefinieren. Nur dann ist gewährleistet, dass die Nachfolgeversion aufgerufen wird, wenn die angegebene Operation auf einen Vorgängerverweis angewendet wird.</li>
+</ul>
+</div>
+<h3 id="nachkommenschaft">Nachkommenschaft<a class="headerlink" href="#nachkommenschaft" title="Permanent link">&para;</a></h3>
+<p>Im nächsten Schritt gehen wir zu <code>EquipmentBase</code> descendants über. Wenn in C# abstrakte und virtuelle Operationen überschrieben werden, muss das Schlüsselwort <code>override</code> im Nachfahren angegeben werden. Zunächst wird der Vorgang <code>GetPrice</code> neu definiert:</p>
+<div class="highlight"><span class="filename">HardDisk.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">4</span><span class="p">)</span>
+<span class="w">        </span><span class="o">?</span><span class="w"> </span><span class="m">0</span>
+<span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="n">newPrice</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">5000</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">SoundCard.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">4</span><span class="p">)</span>
+<span class="w">        </span><span class="o">?</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>
+<span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="n">newPrice</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">2000</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Im nächsten Schritt werden wir die Operation <code>GetDescription</code> in die Klassen <code>HardDisk</code> und <code>SoundCard</code> schreiben. Da wir hier die virtuelle Vorgängerfunktion umdefinieren, müssen wir auch das Schlüsselwort <code>override</code> angeben:</p>
+<div class="highlight"><span class="filename">HardDisk.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Hard Disk&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">SoundCard.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Sound Card&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Man könnte sich fragen, warum die Entwickler der Sprache C# beschlossen haben, der Definition von Operationen ein zusätzliches Schlüsselwort hinzuzufügen, was im Fall von C++ nicht notwendig war. Der Grund dafür ist einfach: Der Code ist aussagekräftiger. Wenn man sich den Code der Nachkommen ansieht, macht das Wort <code>override</code> sofort klar, ob diese Operation in einem der Vorfahren abstrakt oder virtuell ist, ohne dass man sich den Code aller Vorfahren ansehen muss.</p>
+<h3 id="vorfahre-von-leddisplay">Vorfahre von LedDisplay<a class="headerlink" href="#vorfahre-von-leddisplay" title="Permanent link">&para;</a></h3>
+<p>Unsere Vorgängerklasse <code>LedDisplay</code> ist gebunden, ihr Code kann nicht geändert werden, daher können wir sie nicht von <code>EquipmentBase</code>ableiten. Wir können den Vorgang <code>GetAge</code> nicht löschen, diese Code-Duplizierung bleibt hier erhalten (aber nur für <code>LedDisplay</code>, die nur eine Klasse unter vielen ist!).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Mit ein wenig zusätzlicher Arbeit könnten wir diese Doppelung beseitigen. Dazu müsste eine statische Hilfsfunktion in eine der Klassen aufgenommen werden (z. B. <code>EquipmentBase</code>) , die das Produktionsjahr ermittelt und das Alter zurückgibt.  <code>EquipmentBase.GetAge</code> und <code>LedDisplay.GetAge</code> würden diese Hilfsfunktion für ihre Ausgabe verwenden.</p>
+<p>In unserer Klasse <code>LedDisplay</code> müssen wir noch <code>GetDescription</code> schreiben:</p>
+</div>
+<div class="highlight"><span class="filename">LedDisplay.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Led Display&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Beachten Sie, dass das Schlüsselwort <code>override</code> hier NICHT angegeben ist. Wenn eine Schnittstellenfunktion implementiert ist, muss/kann <code>override</code>nicht gedruckt werden.</p>
+<h3 id="getdescription-verwenden">GetDescription verwenden<a class="headerlink" href="#getdescription-verwenden" title="Permanent link">&para;</a></h3>
+<p>Ändern Sie die Operation <code>EquipmentInventory.ListAll</code>, um auch die Beschreibung der Elemente in die Ausgabe zu schreiben:</p>
+<div class="highlight"><span class="filename">EquipmentInventory.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ListAll</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="n">IEquipment</span><span class="w"> </span><span class="n">eq</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">equipment</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;$Description: {eq.GetDescription()}\t&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">            </span><span class="s">$&quot;Alter: {eq.GetAge()}\tValue: {eq.GetPrice()}&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Dies führt zu einer informativeren Ausgabe, wenn die Anwendung ausgeführt wird:</p>
+<p><a class="glightbox" href="../images/console-out-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Ausgabe auf der Konsole" src="../images/console-out-2.png" /></a></p>
+<h3 id="duplizierung-von-konstruktorcode">Duplizierung von Konstruktorcode<a class="headerlink" href="#duplizierung-von-konstruktorcode" title="Permanent link">&para;</a></h3>
+<p>Ein Blick auf unseren Code zeigt, dass es eine weitere Duplikation gibt. Alle Nachfahren von <code>EquipmentBase</code> (<code>HardDisk</code>, <code>SoundCard</code>) haben diese beiden Zeilen in ihrem Konstruktor:</p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">yearOfCreation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">;</span>
+<span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">newPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newPrice</span><span class="p">;</span>
+</code></pre></div>
+<p>Wenn Sie darüber nachdenken, werden diese <code>yearOfCreation</code> und <code>newPrice</code> Mitglieder im Vorfahren definiert, also sollte es seine Verantwortung sein, sie zu initialisieren. Fügen wir einen entsprechenden Konstruktor in <code>EquipmentBase</code>hinzu:</p>
+<div class="highlight"><span class="filename">EquipmentBase.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">EquipmentBase</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">Erstellungsjahr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">neuerPreis</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">yearOfCreation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">newPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newPrice</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Entfernen Sie die Initialisierung der beiden Mitglieder aus dem Konstruktor der Nachfahren <code>HardDisk</code> und <code>SoundCard</code> und rufen Sie stattdessen den Konstruktor des Vorfahren auf, indem Sie auf das Schlüsselwort <code>base</code> verweisen:</p>
+<div class="highlight"><span class="filename">HardDisk.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">HardDisk</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newPrice</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">capacityGB</span><span class="p">)</span>
+<span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="k">base</span><span class="p">(</span><span class="n">yearOfCreation</span><span class="p">,</span><span class="w"> </span><span class="n">newPrice</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">capacityGB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">capacityGB</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">SoundCard.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">SoundCard</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newPrice</span><span class="p">)</span>
+<span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="k">base</span><span class="p">(</span><span class="n">yearOfCreation</span><span class="p">,</span><span class="w"> </span><span class="n">newPrice</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="bewertung">Bewertung<a class="headerlink" href="#bewertung" title="Permanent link">&para;</a></h3>
+<p>Durch die Verwendung einer Kombination aus Schnittstelle und abstraktem Vorgänger ist es uns gelungen, die Lösung mit dem geringsten Kompromiss zu entwickeln:</p>
+<ul>
+<li><code>IEquipment</code> als Schnittstelle können wir alle Arten von Teilen einheitlich behandeln, auch solche, bei denen die Vorgängerklasse gebunden war (mit abstrakten Vorgängern allein hätten wir dies nicht erreichen können).</li>
+<li>Durch die Einführung des abstrakten Vorfahren <code>EquipmentBase</code> konnten wir den Code, der verschiedenen Komponententypen gemeinsam ist, mit einer Ausnahme in einen gemeinsamen Vorfahren bringen und so Code-Duplikationen vermeiden.</li>
+<li>Durch die Einführung des abstrakten Vorgängers <code>EquipmentBase</code> können wir eine Standardimplementierung für neu eingeführte <code>IEquipment</code> Operationen (z.B. <code>GetDescripton</code>) angeben, so dass wir nicht gezwungen sind, diese in jeder <code>IEquipment</code> Implementierungsklasse anzugeben.</li>
+</ul>
+<p>Werfen wir abschließend noch einen Blick auf das UML-Klassendiagramm unserer Lösung:</p>
+<p><a class="glightbox" href="../images/class-diagram-final.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Ultimatives Klassendiagramm" src="../images/class-diagram-final.png" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">C# 11 - Statische Schnittstellen</p>
+<p>Die neueste Funktion von C# 11 ist die Definition von statischen Schnittstellenmitgliedern, die es Ihnen ermöglicht, von einer implementierenden Klasse zu verlangen, dass sie Mitglieder hat, die sich nicht auf die Objektinstanz beziehen, sondern die Klasse muss über ein bestimmtes statisches Mitglied verfügen. Mehr lesen</p>
+</div>
+<h3 id="hinweis-fakultative-hausaufgabe">Hinweis - fakultative Hausaufgabe<a class="headerlink" href="#hinweis-fakultative-hausaufgabe" title="Permanent link">&para;</a></h3>
+<p>Unsere Lösung unterstützt nicht die Anzeige von komponentenspezifischen Daten (z.B. Kapazität für <code>HardDisk</code> ) während der Auflistung. Zu diesem Zweck sollte das Schreiben von Komponentendaten in eine formatierte Zeichenkette von der Klasse <code>EqipmentInventory</code> in die Komponentenklassen verlagert werden, und zwar nach den folgenden Grundsätzen:</p>
+<ul>
+<li>Sie können eine <code>GetFormattedString</code> Operation in die <code>IEquipment</code> Schnittstelle einführen, die ein Objekt vom Typ <code>string</code> zurückgibt. Alternativ kann die Operation <code>System.Object ToString()</code> außer Kraft gesetzt werden. in .NET sind alle Typen implizit von <code>System.Object</code>abgeleitet, das über eine virtuelle Operation <code>ToString()</code> verfügt.</li>
+<li>In <code>EquipmentBase</code>schreiben wir die Formatierung der üblichen Tags (Beschreibung, Preis, Alter) in Strings.</li>
+<li>Wenn eine Komponente auch typspezifische Daten hat, dann überschreibt ihre Klasse die Funktion, die sie in eine Zeichenkette formatiert: Diese Funktion muss zuerst ihren Vorgänger aufrufen (mit dem Schlüsselwort <code>base</code> ), dann ihre eigenen formatierten Daten an sie anhängen und mit dieser Zeichenkette zurückkehren.</li>
+</ul>
+
+  <hr>
+<div class="md-source-file">
+  <span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg
+        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z">
+        </path>
+      </svg>
+    </span>
+    <span title="2024. február 12. 18:14:38">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-12T18:14:38+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-12</span>
+    </span>
+  </span>
+
+  
+
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Szerzők">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z">
+        </path>
+      </svg>
+    </span>
+    <span>Szerzők</span>
+    <nav><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
+        <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&v=4?size=72" alt="@Zoltán Benedek">
+      </a></nav>      
+  </span>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Vissza a tetejére
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; BME VIK AUT
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
