@@ -119,3 +119,11 @@ nav:
       - labor/5-mvvm/index_eng.md
       - labor/6-tervezesi-mintak/index_eng.md      
       - labor/7-adatkezeles/index_eng.md 
+  - "Deutschkurs-Labore":
+      - labor/1-model-es-kod-kapcsolata/index_ger.md
+      - labor/2-nyelvi-eszkozok/index_ger.md
+      - labor/3-felhasznaloi-felulet/index_ger.md
+      - labor/4-tobbszalu/index_ger.md
+      - labor/5-mvvm/index_ger.md
+      - labor/6-tervezesi-mintak/index_ger.md      
+      - labor/7-adatkezeles/index_ger.md 

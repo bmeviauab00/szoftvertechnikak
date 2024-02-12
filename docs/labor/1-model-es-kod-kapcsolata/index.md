@@ -231,7 +231,7 @@ Ehhez klónozzuk le a kiinduló projekt online GitHub rendszerben elérhető Git
 git clone https://github.com/bmeviauab00/lab-modellkod-kiindulo.git
 ```
 
-!!! note Git és GitHub
+!!! note "Git és GitHub"
     A Git-ről, mint forráskódkezelő rendszerről, az első házi feladat kontextusában olvashatunk majd bővebben.
 
 Nyissuk meg a leklónozott mappában található src/EquipmentInventory.sln Visual Studio solutiont.
