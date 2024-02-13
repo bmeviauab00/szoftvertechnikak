@@ -1,17 +1,17 @@
 # Theorie der Beziehung zwischen dem UML-Klassendiagramm und dem Code
 
 Letztes Änderungsdatum: 2022.10.15  
-Er hat trainiert: Zoltán Benedek
+Ausgearbeitet von: Zoltán Benedek
 
 Das Kapitel enthält keine Übung, sondern bietet den Studierenden eine Einführung in die entsprechende Theorie.
 
 ## Einführung
 
-Das Kapitel gibt einen kurzen, skizzenhaften Überblick über die Grundlagen des Mappings zwischen dem UML-Klassendiagramm und dem Quellcode, als Wiederholung dessen, was bereits im vorherigen Semester in Software Engineering gelernt wurde.
+Das Kapitel gibt einen kurzen Überblick über die Grundlagen des Mappings zwischen dem UML-Klassendiagramm und dem Quellcode, als Wiederholung dessen, was bereits im vorherigen Semester in Softwarechnologien gelernt wurde.
 
-Heutzutage gibt es viele Softwareentwicklungsmethoden. Sie stützen sich bei der Erstellung der Software in unterschiedlichem Maße auf die Modellierung bzw. erfordern diese. Es besteht jedoch kein Zweifel daran, dass selbst die agilsten, "code-zentrierten" Anhänger der "code-zentrierten" Ansätze es für nützlich halten, die wichtigeren/komplexeren Komponenten und Strukturelemente der Software visuell zu modellieren, da die grafische Natur der Software eine größere Ausdruckskraft hat.
+Heutzutage gibt es viele Softwareentwicklungsmethoden. Sie stützen sich bei der Erstellung der Software in unterschiedlichem Maße auf die Modellierung bzw. erfordern diese. Es besteht jedoch kein Zweifel daran, dass selbst die Anhänger der agilsten, "code-zentrierten" Ansätze es für nützlich halten, die wichtigeren/komplexeren Komponenten und Strukturelemente der Software visuell zu modellieren, da deren grafische Natur eine größere Ausdruckskraft hat.
 
-Nehmen wir an, Sie müssen eine Anwendung oder ein bestimmtes Modul einer Anwendung erstellen. Nach der von uns gewählten Methodik werden wir die Schritte Anforderungsanalyse, Analyse, Entwurf, Implementierung und Test durchführen, wahrscheinlich in mehreren Iterationen. Konzentrieren wir uns nun auf die Entwurfsphase. Das Ergebnis ist ein detaillierter Entwurf des Systems (zumindest von Teilen davon), der in einen detaillierten Plan oder ein Modell für die Umsetzung mündet. Auf dieser Ebene können bestimmte Elemente des Modells (z. B. Klassen) explizit auf Elemente der für die Implementierung des Teilsystems gewählten Programmiersprache abgebildet werden. Wenn Sie über ein gutes Entwicklungs-/Modellierungswerkzeug verfügen, kann dieses das Klassenskelett (z. B. C++, Java-, C#-Klassen) generieren. Unsere Aufgabe besteht nun darin, die Wurzel der Methoden in den generierten Code einzutragen.
+Nehmen wir an, man muss eine Anwendung oder ein bestimmtes Modul einer Anwendung erstellen. Nach der von sich gewählten Methodik wird man die Schritte Anforderungsanalyse, Analyse, Entwurf, Implementierung und Test durchführen, wahrscheinlich in mehreren Iterationen. Konzentrieren wir uns nun auf die Entwurfsphase. Das Ergebnis ist ein detaillierter Entwurf des Systems (zumindest von Teilen davon), der in einen detaillierten Plan oder ein Modell für die Umsetzung mündet. Auf dieser Ebene können bestimmte Elemente des Modells (z. B. Klassen) explizit auf Elemente der für die Implementierung des Teilsystems gewählten Programmiersprache abgebildet werden. Wenn man über ein gutes Entwicklungs-/Modellierungswerkzeug verfügt, kann dieses das Klassenskelett (z. B. C++, Java-, C#-Klassen) generieren. Unsere Aufgabe besteht nun darin, die Wurzel der Methoden in den generierten Code einzutragen.
 
 ### Konzepte
 
@@ -19,7 +19,7 @@ Nehmen wir an, Sie müssen eine Anwendung oder ein bestimmtes Modul einer Anwend
 - Reverse Engineering: Generierung eines Modells aus Code. Es hilft Ihnen, den bereits vorhandenen Code zu verstehen.
 - Round-Trip-Engineering: eine Kombination der beiden vorgenannten Verfahren. Der springende Punkt ist, dass das Modell und der Code ständig synchronisiert sind. Wenn Sie den Code ändern, erscheint die Änderung im Modell, wenn Sie das Modell ändern, erscheint die Änderung im Code.
 
-Um die Vorteile der Codegenerierung nutzen zu können, müssen Sie Folgendes wissen: Sie müssen wissen, wie ein bestimmtes Modellierungswerkzeug jedes Modellelement auf Elemente einer bestimmten Programmiersprache abbildet. Das Mapping hängt von der Sprache und dem Modellierungswerkzeug ab, es gibt keinen universellen Standard. Die Zuordnungen sind in der Regel selbsterklärend, es gibt in der Regel nicht allzu viele Variationen.
+Um die Vorteile der Codegenerierung nutzen zu können, muss man Folgendes wissen: man muss wissen, wie ein bestimmtes Modellierungswerkzeug jedes Modellelement auf Elemente einer bestimmten Programmiersprache abbildet. Das Mapping hängt von der Sprache und dem Modellierungswerkzeug ab, es gibt keinen universellen Standard. Die Zuordnungen sind in der Regel selbsterklärend, es gibt in der Regel nicht allzu viele Variationen.
 
 Im Folgenden werden wir uns ansehen, wie jedes Modellelement des UML-Klassendiagramms auf den Quellcode abgebildet wird und umgekehrt.
 
@@ -29,7 +29,7 @@ Es ist trivial einfach:
 
 - UML-Klasse -> Klasse
 - UML-Attribut -> Mitgliedsvariable
-- UML-Operation -> operation/method
+- UML-Operation -> Funktion/Method
 
 Ein Beispiel:
 
@@ -55,7 +55,7 @@ Im Zusammenhang mit der Sichtbarkeit, Kartierung:
 
 Eine spannendere Frage ist, wie die Beziehungen zwischen den Klassen abgebildet werden, und dies wird in den folgenden Kapiteln diskutiert.
 
-### I. Verbindung zwischen Generalisierung und Spezialisierung
+### I. Generalisierung und Spezialisierung
 
 ![Generalisierung, Spezialisierung](images/alt-spec.png)
 
@@ -68,7 +68,7 @@ public class Derived : Base
 { };
 ```
 
-### II. Verein
+### II. Assoziation
 
 Dieser Beziehungstyp impliziert immer eine Kommunikation zwischen Objekten von Klassen. Eine Abteilung nimmt die Dienste einer anderen Abteilung in Anspruch.
 
@@ -134,7 +134,7 @@ class WindowManager
 };
 ```
 
-### III. Aggregation (Einbeziehung, Teil-Teil-Beziehung)
+### III. Aggregation (Einbeziehung, Teil-Ganzes-Beziehung)
 
 Im Allgemeinen ist die Zuordnung genau die gleiche wie bei der Assoziation.
 
