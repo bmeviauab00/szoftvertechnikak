@@ -249,10 +249,14 @@ A megvalósítás során jelentős egyszerűsítéssel élünk:
 
 ### Osztálykönyvtárak használata
 
-A megoldás az [1. A modell és a kód kapcsolata](../../labor/1-model-es-kod-kapcsolata/index.md) laborgyakorlat mintájára kidolgozható. Jelen feladat egy lényeges részletében különbözik tőle: míg abban csak szóban kötöttük ki, hogy a `DisplayBase` ősosztály forráskódja nem megváltoztató, jelen esetben a `Textbox` ősosztályunk esetében ez adott, hiszen csak egy lefordított dll formájában áll rendelkezésre. A következőkben nézzük meg, milyen lépésekben lehet egy ilyen dll-ben levő osztályokat a kódunkban felhasználni:
+A megoldás az [1. A modell és a kód kapcsolata](../../labor/1-model-es-kod-kapcsolata/index.md) laborgyakorlat mintájára kidolgozható. Jelen feladat egy lényeges részletében különbözik tőle: míg abban csak szóban kötöttük ki, hogy a `DisplayBase` ősosztály forráskódja nem megváltoztató, jelen esetben a `Textbox` ősosztályunk esetében ez adott, hiszen csak egy lefordított dll formájában áll rendelkezésre.
 
 !!! note 
     Többkomponensű alkalmazások fejlesztéséről, szerelvény és projekt referencia alkalmazásáról az első előadáson volt szó, ha nem emlékszel erre a témakörre, célszerű átismételni.
+
+A következőkben nézzük meg, milyen lépésekben lehet egy ilyen dll-ben levő osztályokat a kódunkban felhasználni:
+
+
 
 1. A Visual Studio Solution Explorer ablakában jobb gombbal kattintsunk a *Dependencies* elemen, és válasszuk az *Add Reference*-t vagy *Add Project Reference*-t (amelyik létezik).
 2. A megjelenő ablak bal oldalán válasszuk ki a *Browse* elemet,
