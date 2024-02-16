@@ -110,6 +110,7 @@ nav:
       - '3. HF - Felhasználói felület kialakítása': hazi/meghirdetes-elott.md
       - '4. HF - Többszálú alkalmazások fejlesztése': hazi/meghirdetes-elott.md
       - '5. HF - MVVM': hazi/meghirdetes-elott.md
+      - '6. HF - Tervezési minták': hazi/meghirdetes-elott.md
       - 'Fejlesztőkörnyezet': hazi/fejlesztokornyezet/index.md
   - "English course labs":
       - labor/1-model-es-kod-kapcsolata/index_eng.md
@@ -126,4 +127,12 @@ nav:
       - labor/4-tobbszalu/index_ger.md
       - labor/5-mvvm/index_ger.md
       - labor/6-tervezesi-mintak/index_ger.md      
-      - labor/7-adatkezeles/index_ger.md 
+      - labor/7-adatkezeles/index_ger.md
+  - "Hausaufgaben":
+      - '1. Beziehung zwischen dem Modell und dem Code': hazi/meghirdetes-elott_ger.md
+      - '2. Sprachliche Mittel': hazi/meghirdetes-elott_ger.md
+      - '3. Gestaltung der Benutzeroberfläche': hazi/meghirdetes-elott_ger.md
+      - '4. Entwicklung von Multithreading-Anwendungen': hazi/meghirdetes-elott_ger.md
+      - '5. MVVM': hazi/meghirdetes-elott_ger.md
+      - '6. Entwurfsmuster': hazi/meghirdetes-elott_ger.md
+      - 'Entwicklungsumgebung': hazi/fejlesztokornyezet/index.md

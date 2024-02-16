@@ -8,7 +8,7 @@ A félév során a házi feladatok megoldásához a **Visual Studio 2022** fejle
     VS Code, illetve a Visual Studio for Mac a következők miatt nem használhatók:
     
     - Nem támogatják az UML (szerű) modellezést, melyre az első házi feladatnál szükség van.
-    - Érdemben nem támogatják a *Windows Form* űrlap alapú .NET alkalmazások fejlesztését (erre a 3-5 házi feladat épít).
+    - Érdemben nem támogatják a *WinUI3* felhasználói felülettel rendelkező .NET alkalmazások fejlesztését (erre a 3. házi feladattól kezdődően építenek bizonyos házi feladatok).
 
 ### Visual Studio edition-ök
 

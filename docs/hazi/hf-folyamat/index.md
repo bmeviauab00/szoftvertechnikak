@@ -24,9 +24,9 @@ Az egyes házi feladatok kiinduló keretét GitHub/GitHub Classroom segítségé
 A fenti lépések kapcsán két kérdés vár még megválaszolásra:
 
 - Hogyan klónozzuk (clone) a repónkat (mely a házi feladat kiinduló keretét tartalmazza)?
-- Hogyan commit-áljunk és push-oljunk a Visual Studio segítségével GitHub-ra?
+- Hogyan commit-áljunk és push-oljunk GitHub-ra?
 
-Az alábbiakban ezekre is kitérünk.
+Ezeket Szoftvertechnológia tárgyból már tanultad a képzés során. De ha esetleg nem emlékszel ennek részleteire, vagy ha szeretnél megismerkedni azzal, hogyan tudod ezeket nem csak parancssorból, hanem Visual Studio-ból használni, akkor olvasd el az alábbiakat, röviden mindenre kitérünk a git használata kapcsán, amire a házi feladatok megoldása során szükség lehet.
 
 ## GitHub repository klónozása
 

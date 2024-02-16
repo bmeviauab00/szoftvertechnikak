@@ -114,7 +114,7 @@ public override string ToString()
 }
 ```
 
-Szövegfájl feldolgozására legkényelmesebben a `System.IO` névtérben levő [`StreamReader`](https://learn.microsoft.com/en-us/dotnet/api/system.io.streamreader?redirectedfrom=MSDN&view=net-6.0) osztályt tudjuk használni.
+Szövegfájl feldolgozására legkényelmesebben a `System.IO` névtérben levő [`StreamReader`](https://learn.microsoft.com/en-us/dotnet/api/system.io.streamreader) osztályt tudjuk használni.
 
 A `Main` függvényünkben olvassuk fel soronként a fájlt, hozzuk létre a `Song` objektumokat, és tegyük be egy `List<Song>` dinamikusan nyújtózkodó tömbbe. Figyeljünk arra, hogy a fájlban a `;`-vel elválasztott elemek előtt/után whitespace karakterek (space, tab) lehetnek, ezektől szabaduljunk meg!
 
@@ -225,7 +225,7 @@ Egy síkbeli vektorgrafikus alakzatokat kezelni képes CAD tervezőalkalmazás e
 
 - A `TextArea` osztálynak kötelezően a jelen feladathoz tartozó `Controls.dll` osztálykönyvtár `Textbox` osztályából kell származnia. A `Controls.dll` egy .NET szerelvény, lefordított formában tartalmaz osztályokat.
 
-    !!!failure "Interfészben alapértelmezett implementáció"
+    !!! failure "Interfészben alapértelmezett implementáció"
         Bár C# 8-tól támogatott .NET interfészben alapértelmezett implementáció megadása. Ez sokszor hasznos technika, de a megoldásban nem alkalmazható, ennél "klasszikusabb" megközelítést kell választani.
 
 - A megvalósítás során törekedjen egységbezárásra: pl. az alakzatok menedzselése legyen egy **erre dedikált osztály** feladata.
@@ -276,7 +276,7 @@ Ezzel a projektünkben felvettünk egy referenciát a `Controls.dll`-re, így a 
 A `Textbox` osztály, melyből a `TextArea` osztályunkat származtatni kell, a `Controls` névtérben található. A `TextBox` osztálynak egy konstruktora van, melynek négy paramétere van, az x és y koordináták, valamint a szélesség és a magasság.
 Amennyiben szükség lenne rá, a többi művelet felderítésében az *Object Browser* segít. Az *Object Browser* a *View* menüből az *Object Browser* menü kiválasztásával nyitható meg. Az *Object Browser* egy új tabfülön jelenik meg.
 
-!!!Note "Ha üres az Object Browser nézet"
+!!! note "Ha üres az Object Browser nézet"
     A Visual Studio 2022 hajlamos arra, hogy mindaddig, amíg nincs egy forrásfájl megnyitva, az Object Browserben nem jelenít meg semmit (csak egy "No information" kezdetű szöveg látszik). Ha azt tapasztaljuk, hogy üres az Object Browser nézet, csak nyissuk meg a Program.cs fájl a Solution Explorerben, majd váltsunk vissza az Object Browser tabfülre, ahol így már megjelennek a komponensek. 
 
 Az Object Browserben a `Controls` komponenst lenyitogatva az egyes csomópontokat kiválasztva (névtér, osztály) az adott csomópont jellemzői jelennek meg: pl. az osztály nevén állva az osztály tagjait látjuk.
