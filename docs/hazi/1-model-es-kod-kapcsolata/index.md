@@ -191,6 +191,8 @@ A következő kód egy lehetséges megoldást mutat, a megoldás részleteit a k
 
     A `c:\temp` mappába másoljuk ki a `music.txt` fájlt, és futtassuk az alkalmazást. A megvalósítás során az egyszerűségre törekedve mindent beleöntöttünk a `main` függvénybe, „éles” környezetben mindenképp célszerű a kódot egy külön feldolgozó osztályba kiszervezni.
 
+    A fenti példában jópár .NET/C# alaptechnika bemutatásra kerül, mindenképen érdemes a fenti kódba szúrt megjegyzések alapján ezeket értelmezni és megtanulni, a félév során ezekre építeni fogunk.
+
 ## Feladat 2 - Az UML és a kód kapcsolata, interfész és absztrakt ős alkalmazástechnikája
 
 ### Kiinduló környezet
@@ -248,6 +250,9 @@ A megvalósítás során jelentős egyszerűsítéssel élünk:
 ### Osztálykönyvtárak használata
 
 A megoldás az [1. A modell és a kód kapcsolata](../../labor/1-model-es-kod-kapcsolata/index.md) laborgyakorlat mintájára kidolgozható. Jelen feladat egy lényeges részletében különbözik tőle: míg abban csak szóban kötöttük ki, hogy a `DisplayBase` ősosztály forráskódja nem megváltoztató, jelen esetben a `Textbox` ősosztályunk esetében ez adott, hiszen csak egy lefordított dll formájában áll rendelkezésre. A következőkben nézzük meg, milyen lépésekben lehet egy ilyen dll-ben levő osztályokat a kódunkban felhasználni:
+
+!!! note 
+    Többkomponensű alkalmazások fejlesztéséről, szerelvény és projekt referencia alkalmazásáról az első előadáson volt szó, ha nem emlékszel erre a témakörre, célszerű átismételni.
 
 1. A Visual Studio Solution Explorer ablakában jobb gombbal kattintsunk a *Dependencies* elemen, és válasszuk az *Add Reference*-t vagy *Add Project Reference*-t (amelyik létezik).
 2. A megjelenő ablak bal oldalán válasszuk ki a *Browse* elemet,
