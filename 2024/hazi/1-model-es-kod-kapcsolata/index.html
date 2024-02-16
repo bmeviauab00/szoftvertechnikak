@@ -1429,6 +1429,7 @@ stb.
 <span class="p">}</span>
 </code></pre></div>
 <p>A <code>c:\temp</code> mappába másoljuk ki a <code>music.txt</code> fájlt, és futtassuk az alkalmazást. A megvalósítás során az egyszerűségre törekedve mindent beleöntöttünk a <code>main</code> függvénybe, „éles” környezetben mindenképp célszerű a kódot egy külön feldolgozó osztályba kiszervezni.</p>
+<p>A fenti példában jópár .NET/C# alaptechnika bemutatásra kerül, mindenképen érdemes a fenti kódba szúrt megjegyzések alapján ezeket értelmezni és megtanulni, a félév során ezekre építeni fogunk.</p>
 </details>
 <h2 id="feladat-2-az-uml-es-a-kod-kapcsolata-interfesz-es-absztrakt-os-alkalmazastechnikaja">Feladat 2 - Az UML és a kód kapcsolata, interfész és absztrakt ős alkalmazástechnikája<a class="headerlink" href="#feladat-2-az-uml-es-a-kod-kapcsolata-interfesz-es-absztrakt-os-alkalmazastechnikaja" title="Permanent link">&para;</a></h2>
 <h3 id="kiindulo-kornyezet">Kiinduló környezet<a class="headerlink" href="#kiindulo-kornyezet" title="Permanent link">&para;</a></h3>
@@ -1494,6 +1495,10 @@ stb.
 </ul>
 <h3 id="osztalykonyvtarak-hasznalata">Osztálykönyvtárak használata<a class="headerlink" href="#osztalykonyvtarak-hasznalata" title="Permanent link">&para;</a></h3>
 <p>A megoldás az <a href="../../labor/1-model-es-kod-kapcsolata/">1. A modell és a kód kapcsolata</a> laborgyakorlat mintájára kidolgozható. Jelen feladat egy lényeges részletében különbözik tőle: míg abban csak szóban kötöttük ki, hogy a <code>DisplayBase</code> ősosztály forráskódja nem megváltoztató, jelen esetben a <code>Textbox</code> ősosztályunk esetében ez adott, hiszen csak egy lefordított dll formájában áll rendelkezésre. A következőkben nézzük meg, milyen lépésekben lehet egy ilyen dll-ben levő osztályokat a kódunkban felhasználni:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Többkomponensű alkalmazások fejlesztéséről, szerelvény és projekt referencia alkalmazásáról az első előadáson volt szó, ha nem emlékszel erre a témakörre, célszerű átismételni.</p>
+</div>
 <ol>
 <li>A Visual Studio Solution Explorer ablakában jobb gombbal kattintsunk a <em>Dependencies</em> elemen, és válasszuk az <em>Add Reference</em>-t vagy <em>Add Project Reference</em>-t (amelyik létezik).</li>
 <li>A megjelenő ablak bal oldalán válasszuk ki a <em>Browse</em> elemet,</li>
@@ -1543,8 +1548,8 @@ Amennyiben szükség lenne rá, a többi művelet felderítésében az <em>Objec
         </path>
       </svg>
     </span>
-    <span title="2024. január 14. 17:38:37">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-14T17:38:37+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-14</span>
+    <span title="2024. február 16. 11:13:03">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-16T11:13:03+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
     </span>
   </span>
 
