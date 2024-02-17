@@ -44,3 +44,9 @@ A két megközelítést a mindennapokban kombináltan szoktuk használni. Egy re
 ## Git telepítése
 
 Amennyiben a számítógépünkre nincs még a Git telepítve, és szeretnénk azt parancssorból is használni, akkor innen telepíthető Windows operációs rendszerre: https://git-scm.com/download/win. Egyéb operációs rendszerek esetén pedig innen érdemes indulni: https://git-scm.com/downloads.
+
+!!! warning "Git Credential Manager telepítése"
+    A GitHub már egy ideje nem támogatja az egyszerű felhasználónév/jelszó alapú hitelesítést. Ha git parancssorban a login során "Support for password authentication was removed." hibaüzenetet kapunk, ez az oka. Két megoldás is létezik a probléma megoldására: 
+    
+    * A legegyszerűbb megoldás a "Git Credential Manager" telepítése. Ezt fel lehet telepíten a git telepítése során (csak be kell pipálni a telepítőben), de külön is telepíthető [innen](https://github.com/git-ecosystem/git-credential-manager/releases). A telepítést követően nincs teendőnk vele, a git automatikusan használni fogja, és egy böngésző alapú (ún. OAuth) hitelesítési folyamaton vezeti végig a felhasználót, ill. plusz kényelmi funkcióként meg is jegyzi a hitelesítési adatokat.
+    * A másik megoldás a PAT (Personal Access Token) használata, erről pl. [itt](https://stackoverflow.com/questions/68775869/message-support-for-password-authentication-was-removed) lehet olvasni.
