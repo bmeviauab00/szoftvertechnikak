@@ -16,7 +16,7 @@ Az egyes házi feladatok kiinduló keretét GitHub/GitHub Classroom segítségé
 8. :exclamation: A kiinduló projektben van egy .github/workflows mappa, ennek tartalmát tilos megváltoztatni, törölni stb.
 9. :exclamation: A munka során a kiindulási repóban levő solutionben/projektben kell dolgozni, új projektet/solutiont ne hozz létre.
 10. :exclamation: A repository gyökérmappájában található neptun.txt fájlba írd bele a Neptun kódod, csupa nagybetűvel. A fájlban csak ez a hat karakter legyen, semmi más.
-11. Oldd meg a feladatot. Pushold a határidőig. Akárhány commitod lehet, a legutolsó állapotot fogjuk nézni.
+11. Oldd meg a feladatot. Pushold a határidőig. Az alapértelmezett "Main" ágon kell dolgozni közvetlenül, nincsenek pull requestek. Akárhány commitod lehet, a legutolsó állapotot fogjuk nézni.
 12. Az eredmények Moodle-ben kerülnek meghirdetésre (a nyitóoldalon kapcsolódó házi feladat oldalát Moodle-ben megnyitva az oldal alján a "Visszajelzés" szekcióban látható). Eredmények az adott feladatra vonatkozó határidőt követő pár napon belül várhatók.
 13. A házi feladatot külön explicit beadni nem kell, csak legyen fent GitHub-on határidőre a megoldás.
 14.	:exclamation: Amikor a házi feladatod beadottnak tekinted,  célszerű ellenőrizni a böngészőben a GitHub webes felületén a repository-ban a fájlokra való rápillantással, hogy valóban minden változtatást push-oltál-e, és hogy a neptun.txt valóban ki van-e töltve.
