@@ -1,5 +1,4 @@
 ---
-search:
 authors: bzolka
 ---
 

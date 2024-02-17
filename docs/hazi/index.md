@@ -5,7 +5,7 @@ Az önálló/házi feladatokra vonatkozó pontos követelmények Moodle-ben, a [
 
 ## A feladatok
 
-- [1. HF - A modell és a kód kapcsolata](../hazi/1-model-es-kod-kapcsolata.md)
+- [1. HF - A modell és a kód kapcsolata](../hazi/1-model-es-kod-kapcsolata/index.md)
 - [2. HF - Nyelvi eszközök](../hazi/meghirdetes-elott.md)
 - [3. HF - Felhasználói felület kialakítása](../hazi/meghirdetes-elott.md)
 - [4. HF - Többszálú alkalmazások fejlesztése](../hazi/meghirdetes-elott.md)
