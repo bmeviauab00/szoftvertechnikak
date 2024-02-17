@@ -40,7 +40,19 @@ Bizonyos házi feladatok esetén (már az elsőnél is) szükség van Visual Stu
 
 #### WinUI támogatás
 
-XAML/WinUI technológiákhoz kapcsolódó feladatok esetén (3. házi feladattól kezdődően) szükség van Windows App SDK előzetes telepítésére. Ez innen telepíthető: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads. A félév során laborokon, házikban az "1.4.4 (1.4.231219000)" verziót használjuk, érdemes ezt telepíteni akkor is, ha újabb verzió jönne ki.
+XAML/WinUI technológiákhoz kapcsolódó feladatok esetén (3. házi feladattól kezdődően) szükség van Windows App SDK előzetes telepítésére és bizonyos speciális gépi szintű beállítások módosítására.
+
+1. A számítógépen engedélyezni kell a "Developer mode" ("Fejlesztői mód")-ot. A Windows Start menüben a "Developer settings"/"Fejlesztői funkciók"-ra érdemes keresni (annak függvényében hogy angol vagy magyar Windowst használunk).
+
+2. A Visual Studio telepítőben győződjünk meg, hogy a ".NET Desktop Development" workload telepítve van (ha nincs, pipáljuk és telepítsük)
+
+3. "Windows App SDK C# templates" Visual Studio komponens telepítése.
+    
+    A Visual Studio telepítőben válasszuk ki a ".NET Desktop Development" workload-ot, jobb oldalt az "Installation details" panelen alul pipáljuk a "Windows App SDK C# Templates" komponenst, majd jobb alsó sarokban "Modify" gomb. 
+
+4. Windows SDK telepítése
+    
+    Ez innen telepíthető: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads. A félév során laborokon, házikban az "1.4.4 (1.4.231219000)" verziót használjuk, érdemes ezt telepíteni akkor is, ha újabb verzió jönne ki.
 
 ### MacBook és Linux használók számára információk
 
