@@ -28,7 +28,7 @@ A fenti lépések kapcsán két kérdés vár még megválaszolásra:
 
 Ezek nagy részét Szoftvertechnológia tárgyból már tanultad a képzés során. De ha esetleg nem emlékszel ennek minden részleteire, vagy ha szeretnél megismerkedni azzal, hogyan tudod ezeket nem csak parancssorból, hanem Visual Studio-ból használni, akkor mindenképpen olvasd el az alábbiakat. Röviden mindenre kitérünk a git használata kapcsán, amire a házi feladatok megoldása során szükség lehet (még azok is meg tudják oldani a házi feladatot, akik git-et nem tanultak, és így kapcsolódnak be a tárgyba).
 
-Amennyiben a git login során "Support for password authentication was removed" hibaüzenetet kapsz, a [a git telepítését ismertető oldal](../git-github-github-classroom/index.md#git-telepitese) alján a Git Credential Manager-ről szóló szakaszt érdemes elolvasni.
+Amennyiben a git login során "Support for password authentication was removed" hibaüzenetet kapsz, a [git telepítését ismertető oldal](../git-github-github-classroom/index.md#git-telepitese) alján a Git Credential Manager-ről szóló szakaszt érdemes elolvasni.
 
 ## GitHub repository klónozása
 
