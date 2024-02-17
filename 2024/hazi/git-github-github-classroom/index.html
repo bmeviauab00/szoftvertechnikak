@@ -1468,6 +1468,14 @@ A fentieken túlmenően a Git számos további szolgáltatást biztosít (pl. te
 <p>A két megközelítést a mindennapokban kombináltan szoktuk használni. Egy repo leklónozása sokszor parancssorból a legegyszerűbb/leggyorsabb. A változások commit-olására, a központi repositoryval való szinkronizációra (push, pull), a verziótörtének megjelenítésére már célszerűbb egy grafikus eszközt használni, különösen akkor, ha még kevésbé vagyunk rutinosak. A tárgy keretében a klónozásra a parancssor vagy a Visual Studio, az egyéb parancsok kiadására a Visual Studio javasolt. A git használatról (a házi feladatok kontextusában) <a href="../hf-folyamat/">itt</a> található bővebb leírás.</p>
 <h2 id="git-telepitese">Git telepítése<a class="headerlink" href="#git-telepitese" title="Permanent link">&para;</a></h2>
 <p>Amennyiben a számítógépünkre nincs még a Git telepítve, és szeretnénk azt parancssorból is használni, akkor innen telepíthető Windows operációs rendszerre: <a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a>. Egyéb operációs rendszerek esetén pedig innen érdemes indulni: <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Git Credential Manager telepítése</p>
+<p>A GitHub már egy ideje nem támogatja az egyszerű felhasználónév/jelszó alapú hitelesítést. Ha git parancssorban a login során "Support for password authentication was removed." hibaüzenetet kapunk, ez az oka. Két megoldás is létezik a probléma megoldására: </p>
+<ul>
+<li>A legegyszerűbb megoldás a "Git Credential Manager" telepítése. Ezt fel lehet telepíten a git telepítése során (csak be kell pipálni a telepítőben), de külön is telepíthető <a href="https://github.com/git-ecosystem/git-credential-manager/releases">innen</a>. A telepítést követően nincs teendőnk vele, a git automatikusan használni fogja, és egy böngésző alapú (ún. OAuth) hitelesítési folyamaton vezeti végig a felhasználót, ill. plusz kényelmi funkcióként meg is jegyzi a hitelesítési adatokat.</li>
+<li>A másik megoldás a PAT (Personal Access Token) használata, erről pl. <a href="https://stackoverflow.com/questions/68775869/message-support-for-password-authentication-was-removed">itt</a> lehet olvasni.</li>
+</ul>
+</div>
 
   <hr>
 <div class="md-source-file">
@@ -1478,8 +1486,8 @@ A fentieken túlmenően a Git számos további szolgáltatást biztosít (pl. te
         </path>
       </svg>
     </span>
-    <span title="2023. március 11. 17:28:38">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-11T17:28:38+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-11</span>
+    <span title="2024. február 17. 11:02:38">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-17T11:02:38+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-17</span>
     </span>
   </span>
 
