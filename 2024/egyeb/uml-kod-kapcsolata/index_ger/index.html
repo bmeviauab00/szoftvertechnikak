@@ -1401,18 +1401,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#i-verbindung-zwischen-generalisierung-und-spezialisierung" class="md-nav__link">
-    I. Verbindung zwischen Generalisierung und Spezialisierung
+  <a href="#i-generalisierung-und-spezialisierung" class="md-nav__link">
+    I. Generalisierung und Spezialisierung
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ii-verein" class="md-nav__link">
-    II. Verein
+  <a href="#ii-assoziation" class="md-nav__link">
+    II. Assoziation
   </a>
   
-    <nav class="md-nav" aria-label="II. Verein">
+    <nav class="md-nav" aria-label="II. Assoziation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1435,8 +1435,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#iii-aggregation-einbeziehung-teil-teil-beziehung" class="md-nav__link">
-    III. Aggregation (Einbeziehung, Teil-Teil-Beziehung)
+  <a href="#iii-aggregation-einbeziehung-teil-ganzes-beziehung" class="md-nav__link">
+    III. Aggregation (Einbeziehung, Teil-Ganzes-Beziehung)
   </a>
   
 </li>
@@ -1478,26 +1478,26 @@
 
 <h1 id="theorie-der-beziehung-zwischen-dem-uml-klassendiagramm-und-dem-code">Theorie der Beziehung zwischen dem UML-Klassendiagramm und dem Code<a class="headerlink" href="#theorie-der-beziehung-zwischen-dem-uml-klassendiagramm-und-dem-code" title="Permanent link">&para;</a></h1>
 <p>Letztes Änderungsdatum: 2022.10.15<br />
-Er hat trainiert: Zoltán Benedek</p>
+Ausgearbeitet von: Zoltán Benedek</p>
 <p>Das Kapitel enthält keine Übung, sondern bietet den Studierenden eine Einführung in die entsprechende Theorie.</p>
 <h2 id="einfuhrung">Einführung<a class="headerlink" href="#einfuhrung" title="Permanent link">&para;</a></h2>
-<p>Das Kapitel gibt einen kurzen, skizzenhaften Überblick über die Grundlagen des Mappings zwischen dem UML-Klassendiagramm und dem Quellcode, als Wiederholung dessen, was bereits im vorherigen Semester in Software Engineering gelernt wurde.</p>
-<p>Heutzutage gibt es viele Softwareentwicklungsmethoden. Sie stützen sich bei der Erstellung der Software in unterschiedlichem Maße auf die Modellierung bzw. erfordern diese. Es besteht jedoch kein Zweifel daran, dass selbst die agilsten, "code-zentrierten" Anhänger der "code-zentrierten" Ansätze es für nützlich halten, die wichtigeren/komplexeren Komponenten und Strukturelemente der Software visuell zu modellieren, da die grafische Natur der Software eine größere Ausdruckskraft hat.</p>
-<p>Nehmen wir an, Sie müssen eine Anwendung oder ein bestimmtes Modul einer Anwendung erstellen. Nach der von uns gewählten Methodik werden wir die Schritte Anforderungsanalyse, Analyse, Entwurf, Implementierung und Test durchführen, wahrscheinlich in mehreren Iterationen. Konzentrieren wir uns nun auf die Entwurfsphase. Das Ergebnis ist ein detaillierter Entwurf des Systems (zumindest von Teilen davon), der in einen detaillierten Plan oder ein Modell für die Umsetzung mündet. Auf dieser Ebene können bestimmte Elemente des Modells (z. B. Klassen) explizit auf Elemente der für die Implementierung des Teilsystems gewählten Programmiersprache abgebildet werden. Wenn Sie über ein gutes Entwicklungs-/Modellierungswerkzeug verfügen, kann dieses das Klassenskelett (z. B. C++, Java-, C#-Klassen) generieren. Unsere Aufgabe besteht nun darin, die Wurzel der Methoden in den generierten Code einzutragen.</p>
+<p>Das Kapitel gibt einen kurzen Überblick über die Grundlagen des Mappings zwischen dem UML-Klassendiagramm und dem Quellcode, als Wiederholung dessen, was bereits im vorherigen Semester in Softwarechnologien gelernt wurde.</p>
+<p>Heutzutage gibt es viele Softwareentwicklungsmethoden. Sie stützen sich bei der Erstellung der Software in unterschiedlichem Maße auf die Modellierung bzw. erfordern diese. Es besteht jedoch kein Zweifel daran, dass selbst die Anhänger der agilsten, "code-zentrierten" Ansätze es für nützlich halten, die wichtigeren/komplexeren Komponenten und Strukturelemente der Software visuell zu modellieren, da deren grafische Natur eine größere Ausdruckskraft hat.</p>
+<p>Nehmen wir an, man muss eine Anwendung oder ein bestimmtes Modul einer Anwendung erstellen. Nach der von sich gewählten Methodik wird man die Schritte Anforderungsanalyse, Analyse, Entwurf, Implementierung und Test durchführen, wahrscheinlich in mehreren Iterationen. Konzentrieren wir uns nun auf die Entwurfsphase. Das Ergebnis ist ein detaillierter Entwurf des Systems (zumindest von Teilen davon), der in einen detaillierten Plan oder ein Modell für die Umsetzung mündet. Auf dieser Ebene können bestimmte Elemente des Modells (z. B. Klassen) explizit auf Elemente der für die Implementierung des Teilsystems gewählten Programmiersprache abgebildet werden. Wenn man über ein gutes Entwicklungs-/Modellierungswerkzeug verfügt, kann dieses das Klassenskelett (z. B. C++, Java-, C#-Klassen) generieren. Unsere Aufgabe besteht nun darin, die Wurzel der Methoden in den generierten Code einzutragen.</p>
 <h3 id="konzepte">Konzepte<a class="headerlink" href="#konzepte" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Forward Engineering: Generierung von Code aus einem Modell. Aus dem detaillierten Plan kann das Modellierungswerkzeug das Programmgerüst erstellen. Der Vorteil ist, dass weniger Kodierung erforderlich ist.</li>
 <li>Reverse Engineering: Generierung eines Modells aus Code. Es hilft Ihnen, den bereits vorhandenen Code zu verstehen.</li>
 <li>Round-Trip-Engineering: eine Kombination der beiden vorgenannten Verfahren. Der springende Punkt ist, dass das Modell und der Code ständig synchronisiert sind. Wenn Sie den Code ändern, erscheint die Änderung im Modell, wenn Sie das Modell ändern, erscheint die Änderung im Code.</li>
 </ul>
-<p>Um die Vorteile der Codegenerierung nutzen zu können, müssen Sie Folgendes wissen: Sie müssen wissen, wie ein bestimmtes Modellierungswerkzeug jedes Modellelement auf Elemente einer bestimmten Programmiersprache abbildet. Das Mapping hängt von der Sprache und dem Modellierungswerkzeug ab, es gibt keinen universellen Standard. Die Zuordnungen sind in der Regel selbsterklärend, es gibt in der Regel nicht allzu viele Variationen.</p>
+<p>Um die Vorteile der Codegenerierung nutzen zu können, muss man Folgendes wissen: man muss wissen, wie ein bestimmtes Modellierungswerkzeug jedes Modellelement auf Elemente einer bestimmten Programmiersprache abbildet. Das Mapping hängt von der Sprache und dem Modellierungswerkzeug ab, es gibt keinen universellen Standard. Die Zuordnungen sind in der Regel selbsterklärend, es gibt in der Regel nicht allzu viele Variationen.</p>
 <p>Im Folgenden werden wir uns ansehen, wie jedes Modellelement des UML-Klassendiagramms auf den Quellcode abgebildet wird und umgekehrt.</p>
 <h2 id="zuordnung-von-klassen">Zuordnung von Klassen<a class="headerlink" href="#zuordnung-von-klassen" title="Permanent link">&para;</a></h2>
 <p>Es ist trivial einfach:</p>
 <ul>
 <li>UML-Klasse -&gt; Klasse</li>
 <li>UML-Attribut -&gt; Mitgliedsvariable</li>
-<li>UML-Operation -&gt; operation/method</li>
+<li>UML-Operation -&gt; Funktion/Method</li>
 </ul>
 <p>Ein Beispiel:</p>
 <p><a class="glightbox" href="../images/shapeclass.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Klasse Shape" src="../images/shapeclass.png" /></a></p>
@@ -1517,7 +1517,7 @@ Er hat trainiert: Zoltán Benedek</p>
 <li># : protected</li>
 </ul>
 <p>Eine spannendere Frage ist, wie die Beziehungen zwischen den Klassen abgebildet werden, und dies wird in den folgenden Kapiteln diskutiert.</p>
-<h3 id="i-verbindung-zwischen-generalisierung-und-spezialisierung">I. Verbindung zwischen Generalisierung und Spezialisierung<a class="headerlink" href="#i-verbindung-zwischen-generalisierung-und-spezialisierung" title="Permanent link">&para;</a></h3>
+<h3 id="i-generalisierung-und-spezialisierung">I. Generalisierung und Spezialisierung<a class="headerlink" href="#i-generalisierung-und-spezialisierung" title="Permanent link">&para;</a></h3>
 <p><a class="glightbox" href="../images/alt-spec.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Generalisierung, Spezialisierung" src="../images/alt-spec.png" /></a></p>
 <p>C#-Zuordnung:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Base</span>
@@ -1525,7 +1525,7 @@ Er hat trainiert: Zoltán Benedek</p>
 <span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Derived</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Base</span>
 <span class="p">{</span><span class="w"> </span><span class="p">};</span>
 </code></pre></div>
-<h3 id="ii-verein">II. Verein<a class="headerlink" href="#ii-verein" title="Permanent link">&para;</a></h3>
+<h3 id="ii-assoziation">II. Assoziation<a class="headerlink" href="#ii-assoziation" title="Permanent link">&para;</a></h3>
 <p>Dieser Beziehungstyp impliziert immer eine Kommunikation zwischen Objekten von Klassen. Eine Abteilung nimmt die Dienste einer anderen Abteilung in Anspruch.</p>
 <h4 id="a-aufbau-einer-01-multiplizitats-assoziationsbeziehung">A) Aufbau einer 0..1-Multiplizitäts-Assoziationsbeziehung<a class="headerlink" href="#a-aufbau-einer-01-multiplizitats-assoziationsbeziehung" title="Permanent link">&para;</a></h4>
 <p>In diesem Fall enthält die Client-Klasse einen Zeiger oder Verweis, über den sie die Dienste der Zielklasse nutzen (ihre Operationen aufrufen) kann. Beispiel:</p>
@@ -1568,7 +1568,7 @@ Er hat trainiert: Zoltán Benedek</p>
 <span class="w">  </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Window</span><span class="o">&gt;</span><span class="w"> </span><span class="n">windows</span><span class="p">;</span><span class="w"> </span>
 <span class="p">};</span>
 </code></pre></div>
-<h3 id="iii-aggregation-einbeziehung-teil-teil-beziehung">III. Aggregation (Einbeziehung, Teil-Teil-Beziehung)<a class="headerlink" href="#iii-aggregation-einbeziehung-teil-teil-beziehung" title="Permanent link">&para;</a></h3>
+<h3 id="iii-aggregation-einbeziehung-teil-ganzes-beziehung">III. Aggregation (Einbeziehung, Teil-Ganzes-Beziehung)<a class="headerlink" href="#iii-aggregation-einbeziehung-teil-ganzes-beziehung" title="Permanent link">&para;</a></h3>
 <p>Im Allgemeinen ist die Zuordnung genau die gleiche wie bei der Assoziation.</p>
 <h3 id="iv-abhangigkeit-dependenz">IV. Abhängigkeit (Dependenz)<a class="headerlink" href="#iv-abhangigkeit-dependenz" title="Permanent link">&para;</a></h3>
 <p>Sie stellt die lockerste Verbindung zwischen den Abteilungen dar. Beispiel:</p>
@@ -1584,8 +1584,8 @@ Er hat trainiert: Zoltán Benedek</p>
         </path>
       </svg>
     </span>
-    <span title="2024. február 12. 18:14:38">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-12T18:14:38+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-12</span>
+    <span title="2024. február 20. 09:54:42">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-20T09:54:42+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-20</span>
     </span>
   </span>
 
@@ -1602,6 +1602,8 @@ Er hat trainiert: Zoltán Benedek</p>
     <span>Szerzők</span>
     <nav><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
         <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&v=4?size=72" alt="@Zoltán Benedek">
+      </a><a href="https://github.com/szucscintialia" target="_blank" rel="noopener noreferrer" class="md-author" title="@Cintia Szücs">
+        <img src="https://avatars.githubusercontent.com/u/26093637?v=4?size=72" alt="@Cintia Szücs">
       </a></nav>      
   </span>
 </div>
