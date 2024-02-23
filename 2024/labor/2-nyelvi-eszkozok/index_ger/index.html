@@ -2226,7 +2226,7 @@ Die Sichtbarkeitskontrolle kann sowohl für autoimplementierte als auch für nic
 <h2 id="5-aufgabe-delegieren-2">5. Aufgabe - Delegieren 2.<a class="headerlink" href="#5-aufgabe-delegieren-2" title="Permanent link">&para;</a></h2>
 <p>In den Aufgaben 2 und 3 haben wir ereignisbasierte Nachrichtenübermittlung mit Delegierten implementiert. Bei einer <strong>anderen typischen Verwendung von Delegaten werden Funktionsreferenzen verwendet, um eine Implementierung eines undefinierten Schritts an einen Algorithmus oder eine komplexere Operation zu übergeben</strong>.</p>
 <p>Zum Beispiel kann die eingebaute generische Listenklasse (<code>List&lt;T&gt;</code>) mit der Funktion <code>FindAll</code> eine neue Liste mit allen Elementen zurückgeben, die eine bestimmte Bedingung erfüllen. Die spezifische Filterbedingung kann als Funktion angegeben werden, genauer gesagt als Delegate-Parameter (dies ruft <code>FindAll</code> für jedes Element auf), der für jedes Element, das wir in der Ergebnisliste sehen wollen, true zurückgibt. Der Typ des Funktionsparameters ist der folgende vordefinierte Delegatentyp**(er muss nicht eingegeben/erstellt** werden, er existiert bereits):</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">delegate</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">Prädikat</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">delegate</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">Predicate</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2264,13 +2264,11 @@ Die Sichtbarkeitskontrolle kann sowohl für autoimplementierte als auch für nic
 <div class="admonition tip">
 <p class="admonition-title">Collection initializer syntax</p>
 <p>Für alle Klassen (typischerweise Sammlungen) mit der Methode <code>Add</code>, die die Schnittstelle <code>IEnumerable</code> implementieren, lautet die Syntax für die Sammlungsinitialisierung wie folgt:</p>
-<p>``csharp
-var list = new List<int>() { 1, 2, 3 };
-<div class="highlight"><pre><span></span><code>Ab C# 12 kann eine noch einfachere Syntax (*collection expression* genannt) verwendet werden, um eine Sammlung zu initialisieren, wenn der Compiler aus dem Typ der Variablen schließen kann, dass es sich um eine Sammlung handelt. Pl.:
-
-``csharp
-Liste&lt;int&gt; liste = [1, 2, 3];
-</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="p">};</span>
+</code></pre></div>
+<p>Ab C# 12 kann eine noch einfachere Syntax (<em>collection expression</em> genannt) verwendet werden, um eine Sammlung zu initialisieren, wenn der Compiler aus dem Typ der Variablen schließen kann, dass es sich um eine Sammlung handelt. Pl.:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Liste</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">liste</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">];</span>
+</code></pre></div>
 </div>
 <h2 id="6-aufgabe-lambda-begriffe">6. Aufgabe - Lambda-Begriffe<a class="headerlink" href="#6-aufgabe-lambda-begriffe" title="Permanent link">&para;</a></h2>
 <p>Die entsprechenden Themen werden in den Vorlesungsunterlagen ausführlich behandelt, sie werden hier nicht wiederholt. Siehe das Kapitel "Lambda-Ausdruck" im Dokument "Vorlesung 02 - Sprachwerkzeuge.pdf". Das Schlüsselelement ist <code>=&gt;</code> (Lambda-Operator), das die Definition von <strong>Lambda-Ausdrücken</strong>, d. h. anonymen Funktionen, ermöglicht.</p>
@@ -2397,8 +2395,8 @@ Wie Sie sehen können, haben wir die Klammern und die Anweisung <code>return</co
         </path>
       </svg>
     </span>
-    <span title="2024. február 23. 13:28:36">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-23T13:28:36+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-23</span>
+    <span title="2024. február 23. 14:08:58">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-23T14:08:58+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-23</span>
     </span>
   </span>
 
