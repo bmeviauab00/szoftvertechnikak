@@ -31,7 +31,7 @@ A gyakorlat elvégzéséhez szükséges eszközök:
 
     A megoldás GitHubon érhető el [itt](https://github.com/bmeviauab00/lab-adatkezeles-megoldas). A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre:
 
-    ```git clone https://github.com/bmeviauab00/lab-adatkezeles-megoldas```
+    `git clone https://github.com/bmeviauab00/lab-adatkezeles-megoldas`
 
     Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ [itt](../../hazi/git-github-github-classroom/index.md#git-telepitese).
 

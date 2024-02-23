@@ -24,7 +24,7 @@ A labor elvégzéséhez szükséges eszközök:
 
     A megoldás [GitHubon érhető el](https://github.com/bmeviauab00/lab-XAML-kiindulo) a `megoldas` ágon. A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre a `megoldas` ágat:
 
-    ```git clone https://github.com/bmeviauab00/lab-xaml-kiindulo -b megoldas```
+    `git clone https://github.com/bmeviauab00/lab-xaml-kiindulo -b megoldas`
 
     Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ [itt](../../hazi/git-github-github-classroom/index.md#git-telepitese).
 

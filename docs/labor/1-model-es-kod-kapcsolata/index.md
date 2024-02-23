@@ -56,7 +56,7 @@ A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek e
 
     A megoldás [GitHubon érhető el](https://github.com/bmeviauab00/lab-modellkod-kiindulo/tree/megoldas). A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre:
 
-    ```git clone https://github.com/bmeviauab00/lab-modellkod-kiindulo -b megoldas```
+    `git clone https://github.com/bmeviauab00/lab-modellkod-kiindulo -b megoldas`
 
     Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ [itt](../../hazi/git-github-github-classroom/index.md#git-telepitese).
 

@@ -29,8 +29,8 @@ A gyakorlat elvégzéséhez szükséges eszközök:
 
 ## Bevezető
 
-!!! Tip "Kitekintő részek"
-    Jelen útmutató több helyen is bővített ismeretanyagot, illetve extra magyarázatot ad meg jelen megjegyzéssel egyező színnel keretezett és ugyanilyen ikonnal ellátott formában. Ezek hasznos kitekintések, de nem képezik az alap tananyag részét.
+!!! tip "Kitekintő részek"
+    Jelen útmutató több helyen is bővített ismeretanyagot, **illetve** extra magyarázatot ad meg jelen megjegyzéssel egyező színnel keretezett és ugyanilyen ikonnal ellátott formában. Ezek hasznos kitekintések, de nem képezik az alap tananyag részét.
 
 ## Megoldás
 
@@ -39,7 +39,7 @@ A gyakorlat elvégzéséhez szükséges eszközök:
 
     A megoldás GitHubon érhető el [itt](https://github.com/bmeviauab00/lab-nyelvieszkozok-megoldas). A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre:
 
-    ```git clone https://github.com/bmeviauab00/lab-nyelvieszkozok-megoldas```
+    `git clone https://github.com/bmeviauab00/lab-nyelvieszkozok-megoldas`
 
     Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ [itt](../../hazi/git-github-github-classroom/index.md#git-telepitese).
 
@@ -452,7 +452,7 @@ A NET számos **beépített** attribútumot definiál, melyek funkciója a legk�
     });
     ```
 
-    A fenti példából az utolsó `Process.Start` függvényhívás nem a sorosító logika része, csupán egy frappáns megoldás arra, hogy a Windows alapértelmezett szövegfájl nézegetőjével megnyissuk a keletkezett adatállományt. Ezt kipróbálhatjuk, de a használt .NET runtime-tól és az operációs rendszerünktől függ, támogatott-e. Ha nem, futás közben hibát kapunk. Ez esetben hagyjuk kikommentezve, és a `person.txt` fájlt a fájlrendszerben megkeresve kézzel nyissuk meg (a Visual Studio mappánkban a *\bin\Debug\<valami>\* alatt található az .exe alkalmazásunk mellett.
+    A fenti példából az utolsó `Process.Start` függvényhívás nem a sorosító logika része, csupán egy frappáns megoldás arra, hogy a Windows alapértelmezett szövegfájl nézegetőjével megnyissuk a keletkezett adatállományt. Ezt kipróbálhatjuk, de a használt .NET runtime-tól és az operációs rendszerünktől függ, támogatott-e. Ha nem, futás közben hibát kapunk. Ez esetben hagyjuk kikommentezve, és a `person.txt` fájlt a fájlrendszerben megkeresve kézzel nyissuk meg (a Visual Studio mappánkban a *\bin\Debug\<valami>\* alatt található az .exe alkalmazásunk mellett).
 
 2. Nézzük meg a keletkezett fájl szerkezetét. Figyeljük meg, hogy minden tulajdonság a nevének megfelelő XML elemre lett leképezve.
 
@@ -605,7 +605,7 @@ public int AgeInDogYear => Age * 7;
 
 Ezt az különbözteti meg a korábban látott függvények hasonló szintaktikájától, hogy itt nem írtuk ki a kerek zárójeleket.
 
-!!! Note
+!!! note
     A Microsoft hivatalos dokumentációjának magyar fordításában az "expression-bodied members" nem "kifejezéstörzsű", hanem "kifejezéstestű" tagként szerepel. Köszönjük szépen, de a függvényeknek sokkal inkább törzse, mint teste van a magyar terminológiában, így ezt nem vesszük át...
 
 ### Objektuminicializáló (Object initializer)
