@@ -8,12 +8,12 @@ autoren: BenceKovari,bzolka,tibitoth
 
 Während des Praktikums werden die Studenten mit den wichtigsten modernen Sprachwerkzeugen vertraut gemacht, die in der .NET-Umgebung verfügbar sind. Es wird vorausgesetzt, dass der Studierende den objektorientierten Ansatz in seinem bisherigen Studium beherrscht und mit den grundlegenden Konzepten der Objektorientierung vertraut ist. In dieser Übung werden wir uns auf die Sprachelemente in .NET konzentrieren, die über den allgemeinen objektorientierten Ansatz hinausgehen, aber wesentlich zur Erstellung von transparentem und wartbarem Code beitragen. Diese sind:
 
-- Eigentum (Eigentum)
-- Delegate (Delegierter, Methodenreferenz)
-- Ereignis (Ereignis)
-- Attribut (Eigenschaft)
-- Lambda-Ausdruck (Lambda-Ausdruck)
-- Generischer Typ (Generischer Typ)
+- Eigentum (property)
+- Delegate (delegate, Methodenreferenz)
+- Ereignis (event)
+- Attribut (attribute)
+- Lambda-Ausdruck (lambda expression)
+- Generischer Typ (generic type)
 - Einige zusätzliche Sprachkonstruktionen
 
 Verwandte Vorlesungen: Vorlesung 2 und Anfang der Vorlesung 3 - Sprachliche Mittel.
@@ -89,7 +89,7 @@ Wir beginnen mit einer einfachen Aufwärmübung. Im folgenden Beispiel erstellen
 
         Der Vorteil dieses Ansatzes gegenüber `var' ist, dass er auch für Member-Variablen verwendet werden kann.
 
-## 1. Aufgabe - Eigenschaft
+## 1. Aufgabe - property
 
 Eigenschaften erlauben uns typischerweise (aber nicht ausschließlich, wie wir noch sehen werden) den Zugriff auf Membervariablen von Klassen auf eine syntaktisch ähnliche Weise wie den Zugriff auf eine traditionelle Membervariable. Beim Zugriff haben wir jedoch die Möglichkeit, anstelle einer einfachen Wertabfrage oder Einstellung eine methodenähnliche Art des Zugriffs auf die Variable zu implementieren, und wir können sogar die Sichtbarkeit der Abfrage und der Einstellung separat definieren.
 
@@ -177,7 +177,7 @@ Im folgenden Beispiel erstellen wir eine Klasse namens `Person`, die eine Person
     p.Alter = 2;
     ```
 
-### Auto-implementierte Eigenschaft (Auto-implementierte Eigenschaft)
+### Auto-implementierte Eigenschaft (Auto-implementierte property)
 
 In unserer täglichen Arbeit begegnen wir auch einer viel kompakteren Syntax von Eigenschaften. Diese Syntax kann verwendet werden, wenn Sie eine Eigenschaft erstellen möchten, in der:
 
@@ -206,7 +206,7 @@ Nachfolgend ein Beispiel dafür.
     }
     ```
 
-### Standardwert (Standardwert)
+### Standardwert (default value)
 
 Für automatisch implementierte Eigenschaften können Sie bei der Deklaration auch deren Anfangswert angeben.
 
@@ -231,7 +231,7 @@ Ein großer Vorteil der Eigenschaften, neben der völlig freien Implementierung,
 
 2. Stellen Sie die Sichtbarkeit wieder her (entfernen Sie das Schlüsselwort `private` aus dem Property Setter `Name` ), um den Übersetzungsfehler zu beheben.
 
-### Nur-Lese-Eigenschaft (Nur-Lese-Eigenschaft)
+### Nur-Lese-Eigenschaft (readonly property)
 
 Der Setter kann weggelassen werden, um eine schreibgeschützte Eigenschaft zu erhalten. Für eine automatisch implementierte Eigenschaft kann auch ein Anfangswert angegeben werden: Dies ist nur in einem Konstruktor oder durch Angabe eines Standardwerts (siehe oben) möglich, im Gegensatz zu Eigenschaften mit einem privaten Setter, deren Setter von jeder Mitgliedsfunktion der Klasse aufgerufen werden kann.
 
@@ -251,7 +251,7 @@ private string name;
 public string Name { get {return name; } }
 ```
 
-### Berechneter Wert (berechneter Wert)
+### Berechneter Wert (calculated value)
 
 Eigenschaften mit nur Getter haben eine andere Verwendung. Sie kann auch verwendet werden, um einen berechneten Wert zu ermitteln, der immer einen Wert auf der Grundlage einer bestimmten Logik berechnet, aber im Gegensatz zur "Nur-Lese-Eigenschaft" verfügt sie nicht über ein Datenelement direkt hinter ihr. Dies wird im folgenden Codeschnipsel veranschaulicht (übernehmen Sie ihn NICHT in Ihren Code):
 
@@ -259,7 +259,7 @@ Eigenschaften mit nur Getter haben eine andere Verwendung. Sie kann auch verwend
 public int AgeInDogYear { get { return Age * 7; } }
 ```
 
-## 2. Aufgabe - Delegat (Delegat, Methodenreferenz)
+## 2. Aufgabe - Delegat (delegate, Methodenreferenz)
 
 !!! danger "Ensure the code compiles!"
     Die folgenden Übungen bauen auf den Ergebnissen der vorherigen Übungen auf. Wenn Ihr Programm nicht abstürzt oder nicht richtig funktioniert, melden Sie dies Ihrem Tutor am Ende der Übung, damit er Ihnen bei der Behebung des Problems helfen kann.
@@ -393,7 +393,7 @@ Im folgenden Beispiel werden wir Objekten der zuvor erstellten Klasse `Person` e
     p.AgeChanging -= PersonAgeChanging;
     ```
 
-## 3. Aufgabe - Ereignis (Ereignis)
+## 3. Aufgabe - Ereignis (event)
 
 So wie Eigenschaften eine syntaktisch schlankere Alternative zu Getter- und Setter-Methoden sind, bietet der oben beschriebene Delegat-Mechanismus eine schlankere Alternative zu den aus Java bekannten Event Listenern. Allerdings verstößt unsere obige Lösung immer noch erheblich gegen einige OO-Prinzipien (Einheiteneinschränkung, Verbergen von Informationen). Wir können dies anhand der folgenden zwei Beispiele veranschaulichen.
 
@@ -574,9 +574,9 @@ Es wurden die folgenden Vereinfachungen vorgenommen:
 
 Im Folgenden werfen wir einen Blick auf einige der C#-Sprachelemente, die bei alltäglichen Programmieraufgaben immer häufiger verwendet werden. Während der Übung kann es sein, dass keine Zeit bleibt, diese zu überprüfen.
 
-### Ausdrucksstarke Mitglieder
+### Ausdrucksstarke Mitglieder (Expression-bodied members)
 
-Manchmal schreiben wir kurze Funktionen oder, im Falle von Eigenschaften, sehr oft kurze get/set/init-Definitionen, die aus einem **einzigen Ausdruck** bestehen. In diesem Fall kann der get/set/init-Stamm einer Funktion oder Eigenschaft unter Verwendung der Syntax für **Ausdrücke in Form von Members** angegeben werden, und zwar unter `=>`.  Dies kann unabhängig davon geschehen, ob es im Kontext einen Rückgabewert (Return-Anweisung) gibt oder nicht.
+Manchmal schreiben wir kurze Funktionen oder, im Falle von Eigenschaften, sehr oft kurze get/set/init-Definitionen, die aus einem **einzigen Ausdruck** bestehen. In diesem Fall kann der get/set/init-Stamm einer Funktion oder Eigenschaft unter Verwendung der Syntax für **Ausdrücke in Form von Members (Expression-bodied members)** angegeben werden, und zwar unter `=>`.  Dies kann unabhängig davon geschehen, ob es im Kontext einen Rückgabewert (Return-Anweisung) gibt oder nicht.
 
 In den Beispielen werden wir sehen, dass die Verwendung von Ausdrucks-Tags nichts weiter als eine kleine syntaktische "Wendung" ist, um die Notwendigkeit zu minimieren, so viel umgebenden Code wie möglich in solch einfachen Fällen zu schreiben.
 
@@ -608,7 +608,7 @@ Der Unterschied zur ähnlichen Syntax der bisherigen Funktionen ist, dass wir di
 !!! note
     In der offiziellen Microsoft-Dokumentation wird "expression-bodied members" nicht als "expression-bodied", sondern als "expression-bodied" übersetzt. Vielen Dank, aber Funktionen haben in der ungarischen Terminologie eher einen Rumpf als einen Körper, also werden wir das nicht nehmen...
 
-### Objektinitialisierer (Objektinitialisierer)
+### Objektinitialisierer (Object initializer)
 
 Die Initialisierung von öffentlichen Eigenschaften/Mitgliedsvariablen und der Aufruf des Konstruktors können mit einer Syntax kombiniert werden, die als Objektinitialisierung bezeichnet wird. Dazu wird nach dem Konstruktoraufruf ein Block mit eckigen Klammern geöffnet, in dem der Wert der öffentlichen Eigenschaften/Mitgliedsvariablen unter Verwendung der folgenden Syntax angegeben werden kann.
 
@@ -635,7 +635,7 @@ Foo(new Person() { Alter = 17, Name = "Luke" });
 
 Die Syntax ist auch zum Kopieren und Einfügen geeignet, denn wie Sie in den obigen Beispielen sehen können, spielt es keine Rolle, ob nach der letzten Eigenschaft ein Komma steht oder nicht.
 
-### Eigenschaften - Nur Init Setter
+### Eigenschaften - Init only setter
 
 Die Syntax für die Objektinitialisierung im vorigen Abschnitt ist sehr praktisch, erfordert aber, dass die Eigenschaft öffentlich ist. Wenn Sie möchten, dass eine Eigenschaft nur bei der Erstellung des Objekts auf einen Wert gesetzt wird, müssen Sie einen Konstruktorparameter einführen und ihn auf eine Nur-Lese-Eigenschaft (Getter-Only) setzen. Eine einfachere Lösung für dieses Problem ist die so genannte *Init only setter-Syntax*, bei der Sie mit dem Schlüsselwort `init` einen "Setter" erstellen können, der nur im Konstruktor und in der im vorigen Kapitel beschriebenen Syntax für die Objektinitialisierung gesetzt werden darf, nicht aber danach.
 
@@ -662,7 +662,7 @@ public required string Name { get; init; }
 Dies ist auch deshalb nützlich, weil Sie die obligatorischen Konstruktorparameter speichern können, wenn Sie die Eigenschaften der Klasse ohnehin veröffentlichen und die Syntax der Objektinitialisierung unterstützen wollen.
 
 
-## 8. Aufgabe - Allgemeine Klassen
+## 8. Aufgabe - Allgemeine Klassen (generic classes)
 
 Hinweis: Die Zeit für diese Übung reicht wahrscheinlich nicht aus. In diesem Fall ist es ratsam, die Übung zu Hause zu machen.
 
