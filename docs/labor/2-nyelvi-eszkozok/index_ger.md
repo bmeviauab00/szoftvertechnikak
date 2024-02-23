@@ -489,7 +489,7 @@ In den Aufgaben 2 und 3 haben wir ereignisbasierte Nachrichtenübermittlung mit 
 Zum Beispiel kann die eingebaute generische Listenklasse (`List<T>`) mit der Funktion `FindAll` eine neue Liste mit allen Elementen zurückgeben, die eine bestimmte Bedingung erfüllen. Die spezifische Filterbedingung kann als Funktion angegeben werden, genauer gesagt als Delegate-Parameter (dies ruft `FindAll` für jedes Element auf), der für jedes Element, das wir in der Ergebnisliste sehen wollen, true zurückgibt. Der Typ des Funktionsparameters ist der folgende vordefinierte Delegatentyp**(er muss nicht eingegeben/erstellt** werden, er existiert bereits):
 
 ```csharp
-public delegate bool Prädikat<T>(T obj)
+public delegate bool Predicate<T>(T obj)
 ```
 
 !!! note
@@ -527,13 +527,13 @@ Das heißt, sie nimmt als Eingabe eine Variable des gleichen Typs wie der Typ de
 !!! tip "Collection initializer syntax"
     Für alle Klassen (typischerweise Sammlungen) mit der Methode `Add`, die die Schnittstelle `IEnumerable` implementieren, lautet die Syntax für die Sammlungsinitialisierung wie folgt:
 
-    ``csharp
+    ```csharp
     var list = new List<int>() { 1, 2, 3 };
     ```
 
     Ab C# 12 kann eine noch einfachere Syntax (*collection expression* genannt) verwendet werden, um eine Sammlung zu initialisieren, wenn der Compiler aus dem Typ der Variablen schließen kann, dass es sich um eine Sammlung handelt. Pl.:
     
-    ``csharp
+    ```csharp
     Liste<int> liste = [1, 2, 3];
     ```
 
