@@ -1937,18 +1937,17 @@ töréspontokat entspricht dem als Eigenschaftswert angegebenen Ausdruck.</p>
 </li>
 <li>
 <p>Ein wichtiges Merkmal von Setter-Funktionen ist, dass sie die Möglichkeit der Wertüberprüfung bieten. Fügen wir in diesem Sinne dem Setter der Eigenschaft <code>Age</code> etwas hinzu.</p>
-<p>```csharp
-public int Age
-{
-    get { return age; }
-    set 
-    {
-        if (value &lt; 0)
-            throw new ArgumentException("Ungültiges Alter!");
-        age = value; 
-    }
-}
-`````</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Age</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">get</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">age</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">set</span><span class="w"> </span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">ArgumentException</span><span class="p">(</span><span class="s">&quot;Ungültiges Alter!&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">value</span><span class="p">;</span><span class="w"> </span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>Beachten wir, dass bei einfachen Gettern und Settern die Abfrage bzw. das Setzen von Werten in einer Zeile erfolgt, während sie bei komplexeren Stammdaten auf mehrere Zeilen aufgeteilt wird.</p>
 </li>
 <li>
@@ -2395,8 +2394,8 @@ Wie wir sehen können, haben wir die Klammern und die Anweisung <code>return</co
         </path>
       </svg>
     </span>
-    <span title="2024. február 27. 14:45:53">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T14:45:53+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
+    <span title="2024. február 27. 15:40:32">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T15:40:32+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
     </span>
   </span>
 
