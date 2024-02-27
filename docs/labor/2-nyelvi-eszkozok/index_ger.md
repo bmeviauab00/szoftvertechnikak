@@ -162,7 +162,7 @@ Im folgenden Beispiel erstellen wir eine Klasse namens `Person`, die eine Person
             age = value; 
         }
     }
-    `````
+    ```
 
     Beachten wir, dass bei einfachen Gettern und Settern die Abfrage bzw. das Setzen von Werten in einer Zeile erfolgt, während sie bei komplexeren Stammdaten auf mehrere Zeilen aufgeteilt wird.
 
