@@ -81,13 +81,13 @@ Wir beginnen mit einer einfachen Aufwärmübung. Im folgenden Beispiel erstellen
     Dies wird als **implicitly typed local variables** bezeichnet, auf Deutsch implizit typisierte lokale Variablen genannt. In diesem Fall versucht der Compiler, den Typ der Variablen aus dem Kontext, aus der rechten Seite des Gleichheitszeichens zu erkennen. In diesem Fall ist es `Person`.  Es ist wichtig anzumerken, dass die Sprache dadurch statisch typisiert bleibt (es funktioniert also **nicht** wie das JavaScript-Schlüsselwort `var` ), da der Typ der `p` -Variable später nicht mehr geändert werden kann. Es ist nur ein einfaches syntaktisches Bonbon, um die Definition lokaler Variablen kompakter zu machen (keine Notwendigkeit, den Typ "zweimal" anzugeben, auf der linken und auf der rechten Seite von `=` ).
 
     !!! note "Target-typed `new` expressions"
-        Ein weiterer Ansatz könnte die Target-typed `new` expressions in C# 9 sein, wo der Typ für den neuen Operator weggelassen werden kann, wenn er vom Compiler aus dem Kontext erraten werden kann (z.B.: linke Seite eines Wertes, Typ eines Parameters, etc.). Unser obiger `Person` -Konstruktor würde wie folgt aussehen:
+        Ein weiterer Ansatz könnte die Target-typed `new` expressions in C# 9 sein, wo der Typ für den neuen Operator weggelassen werden kann, wenn er vom Compiler aus dem Kontext erkannt werden kann (z.B.: linke Seite eines Wertes, Typ eines Parameters, etc.). Unser obiger `Person` -Konstruktor würde wie folgt aussehen:
 
-        ``csharp
+        ```csharp
         Person p = new();
         ```
 
-        Der Vorteil dieses Ansatzes gegenüber `var' ist, dass er auch für Membervariablen verwendet werden kann.
+        Der Vorteil dieses Ansatzes gegenüber `var` ist, dass er auch für Membervariablen verwendet werden kann.
 
 ## 1. Aufgabe - Eigenschaft (property)
 
@@ -123,7 +123,7 @@ Im folgenden Beispiel erstellen wir eine Klasse namens `Person`, die eine Person
         - `switch`: Schaltbefehl
         - `cw`: Console.WriteLine
 
-        Wir können solche Schnipseln [herstellen] (https://learn.microsoft.com/en-us/visualstudio/ide/walkthrough-creating-a-code-snippet?view=vs-2022).
+        Wir können solche Schnipseln [herstellen](https://learn.microsoft.com/en-us/visualstudio/ide/walkthrough-creating-a-code-snippet?view=vs-2022).
 
 2. Ergnänzen wir die Funktion `Main` in der Datei `Program.cs`, um unsere neue Eigenschaft zu testen.
 
@@ -139,8 +139,7 @@ Im folgenden Beispiel erstellen wir eine Klasse namens `Person`, die eine Person
 
 3. Führen wir unseren Programm aus (++f5++)
 
-    Wir sehen, dass die Eigenschaft auf ähnliche Weise wie die Mitgliedsvariablen verwendet werden kann. Wenn die Eigenschaft abgefragt wird, wird der in der Eigenschaft definierte Teil `get` ausgeführt und der Wert der Eigenschaft ist der durch return zurückgegebene Wert. Wenn die Eigenschaft gesetzt ist, wird der in der Eigenschaft definierte Abschnitt `set` ausgeführt, und der Wert der speziellen Variablen `value` in diesem Abschnitt fentinél
-    töréspontokat entspricht dem als Eigenschaftswert angegebenen Ausdruck.
+    Wir sehen, dass die Eigenschaft auf ähnliche Weise wie die Mitgliedsvariablen verwendet werden kann. Wenn die Eigenschaft abgefragt wird, wird der in der Eigenschaft definierte Teil `get` ausgeführt und der Wert der Eigenschaft ist der durch return zurückgegebene Wert. Wenn die Eigenschaft gesetzt ist, wird der in der Eigenschaft definierte Abschnitt `set` ausgeführt, und der Wert der speziellen Variablen `value` in diesem Abschnitt entspricht dem als Eigenschaftswert angegebenen Ausdruck.
 
     Beachten wir in der obigen Lösung, wie elegant wir ein Jahr zum Alter einer Person hinzufügen können. In Java- oder C++-Code hätte ein ähnlicher Vorgang in der Form `p.setAge(p.getAge() + 1)` geschrieben werden können, was eine wesentlich umständlichere und schwieriger zu lesende Syntax ist als die Obige. Der Hauptvorteil der Verwendung von Eigenschaften besteht darin, dass unser Code syntaktisch sauberer ist und Wertzuweisungen/-abfragen in den meisten Fällen gut von tatsächlichen Funktionsaufrufen getrennt sind.
 
@@ -273,7 +272,7 @@ Einige Beispiele für den Einsatz von Delegaten:
 - ist die Implementierung einer universellen Filterlogik für eine allgemeine Sammlung, bei der eine Funktion als Delegat in einem Parameter übergeben wird, um zu entscheiden, ob ein Element in die gefilterte Liste aufgenommen werden soll,
 - Implementierung des Publish-Subscribe-Musters, bei dem bestimmte Objekte andere Objekte über sich selbst betreffender Ereignisse informieren.
 
-Im folgenden Beispiel werden wir Objekten der zuvor erstellten Klasse `Person` erlauben, Objekte anderer Klassen frei zu benachrichtigen, wenn sich das Alter einer Person geändert hat. Zu diesem Zweck führen wir einen Delegatentyp (`AgeChangingDelegate`) ein, der den aktuellen oder neuen Wert des Alters der Person in seiner Parameterliste übergeben kann. Als Nächstes erstellen wir eine öffentliche Mitgliedsvariable des Typs `AgeChangingDelegate` in der Klasse `Person`, die es einer externen Partei ermöglicht, die Funktion anzugeben, über die sie die Benachrichtigung über Änderungen an der Instanz `Person` anfordern wird.
+Im folgenden Beispiel werden wir Objekten der zuvor erstellten Klasse `Person` erlauben, Objekte anderer Klassen frei zu benachrichtigen, wenn sich das Alter einer Person geändert hat. Zu diesem Zweck führen wir einen Delegatentyp (`AgeChangingDelegate`) ein, der den aktuellen und neuen Wert des Alters der Person in seiner Parameterliste übergeben kann. Als Nächstes erstellen wir eine öffentliche Mitgliedsvariable des Typs `AgeChangingDelegate` in der Klasse `Person`, die es einer externen Partei ermöglicht, die Funktion anzugeben, über die sie die Benachrichtigung über Änderungen an der Instanz `Person` anfordern wird.
 
 1. Erstellen wir einen neuen **Delegatentyp**, der auf solche Funktionen verweisen kann, die `void` zurückgeben und  zwei `int` Parameter annehmen. Überprüfen wir, dass der neue Typ vor der Klasse `Person` definiert ist, direkt im Gültigkeitsbereich des Namespaces!
 
@@ -433,14 +432,14 @@ So wie Eigenschaften eine syntaktisch schlankere Alternative zu Getter- und Sett
 
 ## 4. Aufgabe - Attribute
 
-### Anpassen der Sortierung nach Attribut
+### Anpassen der Serialisierung nach Attribut
 
 **Attribute sind ein deklarativer Weg, um Metadaten für Ihren Quellcode bereitzustellen**. Ein Attribut ist eigentlich eine Klasse, die an ein bestimmtes Element des Programms (Typ, Klasse, Schnittstelle, Methode usw.) angehängt ist. Diese Metainformationen können von jedem (auch von uns selbst) gelesen werden, während das Programm läuft, und zwar über einen Mechanismus, der Reflection genannt wird. Die Attribute können auch als das .NET-Äquivalent zu den Java-Annotationen betrachtet werden.
 
 !!! tip "property vs. attribute vs. static"
     Es stellt sich die Frage, welche Klasseneigenschaften in properties und welche in attributes einer Klasse untergebracht werden sollten. Eigenschaften beziehen sich auf die Objektinstanz selbst, während sich ein Attribut auf die Klasse (oder ein Mitglied der Klasse) bezieht, die das Objekt beschreibt.
 
-    In dieser Hinsicht sind Attribute näher an statischen Eigenschaften, aber es islohnt sich immer noch eine Überlegung, ob man ein bestimmtes Datenelement als statisches Mitglied oder als Attribut definiert. Mit einem Attribut ist die Beschreibung deklarativer, und wir verschmutzen den Code nicht mit Details, die nicht in der öffentlichen Schnittstelle der Klasse erscheinen sollten.
+    In dieser Hinsicht sind Attribute näher an statischen Eigenschaften, aber es lohnt sich immer noch eine Überlegung, ob man ein bestimmtes Datenelement als statisches Mitglied oder als Attribut definiert. Mit einem Attribut ist die Beschreibung deklarativer, und wir verschmutzen den Code nicht mit Details, die nicht in der öffentlichen Schnittstelle der Klasse erscheinen sollten.
 
 .NET definiert viele **eingebaute** Attribute, die eine große Vielfalt an Funktionen haben können. Die im folgenden Beispiel verwendeten Attribute kommunizieren beispielsweise verschiedene Metainformationen mit dem XML-Serialisierer.
 
@@ -492,7 +491,7 @@ So wie Eigenschaften eine syntaktisch schlankere Alternative zu Getter- und Sett
 
 In den Aufgaben 2 und 3 haben wir ereignisbasierte Nachrichtenübermittlung mit Delegaten implementiert. **Als einer anderen typischen Verwendung von Delegaten ist ihre Verwendung als Funktionsreferenzen, um eine Implementierung eines undefinierten Schritts an einen Algorithmus oder eine komplexere Operation zu übergeben**.
 
-Zum Beispiel kann die eingebaute generische Listenklasse (`List<T>`) mit der Funktion `FindAll` eine neue Liste mit allen Elementen zurückgeben, die eine bestimmte Bedingung erfüllen. Die spezifische Filterbedingung kann als Funktion angegeben werden, genauer gesagt als Delegate-Parameter (dies ruft `FindAll` für jedes Element auf), der für jedes Element, das wir in der Ergebnisliste sehen wollen, true zurückgibt. Der Typ des Funktionsparameters ist der folgende vordefinierte Delegatentyp**(er muss nicht eingegeben/erstellt** werden, er existiert bereits):
+Zum Beispiel kann die eingebaute generische Listenklasse (`List<T>`) mit der Funktion `FindAll` eine neue Liste mit allen Elementen zurückgeben, die eine bestimmte Bedingung erfüllen. Die spezifische Filterbedingung kann als Funktion angegeben werden, genauer gesagt als Delegate-Parameter (dies ruft `FindAll` für jedes Element auf), der für jedes Element, das wir in der Ergebnisliste sehen wollen, true zurückgibt. Der Typ des Funktionsparameters ist der folgende vordefinierte Delegatentyp (**er muss nicht eingegeben/erstellt** werden, er existiert bereits):
 
 ```csharp
 public delegate bool Predicate<T>(T obj)
@@ -515,13 +514,13 @@ Das heißt, sie nimmt als Eingabe eine Variable des gleichen Typs wie der Typ de
 2. Vervollständigen wir den Code, den wir zuvor geschrieben haben, mit unserer Filterfunktion:
 
     ```csharp hl_lines="5"
-    var list = new List\<int>();
+    var list = new List<int>();
     list.Add(1);
     list.Add(2);
     list.Add(3);
     list = list.FindAll(MyFilter);
 
-    foreach (int n in Liste)
+    foreach (int n in list)
     {
         Console.WriteLine($"Wert: {n}");
     }
