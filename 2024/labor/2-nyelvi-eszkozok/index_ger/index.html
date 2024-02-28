@@ -1205,8 +1205,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#anpassen-der-sortierung-nach-attribut" class="md-nav__link">
-    Anpassen der Sortierung nach Attribut
+  <a href="#anpassen-der-serialisierung-nach-attribut" class="md-nav__link">
+    Anpassen der Serialisierung nach Attribut
   </a>
   
 </li>
@@ -1712,8 +1712,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#anpassen-der-sortierung-nach-attribut" class="md-nav__link">
-    Anpassen der Sortierung nach Attribut
+  <a href="#anpassen-der-serialisierung-nach-attribut" class="md-nav__link">
+    Anpassen der Serialisierung nach Attribut
   </a>
   
 </li>
@@ -1871,11 +1871,10 @@
 <p>Dies wird als <strong>implicitly typed local variables</strong> bezeichnet, auf Deutsch implizit typisierte lokale Variablen genannt. In diesem Fall versucht der Compiler, den Typ der Variablen aus dem Kontext, aus der rechten Seite des Gleichheitszeichens zu erkennen. In diesem Fall ist es <code>Person</code>.  Es ist wichtig anzumerken, dass die Sprache dadurch statisch typisiert bleibt (es funktioniert also <strong>nicht</strong> wie das JavaScript-Schlüsselwort <code>var</code> ), da der Typ der <code>p</code> -Variable später nicht mehr geändert werden kann. Es ist nur ein einfaches syntaktisches Bonbon, um die Definition lokaler Variablen kompakter zu machen (keine Notwendigkeit, den Typ "zweimal" anzugeben, auf der linken und auf der rechten Seite von <code>=</code> ).</p>
 <div class="admonition note">
 <p class="admonition-title">Target-typed <code>new</code> expressions</p>
-<p>Ein weiterer Ansatz könnte die Target-typed <code>new</code> expressions in C# 9 sein, wo der Typ für den neuen Operator weggelassen werden kann, wenn er vom Compiler aus dem Kontext erraten werden kann (z.B.: linke Seite eines Wertes, Typ eines Parameters, etc.). Unser obiger <code>Person</code> -Konstruktor würde wie folgt aussehen:</p>
-<p>``csharp
-Person p = new();
-```</p>
-<p>Der Vorteil dieses Ansatzes gegenüber `var' ist, dass er auch für Membervariablen verwendet werden kann.</p>
+<p>Ein weiterer Ansatz könnte die Target-typed <code>new</code> expressions in C# 9 sein, wo der Typ für den neuen Operator weggelassen werden kann, wenn er vom Compiler aus dem Kontext erkannt werden kann (z.B.: linke Seite eines Wertes, Typ eines Parameters, etc.). Unser obiger <code>Person</code> -Konstruktor würde wie folgt aussehen:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Person</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
+</code></pre></div>
+<p>Der Vorteil dieses Ansatzes gegenüber <code>var</code> ist, dass er auch für Membervariablen verwendet werden kann.</p>
 </div>
 </li>
 </ol>
@@ -1908,7 +1907,7 @@ Person p = new();
 <li><code>switch</code>: Schaltbefehl</li>
 <li><code>cw</code>: Console.WriteLine</li>
 </ul>
-<p>Wir können solche Schnipseln [herstellen] (<a href="https://learn.microsoft.com/en-us/visualstudio/ide/walkthrough-creating-a-code-snippet?view=vs-2022">https://learn.microsoft.com/en-us/visualstudio/ide/walkthrough-creating-a-code-snippet?view=vs-2022</a>).</p>
+<p>Wir können solche Schnipseln <a href="https://learn.microsoft.com/en-us/visualstudio/ide/walkthrough-creating-a-code-snippet?view=vs-2022">herstellen</a>.</p>
 </div>
 </li>
 <li>
@@ -1924,8 +1923,7 @@ Person p = new();
 </li>
 <li>
 <p>Führen wir unseren Programm aus (<span class="keys"><kbd class="key-f5">F5</kbd></span>)</p>
-<p>Wir sehen, dass die Eigenschaft auf ähnliche Weise wie die Mitgliedsvariablen verwendet werden kann. Wenn die Eigenschaft abgefragt wird, wird der in der Eigenschaft definierte Teil <code>get</code> ausgeführt und der Wert der Eigenschaft ist der durch return zurückgegebene Wert. Wenn die Eigenschaft gesetzt ist, wird der in der Eigenschaft definierte Abschnitt <code>set</code> ausgeführt, und der Wert der speziellen Variablen <code>value</code> in diesem Abschnitt fentinél
-töréspontokat entspricht dem als Eigenschaftswert angegebenen Ausdruck.</p>
+<p>Wir sehen, dass die Eigenschaft auf ähnliche Weise wie die Mitgliedsvariablen verwendet werden kann. Wenn die Eigenschaft abgefragt wird, wird der in der Eigenschaft definierte Teil <code>get</code> ausgeführt und der Wert der Eigenschaft ist der durch return zurückgegebene Wert. Wenn die Eigenschaft gesetzt ist, wird der in der Eigenschaft definierte Abschnitt <code>set</code> ausgeführt, und der Wert der speziellen Variablen <code>value</code> in diesem Abschnitt entspricht dem als Eigenschaftswert angegebenen Ausdruck.</p>
 <p>Beachten wir in der obigen Lösung, wie elegant wir ein Jahr zum Alter einer Person hinzufügen können. In Java- oder C++-Code hätte ein ähnlicher Vorgang in der Form <code>p.setAge(p.getAge() + 1)</code> geschrieben werden können, was eine wesentlich umständlichere und schwieriger zu lesende Syntax ist als die Obige. Der Hauptvorteil der Verwendung von Eigenschaften besteht darin, dass unser Code syntaktisch sauberer ist und Wertzuweisungen/-abfragen in den meisten Fällen gut von tatsächlichen Funktionsaufrufen getrennt sind.</p>
 </li>
 <li>
@@ -2037,7 +2035,7 @@ Die Sichtbarkeitskontrolle kann sowohl für autoimplementierte als auch für nic
 <li>ist die Implementierung einer universellen Filterlogik für eine allgemeine Sammlung, bei der eine Funktion als Delegat in einem Parameter übergeben wird, um zu entscheiden, ob ein Element in die gefilterte Liste aufgenommen werden soll,</li>
 <li>Implementierung des Publish-Subscribe-Musters, bei dem bestimmte Objekte andere Objekte über sich selbst betreffender Ereignisse informieren.</li>
 </ul>
-<p>Im folgenden Beispiel werden wir Objekten der zuvor erstellten Klasse <code>Person</code> erlauben, Objekte anderer Klassen frei zu benachrichtigen, wenn sich das Alter einer Person geändert hat. Zu diesem Zweck führen wir einen Delegatentyp (<code>AgeChangingDelegate</code>) ein, der den aktuellen oder neuen Wert des Alters der Person in seiner Parameterliste übergeben kann. Als Nächstes erstellen wir eine öffentliche Mitgliedsvariable des Typs <code>AgeChangingDelegate</code> in der Klasse <code>Person</code>, die es einer externen Partei ermöglicht, die Funktion anzugeben, über die sie die Benachrichtigung über Änderungen an der Instanz <code>Person</code> anfordern wird.</p>
+<p>Im folgenden Beispiel werden wir Objekten der zuvor erstellten Klasse <code>Person</code> erlauben, Objekte anderer Klassen frei zu benachrichtigen, wenn sich das Alter einer Person geändert hat. Zu diesem Zweck führen wir einen Delegatentyp (<code>AgeChangingDelegate</code>) ein, der den aktuellen und neuen Wert des Alters der Person in seiner Parameterliste übergeben kann. Als Nächstes erstellen wir eine öffentliche Mitgliedsvariable des Typs <code>AgeChangingDelegate</code> in der Klasse <code>Person</code>, die es einer externen Partei ermöglicht, die Funktion anzugeben, über die sie die Benachrichtigung über Änderungen an der Instanz <code>Person</code> anfordern wird.</p>
 <ol>
 <li>
 <p>Erstellen wir einen neuen <strong>Delegatentyp</strong>, der auf solche Funktionen verweisen kann, die <code>void</code> zurückgeben und  zwei <code>int</code> Parameter annehmen. Überprüfen wir, dass der neue Typ vor der Klasse <code>Person</code> definiert ist, direkt im Gültigkeitsbereich des Namespaces!</p>
@@ -2175,12 +2173,12 @@ Die Sichtbarkeitskontrolle kann sowohl für autoimplementierte als auch für nic
 </li>
 </ol>
 <h2 id="4-aufgabe-attribute">4. Aufgabe - Attribute<a class="headerlink" href="#4-aufgabe-attribute" title="Permanent link">&para;</a></h2>
-<h3 id="anpassen-der-sortierung-nach-attribut">Anpassen der Sortierung nach Attribut<a class="headerlink" href="#anpassen-der-sortierung-nach-attribut" title="Permanent link">&para;</a></h3>
+<h3 id="anpassen-der-serialisierung-nach-attribut">Anpassen der Serialisierung nach Attribut<a class="headerlink" href="#anpassen-der-serialisierung-nach-attribut" title="Permanent link">&para;</a></h3>
 <p><strong>Attribute sind ein deklarativer Weg, um Metadaten für Ihren Quellcode bereitzustellen</strong>. Ein Attribut ist eigentlich eine Klasse, die an ein bestimmtes Element des Programms (Typ, Klasse, Schnittstelle, Methode usw.) angehängt ist. Diese Metainformationen können von jedem (auch von uns selbst) gelesen werden, während das Programm läuft, und zwar über einen Mechanismus, der Reflection genannt wird. Die Attribute können auch als das .NET-Äquivalent zu den Java-Annotationen betrachtet werden.</p>
 <div class="admonition tip">
 <p class="admonition-title">property vs. attribute vs. static</p>
 <p>Es stellt sich die Frage, welche Klasseneigenschaften in properties und welche in attributes einer Klasse untergebracht werden sollten. Eigenschaften beziehen sich auf die Objektinstanz selbst, während sich ein Attribut auf die Klasse (oder ein Mitglied der Klasse) bezieht, die das Objekt beschreibt.</p>
-<p>In dieser Hinsicht sind Attribute näher an statischen Eigenschaften, aber es islohnt sich immer noch eine Überlegung, ob man ein bestimmtes Datenelement als statisches Mitglied oder als Attribut definiert. Mit einem Attribut ist die Beschreibung deklarativer, und wir verschmutzen den Code nicht mit Details, die nicht in der öffentlichen Schnittstelle der Klasse erscheinen sollten.</p>
+<p>In dieser Hinsicht sind Attribute näher an statischen Eigenschaften, aber es lohnt sich immer noch eine Überlegung, ob man ein bestimmtes Datenelement als statisches Mitglied oder als Attribut definiert. Mit einem Attribut ist die Beschreibung deklarativer, und wir verschmutzen den Code nicht mit Details, die nicht in der öffentlichen Schnittstelle der Klasse erscheinen sollten.</p>
 </div>
 <p>.NET definiert viele <strong>eingebaute</strong> Attribute, die eine große Vielfalt an Funktionen haben können. Die im folgenden Beispiel verwendeten Attribute kommunizieren beispielsweise verschiedene Metainformationen mit dem XML-Serialisierer.</p>
 <ol>
@@ -2228,7 +2226,7 @@ Die Sichtbarkeitskontrolle kann sowohl für autoimplementierte als auch für nic
 </ol>
 <h2 id="5-aufgabe-delegaten-2">5. Aufgabe - Delegaten 2.<a class="headerlink" href="#5-aufgabe-delegaten-2" title="Permanent link">&para;</a></h2>
 <p>In den Aufgaben 2 und 3 haben wir ereignisbasierte Nachrichtenübermittlung mit Delegaten implementiert. <strong>Als einer anderen typischen Verwendung von Delegaten ist ihre Verwendung als Funktionsreferenzen, um eine Implementierung eines undefinierten Schritts an einen Algorithmus oder eine komplexere Operation zu übergeben</strong>.</p>
-<p>Zum Beispiel kann die eingebaute generische Listenklasse (<code>List&lt;T&gt;</code>) mit der Funktion <code>FindAll</code> eine neue Liste mit allen Elementen zurückgeben, die eine bestimmte Bedingung erfüllen. Die spezifische Filterbedingung kann als Funktion angegeben werden, genauer gesagt als Delegate-Parameter (dies ruft <code>FindAll</code> für jedes Element auf), der für jedes Element, das wir in der Ergebnisliste sehen wollen, true zurückgibt. Der Typ des Funktionsparameters ist der folgende vordefinierte Delegatentyp**(er muss nicht eingegeben/erstellt** werden, er existiert bereits):</p>
+<p>Zum Beispiel kann die eingebaute generische Listenklasse (<code>List&lt;T&gt;</code>) mit der Funktion <code>FindAll</code> eine neue Liste mit allen Elementen zurückgeben, die eine bestimmte Bedingung erfüllen. Die spezifische Filterbedingung kann als Funktion angegeben werden, genauer gesagt als Delegate-Parameter (dies ruft <code>FindAll</code> für jedes Element auf), der für jedes Element, das wir in der Ergebnisliste sehen wollen, true zurückgibt. Der Typ des Funktionsparameters ist der folgende vordefinierte Delegatentyp (<strong>er muss nicht eingegeben/erstellt</strong> werden, er existiert bereits):</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">delegate</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">Predicate</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition note">
@@ -2247,13 +2245,13 @@ Die Sichtbarkeitskontrolle kann sowohl für autoimplementierte als auch für nic
 </li>
 <li>
 <p>Vervollständigen wir den Code, den wir zuvor geschrieben haben, mit unserer Filterfunktion:</p>
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="err">\</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span>
 <span class="n">list</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
 <span class="n">list</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="m">2</span><span class="p">);</span>
 <span class="n">list</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="m">3</span><span class="p">);</span>
 <span class="hll"><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="p">.</span><span class="n">FindAll</span><span class="p">(</span><span class="n">MyFilter</span><span class="p">);</span>
 </span>
-<span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">Liste</span><span class="p">)</span>
+<span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">list</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;Wert: {n}&quot;</span><span class="p">);</span>
 <span class="p">}</span>
@@ -2394,8 +2392,8 @@ Wie wir sehen können, haben wir die Klammern und die Anweisung <code>return</co
         </path>
       </svg>
     </span>
-    <span title="2024. február 27. 15:40:32">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-27T15:40:32+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
+    <span title="2024. február 28. 09:49:30">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-28T09:49:30+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-28</span>
     </span>
   </span>
 
