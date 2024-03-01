@@ -32,7 +32,15 @@ A képernyőképeket a megoldás részeként kell beadni, a repository-d gyöké
 A képernyőképek így felkerülnek GitHub-ra a git repository tartalmával együtt.
 Mivel a repository privát, azt az oktatókon kívül más nem látja.
 Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltölteni, kitakarhatod a képről.
-- :exclamation: A beadott megoldások mellé külön indoklást, illetve leírást nem várunk el, ugyanakkor az elfogadás feltétele, hogy a beadott kódban a feladat megoldása szempontjából relevánsabb részek kommentekkel legyenek ellátva.
+- :exclamation: Ehhez a feladathoz érdemi előellenőrző nem tartozik: minden push után lefut ugyan, de csak a neptun.txt kitöltöttségét ellenőrzi és azt, van-e fordítási hiba. Az érdemi ellenőrzést a határidő lejárta után a laborvezetők teszik majd meg.
+
+## Kikötések
+
+:warning: __MVVM minta - ne alkalmazd!__  
+  Jelen házi feladatban az MVVM mintát még NE használd (egyik későbbi részfeladatnál sem), `ViewModel` osztályt NE vezess be. Az MVVM egy később házi feladatnak lesz a tárgya.
+
+:warning: __Layout - egyszerűség__  
+Mint általában, a jelen házi feladat keretében elkészítendő feladatra is igaz, hogy az oldal alapelrendezését `Grid`-del célszerű kialakítani. Ugyanakkor az egyes belső részek elrendezésének kialakításakor törekedj az egyszerűségre: ahol az `StackPanel`-t is lehet használni, ne használj `Grid`-et.
 
 ## 1. feladat - Modell kialakítása és tesztadatok
 
@@ -42,8 +50,9 @@ A projekten belül hozzuk létre a `Models` mappába az alábbi ábrán láthat�
 ![Modell](images/model.png)
 </figure>
 
-A `MainPage` oldal fogja a teendők listáját megjeleníteni. Most memóriában lévő tesztadatokkal használjunk, amit a `MainPage.xaml.cs`-ben hozzunk létre.
-A `Todos` tulajdonság fogja tartalmazni a listát, amit kikötünk a felületen a listában. Ez a lista `TodoItem` objektumokat tartalmaz.
+Mindkét típus legyen publikus (írjuk a `class` és az `enum` elé a `public` kulcsszót), különben "Inconsistent accessibility" hibát kapnánk a későbbiekben a fordítás során.
+
+A `MainPage` oldal fogja a teendők listáját megjeleníteni. Most memóriában lévő tesztadatokat használjunk, melyeket a `View` mappában található `MainPage.xaml.cs`-ben hozzunk létre: itt `Todos` néven vezessünk be egy `List<TodoItem>` tulajdonságot (melyet később a felületen elhelyezett `ListView` vezérlőhöz kötünk adatkötéssel). Ez a lista `TodoItem` objektumokat tartalmaz.
 
 ```csharp title="MainPage.xaml.cs"
 public List<TodoItem> Todos { get; set; } = new()
@@ -51,7 +60,7 @@ public List<TodoItem> Todos { get; set; } = new()
     new TodoItem()
     {
         Id = 3,
-        Title = "Neptunkódot is felvenni a neptun.txt-be",
+        Title = "Add Neptun code to neptun.txt",
         Description = "NEPTUN",
         Priority = Priority.Normal,
         IsDone = false,
@@ -60,8 +69,8 @@ public List<TodoItem> Todos { get; set; } = new()
     new TodoItem()
     {
         Id = 1,
-        Title = "Tejet venni",
-        Description = "Ha van tojás, hozz tizet!",
+        Title = "Buy milk",
+        Description = "Should be lactose and gluten free!",
         Priority = Priority.Low,
         IsDone = true,
         Deadline = DateTimeOffset.Now + TimeSpan.FromDays(1)
@@ -69,8 +78,8 @@ public List<TodoItem> Todos { get; set; } = new()
     new TodoItem()
     {
         Id = 2,
-        Title = "Megcsinálni a grafika házit",
-        Description = "Sugárkövetés, csilli-villi legyen! :)",
+        Title = "Do the Computer Graphics homework",
+        Description = "Ray tracing, make it shiny and gleamy! :)",
         Priority = Priority.High,
         IsDone = false,
         Deadline = new DateTime(2024, 11, 08)
@@ -78,7 +87,18 @@ public List<TodoItem> Todos { get; set; } = new()
 };
 ```
 
-## 2. feladat - Oldal layoutja, lista megjelenítése
+??? note "A fenti kód magyarázata"
+    A fenti kódrészletben több modern C# nyelvi elemet kombináltunk:
+
+    * Ez egy auto-implementált tulajdonság (lásd 2. labor).
+    * Kedzőértéket adtunk neki.
+    * A `new` után nem adtuk meg a típust, mert a fordító ki tudja következtetni (lásd 2. labor "Target-typed new expressions").
+    * A gyűjtemény elemeit `{}` között soroljuk fel (lásd 2. labor "Collection initializer szintaxis").
+
+!!! Note "`MainPage` osztály"
+    A házi feladat során a beépített `Page` osztályból származó `MainPage` osztályban dolgozunk. A `Page` osztály az ablakon belüli oldalak közötti navigációt segíti. Bár jelen feladatban ezt nem használjuk ki, érdemes megszokni a használatát. Mivel alkalmazásunk egyetlen oldalból áll, a főablakban egyszerűen csak példányosítunk egy `MainPage` objektumot (érdemes a `MainWindow.xaml` fájlban ezt megtekinteni).
+
+## 2. feladat - Oldal elrendezése (layout), lista megjelenítése
 
 ### Layout
 
@@ -89,10 +109,12 @@ A `MainPage.xaml`-ben hozzuk létre a felületet, amelyen a teendők listáját 
 <figurecaption>Készítendő alkalmazás listázó felülettel</figurecaption>
 </figure>
 
+Mint a fenti ábra a három teendővel mutatja, a teendők adatait egymás alatt kell megjeleníteni, a teendők prioritását színek jelzik, a kész teendők mellett azok jobb oldalán egy pipa jelenik meg.
+
 A felületen a következő struktúrában helyezkednek el az elemek:
 
-* A `MainPage`-en belül egy `Grid`-et használjunk, amelynek két sorban és két oszlopban helyezkednek el az elemek. Az első oszlop fix széles legyen (pl.: 300 px), a második pedig a maradék helyet foglalja el.
-* Az első oszlop első sorában egy `CommandBar` vezérlő kerüljön, amibe egy cím és egy gomb helyezkedik el. Ehhez az alábbi példa szolgál segítségül:
+* A `MainPage`-en belül egy `Grid`-et használjunk, amelyben két sorban és két oszlopban helyezkednek el az elemek. Az első oszlop fix széles legyen (pl.: 300 px), a második pedig a maradék helyet foglalja el.
+* Az első oszlop első sorában egy `CommandBar` vezérlő kerüljön, melyben egy cím és egy gomb helyezkedik el. Ehhez az alábbi példa szolgál segítségül:
 
     ```xml
     <CommandBar VerticalContentAlignment="Center"
@@ -101,25 +123,27 @@ A felületen a következő struktúrában helyezkednek el az elemek:
         <CommandBar.Content>
             <TextBlock Margin="12,0,0,0"
                        Style="{ThemeResource SubtitleTextBlockStyle}"
-                       Text="Teendők" />
+                       Text="To-Dos" />
         </CommandBar.Content>
 
         <AppBarButton Icon="Add"
-                      Label="Hozzáadás" />
+                      Label="Add" />
     </CommandBar>
     ```
 
     !!! note "ThemeResource"
-        A példában szerepló `ThemeResource`-okat használhatjuk a színek és stílusok beállítására, amik a felület témájától függően változnak. Például a `AppBarBackgroundThemeBrush` a felület témájától függően a megfelelő színű háttér lesz.
+        A példában szerepló `ThemeResource`-okat használhatjuk a színek és stílusok beállítására, melyek a felület témájától függően változnak. Például a `AppBarBackgroundThemeBrush` a felület témájától (világos/sötét) függően a megfelelő színű háttér lesz.
 
         Részletekért lásd a [dokumentációt](https://docs.microsoft.com/en-us/windows/uwp/design/style/color#theme-resources) és a [WinUI 3 Gallery App Colors](winui3gallery://item/Colors) példáit.
 
+Ha jól dolgoztunk, az alkalmazást futtatva, `CommandBar`-nak a megfelelő helyen meg kell jelennie.
+
 ### Lista megjelenítése
 
-A `CommandBar` alatti cellában egy listába (`ListView`) kerüljenek a teendők a következő tartalommal egymás alatt. Az adatok adatkötésen keresztül hassanak a felület megjelenítésére.
+A `CommandBar` alatti cellában egy listába (`ListView`) kerüljenek a teendők a következő tartalommal egymás alatt. Az adatok adatkötésen keresztül hassanak a felület megjelenítésére (a korábban bevezetett `Todos` listából jelenjenek meg adatkötéssel az elemek).
 
 * Teendő címe
-    * Félkövér betűtípussal
+    * Félkövér (SemiBold) betűtípussal
     * Prioritás alapján színezve
         * Magas prioritás: piros egy árnyalata
         * Normál prioritás: beépített előtérszín
@@ -128,6 +152,9 @@ A `CommandBar` alatti cellában egy listába (`ListView`) kerüljenek a teendők
 * Teendő leírása
 * Teendő határideje `yyyy.MM.dd` formátumban
 * A `ListView` háttere legyen azonos a `CommandBar`-éval, így baloldalt egy egybefüggő sávot alkotnak.
+
+??? tip "Elemek a listában"
+    Mindig gondoljuk át, hogy egy objektumhoz történő, vagy listás adatkötésről van-e szó, és ennek megfelelő technikát alkalmazzunk! Jelen házi feladatban nem biztos, olyan sorrendben jönnek ezek elő, mint ahogy laboron szerepeltek!"
 
 ??? tip "Feltételes színezés"
     A cím színezésére használhatunk konvertert vagy `x:Bind` alapú függvény kötést is.
@@ -138,7 +165,7 @@ A `CommandBar` alatti cellában egy listába (`ListView`) kerüljenek a teendők
         Foreground="{x:Bind local:MainPage.GetForeground(Priority)}"
         ```
 
-        Itt a `GetForeground` egy statikus függvény a `MainPage` osztályban, amely a `Priority` felsorolt típus alapján visszaadja a megfelelő színű `Brush` objektumot.
+        Itt a `GetForeground` egy publikus statikus függvény a `MainPage` osztályban, amely a `Priority` felsorolt típus alapján visszaadja a megfelelő színű `Brush` objektumot.
         Alap esetben nem lenne fontos a függvénynek statikusnak lennie, de mivel itt egy `DataTemplate`-ben használjuk az adatkötést, ezért az `x:Bind` kontextusa nem az oldal példánya lesz, hanem a listaelem.
 
 
@@ -185,10 +212,16 @@ A `CommandBar` alatti cellában egy listába (`ListView`) kerüljenek a teendők
     (Brush)App.Current.Resources["ApplicationForegroundThemeBrush"]
     ```
 
+??? tip "Félkövér betűtípus"
+    A betűjellemzőket a "Font..." nevű tulajdonságok határozzák meg: `FontFamily`, `FontSize`, `FontStyle`, `FontStretch` és `FontWeight`.
+
 ??? tip "Pipa ikon láthatósága"
-    A pipa ikonhoz használjunk egy `SymbolIcon`-t, aminek az `Icon` tulajdonságát állítsuk be `Accept` értékre.
+    A pipa ikonhoz használjunk egy `SymbolIcon`-t, aminek az `Symbol` tulajdonságát állítsuk be `Accept` értékre.
 
     A pipa ikon megjelenítésekor egy igaz-hamis értéket kell átalakítani `Visibility` típusúra. Erre ugyan használhatnánk konvertert is, de ez a konverzió annyira gyakori, hogy az `x:Bind` adatkötés beépítetten konvertálja a `bool` értéket `Visibility`-re.
+
+??? tip "Pipa ikon igazítása"
+    A teendő címe és a pipa ikon egy sorban kell elhelyezkedjenek (egyik balra, másik jobbra igazítva). Ehhez egy tipp: pl. be lehet vetni egy egycellás `Grid`-et. `Grid`-ben lehet olyat csinálni, hogy egy cellába több vezérlőt teszünk "egymásra", melyek igazítása külön szabályozható. A második laboron így oldottuk meg a `ListView` `DataTemplate`-ben a név és a kor megjelenítését.
 
 ??? tip "Dátumok formázása"
     A határidő dátum formázására használhatunk szintén konvertert vagy `x:Bind` alapú függvény kötést is, ahol a `DateTime.ToString` függvényét kötjük ki paraméterezve.
@@ -199,12 +232,21 @@ A `CommandBar` alatti cellában egy listába (`ListView`) kerüljenek a teendők
 
     A `{x:Null}` azért kell, mert a `ToString` függvénynek a második paraméterét is meg kell adni, de az lehet `null` is ebben az esetben.
 
+    !!! warning "`{x:Null}` hibaüzenetek"
+        A Visual Studio XAML compilere hajlamos félrevezető hibaüzeneteket megjeleníteni. Amennyiben olyan hibaüzenetet kapunk a fordítás során (más hibaüzenetek mellett), mely a `{x:Null}`-ra panaszkodik, előbb a többi hibát nézzük meg, az `{x:Null}`-ra vonatkozó hibajelentés lehet hamis. Erre emlékezzünk, mert a későbbi feladatoknál is könnyen előfordulhat!
+
+??? tip "Listaelemek közötti hely"
+    Az útmutató képernyőmentésén látszik, hogy a listaelemek között függőlegesen van kihagyott hely, a listaelemek így jól elkülönülnek. Alapesetben ez nincs így. Szerencsére a megoldás során úgyis kell DataTemplate-et alkalmazni az elemek megjelenítésére, így ennek kicsi hangolásával (tipp: egyetlen Margin/Padding megadása) könnyedén elérhetjük, hogy a listaelemek között legyen némi hely a jobb olvashatóság érdekében. 
+
 !!! example "2. feladat BEADANDÓ"
     Illessz be egy képernyőképet az alkalmazásról, ahol az egyik teendőnek a listában a neve vagy leírása a NEPTUN kódod legyen! (`f2.png`)
 
 ## 3. feladat - Új teendő hozzáadása
 
-A felületen a _Hozzáadás_ gombra kattintva jelenjen a grid jobb oldalán a 2. sorban egy űrlap, ahol új teendőt lehet felvenni.
+A grid jobb oldalán az 1. sorban a "To-Do item" szöveg legyen látható, 25-ös betűmérettel, vízszintesen balra, függőlegesen pedig középre igazítva, baloldalon 20 pixelnyi üres hellyel.
+
+A felületen a _Hozzáadás_ gombra kattintva jelenjen a 2. sorban egy űrlap, ahol új teendőt lehet felvenni.
+
 Az űrlap kinézete legyen a következő:
 
 <figure markdown>
@@ -215,28 +257,44 @@ Az űrlap kinézete legyen a következő:
 Az űrlapban a következő elemek legyenek egymás alatt.
 
 * **Cím**: szöveges beviteli mező
-* **Leírás**: magasabb szöveges beviteli mező, fogadjon el entert is (`AcceptsReturn="True"`)
+* **Leírás**: magasabb szöveges beviteli mező, fogadjon el sortörést (enter) is (`AcceptsReturn="True"`)
 * **Határidő**: dátumválasztó (`DatePicker`) (Megj.: Ezért a vezérlő miatt használunk a modellben `DateTimeOffset` típust.)
-* **Prioritás**: legördülő lista (`ComboBox`), amiben a `Priority` felsorolt típus értékei szerepelnek
+* **Prioritás**: legördülő lista (`ComboBox`), melyben a `Priority` felsorolt típus értékei szerepelnek
 * **Készültség**: jelölőnégyzet (`CheckBox`)
 * **Mentés**: gomb beépített accent stílussal (`Style="{StaticResource AccentButtonStyle}"`)
+
+Az űrlaphoz nem kell speciális, egyedi vezérlőt (pl. `UserControl` készíteni): egyszerűen használjuk valamelyik, a feladathoz jól illeszkedő layout panel típust.
 
 További funkcionális követelmények:
 
 * Az űrlap csak akkor legyen látható, ha a _Hozzáadás_ gombra kattintottak, és tűnjön el, ha a teendő mentésre kerül.
 * A _Mentés_ gombra kattintva a felvitt adatok kerüljenek a listába, és az űrlap tűnjön el.
-* Az űrlap legyen görgethető, ha a tartalma nem fér ki a képernyőre (`ScrollViewer` használata).
 * A _Hozzáadás_ gombra kattintva a listában ürítsük ki az aktuálisan kiválasztott elem jelölését (`SelectedItem`)
+* Opcionális feladat: Az űrlap legyen görgethető, ha a tartalma nem fér ki a képernyőre (`ScrollViewer` használata).
+  
+Az űrlap elrendezése
 
-??? success "Mentés megvalósításának lépései"
+*  A `TextBox`, `ComboBox` és `DatePicker` vezérlők rendelkeznek egy `Header` tulajdonsággal, melyben a vezérlő feletti fejlécszöveg megadható. A fejlécszövegek megadásához ezt használjuk, ne külön `TextBlock`-ot!
+* Az űrlapon az elemek ne legyenek túl sűrűn egymás alatt, legyen közöttük kb. 15 pixel extra hely (erre remekül alkalmazható pl. a `StackPanel` `Spacing` tulajdonsága).
+   
 
-    1. Az űrlapban lévő adatokat egy új `TodoItem` objektumba gyűjtsük össze, aminek az propertyjeit adatkötjük (két irányúan) a felületen. Hozzunk létre egy tulajdonságot ehhez `EditedTodo` néven.
-    2. A _Hozzáadás_ gombra kattintva legyen példányosítva az `EditedTodo`. Gondoljunk arra, hogy az adatkötéseknek frissülniük kell a felületen.
-    3. A mentés során a `Todos` listához adjuk hozzá a szerkesztett teendő objektumot. Itt is gondoljunk arra, hogy az adatkötéseknek frissülniük kell a felületen a lista tartalmának változása során.
-    4. Az `EditedTodo` property-t nullozzuk ki, hogy az űrlap újra üres legyen, és tűnjön el.
-          1. A megjelenítés és elrejtéshez az `EditedTodo` property `null` vagy nem `null` értékét kell konvertálni `Visibility`-re.
-          2. Erre használhatunk konvertert vagy `x:Bind` alapú függvény kötést is. 
-          3. Itt az `x:Bind` függvény alapú adatkötés esetén a `FallbackValue='Collapsed'` beállítást is használnunk kell, mert sajnos az `x:Bind` alapértelmezetten nem hívja meg a függvényt, ha az érték `null`.
+??? success "Mentés megvalósításának lépései, valamint űrlap láthatóság szabályozása"
+
+    1. Az űrlapban lévő adatokat egy új `TodoItem` objektumba gyűjtsük össze, melynek tulajdonságait adatkötjük (két irányúan!) a felületen. Hozzunk létre egy tulajdonságot ehhez `EditedTodo` néven (kezdőértéke legyen null).
+    2. A _Hozzáadás_ gombra kattintva legyen példányosítva az `EditedTodo`. 
+    3. A mentés során a `Todos` listához adjuk hozzá a szerkesztett teendő objektumot. Gondoljunk arra, hogy az adatkötéseknek frissülniük kell a felületen a lista tartalmának változása során (ehhez az adataink tárolásán kell változtatni).
+    4. A mentés során az `EditedTodo` property-t nullozzuk ki.
+    5. Ha a fentieknek megfelelően dolgoztunk, az űrlapunk pontosan akkor kell látható legyen, amikor az `EditedTodo` értéke nem null (gondoljuk át, hogy valóban így van). Erre építve több megoldást is kidolgozhatunk:
+          1. A legegyszerűbb a klasszikus tulajdonság alapú adatkötés alkalmazása. 
+             1. Vezessünk be egy új tulajdonságot a `Page` osztályunkban (pl. `IsFormVisible` néven, bool típussal).
+             2. Ez pontosan akkor legyen igaz, amikor az `EditedTodo` nem null. Ennek a karbantartása a mi feladatunk, pl. az `EditedTodo` setterében.
+             3. Ezt a tulajdonságot lehet adatkötni az űrlapunkat reprezentátó konténer láthatóságához (`Visibility` tulajdonság). Igaz, hogy a típusuk nem egyezik, de WinUI alatt van automatikus konverzió a `bool` és `Visibility` típusok között.
+             4. Gondoljunk arra is, hogy amikor a forrás tulajdonság (`IsFormVisible`) változik, a hozzá kötött cél tulajdonságot (vezérlő láthatóság) esetünkben mindig frissíteni kell. Mire van ehhez szükség? (Tipp: a **tulajdonságot közvetlenül tartalmazó osztálynak** - gondoljuk át, esetünkben ez melyik osztály - egy megfelelő interfészt meg kell valósítania stb.)
+          2. Alternatív lehetőség függvény alapú adatkötés megvalósítása, de esetünkben ez körülményesebb lenne. Ne ezt alkalmazzuk, de érdekességképpen pár gondolat ennek kapcsán:
+             1. A `x:Bind` alapon kötött függvénynek a megjelenítés és elrejtéshez az `EditedTodo` property `null` vagy nem `null` értékét kell konvertálni `Visibility`-re.
+             2. Az adatkötés során a `FallbackValue='Collapsed'` beállítást is használnunk kell, mert sajnos az `x:Bind` alapértelmezetten nem hívja meg a függvényt, ha az érték `null`.
+             3. A kötött függvénynek paraméterben meg kell adni azt a tulajdonságot, melynek változása esetén az adatkötést frissíteni kell, illetve a tulajdonságra vonatkozó változásértesítést itt is meg kell valósítani.
+          3. További alternatíva lehet egy konverter alkalmazása (de ne ezt alkalmazzuk).
 
 ??? tip "Prioritások listája"
     A `ComboBox`-ban a `Priority` felsorolt típus értékeit jelenítsük meg. Ehhez használhatjuk a `Enum.GetValues` függvényt, amihez készítsünk egy tulajdonságot a `MainPage.xaml.cs`-ben.
@@ -251,6 +309,15 @@ További funkcionális követelmények:
     <ComboBox ItemsSource="{x:Bind Priorities}" />
     ```
 
+    A fenti példában az `ItemsSource` csak azt határozza meg, hogy milyen elemek jelenjenek meg a `ComboBox` listájában. De ez semmit nem mond arról, hogy a `ComboBox` kiválasztott elemét mihez kell kötni. Ehhez szükség van még egy adatkötésre. Laboron ez nem szerepelt, előadásanyagban pl. a `SelectedItem`-re érdemes rákeresni (minden előfordulását érdemes megnézni).
+
+??? tip "Néhány fontosabb vezérlő tulajdonság"
+    * A `CheckBox` vezérlő `IsChecked` (és nem a `Checked`!) tulajdonsága
+    * `DatePicker` vezérlő `Date` tulajdonsága
+
+??? tip "Űrlap görgethetővé tétele"
+    Ehhez mindössze be kell csomagolni az űrlapot egy `ScrollViewer` vezérlőbe (illetve ne feledkezzünk meg arról, hogy így már ez lesz a legkülső elem a grid cellában, így rá vonatkozóan kell megadni a gridbeli pozíciót).
+
 !!! example "3. feladat BEADANDÓ"
     Illessz be egy képernyőképet az alkalmazásról, ahol az új teendő felvétele látható még mentés előtt! (`f3.1.png`)
 
@@ -260,12 +327,12 @@ További funkcionális követelmények:
 
 Valósítsd meg a teendők szerkesztésének lehetőségét az alábbiak szerint:
 
-* A felületen a teendők listában az elemre kattintva, az adott teendő adatai a szerkesztő felületen kerüljön megjelenítésre, ahol azok így szerkeszthetőek és menthetőek lesznek.
+* A felületen a teendők listában az elemre kattintva, az adott teendő adatai a szerkesztő felületen (a korábbi feladatban bevezetett űrlapon) kerüljenek megjelenítésre, ahol azok így szerkeszthetőek és menthetőek lesznek.
 * A mentés során a listában a szerkesztett teendő adatai frissüljenek, és az űrlap tűnjön el.
 
 ??? success "Megoldási tippek"
-    * Érdemes karbantartani a teendők egyedi azonosítóját a beszúrás során, ,hogy figyelni tudjuk a mentés során, hogy ez egy szerkesztés vagy beszúrás-e.
-    * A lista elemre kattintáshoz az `ItemClick` eseményt célszerű használni, miután bekapcsoltuk a `IsItemClickEnabled` tulajdonságot a `ListView`-n.
+    * Érdemes karbantartani a teendők egyedi azonosítóját a beszúrás során, hogy figyelni tudjuk a mentés során, hogy ez egy szerkesztés vagy beszúrás-e.
+    * A lista elemre kattintáshoz a `ListView` `ItemClick` eseményét célszerű használni, miután bekapcsoltuk a `IsItemClickEnabled` tulajdonságot a `ListView`-n. Az újonnan kiválasztott listaelem kapcsán információt az eseménykezelő `ItemClickEventArgs` paraméterében kapunk. 
     * A szerkesztendő adatok kezelésére több megoldás is elképzelhető, ezekből az egyik: 
         * Az `EditedTodo` property-t állítsuk be a szerkesztett teendőre a kattintáskor.
         * A mentés gombra kattintva a `Todos` listában cseréljük le a szerkesztett teendőt az `EditedTodo` értékére. Valójában ugyanazt az elemet cseréljük le önmagára, de a `ListView` így frissülni tud.
