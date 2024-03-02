@@ -21,6 +21,9 @@ Az önálló gyakorlat célja:
 
 A szükséges fejlesztőkörnyezetről [itt](../fejlesztokornyezet/index.md) található leírás.
 
+:warning: __C# 12-es (és újabb) nyelvi elemek használata__  
+    A házi feladat megoldása során C# 12-es, és annál újabb nyelvi elemek, (pl. primary constructor) nem használhatók, ugyanis a GitHub-on futó ellenőrző ezeket még nem támogatja.
+
 ## A kiindulási keret letöltése, az elkészült megoldás feltöltése
 
 A házi feladat kiindulási környezetének publikálása, valamint a megoldás beadása Git, GitHub és GitHub Classroom segítségével történik. Főbb lépések:

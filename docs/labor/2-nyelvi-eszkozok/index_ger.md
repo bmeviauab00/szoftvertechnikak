@@ -277,7 +277,7 @@ Im folgenden Beispiel werden wir Objekten der zuvor erstellten Klasse `Person` e
 1. Erstellen wir einen neuen **Delegatentyp**, der auf solche Funktionen verweisen kann, die `void` zurückgeben und  zwei `int` Parameter annehmen. Überprüfen wir, dass der neue Typ vor der Klasse `Person` definiert ist, direkt im Gültigkeitsbereich des Namespaces!
 
     ```csharp hl_lines="3"
-    namensraum PropertyDemo
+    namespace PropertyDemo
     {
         public delegate void AgeChangingDelegate(int oldAge, int newAge);
 
