@@ -20,7 +20,7 @@ Az önálló gyakorlat célja:
 
 A szükséges fejlesztőkörnyezetről [itt](../fejlesztokornyezet/index.md) található leírás.
 
-:warning: __C# 12-es (és újabb) nyelvi elemek használata__  
+!!! warning "C# 12-es (és újabb) nyelvi elemek használata" 
     A házi feladat megoldása során C# 12-es, és annál újabb nyelvi elemek, (pl. primary constructor) nem használhatók, ugyanis a GitHub-on futó ellenőrző ezeket még nem támogatja.
 
 ## Beadás menete, előellenőrző
