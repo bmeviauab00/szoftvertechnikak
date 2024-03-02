@@ -276,8 +276,14 @@ Az űrlap elrendezése
 
 *  A `TextBox`, `ComboBox` és `DatePicker` vezérlők rendelkeznek egy `Header` tulajdonsággal, melyben a vezérlő feletti fejlécszöveg megadható. A fejlécszövegek megadásához ezt használjuk, ne külön `TextBlock`-ot!
 * Az űrlapon az elemek ne legyenek túl sűrűn egymás alatt, legyen közöttük kb. 15 pixel extra hely (erre remekül alkalmazható pl. a `StackPanel` `Spacing` tulajdonsága).
-* TODO
-   
+* Az űrlapnak állíts be egy jól látható keretet. Ezt nem azért tesszük, hogy szebb legyen a felületünk, hanem azért, hogy jól látható legyen, pontosan hol helyezkedik el az űrlapunk (alternatíva lehetne a háttérszínének a megváltoztatása). Ezt a "trükköt" ideiglenesen is szoktuk alkalmazni a felületkialakítás során, ha nem egyértelmű, pontosan mi hol helyezkedik el a felületen. Ehhez az űrlap konténer `BorderThickness` tulajdonságát állítsuk 1-re, valamint a keret színét (`BorderBrush` tulajdonság) valamilyen jól látható színre (pl. `LightGray`-re).
+* Az űrlap baloldalán, jobboldalán, és alján használjunk 8-as, tetején pedig 0-ás margót (ekkora hely legyen az űrlap kerete és a tartalmazója között, akármekkorára is méretezi a felhasználó futás közben az ablakot). 
+* Az űrlap kerete, és a benne levő vezérlők széle között legyen alul és felül 15, bal és jobb oldalt 10 pixel szabad hely minden irányban. Ehhez ne az űrlapban levő vezérlők margóit állítsuk egyesével, hanem az űrlap konténer egy megfelelő tulajdonságát állítsuk (mely azt szabályozza, mennyi hely van a széle, a belső tartalma között)!
+* Az előző két pont azt is jelenti, hogy az űrlapnak, és benne a szövegdobozoknak automatikusan méreteződniük kell az ablakkal, ezt az alábbi lenyitható szekció alatt megjelenő képek illusztrálják.
+    
+    ??? note "Az űrlap viselkedésének és elvárt méretek illusztrálása"
+        ![Viselkedés átméretezés közben](images/newtodo-resizing.gif)
+        ![Néhány méret feltüntetése](images/newtodo-annotated.png)
 
 ??? success "Mentés megvalósításának lépései, valamint űrlap láthatóság szabályozása"
 
@@ -288,18 +294,18 @@ Az űrlap elrendezése
     5. Ha a fentieknek megfelelően dolgoztunk, az űrlapunk pontosan akkor kell látható legyen, amikor az `EditedTodo` értéke nem null (gondoljuk át, hogy valóban így van). Erre építve több megoldást is kidolgozhatunk. A legegyszerűbb a klasszikus `x:Bind` tulajdonság alapú adatkötés alkalmazása:
         1. Vezessünk be egy új tulajdonságot a `Page` osztályunkban (pl. `IsFormVisible` néven, bool típussal).
         2. Ez pontosan akkor legyen igaz, amikor az `EditedTodo` nem null. Ennek a karbantartása a mi feladatunk, pl. az `EditedTodo` setterében.
-        3. Ezt a tulajdonságot lehet adatkötni az űrlapunkat reprezentátó konténer láthatóságához (`Visibility` tulajdonság). Igaz, hogy a típusuk nem egyezik, de WinUI alatt van automatikus konverzió a `bool` és `Visibility` típusok között.
+        3. Ezt a tulajdonságot lehet adatkötni az űrlapunkat reprezentáló konténer láthatóságához (`Visibility` tulajdonság). Igaz, hogy a típusuk nem egyezik, de WinUI alatt van automatikus konverzió a `bool` és `Visibility` típusok között.
         4. Gondoljunk arra is, hogy amikor a forrás tulajdonság (`IsFormVisible`) változik, a hozzá kötött cél tulajdonságot (vezérlő láthatóság) esetünkben mindig frissíteni kell. Mire van ehhez szükség? (Tipp: a **tulajdonságot közvetlenül tartalmazó osztálynak** - gondoljuk át, esetünkben ez melyik osztály - egy megfelelő interfészt meg kell valósítania stb.)
         
     ??? "Alternatív lehetőségek a megoldásra"
         
         Egyéb alternatívák alkalmazása is lehetséges (csak érdekességképpen, de ne ezeket alkalmazzuk a megoldás során):
         
-        1. Függvény alapú adatkötés megvalósítása, de esetünkben ez körülményesebb lenne.
+        5. Függvény alapú adatkötés megvalósítása, de esetünkben ez körülményesebb lenne.
             * A `x:Bind` alapon kötött függvénynek a megjelenítés és elrejtéshez az `EditedTodo` property `null` vagy nem `null` értékét kell konvertálni `Visibility`-re.
             * Az adatkötés során a `FallbackValue='Collapsed'` beállítást is használnunk kell, mert sajnos az `x:Bind` alapértelmezetten nem hívja meg a függvényt, ha az érték `null`.
             * A kötött függvénynek paraméterben meg kell adni azt a tulajdonságot, melynek változása esetén az adatkötést frissíteni kell, illetve a tulajdonságra vonatkozó változásértesítést itt is meg kell valósítani.
-        2. Konverter alkalmazása.
+        6. Konverter alkalmazása.
 
 ??? tip "Prioritások listája"
     A `ComboBox`-ban a `Priority` felsorolt típus értékeit jelenítsük meg. Ehhez használhatjuk a `Enum.GetValues` függvényt, amihez készítsünk egy tulajdonságot a `MainPage.xaml.cs`-ben.
@@ -320,13 +326,19 @@ Az űrlap elrendezése
     * A `CheckBox` vezérlő `IsChecked` (és nem a `Checked`!) tulajdonsága
     * `DatePicker` vezérlő `Date` tulajdonsága
 
-??? tip "Űrlap görgethetővé tétele"
-    Ehhez mindössze be kell csomagolni az űrlapot egy `ScrollViewer` vezérlőbe (illetve ne feledkezzünk meg arról, hogy így már ez lesz a legkülső elem a grid cellában, így rá vonatkozóan kell megadni a gridbeli pozíciót).
-
 !!! example "3. feladat BEADANDÓ"
     Illessz be egy képernyőképet az alkalmazásról, ahol az új teendő felvétele látható még mentés előtt! (`f3.1.png`)
 
     Illessz be egy képernyőképet az alkalmazásról, ahol az előző képen lévő teendő a listába került és eltűnt az űrlap! (`f3.2.png`)
+
+Opcionális gyakorló feladatok
+
+??? tip "Opcionális gyakorló feladat 1 - Űrlap görgethetővé tétele"
+    Ehhez mindössze be kell csomagolni az űrlapot egy `ScrollViewer` vezérlőbe (illetve ne feledkezzünk meg arról, hogy így már ez lesz a legkülső elem a grid cellában, így rá vonatkozóan kell megadni a gridbeli pozíciót). Ha ezt megvalósítod, benne lehet a beadott megoldásodban.
+
+??? tip "Opcionális gyakorló feladat 2 - Fix szélességű űrlap"
+    Jelen megoldásunkban az űrlap automatikusan méreteződik az ablakkal. Jó gyakorlási lehetőség ennek olyan átalakítása, mely esetben az űrlap fix szélességű (pl. 500 pixel) és olyan magasságú, mint a benne levő elemek össz magassága. Ha az űrlap esetén StackPanellel dolgoztál, ehhez mindössze három attribútumot kell felvenni vagy megváltoztatni. Ezt a viselkedést az alábbi animált kép illusztrálja. Lényeges, hogy beadni a korábbi megoldást kell, nem ez az opcionális feladatban leírt viselkedést!
+    ![Fix méretű űrlap](images/newtodo-resizing-optional.gif)
 
 ## 4. (opcionális) iMSc feladat - Teendő szerkesztése
 
