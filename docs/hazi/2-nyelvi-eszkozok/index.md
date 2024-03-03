@@ -312,7 +312,7 @@ Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így 
     - az attribútumot ne a logikát megvalósító, hanem a tesztelést végző függvény fölé írd,
     - az attribútum csak egyetlen függvény fölött szerepelhet.
 
-## Feladat 6 – Action/Func használata
+## Feladat 6 – `Action`/`Func` használata
 
 Ez a feladat a 3. előadás anyagára épít, laboron (idő hiányában) nem szerepelt. Ettől függetlenül ez egy lényeges alaptémakör a tárgyban.
 
