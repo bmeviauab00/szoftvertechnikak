@@ -858,10 +858,10 @@
       
         <li class="md-nav__item">
   <a href="#feladat-7-imsc-beepitett-funcaction-generikus-delegate-tipusok-hasznalata" class="md-nav__link">
-    Feladat 7 (iMSc) – beépített Func/Action generikus delegate típusok használata
+    Feladat 7 (IMSc) – beépített Func/Action generikus delegate típusok használata
   </a>
   
-    <nav class="md-nav" aria-label="Feladat 7 (iMSc) – beépített Func/Action generikus delegate típusok használata">
+    <nav class="md-nav" aria-label="Feladat 7 (IMSc) – beépített Func/Action generikus delegate típusok használata">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1728,10 +1728,10 @@
       
         <li class="md-nav__item">
   <a href="#feladat-7-imsc-beepitett-funcaction-generikus-delegate-tipusok-hasznalata" class="md-nav__link">
-    Feladat 7 (iMSc) – beépített Func/Action generikus delegate típusok használata
+    Feladat 7 (IMSc) – beépített Func/Action generikus delegate típusok használata
   </a>
   
-    <nav class="md-nav" aria-label="Feladat 7 (iMSc) – beépített Func/Action generikus delegate típusok használata">
+    <nav class="md-nav" aria-label="Feladat 7 (IMSc) – beépített Func/Action generikus delegate típusok használata">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2140,7 +2140,7 @@ Footer
 <p>Alakítsd tovább a <code>ReportPrinter</code> osztályt úgy, hogy az egyes személyek kiírásakor ne a fix "Person" szöveg jelenjen meg, hanem a <code>ReportPrinter</code> osztály használója tudja az egyes személyek adatait az igényeinek megfelelően kiírni egy delegate segítségével (a fix "Person" helyett). Lényeges, hogy a sorszám a sor elején mindig meg kell jelenjen, ez nem lehet a <code>ReportPrinter</code> használója által megváltoztatható!</p>
 <div class="admonition tip">
 <p class="admonition-title">Tipp a megoldáshoz</p>
-<p>Hasonló megközelítésben gondolkozz, mint a fejléc és lábléc esetében, de itt ehhez a <code>ReportPrinter</code> felhasználójának meg kell kapnia az egyes személy objektumokat ahhoz, hogy azt formázottan ki tudja írni a konzolra.</p>
+<p>Hasonló megközelítésben gondolkozz, mint a fejléc és lábléc esetében, de itt ehhez a <code>ReportPrinter</code> felhasználójának meg kell kapnia a személy objektumot ahhoz, hogy azt formázottan ki tudja írni a konzolra.</p>
 </div>
 </li>
 <li>
@@ -2154,21 +2154,22 @@ Number of Employees: 2
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Házi feladat ellenőrzése</p>
-<p>A "Feladat 6" feladatot, vagyis azt, hogy a <code>ReportPrinter</code>-t és annak használatát jól alakítottad-e át, a GitHub-os automata ellenőrző NEM ellenőrzi. Mindenképpen győződj meg és teszteld a megoldásod alaposan, hogy ne csak a határidő után utólag, a házi feladatok manuális ellenőrzése során derüljön ki, hogy a megoldás nem elfogadható.</p>
+<p>A "Feladat 6" feladatot, vagyis azt, hogy a <code>ReportPrinter</code>-t és annak használatát jól alakítottad-e át, a GitHub-os automata ellenőrző NEM ellenőrzi. Teszteld a megoldásod alaposan, hogy ne csak a határidő után utólag, a házi feladatok manuális ellenőrzése során derüljön ki, hogy a megoldás nem elfogadható.</p>
 </div>
 </li>
 <li>
-<p>A következő feladat opcionális, a beépített <code>Func</code> delegate-ek gyakorlására ad jó lehetőséget (egy több szempontból is tanulságos példával). A <code>ReportPrinter</code> osztálynak van egy komolyabb hátránya: a kimeneti riportot csak a konzolon tudjuk a segítségével megjeleníteni. Rugalmasabb megoldás lenne, ha nem írna a konzolra, hanem egy string formájában lehetne a segítségével a riportot előállítani. Ezt a stringet már úgy használhatnánk fel, ahogy csak szeretnénk (pl. írhatnánk fájlba is). A feladat a következő: vezess be egy <code>ReportBuilder</code> osztályt a már meglévő <code>ReportPrinter</code> mintájára, de ez ne a konzolra írjon, hanem egy stringet állítson elő, melyet egy újonnan bevezetett, <code>GetResult()</code> művelettel lehessen tőle lekérdezni. </p>
+<p>A következő feladat opcionális, a beépített <code>Func</code> delegate-ek gyakorlására ad jó lehetőséget. A <code>ReportPrinter</code> osztálynak van egy komolyabb hátránya: a kimeneti riportot csak a konzolon tudjuk a segítségével megjeleníteni. Rugalmasabb megoldás lenne, ha nem írna a konzolra, hanem egy string formájában lehetne a segítségével a riportot előállítani. Ezt a stringet már úgy használhatnánk fel, ahogy csak szeretnénk (pl. írhatnánk fájlba is).</p>
+<p>A feladat a következő: vezess be egy <code>ReportBuilder</code> osztályt a már meglévő <code>ReportPrinter</code> mintájára, de ez ne a konzolra írjon, hanem egy a teljes riportot tartalmazó stringet állítson elő, melyet egy újonnan bevezetett, <code>GetResult()</code> művelettel lehessen tőle lekérdezni. </p>
 <div class="admonition tip">
 <p class="admonition-title">Tippek a megoldáshoz</p>
 <ul>
 <li>Célszerű az osztályba egy <code>StringBuilder</code> tagváltozót bevezetni, és ennek segítségével dolgozni. Ez nagyságrenddel hatékonyabb, mint a stringek "+"-szal való összefűzögetése.</li>
-<li>A <code>ReportBuilder</code> osztály használója itt már ne a konzolra írjon, hanem megfelelő beépített típusú delegate-ek (itt az <code>Action</code> nem lesz megfelelő) segítségével adja vissza a <code>ReportBuilder</code> számára azokat a stringeket, melyeket bele kell fűznie a kimenetbe. A tesztelés során most is lambda kifejezéseket használj.</li>
+<li>A <code>ReportBuilder</code> osztály használója itt már ne a konzolra írjon, hanem megfelelő beépített típusú delegate-ek (itt az <code>Action</code> nem lesz megfelelő) segítségével adja vissza a <code>ReportBuilder</code> számára azokat a stringeket, melyeket bele kell fűznie a kimenetbe. A tesztelés során most is lambda kifejezéseket használj!</li>
 </ul>
 </div>
 </li>
 </ol>
-<h2 id="feladat-7-imsc-beepitett-funcaction-generikus-delegate-tipusok-hasznalata">Feladat 7 (iMSc) – beépített <code>Func</code>/<code>Action</code> generikus delegate típusok használata<a class="headerlink" href="#feladat-7-imsc-beepitett-funcaction-generikus-delegate-tipusok-hasznalata" title="Permanent link">&para;</a></h2>
+<h2 id="feladat-7-imsc-beepitett-funcaction-generikus-delegate-tipusok-hasznalata">Feladat 7 (IMSc) – beépített <code>Func</code>/<code>Action</code> generikus delegate típusok használata<a class="headerlink" href="#feladat-7-imsc-beepitett-funcaction-generikus-delegate-tipusok-hasznalata" title="Permanent link">&para;</a></h2>
 <p>A feladat megoldása nem kötelező, de erősen ajánlott: alapanyag, így ZH-n/vizsgán szerepelhet. Laboron nem volt, csak előadáson.</p>
 <p><strong>A megoldásért +2 IMSc pont is jár.</strong></p>
 <h3 id="feladat_4">Feladat<a class="headerlink" href="#feladat_4" title="Permanent link">&para;</a></h3>
@@ -2225,8 +2226,8 @@ Number of Employees: 2
         </path>
       </svg>
     </span>
-    <span title="2024. március 3. 11:11:11">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-03T11:11:11+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-03</span>
+    <span title="2024. március 3. 11:20:37">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-03T11:20:37+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-03</span>
     </span>
   </span>
 
