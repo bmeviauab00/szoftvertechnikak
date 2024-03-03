@@ -312,7 +312,124 @@ Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így 
     - az attribútumot ne a logikát megvalósító, hanem a tesztelést végző függvény fölé írd,
     - az attribútum csak egyetlen függvény fölött szerepelhet.
 
-## Feladat 6 (iMSc) – beépített `Func`/`Action` generikus delegate típusok használata
+## Feladat 6 – Action/Func használata
+
+Ez a feladat a 3. előadás anyagára épít, laboron (idő hiányában) nem szerepelt. Ettől függetlenül ez egy lényeges alaptémakör a tárgyban.
+
+A projektbe vegyél fel egy `Person` és egy `ReportPrinter` osztályt (egy-egy, az osztály nevével egyező fájlba), a következő tartalommal:
+
+??? tip "Person és ReportPrinter osztályok"
+
+    ```csharp   
+    class Person
+    {
+        public Person(string name, int age)
+        {
+            Name = name;
+            Age = age;
+        }
+
+        public string Name { get; set; }
+        public int Age { get; set; }
+    }
+    ```
+
+    ```csharp   
+    class ReportPrinter
+    {
+        private readonly IEnumerable<Person> people;
+        private readonly Action headerPrinter;
+
+        public ReportPrinter(IEnumerable<Person> people, Action headerPrinter)
+        {
+            this.people = people;
+            this.headerPrinter = headerPrinter;
+        }
+
+        public void PrintReport()
+        {
+            headerPrinter();
+            Console.WriteLine("-----------------------------------------");
+            int i = 0;
+            foreach (var person in people)
+            {
+                Console.Write($"{++i}. ");
+                Console.WriteLine("Person");
+            }
+            Console.WriteLine("--------------- Summary -----------------");
+            Console.WriteLine("Footer");
+        }
+    }
+    ```
+
+Ez a `ReportPrinter` osztály arra használható, hogy a konstruktorában megadott személyek adatairól formázott riportot írjon ki a konzolra fejléc/adatok/lábléc hármas bontásban.
+A `Program.cs` fájlba vedd fel az alábbi függvényt a `ReportPrinter` kipróbálására, és ezt hívd is meg a `Main` függvényből:
+
+??? tip "ReportPrinter tesztelése"
+
+    ```csharp   
+    [Description("Feladat6")]
+    static void test6()
+    {
+        var employees = new Person[] { new Person("Joe", 20), new Person("Jill", 30) };
+
+        ReportPrinter reportPrinter = new ReportPrinter(
+            employees,
+            () => Console.WriteLine("Employees")
+            );
+
+        reportPrinter.PrintReport();
+    }
+    ```
+
+Futtassuk az alkalmazást. Az alábbi kimenetet kapjuk a konzolon:
+
+```
+Employees
+-----------------------------------------
+1. Person
+2. Person
+--------------- Summary -----------------
+Footer
+```
+
+Az első sorban "----" felett található a fejléc. Alatta az egye személyekhez egy-egy "Person" beégetett szöveg, majd a "----" alatt a lábléc, egyelőre csak egy beégetett "Footer" szöveggel.
+
+A megoldásban látható, hogy a fejléc szövege a `ReportPrinter` osztályba nincs beégetve. Ezt `ReportPrinter` felhasználója adja meg konstruktor paraméterben egy delegate, esetünkben egy lambda kifejezés formájában. A delegate típusa a .NET beépített `Action` típusa.
+
+A feladatok a következők:
+
+!!! warning
+    A megoldás során NEM használhatsz saját delegate típust (a .NET beépített delegate típusaival dolgozz, a megoldás csak ekkor elfogadható).
+
+1. Alakítsd át a `ReportPrinter` osztályt úgy, hogy az osztály használója ne csak a fejlécet, hanem a láblécet is meg tudja adni egy delegate formájában.
+   
+2. Alakítsd tovább a `ReportPrinter` osztályt úgy, hogy az egyes személyek kiírásakor ne a fix "Person" szöveg jelenjen meg, hanem a `ReportPrinter` osztály használója tudja az egyes személyek adatait az igényeinek megfelelően kiírni egy delegate segítségével (a fix "Person" helyett). Lényeges, hogy a sorszám a sor elején mindig meg kell jelenjen, ez nem lehet a `ReportPrinter` használója által megváltoztatható!
+   
+    !!! tip "Tipp a megoldáshoz"
+        Hasonló megközelítésben gondolkozz, mint a fejléc és lábléc esetében, de itt ehhez a `ReportPrinter` felhasználójának meg kell kapnia az egyes személy objektumokat ahhoz, hogy azt formázottan ki tudja írni a konzolra.
+
+3. A `Program.cs` fájlban a `ReportPrinter` használatát alakítsd úgy (megfelelő lambda kifejezések megadásával), hogy a kimenet a konzolon a következő legyen:
+
+    ```
+    Employees
+    -----------------------------------------
+    1. Name: Joe (Age: 20)
+    2. Name: Jill (Age: 30)
+    --------------- Summary -----------------
+    Number of Employees: 2
+    ```
+
+    !!! Warning "Házi feladat ellenőrzése"
+        A "Feladat 6" feladatot, vagyis azt, hogy a `ReportPrinter`-t és annak használatát jól alakítottad-e át, a GitHub-os automata ellenőrző NEM ellenőrzi. Mindenképpen győződj meg és teszteld a megoldásod alaposan, hogy ne csak a határidő után utólag, a házi feladatok manuális ellenőrzése során derüljön ki, hogy a megoldás nem elfogadható.
+
+4. A következő feladat opcionális, a beépített `Func` delegate-ek gyakorlására ad jó lehetőséget (egy több szempontból is tanulságos példával). A `ReportPrinter` osztálynak van egy komolyabb hátránya: a kimeneti riportot csak a konzolon tudjuk a segítségével megjeleníteni. Rugalmasabb megoldás lenne, ha nem írna a konzolra, hanem egy string formájában lehetne a segítségével a riportot előállítani. Ezt a stringet már úgy használhatnánk fel, ahogy csak szeretnénk (pl. írhatnánk fájlba is). A feladat a következő: vezess be egy `ReportBuilder` osztályt a már meglévő `ReportPrinter` mintájára, de ez ne a konzolra írjon, hanem egy stringet állítson elő, melyet egy újonnan bevezetett, `GetResult()` művelettel lehessen tőle lekérdezni. 
+   
+    !!! tip "Tippek a megoldáshoz"
+        * Célszerű az osztályba egy `StringBuilder` tagváltozót bevezetni, és ennek segítségével dolgozni. Ez nagyságrenddel hatékonyabb, mint a stringek "+"-szal való összefűzögetése.
+        * A `ReportBuilder` osztály használója itt már ne a konzolra írjon, hanem megfelelő beépített típusú delegate-ek (itt az `Action` nem lesz megfelelő) segítségével adja vissza a `ReportBuilder` számára azokat a stringeket, melyeket bele kell fűznie a kimenetbe. A tesztelés során most is lambda kifejezéseket használj.
+
+## Feladat 7 (iMSc) – beépített `Func`/`Action` generikus delegate típusok használata
 
 A feladat megoldása nem kötelező, de erősen ajánlott: alapanyag, így ZH-n/vizsgán szerepelhet. Laboron nem volt, csak előadáson.
 
@@ -334,10 +451,10 @@ Bővítsd ki a `JediCouncil` osztályt.
 
         Emiatt a listán NEM használhatod a beépített `FindAll` műveletét, mivel az általunk használt delegate típus nem lenne kompatibilis a `FindAll` által várt paraméterrel. A tagokon egy `foreach` ciklusban végigiterálva dolgozz!
 
-- A property és a függvény működését demonstráld egy erre dedikált közös függvényben, amit láss el a `[Description("Feladat6")]` attribútummal. Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, viszont a Jeditanács feltöltéséhez az előző feladatban bevezetett segédfüggvényt hívd. A függvényt hívd meg a `Program` osztály `Main` függvényéből. 
+- A property és a függvény működését demonstráld egy erre dedikált közös függvényben, amit láss el a `[Description("Feladat7")]` attribútummal. Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, viszont a Jeditanács feltöltéséhez az előző feladatban bevezetett segédfüggvényt hívd. A függvényt hívd meg a `Program` osztály `Main` függvényéből. 
 
     !!! danger "Fontos"
-        A `[Description("Feladat6")]` attribútum csak egyetlen függvény fölött szerepelhet.
+        A `[Description("Feladat7")]` attribútum csak egyetlen függvény fölött szerepelhet.
 
 ### Megoldás
 
