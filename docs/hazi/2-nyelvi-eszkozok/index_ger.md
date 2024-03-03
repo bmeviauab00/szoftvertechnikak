@@ -83,7 +83,7 @@ Die Lösung dieser Aufgabe kann auf ähnliche Weise wie in [Labor 2, Aufgabe 4](
     <Jedi xmlns:xsi="..." Nev="Obi-Wan" MidiChlorianSzam="15000" />
     ```
 
-    Es ist wichtig, dass jeder Jedi als XML-Element `Jedi` erscheint, sein Name `Nev`, seine Midichlorian-Nummer `MidiChlorianSzam` als XML-Attribut.
+    Es ist wichtig, dass jeder Jedi als XML-Element `Jedi` erscheint, sein Name `Name`, seine Midichlorian-Nummer `MidiChlorianCount` als XML-Attribut.
 
 - Wir haben uns im Labor keinen Beispielcode für die Rückgabe sortierter Objekte angesehen, daher stellen wir ihn hier zur Verfügung:
 
