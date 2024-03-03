@@ -407,7 +407,7 @@ A feladatok a következők:
 2. Alakítsd tovább a `ReportPrinter` osztályt úgy, hogy az egyes személyek kiírásakor ne a fix "Person" szöveg jelenjen meg, hanem a `ReportPrinter` osztály használója tudja az egyes személyek adatait az igényeinek megfelelően kiírni egy delegate segítségével (a fix "Person" helyett). Lényeges, hogy a sorszám a sor elején mindig meg kell jelenjen, ez nem lehet a `ReportPrinter` használója által megváltoztatható!
    
     !!! tip "Tipp a megoldáshoz"
-        Hasonló megközelítésben gondolkozz, mint a fejléc és lábléc esetében, de itt ehhez a `ReportPrinter` felhasználójának meg kell kapnia az egyes személy objektumokat ahhoz, hogy azt formázottan ki tudja írni a konzolra.
+        Hasonló megközelítésben gondolkozz, mint a fejléc és lábléc esetében, de itt ehhez a `ReportPrinter` felhasználójának meg kell kapnia a személy objektumot ahhoz, hogy azt formázottan ki tudja írni a konzolra.
 
 3. A `Program.cs` fájlban a `ReportPrinter` használatát alakítsd úgy (megfelelő lambda kifejezések megadásával), hogy a kimenet a konzolon a következő legyen:
 
@@ -421,15 +421,17 @@ A feladatok a következők:
     ```
 
     !!! Warning "Házi feladat ellenőrzése"
-        A "Feladat 6" feladatot, vagyis azt, hogy a `ReportPrinter`-t és annak használatát jól alakítottad-e át, a GitHub-os automata ellenőrző NEM ellenőrzi. Mindenképpen győződj meg és teszteld a megoldásod alaposan, hogy ne csak a határidő után utólag, a házi feladatok manuális ellenőrzése során derüljön ki, hogy a megoldás nem elfogadható.
+        A "Feladat 6" feladatot, vagyis azt, hogy a `ReportPrinter`-t és annak használatát jól alakítottad-e át, a GitHub-os automata ellenőrző NEM ellenőrzi. Teszteld a megoldásod alaposan, hogy ne csak a határidő után utólag, a házi feladatok manuális ellenőrzése során derüljön ki, hogy a megoldás nem elfogadható.
 
-4. A következő feladat opcionális, a beépített `Func` delegate-ek gyakorlására ad jó lehetőséget (egy több szempontból is tanulságos példával). A `ReportPrinter` osztálynak van egy komolyabb hátránya: a kimeneti riportot csak a konzolon tudjuk a segítségével megjeleníteni. Rugalmasabb megoldás lenne, ha nem írna a konzolra, hanem egy string formájában lehetne a segítségével a riportot előállítani. Ezt a stringet már úgy használhatnánk fel, ahogy csak szeretnénk (pl. írhatnánk fájlba is). A feladat a következő: vezess be egy `ReportBuilder` osztályt a már meglévő `ReportPrinter` mintájára, de ez ne a konzolra írjon, hanem egy stringet állítson elő, melyet egy újonnan bevezetett, `GetResult()` művelettel lehessen tőle lekérdezni. 
+4. A következő feladat opcionális, a beépített `Func` delegate-ek gyakorlására ad jó lehetőséget. A `ReportPrinter` osztálynak van egy komolyabb hátránya: a kimeneti riportot csak a konzolon tudjuk a segítségével megjeleníteni. Rugalmasabb megoldás lenne, ha nem írna a konzolra, hanem egy string formájában lehetne a segítségével a riportot előállítani. Ezt a stringet már úgy használhatnánk fel, ahogy csak szeretnénk (pl. írhatnánk fájlba is).
+   
+    A feladat a következő: vezess be egy `ReportBuilder` osztályt a már meglévő `ReportPrinter` mintájára, de ez ne a konzolra írjon, hanem egy a teljes riportot tartalmazó stringet állítson elő, melyet egy újonnan bevezetett, `GetResult()` művelettel lehessen tőle lekérdezni. 
    
     !!! tip "Tippek a megoldáshoz"
         * Célszerű az osztályba egy `StringBuilder` tagváltozót bevezetni, és ennek segítségével dolgozni. Ez nagyságrenddel hatékonyabb, mint a stringek "+"-szal való összefűzögetése.
-        * A `ReportBuilder` osztály használója itt már ne a konzolra írjon, hanem megfelelő beépített típusú delegate-ek (itt az `Action` nem lesz megfelelő) segítségével adja vissza a `ReportBuilder` számára azokat a stringeket, melyeket bele kell fűznie a kimenetbe. A tesztelés során most is lambda kifejezéseket használj.
+        * A `ReportBuilder` osztály használója itt már ne a konzolra írjon, hanem megfelelő beépített típusú delegate-ek (itt az `Action` nem lesz megfelelő) segítségével adja vissza a `ReportBuilder` számára azokat a stringeket, melyeket bele kell fűznie a kimenetbe. A tesztelés során most is lambda kifejezéseket használj!
 
-## Feladat 7 (iMSc) – beépített `Func`/`Action` generikus delegate típusok használata
+## Feladat 7 (IMSc) – beépített `Func`/`Action` generikus delegate típusok használata
 
 A feladat megoldása nem kötelező, de erősen ajánlott: alapanyag, így ZH-n/vizsgán szerepelhet. Laboron nem volt, csak előadáson.
 
