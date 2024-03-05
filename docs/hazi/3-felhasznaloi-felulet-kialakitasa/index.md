@@ -32,7 +32,7 @@ A képernyőképeket a megoldás részeként kell beadni, a repository-d gyöké
 A képernyőképek így felkerülnek GitHub-ra a git repository tartalmával együtt.
 Mivel a repository privát, azt az oktatókon kívül más nem látja.
 Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltölteni, kitakarhatod a képről.
-- :exclamation: Ehhez a feladathoz érdemi előellenőrző nem tartozik: minden push után lefut ugyan, de csak a neptun.txt kitöltöttségét ellenőrzi és azt, van-e fordítási hiba. Az érdemi ellenőrzést a határidő lejárta után a laborvezetők teszik majd meg.
+- :exclamation: Ehhez a feladathoz érdemi előellenőrző nem tartozik: minden push után lefut ugyan, de csak a neptun.txt kitöltöttségét ellenőrzi. Az érdemi ellenőrzést a határidő lejárta után a laborvezetők teszik majd meg.
 
 ## Kikötések
 
