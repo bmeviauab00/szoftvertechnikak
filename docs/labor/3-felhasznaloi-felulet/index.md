@@ -127,7 +127,7 @@ Futtassuk az alkalmazást (pl. az ++f5++ billentyűvel). A `Grid` most kitölti 
 
 A következő feladatok során hagyjuk futni az alkalmazást, hogy azonnal láthassuk a felületen eszközölt módosításainkat.
 
-!!! Warning "Hot Reload limitációk"
+!!! warning "Hot Reload limitációk"
     Tartsuk szem előtt a Hot Reload limitációit: ha egy változásunk nem akar a futó alkalmazás felületén megjelenni, akkor indítsuk majd újra az alkalmazást!
 
 ### Objektum példányok és tulajdonságaik
