@@ -10,28 +10,28 @@
         <meta name="author" content="Benedek Zoltán">
       
       
-        <link rel="canonical" href="https://bmeviauab00.github.io/szoftvertechnikak/2024/labor/4-tobbszalu/">
+        <link rel="canonical" href="https://bmeviauab00.github.io/szoftvertechnikak/2024/labor/4-tobbszalu/index_ger/">
       
       
-        <link rel="prev" href="../3-felhasznaloi-felulet/">
+        <link rel="prev" href="../../3-felhasznaloi-felulet/index_ger/">
       
       
-        <link rel="next" href="../5-mvvm/">
+        <link rel="next" href="../../../hazi/meghirdetes-elott_ger/">
       
       
-      <link rel="icon" href="../../img/favicon.ico">
+      <link rel="icon" href="../../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
     
     
       
-        <title>4. Többszálú alkalmazások készítése - BMEVIAUAB00 Szoftvertechnikák</title>
+        <title>4. Erstellung von Multithreading-Anwendungen - BMEVIAUAB00 Szoftvertechnikák</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.35e1ed30.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.35e1ed30.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
       
       
 
@@ -50,18 +50,18 @@
       
     
     
-      <link rel="stylesheet" href="../../css/timeago.css">
+      <link rel="stylesheet" href="../../../css/timeago.css">
     
-      <link rel="stylesheet" href="../../extra-material-theme.css">
+      <link rel="stylesheet" href="../../../extra-material-theme.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -70,7 +70,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -92,7 +92,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#4-tobbszalu-alkalmazasok-keszitese" class="md-skip">
+        <a href="#4-erstellung-von-multithreading-anwendungen" class="md-skip">
           Kihagyás
         </a>
       
@@ -110,9 +110,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Élőfej">
-    <a href="../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-header__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
+    <a href="../../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-header__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
       
-  <img src="../../img/logo-bme-aut.png" alt="logo">
+  <img src="../../../img/logo-bme-aut.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -129,7 +129,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              4. Többszálú alkalmazások készítése
+              4. Erstellung von Multithreading-Anwendungen
             
           </span>
         </div>
@@ -235,7 +235,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
     
@@ -250,13 +250,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../1-model-es-kod-kapcsolata/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../1-model-es-kod-kapcsolata/" class="md-tabs__link">
           
   
   Laborok
@@ -274,7 +272,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../hazi/" class="md-tabs__link">
+        <a href="../../../hazi/" class="md-tabs__link">
           
   
   Önálló/házi feladatok
@@ -292,7 +290,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../1-model-es-kod-kapcsolata/index_eng/" class="md-tabs__link">
+        <a href="../../1-model-es-kod-kapcsolata/index_eng/" class="md-tabs__link">
           
   
   English course labs
@@ -306,11 +304,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../1-model-es-kod-kapcsolata/index_ger/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../1-model-es-kod-kapcsolata/index_ger/" class="md-tabs__link">
           
   
   Deutschkurs-Labore
@@ -328,7 +328,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../hazi/meghirdetes-elott_ger/" class="md-tabs__link">
+        <a href="../../../hazi/meghirdetes-elott_ger/" class="md-tabs__link">
           
   
   Hausaufgaben
@@ -361,9 +361,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigáció" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-nav__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
+    <a href="../../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-nav__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
       
-  <img src="../../img/logo-bme-aut.png" alt="logo">
+  <img src="../../../img/logo-bme-aut.png" alt="logo">
 
     </a>
     BMEVIAUAB00 Szoftvertechnikák
@@ -389,7 +389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -406,8 +406,6 @@
       
   
   
-    
-  
   
     
     
@@ -417,12 +415,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -436,7 +434,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Laborok
@@ -449,7 +447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-model-es-kod-kapcsolata/" class="md-nav__link">
+      <a href="../../1-model-es-kod-kapcsolata/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -469,7 +467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-nyelvi-eszkozok/" class="md-nav__link">
+      <a href="../../2-nyelvi-eszkozok/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -489,7 +487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-felhasznaloi-felulet/" class="md-nav__link">
+      <a href="../../3-felhasznaloi-felulet/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -507,29 +505,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    4. Többszálú alkalmazások készítése
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -538,177 +516,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tartalomjegyzék
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#a-gyakorlat-celja" class="md-nav__link">
-    A gyakorlat célja
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#elofeltetelek" class="md-nav__link">
-    Előfeltételek
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#megoldas" class="md-nav__link">
-    Megoldás
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bevezeto" class="md-nav__link">
-    Bevezető
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#0-feladat-ismerkedes-a-kiindulo-alkalmazassal-elokeszites" class="md-nav__link">
-    0. Feladat - Ismerkedés a kiinduló alkalmazással, előkészítés
-  </a>
-  
-    <nav class="md-nav" aria-label="0. Feladat - Ismerkedés a kiinduló alkalmazással, előkészítés">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a-dll-ben-levo-kod-felhasznalasa" class="md-nav__link">
-    A DLL-ben levő kód felhasználása
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-feladat-muvelet-futtatasa-a-foszalon" class="md-nav__link">
-    1. Feladat – Művelet futtatása a főszálon
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-feladat-vegezzuk-a-szamitast-kulon-szalban" class="md-nav__link">
-    2. Feladat – Végezzük a számítást külön szálban
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-feladat-a-dispatcherqueuehasthreadaccess-es-dispatcherqueuetryenqueue-hasznalata" class="md-nav__link">
-    3. Feladat – a DispatcherQueue.HasThreadAccess és DispatcherQueue.TryEnqueue használata
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-feladat-muvelet-vegzese-threadpool-szalon" class="md-nav__link">
-    4. feladat – Művelet végzése Threadpool szálon
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-feladat-termelo-fogyaszto-alapu-megoldas" class="md-nav__link">
-    5. Feladat – Termelő-fogyasztó alapú megoldás
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Feladat – Termelő-fogyasztó alapú megoldás">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#problema-1" class="md-nav__link">
-    Probléma 1
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#problema-2" class="md-nav__link">
-    Probléma 2
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-feladat-tegyuk-szabiztossa-a-datafifo-osztalyt" class="md-nav__link">
-    6. feladat – Tegyük szábiztossá a DataFifo osztályt
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-feladat-hatekony-jelzes-megvalositasa" class="md-nav__link">
-    7. feladat – Hatékony jelzés megvalósítása
-  </a>
-  
-    <nav class="md-nav" aria-label="7. feladat – Hatékony jelzés megvalósítása">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#manualresetevent-hasznalata" class="md-nav__link">
-    ManualResetEvent használata
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#jelzesre-varakozas-blokkolo-a-get" class="md-nav__link">
-    Jelzésre várakozás (blokkoló a Get)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-feladat-kulturalt-leallas" class="md-nav__link">
-    8. feladat – Kulturált leállás
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kitekintes-task-async-await" class="md-nav__link">
-    Kitekintés: Task, async, await
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -720,7 +527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../5-mvvm/" class="md-nav__link">
+      <a href="../../5-mvvm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -740,7 +547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../6-tervezesi-mintak/" class="md-nav__link">
+      <a href="../../6-tervezesi-mintak/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -760,7 +567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../7-adatkezeles/" class="md-nav__link">
+      <a href="../../7-adatkezeles/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -826,7 +633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hazi/" class="md-nav__link">
+      <a href="../../../hazi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -846,7 +653,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hazi/1-model-es-kod-kapcsolata/" class="md-nav__link">
+      <a href="../../../hazi/1-model-es-kod-kapcsolata/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -866,7 +673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hazi/2-nyelvi-eszkozok/" class="md-nav__link">
+      <a href="../../../hazi/2-nyelvi-eszkozok/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -886,7 +693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hazi/meghirdetes-elott/" class="md-nav__link">
+      <a href="../../../hazi/meghirdetes-elott/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -906,7 +713,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hazi/meghirdetes-elott/" class="md-nav__link">
+      <a href="../../../hazi/meghirdetes-elott/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -926,7 +733,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hazi/meghirdetes-elott/" class="md-nav__link">
+      <a href="../../../hazi/meghirdetes-elott/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -946,7 +753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hazi/meghirdetes-elott/" class="md-nav__link">
+      <a href="../../../hazi/meghirdetes-elott/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -966,7 +773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hazi/fejlesztokornyezet/" class="md-nav__link">
+      <a href="../../../hazi/fejlesztokornyezet/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1032,7 +839,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-model-es-kod-kapcsolata/index_eng/" class="md-nav__link">
+      <a href="../../1-model-es-kod-kapcsolata/index_eng/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1052,7 +859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-nyelvi-eszkozok/index_eng.md" class="md-nav__link">
+      <a href="../../2-nyelvi-eszkozok/index_eng.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1072,7 +879,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-felhasznaloi-felulet/index_eng.md" class="md-nav__link">
+      <a href="../../3-felhasznaloi-felulet/index_eng.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1092,7 +899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="index_eng.md" class="md-nav__link">
+      <a href="../index_eng.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1112,7 +919,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../5-mvvm/index_eng.md" class="md-nav__link">
+      <a href="../../5-mvvm/index_eng.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1132,7 +939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../6-tervezesi-mintak/index_eng.md" class="md-nav__link">
+      <a href="../../6-tervezesi-mintak/index_eng.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1152,7 +959,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../7-adatkezeles/index_eng.md" class="md-nav__link">
+      <a href="../../7-adatkezeles/index_eng.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1177,6 +984,8 @@
       
   
   
+    
+  
   
     
     
@@ -1186,12 +995,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -1205,7 +1014,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Deutschkurs-Labore
@@ -1218,7 +1027,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-model-es-kod-kapcsolata/index_ger/" class="md-nav__link">
+      <a href="../../1-model-es-kod-kapcsolata/index_ger/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1238,7 +1047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-nyelvi-eszkozok/index_ger/" class="md-nav__link">
+      <a href="../../2-nyelvi-eszkozok/index_ger/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1258,7 +1067,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-felhasznaloi-felulet/index_ger/" class="md-nav__link">
+      <a href="../../3-felhasznaloi-felulet/index_ger/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1276,9 +1085,29 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="index_ger/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    4. Erstellung von Multithreading-Anwendungen
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1287,6 +1116,177 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tartalomjegyzék
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#das-ziel-der-ubung" class="md-nav__link">
+    Das Ziel der Übung
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voraussetzungen" class="md-nav__link">
+    Voraussetzungen
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#losung" class="md-nav__link">
+    Lösung
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#einfuhrung" class="md-nav__link">
+    Einführung
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0-aufgabe-kennenlernen-des-erstantrags-vorbereitung" class="md-nav__link">
+    0. Aufgabe - Kennenlernen des Erstantrags, Vorbereitung
+  </a>
+  
+    <nav class="md-nav" aria-label="0. Aufgabe - Kennenlernen des Erstantrags, Vorbereitung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verwendung-des-codes-in-der-dll" class="md-nav__link">
+    Verwendung des Codes in der DLL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-task-ausfuhren-einer-operation-auf-dem-hauptthread" class="md-nav__link">
+    1. Task - Ausführen einer Operation auf dem Hauptthread
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-aufgabe-durchfuhrung-der-berechnung-in-einem-separaten-thread" class="md-nav__link">
+    2. Aufgabe - Durchführung der Berechnung in einem separaten Thread
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-aufgabe-verwenden-sie-dispatcherqueuehasthreadaccess-und-dispatcherqueuetryenqueue" class="md-nav__link">
+    3. Aufgabe - verwenden Sie DispatcherQueue.HasThreadAccess und DispatcherQueue.TryEnqueue
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-problem-1-ausfuhren-einer-operation-auf-einem-threadpool-thread" class="md-nav__link">
+    4. problem 1 - Ausführen einer Operation auf einem Threadpool-Thread
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-aufgabe-erzeuger-verbraucher-basierte-losung" class="md-nav__link">
+    5. Aufgabe - Erzeuger-Verbraucher-basierte Lösung
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Aufgabe - Erzeuger-Verbraucher-basierte Lösung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-1" class="md-nav__link">
+    Problem 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-2" class="md-nav__link">
+    Problem 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-problem-2-die-datafifo-klasse-sicher-machen" class="md-nav__link">
+    6. problem 2 - Die DataFifo-Klasse sicher machen
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-aufgabe-1-umsetzung-einer-wirksamen-signalisierung" class="md-nav__link">
+    7. aufgabe 1 - Umsetzung einer wirksamen Signalisierung
+  </a>
+  
+    <nav class="md-nav" aria-label="7. aufgabe 1 - Umsetzung einer wirksamen Signalisierung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manualresetevent-verwenden" class="md-nav__link">
+    ManualResetEvent verwenden
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warten-auf-signal-blockieren-des-get" class="md-nav__link">
+    Warten auf Signal (Blockieren des Get)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-aufgabe-1-kultivierter-stillstand" class="md-nav__link">
+    8. aufgabe 1 - Kultivierter Stillstand
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ausblick-task-async-await" class="md-nav__link">
+    Ausblick: Task, async, await
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1298,7 +1298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../5-mvvm/index_ger.md" class="md-nav__link">
+      <a href="../../5-mvvm/index_ger.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1318,7 +1318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../6-tervezesi-mintak/index_ger.md" class="md-nav__link">
+      <a href="../../6-tervezesi-mintak/index_ger.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1338,7 +1338,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../7-adatkezeles/index_ger.md" class="md-nav__link">
+      <a href="../../7-adatkezeles/index_ger.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1404,7 +1404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hazi/meghirdetes-elott_ger/" class="md-nav__link">
+      <a href="../../../hazi/meghirdetes-elott_ger/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1424,7 +1424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hazi/meghirdetes-elott_ger/" class="md-nav__link">
+      <a href="../../../hazi/meghirdetes-elott_ger/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1444,7 +1444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hazi/meghirdetes-elott_ger/" class="md-nav__link">
+      <a href="../../../hazi/meghirdetes-elott_ger/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1464,7 +1464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hazi/meghirdetes-elott_ger/" class="md-nav__link">
+      <a href="../../../hazi/meghirdetes-elott_ger/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1484,7 +1484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hazi/meghirdetes-elott_ger/" class="md-nav__link">
+      <a href="../../../hazi/meghirdetes-elott_ger/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1504,7 +1504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hazi/meghirdetes-elott_ger/" class="md-nav__link">
+      <a href="../../../hazi/meghirdetes-elott_ger/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1524,7 +1524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hazi/fejlesztokornyezet/index_ger/" class="md-nav__link">
+      <a href="../../../hazi/fejlesztokornyezet/index_ger/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1572,44 +1572,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#a-gyakorlat-celja" class="md-nav__link">
-    A gyakorlat célja
+  <a href="#das-ziel-der-ubung" class="md-nav__link">
+    Das Ziel der Übung
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#elofeltetelek" class="md-nav__link">
-    Előfeltételek
+  <a href="#voraussetzungen" class="md-nav__link">
+    Voraussetzungen
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#megoldas" class="md-nav__link">
-    Megoldás
+  <a href="#losung" class="md-nav__link">
+    Lösung
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bevezeto" class="md-nav__link">
-    Bevezető
+  <a href="#einfuhrung" class="md-nav__link">
+    Einführung
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#0-feladat-ismerkedes-a-kiindulo-alkalmazassal-elokeszites" class="md-nav__link">
-    0. Feladat - Ismerkedés a kiinduló alkalmazással, előkészítés
+  <a href="#0-aufgabe-kennenlernen-des-erstantrags-vorbereitung" class="md-nav__link">
+    0. Aufgabe - Kennenlernen des Erstantrags, Vorbereitung
   </a>
   
-    <nav class="md-nav" aria-label="0. Feladat - Ismerkedés a kiinduló alkalmazással, előkészítés">
+    <nav class="md-nav" aria-label="0. Aufgabe - Kennenlernen des Erstantrags, Vorbereitung">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#a-dll-ben-levo-kod-felhasznalasa" class="md-nav__link">
-    A DLL-ben levő kód felhasználása
+  <a href="#verwendung-des-codes-in-der-dll" class="md-nav__link">
+    Verwendung des Codes in der DLL
   </a>
   
 </li>
@@ -1620,51 +1620,51 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-feladat-muvelet-futtatasa-a-foszalon" class="md-nav__link">
-    1. Feladat – Művelet futtatása a főszálon
+  <a href="#1-task-ausfuhren-einer-operation-auf-dem-hauptthread" class="md-nav__link">
+    1. Task - Ausführen einer Operation auf dem Hauptthread
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-feladat-vegezzuk-a-szamitast-kulon-szalban" class="md-nav__link">
-    2. Feladat – Végezzük a számítást külön szálban
+  <a href="#2-aufgabe-durchfuhrung-der-berechnung-in-einem-separaten-thread" class="md-nav__link">
+    2. Aufgabe - Durchführung der Berechnung in einem separaten Thread
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-feladat-a-dispatcherqueuehasthreadaccess-es-dispatcherqueuetryenqueue-hasznalata" class="md-nav__link">
-    3. Feladat – a DispatcherQueue.HasThreadAccess és DispatcherQueue.TryEnqueue használata
+  <a href="#3-aufgabe-verwenden-sie-dispatcherqueuehasthreadaccess-und-dispatcherqueuetryenqueue" class="md-nav__link">
+    3. Aufgabe - verwenden Sie DispatcherQueue.HasThreadAccess und DispatcherQueue.TryEnqueue
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-feladat-muvelet-vegzese-threadpool-szalon" class="md-nav__link">
-    4. feladat – Művelet végzése Threadpool szálon
+  <a href="#4-problem-1-ausfuhren-einer-operation-auf-einem-threadpool-thread" class="md-nav__link">
+    4. problem 1 - Ausführen einer Operation auf einem Threadpool-Thread
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-feladat-termelo-fogyaszto-alapu-megoldas" class="md-nav__link">
-    5. Feladat – Termelő-fogyasztó alapú megoldás
+  <a href="#5-aufgabe-erzeuger-verbraucher-basierte-losung" class="md-nav__link">
+    5. Aufgabe - Erzeuger-Verbraucher-basierte Lösung
   </a>
   
-    <nav class="md-nav" aria-label="5. Feladat – Termelő-fogyasztó alapú megoldás">
+    <nav class="md-nav" aria-label="5. Aufgabe - Erzeuger-Verbraucher-basierte Lösung">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#problema-1" class="md-nav__link">
-    Probléma 1
+  <a href="#problem-1" class="md-nav__link">
+    Problem 1
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#problema-2" class="md-nav__link">
-    Probléma 2
+  <a href="#problem-2" class="md-nav__link">
+    Problem 2
   </a>
   
 </li>
@@ -1675,30 +1675,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-feladat-tegyuk-szabiztossa-a-datafifo-osztalyt" class="md-nav__link">
-    6. feladat – Tegyük szábiztossá a DataFifo osztályt
+  <a href="#6-problem-2-die-datafifo-klasse-sicher-machen" class="md-nav__link">
+    6. problem 2 - Die DataFifo-Klasse sicher machen
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-feladat-hatekony-jelzes-megvalositasa" class="md-nav__link">
-    7. feladat – Hatékony jelzés megvalósítása
+  <a href="#7-aufgabe-1-umsetzung-einer-wirksamen-signalisierung" class="md-nav__link">
+    7. aufgabe 1 - Umsetzung einer wirksamen Signalisierung
   </a>
   
-    <nav class="md-nav" aria-label="7. feladat – Hatékony jelzés megvalósítása">
+    <nav class="md-nav" aria-label="7. aufgabe 1 - Umsetzung einer wirksamen Signalisierung">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#manualresetevent-hasznalata" class="md-nav__link">
-    ManualResetEvent használata
+  <a href="#manualresetevent-verwenden" class="md-nav__link">
+    ManualResetEvent verwenden
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#jelzesre-varakozas-blokkolo-a-get" class="md-nav__link">
-    Jelzésre várakozás (blokkoló a Get)
+  <a href="#warten-auf-signal-blockieren-des-get" class="md-nav__link">
+    Warten auf Signal (Blockieren des Get)
   </a>
   
 </li>
@@ -1709,15 +1709,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-feladat-kulturalt-leallas" class="md-nav__link">
-    8. feladat – Kulturált leállás
+  <a href="#8-aufgabe-1-kultivierter-stillstand" class="md-nav__link">
+    8. aufgabe 1 - Kultivierter Stillstand
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#kitekintes-task-async-await" class="md-nav__link">
-    Kitekintés: Task, async, await
+  <a href="#ausblick-task-async-await" class="md-nav__link">
+    Ausblick: Task, async, await
   </a>
   
 </li>
@@ -1737,7 +1737,7 @@
                   
 
   
-    <a href="https://github.com/bmeviauab00/szoftvertechnikak/edit/master/docs/labor/4-tobbszalu/index.md" title="Oldal szerkesztése" class="md-content__button md-icon">
+    <a href="https://github.com/bmeviauab00/szoftvertechnikak/edit/master/docs/labor/4-tobbszalu/index_ger.md" title="Oldal szerkesztése" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -1745,98 +1745,98 @@
   
 
 
-<h1 id="4-tobbszalu-alkalmazasok-keszitese">4. Többszálú alkalmazások készítése<a class="headerlink" href="#4-tobbszalu-alkalmazasok-keszitese" title="Permanent link">&para;</a></h1>
-<h2 id="a-gyakorlat-celja">A gyakorlat célja<a class="headerlink" href="#a-gyakorlat-celja" title="Permanent link">&para;</a></h2>
-<p>A gyakorlat célja, hogy megismertesse a hallgatókat a többszálas programozás során követendő alapelvekkel. Érintett témakörök (többek között):</p>
+<h1 id="4-erstellung-von-multithreading-anwendungen">4. Erstellung von Multithreading-Anwendungen<a class="headerlink" href="#4-erstellung-von-multithreading-anwendungen" title="Permanent link">&para;</a></h1>
+<h2 id="das-ziel-der-ubung">Das Ziel der Übung<a class="headerlink" href="#das-ziel-der-ubung" title="Permanent link">&para;</a></h2>
+<p>Ziel der Übung ist es, die Studierenden mit den Grundsätzen vertraut zu machen, die bei der Programmierung mit mehreren Threads beachtet werden müssen. Behandelte Themen (unter anderem):</p>
 <ul>
-<li>Szálak indítása (<code>Thread</code>)</li>
-<li>Szálak leállítása</li>
-<li>Szálbiztos (thread safe) osztályok készítése a <code>lock</code> kulcsszó alkalmazásával</li>
-<li><code>ThreadPool</code> használata</li>
-<li>Jelzés és jelzésre várakozás szál szinkronizáció <code>ManualResetEvent</code> segítségével (<code>WaitHandle</code>)</li>
-<li>WinUI szálkezelési sajátosságok (<code>DispatcherQueue</code>)</li>
+<li>Einen Thread starten (<code>Thread</code>)</li>
+<li>Anhalten der Fasern</li>
+<li>Erstellen von thread-sicheren Klassen mit dem Schlüsselwort <code>lock</code> </li>
+<li><code>ThreadPool</code> verwenden</li>
+<li>Signalisieren und Warten auf Signal-Thread-Synchronisation über <code>ManualResetEvent</code> (<code>WaitHandle</code>)</li>
+<li>Besonderheiten des WinUI-Threadings (<code>DispatcherQueue</code>)</li>
 </ul>
-<p>Természetesen, mivel a témakör hatalmas, csak alapszintű tudást fogunk szerezni, de e tudás birtokában már képesek leszünk önállóan is elindulni a bonyolultabb feladatok megvalósításában.</p>
-<p>A kapcsolódó előadások: Konkurens (többszálú) alkalmazások fejlesztése.</p>
-<h2 id="elofeltetelek">Előfeltételek<a class="headerlink" href="#elofeltetelek" title="Permanent link">&para;</a></h2>
-<p>A gyakorlat elvégzéséhez szükséges eszközök:</p>
+<p>Da das Thema sehr umfangreich ist, werden Sie natürlich nur Grundkenntnisse erwerben, aber mit diesem Wissen werden Sie in der Lage sein, komplexere Aufgaben selbständig zu bearbeiten.</p>
+<p>Verwandte Präsentationen: Entwicklung konkurrierender (Multithreading-) Anwendungen.</p>
+<h2 id="voraussetzungen">Voraussetzungen<a class="headerlink" href="#voraussetzungen" title="Permanent link">&para;</a></h2>
+<p>Die für die Durchführung der Übung benötigten Werkzeuge:</p>
 <ul>
 <li>Visual Studio 2022<ul>
-<li>Windows Desktop Development Workload</li>
+<li>Windows Desktop Entwicklung Workload</li>
 </ul>
 </li>
-<li>Windows 10 vagy Windows 11 operációs rendszer (Linux és macOS nem alkalmas)</li>
+<li>Betriebssystem Windows 10 oder Windows 11 (Linux und macOS nicht geeignet)</li>
 </ul>
-<h2 id="megoldas">Megoldás<a class="headerlink" href="#megoldas" title="Permanent link">&para;</a></h2>
+<h2 id="losung">Lösung<a class="headerlink" href="#losung" title="Permanent link">&para;</a></h2>
 <details class="success">
-<summary>A kész megoldás letöltése</summary>
-<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2757.svg" title=":exclamation:" /> Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, tilos (és értelmetlen) a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.</p>
-<p>A megoldás <a href="https://github.com/bmeviauab00/lab-tobbszalu-kiindulo/tree/megoldas">GitHubon érhető el</a>. A legegyszerűbb mód a letöltésére, ha parancssorból a <code>git clone</code> utasítással leklónozzuk a gépünkre a <code>megoldas</code> ágat:</p>
-<p><code>git clone https://github.com/bmeviauab00/lab-tobbszalu-kiindulo -b megoldas</code></p>
-<p>Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ <a href="../../hazi/git-github-github-classroom/#git-telepitese">itt</a>.</p>
+<summary>Laden Sie die fertige Lösung herunter</summary>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/2757.svg" title=":exclamation:" /> Es ist wichtig, dass Sie sich während des Praktikums an die Anleitung halten. Es ist verboten (und sinnlos), die fertige Lösung herunterzuladen. Allerdings kann es bei der anschließenden Selbsteinübung nützlich sein, die fertige Lösung zu überprüfen, daher stellen wir sie zur Verfügung.</p>
+<p>Die Lösung ist [verfügbar auf GitHub] (<a href="https://github.com/bmeviauab00/lab-tobbszalu-kiindulo/tree/megoldas">https://github.com/bmeviauab00/lab-tobbszalu-kiindulo/tree/megoldas</a>). Der einfachste Weg, es herunterzuladen, ist, den <code>git clone</code>-Zweig von der Kommandozeile aus zu klonen:</p>
+<p><code>git clone https://github.com/bmeviauab00/lab-tobbszalu-kiindulo -b solved</code></p>
+<p>Sie müssen Git auf Ihrem Rechner installiert haben, weitere Informationen <a href="../../../hazi/git-github-github-classroom/#git-telepitese">hier</a>.</p>
 </details>
-<h2 id="bevezeto">Bevezető<a class="headerlink" href="#bevezeto" title="Permanent link">&para;</a></h2>
-<p>A párhuzamosan futó szálak kezelése kiemelt fontosságú terület, melyet minden szoftverfejlesztőnek legalább alapszinten ismernie kell. A gyakorlat során alapszintű, de kiemelt fontosságú problémákat oldunk meg, ezért törekednünk kell arra, hogy ne csak a végeredményt, hanem az elvégzett módosítások értelmét és indokait is megértsük.</p>
-<p>A feladat során egyszerű WinUI alkalmazást fogunk felruházni többszálas képességekkel, egyre komplexebb feladatokat megoldva. Az alapprobléma a következő: van egy függvényünk, mely hosszú ideig fut, s mint látni fogjuk, ennek „direktben” történő hívása a felületről kellemetlen következményekkel jár. A megoldás során egy meglévő alkalmazást fogunk kiegészíteni saját kódrészletekkel. Az újonnan beszúrandó sorokat az útmutatóban kiemelt háttér jelzi.</p>
-<h2 id="0-feladat-ismerkedes-a-kiindulo-alkalmazassal-elokeszites">0. Feladat - Ismerkedés a kiinduló alkalmazással, előkészítés<a class="headerlink" href="#0-feladat-ismerkedes-a-kiindulo-alkalmazassal-elokeszites" title="Permanent link">&para;</a></h2>
-<p>Klónozzuk le a 4. gyakorlathoz tartozó kiinduló alkalmazás <a href="https://github.com/bmeviauab00/lab-tobbszalu-kiindulo">repositoryját</a>:</p>
+<h2 id="einfuhrung">Einführung<a class="headerlink" href="#einfuhrung" title="Permanent link">&para;</a></h2>
+<p>Die Verwaltung parallel laufender Threads ist ein Bereich mit hoher Priorität, den alle Softwareentwickler zumindest in Grundzügen kennen sollten. In der Übung lösen wir grundlegende, aber vorrangige Probleme, so dass wir uns bemühen sollten, nicht nur das Endergebnis, sondern auch die Bedeutung und die Gründe für die von uns vorgenommenen Änderungen zu verstehen.</p>
+<p>In dieser Übung werden wir einer einfachen WinUI-Anwendung Multithreading-Fähigkeiten hinzufügen und zunehmend komplexere Aufgaben lösen. Das Grundproblem ist folgendes: Wir haben eine Funktion, die lange läuft, und wie wir sehen werden, hat der "direkte" Aufruf über die Schnittstelle unangenehme Folgen. Die Lösung besteht darin, eigene Codeschnipsel zu einer bestehenden Anwendung hinzuzufügen. Neue Zeilen, die eingefügt werden sollen, sind in der Anleitung durch einen hervorgehobenen Hintergrund gekennzeichnet.</p>
+<h2 id="0-aufgabe-kennenlernen-des-erstantrags-vorbereitung">0. Aufgabe - Kennenlernen des Erstantrags, Vorbereitung<a class="headerlink" href="#0-aufgabe-kennenlernen-des-erstantrags-vorbereitung" title="Permanent link">&para;</a></h2>
+<p>Klonen Sie <a href="https://github.com/bmeviauab00/lab-tobbszalu-kiindulo">das Repository</a> der ursprünglichen Anwendung für Übung 4:</p>
 <ul>
-<li>Nyissunk egy command prompt-ot</li>
-<li>Navigáljunk el egy tetszőleges mappába, például c:\work\NEPTUN</li>
-<li>Adjuk ki a következő parancsot: <code>git clone https://github.com/bmeviauab00/lab-tobbszalu-kiindulo.git</code></li>
-<li>Nyissuk meg a <em>SuperCalculator.sln</em> solutiont Visual Studio-ban.</li>
+<li>Öffnen Sie eine Eingabeaufforderung</li>
+<li>Navigieren Sie zu einem Ordner Ihrer Wahl, zum Beispiel c:workNEPTUN</li>
+<li>Geben Sie den folgenden Befehl ein: <code>git clone https://github.com/bmeviauab00/lab-tobbszalu-kiindulo.git</code></li>
+<li>Öffnen Sie die Lösung <em>SuperCalculator.sln</em> in Visual Studio.</li>
 </ul>
-<p>A feladatunk az, hogy egy bináris formában megkapott algoritmus futtatásához WinUI technológiával felhasználói felületet készítsünk. A bináris forma .NET esetében egy <em>.dll</em> kiterjesztésű fájlt jelent, ami programozói szemmel egy osztálykönyvtár.  A fájl neve esetünkben <em>Algorithms.dll</em>, megtalálható a leklónozott Git repositoryban.</p>
-<p>A kiinduló alkalmazásban a felhasználói felület elő is van készítve. Futtassuk az alkalmazást:</p>
-<p><a class="glightbox" href="images/starter.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="starter" src="images/starter.png" /></a></p>
-<p>Az alkalmazás felületén meg tudjuk adni az algoritmus bemenő paramétereit (<code>double</code> számok tömbje): a példánkban mindig két <code>double</code> szám paraméterrel hívjuk az algoritmust, ezt a két felső szövegmezőben lehet megadni.
-A feladatunk az, hogy a <em>Calculate Result</em> gombra kattintás során futtassuk az algoritmust a megadott paraméterekkel, majd, ha végzett, akkor a <em>Result</em> alatti listázó mező új sorában jelenítsük meg a kapott eredményt a bemenő paraméterekkel együtt.</p>
-<p>Következő lépésben ismerkedjünk meg a letöltött Visual Studio solutionnel:</p>
-<p>A keretalkalmazás egy WinUI 3 alapú alkalmazás. A felület alapvetően kész, definíciója a <code>MainWindow.xaml</code> fájlban található. Ez számunkra a gyakorlat célját tekintve kevésbé izgalmas, de otthon a gyakorlás kedvéért érdemes áttekinteni.</p>
+<p>Unsere Aufgabe ist es, eine Benutzeroberfläche zu erstellen, um einen Algorithmus in binärer Form unter Verwendung der WinUI-Technologie auszuführen. Die binäre Form von .NET ist eine Datei mit der Erweiterung <em>.dll</em>, die in der Programmiersprache eine Klassenbibliothek darstellt.  In unserem Fall lautet der Dateiname <em>Algorithms.dll</em>, der sich im geklonten Git-Repository befindet.</p>
+<p>Bei der Erstanwendung ist die Benutzeroberfläche bereits vorbereitet. Führen Sie die Anwendung aus:</p>
+<p><a class="glightbox" href="../images/starter.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="starthilfe" src="../images/starter.png" /></a></p>
+<p>In der Anwendungsschnittstelle können wir die Eingabeparameter des Algorithmus angeben (<code>double</code> array of numbers): in unserem Beispiel rufen wir den Algorithmus immer mit zwei Parametern auf <code>double</code> numbers, die in den beiden oberen Textfeldern angegeben werden können.
+Unsere Aufgabe ist es, den Algorithmus mit den angegebenen Parametern auszuführen, indem wir auf die Schaltfläche <em>Calculate Result</em> klicken, und wenn er fertig ist, das Ergebnis mit den Eingabeparametern in einer neuen Zeile des Listenfeldes unterhalb des <em>Results</em> anzuzeigen.</p>
+<p>Machen wir uns nun mit der heruntergeladenen Visual Studio-Lösung vertraut:</p>
+<p>Die Rahmenanwendung ist eine auf WinUI 3 basierende Anwendung. Die Schnittstelle ist grundsätzlich fertig, ihre Definition ist in der Datei <code>MainWindow.xaml</code> zu finden. Dies ist für uns im Hinblick auf den Zweck der Übung weniger aufregend, aber es lohnt sich, sie zu Hause zu üben.</p>
 <details class="note">
-<summary>Felület kialakítása a <code>MainWindow.xaml</code>-ben</summary>
-<p>Az ablakfelület kialakításának alapjai:</p>
+<summary>Gestaltung der Schnittstelle in <code>MainWindow.xaml</code></summary>
+<p>Grundlagen der Gestaltung von Fensterflächen:</p>
 <ul>
-<li>A gyökérelem (root) "szokásosan" egy <code>Grid</code>. </li>
-<li>A gyökér <code>Grid</code>  felső sorában található a két <code>TextBox</code>-ot és a <code>Button</code>-t tartalmazó <code>StackPanel</code>.</li>
-<li>A gyökér <code>Grid</code> alsó sorában egy másik <code>Grid</code> található. A <code>TextBox</code>-szal ellentétben a <code>ListBox</code> nem rendelkezik <code>Header</code> tulajdonsággal, így ezt nekünk kellett egy különálló "Result" szövegű <code>TextBlock</code> formájában bevezetni. Ezt a <code>Grid</code>-et azért vezettük be (egy "egyszerűbb" <code>StackPanel</code> helyett), mert így lehetett elérni, hogy a felső sorában a "Result" <code>TextBlock</code> fix magasságú legyen, az alsó sorban pedig a <code>ListBox</code> töltse ki a teljes maradó helyet (a felső sor magassága <code>Auto</code>, az alsó sor magassága <code>*</code>).</li>
-<li>A "Calculate Result" szövegű gomb szép példa arra, hogy a <code>Button</code> <code>Content</code>-jének sokszor nemcsak egy egyszerű szöveget adunk meg. A példában egy <code>SymbolIcon</code> és a <code>TextBlock</code> kompozíciója (<code>StackPanel</code> segítségével megvalósítva), ezáltal tudjunk a egy megfelelő ikont/szimbólumot rendelni, mely feldobja a megjelenését.</li>
-<li>Arra is látunk példát, hogy a <code>ListBox</code> hogyan tehető görgethetővé, ha már sok elem van benne (vagy túl szélesek az elemek). Ehhez a <code>ScrollViewer</code>-ét kell megfelelően paraméterezni.</li>
-<li>A <code>ListBox</code> <code>ItemContainerStyle</code> tulajdonságával a <code>ListBox</code> elemre adhatunk meg stílusokat. A példában a <code>Padding</code>-et vettük kisebbre az alapértelmezettnél, enélkül a <code>ListBox</code> elemek magassága helypazarlóan nagy lenne.</li>
+<li>Die Wurzel ist "normalerweise" ein <code>Grid</code>. </li>
+<li>In der obersten Zeile des Wurzelgitters befindet sich das "StackPanel", das die beiden "Textboxen" und die Schaltfläche enthält.</li>
+<li>Die unterste Zeile des Wurzel-"Grid" enthält ein weiteres "Grid". Im Gegensatz zur "TextBox" hat die "ListBox" keine "Header"-Eigenschaft, so dass wir diese als separaten "TextBlock" mit einem "Ergebnis"-Text einführen mussten. Dieses <code>Grid</code> wurde eingeführt (anstelle eines "einfacheren" <code>StackPanel</code>), weil es möglich war, den <code>TextBlock</code> in der oberen Zeile mit einer festen Höhe für das "Ergebnis" und die <code>ListBox</code> in der unteren Zeile so zu haben, dass sie den gesamten verbleibenden Platz ausfüllt (die Höhe der oberen Zeile ist <code>Auto</code>, die Höhe der unteren Zeile ist <code>*</code>).</li>
+<li>Die Schaltfläche mit dem Text "Ergebnis berechnen" ist ein gutes Beispiel dafür, dass der <code>Inhalt</code> einer <code>Schaltfläche</code> oft nicht nur ein einfacher Text ist. Das Beispiel zeigt eine Komposition aus einem <code>SymbolIcon</code> und einem <code>TextBlock</code> (implementiert mit <code>StackPanel</code>), so dass wir ein geeignetes Icon/Symbol zuweisen können, um sein Aussehen zu verbessern.</li>
+<li>Wir sehen auch ein Beispiel dafür, wie man eine <code>ListBox</code> scrollbar macht, wenn sie bereits viele Elemente enthält (oder die Elemente zu breit sind). Dazu muss der <code>ScrollViewer</code> richtig parametrisiert werden.</li>
+<li>Die Eigenschaft <code>ItemContainerStyle</code> der <code>ListBox</code> wird verwendet, um Stile für das Element <code>ListBox</code> festzulegen. Im Beispiel ist "Padding" auf einen kleineren Wert als den Standardwert eingestellt, da sonst die Höhe der "ListBox"-Elemente verschwenderisch wäre.</li>
 </ul>
 </details>
-<p>A <code>MainWindow.xaml.cs</code> forrásfájl a főablakhoz tartozó code behind fájl, ezt tekintsük át, főbb elemei a következők:</p>
+<p>Die Quelldatei <code>MainWindow.xaml.cs</code> ist der Code hinter der Datei für das Hauptfenster, lassen Sie uns diese überprüfen, ihre Hauptelemente sind wie folgt:</p>
 <ul>
-<li>Az eredmény és a paraméterek <code>ListBox</code>-ba történő naplózásához találunk egy <code>ShowResult</code> nevű segédfüggvényt.</li>
-<li>A <code>CalculateResultButton_Click</code> a gomb a <em>Calculate Result</em> gomb kattintásához tartozó eseménykezelő. Azt látjuk, hogy a két szövegdobozból kiolvassa a paraméterek értékét, és megpróbálja számmá alakítani. Ha sikerül, akkor itt történik majd az algoritmus hívása (ez nincs még megvalósítva), illetve, ha nem sikerül, akkor a <code>DisplayInvalidElementDialog</code> segítségével egy üzenetablakban tájékoztatja a felhasználót az érvénytelen paraméterekről.</li>
-<li>A konstruktorból hívott <code>AddKeyboardAcceleratorToChangeTheme</code> függvény számunkra nem releváns, a világos és sötét téma közötti váltást teszi lehetővé (futás közben érdemes kipróbálni, <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-t">T</kbd></span> billentyűkombináció).</li>
+<li>Um das Ergebnis und die Parameter auf <code>ListBox</code>zu protokollieren, gibt es eine Hilfsfunktion namens <code>ShowResult</code>. </li>
+<li><code>CalculateResultButton_Click</code> ist der Event-Handler für das Anklicken der Schaltfläche " <em>Ergebnis berechnen</em> ". Wir sehen, dass er den Wert der Parameter aus den beiden Textfeldern liest und versucht, ihn in eine Zahl umzuwandeln. Wenn er erfolgreich ist, wird der Algorithmus hier aufgerufen (dies ist noch nicht implementiert), oder wenn er fehlschlägt, wird der Benutzer über <code>DisplayInvalidElementDialog</code> in einem Nachrichtenfenster über ungültige Parameter informiert.</li>
+<li>Die Funktion <code>AddKeyboardAcceleratorToChangeTheme</code>, die vom Konstruktor aufgerufen wird, ist für uns nicht relevant, sie ermöglicht das Umschalten zwischen hellen und dunklen Themen (Sie sollten es zur Laufzeit ausprobieren, <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-t">T</kbd></span> ).</li>
 </ul>
-<h3 id="a-dll-ben-levo-kod-felhasznalasa">A DLL-ben levő kód felhasználása<a class="headerlink" href="#a-dll-ben-levo-kod-felhasznalasa" title="Permanent link">&para;</a></h3>
-<p>A kiinduló projektben megtaláljuk a <em>Algorithm.dll</em>-t. Ebben lefordított formában egy <code>Algorithms</code> névtérben levő <code>SuperAlgorithm</code> nevű osztály található, melynek egy <code>Calculate</code> nevű statikus művelete van. Ahhoz, hogy egy projektben fel tudjuk használni a DLL-ben levő osztályokat, a DLL-re a projektünkben egy ún. referenciát kell felvegyünk.</p>
+<h3 id="verwendung-des-codes-in-der-dll">Verwendung des Codes in der DLL<a class="headerlink" href="#verwendung-des-codes-in-der-dll" title="Permanent link">&para;</a></h3>
+<p>Im ursprünglichen Projekt finden wir die <em>Datei Algorithm.dll.</em> In dieser kompilierten Form gibt es eine Klasse <code>SuperAlgorithm</code> im Namensraum <code>Algorithms</code>, die eine statische Operation namens <code>Calculate</code> hat. Um die Klassen einer DLL in einem Projekt verwenden zu können, müssen Sie in Ihrem Projekt einen Verweis auf die DLL hinzufügen.</p>
 <ol>
 <li>
-<p>Solution Explorerben a projektünk <em>Dependencies</em> node-jára jobbklikkelve válasszuk az <em>Add Project reference</em> opciót!</p>
-<p><a class="glightbox" href="images/add-project-ref.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Add project reference" src="images/add-project-ref.png" /></a></p>
+<p>Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Knoten <em>Abhängigkeiten</em> Ihres Projekts und wählen Sie <em>Projektreferenz hinzufügen</em> </p>
+<p><a class="glightbox" href="../images/add-project-ref.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Projektreferenz hinzufügen" src="../images/add-project-ref.png" /></a></p>
 <div class="admonition note">
-<p class="admonition-title">Külső referenciák</p>
-<p>Itt valójában nem egy másik Visual Studio projektre adunk referenciát, de így a legegyszerűbb előhozni ezt az ablakot.</p>
-<p>Megemlítendő még, hogy külső osztálykönyvtárak esetében már nem DLL-eket szoktunk referálni egy rendes projektben, hanem a .NET csomagkezelő rendeszeréből a NuGet-ről szokás a külső csomagokat beszerezni. Most az <em>Algorithm.dll</em> esetünkben nincs NuGet-en publikálva, ezért kell kézzel felvegyük azt.</p>
+<p class="admonition-title">Externe Referenzen</p>
+<p>Hier verweisen wir eigentlich nicht auf ein anderes Visual Studio-Projekt, aber dies ist der einfachste Weg, dieses Fenster aufzurufen.</p>
+<p>Es sollte auch erwähnt werden, dass wir für externe Klassenbibliotheken keine DLLs mehr in einem regulären Projekt referenzieren, sondern die externen Pakete aus dem NuGet-Repository des .NET-Paketmanagers beziehen. Nun ist <em>Algorithm.dll</em> in unserem Fall nicht in NuGet veröffentlicht, so dass wir sie manuell hinzufügen müssen.</p>
 </div>
 </li>
 <li>
-<p>Az előugró ablak jobb alsó sarokban található <em>Browse</em> gomb segítségével keressük meg és válasszuk ki projekt <em>External</em> almappájában található <em>Algorithms.dll</em> fájlt, majd hagyjuk jóvá a hozzáadást az OK gombbal!</p>
+<p>Verwenden Sie die Schaltfläche <em>Durchsuchen</em> in der rechten unteren Ecke des Popup-Fensters, wählen Sie die Datei <em>Algorithms.dll</em> im Unterordner <em>External</em> Ihres Projekts aus und klicken Sie auf OK, um das Hinzufügen zu bestätigen</p>
 </li>
 </ol>
-<p>A Solution Explorerben egy projekt alatti <em>Dependencies</em> csomópontot lenyitva láthatjuk a hivatkozott külső függőségeket. Itt most már megjelenik az Assemblyk között előbb felvett Algorithms referencia is. A Frameworks kategóriában a .NET keretrendszer csomagjait találjuk. Az Analyzerek pedig statikus kódelemző eszközök fordítás időben. Illetve itt lennének még a projekt vagy a NuGet referenciák is.</p>
-<p><a class="glightbox" href="images/dependencies.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Dependencies" src="images/dependencies.png" /></a></p>
-<p>Kattintsunk Algorithms referencián jobb gombbal és válasszuk a <em>View in Object Browser</em> funkciót. Ekkor megnyílik az Object Browser tabfül, ahol megtekinthetjük, hogy az adott DLL-ben milyen névterek, osztályok találhatók, illetve ezeknek milyen tagjaik (tagváltozó, tagfüggvény, property, event) vannak. Ezeket a Visual Studio a DLL metaadataiból az ún. reflection mechanizmus segítségével olvassa ki (ilyen kódot akár mi is írhatunk).</p>
-<p>Az alábbi ábrának megfelelően az Object Browserben baloldalt keressük ki az Algorithms csomópontot, nyissuk le, és láthatóvá válik, hogy egy <code>Algorithms</code> névtér van benne, abban pedig egy <code>SuperAlgorithm</code> osztály. Ezt kiválasztva középen megjelennek az osztály függvényei, itt egy függvényt kiválasztva pedig az adott függvény pontos szignatúrája:</p>
-<p><a class="glightbox" href="images/object-browser.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Object browser" src="images/object-browser.png" /></a></p>
-<h2 id="1-feladat-muvelet-futtatasa-a-foszalon">1. Feladat – Művelet futtatása a főszálon<a class="headerlink" href="#1-feladat-muvelet-futtatasa-a-foszalon" title="Permanent link">&para;</a></h2>
-<p>Most már rátérhetünk az algoritmus futtatására. Első lépésben ezt az alkalmazásunk fő szálán tesszük meg.</p>
+<p>Im Projektmappen-Explorer können Sie auf den Knoten <em>Abhängigkeiten</em> unter einem Projekt klicken, um die referenzierten externen Abhängigkeiten anzuzeigen. Der Verweis auf Algorithmen, der zuvor in Baugruppen enthalten war, wird nun auch hier angezeigt. Die Kategorie Frameworks enthält die .NET Framework-Pakete. Und Analyzer sind Werkzeuge für die statische Codeanalyse zur Kompilierzeit. Oder es gäbe auch die Projekt- oder NuGet-Referenzen.</p>
+<p><a class="glightbox" href="../images/dependencies.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Abhängigkeiten" src="../images/dependencies.png" /></a></p>
+<p>Klicken Sie mit der rechten Maustaste auf die Referenz Algorithms und wählen Sie <em>View in Object Browser</em>. Dies öffnet die Registerkarte Objektbrowser, in der Sie sehen können, welche Namespaces, Klassen und deren Mitglieder (Membervariable, Memberfunktion, Eigenschaft, Ereignis) in der angegebenen DLL enthalten sind. Visual Studio liest diese aus den DLL-Metadaten mit Hilfe des so genannten Reflection-Mechanismus (wir können diesen Code selbst schreiben).</p>
+<p>Wie in der Abbildung unten dargestellt, suchen Sie im Objektbrowser den Knoten Algorithmen auf der linken Seite, öffnen ihn und sehen, dass er einen Namensraum <code>Algorithms</code> und eine Klasse <code>SuperAlgorithm</code> enthält. Wenn Sie dies auswählen, werden die Funktionen der Klasse in der Mitte angezeigt, und wenn Sie hier eine Funktion auswählen, wird die genaue Signatur dieser Funktion angezeigt:</p>
+<p><a class="glightbox" href="../images/object-browser.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Objekt-Browser" src="../images/object-browser.png" /></a></p>
+<h2 id="1-task-ausfuhren-einer-operation-auf-dem-hauptthread">1. Task - Ausführen einer Operation auf dem Hauptthread<a class="headerlink" href="#1-task-ausfuhren-einer-operation-auf-dem-hauptthread" title="Permanent link">&para;</a></h2>
+<p>Jetzt können wir mit der Ausführung des Algorithmus fortfahren. Zunächst tun wir dies im Hauptthread unserer Anwendung.</p>
 <ol>
 <li>
-<p>A főablakon lévő gomb <code>Click</code> eseménykezelőjében hívjuk meg a számoló függvényünket. Ehhez a Solution Explorerben nyissuk meg a <code>MainWindow.xaml.cs</code> code behind fájlt, és keressük meg a <code>CalculateResultButton_Click</code> eseménykezelőt. Egészítsük ki a kódot az újonnan behivatkozott algoritmus meghívásával.</p>
+<p>Im Event-Handler der Schaltfläche <code>Click</code> im Hauptfenster rufen wir unsere Zählerfunktion auf. Öffnen Sie dazu die Datei <code>MainWindow.xaml.cs</code> code behind im Projektmappen-Explorer und suchen Sie nach <code>CalculateResultButton_Click</code> event handler. Vervollständigen Sie den Code durch den Aufruf des neu aufgerufenen Algorithmus.</p>
 <div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CalculateResultButton_Click</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">RoutedEventArgs</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">param1TextBox</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">param2TextBox</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p2</span><span class="p">))</span>
@@ -1852,15 +1852,15 @@ A feladatunk az, hogy a <em>Calculate Result</em> gombra kattintás során futta
 </code></pre></div>
 </li>
 <li>
-<p>Próbáljuk ki az alkalmazást, és vegyük észre, hogy az ablak a számolás ideje alatt nem reagál a mozgatásra, átméretezésre, a felület gyakorlatilag befagy.</p>
+<p>Probieren wir die Anwendung aus und stellen fest, dass das Fenster während der Berechnung nicht auf Verschieben oder Größenänderung reagiert, die Schnittstelle friert praktisch ein.</p>
 </li>
 </ol>
-<p>Az alkalmazásunk eseményvezérelt, mint minden Windows alkalmazás. Az operációs rendszer a különböző interakciókról (pl. mozgatás, átméretezés, egérkattintás) értesíti az alkalmazásunkat: mivel a gombnyomást követően az alkalmazásunk egyetlen szála a kalkulációval van elfoglalva, nem tudja azonnal feldolgozni a további felhasználói utasításokat. Amint a számítás lefutott (és az eredmények megjelennek a listában) a korábban kapott parancsok is végrehajtásra kerülnek.</p>
-<h2 id="2-feladat-vegezzuk-a-szamitast-kulon-szalban">2. Feladat – Végezzük a számítást külön szálban<a class="headerlink" href="#2-feladat-vegezzuk-a-szamitast-kulon-szalban" title="Permanent link">&para;</a></h2>
-<p>Következő lépésben a számítás elvégzésére egy külön szálat fogunk indítani, hogy az ne blokkolja a felhasználói felületet.</p>
+<p>Unsere Anwendung ist ereignisgesteuert, wie alle Windows-Anwendungen. Das Betriebssystem benachrichtigt unsere Anwendung über die verschiedenen Interaktionen (z. B. Verschieben, Größenänderung, Mausklick): Da der einzige Thread unserer Anwendung nach dem Tastendruck mit der Berechnung beschäftigt ist, kann er nicht sofort weitere Benutzeranweisungen verarbeiten. Sobald die Berechnung abgeschlossen ist (und die Ergebnisse in der Liste angezeigt werden), werden die zuvor erhaltenen Befehle ausgeführt.</p>
+<h2 id="2-aufgabe-durchfuhrung-der-berechnung-in-einem-separaten-thread">2. Aufgabe - Durchführung der Berechnung in einem separaten Thread<a class="headerlink" href="#2-aufgabe-durchfuhrung-der-berechnung-in-einem-separaten-thread" title="Permanent link">&para;</a></h2>
+<p>Im nächsten Schritt werden wir einen separaten Thread starten, um die Berechnung durchzuführen, damit die Benutzeroberfläche nicht blockiert wird.</p>
 <ol>
 <li>
-<p>Készítsünk egy új függvényt a <code>MainWindow</code> osztályban, mely a feldolgozó szál belépési pontja lesz.</p>
+<p>Erstellen Sie eine neue Funktion in der Klasse <code>MainWindow</code>, die der Einstiegspunkt für den Verarbeitungs-Thread sein wird.</p>
 <div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CalculatorThread</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="n">arg</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">parameters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">[])</span><span class="n">arg</span><span class="p">;</span>
@@ -1870,7 +1870,7 @@ A feladatunk az, hogy a <em>Calculate Result</em> gombra kattintás során futta
 </code></pre></div>
 </li>
 <li>
-<p>Indítsuk el a szálat a gomb <code>Click</code> eseménykezelőjében. Ehhez cseréljük le a korábban hozzáadott kódot:</p>
+<p>Starten Sie den Thread in der Ereignisverwaltung der Schaltfläche <code>Click</code>.  Ersetzen Sie dazu den Code, den Sie zuvor hinzugefügt haben:</p>
 <div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CalculateResultButton_Click</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">RoutedEventArgs</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">param1TextBox</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">param2TextBox</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p2</span><span class="p">))</span>
@@ -1884,30 +1884,30 @@ A feladatunk az, hogy a <em>Calculate Result</em> gombra kattintás során futta
 <span class="w">        </span><span class="nf">DisplayInvalidElementDialog</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>A Thread objektum <code>Start</code> műveletében átadott paramétert kapja meg a <code>CalculatorThread</code> szálfüggvényünk.</p>
+<p>Der in der Operation <code>Start</code> des Thread-Objekts übergebene Parameter wird an unsere Thread-Funktion <code>CalculatorThread</code> übergeben.</p>
 </li>
 <li>
-<p>Futtassuk az alkalmazást <span class="keys"><kbd class="key-f5">F5</kbd></span>-tel (most fontos, hogy így, a debuggerben futtassuk)! <em>The application called an interface that was marshalled for a different thread. (0x8001010E (RPC_E_WRONG_THREAD))</em> hibaüzenetet kapunk a <code>ShowResult</code> metódusban, ugyanis nem abból a szálból próbálunk hozzáférni a UI elemhez / vezérlőhöz, amelyik létrehozta (a vezérlőt). A következő feladatban ezt a problémát analizáljuk és oldjuk meg.</p>
+<p>Führen Sie die Anwendung ++mit f5++aus (jetzt ist es wichtig, sie so auszuführen, im Debugger)! <em>Die Anwendung rief eine Schnittstelle auf, die für einen anderen Thread bereitgestellt wurde. (0x8001010E (RPC_E_WRONG_THREAD))</em> Fehlermeldung in der Methode <code>ShowResult</code>, weil wir nicht versuchen, auf das UI-Element/Controller von dem Thread aus zuzugreifen, der es erstellt hat (der Controller). In der nächsten Übung werden wir dieses Problem analysieren und lösen.</p>
 </li>
 </ol>
-<h2 id="3-feladat-a-dispatcherqueuehasthreadaccess-es-dispatcherqueuetryenqueue-hasznalata">3. Feladat – a <code>DispatcherQueue.HasThreadAccess</code> és <code>DispatcherQueue.TryEnqueue</code> használata<a class="headerlink" href="#3-feladat-a-dispatcherqueuehasthreadaccess-es-dispatcherqueuetryenqueue-hasznalata" title="Permanent link">&para;</a></h2>
-<p>Az előző pontban a problémát a következő okozza. WinUI alkalmazásoknál él az alábbi szabály: az ablakok/felületelemek/vezérlőelemek alapvetően nem szálvédett (thread safe) objektumok, így <strong>egy ablakhoz/felületelemhez/vezérlőhöz csak abból a szálból szabad hozzáférni (pl. propertyjét olvasni, állítani, műveletét meghívni), amelyik szál az adott ablakot/felületelemet/vezérlőt létrehozta</strong>, máskülönben kivételt kapunk.
-Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> vezérlőt a fő szálban hoztuk létre, a <code>ShowResult</code> metódusban az eredmény megjelenítésekor viszont egy másik szálból férünk hozzá (<code>resultListBox.Items.Add</code> művelet hívása).</p>
-<p>Kérdés, hogyan lehet mégis valamilyen módon ezekhez a felületelemekhez/vezérlőkhöz egy másik szálból hozzáférni. A megoldást a <code>DispatcherQueue</code> alkalmazása jelenti, mely abban nyújt segítséget, hogy a vezérlőkhöz mindig a megfelelő szálból történjen a hozzáférés:</p>
+<h2 id="3-aufgabe-verwenden-sie-dispatcherqueuehasthreadaccess-und-dispatcherqueuetryenqueue">3. Aufgabe - verwenden Sie <code>DispatcherQueue.HasThreadAccess</code> und <code>DispatcherQueue.TryEnqueue</code><a class="headerlink" href="#3-aufgabe-verwenden-sie-dispatcherqueuehasthreadaccess-und-dispatcherqueuetryenqueue" title="Permanent link">&para;</a></h2>
+<p>Das Problem im vorigen Punkt hat folgende Ursachen. Für WinUI-Anwendungen gilt folgende Regel: Fenster/Oberflächen/Steuerelemente sind standardmäßig keine thread-sicheren Objekte, so dass <strong>auf ein Fenster/Oberfläche/Steuerelement nur von einem Thread aus zugegriffen werden sollte (**z. B.
+i **n</strong> unserer Anwendung gibt es eine Ausnahme, da das <code>resultListBox</code> Steuerelement im Haupt-Thread erstellt wird, aber in der <code>ShowResult</code> Methode, wenn das Ergebnis angezeigt wird, wird von einem anderen Thread aus darauf zugegriffen (Aufruf der<code>resultListBox.Items.Add</code> Aktion).</p>
+<p>Die Frage ist, wie auf diese Schnittstellen/Controller von einem anderen Thread aus noch irgendwie zugegriffen werden kann. Die Lösung besteht in der Verwendung von <code>DispatcherQueue</code>, um sicherzustellen, dass der Zugriff auf die Steuerelemente immer über den richtigen Thread erfolgt:</p>
 <ul>
-<li><code>DispatcherQueue</code> objektum <code>TryEnqueue</code> függvénye a vezérlőelemet létrehozó szálon futtatja le a számára paraméterként megadott függvényt (mely függvényből így már közvetlenül hozzáférhetünk a vezérlőhöz).</li>
-<li>A <code>DispatcherQueue</code> objektum <code>HasThreadAccess</code> tulajdonsága azt segít eldönteni, szükség van-e egyáltalán az előző pontban említett <code>TryEnqueue</code> alkalmazására. Ha a tulajdonság értéke<ul>
-<li>igaz, akkor a vezérlőhöz közvetlenül is hozzáférhetünk (mert az aktuális szál megegyezik a vezérlőt létrehozó szállal), ellenben ha</li>
-<li>hamis, akkor a vezérlőhöz csak "kerülő úton", a <code>DispatcherQueue</code> objektum <code>TryEnqueue</code> segítségével férhetünk hozzá (mert az aktuális szál NEM egyezik a vezérlőt létrehozó szállal).</li>
+<li><code>DispatcherQueue</code> des <code>TryEnqueue</code> -Objekts führt die als Parameter angegebene Funktion auf dem Thread aus, der das Steuerelement erstellt (von dem aus Sie nun direkt auf das Steuerelement zugreifen können).</li>
+<li>Die Eigenschaft <code>HasThreadAccess</code> des Objekts <code>DispatcherQueue</code> hilft bei der Entscheidung, ob es notwendig ist, <code>TryEnqueue</code> zu verwenden, wie im vorherigen Abschnitt erwähnt. Wenn die Immobilie<ul>
+<li>wahr ist, kann auf den Controller direkt zugegriffen werden (weil der aktuelle Thread derselbe ist wie der Thread, der den Controller erstellt hat), aber wenn</li>
+<li>falsch ist, kann auf den Controller nur unter Umgehung des <code>DispatcherQueue</code> Objekts <code>TryEnqueue</code> zugegriffen werden (da der aktuelle Thread NICHT mit dem Thread identisch ist, der den Controller erstellt hat).</li>
 </ul>
 </li>
 </ul>
-<p>A <code>DispatcherQueue</code> segítségével tehát el tudjuk kerülni korábbi kivételünket (a vezérlőhöz, esetünkben a <code>resultListBox</code>-hoz való hozzáférést a megfelelő szálra tudjuk "irányítani"). Ezt fogjuk a következőkben megtenni.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>A <code>DispatcherQueue</code> objektum a Window osztály leszármazottakban érhető el a<code>DispatcherQueue</code> tulajdonságán keresztül (más osztályokban pedig a <code>DispatcherQueue.GetForCurrentThread()</code> statikus művelet segítségével szerezhető meg).</p>
+<p>Mit <code>DispatcherQueue</code> können wir also unsere vorherige Ausnahme vermeiden (der Zugriff auf den Controller, in diesem Fall <code>resultListBox</code>, kann an den entsprechenden Thread "geleitet" werden). Wir werden dies im Folgenden tun.</p>
+<div class="admonition hinweis">
+<p class="admonition-title">Hinweis</p>
+<p>Das Objekt <code>DispatcherQueue</code> ist in Nachkommen der Klasse Window über die Eigenschaft<code>DispatcherQueue</code> verfügbar (und in anderen Klassen über die statische Operation <code>DispatcherQueue.GetForCurrentThread()</code> ).</p>
 </div>
-<p>Módosítanunk kell a <code>ShowResult</code> metódust annak érdekében, hogy mellékszálból történő hívás esetén se dobjon kivételt.</p>
+<p>Wir müssen die Methode <code>ShowResult</code> so ändern, dass sie keine Ausnahme auslöst, wenn sie von einer Erweiterung aus aufgerufen wird.</p>
 <div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ShowResult</span><span class="p">(</span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="n">parameters</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">result</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="hll"><span class="w">    </span><span class="c1">// Closing the window the DispatcherQueue property may return null, so we have to perform a null check</span>
@@ -1929,26 +1929,26 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 </span><span class="hll"><span class="w">    </span><span class="p">}</span>
 </span><span class="p">}</span>
 </code></pre></div>
-<p>Próbáljuk ki!</p>
-<p>Ez a megoldás már működőképes, főbb elemei a következők:</p>
+<p>Probieren wir es aus!</p>
+<p>Diese Lösung ist bereits einsatzbereit und besteht im Wesentlichen aus folgenden Elementen:</p>
 <ul>
-<li>A <code>DispatcherQueue</code> <code>null</code> vizsgálat szerepe: a főablak bezárása után a <code>DispatcherQueue</code> már <code>null</code>, nem használható.</li>
-<li>A <code>DispatcherQueue.HasThreadAccess</code> segítségével megnézzük, hogy a hívó szál hozzáférhet-e közvetlenül a vezérlőkhöz (esetünkben a <code>ListBox</code>-hoz):<ul>
-<li>Ha igen, minden úgy történik, mint eddig, a <code>ListBox</code>-ot kezelő kód változatlan.</li>
-<li>Ha nem, a <code>DispatcherQueue.TryEnqueue</code> segítségével férünk hozzá a vezérlőhöz. A következő trükköt alkalmazzuk. A <code>TryEnqueue</code> függvénynek egy olyan paraméter nélküli, egysoros függvényt adunk meg lambda kifejezés formájában, mellyel a <code>ShowResult</code> függvényünket hívja meg (gyakorlatilag rekurzívan), a paramétereket tovább passzolva számára. Ez nekünk azért jó, mert ez a <code>ShowResult</code> hívás már azon a szálon történik, mely a vezérlőt létrehozta (az alkalmazás fő szála), ebben a <code>HasThreadAccess</code> értéke már igaz, és hozzá tudunk férni közvetlenül a <code>ListBox</code>-unkhoz. Ez a rekurzív megközelítés egy bevett minta a redundáns kódok elkerülésére.</li>
+<li>Die Rolle des <code>DispatcherQueue</code> <code>null</code> -Scans: Nach dem Schließen des Hauptfensters ist <code>DispatcherQueue</code> nicht mehr <code>null</code>, es kann nicht verwendet werden.</li>
+<li>Die <code>DispatcherQueue.HasThreadAccess</code> wird verwendet, um zu prüfen, ob der aufrufende Thread direkt auf die Controller zugreifen kann (in unserem Fall <code>ListBox</code>):<ul>
+<li>Wenn ja, wird alles wie bisher gehandhabt, der Code für <code>ListBox</code>bleibt unverändert.</li>
+<li>Falls nicht, können Sie über <code>DispatcherQueue.TryEnqueue</code> auf den Controller zugreifen. Dabei wird der folgende Trick angewendet. Die Funktion <code>TryEnqueue</code> erhält eine parameterlose, einzeilige Funktion in Form eines Lambda-Ausdrucks, der unsere Funktion <code>ShowResult</code> aufruft (effektiv rekursiv) und ihr die Parameter übergibt. Das ist gut für uns, weil dieser <code>ShowResult</code> -Aufruf bereits auf dem Thread erfolgt, der den Controller erstellt hat (dem Hauptthread der Anwendung), der Wert von <code>HasThreadAccess</code> ist jetzt wahr, und wir können direkt auf unser <code>ListBox</code>zugreifen. Dieser rekursive Ansatz ist ein gängiges Muster, um redundanten Code zu vermeiden.</li>
 </ul>
 </li>
 </ul>
-<p>Tegyünk töréspontot a <code>ShowResult</code> művelet első sorára, és az alkalmazást futtatva győződjünk meg arról, hogy a <code>ShowResult</code> művelet első hívásakor <code>HasThreadAccess</code> még hamis (így megtörténik a <code>TryEnqueue</code> hívása), majd ennek hatására még egyszer meghívódik a <code>ShowResult</code>, de ekkor a <code>HasThreadAccess</code> értéke már igaz.</p>
-<p>Vegyük ki a töréspontot, így futtassuk az alkalmazást: vegyük észre, hogy amíg egy számítás fut, újabbakat is indíthatunk, hiszen a felületünk végig reszponzív maradt (a korábban tapasztalt hiba pedig már nem jelentkezik).</p>
-<h2 id="4-feladat-muvelet-vegzese-threadpool-szalon">4. feladat – Művelet végzése Threadpool szálon<a class="headerlink" href="#4-feladat-muvelet-vegzese-threadpool-szalon" title="Permanent link">&para;</a></h2>
-<p>Az előző megoldás egy jellemzője, hogy mindig új szálat hoz létre a művelethez. Esetünkben ennek nincs különösebb jelentősége, de ez a megközelítés egy olyan kiszolgáló alkalmazás esetében, amely nagyszámú kérést szolgál ki úgy, hogy minden kéréshez külön szálat indít, már problémás lehet. Két okból is:</p>
+<p>Setzen Sie einen Haltepunkt in der ersten Zeile der Operation <code>ShowResult</code>, und führen Sie die Anwendung aus, um sicherzustellen, dass <code>HasThreadAccess</code> falsch ist, wenn <code>ShowResult</code> zum ersten Mal aufgerufen wird (also wird <code>TryEnqueue</code> aufgerufen), und dann wird <code>ShowResult</code> erneut aufgerufen, aber <code>HasThreadAccess</code> ist wahr.</p>
+<p>Nehmen Sie den Haltepunkt heraus und führen Sie die Anwendung aus: Beachten Sie, dass Sie, während eine Berechnung läuft, eine andere starten können, da Ihre Schnittstelle durchgehend ansprechbar bleibt (und der Fehler, der zuvor auftrat, nicht mehr auftritt).</p>
+<h2 id="4-problem-1-ausfuhren-einer-operation-auf-einem-threadpool-thread">4. problem 1 - Ausführen einer Operation auf einem Threadpool-Thread<a class="headerlink" href="#4-problem-1-ausfuhren-einer-operation-auf-einem-threadpool-thread" title="Permanent link">&para;</a></h2>
+<p>Eine Besonderheit der bisherigen Lösung ist, dass sie immer einen neuen Thread für die Operation erstellt. In unserem Fall ist dies nicht besonders wichtig, aber dieser Ansatz kann für eine Serveranwendung, die eine große Anzahl von Anfragen bedient, problematisch sein, da für jede Anfrage ein eigener Thread gestartet wird. Aus zwei Gründen:</p>
 <ul>
-<li>Ha a szálfüggvény gyorsan lefut (egy kliens kiszolgálása gyors), akkor a CPU nagy részét arra pazaroljuk, hogy szálakat indítsunk és állítsunk le, ezek ugyanis önmagukban is erőforrásigényesek.</li>
-<li>Túl nagy számú szál is létrejöhet, ennyit kell ütemeznie az operációs rendszernek, ami feleslegesen pazarolja az erőforrásokat.</li>
+<li>Wenn die Thread-Funktion schnell läuft (um einen Client schnell zu bedienen), dann wird ein großer Teil der CPU für das Starten und Stoppen von Threads verschwendet, was an sich schon ressourcenintensiv ist.</li>
+<li>Es können zu viele Threads erstellt werden, und das Betriebssystem muss zu viele planen, was unnötig Ressourcen verschwendet.</li>
 </ul>
-<p>Egy másik probléma jelen megoldásunkkal: mivel a számítás ún. <strong>előtérszálon</strong> fut (az újonnan létrehozott szálak alapértelmezésben előtérszálak), hiába zárjuk be az alkalmazást, a program tovább fut a háttérben mindaddig, amíg végre nem hajtódik az utoljára indított számolás is: egy processz futása ugyanis akkor fejeződik csak be, ha már nincs futó előtérszála.</p>
-<p>Módosítsuk a gomb eseménykezelőjét, hogy új szál indítása helyett <strong>threadpool</strong> szálon futtassa a számítást. Ehhez csak a gombnyomás eseménykezelőjét kell ismét átírni.</p>
+<p>Ein weiteres Problem mit unserer derzeitigen Lösung: Da die Berechnung <strong>auf einem</strong> so genannten <strong>Vordergrund-Thread</strong> läuft (neu erstellte Threads sind standardmäßig Vordergrund-Threads), läuft das Programm selbst dann im Hintergrund weiter, wenn Sie die Anwendung schließen, bis die letzte Berechnung ausgeführt wurde: Ein Prozess hört erst auf zu laufen, wenn er keinen Vordergrund-Thread mehr hat.</p>
+<p>Ändern Sie den Event-Handler der Schaltfläche, um die Berechnung in einem <strong>Threadpool-Thread</strong> auszuführen, anstatt einen neuen Thread zu starten. Um dies zu tun, schreiben Sie einfach den Event-Handler für das Drücken der Schaltfläche um.</p>
 <div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CalculateResultButton_Click</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">RoutedEventArgs</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">param1TextBox</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">param2TextBox</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p2</span><span class="p">))</span>
@@ -1961,19 +1961,19 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 <span class="w">        </span><span class="nf">DisplayInvalidElementDialog</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Próbáljuk ki az alkalmazást, és vegyük észre, hogy az alkalmazás az ablak bezárásakor azonnal leáll, nem foglalkozik az esetlegesen még futó szálakkal (mert a threadpool szálak háttér szálak).</p>
-<h2 id="5-feladat-termelo-fogyaszto-alapu-megoldas">5. Feladat – Termelő-fogyasztó alapú megoldás<a class="headerlink" href="#5-feladat-termelo-fogyaszto-alapu-megoldas" title="Permanent link">&para;</a></h2>
-<p>Az előző feladatok megoldása során önmagában egy jól működő komplett megoldását kaptuk az eredeti problémának, mely lehetővé teszi, hogy akár több munkaszál is párhuzamosan dolgozzon a háttérben a számításon, ha a gombot sokszor egymás után megnyomjuk. A következőkben úgy fogjuk módosítani az alkalmazásunkat, hogy a gombnyomásra ne mindig keletkezzen új szál, hanem a feladatok bekerüljenek egy feladatsorba, ahonnan több, a háttérben folyamatosan futó szál egymás után fogja kivenni őket és végrehajtani. Ez a feladat a klasszikus termelő-fogyasztó probléma, mely a gyakorlatban is sokszor előfordul, a működését az alábbi ábra szemlélteti.</p>
-<p><a class="glightbox" href="images/termelo-fogyaszto.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Termelő fogyasztó" src="images/termelo-fogyaszto.png" /></a></p>
+<p>Probieren wir die Anwendung aus und stellen fest, dass die Anwendung sofort anhält, wenn das Fenster geschlossen wird, ohne sich um eventuell noch laufende Threads zu kümmern (denn Threadpool-Threads sind Hintergrund-Threads).</p>
+<h2 id="5-aufgabe-erzeuger-verbraucher-basierte-losung">5. Aufgabe - Erzeuger-Verbraucher-basierte Lösung<a class="headerlink" href="#5-aufgabe-erzeuger-verbraucher-basierte-losung" title="Permanent link">&para;</a></h2>
+<p>Allein durch die Lösung der vorangegangenen Probleme erhielten wir eine vollständige und gut funktionierende Lösung für das ursprüngliche Problem, die es ermöglicht, dass mehrere Threads parallel im Hintergrund arbeiten, wenn die Taste viele Male hintereinander gedrückt wird. Im Folgenden werden wir unsere Anwendung so modifizieren, dass ein Tastendruck nicht immer einen neuen Thread erzeugt, sondern die Aufgaben in eine Aufgabenwarteschlange stellt, aus der mehrere im Hintergrund laufende Threads sie nacheinander auswählen und ausführen. Bei dieser Aufgabe handelt es sich um das klassische Erzeuger-Verbraucher-Problem, das in der Praxis häufig auftritt und in der folgenden Abbildung dargestellt ist.</p>
+<p><a class="glightbox" href="../images/termelo-fogyaszto.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Produzierender Verbraucher" src="../images/termelo-fogyaszto.png" /></a></p>
 <div class="admonition tip">
-<p class="admonition-title">Termelő fogyasztó vs <code>ThreadPool</code></p>
-<p>Ha belegondolunk, a <code>ThreadPool</code> is egy speciális, a .NET által számunkra biztosított termelő-fogyasztó és ütemező mechanizmus. A következőkben egy más jellegű termelő-fogyasztó megoldást dolgozunk ki annak érdekében, hogy bizonyos szálkezeléssel kapcsolatos konkurencia problémákkal találkozhassunk.</p>
+<p class="admonition-title">Producer-Consumer vs <code>ThreadPool</code></p>
+<p>Wenn Sie darüber nachdenken, ist <code>ThreadPool</code> auch ein spezieller Producer-Consumer- und Scheduler-Mechanismus, der uns von .NET zur Verfügung gestellt wird. Im Folgenden entwickeln wir eine andere Art von Erzeuger-Verbraucher-Lösung für einige der mit der Faserbewirtschaftung verbundenen Wettbewerbsprobleme.</p>
 </div>
-<p>A főszálunk a termelő, a <em>Calculate result</em> gombra kattintva hoz létre egy új feladatot. Fogyasztó/feldolgozó munkaszálból azért indítunk majd többet, mert így több CPU magot is ki tudunk használni, valamint a feladatok végrehajtását párhuzamosítani tudjuk.</p>
-<p>A feladatok ideiglenes tárolására a kiinduló projektünkben már némiképpen előkészített <code>DataFifo</code> osztályt tudjuk használni (a Solution Explorerben a <code>Data</code> mappában található). Nézzük meg a forráskódját. Egy egyszerű FIFO sort valósít meg, melyben <code>double[]</code> elemeket tárol. A <code>Put</code> metódus hozzáfűzi a belső lista végéhez az új párokat, míg a <code>TryGet</code> metódus visszaadja (és eltávolítja) a belső lista első elemét. Amennyiben a lista üres, a függvény nem tud visszaadni elemet. Ilyenkor a <code>false</code> visszatérési értékkel jelzi ezt.</p>
+<p>Der Hauptthread ist der Producer, der eine neue Aufgabe erstellt, indem er auf die Schaltfläche <em>Ergebnis berechnen</em> klickt. Wir werden mehr Threads in der konsumierenden/verarbeitenden Arbeitslast starten, da wir mehr CPU-Kerne verwenden und die Ausführung von Aufgaben parallelisieren können.</p>
+<p>Für die Zwischenspeicherung von Aufgaben können wir die Klasse <code>DataFifo</code> (im Ordner <code>Data</code> im Projektmappen-Explorer) verwenden, die in unserem ursprünglichen Projekt bereits etwas vorbereitet ist. Schauen wir uns den Quellcode an. Es implementiert eine einfache FIFO-Warteschlange, um <code>double[]</code> zu speichern. Die Methode <code>Put</code> hängt die neuen Paare an das Ende der internen Liste an, während die Methode <code>TryGet</code> das erste Element der internen Liste zurückgibt (und entfernt). Wenn die Liste leer ist, kann die Funktion kein Element zurückgeben. In diesem Fall zeigt <code>false</code> dies durch einen Rückgabewert an.</p>
 <ol>
 <li>
-<p>Módosítsuk a gomb eseménykezelőjét, hogy ne <code>ThreadPool</code>ba dolgozzon, hanem a FIFO-ba:</p>
+<p>Ändern Sie den Event-Handler der Schaltfläche so, dass er nicht in <code>ThreadPool</code>, sondern in FIFO arbeitet:</p>
 <div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CalculateResultButton_Click</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">RoutedEventArgs</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">param1TextBox</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="kt">double</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">param2TextBox</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">p2</span><span class="p">))</span>
@@ -1988,7 +1988,7 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 </code></pre></div>
 </li>
 <li>
-<p>Készítsük el az új szálkezelő függvény naív implementációját az űrlap osztályunkban:</p>
+<p>Erstellen Sie eine naive Implementierung der neuen Thread-Handler-Funktion in Ihrer Formularklasse:</p>
 <div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">WorkerThread</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
@@ -2003,51 +2003,51 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>A <code>Thread.Sleep</code> bevezetésére azért van szükség, mert e nélkül a munkaszálak üres FIFO esetén folyamatosan feleslegesen pörögnének, semmi hasznos műveletet nem végezve is 100%-ban kiterhelnének egy-egy CPU magot. Megoldásunk nem ideális, később továbbfejlesztjük.</p>
+<p>Der Grund für die Einführung von <code>Thread.Sleep</code> ist, dass sich die Threads sonst unnötigerweise die ganze Zeit mit einem leeren FIFO drehen würden, ohne irgendeinen nützlichen Vorgang auszuführen, und einen CPU-Kern zu 100% überlasten würden. Unsere Lösung ist nicht ideal, wir werden sie später verbessern.</p>
 </li>
 <li>
-<p>Hozzuk létre, és indítsuk el a feldolgozó szálakat a konstruktorban:</p>
-<div class="highlight"><pre><span></span><code><span class="k">new</span><span class="w"> </span><span class="nf">Thread</span><span class="p">(</span><span class="n">WorkerThread</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Szal1&quot;</span><span class="w"> </span><span class="p">}.</span><span class="n">Start</span><span class="p">();</span>
-<span class="k">new</span><span class="w"> </span><span class="nf">Thread</span><span class="p">(</span><span class="n">WorkerThread</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Szal2&quot;</span><span class="w"> </span><span class="p">}.</span><span class="n">Start</span><span class="p">();</span>
-<span class="k">new</span><span class="w"> </span><span class="nf">Thread</span><span class="p">(</span><span class="n">WorkerThread</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Szal3&quot;</span><span class="w"> </span><span class="p">}.</span><span class="n">Start</span><span class="p">();</span>
+<p>Erstellen und starten Sie die Verarbeitungs-Threads im Konstruktor:</p>
+<div class="highlight"><pre><span></span><code><span class="k">new</span><span class="w"> </span><span class="nf">Thread</span><span class="p">(</span><span class="n">WorkerThread</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Worker thread 1&quot;</span><span class="w"> </span><span class="p">}.</span><span class="n">Start</span><span class="p">();</span>
+<span class="k">new</span><span class="w"> </span><span class="nf">Thread</span><span class="p">(</span><span class="n">WorkerThread</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Worker thread 2&quot;</span><span class="w"> </span><span class="p">}.</span><span class="n">Start</span><span class="p">();</span>
+<span class="k">new</span><span class="w"> </span><span class="nf">Thread</span><span class="p">(</span><span class="n">WorkerThread</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Worker thread 3&quot;</span><span class="w"> </span><span class="p">}.</span><span class="n">Start</span><span class="p">();</span>
 </code></pre></div>
 </li>
 <li>
-<p>Indítsuk el az alkalmazást, majd zárjuk is be azonnal anélkül, hogy a <em>Calculate Result</em> gombra kattintanánk. Az tapasztaljuk, hogy az ablakunk bezáródik ugyan, de a processzünk tovább fut, az alkalmazás bezárására csak a Visual Studioból, vagy a Task Managerből van lehetőség:</p>
-<p><a class="glightbox" href="images/stop-debugging.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Stop Debugging" src="images/stop-debugging.png" /></a></p>
-<p>A feldolgozó szálak előtérszálak, kilépéskor megakadályozzák a processz megszűnését. Az egyik megoldás az lehetne, ha a szálak <code>IsBackground</code> tulajdonságát <code>true</code>-ra állítanánk a létrehozásukat követően. A másik megoldás, hogy kilépéskor gondoskodunk a feldolgozó szálak kiléptetéséről. Egyelőre tegyük félre ezt a problémát, később visszatérünk rá.</p>
+<p>Starten Sie die Anwendung und schließen Sie sie sofort, ohne auf die Schaltfläche <em>Ergebnis berechnen</em> zu klicken. Unser Fenster wird geschlossen, aber unser Prozess läuft weiter, und die einzige Möglichkeit, die Anwendung zu schließen, ist über Visual Studio oder den Task-Manager:</p>
+<p><a class="glightbox" href="../images/stop-debugging.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Fehlersuche beenden" src="../images/stop-debugging.png" /></a></p>
+<p>Bei den Verarbeitungsfasern handelt es sich um Vorfilamente, die verhindern, dass der Prozess am Ausgang abbricht. Eine Lösung könnte darin bestehen, die Eigenschaft <code>IsBackground</code> der Threads auf <code>true</code>zu setzen, nachdem sie erstellt wurden. Die andere Lösung besteht darin, sicherzustellen, dass die Verarbeitungs-Threads beim Beenden beendet werden. Lassen wir dieses Thema erst einmal beiseite, wir kommen später darauf zurück.</p>
 </li>
 <li>
-<p>Indítsuk el az alkalmazást azt tapasztaljuk, hogy miután kattintunk a <em>Calculate Result</em> gombon (csak egyszer kattintsunk rajta) nagy valószínűséggel kivételt fogunk kapni. A probléma az, hogy a <code>DataFifo</code> nem szálbiztos, inkonzisztensé vált. Két eredő ok is húzódik a háttérben:</p>
+<p>Starten Sie die Anwendung und Sie werden feststellen, dass Sie nach dem Klicken auf die Schaltfläche <em>Ergebnis berechnen</em> (nur einmal klicken) höchstwahrscheinlich eine Ausnahme erhalten. Das Problem ist, dass <code>DataFifo</code> nicht thread-sicher ist, es ist inkonsistent geworden. Hierfür gibt es zwei Ursachen:</p>
 </li>
 </ol>
-<h3 id="problema-1">Probléma 1<a class="headerlink" href="#problema-1" title="Permanent link">&para;</a></h3>
-<p>Nézzük a következő forgatókönyvet:</p>
+<h3 id="problem-1">Problem 1<a class="headerlink" href="#problem-1" title="Permanent link">&para;</a></h3>
+<p>Betrachten wir das folgende Szenario:</p>
 <ol>
-<li>A sor üres. A feldolgozó szálak egy <code>while</code> ciklusban folyamatosan pollozzák a FIFO-t, vagyis hívják a <code>TryGet</code> metódusát.</li>
-<li>A felhasználó egy feladatot tesz a sorba.</li>
-<li>Az egyik feldolgozó szál a <code>TryGet</code> metódusban azt látja, van adat a sorban, vagyis <code>if ( _innerList.Count &gt; 0 )</code> kódsor feltétele teljesül, és rálép a következő kódsorra. Tegyük fel, hogy ez a szál ebben a pillanatban elveszti a futási jogát, már nincs ideje kivenni az adatot a sorból.</li>
-<li>Egy másik feldolgozó szál is éppen ekkor ejti meg az <code>if ( _innerList.Count &gt; 0 )</code> vizsgálatot, nála is teljesül a feltétel, és ez a szál ki is veszi az adatot a sorból.</li>
-<li>Az első szálunk újra ütemezésre kerül, felébred, ő is megpróbálja kivenni az adatot a sorból: a sor viszont már üres, a másik szálunk kivette az egyetlen adatot a sorból az orra előtt. Így az <code>_innerList[0]</code> hozzáférés kivételt eredményez.</li>
+<li>Die Zeile ist leer. Die verarbeitenden Threads fragen den FIFO kontinuierlich in einer <code>while</code> -Schleife ab, d. h. sie rufen die Methode <code>TryGet</code> auf.</li>
+<li>Der Benutzer fügt der Warteschlange eine Aufgabe hinzu.</li>
+<li>Einer der Verarbeitungsstränge in der Methode <code>TryGet</code> stellt fest, dass Daten in der Zeile vorhanden sind, d. h. die Bedingung <code>if ( _innerList.Count &gt; 0 )</code> code line ist erfüllt, und geht zur nächsten Codezeile über. Angenommen, dieser Thread verliert an dieser Stelle seine Laufzeit, dann hat er keine Zeit mehr, die Daten aus der Warteschlange zu nehmen.</li>
+<li>Ein anderer Verarbeitungsthread lässt die Prüfung von <code>if ( _innerList.Count &gt; 0 )</code> zu diesem Zeitpunkt ebenfalls fallen, die Bedingung ist ebenfalls erfüllt, und dieser Thread nimmt die Daten aus der Warteschlange.</li>
+<li>Der erste Thread wird neu geplant, wacht auf und versucht, die Daten aus der Warteschlange zu nehmen: die Warteschlange ist leer, der andere Thread hat die einzigen Daten aus der Warteschlange vor ihm genommen. Der Zugriff auf <code>_innerList[0]</code> führt daher zu einer Ausnahme.</li>
 </ol>
-<p>Ezt a problémát csak úgy tudjuk elkerülni, ha a sor ürességének a vizsgálatát és az elem kivételét oszthatatlanná tesszük.</p>
+<p>Die einzige Möglichkeit, dieses Problem zu vermeiden, besteht darin, die Prüfung der Zeilenleere und die Elementausnahme unteilbar zu machen.</p>
 <div class="admonition note">
 <p class="admonition-title">Thread.Sleep(500)</p>
-<p>Az ürességvizsgálatot figyelő kódsort követő <code>Thread.Sleep(500);</code> kódsornak csak az a szerepe a példakódunkban, hogy a fenti peches forgatókönyv bekövetkezésének a valószínűségét megnövelje, s így a példát szemléletesebbé tegye (mivel ilyenkor szinte biztos, hogy átütemeződik a szál). A későbbiekben ezt ki is fogjuk venni, egyelőre hagyjuk benne.</p>
+<p>Die Rolle der Code-Zeile <code>Thread.Sleep(500);</code>, die auf die Code-Zeile folgt, die die Leere-Prüfung in unserem Beispielcode überwacht, besteht nur darin, die Wahrscheinlichkeit zu erhöhen, dass das obige unglückliche Szenario eintritt, und somit das Beispiel anschaulicher zu machen (da es fast sicher ist, dass der Thread neu geplant wird). Wir werden dies in Zukunft herausnehmen, aber vorläufig lassen wir es drin.</p>
 </div>
-<h3 id="problema-2">Probléma 2<a class="headerlink" href="#problema-2" title="Permanent link">&para;</a></h3>
-<p>A <code>DataFifo</code> osztály egyidőben több szálból is hozzáférhet a <code>List&lt;double[]&gt;</code> típusú <code>_innerList</code> tagváltozóhoz. Ugyanakkor, ha megnézzük a <code>List&lt;T&gt;</code> dokumentációját, azt találjuk, hogy az osztály nem szálbiztos (not thread safe). Ez esetben viszont ezt nem tehetjük meg, nekünk kell zárakkal biztosítanunk, hogy a kódunk egyidőben csak egy metódusához / tulajdonságához / tagváltozójához fér hozzá (pontosabban inkonzisztencia csak egyidejű írás, illetve egyidejű írás és olvasás esetén léphet fel, de az írókat és az olvasókat a legtöbb esetben nem szoktuk megkülönböztetni, itt sem tesszük).</p>
-<p>A következő lépésben a <code>DataFifo</code> osztályunkat szálbiztossá tesszük, amivel megakadályozzuk, hogy a fenti két probléma bekövetkezhessen.</p>
-<h2 id="6-feladat-tegyuk-szabiztossa-a-datafifo-osztalyt">6. feladat – Tegyük szábiztossá a DataFifo osztályt<a class="headerlink" href="#6-feladat-tegyuk-szabiztossa-a-datafifo-osztalyt" title="Permanent link">&para;</a></h2>
-<p>A <code>DataFifo</code> osztály szálbiztossá tételéhez szükségünk van egy objektumra (ez bármilyen referencia típusú objektum lehet), melyet kulcsként használhatunk a zárolásnál. Ezt követően a <code>lock</code> kulcsszó segítségével el tudjuk érni, hogy egyszerre mindig csak egy szál tartózkodjon az adott kulccsal védett blokkokban.</p>
+<h3 id="problem-2">Problem 2<a class="headerlink" href="#problem-2" title="Permanent link">&para;</a></h3>
+<p>Die Klasse <code>DataFifo</code> kann von mehreren Threads gleichzeitig auf die Mitgliedsvariable <code>_innerList</code> <code>List&lt;double[]&gt;</code> zugreifen. Wenn Sie sich jedoch die Dokumentation zu <code>List&lt;T&gt;</code> ansehen, werden Sie feststellen, dass die Klasse nicht thread-sicher ist. Aber in diesem Fall können wir das nicht tun, wir müssen Sperren verwenden, um sicherzustellen, dass unser Code nur auf eine Methode/Eigenschaft/Mitgliedsvariable zur gleichen Zeit zugreifen kann (genauer gesagt, kann Inkonsistenz nur im Fall von gleichzeitigen Schreib- oder Lesevorgängen auftreten, aber wir unterscheiden in den meisten Fällen nicht zwischen Lesern und Schreibern, und wir tun es hier auch nicht).</p>
+<p>Der nächste Schritt besteht darin, unsere Klasse <code>DataFifo</code> thread-sicher zu machen, wodurch die beiden oben genannten Probleme vermieden werden.</p>
+<h2 id="6-problem-2-die-datafifo-klasse-sicher-machen">6. problem 2 - Die DataFifo-Klasse sicher machen<a class="headerlink" href="#6-problem-2-die-datafifo-klasse-sicher-machen" title="Permanent link">&para;</a></h2>
+<p>Um die Klasse <code>DataFifo</code> thread-sicher zu machen, benötigen wir ein Objekt (dies kann ein beliebiges Objekt vom Referenztyp sein), das als Schlüssel zum Sperren verwendet wird. Mit dem Schlüsselwort <code>lock</code> können wir dann sicherstellen, dass sich jeweils nur ein Thread in den durch diesen Schlüssel geschützten Blöcken aufhält.</p>
 <ol>
 <li>
-<p>Vegyünk fel egy <code>object</code> típusú mezőt <code>_syncRoot</code> néven a <code>DataFifo</code> osztályba.</p>
+<p>Fügen Sie ein Feld vom Typ <code>object</code> mit dem Namen <code>_syncRoot</code> zur Klasse <code>DataFifo</code> hinzu.</p>
 <div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="kt">object</span><span class="w"> </span><span class="n">_syncRoot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">object</span><span class="p">();</span>
 </code></pre></div>
 </li>
 <li>
-<p>Egészítsük ki a <code>Put</code> és a <code>TryGet</code> függvényeket a zárolással.</p>
+<p>Füllen Sie die Funktionen <code>Put</code> und <code>TryGet</code> mit dem Schloss aus.</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Put</span><span class="p">(</span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="hll"><span class="w">    </span><span class="k">lock</span><span class="w"> </span><span class="p">(</span><span class="n">_syncRoot</span><span class="p">)</span>
@@ -2076,32 +2076,32 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Surround with</p>
-<p>Használjuk a Visual Studio <em>Surround with</em> funkcióját a CTRL + K, CTRL + S billentyű kombinációjával a körülvenni kívánt kijelölt kódrészleten.</p>
+<p>Verwenden Sie die Funktion <em>"Surround with"</em> von Visual Studio, indem Sie STRG + K, STRG + S auf dem ausgewählten Codeschnipsel drücken, den Sie umschließen möchten.</p>
 </div>
 </li>
 </ol>
-<p>Most már nem szabad kivételt kapnunk.</p>
-<p>Ki is vehetjük a <code>TryGet</code> metódusból a mesterséges késleltetést (<code>Thread.Sleep(500);</code> sor).</p>
+<p>Jetzt dürfen wir keine Ausnahme bekommen.</p>
+<p>Sie können die künstliche Verzögerung auch aus der Methode <code>TryGet</code> entfernen ( Zeile<code>Thread.Sleep(500);</code> ).</p>
 <div class="admonition error">
-<p class="admonition-title">Lockolás <code>this</code>-en</p>
-<p>Felmerülhet a kérdés, hogy miért vezettünk be egy külön <code>_syncRoot</code> tagváltozót és használtuk ezt zárolásra a <code>lock</code> paramétereként, amikor a <code>this</code>-t is használhattuk volna helyette (a <code>DataFifo</code> referencia típus, így ennek nem lenne akadálya). A <code>this</code> alkalmazása azonban <strong>sértené az osztályunk egységbezárását</strong>! Ne feledjük: a <code>this</code> egy referencia az objektumunkra, de más osztályoknak is van ugyanerre az objektumra referenciájuk (pl. esetünkben a <code>MainWindow</code>-nak van referenciája a <code>DataFifo</code>-ra), és ha ezek a külső osztályok zárat tesznek a <code>lock</code> segítségével az objektumra, akkor az "interferál" az általunk az osztályon belük használt zárolással (mivel <code>this</code> alkalmazása miatt a külső és belső <code>lock</code>-ok paramétere ugyanaz lesz). Így pl. egy külső zárral teljesen meg lehet "bénítani" a <code>TryGet</code> és <code>Put</code> művelet működését. Ezzel szemben az általunk választott megoldásban a <code>lock</code> paramétere, a <code>_syncRoot</code> változó privát, ehhez már külső osztályok nem férhetnek hozzá, így nem is zavarhatják meg az osztályunk belső működését.</p>
+<p class="admonition-title">Locking on <code>this</code></p>
+<p>Es stellt sich die Frage, warum wir eine separate Membervariable <code>_syncRoot</code> eingeführt und diese als Locking-Parameter für <code>lock</code> verwendet haben, wenn wir stattdessen auch <code>this</code>hätten verwenden können ( <code>DataFifo</code> ist der Referenztyp, daher wäre dies kein Problem). Die Verwendung von <code>this</code> <strong>würde</strong> jedoch <strong>gegen das Unit Lock-in unserer Abteilung verstoßen</strong>! Erinnern Sie sich: <code>this</code> ist ein Verweis auf unser Objekt, aber andere Klassen haben Verweise auf dasselbe Objekt (z.B. in unserem Fall <code>MainWindow</code>hat einen Verweis auf <code>DataFifo</code>), und wenn diese externen Klassen eine Sperre auf das Objekt setzen, indem sie <code>lock</code> verwenden, wird dies die Sperre "stören", die wir auf die Klasse darin verwenden (da die Verwendung von <code>this</code> dazu führt, dass die externen und internen <code>lock</code>denselben Parameter haben). Zum Beispiel kann eine externe Sperre verwendet werden, um die Operationen <code>TryGet</code> und <code>Put</code> vollständig "lahmzulegen". Im Gegensatz dazu ist in unserer Lösung der Parameter <code>lock</code>, die Variable <code>_syncRoot</code>, privat und kann nicht von externen Klassen aufgerufen werden, so dass sie die internen Abläufe unserer Klasse nicht beeinträchtigen kann.</p>
 </div>
-<h2 id="7-feladat-hatekony-jelzes-megvalositasa">7. feladat – Hatékony jelzés megvalósítása<a class="headerlink" href="#7-feladat-hatekony-jelzes-megvalositasa" title="Permanent link">&para;</a></h2>
-<h3 id="manualresetevent-hasznalata">ManualResetEvent használata<a class="headerlink" href="#manualresetevent-hasznalata" title="Permanent link">&para;</a></h3>
-<p>A <code>WorkerThread</code>-ben folyamatosan futó <code>while</code> ciklus ún. aktív várakozást valósít meg, ami mindig kerülendő. Ha a <code>Thread.Sleep</code>-et nem tettük volna a ciklusmagba, akkor ezzel maximumra ki is terhelné a processzort. A <code>Thread.Sleep</code> megoldja ugyan a processzor terhelés problémát, de bevezet egy másikat: ha mindhárom munkaszálunk éppen alvó állapotba lépett, mikor beérkezik egy új adat, akkor feleslegesen várunk 500 ms-ot az adat feldolgozásának megkezdéséig.</p>
-<p>A következőkben úgy fogjuk módosítani az alkalmazást, hogy blokkolva várakozzon, amíg adat nem kerül a FIFO-ba (amikor viszont adat kerül bele, azonnal kezdje meg a feldolgozást). Annak jelzésére, hogy van-e adat a sorban egy <code>ManualResetEvent</code>-et fogunk használni.</p>
+<h2 id="7-aufgabe-1-umsetzung-einer-wirksamen-signalisierung">7. aufgabe 1 - Umsetzung einer wirksamen Signalisierung<a class="headerlink" href="#7-aufgabe-1-umsetzung-einer-wirksamen-signalisierung" title="Permanent link">&para;</a></h2>
+<h3 id="manualresetevent-verwenden">ManualResetEvent verwenden<a class="headerlink" href="#manualresetevent-verwenden" title="Permanent link">&para;</a></h3>
+<p>Die Schleife <code>while</code>, die in <code>WorkerThread</code>ständig läuft, implementiert ein sogenanntes aktives Warten, das immer vermieden werden sollte. Wäre <code>Thread.Sleep</code>nicht in den Schleifenkern eingebaut worden, wäre der Prozessor überlastet gewesen.  <code>Thread.Sleep</code> löst zwar das Problem der CPU-Belastung, führt aber ein weiteres ein: Wenn sich alle drei Arbeitsstationen im Ruhezustand befinden, wenn neue Daten empfangen werden, warten wir unnötigerweise 500 ms, bevor wir mit der Verarbeitung der Daten beginnen.</p>
+<p>Im Folgenden wird die Anwendung so geändert, dass sie in einem blockierten Zustand wartet, bis Daten zum FIFO hinzugefügt werden (aber wenn Daten hinzugefügt werden, beginnt sie sofort mit der Verarbeitung). Um anzuzeigen, ob sich Daten in der Warteschlange befinden, wird <code>ManualResetEvent</code>verwendet.</p>
 <ol>
 <li>
-<p>Adjunk hozzá egy <code>MaunalResetEvent</code> példányt a <code>DataFifo</code> osztályunkhoz <code>_hasData</code> néven.</p>
+<p>Fügen Sie eine Instanz von <code>MaunalResetEvent</code> zu Ihrer Klasse <code>DataFifo</code> als <code>_hasData</code> hinzu.</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// A false konstruktor paraméter eredményeképpen kezdetben az esemény nem jelzett (kapu csukva)</span>
 <span class="k">private</span><span class="w"> </span><span class="n">ManualResetEvent</span><span class="w"> </span><span class="n">_hasData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ManualResetEvent</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
 </code></pre></div>
 </li>
 <li>
-<p>A <code>_hasData</code> alkalmazásunkban kapuként viselkedik. Amikor adat kerül a listába „kinyitjuk”, míg amikor kiürül a lista „bezárjuk”.</p>
+<p>Es fungiert als Gateway in unserer Anwendung <code>_hasData</code>.  Wenn der Liste Daten hinzugefügt werden, wird sie "geöffnet", und wenn die Liste geleert wird, wird sie "geschlossen".</p>
 <div class="admonition tip">
-<p class="admonition-title">Az esemény szemantikája és elnevezése</p>
-<p>Lényeges, hogy jó válasszuk meg az eseményünk szemantikáját és ezt a változónk nevével pontosan ki is fejezzük. A példánkban a <code>_hasData</code> név jól kifejezi, hogy pontosan akkor és csak akkor jelzett az eseményünk (nyitott a kapu), amikor van feldolgozandó adat. Most már "csak" az a dolgunk, hogy ezt a szemantikát megvalósítsuk: jelzettbe tegyük az eseményt, mikor adat kerül a FIFO-ba, és jelzetlenbe, amikor kiürül a FIFO.</p>
+<p class="admonition-title">Semantik und Namensgebung der Veranstaltung</p>
+<p>Es ist wichtig, die Semantik Ihrer Veranstaltung gut zu wählen und sie im Namen Ihrer Veranstaltung präzise auszudrücken. In unserem Beispiel drückt der Name <code>_hasData</code> aus, dass unser Ereignis genau dann und nur dann signalisiert wird, wenn es Daten zu verarbeiten gibt (Gateway geöffnet). Jetzt müssen wir "nur" noch diese Semantik implementieren: das Ereignis in flagged setzen, wenn Daten in den FIFO eingegeben werden, und in unsigned, wenn der FIFO geleert wird.</p>
 </div>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Put</span><span class="p">(</span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
 <span class="p">{</span>
@@ -2135,11 +2135,11 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 </code></pre></div>
 </li>
 </ol>
-<h3 id="jelzesre-varakozas-blokkolo-a-get">Jelzésre várakozás (blokkoló a Get)<a class="headerlink" href="#jelzesre-varakozas-blokkolo-a-get" title="Permanent link">&para;</a></h3>
-<p>Az előző pontban megoldottuk a jelzést, ám ez önmagában nem sokat ér, hiszen nem várakoznak rá. Ennek megvalósítása jön most.</p>
+<h3 id="warten-auf-signal-blockieren-des-get">Warten auf Signal (Blockieren des Get)<a class="headerlink" href="#warten-auf-signal-blockieren-des-get" title="Permanent link">&para;</a></h3>
+<p>Der vorherige Punkt wurde gelöst, aber das ist an sich nicht viel wert, da es nicht erwartet wird. Diese Erkenntnis kommt jetzt.</p>
 <ol>
 <li>
-<p>Módosítsuk a metódust az alábbiak szerint: kidobjuk az üresség vizsgálatot és az eseményre való várakozással pótoljuk.</p>
+<p>Ändern Sie die Methode wie folgt: Streichen Sie den Leere-Test und ersetzen Sie ihn durch Warten auf das Ereignis.</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">TryGet</span><span class="p">(</span><span class="k">out</span><span class="w"> </span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">lock</span><span class="w"> </span><span class="p">(</span><span class="n">_syncRoot</span><span class="p">)</span>
@@ -2149,18 +2149,18 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 <span class="w">            </span><span class="c1">// ...</span>
 </code></pre></div>
 <div class="admonition note">
-<p class="admonition-title">A WaitOne művelet visszatérési értékének vizsgálata</p>
-<p>A <code>WaitOne</code> művelet egy <code>bool</code> értékkel tér vissza, mely igaz, ha a <code>WaitOne</code> paraméterében megadott időkorlát előtt jelzett állapotba kerül az esemény (ill. ennek megfelelően hamis, ha lejárt az időkorlát). A példánkban nem adtunk meg időkorlátot paraméterben, mely végtelen időkorlát alkalmazását jelenti. Ennek megfelelően felesleges is az <code>if</code> feltételvizsgálat, hiszen esetünkben a <code>WaitOne()</code> mindig igaz értékkel tér vissza. Ez egyetlen ok, amiért mégis éltünk feltételvizsgálattal: így a követketkező és egy későbbi feladatnál kisebb átalakításra lesz majd szükség.</p>
+<p class="admonition-title">Überprüfung des Rückgabewerts der Operation WaitOne</p>
+<p>Die Operation <code>WaitOne</code> gibt den Wert <code>bool</code> zurück, der wahr ist, wenn sich das Ereignis vor der im Parameter <code>WaitOne</code> angegebenen Zeitspanne in dem angegebenen Zustand befindet (und entsprechend falsch, wenn die Zeitspanne abgelaufen ist). In unserem Beispiel haben wir im Parameter kein Zeitlimit angegeben, was eine unendliche Zeitspanne bedeutet. Dementsprechend ist die Prüfung der Bedingung <code>if</code> überflüssig, da in unserem Fall <code>WaitOne()</code> immer einen wahren Wert liefert. Dies ist der einzige Grund, warum wir dennoch die Konditionstests verwendet haben: Sie erfordern weniger Änderungen für die nächste und eine zukünftige Übung.</p>
 </div>
 </li>
 <li>
-<p>Ezzel a <code>Thread.Sleep</code> a <code>WorkerThread</code>-ben feleslegessé vált, kommentezzük ki!</p>
-<p>A fenti megoldás futtatásakor azt tapasztaljuk, hogy az alkalmazásunk felülete az első gombnyomást követően befagy. Az előző megoldásunkban ugyanis egy amatőr hibát követtünk el. A lock-olt kódrészleten belül várakozunk a <code>_hasData</code> jelzésére, így a főszálnak lehetősége sincs arra, hogy a <code>Put</code> műveletben (egy szintén <code>lock</code>-kal védett részen belül) jelzést küldjön <code>_hasData</code>-val. <strong>Gyakorlatilag egy holtpont (deadlock) helyzet alakult ki.</strong></p>
-<p>Próbálkozhatnánk egy időkorlát megadásával (ms) a várakozásnál:</p>
+<p>Dies macht <code>Thread.Sleep</code> in <code>WorkerThread</code>überflüssig, kommentieren Sie es aus!</p>
+<p>Wenn Sie die obige Lösung ausführen, werden Sie feststellen, dass die Oberfläche Ihrer Anwendung nach dem ersten Tastendruck einfriert. Bei unserer vorherigen Lösung haben wir einen Anfängerfehler gemacht. In dem gesperrten Codeschnipsel warten wir darauf, dass <code>_hasData</code> gesendet wird, so dass der Hauptthread keine Gelegenheit hat, <code>_hasData</code>in der Operation <code>Put</code> zu senden (ebenfalls geschützt durch <code>lock</code>). <strong>In der Praxis hat sich eine festgefahrene Situation ergeben.</strong></p>
+<p>Wir könnten versuchen, ein Zeitlimit (ms) für die Wartezeit festzulegen:</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_hasData</span><span class="p">.</span><span class="n">WaitOne</span><span class="p">(</span><span class="m">100</span><span class="p">))</span>
 </code></pre></div>
-<p>Ez önmagában sem lenne elegáns megoldás, ráadásul a folyamatosan pollozó munkaszálak jelentősen kiéheztetnék a Put-ot hívó szálat! Helyette, az elegáns és követendő minta az, hogy lock-on belül kerüljük a blokkolva várakozást.</p>
-<p>Valódi javításként cseréljük meg a <code>lock</code>-ot és a <code>WaitOne</code>-t, illetve a <code>WaitOne</code> paraméter eltávolításával szüntessük meg a várakozási időkorlátot:</p>
+<p>Dies wäre an sich keine elegante Lösung, außerdem würden die ständig verschmutzenden Arbeits-Threads den Thread, der Put aufruft, erheblich aushungern! Stattdessen ist das elegante Muster zu folgen, um zu vermeiden, dass man innerhalb einer Sperre blockiert wartet.</p>
+<p>Ersetzen Sie <code>lock</code>und <code>WaitOne</code>und entfernen Sie die Wartezeitbegrenzung, indem Sie den Parameter <code>WaitOne</code> entfernen:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">TryGet</span><span class="p">(</span><span class="k">out</span><span class="w"> </span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="hll"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_hasData</span><span class="p">.</span><span class="n">WaitOne</span><span class="p">())</span>
@@ -2182,14 +2182,14 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Próbáljuk ki az alkalmazást. Az első gombnyomás hatására kivételt kapunk. Így elkerüljük ugyan a deadlockot, <strong>azonban a szálbiztosság sérült</strong>, hiszen mire a <code>lock</code>-on belülre jutunk, nem biztos, hogy maradt elem a listában. Ugyanis lehet, több szál is várakozik a <code>_hasData.WaitOne()</code> műveletnél arra, hogy elem kerüljön a sorba. Mikor ez bekövetkezik, a <code>ManualResetEvent</code> objektumunk mind átengedi (hacsak éppen gyorsan le nem csukja egy szál, de ez nem garantált).</p>
+<p>Probieren wir die App aus. Wenn Sie die Taste zum ersten Mal drücken, erhalten Sie eine Ausnahme. Dadurch wird zwar ein Deadlock vermieden, <strong>aber die Threadsicherheit ist beeinträchtigt</strong>, da zu dem Zeitpunkt, zu dem Sie in <code>lock</code>gelangen, möglicherweise keine Elemente mehr in der Liste vorhanden sind. Es kann mehrere Threads geben, die darauf warten, dass ein Element zum Vorgang <code>_hasData.WaitOne()</code> hinzugefügt wird. Wenn dies geschieht, wird unser <code>ManualResetEvent</code> Objekt alle durchlassen (es sei denn, ein Thread schließt es schnell, aber das ist nicht garantiert).</p>
 <div class="admonition note">
-<p class="admonition-title">A konkurens, többszálú környezetben való programozás nehézségei</p>
-<p>Jól illusztrálja a feladat, hogy milyen alapos átgondolást igényel a konkurens, többszálú környezetben való programozás. Tulajdonképpen még szerencsénk is volt az előzőekben, mert jól reprodukálhatóan előjött a hiba. A gyakorlatban azonban ez ritkán van így. Sajnos sokkal gyakoribb, hogy a konkurenciahibák időnkénti, nem reprodukálható problémákat okoznak. Az ilyen jellegű feladatok megoldását mindig nagyon át kell gondolni, nem lehet az "addig-próbálkozom-míg-jó-nem-lesz-a-kézi-teszt-során" elv mentén leprogramozni.</p>
+<p class="admonition-title">The difficulties of programming in a concurrent, multi-threaded environment</p>
+<p>Diese Übung veranschaulicht, wie sorgfältig man bei der Programmierung in einer gleichzeitigen Multi-Thread-Umgebung vorgehen muss. Bei den vorherigen hatten wir sogar noch Glück, denn der Fehler war reproduzierbar. In der Praxis ist dies jedoch selten der Fall. Leider ist es viel häufiger der Fall, dass wettbewerbsbedingte Ausfälle gelegentliche, nicht reproduzierbare Probleme verursachen. Die Lösung einer solchen Aufgabe muss immer sehr sorgfältig durchdacht sein und kann nicht nach dem Motto "Probieren geht über Studieren" programmiert werden.</p>
 </div>
 </li>
 <li>
-<p>Javításként tegyük vissza a <code>lock</code>-on belüli üresség-vizsgálatot.</p>
+<p>Als Abhilfe sollten wir die Ungültigkeitsprüfung in <code>lock</code>wieder einführen.</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">TryGet</span><span class="p">(</span><span class="k">out</span><span class="w"> </span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_hasData</span><span class="p">.</span><span class="n">WaitOne</span><span class="p">())</span>
@@ -2214,19 +2214,19 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Ez már jól működik. Előfordulhat ugyan, hogy feleslegesen fordulunk a listához, de ezzel így most megelégszünk.</p>
-<p>Teszteljük az alkalmazást!</p>
+<p>Dies funktioniert bereits gut. Es ist möglich, dass wir unnötigerweise auf die Liste eingehen, aber wir belassen es vorerst dabei.</p>
+<p>Testen wir die App!</p>
 </li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">System.Collections.Concurrent</p>
-<p>A .NET keretrendszerben több beépített szálbiztosságra felkészített osztály is található a <code>System.Collections.Concurrent</code> névtérben. A fenti példában a <code>DataFifo</code> osztályt a <code>System.Collections.Concurrent.ConcurrentQueue</code> osztállyal kiválthattuk volna.</p>
+<p>Im .NET-Framework gibt es mehrere eingebaute thread-sichere Klassen im Namensraum <code>System.Collections.Concurrent</code>.  In dem obigen Beispiel hätte die Klasse <code>DataFifo</code> durch <code>System.Collections.Concurrent.ConcurrentQueue</code> ersetzt werden können.</p>
 </div>
-<h2 id="8-feladat-kulturalt-leallas">8. feladat – Kulturált leállás<a class="headerlink" href="#8-feladat-kulturalt-leallas" title="Permanent link">&para;</a></h2>
-<p>Korábban félretettük azt a problémát, hogy az ablakunk bezárásakor a processzünk „beragad”, ugyanis a feldolgozó munkaszálak előtérszálak, kiléptetésüket eddig nem oldottuk meg. Célunk, hogy a végtelen <code>while</code> ciklust kiváltva a munkaszálaink az alkalmazás bezárásakor kulturált módon álljanak le.</p>
+<h2 id="8-aufgabe-1-kultivierter-stillstand">8. aufgabe 1 - Kultivierter Stillstand<a class="headerlink" href="#8-aufgabe-1-kultivierter-stillstand" title="Permanent link">&para;</a></h2>
+<p>Bisher haben wir das Problem, dass unser Prozess beim Schließen des Fensters "stecken bleibt", beiseite gelassen, weil die Verarbeitungsthreads Vorverarbeitungsthreads sind und wir das Problem des Beendens dieser Threads nicht gelöst haben. Unser Ziel ist es, den unendlichen <code>while</code> -Zyklus auszulösen, so dass unsere Arbeits-Threads auf zivilisierte Weise beendet werden, wenn die Anwendung geschlossen wird.</p>
 <ol>
 <li>
-<p>Egy <code>ManualResetEvent</code> segítségével jelezzük a leállítást a FIFO-ban a <code>TryGet</code>-ben történő várakozás során. A FIFO-ban vegyünk fel egy új <code>ManualResetEvent</code>-et, és vezessünk be egy <code>Release</code> műveletet, amellyel a várakozásainkat zárhatjuk rövidre (új eseményünk jelzett állapotba állítható).</p>
+<p>Ein <code>ManualResetEvent</code> wird verwendet, um einen Stopp im FIFO anzuzeigen, während in <code>TryGet</code>gewartet wird. Fügen Sie im FIFO ein neues <code>ManualResetEvent</code>hinzu und führen Sie eine <code>Release</code> -Operation ein, um unsere Wartezeiten zu verkürzen (unser neues Ereignis kann auf einen markierten Zustand gesetzt werden).</p>
 <div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="n">ManualResetEvent</span><span class="w"> </span><span class="n">_releaseTryGet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ManualResetEvent</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
 
 <span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Release</span><span class="p">()</span>
@@ -2236,7 +2236,7 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 </code></pre></div>
 </li>
 <li>
-<p>A <code>TryGet</code>-ben erre az eseményre is várakozzunk. A <code>WaitAny</code> metódus akkor engedi tovább a futtatást, ha a paraméterként megadott <code>WaitHandle</code> típusú objektumok közül valamelyik jelzett állapotba kerül, és visszaadja annak tömbbéli indexét. Tényleges adatfeldolgozást pedig csak akkor szeretnénk, ha a <code>_hasData</code> jelzett (amikor is a <code>WaitAny</code> 0-val tér vissza).</p>
+<p>Bleiben Sie auf <code>TryGet</code>für diese Veranstaltung. Die Methode <code>WaitAny</code> darf die Ausführung fortsetzen, wenn sich eines der als Parameter angegebenen Objekte vom Typ <code>WaitHandle</code> in dem angegebenen Zustand befindet, und gibt dessen Massenindex zurück. Und wir wollen die tatsächliche Verarbeitung nur, wenn <code>_hasData</code> markiert ist (wenn <code>WaitAny</code> 0 zurückgibt).</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">TryGet</span><span class="p">(</span><span class="k">out</span><span class="w"> </span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="hll"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">WaitHandle</span><span class="p">.</span><span class="n">WaitAny</span><span class="p">(</span><span class="k">new</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_hasData</span><span class="p">,</span><span class="w"> </span><span class="n">_releaseTryGet</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
@@ -2246,12 +2246,12 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 </code></pre></div>
 </li>
 <li>
-<p><code>MainWindow.xaml.cs</code>-ban vegyünk fel egy flag tagváltozót a bezárás jelzésére:</p>
+<p><code>MainWindow.xaml.cs</code>-eine Flaggenvariable hinzufügen, um den Abschluss anzuzeigen:</p>
 <div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">_isClosed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
 </code></pre></div>
 </li>
 <li>
-<p>A főablak bezárásakor állítsuk jelzettre az új eseményt és billentsünk be be a flag-et is: a <code>MainWindow</code> osztály <code>Closed</code> eseményére iratkozzunk fel a konstruktorban, és írjuk meg a megfelelő eseménykezelő függvényt:</p>
+<p>Wenn das Hauptfenster geschlossen wird, setzen Sie das neue Ereignis auf "flagged" und setzen Sie auch das Flag: abonnieren Sie das Ereignis <code>Closed</code> der Klasse <code>MainWindow</code> im Konstruktor und schreiben Sie die entsprechende Ereignisbehandlungsfunktion:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">MainWindow</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="p">...</span>
@@ -2267,7 +2267,7 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 </code></pre></div>
 </li>
 <li>
-<p>Írjuk át a while ciklust az előző pontban felvett flag figyelésére.</p>
+<p>Schreiben wir die while-Schleife so um, dass sie auf das im vorigen Abschnitt aufgegriffene Flag wartet.</p>
 <div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">WorkerThread</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="hll"><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">_isClosed</span><span class="p">)</span>
@@ -2275,7 +2275,7 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 </code></pre></div>
 </li>
 <li>
-<p>Végül biztosítsuk, hogy a már bezáródó ablak esetében ne próbáljunk üzeneteket kiírni</p>
+<p>Stellen Sie sicher, dass Sie nicht versuchen, Nachrichten für ein Fenster zu drucken, das bereits geschlossen ist</p>
 <div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ShowResult</span><span class="p">(</span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="n">parameters</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">result</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="hll"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_isClosed</span><span class="p">)</span>
@@ -2283,11 +2283,11 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 </span></code></pre></div>
 </li>
 <li>
-<p>Futtassuk az alkalmazást, és ellenőrizzük, kilépéskor az processzünk valóban befejezi-e a futását.</p>
+<p>Führen Sie die Anwendung aus und überprüfen Sie, ob unser Prozess tatsächlich beendet wird, wenn Sie ihn beenden.</p>
 </li>
 </ol>
-<h2 id="kitekintes-task-async-await">Kitekintés: Task, async, await<a class="headerlink" href="#kitekintes-task-async-await" title="Permanent link">&para;</a></h2>
-<p>A gyakorlat során az alacsonyabb szintű szálkezelési technikákkal kívántunk megismerkedni. Ugyanakkor megoldásunkat (legalábbis részben) építhettük volna a .NET aszinkron programozást támogató magasabb szintű eszközeire és mechanizmusaira, úgymint <code>Task</code>/<code>Task&lt;T&gt;</code> osztályok és <code>async</code>/<code>await</code> kulcsszavak.</p>
+<h2 id="ausblick-task-async-await">Ausblick: Task, async, await<a class="headerlink" href="#ausblick-task-async-await" title="Permanent link">&para;</a></h2>
+<p>Ziel der Übung war es, die Techniken für das Management von Fasern auf unterer Ebene kennen zu lernen. Wir hätten unsere Lösung jedoch (zumindest teilweise) auf den übergeordneten Werkzeugen und Mechanismen aufbauen können, die die asynchrone Programmierung in .NET unterstützen, z. B. die Klassen <code>Task</code>/<code>Task&lt;T&gt;</code> und die Schlüsselwörter <code>async</code>/<code>await</code>. </p>
 
   <hr>
 <div class="md-source-file">
@@ -2298,8 +2298,8 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
         </path>
       </svg>
     </span>
-    <span title="2024. február 23. 13:18:04">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-23T13:18:04+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-23</span>
+    <span title="2024. március 9. 10:46:58">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-09T10:46:58+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-09</span>
     </span>
   </span>
 
@@ -2314,16 +2314,8 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
       </svg>
     </span>
     <span>Szerzők</span>
-    <nav><a href="https://github.com/Szabó Zoltán" target="_blank" rel="noopener noreferrer" class="md-author" title="@Szabó Zoltán">
-        <img src="https://avatars.githubusercontent.com/Szabó Zoltán?size=72" alt="@Szabó Zoltán">
-      </a><a href="https://github.com/kszicsillag" target="_blank" rel="noopener noreferrer" class="md-author" title="@kszicsillag">
-        <img src="https://avatars.githubusercontent.com/kszicsillag?size=72" alt="@kszicsillag">
-      </a><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@bzolka">
-        <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
-      </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tibor Tóth">
-        <img src="https://avatars.githubusercontent.com/u/8333960?u=d26653213d265ecdceeaf20a896d74f479d35450&v=4?size=72" alt="@Tibor Tóth">
-      </a><a href="https://github.com/zbenedek-mirango" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
-        <img src="https://avatars.githubusercontent.com/u/105201689?u=f025d5bedc2ea0cab45a1010194e95afd8ed3556&v=4?size=72" alt="@Zoltán Benedek">
+    <nav><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
+        <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&v=4?size=72" alt="@Zoltán Benedek">
       </a></nav>      
   </span>
 </div>
@@ -2370,14 +2362,14 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.aecac24b.min.js"></script>
       
-        <script src="../../js/timeago.min.js"></script>
+        <script src="../../../js/timeago.min.js"></script>
       
-        <script src="../../js/timeago_mkdocs_material.js"></script>
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
       
     
   <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
