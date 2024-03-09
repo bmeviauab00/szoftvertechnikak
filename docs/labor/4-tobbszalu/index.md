@@ -303,9 +303,9 @@ A feladatok ideiglenes tárolására a kiinduló projektünkben már némiképpe
 3. Hozzuk létre, és indítsuk el a feldolgozó szálakat a konstruktorban:
 
     ```cs
-    new Thread(WorkerThread) { Name = "Szal1" }.Start();
-    new Thread(WorkerThread) { Name = "Szal2" }.Start();
-    new Thread(WorkerThread) { Name = "Szal3" }.Start();
+    new Thread(WorkerThread) { Name = "Worker thread 1" }.Start();
+    new Thread(WorkerThread) { Name = "Worker thread 2" }.Start();
+    new Thread(WorkerThread) { Name = "Worker thread 3" }.Start();
     ```
 
 4. Indítsuk el az alkalmazást, majd zárjuk is be azonnal anélkül, hogy a _Calculate Result_ gombra kattintanánk. Az tapasztaljuk, hogy az ablakunk bezáródik ugyan, de a processzünk tovább fut, az alkalmazás bezárására csak a Visual Studioból, vagy a Task Managerből van lehetőség:
