@@ -2212,7 +2212,7 @@ Es ist auch möglich, eine eigene Markup Extension zu erstellen, aber dies ist k
 <span class="w">    </span><span class="n">NewPerson</span><span class="p">.</span><span class="n">Age</span><span class="o">++</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Aufgrund der Datenbindung, die im vorherigen Abschnitt eingeführt wurde, würden wir erwarten, dass, wenn wir die Eigenschaft <code>Age</code> der Datenquelle <code>NewPerson</code> in den obigen Ereignishandlern ändern, unser Steuerelement <code>tbAge</code> <code>Textbox</code> in unserer Schnittstelle dies verfolgen würde. Probieren wir es aus! Dies funktioniert noch nicht, da es die** Implementierung der Schnittstelle <code>INotifyPropertyChanged</code>** erfordert.</p>
+<p>Aufgrund der Datenbindung, die im vorherigen Abschnitt eingeführt wurde, würden wir erwarten, dass, wenn wir die Eigenschaft <code>Age</code> der Datenquelle <code>NewPerson</code> in den obigen Ereignishandlern ändern, unser Steuerelement <code>tbAge</code> <code>Textbox</code> in unserer Schnittstelle dies verfolgen würde. Probieren wir es aus! Dies funktioniert noch nicht, da es die <strong>Implementierung der Schnittstelle <code>INotifyPropertyChanged</code></strong> erfordert.</p>
 <ol>
 <li>
 <p>Implementieren wir die Schnittstelle <code>INotifyPropertyChanged</code> in unserer Klasse <code>Person</code>.  Wenn wir Daten an diese Klasse binden, abonniert das System das Ereignis <code>PropertyChanged</code>. Durch Auslösen dieses Ereignisses können wir die Bindung benachrichtigen, wenn sich eine Eigenschaft geändert hat.</p>
@@ -2299,7 +2299,7 @@ Fügen Sie die Liste <code>Person</code>in die Code-Behind-Datei Ihrer Ansicht e
 <p>Probieren wir es aus!</p>
 <p>Wir sehen, dass zwei Einträge in der Liste erschienen sind. Natürlich ist es nicht das, was wir wollen, aber das ist leicht zu ändern.
 Standardmäßig ruft <code>ListView</code> <code>ToString()</code>bei Listenelementen auf, was, wenn es nicht überschrieben wird, die Eigenschaft <code>FullName</code> des Klassentyps (d.h. der Typname) ist.</p>
-<p>Legen wir** die Eigenschaft** <code>ItemTemplate</code>** von** <code>ListView</code>fest (unter Verwendung der bekannten Syntax für Eigenschaftselemente), die dem Listenelement das Aussehen unter Verwendung einer Vorlage verleiht: In unserem Fall machen wir daraus ein einzelliges <code>Grid</code>, wobei <code>TextBlock</code>s die Eigenschaften von <code>Person</code> anzeigt, wobei der Name links und das Alter rechts ausgerichtet ist.</p>
+<p>Legen wir <strong>die Eigenschaft</strong> <code>ItemTemplate</code> <strong>von</strong> <code>ListView</code>fest (unter Verwendung der bekannten Syntax für Eigenschaftselemente), die dem Listenelement das Aussehen unter Verwendung einer Vorlage verleiht: In unserem Fall machen wir daraus ein einzelliges <code>Grid</code>, wobei <code>TextBlock</code>s die Eigenschaften von <code>Person</code> anzeigt, wobei der Name links und das Alter rechts ausgerichtet ist.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;ListView</span><span class="w"> </span><span class="na">Grid.Row=</span><span class="s">&quot;3&quot;</span><span class="w"> </span><span class="na">Grid.ColumnSpan=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="na">ItemsSource=</span><span class="s">&quot;{x:Bind People}&quot;</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nt">&lt;ListView.ItemTemplate&gt;</span>
 <span class="w">        </span><span class="nt">&lt;DataTemplate</span><span class="w"> </span><span class="na">x:DataType=</span><span class="s">&quot;model:Person&quot;</span><span class="nt">&gt;</span>
@@ -2363,8 +2363,8 @@ Standardmäßig ruft <code>ListView</code> <code>ToString()</code>bei Listenelem
         </path>
       </svg>
     </span>
-    <span title="2024. március 8. 21:11:38">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-08T21:11:38+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-08</span>
+    <span title="2024. március 9. 09:23:00">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-09T09:23:00+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-09</span>
     </span>
   </span>
 
