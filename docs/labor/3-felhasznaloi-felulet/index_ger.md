@@ -607,7 +607,7 @@ private void IncreaseButton_Click(object sender, RoutedEventArgs e)
 }
 ```
 
-Aufgrund der Datenbindung, die im vorherigen Abschnitt eingeführt wurde, würden wir erwarten, dass, wenn wir die Eigenschaft `Age` der Datenquelle `NewPerson` in den obigen Ereignishandlern ändern, unser Steuerelement `tbAge` `Textbox` in unserer Schnittstelle dies verfolgen würde. Probieren wir es aus! Dies funktioniert noch nicht, da es die** Implementierung der Schnittstelle `INotifyPropertyChanged`** erfordert.
+Aufgrund der Datenbindung, die im vorherigen Abschnitt eingeführt wurde, würden wir erwarten, dass, wenn wir die Eigenschaft `Age` der Datenquelle `NewPerson` in den obigen Ereignishandlern ändern, unser Steuerelement `tbAge` `Textbox` in unserer Schnittstelle dies verfolgen würde. Probieren wir es aus! Dies funktioniert noch nicht, da es die **Implementierung der Schnittstelle `INotifyPropertyChanged`** erfordert.
 
 1. Implementieren wir die Schnittstelle `INotifyPropertyChanged` in unserer Klasse `Person`.  Wenn wir Daten an diese Klasse binden, abonniert das System das Ereignis `PropertyChanged`. Durch Auslösen dieses Ereignisses können wir die Bindung benachrichtigen, wenn sich eine Eigenschaft geändert hat.
 
@@ -713,7 +713,7 @@ Probieren wir es aus!
 Wir sehen, dass zwei Einträge in der Liste erschienen sind. Natürlich ist es nicht das, was wir wollen, aber das ist leicht zu ändern.
 Standardmäßig ruft `ListView` `ToString()`bei Listenelementen auf, was, wenn es nicht überschrieben wird, die Eigenschaft `FullName` des Klassentyps (d.h. der Typname) ist.
 
-Legen wir** die Eigenschaft** `ItemTemplate`** von** `ListView`fest (unter Verwendung der bekannten Syntax für Eigenschaftselemente), die dem Listenelement das Aussehen unter Verwendung einer Vorlage verleiht: In unserem Fall machen wir daraus ein einzelliges `Grid`, wobei `TextBlock`s die Eigenschaften von `Person` anzeigt, wobei der Name links und das Alter rechts ausgerichtet ist.
+Legen wir **die Eigenschaft** `ItemTemplate` **von** `ListView`fest (unter Verwendung der bekannten Syntax für Eigenschaftselemente), die dem Listenelement das Aussehen unter Verwendung einer Vorlage verleiht: In unserem Fall machen wir daraus ein einzelliges `Grid`, wobei `TextBlock`s die Eigenschaften von `Person` anzeigt, wobei der Name links und das Alter rechts ausgerichtet ist.
 
 ```xml
 <ListView Grid.Row="3" Grid.ColumnSpan="2" ItemsSource="{x:Bind People}">
