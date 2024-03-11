@@ -68,7 +68,7 @@ Ami számunkra fontos a kiinduló projektben:
 
 * `App.xaml.cs`: Az alkalmazás belépési pontja, amely használja a modern .NET alkalmazásokban alkalmazott Host Builder és Dependency Injection mintákat. A félévnek ez nem az anyaga, de a függőség injektálásról még a labor során lesz szó.
 * `Views` mappa: Az alkalmazás nézeteit tartalmazza, jelenleg a `MainPage`-et
-* `ViewModels` mappa: Az alkalmazás ViewModel-jeit tartalmazza, jelenleg a `MainViewModel`-t
+* `ViewModels` mappa: Az alkalmazás ViewModel-jeit tartalmazza, jelenleg a `MainPageViewModel`-t
 * `INagivationService` (`Services` mappában): oldalak közötti navigációhoz használt szolgáltatás
 
 !!! tip "MVVM és Boilerplate könyvtárak"
@@ -96,7 +96,7 @@ A megoldás során "alulról", az adatok felől fogunk építkezni és fokozatos
 Fontosabb elemek:
 
 * `MainPage`: ez a View, egy Page leszármazott, a felület XAML alapú leírása.
-* `MainViewModel`: a főoldalhoz (`MainPage`) tartozó ViewModel. Egy (generált) `RecipeGroups` tulajdonságban receptcsoportokat, a receptcsoportokban recepteket tartalmaz. A nézet ezen a receptcsoportok fejlécét, illetve a csoportokban levő receptek fejlécét és képeit jeleníti meg adatkötéssel.
+* `MainPageViewModel`: a főoldalhoz (`MainPage`) tartozó ViewModel. Egy (generált) `RecipeGroups` tulajdonságban receptcsoportokat, a receptcsoportokban recepteket tartalmaz. A nézet ezen a receptcsoportok fejlécét, illetve a csoportokban levő receptek fejlécét és képeit jeleníti meg adatkötéssel.
 * `RecipeGroup` és `Recipe`: a receptcsoportokat és a recepteket reprezentáló modell osztályok.
 * `RecipeService`: alkalmazáslogika/adatelérés a receptek kezeléséhez (egy távoli szolgáltatással kommunikál), a ViewModel használja.
 
@@ -207,15 +207,15 @@ Következő lépésben a főoldal ViewModeljét fogjuk elkészíteni, amely az e
 
 #### Dependency Injection
 
-Nyissuk meg a `MainViewModel` osztályt az `MvvmLab.ViewModels` mappából.
+Nyissuk meg a `MainPageViewModel` osztályt az `MvvmLab.ViewModels` mappából.
 A ViewModel-ünknek szüksége lesz egy `IRecipeService` interfészt implementáló osztályra, amelyen keresztül le tudja kérdezni a recept csoportokat.
-A `MainViewModel` konstruktorában függőség injektáláson keresztül szerezzük be a szükséges függőséget.
+A `MainPageViewModel` konstruktorában függőség injektáláson keresztül szerezzük be a szükséges függőséget.
 Esetünkben ez annyit tesz, hogy várunk egy `IRecipeService` típusú paramétert, amelyet majd a ViewModel példányosításkor fog megkapni, a paramétert pedig elmentjük egy privát változóba.
 
 ```csharp
 private readonly IRecipeService _recipeService;
 
-public MainViewModel(IRecipeService recipeService)
+public MainPageViewModel(IRecipeService recipeService)
 {
     _recipeService = recipeService;
 }
@@ -245,9 +245,9 @@ Ahhoz, hogy a példányosítás során a függőségi gráfot bejárva beinjekt�
 services.AddTransient<IRecipeService, RecipeService>();
 ```
 
-Ez azt mondja meg, hogy ahol egy osztályunk `IRecipeService` függőséget vár (pl. `MainViewModel` konstruktora), a DI keretrendszer egy `RecipeService` implementációt szúr be (és mivel itt **Tranziens** élettartamúként regisztráltuk, minden egyes `IRecipeService` függőség igényt egy új `RecipeService` példány fog kielégíteni).
+Ez azt mondja meg, hogy ahol egy osztályunk `IRecipeService` függőséget vár (pl. `MainPageViewModel` konstruktora), a DI keretrendszer egy `RecipeService` implementációt szúr be (és mivel itt **Tranziens** élettartamúként regisztráltuk, minden egyes `IRecipeService` függőség igényt egy új `RecipeService` példány fog kielégíteni).
 
-Ahhoz, hogy a Dependency Injection az alkalmazásunkban működjön, a `MainViewModel` osztályt is be kell regisztrálni a konténerbe, ezt is megtaláljuk a `ConfigureServices` alatt.
+Ahhoz, hogy a Dependency Injection az alkalmazásunkban működjön, a `MainPageViewModel` osztályt is be kell regisztrálni a konténerbe, ezt is megtaláljuk a `ConfigureServices` alatt.
 
 !!! note "DI konténerekről részletesen"
     A DI konténerek használatával és működésével Adatvezérelt rendszerek tárgy keretében fogunk később részletesen megismerkedni.
@@ -258,12 +258,12 @@ Következő lépésben a ViewModel állapotának feltöltését implementáljuk.
 
 A célunk az, hogy
 
-* a `MainViewModel`-ben legyen `RecipeGroups`nevű tulajdonság, melyben receptcsoportok vannak (ezt akarjuk a felülethez kötni),
+* a `MainPageViewModel`-ben legyen `RecipeGroups`nevű tulajdonság, melyben receptcsoportok vannak (ezt akarjuk a felülethez kötni),
 * a `RecipeGroups` változásait kövesse le a felület, melyhez szükség van az `INotifyPropertyChanged` megvalósítására és a `PropertyChanged` megfelelő elsütésére (ahogy a korábbi laboron/házi feladatban már láttuk).
 
 Ehhez viszonylag "sokat" kellene dolgoznunk, de az MVVM toolkit leegyszerűsíti az életünket, mindössze a következőt kell megtennünk:
 
-* A `MainViewModel`-ben hozzunk létre egy `_recipeGroups` nevű `RecipeGroup[]` **tagváltozót** (vagyis nem tulajdonságot).
+* A `MainPageViewModel`-ben hozzunk létre egy `_recipeGroups` nevű `RecipeGroup[]` **tagváltozót** (vagyis nem tulajdonságot).
 * A változót lássuk el a `ObservableProperty` attribútummal. 
 
 ```csharp
@@ -275,13 +275,13 @@ Kész is vagyunk. De mi történik ennek hatására?
 
 * Ez alapján az MVVM Toolkit automatikusan generálni fog egy `RecipeGroups` nevű property-t az osztály generált másik (partial) felében.
 * Ez a generált property kihasználja az `INotifyPropertyChanged` interfészt, így a `RecipeGroups` property értékének megváltozásakor a `PropertyChanged` eseményt kiváltva értesíti a nézetet, az adatkötések mentén.
-* A `MainViewModel`-ünk már megvalósítja az `INotifyPropertyChanged` interfészt, mert az MVVM Toolkit `ObservableObject` osztályából származik.
+* A `MainPageViewModel`-ünk már megvalósítja az `INotifyPropertyChanged` interfészt, mert az MVVM Toolkit `ObservableObject` osztályából származik.
 
-A `MainViewModel`-ben implementáljuk az előkészített `INavigationAware` interfészt, amelynek segítségével a nézetek közötti navigációs életciklus eseményt tudjuk lekezelni, és akár adatokat is tudunk átadni a ViewModel-ek között.
+A `MainPageViewModel`-ben implementáljuk az előkészített `INavigationAware` interfészt, amelynek segítségével a nézetek közötti navigációs életciklus eseményt tudjuk lekezelni, és akár adatokat is tudunk átadni a ViewModel-ek között.
 A `OnNavigatedTo` metódusban kérdezzük le a recept csoportokat az `IRecipeService`-en keresztül, majd tároljuk el a `RecipeGroups` változóban.
 
 ```csharp hl_lines="7"
-public partial class MainViewModel : ObservableObject, INavigationAware
+public partial class MainPageViewModel : ObservableObject, INavigationAware
 {
     // ...
 
@@ -320,7 +320,7 @@ Hozzuk létre az oldal erőforrásai között a `CollectionViewSource` példány
     Vegyük észre, hogy az adatkötés során a `ViewModel` tulajdonsághoz kötünk, mely a `MainPage.xaml.cs`-ben található, és egyszerűen csak átkasztolja a `DataContext` property-t a ViewModel típusunkra.
 
     ```csharp
-    public MainViewModel ViewModel => DataContext as MainViewModel;
+    public MainPageViewModel ViewModel => DataContext as MainPageViewModel;
     ```
 
     Az, hogy a vezérlők (oldalak) `DataContext` tulajdonságában a ViewModel-t tároljuk tipikus az MVVM mintában. Esetünkben ezt a generált projekt `NavigationService` osztálya teszi meg nekünk.
@@ -406,10 +406,10 @@ Vegyük fel a következő névteret (ebben vannak a modell osztályaink):
 A receptek részletes oldalának elkészítése a következő lépésekből fog állni:
 
 1. Kiegészítjük az `IRecipeService` interfészt egy `GetRecipeAsync` metódussal, és létrehozzuk a szükséges osztályokat
-1. Létrehozzuk a `RecipeDetailViewModel` ViewModel-t, amiben lekérdezzük a recept adatait a `RecipeDetailViewModel`-ben az `IRecipeService`-en keresztül (a VM az azonosítót kapja meg a navigáció során)
+1. Létrehozzuk a `RecipeDetailPageViewModel` ViewModel-t, amiben lekérdezzük a recept adatait a `RecipeDetailPageViewModel`-ben az `IRecipeService`-en keresztül (a VM az azonosítót kapja meg a navigáció során)
 1. Létrehozzuk a `RecipeDetailPage` nézetet, építve a ViewModel adataira
 1. Regisztráljuk a ViewModel-t és a nézetet a Dependency Injection konfigurációhoz és a navigációhoz
-1. Átnavigálunk a `RecipeDetailPage`-re a `MainViewModel`-ből a receptre történő kattintásra az `INavigationService` segítségével, és átadjuk a kiválasztott recept azonosítóját a részletes oldalnak
+1. Átnavigálunk a `RecipeDetailPage`-re a `MainPageViewModel`-ből a receptre történő kattintásra az `INavigationService` segítségével, és átadjuk a kiválasztott recept azonosítóját a részletes oldalnak
 
 ### 2.1 Recept lekérdezése
 
@@ -453,25 +453,25 @@ public async Task<Recipe> GetRecipeAsync(int id)
 
 ### 2.2 Recept részletes ViewModel
 
-A ViewModel készítése a főoldalhoz képest már ujjgyakorlat (alapvetően annak mintájára lehet dolgozni). Hozzuk létre a `RecipeDetailViewModel` osztályt az `MvvmLab.ViewModels` mappában.
+A ViewModel készítése a főoldalhoz képest már ujjgyakorlat (alapvetően annak mintájára lehet dolgozni). Hozzuk létre a `RecipeDetailPageViewModel` osztályt az `MvvmLab.ViewModels` mappában.
 
-A ViewModel-nek szüksége lesz egy `IRecipeService` interfészt implementáló osztályra, amelyen keresztül le tudja kérdezni a receptet. A `RecipeDetailViewModel` konstruktorában DI segítségével szerezzük be a szükséges függőséget.
+A ViewModel-nek szüksége lesz egy `IRecipeService` interfészt implementáló osztályra, amelyen keresztül le tudja kérdezni a receptet. A `RecipeDetailPageViewModel` konstruktorában DI segítségével szerezzük be a szükséges függőséget.
 
 ```csharp
 private readonly IRecipeService _recipeService;
 
-public RecipeDetailViewModel(IRecipeService recipeService)
+public RecipeDetailPageViewModel(IRecipeService recipeService)
 {
     _recipeService = recipeService;
 }
 ```
 
-A `RecipeDetailViewModel`-ben hozzunk létre egy `_recipe` nevű `Recipe` típusú változót, amelyben tárolni fogjuk a receptet.
+A `RecipeDetailPageViewModel`-ben hozzunk létre egy `_recipe` nevű `Recipe` típusú változót, amelyben tárolni fogjuk a receptet.
 A változót attributáljuk fel a `ObservableProperty` attribútummal, mely alapján az MVVM Toolkit automatikusan generálni fogja a `Recipe` nevű property-t az osztály másik generált partial felében.
 Ehhez szükséges, hogy az osztály az `ObservableObject` osztályból származzon, publikus legyen és a `partial` kulcsszóval legyen ellátva.
 
 ```csharp
-public partial class RecipeDetailViewModel : ObservableObject
+public partial class RecipeDetailPageViewModel : ObservableObject
 {
     // ...
 
@@ -479,12 +479,12 @@ public partial class RecipeDetailViewModel : ObservableObject
     private Recipe _recipe = new();
 ```
 
-Implementáljuk a `RecipeDetailViewModel`-ben az előkészített `INavigationAware` interfészt.
+Implementáljuk a `RecipeDetailPageViewModel`-ben az előkészített `INavigationAware` interfészt.
 Arra készülünk, hogy a navigációs paraméterként a megjeleníteni kívánt recept azonosítóját fogjuk megkapni.
 A `OnNavigatedTo` metódusban kérdezzük le a receptet a `RecipeService`-en keresztül, majd tároljuk el a `Recipe` tulajdonságban.
 
 ```csharp
-public partial class RecipeDetailViewModel : ObservableObject, INavigationAware
+public partial class RecipeDetailPageViewModel : ObservableObject, INavigationAware
 {
     // ...
 
@@ -523,7 +523,7 @@ Hozzunk létre egy új oldalt `RecipeDetailPage` néven a `Views` mappába (_Vie
 Az adatkötéshez vegyük fel a `RecipeDetailPage.xaml.cs`-ben a `ViewModel` property-t a főoldal mintájára.
 
 ```csharp
-public RecipeDetailViewModel ViewModel => (RecipeDetailViewModel)DataContext;
+public RecipeDetailPageViewModel ViewModel => (RecipeDetailPageViewModel)DataContext;
 ```
 
 !!! warning "Fordítási hibák"
@@ -558,8 +558,8 @@ A navigáció támogatásához a `Services` mappában lévő `PageService`-ben r
     ```csharp hl_lines="4"
     public PageService()
     {
-        Configure<MainViewModel, MainPage>(Pages.Main);
-        Configure<RecipeDetailViewModel, RecipeDetailPage>(Pages.Detail);
+        Configure<MainPageViewModel, MainPage>(Pages.Main);
+        Configure<RecipeDetailPageViewModel, RecipeDetailPage>(Pages.Detail);
     }
     ```
 
@@ -568,18 +568,18 @@ A navigáció támogatásához a `Services` mappában lévő `PageService`-ben r
 
     ```csharp
     services.AddTransient<RecipeDetailPage>();
-    services.AddTransient<RecipeDetailViewModel>();
+    services.AddTransient<RecipeDetailPageViewModel>();
     ```
 
 Ezekre azért van szükség, mert a projekt sablonban lévő `INavigationService` alapvetően egy kulccsal azonosítja a nézeteket, annak érdekében, hogy a ViewModel-ben ne legyen szükség a nézet típusának ismeretére.
 A kulcs alapján pedig ki tudja keresni, hogy pontosan melyik Viewt kell megjeleníteni, és melyik ViewModel-t kell példányosítani a nézet `DataContext`-jébe a DI konténerből.
 
-A `MainViewModel`-ben injektáljuk be az `INavigationService`-t, amelyen keresztül navigálni fogunk a `RecipeDetailPage`-re.
+A `MainPageViewModel`-ben injektáljuk be az `INavigationService`-t, amelyen keresztül navigálni fogunk a `RecipeDetailPage`-re.
 
 ```csharp
 private readonly INavigationService _navigationService;
 
-public MainViewModel(IRecipeService recipeService, INavigationService navigationService)
+public MainPageViewModel(IRecipeService recipeService, INavigationService navigationService)
 {
     _recipeService = recipeService;
     _navigationService = navigationService;
@@ -590,11 +590,11 @@ public MainViewModel(IRecipeService recipeService, INavigationService navigation
 
 Eddig az MVVM minta egyik oldalával foglalkoztunk: hogyan éri el adatkötéssel és jeleníti meg a View a ViewModel-ben levő adatokat. Ugyanakkor, az View és ViewModel között általában van egy másik kapcsolat is: ez arról szól, hogy a View eseményei (pl. kattintás) hogyan hatnak vissza a ViewModel-re. Most ezzel fogunk foglalkozni.
 
-Esetünkben pl. meg kell oldani, hogy a főoldali nézeten egy Recepten történő kattintás eljusson a `MainViewModel`-hez, és az ennek hatására átnavigáljon az adott recept részletes nézetére.
+Esetünkben pl. meg kell oldani, hogy a főoldali nézeten egy Recepten történő kattintás eljusson a `MainPageViewModel`-hez, és az ennek hatására átnavigáljon az adott recept részletes nézetére.
 
 A ViewModel a végrehajtható műveleteket az MVVM mintában tipikusan `ICommand` interfészt megvalósító objektumokon keresztül publikálja (amelyek a konkrét művelet végrehajtásán túl kezelhetik a művelet végrehajtásának feltételeit is).
 
-A `MainViewModel`-ben készítsünk egy Commandot, mely a receptre kattintva fog lefutni. A Command paraméterként megkapja a kiválasztott recept fejlécet, és átnavigál a `RecipeDetailPage`-re, ahol átadásra kerül a kiválasztott recept azonosítója.
+A `MainPageViewModel`-ben készítsünk egy Commandot, mely a receptre kattintva fog lefutni. A Command paraméterként megkapja a kiválasztott recept fejlécet, és átnavigál a `RecipeDetailPage`-re, ahol átadásra kerül a kiválasztott recept azonosítója.
 
 Most létre kellene hozzunk egy úgy, `ICommand` interfészt implementáló osztályt, majd ebből fel kellene vegyünk egy példányt (tulajdonságot) a ViewModel-be. Ezt a két lépést az MVVM toolkit leegyszerűsíti, csak egy `[RelayCommand]` attribútummal ellátott függvényt kell felvegyünk a ViewModelbe:
 
@@ -650,7 +650,7 @@ ItemClickCommand="{x:Bind ViewModel.RecipeSelectedCommand}"
         </controls:AdaptiveGridView>
         ```
 
-        ```csharp title="ViewModel - MainViewModel"
+        ```csharp title="ViewModel - MainPageViewModel"
         public void RecipeSelected(object sender, ItemClickEventArgs e)
         {
            ...
@@ -844,7 +844,7 @@ public async Task SendCommentAsync(int recipeId, Comment comment)
 
 ### ViewModel
 
-A `RecipeDetailViewModel`-ben hozzunk létre egy `NewCommentText` nevű `string` típusú tulajdonságot és egy `NewCommentName` `string` tulajdonságot, melyekben tárolni fogjuk a felhasználó által megadott komment adatait. Használjuk az `ObservableProperty` attribútumot!
+A `RecipeDetailPageViewModel`-ben hozzunk létre egy `NewCommentText` nevű `string` típusú tulajdonságot és egy `NewCommentName` `string` tulajdonságot, melyekben tárolni fogjuk a felhasználó által megadott komment adatait. Használjuk az `ObservableProperty` attribútumot!
 
 ```csharp
 [ObservableProperty]
@@ -854,7 +854,7 @@ private string _newCommentName = string.Empty;
 private string _newCommentText = string.Empty;
 ```
 
-A `RecipeDetailViewModel`-ben hozzunk létre egy `SendComment` nevű függvényt, amelyen keresztül a felhasználó által megadott kommentet tudjuk elküldeni a szervernek.
+A `RecipeDetailPageViewModel`-ben hozzunk létre egy `SendComment` nevű függvényt, amelyen keresztül a felhasználó által megadott kommentet tudjuk elküldeni a szervernek.
 A függvényből generáltassunk egy Commandot az MVVM Toolkit segítségével (`[RelayCommand]`).
 
 Az implementáció egyszerű: elküldjük a kommentet a szervernek, majd frissítjük a receptet.
@@ -904,7 +904,7 @@ A `SendCommentCommand` Command végrehajtásának feltétele, hogy a `NewComment
 A Commandok lehetőséget adnak arra, hogy a végrehajtásukat feltételekhez kössük, amelyeket a `CanExecute` metódusban tudunk megadni.
 Esetünkben egy `bool`-lal visszatérő metódus/property nevet kell megadnunk a Command generátor attribútumnak.
 
-```csharp title="RecipeDetailViewModel-ben:"
+```csharp title="RecipeDetailPageViewModel-ben:"
 private bool CanExecuteSendComment => !string.IsNullOrEmpty(NewCommentName) && !string.IsNullOrEmpty(NewCommentText);
 
 [RelayCommand(CanExecute = nameof(CanExecuteSendComment))]
