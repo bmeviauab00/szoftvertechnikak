@@ -108,7 +108,7 @@ Annyiban megváltozik az alkalmazás működése (de ez szándékos), hogy indul
 Próbáljuk a megoldást magunktól megvalósítani a fenti pontokat követve, majd ellenőrizzük, hogy alapvetően megfelel-e az alábbi megoldásnak.
 
 ??? tip "Megoldás"
-    
+
     ```csharp
     foreach (var bike in game.Bikes)
     {
