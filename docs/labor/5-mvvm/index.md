@@ -141,13 +141,13 @@ Visual Studio-ban az `Edit` menü `Paste Special` menüpontjában a `Paste JSON 
 
 ![Paste JSON as Classes](images/paste-json-as-classes.png)
 
-A kapott osztályokat átnevezhetjük, hogy a C# kódolási konvencióknak megfeleljenek. A `Rootobject` osztályt nevezzük át `RecipeGroup`-ra, a `Recipe` osztályt pedig `RecipeHeader`-re. Használjunk tömbök helyett `List<T>`-t.
+A kapott osztályokat átnevezhetjük, hogy a C# kódolási konvencióknak megfeleljenek. A `Rootobject` osztályt nevezzük át `RecipeGroup`-ra, a `Recipe` osztályt pedig `RecipeHeader`-re.
 
 ```csharp
 public class RecipeGroup
 {
     public string Title { get; set; }
-    public List<RecipeHeader> Recipes { get; set; }
+    public RecipeHeader[] Recipes { get; set; }
 }
 
 public class RecipeHeader
@@ -158,17 +158,20 @@ public class RecipeHeader
 }
 ```
 
+!!! tip "`List<T>` használata"
+    Esetünkben nem volt rá szükség (mert nem bővjük receptgyűjteményeket), de ha kényelmesebb számunkra, akkor nyugodtan írjuk át a generált kódban a tömböket `List<T>`-re.
+
 Készítsünk egy `IRecipeService` interfészt az `MvvmLab.Core.Services` névtérbe, amelyen keresztül el fogjuk érni a távoli szolgáltatást. Az interfészben egy `GetRecipeGroupsAsync` metódust hozzunk létre, amely a recept csoportokat kérdezi le és adja vissza.
 
 ```csharp
 public interface IRecipeService
 {
-    public Task<List<RecipeGroup>> GetRecipeGroupsAsync();
+    public Task<RecipeGroup[]> GetRecipeGroupsAsync();
 }
 ```
 
 !!! tip "Task visszatérési érték"
-    Az interfészben a tényleges visszatérési értéket (`List<RecipeGroup>`) egy `Task<T>` objektumba csomagoljuk, mivel a hálózati műveleteket aszinkron célszerű implementálni. .NET-ben az aszinkron megvalósítás legkorszerűbb és legegyszerűbb módja a `Task`-ok alkalmazása. Az aszinkronitás pedig azt biztosítja itt számunkra, hogy ha a hálózati kérés sokáig tart, akkor se fagyjon be a felhasználói felület (és mindezt külön szálak indítása nélkül).
+    Az interfészben a tényleges visszatérési értéket (`RecipeGroup[]`) egy `Task<T>` objektumba csomagoljuk, mivel a hálózati műveleteket aszinkron célszerű implementálni. .NET-ben az aszinkron megvalósítás legkorszerűbb és legegyszerűbb módja a `Task`-ok alkalmazása. Az aszinkronitás pedig azt biztosítja itt számunkra, hogy ha a hálózati kérés sokáig tart, akkor se fagyjon be a felhasználói felület (és mindezt külön szálak indítása nélkül).
 
 Az interfész implementációját a `MvvmLab.Core.Services` névtérben hozzuk létre `RecipeService` néven.
 A szolgáltatásunk a `HttpClient` beépített .NET osztályt fogja használni a REST API hívásokhoz.
@@ -179,10 +182,10 @@ public class RecipeService : IRecipeService
 {
     private readonly string _baseUrl = "https://bmecookbook2.azurewebsites.net/api";
 
-    public async Task<List<RecipeGroup>> GetRecipeGroupsAsync()
+    public async Task<RecipeGroup[]> GetRecipeGroupsAsync()
     {
         using var client = new HttpClient();
-        return await client.GetFromJsonAsync<List<RecipeGroup>>($"{_baseUrl}/Recipes/Groups");
+        return await client.GetFromJsonAsync<RecipeGroup[]>($"{_baseUrl}/Recipes/Groups");
     }
 }
 ```
@@ -260,12 +263,12 @@ A célunk az, hogy
 
 Ehhez viszonylag "sokat" kellene dolgoznunk, de az MVVM toolkit leegyszerűsíti az életünket, mindössze a következőt kell megtennünk:
 
-* A `MainViewModel`-ben hozzunk létre egy `_recipeGroups` nevű `List<RecipeGroup>` **tagváltozót** (vagyis nem tulajdonságot).
+* A `MainViewModel`-ben hozzunk létre egy `_recipeGroups` nevű `RecipeGroup[]` **tagváltozót** (vagyis nem tulajdonságot).
 * A változót lássuk el a `ObservableProperty` attribútummal. 
 
 ```csharp
 [ObservableProperty]
-private List<RecipeGroup> _recipeGroups = new();
+private RecipeGroup[] _recipeGroups = Array.Empty<RecipeGroup>();
 ```
   
 Kész is vagyunk. De mi történik ennek hatására?
@@ -410,18 +413,18 @@ A receptek részletes oldalának elkészítése a következő lépésekből fog 
 
 ### 2.1 Recept lekérdezése
 
-Hozzuk létre a  `Recipe` osztályt a `MvvmLab.Core.Model` névtérbe, és generáljuk le a tartalmát a `/api/recipes/{id}` végpont által visszaadott példa JSON adatokból, a fent megismert módszerrel (copy, paste special).
+Hozzuk létre a  `Recipe` osztályt a `MvvmLab.Core.Model` névtérbe, és generáljuk le a tartalmát a `/api/recipes/{id}` végpont által visszaadott példa JSON adatokból, a fent megismert módszerrel (Paste special).
 
 ```csharp
 public class Recipe
 {
     public int Id { get; set; }
-    public string Title { get; set; }
-    public string Directions { get; set; }
-    public List<string> Ingredients { get; set; }
     public string BackgroundImage { get; set; }
-    public List<string> ExtraImages { get; set; }
-    public List<Comment> Comments { get; set; }
+    public string Title { get; set; }
+    public string[] ExtraImages { get; set; }
+    public string[] Ingredients { get; set; }
+    public string Directions { get; set; }
+    public Comment[] Comments { get; set; }
 }
 
 public class Comment
@@ -432,7 +435,7 @@ public class Comment
 ```
 
 !!! warning
-    A Paste Special parancs a `Recipe` osztályban a `Comments` típusának `List<object>` típust generál. Ezt mindenképpen írjuk át `List<Comment>`-re, különben később furcsa futásidejű hibát kapunk!
+    A "Paste Special" során fontos, hogy olyan receptet tegyünk előtte a vágólapra, melyhez tartozik megjegyzés (különben a `Comment` osztály nem fog legenerálódni, illetve a `Recipe` osztályban a `Comments` típusának `object[]` típus generálódik). Érdemes ehhez a swagger leírás "Example value" mezőjéből a vágólapra másolni a mintát!
 
 A `IRecipeService` interfészt és implementációját egészítsük ki egy `GetRecipeAsync` metódussal, mely egy receptet ad vissza az azonosítója alapján.
 
