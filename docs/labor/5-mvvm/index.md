@@ -588,7 +588,7 @@ public MainPageViewModel(IRecipeService recipeService, INavigationService naviga
 
 #### Command
 
-Eddig az MVVM minta egyik oldalával foglalkoztunk: hogyan éri el adatkötéssel és jeleníti meg a View a ViewModel-ben levő adatokat. Ugyanakkor, az View és ViewModel között általában van egy másik kapcsolat is: ez arról szól, hogy a View eseményei (pl. kattintás) hogyan hatnak vissza a ViewModel-re. Most ezzel fogunk foglalkozni.
+Eddig az MVVM minta egyik oldalával foglalkoztunk: hogyan éri el adatkötéssel és jeleníti meg a View a ViewModel-ben levő adatokat. Ugyanakkor, a View és ViewModel között általában van egy másik kapcsolat is: ez arról szól, hogy a View eseményei (pl. kattintás) hogyan hatnak vissza a ViewModel-re. Most ezzel fogunk foglalkozni.
 
 Esetünkben pl. meg kell oldani, hogy a főoldali nézeten egy Recepten történő kattintás eljusson a `MainPageViewModel`-hez, és az ennek hatására átnavigáljon az adott recept részletes nézetére.
 
