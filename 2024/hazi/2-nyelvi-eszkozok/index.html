@@ -2252,7 +2252,7 @@ Footer
 <p>Alakítsd át a <code>ReportPrinter</code> osztályt úgy, hogy az osztály használója ne csak a fejlécet, hanem a láblécet is meg tudja adni egy delegate formájában.</p>
 </li>
 <li>
-<p>Alakítsd tovább a <code>ReportPrinter</code> osztályt úgy, hogy az egyes személyek kiírásakor ne a fix "Person" szöveg jelenjen meg, hanem a <code>ReportPrinter</code> osztály használója tudja az egyes személyek adatait az igényeinek megfelelően kiírni egy delegate segítségével (a fix "Person" helyett). Lényeges, hogy a sorszám a sor elején mindig meg kell jelenjen, ez nem lehet a <code>ReportPrinter</code> használója által megváltoztatható!</p>
+<p>Alakítsd tovább a <code>ReportPrinter</code> osztályt úgy, hogy az egyes személyek kiírásakor ne a fix "Person" szöveg jelenjen meg, hanem a <code>ReportPrinter</code> osztály használója tudja az egyes személyek adatait az igényeinek megfelelően kiírni a konzolra egy delegate segítségével (a fix "Person" helyett). Lényeges, hogy a sorszám a sor elején mindig meg kell jelenjen, ez nem lehet a <code>ReportPrinter</code> használója által megváltoztatható!</p>
 <div class="admonition tip">
 <p class="admonition-title">Tipp a megoldáshoz</p>
 <p>Hasonló megközelítésben gondolkozz, mint a fejléc és lábléc esetében, de itt ehhez a <code>ReportPrinter</code> felhasználójának meg kell kapnia a személy objektumot ahhoz, hogy azt formázottan ki tudja írni a konzolra.</p>
@@ -2267,10 +2267,14 @@ Footer
 --------------- Summary -----------------
 Number of Employees: 2
 </code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Láblécben a dolgozók számának kiírása</p>
+<p>Ahhoz, hogy a láblécben a dolgozók számának kiírását elegáns módon meg tudd tenni, szükség van a "variable capturing" témakör ismeretére (lásd 3. előadás "Variable capturing, closure" fejezet).</p>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Házi feladat ellenőrzése</p>
 <p>A "Feladat 6" feladatot, vagyis azt, hogy a <code>ReportPrinter</code>-t és annak használatát jól alakítottad-e át, a GitHub-os automata ellenőrző NEM ellenőrzi. Teszteld a megoldásod alaposan, hogy ne csak a határidő után utólag, a házi feladatok manuális ellenőrzése során derüljön ki, hogy a megoldás nem elfogadható.
-(kiegészítés: 2024.03.13 reggeltől kezdve már erre is van részleges automara ellenőrzés)</p>
+(Kiegészítés: 2024.03.13 reggeltől kezdve már erre is van részleges automata ellenőrzés)</p>
 </div>
 </li>
 <li>
@@ -2345,8 +2349,8 @@ Number of Employees: 2
         </path>
       </svg>
     </span>
-    <span title="2024. március 13. 12:37:40">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-13T12:37:40+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-13</span>
+    <span title="2024. március 13. 16:18:52">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-13T16:18:52+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-13</span>
     </span>
   </span>
 
