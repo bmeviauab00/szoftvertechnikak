@@ -535,8 +535,7 @@ Készen is vagyunk az egyszerű űrlapunk kinézetének kialakításával.
 
 ### Binding
 
-A következő lépésben azt oldjuk meg, hogy az előbb elkészített kis űrlapon egy személy adatait lehessen megadni, módosítani.
-Ehhez először készítsünk egy adatosztályt `Person` néven a project egy újonnan létrehozott `Models` mappájába.
+A következő lépésben azt oldjuk meg, hogy az előbb elkészített kis űrlapon egy személy adatait lehessen megadni, módosítani. Ehhez már elő van készítve egy `Person` osztály a projekt `Models` mappájában, nézzünk ezt meg.
 
 ```csharp
 public class Person
