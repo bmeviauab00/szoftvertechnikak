@@ -316,7 +316,7 @@ Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így 
 
 Ez a feladat a 3. előadás anyagára épít, laboron (idő hiányában) nem szerepelt. Ettől függetlenül ez egy lényeges alaptémakör a tárgyban.
 
-A projektbe vegyél fel egy `Person` és egy `ReportPrinter` osztályt (egy-egy, az osztály nevével egyező fájlba), a következő tartalommal:
+A projektbe vegyél fel egy `Person` és egy `ReportPrinter` osztályt (egy-egy, az osztály nevével egyező fájlba, az alapértelmezett, `ModernLangToolsApp` névtérbe), a következő tartalommal:
 
 ??? tip "Person és ReportPrinter osztályok"
 
@@ -362,7 +362,7 @@ A projektbe vegyél fel egy `Person` és egy `ReportPrinter` osztályt (egy-egy,
     }
     ```
 
-Ez a `ReportPrinter` osztály arra használható, hogy a konstruktorában megadott személyek adatairól formázott riportot írjon ki a konzolra fejléc/adatok/lábléc hármas bontásban.
+ Ez a `ReportPrinter` osztály arra használható, hogy a konstruktorában megadott személyek adatairól formázott riportot írjon ki a konzolra fejléc/adatok/lábléc hármas bontásban.
 A `Program.cs` fájlba vedd fel az alábbi függvényt a `ReportPrinter` kipróbálására, és ezt hívd is meg a `Main` függvényből:
 
 ??? tip "ReportPrinter tesztelése"
@@ -426,6 +426,9 @@ A feladatok a következők:
 4. A következő feladat opcionális, a beépített `Func` delegate-ek gyakorlására ad jó lehetőséget. A `ReportPrinter` osztálynak van egy komolyabb hátránya: a kimeneti riportot csak a konzolon tudjuk a segítségével megjeleníteni. Rugalmasabb megoldás lenne, ha nem írna a konzolra, hanem egy string formájában lehetne a segítségével a riportot előállítani. Ezt a stringet már úgy használhatnánk fel, ahogy csak szeretnénk (pl. írhatnánk fájlba is).
    
     A feladat a következő: vezess be egy `ReportBuilder` osztályt a már meglévő `ReportPrinter` mintájára, de ez ne a konzolra írjon, hanem egy a teljes riportot tartalmazó stringet állítson elő, melyet egy újonnan bevezetett, `GetResult()` művelettel lehessen tőle lekérdezni. 
+
+    !!! warning "Beadás"
+        Ha beadod a feladatot, a `ReportBuilder`-t példányosító/tesztelő kódot ne a fenti, `test6` függvénybe tedd, hanem vezess be egy `test6b` nevű függvényt, és lásd el a `[Description("Feladat6b")]` attribútummal.
    
     !!! tip "Tippek a megoldáshoz"
         * Célszerű az osztályba egy `StringBuilder` tagváltozót bevezetni, és ennek segítségével dolgozni. Ez nagyságrenddel hatékonyabb, mint a stringek "+"-szal való összefűzögetése.
