@@ -2172,7 +2172,7 @@ Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így 
 </div>
 <h2 id="feladat-6-actionfunc-hasznalata">Feladat 6 – <code>Action</code>/<code>Func</code> használata<a class="headerlink" href="#feladat-6-actionfunc-hasznalata" title="Permanent link">&para;</a></h2>
 <p>Ez a feladat a 3. előadás anyagára épít, laboron (idő hiányában) nem szerepelt. Ettől függetlenül ez egy lényeges alaptémakör a tárgyban.</p>
-<p>A projektbe vegyél fel egy <code>Person</code> és egy <code>ReportPrinter</code> osztályt (egy-egy, az osztály nevével egyező fájlba), a következő tartalommal:</p>
+<p>A projektbe vegyél fel egy <code>Person</code> és egy <code>ReportPrinter</code> osztályt (egy-egy, az osztály nevével egyező fájlba, az alapértelmezett, <code>ModernLangToolsApp</code> névtérbe), a következő tartalommal:</p>
 <details class="tip">
 <summary>Person és ReportPrinter osztályok</summary>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Person</span>
@@ -2275,6 +2275,10 @@ Number of Employees: 2
 <li>
 <p>A következő feladat opcionális, a beépített <code>Func</code> delegate-ek gyakorlására ad jó lehetőséget. A <code>ReportPrinter</code> osztálynak van egy komolyabb hátránya: a kimeneti riportot csak a konzolon tudjuk a segítségével megjeleníteni. Rugalmasabb megoldás lenne, ha nem írna a konzolra, hanem egy string formájában lehetne a segítségével a riportot előállítani. Ezt a stringet már úgy használhatnánk fel, ahogy csak szeretnénk (pl. írhatnánk fájlba is).</p>
 <p>A feladat a következő: vezess be egy <code>ReportBuilder</code> osztályt a már meglévő <code>ReportPrinter</code> mintájára, de ez ne a konzolra írjon, hanem egy a teljes riportot tartalmazó stringet állítson elő, melyet egy újonnan bevezetett, <code>GetResult()</code> művelettel lehessen tőle lekérdezni. </p>
+<div class="admonition warning">
+<p class="admonition-title">Beadás</p>
+<p>Ha beadod a feladatot, a <code>ReportBuilder</code>-t példányosító/tesztelő kódot ne a fenti, <code>test6</code> függvénybe tedd, hanem vezess be egy <code>test6b</code> nevű függvényt, és lásd el a <code>[Description("Feladat6b")]</code> attribútummal.</p>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Tippek a megoldáshoz</p>
 <ul>
@@ -2340,8 +2344,8 @@ Number of Employees: 2
         </path>
       </svg>
     </span>
-    <span title="2024. március 3. 16:10:59">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-03T16:10:59+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-03</span>
+    <span title="2024. március 13. 12:23:57">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-13T12:23:57+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-13</span>
     </span>
   </span>
 
