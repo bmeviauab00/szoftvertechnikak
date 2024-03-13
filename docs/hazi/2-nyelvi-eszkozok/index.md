@@ -422,6 +422,7 @@ A feladatok a következők:
 
     !!! warning "Házi feladat ellenőrzése"
         A "Feladat 6" feladatot, vagyis azt, hogy a `ReportPrinter`-t és annak használatát jól alakítottad-e át, a GitHub-os automata ellenőrző NEM ellenőrzi. Teszteld a megoldásod alaposan, hogy ne csak a határidő után utólag, a házi feladatok manuális ellenőrzése során derüljön ki, hogy a megoldás nem elfogadható.
+        (kiegészítés: 2024.03.13 reggeltől kezdve már erre is van részleges automara ellenőrzés)
 
 4. A következő feladat opcionális, a beépített `Func` delegate-ek gyakorlására ad jó lehetőséget. A `ReportPrinter` osztálynak van egy komolyabb hátránya: a kimeneti riportot csak a konzolon tudjuk a segítségével megjeleníteni. Rugalmasabb megoldás lenne, ha nem írna a konzolra, hanem egy string formájában lehetne a segítségével a riportot előállítani. Ezt a stringet már úgy használhatnánk fel, ahogy csak szeretnénk (pl. írhatnánk fájlba is).
    
