@@ -404,7 +404,7 @@ A feladatok a következők:
 
 1. Alakítsd át a `ReportPrinter` osztályt úgy, hogy az osztály használója ne csak a fejlécet, hanem a láblécet is meg tudja adni egy delegate formájában.
    
-2. Alakítsd tovább a `ReportPrinter` osztályt úgy, hogy az egyes személyek kiírásakor ne a fix "Person" szöveg jelenjen meg, hanem a `ReportPrinter` osztály használója tudja az egyes személyek adatait az igényeinek megfelelően kiírni egy delegate segítségével (a fix "Person" helyett). Lényeges, hogy a sorszám a sor elején mindig meg kell jelenjen, ez nem lehet a `ReportPrinter` használója által megváltoztatható!
+2. Alakítsd tovább a `ReportPrinter` osztályt úgy, hogy az egyes személyek kiírásakor ne a fix "Person" szöveg jelenjen meg, hanem a `ReportPrinter` osztály használója tudja az egyes személyek adatait az igényeinek megfelelően kiírni a konzolra egy delegate segítségével (a fix "Person" helyett). Lényeges, hogy a sorszám a sor elején mindig meg kell jelenjen, ez nem lehet a `ReportPrinter` használója által megváltoztatható!
    
     !!! tip "Tipp a megoldáshoz"
         Hasonló megközelítésben gondolkozz, mint a fejléc és lábléc esetében, de itt ehhez a `ReportPrinter` felhasználójának meg kell kapnia a személy objektumot ahhoz, hogy azt formázottan ki tudja írni a konzolra.
@@ -419,10 +419,13 @@ A feladatok a következők:
     --------------- Summary -----------------
     Number of Employees: 2
     ```
+    
+    !!! tip "Láblécben a dolgozók számának kiírása"
+        Ahhoz, hogy a láblécben a dolgozók számának kiírását elegáns módon meg tudd tenni, szükség van a "variable capturing" témakör ismeretére (lásd 3. előadás "Variable capturing, closure" fejezet).
 
     !!! warning "Házi feladat ellenőrzése"
         A "Feladat 6" feladatot, vagyis azt, hogy a `ReportPrinter`-t és annak használatát jól alakítottad-e át, a GitHub-os automata ellenőrző NEM ellenőrzi. Teszteld a megoldásod alaposan, hogy ne csak a határidő után utólag, a házi feladatok manuális ellenőrzése során derüljön ki, hogy a megoldás nem elfogadható.
-        (kiegészítés: 2024.03.13 reggeltől kezdve már erre is van részleges automara ellenőrzés)
+        (Kiegészítés: 2024.03.13 reggeltől kezdve már erre is van részleges automata ellenőrzés)
 
 4. A következő feladat opcionális, a beépített `Func` delegate-ek gyakorlására ad jó lehetőséget. A `ReportPrinter` osztálynak van egy komolyabb hátránya: a kimeneti riportot csak a konzolon tudjuk a segítségével megjeleníteni. Rugalmasabb megoldás lenne, ha nem írna a konzolra, hanem egy string formájában lehetne a segítségével a riportot előállítani. Ezt a stringet már úgy használhatnánk fel, ahogy csak szeretnénk (pl. írhatnánk fájlba is).
    
