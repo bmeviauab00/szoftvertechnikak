@@ -402,9 +402,9 @@ A feladatok a következők:
 !!! warning
     A megoldás során NEM használhatsz saját delegate típust (a .NET beépített delegate típusaival dolgozz, a megoldás csak ekkor elfogadható).
 
-1. Alakítsd át a `ReportPrinter` osztályt úgy, hogy az osztály használója ne csak a fejlécet, hanem a láblécet is meg tudja adni egy delegate formájában.
+1. Alakítsd át a `ReportPrinter` osztályt úgy, hogy az osztály használója ne csak a fejlécet, hanem a láblécet is meg tudja adni egy delegate formájában a konstruktorban.
    
-2. Alakítsd tovább a `ReportPrinter` osztályt úgy, hogy az egyes személyek kiírásakor ne a fix "Person" szöveg jelenjen meg, hanem a `ReportPrinter` osztály használója tudja az egyes személyek adatait az igényeinek megfelelően kiírni a konzolra egy delegate segítségével (a fix "Person" helyett). Lényeges, hogy a sorszám a sor elején mindig meg kell jelenjen, ez nem lehet a `ReportPrinter` használója által megváltoztatható (vagyis ezt a továbbiakban is a `ReportPrinter` osztálynak kell kiírnia)!
+2. Alakítsd tovább a `ReportPrinter` osztályt úgy, hogy az egyes személyek kiírásakor ne a fix "Person" szöveg jelenjen meg, hanem a `ReportPrinter` osztály használója tudja az egyes személyek adatait az igényeinek megfelelően kiírni a konzolra egy konstruktorban megadott delegate segítségével (a fix "Person" helyett). Lényeges, hogy a sorszám a sor elején mindig meg kell jelenjen, ez nem lehet a `ReportPrinter` használója által megváltoztatható (vagyis ezt a továbbiakban is a `ReportPrinter` osztálynak kell kiírnia)!
    
     !!! tip "Tipp a megoldáshoz"
         Hasonló megközelítésben gondolkozz, mint a fejléc és lábléc esetében, de itt ehhez a `ReportPrinter` felhasználójának meg kell kapnia a személy objektumot ahhoz, hogy azt formázottan ki tudja írni a konzolra.
