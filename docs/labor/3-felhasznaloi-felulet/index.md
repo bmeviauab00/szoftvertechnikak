@@ -408,9 +408,9 @@ Definiáljunk a gyökér `Grid`-en 4 sort és 2 oszlopot. Az első oszlopába ke
     </Grid.ColumnDefinitions>
 
     <TextBlock Grid.Row="0" Grid.Column="0" Text="Name"/>
-    <TextBox Grid.Row="0" Grid.Column="1" />
+    <TextBox Grid.Row="0" Grid.Column="1" x:Name="tbName"/>
     <TextBlock Grid.Row="1" Grid.Column="0" Text="Age"/>
-    <TextBox Grid.Row="1" Grid.Column="1" />
+    <TextBox Grid.Row="1" Grid.Column="1" x:Name="tbAge"/>
 
     <Button Grid.Row="2" Grid.Column="1">
         <StackPanel Orientation="Horizontal">
@@ -452,7 +452,7 @@ A felületünk még nem úgy néz ki, mint amit szeretnénk, finomítsunk kicsit
     * `Width="300"`
 * Legyen a sorok között 10px, az oszlopok között 5px távolság és tartsunk 20px távolságot a konténer szélétől
     * `RowSpacing="5" ColumnSpacing="10" Margin="20"`
-* Igazítsuk a címkéket (`TexBlock`) függőlegesen középre
+* Igazítsuk a címkéket (`TextBlock`) függőlegesen középre
     * `VerticalAlignment="Center"`
 * Igazítsuk a gombot jobbra
     * `HorizontalAlignment="Right"`
