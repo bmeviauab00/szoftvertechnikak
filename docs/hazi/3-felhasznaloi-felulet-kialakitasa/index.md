@@ -22,7 +22,7 @@ Az önálló gyakorlat célja:
 A szükséges fejlesztőkörnyezetről [itt](../fejlesztokornyezet/index.md) található leírás.
 
 !!! warning "Fejlesztőkörnyezet WinUI3 fejlesztéshez" 
-    A korábbi házi feladatokhoz képest plusz komponensek telepítése szükséges. A [fenti] (../fejlesztokornyezet/index.md) oldal alján van egy "WinUI támogatás" fejezet, az itt megadott lépéseket mindenképpen meg kell tenni!
+    A korábbi házi feladatokhoz képest plusz komponensek telepítése szükséges. A [fenti](../fejlesztokornyezet/index.md) oldal alján van egy "WinUI támogatás" fejezet, az itt megadott lépéseket mindenképpen meg kell tenni!
 
 ## A beadás menete
 
