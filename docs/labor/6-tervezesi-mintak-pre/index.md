@@ -309,7 +309,7 @@ El is készültünk. Ha sok időnk van, ki is próbálhatjuk, hogy jobban "érez
 
 * Legyen a "TemplateMethod-1" projekt a startup projekt.
 * Tegyünk egy töréspontot az `AnonymizerBase` osztály `var person = Anonymize(persons[i]);` sorára.
-* Amikor futás közben itt megáll a debugger, ++F11++-gyel lépjünk bele.
+* Amikor futás közben itt megáll a debugger, ++f11++-gyel lépjünk bele.
 * Az tapasztaljuk, hogy a  leszármazott `AgeAnonymizer` művelete hívódik.
 
 Vethetünk egy pillantást a megoldás osztálydiagramjára:
@@ -329,7 +329,7 @@ Ellenőrizzük a megoldást, megvalósítja-e a céljainkat:
 * Ennek megfelelően teljesül az OPEN/CLOSED elv, vagyis a kódjának módosítása nélkül tudjuk az ősben megadott két pontban a logikát testre szabni, kiterjeszteni.
 
 !!! Note "Legyen minden pontban kiterjeszthető az osztályunk?"
-    Figyeljük meg, hogy nem tettünk az `AnonymizerBase` minden műveletét virtuálissá (így sok pontban kiterjeszthetővé az osztályt). Csak ott tettük meg, ahogy azt gondoljuk, hogy a jövőben szükség lehet a logika kiterjesztésére.
+    Figyeljük meg, hogy nem tettünk az `AnonymizerBase` minden műveletét virtuálissá (így sok pontban kiterjeszthetővé az osztályt). Csak ott tettük meg, ahol azt gondoljuk, hogy a jövőben szükség lehet a logika kiterjesztésére.
 
 ## 5. Megoldás (3-TemplateMethod/TemplateMethod-2-Progress)
 
