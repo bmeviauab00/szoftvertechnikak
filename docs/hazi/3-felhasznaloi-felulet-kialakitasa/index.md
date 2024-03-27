@@ -268,7 +268,9 @@ Az űrlapban a következő elemek legyenek egymás alatt.
 * **Készültség**: jelölőnégyzet (`CheckBox`)
 * **Mentés**: gomb beépített accent stílussal (`Style="{StaticResource AccentButtonStyle}"`)
 
-Az űrlaphoz nem kell speciális, egyedi vezérlőt (pl. `UserControl` készíteni): egyszerűen használjuk valamelyik, a feladathoz jól illeszkedő layout panel típust.
+Az űrlaphoz nem kell speciális, egyedi vezérlőt (pl. `UserControl` készíteni): egyszerűen használjuk valamelyik, a feladathoz jól illeszkedő layout panel típust. 
+
+Néhány fenti és alább meghatározott követelmény megvalósítása kapcsán lentebb görgetve lenyíló mezőkben némi iránymutatást ad az útmutató.
 
 További funkcionális követelmények:
 
