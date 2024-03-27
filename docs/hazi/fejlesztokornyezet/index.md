@@ -50,9 +50,11 @@ XAML/WinUI technológiákhoz kapcsolódó feladatok esetén (3. házi feladattó
     
     A Visual Studio telepítőben válasszuk ki a ".NET Desktop Development" workload-ot, jobb oldalt az "Installation details" panelen alul pipáljuk a "Windows App SDK C# Templates" komponenst, majd jobb alsó sarokban "Modify" gomb. 
 
-4. Windows SDK telepítése
+4. Windows App SDK telepítése
     
     Ez innen telepíthető: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads. A félév során laborokon, házikban az "1.4.4 (1.4.231219000)" verziót használjuk, érdemes ezt telepíteni akkor is, ha újabb verzió jönne ki.
+
+5. Ha a fentiek telepítése után Windows 11-en nem akarna működni, akkor fel kell tenni a Visual Studio telepítőben a Windows 10 SDK-ból a 10.0.19041-et, vagy újabbat (az Idividual Comopnents alatt található)
 
 ### MacBook és Linux használók számára információk
 
