@@ -12,10 +12,11 @@ A gyakorlat célja megismerkedni a vastagkliens alkalmazások fejlesztésének a
 A labor elvégzéséhez szükséges eszközök:
 
 * Windows 10 vagy Windows 11 operációs rendszer (Linux és macOS nem alkalmas)
-* Visual Studio 2022
-  * Windows Desktop Development Workload
 
-    ![desktop workload](images/desktop-workload.png)
+A szükséges fejlesztőkörnyezetről [itt](../fejlesztokornyezet/index.md) található leírás.
+
+!!! warning "Fejlesztőkörnyezet WinUI3 fejlesztéshez"
+    A korábbi laborokhoz képest plusz komponensek telepítése szükséges. A [fenti](../fejlesztokornyezet/index.md) oldal említi, hogy szükség van a ".NET desktop development" Visual Studio Workload telepítésére, valamint ugyanitt az oldal alján van egy "WinUI támogatás" fejezet, az itt megadott lépéseket is mindenképpen meg kell tenni!
 
 ## Megoldás
 

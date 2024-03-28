@@ -21,8 +21,8 @@ Az önálló gyakorlat célja:
 
 A szükséges fejlesztőkörnyezetről [itt](../fejlesztokornyezet/index.md) található leírás.
 
-!!! warning "Fejlesztőkörnyezet WinUI3 fejlesztéshez" 
-    A korábbi házi feladatokhoz képest plusz komponensek telepítése szükséges. A [fenti](../fejlesztokornyezet/index.md) oldal alján van egy "WinUI támogatás" fejezet, az itt megadott lépéseket mindenképpen meg kell tenni!
+!!! warning "Fejlesztőkörnyezet WinUI3 fejlesztéshez"
+    A korábbi laborokhoz képest plusz komponensek telepítése szükséges. A [fenti](../fejlesztokornyezet/index.md) oldal említi, hogy szükség van a ".NET desktop development" Visual Studio Workload telepítésére, valamint ugyanitt az oldal alján van egy "WinUI támogatás" fejezet, az itt megadott lépéseket is mindenképpen meg kell tenni!
 
 ## A beadás menete
 
