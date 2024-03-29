@@ -18,7 +18,7 @@ A gyakorlat elvégzéséhez szükséges eszközök:
 - A gyakorlat során Visual Studio-ban az *SQL Server Object Explorer*-t fogjuk használni az adatbázis objektumok közötti navigálására és a lekérdezések futtatására. Ehhez szükség lehet az *SQL Server Data Tools* komponensre, melyet legegyszerűbben az *Individual Components* oldalon tudunk telepíteni a Visual Studio Installer-ben, de a *Data Storage and Processing* workload is tartalmazza ezt.
 
 !!! tip "Gyakorlat Linuxon vagy Macen"
-    A gyakorlat anyag alapvetően Windowsra és Visual Studio-ra készült, de - némiképpen más úton - elvégezhető más operációs rendszereken is, mivel a .NET 6 SDK támogatott Linuxon és Mac-en is, Linuxon:
+    A gyakorlat anyag alapvetően Windowsra és Visual Studio-ra készült, de - némiképpen más úton - elvégezhető más operációs rendszereken is, mivel a .NET SDK támogatott Linuxon és Mac-en is, Linuxon:
 
     - Visual Studio helyett, szövegszerkesztővel (pl.: VSCode) és CLI eszközökkel.
     - Az SQL szervernek van Linuxos változata, Mac-en pedig Dockerben futtatható (de Linuxon is talán a Docker legkényelmesebb mód a futtatására).
@@ -181,7 +181,7 @@ A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, amely használ
 
 1. Hozzunk létre egy C# nyelvű konzolos alkalmazást. A projekt típusa *Console App* legyen, és **NE** a *Console App (.NET Framework)*:
     - A projekt neve legyen *AdoExample*
-    - A Target Framework legyen *.NET 6*
+    - A Target Framework legyen *.NET 8*
     - Pipáljuk be a *Do not use top-level statements* kapcsolót
   
 2. Keressük ki a connection string-et az SSOE-ből: jobbklikk az adatbázis-kapcsolatunkon (pirossal jelölve az alábbi ábrán) / Properties.

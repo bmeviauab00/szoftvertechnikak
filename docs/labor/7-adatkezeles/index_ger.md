@@ -181,7 +181,7 @@ Die Aufgabe besteht darin, eine C#-Konsolenanwendung zu erstellen, die die Daten
 
 1. Erstellen Sie eine Konsolenanwendung in C#. Der Projekttyp sollte *Console App* und **NICHT** *Console App (.NET Framework)* sein:
     - Der Projektname sollte *AdoExample* lauten
-    - Das Ziel-Framework sollte *.NET 6* sein
+    - Das Ziel-Framework sollte *.NET 8* sein
     - Aktivieren Sie die Option *Keine Top-Level-Anweisungen verwenden* 
   
 2. Suchen Sie die Verbindungszeichenfolge aus der SSOE: Klicken Sie mit der rechten Maustaste auf unsere Datenbankverbindung (in der Abbildung unten rot markiert) / Eigenschaften.
