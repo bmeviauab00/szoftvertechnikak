@@ -29,7 +29,7 @@ git clone https://github.com/bmeviauab00/lab-mvvm-kiindulo
 
     A megoldás [GitHubon érhető el](https://github.com/bmeviauab00/lab-mvvm-kiindulo) a `megoldas` ágon. A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre a `megoldas` ágat:
 
-    ```git clone https://github.com/bmeviauab00/lab-mvvm-kiindulo -b megoldas```
+    `git clone https://github.com/bmeviauab00/lab-mvvm-kiindulo -b megoldas`
 
 ## Az MVVM mintáról
 
@@ -86,7 +86,6 @@ Ami számunkra fontos a kiinduló projektben:
 ## 1. Feladat - Receptek főoldal
 
 A megoldás során "alulról", az adatok felől fogunk építkezni és fokozatosan fogunk eljutni a nézetig. Ugyan a való életben egy top-bottom fejlesztés gyakran hasznosabb, de a labor során az idő rövidsége miatt az alulról építkezés gyorsabb és egyszerűbb, mert így nem kell az adatokat mockolni. Az alábbi ábra a főoldalhoz tartozó fontosabb osztályokat tekinti át.
-
 
 <figure markdown>
 ![Főoldal](images/mvvm-mainpage.png)
