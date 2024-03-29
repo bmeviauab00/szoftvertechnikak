@@ -25,7 +25,7 @@ Die für die Durchführung der Übung benötigten Werkzeuge:
 - Visual Studio 2022
 
 !!! tip "Übung unter Linux oder macOS"
-    Das Übungsmaterial ist grundsätzlich für Windows und Visual Studio gedacht, kann aber auch auf anderen Betriebssystemen mit anderen Entwicklungswerkzeugen (z.B. VS Code, Rider, Visual Studio für Mac) oder sogar mit einem Texteditor und CLI (Kommandozeilen)-Tools durchgeführt werden. Dies wird dadurch ermöglicht, dass die Beispiele im Kontext einer einfachen Konsolenanwendung präsentiert werden (keine Windows-spezifischen Elemente) und das .NET 6 SDK auf Linux und macOS unterstützt wird. [Hello World unter Linuxon](https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code)
+    Das Übungsmaterial ist grundsätzlich für Windows und Visual Studio gedacht, kann aber auch auf anderen Betriebssystemen mit anderen Entwicklungswerkzeugen (z.B. VS Code, Rider, Visual Studio für Mac) oder sogar mit einem Texteditor und CLI (Kommandozeilen)-Tools durchgeführt werden. Dies wird dadurch ermöglicht, dass die Beispiele im Kontext einer einfachen Konsolenanwendung präsentiert werden (keine Windows-spezifischen Elemente) und das .NET SDK auf Linux und macOS unterstützt wird. [Hello World unter Linuxon](https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code)
 
 ## Einführung
 
