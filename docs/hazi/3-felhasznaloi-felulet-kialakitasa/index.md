@@ -347,11 +347,11 @@ Az űrlap elrendezése
     Illessz be egy képernyőképet az alkalmazásról, ahol az előző képen lévő teendő a listába került és eltűnt az űrlap! (`f3.2.png`)
 
 !!! warning "Fontos kritériumok"
-    Az alábbiakban megadunk néhány fontos kritériumot, melyek mindenképpen kizárják a házi feladat elfogadását:
+    Az alábbiakban megadunk néhány fontos kritériumot, melyek mindenképpen feltételei a házi feladat elfogadásának:
 
     * A feladatkiírás kikötötte, hogy a listában és az űrlapon levő vezélők esetében is adatkötéssel kell dolgozni. Olyan megoldás nem elfogadható, mely ezt megkerüli. Így például nem lehet a code behind fájlban olyan kód, mely az űrlapokon levő vezérlők tulajdonságait (pl. TextBox Text tulajdonsága) közvetlenül kérdezi le vagy állítja.
     * Az előző pont alól két kivétel van: 
-        * A ListView `SelectedItem` tulajdonsága közvetlenül állítandó.
+        * A `ListView` `SelectedItem` tulajdonsága közvetlenül állítandó.
         * Az űrlap láthatóságának szabályozása adatkötés nélkül is elfogadható (bár nem a legszebb megoldás, és a gyakorlás kedvéért is érdemesebb adatkötéssel dolgozni).
     * Amikor egy új to-do elem felvétele történik, és korábban már történt egy ilyen elem felvétele, akkor a korábbi elem adatai NEM lehetnek benne az űrlap vezérlőiben.
 
