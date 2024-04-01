@@ -1938,17 +1938,26 @@ Alap esetben nem lenne fontos a függvénynek statikusnak lennie, de mivel itt e
 <details class="success">
 <summary>Mentés megvalósításának lépései, valamint űrlap láthatóság szabályozása</summary>
 <ol>
-<li>Az űrlapban lévő adatokat egy új <code>TodoItem</code> objektumba gyűjtsük össze, melynek tulajdonságait adatkötjük (két irányúan!) a felületen. Hozzunk létre egy tulajdonságot ehhez <code>EditedTodo</code> néven (kezdőértéke legyen null).</li>
-<li>A <em>Hozzáadás</em> gombra kattintva legyen példányosítva az <code>EditedTodo</code>. </li>
+<li>Az űrlapban lévő adatokat egy új <code>TodoItem</code> objektumba gyűjtsük össze, melynek tulajdonságait adatkötjük (két irányúan!) a felületen. Vezessünk be egy tulajdonságot ehhez <code>EditedTodo</code> néven. Ettől a ponttól kezdve két megközelítéssel dolgozhatunk:<ol>
+<li>Az EditedTodo alapesetben null. Amikor a felhasználó új to-do elem felvételét kezdeményezi, akkor hozzuk létre az új EditedTodo objektumot, mely az adott új elem adatait tárolja. Mentéskor ezt az objektumot tesszük bele a listába. Így minden új elem felvételekor az EditedTodo egy új objektumra hivatkozik. </li>
+<li>Egy közös EditedTodo objektumot használunk minden to-do elem felvételekor. Ezt már az oldal létrehozáskor példányosítjuk. Amikor a felhasználó új to-do elem felvételét kezdeményezi (vagy a mentés végén), akkor gondoskodni kell az EditedTodo alapértelmezett értékekkel való feltöltéséről. Mentéskor egy másolatot kell készíteni róla és ezt kell a közös listába beletenni.</li>
+</ol>
+</li>
+<li>A kövezkezőkben a fenti 1. megközelítés lépéseire adunk iránymutatást, de mindenképpen érdemes először önálóan próbálkozni. </li>
+<li>Az EditedTodo kezdőértéke legyen null, illetve a <em>Hozzáadás</em> gombra kattintva legyen példányosítva az <code>EditedTodo</code>. </li>
 <li>A mentés során a <code>Todos</code> listához adjuk hozzá a szerkesztett teendő objektumot. Gondoljunk arra, hogy az adatkötéseknek frissülniük kell a felületen a lista tartalmának változása során (ehhez az adataink tárolásán kell változtatni).</li>
-<li>A mentés során az <code>EditedTodo</code> property-t nullozzuk ki.</li>
-<li>Ha a fentieknek megfelelően dolgoztunk, az űrlapunk pontosan akkor kell látható legyen, amikor az <code>EditedTodo</code> értéke nem null (gondoljuk át, hogy valóban így van). Erre építve több megoldást is kidolgozhatunk. A legegyszerűbb a klasszikus <code>x:Bind</code> tulajdonság alapú adatkötés alkalmazása:<ol>
+<li>A mentés során az <code>EditedTodo</code> property-t nullozzuk ki. Ezt annak érdekében, tesszük, hogy a következő to-do elem felvételekor az adatkötés miatt üresek legyenek az űrlapon a vezérlők, ne a korábbi to-do elem adatai legyenek rajta. Gondoljuk át, ez elég lesz-e a megoldáshoz? Próbáljuk is ki a megoldásunkat! Amikor az <code>EditedTodo</code> tulajdonságot állítjuk, a kötött vezérlőknek frissülniük kell. Mire van ehhez szükség? 
+    (Tipp: itt most nem az érdekel minket, hogy az <code>EditedTodo</code> által hivatkozott <code>TodoItem</code> tulajdonságai, pl. <code>Title</code>, <code>Description</code> változnak, hanem a <code>MainPage</code> osztály <code>EditedTodo</code> tulajdonsága változik: ennek megfelelően az <code>EditedTodo</code>-t tartalmazó osztályban kell a megfelelő interfészt megvalósítani).</li>
+</ol>
+</details>
+<details class="success">
+<summary>Az űrlap láthatóság szabályozása</summary>
+<p>Ha a fentieknek megfelelően dolgoztunk, az űrlapunk pontosan akkor kell látható legyen, amikor az <code>EditedTodo</code> értéke nem null (gondoljuk át, hogy valóban így van). Erre építve több megoldást is kidolgozhatunk. A legegyszerűbb a klasszikus <code>x:Bind</code> tulajdonság alapú adatkötés alkalmazása:</p>
+<ol>
 <li>Vezessünk be egy új tulajdonságot a <code>MainPage</code> osztályunkban (pl. <code>IsFormVisible</code> néven, bool típussal).</li>
 <li>Ez pontosan akkor legyen igaz, amikor az <code>EditedTodo</code> nem null. Ennek a karbantartása a mi feladatunk, pl. az <code>EditedTodo</code> setterében.</li>
 <li>Ezt a tulajdonságot lehet adatkötni az űrlapunkat reprezentáló konténer láthatóságához (<code>Visibility</code> tulajdonság). Igaz, hogy a típusuk nem egyezik, de WinUI alatt van automatikus konverzió a <code>bool</code> és <code>Visibility</code> típusok között.</li>
 <li>Gondoljunk arra is, hogy amikor a forrás tulajdonság (<code>IsFormVisible</code>) változik, a hozzá kötött cél tulajdonságot (vezérlő láthatóság) esetünkben mindig frissíteni kell. Mire van ehhez szükség? (Tipp: a <strong>tulajdonságot közvetlenül tartalmazó osztálynak</strong> - gondoljuk át, esetünkben ez melyik osztály - egy megfelelő interfészt meg kell valósítania stb.)</li>
-</ol>
-</li>
 </ol>
 <details>
 <summary>Alternatív lehetőségek a megoldásra</summary>
@@ -1985,6 +1994,19 @@ Alap esetben nem lenne fontos a függvénynek statikusnak lennie, de mivel itt e
 <p class="admonition-title">3. feladat BEADANDÓ</p>
 <p>Illessz be egy képernyőképet az alkalmazásról, ahol az új teendő felvétele látható még mentés előtt! (<code>f3.1.png</code>)</p>
 <p>Illessz be egy képernyőképet az alkalmazásról, ahol az előző képen lévő teendő a listába került és eltűnt az űrlap! (<code>f3.2.png</code>)</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Fontos kritériumok</p>
+<p>Az alábbiakban megadunk néhány fontos kritériumot, melyek mindenképpen kizárják a házi feladat elfogadását:</p>
+<ul>
+<li>A feladatkiírás kikötötte, hogy a listában és az űrlapon levő vezélők esetében is adatkötéssel kell dolgozni. Olyan megoldás nem elfogadható, mely ezt megkerüli. Így például nem lehet a code behind fájlban olyan kód, mely az űrlapokon levő vezérlők tulajdonságait (pl. TextBox Text tulajdonsága) közvetlenül kérdezi le vagy állítja.</li>
+<li>Az előző pont alól két kivétel van: <ul>
+<li>A ListView <code>SelectedItem</code> tulajdonsága közvetlenül állítandó.</li>
+<li>Az űrlap láthatóságának szabályozása adatkötés nélkül is elfogadható (bár nem a legszebb megoldás, és a gyakorlás kedvéért is érdemesebb adatkötéssel dolgozni).</li>
+</ul>
+</li>
+<li>Amikor egy új to-do elem felvétele történik, és korábban már történt egy ilyen elem felvétele, akkor a korábbi elem adatai NEM lehetnek benne az űrlap vezérlőiben.</li>
+</ul>
 </div>
 <p>Opcionális gyakorló feladatok</p>
 <details class="tip">
@@ -2038,8 +2060,8 @@ Alap esetben nem lenne fontos a függvénynek statikusnak lennie, de mivel itt e
         </path>
       </svg>
     </span>
-    <span title="2024. március 31. 20:50:15">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-31T20:50:15+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-31</span>
+    <span title="2024. április 1. 13:16:30">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-01T13:16:30+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-01</span>
     </span>
   </span>
 
