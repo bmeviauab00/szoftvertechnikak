@@ -292,7 +292,7 @@ Az űrlap elrendezése
         ![Viselkedés átméretezés közben](images/newtodo-resizing.gif)
         ![Néhány méret feltüntetése](images/newtodo-annotated.png)
 
-??? success "Mentés megvalósításának lépései, valamint űrlap láthatóság szabályozása"
+??? success "Mentés megvalósításának lépései"
 
     1. Az űrlapban lévő adatokat egy új `TodoItem` objektumba gyűjtsük össze, melynek tulajdonságait adatkötjük (két irányúan!) a felületen. Vezessünk be egy tulajdonságot ehhez `EditedTodo` néven. Ettől a ponttól kezdve két megközelítéssel dolgozhatunk:
         1. Az EditedTodo alapesetben null. Amikor a felhasználó új to-do elem felvételét kezdeményezi, akkor hozzuk létre az új EditedTodo objektumot, mely az adott új elem adatait tárolja. Mentéskor ezt az objektumot tesszük bele a listába. Így minden új elem felvételekor az EditedTodo egy új objektumra hivatkozik. 
