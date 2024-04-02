@@ -47,7 +47,7 @@ Mint általában, a jelen házi feladat keretében elkészítendő feladatra is 
 
 ## 1. feladat - Modell kialakítása és tesztadatok
 
-A projekten belül hozzuk létre a `Models` mappába az alábbi ábrán látható osztályt és enum típust. A `TodoItem` osztály fogja tartalmazni a teendők adatait, a prioritáshoz egy felsorolt típust hozunk létre.
+A projekten belül hozzunk létre egy `Models` mappát (VS Solution Exporerben), majd a mappába az alábbi ábrán látható osztályt és enum típust. A `TodoItem` osztály fogja tartalmazni a teendők adatait, a prioritáshoz egy felsorolt típust hozunk létre.
 
 <figure markdown>
 ![Modell](images/model.png)
