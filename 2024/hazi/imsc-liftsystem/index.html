@@ -13,6 +13,10 @@
         <link rel="canonical" href="https://bmeviauab00.github.io/szoftvertechnikak/2024/hazi/imsc-liftsystem/">
       
       
+        <link rel="prev" href="../meghirdetes-elott/">
+      
+      
+        <link rel="next" href="../fejlesztokornyezet/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -20,7 +24,7 @@
     
     
       
-        <title>IMSc. HF - Liftrendszer - BMEVIAUAB00 Szoftvertechnikák</title>
+        <title>IMSc HF - Liftrendszer - BMEVIAUAB00 Szoftvertechnikák</title>
       
     
     
@@ -122,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              IMSc. HF - Liftrendszer
+              IMSc HF - Liftrendszer
             
           </span>
         </div>
@@ -264,10 +268,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../" class="md-tabs__link">
           
   
@@ -593,23 +599,28 @@
       
   
   
+    
   
   
+  
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -620,7 +631,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Önálló/házi feladatok
@@ -769,6 +780,112 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    IMSc HF - Liftrendszer
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    IMSc HF - Liftrendszer
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tartalomjegyzék
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bevezetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bevezetés
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-beadas-menete" class="md-nav__link">
+    <span class="md-ellipsis">
+      A beadás menete
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-feladat-liftrendszer-alapok" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. feladat - Liftrendszer alapok
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-feladat-liftcontroller-osztaly-bevezetese" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Feladat - LiftController osztály bevezetése
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-feladat-meglevo-liftmonitor-osztaly-beillesztese" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. feladat - Meglévő LiftMonitor osztály beillesztése
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1500,17 +1617,17 @@
 <li>
 <p>Egy adott lifthez tartozó ajtók adatai egy oszlopban, egymás alatt (emelet sorrendjében) jelenjenek meg. Az 1. oszlopban az 1. lépcsőház, 2. oszlopban a 2. lépcsőház stb. lift/liftajtó adatok jelenjenek meg. Az oszlopok 20-as karakterszélességűek, így az 1. oszlop a 20-as, a 2. oszlop a 40-es stb. karakterpozícióban kezdődik. Az alábbi ábra illusztrálja az elrendezést két lift esetére (1. lift az első lépcsőházban, 2. lift a 2. lépcsőházban található):</p>
 <p><a class="glightbox" href="images/two-lifts-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="2 lifts" src="images/two-lifts-1.png" /></a></p>
-<p>Az ábra azt is illusztrálja, hogy a a liftajtóknak milyen formában kell a kimenetet megjeleníteni (emelet után kettőspont, majd [ ] között a kijelző értéke)</p>
+<p>Az ábra azt is illusztrálja, hogy a liftajtóknak milyen formában kell a kimenetet megjeleníteni (emelet után kettőspont, majd [ ] között a kijelző értéke).</p>
 </li>
 <li>
-<p>A konzolra írás során a <code>Console.SetCursorPosition</code> műveletet érdemes használni.</p>
+<p>A konzolra írás során a <code>Console.SetCursorPosition</code> műveletet érdemes használni az írási pozíció beállítására.</p>
 </li>
 <li>Egyszerűsítés: a <code>Lift</code> osztálynak nem kell tudnia, hogy hány szint tartozik hozzá, így nem szükséges erre vonatkozó validációkat sem megvalósítani.</li>
-<li>Kulcsfontosságú, hogy a <code>Lift</code> osztály nem tudhatja, milyen más osztályok építenek az állapotára. Pl. esetünkben egyelőre a <code>LiftDoor</code> ilyen (később lesz más is). Vagyis a rendszernek könnyen bővíthetőnek kell lenni más osztályokkal, melyek a <code>Lift</code> működésétől/állapotától függenek, új ilyen osztály bevezetésekor a <code>Lift</code> osztályt nem szabad a későbbiekben módosítani. Ennek megfelelően a <code>Lift</code> - <code>LiftDoor</code> viszonyát az Observer mintára kell építeni. </li>
-<li>A jövőben a továbbfejlesztés során lehetnek más <code>Subject</code> osztályok is, ezért be kell vezetni <code>Subject</code> ősosztályt a kódduplikáció elkerülésére (de a házi feladatban csak egy subject lesz).</li>
-<li>A megoldás NEM építhet .NET event-ekre (ugyanezen osztályokkal/interfészekkel pl. Java nyelven is megvalósíthatónak kell lennie).</li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> Kulcsfontosságú, hogy a <code>Lift</code> osztály nem tudhatja, milyen más osztályok építenek az állapotára. Pl. esetünkben egyelőre a <code>LiftDoor</code> ilyen (később lesz más is). Vagyis a rendszernek könnyen bővíthetőnek kell lenni más osztályokkal, melyek a <code>Lift</code> működésétől/állapotától függenek, új ilyen osztály bevezetésekor a <code>Lift</code> osztályt nem szabad a későbbiekben módosítani. Ennek megfelelően a <code>Lift</code> - <code>LiftDoor</code> viszonyát az Observer mintára kell építeni. </li>
+<li>A jövőben a továbbfejlesztés során lehetnek más <code>Subject</code> osztályok is, ezért be kell vezetni egy <code>Subject</code> ősosztályt a kódduplikáció elkerülésére (de a házi feladatban csak egy subject lesz).</li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> A megoldás NEM építhet .NET event-ekre (ugyanezen osztályokkal/interfészekkel pl. Java nyelven is megvalósíthatónak kell lennie).</li>
 </ul>
-<p>A liftrendszer konfiguráció összeállításért és a szimuláció futtatásáért egy <code>LiftSystemModel</code> osztály legyen a felelős. Ennek forráskódját alább megadjuk, ebből kell egy példányt a <code>Main</code> függvényben létrehozni és a <code>Run</code> függvényét meghívni:</p>
+<p>A liftrendszer konfiguráció összeállításért és a szimuláció futtatásáért egy <code>LiftSystemModel</code> osztály legyen a felelős. Ennek forráskódját alább megadjuk, ebből kell egy példányt a <code>Main</code> függvényben létrehozni, és a <code>Run</code> függvényét meghívni:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">LiftSystemModel</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">iterationCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
@@ -1566,7 +1683,7 @@
 <li>A modell két liftet tartalmaz, az egyik az 1., a másik a 2. lépcsőházban található.</li>
 <li>A konstruktorban létrehozzuk a két lifthez az egyes emeleteken található ajtókat (mindkét lépcsőház 5 emeletes).</li>
 <li>A <code>Run</code> egy végtelen ciklusban futtatja a szimulációt. A <code>Step</code> műveletben léptet, vár egy másodpercet, majd megnöveli az aktuális iterációszámot.</li>
-<li>A <code>Step</code> hívódik minden iterációban. Léptetjük mindkét liftet, és bizonyos iterációkban hívjuk a két liftet az 5. illetve 1. emeletre.</li>
+<li>A <code>Step</code> hívódik minden iterációban. Ebben léptetjük mindkét liftet, és bizonyos iterációkban hívjuk a két liftet az 5. illetve 1. emeletre.</li>
 </ul>
 <p>A következő mozgókép illusztrálja a működést:
  <a class="glightbox" href="images/Lift-1-anim.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="2 lifts" src="images/Lift-1-anim.gif" /></a></p>
@@ -1574,14 +1691,14 @@
 <p>Készíts el egy <code>LiftController</code> osztályt, mely egy adott liftre vonatkozóan folyamatosan meg tudja jeleníteni, mely szinten van és mely szintre hívták utoljára (ez a központi vezérlőterem számára hasznos).</p>
 <ul>
 <li>Konstruktor paraméterben lehessen a lift objektumot megadni, melyhez a <code>LiftController</code> tartozik.</li>
-<li><code>LiftSystemModel</code> konstruktorában mindkét lifthez vegyünk fel egy-egy <code>LiftController</code> példányt</li>
-<li>Kulcsfontosságú, hogy a bevezetése során NE kelljen a <code>Lift</code> osztályt módosítani (az Observer mintának köszönhetően).</li>
+<li><code>LiftSystemModel</code> konstruktorában mindkét lifthez vegyünk fel egy-egy <code>LiftController</code> példányt.</li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> Kulcsfontosságú, hogy a bevezetése során NE kelljen a <code>Lift</code> osztályt módosítani (az Observer mintának köszönhetően).</li>
 <li><code>LiftController</code>-ek a hozzájuk tartozó lift oszlopában a liftajtók alatt jelenítsék meg egy "-&gt;" előtt az aktuális, utána pedig a cél emeletet. </li>
 </ul>
 <p>A megoldás illusztrálása:</p>
 <p><a class="glightbox" href="images/two-lifts-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="2 lifts" src="images/two-lifts-2.png" /></a></p>
 <h2 id="3-feladat-meglevo-liftmonitor-osztaly-beillesztese">3. feladat - Meglévő LiftMonitor osztály beillesztése<a class="headerlink" href="#3-feladat-meglevo-liftmonitor-osztaly-beillesztese" title="Permanent link">&para;</a></h2>
-<p>A feladat a liftek működési státuszáról információ megjelenítése. Vagyis minden időpillanatban tudni szeretnénk, hogy egy lift működik (státusza "OK"), vagy el van akadva (státusza "stuck"). Ehhez rendelkezésre is áll az alábbi osztály:</p>
+<p>A feladat a liftek működési státuszáról információ megjelenítése. Emlékezzünk: a liftek véletlenszerű időközönként elakadnak, mint ahogy a korábbi leírásban szerepelt! Minden időpillanatban tudni szeretnénk, hogy egy lift működik (státusza "OK"), vagy el van akadva (státusza "stuck").  Ehhez rendelkezésre is áll az alábbi osztály:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">LiftMonitor</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">prevFloor</span><span class="p">;</span>
@@ -1602,15 +1719,16 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Vegyük fel a fenti osztályt! De ettől a pillanattól feltesszük, hogy ezt egy könyvtár formájában kaptuk meg, így forráskódja nem módosítható!</p>
+<p>Vegyük fel a fenti osztályt!</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> Ettől a pillanattól feltesszük, hogy a fenti osztályt egy könyvtár formájában kaptuk meg, így forráskódja nem módosítható!</p>
 <p>Illesszük be az Adapter minta segítségével a fenti osztályt a megoldásunkba:</p>
 <ul>
 <li>A <code>LiftMonitor</code> osztály nem módosítható!</li>
-<li>Kulcsfontosságú, hogy a beillesztése során NE kelljen a <code>Lift</code> osztályt módosítani (az Observer mintának köszönhetően). Tipp: a <code>Lift</code> akkor is kell értesítse a megfigyelőit, ha beragadás miatt nem váltott szintet, máskülönben a <code>LiftMonitor</code> nem tudja detektálni a beragadást.</li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> Kulcsfontosságú, hogy a beillesztése során NE kelljen a <code>Lift</code> osztályt módosítani (az Observer mintának köszönhetően). Tipp: a <code>Lift</code> akkor is kell értesítse a megfigyelőit, ha beragadás miatt nem váltott szintet, máskülönben a <code>LiftMonitor</code> nem tudja detektálni a beragadást.</li>
 <li><code>LiftSystemModel</code> konstruktorában mindkét lifthez vegyünk fel egy-egy <code>LiftController</code> példányt.</li>
 <li>Csak Object Adapter alapú megoldás fogadható el (Class Adapter nem).</li>
 </ul>
-<p>A megoldás illusztrálása:</p>
+<p>A megoldás működésének illusztrálása:</p>
 <p><a class="glightbox" href="images/two-lifts-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="2 lifts" src="images/two-lifts-3.png" /></a></p>
 <hr>
 <div class="md-source-file">
@@ -1621,8 +1739,8 @@
         </path>
       </svg>
     </span>
-    <span title="2024. március 31. 20:09:48">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-31T20:09:48+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-31</span>
+    <span title="2024. április 5. 20:14:53">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-05T20:14:53+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-05</span>
     </span>
   </span>
 
