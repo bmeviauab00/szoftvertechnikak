@@ -38,16 +38,16 @@ Készíts egy `LiftDoor` osztályt, mely egy liftajtót reprezentál:
   
     ![2 lifts](images/two-lifts-1.png)
 
-    Az ábra azt is illusztrálja, hogy a a liftajtóknak milyen formában kell a kimenetet megjeleníteni (emelet után kettőspont, majd [ ] között a kijelző értéke)
+    Az ábra azt is illusztrálja, hogy a liftajtóknak milyen formában kell a kimenetet megjeleníteni (emelet után kettőspont, majd [ ] között a kijelző értéke).
 
-* A konzolra írás során a `Console.SetCursorPosition` műveletet érdemes használni.
+* A konzolra írás során a `Console.SetCursorPosition` műveletet érdemes használni az írási pozíció beállítására.
 * Egyszerűsítés: a `Lift` osztálynak nem kell tudnia, hogy hány szint tartozik hozzá, így nem szükséges erre vonatkozó validációkat sem megvalósítani.
-* Kulcsfontosságú, hogy a `Lift` osztály nem tudhatja, milyen más osztályok építenek az állapotára. Pl. esetünkben egyelőre a `LiftDoor` ilyen (később lesz más is). Vagyis a rendszernek könnyen bővíthetőnek kell lenni más osztályokkal, melyek a `Lift` működésétől/állapotától függenek, új ilyen osztály bevezetésekor a `Lift` osztályt nem szabad a későbbiekben módosítani. Ennek megfelelően a `Lift` - `LiftDoor` viszonyát az Observer mintára kell építeni. 
-* A jövőben a továbbfejlesztés során lehetnek más `Subject` osztályok is, ezért be kell vezetni `Subject` ősosztályt a kódduplikáció elkerülésére (de a házi feladatban csak egy subject lesz).
-* A megoldás NEM építhet .NET event-ekre (ugyanezen osztályokkal/interfészekkel pl. Java nyelven is megvalósíthatónak kell lennie).
+* :exclamation: Kulcsfontosságú, hogy a `Lift` osztály nem tudhatja, milyen más osztályok építenek az állapotára. Pl. esetünkben egyelőre a `LiftDoor` ilyen (később lesz más is). Vagyis a rendszernek könnyen bővíthetőnek kell lenni más osztályokkal, melyek a `Lift` működésétől/állapotától függenek, új ilyen osztály bevezetésekor a `Lift` osztályt nem szabad a későbbiekben módosítani. Ennek megfelelően a `Lift` - `LiftDoor` viszonyát az Observer mintára kell építeni. 
+* A jövőben a továbbfejlesztés során lehetnek más `Subject` osztályok is, ezért be kell vezetni egy `Subject` ősosztályt a kódduplikáció elkerülésére (de a házi feladatban csak egy subject lesz).
+* :exclamation: A megoldás NEM építhet .NET event-ekre (ugyanezen osztályokkal/interfészekkel pl. Java nyelven is megvalósíthatónak kell lennie).
 
 
-A liftrendszer konfiguráció összeállításért és a szimuláció futtatásáért egy `LiftSystemModel` osztály legyen a felelős. Ennek forráskódját alább megadjuk, ebből kell egy példányt a `Main` függvényben létrehozni és a `Run` függvényét meghívni:
+A liftrendszer konfiguráció összeállításért és a szimuláció futtatásáért egy `LiftSystemModel` osztály legyen a felelős. Ennek forráskódját alább megadjuk, ebből kell egy példányt a `Main` függvényben létrehozni, és a `Run` függvényét meghívni:
 
 ```csharp
 class LiftSystemModel
@@ -106,7 +106,7 @@ A fenti kód rövid magyarázata:
 * A modell két liftet tartalmaz, az egyik az 1., a másik a 2. lépcsőházban található.
 * A konstruktorban létrehozzuk a két lifthez az egyes emeleteken található ajtókat (mindkét lépcsőház 5 emeletes).
 * A `Run` egy végtelen ciklusban futtatja a szimulációt. A `Step` műveletben léptet, vár egy másodpercet, majd megnöveli az aktuális iterációszámot.
-* A `Step` hívódik minden iterációban. Léptetjük mindkét liftet, és bizonyos iterációkban hívjuk a két liftet az 5. illetve 1. emeletre.
+* A `Step` hívódik minden iterációban. Ebben léptetjük mindkét liftet, és bizonyos iterációkban hívjuk a két liftet az 5. illetve 1. emeletre.
 
 A következő mozgókép illusztrálja a működést:
  ![2 lifts](images/Lift-1-anim.gif)
@@ -116,8 +116,8 @@ A következő mozgókép illusztrálja a működést:
 Készíts el egy `LiftController` osztályt, mely egy adott liftre vonatkozóan folyamatosan meg tudja jeleníteni, mely szinten van és mely szintre hívták utoljára (ez a központi vezérlőterem számára hasznos).
 
 * Konstruktor paraméterben lehessen a lift objektumot megadni, melyhez a `LiftController` tartozik.
-* `LiftSystemModel` konstruktorában mindkét lifthez vegyünk fel egy-egy `LiftController` példányt
-* Kulcsfontosságú, hogy a bevezetése során NE kelljen a `Lift` osztályt módosítani (az Observer mintának köszönhetően).
+* `LiftSystemModel` konstruktorában mindkét lifthez vegyünk fel egy-egy `LiftController` példányt.
+* :exclamation: Kulcsfontosságú, hogy a bevezetése során NE kelljen a `Lift` osztályt módosítani (az Observer mintának köszönhetően).
 * `LiftController`-ek a hozzájuk tartozó lift oszlopában a liftajtók alatt jelenítsék meg egy "->" előtt az aktuális, utána pedig a cél emeletet. 
   
 A megoldás illusztrálása:
@@ -126,7 +126,7 @@ A megoldás illusztrálása:
 
 ## 3. feladat - Meglévő LiftMonitor osztály beillesztése
 
-A feladat a liftek működési státuszáról információ megjelenítése. Vagyis minden időpillanatban tudni szeretnénk, hogy egy lift működik (státusza "OK"), vagy el van akadva (státusza "stuck"). Ehhez rendelkezésre is áll az alábbi osztály:
+A feladat a liftek működési státuszáról információ megjelenítése. Emlékezzünk: a liftek véletlenszerű időközönként elakadnak, mint ahogy a korábbi leírásban szerepelt! Minden időpillanatban tudni szeretnénk, hogy egy lift működik (státusza "OK"), vagy el van akadva (státusza "stuck").  Ehhez rendelkezésre is áll az alábbi osztály:
 
 ```csharp
 class LiftMonitor
@@ -150,15 +150,17 @@ class LiftMonitor
 }
 ```
 
-Vegyük fel a fenti osztályt! De ettől a pillanattól feltesszük, hogy ezt egy könyvtár formájában kaptuk meg, így forráskódja nem módosítható!
+Vegyük fel a fenti osztályt!
+
+:exclamation: Ettől a pillanattól feltesszük, hogy a fenti osztályt egy könyvtár formájában kaptuk meg, így forráskódja nem módosítható!
 
 Illesszük be az Adapter minta segítségével a fenti osztályt a megoldásunkba:
 
 * A `LiftMonitor` osztály nem módosítható!
-* Kulcsfontosságú, hogy a beillesztése során NE kelljen a `Lift` osztályt módosítani (az Observer mintának köszönhetően). Tipp: a `Lift` akkor is kell értesítse a megfigyelőit, ha beragadás miatt nem váltott szintet, máskülönben a `LiftMonitor` nem tudja detektálni a beragadást.
+* :exclamation: Kulcsfontosságú, hogy a beillesztése során NE kelljen a `Lift` osztályt módosítani (az Observer mintának köszönhetően). Tipp: a `Lift` akkor is kell értesítse a megfigyelőit, ha beragadás miatt nem váltott szintet, máskülönben a `LiftMonitor` nem tudja detektálni a beragadást.
 * `LiftSystemModel` konstruktorában mindkét lifthez vegyünk fel egy-egy `LiftController` példányt.
 * Csak Object Adapter alapú megoldás fogadható el (Class Adapter nem).
 
-A megoldás illusztrálása:
+A megoldás működésének illusztrálása:
 
 ![2 lifts](images/two-lifts-3.png)
