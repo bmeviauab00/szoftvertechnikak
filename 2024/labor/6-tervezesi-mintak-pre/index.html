@@ -1776,19 +1776,19 @@ Ugyanakkor ne essünk át a ló túloldalára: csak akkor érdemes egy adott ter
 Ennek tükrében nem is célunk (és sokszor nincs is rá lehetőségünk), hogy minden jövőbeli kiterjeszthetőségi igény előre megérezzünk, illetve nagyon előre átgondoljunk. A lényeg az, hogy akár egy egyszerű megoldásból kiindulva, az egyes problémákat felismerve, a kódunkat folyamatosan refaktoráljuk úgy, hogy az aktuális (funkcionális és nemfunkcionális) követelményeknek és előrelátásunknak szerint a megfelelő pontokban tegyük kódunkat könnyebben kiterjeszthetővé és újrafelhasználhatóvá.</p>
 <p>Zárásképpen megvizsgáljuk, hogyan segítenek bizonyos tervezési minták és nyelvi eszközök a kódunk <strong>egységtesztelhetővé</strong> tételében: sok cégnél egy szoftvertermék fejlesztése esetén (jogos) alapelvárás a fejlesztőktől, hogy nagy kódlefedettségű egységteszteket (unit test) készítsenek. Ennek kivitelezése viszont gyakorlatilag lehetetlen, ha a kódunk egyes egységei/osztályai túl szoros csatolásban vannak egymással.</p>
 <h2 id="0-feladat-ismerkedes-a-feladattal-es-a-kiindulo-alkalmazassal">0. Feladat - Ismerkedés a feladattal és a kiinduló alkalmazással<a class="headerlink" href="#0-feladat-ismerkedes-a-feladattal-es-a-kiindulo-alkalmazassal" title="Permanent link">&para;</a></h2>
-<p>Klónozzuk le a 6. gyakorlathoz tartozó kiinduló alkalmazás <a href="https://github.com/bmeviauab00/lab-designpatterns-kiindulo">repositoryját</a>:</p>
+<p>Klónozzuk le a 6. gyakorlathoz tartozó kiinduló alkalmazás <a href="https://github.com/bmeviauab00/lab-patterns-extensibility-kiindulo">repositoryját</a>:</p>
 <ul>
 <li>Nyissunk egy command prompt-ot</li>
 <li>Navigáljunk el egy tetszőleges mappába, például c:\work\NEPTUN</li>
-<li>Adjuk ki a következő parancsot: <code>git clone https://github.com/bmeviauab00/lab-designpatterns-kiindulo.git</code></li>
+<li>Adjuk ki a következő parancsot: <code>git clone https://github.com/bmeviauab00/lab-patterns-extensibility-kiindulo.git</code></li>
 <li>Nyissuk meg a <em>Lab-Extensibility.sln</em> solutiont Visual Studio-ban.</li>
 </ul>
 <h3 id="a-feladat-ismertetese">A feladat ismertetése<a class="headerlink" href="#a-feladat-ismertetese" title="Permanent link">&para;</a></h3>
 <p>A gyakorlat során egy konzol alapú, adatfeldolgozó (pontosabban anonimizáló) alkalmazást fogunk a folyamatosan alakuló igényeknek megfelelően - különböző pontok mentén és különböző technikákat alkalmazva - kiterjeszthetővé tenni. Az első feladat keretében az anonimizálás fogalmával is megismerkedünk.</p>
 <p>Az alkalmazás bemenete egy CSV szövegfájl, mely minden sora egy adott személyre vonatkozóan tartalmaz adatokat. A fájlrendszerben nyissuk meg a <em>Data</em> mappában levő us-500.csv fájlt (duplakattal, vagy akár a Jegyzettömb/Notepad alkalmazásban). Az látjuk, hogy "" között, vesszővel elválasztva találhatók az egyes személyekre vonatkozó adatok (ezek nem valósak). Nézzük az első sort:</p>
-<div class="highlight"><pre><span></span><code>&quot;James&quot;,&quot;Butt&quot;,&quot;Benton, John B Jr&quot;,&quot;6649 N Blue Gum St&quot;,&quot;New Orleans &quot;,&quot;Orleans&quot;,&quot;LA&quot;,&quot;70116&quot;,&quot;504-621-8927&quot;,&quot;504-845-1427&quot;,&quot;30&quot;,&quot;65&quot;,&quot;Heart-related&quot;,&quot;jbutt@gmail.com&quot;
+<div class="highlight"><pre><span></span><code>&quot;James&quot;,&quot;Rhymes&quot;,&quot;Benton, John B Jr&quot;,&quot;6649 N Blue Gum St&quot;,&quot;New Orleans &quot;,&quot;Orleans&quot;,&quot;LA&quot;,&quot;70116&quot;,&quot;504-621-8927&quot;,&quot;504-845-1427&quot;,&quot;30&quot;,&quot;65&quot;,&quot;Heart-related&quot;,&quot;jRhymes@gmail.com&quot;
 </code></pre></div>
-<p>Az első sorban levő személyt James Buttnak nevezik, a "Benton, John B Jr" cégnél dolgozik, majd néhány címre vonatkozó mező található, 30 éves, 65 kg a testsúlya. Az ezt követő mező azt mondja meg, milyen súlyosabb betegsége van (a fenti sorba ez "Heart-related"). Az utolsó oszlop pedig a személy e-mail címét tartalmazza.</p>
+<p>Az első sorban levő személyt James Rhymesnak nevezik, a "Benton, John B Jr" cégnél dolgozik, majd néhány címre vonatkozó mező található, 30 éves, 65 kg a testsúlya. Az ezt követő mező azt mondja meg, milyen súlyosabb betegsége van (a fenti sorba ez "Heart-related"). Az utolsó oszlop pedig a személy e-mail címét tartalmazza.</p>
 <details class="note">
 <summary>Adatok forrása és pontos formátuma *</summary>
 <p>Az adatok forrása: <a href="https://www.briandunning.com/sample-data/">https://www.briandunning.com/sample-data/</a>, pár oszloppal (kor, súly, betegség) kiegészítve. A mezők sorrendje: First Name, Last Name, Company, Address, City, County (where applicable), State/Province (where applicable), ZIP/Postal Code, Phone 1, Phone 2, Age, Weight, Illness, Email</p>
@@ -2611,8 +2611,8 @@ implementációs osztályokat bevezetni (a beépített <code>Action</code> és <
         </path>
       </svg>
     </span>
-    <span title="2024. március 26. 23:18:28">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-26T23:18:28+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-26</span>
+    <span title="2024. április 6. 15:16:47">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-06T15:16:47+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-06</span>
     </span>
   </span>
 
