@@ -232,7 +232,7 @@ Alakítsuk át a kódunkat ennek megfelelően. A VS solution-ben a "3-TemplateMe
 5. Az `AnonymizerBase`-ből mozgassuk át az `AgeAnonymizer`-be az ide tartozó részeket:
    1. A `_rangeSize` tagváltozót.
    2. A `string inputFileName, string rangeSize` paraméterezésű konstruktort, átnevezve `AgeAnonymizer`-re,
-      1. `_anonymizerMode = AnonymizerMode.Name;` sort törölve,
+      1. `_anonymizerMode = AnonymizerMode.Age;` sort törölve,
       2. a `this` konstruktorhívás helyett `base` konstruktorhívással.
 6. Az `AnonymizerBase`-ben:
       1. Töröljük az `AnonymizerMode` enum típust.
@@ -343,6 +343,8 @@ Vethetünk egy pillantást a megoldás osztálydiagramjára:
 ??? "Template Method alapú megoldás osztálydiagram *"
     ![Template Method alapú megoldás osztálydiagram](images/template-method.png)
 
+!!! Note "Az eddigi munkánk megoldása a `TemplateMethod-2-Progress` projektben megtalálható, ha esetleg szükség lenne rá."
+
 ??? "Miért Template Method a minta neve *"
     A minta azért kapta a Template Method nevet, mert - alkalmazásunkat példaként használva - a `Run` és a `PrintSummary` olyan "sablon metódusok", melyek meghatároznak egy sablonszerű logikát, vázat, melyben bizonyos lépések nincsenek megkötve. Ezek "kódját" absztrakt/virtuális függvényekre bízzuk, és a leszármazott osztályok határozzák meg a megvalósításukat.
 
@@ -412,9 +414,9 @@ Ebben a lépésben a **Strategy** tervezési minta alkalmazásával fogjuk a kez
 
 * A "közös/változatlan" részeket egy adott osztályba tesszük (de ez most nem egy "ősosztály" lesz).
 * A Template Methoddal szemben nem öröklést, hanem kompozíciót (tartalmazást) alkalmazunk: interfészként tartalmazott más objektumokra bízzuk a viselkedés megvalósítását a kiterjesztési pontokban (és nem absztrakt/virtuális függvényekre).
-* Mindezt az osztály viselkedésének minden olyan aspektusára/dimenziójára, melyet lecserélhetővé/bővíthetővé szeretnénk tenni, egymástól függetlenül megtesszük. Ezzel az előző fejezetben tapasztalt kombinatorikus robbanás elkerülhető.
+* Mindezt az osztály viselkedésének minden olyan aspektusára/dimenziójára, melyet lecserélhetővé/bővíthetővé szeretnénk tenni, egymástól függetlenül megtesszük. Mint látni fogjuk, ezzel az előző fejezetben tapasztalt kombinatorikus robbanás elkerülhető.
 
-Ez sokkal egyszerűbb a gyakorlatban, mint amilyennel leírva érződik (már használtuk is párszor korábbi tanulmányaink során), értsük meg a példánkra vetítve.
+Ez sokkal egyszerűbb a gyakorlatban, mint amilyennel leírva érződik (már használtuk is párszor korábbi tanulmányaink során). Értsük meg a példánkra vetítve.
 
 A következőkben tekintsük át a Strategy alapú megoldást illusztráló osztálydiagramot, a diagramot követő magyarázatra építve.
 
@@ -427,18 +429,20 @@ A Strategy minta alkalmazásának első lépése, hogy meghatározzuk, **az oszt
 
 * Anonimizáláshoz kötődő viselkedés, melyhez két művelet tartozik:
     * Anonimizáló logika
-    * Anonimizáló logika leírásának meghatározása (description)
+    * Anonimizáló logika leírásának meghatározása (description string előállítása)
 * Progress kezelés, melyhez egy művelet tartozik:
     * Progress megjelenítése
 
 A nehezével meg is vagyunk, ettől kezdve alapvetően mechanikusan lehet dolgozni a Strategy mintát követve:
 
 1. A fenti aspektusok mindegyikéhez egy-egy strategy interfészt kell bevezetni, a fent meghatározott műveletekkel, és ezekhez el kell készíteni a megfelelő implementációkat.
-2. Az Anonymizer osztályba be kell vezetni egy-egy strategy interfész tagváltozót, és a kiterjesztési pontokban ezen tagváltozókon keresztül használni az aktuálisan beállított strategy implementációs objektumokat.
+2. Az `Anonymizer` osztályba be kell vezetni egy-egy strategy interfész tagváltozót, és a kiterjesztési pontokban ezen tagváltozókon keresztül használni az aktuálisan beállított strategy implementációs objektumokat.
 
 A fenti osztálydiagramon meg is jelennek ezek az elemek. Most térjünk át a kódra. Kiinduló környezetünk a "4-Strategy" mappában a "Strategy-0-Begin" projektben található, ebben dolgozzunk. Ez ugyanaz, az enum-ot használó megoldás, mint amelyet a Template Method minta esetében is kiindulásként használtunk. 
 
-Az **anonimizálási stratégia/aspektus** kezelésével kezdünk: vezessük be az ehhez tartozó interfészt és implementációkat:
+### Anonimizálási stratégia
+
+Az **anonimizálási stratégia/aspektus** kezelésével kezdünk. Vezessük be az ehhez tartozó interfészt:
 
 1. Hozzunk létre a projektben egy `AnonymizerAlgorithms` nevű mappát (jobb katt a "Strategy-0-Begin" projekten, majd *Add/New Folder* menü). A következő lépésekben minden interfészt és osztályt egy külön, a nevének megfelelő forrásfájlba tegyünk a szokásos módon!
 2. Vegyünk fel ebben a mappában egy `IAnonymizerAlgorithm` interfészt az alábbi kóddal:
@@ -453,9 +457,27 @@ Az **anonimizálási stratégia/aspektus** kezelésével kezdünk: vezessük be 
 
     Azt is megfigyelhetjük a `GetAnonymizerDescription` művelet esetében, hogy a modern C# nyelven, amennyiben akarunk, tudunk az egyes interfész műveleteknek alapértelmezett implementációt adni!
 
-3. Vegyük fel ennek az interfésznek az név anonimizáláshoz tartozó megvalósítását ugyanebbe a mappába (csak másoljuk be az alábbi kódot és értelmezzük azt):
+Most ennek az interfésznek a **név** anonimizáláshoz tartozó megvalósítását készítjük el (vagyis egy strategy implementációt készítünk). 
 
-    ??? example "Megoldás"
+1. Vegyünk fel egy `NameMaskingAnonymizerAlgorithm` osztályt ugyenebbe a mappába.
+2. Az `Anonymizer` osztályból mozgassuk át a `NameMaskingAnonymizerAlgorithm`-be az ide tartozó részeket:
+    1. A `_mask` tagváltozót.
+    2. A `string inputFileName, string mask` paraméterezésű konstruktort, átnevezve `NameMaskingAnonymizerAlgorithm`-re,
+        1. a `string inputFileName` paramétert törölve
+        2. a`: this(inputFileName)` konstruktorhívást törölve,
+        3. a `_anonymizerMode = AnonymizerMode.Name;` sort törölve.
+3. Valósítsuk meg a `IAnonymizerAlgorithm` interfészt. Miután az osztály neve után beírjuk a `: IAnonymizerAlgorithm` interfészt, célszerű a műveletek vázát a Visual Studioval legeneráltatni: tegyük a kurzort a interfész nevére, használjuk a 'ctrl' + '.' billentyűkombinációt, majd a megjelenő menüben "Implement interface" kiválasztása. Megjegyzés: mivel a `GetAnonymizerDescription` művelethez van alapértelmezett implementáció az interfészben, csak az `Anonymize` művelet generálódik le, de ez most nekünk egyelőre rendben van így. 
+4. Az `Anonymizer` osztályból vegyük át a `Anonymize_MaskName` művelet törzsét a `NameMaskingAnonymizerAlgorithm`.`Anonymize`-be. A függvény törzsét csak annyiban kell átírni, hogy ne a már nem létező `mask` paramétert, hanem a `_mask` tagváltozót használja. Az `Anonymize` osztály `Anonymize_MaskName`-et pedig töröljük.
+5. A stategy interfész `GetAnonymizerDescription`műveletének megvalósítására térünk most át. Az `Anonymizer` osztály `GetAnonymizerDescription` műveletét másoljuk át a `NameMaskingAnonymizerAlgorithm`-be, a függvény törzsében csak a név anonimizálóra vonatkozó logikát meghagyva, a műveletet publikussá téve:
+
+    ``` csharp
+    public string GetAnonymizerDescription()
+    {
+        return $"NameMasking anonymizer with mask {_mask}";
+    }  
+    ```
+
+6. ??? example "Ezzel a név anonimizáláshoz tartozó strategy implementációnk elkészült, a teljes kódja a következő lett"
 
         ``` csharp title="NameMaskingAnonymizerAlgorithm.cs"
         public class NameMaskingAnonymizerAlgorithm: IAnonymizerAlgorithm
@@ -480,9 +502,27 @@ Az **anonimizálási stratégia/aspektus** kezelésével kezdünk: vezessük be 
         }
         ```
 
-4. Vegyük fel ennek az interfésznek az életkor anonimizáláshoz tartozó megvalósítását ugyanebbe a mappába (csak másoljuk be az alábbi kódot és értelmezzük azt):
+A következő lépésben az `IAnonymizerAlgorithm` strategy interfészünk **életkor** anonimizáláshoz tartozó megvalósítását készítjük el.
 
-    ??? example "Megoldás"
+1. Vegyünk fel egy `AgeAnonymizerAlgorithm` osztályt ugyenebbe a mappába (AnonymizerAlgorithms).
+2. Az `Anonymizer` osztályból mozgassuk át a `AgeAnonymizerAlgorithm`-be az ide tartozó részeket:
+    1. A `_rangeSize` tagváltozót.
+    2. A `string inputFileName, string rangeSize` paraméterezésű konstruktort, átnevezve `AgeAnonymizerAlgorithm`-re,
+        1. a `string inputFileName` paramétert törölve,         
+        2. a `: this(inputFileName)` konstruktorhívást törölve.
+        3. `_anonymizerMode = AnonymizerMode.Age;` sort törölve.
+3. Valósítsuk meg a `IAnonymizerAlgorithm` interfészt. Miután az osztály neve után beírjuk a `: IAnonymizerAlgorithm` interfészt, most is célszerű az `Anonymize` művelet vázát a Visual Studioval a korábbihoz hasonló módon legeneráltatni. 
+4. Az `Anonymizer` osztályból vegyük át az `Anonymize_AgeRange` művelet törzsét a `AgeAnonymizerAlgorithm`.`Anonymize`-be. A függvény törzsét csak annyiban kell átírni, hogy ne a már nem létező `rangeSize` paramétert, hanem a `_rangeSize` tagváltozót használja. Az `Anonymize` osztály `Anonymize_AgeRange`-et pedig töröljük.
+5. A stategy interfész `GetAnonymizerDescription`műveletének megvalósítására térünk most át. Az `Anonymizer` osztály `GetAnonymizerDescription` műveletét másoljuk át az `AgeAnonymizerAlgorithm`-be, a függvény törzsében csak a kor anonimizálóra vonatkozó logikát meghagyva, a műveletet publikussá téve:
+
+    ``` csharp
+    public string GetAnonymizerDescription()
+    {
+        return $"Age anonymizer with range size {_rangeSize}";
+    } 
+    ```
+
+6. ??? example "Ezzel a kor anonimizáláshoz tartozó strategy implementációnk elkészült, a teljes kódja a következő lett"
 
         ``` csharp title="AgeAnonymizerAlgorithm.cs"
         public class AgeAnonymizerAlgorithm: IAnonymizerAlgorithm
@@ -512,14 +552,14 @@ Az **anonimizálási stratégia/aspektus** kezelésével kezdünk: vezessük be 
         }
         ```
 
-5. Fontos gondolat
 
-    !!! warning
-        Mindenképpen figyeljük meg, hogy az interfész és a megvalósításai kizárólag az anonimizálással foglalkoznak, semmiféle más logika (pl. progress kezelés) nincs itt!
+:exclamation: Mindenképpen figyeljük meg, hogy az interfész és a megvalósításai kizárólag az anonimizálással foglalkoznak, semmiféle más logika (pl. progress kezelés) nincs itt!
 
-**Második** lépésben vezessük be a **progress kezeléshez** tartozó interfészt és implementációkat:
+### Progress stratégia
 
-1. Hozzunk létre a projektben egy `Progresses` nevű mappát. A következő lépésekben minden interfészt és osztály egy külön, a nevének megfelelő forrásfájlba tegyünk a szokásos módon.
+A következő lépésben vezessük be a **progress kezeléshez** tartozó interfészt és implementációkat:
+
+1. Hozzunk létre a projektben egy `Progresses` nevű mappát. A következő lépésekben minden interfészt és osztályt egy külön, a nevének megfelelő forrásfájlba tegyünk a szokásos módon.
 2. Vegyünk fel ebben a mappában egy `IProgress` interfészt az alábbi kóddal:
 
     ??? example "Megoldás"
@@ -530,11 +570,11 @@ Az **anonimizálási stratégia/aspektus** kezelésével kezdünk: vezessük be 
         }
         ```
 
-3. Vegyük fel ennek az interfésznek az egyszerű progresshez tartozó megvalósítását ugyanebbe a mappába:
+3. Vegyük fel ennek az interfésznek az egyszerű progresshez tartozó megvalósítását ugyanebbe a mappába. Az implementáció az `Anonymizer` osztályunk `PrintProgress` műveletéből lett "levezetve":
 
     ??? example "Megoldás"
 
-        ``` csharp title="IProgress.cs"
+        ``` csharp title="SimpleProgress.cs"
         public class SimpleProgress: IProgress
         {
             public void Report(int count, int index)
@@ -544,11 +584,11 @@ Az **anonimizálási stratégia/aspektus** kezelésével kezdünk: vezessük be 
         }
         ```
 
-4. Vegyük fel ennek az interfésznek az százalékos progresshez tartozó megvalósítását ugyanebbe a mappába:
+4. Vegyük fel ennek az interfésznek a százalékos progresshez tartozó megvalósítását ugyanebbe a mappába. A kód értelmezésével ne foglalkozzunk. Erre megoldás az `Anonymizer` osztályunkban nincs, hiszen ezt csak a template method alapú megoldásunknál vezettük be (ott nem néztük a kódját, de azzal gyakorlatilag megegyezik a lényege):
 
     ??? example "Megoldás"
 
-        ``` csharp title="IProgress.cs"
+        ``` csharp title="PercentProgress.cs"
         public class PercentProgress: IProgress
         {
             public void Report(int count, int index)
@@ -566,16 +606,16 @@ Az **anonimizálási stratégia/aspektus** kezelésével kezdünk: vezessük be 
         }
         ```
 
-5. Fontos gondolat
+:exclamation: Mindenképpen figyeljük meg, hogy az interfész és a megvalósításai kizárólag a progress kezeléssel foglalkoznak, semmiféle más logika (pl. anonimizálás) nincs itt!
 
-    !!! warning "Fontos"
-        Mindenképpen figyeljük meg, hogy az interfész és a megvalósításai kizárólag a progress kezeléssel foglalkoznak, semmiféle más logika (pl. anonimizálás) nincs itt!
+### A stratégiák alkalmazása
 
 A következő fontos lépés az anonimizáló alaposztály újrafelhasználhatóvá és kiterjeszthetővé tétele a fent bevezetett strategy-k segítségével. Az `Anonymizer.cs` fájlban:
 
 1. Töröljük a következőket:
       * `AnonymizerMode` enum típus
-      * `_anonymizerMode`, `_mask` és `_rangeSize` tagok
+      * `_anonymizerMode` tag (illetve a `_mask` és `_rangeSize` tagok, ha esetleg itt maradtak korábban)
+  
 2. Vezessünk be egy-egy strategy interfész típusú tagot:
 
     ``` csharp
@@ -630,7 +670,7 @@ Az `Anonymizer` osztályban a jelenleg beégetett, de **anonimizálás függő**
     Person person = _anonymizerAlgorithm.Anonymize(persons[i]);
     ```
 
-2. Töröljük a `Anonymize_MaskName` és `Anonymize_AgeRange` függvényeket, hiszen ezek kódja már a strategy implementációkba került, az osztályról leválasztva.
+2. Ha esetleg korábban nem tettük meg, töröljük a `Anonymize_MaskName` és `Anonymize_AgeRange` függvényeket, hiszen ezek kódja már a strategy implementációkba került, az osztályról leválasztva.
 
 4. A `PrintSummary` függvényünk a rugalmatlan, `switch` alapokon működő `GetAnonymizerDescription`-t hívja. Ezt a `GetAnonymizerDescription` hívást cseréljük le, delegáljuk a `_anonymizerAlgorithm` objektumnak. A `PrintSummary` függvényben (csak a lényeget kiemelve):
 
@@ -668,6 +708,8 @@ Az utolsó lépés az `Anonymizer` osztályba beégetett **progress kezelés** l
 
 Elkészültünk, a kész megoldás a "Strategy-1" projektben meg is található (ha valahol elakadtunk, vagy nem fordul a kód, ezzel össze lehet nézni).
 
+Ha van időnk a labor során, érdemes töréspontot tenni pl. az `Anonymizer` osztály `Person person = _anonymizerAlgorithm.Anonymize(persons[i]);` sorára, és megnézni, hogy itt az osztály kihív a strategy implementációba.
+
 ### A megoldás értékelése
 
 A strategy minta bevezetésével elkészültünk. Jelen formájában ugyanakkor szinte soha nem használjuk. Ellenőrizzük a megoldásunkat: valóban újrafelhasználható, és az `Anomymizer` osztály módosítása nélkül lehetőség van-e az anonimizáló algoritmus, illetve a progress kezelés megváltoztatására? Ehhez azt kell megnézni, bárhol az osztályban van-e olyan kód, mely implementáció függő.
@@ -678,7 +720,12 @@ Sokan - teljesen jogosan - ezt jelen formájában nem is tekintik igazi Strategy
 
 ## 8. Megoldás (4-Strategy/Strategy-2-DI)
 
-A megoldást a **Dependency Injection (röviden DI)** alkalmazása jelenti. Ennek lényege az, hogy nem maga az osztály példányosítja a viselkedésbeli függőségeit (ezek a strategy implementációk), hanem ezeket kívülről adjuk át neki, pl. konstruktor paraméterekben, vagy akár property-k vagy setter műveletek formájában. Természetesen interfész típusként hivatkozva!
+<div class="grid cards" markdown>
+
+- :warning: __Dependency Injection (DI)__  
+  *A megoldást a **Dependency Injection (röviden DI)** alkalmazása jelenti. Ennek lényege az, hogy nem maga az osztály példányosítja a viselkedésbeli függőségeit (ezek a strategy implementációk), hanem ezeket kívülről adjuk át neki, pl. konstruktor paraméterekben, vagy akár property-k vagy setter műveletek formájában. Természetesen interfész típusként hivatkozva!*
+  
+</div>
 
 A kész megoldást nézzük meg, ez a "Strategy-2-DI" projektben található. Csak az `Anonymizer` osztály konstruktorát kell nézni. Azt látjuk, hogy a fenti elveknek megfelelően át lett alakítva.
 
