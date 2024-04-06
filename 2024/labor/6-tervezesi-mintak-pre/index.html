@@ -1601,6 +1601,33 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#anonimizalasi-strategia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anonimizálási stratégia
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#progress-strategia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Progress stratégia
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-strategiak-alkalmazasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      A stratégiák alkalmazása
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#a-megoldas-ertekelese_3" class="md-nav__link">
     <span class="md-ellipsis">
       A megoldás értékelése
@@ -1946,7 +1973,7 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 <li>Az <code>AnonymizerBase</code>-ből mozgassuk át az <code>AgeAnonymizer</code>-be az ide tartozó részeket:</li>
 <li>A <code>_rangeSize</code> tagváltozót.</li>
 <li>A <code>string inputFileName, string rangeSize</code> paraméterezésű konstruktort, átnevezve <code>AgeAnonymizer</code>-re,<ol>
-<li><code>_anonymizerMode = AnonymizerMode.Name;</code> sort törölve,</li>
+<li><code>_anonymizerMode = AnonymizerMode.Age;</code> sort törölve,</li>
 <li>a <code>this</code> konstruktorhívás helyett <code>base</code> konstruktorhívással.</li>
 </ol>
 </li>
@@ -2049,6 +2076,9 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 <summary>Template Method alapú megoldás osztálydiagram *</summary>
 <p><a class="glightbox" href="images/template-method.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Template Method alapú megoldás osztálydiagram" src="images/template-method.png" /></a></p>
 </details>
+<div class="admonition note">
+<p class="admonition-title">Az eddigi munkánk megoldása a <code>TemplateMethod-2-Progress</code> projektben megtalálható, ha esetleg szükség lenne rá.</p>
+</div>
 <details>
 <summary>Miért Template Method a minta neve *</summary>
 <p>A minta azért kapta a Template Method nevet, mert - alkalmazásunkat példaként használva - a <code>Run</code> és a <code>PrintSummary</code> olyan "sablon metódusok", melyek meghatároznak egy sablonszerű logikát, vázat, melyben bizonyos lépések nincsenek megkötve. Ezek "kódját" absztrakt/virtuális függvényekre bízzuk, és a leszármazott osztályok határozzák meg a megvalósításukat.</p>
@@ -2135,9 +2165,9 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 <ul>
 <li>A "közös/változatlan" részeket egy adott osztályba tesszük (de ez most nem egy "ősosztály" lesz).</li>
 <li>A Template Methoddal szemben nem öröklést, hanem kompozíciót (tartalmazást) alkalmazunk: interfészként tartalmazott más objektumokra bízzuk a viselkedés megvalósítását a kiterjesztési pontokban (és nem absztrakt/virtuális függvényekre).</li>
-<li>Mindezt az osztály viselkedésének minden olyan aspektusára/dimenziójára, melyet lecserélhetővé/bővíthetővé szeretnénk tenni, egymástól függetlenül megtesszük. Ezzel az előző fejezetben tapasztalt kombinatorikus robbanás elkerülhető.</li>
+<li>Mindezt az osztály viselkedésének minden olyan aspektusára/dimenziójára, melyet lecserélhetővé/bővíthetővé szeretnénk tenni, egymástól függetlenül megtesszük. Mint látni fogjuk, ezzel az előző fejezetben tapasztalt kombinatorikus robbanás elkerülhető.</li>
 </ul>
-<p>Ez sokkal egyszerűbb a gyakorlatban, mint amilyennel leírva érződik (már használtuk is párszor korábbi tanulmányaink során), értsük meg a példánkra vetítve.</p>
+<p>Ez sokkal egyszerűbb a gyakorlatban, mint amilyennel leírva érződik (már használtuk is párszor korábbi tanulmányaink során). Értsük meg a példánkra vetítve.</p>
 <p>A következőkben tekintsük át a Strategy alapú megoldást illusztráló osztálydiagramot, a diagramot követő magyarázatra építve.</p>
 <details class="info">
 <summary>Strategy alapú megoldás osztálydiagram</summary>
@@ -2148,7 +2178,7 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 <ul>
 <li>Anonimizáláshoz kötődő viselkedés, melyhez két művelet tartozik:<ul>
 <li>Anonimizáló logika</li>
-<li>Anonimizáló logika leírásának meghatározása (description)</li>
+<li>Anonimizáló logika leírásának meghatározása (description string előállítása)</li>
 </ul>
 </li>
 <li>Progress kezelés, melyhez egy művelet tartozik:<ul>
@@ -2159,10 +2189,11 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 <p>A nehezével meg is vagyunk, ettől kezdve alapvetően mechanikusan lehet dolgozni a Strategy mintát követve:</p>
 <ol>
 <li>A fenti aspektusok mindegyikéhez egy-egy strategy interfészt kell bevezetni, a fent meghatározott műveletekkel, és ezekhez el kell készíteni a megfelelő implementációkat.</li>
-<li>Az Anonymizer osztályba be kell vezetni egy-egy strategy interfész tagváltozót, és a kiterjesztési pontokban ezen tagváltozókon keresztül használni az aktuálisan beállított strategy implementációs objektumokat.</li>
+<li>Az <code>Anonymizer</code> osztályba be kell vezetni egy-egy strategy interfész tagváltozót, és a kiterjesztési pontokban ezen tagváltozókon keresztül használni az aktuálisan beállított strategy implementációs objektumokat.</li>
 </ol>
 <p>A fenti osztálydiagramon meg is jelennek ezek az elemek. Most térjünk át a kódra. Kiinduló környezetünk a "4-Strategy" mappában a "Strategy-0-Begin" projektben található, ebben dolgozzunk. Ez ugyanaz, az enum-ot használó megoldás, mint amelyet a Template Method minta esetében is kiindulásként használtunk. </p>
-<p>Az <strong>anonimizálási stratégia/aspektus</strong> kezelésével kezdünk: vezessük be az ehhez tartozó interfészt és implementációkat:</p>
+<h3 id="anonimizalasi-strategia">Anonimizálási stratégia<a class="headerlink" href="#anonimizalasi-strategia" title="Permanent link">&para;</a></h3>
+<p>Az <strong>anonimizálási stratégia/aspektus</strong> kezelésével kezdünk. Vezessük be az ehhez tartozó interfészt:</p>
 <ol>
 <li>Hozzunk létre a projektben egy <code>AnonymizerAlgorithms</code> nevű mappát (jobb katt a "Strategy-0-Begin" projekten, majd <em>Add/New Folder</em> menü). A következő lépésekben minden interfészt és osztályt egy külön, a nevének megfelelő forrásfájlba tegyünk a szokásos módon!</li>
 <li>
@@ -2175,10 +2206,33 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 </code></pre></div>
 <p>Azt is megfigyelhetjük a <code>GetAnonymizerDescription</code> művelet esetében, hogy a modern C# nyelven, amennyiben akarunk, tudunk az egyes interfész műveleteknek alapértelmezett implementációt adni!</p>
 </li>
+</ol>
+<p>Most ennek az interfésznek a <strong>név</strong> anonimizáláshoz tartozó megvalósítását készítjük el (vagyis egy strategy implementációt készítünk). </p>
+<ol>
+<li>Vegyünk fel egy <code>NameMaskingAnonymizerAlgorithm</code> osztályt ugyenebbe a mappába.</li>
+<li>Az <code>Anonymizer</code> osztályból mozgassuk át a <code>NameMaskingAnonymizerAlgorithm</code>-be az ide tartozó részeket:<ol>
+<li>A <code>_mask</code> tagváltozót.</li>
+<li>A <code>string inputFileName, string mask</code> paraméterezésű konstruktort, átnevezve <code>NameMaskingAnonymizerAlgorithm</code>-re,<ol>
+<li>a <code>string inputFileName</code> paramétert törölve</li>
+<li>a<code>: this(inputFileName)</code> konstruktorhívást törölve,</li>
+<li>a <code>_anonymizerMode = AnonymizerMode.Name;</code> sort törölve.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Valósítsuk meg a <code>IAnonymizerAlgorithm</code> interfészt. Miután az osztály neve után beírjuk a <code>: IAnonymizerAlgorithm</code> interfészt, célszerű a műveletek vázát a Visual Studioval legeneráltatni: tegyük a kurzort a interfész nevére, használjuk a 'ctrl' + '.' billentyűkombinációt, majd a megjelenő menüben "Implement interface" kiválasztása. Megjegyzés: mivel a <code>GetAnonymizerDescription</code> művelethez van alapértelmezett implementáció az interfészben, csak az <code>Anonymize</code> művelet generálódik le, de ez most nekünk egyelőre rendben van így. </li>
+<li>Az <code>Anonymizer</code> osztályból vegyük át a <code>Anonymize_MaskName</code> művelet törzsét a <code>NameMaskingAnonymizerAlgorithm</code>.<code>Anonymize</code>-be. A függvény törzsét csak annyiban kell átírni, hogy ne a már nem létező <code>mask</code> paramétert, hanem a <code>_mask</code> tagváltozót használja. Az <code>Anonymize</code> osztály <code>Anonymize_MaskName</code>-et pedig töröljük.</li>
 <li>
-<p>Vegyük fel ennek az interfésznek az név anonimizáláshoz tartozó megvalósítását ugyanebbe a mappába (csak másoljuk be az alábbi kódot és értelmezzük azt):</p>
+<p>A stategy interfész <code>GetAnonymizerDescription</code>műveletének megvalósítására térünk most át. Az <code>Anonymizer</code> osztály <code>GetAnonymizerDescription</code> műveletét másoljuk át a <code>NameMaskingAnonymizerAlgorithm</code>-be, a függvény törzsében csak a név anonimizálóra vonatkozó logikát meghagyva, a műveletet publikussá téve:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetAnonymizerDescription</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;NameMasking anonymizer with mask {_mask}&quot;</span><span class="p">;</span>
+<span class="p">}</span><span class="w">  </span>
+</code></pre></div>
+</li>
+<li>
 <details class="example">
-<summary>Megoldás</summary>
+<summary>Ezzel a név anonimizáláshoz tartozó strategy implementációnk elkészült, a teljes kódja a következő lett</summary>
 <div class="highlight"><span class="filename">NameMaskingAnonymizerAlgorithm.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">NameMaskingAnonymizerAlgorithm</span><span class="p">:</span><span class="w"> </span><span class="n">IAnonymizerAlgorithm</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">_mask</span><span class="p">;</span>
@@ -2202,10 +2256,33 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 </code></pre></div>
 </details>
 </li>
+</ol>
+<p>A következő lépésben az <code>IAnonymizerAlgorithm</code> strategy interfészünk <strong>életkor</strong> anonimizáláshoz tartozó megvalósítását készítjük el.</p>
+<ol>
+<li>Vegyünk fel egy <code>AgeAnonymizerAlgorithm</code> osztályt ugyenebbe a mappába (AnonymizerAlgorithms).</li>
+<li>Az <code>Anonymizer</code> osztályból mozgassuk át a <code>AgeAnonymizerAlgorithm</code>-be az ide tartozó részeket:<ol>
+<li>A <code>_rangeSize</code> tagváltozót.</li>
+<li>A <code>string inputFileName, string rangeSize</code> paraméterezésű konstruktort, átnevezve <code>AgeAnonymizerAlgorithm</code>-re,<ol>
+<li>a <code>string inputFileName</code> paramétert törölve,         </li>
+<li>a <code>: this(inputFileName)</code> konstruktorhívást törölve.</li>
+<li><code>_anonymizerMode = AnonymizerMode.Age;</code> sort törölve.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Valósítsuk meg a <code>IAnonymizerAlgorithm</code> interfészt. Miután az osztály neve után beírjuk a <code>: IAnonymizerAlgorithm</code> interfészt, most is célszerű az <code>Anonymize</code> művelet vázát a Visual Studioval a korábbihoz hasonló módon legeneráltatni. </li>
+<li>Az <code>Anonymizer</code> osztályból vegyük át az <code>Anonymize_AgeRange</code> művelet törzsét a <code>AgeAnonymizerAlgorithm</code>.<code>Anonymize</code>-be. A függvény törzsét csak annyiban kell átírni, hogy ne a már nem létező <code>rangeSize</code> paramétert, hanem a <code>_rangeSize</code> tagváltozót használja. Az <code>Anonymize</code> osztály <code>Anonymize_AgeRange</code>-et pedig töröljük.</li>
 <li>
-<p>Vegyük fel ennek az interfésznek az életkor anonimizáláshoz tartozó megvalósítását ugyanebbe a mappába (csak másoljuk be az alábbi kódot és értelmezzük azt):</p>
+<p>A stategy interfész <code>GetAnonymizerDescription</code>műveletének megvalósítására térünk most át. Az <code>Anonymizer</code> osztály <code>GetAnonymizerDescription</code> műveletét másoljuk át az <code>AgeAnonymizerAlgorithm</code>-be, a függvény törzsében csak a kor anonimizálóra vonatkozó logikát meghagyva, a műveletet publikussá téve:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetAnonymizerDescription</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;Age anonymizer with range size {_rangeSize}&quot;</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+</li>
+<li>
 <details class="example">
-<summary>Megoldás</summary>
+<summary>Ezzel a kor anonimizáláshoz tartozó strategy implementációnk elkészült, a teljes kódja a következő lett</summary>
 <div class="highlight"><span class="filename">AgeAnonymizerAlgorithm.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">AgeAnonymizerAlgorithm</span><span class="p">:</span><span class="w"> </span><span class="n">IAnonymizerAlgorithm</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">_rangeSize</span><span class="p">;</span>
@@ -2234,17 +2311,12 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 </code></pre></div>
 </details>
 </li>
-<li>
-<p>Fontos gondolat</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Mindenképpen figyeljük meg, hogy az interfész és a megvalósításai kizárólag az anonimizálással foglalkoznak, semmiféle más logika (pl. progress kezelés) nincs itt!</p>
-</div>
-</li>
 </ol>
-<p><strong>Második</strong> lépésben vezessük be a <strong>progress kezeléshez</strong> tartozó interfészt és implementációkat:</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> Mindenképpen figyeljük meg, hogy az interfész és a megvalósításai kizárólag az anonimizálással foglalkoznak, semmiféle más logika (pl. progress kezelés) nincs itt!</p>
+<h3 id="progress-strategia">Progress stratégia<a class="headerlink" href="#progress-strategia" title="Permanent link">&para;</a></h3>
+<p>A következő lépésben vezessük be a <strong>progress kezeléshez</strong> tartozó interfészt és implementációkat:</p>
 <ol>
-<li>Hozzunk létre a projektben egy <code>Progresses</code> nevű mappát. A következő lépésekben minden interfészt és osztály egy külön, a nevének megfelelő forrásfájlba tegyünk a szokásos módon.</li>
+<li>Hozzunk létre a projektben egy <code>Progresses</code> nevű mappát. A következő lépésekben minden interfészt és osztályt egy külön, a nevének megfelelő forrásfájlba tegyünk a szokásos módon.</li>
 <li>
 <p>Vegyünk fel ebben a mappában egy <code>IProgress</code> interfészt az alábbi kóddal:</p>
 <details class="example">
@@ -2257,10 +2329,10 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 </details>
 </li>
 <li>
-<p>Vegyük fel ennek az interfésznek az egyszerű progresshez tartozó megvalósítását ugyanebbe a mappába:</p>
+<p>Vegyük fel ennek az interfésznek az egyszerű progresshez tartozó megvalósítását ugyanebbe a mappába. Az implementáció az <code>Anonymizer</code> osztályunk <code>PrintProgress</code> műveletéből lett "levezetve":</p>
 <details class="example">
 <summary>Megoldás</summary>
-<div class="highlight"><span class="filename">IProgress.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SimpleProgress</span><span class="p">:</span><span class="w"> </span><span class="n">IProgress</span>
+<div class="highlight"><span class="filename">SimpleProgress.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SimpleProgress</span><span class="p">:</span><span class="w"> </span><span class="n">IProgress</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Report</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
@@ -2271,10 +2343,10 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 </details>
 </li>
 <li>
-<p>Vegyük fel ennek az interfésznek az százalékos progresshez tartozó megvalósítását ugyanebbe a mappába:</p>
+<p>Vegyük fel ennek az interfésznek a százalékos progresshez tartozó megvalósítását ugyanebbe a mappába. A kód értelmezésével ne foglalkozzunk. Erre megoldás az <code>Anonymizer</code> osztályunkban nincs, hiszen ezt csak a template method alapú megoldásunknál vezettük be (ott nem néztük a kódját, de azzal gyakorlatilag megegyezik a lényege):</p>
 <details class="example">
 <summary>Megoldás</summary>
-<div class="highlight"><span class="filename">IProgress.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PercentProgress</span><span class="p">:</span><span class="w"> </span><span class="n">IProgress</span>
+<div class="highlight"><span class="filename">PercentProgress.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PercentProgress</span><span class="p">:</span><span class="w"> </span><span class="n">IProgress</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Report</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
@@ -2292,19 +2364,16 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 </code></pre></div>
 </details>
 </li>
-<li>
-<p>Fontos gondolat</p>
-<div class="admonition warning">
-<p class="admonition-title">Fontos</p>
-<p>Mindenképpen figyeljük meg, hogy az interfész és a megvalósításai kizárólag a progress kezeléssel foglalkoznak, semmiféle más logika (pl. anonimizálás) nincs itt!</p>
-</div>
-</li>
 </ol>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> Mindenképpen figyeljük meg, hogy az interfész és a megvalósításai kizárólag a progress kezeléssel foglalkoznak, semmiféle más logika (pl. anonimizálás) nincs itt!</p>
+<h3 id="a-strategiak-alkalmazasa">A stratégiák alkalmazása<a class="headerlink" href="#a-strategiak-alkalmazasa" title="Permanent link">&para;</a></h3>
 <p>A következő fontos lépés az anonimizáló alaposztály újrafelhasználhatóvá és kiterjeszthetővé tétele a fent bevezetett strategy-k segítségével. Az <code>Anonymizer.cs</code> fájlban:</p>
 <ol>
-<li>Töröljük a következőket:<ul>
+<li>
+<p>Töröljük a következőket:</p>
+<ul>
 <li><code>AnonymizerMode</code> enum típus</li>
-<li><code>_anonymizerMode</code>, <code>_mask</code> és <code>_rangeSize</code> tagok</li>
+<li><code>_anonymizerMode</code> tag (illetve a <code>_mask</code> és <code>_rangeSize</code> tagok, ha esetleg itt maradtak korábban)</li>
 </ul>
 </li>
 <li>
@@ -2354,7 +2423,7 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 </code></pre></div>
 </li>
 <li>
-<p>Töröljük a <code>Anonymize_MaskName</code> és <code>Anonymize_AgeRange</code> függvényeket, hiszen ezek kódja már a strategy implementációkba került, az osztályról leválasztva.</p>
+<p>Ha esetleg korábban nem tettük meg, töröljük a <code>Anonymize_MaskName</code> és <code>Anonymize_AgeRange</code> függvényeket, hiszen ezek kódja már a strategy implementációkba került, az osztályról leválasztva.</p>
 </li>
 <li>
 <p>A <code>PrintSummary</code> függvényünk a rugalmatlan, <code>switch</code> alapokon működő <code>GetAnonymizerDescription</code>-t hívja. Ezt a <code>GetAnonymizerDescription</code> hívást cseréljük le, delegáljuk a <code>_anonymizerAlgorithm</code> objektumnak. A <code>PrintSummary</code> függvényben (csak a lényeget kiemelve):</p>
@@ -2383,12 +2452,18 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 </li>
 </ol>
 <p>Elkészültünk, a kész megoldás a "Strategy-1" projektben meg is található (ha valahol elakadtunk, vagy nem fordul a kód, ezzel össze lehet nézni).</p>
+<p>Ha van időnk a labor során, érdemes töréspontot tenni pl. az <code>Anonymizer</code> osztály <code>Person person = _anonymizerAlgorithm.Anonymize(persons[i]);</code> sorára, és megnézni, hogy itt az osztály kihív a strategy implementációba.</p>
 <h3 id="a-megoldas-ertekelese_3">A megoldás értékelése<a class="headerlink" href="#a-megoldas-ertekelese_3" title="Permanent link">&para;</a></h3>
 <p>A strategy minta bevezetésével elkészültünk. Jelen formájában ugyanakkor szinte soha nem használjuk. Ellenőrizzük a megoldásunkat: valóban újrafelhasználható, és az <code>Anomymizer</code> osztály módosítása nélkül lehetőség van-e az anonimizáló algoritmus, illetve a progress kezelés megváltoztatására? Ehhez azt kell megnézni, bárhol az osztályban van-e olyan kód, mely implementáció függő.</p>
 <p>Sajnos találunk ilyet. A konstruktorba be van égetve, milyen algoritmus implementációt és progress implementációt hozunk létre. Ezt mindenképpen nézzük meg a kódban! Ha algoritmus vagy progress módot akarunk változtatni, ezekben a sorokban át kell írni a <code>new</code> operátor utáni típust, mely így az osztály módosításával jár.</p>
 <p>Sokan - teljesen jogosan - ezt jelen formájában nem is tekintik igazi Strategy alapú megoldásnak. A teljes körű megoldást a következő lépésben valósítjuk meg.</p>
 <h2 id="8-megoldas-4-strategystrategy-2-di">8. Megoldás (4-Strategy/Strategy-2-DI)<a class="headerlink" href="#8-megoldas-4-strategystrategy-2-di" title="Permanent link">&para;</a></h2>
-<p>A megoldást a <strong>Dependency Injection (röviden DI)</strong> alkalmazása jelenti. Ennek lényege az, hogy nem maga az osztály példányosítja a viselkedésbeli függőségeit (ezek a strategy implementációk), hanem ezeket kívülről adjuk át neki, pl. konstruktor paraméterekben, vagy akár property-k vagy setter műveletek formájában. Természetesen interfész típusként hivatkozva!</p>
+<div class="grid cards">
+<ul>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> <strong>Dependency Injection (DI)</strong><br />
+<em>A megoldást a <strong>Dependency Injection (röviden DI)</strong> alkalmazása jelenti. Ennek lényege az, hogy nem maga az osztály példányosítja a viselkedésbeli függőségeit (ezek a strategy implementációk), hanem ezeket kívülről adjuk át neki, pl. konstruktor paraméterekben, vagy akár property-k vagy setter műveletek formájában. Természetesen interfész típusként hivatkozva!</em></li>
+</ul>
+</div>
 <p>A kész megoldást nézzük meg, ez a "Strategy-2-DI" projektben található. Csak az <code>Anonymizer</code> osztály konstruktorát kell nézni. Azt látjuk, hogy a fenti elveknek megfelelően át lett alakítva.</p>
 <p>Megjegyzés: azt egyelőre ne akarjuk megérteni, mi az újonnan felbukkanó <code>NullProgress</code> a konstruktorban (ez a DI szempontjából irreleváns, rövidesen visszatérünk rá).</p>
 <p>Most már elkészültünk, az <code>Anonymizer</code> osztály teljesen független lett az implementációktól. Lehetőségünk van az <code>Anonymizer</code> osztály bármilyen anonimizáló algoritmus és bármilyen progress kezelés  (annak módosítása nélkül). Erre vannak is példák a <code>Program.cs</code> fájlban, nézzük ezt meg! Itt négy <code>Anonymizer</code> objektumot hozunk létre, négy különböző anonimizáló és progress kombinációval.</p>
@@ -2644,8 +2719,8 @@ implementációs osztályokat bevezetni (a beépített <code>Action</code> és <
         </path>
       </svg>
     </span>
-    <span title="2024. április 6. 18:35:25">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-06T18:35:25+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-06</span>
+    <span title="2024. április 6. 20:36:33">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-06T20:36:33+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-06</span>
     </span>
   </span>
 
