@@ -299,16 +299,41 @@ A mintát követve ezekre az ősben absztrakt (vagy esetleg virtuális) függvé
     var person = Anonymize(persons[i]);
     ```
 
-Az egyik kiterjesztési pontunkkal el is készültünk. De maradt még egy, a `GetAnonymizerDescription`, mely kezelése szintén esetfüggő. Ennek átalakítása nagyon hasonló az előző lépéssorozathoz. Idő hiányában ezt az átalakítást gyakorlaton nem tesszük meg (lehet otthoni gyakorló feladat), hanem a kész megoldásra ugrunk: ezt a "TemplateMethod-1" nevű projektben találjuk. Fussuk át a megoldás alapelemeit:
+Az egyik kiterjesztési pontunkkal el is készültünk. De maradt még egy, a `GetAnonymizerDescription`, mely kezelése szintén esetfüggő. Ennek átalakítása nagyon hasonló az előző lépéssorozathoz:
 
-1. Az `AnonymizerBase`-ben a `GetAnonymizerDescription` nem absztrakt, hanem virtuális függvényként került bevezetésre, hiszen itt tudtunk értelmes alapértelmezett viselkedést biztosítani: egyszerűen visszaadjuk az osztály nevét (mely pl. a `NameMaskingAnonymizer` osztály esetében "NameMaskingAnonymizer"). Mindenesetre a rugalmatlan `switch` szerkezettől megszabadultunk.
-2. A leszármazottakban felülírjuk ezt a virtuális függvényt, belefűzzük a leírásba az osztályspecifikus adatokat (pl.`NameMaskingAnonymizer` esetében a `_mask` értékét).
+1. Az `AnonymizerBase` osztály `GetAnonymizerDescription` műveletét másoljuk át a `NameMaskingAnonymizer`-be, a szignatúrába belevéve az `override` kulcsszót, a függvény törzsében csak a `NameMaskingAnonymizer`-re vonatkozó logikát meghagyva:
 
-A "TemplateMethod-0-Begin" projektünk most nem forduló kódot tartalmaz, ezt célszerű eltávolítani a solution-ből, hogy a későbbi futtatások során ne legyen zavaró: jobb katt a projekten és `Remove` menü (ez fizikailag nem törli, csak kiveszi a solution-ből, később visszatehető).
+    ``` csharp
+    protected override string GetAnonymizerDescription()
+    {
+        return $"NameMasking anonymizer with mask {_mask}";
+    }
+    ```
 
-El is készültünk. Ha sok időnk van, ki is próbálhatjuk, hogy jobban "érezzük", valóban működnek az kiterjesztési pontok (de ez különösebben nem fontos, hasonlót már korábbi félévekben C++/Java nyelvek kontextusában is csináltunk):
+ 2. A `AnonymizerBase` `GetAnonymizerDescription` műveletét másoljuk át az `AgeAnonymizer`-be is, a szignatúrába belevéve az `override` kulcsszót, a függvény törzsében most csak a `AgeAnonymizer`-re vonatkozó logikát meghagyva:
 
-* Legyen a "TemplateMethod-1" projekt a startup projekt.
+    ``` csharp
+    protected override string GetAnonymizerDescription()
+    {
+        return $"Age anonymizer with range size {_rangeSize}";
+    }
+    ```
+
+3. Kérdés, mi legyen `AnonymizerBase`-ben a `GetAnonymizerDescription` művelettel. Ezt nem absztraktá, hanem virtuális függvénnyé alakítjuk, hiszen itt tudunk értelmes alapértelmezett viselkedést biztosítani: egyszerűen visszaadjuk az osztály nevét (mely pl. a `NameMaskingAnonymizer` osztály esetében "NameMaskingAnonymizer" lenne). Mindenesetre a rugalmatlan `switch` szerkezettől ezzel megszabadulunk:
+
+    ``` csharp
+    protected virtual string GetAnonymizerDescription()
+    {
+        return GetType().Name;
+    }
+    ```
+
+    !!! Note "Reflexió"
+        Az object ősből örökölt `GetType()` művelettel egy `Type` típúsú objektumot szerzünk az osztályunkra vonatkozóan. Ez a **refelexió** témakörhöz tartozik, erről a félév végén fogunk előadáson részletesebben tanulni.
+
+El is készültünk. Próbáljuk ki, hogy jobban "érezzük", valóban működnek az kiterjesztési pontok (de ha kevés az időnk a labor során, ez különösebben nem fontos, hasonlót már korábbi félévekben C++/Java nyelvek kontextusában is csináltunk):
+
+* Visual Studioban a *TemplateMethod-0-Begin* projekt legyen a startup projekt, ha ezt eddig még nem állítottuk be.
 * Tegyünk egy töréspontot az `AnonymizerBase` osztály `var person = Anonymize(persons[i]);` sorára.
 * Amikor futás közben itt megáll a debugger, ++f11++-gyel lépjünk bele.
 * Az tapasztaljuk, hogy a  leszármazott `AgeAnonymizer` művelete hívódik.
