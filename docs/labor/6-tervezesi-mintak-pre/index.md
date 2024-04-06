@@ -41,11 +41,11 @@ Zárásképpen megvizsgáljuk, hogyan segítenek bizonyos tervezési minták és
 
 ## 0. Feladat - Ismerkedés a feladattal és a kiinduló alkalmazással
 
-Klónozzuk le a 6. gyakorlathoz tartozó kiinduló alkalmazás [repositoryját](https://github.com/bmeviauab00/lab-designpatterns-kiindulo):
+Klónozzuk le a 6. gyakorlathoz tartozó kiinduló alkalmazás [repositoryját](https://github.com/bmeviauab00/lab-patterns-extensibility-kiindulo):
 
 - Nyissunk egy command prompt-ot
 - Navigáljunk el egy tetszőleges mappába, például c:\work\NEPTUN
-- Adjuk ki a következő parancsot: `git clone https://github.com/bmeviauab00/lab-designpatterns-kiindulo.git`
+- Adjuk ki a következő parancsot: `git clone https://github.com/bmeviauab00/lab-patterns-extensibility-kiindulo.git`
 - Nyissuk meg a _Lab-Extensibility.sln_ solutiont Visual Studio-ban.
 
 ### A feladat ismertetése
@@ -55,10 +55,10 @@ A gyakorlat során egy konzol alapú, adatfeldolgozó (pontosabban anonimizáló
 Az alkalmazás bemenete egy CSV szövegfájl, mely minden sora egy adott személyre vonatkozóan tartalmaz adatokat. A fájlrendszerben nyissuk meg a *Data* mappában levő us-500.csv fájlt (duplakattal, vagy akár a Jegyzettömb/Notepad alkalmazásban). Az látjuk, hogy "" között, vesszővel elválasztva találhatók az egyes személyekre vonatkozó adatok (ezek nem valósak). Nézzük az első sort:
   
 ```
-"James","Butt","Benton, John B Jr","6649 N Blue Gum St","New Orleans ","Orleans","LA","70116","504-621-8927","504-845-1427","30","65","Heart-related","jbutt@gmail.com"
+"James","Rhymes","Benton, John B Jr","6649 N Blue Gum St","New Orleans ","Orleans","LA","70116","504-621-8927","504-845-1427","30","65","Heart-related","jRhymes@gmail.com"
 ```
 
-Az első sorban levő személyt James Buttnak nevezik, a "Benton, John B Jr" cégnél dolgozik, majd néhány címre vonatkozó mező található, 30 éves, 65 kg a testsúlya. Az ezt követő mező azt mondja meg, milyen súlyosabb betegsége van (a fenti sorba ez "Heart-related"). Az utolsó oszlop pedig a személy e-mail címét tartalmazza.
+Az első sorban levő személyt James Rhymesnak nevezik, a "Benton, John B Jr" cégnél dolgozik, majd néhány címre vonatkozó mező található, 30 éves, 65 kg a testsúlya. Az ezt követő mező azt mondja meg, milyen súlyosabb betegsége van (a fenti sorba ez "Heart-related"). Az utolsó oszlop pedig a személy e-mail címét tartalmazza.
 
 ??? Note "Adatok forrása és pontos formátuma *"
     Az adatok forrása: https://www.briandunning.com/sample-data/, pár oszloppal (kor, súly, betegség) kiegészítve. A mezők sorrendje: First Name, Last Name, Company, Address, City, County (where applicable), State/Province (where applicable), ZIP/Postal Code, Phone 1, Phone 2, Age, Weight, Illness, Email
