@@ -11,7 +11,7 @@ Az önálló/házi feladatokra vonatkozó pontos követelmények Moodle-ben, a [
 - [4. HF - Többszálú alkalmazások fejlesztése](../hazi/4-tobbszalu-alkalmazasok-fejlesztese/index.md)
 - [5. HF - MVVM](../hazi/meghirdetes-elott.md)
 - [6. HF - Tervezési minták](../hazi/meghirdetes-elott.md)
-- [IMSc HF - Liftrendszer](../hazi/imsc-liftsystem/index.md)'': 
+- [IMSc HF - Liftrendszer](../hazi/imsc-liftsystem/index.md): 
 
 ## A feladatok beadása
 
