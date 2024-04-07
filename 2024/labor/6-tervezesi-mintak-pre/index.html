@@ -2413,9 +2413,58 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 <em>A megoldást a <strong>Dependency Injection (röviden DI)</strong> alkalmazása jelenti. Ennek lényege az, hogy nem maga az osztály példányosítja a viselkedésbeli függőségeit (ezek a strategy implementációk), hanem ezeket kívülről adjuk át neki, pl. konstruktor paraméterekben, vagy akár property-k vagy setter műveletek formájában. Természetesen interfész típusként hivatkozva!</em></li>
 </ul>
 </div>
-<p>A kész megoldást nézzük meg, ez a "Strategy-2-DI" projektben található. Csak az <code>Anonymizer</code> osztály konstruktorát kell nézni. Azt látjuk, hogy a fenti elveknek megfelelően át lett alakítva.</p>
-<p>Megjegyzés: azt egyelőre ne akarjuk megérteni, mi az újonnan felbukkanó <code>NullProgress</code> a konstruktorban (ez a DI szempontjából irreleváns, rövidesen visszatérünk rá).</p>
-<p>Most már elkészültünk, az <code>Anonymizer</code> osztály teljesen független lett az implementációktól. Lehetőségünk van az <code>Anonymizer</code> osztály bármilyen anonimizáló algoritmus és bármilyen progress kezelés  (annak módosítása nélkül). Erre vannak is példák a <code>Program.cs</code> fájlban, nézzük ezt meg! Itt négy <code>Anonymizer</code> objektumot hozunk létre, négy különböző anonimizáló és progress kombinációval.</p>
+<p>Alakítsuk át ennek megfelelően az <code>Anonymizer</code> osztályt úgy, hogy ne maga példányosítsa a strategy implementációit, hanem konstruktor paraméterekben kapja meg azokat:</p>
+<ol>
+<li>Töröljük mindhárom konstruktorát</li>
+<li>
+<p>Vegyük fel a következő konstruktort:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">Anonymizer</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">inputFileName</span><span class="p">,</span><span class="w"> </span><span class="n">IAnonymizerAlgorithm</span><span class="w"> </span><span class="n">anonymizerAlgorithm</span><span class="p">,</span><span class="w"> </span><span class="n">IProgress</span><span class="w"> </span><span class="n">progress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">ArgumentException</span><span class="p">.</span><span class="n">ThrowIfNullOrEmpty</span><span class="p">(</span><span class="n">inputFileName</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ArgumentNullException</span><span class="p">.</span><span class="n">ThrowIfNull</span><span class="p">(</span><span class="n">anonymizerAlgorithm</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">_inputFileName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inputFileName</span><span class="p">;</span>
+<span class="w">    </span><span class="n">_anonymizerAlgorithm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">anonymizerAlgorithm</span><span class="p">;</span>
+<span class="w">    </span><span class="n">_progress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">progress</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Mint látható, a <code>progress</code> paraméter megadása nem kötelező, hiszen lehet, hogy az osztály használója nem kíváncsi semmiféle progress információra.</p>
+</li>
+<li>
+<p>Mivel a _progress strategy null is lehet, egy null vizsgálatot be kell vezessünk a használata során. A "." operátor helyett a "?." operátort használjuk:</p>
+<div class="highlight"><pre><span></span><code><span class="n">_progress</span><span class="o">?.</span><span class="n">Report</span><span class="p">(</span><span class="n">persons</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+</code></pre></div>
+</li>
+<li>
+<p>Most már elkészültünk, az <code>Anonymizer</code> osztály teljesen független lett a strategy implementációktól. Lehetőségünk van az <code>Anonymizer</code> osztályt bármilyen anonimizáló algoritmus és bármilyen progress kezelés kombinációval használni (annak módosítása nélkül). Hozzunk is létre három <code>Anonymizer</code> különböző kombinációkkal a <code>Program.cs</code> fájl <code>Main</code> függvényében (a meglévő kódot előtte töröljük a <code>Main</code> függvényből):</p>
+<div class="highlight"><pre><span></span><code><span class="n">Anonymizer</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">(</span><span class="s">&quot;us-500.csv&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">NameMaskingAnonymizerAlgorithm</span><span class="p">(</span><span class="s">&quot;***&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">SimpleProgress</span><span class="p">());</span>
+<span class="n">p1</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;--------------------&quot;</span><span class="p">);</span>
+
+<span class="n">Anonymizer</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">(</span><span class="s">&quot;us-500.csv&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">NameMaskingAnonymizerAlgorithm</span><span class="p">(</span><span class="s">&quot;***&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">PercentProgress</span><span class="p">());</span>
+<span class="n">p2</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;--------------------&quot;</span><span class="p">);</span>
+
+<span class="n">Anonymizer</span><span class="w"> </span><span class="n">p3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">(</span><span class="s">&quot;us-500.csv&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">AgeAnonymizerAlgorithm</span><span class="p">(</span><span class="m">20</span><span class="p">),</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">SimpleProgress</span><span class="p">());</span>
+<span class="n">p3</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
+</code></pre></div>
+</li>
+<li>
+<p>Ahhoz, hogy a kód foruljon, szúrjuk be a fájl elejére a szükséges <code>using</code>-okat</p>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">Lab_Extensibility.AnonymizerAlgorithms</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Lab_Extensibility.Progresses</span><span class="p">;</span>
+</code></pre></div>
+</li>
+</ol>
+<p>Elkészültünk, a kész megoldás a "4-Strategy/Strategy-2-DI" projektben meg is található (ha valahol elakadtunk, vagy nem fordul a kód, ezzel össze lehet nézni).</p>
 <div class="admonition note">
 <p class="admonition-title">A működés ellenőrzése</p>
 <p>A gyakorlat során erre valószínűleg nem lesz idő, de aki bizonytalan abban, "mitől is működik" a strategy minta, mitől lesz más a viselkedés a fenti négy esetre: érdemes töréspontokat tenni a <code>Program.cs</code> fájlban a négy <code>Run</code> függvényhívásra, és a függvényekbe a debuggerben belelépkedve kipróbálni, hogy mindig a megfelelő strategy implementáció hívódik meg.</p>
@@ -2451,8 +2500,8 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
         </path>
       </svg>
     </span>
-    <span title="2024. április 7. 16:42:32">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-07T16:42:32+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-07</span>
+    <span title="2024. április 7. 17:08:04">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-07T17:08:04+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-07</span>
     </span>
   </span>
 
