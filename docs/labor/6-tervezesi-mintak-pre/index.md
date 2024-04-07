@@ -331,6 +331,13 @@ Az egyik kiterjesztési pontunkkal el is készültünk. De maradt még egy, a `G
     !!! Note "Reflexió"
         Az object ősből örökölt `GetType()` művelettel egy `Type` típúsú objektumot szerzünk az osztályunkra vonatkozóan. Ez a **refelexió** témakörhöz tartozik, erről a félév végén fogunk előadáson részletesebben tanulni.
 
+Egy dolog van már csak hátra: a `Program.cs` `Main` függvényében most az `AnonymizerBase` őst próbáljuk példányosítani. Helyette a két leszármazott valamelyikét kellene. Pl.:
+
+``` csharp
+NameMaskingAnonymizer anonymizer = new("us-500.csv", "***");
+anonymizer.Run();
+```
+
 El is készültünk. Próbáljuk ki, hogy jobban "érezzük", valóban működnek az kiterjesztési pontok (de ha kevés az időnk a labor során, ez különösebben nem fontos, hasonlót már korábbi félévekben C++/Java nyelvek kontextusában is csináltunk):
 
 * Visual Studioban a *TemplateMethod-0-Begin* projekt legyen a startup projekt, ha ezt eddig még nem állítottuk be.
@@ -708,7 +715,7 @@ Az utolsó lépés az `Anonymizer` osztályba beégetett **progress kezelés** l
 
 Elkészültünk, a kész megoldás a "Strategy-1" projektben meg is található (ha valahol elakadtunk, vagy nem fordul a kód, ezzel össze lehet nézni).
 
-Ha van időnk a labor során, érdemes töréspontot tenni pl. az `Anonymizer` osztály `Person person = _anonymizerAlgorithm.Anonymize(persons[i]);` sorára, és megnézni, hogy itt az osztály kihív a strategy implementációba.
+
 
 ### A megoldás értékelése
 
@@ -743,23 +750,19 @@ A projektben található egy osztálydiagram (`Main.cd`), ezen is megtekinthető
 
     ![Strategy DI UML osztálydiagram](images\strategy-di.png)
 
-### Null strategy (kitérő)
-
-Az `Anonymizer` konstruktorában látunk egy elsőre talán kicsit fura részletet. Ha a hívó null-t ad meg `IProgress` strategy-ként paraméterben, akkor a `_progress` tagváltozóba nem `null`-t mentünk, hanem egy `NullProgress` objektumra állítjuk. A `NullProgress` is egy teljes értékű `IProgress` implementáció, csak éppen nem csinál semmit (üres a törzse). Ezzel a megoldással azt érjük el, hogy nem kell az osztályban a `_progress` minden használatakor megvizsgálni, hogy null-e (ha elfelejtenénk, akkor `NullReferenceException`-t kapnánk!), mert az mindig egy érvényes objektumra mutat. Egyszerűen, ha nincs szükség semmiféle progress kiírására, akkor `NullProgress`-t használunk stratégiaként, mely nem csinál semmit. Ez is egy tervezési minta, **Null Object** a neve.
-
 ### A megoldás értékelése
 
 Ellenőrizzük a megoldást, megvalósítja-e a céljainkat:
 
 * Az `Anonymizer` egy újrafelhasználható(bb) osztály lett.
-* Ha új anonimizáló logikára van szükség a jövőben, csak egy új `IAnonymizerAlgorithm` implementációt kell bevezetni. Ez nem módosítás, hanem bővítés.
+* Ha új anonimizáló logikára van szükség a jövőben, csak egy új `IAnonymizerAlgorithm` implementációt kell bevezetni. Ez nem módosítás, hanem kiterjesztés/bővítés.
 * Ha új progress logikára van szükség a jövőben, csak egy új `IProgress` implementációt kell bevezetni. Ez nem módosítás, hanem bővítés.
 * A fenti két pontban teljesül az OPEN/CLOSED elv, vagyis az `Anonymizer` kódjának módosítása nélkül tudjuk a logikáját testre szabni, kiterjeszteni.
 * Itt nem kell tartani a Template Methodnál tapasztalt kombinatorikus robbanástól: bármely `IAnonymizerAlgorithm` implementáció bármely `IProgress` implementációval kényelmesen használható, nem kell a kombinációkhoz új osztályokat bevezetni (ezt láttuk a `Program.cs` fájlban).
 
 !!! Note "További Strategy előnyök a Template Methoddal szemben *"
     * Futás közben lecserélhető viselkedés is megvalósítható. Ha szükség lenne arra, hogy egy adott `Anonymizer` objektumra vonatkozóan a létrehozása után meg tudjuk változtatni az anonimizáló vagy progress viselkedést, akkor azt könnyen meg tudnánk tenni (csak egy `SetAnonimizerAlgorithm`, ill. `SetProgress` műveletet kellene bevezetni, melyben a paraméterben megkapott implementációra lehetne állítani az osztály által használt strategy-t).
-    * Egységtesztelhetőség támogatása (még visszatérünk erre).
+    * Egységtesztelhetőség támogatása (laboron ezt nem nézzük).
 
 ## 9. Megoldás (5-StrategyFull-UnitTesting/StrategyFull-1)
 
@@ -981,13 +984,13 @@ Megpróbálhatjuk ábrába önteni, hogy vált a megoldásunk az egyes iteráci�
 Természetesen a % szinteket nem szabad túl komolyan venni. Mindenesetre a fejlődés jól megfigyelhető.
 
 ??? note "Miért "csak" 70%-os a végső megoldásnál mutatónk?"
-    Felmerülhet a kérdés, miért adunk jelem megoldásra kb. 70%-ot? Többek között:
+    Felmerülhet a kérdés, miért adunk jelen megoldásra kb. 70%-ot? Többek között:
 
     * Az `Anonymizer` osztályba az adattisztítás módja mereven be van égetve (trimmelés adott oszlopra adott módon).
     * Nem követtünk egy nagyon fontos általános alapelvet: a UI és a logika különválasztását. A kódunk több pontban konzolra ír, így például egy grafikus felülettel nem használható!
-    * Bizonyos az anonimizáló algoritmusaink nagyon specifikusak. Lehetne olyan általánosabb algoritmusokat készíteni, melyek tetszőleges mezőket kicsillagoznak (nem csak a nevet beégetetten), illetve tetszőleges mezőket sávosítanak (nem csak az életkort).
+    * Az anonimizáló algoritmusaink nagyon specifikusak. Lehetne olyan általánosabb algoritmusokat készíteni, melyek tetszőleges mezőket kicsillagoznak (nem csak a nevet beégetetten), illetve tetszőleges mezőket sávosítanak (nem csak az életkort).
     * Jelen megoldás csak `Person` objektumokkal tud működni.
-    * Nem lehet egyszerre alkalmazni kombinálni különböző anonimizáló algoritmusokat.
+    * Nem lehet egyszerre alkalmazni (kombinálni) különböző anonimizáló algoritmusokat.
 
 ### Kiterjesztési technikák áttekintése
 
@@ -1005,4 +1008,4 @@ Természetesen a % szinteket nem szabad túl komolyan venni. Mindenesetre a fejl
 
     De ezek a megoldások nem mindig alkalmazhatók, vagy legalábbis körülményes lehet az alkalmazásuk.
 
-Mindenképpen meg kell említeni, hogy nem csak jelen gyakorlatban említett néhány minta szolgálja a kiterjeszthetőséget és újrafelhasználhatóságot, hanem gyakorlatilag az összes. Most kiemeltünk párat, melyek (még p. az Observert/Iteratort/Adaptert ide sorolva) talán a leggyakrabban, legszélesebb körben alkalmazhatók és bukkannak is fel keretrendszerekben.
+Mindenképpen meg kell említeni, hogy nem csak jelen gyakorlatban említett néhány minta szolgálja a kiterjeszthetőséget és újrafelhasználhatóságot, hanem gyakorlatilag az összes. Most kiemeltünk párat, melyek (még pl. az Observert/Iteratort/Adaptert ide sorolva) talán a leggyakrabban, legszélesebb körben alkalmazhatók és bukkannak is fel keretrendszerekben.
