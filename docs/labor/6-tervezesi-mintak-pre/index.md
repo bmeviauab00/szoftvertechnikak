@@ -162,12 +162,8 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 
 Miért állítjuk azt, hogy a kódunk nem kiterjeszthető, amikor "csak" egy új enum értéket, és egy-egy plusz `if`/`switch` ágat kell a kód néhány pontjára bevezetni, amikor új algoritmust kell majd bevezetni?
 
-<div class="grid cards" markdown>
-
-- :warning: __Open/Closed principle__  
-  *Kulcsfontosságú, hogy egy osztályt akkor tekintünk kiterjeszthetőnek, ha annak bármilyen nemű **módosítása nélkül**, pusztán a kód **kiterjesztésével/bővítésével** lehet új viselkedést (esetünkben új algoritmust) bevezetni. Vagyis esetünkben az `Anonymizer` kódjához nem szabadna hozzányúlni (ezt még "bővíteni" sem!), ami egyértelműen nem teljesül. Ez a híres **Open/Closed principle/elv**: the class should be Open for Extension, Closed for Modification. A kód módosítása azért probléma, mert annak során jó eséllyel új bugokat vezetünk be, ill. a módosított kódot mindig újra kell tesztelni, ez pedig jelentős idő/költségráfordítási igényt jelenthet.*
-
-</div>
+:warning: **Open/Closed principle**  
+Kulcsfontosságú, hogy egy osztályt akkor tekintünk kiterjeszthetőnek, ha annak bármilyen nemű **módosítása nélkül**, pusztán a kód **kiterjesztésével/bővítésével** lehet új viselkedést (esetünkben új algoritmust) bevezetni. Vagyis esetünkben az `Anonymizer` kódjához nem szabadna hozzányúlni, ami egyértelműen nem teljesül. Ez a híres **Open/Closed principle/elv**: the class should be Open for Extension, Closed for Modification. A kód módosítása azért probléma, mert annak során jó eséllyel új bugokat vezetünk be, ill. a módosított kódot mindig újra kell tesztelni, ez pedig jelentős idő/költségráfordítási igényt jelenthet.
 
 Mi is a pontos cél, és hogyan érjük ezt el? Vannak olyan részek az osztályunkban, melyeket nem szeretnénk beégetni:
 
@@ -754,12 +750,8 @@ Sokan - teljesen jogosan - ezt jelen formájában nem is tekintik igazi Strategy
 
 ## 8. Megoldás (4-Strategy/Strategy-2-DI)
 
-<div class="grid cards" markdown>
-
-- :warning: __Dependency Injection (DI)__  
-  *A megoldást a **Dependency Injection (röviden DI)** alkalmazása jelenti. Ennek lényege az, hogy nem maga az osztály példányosítja a viselkedésbeli függőségeit (ezek a strategy implementációk), hanem ezeket kívülről adjuk át neki, pl. konstruktor paraméterekben, vagy akár property-k vagy setter műveletek formájában. Természetesen interfész típusként hivatkozva!*
-  
-</div>
+:warning: **Dependency Injection (DI)**  
+A megoldást a **Dependency Injection (röviden DI)** alkalmazása jelenti. Ennek lényege az, hogy nem maga az osztály példányosítja a viselkedésbeli függőségeit (ezek a strategy implementációk), hanem ezeket kívülről adjuk át neki, pl. konstruktor paraméterekben, vagy akár property-k vagy setter műveletek formájában. Természetesen interfész típusként hivatkozva!
 
 Alakítsuk át ennek megfelelően az `Anonymizer` osztályt úgy, hogy ne maga példányosítsa a strategy implementációit, hanem konstruktor paraméterekben kapja meg azokat:
 
