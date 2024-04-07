@@ -2158,18 +2158,18 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 <p>Most ennek az interfésznek a <strong>név</strong> anonimizáláshoz tartozó megvalósítását készítjük el (vagyis egy strategy implementációt készítünk). </p>
 <ol>
 <li>Vegyünk fel egy <code>NameMaskingAnonymizerAlgorithm</code> osztályt ugyenebbe a mappába.</li>
-<li>Az <code>Anonymizer</code> osztályból mozgassuk át a <code>NameMaskingAnonymizerAlgorithm</code>-be az ide tartozó részeket:<ol>
-<li>A <code>_mask</code> tagváltozót.</li>
-<li>A <code>string inputFileName, string mask</code> paraméterezésű konstruktort, átnevezve <code>NameMaskingAnonymizerAlgorithm</code>-re,<ol>
-<li>a <code>string inputFileName</code> paramétert törölve</li>
-<li>a<code>: this(inputFileName)</code> konstruktorhívást törölve,</li>
-<li>a <code>_anonymizerMode = AnonymizerMode.Name;</code> sort törölve.</li>
-</ol>
+<li>Az <code>Anonymizer</code> osztályból mozgassuk át a <code>NameMaskingAnonymizerAlgorithm</code>-be az ide tartozó <code>_mask</code> tagváltozót:</li>
+<li>
+<p>A <code>NameMaskingAnonymizerAlgorithm</code>-be vegyük fel a következő konstruktort:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">NameMaskingAnonymizerAlgorithm</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">mask</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">_mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mask</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 </li>
-</ol>
+<li>
+<p>Valósítsuk meg a <code>IAnonymizerAlgorithm</code> interfészt. Miután az osztály neve után beírjuk a <code>: IAnonymizerAlgorithm</code> interfészt, célszerű a műveletek vázát a Visual Studioval legeneráltatni: tegyük a kurzort a interfész nevére (kattintsunk rá a forráskódban), használjuk a 'ctrl' + '.' billentyűkombinációt, majd a megjelenő menüben "Implement interface" kiválasztása. Megjegyzés: mivel a <code>GetAnonymizerDescription</code> művelethez van alapértelmezett implementáció az interfészben, csak az <code>Anonymize</code> művelet generálódik le, de ez most nekünk egyelőre rendben van így. </p>
 </li>
-<li>A <code>Program.cs</code> <code>Main</code> függvényben a "***" paramétert vegyük ki (mert ezt a konstruktort megszüntettük, így fordítási hibát kapnánk), az <code>Anonymizer</code> osztály <code>protected Anonymizer(string inputFileName)</code> konstruktorát pedig tegyük publikussá.</li>
-<li>Valósítsuk meg a <code>IAnonymizerAlgorithm</code> interfészt. Miután az osztály neve után beírjuk a <code>: IAnonymizerAlgorithm</code> interfészt, célszerű a műveletek vázát a Visual Studioval legeneráltatni: tegyük a kurzort a interfész nevére, használjuk a 'ctrl' + '.' billentyűkombinációt, majd a megjelenő menüben "Implement interface" kiválasztása. Megjegyzés: mivel a <code>GetAnonymizerDescription</code> művelethez van alapértelmezett implementáció az interfészben, csak az <code>Anonymize</code> művelet generálódik le, de ez most nekünk egyelőre rendben van így. </li>
 <li>Az <code>Anonymizer</code> osztályból vegyük át a <code>Anonymize_MaskName</code> művelet törzsét a <code>NameMaskingAnonymizerAlgorithm</code>.<code>Anonymize</code>-be. A függvény törzsét csak annyiban kell átírni, hogy ne a már nem létező <code>mask</code> paramétert, hanem a <code>_mask</code> tagváltozót használja. Az <code>Anonymize</code> osztály <code>Anonymize_MaskName</code>-et pedig töröljük.</li>
 <li>
 <p>A stategy interfész <code>GetAnonymizerDescription</code>műveletének megvalósítására térünk most át. Az <code>Anonymizer</code> osztály <code>GetAnonymizerDescription</code> műveletét másoljuk át a <code>NameMaskingAnonymizerAlgorithm</code>-be, a függvény törzsében csak a név anonimizálóra vonatkozó logikát meghagyva, a műveletet publikussá téve:</p>
@@ -2209,17 +2209,18 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 <p>A következő lépésben az <code>IAnonymizerAlgorithm</code> strategy interfészünk <strong>életkor</strong> anonimizáláshoz tartozó megvalósítását készítjük el.</p>
 <ol>
 <li>Vegyünk fel egy <code>AgeAnonymizerAlgorithm</code> osztályt ugyenebbe a mappába (AnonymizerAlgorithms).</li>
-<li>Az <code>Anonymizer</code> osztályból mozgassuk át a <code>AgeAnonymizerAlgorithm</code>-be az ide tartozó részeket:<ol>
-<li>A <code>_rangeSize</code> tagváltozót.</li>
-<li>A <code>string inputFileName, string rangeSize</code> paraméterezésű konstruktort, átnevezve <code>AgeAnonymizerAlgorithm</code>-re,<ol>
-<li>a <code>string inputFileName</code> paramétert törölve,         </li>
-<li>a <code>: this(inputFileName)</code> konstruktorhívást törölve.</li>
-<li><code>_anonymizerMode = AnonymizerMode.Age;</code> sort törölve.</li>
-</ol>
+<li>Az <code>Anonymizer</code> osztályból mozgassuk át a <code>AgeAnonymizerAlgorithm</code>-be az ide tartozó <code>_rangeSize</code> tagváltozót:</li>
+<li>
+<p>A <code>AgeAnonymizerAlgorithm</code>-be vegyük fel a következő konstruktort:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">AgeAnonymizerAlgorithm</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">rangeSize</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">_rangeSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rangeSize</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 </li>
-</ol>
+<li>
+<p>Valósítsuk meg a <code>IAnonymizerAlgorithm</code> interfészt. Miután az osztály neve után beírjuk a <code>: IAnonymizerAlgorithm</code> interfészt, most is célszerű az <code>Anonymize</code> művelet vázát a Visual Studioval a korábbihoz hasonló módon legeneráltatni. </p>
 </li>
-<li>Valósítsuk meg a <code>IAnonymizerAlgorithm</code> interfészt. Miután az osztály neve után beírjuk a <code>: IAnonymizerAlgorithm</code> interfészt, most is célszerű az <code>Anonymize</code> művelet vázát a Visual Studioval a korábbihoz hasonló módon legeneráltatni. </li>
 <li>Az <code>Anonymizer</code> osztályból vegyük át az <code>Anonymize_AgeRange</code> művelet törzsét a <code>AgeAnonymizerAlgorithm</code>.<code>Anonymize</code>-be. A függvény törzsét csak annyiban kell átírni, hogy ne a már nem létező <code>rangeSize</code> paramétert, hanem a <code>_rangeSize</code> tagváltozót használja. Az <code>Anonymize</code> osztály <code>Anonymize_AgeRange</code>-et pedig töröljük.</li>
 <li>
 <p>A stategy interfész <code>GetAnonymizerDescription</code>műveletének megvalósítására térünk most át. Az <code>Anonymizer</code> osztály <code>GetAnonymizerDescription</code> műveletét másoljuk át az <code>AgeAnonymizerAlgorithm</code>-be, a függvény törzsében csak a kor anonimizálóra vonatkozó logikát meghagyva, a műveletet publikussá téve:</p>
@@ -2356,7 +2357,7 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 <p>Az <code>Anonymizer</code> osztályban a jelenleg beégetett, de <strong>anonimizálás függő</strong> logikákat bízzuk a <code>_anonymizerAlgorithm</code> tagváltozó által hivatkozott strategy implementációra:</p>
 <ol>
 <li>
-<p>Az osztály <code>Run</code> függvényében az <code>if</code>/<code>else</code> kifejezésben található <code>Anonymize</code> hívásokat most már le delegáljuk a <code>_anonymizerAlgorithm</code> objektumnak:</p>
+<p>Az osztály <code>Run</code> függvényében az <code>if</code>/<code>else</code> kifejezésben található <code>Anonymize</code> hívásokat most már delegáljuk a <code>_anonymizerAlgorithm</code> objektumnak:</p>
 <del class="critic block">
 <div class="highlight"><pre><span></span><code><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">;</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_anonymizerMode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">AnonymizerMode</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span>
@@ -2450,8 +2451,8 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
         </path>
       </svg>
     </span>
-    <span title="2024. április 7. 16:24:59">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-07T16:24:59+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-07</span>
+    <span title="2024. április 7. 16:42:32">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-07T16:42:32+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-07</span>
     </span>
   </span>
 
