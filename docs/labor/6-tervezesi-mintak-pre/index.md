@@ -59,12 +59,12 @@ Az alkalmazás bemenete egy CSV szövegfájl, mely minden sora egy adott személ
 
 Az első sorban levő személyt James Rhymesnak nevezik, a "Benton, John B Jr" cégnél dolgozik, majd néhány címre vonatkozó mező található, 30 éves, 65 kg a testsúlya. Az ezt követő mező azt mondja meg, milyen súlyosabb betegsége van (a fenti sorban ez "Heart-related"). Az utolsó oszlop pedig a személy e-mail címét tartalmazza.
 
-??? Note "Adatok forrása és pontos formátuma *"
+??? note "Adatok forrása és pontos formátuma *"
     Az adatok forrása: https://www.briandunning.com/sample-data/, pár oszloppal (kor, súly, betegség) kiegészítve. A mezők sorrendje: First Name, Last Name, Company, Address, City, County (where applicable), State/Province (where applicable), ZIP/Postal Code, Phone 1, Phone 2, Age, Weight, Illness, Email
 
 Az alkalmazás alapfeladata, hogy ezeket az adatokat az aktuális igényeknek megfelelően anonimizálja, majd egy kimeneti CSV szövegfájlba kiírja. Az anonimizálás célja, hogy az adatok átalakításával adathalmazban levő személyeket beazonosíthatatlanná tegye, de olyan módon, hogy az adatokból mégis lehessen kimutatásokat készíteni. Az anonimizálás egy különálló, nagyon komoly és sok kihívást rejtő adatfeldolgozási szakterület. A gyakorlat keretében nem célunk, hogy valós környezetben is használható, vagy akár minden tekintetben értelmes megoldásokat dolgozzunk ki. Számunkra tulajdonképpen csak egy valamilyen adatfeldolgozó algoritmus "bevetése" a fontos a minták bemutatásához. Ez talán kicsit "izgalmasabb" keretet ad, mint egy egyszerű adatszűrés/sorrendezés/stb. alapú adatfeldolgozás (melyeket ráadásul a .NET már eleve beépítve támogat).
 
-!!! Note "Pár gondolat az anonimizálásról"
+!!! note "Pár gondolat az anonimizálásról"
 
     Azt gondolhatnánk, hogy az anonimizálás egy egyszerű problémakör. Pl. csak el kell távolítani, vagy ki kell "csillagozni" a személyek neveit, lakcíméből az utca-házszámot, telefonszámokat, e-mail címet, és meg is vagyunk. Például a bemenetünk első sorára ez lenne a kimenet:
 
@@ -134,7 +134,7 @@ A kimeneti fájt fájlkezelőben tudjuk megnézni, az "OrganizedToFunctions-1\bi
     * Kétségtelen, hogy az `Anonymizer` osztályunknak számos felelőssége van: bemenet feldolgozása, adattisztítás, anonimizálás, kimenet előállítása stb.
     * Ez a probléma nálunk azért nem feltűnő, illetve azért nem okoz gondot, mert mindegyik felelősség megvalósítása egyszerű, "belefért" egy-egy rövidebb függvénybe. De ha bármelyik is összetettebb lenne, több függvényben lennének megvalósítva, akkor mindenképpen külön osztályba illene szervezni.
 
-    ??? Note "Miért probléma, ha egy osztálynak több felelőssége van? *"
+    ??? note "Miért probléma, ha egy osztálynak több felelőssége van? *"
 
         * Nehezebb megérteni a működését, mert nem egy dologra fókuszál.
         * Ha bármelyik felelősség mentén is jön be változási igény, egy nagy, sok mindennel foglalkozó osztályt kell változtatni és újra tesztelni.
@@ -175,7 +175,7 @@ Mi is a pontos cél, és hogyan érjük ezt el? Vannak olyan részek az osztály
 * Nem `if`/`switch` utasításokkal oldjuk meg: "kiterjesztési pontokat" vezetünk be, és valamilyen módon megoldjuk, hogy ezekben "tetszőleges" kód lefuthasson.
 * Ezek változó/esetfüggő részek kódját **más osztályokba** tesszük (az osztályunk szempontjából "lecserélhető" módon)!
 
-!!! Note
+!!! note
     Ne gondoljunk semmiféle varázslatra, a már ismert eszközöket fogjuk erre használni: öröklést absztrakt/virtuális függvényekkel, vagy interfészeket, vagy delegate-eket.
 
 Keressük meg azokat a részeket, melyek esetfüggő, változó logikák, így nem jó beégetni az `Anonymizer` osztályba:
@@ -185,7 +185,7 @@ Keressük meg azokat a részeket, melyek esetfüggő, változó logikák, így n
 
 Ezeket kell leválasztani az osztályról, ezekben a pontokban kell kiterjeszthetővé tenni az osztályt. Az alábbi ábra illusztrálja a célt általánosságában *:
 
-??? Note "Az általános megoldási elv illusztrálása"
+??? note "Az általános megoldási elv illusztrálása"
 
     ![Extensibility illustration](images/illustrate-extensibility.png)
 
@@ -201,7 +201,7 @@ Valójában mind használtuk már a tanulmányaink során, de most mélyebben me
 
 Ebben a lépésben a **Template Method** tervezési minta alkalmazásával fogjuk a megoldásunkat a szükséges pontokban kiterjeszthetővé tenni.
 
-!!! Note
+!!! note
     A minta neve "megtévesztő": semmi köze nincs a C++-ban tanult sablonmetódusokhoz!
 
 ??? info "Template Method alapú megoldás osztálydiagram"
@@ -225,15 +225,35 @@ Alakítsuk át a kódunkat ennek megfelelően. A VS solution-ben a "3-TemplateMe
 2. Vegyünk fel az projektbe egy `NameMaskingAnonymizer` és egy `AgeAnonymizer` osztályt (projekten jobb katt, *Add*/*Class*).
 3. Származtassuk az `AnonymizerBase`-ből őket
 4. Az `AnonymizerBase`-ből mozgassuk át a `NameMaskingAnonymizer`-be az ide tartozó részeket:
-      1. A `_mask` tagváltozót.
-      2. A `string inputFileName, string mask` paraméterezésű konstruktort, átnevezve `NameMaskingAnonymizer`-re,
-         1. `_anonymizerMode = AnonymizerMode.Name;` sort törölve,
-         2. a `this` konstruktorhívás helyett `base` konstruktorhívással.
+    1. A `_mask` tagváltozót.
+    2. A `string inputFileName, string mask` paraméterezésű konstruktort, átnevezve `NameMaskingAnonymizer`-re,
+        1. `_anonymizerMode = AnonymizerMode.Name;` sort törölve,
+        2. a `this` konstruktorhívás helyett `base` konstruktorhívással.
+      
+            ??? example "A konstruktor kódja"
+      
+                ``` csharp
+                public NameMaskingAnonymizer(string inputFileName, string mask): base(inputFileName)
+                {
+                    _mask = mask;
+                }
+                ```
+
 5. Az `AnonymizerBase`-ből mozgassuk át az `AgeAnonymizer`-be az ide tartozó részeket:
-   1. A `_rangeSize` tagváltozót.
-   2. A `string inputFileName, string rangeSize` paraméterezésű konstruktort, átnevezve `AgeAnonymizer`-re,
-      1. `_anonymizerMode = AnonymizerMode.Age;` sort törölve,
-      2. a `this` konstruktorhívás helyett `base` konstruktorhívással.
+    1. A `_rangeSize` tagváltozót.
+    2. A `string inputFileName, string rangeSize` paraméterezésű konstruktort, átnevezve `AgeAnonymizer`-re,
+        1. `_anonymizerMode = AnonymizerMode.Age;` sort törölve,
+        2. a `this` konstruktorhívás helyett `base` konstruktorhívással.
+
+            ??? example "A konstruktor kódja"
+      
+                ``` csharp
+                public AgeAnonymizer(string inputFileName, int rangeSize): base(inputFileName)
+                {
+                    _rangeSize = rangeSize;
+                }
+                ```
+
 6. Az `AnonymizerBase`-ben:
       1. Töröljük az `AnonymizerMode` enum típust.
       2. Töröljük a `_anonymizerMode` tagot.
@@ -245,7 +265,7 @@ Keressük meg azokat a részeket, melyek esetfüggő, változó logikák, így n
 
 A mintát követve ezekre az ősben absztrakt (vagy esetleg virtuális) függvényeket vezetünk be, és ezeket hívjuk, az esetfüggő implementációikat pedig a leszármazott osztályokba tesszük (override):
 
-1. Tegyük az `AnonymizerBase` osztály absztrakttá (a `class` elé `abstract` kulcsszó)
+1. Tegyük az `AnonymizerBase` osztályt absztrakttá (a `class` elé `abstract` kulcsszó).
 2. Vezessünk be az `AnonymizerBase`-ben egy
 
     ``` csharp
@@ -328,10 +348,10 @@ Az egyik kiterjesztési pontunkkal el is készültünk. De maradt még egy, a `G
     }
     ```
 
-    !!! Note "Reflexió"
+    !!! note "Reflexió"
         Az object ősből örökölt `GetType()` művelettel egy `Type` típúsú objektumot szerzünk az osztályunkra vonatkozóan. Ez a **refelexió** témakörhöz tartozik, erről a félév végén fogunk előadáson részletesebben tanulni.
 
-Egy dolog van már csak hátra: a `Program.cs` `Main` függvényében most az `AnonymizerBase` őst próbáljuk példányosítani. Helyette a két leszármazott valamelyikét kellene. Pl.:
+Egy dolog van már csak hátra: a `Program.cs` `Main` függvényében most az `AnonymizerBase` őst próbáljuk példányosítani (a korábbi átnevezés miatt). Helyette a két leszármazott valamelyikét kellene. Pl.:
 
 ``` csharp
 NameMaskingAnonymizer anonymizer = new("us-500.csv", "***");
@@ -350,7 +370,7 @@ Vethetünk egy pillantást a megoldás osztálydiagramjára:
 ??? "Template Method alapú megoldás osztálydiagram *"
     ![Template Method alapú megoldás osztálydiagram](images/template-method.png)
 
-!!! Note "Az eddigi munkánk megoldása a `TemplateMethod-2-Progress` projektben megtalálható, ha esetleg szükség lenne rá."
+!!! note "Az eddigi munkánk megoldása a `3-TemplateMethod/TemplateMethod-1` projektben megtalálható, ha esetleg szükség lenne rá."
 
 ??? "Miért Template Method a minta neve *"
     A minta azért kapta a Template Method nevet, mert - alkalmazásunkat példaként használva - a `Run` és a `PrintSummary` olyan "sablon metódusok", melyek meghatároznak egy sablonszerű logikát, vázat, melyben bizonyos lépések nincsenek megkötve. Ezek "kódját" absztrakt/virtuális függvényekre bízzuk, és a leszármazott osztályok határozzák meg a megvalósításukat.
@@ -363,7 +383,7 @@ Ellenőrizzük a megoldást, megvalósítja-e a céljainkat:
 * Ha új anonimizáló logikára van szükség a jövőben, csak származtatunk belőle. Ez nem módosítás, hanem bővítés.
 * Ennek megfelelően teljesül az OPEN/CLOSED elv, vagyis a kódjának módosítása nélkül tudjuk az ősben megadott két pontban a logikát testre szabni, kiterjeszteni.
 
-!!! Note "Legyen minden pontban kiterjeszthető az osztályunk?"
+!!! note "Legyen minden pontban kiterjeszthető az osztályunk?"
     Figyeljük meg, hogy nem tettünk az `AnonymizerBase` minden műveletét virtuálissá (így sok pontban kiterjeszthetővé az osztályt). Csak ott tettük meg, ahol azt gondoljuk, hogy a jövőben szükség lehet a logika kiterjesztésére.
 
 ## 5. Megoldás (3-TemplateMethod/TemplateMethod-2-Progress)
@@ -371,7 +391,7 @@ Ellenőrizzük a megoldást, megvalósítja-e a céljainkat:
 T.f.h új - viszonylag egyszerű - igény merül fel:
 
 * A `NameMaskinAnonimizer` esetén marad ugyan a korábbi egyszerű progress kijelzés (minden sor után kiírjuk, hányadiknál tartottunk),
-  
+
     ??? note "Egyszerű progress illusztrálása"
         ![Egyszerű progress illusztrálása](images/progress-simple.png)
 
@@ -384,7 +404,7 @@ T.f.h új - viszonylag egyszerű - igény merül fel:
 
 A megoldás nagyon egyszerű: a `Run` műveletben szélesebb körben alkalmazva a Template Method mintát, a progress kiíráskor is egy kiterjesztési pontot vezetünk be, egy virtuális függvényre bízzuk a megvalósítást.
 
-Ugorjunk egyből a kész megoldásra (*TemplateMethod-2-Progress* projekt):
+Ugorjunk egyből a kész megoldásra (*3-TemplateMethod/TemplateMethod-2-Progress* projekt):
 
 * `AnonymizerBase` osztályban új `PrintProgress` virtuális függvény (alapértelmezésben nem ír ki semmit)
 * `Run`-ban ennek hívása
@@ -403,7 +423,7 @@ Ennek egyelőre különösebb tanulsága nincs, de a következő lépésben már
 | Kor anonimizáló     | Egyszerű progress |
 | Kor anonimizáló     | Százalék progress |
 
-Ugorjunk a kész megoldásra (TemplateMethod-3-ProgressMultiple projekt). Kód helyett a `Main.cd` osztálydiagramot nyissuk meg a projektben, és a megoldást az alapján tekintjük át (vagy nézhetjük a diagramot alább az útmutatóban).
+Ugorjunk a kész megoldásra (*3-TemplateMethod/TemplateMethod-3-ProgressMultiple* projekt). Kód helyett a `Main.cd` osztálydiagramot nyissuk meg a projektben, és a megoldást az alapján tekintjük át (vagy nézhetjük a diagramot alább az útmutatóban).
 
 ??? "Template Method alapú megoldás (két aspektus) osztálydiagram"
     ![Template Method alapú megoldás (két aspektus) osztálydiagram](images/template-method-progress-multiple.png)
@@ -425,7 +445,7 @@ Ebben a lépésben a **Strategy** tervezési minta alkalmazásával fogjuk a kez
 
 Ez sokkal egyszerűbb a gyakorlatban, mint amilyennel leírva érződik (már használtuk is párszor korábbi tanulmányaink során). Értsük meg a példánkra vetítve.
 
-A következőkben tekintsük át a Strategy alapú megoldást illusztráló osztálydiagramot, a diagramot követő magyarázatra építve.
+A következőkben tekintsük át a Strategy alapú megoldást illusztráló osztálydiagramot (a diagramot követő magyarázatra építve).
 
 ??? info "Strategy alapú megoldás osztálydiagram"
     Az alábbi UML osztálydiagram illusztrálja a Strategy alapú megoldást, a lényegre fókuszálva:
@@ -473,9 +493,10 @@ Most ennek az interfésznek a **név** anonimizáláshoz tartozó megvalósítá
         1. a `string inputFileName` paramétert törölve
         2. a`: this(inputFileName)` konstruktorhívást törölve,
         3. a `_anonymizerMode = AnonymizerMode.Name;` sort törölve.
-3. Valósítsuk meg a `IAnonymizerAlgorithm` interfészt. Miután az osztály neve után beírjuk a `: IAnonymizerAlgorithm` interfészt, célszerű a műveletek vázát a Visual Studioval legeneráltatni: tegyük a kurzort a interfész nevére, használjuk a 'ctrl' + '.' billentyűkombinációt, majd a megjelenő menüben "Implement interface" kiválasztása. Megjegyzés: mivel a `GetAnonymizerDescription` művelethez van alapértelmezett implementáció az interfészben, csak az `Anonymize` művelet generálódik le, de ez most nekünk egyelőre rendben van így. 
-4. Az `Anonymizer` osztályból vegyük át a `Anonymize_MaskName` művelet törzsét a `NameMaskingAnonymizerAlgorithm`.`Anonymize`-be. A függvény törzsét csak annyiban kell átírni, hogy ne a már nem létező `mask` paramétert, hanem a `_mask` tagváltozót használja. Az `Anonymize` osztály `Anonymize_MaskName`-et pedig töröljük.
-5. A stategy interfész `GetAnonymizerDescription`műveletének megvalósítására térünk most át. Az `Anonymizer` osztály `GetAnonymizerDescription` műveletét másoljuk át a `NameMaskingAnonymizerAlgorithm`-be, a függvény törzsében csak a név anonimizálóra vonatkozó logikát meghagyva, a műveletet publikussá téve:
+3. A `Program.cs` `Main` függvényben a "***" paramétert vegyük ki (mert ezt a konstruktort megszüntettük, így fordítási hibát kapnánk), az `Anonymizer` osztály `protected Anonymizer(string inputFileName)` konstruktorát pedig tegyük publikussá.
+4. Valósítsuk meg a `IAnonymizerAlgorithm` interfészt. Miután az osztály neve után beírjuk a `: IAnonymizerAlgorithm` interfészt, célszerű a műveletek vázát a Visual Studioval legeneráltatni: tegyük a kurzort a interfész nevére, használjuk a 'ctrl' + '.' billentyűkombinációt, majd a megjelenő menüben "Implement interface" kiválasztása. Megjegyzés: mivel a `GetAnonymizerDescription` művelethez van alapértelmezett implementáció az interfészben, csak az `Anonymize` művelet generálódik le, de ez most nekünk egyelőre rendben van így. 
+5. Az `Anonymizer` osztályból vegyük át a `Anonymize_MaskName` művelet törzsét a `NameMaskingAnonymizerAlgorithm`.`Anonymize`-be. A függvény törzsét csak annyiban kell átírni, hogy ne a már nem létező `mask` paramétert, hanem a `_mask` tagváltozót használja. Az `Anonymize` osztály `Anonymize_MaskName`-et pedig töröljük.
+6. A stategy interfész `GetAnonymizerDescription`műveletének megvalósítására térünk most át. Az `Anonymizer` osztály `GetAnonymizerDescription` műveletét másoljuk át a `NameMaskingAnonymizerAlgorithm`-be, a függvény törzsében csak a név anonimizálóra vonatkozó logikát meghagyva, a műveletet publikussá téve:
 
     ``` csharp
     public string GetAnonymizerDescription()
@@ -484,7 +505,7 @@ Most ennek az interfésznek a **név** anonimizáláshoz tartozó megvalósítá
     }  
     ```
 
-6. ??? example "Ezzel a név anonimizáláshoz tartozó strategy implementációnk elkészült, a teljes kódja a következő lett"
+7. ??? example "Ezzel a név anonimizáláshoz tartozó strategy implementációnk elkészült, a teljes kódja a következő lett"
 
         ``` csharp title="NameMaskingAnonymizerAlgorithm.cs"
         public class NameMaskingAnonymizerAlgorithm: IAnonymizerAlgorithm
@@ -570,6 +591,7 @@ A következő lépésben vezessük be a **progress kezeléshez** tartozó interf
 2. Vegyünk fel ebben a mappában egy `IProgress` interfészt az alábbi kóddal:
 
     ??? example "Megoldás"
+
         ``` csharp title="IProgress.cs"
         public interface IProgress
         {
@@ -713,9 +735,7 @@ Az utolsó lépés az `Anonymizer` osztályba beégetett **progress kezelés** l
 
 2. Töröljük a `PrintProgress` függvényt, hiszen ennek kódja már egy megfelelő strategy implementációba került, az osztályról leválasztva.
 
-Elkészültünk, a kész megoldás a "Strategy-1" projektben meg is található (ha valahol elakadtunk, vagy nem fordul a kód, ezzel össze lehet nézni).
-
-
+Elkészültünk, a kész megoldás a "4-Strategy/Strategy-1" projektben meg is található (ha valahol elakadtunk, vagy nem fordul a kód, ezzel össze lehet nézni).
 
 ### A megoldás értékelése
 
