@@ -2212,7 +2212,7 @@ Futtassuk az alkalmazást (lényeges, hogy debuggolva, vagyis az <span class="ke
 <li>Annak eldöntésére, hogy volt-e már győztes, a <code>Game</code> osztályban vezess be egy <code>bool hasWinner</code> segédváltozót (ez azt jelezze, volt-e már győztes hirdetve).</li>
 <li>Előadáson egy nagyon hasonló példa szerepelt a "A lock használata" témakörben, részletes magyarázattal.</li>
 <li>A megoldásnak akkor is jól kell működnie (egy győztes lehet és nem több), ha a <code>hasWinner</code> feltételvizsgálat és a <code>hasWinner</code> igazba állítása közé egy hosszabb mesterséges késleltetés kerül, azt szimulálva, hogy a szál "pechesen" itt veszti el a futási jogát, és a depóból a biciklik "azonnal" tovább vannak engedve (vagyis közel egyszerre érnek a célba). </li>
-<li>A tesztelés idejére tegyél ide (a feltételvizsgálat és <code>hasWinner</code> állítása közé) egy <code>Thread.Sleep(2000)</code> sort, melyet tesztelés után kommentezz ki. Természetesen úgy tesztelj, hogy a bicikliket a depóból minél inkább egyszerre engedd tovább a gombkattintásokkal, hogy a biciklik kb. egyszerre érjenek a célba. Ha több győztes is van, akkor a célban több bicikli is serleggé válik!</li>
+<li>A tesztelés idejére tegyél ide (a feltételvizsgálat és <code>hasWinner</code> állítása közé) egy <code>Thread.Sleep(2000)</code> sort, melyet tesztelés után kommentezz ki. Természetesen úgy tesztelj, hogy a bicikliket a depóból minél inkább egyszerre engedd tovább a gombkattintásokkal, hogy a biciklik kb. egyszerre érjenek a célba. Ha több győztes is lenne (mert nem jó a megoldásod), akkor a célban több bicikli is serleggé válik!</li>
 </ul>
 </div>
 <div class="admonition example">
@@ -2371,8 +2371,8 @@ Fontos megjegyzés: a <code>volatile</code> alkalmazására nincs szükség, ha 
         </path>
       </svg>
     </span>
-    <span title="2024. április 6. 09:35:26">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-06T09:35:26+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-06</span>
+    <span title="2024. április 7. 16:37:39">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-07T16:37:39+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-07</span>
     </span>
   </span>
 
