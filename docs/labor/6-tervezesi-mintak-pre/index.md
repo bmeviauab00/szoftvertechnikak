@@ -761,11 +761,62 @@ Sokan - teljesen jogosan - ezt jelen formájában nem is tekintik igazi Strategy
   
 </div>
 
-A kész megoldást nézzük meg, ez a "Strategy-2-DI" projektben található. Csak az `Anonymizer` osztály konstruktorát kell nézni. Azt látjuk, hogy a fenti elveknek megfelelően át lett alakítva.
+Alakítsuk át ennek megfelelően az `Anonymizer` osztályt úgy, hogy ne maga példányosítsa a strategy implementációit, hanem konstruktor paraméterekben kapja meg azokat:
 
-Megjegyzés: azt egyelőre ne akarjuk megérteni, mi az újonnan felbukkanó `NullProgress` a konstruktorban (ez a DI szempontjából irreleváns, rövidesen visszatérünk rá).
+1. Töröljük mindhárom konstruktorát
+2. Vegyük fel a következő konstruktort:
 
-Most már elkészültünk, az `Anonymizer` osztály teljesen független lett az implementációktól. Lehetőségünk van az `Anonymizer` osztály bármilyen anonimizáló algoritmus és bármilyen progress kezelés  (annak módosítása nélkül). Erre vannak is példák a `Program.cs` fájlban, nézzük ezt meg! Itt négy `Anonymizer` objektumot hozunk létre, négy különböző anonimizáló és progress kombinációval.
+    ``` csharp
+    public Anonymizer(string inputFileName, IAnonymizerAlgorithm anonymizerAlgorithm, IProgress progress = null)
+    {
+        ArgumentException.ThrowIfNullOrEmpty(inputFileName);
+        ArgumentNullException.ThrowIfNull(anonymizerAlgorithm);
+
+        _inputFileName = inputFileName;
+        _anonymizerAlgorithm = anonymizerAlgorithm;
+        _progress = progress;
+    }
+    ```
+
+    Mint látható, a `progress` paraméter megadása nem kötelező, hiszen lehet, hogy az osztály használója nem kíváncsi semmiféle progress információra.
+
+3. Mivel a _progress strategy null is lehet, egy null vizsgálatot be kell vezessünk a használata során. A "." operátor helyett a "?." operátort használjuk:
+
+    ``` csharp
+    _progress?.Report(persons.Count,i);
+    ```
+
+4. Most már elkészültünk, az `Anonymizer` osztály teljesen független lett a strategy implementációktól. Lehetőségünk van az `Anonymizer` osztályt bármilyen anonimizáló algoritmus és bármilyen progress kezelés kombinációval használni (annak módosítása nélkül). Hozzunk is létre három `Anonymizer` különböző kombinációkkal a `Program.cs` fájl `Main` függvényében (a meglévő kódot előtte töröljük a `Main` függvényből):
+
+    ``` csharp
+    Anonymizer p1 = new("us-500.csv",
+        new NameMaskingAnonymizerAlgorithm("***"),
+        new SimpleProgress());
+    p1.Run();
+
+    Console.WriteLine("--------------------");
+
+    Anonymizer p2 = new("us-500.csv",
+        new NameMaskingAnonymizerAlgorithm("***"),
+        new PercentProgress());
+    p2.Run();
+
+    Console.WriteLine("--------------------");
+
+    Anonymizer p3 = new("us-500.csv",
+        new AgeAnonymizerAlgorithm(20),
+        new SimpleProgress());
+    p3.Run();
+    ```
+
+5. Ahhoz, hogy a kód foruljon, szúrjuk be a fájl elejére a szükséges `using`-okat
+
+    ``` csharp
+    using Lab_Extensibility.AnonymizerAlgorithms;
+    using Lab_Extensibility.Progresses;
+    ```
+
+Elkészültünk, a kész megoldás a "4-Strategy/Strategy-2-DI" projektben meg is található (ha valahol elakadtunk, vagy nem fordul a kód, ezzel össze lehet nézni).
 
 !!! Note "A működés ellenőrzése"
     A gyakorlat során erre valószínűleg nem lesz idő, de aki bizonytalan abban, "mitől is működik" a strategy minta, mitől lesz más a viselkedés a fenti négy esetre: érdemes töréspontokat tenni a `Program.cs` fájlban a négy `Run` függvényhívásra, és a függvényekbe a debuggerben belelépkedve kipróbálni, hogy mindig a megfelelő strategy implementáció hívódik meg.
