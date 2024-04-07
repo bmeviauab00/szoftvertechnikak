@@ -1652,15 +1652,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#null-strategy-kitero" class="md-nav__link">
-    <span class="md-ellipsis">
-      Null strategy (kitérő)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#a-megoldas-ertekelese_4" class="md-nav__link">
     <span class="md-ellipsis">
       A megoldás értékelése
@@ -2064,6 +2055,10 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 </div>
 </li>
 </ol>
+<p>Egy dolog van már csak hátra: a <code>Program.cs</code> <code>Main</code> függvényében most az <code>AnonymizerBase</code> őst próbáljuk példányosítani. Helyette a két leszármazott valamelyikét kellene. Pl.:</p>
+<div class="highlight"><pre><span></span><code><span class="n">NameMaskingAnonymizer</span><span class="w"> </span><span class="n">anonymizer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">(</span><span class="s">&quot;us-500.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;***&quot;</span><span class="p">);</span>
+<span class="n">anonymizer</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
+</code></pre></div>
 <p>El is készültünk. Próbáljuk ki, hogy jobban "érezzük", valóban működnek az kiterjesztési pontok (de ha kevés az időnk a labor során, ez különösebben nem fontos, hasonlót már korábbi félévekben C++/Java nyelvek kontextusában is csináltunk):</p>
 <ul>
 <li>Visual Studioban a <em>TemplateMethod-0-Begin</em> projekt legyen a startup projekt, ha ezt eddig még nem állítottuk be.</li>
@@ -2452,7 +2447,6 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 </li>
 </ol>
 <p>Elkészültünk, a kész megoldás a "Strategy-1" projektben meg is található (ha valahol elakadtunk, vagy nem fordul a kód, ezzel össze lehet nézni).</p>
-<p>Ha van időnk a labor során, érdemes töréspontot tenni pl. az <code>Anonymizer</code> osztály <code>Person person = _anonymizerAlgorithm.Anonymize(persons[i]);</code> sorára, és megnézni, hogy itt az osztály kihív a strategy implementációba.</p>
 <h3 id="a-megoldas-ertekelese_3">A megoldás értékelése<a class="headerlink" href="#a-megoldas-ertekelese_3" title="Permanent link">&para;</a></h3>
 <p>A strategy minta bevezetésével elkészültünk. Jelen formájában ugyanakkor szinte soha nem használjuk. Ellenőrizzük a megoldásunkat: valóban újrafelhasználható, és az <code>Anomymizer</code> osztály módosítása nélkül lehetőség van-e az anonimizáló algoritmus, illetve a progress kezelés megváltoztatására? Ehhez azt kell megnézni, bárhol az osztályban van-e olyan kód, mely implementáció függő.</p>
 <p>Sajnos találunk ilyet. A konstruktorba be van égetve, milyen algoritmus implementációt és progress implementációt hozunk létre. Ezt mindenképpen nézzük meg a kódban! Ha algoritmus vagy progress módot akarunk változtatni, ezekben a sorokban át kell írni a <code>new</code> operátor utáni típust, mely így az osztály módosításával jár.</p>
@@ -2477,13 +2471,11 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 <p>Az alábbi UML osztálydiagram illusztrálja a Strategy alapú megoldásunkat:</p>
 <p><a class="glightbox" href="images\strategy-di.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Strategy DI UML osztálydiagram" src="images\strategy-di.png" /></a></p>
 </details>
-<h3 id="null-strategy-kitero">Null strategy (kitérő)<a class="headerlink" href="#null-strategy-kitero" title="Permanent link">&para;</a></h3>
-<p>Az <code>Anonymizer</code> konstruktorában látunk egy elsőre talán kicsit fura részletet. Ha a hívó null-t ad meg <code>IProgress</code> strategy-ként paraméterben, akkor a <code>_progress</code> tagváltozóba nem <code>null</code>-t mentünk, hanem egy <code>NullProgress</code> objektumra állítjuk. A <code>NullProgress</code> is egy teljes értékű <code>IProgress</code> implementáció, csak éppen nem csinál semmit (üres a törzse). Ezzel a megoldással azt érjük el, hogy nem kell az osztályban a <code>_progress</code> minden használatakor megvizsgálni, hogy null-e (ha elfelejtenénk, akkor <code>NullReferenceException</code>-t kapnánk!), mert az mindig egy érvényes objektumra mutat. Egyszerűen, ha nincs szükség semmiféle progress kiírására, akkor <code>NullProgress</code>-t használunk stratégiaként, mely nem csinál semmit. Ez is egy tervezési minta, <strong>Null Object</strong> a neve.</p>
 <h3 id="a-megoldas-ertekelese_4">A megoldás értékelése<a class="headerlink" href="#a-megoldas-ertekelese_4" title="Permanent link">&para;</a></h3>
 <p>Ellenőrizzük a megoldást, megvalósítja-e a céljainkat:</p>
 <ul>
 <li>Az <code>Anonymizer</code> egy újrafelhasználható(bb) osztály lett.</li>
-<li>Ha új anonimizáló logikára van szükség a jövőben, csak egy új <code>IAnonymizerAlgorithm</code> implementációt kell bevezetni. Ez nem módosítás, hanem bővítés.</li>
+<li>Ha új anonimizáló logikára van szükség a jövőben, csak egy új <code>IAnonymizerAlgorithm</code> implementációt kell bevezetni. Ez nem módosítás, hanem kiterjesztés/bővítés.</li>
 <li>Ha új progress logikára van szükség a jövőben, csak egy új <code>IProgress</code> implementációt kell bevezetni. Ez nem módosítás, hanem bővítés.</li>
 <li>A fenti két pontban teljesül az OPEN/CLOSED elv, vagyis az <code>Anonymizer</code> kódjának módosítása nélkül tudjuk a logikáját testre szabni, kiterjeszteni.</li>
 <li>Itt nem kell tartani a Template Methodnál tapasztalt kombinatorikus robbanástól: bármely <code>IAnonymizerAlgorithm</code> implementáció bármely <code>IProgress</code> implementációval kényelmesen használható, nem kell a kombinációkhoz új osztályokat bevezetni (ezt láttuk a <code>Program.cs</code> fájlban).</li>
@@ -2492,7 +2484,7 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 <p class="admonition-title">További Strategy előnyök a Template Methoddal szemben *</p>
 <ul>
 <li>Futás közben lecserélhető viselkedés is megvalósítható. Ha szükség lenne arra, hogy egy adott <code>Anonymizer</code> objektumra vonatkozóan a létrehozása után meg tudjuk változtatni az anonimizáló vagy progress viselkedést, akkor azt könnyen meg tudnánk tenni (csak egy <code>SetAnonimizerAlgorithm</code>, ill. <code>SetProgress</code> műveletet kellene bevezetni, melyben a paraméterben megkapott implementációra lehetne állítani az osztály által használt strategy-t).</li>
-<li>Egységtesztelhetőség támogatása (még visszatérünk erre).</li>
+<li>Egységtesztelhetőség támogatása (laboron ezt nem nézzük).</li>
 </ul>
 </div>
 <h2 id="9-megoldas-5-strategyfull-unittestingstrategyfull-1">9. Megoldás (5-StrategyFull-UnitTesting/StrategyFull-1)<a class="headerlink" href="#9-megoldas-5-strategyfull-unittestingstrategyfull-1" title="Permanent link">&para;</a></h2>
@@ -2681,13 +2673,13 @@ implementációs osztályokat bevezetni (a beépített <code>Action</code> és <
 <p>Természetesen a % szinteket nem szabad túl komolyan venni. Mindenesetre a fejlődés jól megfigyelhető.</p>
 <details class="note">
 <summary>Miért "csak" 70%-os a végső megoldásnál mutatónk?</summary>
-<p>Felmerülhet a kérdés, miért adunk jelem megoldásra kb. 70%-ot? Többek között:</p>
+<p>Felmerülhet a kérdés, miért adunk jelen megoldásra kb. 70%-ot? Többek között:</p>
 <ul>
 <li>Az <code>Anonymizer</code> osztályba az adattisztítás módja mereven be van égetve (trimmelés adott oszlopra adott módon).</li>
 <li>Nem követtünk egy nagyon fontos általános alapelvet: a UI és a logika különválasztását. A kódunk több pontban konzolra ír, így például egy grafikus felülettel nem használható!</li>
-<li>Bizonyos az anonimizáló algoritmusaink nagyon specifikusak. Lehetne olyan általánosabb algoritmusokat készíteni, melyek tetszőleges mezőket kicsillagoznak (nem csak a nevet beégetetten), illetve tetszőleges mezőket sávosítanak (nem csak az életkort).</li>
+<li>Az anonimizáló algoritmusaink nagyon specifikusak. Lehetne olyan általánosabb algoritmusokat készíteni, melyek tetszőleges mezőket kicsillagoznak (nem csak a nevet beégetetten), illetve tetszőleges mezőket sávosítanak (nem csak az életkort).</li>
 <li>Jelen megoldás csak <code>Person</code> objektumokkal tud működni.</li>
-<li>Nem lehet egyszerre alkalmazni kombinálni különböző anonimizáló algoritmusokat.</li>
+<li>Nem lehet egyszerre alkalmazni (kombinálni) különböző anonimizáló algoritmusokat.</li>
 </ul>
 </details>
 <h3 id="kiterjesztesi-technikak-attekintese">Kiterjesztési technikák áttekintése<a class="headerlink" href="#kiterjesztesi-technikak-attekintese" title="Permanent link">&para;</a></h3>
@@ -2709,7 +2701,7 @@ implementációs osztályokat bevezetni (a beépített <code>Action</code> és <
 <p>De ezek a megoldások nem mindig alkalmazhatók, vagy legalábbis körülményes lehet az alkalmazásuk.</p>
 </li>
 </ul>
-<p>Mindenképpen meg kell említeni, hogy nem csak jelen gyakorlatban említett néhány minta szolgálja a kiterjeszthetőséget és újrafelhasználhatóságot, hanem gyakorlatilag az összes. Most kiemeltünk párat, melyek (még p. az Observert/Iteratort/Adaptert ide sorolva) talán a leggyakrabban, legszélesebb körben alkalmazhatók és bukkannak is fel keretrendszerekben.</p>
+<p>Mindenképpen meg kell említeni, hogy nem csak jelen gyakorlatban említett néhány minta szolgálja a kiterjeszthetőséget és újrafelhasználhatóságot, hanem gyakorlatilag az összes. Most kiemeltünk párat, melyek (még pl. az Observert/Iteratort/Adaptert ide sorolva) talán a leggyakrabban, legszélesebb körben alkalmazhatók és bukkannak is fel keretrendszerekben.</p>
 <hr>
 <div class="md-source-file">
   <span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg
@@ -2719,8 +2711,8 @@ implementációs osztályokat bevezetni (a beépített <code>Action</code> és <
         </path>
       </svg>
     </span>
-    <span title="2024. április 6. 20:36:33">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-06T20:36:33+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-06</span>
+    <span title="2024. április 7. 15:32:28">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-07T15:32:28+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-07</span>
     </span>
   </span>
 
