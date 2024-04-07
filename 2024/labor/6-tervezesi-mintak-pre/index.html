@@ -1820,12 +1820,8 @@ Ennek tükrében nem is célunk (és sokszor nincs is rá lehetőségünk), hogy
 <p>Összegészében megoldásunk kódminőség tekintetében a korábbinál <strong>rosszabb</strong> lett.
 Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem volt kiterjeszthető, hiszen nem volt rá igény. De ha már egyszer felmerült az igény új algoritmus bevezetésére, akkor hiba ebben a tekintetben nem kiterjeszthetővé tenni a megoldásunkat: ettől kezdve sokkal inkább számítunk arra, hogy újabb további algoritmusokat kell bevezetni a jövőben.</p>
 <p>Miért állítjuk azt, hogy a kódunk nem kiterjeszthető, amikor "csak" egy új enum értéket, és egy-egy plusz <code>if</code>/<code>switch</code> ágat kell a kód néhány pontjára bevezetni, amikor új algoritmust kell majd bevezetni?</p>
-<div class="grid cards">
-<ul>
-<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> <strong>Open/Closed principle</strong><br />
-<em>Kulcsfontosságú, hogy egy osztályt akkor tekintünk kiterjeszthetőnek, ha annak bármilyen nemű <strong>módosítása nélkül</strong>, pusztán a kód <strong>kiterjesztésével/bővítésével</strong> lehet új viselkedést (esetünkben új algoritmust) bevezetni. Vagyis esetünkben az <code>Anonymizer</code> kódjához nem szabadna hozzányúlni (ezt még "bővíteni" sem!), ami egyértelműen nem teljesül. Ez a híres <strong>Open/Closed principle/elv</strong>: the class should be Open for Extension, Closed for Modification. A kód módosítása azért probléma, mert annak során jó eséllyel új bugokat vezetünk be, ill. a módosított kódot mindig újra kell tesztelni, ez pedig jelentős idő/költségráfordítási igényt jelenthet.</em></li>
-</ul>
-</div>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> <strong>Open/Closed principle</strong><br />
+Kulcsfontosságú, hogy egy osztályt akkor tekintünk kiterjeszthetőnek, ha annak bármilyen nemű <strong>módosítása nélkül</strong>, pusztán a kód <strong>kiterjesztésével/bővítésével</strong> lehet új viselkedést (esetünkben új algoritmust) bevezetni. Vagyis esetünkben az <code>Anonymizer</code> kódjához nem szabadna hozzányúlni, ami egyértelműen nem teljesül. Ez a híres <strong>Open/Closed principle/elv</strong>: the class should be Open for Extension, Closed for Modification. A kód módosítása azért probléma, mert annak során jó eséllyel új bugokat vezetünk be, ill. a módosított kódot mindig újra kell tesztelni, ez pedig jelentős idő/költségráfordítási igényt jelenthet.</p>
 <p>Mi is a pontos cél, és hogyan érjük ezt el? Vannak olyan részek az osztályunkban, melyeket nem szeretnénk beégetni:</p>
 <ul>
 <li>Ezek nem adatok, hanem <strong><mark>viselkedések (kód, logika)</mark></strong>.</li>
@@ -2407,12 +2403,8 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
 <p>Sajnos találunk ilyet. A konstruktorba be van égetve, milyen algoritmus implementációt és progress implementációt hozunk létre. Ezt mindenképpen nézzük meg a kódban! Ha algoritmus vagy progress módot akarunk változtatni, ezekben a sorokban át kell írni a <code>new</code> operátor utáni típust, mely így az osztály módosításával jár.</p>
 <p>Sokan - teljesen jogosan - ezt jelen formájában nem is tekintik igazi Strategy alapú megoldásnak. A teljes körű megoldást a következő lépésben valósítjuk meg.</p>
 <h2 id="8-megoldas-4-strategystrategy-2-di">8. Megoldás (4-Strategy/Strategy-2-DI)<a class="headerlink" href="#8-megoldas-4-strategystrategy-2-di" title="Permanent link">&para;</a></h2>
-<div class="grid cards">
-<ul>
-<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> <strong>Dependency Injection (DI)</strong><br />
-<em>A megoldást a <strong>Dependency Injection (röviden DI)</strong> alkalmazása jelenti. Ennek lényege az, hogy nem maga az osztály példányosítja a viselkedésbeli függőségeit (ezek a strategy implementációk), hanem ezeket kívülről adjuk át neki, pl. konstruktor paraméterekben, vagy akár property-k vagy setter műveletek formájában. Természetesen interfész típusként hivatkozva!</em></li>
-</ul>
-</div>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> <strong>Dependency Injection (DI)</strong><br />
+A megoldást a <strong>Dependency Injection (röviden DI)</strong> alkalmazása jelenti. Ennek lényege az, hogy nem maga az osztály példányosítja a viselkedésbeli függőségeit (ezek a strategy implementációk), hanem ezeket kívülről adjuk át neki, pl. konstruktor paraméterekben, vagy akár property-k vagy setter műveletek formájában. Természetesen interfész típusként hivatkozva!</p>
 <p>Alakítsuk át ennek megfelelően az <code>Anonymizer</code> osztályt úgy, hogy ne maga példányosítsa a strategy implementációit, hanem konstruktor paraméterekben kapja meg azokat:</p>
 <ol>
 <li>Töröljük mindhárom konstruktorát</li>
@@ -2500,8 +2492,8 @@ Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem 
         </path>
       </svg>
     </span>
-    <span title="2024. április 7. 17:08:04">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-07T17:08:04+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-07</span>
+    <span title="2024. április 7. 18:32:32">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-07T18:32:32+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-07</span>
     </span>
   </span>
 
