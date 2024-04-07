@@ -487,14 +487,17 @@ Az **anonimizálási stratégia/aspektus** kezelésével kezdünk. Vezessük be 
 Most ennek az interfésznek a **név** anonimizáláshoz tartozó megvalósítását készítjük el (vagyis egy strategy implementációt készítünk). 
 
 1. Vegyünk fel egy `NameMaskingAnonymizerAlgorithm` osztályt ugyenebbe a mappába.
-2. Az `Anonymizer` osztályból mozgassuk át a `NameMaskingAnonymizerAlgorithm`-be az ide tartozó részeket:
-    1. A `_mask` tagváltozót.
-    2. A `string inputFileName, string mask` paraméterezésű konstruktort, átnevezve `NameMaskingAnonymizerAlgorithm`-re,
-        1. a `string inputFileName` paramétert törölve
-        2. a`: this(inputFileName)` konstruktorhívást törölve,
-        3. a `_anonymizerMode = AnonymizerMode.Name;` sort törölve.
-3. A `Program.cs` `Main` függvényben a "***" paramétert vegyük ki (mert ezt a konstruktort megszüntettük, így fordítási hibát kapnánk), az `Anonymizer` osztály `protected Anonymizer(string inputFileName)` konstruktorát pedig tegyük publikussá.
-4. Valósítsuk meg a `IAnonymizerAlgorithm` interfészt. Miután az osztály neve után beírjuk a `: IAnonymizerAlgorithm` interfészt, célszerű a műveletek vázát a Visual Studioval legeneráltatni: tegyük a kurzort a interfész nevére, használjuk a 'ctrl' + '.' billentyűkombinációt, majd a megjelenő menüben "Implement interface" kiválasztása. Megjegyzés: mivel a `GetAnonymizerDescription` művelethez van alapértelmezett implementáció az interfészben, csak az `Anonymize` művelet generálódik le, de ez most nekünk egyelőre rendben van így. 
+2. Az `Anonymizer` osztályból mozgassuk át a `NameMaskingAnonymizerAlgorithm`-be az ide tartozó `_mask` tagváltozót:
+3. A `NameMaskingAnonymizerAlgorithm`-be vegyük fel a következő konstruktort:
+
+    ``` csharp
+    public NameMaskingAnonymizerAlgorithm(string mask)
+    {
+        _mask = mask;
+    }
+    ```
+
+4. Valósítsuk meg a `IAnonymizerAlgorithm` interfészt. Miután az osztály neve után beírjuk a `: IAnonymizerAlgorithm` interfészt, célszerű a műveletek vázát a Visual Studioval legeneráltatni: tegyük a kurzort a interfész nevére (kattintsunk rá a forráskódban), használjuk a 'ctrl' + '.' billentyűkombinációt, majd a megjelenő menüben "Implement interface" kiválasztása. Megjegyzés: mivel a `GetAnonymizerDescription` művelethez van alapértelmezett implementáció az interfészben, csak az `Anonymize` művelet generálódik le, de ez most nekünk egyelőre rendben van így. 
 5. Az `Anonymizer` osztályból vegyük át a `Anonymize_MaskName` művelet törzsét a `NameMaskingAnonymizerAlgorithm`.`Anonymize`-be. A függvény törzsét csak annyiban kell átírni, hogy ne a már nem létező `mask` paramétert, hanem a `_mask` tagváltozót használja. Az `Anonymize` osztály `Anonymize_MaskName`-et pedig töröljük.
 6. A stategy interfész `GetAnonymizerDescription`műveletének megvalósítására térünk most át. Az `Anonymizer` osztály `GetAnonymizerDescription` műveletét másoljuk át a `NameMaskingAnonymizerAlgorithm`-be, a függvény törzsében csak a név anonimizálóra vonatkozó logikát meghagyva, a műveletet publikussá téve:
 
@@ -505,7 +508,7 @@ Most ennek az interfésznek a **név** anonimizáláshoz tartozó megvalósítá
     }  
     ```
 
-7. ??? example "Ezzel a név anonimizáláshoz tartozó strategy implementációnk elkészült, a teljes kódja a következő lett"
+8. ??? example "Ezzel a név anonimizáláshoz tartozó strategy implementációnk elkészült, a teljes kódja a következő lett"
 
         ``` csharp title="NameMaskingAnonymizerAlgorithm.cs"
         public class NameMaskingAnonymizerAlgorithm: IAnonymizerAlgorithm
@@ -533,15 +536,19 @@ Most ennek az interfésznek a **név** anonimizáláshoz tartozó megvalósítá
 A következő lépésben az `IAnonymizerAlgorithm` strategy interfészünk **életkor** anonimizáláshoz tartozó megvalósítását készítjük el.
 
 1. Vegyünk fel egy `AgeAnonymizerAlgorithm` osztályt ugyenebbe a mappába (AnonymizerAlgorithms).
-2. Az `Anonymizer` osztályból mozgassuk át a `AgeAnonymizerAlgorithm`-be az ide tartozó részeket:
-    1. A `_rangeSize` tagváltozót.
-    2. A `string inputFileName, string rangeSize` paraméterezésű konstruktort, átnevezve `AgeAnonymizerAlgorithm`-re,
-        1. a `string inputFileName` paramétert törölve,         
-        2. a `: this(inputFileName)` konstruktorhívást törölve.
-        3. `_anonymizerMode = AnonymizerMode.Age;` sort törölve.
-3. Valósítsuk meg a `IAnonymizerAlgorithm` interfészt. Miután az osztály neve után beírjuk a `: IAnonymizerAlgorithm` interfészt, most is célszerű az `Anonymize` művelet vázát a Visual Studioval a korábbihoz hasonló módon legeneráltatni. 
-4. Az `Anonymizer` osztályból vegyük át az `Anonymize_AgeRange` művelet törzsét a `AgeAnonymizerAlgorithm`.`Anonymize`-be. A függvény törzsét csak annyiban kell átírni, hogy ne a már nem létező `rangeSize` paramétert, hanem a `_rangeSize` tagváltozót használja. Az `Anonymize` osztály `Anonymize_AgeRange`-et pedig töröljük.
-5. A stategy interfész `GetAnonymizerDescription`műveletének megvalósítására térünk most át. Az `Anonymizer` osztály `GetAnonymizerDescription` műveletét másoljuk át az `AgeAnonymizerAlgorithm`-be, a függvény törzsében csak a kor anonimizálóra vonatkozó logikát meghagyva, a műveletet publikussá téve:
+2. Az `Anonymizer` osztályból mozgassuk át a `AgeAnonymizerAlgorithm`-be az ide tartozó `_rangeSize` tagváltozót:
+3. A `AgeAnonymizerAlgorithm`-be vegyük fel a következő konstruktort:
+
+    ``` csharp
+    public AgeAnonymizerAlgorithm(int rangeSize)
+    {
+        _rangeSize = rangeSize;
+    }
+    ```
+
+4. Valósítsuk meg a `IAnonymizerAlgorithm` interfészt. Miután az osztály neve után beírjuk a `: IAnonymizerAlgorithm` interfészt, most is célszerű az `Anonymize` művelet vázát a Visual Studioval a korábbihoz hasonló módon legeneráltatni. 
+5. Az `Anonymizer` osztályból vegyük át az `Anonymize_AgeRange` művelet törzsét a `AgeAnonymizerAlgorithm`.`Anonymize`-be. A függvény törzsét csak annyiban kell átírni, hogy ne a már nem létező `rangeSize` paramétert, hanem a `_rangeSize` tagváltozót használja. Az `Anonymize` osztály `Anonymize_AgeRange`-et pedig töröljük.
+6. A stategy interfész `GetAnonymizerDescription`műveletének megvalósítására térünk most át. Az `Anonymizer` osztály `GetAnonymizerDescription` műveletét másoljuk át az `AgeAnonymizerAlgorithm`-be, a függvény törzsében csak a kor anonimizálóra vonatkozó logikát meghagyva, a műveletet publikussá téve:
 
     ``` csharp
     public string GetAnonymizerDescription()
@@ -550,7 +557,7 @@ A következő lépésben az `IAnonymizerAlgorithm` strategy interfészünk **él
     } 
     ```
 
-6. ??? example "Ezzel a kor anonimizáláshoz tartozó strategy implementációnk elkészült, a teljes kódja a következő lett"
+7. ??? example "Ezzel a kor anonimizáláshoz tartozó strategy implementációnk elkészült, a teljes kódja a következő lett"
 
         ``` csharp title="AgeAnonymizerAlgorithm.cs"
         public class AgeAnonymizerAlgorithm: IAnonymizerAlgorithm
@@ -677,7 +684,7 @@ A következő fontos lépés az anonimizáló alaposztály újrafelhasználható
 
 Az `Anonymizer` osztályban a jelenleg beégetett, de **anonimizálás függő** logikákat bízzuk a `_anonymizerAlgorithm` tagváltozó által hivatkozott strategy implementációra:
 
-1. Az osztály `Run` függvényében az `if`/`else` kifejezésben található `Anonymize` hívásokat most már le delegáljuk a `_anonymizerAlgorithm` objektumnak:
+1. Az osztály `Run` függvényében az `if`/`else` kifejezésben található `Anonymize` hívásokat most már delegáljuk a `_anonymizerAlgorithm` objektumnak:
 
     {--
 
