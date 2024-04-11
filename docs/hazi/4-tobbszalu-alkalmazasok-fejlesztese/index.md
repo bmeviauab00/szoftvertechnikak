@@ -29,7 +29,6 @@ A szükséges fejlesztőkörnyezet a szokásos, [itt](../fejlesztokornyezet/inde
 - A neptun.txt fájlba írd bele a Neptun kódod!
 - A kiklónozott fájlok között a `MultiThreadedApp.sln`-t megnyitva kell dolgozni.
 - :exclamation: A feladatok kérik, hogy készíts **képernyőképet** a megoldás egy-egy részéről, mert ezzel bizonyítod, hogy a megoldásod saját magad készítetted. **A képernyőképek elvárt tartalmát a feladat minden esetben pontosan megnevezi.** A képernyőképeket a megoldás részeként kell beadni, a repository-d gyökérmappájába tedd (a neptun.txt mellé). A képernyőképek így felkerülnek GitHub-ra git repository tartalmával együtt. Mivel a repository privát, azt az oktatókon kívül más nem látja. Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltölteni, kitakarhatod a képről.
-- :exclamation: A beadott megoldások mellé külön indoklást, illetve leírást nem várunk el, ugyanakkor az elfogadás feltétele, hogy a beadott kódban a feladat megoldása szempontjából relevánsabb részek **kommentekkel legyenek ellátva**.
 
 ## Feladat 0 – A feladat áttekintése, ismerkedés a kiinduló kerettel
 
