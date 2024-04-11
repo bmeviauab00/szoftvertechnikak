@@ -1,0 +1,1908 @@
+
+<!doctype html>
+<html lang="hu" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Benedek Zoltán">
+      
+      
+        <link rel="canonical" href="https://bmeviauab00.github.io/szoftvertechnikak/2024/hazi/5-mvvm/">
+      
+      
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.9">
+    
+    
+      
+        <title>5. HF - MVVM mintára épülő alkalmazások - BMEVIAUAB00 Szoftvertechnikák</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.f2e4d321.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../extra-material-theme.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="aut" data-md-color-primary="aut" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#5-hf-mvvm-mintara-epulo-alkalmazasok" class="md-skip">
+          Kihagyás
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Élőfej">
+    <a href="../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-header__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
+      
+  <img src="../../img/logo-bme-aut.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BMEVIAUAB00 Szoftvertechnikák
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5. HF - MVVM mintára épülő alkalmazások
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="aut" data-md-color-primary="aut" data-md-color-accent="red"  aria-label="Váltás sötét témára"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Váltás sötét témára" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="indigo"  aria-label="Váltás világos témára"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Váltás világos témára" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Keresés" placeholder="Keresés" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Keresés">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Törlés" aria-label="Törlés" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Keresés inicializálása
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bmeviauab00/szoftvertechnikak
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Lapok" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Szoftvertechnikák (2024-től)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labor/1-model-es-kod-kapcsolata/" class="md-tabs__link">
+          
+  
+  Laborok
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Önálló/házi feladatok
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labor/1-model-es-kod-kapcsolata/index_eng/" class="md-tabs__link">
+          
+  
+  English course labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labor/1-model-es-kod-kapcsolata/index_ger/" class="md-tabs__link">
+          
+  
+  Deutschkurs-Labore
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../meghirdetes-elott_ger/" class="md-tabs__link">
+          
+  
+  Hausaufgaben
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigáció" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-nav__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
+      
+  <img src="../../img/logo-bme-aut.png" alt="logo">
+
+    </a>
+    BMEVIAUAB00 Szoftvertechnikák
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bmeviauab00/szoftvertechnikak
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Szoftvertechnikák (2024-től)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Laborok
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Laborok
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/1-model-es-kod-kapcsolata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. A modell és a kód kapcsolata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/2-nyelvi-eszkozok/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Nyelvi eszközök
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/3-felhasznaloi-felulet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. A felhasználói felület kialakítása
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/4-tobbszalu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Többszálú alkalmazások készítése
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/5-mvvm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/6-tervezesi-mintak/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Tervezési minták
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/7-adatkezeles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Adatkezelés
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Önálló/házi feladatok
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Önálló/házi feladatok
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Útmutató
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-model-es-kod-kapcsolata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. HF - A modell és a kód kapcsolata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-nyelvi-eszkozok/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. HF - Nyelvi eszközök
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-felhasznaloi-felulet-kialakitasa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. HF - Felhasználói felület kialakítása
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-tobbszalu-alkalmazasok-fejlesztese/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. HF - Többszálú alkalmazások fejlesztése
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. HF - MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. HF - Tervezési minták
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../imsc-liftsystem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IMSc HF - Liftrendszer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fejlesztokornyezet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fejlesztőkörnyezet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    English course labs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            English course labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/1-model-es-kod-kapcsolata/index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Relationship between the model and the code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/2-nyelvi-eszkozok/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/3-felhasznaloi-felulet/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/4-tobbszalu/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/5-mvvm/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/6-tervezesi-mintak/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/7-adatkezeles/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Deutschkurs-Labore
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Deutschkurs-Labore
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/1-model-es-kod-kapcsolata/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Beziehung zwischen dem Modell und dem Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/2-nyelvi-eszkozok/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Sprachliche Mittel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/3-felhasznaloi-felulet/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Entwurf der Benutzeroberfläche
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/4-tobbszalu/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Erstellung von mehrfädigen Anwendungen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/5-mvvm/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/6-tervezesi-mintak/index_ger.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labor/7-adatkezeles/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Verwaltung der Daten
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hausaufgaben
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Hausaufgaben
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meghirdetes-elott_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Beziehung zwischen dem Modell und dem Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meghirdetes-elott_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Sprachliche Mittel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-felhasznaloi-felulet-kialakitasa/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Entwurf der Benutzeroberfläche
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meghirdetes-elott_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Entwicklung von Multithreading-Anwendungen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meghirdetes-elott_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meghirdetes-elott_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Entwurfsmuster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fejlesztokornyezet/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entwicklungsumgebung
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tartalomjegyzék
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bevezetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bevezetés
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-beadas-menete" class="md-nav__link">
+    <span class="md-ellipsis">
+      A beadás menete
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kikotesek" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kikötések
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiindulo-allapot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kiinduló állapot
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-feladat-receptek-kedvenckent-kezelese" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Feladat - Receptek kedvencként kezelése
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Feladat - Receptek kedvencként kezelése">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-kedvencek-kezelese-a-szolgaltatas-retegben" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Kedvencek kezelése a szolgáltatás rétegben
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-kedvencnek-jeloles-a-reszletes-oldalon" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Kedvencnek jelölés a részletes oldalon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-kedvencek-oldal-navigacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 Kedvencek oldal navigáció
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-kedvencek-oldal-logika" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4 Kedvencek oldal logika
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beadás
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/bmeviauab00/szoftvertechnikak/edit/master/docs/hazi/5-mvvm/index.md" title="Oldal szerkesztése" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="5-hf-mvvm-mintara-epulo-alkalmazasok">5. HF - MVVM mintára épülő alkalmazások<a class="headerlink" href="#5-hf-mvvm-mintara-epulo-alkalmazasok" title="Permanent link">&para;</a></h1>
+<h2 id="bevezetes">Bevezetés<a class="headerlink" href="#bevezetes" title="Permanent link">&para;</a></h2>
+<p>A házi feladatban a laboron elkezdett recept alkalmazást fogjuk tovább bővíteni az MVVM mintát használva.</p>
+<p>Az önálló feladat az MVVM előadásokon elhangzottakra épít. A feladatok gyakorlati hátteréül a <a href="../../labor/5-mvvm/">5. labor – MVVM</a> laborgyakorlat szolgál.</p>
+<p>A fentiekre építve, jelen önálló gyakorlat feladatai a feladatleírást követő rövidebb iránymutatás segítségével (néha alapértelmezetten összecsukva) önállóan elvégezhetők.</p>
+<p>Az önálló gyakorlat célja:</p>
+<ul>
+<li>MVVM minta használatának gyakorlása</li>
+<li>Adatok megjelenítése és interakciók kezelése a felületen adatkötéssel</li>
+<li>Dependency Injection minta alkalmazása</li>
+<li>Adatok kezelése a szolgáltatás rétegben HTTP kéréseken illetve egy lokális adattár segítségével</li>
+</ul>
+<p>A szükséges fejlesztőkörnyezetről <a href="../fejlesztokornyezet/">itt</a> található leírás.</p>
+<div class="admonition warning">
+<p class="admonition-title">Fejlesztőkörnyezet WinUI3 fejlesztéshez</p>
+<p>A korábbi laborokhoz hasonlóan plusz komponensek telepítése szükséges. A <a href="../fejlesztokornyezet/">fenti</a> oldal említi, hogy szükség van a ".NET desktop development" Visual Studio Workload telepítésére, valamint ugyanitt az oldal alján van egy "WinUI támogatás" fejezet, az itt megadott lépéseket is mindenképpen meg kell tenni!</p>
+</div>
+<h2 id="a-beadas-menete">A beadás menete<a class="headerlink" href="#a-beadas-menete" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Az alapfolyamat megegyezik a korábbiakkal. GitHub Classroom segítségével hozz létre magadnak egy repository-t. A meghívó URL-t Moodle-ben találod (a tárgy nyitóoldalán a "<em>GitHub classroom hivatkozások a házi feladatokhoz</em>" hivatkozásra kattintva megjelenő oldalon látható). Fontos, hogy a megfelelő, ezen házi feladathoz tartozó meghívó URL-t használd (minden házi feladathoz más URL tartozik). Klónozd le az így elkészült repository-t. Ez tartalmazni fogja a megoldás elvárt szerkezetét. A feladatok elkészítése után commit-old és push-old a megoldásod.</li>
+<li>A kiklónozott fájlok között a <code>MvvmLab.sln</code>-t megnyitva kell dolgozni.</li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> A feladatok kérik, hogy készíts <strong>képernyőképet</strong> a megoldás egy-egy részéről, mert ezzel bizonyítod, hogy a megoldásod saját magad készítetted. <strong>A képernyőképek elvárt tartalmát a feladat minden esetben pontosan megnevezi.</strong>
+A képernyőképeket a megoldás részeként kell beadni, a repository-d gyökérmappájába tedd (a neptun.txt mellé).
+A képernyőképek így felkerülnek GitHub-ra a git repository tartalmával együtt.
+Mivel a repository privát, azt az oktatókon kívül más nem látja.
+Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltölteni, kitakarhatod a képről.</li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> Ehhez a feladathoz érdemi előellenőrző nem tartozik: minden push után lefut ugyan, de csak a neptun.txt kitöltöttségét ellenőrzi. Az érdemi ellenőrzést a határidő lejárta után a laborvezetők teszik majd meg.</li>
+</ul>
+<h2 id="kikotesek">Kikötések<a class="headerlink" href="#kikotesek" title="Permanent link">&para;</a></h2>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> <strong>MVVM minta kötelező alkalmazása!</strong><br />
+  Jelen házi feladatban az MVVM mintát gyakoroljuk, így a feladatok megoldásában kötelező az MVVM minta alkalmazása. Az ettől való eltérés a feladatok értékelésének elutasítását vonja maga után.</p>
+<h2 id="kiindulo-allapot">Kiinduló állapot<a class="headerlink" href="#kiindulo-allapot" title="Permanent link">&para;</a></h2>
+<p>A kiinduló állapot épít az 5. labor végállapotára, de ahhoz képest egy lényeges változtatást tartalmaz.</p>
+<p>Az alkalmazás az indulása után létrehoz egy <code>ShellPage</code> típusú oldalt, ami a projektben a <code>Views</code> mappában található meg.
+Ez egy <code>NavigationView</code>-t tartalmaz (aka. Hamburger menü), mely a navigációt fogja esetünkben kezelni.
+Tartalmazhat <code>NavigationViewItem</code>-eket, melyek a menüpontokat reprezentálják, és mindig elérhetőek az alkalmazásban.
+A menüpontokra kattintva a <code>Frame</code>-en belül a megfelelő oldal jelenik meg a projektben található segédosztályok segítségével, ami támogatja a korábbi oldalra történő vissza navigációt is.</p>
+<h2 id="1-feladat-receptek-kedvenckent-kezelese">1. Feladat - Receptek kedvencként kezelése<a class="headerlink" href="#1-feladat-receptek-kedvenckent-kezelese" title="Permanent link">&para;</a></h2>
+<p>Feladatunk funkcionális követelményei a következőek:</p>
+<ul>
+<li>
+<p>A recepteket kedvencek közé lehessen menteni</p>
+<ul>
+<li>Jelenjen meg egy kitöltetlen csillag ikonnal rendelkező gomb a recept részletes oldalon (pl. bal oldali oszlop tetején), amelyre kattintva a receptet a kedvencek közé menthetjük.</li>
+<li>A kedvenc kezelő gomb ikonja váltson tele csillagra, a szövege pedig <em>"Remove from Favorites"</em>-re, ha a recept kedvencnek lett jelölve.</li>
+<li>A korábban kedvencnek jelölt recept kivehető a kedvencek közül ugyanezen a gombon történő kattintással: ekkor a gomb ikonja állapota visszaáll üres csillagra, a szövege pedig <em>"Add to Favorites"</em>-re.</li>
+<li>
+<p>A kedvenc receptek listáját lokálisan tároljuk, az alkalmazás bezárásával ne vesszenek el.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Add To Favorites</label><label for="__tabbed_1_2">Remove From Favorites</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><a class="glightbox" href="images/add_to_favorites.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Add To Favorites" src="images/add_to_favorites.png" /></a></p>
+</div>
+<div class="tabbed-block">
+<p><a class="glightbox" href="images/remove_from_favorites.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Remove From Favorites" src="images/remove_from_favorites.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">A két gomb állapot megjelenítése</p>
+<p>A fenti ábra felett az "Add To Favorites" és "Remove From Favorites"-en kattintva lehet váltani a két állapotot megjelenítő képek között.</p>
+</div>
+</li>
+</ul>
+</li>
+<li>
+<p>A kedvencek listáját jelenítsük meg egy külön oldalon.</p>
+<ul>
+<li>A kedvencek listát a hamburger menüből lehessen elérni</li>
+<li>A listában lévő elemek kinézete hasonló legyen a receptek listájában lévő elemekhez</li>
+<li>A lista ne legyen csoportosítva</li>
+<li>
+<p>A kedvencek listájának elemei között a recepteket kattintva megnyithatjuk a recept részletes oldalát (pont úgy, mint a Recipes oldalon)</p>
+<p><a class="glightbox" href="images/favorites_page.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Favorites Page" src="images/favorites_page.png" /></a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="11-kedvencek-kezelese-a-szolgaltatas-retegben">1.1 Kedvencek kezelése a szolgáltatás rétegben<a class="headerlink" href="#11-kedvencek-kezelese-a-szolgaltatas-retegben" title="Permanent link">&para;</a></h3>
+<p>Bottom-up megvalósítási sorrendben haladva készítsük el először a szolgáltatás rétegben a kedvencek kezeléséhez szükséges funkciókat.</p>
+<p>A kedvencnek megjelölést az online szolgáltatás nem támogatja. A megoldás alapelve így a következő lesz:</p>
+<ul>
+<li>Lokálisan perzisztensen eltároljuk a kedvencnek megjelölt receptek <strong>azonosítóit</strong> (annak érdekében, hogy a program újraindulását követően megmaradjon ez az információ).</li>
+<li>A kedvencnek megjelölt receptek részletes adatait (cím, kép) az online szolgáltatástól kérdezzük le (az azonosítóik alapján).</li>
+</ul>
+<p>Lokális perzisztens adattároláshoz a kiinduló projektben elő van készítve az <code>ILocalSettingsService</code> interfész (és egy ezt megvalósító implementáció). Erre építve kulcs érték párokat tudunk JSON sorosítva tárolni lokálisan az alkalmazásban.</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">ILocalSettingsService</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Task</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ReadSettingAsync</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">key</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Task</span><span class="w"> </span><span class="n">SaveSettingAsync</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="k">value</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Használata során érdemes odafigyelni arra, hogy a függvények generikusak, így a típusokat explicit meg kell(het) adni a hívás során.</p>
+<p>A fenti <code>ILocalSettingsService</code> segítségével egy adott kulcs alatt fogjuk a kedvenc receptek azonosítóinak listáját eltárolni.</p>
+<p>Szintén fontos, hogy a függvények <code>Task</code>-kal térnek vissza, tehát aszinkronok, így <code>await</code> kulcsszóval kell hívni őket, és a hívó függvénynek is aszinkronnak kell lennie (a részletesebb szabályhalmaz a kapcsolódó "5. MVVM" labor leírásában található).</p>
+<p>A kedvencek kezelése a labor során bevezetett <code>IRecipeService</code> interfész és az ezt megvalósító <code>RecipeService</code> osztály feladata legyen. </p>
+<p>Első lépésben azt kell megoldani, hogy a <code>RecipeService</code> számára rendelkezésre álljon egy <code>ILocalSettingsService</code> interfészt megvalósító objektum, melyet fel tud használni  megvalósításában a kedvenc receptazonosítók eltárolására és lekérdezésére. A célunk az, hogy <code>RecipeService</code>-ben <code>ILocalSettingsService</code> interfészként <strong>kapjuk meg</strong> és <strong>tároljuk</strong> ezt az implementációs objektumot, semmiféle függést nem szeretnénk itt bevezetni a konkrét implementációtól. Ezt a laboron már alkalmazott DI konténer segítségével valósítsuk meg.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A megvalósítás során a <code>RecipeService</code>-ben ahhoz hasonlóan kell kezeljük a <code>ILocalSettingsService</code>-t, mint a ahogy a labor során a <code>MainPageViewModel</code>-ben kezeltük a <code>IRecipeService</code>-t.</p>
+</div>
+<p>Miután a fenti előkészítéssel elkészültél, valósítsd meg a szükséges funkciókat a <code>RecipeService</code> osztályban! Az alábbiakban ehhez némi iránymutatást adunk.</p>
+<details class="success">
+<summary>RecipeService váza</summary>
+<p>A <code>RecipeService</code>-nek (és interfésznek) a következő új funkciókkal kell rendelkeznie:</p>
+<ol>
+<li>
+<p>Recept kedvenc állapotának módosítása id (int) alapján az új állapottal (bool). (Recept részletes oldalon gombra kattintás során használjuk.)</p>
+<ol>
+<li>Kérdezzük le az <code>ILocalSettingsService</code>-ből kedvencek azonosítóinak listáját. </li>
+<li>Lista módosítása a kapott id és új kedvenc állapot alapján.<ol>
+<li>Kedvencnek jelölés esetén, berakjuk, egyébként töröljük.</li>
+<li>Gondoljunk arra is, ha a lista már tartalmazza az adott id-t, akkor ne adjuk hozzá újra. (Lista helyett egyébként lehet használni egy speciális halmaz tulajdonságú kollekciót is, a <code>HashSet&lt;T&gt;</code>-et, mely egy elemet csak egyszer tartalmaz.)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>Kedvenc receptek lekérdezése. (Kedvencek oldalon listázás során használjuk.)</p>
+<ol>
+<li>Kérdezzük le az <code>ILocalSettingsService</code>-ből a kedvenc receptek azonosítóinak listáját.</li>
+<li>A kapott id-k alapján egyesével kérjük le a recepteket a REST API-tól, a <code>GET /api/Recipes/{id}/Header</code> végponton keresztül. Ez a laborhoz képest egy új végpont, és az adott azonosítójú recept <code>RecipeHeader</code>-be sorosított adataival tér vissza. Ehhez a végponthoz érdemes új segédfüggvényt is készíteni. Dolgozhatunk a laboron már bevezetett <code>RecipeService</code>-ben levő <code>HttpClient</code>-et használó műveletek "mintájára".</li>
+<li>A lekérdezett <code>RecipeHeader</code> objektumokból összeállított listával térjünk vissza.</li>
+</ol>
+</li>
+<li>
+<p>Recept kedvenc állapotának lekérdezése id alapján. (Recept részletes oldal betöltésekor a gomb állapotának beállításához használjuk.)</p>
+<ol>
+<li>Igaz hamis értékkel térjünk vissza, attól függően, hogy az adott azonosító szerepel-e a kedvenc receptek listájában.</li>
+</ol>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Első hívás</p>
+<p>Gondolni kell arra is, ha még most hívjuk meg először a lekérdező függvényt, és nincs még mentett kedvenc recept azonosító listánk (<code>null</code>-lal tér vissza az adott kulcsú elem lekérdezésekor az <code>ILocalSettingsService.ReadSettingAsync</code>).</p>
+</div>
+</details>
+<h3 id="12-kedvencnek-jeloles-a-reszletes-oldalon">1.2 Kedvencnek jelölés a részletes oldalon<a class="headerlink" href="#12-kedvencnek-jeloles-a-reszletes-oldalon" title="Permanent link">&para;</a></h3>
+<p>A recept részletes oldalon (a <code>RecipeDetailPage</code>-en) meg kell jeleníteni egy gombot, melynek két állapota van:</p>
+<ol>
+<li>Ha a recept nincs kedvencnek jelölve, akkor egy üres csillag ikon jelenik meg a gombon, a gomb felirata pedig legyen <em>"Add to Favorites"</em>.</li>
+<li>Ha a recept kedvencnek van jelölve, akkor egy kitöltött csillag ikon jelenik meg a gombon, a gomb felirata pedig legyen <em>"Remove from Favorites"</em>.</li>
+</ol>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Add To Favorites</label><label for="__tabbed_2_2">Remove From Favorites</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><a class="glightbox" href="images/add_to_favorites.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Add To Favorites" src="images/add_to_favorites.png" /></a></p>
+</div>
+<div class="tabbed-block">
+<p><a class="glightbox" href="images/remove_from_favorites.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Remove From Favorites" src="images/remove_from_favorites.png" /></a></p>
+</div>
+</div>
+</div>
+<p>Ezt az igaz-hamis állapotot és módosító műveletet célszerű a <code>RecipeDetailPageViewModel</code>-ban tárolni/bevezetni (mivel a ViewModelnek definíció szerint ez a feladata), majd adatkötéssel kötni az állapotot gomb kinézetéhez, illetve a műveletet commandjához. Mindenképpen az MVVM mintát követve dolgozzunk!</p>
+<details class="success">
+<summary>RecipeDetailPageViewModel módosítása</summary>
+<p>A <code>RecipeDetailViewModel</code>-t módosítani szükséges a következőkkel:</p>
+<ol>
+<li>Kedvenc állapot tárolása<ol>
+<li>Az állapotot egy <code>bool</code> típusú property-ben tároljuk (mindenképpen érdemes az  <code>[ObservableProperty]</code> attribútumot használni, működésének és jelentőségének átismétlésével).</li>
+<li>Az állapotot az <code>IRecipeService</code>-ből lekérdezve inicializáljuk az oldalra való navigáláskor.</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Elmenti az új kedvenc állapotot az <code>IRecipeService</code> segítségével.</li>
+<li>Gondoskodik a ViewModel osztályunkban tárolt <code>bool</code> kedvenc állapot tulajdonság karbantartásáról.</li>
+</ol>
+<p>Új command függvény készítése, amely </p>
+<details class="tip">
+<summary>Tipp a megoldáshoz</summary>
+<p>A megoldás elve hasonlít a SendComment parancsfüggvényhez, de itt a CanExecute-tal nem kell foglalkozzunk, hiszen az új commandunk mindig futtatható.</p>
+</details>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Állapot tárolása a modellben</p>
+<p>A kedvenc állapotot a <code>RecipeHeader</code> modellben is tárolhatnánk, viszont az két másik problémát is generálna: a modellnek kell megvalósítania az <code>INotifyPropertyChanged</code> interfészt, hogy az állapot változását jelezni tudja.  Ezen felül az új property értékét valamelyik másik rétegben (ViewModel vagy Service) kellene kitölteni, mivel ez az infó csak lokálisan érhető el, a <code>RecipeHeader</code>pedig alapvetően most csak egy DTO (Data Transfer Object) a modell rétegben.</p>
+</div>
+</details>
+<details class="success">
+<summary>RecipeDetailPage (vagyis a View) módosítása</summary>
+<p>A <code>RecipeDetailPage</code>-en a következőket kell módosítani:</p>
+<ol>
+<li>Új gomb hozzáadása az oldal tetejére, tartalma legyen egy <code>SymbolIcon</code> és egy <code>TextBlock</code> egymás mellett.<ol>
+<li>A <code>SymbolIcon</code>-nak a <code>Symbol</code> tulajdonságához használjuk a <code>Symbol.SolidStar</code> és <code>Symbol.OutlineStar</code> enum értékeket a csillag ikonokhoz.</li>
+</ol>
+</li>
+<li>A gomb commandját adatkötni kell a ViewModel-ben található command-hoz.</li>
+</ol>
+<p>A ViewModel-ben tárolt <code>bool</code> értéket valamilyen módon <code>Symbol</code> enumra (gomb ikonja) és <code>string</code>-re (gomb aktuális szövege) kell konvertálni, hogy a felületen a gomb megjelenése mindkét állapotban a megfelelő legyen. Erre több megoldás is lehetséges:</p>
+<ul>
+<li><code>x:Bind</code> használata, ahol nem property-t kötünk, hanem egy a xaml.cs-ben lévő segédfüggvényt, mely a konverziót elvégzi. Vagyis property kötés helyett függvény/funkció kötést használunk. Előadásanyagban a "Property kötése funkciókhoz"-ra érdemes rákeresni, illetve a 3. házi feladatban a "függvény kötés példa"-ra.</li>
+<li>Az <code>IValueConverter</code> interfész implementálása és használata az adatkötés során.</li>
+<li>A <code>RecipeDetailPageViewModel</code>-ben tároljuk a nézethez szükséges adatokat új tuljadonságokat bevezetve (a tulajdonságok típusa a nézet számára szükséges <code>Symbol</code> és <code>string</code>), és ezekhez történik az adatkötés.<ul>
+<li>Talán ez a legegyszerűbb megoldás, ha nem szeretnénk külön konvertert írni vagy az adatkötéseket "bonyolítani", viszont a legkevésbé is lesz karbantartható, mivel a ViewModel view specifikus adatokat is tartalmaz, melyeket külön karban is kell tartani ha a bool property megváltozik.</li>
+</ul>
+</li>
+</ul>
+</details>
+<div class="admonition example">
+<p class="admonition-title">1.2. feladat BEADANDÓ</p>
+<p>Illessz be egy képernyőképet az alkalmazásról, ahol a teendő részletes oldalon megjelenik a kedvencnek jelölés gomb! (<code>f1.2.1.png</code>)</p>
+<p>Illessz be egy képernyőképet az alkalmazásról, ahol a teendő részletes oldalon egy már kedvencnek jelölt recepthez a kedvencekből eltávolítás gomb jelenik meg! (<code>f1.2.2.png</code>)</p>
+</div>
+<h3 id="13-kedvencek-oldal-navigacio">1.3 Kedvencek oldal navigáció<a class="headerlink" href="#13-kedvencek-oldal-navigacio" title="Permanent link">&para;</a></h3>
+<p>A kedvencek oldalra navigáláshoz több lépésre is szükségünk lesz, melyek a kiinduló projekt sajátosságaiból adódódnak, de ezeket itt részletesen átvesszük (a navigáció megvalósítása nem része a tanagyagnak).</p>
+<ol>
+<li>
+<p>Hozzuk létre a <code>FavoritesPage</code>-et a <code>Views</code> mappában (Add/New Item/Blank Page (WinUI3))</p>
+<div class="admonition warning">
+<p class="admonition-title">Fordítási hibák</p>
+<p>Ha valamiért egzotikus hibákat kapnánk az új oldal felvétele után töröljük ki a projekt fájlból az alábbi sorokat:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;ItemGroup&gt;</span>
+<span class="w">    </span><span class="nt">&lt;None</span><span class="w"> </span><span class="na">Remove=</span><span class="s">&quot;Views\FavoritesPage.xaml&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/ItemGroup&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;Page</span><span class="w"> </span><span class="na">Update=</span><span class="s">&quot;Views\FavoritesPage.xaml&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Generator&gt;</span>MSBuild:Compile<span class="nt">&lt;/Generator&gt;</span>
+<span class="nt">&lt;/Page&gt;</span>
+</code></pre></div>
+</div>
+</li>
+<li>
+<p>Hozzuk létre a <code>FavoritesPageViewModel</code> osztályt a <code>ViewModels</code> mappában</p>
+<ol>
+<li>Gondoskodjunk arról, hogy a megfelelő osztályból származzon!</li>
+<li>Valósítsa meg az <code>INavigationAware</code> interfészt a navigáció támogatásához (egyelőre üres függvénytörzzsel).</li>
+</ol>
+</li>
+<li>
+<p>Regisztráljuk be az <code>App.xaml.cs</code>-ben a Dependency Injection konténerbe az új nézetet és az új ViewModelt:</p>
+<div class="highlight"><pre><span></span><code><span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="o">&lt;</span><span class="n">FavoritesPage</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="o">&lt;</span><span class="n">FavoritesPageViewModel</span><span class="o">&gt;</span><span class="p">();</span>
+</code></pre></div>
+</li>
+<li>
+<p>A <code>Pages</code> osztályban (<code>PageService.cs</code>) vegyünk fel egy új kulcsot a kedvencek oldalhoz, és konfiguráljuk a navigációt ehhez a kulcshoz:</p>
+<div class="highlight"><span class="filename">Pages</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Favorites</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Favorites&quot;</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">PageService konstruktor</span><pre><span></span><code><span class="n">Configure</span><span class="o">&lt;</span><span class="n">FavoritesPageViewModel</span><span class="p">,</span><span class="w"> </span><span class="n">FavoritesPage</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Pages</span><span class="p">.</span><span class="n">Favorites</span><span class="p">);</span>
+</code></pre></div>
+</li>
+<li>
+<p>A <code>ShellPage</code>-en a <code>NavigationView</code>-hoz adjunk hozzá egy új <code>NavigationViewItem</code>-et a kedvencek oldalhoz:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;NavigationViewItem</span><span class="w"> </span><span class="na">helpers:NavigationHelper.NavigateTo=</span><span class="s">&quot;Favorites&quot;</span><span class="w"> </span><span class="na">Content=</span><span class="s">&quot;Favorites&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;NavigationViewItem.Icon&gt;</span>
+<span class="w">        </span><span class="nt">&lt;SymbolIcon</span><span class="w"> </span><span class="na">Symbol=</span><span class="s">&quot;SolidStar&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/NavigationViewItem.Icon&gt;</span>
+<span class="nt">&lt;/NavigationViewItem&gt;</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Navigáció</p>
+<p>A navigáció a <code>helpers:NavigationHelper.NavigateTo="Favorites"</code> attached property segítségével történik, ahol azt a kulcsot adhatjuk meg, amilyen kulcsú oldalra navigálni szeretnénk.</p>
+</div>
+</li>
+</ol>
+<h3 id="14-kedvencek-oldal-logika">1.4 Kedvencek oldal logika<a class="headerlink" href="#14-kedvencek-oldal-logika" title="Permanent link">&para;</a></h3>
+<p>A kedvencek oldal (<code>FavoritesPage</code>) a <code>MainPage</code> mintájára készüljön el, és a receptek listáját jelenítse meg, csoportosítás nélkül (!) egy <code>AdaptiveGridView</code> vezérlőben.</p>
+<p><a class="glightbox" href="images/favorites_page.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Favorites Page" src="images/favorites_page.png" /></a></p>
+<p>A ViewModel (<code>FavoritesPageViewModel</code>) a <code>MainPageViewModel</code> mintájára készüljön el, és a navigáció során kérdezze le az <code>IRecipeService</code>-től a kedvenc receptek listáját (<code>GetFavoriteRecipesAsync</code>) és tárolja el egy megfelelő, pl. generált tulajdonságba. Mivel itt nem csoportosítjuk a recepteket, <code>RecipeGroup</code>-ok helyett <code>RecipeHeader</code>-ekkel kell dolgozni.</p>
+<div class="admonition example">
+<p class="admonition-title">1.4. feladat BEADANDÓ</p>
+<p>Illessz be egy képernyőképet az alkalmazásról, ahol kedvencek lista látható! (<code>f1.4.png</code>)</p>
+</div>
+<h2 id="beadas">Beadás<a class="headerlink" href="#beadas" title="Permanent link">&para;</a></h2>
+<p>Ellenőrzőlista ismétlésképpen:</p>
+<ul>
+<li>A repository gyökérmappájában található neptun.txt fájlba írd bele a Neptun kódod, csupa nagybetűvel. A fájlban csak ez a hat karakter legyen, semmi más.</li>
+<li>A GitHub-ról leöltött kiinduló solutionben/projektekben kell dolgozni, nem újonnan létrehozottban.</li>
+<li>Amíg nem vagy rutinos a Visual Studio Git szolgáltatásainak használatában, a push-t követően (legkésőbb akkor, amikor a házi feladatot beadottnak tekintjük) célszerű ellenőrizni a GitHub webes felületén a repository-ban a fájlokra való rápillantással, hogy valóban minden változtatást feltöltöttél-e.</li>
+<li>A GitHub felületén ellenőrizd a push-t követően, hogy a GitHub Action alapú előellenőrző hiba nélkül lefutott-e.</li>
+<li>Lényeges, hogy a feladatok csak akkor kerülnek elfogadásra, ha teljesen elkészülnek, és minden tekintetben teljesítik a követelményeket. Nem forduló kód, illetve részleges megoldás elfogadásában nem érdemes bízni.</li>
+<li>Természetesen saját munkát kell beadni (hiszen értékelésre kerül).</li>
+</ul>
+<hr>
+<div class="md-source-file">
+  <span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg
+        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z">
+        </path>
+      </svg>
+    </span>
+    <span title="2024. április 11. 09:14:34">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-11T09:14:34+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-11</span>
+    </span>
+  </span>
+
+  
+
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Szerzők">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z">
+        </path>
+      </svg>
+    </span>
+    <span>Szerzők</span>
+    <nav><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@tibitoth">
+        <img src="https://avatars.githubusercontent.com/tibitoth?size=72" alt="@tibitoth">
+      </a><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
+        <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&v=4?size=72" alt="@Zoltán Benedek">
+      </a></nav>      
+  </span>
+</div>
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Vissza a tetejére
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; BME VIK AUT
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      
+        <script src="../../js/timeago.min.js"></script>
+      
+        <script src="../../js/timeago_mkdocs_material.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
