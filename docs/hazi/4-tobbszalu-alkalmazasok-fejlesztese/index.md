@@ -1,6 +1,4 @@
 ---
-search:
-  exclude: true
 authors: BenceKovari,bzolka
 ---
 
@@ -31,7 +29,6 @@ A szükséges fejlesztőkörnyezet a szokásos, [itt](../fejlesztokornyezet/inde
 - A neptun.txt fájlba írd bele a Neptun kódod!
 - A kiklónozott fájlok között a `MultiThreadedApp.sln`-t megnyitva kell dolgozni.
 - :exclamation: A feladatok kérik, hogy készíts **képernyőképet** a megoldás egy-egy részéről, mert ezzel bizonyítod, hogy a megoldásod saját magad készítetted. **A képernyőképek elvárt tartalmát a feladat minden esetben pontosan megnevezi.** A képernyőképeket a megoldás részeként kell beadni, a repository-d gyökérmappájába tedd (a neptun.txt mellé). A képernyőképek így felkerülnek GitHub-ra git repository tartalmával együtt. Mivel a repository privát, azt az oktatókon kívül más nem látja. Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltölteni, kitakarhatod a képről.
-- :exclamation: A beadott megoldások mellé külön indoklást, illetve leírást nem várunk el, ugyanakkor az elfogadás feltétele, hogy a beadott kódban a feladat megoldása szempontjából relevánsabb részek **kommentekkel legyenek ellátva**.
 
 ## Feladat 0 – A feladat áttekintése, ismerkedés a kiinduló kerettel
 
@@ -135,7 +132,7 @@ Most már pontosan annyi `TextBlock`-unk lesz, ahány bicikli van a `game` objek
 Általánosságában mindkét megoldásnak lehetnek előnyei és hátrányai. A b) bizonyos tekintetben egyszerűbb (nem kell tudni, mikor változik a `Game` állapota), ugyanakkor felesleges frissítés is történhet (ha nem változott az állapot két frissítés között). De hatékonyabb is lehet, ha az állapot nagyon gyakran változik, és nem akarjuk minden változáskor a felületet frissíteni, elég adott időközönként egyszer (pl. a szemünk úgysem tudja lekövetni).
 Esetünkben - elsősorban egyszerűsége miatt - a "b)", vagyis időzítő alapú megoldást választjuk.
 
-WinUI 3 környezetben periodikus események kezelésére a `DispatchTimer` osztály alkalmazása javasolt (különösen, ha a felületelemekhez is hozzá kívánunk férni) az időzített műveletben.
+WinUI 3 környezetben periodikus események kezelésére a `DispatchTimer` osztály alkalmazása javasolt (különösen, ha a felületelemekhez is hozzá kívánunk férni az időzített műveletben).
 
 A `MainWindow` osztályban vezessünk be egy tagváltozót:
  
@@ -143,7 +140,7 @@ A `MainWindow` osztályban vezessünk be egy tagváltozót:
     private DispatcherTimer timer;
 ```
 
-Ezt követően a kontruktorban példányosítsuk a timert, rendeljünk a `Tick` eseményéhez egy eseménykezelő függvényt (ez hívódik adott időközönként), állítsuk be az időközt 100 ms-ra (`Interval` tulajdonság), és indítsuk el a timert:
+Ezt követően a konstruktorban példányosítsuk a timert, rendeljünk a `Tick` eseményéhez egy eseménykezelő függvényt (ez hívódik adott időközönként), állítsuk be az időközt 100 ms-ra (`Interval` tulajdonság), és indítsuk el a timert:
 
 ```csharp
 public MainWindow()
@@ -331,7 +328,7 @@ A logikát ezt követően önállóan valósítsd meg, az alábbi irányleveknek
     - Annak eldöntésére, hogy volt-e már győztes, a `Game` osztályban vezess be egy `bool hasWinner` segédváltozót (ez azt jelezze, volt-e már győztes hirdetve).
     - Előadáson egy nagyon hasonló példa szerepelt a "A lock használata" témakörben, részletes magyarázattal.
     - A megoldásnak akkor is jól kell működnie (egy győztes lehet és nem több), ha a `hasWinner` feltételvizsgálat és a `hasWinner` igazba állítása közé egy hosszabb mesterséges késleltetés kerül, azt szimulálva, hogy a szál "pechesen" itt veszti el a futási jogát, és a depóból a biciklik "azonnal" tovább vannak engedve (vagyis közel egyszerre érnek a célba). 
-    - A tesztelés idejére tegyél ide (a feltételvizsgálat és `hasWinner` állítása közé) egy `Thread.Sleep(2000)` sort, melyet tesztelés után kommentezz ki. Természetesen úgy tesztelj, hogy a bicikliket a depóból minél inkább egyszerre engedd tovább a gombkattintásokkal, hogy a biciklik kb. egyszerre érjenek a célba. Ha több győztes is van, akkor a célban több bicikli is serleggé válik!
+    - A tesztelés idejére tegyél ide (a feltételvizsgálat és `hasWinner` állítása közé) egy `Thread.Sleep(2000)` sort, melyet tesztelés után kommentezz ki. Természetesen úgy tesztelj, hogy a bicikliket a depóból minél inkább egyszerre engedd tovább a gombkattintásokkal, hogy a biciklik kb. egyszerre érjenek a célba. Ha több győztes is lenne (mert nem jó a megoldásod), akkor a célban több bicikli is serleggé válik!
 
 !!! example "BEADANDÓ"
     Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.

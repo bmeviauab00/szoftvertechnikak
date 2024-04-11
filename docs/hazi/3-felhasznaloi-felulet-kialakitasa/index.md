@@ -341,6 +341,10 @@ Az űrlap elrendezése
     * A `CheckBox` vezérlő `IsChecked` (és nem a `Checked`!) tulajdonsága
     * `DatePicker` vezérlő `Date` tulajdonsága
 
+??? tip "Furcsa, adatkötéshez kapcsolódó NullReferenceException"
+    Ha egy "megfoghatatlannak" tűnő `NullReferenceException`-t kapsz az új elem felvételekor, akkor ellenőrizd, hogy a `ComboBox` esetében a `SelectedValue`-t kötötted-e esetleg a `SelectedItem` helyett (a `SelectedItem` használandó).
+
+
 !!! example "3. feladat BEADANDÓ"
     Illessz be egy képernyőképet az alkalmazásról, ahol az új teendő felvétele látható még mentés előtt! (`f3.1.png`)
 
