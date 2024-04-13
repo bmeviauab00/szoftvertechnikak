@@ -13,10 +13,10 @@ A labor elvégzéséhez szükséges eszközök:
 
 * Windows 10 vagy Windows 11 operációs rendszer (Linux és macOS nem alkalmas)
 
-A szükséges fejlesztőkörnyezetről [itt](../fejlesztokornyezet/index.md) található leírás.
+A szükséges fejlesztőkörnyezetről [itt](../../hazi/fejlesztokornyezet/index.md) található leírás.
 
 !!! warning "Fejlesztőkörnyezet WinUI3 fejlesztéshez"
-    A korábbi laborokhoz képest plusz komponensek telepítése szükséges. A [fenti](../fejlesztokornyezet/index.md) oldal említi, hogy szükség van a ".NET desktop development" Visual Studio Workload telepítésére, valamint ugyanitt az oldal alján van egy "WinUI támogatás" fejezet, az itt megadott lépéseket is mindenképpen meg kell tenni!
+    A korábbi laborokhoz képest plusz komponensek telepítése szükséges. A [fenti](../../hazi/fejlesztokornyezet/index.md) oldal említi, hogy szükség van a ".NET desktop development" Visual Studio Workload telepítésére, valamint ugyanitt az oldal alján van egy "WinUI támogatás" fejezet, az itt megadott lépéseket is mindenképpen meg kell tenni!
 
 ## Megoldás
 
