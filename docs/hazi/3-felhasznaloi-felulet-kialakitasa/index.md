@@ -338,7 +338,7 @@ Az űrlap elrendezése
     A fenti példában az `ItemsSource` csak azt határozza meg, hogy milyen elemek jelenjenek meg a `ComboBox` listájában. De ez semmit nem mond arról, hogy a `ComboBox` kiválasztott elemét mihez kell kötni. Ehhez szükség van még egy adatkötésre. Laboron ez nem szerepelt, előadásanyagban pl. a `SelectedItem`-re érdemes rákeresni (minden előfordulását érdemes megnézni).
 
 ??? tip "Néhány fontosabb vezérlő tulajdonság"
-    * A `CheckBox` vezérlő `IsChecked` (és nem a `Checked`!) tulajdonsága
+    * A `CheckBox` vezérlő `IsChecked` (és nem a `Checked`!) tulajdonsága. A mellette jobbra megjelenő szöveg a `Content` tulajdonságával adható meg.
     * `DatePicker` vezérlő `Date` tulajdonsága
 
 ??? tip "Furcsa, adatkötéshez kapcsolódó NullReferenceException"
