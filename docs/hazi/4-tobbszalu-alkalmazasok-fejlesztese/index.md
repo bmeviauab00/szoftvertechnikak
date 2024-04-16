@@ -280,7 +280,7 @@ Valósítsd meg a versenyzők indítását a depóból és futtatását mindaddi
 - Az egyes versenyzőket a `Start Next Bike From Depo` gombkattintás során már hívott `Game` osztálybeli `StartNextBikeFromDepo` függvény indítsa a depóból.
 - Minden gombkattintásra csak egyetlen versenyző indulhat el a depóból.
 - Fontos, hogy a `StartNextBikeFromDepo` műveletben ne új szálakat indítsunk, hanem meg kell oldani, hogy meglévő szálak várakozzanak, majd a `StartNextBikeFromDepo` függvény hívásának "hatására" folytassák futásukat.
-- Ha a felhasználó azelőtt nyomja meg a `Start Next Bike From Depo` gombot, hogy a biciklik elérnék a depót, akkor egy bicikli már továbbmehet a depóból, amikor megérkezik oda (de az is teljesen jó megoldás, ha ilyen esetben a a gomb lenyomását még figyelmen kívül hagyja az alkalmazás).
+- Ha a felhasználó azelőtt nyomja meg a `Start Next Bike From Depo` gombot, hogy a biciklik elérnék a depót, akkor egy bicikli már továbbmehet a depóból, amikor megérkezik oda (de az is teljesen jó megoldás, ha ilyen esetben a gomb lenyomását még figyelmen kívül hagyja az alkalmazás).
 - A biciklik egészen a célegyenesig haladjanak el (míg pozíciójuk el nem éri a `FinishLinePosition` tagváltozó által meghatározott értéket). Amikor egy bicikli eléri a célvonalat, a biciklihez tartozó szál fejezze be a futását.
 - A `Game` osztályban dolgozz.
 
@@ -424,7 +424,7 @@ private void UpdateBikeUI(Bike bike)
 !!! danger "Fontos"
     A fenti lépések/elvek megfelelő követése esetén is fennáll, hogy megoldás még nem működőképes. Ha elindítjuk a versenyt, az alábbi kivétel dobódik az `UpdateBikeUI` függvényben a biciklihez tartozó `TextBlock` hozzáférés során: `System.Runtime.InteropServices.COMException: 'The application called an interface that was marshalled for a different thread. (0x8001010E (RPC_E_WRONG_THREAD))`
 
-Mi ennek a a hibának az oka? Mielőtt az alábbi emlékeztetőt kinyitod, próbálj magadtól rájönni az előadáson/laboron tanultak alapján.
+Mi ennek a hibának az oka? Mielőtt az alábbi emlékeztetőt kinyitod, próbálj magadtól rájönni az előadáson/laboron tanultak alapján.
 
 ??? tip "Emlékeztető"
     **Egy WinUI felületelemhez/vezérlőhöz csak abból a szálból lehet hozzáférni, mely az adott felületelemet létrehozta, ugyanis ezek a felületelemek nem szálbiztosak, és kivétel dobásával jelzik, ha mégis „rosszul” próbáljuk őket használni.**
@@ -433,7 +433,7 @@ A megoldást a következő részfeladatban dolgozzuk ki.
 
 ### A DispatecherQueue alkalmazása
 
-Esetünkben a konkrét problémát az okozza, hogy amikor a `Game` állapota megváltozik, akkor `Game` osztályban a változásértesítő delegate hívása a biciklikhez tartozó munkaszálakon történik, így a beregisztrált `MainWindow.UpdateBikeUI` kezelőfüggvény is ezekről a szálakról hívódik. Az `UpdateBikeUI` függvényben hozzáférük a felületelemekhez (biciklihez tartozó `TextBlock`- hoz). De ezeket a felületelemeket a főszálból hoztuk létre: így csak a fő szálból szabad(na) hozzájuk férni.
+Esetünkben a konkrét problémát az okozza, hogy amikor a `Game` állapota megváltozik, akkor `Game` osztályban a változásértesítő delegate hívása a biciklikhez tartozó munkaszálakon történik, így a beregisztrált `MainWindow.UpdateBikeUI` kezelőfüggvény is ezekről a szálakról hívódik. Az `UpdateBikeUI` függvényben hozzáférünk a felületelemekhez (biciklihez tartozó `TextBlock`- hoz). De ezeket a felületelemeket a főszálból hoztuk létre: így csak a fő szálból szabad(na) hozzájuk férni.
 
 :exclamation: A problémára a `DispatcherQueue` alkalmazása jelent megoldást, mellyel **a munkaszálakból a hívást "át tudjuk játszani" a főszálba, melyből már hozzá tudunk férni a vezérlőkhöz**. A `DispacherQueue` alkalmazása előadáson és a kapcsolódó laboron is részletesen ismertetésre került.
 
@@ -461,7 +461,7 @@ Tedd lehetővé a biciklik gombkattintásra történő megállítását:
 - A *Stop Race* gombra kattintás állítsa meg az összes biciklit, és állítsa le a bicikliket futtató szálakat is. Ehhez vezess be egy `StopRace` publikus függvényt a `Game` osztályba.
 - A verseny akár az elindítása előtt is leállítható legyen.
 - A `StopRace` művelet szálak leállítása után várja meg, míg valamennyi szál valóban be is fejezi a futását.
-- A verseny leállítása után (*Stop Race* kattintás) semelyik gombra ne lehessen kattintani (minden gomb legyen letiltva, `IsEnabled` tulajdonságuka állítsuk hamisba).
+- A verseny leállítása után (*Stop Race* kattintás) semelyik gombra ne lehessen kattintani (minden gomb legyen letiltva, `IsEnabled` tulajdonságukat állítsuk hamisba).
 
 ### Megoldás
 
