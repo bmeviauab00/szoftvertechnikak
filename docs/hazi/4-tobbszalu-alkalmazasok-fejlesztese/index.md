@@ -445,7 +445,7 @@ Feladat: módosítsd úgy a `MainWindow.UpdateBikeUI` függvényt, hogy a `Dispa
     Készíts egy képernyőmentést `Feladat6.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
-    - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
+    - a „háttérben” a Visual Studio legyen, a `MainWindow.xaml.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `MainWindow` osztály `UpdateBikeUI` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
 
 !!! warning "Hasonló játék megvalósítása a gyakorlatban"
