@@ -1725,7 +1725,7 @@
 <ul>
 <li>A <code>LiftMonitor</code> osztály nem módosítható!</li>
 <li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> Kulcsfontosságú, hogy a beillesztése során NE kelljen a <code>Lift</code> osztályt módosítani (az Observer mintának köszönhetően). Tipp: a <code>Lift</code> akkor is kell értesítse a megfigyelőit, ha beragadás miatt nem váltott szintet, máskülönben a <code>LiftMonitor</code> nem tudja detektálni a beragadást.</li>
-<li><code>LiftSystemModel</code> konstruktorában mindkét lifthez vegyünk fel egy-egy <code>LiftController</code> példányt.</li>
+<li><code>LiftSystemModel</code> konstruktorában mindkét lifthez vegyünk fel egy-egy monitorozást megvalósító objektumot.</li>
 <li>Csak Object Adapter alapú megoldás fogadható el (Class Adapter nem).</li>
 </ul>
 <p>A megoldás működésének illusztrálása:</p>
@@ -1739,8 +1739,8 @@
         </path>
       </svg>
     </span>
-    <span title="2024. április 5. 20:14:53">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-05T20:14:53+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-05</span>
+    <span title="2024. április 16. 22:20:36">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-16T22:20:36+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-16</span>
     </span>
   </span>
 
