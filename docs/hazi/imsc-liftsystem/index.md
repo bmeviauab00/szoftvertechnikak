@@ -158,7 +158,7 @@ Illesszük be az Adapter minta segítségével a fenti osztályt a megoldásunkb
 
 * A `LiftMonitor` osztály nem módosítható!
 * :exclamation: Kulcsfontosságú, hogy a beillesztése során NE kelljen a `Lift` osztályt módosítani (az Observer mintának köszönhetően). Tipp: a `Lift` akkor is kell értesítse a megfigyelőit, ha beragadás miatt nem váltott szintet, máskülönben a `LiftMonitor` nem tudja detektálni a beragadást.
-* `LiftSystemModel` konstruktorában mindkét lifthez vegyünk fel egy-egy `LiftController` példányt.
+* `LiftSystemModel` konstruktorában mindkét lifthez vegyünk fel egy-egy monitorozást megvalósító objektumot.
 * Csak Object Adapter alapú megoldás fogadható el (Class Adapter nem).
 
 A megoldás működésének illusztrálása:
