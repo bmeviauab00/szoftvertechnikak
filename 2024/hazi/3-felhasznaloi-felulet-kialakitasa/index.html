@@ -1898,13 +1898,9 @@ Alap esetben nem lenne fontos a függvénynek statikusnak lennie, de mivel itt e
 <details class="tip">
 <summary>Dátumok formázása</summary>
 <p>A határidő dátum formázására használhatunk szintén konvertert vagy <code>x:Bind</code> alapú függvény kötést is, ahol a <code>DateTime.ToString</code> függvényét kötjük ki paraméterezve.</p>
-<div class="highlight"><pre><span></span><code>Text=&quot;{x:Bind<span class="w"> </span>Deadline.ToString(&#39;yyyy.MM.dd&#39;,<span class="w"> </span>{x:Null})}&quot;
+<div class="highlight"><pre><span></span><code>Text=&quot;{x:Bind<span class="w"> </span>Deadline.ToString(&#39;yyyy.MM.dd&#39;,<span class="w"> </span>x:Null)}&quot;
 </code></pre></div>
-<p>A <code>{x:Null}</code> azért kell, mert a <code>ToString</code> függvénynek a második paraméterét is meg kell adni, de az lehet <code>null</code> is ebben az esetben.</p>
-<div class="admonition warning">
-<p class="admonition-title"><code>{x:Null}</code> hibaüzenetek</p>
-<p>A Visual Studio XAML compilere hajlamos félrevezető hibaüzeneteket megjeleníteni. Amennyiben olyan hibaüzenetet kapunk a fordítás során (más hibaüzenetek mellett), mely a <code>{x:Null}</code>-ra panaszkodik, előbb a többi hibát nézzük meg, az <code>{x:Null}</code>-ra vonatkozó hibajelentés lehet hamis. Erre emlékezzünk, mert a későbbi feladatoknál is könnyen előfordulhat!</p>
-</div>
+<p>A <code>x:Null</code> azért kell, mert a <code>ToString</code> függvénynek a második paraméterét is meg kell adni, de az lehet <code>null</code> is ebben az esetben.</p>
 </details>
 <details class="tip">
 <summary>Listaelemek közötti hely</summary>
@@ -2085,8 +2081,8 @@ Alap esetben nem lenne fontos a függvénynek statikusnak lennie, de mivel itt e
         </path>
       </svg>
     </span>
-    <span title="2024. április 14. 08:50:12">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-14T08:50:12+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-14</span>
+    <span title="2024. április 18. 09:53:07">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-18T09:53:07+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-18</span>
     </span>
   </span>
 

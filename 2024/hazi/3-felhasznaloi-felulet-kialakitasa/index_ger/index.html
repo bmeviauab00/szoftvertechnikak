@@ -1888,13 +1888,9 @@ Foreground="{x:Bind Priority, Converter={StaticResource PriorityBrushConverter}}
 <details class="tip">
 <summary>Datumsformatierung</summary>
 <p>Zur Formatierung des Datums der Abgabefrist können Sie auch einen Konverter oder eine Funktionsbindung auf der Grundlage von <code>x:Bind</code> verwenden, wobei Sie die Funktion <code>DateTime.ToString</code> mit Parametern binden.</p>
-<div class="highlight"><pre><span></span><code>Text=&quot;{x:Bind<span class="w"> </span>Deadline.ToString(&#39;yyyy.MM.dd&#39;,<span class="w"> </span>{x:Null})}&quot;
+<div class="highlight"><pre><span></span><code>Text=&quot;{x:Bind<span class="w"> </span>Deadline.ToString(&#39;yyyy.MM.dd&#39;,<span class="w"> </span>x:Null)}&quot;
 </code></pre></div>
-<p>Das <code>{x:Null}</code> wird benötigt, weil der zweite Parameter der Funktion <code>ToString</code> angegeben werden muss, aber in diesem Fall kann er <code>null</code> sein.</p>
-<div class="admonition warning">
-<p class="admonition-title"><code>{x:Null}</code> Fehlermeldungen</p>
-<p>Der XAML-Compiler von Visual Studio neigt dazu, irreführende Fehlermeldungen anzuzeigen. Wenn Sie während der Kompilierung eine Fehlermeldung (neben anderen Fehlermeldungen) erhalten, die sich über <code>{x:Null}</code> beschwert, überprüfen Sie zuerst die anderen Fehler, die Fehlermeldung für <code>{x:Null}</code> könnte falsch sein. Denken Sie daran, denn das kann bei künftigen Aufgaben leicht passieren!</p>
-</div>
+<p>Das <code>x:Null</code> wird benötigt, weil der zweite Parameter der Funktion <code>ToString</code> angegeben werden muss, aber in diesem Fall kann er <code>null</code> sein.</p>
 </details>
 <details class="tip">
 <summary>Abstand zwischen den Listenelementen</summary>
@@ -2045,8 +2041,8 @@ Foreground="{x:Bind Priority, Converter={StaticResource PriorityBrushConverter}}
         </path>
       </svg>
     </span>
-    <span title="2024. március 26. 12:10:20">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-26T12:10:20+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-26</span>
+    <span title="2024. április 18. 09:53:07">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-18T09:53:07+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-18</span>
     </span>
   </span>
 
@@ -2065,6 +2061,8 @@ Foreground="{x:Bind Priority, Converter={StaticResource PriorityBrushConverter}}
         <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&v=4?size=72" alt="@Zoltán Benedek">
       </a><a href="https://github.com/szucscintialia" target="_blank" rel="noopener noreferrer" class="md-author" title="@Cintia Szücs">
         <img src="https://avatars.githubusercontent.com/u/26093637?v=4?size=72" alt="@Cintia Szücs">
+      </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tibor Tóth">
+        <img src="https://avatars.githubusercontent.com/u/8333960?u=d26653213d265ecdceeaf20a896d74f479d35450&v=4?size=72" alt="@Tibor Tóth">
       </a></nav>      
   </span>
 </div>
