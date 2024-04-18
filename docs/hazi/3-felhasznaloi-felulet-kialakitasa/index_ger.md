@@ -224,13 +224,10 @@ Stellen Sie in der Zelle unter `CommandBar` in einer Liste (`ListView`) die Aufg
     Zur Formatierung des Datums der Abgabefrist können Sie auch einen Konverter oder eine Funktionsbindung auf der Grundlage von `x:Bind` verwenden, wobei Sie die Funktion `DateTime.ToString` mit Parametern binden.
 
     ```xml
-    Text="{x:Bind Deadline.ToString('yyyy.MM.dd', {x:Null})}"
+    Text="{x:Bind Deadline.ToString('yyyy.MM.dd', x:Null)}"
     ```
 
-    Das `{x:Null}` wird benötigt, weil der zweite Parameter der Funktion `ToString` angegeben werden muss, aber in diesem Fall kann er `null` sein.
-
-    !!! warning "`{x:Null}` Fehlermeldungen"
-        Der XAML-Compiler von Visual Studio neigt dazu, irreführende Fehlermeldungen anzuzeigen. Wenn Sie während der Kompilierung eine Fehlermeldung (neben anderen Fehlermeldungen) erhalten, die sich über `{x:Null}` beschwert, überprüfen Sie zuerst die anderen Fehler, die Fehlermeldung für `{x:Null}` könnte falsch sein. Denken Sie daran, denn das kann bei künftigen Aufgaben leicht passieren!
+    Das `x:Null` wird benötigt, weil der zweite Parameter der Funktion `ToString` angegeben werden muss, aber in diesem Fall kann er `null` sein.
 
 ??? tip "Abstand zwischen den Listenelementen"
     Auf dem Screenshot der Anleitung sehen Sie, dass zwischen den Listenelementen ein vertikaler Abstand besteht, so dass die Listenelemente gut voneinander getrennt sind. Dies ist nicht standardmäßig der Fall. Glücklicherweise erfordert die Lösung, dass DataTemplate für die Anzeige der Elemente verwendet wird, so dass Sie durch eine kleine Anpassung (Tipp: geben Sie einen einzelnen Margin/Padding an) leicht etwas Platz zwischen den Listenelementen für eine bessere Lesbarkeit erreichen können. 

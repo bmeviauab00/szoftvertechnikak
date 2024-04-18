@@ -232,13 +232,10 @@ A `CommandBar` alatti cellában egy listába (`ListView`) kerüljenek a teendők
     A határidő dátum formázására használhatunk szintén konvertert vagy `x:Bind` alapú függvény kötést is, ahol a `DateTime.ToString` függvényét kötjük ki paraméterezve.
 
     ```xml
-    Text="{x:Bind Deadline.ToString('yyyy.MM.dd', {x:Null})}"
+    Text="{x:Bind Deadline.ToString('yyyy.MM.dd', x:Null)}"
     ```
-
-    A `{x:Null}` azért kell, mert a `ToString` függvénynek a második paraméterét is meg kell adni, de az lehet `null` is ebben az esetben.
-
-    !!! warning "`{x:Null}` hibaüzenetek"
-        A Visual Studio XAML compilere hajlamos félrevezető hibaüzeneteket megjeleníteni. Amennyiben olyan hibaüzenetet kapunk a fordítás során (más hibaüzenetek mellett), mely a `{x:Null}`-ra panaszkodik, előbb a többi hibát nézzük meg, az `{x:Null}`-ra vonatkozó hibajelentés lehet hamis. Erre emlékezzünk, mert a későbbi feladatoknál is könnyen előfordulhat!
+ 
+    A `x:Null` azért kell, mert a `ToString` függvénynek a második paraméterét is meg kell adni, de az lehet `null` is ebben az esetben.
 
 ??? tip "Listaelemek közötti hely"
     Az útmutató képernyőmentésén látszik, hogy a listaelemek között függőlegesen van kihagyott hely, a listaelemek így jól elkülönülnek. Alapesetben ez nincs így. Szerencsére a megoldás során úgyis kell DataTemplate-et alkalmazni az elemek megjelenítésére, így ennek kicsi hangolásával (tipp: egyetlen Margin/Padding megadása) könnyedén elérhetjük, hogy a listaelemek között legyen némi hely a jobb olvashatóság érdekében. 
