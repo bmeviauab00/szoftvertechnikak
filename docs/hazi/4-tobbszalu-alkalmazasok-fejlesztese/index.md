@@ -76,7 +76,7 @@ A felület kialakítása a `MainWindow.xaml`-ben található, a következő alap
 - Az ablak alapelrendezésének kialakítására "szokásosan" egy `Grid`-et használtunk, mely két sorból áll. Az első sorában található a versenypálya a biciklikkel (`*` sormagasság), az alsó részben pedig egy `StackPanel` a gombokkal (`Auto` sormagasság).
 - A pálya kialakítására `Rectangle` objektumokat (háttér, startvonal, depo, célegyenes), a szövegelemek elrendezésére pedig (részben elforgatott) `TextBlock` objektumokat használtunk.
 - Az egyes bicikliket egy vertikális `StackPanel`-en helyeztük el. A bicikliket egy-egy `TextBlock` objektummal jelenítjük meg (`Webdings` betűtípus, `b` betű). Használhattunk volna `FontIcon`-t is, a `TextBlock`-ra csak azért esett a választásunk, mert ezzel már korábban megismerkedtünk.
-- A pálya valamennyi elemét és a bicikliket tartalmazó `StackPanel`-t is a `Grid` első (technikailag 0-dik) sorában helyeztük el. Ezek a definiálásuk sorrendjében rajzolódnak ki, az igazítások és margók által meghatározott helyen. A biciklik `TextBlock`-jának pozícionálására is a margót használjuk majd. Egy alternatíva megoldás lett volna, ha miden felületelemet egy `Canvas`-re helyeztünk volna el, és azon állítottuk volna be az elemek abszolút pozícióját és méretét (Left, Top, Width, Height) a margók alkalmazása helyett.
+- A pálya valamennyi elemét és a bicikliket tartalmazó `StackPanel`-t is a `Grid` első (technikailag 0-dik) sorában helyeztük el. Ezek a definiálásuk sorrendjében rajzolódnak ki, az igazítások és margók által meghatározott helyen. A biciklik `TextBlock`-jának pozícionálására is a margót használjuk majd. Egy alternatíva megoldás lett volna, ha minden felületelemet egy `Canvas`-re helyeztünk volna el, és azon állítottuk volna be az elemek abszolút pozícióját és méretét (Left, Top, Width, Height) a margók alkalmazása helyett.
 
 Az ablakhoz tartozó `MainWindow.cs` code behind fájlt is nézzük meg, főbb elemei a következők:
 
@@ -280,7 +280,7 @@ Valósítsd meg a versenyzők indítását a depóból és futtatását mindaddi
 - Az egyes versenyzőket a `Start Next Bike From Depo` gombkattintás során már hívott `Game` osztálybeli `StartNextBikeFromDepo` függvény indítsa a depóból.
 - Minden gombkattintásra csak egyetlen versenyző indulhat el a depóból.
 - Fontos, hogy a `StartNextBikeFromDepo` műveletben ne új szálakat indítsunk, hanem meg kell oldani, hogy meglévő szálak várakozzanak, majd a `StartNextBikeFromDepo` függvény hívásának "hatására" folytassák futásukat.
-- Ha a felhasználó azelőtt nyomja meg a `Start Next Bike From Depo` gombot, hogy a biciklik elérnék a depót, akkor egy bicikli már továbbmehet a depóból, amikor megérkezik oda (de az is teljesen jó megoldás, ha ilyen esetben a a gomb lenyomását még figyelmen kívül hagyja az alkalmazás).
+- Ha a felhasználó azelőtt nyomja meg a `Start Next Bike From Depo` gombot, hogy a biciklik elérnék a depót, akkor egy bicikli már továbbmehet a depóból, amikor megérkezik oda (de az is teljesen jó megoldás, ha ilyen esetben a gomb lenyomását még figyelmen kívül hagyja az alkalmazás).
 - A biciklik egészen a célegyenesig haladjanak el (míg pozíciójuk el nem éri a `FinishLinePosition` tagváltozó által meghatározott értéket). Amikor egy bicikli eléri a célvonalat, a biciklihez tartozó szál fejezze be a futását.
 - A `Game` osztályban dolgozz.
 
@@ -300,7 +300,7 @@ Valósítsd meg a versenyzők indítását a depóból és futtatását mindaddi
 
 Valósítsd meg a győztes bicikli meghatározásának és megjelenítésének logikáját, a következő irányelveknek megfelelően:
 
-- A biciklik közül az a győztes, mely először éri ez a célvonala (a pozíciója először éri el a `FinishLinePosition` tagváltozó által meghatározott értéket).
+- A biciklik közül az a győztes, mely először éri ez a célvonalat (a pozíciója először éri el a `FinishLinePosition` tagváltozó által meghatározott értéket).
 - A megoldás során használd fel, hogy a `Bike` osztályban már van egy `isWinner` változó, mely értéke kezdetben hamis, és a `SetAsWinner` művelettel igazzá tehető, illetve az értéke az `IsWinner` tulajdonsággal lekérdezhető.
 - Annak eldöntése, hogy az adott bicikli lett-e a győztes, a `Game` osztályban biciklihez tartozó szálfüggvény feladata, ide tedd a döntési logikát.
 - :exclamation: Kulcsfontosságú, hogy pontosan egy győztes lehet. Ha egynél több bicikli kerül győztesnek megjelölésre (vagyis a `Bike` osztály `SetAsWinner` művelete több biciklire is meghívásra kerül), az nagyon súlyos hiba!
@@ -473,7 +473,7 @@ A következőkben megadjuk a feladat megoldásának néhány fontos elemét:
 - Ezt az eseményt a `bool` változóval együtt a *Stop Race* gombra való kattintás során kell jelzettbe állítani (a `Game.StopRace`-ben).
 - A bicikliket mozgató szálfüggvényben kommentezd ki (ne töröld!) az eddigi várakozást megvalósító kódrészeket, és készíts egy új megoldást az előbb felvett leállítást jelző `ManualResetEvent` segítségével. A várakozásokra továbbra is szükség lesz, azonban a várakozó állapotból akkor is ki kell lépni, ha a leállítást jelző `ManualResetEvent` esemény lesz jelzett.
 - Ha leállítás történt, a szál futását be kell fejezni (a szálfüggvényből ki kell lépni, pl. egy `return` utasítással).
-- A `Game.StopRace` műveletében a szálaknak történő jelzés után meg kell várni, míg a szálak valóban ki is lépnek. Ehhez az egyes biciklikhez tartozó szál objektumokra kel sorban `Join()`-t hívni. Ahhoz, hogy ez megtehető legyen, a szálak indításakor a szál objektumokat el kell tárolni egy tagváltozóban (pl. egy `List<Thread>` -ben)
+- A `Game.StopRace` műveletében a szálaknak történő jelzés után meg kell várni, míg a szálak valóban ki is lépnek. Ehhez az egyes biciklikhez tartozó szál objektumokra kell sorban `Join()`-t hívni. Ahhoz, hogy ez megtehető legyen, a szálak indításakor a szál objektumokat el kell tárolni egy tagváltozóban (pl. egy `List<Thread>` -ben)
 
 Megjegyzés: szálak kiléptetésére alternatív megoldás lett volna a bool és `ManualResetEvent` bevezetése helyett a szálakra `Interrupt` művelet hívása, és a szálfüggvényekben az ennek hatására kiváltódó `ThreadInterruptedException` elkapása. Ez a témakör előadáson került ismertetésre.
 

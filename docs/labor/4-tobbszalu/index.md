@@ -573,7 +573,7 @@ Korábban félretettük azt a problémát, hogy az ablakunk bezárásakor a proc
     private bool _isClosed = false;
     ```
 
-4. A főablak bezárásakor állítsuk jelzettre az új eseményt és billentsünk be be a flag-et is: a `MainWindow` osztály `Closed` eseményére iratkozzunk fel a konstruktorban, és írjuk meg a megfelelő eseménykezelő függvényt:
+4. A főablak bezárásakor állítsuk jelzettre az új eseményt és billentsünk be a flag-et is: a `MainWindow` osztály `Closed` eseményére iratkozzunk fel a konstruktorban, és írjuk meg a megfelelő eseménykezelő függvényt:
 
     ```cs
     public MainWindow()

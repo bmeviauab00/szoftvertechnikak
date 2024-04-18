@@ -44,7 +44,7 @@ Nyissuk meg a `HelloXaml.sln`-t.
 Tekintsük át milyen fájlokat tartalmaz a projekt:
 
 * App
-    * Két fájl `App.xaml` és `App.xaml.cs`(később tisztázzuk két fájl tartozik hozzá)
+    * Két fájl `App.xaml` és `App.xaml.cs`(később tisztázzuk, két fájl tartozik hozzá)
     * Alkalmazás belépési pontja: `OnLaunched` felüldefiniált metódus az `App.xaml.cs`-ben
     * Esetünkben itt inicializáljuk az alkalmazás egyetlen ablakát a `MainWindow`-t
 * MainWindow

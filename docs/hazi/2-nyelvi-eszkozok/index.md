@@ -58,7 +58,7 @@ throw new ArgumentException("You are not a true jedi!");
 ### Feladat
 
 Egészítsd ki az 1. feladatban elkészített osztályt attribútumokkal úgy, hogy amennyiben az `XmlSerializer` osztály segítségével, XML formátumú adatfájlba írunk/sorosítunk ki egy `Jedi` objektumot, a tulajdonságai egy-egy XML attribútum formájában, magyarul jelenjenek meg!
-Ezt követően írjon egy függvényt, mely a `Jedi` osztály egy példányát egy szövegfájlba sorosítja, majd onnan visszaolvassa egy új objektumba (ezzel tulajdonképpen klónozva az eredeti objektumot).
+Ezt követően írj egy függvényt, mely a `Jedi` osztály egy példányát egy szövegfájlba sorosítja, majd onnan visszaolvassa egy új objektumba (ezzel tulajdonképpen klónozva az eredeti objektumot).
 
 !!! tip "XML sorosító attribútumai"
     Az XML sorosítást szabályozó attribútumokat ne tagváltozók, hanem a property-k felett helyezd el!
