@@ -1731,7 +1731,7 @@ Mint általában, a jelen házi feladat keretében elkészítendő feladatra is 
 <p><a class="glightbox" href="images/model.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Modell" src="images/model.png" /></a></p>
 </figure>
 <p>Mindkét típus legyen publikus (írjuk a <code>class</code> és az <code>enum</code> elé a <code>public</code> kulcsszót), különben "Inconsistent accessibility" hibát kapnánk a későbbiekben a fordítás során.</p>
-<p>A <code>MainPage</code> oldal fogja a teendők listáját megjeleníteni. Most memóriában lévő tesztadatokat használjunk, melyeket a <code>View</code> mappában található <code>MainPage.xaml.cs</code>-ben hozzunk létre: itt <code>Todos</code> néven vezessünk be egy <code>List&lt;TodoItem&gt;</code> tulajdonságot (melyet később a felületen elhelyezett <code>ListView</code> vezérlőhöz kötünk adatkötéssel). Ez a lista <code>TodoItem</code> objektumokat tartalmaz.</p>
+<p>A <code>MainPage</code> oldal fogja a teendők listáját megjeleníteni. Most memóriában lévő tesztadatokat használjunk, melyeket a <code>Views</code> mappában található <code>MainPage.xaml.cs</code>-ben hozzunk létre: itt <code>Todos</code> néven vezessünk be egy <code>List&lt;TodoItem&gt;</code> tulajdonságot (melyet később a felületen elhelyezett <code>ListView</code> vezérlőhöz kötünk adatkötéssel). Ez a lista <code>TodoItem</code> objektumokat tartalmaz.</p>
 <div class="highlight"><span class="filename">MainPage.xaml.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">TodoItem</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Todos</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">TodoItem</span><span class="p">()</span>
@@ -2081,8 +2081,8 @@ Alap esetben nem lenne fontos a függvénynek statikusnak lennie, de mivel itt e
         </path>
       </svg>
     </span>
-    <span title="2024. április 18. 09:53:07">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-18T09:53:07+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-18</span>
+    <span title="2024. április 18. 11:23:56">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-18T11:23:56+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-18</span>
     </span>
   </span>
 

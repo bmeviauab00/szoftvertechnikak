@@ -1991,7 +1991,7 @@ Az önálló gyakorlat a következő ismeretek elmélyítését célozza:</p>
 <li>Az ablak alapelrendezésének kialakítására "szokásosan" egy <code>Grid</code>-et használtunk, mely két sorból áll. Az első sorában található a versenypálya a biciklikkel (<code>*</code> sormagasság), az alsó részben pedig egy <code>StackPanel</code> a gombokkal (<code>Auto</code> sormagasság).</li>
 <li>A pálya kialakítására <code>Rectangle</code> objektumokat (háttér, startvonal, depo, célegyenes), a szövegelemek elrendezésére pedig (részben elforgatott) <code>TextBlock</code> objektumokat használtunk.</li>
 <li>Az egyes bicikliket egy vertikális <code>StackPanel</code>-en helyeztük el. A bicikliket egy-egy <code>TextBlock</code> objektummal jelenítjük meg (<code>Webdings</code> betűtípus, <code>b</code> betű). Használhattunk volna <code>FontIcon</code>-t is, a <code>TextBlock</code>-ra csak azért esett a választásunk, mert ezzel már korábban megismerkedtünk.</li>
-<li>A pálya valamennyi elemét és a bicikliket tartalmazó <code>StackPanel</code>-t is a <code>Grid</code> első (technikailag 0-dik) sorában helyeztük el. Ezek a definiálásuk sorrendjében rajzolódnak ki, az igazítások és margók által meghatározott helyen. A biciklik <code>TextBlock</code>-jának pozícionálására is a margót használjuk majd. Egy alternatíva megoldás lett volna, ha miden felületelemet egy <code>Canvas</code>-re helyeztünk volna el, és azon állítottuk volna be az elemek abszolút pozícióját és méretét (Left, Top, Width, Height) a margók alkalmazása helyett.</li>
+<li>A pálya valamennyi elemét és a bicikliket tartalmazó <code>StackPanel</code>-t is a <code>Grid</code> első (technikailag 0-dik) sorában helyeztük el. Ezek a definiálásuk sorrendjében rajzolódnak ki, az igazítások és margók által meghatározott helyen. A biciklik <code>TextBlock</code>-jának pozícionálására is a margót használjuk majd. Egy alternatíva megoldás lett volna, ha minden felületelemet egy <code>Canvas</code>-re helyeztünk volna el, és azon állítottuk volna be az elemek abszolút pozícióját és méretét (Left, Top, Width, Height) a margók alkalmazása helyett.</li>
 </ul>
 <p>Az ablakhoz tartozó <code>MainWindow.cs</code> code behind fájlt is nézzük meg, főbb elemei a következők:</p>
 <ul>
@@ -2165,7 +2165,7 @@ Futtassuk az alkalmazást (lényeges, hogy debuggolva, vagyis az <span class="ke
 <li>Az egyes versenyzőket a <code>Start Next Bike From Depo</code> gombkattintás során már hívott <code>Game</code> osztálybeli <code>StartNextBikeFromDepo</code> függvény indítsa a depóból.</li>
 <li>Minden gombkattintásra csak egyetlen versenyző indulhat el a depóból.</li>
 <li>Fontos, hogy a <code>StartNextBikeFromDepo</code> műveletben ne új szálakat indítsunk, hanem meg kell oldani, hogy meglévő szálak várakozzanak, majd a <code>StartNextBikeFromDepo</code> függvény hívásának "hatására" folytassák futásukat.</li>
-<li>Ha a felhasználó azelőtt nyomja meg a <code>Start Next Bike From Depo</code> gombot, hogy a biciklik elérnék a depót, akkor egy bicikli már továbbmehet a depóból, amikor megérkezik oda (de az is teljesen jó megoldás, ha ilyen esetben a a gomb lenyomását még figyelmen kívül hagyja az alkalmazás).</li>
+<li>Ha a felhasználó azelőtt nyomja meg a <code>Start Next Bike From Depo</code> gombot, hogy a biciklik elérnék a depót, akkor egy bicikli már továbbmehet a depóból, amikor megérkezik oda (de az is teljesen jó megoldás, ha ilyen esetben a gomb lenyomását még figyelmen kívül hagyja az alkalmazás).</li>
 <li>A biciklik egészen a célegyenesig haladjanak el (míg pozíciójuk el nem éri a <code>FinishLinePosition</code> tagváltozó által meghatározott értéket). Amikor egy bicikli eléri a célvonalat, a biciklihez tartozó szál fejezze be a futását.</li>
 <li>A <code>Game</code> osztályban dolgozz.</li>
 </ul>
@@ -2186,7 +2186,7 @@ Futtassuk az alkalmazást (lényeges, hogy debuggolva, vagyis az <span class="ke
 <h2 id="feladat-4-gyoztes-bicikli-megvalositasa">Feladat 4 – Győztes bicikli megvalósítása<a class="headerlink" href="#feladat-4-gyoztes-bicikli-megvalositasa" title="Permanent link">&para;</a></h2>
 <p>Valósítsd meg a győztes bicikli meghatározásának és megjelenítésének logikáját, a következő irányelveknek megfelelően:</p>
 <ul>
-<li>A biciklik közül az a győztes, mely először éri ez a célvonala (a pozíciója először éri el a <code>FinishLinePosition</code> tagváltozó által meghatározott értéket).</li>
+<li>A biciklik közül az a győztes, mely először éri ez a célvonalat (a pozíciója először éri el a <code>FinishLinePosition</code> tagváltozó által meghatározott értéket).</li>
 <li>A megoldás során használd fel, hogy a <code>Bike</code> osztályban már van egy <code>isWinner</code> változó, mely értéke kezdetben hamis, és a <code>SetAsWinner</code> művelettel igazzá tehető, illetve az értéke az <code>IsWinner</code> tulajdonsággal lekérdezhető.</li>
 <li>Annak eldöntése, hogy az adott bicikli lett-e a győztes, a <code>Game</code> osztályban biciklihez tartozó szálfüggvény feladata, ide tedd a döntési logikát.</li>
 <li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> Kulcsfontosságú, hogy pontosan egy győztes lehet. Ha egynél több bicikli kerül győztesnek megjelölésre (vagyis a <code>Bike</code> osztály <code>SetAsWinner</code> művelete több biciklire is meghívásra kerül), az nagyon súlyos hiba!</li>
@@ -2349,7 +2349,7 @@ Fontos megjegyzés: a <code>volatile</code> alkalmazására nincs szükség, ha 
 <li>Ezt az eseményt a <code>bool</code> változóval együtt a <em>Stop Race</em> gombra való kattintás során kell jelzettbe állítani (a <code>Game.StopRace</code>-ben).</li>
 <li>A bicikliket mozgató szálfüggvényben kommentezd ki (ne töröld!) az eddigi várakozást megvalósító kódrészeket, és készíts egy új megoldást az előbb felvett leállítást jelző <code>ManualResetEvent</code> segítségével. A várakozásokra továbbra is szükség lesz, azonban a várakozó állapotból akkor is ki kell lépni, ha a leállítást jelző <code>ManualResetEvent</code> esemény lesz jelzett.</li>
 <li>Ha leállítás történt, a szál futását be kell fejezni (a szálfüggvényből ki kell lépni, pl. egy <code>return</code> utasítással).</li>
-<li>A <code>Game.StopRace</code> műveletében a szálaknak történő jelzés után meg kell várni, míg a szálak valóban ki is lépnek. Ehhez az egyes biciklikhez tartozó szál objektumokra kel sorban <code>Join()</code>-t hívni. Ahhoz, hogy ez megtehető legyen, a szálak indításakor a szál objektumokat el kell tárolni egy tagváltozóban (pl. egy <code>List&lt;Thread&gt;</code> -ben)</li>
+<li>A <code>Game.StopRace</code> műveletében a szálaknak történő jelzés után meg kell várni, míg a szálak valóban ki is lépnek. Ehhez az egyes biciklikhez tartozó szál objektumokra kell sorban <code>Join()</code>-t hívni. Ahhoz, hogy ez megtehető legyen, a szálak indításakor a szál objektumokat el kell tárolni egy tagváltozóban (pl. egy <code>List&lt;Thread&gt;</code> -ben)</li>
 </ul>
 <p>Megjegyzés: szálak kiléptetésére alternatív megoldás lett volna a bool és <code>ManualResetEvent</code> bevezetése helyett a szálakra <code>Interrupt</code> művelet hívása, és a szálfüggvényekben az ennek hatására kiváltódó <code>ThreadInterruptedException</code> elkapása. Ez a témakör előadáson került ismertetésre.</p>
 <div class="admonition example">
@@ -2370,8 +2370,8 @@ Fontos megjegyzés: a <code>volatile</code> alkalmazására nincs szükség, ha 
         </path>
       </svg>
     </span>
-    <span title="2024. április 11. 08:33:35">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-11T08:33:35+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-11</span>
+    <span title="2024. április 18. 11:23:56">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-18T11:23:56+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-18</span>
     </span>
   </span>
 
