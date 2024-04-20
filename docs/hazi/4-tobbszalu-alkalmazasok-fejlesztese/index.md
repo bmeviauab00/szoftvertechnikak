@@ -217,7 +217,7 @@ Ezekhez a lépésekhez még adunk megoldást (de sokkal többet tanulsz belőle,
     void BikeThreadFunction(object bikeAsObject)
     {
         Bike bike = (Bike)bikeAsObject;
-        while (bike.Position <= StartLinePosition)
+        while (bike.Position < StartLinePosition)
         {
             bike.Step();
 
