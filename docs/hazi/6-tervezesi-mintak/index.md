@@ -169,6 +169,10 @@ Elkészültünk, értékeljük a megoldást:
     - Illessz be egy képernyőképet, melyen az `AllProgresses.cs` fájl tartalma látszik (`f5.1.png`).
     - Illessz be egy képernyőképet, melyen a `Program.cs` fájl tartalma (különösen az új részek) látszik (`f5.2.png`).
 
+## Refaktorálás (Refactoring)
+
+A labor és a házi feladat megvalósítása során számos olyan lépés volt, mely során a kódot úgy alakítottuk át, hogy az alkalmazás külső viselkedése nem változott, csak a belső felépítése. Mégpedig annak érdekében, hogy valamilyen szempontból jobb kódminőségi jellemzőkkel rendelkezzen. Ezt a kód `refaktorálásának` (angolul `refactoring`) nevezzük. Ez egy nagyon fontos fogalom, a mindennapi munka során nagyon gyakran használjuk. Külön irodalma van, a fontosabb technikákkal a későbbiekben érdemes megismerkedni. A komolyabb fejlesztőeszközök beépítetten támogatnak bizonyos refaktorálási műveleteket: a Visual Studio ebben nem a legerősebb, de azért pár alapműveletet támogat (pl. Extract Method, Extract base class stb.). Manuálisan gyakoroltuk, ennek kapcsán külön feladatunk nem lesz.
+
 ## Összegzés
 
 Több feladat nem lesz 😊. De ha kíváncsi vagy pl. arra, hogy jelen megoldás mennyire tekinthető "tökéletesnek"/hiányosnak, illetve mikor érdemes Template Methoddal, Strategyvel, vagy inkább delegate-ekkel dolgozni, akkor érdemes elolvasnod az alábbiakat, melyben értékeljük a laboron elkezdett és a házi feladat keretében befejezett megoldást.
