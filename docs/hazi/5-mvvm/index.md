@@ -49,7 +49,7 @@ Mivel mindent átmozgattunk a `MainWindow`-ból a `PersonListPage`-be, a `MainWi
 <views:PersonListPage/>
 ```
 
-Ellenőrizzük a kódban is!
+Ellenőrizd a kódban, hogy valóban ez a helyzet!
 
 ## Főablak fejléce
 
@@ -57,20 +57,20 @@ Ellenőrizzük a kódban is!
 
 ## Feladat 1 - MVVM Toolkit alkalmazása
 
-A meglévő alkalmazásban a `Models` mappában levő `Person` osztály már implementálja az `INotifyPropertyChanged` (becenevén INPC) interfészt (így rendelkezik egy `PropertyChanged` eseménnyel), valamint a `Name` és az `Age` setterében jelzi is a tulajdonság változását a `PropertyChanged` esemény elsütésével (nézzük ez át alaposan a `Person.cs` fájlban).
+A meglévő alkalmazásban a `Models` mappában levő `Person` osztály már implementálja az `INotifyPropertyChanged` (becenevén INPC) interfészt (így rendelkezik egy `PropertyChanged` eseménnyel), valamint a `Name` és az `Age` setterében jelzi is a tulajdonság változását a `PropertyChanged` esemény elsütésével (nézd meg ezt alaposan a `Person.cs` fájlban).
 
 Bemelegítésképpen/ismétlésképpen - a kódot (`PersonListPage.xaml` és `PersonListPage.xaml.cs`) alaposan átnézve és az alkalmazást futtatva - fogalmazd meg magadban, miért is volt erre az alkalmazásban szükség!
 
 ??? "A válasz (ismétlés)"
     Az alkalmazásban a `PersonListPage.xaml`-ben a `TextBox`-ok `Text` tulajdonsága (ez a cél tulajdonság) hozzá vannak kötve a code behindban levő `Person` típusú `NewPerson` tag `Age` és `Name` tulajdonságaihoz (ezek a források a két adatkötésben). Nézzük meg a kódban, hogy a `NewPerson.Name` és `NewPerson.Age` forrás tulajdonságokat **változtatjuk is a kódban**: a vezérlő csak akkor tud ezekről értesülni (és így szinkronban maradni a forrással), ha ezekről a `Name` és `Age` változásokról értesítést kap. Emiatt az `Age` és `Name` tulajdonságokat tartalmazó osztálynak, vagyis a `Person`-nek meg kell valósítania az `INotifyPropertyChanged` interfészt, és a tulajdonságok változásakor el kell sütnie a `PropertyChanged` eseményt megfelelően paraméterezve.
     
- Az alkalmazást futtatva ellenőrizzük, hogy a '+' és '-' gombok hatására eszközölt `NewPerson.Age` változások valóban érvényre jutnak az életkort megjelenítő `TextBox`-ban. 
+ Az alkalmazást futtatva ellenőrizd, hogy a '+' és '-' gombok hatására eszközölt `NewPerson.Age` változások valóban érvényre jutnak az életkort megjelenítő `TextBox`-ban. 
 
 A `Person` osztályban látszik, hogy az `INotifyPropertyChanged` megvalósítása és a kapcsolódó kód igencsak terjengős. Nézd meg az előadásanyagban, milyen alternatívák vannak az interfész megvalósítására (az "INPC példa 1" című diától kezdődően kb. négy dia a négy lehetőség illusztrálására)! A legtömörebb legoldást az MVVM Toolkit alkalmazása jelenti. A következő lépésben jelen terjengősebb "manuális" INPC megvalósítást átalakítjuk MVVM toolkit alapúra.
 
 ### Feladat 1/a - MVVM Toolkit NuGet referencia felvétele
 
-Első lépésben NuGet referenciát kell tegyünk az MVVM Toolkitre annak érdekében, hogy használni tudjuk. 
+Első lépésben NuGet referenciát kell tenni az MVVM Toolkitre annak érdekében, hogy használni lehessen a projektben. 
 
 **Feladat**: Vegyél fel egy NuGet referenciát a projektben a "CommunityToolkit.Mvvm" NuGet csomagra. Ez a Visual Studio oldal írja le, hogyan lehet egy NuGet referenciát a projektbe felvenni [NuGet Package Manager](https://learn.microsoft.com/en-us/nuget/quickstart/install-and-use-a-package-in-visual-studio#nuget-package-manager). Az előző link az oldalon belül a "NuGet Package Manager" fejezetre ugrik, az itt megadott négy lépést kell követni (természetesen azzal a különbséggel, hogy nem a "Newtonsoft.Json" hanem a "CommunityToolkit.Mvvm" csomagra kell a referenciát felvenni).
 
@@ -78,13 +78,13 @@ Most, hogy a projektünkbe felvettük ezt a NuGet referenciát, a következő bu
 
 :warning: A fenti NuGet-re vonatkozó koncepciók ismerete fontos, a tananyag fontos részét képezik!
 
-Egy NuGet referencia tulajdonképpen csak egy sor a `.csproj` projektleíró fájlban. A Solution Explorerben a "HelloXaml" projekt csomópontra kattintva nyissuk meg a `.csproj` projektfájlt, és ellenőrizzük, benne van ez a sor (a verzió lehet más lesz):
+Egy NuGet referencia tulajdonképpen csak egy sor a `.csproj` projektleíró fájlban. A Solution Explorerben a "HelloXaml" projekt csomópontra kattintva nyisd meg a `.csproj` projektfájlt, és ellenőrizd, benne van ez a sor (a verzió lehet más lesz):
 
 ``` csharp
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 ```
 
-A `csproj` fájl megnyitása nélkül is ellenőrizzük a NuGet referenciánkat: Solution Explorerben nyissuk le a "HelloXaml"/"Dependencies"/"Packages" csomópontot: alatta látható egy "CommunityToolkit.Mvvm (verzió)" csomópont.
+A `csproj` fájl megnyitása nélkül is ellenőrizd a NuGet referenciánkat: Solution Explorerben nyisd le a "HelloXaml"/"Dependencies"/"Packages" csomópontot: ha minden rendben van, alatta látható egy "CommunityToolkit.Mvvm (verzió)" csomópont.
 
 ### Feladat 1/b - INPC megvalósítás MVVM Toolkit alapokon
 
@@ -111,11 +111,13 @@ Most már tudjuk használni az MVVM Toolkit NuGet package-ben levő osztályokat
     }
     ```
 
-Ez a kód, egy fordítást követően, alapjaiban ugyanazt a megoldást eredményezi, mint a korábbi, sokkal terjengősebb, immár kikommentezett forma. Vagyis születik `Name` és `Age` tulajdonság, megfelelő `PropertyChanged` esemény elsütésekkel. Hogyan lehetséges ez? 
+Ez a kód, egy fordítást követően, alapjaiban ugyanazt a megoldást eredményezi, mint a korábbi, sokkal terjengősebb, immár kikommentezett forma. Vagyis (még ha nem is látjuk egyelőre) születik `Name` és `Age` tulajdonság, megfelelő `PropertyChanged` esemény elsütésekkel. Hogyan lehetséges ez? 
 
 * Egyrészt az `ObservableObject` ős már megvalósítja az `INotifyPropertyChanged` interfészt, így a `PropertyChanged` esemény tagot is tartalmazza, ezt a származtatás révén  al "megörökli" az osztályunk.
 * A fordítás során lefut az MVVM Toolkit kódgenerátora, mely minden `ObservableProperty` attribútummal ellátott tagváltozóhoz generál egy ugyanolyan nevű, de nagybetűvel kezdődő tulajdonságot az osztályba, mely tulajdonság settere elsüti megfelelő feltételek mellett és megfelelő paraméterekkel a `PropertyChanged` eseményt. Hurrá, ezt a kódot akkor nem nekünk kell megírni.
 * Kérdés, hol keletkezi ez a kód. Az osztályunk egy másik "partial" részében. Egy fordítást követően Visual Studio-ban jobb gombbal kattintsunk a `Person` osztály nevén, majd a felugró menüben "Go to Definition". Ekkor egy alsó ablakban két találatot is kapunk: az egyik az általunk írt fenti kód, a másik ("public class Person") a generált részre ugrik egy duplakatt hatására: látszik, hogy viszonylag terjengős kódot generált a kódgenerátor, de ami nekünk fontos, hogy itt található a `Name` és `Age` tulajdonság, benne - többek között - a `OnPropertyChanged` elsütésével.
+
+:exclamation: A kódgenerátor szokásosan az osztályunk másik "partial" felébe dolgozik, annak érdekében, hogy ne keveredjen az általunk írt és a generált kód! A partial classokat leggyakrabban a kézzel írt és a generált kód "különválasztására" használjuk.
 
 Mivel sokkal kevesebb kódot kell írni, a gyakorlatban az MVVM Toolkit alapú megoldást szoktuk használni (de a manuális megoldást is tudni kell, ez alapján érthető, mi is történik a színfalak mögött).
 
@@ -162,10 +164,10 @@ Feladat: alakítsd át a meglévő logikát így, hogy a fenti elveket követő 
 
 További lényeges átalakítandók:
 
-* A ViewModel-ben jelenleg a `Click` eseménykezelők nevei: `AddButton_Click`, `IncreaseButton_Click` és `DecreaseButton_Click`. Ez nem szerencsés. A ViewModel-ben "szemantikailag" nem eseménykezelőkben gondolkodunk. Helyette módosító műveletekben, melyek módosítják a ViewModel állapotát. A fentiek helyett ennek megfelelően sokkal jobban passzoló és kifejező nevek az `AddPersonToList`, `IncreaseAge` és `DecreaseAge`. Nevezzük át a függvényeket ennek megfelelően! Persze a továbbiakban is adatkötéssel ezeket kötjük a XAML fájlban a `Click` eseményekhez.
-* A fenti függvények paraméterlistája egyelőre az "`object sender, RoutedEventArgs e`". Ugyanakkor ezeket a paramétereket nem használjuk semmire. Szerencsére a x:Bind esemény adatkötés rugalmas annyira, hogy paraméter nélküli művelet is megadható, azzal is jól működik. Ennek tudatában távolítsuk el a fenti felesleges paramétereket a ViewModelünk három függvényéből. Így egy letisztultabb megoldást kapunk.
+* A ViewModel-ben jelenleg a `Click` eseménykezelők nevei: `AddButton_Click`, `IncreaseButton_Click` és `DecreaseButton_Click`. Ez nem szerencsés. A ViewModel-ben "szemantikailag" nem eseménykezelőkben gondolkodunk. Helyette módosító műveletekben, melyek módosítják a ViewModel állapotát. A fentiek helyett ennek megfelelően sokkal jobban passzoló és kifejező nevek az `AddPersonToList`, `IncreaseAge` és `DecreaseAge`. Nevezd át a függvényeket ennek megfelelően! Persze a továbbiakban is adatkötéssel ezeket kell kötni a XAML fájlban a `Click` eseményekhez.
+* A fenti függvények paraméterlistája egyelőre az "`object sender, RoutedEventArgs e`". Ugyanakkor ezeket a paramétereket nem használjuk semmire. Szerencsére a x:Bind esemény adatkötés rugalmas annyira, hogy paraméter nélküli művelet is megadható, azzal is jól működik. Ennek tudatában távolítsd el a fenti felesleges paramétereket a ViewModelünk három függvényéből. Így egy letisztultabb megoldást kapunk.
 
-Ellenőrizzük, hogy az átalakítások után is pontosan ugyanúgy működik az alkalmazás, mint előtte!
+Ellenőrizd, hogy az átalakítások után is pontosan ugyanúgy működik az alkalmazás, mint előtte!
 
 Mit nyertünk azzal, hogy korábbi megoldásunkat MVVM alapúra alakítottuk át? A választ az előadásanyag adja meg! Pár dolog kiemelve:
 
@@ -204,21 +206,21 @@ A problémára többféle megoldás is kidolgozható. Mindben közös, hogy a "-
     IsEnabled="{x:Bind ViewModel.IsDecrementEnabled, Mode=OneWay}"
 ```
 
-Próbáljuk ki! Sajnos nem működik, a "-" gomb nem tiltódik le, amikor 0 vagy kisebb értékű lesz az életkor (pl. a gomb sokszori kattintásával). Ha töréspontot teszünk az `IsDecrementEnabled` belsejébe, és így indítjuk az alkalmazást, azt tapasztaljuk, hogy a tulajdonság értékét csak egyszer kérdezi le a kötött vezérlő, az alkalmazás indulásakor: utána hiába kattintunk pl. a "-" gombon, többször nem. Próbáljuk ki!
+Próbáljuk ki! Sajnos nem működik, a "-" gomb nem tiltódik le, amikor 0 vagy kisebb értékű lesz az életkor (pl. a gomb sokszori kattintásával). Ha töréspontot teszünk az `IsDecrementEnabled` belsejébe, és így indítjuk az alkalmazást, azt tapasztaljuk, hogy a tulajdonság értékét csak egyszer kérdezi le a kötött vezérlő, az alkalmazás indulásakor: utána hiába kattintunk pl. a "-" gombon, többször nem. Próbáld is ki!
 
 Gondold át, mi okozza ezt, és csak utána haladj tovább az útmutatóval!
 
 ??? tip "Indoklás"
     A korábban tanultaknak megfelelően az adatkötés csak akkor kérdezi le a forrástulajdonság (esetünkben `IsDecrementEnabled`) értékét, ha annak változásáról az `INotifyPropertyChanged` segítségével értesítést kap! Márpedig, jelen megoldásunkban hiába változik a `NewPerson` objektum `Age` tulajdonsága, ennek megtörténtekor a semmiféle értesítés nincs az erre épülő `IsDecrementEnabled` tulajdonság megváltozásáról!
 
-A következő lépésben valósítsuk meg a kapcsolódó változásértesítést a ViewModel osztályunkban:
+A következő lépésben valósítsd meg a kapcsolódó változásértesítést a `PersonListPageViewModel` osztályban:
 
 * MVVM Toolkit "alapokon" valósítsd meg az `INotifyPropertyChanged` interfészt!
-* Az `IsDecrementEnabled` tulajdonság maradhat a mostani formájában (egy getter only property), nem szükséges `[ObservableProperty]` alapúra átírni (de az is jó megoldás és a házi feladat tekintetében is teljesen elfogadható, csak kicsit másként kell dolgozni a következő lépésekben).
-* Próbáld magadtól megvalósítani a következőt a ViewModel osztályban (a `Person` marad változatlan): amikor a `NewPerson.Age` változik, akkor az ősből örökölt `OnPropertyChanged` hívásával jelezzük a `IsDecrementEnabled` tulajdonság változását. Tipp: a `Person` osztály már rendelkezik `PropertyChanged` eseménnyel, hiszen maga is megvalósítja az `INotifyPropertyChanged` interfészt, erre az eseményre fel lehet iratkozni! Az egyszerűség érdekében az nem zavar minket, ha az `IsDecrementEnabled` változását esetleg akkor is jelezzük, ha tulajdonképen "logikailag" estleg nem is változik.
+* Az `IsDecrementEnabled` tulajdonság maradhat a mostani formájában (egy getter only property), nem szükséges `[ObservableProperty]` alapúra átírni (de az is jó megoldás, és a házi feladat tekintetében is teljesen elfogadható, csak kicsit másként kell dolgozni a következő lépésekben).
+* Próbáld magadtól megvalósítani a következőt a ViewModel osztályban (a `Person` osztály marad változatlan): amikor a `NewPerson.Age` változik, akkor az ősből örökölt `OnPropertyChanged` hívásával jelezzük a `IsDecrementEnabled` tulajdonság változását. Tipp: a `Person` osztály már rendelkezik `PropertyChanged` eseménnyel, hiszen maga is megvalósítja az `INotifyPropertyChanged` interfészt, erre az eseményre fel lehet iratkozni! Az egyszerűség érdekében az nem zavar minket, ha az `IsDecrementEnabled` változását esetleg akkor is jelezzük, ha tulajdonképen "logikailag" estleg nem is változik.
 * A fentieket külön eseménykezelő függvény bevezetése nélkül is meg lehet oldani: javasoljuk, hogy így dolgozz, de nem kötelező (tipp: eseménykezelő megadása lambda kifejezéssel).
 
-Teszteld is a megoldásod! Ha jól dolgoztál, a gombnak akkor is le kell tiltódnia, ha a TextBoxba kézzel írsz be negatív életkor értéket (és kikattintasz a TextBoxból). Gondold át, miért van ez így!
+Teszteld is a megoldásod! Ha jól dolgoztál, a gombnak akkor is le kell tiltódnia, ha a TextBoxba kézzel írsz be negatív életkor értéket (és utána kikattintasz a TextBoxból). Gondold át, miért van ez így!
 
 A "+" gombra és a "+Add" gomra is dolgozz ki hasonló megoldást!
 
@@ -257,7 +259,7 @@ A következő lépésben a "-" gomb kezelését alakítjuk át command alapúra.
 * Az újonnan bevezetett tulajdonságnak a ViewModel konstruktorban értéket adni. A `RelayCommand` konstruktor paramétereit add meg megfelelően.
 * A `PersonListPage.xaml`-ben a "-" gombnál a `Click` és `IsEnabled` adatkötésére nincs már szükség, ezek törlendők. Helyette a gomb `Command` tulajdonságát kösd a ViewModel-ben az előző lépésben bevezetett `DecreaseAgeCommand` tulajdonsághoz.
 
-Ha kipróbáljuk, a parancs futtatás működik, a tiltás/engedélyezés viszont még nem: ha jól megfigyeljük, a gomb mindig engedélyezett marad megjelenésében. Ennek, kicsit jobban belegondolva, logikus oka van: a `RelayCommand` meg tudja ugyan hívni a második konstruktor paraméterében megadott műveletet az állapot ellenőrzéséhez, de nem tudja, hogy minden `NewPerson.Age` változáskor meg kellene ezt tennie! Ezen tudunk segíteni. A ViewModel-ünk konstruktorában már feliratkoztunk korábban a `NewPerson.PropertyChanged` eseményre: erre építve, amikor változik az életkor (vagy amikor változhat, az nem probléma, ha néha feleslegesen megtesszük) hívjuk meg a `DecreaseAgeCommand` `NotifyCanExecuteChanged` műveletét. Ennek nagyon beszédes neve van: értesíti a parancsot, hogy megváltoz(hat)ott az állapot, mely alapján a tiltott/engedélyezett állapota frissül, így frissíteni fogja magát, pontosabban a parancshoz tartozó gomb állapotát.
+Ha kipróbáljuk, a parancs futtatás működik, a tiltás/engedélyezés viszont még nem: ha jól megfigyeljük, a gomb mindig engedélyezett marad megjelenésében. Ennek, kicsit jobban belegondolva, logikus oka van: a `RelayCommand` meg tudja ugyan hívni a második konstruktor paraméterében megadott műveletet az állapot ellenőrzéséhez, de nem tudja, hogy minden `NewPerson.Age` változáskor meg kellene ezt tennie! Ezen tudunk segíteni. A ViewModel-ünk konstruktorában már feliratkoztunk korábban a `NewPerson.PropertyChanged` eseményre: erre építve, amikor változik az életkor (vagy amikor változhat, az nem probléma, ha néha feleslegesen megtesszük) hívd meg a `DecreaseAgeCommand` `NotifyCanExecuteChanged` műveletét. Ennek a műveletnek nagyon beszédes neve van: értesíti a parancsot, hogy megváltoz(hat)ott azon állapot, mely alapján a parancs tiltott/engedélyezett állapota épít. Így a parancs frissíteni fogja magát, pontosabban a parancshoz tartozó gomb állapotát.
 
 Írd át "+" gomb kezelését is hasonlóan, parancs alapúra! A "+Add" gomb kezelését ne változtasd meg!
 
@@ -274,15 +276,13 @@ Az előző feladatban a command tulajdonságok bevezetését és azok példányo
 
 Alakítsuk át a `DecreaseAgeCommand` kezelését (csak ezt, az `IncreaseAgeCommand` maradjon!) generált kód alapúra:
 
-1. Lássuk el a `PersonListPageViewModel` osztályt a partial kulcsszóval.
-2. Töröljük ki a `DecreaseAgeCommand` tulajdonságot és ennek példányosítását a konstruktorból.
-3. A `DecreaseAge` műveletet lássuk el ezzel az attribútummal: `[RelayCommand(CanExecute = nameof(IsDecrementEnabled))]`. 
+1. Lásd el a `PersonListPageViewModel` osztályt a `partial` kulcsszóval.
+2. Töröld ki a `DecreaseAgeCommand` tulajdonságot és ennek példányosítását a konstruktorból.
+3. A `DecreaseAge` műveletet lásd el ezzel az attribútummal: `[RelayCommand(CanExecute = nameof(IsDecrementEnabled))]`. 
     * Ennek hatására a kódgenerátor bevezet egy `RelayCommand` tulajdonságot az osztályban, melynek neve a műveletünk neve (`DecreaseAge`), hozzáfűzve a "Command" stringet. Ezzel meg is kapjuk a korábban kézzel bevezetett `DecreaseAgeCommand` nevű tulajdonságot.
     * A `CanExecute` attribútum tulajdonságban egy string formában annak a boollal visszatérő műveletnek vagy tulajdonságnak a nevét lehet megadni, melyet a generált kód a parancs tiltásának/engedélyezésének során használ (a RelayCommand konstruktor második paramétere lesz). Nekünk már van ilyen tulajdonságunk, "IsDecrementEnabled" névben. Azért nem egyszerű string formájában adjuk meg, mert ha utólag valaki átnevezi az `IsDecrementEnabled` műveletet, akkor a mostani "IsDecrementEnabled" már nem jó műveletre mutatna. A `nameof` kifejezés használatával ez a probléma elkerülhető. A `CanExecute` megadása általánosságában nem kötelező (nem adjuk meg, ha nem akarjuk a parancsot soha tiltani).
 
-:exclamation: A kódgenerátor szokásosan az osztályunk másik "partial" felébe dolgozik, annak érdekében, hogy ne keveredjen az általunk írt és a generált kód! A partial classokat leggyakrabban a kézzel írt és a generált kód "különválasztására" használjuk.
-
-Próbáljuk ki, a megoldásunknak (életkor csökkentése) ugyanúgy kell működnie, mint korábban.
+Teszteld a megoldást (életkor csökkentése), ugyanúgy kell működnie, mint korábban.
 
 !!! example "BEADANDÓ"
     Készíts egy képernyőmentést `f4.png` néven az alábbiak szerint:
