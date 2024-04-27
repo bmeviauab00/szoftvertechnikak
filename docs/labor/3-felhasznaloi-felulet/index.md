@@ -656,7 +656,7 @@ A korábbi pontban bevezetett adatkötés miatt azt várnánk, hogy ha a `NewPer
 
 Próbáljuk ki! Az eseménykezelők változtatják az adatforrást (`NewPerson`), ennek hatására most már változik a felület is a megfelelően előkészített adatkötés miatt.
 
-## Kétirányú irányú adatkötés
+## Kétirányú adatkötés
 
 Az `Age` mintájára, a `Name` tulajdonságra vonatkozó adatkötést is állítsuk egyirányúra:
 
@@ -664,7 +664,7 @@ Az `Age` mintájára, a `Name` tulajdonságra vonatkozó adatkötést is állít
 Text="{x:Bind NewPerson.Name, Mode=OneWay}"
 ```
 
-Indítsuk ez az alkalmazást, majd ezt követően tegyünk egy töréspontot a `Person` osztály `Name` tulajdonságának setterébe (`if (name != value)` sor) , és próbáljuk, hogy vissza irányba is működik-e az adatkötés: ha megváltoztatjuk az egyik `TextBox` értékét, megváltozik-e a `NewPerson` objektum `Name` tulajdonsága? Gépeljünk valamit a Name-hez tartozó szövegdobozba, majd kattintsunk át egy másik mezőbe: ekkor a Textbox tartalma "véglegesítődik", tartalma vissza kellene íródjon az adatforrásba, de mégsem történik meg, nem fut rá a kód a töréspontunkra.
+Indítsuk el az alkalmazást, majd ezt követően tegyünk egy töréspontot a `Person` osztály `Name` tulajdonságának setterébe (`if (name != value)` sor) , és próbáljuk, hogy vissza irányba is működik-e az adatkötés: ha megváltoztatjuk az egyik `TextBox` értékét, megváltozik-e a `NewPerson` objektum `Name` tulajdonsága? Gépeljünk valamit a Name-hez tartozó szövegdobozba, majd kattintsunk át egy másik mezőbe: ekkor a Textbox tartalma "véglegesítődik", tartalma vissza kellene íródjon az adatforrásba, de mégsem történik meg, nem fut rá a kód a töréspontunkra.
 
 Ez azért van így, mert fentebb `OneWay` adatkötést használtunk, mely csak az adatforrásból a felületre irányú adatkötést jelent. Ha azt szeretnénk, hogy az adatkötés a másik irányba is működjön (vezérlőből adatforrásba), ahhoz  **`TwoWay`**-re kell állítsuk az adatkötés módját. Ezt **kétirányű adatkötésnek** nevezzük.
 
