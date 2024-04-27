@@ -13,6 +13,10 @@
         <link rel="canonical" href="https://bmeviauab00.github.io/szoftvertechnikak/2024/hazi/5-mvvm/">
       
       
+        <link rel="prev" href="../4-tobbszalu-alkalmazasok-fejlesztese/">
+      
+      
+        <link rel="next" href="../meghirdetes-elott/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -20,7 +24,7 @@
     
     
       
-        <title>5. HF - MVVM mintára épülő alkalmazások - BMEVIAUAB00 Szoftvertechnikák</title>
+        <title>5. HF - MVVM - BMEVIAUAB00 Szoftvertechnikák</title>
       
     
     
@@ -85,7 +89,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#5-hf-mvvm-mintara-epulo-alkalmazasok" class="md-skip">
+        <a href="#5-hf-az-mvvm-minta-es-az-mvvm-toolkit-alkalmazasa" class="md-skip">
           Kihagyás
         </a>
       
@@ -122,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              5. HF - MVVM mintára épülő alkalmazások
+              5. HF - MVVM
             
           </span>
         </div>
@@ -264,10 +268,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../" class="md-tabs__link">
           
   
@@ -593,23 +599,28 @@
       
   
   
+    
   
   
+  
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -620,7 +631,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Önálló/házi feladatok
@@ -736,10 +747,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../meghirdetes-elott/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    5. HF - MVVM
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -748,6 +779,140 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tartalomjegyzék
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bevezetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bevezetés
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-beadas-menete" class="md-nav__link">
+    <span class="md-ellipsis">
+      A beadás menete
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kikotesek" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kikötések
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feladat-0-kiindulo-allapot-attekintese" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feladat 0 - Kiinduló állapot áttekintése
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#foablak-fejlece" class="md-nav__link">
+    <span class="md-ellipsis">
+      Főablak fejléce
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feladat-1-mvvm-toolkit-alkalmazasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feladat 1 - MVVM Toolkit alkalmazása
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Feladat 1 - MVVM Toolkit alkalmazása">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feladat-1a-mvvm-toolkit-nuget-referencia-felvetele" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feladat 1/a - MVVM Toolkit NuGet referencia felvétele
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feladat-1b-inpc-megvalositas-mvvm-toolkit-alapokon" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feladat 1/b - INPC megvalósítás MVVM Toolkit alapokon
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feladat-2-atteres-mvvm-alapu-megoldasra" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feladat 2 - Áttérés MVVM alapú megoldásra
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feladat-3-vezerlok-tiltasaengedelyezese" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feladat 3 - Vezérlők tiltása/engedélyezése
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feladat-4-command-hasznalata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feladat 4 - Command használata
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feladat-4-command-hasznalata-mvvm-toolkit-alapu-kodgeneralassal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feladat 4 - Command használata MVVM Toolkit alapú kódgenerálással
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1453,55 +1618,46 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#kiindulo-allapot" class="md-nav__link">
+  <a href="#feladat-0-kiindulo-allapot-attekintese" class="md-nav__link">
     <span class="md-ellipsis">
-      Kiinduló állapot
+      Feladat 0 - Kiinduló állapot áttekintése
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-feladat-receptek-kedvenckent-kezelese" class="md-nav__link">
+  <a href="#foablak-fejlece" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Feladat - Receptek kedvencként kezelése
+      Főablak fejléce
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. Feladat - Receptek kedvencként kezelése">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feladat-1-mvvm-toolkit-alkalmazasa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feladat 1 - MVVM Toolkit alkalmazása
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Feladat 1 - MVVM Toolkit alkalmazása">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#11-kedvencek-kezelese-a-szolgaltatas-retegben" class="md-nav__link">
+  <a href="#feladat-1a-mvvm-toolkit-nuget-referencia-felvetele" class="md-nav__link">
     <span class="md-ellipsis">
-      1.1 Kedvencek kezelése a szolgáltatás rétegben
+      Feladat 1/a - MVVM Toolkit NuGet referencia felvétele
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#12-kedvencnek-jeloles-a-reszletes-oldalon" class="md-nav__link">
+  <a href="#feladat-1b-inpc-megvalositas-mvvm-toolkit-alapokon" class="md-nav__link">
     <span class="md-ellipsis">
-      1.2 Kedvencnek jelölés a részletes oldalon
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13-kedvencek-oldal-navigacio" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.3 Kedvencek oldal navigáció
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#14-kedvencek-oldal-logika" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.4 Kedvencek oldal logika
+      Feladat 1/b - INPC megvalósítás MVVM Toolkit alapokon
     </span>
   </a>
   
@@ -1513,9 +1669,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#beadas" class="md-nav__link">
+  <a href="#feladat-2-atteres-mvvm-alapu-megoldasra" class="md-nav__link">
     <span class="md-ellipsis">
-      Beadás
+      Feladat 2 - Áttérés MVVM alapú megoldásra
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feladat-3-vezerlok-tiltasaengedelyezese" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feladat 3 - Vezérlők tiltása/engedélyezése
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feladat-4-command-hasznalata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feladat 4 - Command használata
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feladat-4-command-hasznalata-mvvm-toolkit-alapu-kodgeneralassal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feladat 4 - Command használata MVVM Toolkit alapú kódgenerálással
     </span>
   </a>
   
@@ -1544,27 +1727,24 @@
   
 
 
-<h1 id="5-hf-mvvm-mintara-epulo-alkalmazasok">5. HF - MVVM mintára épülő alkalmazások<a class="headerlink" href="#5-hf-mvvm-mintara-epulo-alkalmazasok" title="Permanent link">&para;</a></h1>
+<h1 id="5-hf-az-mvvm-minta-es-az-mvvm-toolkit-alkalmazasa">5. HF - Az MVVM minta és az MVVM Toolkit alkalmazása<a class="headerlink" href="#5-hf-az-mvvm-minta-es-az-mvvm-toolkit-alkalmazasa" title="Permanent link">&para;</a></h1>
 <h2 id="bevezetes">Bevezetés<a class="headerlink" href="#bevezetes" title="Permanent link">&para;</a></h2>
-<p>A házi feladatban a laboron elkezdett recept alkalmazást fogjuk tovább bővíteni az MVVM mintát használva.</p>
-<p>Az önálló feladat az MVVM előadásokon elhangzottakra épít. A feladatok gyakorlati hátteréül a <a href="../../labor/5-mvvm/">5. labor – MVVM</a> laborgyakorlat szolgál.</p>
-<p>A fentiekre építve, jelen önálló gyakorlat feladatai a feladatleírást követő rövidebb iránymutatás segítségével (néha alapértelmezetten összecsukva) önállóan elvégezhetők.</p>
+<p>A házi feladatban a 3. XAML laboron megvalósított személy regisztrációs alkalmazást alakítjuk át olyan módon, hogy az MVVM mintára épüljön, valamint megismerkedünk az MVVM Toolkit alkalmazásával.</p>
+<p>Az önálló feladat a WinUI előadássorozat végén elhangzott MVVM témakörre épít.
+Megjegyzés: az <a href="../../labor/5-mvvm/">5. labor – MVVM</a> labor nagyon szerteágazó, és egy komplexebb alkalmazás kontextusában mutat példát az MVVM minta alkalmazására, sok más témakör mellett. Jelen házi feladat sokkal fókuszáltabb, kisebb lépésekben építkezik: estünkben esetben inkább a jelen házi feladat megoldása segíti az <a href="../../labor/5-mvvm/">5. labor – MVVM</a> kapcsolódó részeinek könnyebb megértését.</p>
+<p>Az kapcsolódó előadásanyag feldolgozásával, jelen önálló gyakorlat feladatai a feladatleírást követő rövidebb iránymutatás segítségével (néha alapértelmezetten összecsukva) önállóan elvégezhetők.</p>
 <p>Az önálló gyakorlat célja:</p>
 <ul>
-<li>MVVM minta használatának gyakorlása</li>
-<li>Adatok megjelenítése és interakciók kezelése a felületen adatkötéssel</li>
-<li>Dependency Injection minta alkalmazása</li>
-<li>Adatok kezelése a szolgáltatás rétegben HTTP kéréseken illetve egy lokális adattár segítségével</li>
+<li>Az MVVM minta használatának gyakorlása</li>
+<li>NuGet referenciák alkalmazása</li>
+<li>Az MVVM Toolkit alapjaival való ismerkedés</li>
+<li>XAML technikák gyakorlása</li>
 </ul>
-<p>A szükséges fejlesztőkörnyezetről <a href="../fejlesztokornyezet/">itt</a> található leírás.</p>
-<div class="admonition warning">
-<p class="admonition-title">Fejlesztőkörnyezet WinUI3 fejlesztéshez</p>
-<p>A korábbi laborokhoz hasonlóan plusz komponensek telepítése szükséges. A <a href="../fejlesztokornyezet/">fenti</a> oldal említi, hogy szükség van a ".NET desktop development" Visual Studio Workload telepítésére, valamint ugyanitt az oldal alján van egy "WinUI támogatás" fejezet, az itt megadott lépéseket is mindenképpen meg kell tenni!</p>
-</div>
+<p>A szükséges fejlesztőkörnyezetről <a href="../fejlesztokornyezet/">itt</a> található leírás, megegyezik a 3. házi feladatéval (XAML alapok).</p>
 <h2 id="a-beadas-menete">A beadás menete<a class="headerlink" href="#a-beadas-menete" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Az alapfolyamat megegyezik a korábbiakkal. GitHub Classroom segítségével hozz létre magadnak egy repository-t. A meghívó URL-t Moodle-ben találod (a tárgy nyitóoldalán a "<em>GitHub classroom hivatkozások a házi feladatokhoz</em>" hivatkozásra kattintva megjelenő oldalon látható). Fontos, hogy a megfelelő, ezen házi feladathoz tartozó meghívó URL-t használd (minden házi feladathoz más URL tartozik). Klónozd le az így elkészült repository-t. Ez tartalmazni fogja a megoldás elvárt szerkezetét. A feladatok elkészítése után commit-old és push-old a megoldásod.</li>
-<li>A kiklónozott fájlok között a <code>MvvmLab.sln</code>-t megnyitva kell dolgozni.</li>
+<li>A kiklónozott fájlok között a <code>HelloXaml.sln</code>-t megnyitva kell dolgozni.</li>
 <li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> A feladatok kérik, hogy készíts <strong>képernyőképet</strong> a megoldás egy-egy részéről, mert ezzel bizonyítod, hogy a megoldásod saját magad készítetted. <strong>A képernyőképek elvárt tartalmát a feladat minden esetben pontosan megnevezi.</strong>
 A képernyőképeket a megoldás részeként kell beadni, a repository-d gyökérmappájába tedd (a neptun.txt mellé).
 A képernyőképek így felkerülnek GitHub-ra a git repository tartalmával együtt.
@@ -1575,250 +1755,234 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
 <h2 id="kikotesek">Kikötések<a class="headerlink" href="#kikotesek" title="Permanent link">&para;</a></h2>
 <p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> <strong>MVVM minta kötelező alkalmazása!</strong><br />
   Jelen házi feladatban az MVVM mintát gyakoroljuk, így a feladatok megoldásában kötelező az MVVM minta alkalmazása. Az ettől való eltérés a feladatok értékelésének elutasítását vonja maga után.</p>
-<h2 id="kiindulo-allapot">Kiinduló állapot<a class="headerlink" href="#kiindulo-allapot" title="Permanent link">&para;</a></h2>
-<p>A kiinduló állapot épít az 5. labor végállapotára, de ahhoz képest egy lényeges változtatást tartalmaz.</p>
-<p>Az alkalmazás az indulása után létrehoz egy <code>ShellPage</code> típusú oldalt, ami a projektben a <code>Views</code> mappában található meg.
-Ez egy <code>NavigationView</code>-t tartalmaz (aka. Hamburger menü), mely a navigációt fogja esetünkben kezelni.
-Tartalmazhat <code>NavigationViewItem</code>-eket, melyek a menüpontokat reprezentálják, és mindig elérhetőek az alkalmazásban.
-A menüpontokra kattintva a <code>Frame</code>-en belül a megfelelő oldal jelenik meg a projektben található segédosztályok segítségével, ami támogatja a korábbi oldalra történő vissza navigációt is.</p>
-<h2 id="1-feladat-receptek-kedvenckent-kezelese">1. Feladat - Receptek kedvencként kezelése<a class="headerlink" href="#1-feladat-receptek-kedvenckent-kezelese" title="Permanent link">&para;</a></h2>
-<p>Feladatunk funkcionális követelményei a következőek:</p>
+<h2 id="feladat-0-kiindulo-allapot-attekintese">Feladat 0 - Kiinduló állapot áttekintése<a class="headerlink" href="#feladat-0-kiindulo-allapot-attekintese" title="Permanent link">&para;</a></h2>
+<p>A kiinduló állapot alapvetően megegyezik a <a href="../../labor/3-felhasznaloi-felulet/">3. A felhasználói felület kialakítása</a> végállapotával. Vagyis egy olyan alkalmazás, melyben egy listában személyek adatait lehet rögzíteni. 
+A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a felület teljes leírását a <code>MainWindow.xaml</code> (és a kapcsolódó code-behind fájl) tartalmazta. Jelen kiinduló megoldásban az a különbség, hogy ez át lett mozgatva a <code>Views</code> mappában levő <code>PersonListPage.xaml</code> (és code behind) fájlba. A <code>PersonListPage</code> nem egy <code>Window</code>, hanem egy <code>Page</code> leszármazott osztály (ellenőrizzük ezt a code behind fájlban). De semmi más változás nincs! Mint a neve is utal rá, a <code>Page</code> egy "oldalt" reprezentál az alkalmazásban: önmagában nem tud megjelenni, hanem pl. egy ablakon kell elhelyezni. Előnye, hogy az ablakon - megfelelő navigáció kialakításával - lehetőség van oldalak (különböző <code>Page</code> leszármazottak) között navigálni. Ezt mi nem fogjuk kihasználni, egyetlen oldalunk lesz csak. Az oldal bevezetésével a célunk mindössze az volt, hogy szemléltessük: az MVVM architektúrában a nézeteket nem csak <code>Window</code> (teljes ablak), hanem pl. <code>Page</code> objektumokkal is meg lehet valósítani. </p>
+<p>Mivel mindent átmozgattunk a <code>MainWindow</code>-ból a <code>PersonListPage</code>-be, a <code>MainWindow.xaml</code>-ban már semmi más nincs, mint egy ilyen <code>PersonListPage</code> objektum példányosítása:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="n">views</span><span class="p">:</span><span class="n">PersonListPage</span><span class="o">/&gt;</span>
+</code></pre></div>
+<p>Ellenőrizzük a kódban is!</p>
+<h2 id="foablak-fejlece">Főablak fejléce<a class="headerlink" href="#foablak-fejlece" title="Permanent link">&para;</a></h2>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> A főablak fejléce az "MVVM" szöveg legyen, hozzáfűzve a saját Neptun kódod: (pl. "ABCDEF" Neptun kód esetén "MVVM - ABCDEF"), fontos, hogy ez legyen a szöveg! Ehhez a főablakunk <code>Title</code> tulajdonságát állítsuk be erre a szövegre a <code>MainWindow.xaml</code> fájlban.</p>
+<h2 id="feladat-1-mvvm-toolkit-alkalmazasa">Feladat 1 - MVVM Toolkit alkalmazása<a class="headerlink" href="#feladat-1-mvvm-toolkit-alkalmazasa" title="Permanent link">&para;</a></h2>
+<p>A meglévő alkalmazásban a <code>Models</code> mappában levő <code>Person</code> osztály már implementálja az <code>INotifyPropertyChanged</code> (becenevén INPC) interfészt (így rendelkezik egy <code>PropertyChanged</code> eseménnyel), valamint a <code>Name</code> és az <code>Age</code> setterében jelzi is a tulajdonság változását a <code>PropertyChanged</code> esemény elsütésével (nézzük ez át alaposan a <code>Person.cs</code> fájlban).</p>
+<p>Bemelegítésképpen/ismétlésképpen - a kódot (<code>PersonListPage.xaml</code> és <code>PersonListPage.xaml.cs</code>) alaposan átnézve és az alkalmazást futtatva - fogalmazd meg magadban, miért is volt erre az alkalmazásban szükség!</p>
+<details>
+<summary>A válasz (ismétlés)</summary>
+<p>Az alkalmazásban a <code>PersonListPage.xaml</code>-ben a <code>TextBox</code>-ok <code>Text</code> tulajdonsága (ez a cél tulajdonság) hozzá vannak kötve a code behindban levő <code>Person</code> típusú <code>NewPerson</code> tag <code>Age</code> és <code>Name</code> tulajdonságaihoz (ezek a források a két adatkötésben). Nézzük meg a kódban, hogy a <code>NewPerson.Name</code> és <code>NewPerson.Age</code> forrás tulajdonságokat <strong>változtatjuk is a kódban</strong>: a vezérlő csak akkor tud ezekről értesülni (és így szinkronban maradni a forrással), ha ezekről a <code>Name</code> és <code>Age</code> változásokról értesítést kap. Emiatt az <code>Age</code> és <code>Name</code> tulajdonságokat tartalmazó osztálynak, vagyis a <code>Person</code>-nek meg kell valósítania az <code>INotifyPropertyChanged</code> interfészt, és a tulajdonságok változásakor el kell sütnie a <code>PropertyChanged</code> eseményt megfelelően paraméterezve.</p>
+</details>
+<p>Az alkalmazást futtatva ellenőrizzük, hogy a '+' és '-' gombok hatására eszközölt <code>NewPerson.Age</code> változások valóban érvényre jutnak az életkort megjelenítő <code>TextBox</code>-ban. </p>
+<p>A <code>Person</code> osztályban látszik, hogy az <code>INotifyPropertyChanged</code> megvalósítása és a kapcsolódó kód igencsak terjengős. Nézd meg az előadásanyagban, milyen alternatívák vannak az interfész megvalósítására (az "INPC példa 1" című diától kezdődően kb. négy dia a négy lehetőség illusztrálására)! A legtömörebb legoldást az MVVM Toolkit alkalmazása jelenti. A következő lépésben jelen terjengősebb "manuális" INPC megvalósítást átalakítjuk MVVM toolkit alapúra.</p>
+<h3 id="feladat-1a-mvvm-toolkit-nuget-referencia-felvetele">Feladat 1/a - MVVM Toolkit NuGet referencia felvétele<a class="headerlink" href="#feladat-1a-mvvm-toolkit-nuget-referencia-felvetele" title="Permanent link">&para;</a></h3>
+<p>Első lépésben NuGet referenciát kell tegyünk az MVVM Toolkitre annak érdekében, hogy használni tudjuk. </p>
+<p><strong>Feladat</strong>: Vegyél fel egy NuGet referenciát a projektben a "CommunityToolkit.Mvvm" NuGet csomagra. Ez a Visual Studio oldal írja le, hogyan lehet egy NuGet referenciát a projektbe felvenni <a href="https://learn.microsoft.com/en-us/nuget/quickstart/install-and-use-a-package-in-visual-studio#nuget-package-manager">NuGet Package Manager</a>. Az előző link az oldalon belül a "NuGet Package Manager" fejezetre ugrik, az itt megadott négy lépést kell követni (természetesen azzal a különbséggel, hogy nem a "Newtonsoft.Json" hanem a "CommunityToolkit.Mvvm" csomagra kell a referenciát felvenni).</p>
+<p>Most, hogy a projektünkbe felvettük ezt a NuGet referenciát, a következő build során (mivel annak részeként lefut egy NuGet update lépés!) letöltődik a NuGet csomag, kicsomagolódnak a benne levő DLL-ek a kimeneti mappába, így azok már szerves részét képezik az alkalmazásnak (egy NuGet csomag tulajdonképpen egy zip állomány). Fontos megemlíteni, hogy Git-be sem a NuGet zip, sem a benne levő dll-ek nem kerülnek fel, a solution gyökerében levő <code>.gitignore</code> fájl ezeket kiszűri. Pont ez a NuGet koncepció lényege: a repository kicsi maradhat, mert a projektfájl csak hivatkozásokat tartalmazza a NuGet csomagokra, és amikor valaki egy frissen clone-ozott solution-t buildel, csak ekkor töltődnek le az online NuGet forrásokból a hivatkozott NuGet csomagok.</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> A fenti NuGet-re vonatkozó koncepciók ismerete fontos, a tananyag fontos részét képezik!</p>
+<p>Egy NuGet referencia tulajdonképpen csak egy sor a <code>.csproj</code> projektleíró fájlban. A Solution Explorerben a "HelloXaml" projekt csomópontra kattintva nyissuk meg a <code>.csproj</code> projektfájlt, és ellenőrizzük, benne van ez a sor (a verzió lehet más lesz):</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="o">&lt;</span><span class="n">PackageReference</span><span class="w"> </span><span class="n">Include</span><span class="o">=</span><span class="s">&quot;CommunityToolkit.Mvvm&quot;</span><span class="w"> </span><span class="n">Version</span><span class="o">=</span><span class="s">&quot;8.2.2&quot;</span><span class="w"> </span><span class="o">/&gt;</span>
+</code></pre></div>
+<p>A <code>csproj</code> fájl megnyitása nélkül is ellenőrizzük a NuGet referenciánkat: Solution Explorerben nyissuk le a "HelloXaml"/"Dependencies"/"Packages" csomópontot: alatta látható egy "CommunityToolkit.Mvvm (verzió)" csomópont.</p>
+<h3 id="feladat-1b-inpc-megvalositas-mvvm-toolkit-alapokon">Feladat 1/b - INPC megvalósítás MVVM Toolkit alapokon<a class="headerlink" href="#feladat-1b-inpc-megvalositas-mvvm-toolkit-alapokon" title="Permanent link">&para;</a></h3>
+<p>Most már tudjuk használni az MVVM Toolkit NuGet package-ben levő osztályokat, interfészeket, attribútumokat stb., így át tudunk térni az MVVM Toolkit alapú INPC megvalósításra.</p>
 <ul>
-<li>
-<p>A recepteket kedvencek közé lehessen menteni</p>
-<ul>
-<li>Jelenjen meg egy kitöltetlen csillag ikonnal rendelkező gomb a recept részletes oldalon (pl. bal oldali oszlop tetején), amelyre kattintva a receptet a kedvencek közé menthetjük.</li>
-<li>A kedvenc kezelő gomb ikonja váltson tele csillagra, a szövege pedig <em>"Remove from Favorites"</em>-re, ha a recept kedvencnek lett jelölve.</li>
-<li>A korábban kedvencnek jelölt recept kivehető a kedvencek közül ugyanezen a gombon történő kattintással: ekkor a gomb ikonja állapota visszaáll üres csillagra, a szövege pedig <em>"Add to Favorites"</em>-re.</li>
-<li>
-<p>A kedvenc receptek listáját lokálisan tároljuk, az alkalmazás bezárásával ne vesszenek el.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Add To Favorites</label><label for="__tabbed_1_2">Remove From Favorites</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p><a class="glightbox" href="images/add_to_favorites.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Add To Favorites" src="images/add_to_favorites.png" /></a></p>
-</div>
-<div class="tabbed-block">
-<p><a class="glightbox" href="images/remove_from_favorites.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Remove From Favorites" src="images/remove_from_favorites.png" /></a></p>
-</div>
-</div>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">A két gomb állapot megjelenítése</p>
-<p>A fenti ábra felett az "Add To Favorites" és "Remove From Favorites"-en kattintva lehet váltani a két állapotot megjelenítő képek között.</p>
-</div>
-</li>
-</ul>
-</li>
-<li>
-<p>A kedvencek listáját jelenítsük meg egy külön oldalon.</p>
-<ul>
-<li>A kedvencek listát a hamburger menüből lehessen elérni</li>
-<li>A listában lévő elemek kinézete hasonló legyen a receptek listájában lévő elemekhez</li>
-<li>A lista ne legyen csoportosítva</li>
-<li>
-<p>A kedvencek listájának elemei között a recepteket kattintva megnyithatjuk a recept részletes oldalát (pont úgy, mint a Recipes oldalon)</p>
-<p><a class="glightbox" href="images/favorites_page.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Favorites Page" src="images/favorites_page.png" /></a></p>
-</li>
+<li>Kommentezd ki a <code>Person</code> osztályt teljes egészében. </li>
+<li>A kikommentezett rész felett vedd fel az osztályt újonnan, de MVVM Toolkit alapú INPC megvalósítással.<ul>
+<li>A megvalósításban a "INPC példa 4 – MVVM Toolkittel" előadásdia segít.</li>
+<li>Partial class kell legyen (vagyis az osztály részei több fájlban is definiálhatók).</li>
+<li>A Toolkit-beli <code>ObservableObject</code>-ből származzon: ez az ős valósítja meg az <code>INotifyPropertyChanged</code> interfészt, így nekünk már nem kell.</li>
+<li><code>Name</code> és <code>Age</code> tulajdonságok helyett <code>name</code> és <code>age</code> tagváltozókat vezessünk be, <code>ObservableProperty</code> attribútummal ellátva.</li>
 </ul>
 </li>
 </ul>
-<h3 id="11-kedvencek-kezelese-a-szolgaltatas-retegben">1.1 Kedvencek kezelése a szolgáltatás rétegben<a class="headerlink" href="#11-kedvencek-kezelese-a-szolgaltatas-retegben" title="Permanent link">&para;</a></h3>
-<p>Bottom-up megvalósítási sorrendben haladva készítsük el először a szolgáltatás rétegben a kedvencek kezeléséhez szükséges funkciókat.</p>
-<p>A kedvencnek megjelölést az online szolgáltatás nem támogatja. A megoldás alapelve így a következő lesz:</p>
-<ul>
-<li>Lokálisan perzisztensen eltároljuk a kedvencnek megjelölt receptek <strong>azonosítóit</strong> (annak érdekében, hogy a program újraindulását követően megmaradjon ez az információ).</li>
-<li>A kedvencnek megjelölt receptek részletes adatait (cím, kép) az online szolgáltatástól kérdezzük le (az azonosítóik alapján).</li>
-</ul>
-<p>Lokális perzisztens adattároláshoz a kiinduló projektben elő van készítve az <code>ILocalSettingsService</code> interfész (és egy ezt megvalósító implementáció). Erre építve kulcs érték párokat tudunk JSON sorosítva tárolni lokálisan az alkalmazásban.</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">ILocalSettingsService</span>
+<p>Meg is vagyunk.</p>
+<details class="note">
+<summary>A megoldás ellenőrzése</summary>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">partial</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Person</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ObservableObject</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">Task</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ReadSettingAsync</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">key</span><span class="p">);</span>
-<span class="w">    </span><span class="n">Task</span><span class="w"> </span><span class="n">SaveSettingAsync</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="k">value</span><span class="p">);</span>
+<span class="w">    </span><span class="na">[ObservableProperty]</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+
+<span class="w">    </span><span class="na">[ObservableProperty]</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Használata során érdemes odafigyelni arra, hogy a függvények generikusak, így a típusokat explicit meg kell(het) adni a hívás során.</p>
-<p>A fenti <code>ILocalSettingsService</code> segítségével egy adott kulcs alatt fogjuk a kedvenc receptek azonosítóinak listáját eltárolni.</p>
-<p>Szintén fontos, hogy a függvények <code>Task</code>-kal térnek vissza, tehát aszinkronok, így <code>await</code> kulcsszóval kell hívni őket, és a hívó függvénynek is aszinkronnak kell lennie (a részletesebb szabályhalmaz a kapcsolódó "5. MVVM" labor leírásában található).</p>
-<p>A kedvencek kezelése a labor során bevezetett <code>IRecipeService</code> interfész és az ezt megvalósító <code>RecipeService</code> osztály feladata legyen. </p>
-<p>Első lépésben azt kell megoldani, hogy a <code>RecipeService</code> számára rendelkezésre álljon egy <code>ILocalSettingsService</code> interfészt megvalósító objektum, melyet fel tud használni  megvalósításában a kedvenc receptazonosítók eltárolására és lekérdezésére. A célunk az, hogy <code>RecipeService</code>-ben <code>ILocalSettingsService</code> interfészként <strong>kapjuk meg</strong> és <strong>tároljuk</strong> ezt az implementációs objektumot, semmiféle függést nem szeretnénk itt bevezetni a konkrét implementációtól. Ezt a laboron már alkalmazott DI konténer segítségével valósítsuk meg.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>A megvalósítás során a <code>RecipeService</code>-ben ahhoz hasonlóan kell kezeljük a <code>ILocalSettingsService</code>-t, mint a ahogy a labor során a <code>MainPageViewModel</code>-ben kezeltük a <code>IRecipeService</code>-t.</p>
-</div>
-<p>Miután a fenti előkészítéssel elkészültél, valósítsd meg a szükséges funkciókat a <code>RecipeService</code> osztályban! Az alábbiakban ehhez némi iránymutatást adunk.</p>
-<details class="success">
-<summary>RecipeService váza</summary>
-<p>A <code>RecipeService</code>-nek (és interfésznek) a következő új funkciókkal kell rendelkeznie:</p>
-<ol>
-<li>
-<p>Recept kedvenc állapotának módosítása id (int) alapján az új állapottal (bool). (Recept részletes oldalon gombra kattintás során használjuk.)</p>
-<ol>
-<li>Kérdezzük le az <code>ILocalSettingsService</code>-ből kedvencek azonosítóinak listáját. </li>
-<li>Lista módosítása a kapott id és új kedvenc állapot alapján.<ol>
-<li>Kedvencnek jelölés esetén, berakjuk, egyébként töröljük.</li>
-<li>Gondoljunk arra is, ha a lista már tartalmazza az adott id-t, akkor ne adjuk hozzá újra. (Lista helyett egyébként lehet használni egy speciális halmaz tulajdonságú kollekciót is, a <code>HashSet&lt;T&gt;</code>-et, mely egy elemet csak egyszer tartalmaz.)</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>
-<p>Kedvenc receptek lekérdezése. (Kedvencek oldalon listázás során használjuk.)</p>
-<ol>
-<li>Kérdezzük le az <code>ILocalSettingsService</code>-ből a kedvenc receptek azonosítóinak listáját.</li>
-<li>A kapott id-k alapján egyesével kérjük le a recepteket a REST API-tól, a <code>GET /api/Recipes/{id}/Header</code> végponton keresztül. Ez a laborhoz képest egy új végpont, és az adott azonosítójú recept <code>RecipeHeader</code>-be sorosított adataival tér vissza. Ehhez a végponthoz érdemes új segédfüggvényt is készíteni. Dolgozhatunk a laboron már bevezetett <code>RecipeService</code>-ben levő <code>HttpClient</code>-et használó műveletek "mintájára".</li>
-<li>A lekérdezett <code>RecipeHeader</code> objektumokból összeállított listával térjünk vissza.</li>
-</ol>
-</li>
-<li>
-<p>Recept kedvenc állapotának lekérdezése id alapján. (Recept részletes oldal betöltésekor a gomb állapotának beállításához használjuk.)</p>
-<ol>
-<li>Igaz hamis értékkel térjünk vissza, attól függően, hogy az adott azonosító szerepel-e a kedvenc receptek listájában.</li>
-</ol>
-</li>
-</ol>
-<div class="admonition warning">
-<p class="admonition-title">Első hívás</p>
-<p>Gondolni kell arra is, ha még most hívjuk meg először a lekérdező függvényt, és nincs még mentett kedvenc recept azonosító listánk (<code>null</code>-lal tér vissza az adott kulcsú elem lekérdezésekor az <code>ILocalSettingsService.ReadSettingAsync</code>).</p>
-</div>
 </details>
-<h3 id="12-kedvencnek-jeloles-a-reszletes-oldalon">1.2 Kedvencnek jelölés a részletes oldalon<a class="headerlink" href="#12-kedvencnek-jeloles-a-reszletes-oldalon" title="Permanent link">&para;</a></h3>
-<p>A recept részletes oldalon (a <code>RecipeDetailPage</code>-en) meg kell jeleníteni egy gombot, melynek két állapota van:</p>
-<ol>
-<li>Ha a recept nincs kedvencnek jelölve, akkor egy üres csillag ikon jelenik meg a gombon, a gomb felirata pedig legyen <em>"Add to Favorites"</em>.</li>
-<li>Ha a recept kedvencnek van jelölve, akkor egy kitöltött csillag ikon jelenik meg a gombon, a gomb felirata pedig legyen <em>"Remove from Favorites"</em>.</li>
-</ol>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Add To Favorites</label><label for="__tabbed_2_2">Remove From Favorites</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p><a class="glightbox" href="images/add_to_favorites.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Add To Favorites" src="images/add_to_favorites.png" /></a></p>
+<p>Ez a kód, egy fordítást követően, alapjaiban ugyanazt a megoldást eredményezi, mint a korábbi, sokkal terjengősebb, immár kikommentezett forma. Vagyis születik <code>Name</code> és <code>Age</code> tulajdonság, megfelelő <code>PropertyChanged</code> esemény elsütésekkel. Hogyan lehetséges ez? </p>
+<ul>
+<li>Egyrészt az <code>ObservableObject</code> ős már megvalósítja az <code>INotifyPropertyChanged</code> interfészt, így a <code>PropertyChanged</code> esemény tagot is tartalmazza, ezt a származtatás révén  al "megörökli" az osztályunk.</li>
+<li>A fordítás során lefut az MVVM Toolkit kódgenerátora, mely minden <code>ObservableProperty</code> attribútummal ellátott tagváltozóhoz generál egy ugyanolyan nevű, de nagybetűvel kezdődő tulajdonságot az osztályba, mely tulajdonság settere elsüti megfelelő feltételek mellett és megfelelő paraméterekkel a <code>PropertyChanged</code> eseményt. Hurrá, ezt a kódot akkor nem nekünk kell megírni.</li>
+<li>Kérdés, hol keletkezi ez a kód. Az osztályunk egy másik "partial" részében. Egy fordítást követően Visual Studio-ban jobb gombbal kattintsunk a <code>Person</code> osztály nevén, majd a felugró menüben "Go to Definition". Ekkor egy alsó ablakban két találatot is kapunk: az egyik az általunk írt fenti kód, a másik ("public class Person") a generált részre ugrik egy duplakatt hatására: látszik, hogy viszonylag terjengős kódot generált a kódgenerátor, de ami nekünk fontos, hogy itt található a <code>Name</code> és <code>Age</code> tulajdonság, benne - többek között - a <code>OnPropertyChanged</code> elsütésével.</li>
+</ul>
+<p>Mivel sokkal kevesebb kódot kell írni, a gyakorlatban az MVVM Toolkit alapú megoldást szoktuk használni (de a manuális megoldást is tudni kell, ez alapján érthető, mi is történik a színfalak mögött).</p>
+<div class="admonition example">
+<p class="admonition-title">BEADANDÓ</p>
+<p>Készíts egy képernyőmentést <code>f1b.png</code> néven az alábbiak szerint:</p>
+<ul>
+<li>Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,</li>
+<li>a „háttérben” a Visual Studio legyen, a <code>Person.cs</code> megnyitva.</li>
+</ul>
 </div>
-<div class="tabbed-block">
-<p><a class="glightbox" href="images/remove_from_favorites.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Remove From Favorites" src="images/remove_from_favorites.png" /></a></p>
-</div>
-</div>
-</div>
-<p>Ezt az igaz-hamis állapotot és módosító műveletet célszerű a <code>RecipeDetailPageViewModel</code>-ban tárolni/bevezetni (mivel a ViewModelnek definíció szerint ez a feladata), majd adatkötéssel kötni az állapotot gomb kinézetéhez, illetve a műveletet commandjához. Mindenképpen az MVVM mintát követve dolgozzunk!</p>
-<details class="success">
-<summary>RecipeDetailPageViewModel módosítása</summary>
-<p>A <code>RecipeDetailViewModel</code>-t módosítani szükséges a következőkkel:</p>
-<ol>
-<li>Kedvenc állapot tárolása<ol>
-<li>Az állapotot egy <code>bool</code> típusú property-ben tároljuk (mindenképpen érdemes az  <code>[ObservableProperty]</code> attribútumot használni, működésének és jelentőségének átismétlésével).</li>
-<li>Az állapotot az <code>IRecipeService</code>-ből lekérdezve inicializáljuk az oldalra való navigáláskor.</li>
-</ol>
+<h2 id="feladat-2-atteres-mvvm-alapu-megoldasra">Feladat 2 - Áttérés MVVM alapú megoldásra<a class="headerlink" href="#feladat-2-atteres-mvvm-alapu-megoldasra" title="Permanent link">&para;</a></h2>
+<p>Az előző lépésben, bár az MVVM Toolkitet használtuk, még nem tértünk át MVVM alapú megoldára (a toolkitet csak az INPC egyszerűbb megvalósítására használtuk). </p>
+<p>A következőkben átalakítjuk az alkalmazásunk architektúráját, hogy az MVVM koncepcióját kövesse. Az egyszerűbb megvalósítás érdekében építünk az MVVM Toolkitre.</p>
+<p><strong>Feladat</strong>: Dolgozd fel a kapcsolódó előadásanyagot (WinUI anyagrész végén található):</p>
+<ul>
+<li>Értsd meg az MVVM minta alapkoncepcióit.</li>
+<li>Az előadásdiákon található példák teljes kódja elérhető az <a href="https://github.com/bmeviauab00/eloadas-demok">Előadás GitHub repository</a> "04-05 WinUI\DancerProfiles" mappában ("RelaxedMVVM" és "StrictMVVM"), ezek segíthetnek a megértésben és a későbbi feladatok megoldásában. </li>
+</ul>
+<p>Mit is jelent az MVVM minta a példánkra vetítve:</p>
+<ul>
+<li>A model osztály a <code>Models</code> mappában levő <code>Person</code> osztály, egy személy adatait reprezentálja (UI logikát NEM tartalmaz, független mindenféle megjelenítéstől).</li>
+<li>Jelen pillanatban minden,  megjelenítéshez kapcsolódó leírás/logika a <code>PersonListPage</code>-ben van. <img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> A mostani <code>PersonListPage</code>-et <strong>kettévágjuk</strong>:<ul>
+<li>A <code>PersonListPage.xaml</code> és a code behindja lesz a View.</li>
+<li>Bevezetünk egy a <code>PersonListPage</code>-hez tartozó ViewModel-t <code>PersonListPageViewModel</code> néven.<ul>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> Kulcsfontosságú: a <code>PersonListPage</code> code behindból minden megjelenítési logikát átmozgatunk a <code>PersonListPageViewModel</code>-be. <strong>A minta lényege az, hogy a View csak tisztán a felület leírását tartalmazza, a megjelenítési logikának a ViewModelben van a helye.</strong> </li>
+</ul>
 </li>
-<li>
+</ul>
+</li>
+<li>A minta másik alappillére: a View-nk tartalmaz egy hivatkozást a ViewModeljére (mégpedig egy tulajdonság formájában).<ul>
+<li>A példánkban azt jelenti, hogy a <code>PersonListPage</code>-nek kell legyen egy <code>PersonListPageViewModel</code> tulajdonsága. </li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> Ez azért kulcsfontosságú, mert <code>PersonListPage</code> xaml fájlunkban ezen tulajdonságon keresztül tudunk adatkötést megvalósítani a ViewModel-be átmozgatott tulajdonságokra és eseménykezelőkre! </li>
+</ul>
+</li>
+<li>A <code>PersonListPageViewModel</code> "dolgozik" a modellel és kezeli a felhasználói interakciókat (eseménykezelők).</li>
+<li>Mivel a Relaxed, és nem a Strict MVVM mintát használjuk, a <code>Person</code> modellosztályunk köré már nem vezetünk be egy <code>PersonViewModel</code> csomagolót.</li>
+</ul>
+<p>Feladat: alakítsd át a meglévő logikát így, hogy a fenti elveket követő MVVM mintát kövesse. A <code>PersonListPageViewModel</code> osztályt egy újonnan létrehozott <code>ViewModels</code> mappába tedd. Próbáld magad kidolgozni a megoldást a fenti segítség alapján! Ehhez egy előzetes tippet adunk, mert erre nehezebb rájönni: Az eseményekhez az eseménykezelő műveleteket adatkötéssel is meg lehet adni: lásd előadás dia "Események és funkciók kötése" címmel (az átalakítás után az eseménykezelőket csak így tudjuk megadni). Az is fontos, hogy adatkötni csak publikus tulajdonsághoz/művelethez lehet, ennek kapcsán is lesz átalakítandó!</p>
+<details>
+<summary>Tippek / megoldás visszaellenőrzése</summary>
 <ol>
-<li>Elmenti az új kedvenc állapotot az <code>IRecipeService</code> segítségével.</li>
-<li>Gondoskodik a ViewModel osztályunkban tárolt <code>bool</code> kedvenc állapot tulajdonság karbantartásáról.</li>
+<li><code>PersonListPage.xaml.cs</code> code-behind fájlból szinte mindent (kivéve <code>this.InitializeComponent()</code> hívás a konstruktorban) át kell mozgatni az újonnan bevezetett <code>PersonListPageViewModel</code>-be, mert ez mind UI logika.</li>
+<li>A <code>PersonListPageViewModel</code> publikus osztály legyen.</li>
+<li>A <code>PersonListPage</code> code behindba fel kell venni egy ViewModel nevű, <code>PersonListPageViewModel</code> típusú, csak getterrel rendelkező auto implementált tulajdonságot, és ezt egy új objektumra inicializálni is kell. Vagyis a view hozza létre és tartalmazza a ViewModel-t!</li>
+<li>A <code>PersonListPage.xaml</code>-ben az két <code>TextBox</code> adatkötését megfelelően igazítani kell (a <code>NewPerson.Name</code> és <code>NewPerson.Age</code> már egy szinttel mélyebben, a code behind ViewModel tulajdonságán keresztül érhető el).</li>
+<li>A <code>PersonListPage.xaml</code>-ben az eseménykezelők (<code>Click</code>) igazítása három helyen. Ezt trükkösebb. Eseménykezelő függvény az eddig alkalmazott szintaktikával nem adható már meg, mert az eseménykezelők nem a code behindban találhatók (átkerültek a ViewModel-be). <ul>
+<li>Az eseményekhez az eseménykezelő műveleteket adatkötéssel is meg lehet adni! Lásd előadás dia "Események és funkciók kötése" címmel. Ez nekünk azért jó, mert a code behind ViewModel tulajdonságában ott a <code>PersonListPageViewModel</code> objektum, melyben ott vannak az eseménykezelők (<code>AddButton_Click</code>, <code>IncreaseButton_Click</code>, <code>DecreaseButton_Click</code>), ezeket kell kötött tulajdonságként megadni az adatkötésben (pl. <code>ViewModel.AddButton_Click</code> stb.).</li>
+<li>Fontos, hogy az eseménykezelő függvények legyenek publikusak, máskülönben nem működik az adatkötés (át kell alakítani privátról).</li>
+</ul>
+</li>
 </ol>
-<p>Új command függvény készítése, amely </p>
+</details>
+<p>További lényeges átalakítandók:</p>
+<ul>
+<li>A ViewModel-ben jelenleg a <code>Click</code> eseménykezelők nevei: <code>AddButton_Click</code>, <code>IncreaseButton_Click</code> és <code>DecreaseButton_Click</code>. Ez nem szerencsés. A ViewModel-ben "szemantikailag" nem eseménykezelőkben gondolkodunk. Helyette módosító műveletekben, melyek módosítják a ViewModel állapotát. A fentiek helyett ennek megfelelően sokkal jobban passzoló és kifejező nevek az <code>AddPersonToList</code>, <code>IncreaseAge</code> és <code>DecreaseAge</code>. Nevezzük át a függvényeket ennek megfelelően! Persze a továbbiakban is adatkötéssel ezeket kötjük a XAML fájlban a <code>Click</code> eseményekhez.</li>
+<li>A fenti függvények paraméterlistája egyelőre az "<code>object sender, RoutedEventArgs e</code>". Ugyanakkor ezeket a paramétereket nem használjuk semmire. Szerencsére a x:Bind esemény adatkötés rugalmas annyira, hogy paraméter nélküli művelet is megadható, azzal is jól működik. Ennek tudatában távolítsuk el a fenti felesleges paramétereket a ViewModelünk három függvényéből. Így egy letisztultabb megoldást kapunk.</li>
+</ul>
+<p>Ellenőrizzük, hogy az átalakítások után is pontosan ugyanúgy működik az alkalmazás, mint előtte!</p>
+<p>Mit nyertünk azzal, hogy korábbi megoldásunkat MVVM alapúra alakítottuk át? A választ az előadásanyag adja meg! Pár dolog kiemelve:</p>
+<ul>
+<li>Szépen különválnak (nem keverednek) a különböző felelősségű részek, így jobban megérthető:<ul>
+<li>UI független logika (model és kapcsolódó osztályok).</li>
+<li>UI logika (ViewModel)</li>
+<li>UI puszta megjelenés (View)</li>
+</ul>
+</li>
+<li>Mivel a UI logika külön van, lehet(ne) hozzá unit teszteket írni</li>
+</ul>
+<p>Minél komplexebb egy alkalmazás, annál inkább igazak ezek.</p>
+<div class="admonition example">
+<p class="admonition-title">BEADANDÓ</p>
+<p>Készíts egy képernyőmentést <code>f2.png</code> néven az alábbiak szerint:</p>
+<ul>
+<li>Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,</li>
+<li>a „háttérben” a Visual Studio legyen, a <code>PersonListPageViewModel.cs</code> megnyitva.</li>
+</ul>
+</div>
+<h2 id="feladat-3-vezerlok-tiltasaengedelyezese">Feladat 3 - Vezérlők tiltása/engedélyezése<a class="headerlink" href="#feladat-3-vezerlok-tiltasaengedelyezese" title="Permanent link">&para;</a></h2>
+<p>Jelen állapotban kissé furcsán viselkedik az alkalmazás: a "-" gombbal negatív tartományba is vihető egy életkor, vagy a "+"-szal 150 fölé, illetve a "+Add" gombbal olyan személy is felvehető, mely értelmetlen tulajdonságokkal rendelkezik. Ezeket a gombokat le kellene tiltani, amikor az általuk kiváltott műveletnek nincs értelme, illetve engedélyezni, amikor van.</p>
+<p>A következő lépésben valósítsuk meg a "-" gomb tiltását/engedélyezését ennek megfelelően. A gomb akkor legyen csak engedélyezett, ha a személy életkora 0-nál nagyobb.</p>
+<p>Próbáld ezt első körben magadtól megvalósítani, legalábbis az alapjait lefektetni! Mindenképpen adatkötés alapú megoldásban gondolkozz, csak ez fogadható el! Ha elakadsz, a megoldásod nem "akar" működni, akkor gondold át, mi lehet az oka, a megoldást pedig az alábbiaknak megfelelően alakítsd ki.</p>
+<p>A problémára többféle megoldás is kidolgozható. Mindben közös, hogy a "-" gomb <code>IsEnabled</code> tulajdonságát kötjük valamilyen módon. Az általunk választott megoldásban egy a <code>PersonListPageViewModel</code>-ben újonnan bevezetett bool tulajdonsághoz kössük. </p>
+<div class="highlight"><span class="filename">PersonListPageViewModel.cs</span><pre><span></span><code><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">IsDecrementEnabled</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">get</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">NewPerson</span><span class="p">.</span><span class="n">Age</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">PersonListPage.xaml-be a '-' gombhoz</span><pre><span></span><code><span class="w">    </span>IsEnabled=&quot;{x:Bind<span class="w"> </span>ViewModel.IsDecrementEnabled,<span class="w"> </span>Mode=OneWay}&quot;
+</code></pre></div>
+<p>Próbáljuk ki! Sajnos nem működik, a "-" gomb nem tiltódik le, amikor 0 vagy kisebb értékű lesz az életkor (pl. a gomb sokszori kattintásával). Ha töréspontot teszünk az <code>IsDecrementEnabled</code> belsejébe, és így indítjuk az alkalmazást, azt tapasztaljuk, hogy a tulajdonság értékét csak egyszer kérdezi le a kötött vezérlő, az alkalmazás indulásakor: utána hiába kattintunk pl. a "-" gombon, többször nem. Próbáljuk ki!</p>
+<p>Gondold át, mi okozza ezt, és csak utána haladj tovább az útmutatóval!</p>
 <details class="tip">
-<summary>Tipp a megoldáshoz</summary>
-<p>A megoldás elve hasonlít a SendComment parancsfüggvényhez, de itt a CanExecute-tal nem kell foglalkozzunk, hiszen az új commandunk mindig futtatható.</p>
+<summary>Indoklás</summary>
+<p>A korábban tanultaknak megfelelően az adatkötés csak akkor kérdezi le a forrástulajdonság (esetünkben <code>IsDecrementEnabled</code>) értékét, ha annak változásáról az <code>INotifyPropertyChanged</code> segítségével értesítést kap! Márpedig, jelen megoldásunkban hiába változik a <code>NewPerson</code> objektum <code>Age</code> tulajdonsága, ennek megtörténtekor a semmiféle értesítés nincs az erre épülő <code>IsDecrementEnabled</code> tulajdonság megváltozásáról!</p>
 </details>
-</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Állapot tárolása a modellben</p>
-<p>A kedvenc állapotot a <code>RecipeHeader</code> modellben is tárolhatnánk, viszont az két másik problémát is generálna: a modellnek kell megvalósítania az <code>INotifyPropertyChanged</code> interfészt, hogy az állapot változását jelezni tudja.  Ezen felül az új property értékét valamelyik másik rétegben (ViewModel vagy Service) kellene kitölteni, mivel ez az infó csak lokálisan érhető el, a <code>RecipeHeader</code>pedig alapvetően most csak egy DTO (Data Transfer Object) a modell rétegben.</p>
-</div>
-</details>
-<details class="success">
-<summary>RecipeDetailPage (vagyis a View) módosítása</summary>
-<p>A <code>RecipeDetailPage</code>-en a következőket kell módosítani:</p>
-<ol>
-<li>Új gomb hozzáadása az oldal tetejére, tartalma legyen egy <code>SymbolIcon</code> és egy <code>TextBlock</code> egymás mellett.<ol>
-<li>A <code>SymbolIcon</code>-nak a <code>Symbol</code> tulajdonságához használjuk a <code>Symbol.SolidStar</code> és <code>Symbol.OutlineStar</code> enum értékeket a csillag ikonokhoz.</li>
-</ol>
-</li>
-<li>A gomb commandját adatkötni kell a ViewModel-ben található command-hoz.</li>
-</ol>
-<p>A ViewModel-ben tárolt <code>bool</code> értéket valamilyen módon <code>Symbol</code> enumra (gomb ikonja) és <code>string</code>-re (gomb aktuális szövege) kell konvertálni, hogy a felületen a gomb megjelenése mindkét állapotban a megfelelő legyen. Erre több megoldás is lehetséges:</p>
+<p>A következő lépésben valósítsuk meg a kapcsolódó változásértesítést a ViewModel osztályunkban:</p>
 <ul>
-<li><code>x:Bind</code> használata, ahol nem property-t kötünk, hanem egy a xaml.cs-ben lévő segédfüggvényt, mely a konverziót elvégzi. Vagyis property kötés helyett függvény/funkció kötést használunk. Előadásanyagban a "Property kötése funkciókhoz"-ra érdemes rákeresni, illetve a 3. házi feladatban a "függvény kötés példa"-ra.</li>
-<li>Az <code>IValueConverter</code> interfész implementálása és használata az adatkötés során.</li>
-<li>A <code>RecipeDetailPageViewModel</code>-ben tároljuk a nézethez szükséges adatokat új tuljadonságokat bevezetve (a tulajdonságok típusa a nézet számára szükséges <code>Symbol</code> és <code>string</code>), és ezekhez történik az adatkötés.<ul>
-<li>Talán ez a legegyszerűbb megoldás, ha nem szeretnénk külön konvertert írni vagy az adatkötéseket "bonyolítani", viszont a legkevésbé is lesz karbantartható, mivel a ViewModel view specifikus adatokat is tartalmaz, melyeket külön karban is kell tartani ha a bool property megváltozik.</li>
+<li>MVVM Toolkit "alapokon" valósítsd meg az <code>INotifyPropertyChanged</code> interfészt!</li>
+<li>Az <code>IsDecrementEnabled</code> tulajdonság maradhat a mostani formájában (egy getter only property), nem szükséges <code>[ObservableProperty]</code> alapúra átírni (de az is jó megoldás és a házi feladat tekintetében is teljesen elfogadható, csak kicsit másként kell dolgozni a következő lépésekben).</li>
+<li>Próbáld magadtól megvalósítani a következőt a ViewModel osztályban (a <code>Person</code> marad változatlan): amikor a <code>NewPerson.Age</code> változik, akkor az ősből örökölt <code>OnPropertyChanged</code> hívásával jelezzük a <code>IsDecrementEnabled</code> tulajdonság változását. Tipp: a <code>Person</code> osztály már rendelkezik <code>PropertyChanged</code> eseménnyel, hiszen maga is megvalósítja az <code>INotifyPropertyChanged</code> interfészt, erre az eseményre fel lehet iratkozni! Az egyszerűség érdekében az nem zavar minket, ha az <code>IsDecrementEnabled</code> változását esetleg akkor is jelezzük, ha tulajdonképen "logikailag" estleg nem is változik.</li>
+<li>A fentieket külön eseménykezelő függvény bevezetése nélkül is meg lehet oldani: javasoljuk, hogy így dolgozz, de nem kötelező (tipp: eseménykezelő megadása lambda kifejezéssel).</li>
 </ul>
-</li>
-</ul>
-</details>
-<div class="admonition example">
-<p class="admonition-title">1.2. feladat BEADANDÓ</p>
-<p>Illessz be egy képernyőképet az alkalmazásról, ahol a teendő részletes oldalon megjelenik a kedvencnek jelölés gomb! (<code>f1.2.1.png</code>)</p>
-<p>Illessz be egy képernyőképet az alkalmazásról, ahol a teendő részletes oldalon egy már kedvencnek jelölt recepthez a kedvencekből eltávolítás gomb jelenik meg! (<code>f1.2.2.png</code>)</p>
-</div>
-<h3 id="13-kedvencek-oldal-navigacio">1.3 Kedvencek oldal navigáció<a class="headerlink" href="#13-kedvencek-oldal-navigacio" title="Permanent link">&para;</a></h3>
-<p>A kedvencek oldalra navigáláshoz több lépésre is szükségünk lesz, melyek a kiinduló projekt sajátosságaiból adódódnak, de ezeket itt részletesen átvesszük (a navigáció megvalósítása nem része a tanagyagnak).</p>
-<ol>
-<li>
-<p>Hozzuk létre a <code>FavoritesPage</code>-et a <code>Views</code> mappában (Add/New Item/Blank Page (WinUI3))</p>
-<div class="admonition warning">
-<p class="admonition-title">Fordítási hibák</p>
-<p>Ha valamiért egzotikus hibákat kapnánk az új oldal felvétele után töröljük ki a projekt fájlból az alábbi sorokat:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;ItemGroup&gt;</span>
-<span class="w">    </span><span class="nt">&lt;None</span><span class="w"> </span><span class="na">Remove=</span><span class="s">&quot;Views\FavoritesPage.xaml&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="nt">&lt;/ItemGroup&gt;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;Page</span><span class="w"> </span><span class="na">Update=</span><span class="s">&quot;Views\FavoritesPage.xaml&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;Generator&gt;</span>MSBuild:Compile<span class="nt">&lt;/Generator&gt;</span>
-<span class="nt">&lt;/Page&gt;</span>
-</code></pre></div>
-</div>
-</li>
-<li>
-<p>Hozzuk létre a <code>FavoritesPageViewModel</code> osztályt a <code>ViewModels</code> mappában</p>
-<ol>
-<li>Gondoskodjunk arról, hogy a megfelelő osztályból származzon!</li>
-<li>Valósítsa meg az <code>INavigationAware</code> interfészt a navigáció támogatásához (egyelőre üres függvénytörzzsel).</li>
-</ol>
-</li>
-<li>
-<p>Regisztráljuk be az <code>App.xaml.cs</code>-ben a Dependency Injection konténerbe az új nézetet és az új ViewModelt:</p>
-<div class="highlight"><pre><span></span><code><span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="o">&lt;</span><span class="n">FavoritesPage</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="o">&lt;</span><span class="n">FavoritesPageViewModel</span><span class="o">&gt;</span><span class="p">();</span>
-</code></pre></div>
-</li>
-<li>
-<p>A <code>Pages</code> osztályban (<code>PageService.cs</code>) vegyünk fel egy új kulcsot a kedvencek oldalhoz, és konfiguráljuk a navigációt ehhez a kulcshoz:</p>
-<div class="highlight"><span class="filename">Pages</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Favorites</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Favorites&quot;</span><span class="p">;</span>
-</code></pre></div>
-<div class="highlight"><span class="filename">PageService konstruktor</span><pre><span></span><code><span class="n">Configure</span><span class="o">&lt;</span><span class="n">FavoritesPageViewModel</span><span class="p">,</span><span class="w"> </span><span class="n">FavoritesPage</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Pages</span><span class="p">.</span><span class="n">Favorites</span><span class="p">);</span>
-</code></pre></div>
-</li>
-<li>
-<p>A <code>ShellPage</code>-en a <code>NavigationView</code>-hoz adjunk hozzá egy új <code>NavigationViewItem</code>-et a kedvencek oldalhoz:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;NavigationViewItem</span><span class="w"> </span><span class="na">helpers:NavigationHelper.NavigateTo=</span><span class="s">&quot;Favorites&quot;</span><span class="w"> </span><span class="na">Content=</span><span class="s">&quot;Favorites&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;NavigationViewItem.Icon&gt;</span>
-<span class="w">        </span><span class="nt">&lt;SymbolIcon</span><span class="w"> </span><span class="na">Symbol=</span><span class="s">&quot;SolidStar&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/NavigationViewItem.Icon&gt;</span>
-<span class="nt">&lt;/NavigationViewItem&gt;</span>
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Navigáció</p>
-<p>A navigáció a <code>helpers:NavigationHelper.NavigateTo="Favorites"</code> attached property segítségével történik, ahol azt a kulcsot adhatjuk meg, amilyen kulcsú oldalra navigálni szeretnénk.</p>
-</div>
-</li>
-</ol>
-<h3 id="14-kedvencek-oldal-logika">1.4 Kedvencek oldal logika<a class="headerlink" href="#14-kedvencek-oldal-logika" title="Permanent link">&para;</a></h3>
-<p>A kedvencek oldal (<code>FavoritesPage</code>) a <code>MainPage</code> mintájára készüljön el, és a receptek listáját jelenítse meg, csoportosítás nélkül (!) egy <code>AdaptiveGridView</code> vezérlőben.</p>
-<p><a class="glightbox" href="images/favorites_page.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Favorites Page" src="images/favorites_page.png" /></a></p>
-<p>A ViewModel (<code>FavoritesPageViewModel</code>) a <code>MainPageViewModel</code> mintájára készüljön el, és a navigáció során kérdezze le az <code>IRecipeService</code>-től a kedvenc receptek listáját (<code>GetFavoriteRecipesAsync</code>) és tárolja el egy megfelelő, pl. generált tulajdonságba. Mivel itt nem csoportosítjuk a recepteket, <code>RecipeGroup</code>-ok helyett <code>RecipeHeader</code>-ekkel kell dolgozni.</p>
-<div class="admonition example">
-<p class="admonition-title">1.4. feladat BEADANDÓ</p>
-<p>Illessz be egy képernyőképet az alkalmazásról, ahol kedvencek lista látható! (<code>f1.4.png</code>)</p>
-</div>
-<h2 id="beadas">Beadás<a class="headerlink" href="#beadas" title="Permanent link">&para;</a></h2>
-<p>Ellenőrzőlista ismétlésképpen:</p>
+<p>Teszteld is a megoldásod! Ha jól dolgoztál, a gombnak akkor is le kell tiltódnia, ha a TextBoxba kézzel írsz be negatív életkor értéket (és kikattintasz a TextBoxból). Gondold át, miért van ez így!</p>
+<p>A "+" gombra és a "+Add" gomra is dolgozz ki hasonló megoldást!</p>
 <ul>
-<li>A repository gyökérmappájában található neptun.txt fájlba írd bele a Neptun kódod, csupa nagybetűvel. A fájlban csak ez a hat karakter legyen, semmi más.</li>
-<li>A GitHub-ról leöltött kiinduló solutionben/projektekben kell dolgozni, nem újonnan létrehozottban.</li>
-<li>Amíg nem vagy rutinos a Visual Studio Git szolgáltatásainak használatában, a push-t követően (legkésőbb akkor, amikor a házi feladatot beadottnak tekintjük) célszerű ellenőrizni a GitHub webes felületén a repository-ban a fájlokra való rápillantással, hogy valóban minden változtatást feltöltöttél-e.</li>
-<li>A GitHub felületén ellenőrizd a push-t követően, hogy a GitHub Action alapú előellenőrző hiba nélkül lefutott-e.</li>
-<li>Lényeges, hogy a feladatok csak akkor kerülnek elfogadásra, ha teljesen elkészülnek, és minden tekintetben teljesítik a követelményeket. Nem forduló kód, illetve részleges megoldás elfogadásában nem érdemes bízni.</li>
-<li>Természetesen saját munkát kell beadni (hiszen értékelésre kerül).</li>
+<li>Az életkor maximális "elfogadható" értéke 150 legyen.</li>
+<li>A név csak akkor elfogadható, ha van benne legalább egy nem whitespace karakter (ez utóbbi ellenőrzésére a string osztály <code>IsNullOrWhiteSpace</code> statikus műveletét használd).</li>
+<li>Azzal az esettel nem kell foglalkozni, hogy ha a felhasználó az életkor TextBox-ba nem érvényes számot ír be (ezt jelen megoldással nem is lehet kezelni).</li>
 </ul>
+<p>A tesztelés során azt tapasztaljuk, hogy ha pl. kitöröljük a nevet a név TextBox-ban, a "+Add" gomb állapota nem azonnal változik, hanem csak ha elhagyjuk a TextBox-ot? Miért van ez? Módosítsd a megoldásod, hogy ez minden szöveg változáskor, a TextBox elhagyása nélkül is megtörténjen. Tipp: lásd előadásanyag "x:Bind mikor frissül az adat?" című dia.</p>
+<div class="admonition example">
+<p class="admonition-title">BEADANDÓ</p>
+<p>Készíts egy képernyőmentést <code>f3.png</code> néven az alábbiak szerint:</p>
+<ul>
+<li>Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,</li>
+<li>az életkor legyen 0-ra lecsökkentve az alkalmazásban,</li>
+<li>a „háttérben” a Visual Studio legyen, a <code>PersonListPageViewModel.cs</code> megnyitva.</li>
+</ul>
+</div>
+<h2 id="feladat-4-command-hasznalata">Feladat 4 - Command használata<a class="headerlink" href="#feladat-4-command-hasznalata" title="Permanent link">&para;</a></h2>
+<p>Jelen pillanatban a "-" gomb vonatkozásában esetében két feladatunk van:</p>
+<ul>
+<li>A <code>Click</code> esetén az eseménykezelő művelet futtatása</li>
+<li>A gomb tiltása/engedélyezése az <code>IsEnabled</code> tulajdonság segítségével</li>
+</ul>
+<p>Bizonyos vezérlők - ilyen a gomb is - támogatják, hogy ezt a kettőt, a Command mintára építve, egy parancs objektum segítségével adhassuk meg. A  Command tervezési minta koncepciójával a "Tervezési minták 3" előadás alapján lehet résztelesebben megismerkedni (bár ott csak az alap Command mintával ismerkedtünk meg, mely a parancs futtatását támogatja, tiltását/engedélyezését nem). A Command minta MVVM specifikus megvalósításával a WinUI előadássorozat vége felé, a "Command minta" című diától kezdve lehet megismerkedni.</p>
+<p>Az alapelv a következő: a gombnál a <code>Click</code> és <code>IsEnabled</code> "megadása" helyett a gomb <code>Command</code> tulajdonságát állítjuk egy <code>ICommand</code> interfészt megvalósító command objektumra. A futtatás, illetve tiltás/engedélyezés már ezen command objektum feladata.</p>
+<p>Alapesetben egy alkalmazásban minden parancshoz egy külön <code>ICommand</code> implementációt kellene készíteni. Ez azonban sok parancs esetén sok osztály bevezetését igényli. Az MVVM Toolkit ebben is a segítségünkre siet. Biztosít egy <code>RelayCommand</code> osztályt, mely megvalósítja az <code>ICommand</code> interfészt. Ez az osztály bármilyen parancs/kód futtatására használható, így nem kell további command osztályokat bevezetni. Hogyan lehetséges ez? Úgy, hogy a <code>RelayCommand</code>-nak konstruktor paraméterekben, két delegate formájában tudjuk a végrehajtáshoz és a tiltáshoz/engedélyezéshez tartozók kódot:</p>
+<ul>
+<li>Első paraméterben a parancs futtatásakor végrehajtandó kódot adjuk meg.</li>
+<li>Második paraméterben (ez opcionális) azt a kódot, melyet a command hív annak ellenőrzésére, hogy engedélyezni/tiltani kell magát (az itt megadott függvénynek  bool-lal kell visszatérnie, true esetben engedélyezett lesz a parancs).</li>
+</ul>
+<p>A következő lépésben a "-" gomb kezelését alakítjuk át command alapúra. Először próbáld a nagyját önállóan megvalósítani a kapcsolódó WinUI előadásanyag alapján. A parancs futtatása egyszerűbb, de a parancs tiltás-engedélyezéshez lesz még teendőnk. Főbb lépések:</p>
+<ul>
+<li>Egy csak getterrel rendelkező publikus <code>RelayCommand</code> tulajdonság felvétele a ViewModel-be, pl. <code>DecreaseAgeCommand</code> néven. Az előadásanyaggal ellentétben esetünkben nem kell a <code>RelayCommand</code>-nak generikus paramétert megadni, mert a parancskezelő függvényünknek (<code>DecreaseAge</code>) nincs paramétere.</li>
+<li>Az újonnan bevezetett tulajdonságnak a ViewModel konstruktorban értéket adni. A <code>RelayCommand</code> konstruktor paramétereit add meg megfelelően.</li>
+<li>A <code>PersonListPage.xaml</code>-ben a "-" gombnál a <code>Click</code> és <code>IsEnabled</code> adatkötésére nincs már szükség, ezek törlendők. Helyette a gomb <code>Command</code> tulajdonságát kösd a ViewModel-ben az előző lépésben bevezetett <code>DecreaseAgeCommand</code> tulajdonsághoz.</li>
+</ul>
+<p>Ha kipróbáljuk, a parancs futtatás működik, a tiltás/engedélyezés viszont még nem: ha jól megfigyeljük, a gomb mindig engedélyezett marad megjelenésében. Ennek, kicsit jobban belegondolva, logikus oka van: a <code>RelayCommand</code> meg tudja ugyan hívni a második konstruktor paraméterében megadott műveletet az állapot ellenőrzéséhez, de nem tudja, hogy minden <code>NewPerson.Age</code> változáskor meg kellene ezt tennie! Ezen tudunk segíteni. A ViewModel-ünk konstruktorában már feliratkoztunk korábban a <code>NewPerson.PropertyChanged</code> eseményre: erre építve, amikor változik az életkor (vagy amikor változhat, az nem probléma, ha néha feleslegesen megtesszük) hívjuk meg a <code>DecreaseAgeCommand</code> <code>NotifyCanExecuteChanged</code> műveletét. Ennek nagyon beszédes neve van: értesíti a parancsot, hogy megváltoz(hat)ott az állapot, mely alapján a tiltott/engedélyezett állapota frissül, így frissíteni fogja magát, pontosabban a parancshoz tartozó gomb állapotát.</p>
+<p>Írd át "+" gomb kezelését is hasonlóan, parancs alapúra! A "+Add" gomb kezelését ne változtasd meg!</p>
+<div class="admonition example">
+<p class="admonition-title">BEADANDÓ</p>
+<p>Készíts egy képernyőmentést <code>f3.png</code> néven az alábbiak szerint:</p>
+<ul>
+<li>Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,</li>
+<li>a név TextBox legyen üres az alkalmazásban,</li>
+<li>a „háttérben” a Visual Studio legyen, a <code>PersonListPageViewModel.cs</code> megnyitva.</li>
+</ul>
+</div>
+<h2 id="feladat-4-command-hasznalata-mvvm-toolkit-alapu-kodgeneralassal">Feladat 4 - Command használata MVVM Toolkit alapú kódgenerálással<a class="headerlink" href="#feladat-4-command-hasznalata-mvvm-toolkit-alapu-kodgeneralassal" title="Permanent link">&para;</a></h2>
+<p>Az előző feladatban a command tulajdonságok bevezetését és azok példányosítását "manuálisan" oldottuk meg. Az MVVM Toolkit ezt le tudja egyszerűsíteni: megfelelő attribútum alkalmazása esetén a tulajdonságot és a példányosítást automatikusan le tudja generálni.</p>
+<p>Alakítsuk át a <code>DecreaseAgeCommand</code> kezelését (csak ezt, az <code>IncreaseAgeCommand</code> maradjon!) generált kód alapúra:</p>
+<ol>
+<li>Lássuk el a <code>PersonListPageViewModel</code> osztályt a partial kulcsszóval.</li>
+<li>Töröljük ki a <code>DecreaseAgeCommand</code> tulajdonságot és ennek példányosítását a konstruktorból.</li>
+<li>A <code>DecreaseAge</code> műveletet lássuk el ezzel az attribútummal: <code>[RelayCommand(CanExecute = nameof(IsDecrementEnabled))]</code>. <ul>
+<li>Ennek hatására a kódgenerátor bevezet egy <code>RelayCommand</code> tulajdonságot az osztályban, melynek neve a műveletünk neve (<code>DecreaseAge</code>), hozzáfűzve a "Command" stringet. Ezzel meg is kapjuk a korábban kézzel bevezetett <code>DecreaseAgeCommand</code> nevű tulajdonságot.</li>
+<li>A <code>CanExecute</code> attribútum tulajdonságban egy string formában annak a boollal visszatérő műveletnek vagy tulajdonságnak a nevét lehet megadni, melyet a generált kód a parancs tiltásának/engedélyezésének során használ (a RelayCommand konstruktor második paramétere lesz). Nekünk már van ilyen tulajdonságunk, "IsDecrementEnabled" névben. Azért nem egyszerű string formájában adjuk meg, mert ha utólag valaki átnevezi az <code>IsDecrementEnabled</code> műveletet, akkor a mostani "IsDecrementEnabled" már nem jó műveletre mutatna. A <code>nameof</code> kifejezés használatával ez a probléma elkerülhető. A <code>CanExecute</code> megadása általánosságában nem kötelező (nem adjuk meg, ha nem akarjuk a parancsot soha tiltani).</li>
+</ul>
+</li>
+</ol>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> A kódgenerátor szokásosan az osztályunk másik "partial" felébe dolgozik, annak érdekében, hogy ne keveredjen az általunk írt és a generált kód! A partial classokat leggyakrabban a kézzel írt és a generált kód "különválasztására" használjuk.</p>
+<p>Próbáljuk ki, a megoldásunknak (életkor csökkentése) ugyanúgy kell működnie, mint korábban.</p>
+<div class="admonition example">
+<p class="admonition-title">BEADANDÓ</p>
+<p>Készíts egy képernyőmentést <code>f4.png</code> néven az alábbiak szerint:</p>
+<ul>
+<li>Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,</li>
+<li>a „háttérben” a Visual Studio legyen, a <code>PersonListPageViewModel.cs</code> megnyitva.</li>
+</ul>
+</div>
 <hr>
 <div class="md-source-file">
   <span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg
@@ -1828,8 +1992,8 @@ A menüpontokra kattintva a <code>Frame</code>-en belül a megfelelő oldal jele
         </path>
       </svg>
     </span>
-    <span title="2024. április 11. 09:14:34">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-11T09:14:34+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-11</span>
+    <span title="2024. április 27. 19:45:18">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-27T19:45:18+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-27</span>
     </span>
   </span>
 
@@ -1844,10 +2008,10 @@ A menüpontokra kattintva a <code>Frame</code>-en belül a megfelelő oldal jele
       </svg>
     </span>
     <span>Szerzők</span>
-    <nav><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@tibitoth">
-        <img src="https://avatars.githubusercontent.com/tibitoth?size=72" alt="@tibitoth">
-      </a><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
-        <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&v=4?size=72" alt="@Zoltán Benedek">
+    <nav><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@bzolka">
+        <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
+      </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tibor Tóth">
+        <img src="https://avatars.githubusercontent.com/u/8333960?u=d26653213d265ecdceeaf20a896d74f479d35450&v=4?size=72" alt="@Tibor Tóth">
       </a></nav>      
   </span>
 </div>
