@@ -661,9 +661,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ketiranyu-iranyu-adatkotes" class="md-nav__link">
+  <a href="#ketiranyu-adatkotes" class="md-nav__link">
     <span class="md-ellipsis">
-      Kétirányú irányú adatkötés
+      Kétirányú adatkötés
     </span>
   </a>
   
@@ -1744,9 +1744,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ketiranyu-iranyu-adatkotes" class="md-nav__link">
+  <a href="#ketiranyu-adatkotes" class="md-nav__link">
     <span class="md-ellipsis">
-      Kétirányú irányú adatkötés
+      Kétirányú adatkötés
     </span>
   </a>
   
@@ -2375,11 +2375,11 @@ Lehetőségünk van akár saját Markup Extension-t is készíteni, de ez nem ta
 </li>
 </ol>
 <p>Próbáljuk ki! Az eseménykezelők változtatják az adatforrást (<code>NewPerson</code>), ennek hatására most már változik a felület is a megfelelően előkészített adatkötés miatt.</p>
-<h2 id="ketiranyu-iranyu-adatkotes">Kétirányú irányú adatkötés<a class="headerlink" href="#ketiranyu-iranyu-adatkotes" title="Permanent link">&para;</a></h2>
+<h2 id="ketiranyu-adatkotes">Kétirányú adatkötés<a class="headerlink" href="#ketiranyu-adatkotes" title="Permanent link">&para;</a></h2>
 <p>Az <code>Age</code> mintájára, a <code>Name</code> tulajdonságra vonatkozó adatkötést is állítsuk egyirányúra:</p>
 <div class="highlight"><pre><span></span><code>Text=&quot;{x:Bind<span class="w"> </span>NewPerson.Name,<span class="w"> </span>Mode=OneWay}&quot;
 </code></pre></div>
-<p>Indítsuk ez az alkalmazást, majd ezt követően tegyünk egy töréspontot a <code>Person</code> osztály <code>Name</code> tulajdonságának setterébe (<code>if (name != value)</code> sor) , és próbáljuk, hogy vissza irányba is működik-e az adatkötés: ha megváltoztatjuk az egyik <code>TextBox</code> értékét, megváltozik-e a <code>NewPerson</code> objektum <code>Name</code> tulajdonsága? Gépeljünk valamit a Name-hez tartozó szövegdobozba, majd kattintsunk át egy másik mezőbe: ekkor a Textbox tartalma "véglegesítődik", tartalma vissza kellene íródjon az adatforrásba, de mégsem történik meg, nem fut rá a kód a töréspontunkra.</p>
+<p>Indítsuk el az alkalmazást, majd ezt követően tegyünk egy töréspontot a <code>Person</code> osztály <code>Name</code> tulajdonságának setterébe (<code>if (name != value)</code> sor) , és próbáljuk, hogy vissza irányba is működik-e az adatkötés: ha megváltoztatjuk az egyik <code>TextBox</code> értékét, megváltozik-e a <code>NewPerson</code> objektum <code>Name</code> tulajdonsága? Gépeljünk valamit a Name-hez tartozó szövegdobozba, majd kattintsunk át egy másik mezőbe: ekkor a Textbox tartalma "véglegesítődik", tartalma vissza kellene íródjon az adatforrásba, de mégsem történik meg, nem fut rá a kód a töréspontunkra.</p>
 <p>Ez azért van így, mert fentebb <code>OneWay</code> adatkötést használtunk, mely csak az adatforrásból a felületre irányú adatkötést jelent. Ha azt szeretnénk, hogy az adatkötés a másik irányba is működjön (vezérlőből adatforrásba), ahhoz  <strong><code>TwoWay</code></strong>-re kell állítsuk az adatkötés módját. Ezt <strong>kétirányű adatkötésnek</strong> nevezzük.</p>
 <div class="highlight"><pre><span></span><code>Text=&quot;{x:Bind<span class="w"> </span>Name,<span class="w"> </span>Mode=TwoWay}&quot;
 Text=&quot;{x:Bind<span class="w"> </span>Age,<span class="w"> </span>Mode=TwoWay}&quot;
@@ -2480,8 +2480,8 @@ Alapértelmezetten ugyanis a <code>ListView</code> a <code>ToString()</code>-et 
         </path>
       </svg>
     </span>
-    <span title="2024. április 27. 16:49:15">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-27T16:49:15+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-27</span>
+    <span title="2024. április 27. 16:55:51">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-27T16:55:51+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-27</span>
     </span>
   </span>
 
