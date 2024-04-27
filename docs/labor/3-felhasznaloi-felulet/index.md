@@ -656,9 +656,9 @@ A korábbi pontban bevezetett adatkötés miatt azt várnánk, hogy ha a `NewPer
 
 Próbáljuk ki! Az eseménykezelők változtatják az adatforrást (`NewPerson`), ennek hatására most már változik a felület is a megfelelően előkészített adatkötés miatt.
 
-## Vissza (vezérlőből adatforrásba) irányú adatkötés
+## Kétirányú irányú adatkötés
 
-Az Age mintájára, a Name tulajdonságra vonatkozó adatkötést is állítsuk egyirányúra:
+Az `Age` mintájára, a `Name` tulajdonságra vonatkozó adatkötést is állítsuk egyirányúra:
 
 ```xml
 Text="{x:Bind NewPerson.Name, Mode=OneWay}"
@@ -666,14 +666,17 @@ Text="{x:Bind NewPerson.Name, Mode=OneWay}"
 
 Indítsuk ez az alkalmazást, majd ezt követően tegyünk egy töréspontot a `Person` osztály `Name` tulajdonságának setterébe (`if (name != value)` sor) , és próbáljuk, hogy vissza irányba is működik-e az adatkötés: ha megváltoztatjuk az egyik `TextBox` értékét, megváltozik-e a `NewPerson` objektum `Name` tulajdonsága? Gépeljünk valamit a Name-hez tartozó szövegdobozba, majd kattintsunk át egy másik mezőbe: ekkor a Textbox tartalma "véglegesítődik", tartalma vissza kellene íródjon az adatforrásba, de mégsem történik meg, nem fut rá a kód a töréspontunkra.
 
-Ez azért van így, mert fentebb `OneWay` adatkötést használtunk, mely csak az adatforrásból a felületre irányú adatkötést jelent. **A vissza irányhoz `TwoWay`-re kell állítsuk az adatkötés módját.**
+Ez azért van így, mert fentebb `OneWay` adatkötést használtunk, mely csak az adatforrásból a felületre irányú adatkötést jelent. Ha azt szeretnénk, hogy az adatkötés a másik irányba is működjön (vezérlőből adatforrásba), ahhoz  **`TwoWay`**-re kell állítsuk az adatkötés módját. Ezt **kétirányű adatkötésnek** nevezzük.
 
 ```xml
 Text="{x:Bind Name, Mode=TwoWay}"
 Text="{x:Bind Age, Mode=TwoWay}"
 ```
 
-Próbáljuk ki! Így már működik a vissza irányú adatkötés is: a vezérlő adott tulajdonsága (esetünkben szövege) és az adatforrás bármely irányú változás esetén szinkronban marad.
+Próbáljuk ki! Így az adatkötés már mindkét irányba működik:
+
+* Ha a forrástulajdonság (pl. `NewPerson.Name`) változik, akkor a vezérlő kötött tulajdonsága (pl. `TextBox.Text`) ezzel szinkronban marad.
+* Ha a cél (vezérlő) tulajdonság változik (pl. `TextBox.Text`), akkor az forrástulajdonság (pl. `NewPerson.Name`) ezzel szinkronban marad.
 
 ## Listák
 
