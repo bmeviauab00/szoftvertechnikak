@@ -1,33 +1,31 @@
 ---
-authors: tibitoth
+authors: bzolka
 ---
 
-# 5. HF - MVVM mintára épülő alkalmazások
+# 5. HF - Az MVVM minta és az MVVM Toolkit alkalmazása
 
 ## Bevezetés
 
-A házi feladatban a laboron elkezdett recept alkalmazást fogjuk tovább bővíteni az MVVM mintát használva.
+A házi feladatban a 3. XAML laboron megvalósított személy regisztrációs alkalmazást alakítjuk át olyan módon, hogy az MVVM mintára épüljön, valamint megismerkedünk az MVVM Toolkit alkalmazásával.
 
-Az önálló feladat az MVVM előadásokon elhangzottakra épít. A feladatok gyakorlati hátteréül a [5. labor – MVVM](../../labor/5-mvvm/index.md) laborgyakorlat szolgál.
+Az önálló feladat a WinUI előadássorozat végén elhangzott MVVM témakörre épít.
+Megjegyzés: az [5. labor – MVVM](../../labor/5-mvvm/index.md) labor nagyon szerteágazó, és egy komplexebb alkalmazás kontextusában mutat példát az MVVM minta alkalmazására, sok más témakör mellett. Jelen házi feladat sokkal fókuszáltabb, kisebb lépésekben építkezik: estünkben esetben inkább a jelen házi feladat megoldása segíti az [5. labor – MVVM](../../labor/5-mvvm/index.md) kapcsolódó részeinek könnyebb megértését.
 
-A fentiekre építve, jelen önálló gyakorlat feladatai a feladatleírást követő rövidebb iránymutatás segítségével (néha alapértelmezetten összecsukva) önállóan elvégezhetők.
+Az kapcsolódó előadásanyag feldolgozásával, jelen önálló gyakorlat feladatai a feladatleírást követő rövidebb iránymutatás segítségével (néha alapértelmezetten összecsukva) önállóan elvégezhetők.
 
 Az önálló gyakorlat célja:
 
-- MVVM minta használatának gyakorlása
-- Adatok megjelenítése és interakciók kezelése a felületen adatkötéssel
-- Dependency Injection minta alkalmazása
-- Adatok kezelése a szolgáltatás rétegben HTTP kéréseken illetve egy lokális adattár segítségével
+- Az MVVM minta használatának gyakorlása
+- NuGet referenciák alkalmazása
+- Az MVVM Toolkit alapjaival való ismerkedés
+- XAML technikák gyakorlása
 
-A szükséges fejlesztőkörnyezetről [itt](../fejlesztokornyezet/index.md) található leírás.
-
-!!! warning "Fejlesztőkörnyezet WinUI3 fejlesztéshez"
-    A korábbi laborokhoz hasonlóan plusz komponensek telepítése szükséges. A [fenti](../fejlesztokornyezet/index.md) oldal említi, hogy szükség van a ".NET desktop development" Visual Studio Workload telepítésére, valamint ugyanitt az oldal alján van egy "WinUI támogatás" fejezet, az itt megadott lépéseket is mindenképpen meg kell tenni!
+A szükséges fejlesztőkörnyezetről [itt](../fejlesztokornyezet/index.md) található leírás, megegyezik a 3. házi feladatéval (XAML alapok).
 
 ## A beadás menete
 
 - Az alapfolyamat megegyezik a korábbiakkal. GitHub Classroom segítségével hozz létre magadnak egy repository-t. A meghívó URL-t Moodle-ben találod (a tárgy nyitóoldalán a "*GitHub classroom hivatkozások a házi feladatokhoz*" hivatkozásra kattintva megjelenő oldalon látható). Fontos, hogy a megfelelő, ezen házi feladathoz tartozó meghívó URL-t használd (minden házi feladathoz más URL tartozik). Klónozd le az így elkészült repository-t. Ez tartalmazni fogja a megoldás elvárt szerkezetét. A feladatok elkészítése után commit-old és push-old a megoldásod.
-- A kiklónozott fájlok között a `MvvmLab.sln`-t megnyitva kell dolgozni.
+- A kiklónozott fájlok között a `HelloXaml.sln`-t megnyitva kell dolgozni.
 - :exclamation: A feladatok kérik, hogy készíts **képernyőképet** a megoldás egy-egy részéről, mert ezzel bizonyítod, hogy a megoldásod saját magad készítetted. **A képernyőképek elvárt tartalmát a feladat minden esetben pontosan megnevezi.**
 A képernyőképeket a megoldás részeként kell beadni, a repository-d gyökérmappájába tedd (a neptun.txt mellé).
 A képernyőképek így felkerülnek GitHub-ra a git repository tartalmával együtt.
@@ -40,218 +38,254 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
 :warning: __MVVM minta kötelező alkalmazása!__  
   Jelen házi feladatban az MVVM mintát gyakoroljuk, így a feladatok megoldásában kötelező az MVVM minta alkalmazása. Az ettől való eltérés a feladatok értékelésének elutasítását vonja maga után.
 
-## Kiinduló állapot
+## Feladat 0 - Kiinduló állapot áttekintése
 
-A kiinduló állapot épít az 5. labor végállapotára, de ahhoz képest egy lényeges változtatást tartalmaz.
+A kiinduló állapot alapvetően megegyezik a [3. A felhasználói felület kialakítása](../../labor/3-felhasznaloi-felulet/index.md) végállapotával. Vagyis egy olyan alkalmazás, melyben egy listában személyek adatait lehet rögzíteni. 
+A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a felület teljes leírását a `MainWindow.xaml` (és a kapcsolódó code-behind fájl) tartalmazta. Jelen kiinduló megoldásban az a különbség, hogy ez át lett mozgatva a `Views` mappában levő `PersonListPage.xaml` (és code behind) fájlba. A `PersonListPage` nem egy `Window`, hanem egy `Page` leszármazott osztály (ellenőrizzük ezt a code behind fájlban). De semmi más változás nincs! Mint a neve is utal rá, a `Page` egy "oldalt" reprezentál az alkalmazásban: önmagában nem tud megjelenni, hanem pl. egy ablakon kell elhelyezni. Előnye, hogy az ablakon - megfelelő navigáció kialakításával - lehetőség van oldalak (különböző `Page` leszármazottak) között navigálni. Ezt mi nem fogjuk kihasználni, egyetlen oldalunk lesz csak. Az oldal bevezetésével a célunk mindössze az volt, hogy szemléltessük: az MVVM architektúrában a nézeteket nem csak `Window` (teljes ablak), hanem pl. `Page` objektumokkal is meg lehet valósítani. 
 
-Az alkalmazás az indulása után létrehoz egy `ShellPage` típusú oldalt, ami a projektben a `Views` mappában található meg.
-Ez egy `NavigationView`-t tartalmaz (aka. Hamburger menü), mely a navigációt fogja esetünkben kezelni.
-Tartalmazhat `NavigationViewItem`-eket, melyek a menüpontokat reprezentálják, és mindig elérhetőek az alkalmazásban.
-A menüpontokra kattintva a `Frame`-en belül a megfelelő oldal jelenik meg a projektben található segédosztályok segítségével, ami támogatja a korábbi oldalra történő vissza navigációt is.
+Mivel mindent átmozgattunk a `MainWindow`-ból a `PersonListPage`-be, a `MainWindow.xaml`-ban már semmi más nincs, mint egy ilyen `PersonListPage` objektum példányosítása:
 
-## 1. Feladat - Receptek kedvencként kezelése
-
-Feladatunk funkcionális követelményei a következőek:
-
-- A recepteket kedvencek közé lehessen menteni
-    - Jelenjen meg egy kitöltetlen csillag ikonnal rendelkező gomb a recept részletes oldalon (pl. bal oldali oszlop tetején), amelyre kattintva a receptet a kedvencek közé menthetjük.
-    - A kedvenc kezelő gomb ikonja váltson tele csillagra, a szövege pedig *"Remove from Favorites"*-re, ha a recept kedvencnek lett jelölve.
-    - A korábban kedvencnek jelölt recept kivehető a kedvencek közül ugyanezen a gombon történő kattintással: ekkor a gomb ikonja állapota visszaáll üres csillagra, a szövege pedig *"Add to Favorites"*-re.
-    - A kedvenc receptek listáját lokálisan tároljuk, az alkalmazás bezárásával ne vesszenek el.
-
-        === "Add To Favorites"
-            ![Add To Favorites](images/add_to_favorites.png)
-
-        === "Remove From Favorites"
-            ![Remove From Favorites](images/remove_from_favorites.png)
-
-        !!! tip "A két gomb állapot megjelenítése"
-            A fenti ábra felett az "Add To Favorites" és "Remove From Favorites"-en kattintva lehet váltani a két állapotot megjelenítő képek között.
-
-- A kedvencek listáját jelenítsük meg egy külön oldalon.
-    - A kedvencek listát a hamburger menüből lehessen elérni
-    - A listában lévő elemek kinézete hasonló legyen a receptek listájában lévő elemekhez
-    - A lista ne legyen csoportosítva
-    - A kedvencek listájának elemei között a recepteket kattintva megnyithatjuk a recept részletes oldalát (pont úgy, mint a Recipes oldalon)
-
-        ![Favorites Page](images/favorites_page.png)
-
-### 1.1 Kedvencek kezelése a szolgáltatás rétegben
-
-Bottom-up megvalósítási sorrendben haladva készítsük el először a szolgáltatás rétegben a kedvencek kezeléséhez szükséges funkciókat.
-
-A kedvencnek megjelölést az online szolgáltatás nem támogatja. A megoldás alapelve így a következő lesz:
-
-* Lokálisan perzisztensen eltároljuk a kedvencnek megjelölt receptek **azonosítóit** (annak érdekében, hogy a program újraindulását követően megmaradjon ez az információ).
-* A kedvencnek megjelölt receptek részletes adatait (cím, kép) az online szolgáltatástól kérdezzük le (az azonosítóik alapján).
-
-Lokális perzisztens adattároláshoz a kiinduló projektben elő van készítve az `ILocalSettingsService` interfész (és egy ezt megvalósító implementáció). Erre építve kulcs érték párokat tudunk JSON sorosítva tárolni lokálisan az alkalmazásban.
-
-```csharp
-public interface ILocalSettingsService
-{
-    Task<T> ReadSettingAsync<T>(string key);
-    Task SaveSettingAsync<T>(string key, T value);
-}
+``` csharp
+<views:PersonListPage/>
 ```
 
-Használata során érdemes odafigyelni arra, hogy a függvények generikusak, így a típusokat explicit meg kell(het) adni a hívás során.
+Ellenőrizzük a kódban is!
 
-A fenti `ILocalSettingsService` segítségével egy adott kulcs alatt fogjuk a kedvenc receptek azonosítóinak listáját eltárolni.
+## Főablak fejléce
 
-Szintén fontos, hogy a függvények `Task`-kal térnek vissza, tehát aszinkronok, így `await` kulcsszóval kell hívni őket, és a hívó függvénynek is aszinkronnak kell lennie (a részletesebb szabályhalmaz a kapcsolódó "5. MVVM" labor leírásában található).
+:exclamation: A főablak fejléce az "MVVM" szöveg legyen, hozzáfűzve a saját Neptun kódod: (pl. "ABCDEF" Neptun kód esetén "MVVM - ABCDEF"), fontos, hogy ez legyen a szöveg! Ehhez a főablakunk `Title` tulajdonságát állítsuk be erre a szövegre a `MainWindow.xaml` fájlban.
 
-A kedvencek kezelése a labor során bevezetett `IRecipeService` interfész és az ezt megvalósító `RecipeService` osztály feladata legyen. 
+## Feladat 1 - MVVM Toolkit alkalmazása
 
-Első lépésben azt kell megoldani, hogy a `RecipeService` számára rendelkezésre álljon egy `ILocalSettingsService` interfészt megvalósító objektum, melyet fel tud használni  megvalósításában a kedvenc receptazonosítók eltárolására és lekérdezésére. A célunk az, hogy `RecipeService`-ben `ILocalSettingsService` interfészként **kapjuk meg** és **tároljuk** ezt az implementációs objektumot, semmiféle függést nem szeretnénk itt bevezetni a konkrét implementációtól. Ezt a laboron már alkalmazott DI konténer segítségével valósítsuk meg.
+A meglévő alkalmazásban a `Models` mappában levő `Person` osztály már implementálja az `INotifyPropertyChanged` (becenevén INPC) interfészt (így rendelkezik egy `PropertyChanged` eseménnyel), valamint a `Name` és az `Age` setterében jelzi is a tulajdonság változását a `PropertyChanged` esemény elsütésével (nézzük ez át alaposan a `Person.cs` fájlban).
 
-!!! tip 
-    A megvalósítás során a `RecipeService`-ben ahhoz hasonlóan kell kezeljük a `ILocalSettingsService`-t, mint a ahogy a labor során a `MainPageViewModel`-ben kezeltük a `IRecipeService`-t.
+Bemelegítésképpen/ismétlésképpen - a kódot (`PersonListPage.xaml` és `PersonListPage.xaml.cs`) alaposan átnézve és az alkalmazást futtatva - fogalmazd meg magadban, miért is volt erre az alkalmazásban szükség!
 
-
-Miután a fenti előkészítéssel elkészültél, valósítsd meg a szükséges funkciókat a `RecipeService` osztályban! Az alábbiakban ehhez némi iránymutatást adunk.
-
-
-??? success "RecipeService váza"
-
-    A `RecipeService`-nek (és interfésznek) a következő új funkciókkal kell rendelkeznie:
-
-    1. Recept kedvenc állapotának módosítása id (int) alapján az új állapottal (bool). (Recept részletes oldalon gombra kattintás során használjuk.)
-         1. Kérdezzük le az `ILocalSettingsService`-ből kedvencek azonosítóinak listáját. 
-         2. Lista módosítása a kapott id és új kedvenc állapot alapján.
-             1. Kedvencnek jelölés esetén, berakjuk, egyébként töröljük.
-             2. Gondoljunk arra is, ha a lista már tartalmazza az adott id-t, akkor ne adjuk hozzá újra. (Lista helyett egyébként lehet használni egy speciális halmaz tulajdonságú kollekciót is, a `HashSet<T>`-et, mely egy elemet csak egyszer tartalmaz.)
+??? "A válasz (ismétlés)"
+    Az alkalmazásban a `PersonListPage.xaml`-ben a `TextBox`-ok `Text` tulajdonsága (ez a cél tulajdonság) hozzá vannak kötve a code behindban levő `Person` típusú `NewPerson` tag `Age` és `Name` tulajdonságaihoz (ezek a források a két adatkötésben). Nézzük meg a kódban, hogy a `NewPerson.Name` és `NewPerson.Age` forrás tulajdonságokat **változtatjuk is a kódban**: a vezérlő csak akkor tud ezekről értesülni (és így szinkronban maradni a forrással), ha ezekről a `Name` és `Age` változásokról értesítést kap. Emiatt az `Age` és `Name` tulajdonságokat tartalmazó osztálynak, vagyis a `Person`-nek meg kell valósítania az `INotifyPropertyChanged` interfészt, és a tulajdonságok változásakor el kell sütnie a `PropertyChanged` eseményt megfelelően paraméterezve.
     
-    2. Kedvenc receptek lekérdezése. (Kedvencek oldalon listázás során használjuk.)
-         1. Kérdezzük le az `ILocalSettingsService`-ből a kedvenc receptek azonosítóinak listáját.
-         2. A kapott id-k alapján egyesével kérjük le a recepteket a REST API-tól, a `GET /api/Recipes/{id}/Header` végponton keresztül. Ez a laborhoz képest egy új végpont, és az adott azonosítójú recept `RecipeHeader`-be sorosított adataival tér vissza. Ehhez a végponthoz érdemes új segédfüggvényt is készíteni. Dolgozhatunk a laboron már bevezetett `RecipeService`-ben levő `HttpClient`-et használó műveletek "mintájára".
-         3. A lekérdezett `RecipeHeader` objektumokból összeállított listával térjünk vissza.
-    
-    3. Recept kedvenc állapotának lekérdezése id alapján. (Recept részletes oldal betöltésekor a gomb állapotának beállításához használjuk.)
-         1. Igaz hamis értékkel térjünk vissza, attól függően, hogy az adott azonosító szerepel-e a kedvenc receptek listájában.
+ Az alkalmazást futtatva ellenőrizzük, hogy a '+' és '-' gombok hatására eszközölt `NewPerson.Age` változások valóban érvényre jutnak az életkort megjelenítő `TextBox`-ban. 
 
-    !!! warning "Első hívás"
-        Gondolni kell arra is, ha még most hívjuk meg először a lekérdező függvényt, és nincs még mentett kedvenc recept azonosító listánk (`null`-lal tér vissza az adott kulcsú elem lekérdezésekor az `ILocalSettingsService.ReadSettingAsync`).
+A `Person` osztályban látszik, hogy az `INotifyPropertyChanged` megvalósítása és a kapcsolódó kód igencsak terjengős. Nézd meg az előadásanyagban, milyen alternatívák vannak az interfész megvalósítására (az "INPC példa 1" című diától kezdődően kb. négy dia a négy lehetőség illusztrálására)! A legtömörebb legoldást az MVVM Toolkit alkalmazása jelenti. A következő lépésben jelen terjengősebb "manuális" INPC megvalósítást átalakítjuk MVVM toolkit alapúra.
 
-### 1.2 Kedvencnek jelölés a részletes oldalon
+### Feladat 1/a - MVVM Toolkit NuGet referencia felvétele
 
-A recept részletes oldalon (a `RecipeDetailPage`-en) meg kell jeleníteni egy gombot, melynek két állapota van:
+Első lépésben NuGet referenciát kell tegyünk az MVVM Toolkitre annak érdekében, hogy használni tudjuk. 
 
-1. Ha a recept nincs kedvencnek jelölve, akkor egy üres csillag ikon jelenik meg a gombon, a gomb felirata pedig legyen *"Add to Favorites"*.
-2. Ha a recept kedvencnek van jelölve, akkor egy kitöltött csillag ikon jelenik meg a gombon, a gomb felirata pedig legyen *"Remove from Favorites"*.
+**Feladat**: Vegyél fel egy NuGet referenciát a projektben a "CommunityToolkit.Mvvm" NuGet csomagra. Ez a Visual Studio oldal írja le, hogyan lehet egy NuGet referenciát a projektbe felvenni [NuGet Package Manager](https://learn.microsoft.com/en-us/nuget/quickstart/install-and-use-a-package-in-visual-studio#nuget-package-manager). Az előző link az oldalon belül a "NuGet Package Manager" fejezetre ugrik, az itt megadott négy lépést kell követni (természetesen azzal a különbséggel, hogy nem a "Newtonsoft.Json" hanem a "CommunityToolkit.Mvvm" csomagra kell a referenciát felvenni).
 
-=== "Add To Favorites"
-    ![Add To Favorites](images/add_to_favorites.png)
+Most, hogy a projektünkbe felvettük ezt a NuGet referenciát, a következő build során (mivel annak részeként lefut egy NuGet update lépés!) letöltődik a NuGet csomag, kicsomagolódnak a benne levő DLL-ek a kimeneti mappába, így azok már szerves részét képezik az alkalmazásnak (egy NuGet csomag tulajdonképpen egy zip állomány). Fontos megemlíteni, hogy Git-be sem a NuGet zip, sem a benne levő dll-ek nem kerülnek fel, a solution gyökerében levő `.gitignore` fájl ezeket kiszűri. Pont ez a NuGet koncepció lényege: a repository kicsi maradhat, mert a projektfájl csak hivatkozásokat tartalmazza a NuGet csomagokra, és amikor valaki egy frissen clone-ozott solution-t buildel, csak ekkor töltődnek le az online NuGet forrásokból a hivatkozott NuGet csomagok.
 
-=== "Remove From Favorites"
-    ![Remove From Favorites](images/remove_from_favorites.png)
+:warning: A fenti NuGet-re vonatkozó koncepciók ismerete fontos, a tananyag fontos részét képezik!
 
-Ezt az igaz-hamis állapotot és módosító műveletet célszerű a `RecipeDetailPageViewModel`-ban tárolni/bevezetni (mivel a ViewModelnek definíció szerint ez a feladata), majd adatkötéssel kötni az állapotot gomb kinézetéhez, illetve a műveletet commandjához. Mindenképpen az MVVM mintát követve dolgozzunk!
+Egy NuGet referencia tulajdonképpen csak egy sor a `.csproj` projektleíró fájlban. A Solution Explorerben a "HelloXaml" projekt csomópontra kattintva nyissuk meg a `.csproj` projektfájlt, és ellenőrizzük, benne van ez a sor (a verzió lehet más lesz):
 
-??? success "RecipeDetailPageViewModel módosítása"
+``` csharp
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+```
 
-    A `RecipeDetailViewModel`-t módosítani szükséges a következőkkel:
+A `csproj` fájl megnyitása nélkül is ellenőrizzük a NuGet referenciánkat: Solution Explorerben nyissuk le a "HelloXaml"/"Dependencies"/"Packages" csomópontot: alatta látható egy "CommunityToolkit.Mvvm (verzió)" csomópont.
 
-    1. Kedvenc állapot tárolása
-        1. Az állapotot egy `bool` típusú property-ben tároljuk (mindenképpen érdemes az  `[ObservableProperty]` attribútumot használni, működésének és jelentőségének átismétlésével).
-        2. Az állapotot az `IRecipeService`-ből lekérdezve inicializáljuk az oldalra való navigáláskor.
-    2. Új command függvény készítése, amely 
-        1. Elmenti az új kedvenc állapotot az `IRecipeService` segítségével.
-        2. Gondoskodik a ViewModel osztályunkban tárolt `bool` kedvenc állapot tulajdonság karbantartásáról.
-   
-        ??? tip "Tipp a megoldáshoz"
-            A megoldás elve hasonlít a SendComment parancsfüggvényhez, de itt a CanExecute-tal nem kell foglalkozzunk, hiszen az új commandunk mindig futtatható.
+### Feladat 1/b - INPC megvalósítás MVVM Toolkit alapokon
 
-    !!! note "Állapot tárolása a modellben"
-        A kedvenc állapotot a `RecipeHeader` modellben is tárolhatnánk, viszont az két másik problémát is generálna: a modellnek kell megvalósítania az `INotifyPropertyChanged` interfészt, hogy az állapot változását jelezni tudja.  Ezen felül az új property értékét valamelyik másik rétegben (ViewModel vagy Service) kellene kitölteni, mivel ez az infó csak lokálisan érhető el, a `RecipeHeader`pedig alapvetően most csak egy DTO (Data Transfer Object) a modell rétegben.
+Most már tudjuk használni az MVVM Toolkit NuGet package-ben levő osztályokat, interfészeket, attribútumokat stb., így át tudunk térni az MVVM Toolkit alapú INPC megvalósításra.
 
-??? success "RecipeDetailPage (vagyis a View) módosítása"
+* Kommentezd ki a `Person` osztályt teljes egészében. 
+* A kikommentezett rész felett vedd fel az osztályt újonnan, de MVVM Toolkit alapú INPC megvalósítással.
+    * A megvalósításban a "INPC példa 4 – MVVM Toolkittel" előadásdia segít.
+    * Partial class kell legyen (vagyis az osztály részei több fájlban is definiálhatók).
+    * A Toolkit-beli `ObservableObject`-ből származzon: ez az ős valósítja meg az `INotifyPropertyChanged` interfészt, így nekünk már nem kell.
+    * `Name` és `Age` tulajdonságok helyett `name` és `age` tagváltozókat vezessünk be, `ObservableProperty` attribútummal ellátva.
+  
+  Meg is vagyunk.
 
-    A `RecipeDetailPage`-en a következőket kell módosítani:
+??? note "A megoldás ellenőrzése"
+    ``` csharp
+    public partial class Person : ObservableObject
+    {
+        [ObservableProperty]
+        private string name;
 
-    1. Új gomb hozzáadása az oldal tetejére, tartalma legyen egy `SymbolIcon` és egy `TextBlock` egymás mellett.
-          1. A `SymbolIcon`-nak a `Symbol` tulajdonságához használjuk a `Symbol.SolidStar` és `Symbol.OutlineStar` enum értékeket a csillag ikonokhoz.
-    2. A gomb commandját adatkötni kell a ViewModel-ben található command-hoz.
-
-    A ViewModel-ben tárolt `bool` értéket valamilyen módon `Symbol` enumra (gomb ikonja) és `string`-re (gomb aktuális szövege) kell konvertálni, hogy a felületen a gomb megjelenése mindkét állapotban a megfelelő legyen. Erre több megoldás is lehetséges:
-
-    - `x:Bind` használata, ahol nem property-t kötünk, hanem egy a xaml.cs-ben lévő segédfüggvényt, mely a konverziót elvégzi. Vagyis property kötés helyett függvény/funkció kötést használunk. Előadásanyagban a "Property kötése funkciókhoz"-ra érdemes rákeresni, illetve a 3. házi feladatban a "függvény kötés példa"-ra.
-    - Az `IValueConverter` interfész implementálása és használata az adatkötés során.
-    - A `RecipeDetailPageViewModel`-ben tároljuk a nézethez szükséges adatokat új tuljadonságokat bevezetve (a tulajdonságok típusa a nézet számára szükséges `Symbol` és `string`), és ezekhez történik az adatkötés.
-        - Talán ez a legegyszerűbb megoldás, ha nem szeretnénk külön konvertert írni vagy az adatkötéseket "bonyolítani", viszont a legkevésbé is lesz karbantartható, mivel a ViewModel view specifikus adatokat is tartalmaz, melyeket külön karban is kell tartani ha a bool property megváltozik.
-
-!!! example "1.2. feladat BEADANDÓ"
-    Illessz be egy képernyőképet az alkalmazásról, ahol a teendő részletes oldalon megjelenik a kedvencnek jelölés gomb! (`f1.2.1.png`)
-
-    Illessz be egy képernyőképet az alkalmazásról, ahol a teendő részletes oldalon egy már kedvencnek jelölt recepthez a kedvencekből eltávolítás gomb jelenik meg! (`f1.2.2.png`)
-
-### 1.3 Kedvencek oldal navigáció
-
-A kedvencek oldalra navigáláshoz több lépésre is szükségünk lesz, melyek a kiinduló projekt sajátosságaiból adódódnak, de ezeket itt részletesen átvesszük (a navigáció megvalósítása nem része a tanagyagnak).
-
-1. Hozzuk létre a `FavoritesPage`-et a `Views` mappában (Add/New Item/Blank Page (WinUI3))
-
-    !!! warning "Fordítási hibák"
-        Ha valamiért egzotikus hibákat kapnánk az új oldal felvétele után töröljük ki a projekt fájlból az alábbi sorokat:
-
-        ```xml
-        <ItemGroup>
-            <None Remove="Views\FavoritesPage.xaml" />
-        </ItemGroup>
-        ```
-
-        ```xml
-        <Page Update="Views\FavoritesPage.xaml">
-            <Generator>MSBuild:Compile</Generator>
-        </Page>
-        ```
-
-2. Hozzuk létre a `FavoritesPageViewModel` osztályt a `ViewModels` mappában
-    1. Gondoskodjunk arról, hogy a megfelelő osztályból származzon!
-    2. Valósítsa meg az `INavigationAware` interfészt a navigáció támogatásához (egyelőre üres függvénytörzzsel).
-3. Regisztráljuk be az `App.xaml.cs`-ben a Dependency Injection konténerbe az új nézetet és az új ViewModelt:
-
-    ```csharp
-    services.AddTransient<FavoritesPage>();
-    services.AddTransient<FavoritesPageViewModel>();
+        [ObservableProperty]
+        private int age;
+    }
     ```
 
-4. A `Pages` osztályban (`PageService.cs`) vegyünk fel egy új kulcsot a kedvencek oldalhoz, és konfiguráljuk a navigációt ehhez a kulcshoz:
+Ez a kód, egy fordítást követően, alapjaiban ugyanazt a megoldást eredményezi, mint a korábbi, sokkal terjengősebb, immár kikommentezett forma. Vagyis születik `Name` és `Age` tulajdonság, megfelelő `PropertyChanged` esemény elsütésekkel. Hogyan lehetséges ez? 
 
-    ```csharp title="Pages"
-    public static string Favorites { get; } = "Favorites";
-    ```
+* Egyrészt az `ObservableObject` ős már megvalósítja az `INotifyPropertyChanged` interfészt, így a `PropertyChanged` esemény tagot is tartalmazza, ezt a származtatás révén  al "megörökli" az osztályunk.
+* A fordítás során lefut az MVVM Toolkit kódgenerátora, mely minden `ObservableProperty` attribútummal ellátott tagváltozóhoz generál egy ugyanolyan nevű, de nagybetűvel kezdődő tulajdonságot az osztályba, mely tulajdonság settere elsüti megfelelő feltételek mellett és megfelelő paraméterekkel a `PropertyChanged` eseményt. Hurrá, ezt a kódot akkor nem nekünk kell megírni.
+* Kérdés, hol keletkezi ez a kód. Az osztályunk egy másik "partial" részében. Egy fordítást követően Visual Studio-ban jobb gombbal kattintsunk a `Person` osztály nevén, majd a felugró menüben "Go to Definition". Ekkor egy alsó ablakban két találatot is kapunk: az egyik az általunk írt fenti kód, a másik ("public class Person") a generált részre ugrik egy duplakatt hatására: látszik, hogy viszonylag terjengős kódot generált a kódgenerátor, de ami nekünk fontos, hogy itt található a `Name` és `Age` tulajdonság, benne - többek között - a `OnPropertyChanged` elsütésével.
 
-    ```csharp title="PageService konstruktor"
-    Configure<FavoritesPageViewModel, FavoritesPage>(Pages.Favorites);
-    ```
+Mivel sokkal kevesebb kódot kell írni, a gyakorlatban az MVVM Toolkit alapú megoldást szoktuk használni (de a manuális megoldást is tudni kell, ez alapján érthető, mi is történik a színfalak mögött).
 
-5. A `ShellPage`-en a `NavigationView`-hoz adjunk hozzá egy új `NavigationViewItem`-et a kedvencek oldalhoz:
+!!! example "BEADANDÓ"
+    Készíts egy képernyőmentést `f1b.png` néven az alábbiak szerint:
 
-    ```xml
-    <NavigationViewItem helpers:NavigationHelper.NavigateTo="Favorites" Content="Favorites">
-        <NavigationViewItem.Icon>
-            <SymbolIcon Symbol="SolidStar" />
-        </NavigationViewItem.Icon>
-    </NavigationViewItem>
-    ```
+    - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
+    - a „háttérben” a Visual Studio legyen, a `Person.cs` megnyitva.
+  
+## Feladat 2 - Áttérés MVVM alapú megoldásra
 
-    !!! note "Navigáció"
-        A navigáció a `helpers:NavigationHelper.NavigateTo="Favorites"` attached property segítségével történik, ahol azt a kulcsot adhatjuk meg, amilyen kulcsú oldalra navigálni szeretnénk.
+Az előző lépésben, bár az MVVM Toolkitet használtuk, még nem tértünk át MVVM alapú megoldára (a toolkitet csak az INPC egyszerűbb megvalósítására használtuk). 
 
-### 1.4 Kedvencek oldal logika
+A következőkben átalakítjuk az alkalmazásunk architektúráját, hogy az MVVM koncepcióját kövesse. Az egyszerűbb megvalósítás érdekében építünk az MVVM Toolkitre.
 
-A kedvencek oldal (`FavoritesPage`) a `MainPage` mintájára készüljön el, és a receptek listáját jelenítse meg, csoportosítás nélkül (!) egy `AdaptiveGridView` vezérlőben.
+**Feladat**: Dolgozd fel a kapcsolódó előadásanyagot (WinUI anyagrész végén található):
+ 
+ * Értsd meg az MVVM minta alapkoncepcióit.
+ * Az előadásdiákon található példák teljes kódja elérhető az [Előadás GitHub repository](https://github.com/bmeviauab00/eloadas-demok) "04-05 WinUI\DancerProfiles" mappában ("RelaxedMVVM" és "StrictMVVM"), ezek segíthetnek a megértésben és a későbbi feladatok megoldásában. 
 
-![Favorites Page](images/favorites_page.png)
+Mit is jelent az MVVM minta a példánkra vetítve:
 
-A ViewModel (`FavoritesPageViewModel`) a `MainPageViewModel` mintájára készüljön el, és a navigáció során kérdezze le az `IRecipeService`-től a kedvenc receptek listáját (`GetFavoriteRecipesAsync`) és tárolja el egy megfelelő, pl. generált tulajdonságba. Mivel itt nem csoportosítjuk a recepteket, `RecipeGroup`-ok helyett `RecipeHeader`-ekkel kell dolgozni.
+* A model osztály a `Models` mappában levő `Person` osztály, egy személy adatait reprezentálja (UI logikát NEM tartalmaz, független mindenféle megjelenítéstől).
+* Jelen pillanatban minden,  megjelenítéshez kapcsolódó leírás/logika a `PersonListPage`-ben van. :exclamation: A mostani `PersonListPage`-et **kettévágjuk**:
+    * A `PersonListPage.xaml` és a code behindja lesz a View.
+    * Bevezetünk egy a `PersonListPage`-hez tartozó ViewModel-t `PersonListPageViewModel` néven.
+        * :exclamation: Kulcsfontosságú: a `PersonListPage` code behindból minden megjelenítési logikát átmozgatunk a `PersonListPageViewModel`-be. **A minta lényege az, hogy a View csak tisztán a felület leírását tartalmazza, a megjelenítési logikának a ViewModelben van a helye.** 
+* A minta másik alappillére: a View-nk tartalmaz egy hivatkozást a ViewModeljére (mégpedig egy tulajdonság formájában).
+    * A példánkban azt jelenti, hogy a `PersonListPage`-nek kell legyen egy `PersonListPageViewModel` tulajdonsága. 
+    * :exclamation: Ez azért kulcsfontosságú, mert `PersonListPage` xaml fájlunkban ezen tulajdonságon keresztül tudunk adatkötést megvalósítani a ViewModel-be átmozgatott tulajdonságokra és eseménykezelőkre! 
+* A `PersonListPageViewModel` "dolgozik" a modellel és kezeli a felhasználói interakciókat (eseménykezelők).
+* Mivel a Relaxed, és nem a Strict MVVM mintát használjuk, a `Person` modellosztályunk köré már nem vezetünk be egy `PersonViewModel` csomagolót.
 
-!!! example "1.4. feladat BEADANDÓ"
-    Illessz be egy képernyőképet az alkalmazásról, ahol kedvencek lista látható! (`f1.4.png`)
+Feladat: alakítsd át a meglévő logikát így, hogy a fenti elveket követő MVVM mintát kövesse. A `PersonListPageViewModel` osztályt egy újonnan létrehozott `ViewModels` mappába tedd. Próbáld magad kidolgozni a megoldást a fenti segítség alapján! Ehhez egy előzetes tippet adunk, mert erre nehezebb rájönni: Az eseményekhez az eseménykezelő műveleteket adatkötéssel is meg lehet adni: lásd előadás dia "Események és funkciók kötése" címmel (az átalakítás után az eseménykezelőket csak így tudjuk megadni). Az is fontos, hogy adatkötni csak publikus tulajdonsághoz/művelethez lehet, ennek kapcsán is lesz átalakítandó!
 
-## Beadás
+??? "Tippek / megoldás visszaellenőrzése"
+    1. `PersonListPage.xaml.cs` code-behind fájlból szinte mindent (kivéve `this.InitializeComponent()` hívás a konstruktorban) át kell mozgatni az újonnan bevezetett `PersonListPageViewModel`-be, mert ez mind UI logika.
+    2. A `PersonListPageViewModel` publikus osztály legyen.
+    3. A `PersonListPage` code behindba fel kell venni egy ViewModel nevű, `PersonListPageViewModel` típusú, csak getterrel rendelkező auto implementált tulajdonságot, és ezt egy új objektumra inicializálni is kell. Vagyis a view hozza létre és tartalmazza a ViewModel-t!
+    4. A `PersonListPage.xaml`-ben az két `TextBox` adatkötését megfelelően igazítani kell (a `NewPerson.Name` és `NewPerson.Age` már egy szinttel mélyebben, a code behind ViewModel tulajdonságán keresztül érhető el).
+    5. A `PersonListPage.xaml`-ben az eseménykezelők (`Click`) igazítása három helyen. Ezt trükkösebb. Eseménykezelő függvény az eddig alkalmazott szintaktikával nem adható már meg, mert az eseménykezelők nem a code behindban találhatók (átkerültek a ViewModel-be). 
+         * Az eseményekhez az eseménykezelő műveleteket adatkötéssel is meg lehet adni! Lásd előadás dia "Események és funkciók kötése" címmel. Ez nekünk azért jó, mert a code behind ViewModel tulajdonságában ott a `PersonListPageViewModel` objektum, melyben ott vannak az eseménykezelők (`AddButton_Click`, `IncreaseButton_Click`, `DecreaseButton_Click`), ezeket kell kötött tulajdonságként megadni az adatkötésben (pl. `ViewModel.AddButton_Click` stb.).
+         * Fontos, hogy az eseménykezelő függvények legyenek publikusak, máskülönben nem működik az adatkötés (át kell alakítani privátról).
 
-Ellenőrzőlista ismétlésképpen:
+További lényeges átalakítandók:
 
---8<-- "docs/hazi/beadas-ellenorzes/index.md:3"
+* A ViewModel-ben jelenleg a `Click` eseménykezelők nevei: `AddButton_Click`, `IncreaseButton_Click` és `DecreaseButton_Click`. Ez nem szerencsés. A ViewModel-ben "szemantikailag" nem eseménykezelőkben gondolkodunk. Helyette módosító műveletekben, melyek módosítják a ViewModel állapotát. A fentiek helyett ennek megfelelően sokkal jobban passzoló és kifejező nevek az `AddPersonToList`, `IncreaseAge` és `DecreaseAge`. Nevezzük át a függvényeket ennek megfelelően! Persze a továbbiakban is adatkötéssel ezeket kötjük a XAML fájlban a `Click` eseményekhez.
+* A fenti függvények paraméterlistája egyelőre az "`object sender, RoutedEventArgs e`". Ugyanakkor ezeket a paramétereket nem használjuk semmire. Szerencsére a x:Bind esemény adatkötés rugalmas annyira, hogy paraméter nélküli művelet is megadható, azzal is jól működik. Ennek tudatában távolítsuk el a fenti felesleges paramétereket a ViewModelünk három függvényéből. Így egy letisztultabb megoldást kapunk.
+
+Ellenőrizzük, hogy az átalakítások után is pontosan ugyanúgy működik az alkalmazás, mint előtte!
+
+Mit nyertünk azzal, hogy korábbi megoldásunkat MVVM alapúra alakítottuk át? A választ az előadásanyag adja meg! Pár dolog kiemelve:
+
+* Szépen különválnak (nem keverednek) a különböző felelősségű részek, így jobban megérthető:
+    * UI független logika (model és kapcsolódó osztályok).
+    * UI logika (ViewModel)
+    * UI puszta megjelenés (View)
+* Mivel a UI logika külön van, lehet(ne) hozzá unit teszteket írni
+
+Minél komplexebb egy alkalmazás, annál inkább igazak ezek.
+
+!!! example "BEADANDÓ"
+    Készíts egy képernyőmentést `f2.png` néven az alábbiak szerint:
+
+    - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
+    - a „háttérben” a Visual Studio legyen, a `PersonListPageViewModel.cs` megnyitva.
+
+## Feladat 3 - Vezérlők tiltása/engedélyezése
+
+Jelen állapotban kissé furcsán viselkedik az alkalmazás: a "-" gombbal negatív tartományba is vihető egy életkor, vagy a "+"-szal 150 fölé, illetve a "+Add" gombbal olyan személy is felvehető, mely értelmetlen tulajdonságokkal rendelkezik. Ezeket a gombokat le kellene tiltani, amikor az általuk kiváltott műveletnek nincs értelme, illetve engedélyezni, amikor van.
+
+A következő lépésben valósítsuk meg a "-" gomb tiltását/engedélyezését ennek megfelelően. A gomb akkor legyen csak engedélyezett, ha a személy életkora 0-nál nagyobb.
+
+Próbáld ezt első körben magadtól megvalósítani, legalábbis az alapjait lefektetni! Mindenképpen adatkötés alapú megoldásban gondolkozz, csak ez fogadható el! Ha elakadsz, a megoldásod nem "akar" működni, akkor gondold át, mi lehet az oka, a megoldást pedig az alábbiaknak megfelelően alakítsd ki.
+
+A problémára többféle megoldás is kidolgozható. Mindben közös, hogy a "-" gomb `IsEnabled` tulajdonságát kötjük valamilyen módon. Az általunk választott megoldásban egy a `PersonListPageViewModel`-ben újonnan bevezetett bool tulajdonsághoz kössük. 
+
+``` csharp title="PersonListPageViewModel.cs"
+    public bool IsDecrementEnabled
+    {
+        get { return NewPerson.Age > 0; }
+    }
+```
+
+``` xml title="PersonListPage.xaml-be a '-' gombhoz"
+    IsEnabled="{x:Bind ViewModel.IsDecrementEnabled, Mode=OneWay}"
+```
+
+Próbáljuk ki! Sajnos nem működik, a "-" gomb nem tiltódik le, amikor 0 vagy kisebb értékű lesz az életkor (pl. a gomb sokszori kattintásával). Ha töréspontot teszünk az `IsDecrementEnabled` belsejébe, és így indítjuk az alkalmazást, azt tapasztaljuk, hogy a tulajdonság értékét csak egyszer kérdezi le a kötött vezérlő, az alkalmazás indulásakor: utána hiába kattintunk pl. a "-" gombon, többször nem. Próbáljuk ki!
+
+Gondold át, mi okozza ezt, és csak utána haladj tovább az útmutatóval!
+
+??? tip "Indoklás"
+    A korábban tanultaknak megfelelően az adatkötés csak akkor kérdezi le a forrástulajdonság (esetünkben `IsDecrementEnabled`) értékét, ha annak változásáról az `INotifyPropertyChanged` segítségével értesítést kap! Márpedig, jelen megoldásunkban hiába változik a `NewPerson` objektum `Age` tulajdonsága, ennek megtörténtekor a semmiféle értesítés nincs az erre épülő `IsDecrementEnabled` tulajdonság megváltozásáról!
+
+A következő lépésben valósítsuk meg a kapcsolódó változásértesítést a ViewModel osztályunkban:
+
+* MVVM Toolkit "alapokon" valósítsd meg az `INotifyPropertyChanged` interfészt!
+* Az `IsDecrementEnabled` tulajdonság maradhat a mostani formájában (egy getter only property), nem szükséges `[ObservableProperty]` alapúra átírni (de az is jó megoldás és a házi feladat tekintetében is teljesen elfogadható, csak kicsit másként kell dolgozni a következő lépésekben).
+* Próbáld magadtól megvalósítani a következőt a ViewModel osztályban (a `Person` marad változatlan): amikor a `NewPerson.Age` változik, akkor az ősből örökölt `OnPropertyChanged` hívásával jelezzük a `IsDecrementEnabled` tulajdonság változását. Tipp: a `Person` osztály már rendelkezik `PropertyChanged` eseménnyel, hiszen maga is megvalósítja az `INotifyPropertyChanged` interfészt, erre az eseményre fel lehet iratkozni! Az egyszerűség érdekében az nem zavar minket, ha az `IsDecrementEnabled` változását esetleg akkor is jelezzük, ha tulajdonképen "logikailag" estleg nem is változik.
+* A fentieket külön eseménykezelő függvény bevezetése nélkül is meg lehet oldani: javasoljuk, hogy így dolgozz, de nem kötelező (tipp: eseménykezelő megadása lambda kifejezéssel).
+
+Teszteld is a megoldásod! Ha jól dolgoztál, a gombnak akkor is le kell tiltódnia, ha a TextBoxba kézzel írsz be negatív életkor értéket (és kikattintasz a TextBoxból). Gondold át, miért van ez így!
+
+A "+" gombra és a "+Add" gomra is dolgozz ki hasonló megoldást!
+
+* Az életkor maximális "elfogadható" értéke 150 legyen.
+* A név csak akkor elfogadható, ha van benne legalább egy nem whitespace karakter (ez utóbbi ellenőrzésére a string osztály `IsNullOrWhiteSpace` statikus műveletét használd).
+* Azzal az esettel nem kell foglalkozni, hogy ha a felhasználó az életkor TextBox-ba nem érvényes számot ír be (ezt jelen megoldással nem is lehet kezelni).
+
+A tesztelés során azt tapasztaljuk, hogy ha pl. kitöröljük a nevet a név TextBox-ban, a "+Add" gomb állapota nem azonnal változik, hanem csak ha elhagyjuk a TextBox-ot? Miért van ez? Módosítsd a megoldásod, hogy ez minden szöveg változáskor, a TextBox elhagyása nélkül is megtörténjen. Tipp: lásd előadásanyag "x:Bind mikor frissül az adat?" című dia.
+
+!!! example "BEADANDÓ"
+    Készíts egy képernyőmentést `f3.png` néven az alábbiak szerint:
+
+    - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
+    - az életkor legyen 0-ra lecsökkentve az alkalmazásban,
+    - a „háttérben” a Visual Studio legyen, a `PersonListPageViewModel.cs` megnyitva.
+
+## Feladat 4 - Command használata
+
+Jelen pillanatban a "-" gomb vonatkozásában esetében két feladatunk van:
+
+* A `Click` esetén az eseménykezelő művelet futtatása
+* A gomb tiltása/engedélyezése az `IsEnabled` tulajdonság segítségével
+
+Bizonyos vezérlők - ilyen a gomb is - támogatják, hogy ezt a kettőt, a Command mintára építve, egy parancs objektum segítségével adhassuk meg. A  Command tervezési minta koncepciójával a "Tervezési minták 3" előadás alapján lehet résztelesebben megismerkedni (bár ott csak az alap Command mintával ismerkedtünk meg, mely a parancs futtatását támogatja, tiltását/engedélyezését nem). A Command minta MVVM specifikus megvalósításával a WinUI előadássorozat vége felé, a "Command minta" című diától kezdve lehet megismerkedni.
+
+Az alapelv a következő: a gombnál a `Click` és `IsEnabled` "megadása" helyett a gomb `Command` tulajdonságát állítjuk egy `ICommand` interfészt megvalósító command objektumra. A futtatás, illetve tiltás/engedélyezés már ezen command objektum feladata.
+
+Alapesetben egy alkalmazásban minden parancshoz egy külön `ICommand` implementációt kellene készíteni. Ez azonban sok parancs esetén sok osztály bevezetését igényli. Az MVVM Toolkit ebben is a segítségünkre siet. Biztosít egy `RelayCommand` osztályt, mely megvalósítja az `ICommand` interfészt. Ez az osztály bármilyen parancs/kód futtatására használható, így nem kell további command osztályokat bevezetni. Hogyan lehetséges ez? Úgy, hogy a `RelayCommand`-nak konstruktor paraméterekben, két delegate formájában tudjuk a végrehajtáshoz és a tiltáshoz/engedélyezéshez tartozók kódot:
+
+* Első paraméterben a parancs futtatásakor végrehajtandó kódot adjuk meg.
+* Második paraméterben (ez opcionális) azt a kódot, melyet a command hív annak ellenőrzésére, hogy engedélyezni/tiltani kell magát (az itt megadott függvénynek  bool-lal kell visszatérnie, true esetben engedélyezett lesz a parancs).
+
+A következő lépésben a "-" gomb kezelését alakítjuk át command alapúra. Először próbáld a nagyját önállóan megvalósítani a kapcsolódó WinUI előadásanyag alapján. A parancs futtatása egyszerűbb, de a parancs tiltás-engedélyezéshez lesz még teendőnk. Főbb lépések:
+
+* Egy csak getterrel rendelkező publikus `RelayCommand` tulajdonság felvétele a ViewModel-be, pl. `DecreaseAgeCommand` néven. Az előadásanyaggal ellentétben esetünkben nem kell a `RelayCommand`-nak generikus paramétert megadni, mert a parancskezelő függvényünknek (`DecreaseAge`) nincs paramétere.
+* Az újonnan bevezetett tulajdonságnak a ViewModel konstruktorban értéket adni. A `RelayCommand` konstruktor paramétereit add meg megfelelően.
+* A `PersonListPage.xaml`-ben a "-" gombnál a `Click` és `IsEnabled` adatkötésére nincs már szükség, ezek törlendők. Helyette a gomb `Command` tulajdonságát kösd a ViewModel-ben az előző lépésben bevezetett `DecreaseAgeCommand` tulajdonsághoz.
+
+Ha kipróbáljuk, a parancs futtatás működik, a tiltás/engedélyezés viszont még nem: ha jól megfigyeljük, a gomb mindig engedélyezett marad megjelenésében. Ennek, kicsit jobban belegondolva, logikus oka van: a `RelayCommand` meg tudja ugyan hívni a második konstruktor paraméterében megadott műveletet az állapot ellenőrzéséhez, de nem tudja, hogy minden `NewPerson.Age` változáskor meg kellene ezt tennie! Ezen tudunk segíteni. A ViewModel-ünk konstruktorában már feliratkoztunk korábban a `NewPerson.PropertyChanged` eseményre: erre építve, amikor változik az életkor (vagy amikor változhat, az nem probléma, ha néha feleslegesen megtesszük) hívjuk meg a `DecreaseAgeCommand` `NotifyCanExecuteChanged` műveletét. Ennek nagyon beszédes neve van: értesíti a parancsot, hogy megváltoz(hat)ott az állapot, mely alapján a tiltott/engedélyezett állapota frissül, így frissíteni fogja magát, pontosabban a parancshoz tartozó gomb állapotát.
+
+Írd át "+" gomb kezelését is hasonlóan, parancs alapúra! A "+Add" gomb kezelését ne változtasd meg!
+
+!!! example "BEADANDÓ"
+    Készíts egy képernyőmentést `f3.png` néven az alábbiak szerint:
+
+    - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
+    - a név TextBox legyen üres az alkalmazásban,
+    - a „háttérben” a Visual Studio legyen, a `PersonListPageViewModel.cs` megnyitva.
+
+## Feladat 4 - Command használata MVVM Toolkit alapú kódgenerálással
+
+Az előző feladatban a command tulajdonságok bevezetését és azok példányosítását "manuálisan" oldottuk meg. Az MVVM Toolkit ezt le tudja egyszerűsíteni: megfelelő attribútum alkalmazása esetén a tulajdonságot és a példányosítást automatikusan le tudja generálni.
+
+Alakítsuk át a `DecreaseAgeCommand` kezelését (csak ezt, az `IncreaseAgeCommand` maradjon!) generált kód alapúra:
+
+1. Lássuk el a `PersonListPageViewModel` osztályt a partial kulcsszóval.
+2. Töröljük ki a `DecreaseAgeCommand` tulajdonságot és ennek példányosítását a konstruktorból.
+3. A `DecreaseAge` műveletet lássuk el ezzel az attribútummal: `[RelayCommand(CanExecute = nameof(IsDecrementEnabled))]`. 
+    * Ennek hatására a kódgenerátor bevezet egy `RelayCommand` tulajdonságot az osztályban, melynek neve a műveletünk neve (`DecreaseAge`), hozzáfűzve a "Command" stringet. Ezzel meg is kapjuk a korábban kézzel bevezetett `DecreaseAgeCommand` nevű tulajdonságot.
+    * A `CanExecute` attribútum tulajdonságban egy string formában annak a boollal visszatérő műveletnek vagy tulajdonságnak a nevét lehet megadni, melyet a generált kód a parancs tiltásának/engedélyezésének során használ (a RelayCommand konstruktor második paramétere lesz). Nekünk már van ilyen tulajdonságunk, "IsDecrementEnabled" névben. Azért nem egyszerű string formájában adjuk meg, mert ha utólag valaki átnevezi az `IsDecrementEnabled` műveletet, akkor a mostani "IsDecrementEnabled" már nem jó műveletre mutatna. A `nameof` kifejezés használatával ez a probléma elkerülhető. A `CanExecute` megadása általánosságában nem kötelező (nem adjuk meg, ha nem akarjuk a parancsot soha tiltani).
+
+:exclamation: A kódgenerátor szokásosan az osztályunk másik "partial" felébe dolgozik, annak érdekében, hogy ne keveredjen az általunk írt és a generált kód! A partial classokat leggyakrabban a kézzel írt és a generált kód "különválasztására" használjuk.
+
+Próbáljuk ki, a megoldásunknak (életkor csökkentése) ugyanúgy kell működnie, mint korábban.
+
+!!! example "BEADANDÓ"
+    Készíts egy képernyőmentést `f4.png` néven az alábbiak szerint:
+
+    - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
+    - a „háttérben” a Visual Studio legyen, a `PersonListPageViewModel.cs` megnyitva.
