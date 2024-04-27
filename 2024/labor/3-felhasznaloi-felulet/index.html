@@ -661,9 +661,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#vissza-vezerlobol-adatforrasba-iranyu-adatkotes" class="md-nav__link">
+  <a href="#ketiranyu-iranyu-adatkotes" class="md-nav__link">
     <span class="md-ellipsis">
-      Vissza (vezérlőből adatforrásba) irányú adatkötés
+      Kétirányú irányú adatkötés
     </span>
   </a>
   
@@ -1744,9 +1744,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#vissza-vezerlobol-adatforrasba-iranyu-adatkotes" class="md-nav__link">
+  <a href="#ketiranyu-iranyu-adatkotes" class="md-nav__link">
     <span class="md-ellipsis">
-      Vissza (vezérlőből adatforrásba) irányú adatkötés
+      Kétirányú irányú adatkötés
     </span>
   </a>
   
@@ -2375,16 +2375,20 @@ Lehetőségünk van akár saját Markup Extension-t is készíteni, de ez nem ta
 </li>
 </ol>
 <p>Próbáljuk ki! Az eseménykezelők változtatják az adatforrást (<code>NewPerson</code>), ennek hatására most már változik a felület is a megfelelően előkészített adatkötés miatt.</p>
-<h2 id="vissza-vezerlobol-adatforrasba-iranyu-adatkotes">Vissza (vezérlőből adatforrásba) irányú adatkötés<a class="headerlink" href="#vissza-vezerlobol-adatforrasba-iranyu-adatkotes" title="Permanent link">&para;</a></h2>
-<p>Az Age mintájára, a Name tulajdonságra vonatkozó adatkötést is állítsuk egyirányúra:</p>
+<h2 id="ketiranyu-iranyu-adatkotes">Kétirányú irányú adatkötés<a class="headerlink" href="#ketiranyu-iranyu-adatkotes" title="Permanent link">&para;</a></h2>
+<p>Az <code>Age</code> mintájára, a <code>Name</code> tulajdonságra vonatkozó adatkötést is állítsuk egyirányúra:</p>
 <div class="highlight"><pre><span></span><code>Text=&quot;{x:Bind<span class="w"> </span>NewPerson.Name,<span class="w"> </span>Mode=OneWay}&quot;
 </code></pre></div>
 <p>Indítsuk ez az alkalmazást, majd ezt követően tegyünk egy töréspontot a <code>Person</code> osztály <code>Name</code> tulajdonságának setterébe (<code>if (name != value)</code> sor) , és próbáljuk, hogy vissza irányba is működik-e az adatkötés: ha megváltoztatjuk az egyik <code>TextBox</code> értékét, megváltozik-e a <code>NewPerson</code> objektum <code>Name</code> tulajdonsága? Gépeljünk valamit a Name-hez tartozó szövegdobozba, majd kattintsunk át egy másik mezőbe: ekkor a Textbox tartalma "véglegesítődik", tartalma vissza kellene íródjon az adatforrásba, de mégsem történik meg, nem fut rá a kód a töréspontunkra.</p>
-<p>Ez azért van így, mert fentebb <code>OneWay</code> adatkötést használtunk, mely csak az adatforrásból a felületre irányú adatkötést jelent. <strong>A vissza irányhoz <code>TwoWay</code>-re kell állítsuk az adatkötés módját.</strong></p>
+<p>Ez azért van így, mert fentebb <code>OneWay</code> adatkötést használtunk, mely csak az adatforrásból a felületre irányú adatkötést jelent. Ha azt szeretnénk, hogy az adatkötés a másik irányba is működjön (vezérlőből adatforrásba), ahhoz  <strong><code>TwoWay</code></strong>-re kell állítsuk az adatkötés módját. Ezt <strong>kétirányű adatkötésnek</strong> nevezzük.</p>
 <div class="highlight"><pre><span></span><code>Text=&quot;{x:Bind<span class="w"> </span>Name,<span class="w"> </span>Mode=TwoWay}&quot;
 Text=&quot;{x:Bind<span class="w"> </span>Age,<span class="w"> </span>Mode=TwoWay}&quot;
 </code></pre></div>
-<p>Próbáljuk ki! Így már működik a vissza irányú adatkötés is: a vezérlő adott tulajdonsága (esetünkben szövege) és az adatforrás bármely irányú változás esetén szinkronban marad.</p>
+<p>Próbáljuk ki! Így az adatkötés már mindkét irányba működik:</p>
+<ul>
+<li>Ha a forrástulajdonság (pl. <code>NewPerson.Name</code>) változik, akkor a vezérlő kötött tulajdonsága (pl. <code>TextBox.Text</code>) ezzel szinkronban marad.</li>
+<li>Ha a cél (vezérlő) tulajdonság változik (pl. <code>TextBox.Text</code>), akkor az forrástulajdonság (pl. <code>NewPerson.Name</code>) ezzel szinkronban marad.</li>
+</ul>
 <h2 id="listak">Listák<a class="headerlink" href="#listak" title="Permanent link">&para;</a></h2>
 <p>A következőkben a listás adatkötés alkalmazását fogjuk gyakorolni.
 Vegyük fel a <code>Person</code>-ök listáját a nézetünk code-behind fájljába, a konstruktor elején pedig adjunk neki kezdőértéket.</p>
@@ -2476,8 +2480,8 @@ Alapértelmezetten ugyanis a <code>ListView</code> a <code>ToString()</code>-et 
         </path>
       </svg>
     </span>
-    <span title="2024. április 18. 11:23:56">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-18T11:23:56+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-18</span>
+    <span title="2024. április 27. 16:49:15">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-27T16:49:15+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-27</span>
     </span>
   </span>
 
