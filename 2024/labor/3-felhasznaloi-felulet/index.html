@@ -1956,7 +1956,7 @@ Most kézzel fogunk XAML-t írni és ezzel a felületet kialakítani. Vegyünk f
 <span class="w">    </span><span class="nt">&lt;/StackPanel&gt;</span>
 <span class="nt">&lt;/Button&gt;</span>
 </code></pre></div>
-<p>A <code>StackPanel</code> egy egyszerű, vezérlők elrendezésére szolgáló layout panel:  a tartalmazott vezérlőket <code>Horizental</code> <code>Orientation</code> megadása esetén egymás mellé, <code>Vertical</code> <code>Orientation</code> esetén egymás alá helyezi el. Így a példánkban egyszerűen egymás mellé teszi a két vezérlőt.</p>
+<p>A <code>StackPanel</code> egy egyszerű, vezérlők elrendezésére szolgáló layout panel:  a tartalmazott vezérlőket <code>Horizontal</code> <code>Orientation</code> megadása esetén egymás mellé, <code>Vertical</code> <code>Orientation</code> esetén egymás alá helyezi el. Így a példánkban egyszerűen egymás mellé teszi a két vezérlőt.</p>
 <p>Az eredmény a következő:</p>
 <p><a class="glightbox" href="images/record-button.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="record button" src="images/record-button.png" /></a></p>
 <div class="admonition note">
@@ -2365,7 +2365,7 @@ Lehetőségünk van akár saját Markup Extension-t is készíteni, de ez nem ta
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Terjengős a kód?</p>
-<p>A későbbiekben ezt a logikát ki is szervezhetnénk egy ősosztályba, de ez már az MVVM mintát vezetné elő, mely egy későbbi tematikához kapcsolódik. Tehát ne ijedjünk meg ettől a kissé csúnyányka kódtól.</p>
+<p>A későbbiekben ezt a logikát ki is szervezhetnénk egy ősosztályba, de ez már az MVVM mintát vezetné elő, mely egy későbbi tematikához kapcsolódik. Tehát ne ijedjünk meg ettől a kissé csúnyácska kódtól.</p>
 </div>
 </li>
 <li>
@@ -2416,8 +2416,8 @@ Vegyük fel a <code>Person</code>-ök listáját a nézetünk code-behind fájlj
 </code></pre></div>
 <p>Próbáljuk ki!</p>
 <p>Látjuk, hogy megjelent két elem a listában. Persze nem az van kiírva, amit mi szeretnénk, de ezen könnyen segíthetünk.
-Alapértelmezetten ugyanis a <code>ListView</code> a <code>ToString()</code>-et hív a listaelemeken, ami ha nem definiáljuk felül, akkor az osztály típusának <code>FullName</code> tulajdonsága (vagyis a típus neve).</p>
-<p>Állítsunk be a <code>ListView</code>-nk <strong><code>ItemTemplate</code> tulajdonságát</strong> (a már jól ismert property element syntax-szal), mely a listaelem megjelenését adja meg egy sablon segítségével: esetünkben legyen ez egycellás <code>Grid</code>, ahol a <code>TextBlock</code>-ok a <code>Person</code> tulajdonságait jelenítik meg, a nevet balra, az életkort jobbra igazítva.</p>
+Alapértelmezetten ugyanis a <code>ListView</code> <code>ToString()</code>-et hív a listaelemeken, ami ha nem definiáljuk felül, akkor az osztály típusának <code>FullName</code> tulajdonsága (vagyis a típus neve).</p>
+<p>Állítsunk be a <code>ListView</code>-unk <strong><code>ItemTemplate</code> tulajdonságát</strong> (a már jól ismert property element syntax-szal), mely a listaelem megjelenését adja meg egy sablon segítségével: esetünkben legyen ez egycellás <code>Grid</code>, ahol a <code>TextBlock</code>-ok a <code>Person</code> tulajdonságait jelenítik meg, a nevet balra, az életkort jobbra igazítva.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;ListView</span><span class="w"> </span><span class="na">Grid.Row=</span><span class="s">&quot;3&quot;</span><span class="w"> </span><span class="na">Grid.ColumnSpan=</span><span class="s">&quot;2&quot;</span><span class="w"> </span><span class="na">ItemsSource=</span><span class="s">&quot;{x:Bind People}&quot;</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nt">&lt;ListView.ItemTemplate&gt;</span>
 <span class="w">        </span><span class="nt">&lt;DataTemplate</span><span class="w"> </span><span class="na">x:DataType=</span><span class="s">&quot;model:Person&quot;</span><span class="nt">&gt;</span>
@@ -2463,7 +2463,7 @@ Alapértelmezetten ugyanis a <code>ListView</code> a <code>ToString()</code>-et 
 <ul>
 <li>A <code>Binding</code> alapértelmezett módja a <code>OneWay</code> és nem a <code>OneTime</code>: tehát figyeli a változásokat alapértelmezetten, míg az <code>x:Bind</code>-nél ezt explicit meg kell adni.</li>
 <li>A <code>Binding</code> alapértelmezetten a <code>DataContext</code>-ből dolgozik, de lehetőség van állítani az adatkötés forrását. Míg az <code>x:Bind</code> alapértelmezetten a nézetünk osztályából (xaml.cs) köt.</li>
-<li>A <code>Binding</code> futásidőben dolgozik reflection segítségével, így egyrészt nem kapunk fordítás idejű hibákat, ha valamit elírtunk volna, másrészt pedig sok adatkötés (1000-es nagyságrend) jelentésen lassíthatja az alkalmazásunkat.</li>
+<li>A <code>Binding</code> futásidőben dolgozik reflection segítségével, így egyrészt nem kapunk fordítás idejű hibákat, ha valamit elírtunk volna, másrészt pedig sok adatkötés (1000-es nagyságrend) jelentősen lassíthatja az alkalmazásunkat.</li>
 <li>Az <code>x:Bind</code> fordítás idejű, így a fordító ellenőrzi, hogy a megadott tulajdonságok léteznek-e. Adatsablonokban nyilatkozni kell a <code>DataTemplate</code> megadása során, hogy az milyen adatokon fog dolgozni az <code>x:DataType</code> attribútummal.</li>
 <li>Az <code>x:Bind</code> esetében lehetőség van metódusokat is kötni, míg a <code>Binding</code>-nél csak konvertereket lehet használni. Függvények kötése esetén a változásértesítés a paraméterek változására is működik.</li>
 </ul>
@@ -2480,8 +2480,8 @@ Alapértelmezetten ugyanis a <code>ListView</code> a <code>ToString()</code>-et 
         </path>
       </svg>
     </span>
-    <span title="2024. április 27. 16:55:51">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-27T16:55:51+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-27</span>
+    <span title="2024. április 29. 18:50:23">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-29T18:50:23+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-29</span>
     </span>
   </span>
 
@@ -2498,6 +2498,8 @@ Alapértelmezetten ugyanis a <code>ListView</code> a <code>ToString()</code>-et 
     <span>Szerzők</span>
     <nav><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@tibitoth">
         <img src="https://avatars.githubusercontent.com/tibitoth?size=72" alt="@tibitoth">
+      </a><a href="https://github.com/03vmate" target="_blank" rel="noopener noreferrer" class="md-author" title="@Mate Varga">
+        <img src="https://avatars.githubusercontent.com/u/47510515?u=853a81ff1cc1f87f5d90dcc93cac5d06a4260755&v=4?size=72" alt="@Mate Varga">
       </a><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
         <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&v=4?size=72" alt="@Zoltán Benedek">
       </a><a href="https://github.com/norbertkurcsi" target="_blank" rel="noopener noreferrer" class="md-author" title="@Kurcsi Norbert">
