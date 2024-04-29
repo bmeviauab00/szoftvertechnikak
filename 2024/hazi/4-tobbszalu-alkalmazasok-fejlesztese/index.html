@@ -2306,14 +2306,14 @@ Fontos megjegyzés: a <code>volatile</code> alkalmazására nincs szükség, ha 
 <p class="admonition-title">Fontos</p>
 <p>A fenti lépések/elvek megfelelő követése esetén is fennáll, hogy megoldás még nem működőképes. Ha elindítjuk a versenyt, az alábbi kivétel dobódik az <code>UpdateBikeUI</code> függvényben a biciklihez tartozó <code>TextBlock</code> hozzáférés során: <code>System.Runtime.InteropServices.COMException: 'The application called an interface that was marshalled for a different thread. (0x8001010E (RPC_E_WRONG_THREAD))</code></p>
 </div>
-<p>Mi ennek a a hibának az oka? Mielőtt az alábbi emlékeztetőt kinyitod, próbálj magadtól rájönni az előadáson/laboron tanultak alapján.</p>
+<p>Mi ennek a hibának az oka? Mielőtt az alábbi emlékeztetőt kinyitod, próbálj magadtól rájönni az előadáson/laboron tanultak alapján.</p>
 <details class="tip">
 <summary>Emlékeztető</summary>
 <p><strong>Egy WinUI felületelemhez/vezérlőhöz csak abból a szálból lehet hozzáférni, mely az adott felületelemet létrehozta, ugyanis ezek a felületelemek nem szálbiztosak, és kivétel dobásával jelzik, ha mégis „rosszul” próbáljuk őket használni.</strong></p>
 </details>
 <p>A megoldást a következő részfeladatban dolgozzuk ki.</p>
 <h3 id="a-dispatecherqueue-alkalmazasa">A DispatecherQueue alkalmazása<a class="headerlink" href="#a-dispatecherqueue-alkalmazasa" title="Permanent link">&para;</a></h3>
-<p>Esetünkben a konkrét problémát az okozza, hogy amikor a <code>Game</code> állapota megváltozik, akkor <code>Game</code> osztályban a változásértesítő delegate hívása a biciklikhez tartozó munkaszálakon történik, így a beregisztrált <code>MainWindow.UpdateBikeUI</code> kezelőfüggvény is ezekről a szálakról hívódik. Az <code>UpdateBikeUI</code> függvényben hozzáférük a felületelemekhez (biciklihez tartozó <code>TextBlock</code>- hoz). De ezeket a felületelemeket a főszálból hoztuk létre: így csak a fő szálból szabad(na) hozzájuk férni.</p>
+<p>Esetünkben a konkrét problémát az okozza, hogy amikor a <code>Game</code> állapota megváltozik, akkor <code>Game</code> osztályban a változásértesítő delegate hívása a biciklikhez tartozó munkaszálakon történik, így a beregisztrált <code>MainWindow.UpdateBikeUI</code> kezelőfüggvény is ezekről a szálakról hívódik. Az <code>UpdateBikeUI</code> függvényben hozzáférünk a felületelemekhez (biciklihez tartozó <code>TextBlock</code>- hoz). De ezeket a felületelemeket a főszálból hoztuk létre: így csak a fő szálból szabad(na) hozzájuk férni.</p>
 <p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> A problémára a <code>DispatcherQueue</code> alkalmazása jelent megoldást, mellyel <strong>a munkaszálakból a hívást "át tudjuk játszani" a főszálba, melyből már hozzá tudunk férni a vezérlőkhöz</strong>. A <code>DispacherQueue</code> alkalmazása előadáson és a kapcsolódó laboron is részletesen ismertetésre került.</p>
 <p>Feladat: módosítsd úgy a <code>MainWindow.UpdateBikeUI</code> függvényt, hogy a <code>DispacherQueue</code> alkalmazásával a megfelelő szálból történjen a felületelemekhez történő hozzáférés (és így a mostani kivételt el tudd kerülni).</p>
 <div class="admonition example">
@@ -2338,7 +2338,7 @@ Fontos megjegyzés: a <code>volatile</code> alkalmazására nincs szükség, ha 
 <li>A <em>Stop Race</em> gombra kattintás állítsa meg az összes biciklit, és állítsa le a bicikliket futtató szálakat is. Ehhez vezess be egy <code>StopRace</code> publikus függvényt a <code>Game</code> osztályba.</li>
 <li>A verseny akár az elindítása előtt is leállítható legyen.</li>
 <li>A <code>StopRace</code> művelet szálak leállítása után várja meg, míg valamennyi szál valóban be is fejezi a futását.</li>
-<li>A verseny leállítása után (<em>Stop Race</em> kattintás) semelyik gombra ne lehessen kattintani (minden gomb legyen letiltva, <code>IsEnabled</code> tulajdonságuka állítsuk hamisba).</li>
+<li>A verseny leállítása után (<em>Stop Race</em> kattintás) semelyik gombra ne lehessen kattintani (minden gomb legyen letiltva, <code>IsEnabled</code> tulajdonságukat állítsuk hamisba).</li>
 </ul>
 <h3 id="megoldas">Megoldás<a class="headerlink" href="#megoldas" title="Permanent link">&para;</a></h3>
 <p>A következőkben megadjuk a feladat megoldásának néhány fontos elemét:</p>
@@ -2370,8 +2370,8 @@ Fontos megjegyzés: a <code>volatile</code> alkalmazására nincs szükség, ha 
         </path>
       </svg>
     </span>
-    <span title="2024. április 29. 18:52:54">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-29T18:52:54+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-29</span>
+    <span title="2024. április 29. 18:54:08">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-29T18:54:08+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-29</span>
     </span>
   </span>
 
