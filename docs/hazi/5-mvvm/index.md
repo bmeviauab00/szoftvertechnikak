@@ -264,13 +264,13 @@ Ha kipróbáljuk, a parancs futtatás működik, a tiltás/engedélyezés viszon
 Írd át "+" gomb kezelését is hasonlóan, parancs alapúra! A "+Add" gomb kezelését ne változtasd meg!
 
 !!! example "BEADANDÓ"
-    Készíts egy képernyőmentést `f3.png` néven az alábbiak szerint:
+    Készíts egy képernyőmentést `f4.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a név TextBox legyen üres az alkalmazásban,
     - a „háttérben” a Visual Studio legyen, a `PersonListPageViewModel.cs` megnyitva.
 
-## Feladat 4 - Command használata MVVM Toolkit alapú kódgenerálással
+## Feladat 5 - Command használata MVVM Toolkit alapú kódgenerálással
 
 Az előző feladatban a command tulajdonságok bevezetését és azok példányosítását "manuálisan" oldottuk meg. Az MVVM Toolkit ezt le tudja egyszerűsíteni: megfelelő attribútum alkalmazása esetén a tulajdonságot és a példányosítást automatikusan le tudja generálni.
 
@@ -285,7 +285,7 @@ Alakítsuk át a `DecreaseAgeCommand` kezelését (csak ezt, az `IncreaseAgeComm
 Teszteld a megoldást (életkor csökkentése), ugyanúgy kell működnie, mint korábban.
 
 !!! example "BEADANDÓ"
-    Készíts egy képernyőmentést `f4.png` néven az alábbiak szerint:
+    Készíts egy képernyőmentést `f5.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `PersonListPageViewModel.cs` megnyitva.
