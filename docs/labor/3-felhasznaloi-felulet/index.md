@@ -182,7 +182,7 @@ Legyen most a piros kör mellett a _Record_ felirat (hogy értelme is legyen a p
 </Button>
 ```
 
-A `StackPanel` egy egyszerű, vezérlők elrendezésére szolgáló layout panel:  a tartalmazott vezérlőket `Horizental` `Orientation` megadása esetén egymás mellé, `Vertical` `Orientation` esetén egymás alá helyezi el. Így a példánkban egyszerűen egymás mellé teszi a két vezérlőt.
+A `StackPanel` egy egyszerű, vezérlők elrendezésére szolgáló layout panel:  a tartalmazott vezérlőket `Horizontal` `Orientation` megadása esetén egymás mellé, `Vertical` `Orientation` esetén egymás alá helyezi el. Így a példánkban egyszerűen egymás mellé teszi a két vezérlőt.
 
 Az eredmény a következő:
 
@@ -646,7 +646,7 @@ A korábbi pontban bevezetett adatkötés miatt azt várnánk, hogy ha a `NewPer
     ```
 
     !!! tip "Terjengős a kód?"
-        A későbbiekben ezt a logikát ki is szervezhetnénk egy ősosztályba, de ez már az MVVM mintát vezetné elő, mely egy későbbi tematikához kapcsolódik. Tehát ne ijedjünk meg ettől a kissé csúnyányka kódtól.
+        A későbbiekben ezt a logikát ki is szervezhetnénk egy ősosztályba, de ez már az MVVM mintát vezetné elő, mely egy későbbi tematikához kapcsolódik. Tehát ne ijedjünk meg ettől a kissé csúnyácska kódtól.
 
 2. Az adatkötésen kapcsoljuk be a változásértesítést a `Mode` `OneWay`-re történő módosításával, mivel az `x:Bind` alapértelmezett módja a `OneTime`, mely csak egyszeri adatkötést jelent.
 
@@ -713,9 +713,9 @@ Adatkötéssel állítsuk be a `ListView` vezérlő `ItemsSource` tulajdonságá
 Próbáljuk ki!
 
 Látjuk, hogy megjelent két elem a listában. Persze nem az van kiírva, amit mi szeretnénk, de ezen könnyen segíthetünk.
-Alapértelmezetten ugyanis a `ListView` a `ToString()`-et hív a listaelemeken, ami ha nem definiáljuk felül, akkor az osztály típusának `FullName` tulajdonsága (vagyis a típus neve).
+Alapértelmezetten ugyanis a `ListView` `ToString()`-et hív a listaelemeken, ami ha nem definiáljuk felül, akkor az osztály típusának `FullName` tulajdonsága (vagyis a típus neve).
 
-Állítsunk be a `ListView`-nk **`ItemTemplate` tulajdonságát** (a már jól ismert property element syntax-szal), mely a listaelem megjelenését adja meg egy sablon segítségével: esetünkben legyen ez egycellás `Grid`, ahol a `TextBlock`-ok a `Person` tulajdonságait jelenítik meg, a nevet balra, az életkort jobbra igazítva.
+Állítsunk be a `ListView`-unk **`ItemTemplate` tulajdonságát** (a már jól ismert property element syntax-szal), mely a listaelem megjelenését adja meg egy sablon segítségével: esetünkben legyen ez egycellás `Grid`, ahol a `TextBlock`-ok a `Person` tulajdonságait jelenítik meg, a nevet balra, az életkort jobbra igazítva.
 
 ```xml
 <ListView Grid.Row="3" Grid.ColumnSpan="2" ItemsSource="{x:Bind People}">
@@ -779,7 +779,7 @@ A legfontosabb különbségek az `x:Bind`-hoz képest:
 
 * A `Binding` alapértelmezett módja a `OneWay` és nem a `OneTime`: tehát figyeli a változásokat alapértelmezetten, míg az `x:Bind`-nél ezt explicit meg kell adni.
 * A `Binding` alapértelmezetten a `DataContext`-ből dolgozik, de lehetőség van állítani az adatkötés forrását. Míg az `x:Bind` alapértelmezetten a nézetünk osztályából (xaml.cs) köt.
-* A `Binding` futásidőben dolgozik reflection segítségével, így egyrészt nem kapunk fordítás idejű hibákat, ha valamit elírtunk volna, másrészt pedig sok adatkötés (1000-es nagyságrend) jelentésen lassíthatja az alkalmazásunkat.
+* A `Binding` futásidőben dolgozik reflection segítségével, így egyrészt nem kapunk fordítás idejű hibákat, ha valamit elírtunk volna, másrészt pedig sok adatkötés (1000-es nagyságrend) jelentősen lassíthatja az alkalmazásunkat.
 * Az `x:Bind` fordítás idejű, így a fordító ellenőrzi, hogy a megadott tulajdonságok léteznek-e. Adatsablonokban nyilatkozni kell a `DataTemplate` megadása során, hogy az milyen adatokon fog dolgozni az `x:DataType` attribútummal.
 * Az `x:Bind` esetében lehetőség van metódusokat is kötni, míg a `Binding`-nél csak konvertereket lehet használni. Függvények kötése esetén a változásértesítés a paraméterek változására is működik.
 
