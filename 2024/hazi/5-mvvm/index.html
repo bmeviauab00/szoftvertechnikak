@@ -1809,7 +1809,7 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
 </details>
 <p>Ez a kód, egy fordítást követően, alapjaiban ugyanazt a megoldást eredményezi, mint a korábbi, sokkal terjengősebb, immár kikommentezett forma. Vagyis (még ha nem is látjuk egyelőre) születik <code>Name</code> és <code>Age</code> tulajdonság, megfelelő <code>PropertyChanged</code> esemény elsütésekkel. Hogyan lehetséges ez? </p>
 <ul>
-<li>Egyrészt az <code>ObservableObject</code> ős már megvalósítja az <code>INotifyPropertyChanged</code> interfészt, így a <code>PropertyChanged</code> esemény tagot is tartalmazza, ezt a származtatás révén  al "megörökli" az osztályunk.</li>
+<li>Egyrészt az <code>ObservableObject</code> ős már megvalósítja az <code>INotifyPropertyChanged</code> interfészt, így a <code>PropertyChanged</code> esemény tagot is tartalmazza, ezt a származtatás révén "megörökli" az osztályunk.</li>
 <li>A fordítás során lefut az MVVM Toolkit kódgenerátora, mely minden <code>ObservableProperty</code> attribútummal ellátott tagváltozóhoz generál egy ugyanolyan nevű, de nagybetűvel kezdődő tulajdonságot az osztályba, mely tulajdonság settere elsüti megfelelő feltételek mellett és megfelelő paraméterekkel a <code>PropertyChanged</code> eseményt. Hurrá, ezt a kódot akkor nem nekünk kell megírni.</li>
 <li>Kérdés, hol keletkezi ez a kód. Az osztályunk egy másik "partial" részében. Egy fordítást követően Visual Studio-ban jobb gombbal kattintsunk a <code>Person</code> osztály nevén, majd a felugró menüben "Go to Definition". Ekkor egy alsó ablakban két találatot is kapunk: az egyik az általunk írt fenti kód, a másik ("public class Person") a generált részre ugrik egy duplakatt hatására: látszik, hogy viszonylag terjengős kódot generált a kódgenerátor, de ami nekünk fontos, hogy itt található a <code>Name</code> és <code>Age</code> tulajdonság, benne - többek között - a <code>OnPropertyChanged</code> elsütésével.</li>
 </ul>
@@ -1992,8 +1992,8 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
         </path>
       </svg>
     </span>
-    <span title="2024. április 29. 17:34:09">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-29T17:34:09+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-29</span>
+    <span title="2024. május 1. 17:26:43">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-01T17:26:43+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-01</span>
     </span>
   </span>
 
