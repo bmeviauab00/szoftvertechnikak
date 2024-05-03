@@ -215,10 +215,11 @@ Gondold át, mi okozza ezt, és csak utána haladj tovább az útmutatóval!
 
 A következő lépésben valósítsd meg a kapcsolódó változásértesítést a `PersonListPageViewModel` osztályban:
 
-* MVVM Toolkit "alapokon" valósítsd meg az `INotifyPropertyChanged` interfészt (tipp: `ObservableObject` származtatás)!
-* Az `IsDecrementEnabled` tulajdonság maradhat a mostani formájában (egy getter only property), nem szükséges `[ObservableProperty]` alapúra átírni (de az is jó megoldás, és a házi feladat tekintetében is teljesen elfogadható, csak kicsit másként kell dolgozni a következő lépésekben).
-* Próbáld magadtól megvalósítani a következőt a ViewModel osztályban (a `Person` osztály marad változatlan): amikor a `NewPerson.Age` változik, akkor az ősből örökölt `OnPropertyChanged` hívásával jelezzük a `IsDecrementEnabled` tulajdonság változását. Tipp: a `Person` osztály már rendelkezik `PropertyChanged` eseménnyel, hiszen maga is megvalósítja az `INotifyPropertyChanged` interfészt, erre az eseményre fel lehet iratkozni! Az egyszerűség érdekében az nem zavar minket, ha az `IsDecrementEnabled` változását esetleg akkor is jelezzük, ha tulajdonképen "logikailag" estleg nem is változik.
-* A fentieket külön eseménykezelő függvény bevezetése nélkül is meg lehet oldani: javasoljuk, hogy így dolgozz, de nem kötelező (tipp: eseménykezelő megadása lambda kifejezéssel).
+* MVVM Toolkit "alapokon" valósítsd meg az `INotifyPropertyChanged` interfészt
+    * `ObservableObject` származtatást használj.
+    * Az `IsDecrementEnabled` tulajdonság maradhat a mostani formájában (egy getter only property), nem szükséges `[ObservableProperty]` alapúra átírni (de az is jó megoldás, és a házi feladat tekintetében is teljesen elfogadható, csak kicsit másként kell dolgozni a következő lépésekben).
+* Próbáld magadtól megvalósítani a következőt a ViewModel osztályban (a `Person` osztály marad változatlan): amikor a `NewPerson.Age` változik, akkor az `ObservableObject` ősből örökölt `OnPropertyChanged` hívásával jelezzük a `IsDecrementEnabled` tulajdonság változását. Tipp: a `Person` osztály már rendelkezik `PropertyChanged` eseménnyel, hiszen maga is megvalósítja az `INotifyPropertyChanged` interfészt, erre az eseményre fel lehet iratkozni! Az egyszerűség érdekében az nem zavar minket, ha az `IsDecrementEnabled` változását esetleg akkor is jelezzük, ha tulajdonképen "logikailag" estleg nem is változik.
+* A fentieket külön eseménykezelő függvény bevezetése nélkül is meg lehet oldani (tipp: eseménykezelő megadása lambda kifejezéssel).
 
 Teszteld is a megoldásod! Ha jól dolgoztál, a gombnak akkor is le kell tiltódnia, ha a TextBoxba kézzel írsz be negatív életkor értéket (és utána kikattintasz a TextBoxból). Gondold át, miért van ez így!
 
