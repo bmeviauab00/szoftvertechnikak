@@ -2162,13 +2162,13 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 <li>Egy másik feldolgozó szál is éppen ekkor ejti meg az <code>if ( _innerList.Count &gt; 0 )</code> vizsgálatot, nála is teljesül a feltétel, és ez a szál ki is veszi az adatot a sorból.</li>
 <li>Az első szálunk újra ütemezésre kerül, felébred, ő is megpróbálja kivenni az adatot a sorból: a sor viszont már üres, a másik szálunk kivette az egyetlen adatot a sorból az orra előtt. Így az <code>_innerList[0]</code> hozzáférés kivételt eredményez.</li>
 </ol>
-<p>Ezt a problémát csak úgy tudjuk elkerülni, ha a sor ürességének a vizsgálatát és az elem kivételét oszthatatlanná tesszük.</p>
+<p>Ezt a problémát csak úgy tudjuk elkerülni, ha a sor ürességének a vizsgálatát és az elem kivételét "oszthatatlanná" tesszük: <strong>ez azt jelenti, hogy amíg az egyik szál nem végzett mindkettővel, addig a többi szálnak várnia kell!</strong></p>
 <div class="admonition note">
 <p class="admonition-title">Thread.Sleep(500)</p>
 <p>Az ürességvizsgálatot figyelő kódsort követő <code>Thread.Sleep(500);</code> kódsornak csak az a szerepe a példakódunkban, hogy a fenti peches forgatókönyv bekövetkezésének a valószínűségét megnövelje, s így a példát szemléletesebbé tegye (mivel ilyenkor szinte biztos, hogy átütemeződik a szál). A későbbiekben ezt ki is fogjuk venni, egyelőre hagyjuk benne.</p>
 </div>
 <h3 id="problema-2">Probléma 2<a class="headerlink" href="#problema-2" title="Permanent link">&para;</a></h3>
-<p>A <code>DataFifo</code> osztály egyidőben több szálból is hozzáférhet a <code>List&lt;double[]&gt;</code> típusú <code>_innerList</code> tagváltozóhoz. Ugyanakkor, ha megnézzük a <code>List&lt;T&gt;</code> dokumentációját, azt találjuk, hogy az osztály nem szálbiztos (not thread safe). Ez esetben viszont ezt nem tehetjük meg, nekünk kell zárakkal biztosítanunk, hogy a kódunk egyidőben csak egy metódusához / tulajdonságához / tagváltozójához fér hozzá (pontosabban inkonzisztencia csak egyidejű írás, illetve egyidejű írás és olvasás esetén léphet fel, de az írókat és az olvasókat a legtöbb esetben nem szoktuk megkülönböztetni, itt sem tesszük).</p>
+<p>A <code>DataFifo</code> osztály egyidőben több szálból is hozzáférhet a <code>List&lt;double[]&gt;</code> típusú <code>_innerList</code> tagváltozóhoz. Ugyanakkor, ha megnézzük a <code>List&lt;T&gt;</code> dokumentációját, azt találjuk, hogy az osztály nem szálbiztos (not thread safe). Ez esetben viszont ezt nem tehetjük meg, nekünk kell a <strong>kölcsönös kizárást</strong> zárakkal biztosítanunk: meg kell oldjuk, hogy a szálaink egyidőben csak egy metódusához / tulajdonságához / tagváltozójához férjenek hozzá (pontosabban inkonzisztencia csak egyidejű írás, illetve egyidejű írás és olvasás esetén léphet fel, de az írókat és az olvasókat a legtöbb esetben nem szoktuk megkülönböztetni, itt sem tesszük).</p>
 <p>A következő lépésben a <code>DataFifo</code> osztályunkat szálbiztossá tesszük, amivel megakadályozzuk, hogy a fenti két probléma bekövetkezhessen.</p>
 <h2 id="6-feladat-tegyuk-szabiztossa-a-datafifo-osztalyt">6. feladat – Tegyük szábiztossá a DataFifo osztályt<a class="headerlink" href="#6-feladat-tegyuk-szabiztossa-a-datafifo-osztalyt" title="Permanent link">&para;</a></h2>
 <p>A <code>DataFifo</code> osztály szálbiztossá tételéhez szükségünk van egy objektumra (ez bármilyen referencia típusú objektum lehet), melyet kulcsként használhatunk a zárolásnál. Ezt követően a <code>lock</code> kulcsszó segítségével el tudjuk érni, hogy egyszerre mindig csak egy szál tartózkodjon az adott kulccsal védett blokkokban.</p>
@@ -2429,8 +2429,8 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
         </path>
       </svg>
     </span>
-    <span title="2024. április 18. 11:23:56">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-18T11:23:56+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-18</span>
+    <span title="2024. május 3. 16:46:41">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-03T16:46:41+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-03</span>
     </span>
   </span>
 
