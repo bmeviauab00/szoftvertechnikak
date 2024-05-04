@@ -109,7 +109,7 @@ Ennek megfelelően elkészítjük a megoldásunk egységtesztelésre is előkés
 
 Feladat: Alakítsd át a Strategy-DI projektben található megoldást olyan módon, hogy az osztály egység tesztelhető legyen, mégpedig a Strategy minta segítségével. Részletesebben:
 
-- Vezess be egy `InputReaders` mappát, melyben vezess be egy bemenet feldolgozó strategy interfészt `IInputReader` néven (egyetlen, `List<Person> Read()` művelettel), és az `Anonymizer` osztályból a Strategy mintát követve szervezd ki a bemenet feldolgozást egy `CsvInputReader` nevű strategy implementációba.
+- Vezess be egy `InputReaders` mappát, melyben vezess be egy bemenet feldolgozó strategy interfészt `IInputReader` néven (egyetlen, `List<Person> Read()` művelettel), és az `Anonymizer` osztályból a Strategy mintát követve szervezd ki a bemenet feldolgozást egy `CsvInputReader` nevű strategy implementációba. Ez az osztály konstruktor paraméterben kapja meg a fájl útvonalát, melyből a bemenetét olvassa.
 - Vezess be egy `ResultWriters` mappát, melyben vezess be egy eredmény kiíró strategy interfészt `IResultWriter` néven (egyetlen, `void Write(List<Person> persons)` művelettel), és az `Anonymizer` osztályból a Strategy mintát követve szervezd ki a kimenet írását egy `CsvResultWriter` nevű strategy implementációba. Ez az osztály konstruktor paraméterben kapja meg a fájl útvonalát, melybe a kimenetet bele kell írja.
 - Bővítsd ki a `Anonymizer` osztályt, beleértve annak konstruktorát (Strategy + DI minta), hogy bármilyen `IInputReader` és `IResultWriter` implementációval használható legyen.
 - A `Program.cs` fájlban alakítsd át az `Anonymizer` osztály használatát, hogy az újonnan bevezetett `CsvInputReader` és `CsvResultWriter` osztályok is át legyenek paraméterként átadva.
