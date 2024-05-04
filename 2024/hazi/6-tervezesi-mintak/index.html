@@ -1798,7 +1798,7 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
 <p>Ennek megfelelően elkészítjük a megoldásunk egységtesztelésre is előkészített változatát, melyben a bemenet és kimenet kezelése is le van választva a Strategy minta alkalmazásával.</p>
 <p>Feladat: Alakítsd át a Strategy-DI projektben található megoldást olyan módon, hogy az osztály egység tesztelhető legyen, mégpedig a Strategy minta segítségével. Részletesebben:</p>
 <ul>
-<li>Vezess be egy <code>InputReaders</code> mappát, melyben vezess be egy bemenet feldolgozó strategy interfészt <code>IInputReader</code> néven (egyetlen, <code>List&lt;Person&gt; Read()</code> művelettel), és az <code>Anonymizer</code> osztályból a Strategy mintát követve szervezd ki a bemenet feldolgozást egy <code>CsvInputReader</code> nevű strategy implementációba.</li>
+<li>Vezess be egy <code>InputReaders</code> mappát, melyben vezess be egy bemenet feldolgozó strategy interfészt <code>IInputReader</code> néven (egyetlen, <code>List&lt;Person&gt; Read()</code> művelettel), és az <code>Anonymizer</code> osztályból a Strategy mintát követve szervezd ki a bemenet feldolgozást egy <code>CsvInputReader</code> nevű strategy implementációba. Ez az osztály konstruktor paraméterben kapja meg a fájl útvonalát, melyből a bemenetét olvassa.</li>
 <li>Vezess be egy <code>ResultWriters</code> mappát, melyben vezess be egy eredmény kiíró strategy interfészt <code>IResultWriter</code> néven (egyetlen, <code>void Write(List&lt;Person&gt; persons)</code> művelettel), és az <code>Anonymizer</code> osztályból a Strategy mintát követve szervezd ki a kimenet írását egy <code>CsvResultWriter</code> nevű strategy implementációba. Ez az osztály konstruktor paraméterben kapja meg a fájl útvonalát, melybe a kimenetet bele kell írja.</li>
 <li>Bővítsd ki a <code>Anonymizer</code> osztályt, beleértve annak konstruktorát (Strategy + DI minta), hogy bármilyen <code>IInputReader</code> és <code>IResultWriter</code> implementációval használható legyen.</li>
 <li>A <code>Program.cs</code> fájlban alakítsd át az <code>Anonymizer</code> osztály használatát, hogy az újonnan bevezetett <code>CsvInputReader</code> és <code>CsvResultWriter</code> osztályok is át legyenek paraméterként átadva.</li>
@@ -1913,8 +1913,8 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
         </path>
       </svg>
     </span>
-    <span title="2024. május 4. 16:59:40">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-04T16:59:40+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-04</span>
+    <span title="2024. május 4. 17:44:37">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-04T17:44:37+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-04</span>
     </span>
   </span>
 
