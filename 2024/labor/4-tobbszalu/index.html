@@ -2271,85 +2271,91 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 <p>Az előző pontban megoldottuk a jelzést, ám ez önmagában nem sokat ér, hiszen nem várakoznak rá. Ennek megvalósítása jön most.</p>
 <ol>
 <li>
-<p>Módosítsuk a metódust az alábbiak szerint: kidobjuk az üresség vizsgálatot és az eseményre való várakozással pótoljuk.</p>
+<p>Módosítsuk a metódust az alábbiak szerint: szúrjuk be a <code>_hasData</code> eseményre várakozást.</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">TryGet</span><span class="p">(</span><span class="k">out</span><span class="w"> </span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">lock</span><span class="w"> </span><span class="p">(</span><span class="n">_syncRoot</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="hll"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_hasData</span><span class="p">.</span><span class="n">WaitOne</span><span class="p">())</span>
-</span><span class="w">        </span><span class="p">{</span>
+<span class="hll"><span class="w">        </span><span class="n">_hasData</span><span class="p">.</span><span class="n">WaitOne</span><span class="p">();</span>
+</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_innerList</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
 <span class="w">            </span><span class="c1">// ...</span>
 </code></pre></div>
 <div class="admonition note">
-<p class="admonition-title">A WaitOne művelet visszatérési értékének vizsgálata</p>
-<p>A <code>WaitOne</code> művelet egy <code>bool</code> értékkel tér vissza, mely igaz, ha a <code>WaitOne</code> paraméterében megadott időkorlát előtt jelzett állapotba kerül az esemény (ill. ennek megfelelően hamis, ha lejárt az időkorlát). A példánkban nem adtunk meg időkorlátot paraméterben, mely végtelen időkorlát alkalmazását jelenti. Ennek megfelelően felesleges is az <code>if</code> feltételvizsgálat, hiszen esetünkben a <code>WaitOne()</code> mindig igaz értékkel tér vissza. Ez egyetlen ok, amiért mégis éltünk feltételvizsgálattal: így a követketkező és egy későbbi feladatnál kisebb átalakításra lesz majd szükség.</p>
+<p class="admonition-title">A WaitOne művelet visszatérési értéke</p>
+<p>A <code>WaitOne</code> művelet egy <code>bool</code> értékkel tér vissza, mely igaz, ha a <code>WaitOne</code> paraméterében megadott időkorlát előtt jelzett állapotba kerül az esemény (ill. ennek megfelelően hamis, ha lejárt az időkorlát). A példánkban nem adtunk meg időkorlátot paraméterben, mely végtelen időkorlát alkalmazását jelenti. Ennek megfelelően nem is vizsgáljuk a visszatérési értékét (mert végtelen ideig vár jelzésre).</p>
 </div>
 </li>
 <li>
 <p>Ezzel a <code>Thread.Sleep</code> a <code>WorkerThread</code>-ben feleslegessé vált, kommentezzük ki!</p>
-<p>A fenti megoldás futtatásakor azt tapasztaljuk, hogy az alkalmazásunk felülete az első gombnyomást követően befagy. Az előző megoldásunkban ugyanis egy amatőr hibát követtünk el. A lock-olt kódrészleten belül várakozunk a <code>_hasData</code> jelzésére, így a főszálnak lehetősége sincs arra, hogy a <code>Put</code> műveletben (egy szintén <code>lock</code>-kal védett részen belül) jelzést küldjön <code>_hasData</code>-val. <strong>Gyakorlatilag egy holtpont (deadlock) helyzet alakult ki.</strong></p>
-<p>Próbálkozhatnánk egy időkorlát megadásával (ms) a várakozásnál:</p>
+<p>A fenti megoldás futtatásakor azt tapasztaljuk, hogy az alkalmazásunk felülete az első gombnyomást követően befagy. Az előző megoldásunkban ugyanis egy amatőr hibát követtünk el. A lock-olt kódrészleten belül várakozunk a <code>_hasData</code> jelzésére, így a főszálnak lehetősége sincs arra, hogy a <code>Put</code> műveletben (egy szintén <code>lock</code>-kal védett részen belül) jelzést küldjön <code>_hasData</code>-val. <strong>Gyakorlatilag egy holtpont (deadlock) helyzet alakult ki</strong>. Fontos, hogy a kódot nézve gondoljuk át részleteiben:</p>
+<ul>
+<li>A <code>TryGet</code>-ben az egyik munkaszál (mely bejutott a <code>lock</code> blokkba a három közül), a <code>_hasData.WaitOne()</code> sorban arra vár, hogy a fő szál <code>Put</code>-ban a <code>_hasData</code>-t jelzettbe állítsa.</li>
+<li>A <code>Put</code>-ban a <code>lock</code> sorban fő szál arra vár, hogy az előző pontban említett munkaszál a <code>TryGet</code>-ben kilépjen a <code>lock</code> blokkból.</li>
+</ul>
+<p>Kölcsönösen egymásra várnak végtelen ideig, ez a holtpont/deadlock klasszikus esete.</p>
+<p>Próbálkozhatnánk egy időkorlát megadásával (ms) a várakozásnál (ez nem kell megvalósítani):</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_hasData</span><span class="p">.</span><span class="n">WaitOne</span><span class="p">(</span><span class="m">100</span><span class="p">))</span>
 </code></pre></div>
 <p>Ez önmagában sem lenne elegáns megoldás, ráadásul a folyamatosan pollozó munkaszálak jelentősen kiéheztetnék a Put-ot hívó szálat! Helyette, az elegáns és követendő minta az, hogy lock-on belül kerüljük a blokkolva várakozást.</p>
-<p>Valódi javításként cseréljük meg a <code>lock</code>-ot és a <code>WaitOne</code>-t, illetve a <code>WaitOne</code> paraméter eltávolításával szüntessük meg a várakozási időkorlátot:</p>
+<p>Javításként cseréljük meg a <code>lock</code>-ot és a <code>WaitOne</code>-t:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">TryGet</span><span class="p">(</span><span class="k">out</span><span class="w"> </span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="hll"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_hasData</span><span class="p">.</span><span class="n">WaitOne</span><span class="p">())</span>
+<span class="hll"><span class="w">    </span><span class="n">_hasData</span><span class="p">.</span><span class="n">WaitOne</span><span class="p">();</span>
+</span><span class="hll">
+</span><span class="hll"><span class="w">    </span><span class="k">lock</span><span class="w"> </span><span class="p">(</span><span class="n">_syncRoot</span><span class="p">)</span>
 </span><span class="hll"><span class="w">    </span><span class="p">{</span>
-</span><span class="hll"><span class="w">        </span><span class="k">lock</span><span class="w"> </span><span class="p">(</span><span class="n">_syncRoot</span><span class="p">)</span>
-</span><span class="hll"><span class="w">        </span><span class="p">{</span>
-</span><span class="w">            </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_innerList</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
+</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_innerList</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_innerList</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
 <span class="w">            </span><span class="n">_innerList</span><span class="p">.</span><span class="n">RemoveAt</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_innerList</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
 <span class="w">            </span><span class="p">{</span>
 <span class="w">                </span><span class="n">_hasData</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
 <span class="w">            </span><span class="p">}</span>
 
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w"> </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="w">        </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Próbáljuk ki az alkalmazást. Az első gombnyomás hatására kivételt kapunk. Így elkerüljük ugyan a deadlockot, <strong>azonban a szálbiztosság sérült</strong>, hiszen mire a <code>lock</code>-on belülre jutunk, nem biztos, hogy maradt elem a listában. Ugyanis lehet, több szál is várakozik a <code>_hasData.WaitOne()</code> műveletnél arra, hogy elem kerüljön a sorba. Mikor ez bekövetkezik, a <code>ManualResetEvent</code> objektumunk mind átengedi (hacsak éppen gyorsan le nem csukja egy szál, de ez nem garantált).</p>
+<p>Próbáljuk ki az alkalmazást, most már jól működik.</p>
+</li>
+<li>
+<p>A <code>lock</code>-on belüli üresség-vizsgálat szerepe.</p>
+<p>Az előző lépésben a <code>TryGet</code>-ben bevezettünk <code>_hasData</code> néven egy <code>MaunalResetEvent</code> objektumot. Ez pontosan akkor van jelzett állapotban, amikor a FIFO-ban van adat. Kérdés, szükség van-e még most is a lock blokkban az sor üresség vizsgálatra (<code>if (_innerList.Count &gt; 0)</code>). Első érzésre redundánsnak gondolhatjuk. De próbáljuk ki, az <code>if</code>-ben az ürességvizsgálat helyett adjunk meg egy fix <code>true</code> értéket, ezzel semlegesítve az <code>if</code> hatását (azért dolgozunk így, hogy könnyű legyen visszacsinálni):</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="k">lock</span><span class="w"> </span><span class="p">(</span><span class="n">_syncRoot</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="hll"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
+</span><span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_innerList</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
+<span class="w">            </span><span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Próbáljuk ki. Egy kivételt fogunk kapni, amikor kattintunk a gombon: így már <strong>nem szálbiztos</strong> a megoldásunk. Vezessük le, miért:</p>
+<ul>
+<li>Amikor elindul az alkalmazás, mindhárom feldolgozó szál a <code>TryGet</code> <code>_hasData.WaitOne();</code> soránál vár arra, hogy adat kerüljön a FIFO-ba.</li>
+<li>A gombra kattintáskor a <code>Put</code> művelet <code>_hasData</code>-t jelzettre állítja.</li>
+<li>A <code>TryGet</code> <code>_hasData.WaitOne();</code> során mindhárom szál átjut (ez egy ManualResetEvent, ha jelezett, minden szál mehet tovább).</li>
+<li>A <code>TryGet</code> <code>lock</code> blokkjába egyetlen szál jut be, a másik kettő itt vár (lock blokkban egyszerre egy szál lehet): ez a szál kiveszi az egyetlen elemet az <code>_innerList</code> listából, majd elhagyja a <code>lock</code> blokkot.</li>
+<li>Most már be tud jutni a <code>lock</code>-nál várakozó két szálból (ezek már korábban túljutottak a <code>hasData.WaitOne()</code> híváson!!!) egy másik is a <code>lock</code> blokkba, az is megpróbálja a 0. elemet kivenni az <code>_innerList</code> listából. De az már nincs ott (az előző lépésben az elsőnek bejutó szál elcsente az orra elől): ebből lesz a kivétel.</li>
+</ul>
+<p>A megoldás: biztosítani kell a <code>lock</code> blockban, hogy ha időközben egy másik szál kiürítette a sort, akkor a szálunk már ne próbáljon elemet kivenni belőle. Vagyis vissza kell tenni a korábbi üresség vizsgálatot. Tegyük is ezt meg! A megoldásunk így jól működik. Előfordulhat ugyan, hogy feleslegesen fordulunk a listához, de ezzel így most megelégszünk.</p>
+</li>
+</ol>
+<p>Összefoglalva: </p>
+<ul>
+<li>Az üresség vizsgálatra a <code>ManualResetEvent</code> bevezetése után is szükség van. </li>
+<li>A <code>ManualResetEvent</code> az a célja, hogy feleslegesen ne pollozzuk gyakran a sort, ha az üres, vagyis az ún. aktív várakozást kerüljük el a segítségével.</li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">A konkurens, többszálú környezetben való programozás nehézségei</p>
 <p>Jól illusztrálja a feladat, hogy milyen alapos átgondolást igényel a konkurens, többszálú környezetben való programozás. Tulajdonképpen még szerencsénk is volt az előzőekben, mert jól reprodukálhatóan előjött a hiba. A gyakorlatban azonban ez ritkán van így. Sajnos sokkal gyakoribb, hogy a konkurenciahibák időnkénti, nem reprodukálható problémákat okoznak. Az ilyen jellegű feladatok megoldását mindig nagyon át kell gondolni, nem lehet az "addig-próbálkozom-míg-jó-nem-lesz-a-kézi-teszt-során" elv mentén leprogramozni.</p>
 </div>
-</li>
-<li>
-<p>Javításként tegyük vissza a <code>lock</code>-on belüli üresség-vizsgálatot.</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">TryGet</span><span class="p">(</span><span class="k">out</span><span class="w"> </span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_hasData</span><span class="p">.</span><span class="n">WaitOne</span><span class="p">())</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">lock</span><span class="w"> </span><span class="p">(</span><span class="n">_syncRoot</span><span class="p">)</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="hll"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_innerList</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
-</span><span class="hll"><span class="w">            </span><span class="p">{</span>
-</span><span class="w">                </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_innerList</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
-<span class="w">                </span><span class="n">_innerList</span><span class="p">.</span><span class="n">RemoveAt</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_innerList</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="n">_hasData</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
-<span class="w">                </span><span class="p">}</span>
-
-<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w">  </span>
-<span class="hll"><span class="w">            </span><span class="p">}</span>
-</span><span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Ez már jól működik. Előfordulhat ugyan, hogy feleslegesen fordulunk a listához, de ezzel így most megelégszünk.</p>
-<p>Teszteljük az alkalmazást!</p>
-</li>
-</ol>
 <div class="admonition note">
 <p class="admonition-title">System.Collections.Concurrent</p>
 <p>A .NET keretrendszerben több beépített szálbiztosságra felkészített osztály is található a <code>System.Collections.Concurrent</code> névtérben. A fenti példában a <code>DataFifo</code> osztályt a <code>System.Collections.Concurrent.ConcurrentQueue</code> osztállyal kiválthattuk volna.</p>
@@ -2429,8 +2435,8 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
         </path>
       </svg>
     </span>
-    <span title="2024. május 3. 16:46:41">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-03T16:46:41+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-03</span>
+    <span title="2024. május 4. 10:09:24">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-04T10:09:24+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-04</span>
     </span>
   </span>
 
