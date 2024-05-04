@@ -297,7 +297,7 @@ Jelen megoldásunk a Relaxed MVVM megközelítést követi. A következő lépé
 
 Jelen megoldásunk a Relaxed MVVM megközelítést követi, vagyis a View-ban közvetlenül a `Person` modell osztályhoz adatkötünk (és a `PersonPageViewModel`-ben is a `Person` modell osztályt használjuk). Ennek előnye az egyszerűség. De van egy hátránya is: a `Person` modell osztályunkban kénytelenek voltunk megvalósítani az `INotifyPropertyChanged` interfészt (mégha az MVVM toolkit segítségével is), különben nem működne jól az adatkötés. Vannak olyan helyzetek, amikor a modell osztályunkat nem szeretnénk ilyen, némiképpen már a felületet kiszolgáló logikával "szennyezni", hanem a lehető legtisztább formában szeretnénk a modell osztályunkat tartani. Ekkor a Strict MVVM megközelítés jelenti a megoldást (lásd "Strict MVVM – beágyazás" előadásdia). Mit jelentene ez a számunkra, mit kellene a kódon változtatni? Gondold át az előadásdia alapján a szükséges változtatásokat! Megvalósítani/dokumentálni nem kell, ez csak egy átgondolós feladat 😊!
 
-??? tip "String MVVM alapú megoldás"
+??? tip "Strict MVVM alapú megoldás"
     * A `Person` modell osztályban már nem valósítanánk meg az `INotifyPropertyChanged` interfészt, az osztály leegyszerűsödik, csak egyszerű tulajdonságokat tartalmazna (ez volt a cél).
     * Be kellene vezetni egy `PersonViewModel` osztályt (mely egy `Person` modell objektumot csomagolna be). Ebben:
          * Be kellene vezetni a `Name` és `Age` tulajdonságokat. 
