@@ -132,8 +132,8 @@ A következő lépésben a korábban Strategy mintával megvalósított progress
 Feladat: Alakítsd át a Strategy-DI projektben található megoldást olyan módon, hogy a progress kezelés Strategy helyett delegate alapon legyen megvalósítva. Részletesebben:
 
 - Ne vezess be saját delegate típust (használd a .NET által biztosított `Action` típust).
-- A meglévő `SimpleProgress` és `PercentProgress` osztályokat ne használd a megoldásodban, ezeket rövidesen törölni fogjuk (de egyelőre ne töröld).
-- Legyen lehetősége az `Anonymizer` használójának továbbiakban is null-t megadni a konstruktorban, ha nem kíván semmiféle progress kezelést használni.
+- A meglévő `SimpleProgress` és `PercentProgress` osztályokat ne használd a megoldásodban(de ne is töröld ezeket!).
+- Legyen lehetősége az `Anonymizer` használójának továbbiakban is `null`-t megadni a konstruktorban, ha nem kíván semmiféle progress kezelést használni.
 - A `Program.cs` fájlban kommentezd ki az eddigi `Anonymizer` használatokat. Ugyanitt vezess be egy új példát az `Anonymizer` olyan használatára, melyben a progress kezelés lambda kifejezés formájában van megadva, és a lambda kifejezés pontosan a korábbi "simple progress" logikáját valósítja meg. A "percent progress"-re nem kell hasonlót megvalósítani, azt ebben a megoldásban nem kell támogatni (a következő feladatban térünk vissza rá).
   
 !!! tip "Tippek"
@@ -157,8 +157,8 @@ Amennyiben a "simple progress" és/vagy "percent progress" logikát/logikákat �
 Feladat: Bővítsd ki a korábbi megoldást úgy, hogy a "simple progress" és "percent progress" logikája újrafelhasználható legyen. Részletesebben:
 
 - A "simple progress" és "percent progress" logikákat egy újonnan bevezetett `AllProgresses` nevű statikus osztály két statikus műveletében valósítsd meg (az osztály a projekt gyökerébe kerüljön).
-- Vezess be két olyan új `Anonymizer` használatot a `Program.cs` fájlban, melyek az `AllProgresses` két műveletét használják (itt ne használj lambda kifejezést)-
-- Töröld a meglévő `IProgress` interfészt és ennek implementációt (hiszen ezek már nincsenek használatban).
+- Vezess be két olyan új `Anonymizer` használatot a `Program.cs` fájlban a meglévők mellé, melyek az `AllProgresses` két műveletét használják (itt ne használj lambda kifejezést).
+- A meglévő `IProgress` interfészt és ennek implementációi törölhetők lennének (hiszen ezek már nincsenek használatban). De NE töröld őket annak érdekében, hogy a korábbi megoldásodhoz tartozó progress logika is ellenőrizhető legyen.
 
 Elkészültünk, értékeljük a megoldást:
 
