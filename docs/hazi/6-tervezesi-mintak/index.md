@@ -4,7 +4,7 @@ authors: bzolka
 
 # 6. HF - Tervezési minták (kiterjeszthetőség)
 
-A házi feladatban az a kapcsolódó laboron ([6. labor – Tervezési minták (kiterjeszthetőség)](../../labor/5-tervezesi-mintak/index.md)) elkezdett adatfeldolgozó/anonimizáló alkalmazást fogjuk továbbfejleszteni.
+A házi feladatban a kapcsolódó laboron ([6. labor – Tervezési minták (kiterjeszthetőség)](../../labor/5-tervezesi-mintak/index.md)) elkezdett adatfeldolgozó/anonimizáló alkalmazást fogjuk továbbfejleszteni.
 
 Az önálló feladat az tervezési minták előadásokon elhangzottakra épít:
 - "Előadás 08 - Tervezési minták 1" előadás: "Bővíthetőséghez, kiterjeszthetőséghez kapcsolódó alap tervezési minták" nagyfejezet: bevezető példa, Template Method, Strategy, Open/Closed elv, SRP elv, egyéb technikák (metódusreferencia/lambda)
@@ -82,11 +82,11 @@ A fentiek miatt sokszor nagyobb kódlefedettséget nem a lassabb integrációs, 
 !!! note "Tesztpiramis"
     Ezt egy tesztpiramissal szokás szemléltetni, melynek több formája terjedt el az irodalomban. Egy egyszerű variáns a következő:
     
-    ![Tesztpiramis](https://en.wikipedia.org/wiki/Test_automation#/media/File:Testing_Pyramid.png)
+    ![Tesztpiramis](images/testing-pyramid.png)
 
-    Minél fentebb vagyunk a piramis rétegeiben, annál átfogóbbak ugyan a tesztek, de annál lassabbak és költségesebben is futtathatók. Így ezekből általában kevesebbet is készítünk (ezáltal kisebb kódlefedettséget is érünk el velük). A piramis talapzatában az egységtesztek vannak, ezekből készítünk a legtöbbet.
+    Minél fentebb vagyunk a piramis rétegeiben, annál átfogóbbak ugyan a tesztek, de annál lassabbak és költségesebben is futtathatók. Így ezekből általában kevesebbet is készítünk (ezáltal kisebb kódlefedettséget is érünk el velük). A piramis csúcsán az automata E2E (End-to-end) vagy GUI tesztek vannak. Alatta vannak több egységet/modult egyben tesztelő integrációs tesztek. A piramis talapzatában az egységtesztek vannak, ezekből készítünk a legtöbbet (a piramis talapzata a legszélesebb).
 
-    Fun fact: Amikor egy termék fejlesztése során hosszú ideig elhanyagolják az egységtesztek készítését, akkor - mivel a kód szerkezete nem támogatja - már nagyon nehéz egységteszteket utólag készíteni. Így ezekből csak nagyon kevés lesz, némi integrációs tesztekkel kiegészítve, és jobb híján tesztelőcsapatok által elkészített sok-sok end-to-end teszttel (de ezzel sokszor nem lehet jó tesztlefedettséget elérni egy komplex termékben). Így egy feje tetejére állított tesztpiramist kapunk: ennek fagyitölcsér formája van, csak pár gombócot kell a tetejére képzelni. Szokás ezt fagyi "mintának" is nevezni (és ez nem az a fagyi, amit szeretünk). Azt azért érdemes megjegyezni, hogy mindent a helyén kell kezelni: azért vannak kivételek (olyan alkalmazások, ahol az egyes részekben alig van logika, az egész alkalmazásban az egyes nagyon egyszerű részek integrációja a hangsúlyos: ilyen esetben természetszerűen az integrációs tesztek túlsúlyosak).
+    Fun fact: Amikor egy termék fejlesztése során hosszú ideig elhanyagolják az egységtesztek készítését, akkor - mivel a kód szerkezete nem támogatja - már nagyon nehéz egységteszteket utólag készíteni. Így ezekből csak nagyon kevés lesz, némi integrációs tesztekkel kiegészítve, és jobb híján tesztelőcsapatok által elkészített sok-sok end-to-end/GUI teszttel (de ezzel sokszor nem lehet jó tesztlefedettséget elérni egy komplex termékben). Egy piramissal szemben ennek fagyitölcsér formája van, csak pár gombócot kell a tetejére képzelni. Szokás ezt fagyi "mintának" is nevezni (és ez nem az a fagyi, amit szeretünk). Azt azért érdemes megjegyezni, hogy mindent a helyén kell kezelni: vannak kivételek (olyan alkalmazások, ahol az egyes részekben alig van logika, az egész alkalmazásban az egyes nagyon egyszerű részek integrációja a hangsúlyos: ilyen esetben természetszerűen az integrációs tesztek túlsúlyosak).
 
 Az osztályok kódja alapesetben sokszor nem egységtesztelhető. Jelen formájában ilyen az `Anonymizer` is. Ebbe be van égetve, hogy csak a lassú, fájl alapú bemenettel tud dolgozni. De amikor mi pl. a `Run` művelet logikáját szeretnénk egységtesztelni, teljesen mindegy, hogy fájlból jönnek-e az adatok (lassan), vagy egyszerűen kódból a `new` operátorral előállítunk néhány `Person` objektumot a teszteléshez (több nagyságrenddel gyorsabban).
 
