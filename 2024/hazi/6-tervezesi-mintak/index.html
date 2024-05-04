@@ -1710,7 +1710,7 @@
 
 
 <h1 id="6-hf-tervezesi-mintak-kiterjeszthetoseg">6. HF - Tervezési minták (kiterjeszthetőség)<a class="headerlink" href="#6-hf-tervezesi-mintak-kiterjeszthetoseg" title="Permanent link">&para;</a></h1>
-<p>A házi feladatban az a kapcsolódó laboron (<a href="../../labor/5-tervezesi-mintak/index.md">6. labor – Tervezési minták (kiterjeszthetőség)</a>) elkezdett adatfeldolgozó/anonimizáló alkalmazást fogjuk továbbfejleszteni.</p>
+<p>A házi feladatban a kapcsolódó laboron (<a href="../../labor/5-tervezesi-mintak/index.md">6. labor – Tervezési minták (kiterjeszthetőség)</a>) elkezdett adatfeldolgozó/anonimizáló alkalmazást fogjuk továbbfejleszteni.</p>
 <p>Az önálló feladat az tervezési minták előadásokon elhangzottakra épít:
 - "Előadás 08 - Tervezési minták 1" előadás: "Bővíthetőséghez, kiterjeszthetőséghez kapcsolódó alap tervezési minták" nagyfejezet: bevezető példa, Template Method, Strategy, Open/Closed elv, SRP elv, egyéb technikák (metódusreferencia/lambda)
 - "Előadás 09 - Tervezési minták 1" előadás: Dependency Injection minta</p>
@@ -1777,9 +1777,9 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
 <div class="admonition note">
 <p class="admonition-title">Tesztpiramis</p>
 <p>Ezt egy tesztpiramissal szokás szemléltetni, melynek több formája terjedt el az irodalomban. Egy egyszerű variáns a következő:</p>
-<p><a class="glightbox" href="https://en.wikipedia.org/wiki/Test_automation#/media/File:Testing_Pyramid.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Tesztpiramis" src="https://en.wikipedia.org/wiki/Test_automation#/media/File:Testing_Pyramid.png" /></a></p>
-<p>Minél fentebb vagyunk a piramis rétegeiben, annál átfogóbbak ugyan a tesztek, de annál lassabbak és költségesebben is futtathatók. Így ezekből általában kevesebbet is készítünk (ezáltal kisebb kódlefedettséget is érünk el velük). A piramis talapzatában az egységtesztek vannak, ezekből készítünk a legtöbbet.</p>
-<p>Fun fact: Amikor egy termék fejlesztése során hosszú ideig elhanyagolják az egységtesztek készítését, akkor - mivel a kód szerkezete nem támogatja - már nagyon nehéz egységteszteket utólag készíteni. Így ezekből csak nagyon kevés lesz, némi integrációs tesztekkel kiegészítve, és jobb híján tesztelőcsapatok által elkészített sok-sok end-to-end teszttel (de ezzel sokszor nem lehet jó tesztlefedettséget elérni egy komplex termékben). Így egy feje tetejére állított tesztpiramist kapunk: ennek fagyitölcsér formája van, csak pár gombócot kell a tetejére képzelni. Szokás ezt fagyi "mintának" is nevezni (és ez nem az a fagyi, amit szeretünk). Azt azért érdemes megjegyezni, hogy mindent a helyén kell kezelni: azért vannak kivételek (olyan alkalmazások, ahol az egyes részekben alig van logika, az egész alkalmazásban az egyes nagyon egyszerű részek integrációja a hangsúlyos: ilyen esetben természetszerűen az integrációs tesztek túlsúlyosak).</p>
+<p><a class="glightbox" href="images/testing-pyramid.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Tesztpiramis" src="images/testing-pyramid.png" /></a></p>
+<p>Minél fentebb vagyunk a piramis rétegeiben, annál átfogóbbak ugyan a tesztek, de annál lassabbak és költségesebben is futtathatók. Így ezekből általában kevesebbet is készítünk (ezáltal kisebb kódlefedettséget is érünk el velük). A piramis csúcsán az automata E2E (End-to-end) vagy GUI tesztek vannak. Alatta vannak több egységet/modult egyben tesztelő integrációs tesztek. A piramis talapzatában az egységtesztek vannak, ezekből készítünk a legtöbbet (a piramis talapzata a legszélesebb).</p>
+<p>Fun fact: Amikor egy termék fejlesztése során hosszú ideig elhanyagolják az egységtesztek készítését, akkor - mivel a kód szerkezete nem támogatja - már nagyon nehéz egységteszteket utólag készíteni. Így ezekből csak nagyon kevés lesz, némi integrációs tesztekkel kiegészítve, és jobb híján tesztelőcsapatok által elkészített sok-sok end-to-end/GUI teszttel (de ezzel sokszor nem lehet jó tesztlefedettséget elérni egy komplex termékben). Egy piramissal szemben ennek fagyitölcsér formája van, csak pár gombócot kell a tetejére képzelni. Szokás ezt fagyi "mintának" is nevezni (és ez nem az a fagyi, amit szeretünk). Azt azért érdemes megjegyezni, hogy mindent a helyén kell kezelni: vannak kivételek (olyan alkalmazások, ahol az egyes részekben alig van logika, az egész alkalmazásban az egyes nagyon egyszerű részek integrációja a hangsúlyos: ilyen esetben természetszerűen az integrációs tesztek túlsúlyosak).</p>
 </div>
 <p>Az osztályok kódja alapesetben sokszor nem egységtesztelhető. Jelen formájában ilyen az <code>Anonymizer</code> is. Ebbe be van égetve, hogy csak a lassú, fájl alapú bemenettel tud dolgozni. De amikor mi pl. a <code>Run</code> művelet logikáját szeretnénk egységtesztelni, teljesen mindegy, hogy fájlból jönnek-e az adatok (lassan), vagy egyszerűen kódból a <code>new</code> operátorral előállítunk néhány <code>Person</code> objektumot a teszteléshez (több nagyságrenddel gyorsabban).</p>
 <p>A megoldás - a kódunk egységtesztelhetővé tételéhez - egyszerű:</p>
@@ -1913,8 +1913,8 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
         </path>
       </svg>
     </span>
-    <span title="2024. április 25. 16:59:36">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-25T16:59:36+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-25</span>
+    <span title="2024. május 4. 16:59:40">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-04T16:59:40+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-04</span>
     </span>
   </span>
 
