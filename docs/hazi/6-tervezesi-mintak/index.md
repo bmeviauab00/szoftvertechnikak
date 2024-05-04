@@ -129,7 +129,7 @@ Ennek megfelelően a delegate-ek alkalmazása egy újabb alternatíva (a Templat
 
 A következő lépésben a korábban Strategy mintával megvalósított progress kezelést alakítjuk át delegate alapúra (új funkciót nem vezetünk be, ez egy pusztán "technikai" átalakítás lesz).
 
-Feladat: Alakítsd át a Strategy-DI projektben található megoldást olyan módon, hogy az progress kezelés Strategy helyett delegate alapon legyen megvalósítva. Részletesebben:
+Feladat: Alakítsd át a Strategy-DI projektben található megoldást olyan módon, hogy a progress kezelés Strategy helyett delegate alapon legyen megvalósítva. Részletesebben:
 
 - Ne vezess be saját delegate típust (használd a .NET által biztosított `Action` típust).
 - A meglévő `SimpleProgress` és `PercentProgress` osztályokat ne használd a megoldásodban, ezeket rövidesen törölni fogjuk (de egyelőre ne töröld).
