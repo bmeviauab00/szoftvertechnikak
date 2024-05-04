@@ -2008,7 +2008,7 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
 <p>Jelen megoldásunk a Relaxed MVVM megközelítést követi. A következő lépésekben átgondoljuk, mit is jelent ez pontosan, és mit jelentene a Strict MVVM megközelítésre való átállás (megvalósítani nem fogjuk).</p>
 <p>Jelen megoldásunk a Relaxed MVVM megközelítést követi, vagyis a View-ban közvetlenül a <code>Person</code> modell osztályhoz adatkötünk (és a <code>PersonPageViewModel</code>-ben is a <code>Person</code> modell osztályt használjuk). Ennek előnye az egyszerűség. De van egy hátránya is: a <code>Person</code> modell osztályunkban kénytelenek voltunk megvalósítani az <code>INotifyPropertyChanged</code> interfészt (mégha az MVVM toolkit segítségével is), különben nem működne jól az adatkötés. Vannak olyan helyzetek, amikor a modell osztályunkat nem szeretnénk ilyen, némiképpen már a felületet kiszolgáló logikával "szennyezni", hanem a lehető legtisztább formában szeretnénk a modell osztályunkat tartani. Ekkor a Strict MVVM megközelítés jelenti a megoldást (lásd "Strict MVVM – beágyazás" előadásdia). Mit jelentene ez a számunkra, mit kellene a kódon változtatni? Gondold át az előadásdia alapján a szükséges változtatásokat! Megvalósítani/dokumentálni nem kell, ez csak egy átgondolós feladat 😊!</p>
 <details class="tip">
-<summary>String MVVM alapú megoldás</summary>
+<summary>Strict MVVM alapú megoldás</summary>
 <ul>
 <li>A <code>Person</code> modell osztályban már nem valósítanánk meg az <code>INotifyPropertyChanged</code> interfészt, az osztály leegyszerűsödik, csak egyszerű tulajdonságokat tartalmazna (ez volt a cél).</li>
 <li>Be kellene vezetni egy <code>PersonViewModel</code> osztályt (mely egy <code>Person</code> modell objektumot csomagolna be). Ebben:<ul>
@@ -2032,8 +2032,8 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
         </path>
       </svg>
     </span>
-    <span title="2024. május 3. 21:31:54">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-03T21:31:54+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-03</span>
+    <span title="2024. május 4. 11:33:41">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-04T11:33:41+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-04</span>
     </span>
   </span>
 
