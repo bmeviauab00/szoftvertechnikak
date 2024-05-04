@@ -448,26 +448,32 @@ A következőkben úgy fogjuk módosítani az alkalmazást, hogy blokkolva vára
 
 Az előző pontban megoldottuk a jelzést, ám ez önmagában nem sokat ér, hiszen nem várakoznak rá. Ennek megvalósítása jön most.
 
-1. Módosítsuk a metódust az alábbiak szerint: kidobjuk az üresség vizsgálatot és az eseményre való várakozással pótoljuk.
+1. Módosítsuk a metódust az alábbiak szerint: szúrjuk be a `_hasData` eseményre várakozást.
 
     ```cs hl_lines="5"
     public bool TryGet(out double[] data)
     {
         lock (_syncRoot)
         {
-            if (_hasData.WaitOne())
-            {
+            _hasData.WaitOne();
+            
+            if (_innerList.Count > 0)
                 // ...
     ```
    
-    !!! note "A WaitOne művelet visszatérési értékének vizsgálata"
-        A `WaitOne` művelet egy `bool` értékkel tér vissza, mely igaz, ha a `WaitOne` paraméterében megadott időkorlát előtt jelzett állapotba kerül az esemény (ill. ennek megfelelően hamis, ha lejárt az időkorlát). A példánkban nem adtunk meg időkorlátot paraméterben, mely végtelen időkorlát alkalmazását jelenti. Ennek megfelelően felesleges is az `if` feltételvizsgálat, hiszen esetünkben a `WaitOne()` mindig igaz értékkel tér vissza. Ez egyetlen ok, amiért mégis éltünk feltételvizsgálattal: így a követketkező és egy későbbi feladatnál kisebb átalakításra lesz majd szükség.
+    !!! note "A WaitOne művelet visszatérési értéke"
+        A `WaitOne` művelet egy `bool` értékkel tér vissza, mely igaz, ha a `WaitOne` paraméterében megadott időkorlát előtt jelzett állapotba kerül az esemény (ill. ennek megfelelően hamis, ha lejárt az időkorlát). A példánkban nem adtunk meg időkorlátot paraméterben, mely végtelen időkorlát alkalmazását jelenti. Ennek megfelelően nem is vizsgáljuk a visszatérési értékét (mert végtelen ideig vár jelzésre).
 
 2. Ezzel a `Thread.Sleep` a `WorkerThread`-ben feleslegessé vált, kommentezzük ki!
 
-    A fenti megoldás futtatásakor azt tapasztaljuk, hogy az alkalmazásunk felülete az első gombnyomást követően befagy. Az előző megoldásunkban ugyanis egy amatőr hibát követtünk el. A lock-olt kódrészleten belül várakozunk a `_hasData` jelzésére, így a főszálnak lehetősége sincs arra, hogy a `Put` műveletben (egy szintén `lock`-kal védett részen belül) jelzést küldjön `_hasData`-val. **Gyakorlatilag egy holtpont (deadlock) helyzet alakult ki.**
+    A fenti megoldás futtatásakor azt tapasztaljuk, hogy az alkalmazásunk felülete az első gombnyomást követően befagy. Az előző megoldásunkban ugyanis egy amatőr hibát követtünk el. A lock-olt kódrészleten belül várakozunk a `_hasData` jelzésére, így a főszálnak lehetősége sincs arra, hogy a `Put` műveletben (egy szintén `lock`-kal védett részen belül) jelzést küldjön `_hasData`-val. **Gyakorlatilag egy holtpont (deadlock) helyzet alakult ki**. Fontos, hogy a kódot nézve gondoljuk át részleteiben:
+    
+    * A `TryGet`-ben az egyik munkaszál (mely bejutott a `lock` blokkba a három közül), a `_hasData.WaitOne()` sorban arra vár, hogy a fő szál `Put`-ban a `_hasData`-t jelzettbe állítsa.
+    * A `Put`-ban a `lock` sorban fő szál arra vár, hogy az előző pontban említett munkaszál a `TryGet`-ben kilépjen a `lock` blokkból.
 
-    Próbálkozhatnánk egy időkorlát megadásával (ms) a várakozásnál:
+    Kölcsönösen egymásra várnak végtelen ideig, ez a holtpont/deadlock klasszikus esete.
+
+    Próbálkozhatnánk egy időkorlát megadásával (ms) a várakozásnál (ez nem kell megvalósítani):
 
     ```cs
     if (_hasData.WaitOne(100))
@@ -475,14 +481,16 @@ Az előző pontban megoldottuk a jelzést, ám ez önmagában nem sokat ér, his
 
     Ez önmagában sem lenne elegáns megoldás, ráadásul a folyamatosan pollozó munkaszálak jelentősen kiéheztetnék a Put-ot hívó szálat! Helyette, az elegáns és követendő minta az, hogy lock-on belül kerüljük a blokkolva várakozást.
 
-    Valódi javításként cseréljük meg a `lock`-ot és a `WaitOne`-t, illetve a `WaitOne` paraméter eltávolításával szüntessük meg a várakozási időkorlátot:
+    Javításként cseréljük meg a `lock`-ot és a `WaitOne`-t:
 
     ```cs hl_lines="3-6"
     public bool TryGet(out double[] data)
     {
-        if (_hasData.WaitOne())
+        _hasData.WaitOne();
+
+        lock (_syncRoot)
         {
-            lock (_syncRoot)
+            if (_innerList.Count > 0)
             {
                 data = _innerList[0];
                 _innerList.RemoveAt(0);
@@ -491,53 +499,50 @@ Az előző pontban megoldottuk a jelzést, ám ez önmagában nem sokat ér, his
                     _hasData.Reset();
                 }
 
-                return true; 
+                return true;
             }
-        }
 
-        data = null;
-        return false;
+            data = null;
+            return false;
+        }
     }
     ```
 
-    Próbáljuk ki az alkalmazást. Az első gombnyomás hatására kivételt kapunk. Így elkerüljük ugyan a deadlockot, **azonban a szálbiztosság sérült**, hiszen mire a `lock`-on belülre jutunk, nem biztos, hogy maradt elem a listában. Ugyanis lehet, több szál is várakozik a `_hasData.WaitOne()` műveletnél arra, hogy elem kerüljön a sorba. Mikor ez bekövetkezik, a `ManualResetEvent` objektumunk mind átengedi (hacsak éppen gyorsan le nem csukja egy szál, de ez nem garantált).
+    Próbáljuk ki az alkalmazást, most már jól működik.
 
-    !!! note "A konkurens, többszálú környezetben való programozás nehézségei"
-        Jól illusztrálja a feladat, hogy milyen alapos átgondolást igényel a konkurens, többszálú környezetben való programozás. Tulajdonképpen még szerencsénk is volt az előzőekben, mert jól reprodukálhatóan előjött a hiba. A gyakorlatban azonban ez ritkán van így. Sajnos sokkal gyakoribb, hogy a konkurenciahibák időnkénti, nem reprodukálható problémákat okoznak. Az ilyen jellegű feladatok megoldását mindig nagyon át kell gondolni, nem lehet az "addig-próbálkozom-míg-jó-nem-lesz-a-kézi-teszt-során" elv mentén leprogramozni.
+3. A `lock`-on belüli üresség-vizsgálat szerepe.
 
+    Az előző lépésben a `TryGet`-ben bevezettünk `_hasData` néven egy `MaunalResetEvent` objektumot. Ez pontosan akkor van jelzett állapotban, amikor a FIFO-ban van adat. Kérdés, szükség van-e még most is a lock blokkban az sor üresség vizsgálatra (`if (_innerList.Count > 0)`). Első érzésre redundánsnak gondolhatjuk. De próbáljuk ki, az `if`-ben az ürességvizsgálat helyett adjunk meg egy fix `true` értéket, ezzel semlegesítve az `if` hatását (azért dolgozunk így, hogy könnyű legyen visszacsinálni):
 
-3. Javításként tegyük vissza a `lock`-on belüli üresség-vizsgálatot.
-
-    ```cs hl_lines="7-8 17"
-    public bool TryGet(out double[] data)
-    {
-        if (_hasData.WaitOne())
+    ```cs hl_lines="4"
+        ...
+        lock (_syncRoot)
         {
-            lock (_syncRoot)
+            if (true)
             {
-                if (_innerList.Count > 0)
-                {
-                    data = _innerList[0];
-                    _innerList.RemoveAt(0);
-                    if (_innerList.Count == 0)
-                    {
-                        _hasData.Reset();
-                    }
-
-                    return true;  
-                }
-            }
-        }
-
-        data = null;
-        return false;
+                data = _innerList[0];
+                ...
     }
     ```
 
-    Ez már jól működik. Előfordulhat ugyan, hogy feleslegesen fordulunk a listához, de ezzel így most megelégszünk.
+    Próbáljuk ki. Egy kivételt fogunk kapni, amikor kattintunk a gombon: így már **nem szálbiztos** a megoldásunk. Vezessük le, miért:
 
-    Teszteljük az alkalmazást!
+    * Amikor elindul az alkalmazás, mindhárom feldolgozó szál a `TryGet` `_hasData.WaitOne();` soránál vár arra, hogy adat kerüljön a FIFO-ba.
+    * A gombra kattintáskor a `Put` művelet `_hasData`-t jelzettre állítja.
+    * A `TryGet` `_hasData.WaitOne();` során mindhárom szál átjut (ez egy ManualResetEvent, ha jelezett, minden szál mehet tovább).
+    * A `TryGet` `lock` blokkjába egyetlen szál jut be, a másik kettő itt vár (lock blokkban egyszerre egy szál lehet): ez a szál kiveszi az egyetlen elemet az `_innerList` listából, majd elhagyja a `lock` blokkot.
+    * Most már be tud jutni a `lock`-nál várakozó két szálból (ezek már korábban túljutottak a `hasData.WaitOne()` híváson!!!) egy másik is a `lock` blokkba, az is megpróbálja a 0. elemet kivenni az `_innerList` listából. De az már nincs ott (az előző lépésben az elsőnek bejutó szál elcsente az orra elől): ebből lesz a kivétel.
 
+    A megoldás: biztosítani kell a `lock` blockban, hogy ha időközben egy másik szál kiürítette a sort, akkor a szálunk már ne próbáljon elemet kivenni belőle. Vagyis vissza kell tenni a korábbi üresség vizsgálatot. Tegyük is ezt meg! A megoldásunk így jól működik. Előfordulhat ugyan, hogy feleslegesen fordulunk a listához, de ezzel így most megelégszünk.
+
+Összefoglalva: 
+    
+* Az üresség vizsgálatra a `ManualResetEvent` bevezetése után is szükség van. 
+* A `ManualResetEvent` az a célja, hogy feleslegesen ne pollozzuk gyakran a sort, ha az üres, vagyis az ún. aktív várakozást kerüljük el a segítségével.
+    
+!!! note "A konkurens, többszálú környezetben való programozás nehézségei"
+    Jól illusztrálja a feladat, hogy milyen alapos átgondolást igényel a konkurens, többszálú környezetben való programozás. Tulajdonképpen még szerencsénk is volt az előzőekben, mert jól reprodukálhatóan előjött a hiba. A gyakorlatban azonban ez ritkán van így. Sajnos sokkal gyakoribb, hogy a konkurenciahibák időnkénti, nem reprodukálható problémákat okoznak. Az ilyen jellegű feladatok megoldását mindig nagyon át kell gondolni, nem lehet az "addig-próbálkozom-míg-jó-nem-lesz-a-kézi-teszt-során" elv mentén leprogramozni.
+    
 !!! note "System.Collections.Concurrent"
     A .NET keretrendszerben több beépített szálbiztosságra felkészített osztály is található a `System.Collections.Concurrent` névtérben. A fenti példában a `DataFifo` osztályt a `System.Collections.Concurrent.ConcurrentQueue` osztállyal kiválthattuk volna.
 
