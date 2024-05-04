@@ -1805,7 +1805,7 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
 <ul>
 <li>Kommentezd ki a <code>Person</code> osztályt teljes egészében. </li>
 <li>A kikommentezett rész felett vedd fel az osztályt újonnan, de MVVM Toolkit alapú INPC megvalósítással.<ul>
-<li>A megvalósításban a "INPC példa 4 – MVVM Toolkittel" előadásdia segít.</li>
+<li>A megvalósításban a "INPC példa 4 - MVVM Toolkittel" előadásdia segít.</li>
 <li>Partial class kell legyen (vagyis az osztály részei több fájlban is definiálhatók).</li>
 <li>A Toolkit-beli <code>ObservableObject</code>-ből származzon: ez az ős valósítja meg az <code>INotifyPropertyChanged</code> interfészt, így nekünk már nem kell.</li>
 <li><code>Name</code> és <code>Age</code> tulajdonságok helyett <code>name</code> és <code>age</code> tagváltozókat vezessünk be, <code>ObservableProperty</code> attribútummal ellátva.</li>
@@ -2006,7 +2006,7 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
 </div>
 <h2 id="feladat-6-strict-mvvm">Feladat 6 - Strict MVVM<a class="headerlink" href="#feladat-6-strict-mvvm" title="Permanent link">&para;</a></h2>
 <p>Jelen megoldásunk a Relaxed MVVM megközelítést követi. A következő lépésekben átgondoljuk, mit is jelent ez pontosan, és mit jelentene a Strict MVVM megközelítésre való átállás (megvalósítani nem fogjuk).</p>
-<p>Jelen megoldásunk a Relaxed MVVM megközelítést követi, vagyis a View-ban közvetlenül a <code>Person</code> modell osztályhoz adatkötünk (és a <code>PersonPageViewModel</code>-ben is a <code>Person</code> modell osztályt használjuk). Ennek előnye az egyszerűség. De van egy hátránya is: a <code>Person</code> modell osztályunkban kénytelenek voltunk megvalósítani az <code>INotifyPropertyChanged</code> interfészt (mégha az MVVM toolkit segítségével is), különben nem működne jól az adatkötés. Vannak olyan helyzetek, amikor a modell osztályunkat nem szeretnénk ilyen, némiképpen már a felületet kiszolgáló logikával "szennyezni", hanem a lehető legtisztább formában szeretnénk a modell osztályunkat tartani. Ekkor a Strict MVVM megközelítés jelenti a megoldást (lásd "Strict MVVM – beágyazás" előadásdia). Mit jelentene ez a számunkra, mit kellene a kódon változtatni? Gondold át az előadásdia alapján a szükséges változtatásokat! Megvalósítani/dokumentálni nem kell, ez csak egy átgondolós feladat 😊!</p>
+<p>Jelen megoldásunk a Relaxed MVVM megközelítést követi, vagyis a View-ban közvetlenül a <code>Person</code> modell osztályhoz adatkötünk (és a <code>PersonPageViewModel</code>-ben is a <code>Person</code> modell osztályt használjuk). Ennek előnye az egyszerűség. De van egy hátránya is: a <code>Person</code> modell osztályunkban kénytelenek voltunk megvalósítani az <code>INotifyPropertyChanged</code> interfészt (mégha az MVVM toolkit segítségével is), különben nem működne jól az adatkötés. Vannak olyan helyzetek, amikor a modell osztályunkat nem szeretnénk ilyen, némiképpen már a felületet kiszolgáló logikával "szennyezni", hanem a lehető legtisztább formában szeretnénk a modell osztályunkat tartani. Ekkor a Strict MVVM megközelítés jelenti a megoldást (lásd "Strict MVVM - beágyazás" előadásdia). Mit jelentene ez a számunkra, mit kellene a kódon változtatni? Gondold át az előadásdia alapján a szükséges változtatásokat! Megvalósítani/dokumentálni nem kell, ez csak egy átgondolós feladat 😊!</p>
 <details class="tip">
 <summary>Strict MVVM alapú megoldás</summary>
 <ul>
@@ -2032,8 +2032,8 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
         </path>
       </svg>
     </span>
-    <span title="2024. május 4. 11:33:41">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-04T11:33:41+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-04</span>
+    <span title="2024. május 4. 11:41:32">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-04T11:41:32+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-04</span>
     </span>
   </span>
 
