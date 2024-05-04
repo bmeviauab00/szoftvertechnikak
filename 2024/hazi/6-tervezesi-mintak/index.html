@@ -1818,8 +1818,8 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
 <p>Feladat: Alakítsd át a Strategy-DI projektben található megoldást olyan módon, hogy a progress kezelés Strategy helyett delegate alapon legyen megvalósítva. Részletesebben:</p>
 <ul>
 <li>Ne vezess be saját delegate típust (használd a .NET által biztosított <code>Action</code> típust).</li>
-<li>A meglévő <code>SimpleProgress</code> és <code>PercentProgress</code> osztályokat ne használd a megoldásodban, ezeket rövidesen törölni fogjuk (de egyelőre ne töröld).</li>
-<li>Legyen lehetősége az <code>Anonymizer</code> használójának továbbiakban is null-t megadni a konstruktorban, ha nem kíván semmiféle progress kezelést használni.</li>
+<li>A meglévő <code>SimpleProgress</code> és <code>PercentProgress</code> osztályokat ne használd a megoldásodban(de ne is töröld ezeket!).</li>
+<li>Legyen lehetősége az <code>Anonymizer</code> használójának továbbiakban is <code>null</code>-t megadni a konstruktorban, ha nem kíván semmiféle progress kezelést használni.</li>
 <li>A <code>Program.cs</code> fájlban kommentezd ki az eddigi <code>Anonymizer</code> használatokat. Ugyanitt vezess be egy új példát az <code>Anonymizer</code> olyan használatára, melyben a progress kezelés lambda kifejezés formájában van megadva, és a lambda kifejezés pontosan a korábbi "simple progress" logikáját valósítja meg. A "percent progress"-re nem kell hasonlót megvalósítani, azt ebben a megoldásban nem kell támogatni (a következő feladatban térünk vissza rá).</li>
 </ul>
 <div class="admonition tip">
@@ -1844,8 +1844,8 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
 <p>Feladat: Bővítsd ki a korábbi megoldást úgy, hogy a "simple progress" és "percent progress" logikája újrafelhasználható legyen. Részletesebben:</p>
 <ul>
 <li>A "simple progress" és "percent progress" logikákat egy újonnan bevezetett <code>AllProgresses</code> nevű statikus osztály két statikus műveletében valósítsd meg (az osztály a projekt gyökerébe kerüljön).</li>
-<li>Vezess be két olyan új <code>Anonymizer</code> használatot a <code>Program.cs</code> fájlban, melyek az <code>AllProgresses</code> két műveletét használják (itt ne használj lambda kifejezést)-</li>
-<li>Töröld a meglévő <code>IProgress</code> interfészt és ennek implementációt (hiszen ezek már nincsenek használatban).</li>
+<li>Vezess be két olyan új <code>Anonymizer</code> használatot a <code>Program.cs</code> fájlban a meglévők mellé, melyek az <code>AllProgresses</code> két műveletét használják (itt ne használj lambda kifejezést).</li>
+<li>A meglévő <code>IProgress</code> interfészt és ennek implementációi törölhetők lennének (hiszen ezek már nincsenek használatban). De NE töröld őket annak érdekében, hogy a korábbi megoldásodhoz tartozó progress logika is ellenőrizhető legyen.</li>
 </ul>
 <p>Elkészültünk, értékeljük a megoldást:</p>
 <ul>
@@ -1913,8 +1913,8 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
         </path>
       </svg>
     </span>
-    <span title="2024. május 4. 18:17:14">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-04T18:17:14+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-04</span>
+    <span title="2024. május 4. 18:47:39">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-04T18:47:39+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-04</span>
     </span>
   </span>
 
