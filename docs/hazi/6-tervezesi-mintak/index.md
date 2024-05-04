@@ -61,7 +61,7 @@ Feladat: Dolgozz ki egy olyan megoldást, mely a fent vázolt hibalehetőséget 
 
     Ennek a technikának is van neve, **Null Object** néven szokás rá hivatkozni.
 
-## 3. Tesztelhetőség
+## 3. Feladat - Tesztelhetőség
 
 Vegyük észre, hogy az `Anonymizer` osztály működésének van még számos aspektusa, melyeket valamelyik megoldásunkkal kiterjeszthetővé lehetne tenni. Többek között ilyen a:
 
@@ -119,7 +119,7 @@ A következő lépés egységtesztek készítése (lenne) az `Anonymizer` osztá
 !!! example "3. feladat BEADANDÓ"
     - Illessz be egy képernyőképet, melyen az `Anonymizer` osztály konstruktora és a `Run` függvény implementációja látszik (`f3.1.png`).
 
-## 4. Delegate-ek alkalmazása
+## 4. Feladat - Delegate-ek alkalmazása
 
 Napjainkban rohamosan terjed a korábban szigorúan objektumorientált nyelvekben is a funkcionális programozást támogató eszközök megjelenése, és az alkalmazásfejlesztők is egyre nagyobb szeretettel alkalmazzák ezeket (merthogy sokszor jelentősen rövidebb kóddal, kisebb "ceremóniával" lehet ugyanazt segítségükkel megvalósítani). Egy ilyen eszköz C# nyelven a delegate, és ehhez kapcsolódóan a lambda kifejezés.
 
@@ -144,7 +144,7 @@ Feladat: Alakítsd át a Strategy-DI projektben található megoldást olyan mó
     - Illessz be egy képernyőképet, melyen az `Anonymizer` osztály konstruktora és a `Run` függvény implementációja látszik (`f4.1.png`).
     - Illessz be egy képernyőképet, melyen a `Program.cs` fájl tartalma (különösen az új részek) látszik (`f4.2.png`).
 
-## 5. Delegate-ek alkalmazása újrafelhasználható logikával
+## 5. Feladat - Delegate-ek alkalmazása újrafelhasználható logikával
 
 Az előző feladatban feltettük, hogy a "simple progress" és a "percent progress" logikáját csak egyszer használtuk, így nem kellett újrafelhasznélhatóvá tenni. Ennek megfelelően pl. a "simple progress" logikáját a lehető legegyszerűbb formában, egy lambda kifejezéssel adtuk meg (nem kellett külön függvényt bevezetni rá). Amennyiben az `Anonymizer` létrehozásakor a delegate-nek mindig más és más implementációt adunk meg, akkor ez a lambda alapú megoldás tökéletes.
 
@@ -169,9 +169,51 @@ Elkészültünk, értékeljük a megoldást:
     - Illessz be egy képernyőképet, melyen az `AllProgresses.cs` fájl tartalma látszik (`f5.1.png`).
     - Illessz be egy képernyőképet, melyen a `Program.cs` fájl tartalma (különösen az új részek) látszik (`f5.2.png`).
 
-## Refaktorálás (Refactoring)
+## Refaktorálás (Refactoring) fogalma
 
-A labor és a házi feladat megvalósítása során számos olyan lépés volt, mely során a kódot úgy alakítottuk át, hogy az alkalmazás külső viselkedése nem változott, csak a belső felépítése. Mégpedig annak érdekében, hogy valamilyen szempontból jobb kódminőségi jellemzőkkel rendelkezzen. Ezt a kód `refaktorálásának` (angolul `refactoring`) nevezzük. Ez egy nagyon fontos fogalom, a mindennapi munka során nagyon gyakran használjuk. Külön irodalma van, a fontosabb technikákkal a későbbiekben érdemes megismerkedni. A komolyabb fejlesztőeszközök beépítetten támogatnak bizonyos refaktorálási műveleteket: a Visual Studio ebben nem a legerősebb, de azért pár alapműveletet támogat (pl. Extract Method, Extract base class stb.). Manuálisan gyakoroltuk, ennek kapcsán külön feladatunk nem lesz.
+A labor és a házi feladat megvalósítása során számos olyan lépés volt, mely során a kódot úgy alakítottuk át, hogy az alkalmazás külső viselkedése nem változott, csak a belső felépítése. Mégpedig annak érdekében, hogy valamilyen szempontból jobb kódminőségi jellemzőkkel rendelkezzen. Ezt a kód `refaktorálásának` (angolul `refactoring`) nevezzük. Ez egy nagyon fontos fogalom, a mindennapi munka során nagyon gyakran használjuk. Külön irodalma van, a fontosabb technikákkal a későbbiekben érdemes megismerkedni. A komolyabb fejlesztőeszközök beépítetten támogatnak bizonyos refaktorálási műveleteket: a Visual Studio ebben nem a legerősebb, de azért pár alapműveletet támogat (pl. Extract Method, Extract base class stb.). Manuálisan gyakoroltuk, ennek kapcsán külön feladatunk nem lesz, de a Refaktorálás fogalmát ismerni kell.
+
+## 6. Opcionális feladat - Integrációs teszt készítése
+
+A korábbi, 3. feladat során ismertetésre került az integrációs teszt fogalma. Jelen opcionális feladat célja ennek gyakorlása, jobb megértése egy egyszerű feladaton keresztül. 
+
+Készíts egy integrációs tesztet az `Anonymizer` osztályhoz, a következők szerint:
+
+1. A Solutionben a `Test` mappában előkészített `IntegrationTest` projektben dolgozz. Ez egy NUnit teszt projekt.
+2. Ebben a projektben már előre felvettünk egy projekt referenciát a `Strategy-DI` projektre, így látjuk a `Strategy-DI` projektben levő (publikus) osztályokat. Értelemszerűen ez előfeltétele annak, hogy tudjuk tesztelni őket. Ellenőrizd a projekt referencia meglétét (Solution Explorerben a projekt alatt a Dependencies/Projects csomópont).
+3. Az `AnonymizerIntegrationTest` osztályban már van egy `Anonymize_CleanInput_MaskNames_Test` nevű tesztelést végző művelet (a teszt műveleteket `[Test]` attribútummal kell ellátni, ez erre a műveletre más elő van készítve). A művelet törzse egyelőre üres, ebben kell dolgozni a következő lépésekben.
+    1. Hozz létre egy `Anonymizer` objektumot, mely
+        * a `@"TestFiles\us-500-01-clean.input.csv"` bemenettel dolgozik (ez megtalálható a projekt *TestFiles* mappájában, nézd meg a tartalmát),
+        * a kimente legyen a `@"us-500-01-maskedname.processed.txt"` fájl,
+        * "***" paraméterű `NameMaskingAnonymizerAlgorithm`-t használ.
+    2. Futtasd az anonimizálót a `Run` műveletének hívásával, hogy álljon elő a kimenti állomány.
+    3. Az `Assert.AreEqual` hívással ellenőrizd, hogy az anonimizálás során előállt kimeneti állomány tartalma megegyezik-e a várt tartalommal. A várt tartalom a `@"TestFiles\us-500-01-maskedname.processed-expected.txt"` fájlban érhető el (ez megtalálható a projekt `TestFiles` mappájában, nézd meg a tartalmát). 
+    Tipp: egy fájl tartalmát pl. a `File.ReadAllBytes` statikus művelettel egy lépésben be lehet olvasni.
+4. Ellenőrizd, hogy az integrációs teszt hiba nélkül lefut.
+   1. Buildeld meg a projektet
+   2. Nyisd meg a Test Explorert (Test/Test Explorer menü)
+   3. A teszt futtatására a Test Explorer nézet tetején található eszközsávon levő gombokkal van lehetőség. De a teszt debuggolására is van lehetőség, jobb gombbal a tesztre kattintva és a Debug menü kiválasztásával: ez nagyon hasznos tud lenni, ha a tesztünk hibásan fut, és szeretnénk töréspontok segítségével a kódon lépkedni, illetve a változók értékét megnézni.
+   4. Ha a teszt hiba nélkül fut le, a teszthez tartozó ikon zöld lesz. Ha hibával, akkor piros, és a hibaüzenetről a tesztet kiválasztva Test Explorer nézet alján kapunk bővebb információt.
+
+## 7. Opcionális feladat - Unit teszt készítése
+
+A korábbi, 3. feladat során ismertetésre került az egységteszt fogalma. Jelen opcionális feladat célja ennek gyakorlása, jobb megértése egy feladaton keresztül.
+
+Előkészítés:
+
+1. Vegyél fel a solution-be egy új "NUnit Test Project" típusú projektet "UnitTest" néven (jobb katt a Solution-ön a Solution Explorerben/Add/New Project).
+2. Ebben az új projektben vegyél fel projekt referenciát a `Strategy-DI` projektre, hogy a projektben elérhetők legyenek a `Strategy-DI`-ben definiált típusok (jobb katt a Unit Test projekt Dependencies csomópontján/Add Project Reference, a megjelenő ablakban pipa a `Strategy-DI` projekten, "OK").
+3. A projekben születik egy `UnitTest1.cs` állomány, benne egy `Test` osztály. Ezeket célszerű `AnonymizerTest`-re nevezni. 
+
+Készíts egy egységtesztet az `Anonymizer` osztályhoz, mely ellenőrzi, hogy a `Run` művelete pontosan azokkal a személy adatokkal hívja meg sorrendhelyesen az anonimizáló algoritmust, melyeket az `Anonymizer` a bemenetén beolvas (amennyiben nincsenek trimmelendő városnevek). 
+
+* A tesztfüggvény neve legyen `RunShouldCallAlgorithmForEachInput`.
+* :exclamation: Alapvető fontosságú, hogy nagyon gyors egységtesztet kell írni, nem integrációs tesztet: tehát csak a `Run` logikáját akarjuk önmagában tesztelni, mindenféle fájlfeldolgozás nélkül. A megoldásban semmiféle fájlkezelés nem lehet!
+* Tipp: Memóriában hozz létre 2-3 `Person` objektumot, ezekkel dolgozz bemenetként.
+* Tipp: Olyan bemenő személyadatokkal dolgozz, melyekre a `TrimCityNames` függvénynek nincs hatása (vagyis nincsenek benne áltávolítandó adatok), ez egyszerűbbé teszi a tesztelést.
+* Tipp: Olyan `IInputReader`, `IAnonymizerAlgorithm` implementációkat hozz létre (és az `Anonymizert` ezekkel használd), **melyek megfelelő tesztadatokat biztosítanak, és/vagy futás közben adatokat gyűjtenek annak érdekében, hogy a futás után ellenőrizni tudd ezen adatok alapján, hogy a tesztelendő feltételek teljesülnek**. Ezeket a strategy implementációkat mindenképpen a teszt projekben vedd fel, mert csak a tesztelést szolgálják.
+
+További gyakorlásképpen készíthetsz egy olyan másik egységtesztet, mely azt ellenőrzi, hogy minden bemeneti személyadat eljut-e a kimenetre is. 
 
 ## Összegzés
 
