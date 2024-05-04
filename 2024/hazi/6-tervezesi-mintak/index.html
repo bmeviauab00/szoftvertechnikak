@@ -844,36 +844,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-tesztelhetoseg" class="md-nav__link">
+  <a href="#3-feladat-tesztelhetoseg" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Tesztelhetőség
+      3. Feladat - Tesztelhetőség
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-delegate-ek-alkalmazasa" class="md-nav__link">
+  <a href="#4-feladat-delegate-ek-alkalmazasa" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Delegate-ek alkalmazása
+      4. Feladat - Delegate-ek alkalmazása
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-delegate-ek-alkalmazasa-ujrafelhasznalhato-logikaval" class="md-nav__link">
+  <a href="#5-feladat-delegate-ek-alkalmazasa-ujrafelhasznalhato-logikaval" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Delegate-ek alkalmazása újrafelhasználható logikával
+      5. Feladat - Delegate-ek alkalmazása újrafelhasználható logikával
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#refaktoralas-refactoring" class="md-nav__link">
+  <a href="#refaktoralas-refactoring-fogalma" class="md-nav__link">
     <span class="md-ellipsis">
-      Refaktorálás (Refactoring)
+      Refaktorálás (Refactoring) fogalma
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-opcionalis-feladat-integracios-teszt-keszitese" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Opcionális feladat - Integrációs teszt készítése
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-opcionalis-feladat-unit-teszt-keszitese" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Opcionális feladat - Unit teszt készítése
     </span>
   </a>
   
@@ -1609,36 +1627,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-tesztelhetoseg" class="md-nav__link">
+  <a href="#3-feladat-tesztelhetoseg" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Tesztelhetőség
+      3. Feladat - Tesztelhetőség
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-delegate-ek-alkalmazasa" class="md-nav__link">
+  <a href="#4-feladat-delegate-ek-alkalmazasa" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Delegate-ek alkalmazása
+      4. Feladat - Delegate-ek alkalmazása
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-delegate-ek-alkalmazasa-ujrafelhasznalhato-logikaval" class="md-nav__link">
+  <a href="#5-feladat-delegate-ek-alkalmazasa-ujrafelhasznalhato-logikaval" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Delegate-ek alkalmazása újrafelhasználható logikával
+      5. Feladat - Delegate-ek alkalmazása újrafelhasználható logikával
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#refaktoralas-refactoring" class="md-nav__link">
+  <a href="#refaktoralas-refactoring-fogalma" class="md-nav__link">
     <span class="md-ellipsis">
-      Refaktorálás (Refactoring)
+      Refaktorálás (Refactoring) fogalma
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-opcionalis-feladat-integracios-teszt-keszitese" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Opcionális feladat - Integrációs teszt készítése
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-opcionalis-feladat-unit-teszt-keszitese" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Opcionális feladat - Unit teszt készítése
     </span>
   </a>
   
@@ -1760,7 +1796,7 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
 <p>A megoldás "trükkje" a következő. Egy olyan <code>IProgress</code> strategy implementációt kell készíteni (pl. <code>NullProgress</code> néven), melyet akkor használunk, amikor nincs szükség progress információra. Ez az implementáció a progress "során" nem csinál semmit, a függvény törzse üres. Amikor az <code>Anonymizer</code> konstruktorában null-t ad meg az osztály példányosítója progressként, akkor egy <code>NullProgress</code> objektumot hozzunk létre a konstruktorban, és a <code>_progress</code> tagot állítsuk erre. Most már a <code>_progress</code> soha nem lehet null, a null vizsgálatot vegyük is ki a kódból.</p>
 <p>Ennek a technikának is van neve, <strong>Null Object</strong> néven szokás rá hivatkozni.</p>
 </details>
-<h2 id="3-tesztelhetoseg">3. Tesztelhetőség<a class="headerlink" href="#3-tesztelhetoseg" title="Permanent link">&para;</a></h2>
+<h2 id="3-feladat-tesztelhetoseg">3. Feladat - Tesztelhetőség<a class="headerlink" href="#3-feladat-tesztelhetoseg" title="Permanent link">&para;</a></h2>
 <p>Vegyük észre, hogy az <code>Anonymizer</code> osztály működésének van még számos aspektusa, melyeket valamelyik megoldásunkkal kiterjeszthetővé lehetne tenni. Többek között ilyen a:</p>
 <ul>
 <li><strong>Bemenet</strong> kezelése: Most csak fájl alapú, adott CSV formátumot támogatunk.</li>
@@ -1810,7 +1846,7 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
 <li>Illessz be egy képernyőképet, melyen az <code>Anonymizer</code> osztály konstruktora és a <code>Run</code> függvény implementációja látszik (<code>f3.1.png</code>).</li>
 </ul>
 </div>
-<h2 id="4-delegate-ek-alkalmazasa">4. Delegate-ek alkalmazása<a class="headerlink" href="#4-delegate-ek-alkalmazasa" title="Permanent link">&para;</a></h2>
+<h2 id="4-feladat-delegate-ek-alkalmazasa">4. Feladat - Delegate-ek alkalmazása<a class="headerlink" href="#4-feladat-delegate-ek-alkalmazasa" title="Permanent link">&para;</a></h2>
 <p>Napjainkban rohamosan terjed a korábban szigorúan objektumorientált nyelvekben is a funkcionális programozást támogató eszközök megjelenése, és az alkalmazásfejlesztők is egyre nagyobb szeretettel alkalmazzák ezeket (merthogy sokszor jelentősen rövidebb kóddal, kisebb "ceremóniával" lehet ugyanazt segítségükkel megvalósítani). Egy ilyen eszköz C# nyelven a delegate, és ehhez kapcsolódóan a lambda kifejezés.</p>
 <p>Mint a félév során korábban láttuk, delegate-ek segítségével olyan kódot tudunk írni, melybe bizonyos logikák/viselkedések nincsenek beégetve, ezeket "kívülről" kap meg a kód. Pl. egy sorrendező függvénynek delegate formájában adjuk át paraméterként, hogyan kell két elemet összehasonlítani, vagy mely mezője/tulajdonsága szerint kell az összehasonlítást elvégezni (így végső soron meghatározni a kívánt sorrendet).</p>
 <p>Ennek megfelelően a delegate-ek alkalmazása egy újabb alternatíva (a Template Method és a Strategy mellett) a kód újrafelhasználhatóvá/kiterjeszthetővé tételére, kiterjesztési pontok bevezetésére.</p>
@@ -1836,7 +1872,7 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
 <li>Illessz be egy képernyőképet, melyen a <code>Program.cs</code> fájl tartalma (különösen az új részek) látszik (<code>f4.2.png</code>).</li>
 </ul>
 </div>
-<h2 id="5-delegate-ek-alkalmazasa-ujrafelhasznalhato-logikaval">5. Delegate-ek alkalmazása újrafelhasználható logikával<a class="headerlink" href="#5-delegate-ek-alkalmazasa-ujrafelhasznalhato-logikaval" title="Permanent link">&para;</a></h2>
+<h2 id="5-feladat-delegate-ek-alkalmazasa-ujrafelhasznalhato-logikaval">5. Feladat - Delegate-ek alkalmazása újrafelhasználható logikával<a class="headerlink" href="#5-feladat-delegate-ek-alkalmazasa-ujrafelhasznalhato-logikaval" title="Permanent link">&para;</a></h2>
 <p>Az előző feladatban feltettük, hogy a "simple progress" és a "percent progress" logikáját csak egyszer használtuk, így nem kellett újrafelhasznélhatóvá tenni. Ennek megfelelően pl. a "simple progress" logikáját a lehető legegyszerűbb formában, egy lambda kifejezéssel adtuk meg (nem kellett külön függvényt bevezetni rá). Amennyiben az <code>Anonymizer</code> létrehozásakor a delegate-nek mindig más és más implementációt adunk meg, akkor ez a lambda alapú megoldás tökéletes.</p>
 <p>Viszont mi a helyzet akkor, ha a fenti példában szereplő "simple progress" logikát több helyen, több <code>Anonymizer</code> objektumnál is fel szeretnénk használni? Súlyos hiba lenne a lambda kifejezést copy-paste-tel "szaporítani", kódduplikációhoz vezetne (ellentmondana a "<strong>Do Not Repeat Yourself</strong>", röviden <strong>DRY</strong> elvnek).</p>
 <p>Kérdés: van-e megoldás arra, hogy delegate-ek esetében is újrafelhasználható kódot adjunk meg? Természetesen igen, hiszen delegate-ek esetében nem kötelező a lambda kifejezések használata, lehet velük közönséges műveletekre (akár statikus, akár nem statikusakra is), mint azt korábban a félév során láttuk, és számos esetben alkalmaztuk is.</p>
@@ -1859,8 +1895,49 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
 <li>Illessz be egy képernyőképet, melyen a <code>Program.cs</code> fájl tartalma (különösen az új részek) látszik (<code>f5.2.png</code>).</li>
 </ul>
 </div>
-<h2 id="refaktoralas-refactoring">Refaktorálás (Refactoring)<a class="headerlink" href="#refaktoralas-refactoring" title="Permanent link">&para;</a></h2>
-<p>A labor és a házi feladat megvalósítása során számos olyan lépés volt, mely során a kódot úgy alakítottuk át, hogy az alkalmazás külső viselkedése nem változott, csak a belső felépítése. Mégpedig annak érdekében, hogy valamilyen szempontból jobb kódminőségi jellemzőkkel rendelkezzen. Ezt a kód <code>refaktorálásának</code> (angolul <code>refactoring</code>) nevezzük. Ez egy nagyon fontos fogalom, a mindennapi munka során nagyon gyakran használjuk. Külön irodalma van, a fontosabb technikákkal a későbbiekben érdemes megismerkedni. A komolyabb fejlesztőeszközök beépítetten támogatnak bizonyos refaktorálási műveleteket: a Visual Studio ebben nem a legerősebb, de azért pár alapműveletet támogat (pl. Extract Method, Extract base class stb.). Manuálisan gyakoroltuk, ennek kapcsán külön feladatunk nem lesz.</p>
+<h2 id="refaktoralas-refactoring-fogalma">Refaktorálás (Refactoring) fogalma<a class="headerlink" href="#refaktoralas-refactoring-fogalma" title="Permanent link">&para;</a></h2>
+<p>A labor és a házi feladat megvalósítása során számos olyan lépés volt, mely során a kódot úgy alakítottuk át, hogy az alkalmazás külső viselkedése nem változott, csak a belső felépítése. Mégpedig annak érdekében, hogy valamilyen szempontból jobb kódminőségi jellemzőkkel rendelkezzen. Ezt a kód <code>refaktorálásának</code> (angolul <code>refactoring</code>) nevezzük. Ez egy nagyon fontos fogalom, a mindennapi munka során nagyon gyakran használjuk. Külön irodalma van, a fontosabb technikákkal a későbbiekben érdemes megismerkedni. A komolyabb fejlesztőeszközök beépítetten támogatnak bizonyos refaktorálási műveleteket: a Visual Studio ebben nem a legerősebb, de azért pár alapműveletet támogat (pl. Extract Method, Extract base class stb.). Manuálisan gyakoroltuk, ennek kapcsán külön feladatunk nem lesz, de a Refaktorálás fogalmát ismerni kell.</p>
+<h2 id="6-opcionalis-feladat-integracios-teszt-keszitese">6. Opcionális feladat - Integrációs teszt készítése<a class="headerlink" href="#6-opcionalis-feladat-integracios-teszt-keszitese" title="Permanent link">&para;</a></h2>
+<p>A korábbi, 3. feladat során ismertetésre került az integrációs teszt fogalma. Jelen opcionális feladat célja ennek gyakorlása, jobb megértése egy egyszerű feladaton keresztül. </p>
+<p>Készíts egy integrációs tesztet az <code>Anonymizer</code> osztályhoz, a következők szerint:</p>
+<ol>
+<li>A Solutionben a <code>Test</code> mappában előkészített <code>IntegrationTest</code> projektben dolgozz. Ez egy NUnit teszt projekt.</li>
+<li>Ebben a projektben már előre felvettünk egy projekt referenciát a <code>Strategy-DI</code> projektre, így látjuk a <code>Strategy-DI</code> projektben levő (publikus) osztályokat. Értelemszerűen ez előfeltétele annak, hogy tudjuk tesztelni őket. Ellenőrizd a projekt referencia meglétét (Solution Explorerben a projekt alatt a Dependencies/Projects csomópont).</li>
+<li>Az <code>AnonymizerIntegrationTest</code> osztályban már van egy <code>Anonymize_CleanInput_MaskNames_Test</code> nevű tesztelést végző művelet (a teszt műveleteket <code>[Test]</code> attribútummal kell ellátni, ez erre a műveletre más elő van készítve). A művelet törzse egyelőre üres, ebben kell dolgozni a következő lépésekben.<ol>
+<li>Hozz létre egy <code>Anonymizer</code> objektumot, mely<ul>
+<li>a <code>@"TestFiles\us-500-01-clean.input.csv"</code> bemenettel dolgozik (ez megtalálható a projekt <em>TestFiles</em> mappájában, nézd meg a tartalmát),</li>
+<li>a kimente legyen a <code>@"us-500-01-maskedname.processed.txt"</code> fájl,</li>
+<li>"***" paraméterű <code>NameMaskingAnonymizerAlgorithm</code>-t használ.</li>
+</ul>
+</li>
+<li>Futtasd az anonimizálót a <code>Run</code> műveletének hívásával, hogy álljon elő a kimenti állomány.</li>
+<li>Az <code>Assert.AreEqual</code> hívással ellenőrizd, hogy az anonimizálás során előállt kimeneti állomány tartalma megegyezik-e a várt tartalommal. A várt tartalom a <code>@"TestFiles\us-500-01-maskedname.processed-expected.txt"</code> fájlban érhető el (ez megtalálható a projekt <code>TestFiles</code> mappájában, nézd meg a tartalmát). 
+Tipp: egy fájl tartalmát pl. a <code>File.ReadAllBytes</code> statikus művelettel egy lépésben be lehet olvasni.</li>
+</ol>
+</li>
+<li>Ellenőrizd, hogy az integrációs teszt hiba nélkül lefut.</li>
+<li>Buildeld meg a projektet</li>
+<li>Nyisd meg a Test Explorert (Test/Test Explorer menü)</li>
+<li>A teszt futtatására a Test Explorer nézet tetején található eszközsávon levő gombokkal van lehetőség. De a teszt debuggolására is van lehetőség, jobb gombbal a tesztre kattintva és a Debug menü kiválasztásával: ez nagyon hasznos tud lenni, ha a tesztünk hibásan fut, és szeretnénk töréspontok segítségével a kódon lépkedni, illetve a változók értékét megnézni.</li>
+<li>Ha a teszt hiba nélkül fut le, a teszthez tartozó ikon zöld lesz. Ha hibával, akkor piros, és a hibaüzenetről a tesztet kiválasztva Test Explorer nézet alján kapunk bővebb információt.</li>
+</ol>
+<h2 id="7-opcionalis-feladat-unit-teszt-keszitese">7. Opcionális feladat - Unit teszt készítése<a class="headerlink" href="#7-opcionalis-feladat-unit-teszt-keszitese" title="Permanent link">&para;</a></h2>
+<p>A korábbi, 3. feladat során ismertetésre került az egységteszt fogalma. Jelen opcionális feladat célja ennek gyakorlása, jobb megértése egy feladaton keresztül.</p>
+<p>Előkészítés:</p>
+<ol>
+<li>Vegyél fel a solution-be egy új "NUnit Test Project" típusú projektet "UnitTest" néven (jobb katt a Solution-ön a Solution Explorerben/Add/New Project).</li>
+<li>Ebben az új projektben vegyél fel projekt referenciát a <code>Strategy-DI</code> projektre, hogy a projektben elérhetők legyenek a <code>Strategy-DI</code>-ben definiált típusok (jobb katt a Unit Test projekt Dependencies csomópontján/Add Project Reference, a megjelenő ablakban pipa a <code>Strategy-DI</code> projekten, "OK").</li>
+<li>A projekben születik egy <code>UnitTest1.cs</code> állomány, benne egy <code>Test</code> osztály. Ezeket célszerű <code>AnonymizerTest</code>-re nevezni. </li>
+</ol>
+<p>Készíts egy egységtesztet az <code>Anonymizer</code> osztályhoz, mely ellenőrzi, hogy a <code>Run</code> művelete pontosan azokkal a személy adatokkal hívja meg sorrendhelyesen az anonimizáló algoritmust, melyeket az <code>Anonymizer</code> a bemenetén beolvas (amennyiben nincsenek trimmelendő városnevek). </p>
+<ul>
+<li>A tesztfüggvény neve legyen <code>RunShouldCallAlgorithmForEachInput</code>.</li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> Alapvető fontosságú, hogy nagyon gyors egységtesztet kell írni, nem integrációs tesztet: tehát csak a <code>Run</code> logikáját akarjuk önmagában tesztelni, mindenféle fájlfeldolgozás nélkül. A megoldásban semmiféle fájlkezelés nem lehet!</li>
+<li>Tipp: Memóriában hozz létre 2-3 <code>Person</code> objektumot, ezekkel dolgozz bemenetként.</li>
+<li>Tipp: Olyan bemenő személyadatokkal dolgozz, melyekre a <code>TrimCityNames</code> függvénynek nincs hatása (vagyis nincsenek benne áltávolítandó adatok), ez egyszerűbbé teszi a tesztelést.</li>
+<li>Tipp: Olyan <code>IInputReader</code>, <code>IAnonymizerAlgorithm</code> implementációkat hozz létre (és az <code>Anonymizert</code> ezekkel használd), <strong>melyek megfelelő tesztadatokat biztosítanak, és/vagy futás közben adatokat gyűjtenek annak érdekében, hogy a futás után ellenőrizni tudd ezen adatok alapján, hogy a tesztelendő feltételek teljesülnek</strong>. Ezeket a strategy implementációkat mindenképpen a teszt projekben vedd fel, mert csak a tesztelést szolgálják.</li>
+</ul>
+<p>További gyakorlásképpen készíthetsz egy olyan másik egységtesztet, mely azt ellenőrzi, hogy minden bemeneti személyadat eljut-e a kimenetre is. </p>
 <h2 id="osszegzes">Összegzés<a class="headerlink" href="#osszegzes" title="Permanent link">&para;</a></h2>
 <p>Több feladat nem lesz 😊. De ha kíváncsi vagy pl. arra, hogy jelen megoldás mennyire tekinthető "tökéletesnek"/hiányosnak, illetve mikor érdemes Template Methoddal, Strategyvel, vagy inkább delegate-ekkel dolgozni, akkor érdemes elolvasnod az alábbiakat, melyben értékeljük a laboron elkezdett és a házi feladat keretében befejezett megoldást.</p>
 <h3 id="a-munkafolyamatunk-attekintese">A munkafolyamatunk áttekintése<a class="headerlink" href="#a-munkafolyamatunk-attekintese" title="Permanent link">&para;</a></h3>
@@ -1913,8 +1990,8 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
         </path>
       </svg>
     </span>
-    <span title="2024. május 4. 18:47:39">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-04T18:47:39+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-04</span>
+    <span title="2024. május 4. 23:11:11">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-04T23:11:11+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-04</span>
     </span>
   </span>
 
