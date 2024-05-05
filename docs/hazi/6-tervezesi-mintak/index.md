@@ -211,7 +211,7 @@ Készíts egy egységtesztet az `Anonymizer` osztályhoz, mely ellenőrzi, hogy 
 * :exclamation: Alapvető fontosságú, hogy nagyon gyors egységtesztet kell írni, nem integrációs tesztet: tehát csak a `Run` logikáját akarjuk önmagában tesztelni, mindenféle fájlfeldolgozás nélkül. A megoldásban semmiféle fájlkezelés nem lehet!
 * Tipp: Memóriában hozz létre 2-3 `Person` objektumot, ezekkel dolgozz bemenetként.
 * Tipp: Olyan bemenő személyadatokkal dolgozz, melyekre a `TrimCityNames` függvénynek nincs hatása (vagyis nincsenek benne áltávolítandó adatok), ez egyszerűbbé teszi a tesztelést.
-* Tipp: Olyan `IInputReader`, `IAnonymizerAlgorithm` implementációkat hozz létre (és az `Anonymizert` ezekkel használd), **melyek megfelelő tesztadatokat biztosítanak, és/vagy futás közben adatokat gyűjtenek annak érdekében, hogy a futás után ellenőrizni tudd ezen adatok alapján, hogy a tesztelendő feltételek teljesülnek**. Ezeket a strategy implementációkat mindenképpen a teszt projekben vedd fel, mert csak a tesztelést szolgálják.
+* Tipp: Olyan `IInputReader`, `IAnonymizerAlgorithm` implementációkat hozz létre (és az `Anonymizert` ezekkel használd), **melyek megfelelő tesztadatokat biztosítanak, és/vagy futás közben adatokat gyűjtenek annak érdekében, hogy a futás után ellenőrizni tudd ezen adatok alapján, hogy a tesztelendő feltételek teljesülnek**. Ezeket a strategy implementációkat mindenképpen a teszt projektben vedd fel, mert csak a tesztelést szolgálják.
 
 További gyakorlásképpen készíthetsz egy olyan másik egységtesztet, mely azt ellenőrzi, hogy minden bemeneti személyadat eljut-e a kimenetre is. 
 
