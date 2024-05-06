@@ -1875,7 +1875,7 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
 <li><code>PersonListPage.xaml.cs</code> code-behind fájlból szinte mindent (kivéve <code>this.InitializeComponent()</code> hívás a konstruktorban) át kell mozgatni az újonnan bevezetett <code>PersonListPageViewModel</code>-be, mert ez mind UI logika.</li>
 <li>A <code>PersonListPageViewModel</code> publikus osztály legyen.</li>
 <li>A <code>PersonListPage</code> code behindba fel kell venni egy ViewModel nevű, <code>PersonListPageViewModel</code> típusú, csak getterrel rendelkező auto implementált tulajdonságot, és ezt egy új objektumra inicializálni is kell. Vagyis a view hozza létre és tartalmazza a ViewModel-t!</li>
-<li>A <code>PersonListPage.xaml</code>-ben az két <code>TextBox</code> adatkötését megfelelően igazítani kell (a <code>NewPerson.Name</code> és <code>NewPerson.Age</code> már egy szinttel mélyebben, a code behind ViewModel tulajdonságán keresztül érhető el).</li>
+<li>A <code>PersonListPage.xaml</code>-ben a két <code>TextBox</code> adatkötését megfelelően igazítani kell (a <code>NewPerson.Name</code> és <code>NewPerson.Age</code> már egy szinttel mélyebben, a code behind ViewModel tulajdonságán keresztül érhető el).</li>
 <li>A <code>PersonListPage.xaml</code>-ben az eseménykezelők (<code>Click</code>) igazítása három helyen. Ezt trükkösebb. Eseménykezelő függvény az eddig alkalmazott szintaktikával nem adható már meg, mert az eseménykezelők nem a code behindban találhatók (átkerültek a ViewModel-be). <ul>
 <li>Az eseményekhez az eseménykezelő műveleteket adatkötéssel is meg lehet adni! Lásd előadás dia "Események és funkciók kötése" címmel. Ez nekünk azért jó, mert a code behind ViewModel tulajdonságában ott a <code>PersonListPageViewModel</code> objektum, melyben ott vannak az eseménykezelők (<code>AddButton_Click</code>, <code>IncreaseButton_Click</code>, <code>DecreaseButton_Click</code>), ezeket kell kötött tulajdonságként megadni az adatkötésben (pl. <code>ViewModel.AddButton_Click</code> stb.).</li>
 <li>Fontos, hogy az eseménykezelő függvények legyenek publikusak, máskülönben nem működik az adatkötés (át kell alakítani privátról).</li>
@@ -1933,7 +1933,7 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
 <li>Az <code>IsDecrementEnabled</code> tulajdonság maradhat a mostani formájában (egy getter only property), nem szükséges <code>[ObservableProperty]</code> alapúra átírni (de az is jó megoldás, és a házi feladat tekintetében is teljesen elfogadható, csak kicsit másként kell dolgozni a következő lépésekben).</li>
 </ul>
 </li>
-<li>Próbáld magadtól megvalósítani a következőt a ViewModel osztályban (a <code>Person</code> osztály marad változatlan): amikor a <code>NewPerson.Age</code> változik, akkor az <code>ObservableObject</code> ősből örökölt <code>OnPropertyChanged</code> hívásával jelezzük a <code>IsDecrementEnabled</code> tulajdonság változását. Tipp: a <code>Person</code> osztály már rendelkezik <code>PropertyChanged</code> eseménnyel, hiszen maga is megvalósítja az <code>INotifyPropertyChanged</code> interfészt, erre az eseményre fel lehet iratkozni! Az egyszerűség érdekében az nem zavar minket, ha az <code>IsDecrementEnabled</code> változását esetleg akkor is jelezzük, ha tulajdonképen "logikailag" estleg nem is változik.</li>
+<li>Próbáld magadtól megvalósítani a következőt a ViewModel osztályban (a <code>Person</code> osztály marad változatlan): amikor a <code>NewPerson.Age</code> változik, akkor az <code>ObservableObject</code> ősből örökölt <code>OnPropertyChanged</code> hívásával jelezzük a <code>IsDecrementEnabled</code> tulajdonság változását. Tipp: a <code>Person</code> osztály már rendelkezik <code>PropertyChanged</code> eseménnyel, hiszen maga is megvalósítja az <code>INotifyPropertyChanged</code> interfészt, erre az eseményre fel lehet iratkozni! Az egyszerűség érdekében az nem zavar minket, ha az <code>IsDecrementEnabled</code> változását esetleg akkor is jelezzük, ha tulajdonképen "logikailag" esetleg nem is változik.</li>
 <li>A fentieket külön eseménykezelő függvény bevezetése nélkül is meg lehet oldani (tipp: eseménykezelő megadása lambda kifejezéssel).</li>
 </ul>
 <p>Teszteld is a megoldásod! Ha jól dolgoztál, a gombnak akkor is le kell tiltódnia, ha a TextBoxba kézzel írsz be negatív életkor értéket (és utána kikattintasz a TextBoxból). Gondold át, miért van ez így!</p>
@@ -2032,8 +2032,8 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
         </path>
       </svg>
     </span>
-    <span title="2024. május 4. 11:41:32">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-04T11:41:32+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-04</span>
+    <span title="2024. május 6. 21:53:28">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-06T21:53:28+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-06</span>
     </span>
   </span>
 
@@ -2110,5 +2110,7 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
         <script src="../../js/timeago_mkdocs_material.js"></script>
       
     
-  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

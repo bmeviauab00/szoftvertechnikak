@@ -1903,7 +1903,7 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
 <ol>
 <li>A Solutionben a <code>Test</code> mappában előkészített <code>IntegrationTest</code> projektben dolgozz. Ez egy NUnit teszt projekt.</li>
 <li>Ebben a projektben már előre felvettünk egy projekt referenciát a <code>Strategy-DI</code> projektre, így látjuk a <code>Strategy-DI</code> projektben levő (publikus) osztályokat. Értelemszerűen ez előfeltétele annak, hogy tudjuk tesztelni őket. Ellenőrizd a projekt referencia meglétét (Solution Explorerben a projekt alatt a Dependencies/Projects csomópont).</li>
-<li>Az <code>AnonymizerIntegrationTest</code> osztályban már van egy <code>Anonymize_CleanInput_MaskNames_Test</code> nevű tesztelést végző művelet (a teszt műveleteket <code>[Test]</code> attribútummal kell ellátni, ez erre a műveletre más elő van készítve). A művelet törzse egyelőre üres, ebben kell dolgozni a következő lépésekben.<ol>
+<li>Az <code>AnonymizerIntegrationTest</code> osztályban már van egy <code>Anonymize_CleanInput_MaskNames_Test</code> nevű tesztelést végző művelet (a teszt műveleteket <code>[Test]</code> attribútummal kell ellátni, ez erre a műveletre már elő van készítve). A művelet törzse egyelőre üres, ebben kell dolgozni a következő lépésekben.<ol>
 <li>Hozz létre egy <code>Anonymizer</code> objektumot, mely<ul>
 <li>a <code>@"TestFiles\us-500-01-clean.input.csv"</code> bemenettel dolgozik (ez megtalálható a projekt <em>TestFiles</em> mappájában, nézd meg a tartalmát),</li>
 <li>a kimente legyen a <code>@"us-500-01-maskedname.processed.txt"</code> fájl,</li>
@@ -1927,7 +1927,7 @@ Tipp: egy fájl tartalmát pl. a <code>File.ReadAllBytes</code> statikus művele
 <ol>
 <li>Vegyél fel a solution-be egy új "NUnit Test Project" típusú projektet "UnitTest" néven (jobb katt a Solution-ön a Solution Explorerben/Add/New Project).</li>
 <li>Ebben az új projektben vegyél fel projekt referenciát a <code>Strategy-DI</code> projektre, hogy a projektben elérhetők legyenek a <code>Strategy-DI</code>-ben definiált típusok (jobb katt a Unit Test projekt Dependencies csomópontján/Add Project Reference, a megjelenő ablakban pipa a <code>Strategy-DI</code> projekten, "OK").</li>
-<li>A projekben születik egy <code>UnitTest1.cs</code> állomány, benne egy <code>Test</code> osztály. Ezeket célszerű <code>AnonymizerTest</code>-re nevezni. </li>
+<li>A projektben születik egy <code>UnitTest1.cs</code> állomány, benne egy <code>Test</code> osztály. Ezeket célszerű <code>AnonymizerTest</code>-re nevezni. </li>
 </ol>
 <p>Készíts egy egységtesztet az <code>Anonymizer</code> osztályhoz, mely ellenőrzi, hogy a <code>Run</code> művelete pontosan azokkal a személy adatokkal hívja meg sorrendhelyesen az anonimizáló algoritmust, melyeket az <code>Anonymizer</code> a bemenetén beolvas (amennyiben nincsenek trimmelendő városnevek). </p>
 <ul>
@@ -1990,8 +1990,8 @@ Tipp: egy fájl tartalmát pl. a <code>File.ReadAllBytes</code> statikus művele
         </path>
       </svg>
     </span>
-    <span title="2024. május 5. 09:57:52">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-05T09:57:52+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-05</span>
+    <span title="2024. május 6. 21:53:28">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-06T21:53:28+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-06</span>
     </span>
   </span>
 
@@ -2064,5 +2064,7 @@ Tipp: egy fájl tartalmát pl. a <code>File.ReadAllBytes</code> statikus művele
         <script src="../../js/timeago_mkdocs_material.js"></script>
       
     
-  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>
