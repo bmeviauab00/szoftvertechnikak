@@ -10,7 +10,7 @@ A házi feladatban egy konzol alapú alkalmazást kell elkészíteni, mely egy l
 
 A megvalósításért 7 IMSc pont szerezhető.
 
-Az házi feladat az Observer és Adapter tervezési minta ismeretére épít (lásd kapcsolódó tervezési minták előadásanyag). 
+A házi feladat az Observer és Adapter tervezési minta ismeretére épít (lásd kapcsolódó tervezési minták előadásanyag). 
 
 A szükséges fejlesztőkörnyezetről [itt](../fejlesztokornyezet/index.md) található leírás. Ez egy konzolos alkalmazás, akár Linux/Mac környezetben is megvalósítható.
 

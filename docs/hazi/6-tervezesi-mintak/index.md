@@ -181,7 +181,7 @@ Készíts egy integrációs tesztet az `Anonymizer` osztályhoz, a következők 
 
 1. A Solutionben a `Test` mappában előkészített `IntegrationTest` projektben dolgozz. Ez egy NUnit teszt projekt.
 2. Ebben a projektben már előre felvettünk egy projekt referenciát a `Strategy-DI` projektre, így látjuk a `Strategy-DI` projektben levő (publikus) osztályokat. Értelemszerűen ez előfeltétele annak, hogy tudjuk tesztelni őket. Ellenőrizd a projekt referencia meglétét (Solution Explorerben a projekt alatt a Dependencies/Projects csomópont).
-3. Az `AnonymizerIntegrationTest` osztályban már van egy `Anonymize_CleanInput_MaskNames_Test` nevű tesztelést végző művelet (a teszt műveleteket `[Test]` attribútummal kell ellátni, ez erre a műveletre más elő van készítve). A művelet törzse egyelőre üres, ebben kell dolgozni a következő lépésekben.
+3. Az `AnonymizerIntegrationTest` osztályban már van egy `Anonymize_CleanInput_MaskNames_Test` nevű tesztelést végző művelet (a teszt műveleteket `[Test]` attribútummal kell ellátni, ez erre a műveletre már elő van készítve). A művelet törzse egyelőre üres, ebben kell dolgozni a következő lépésekben.
     1. Hozz létre egy `Anonymizer` objektumot, mely
         * a `@"TestFiles\us-500-01-clean.input.csv"` bemenettel dolgozik (ez megtalálható a projekt *TestFiles* mappájában, nézd meg a tartalmát),
         * a kimente legyen a `@"us-500-01-maskedname.processed.txt"` fájl,
@@ -203,7 +203,7 @@ Előkészítés:
 
 1. Vegyél fel a solution-be egy új "NUnit Test Project" típusú projektet "UnitTest" néven (jobb katt a Solution-ön a Solution Explorerben/Add/New Project).
 2. Ebben az új projektben vegyél fel projekt referenciát a `Strategy-DI` projektre, hogy a projektben elérhetők legyenek a `Strategy-DI`-ben definiált típusok (jobb katt a Unit Test projekt Dependencies csomópontján/Add Project Reference, a megjelenő ablakban pipa a `Strategy-DI` projekten, "OK").
-3. A projekben születik egy `UnitTest1.cs` állomány, benne egy `Test` osztály. Ezeket célszerű `AnonymizerTest`-re nevezni. 
+3. A projektben születik egy `UnitTest1.cs` állomány, benne egy `Test` osztály. Ezeket célszerű `AnonymizerTest`-re nevezni. 
 
 Készíts egy egységtesztet az `Anonymizer` osztályhoz, mely ellenőrzi, hogy a `Run` művelete pontosan azokkal a személy adatokkal hívja meg sorrendhelyesen az anonimizáló algoritmust, melyeket az `Anonymizer` a bemenetén beolvas (amennyiben nincsenek trimmelendő városnevek). 
 
