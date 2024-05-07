@@ -175,6 +175,8 @@ A labor és a házi feladat megvalósítása során számos olyan lépés volt, 
 
 ## 6. Opcionális feladat - Integrációs teszt készítése
 
+A feladat megoldásával +1 IMSc pont szerezhető.
+
 A korábbi, 3. feladat során ismertetésre került az integrációs teszt fogalma. Jelen opcionális feladat célja ennek gyakorlása, jobb megértése egy egyszerű feladaton keresztül. 
 
 Készíts egy integrációs tesztet az `Anonymizer` osztályhoz, a következők szerint:
@@ -196,6 +198,8 @@ Készíts egy integrációs tesztet az `Anonymizer` osztályhoz, a következők 
    4. Ha a teszt hiba nélkül fut le, a teszthez tartozó ikon zöld lesz. Ha hibával, akkor piros, és a hibaüzenetről a tesztet kiválasztva Test Explorer nézet alján kapunk bővebb információt.
 
 ## 7. Opcionális feladat - Unit teszt készítése
+
+A feladat megoldásával +2 IMSc pont szerezhető.
 
 A korábbi, 3. feladat során ismertetésre került az egységteszt fogalma. Jelen opcionális feladat célja ennek gyakorlása, jobb megértése egy feladaton keresztül.
 
