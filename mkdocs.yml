@@ -136,6 +136,6 @@ nav:
       - '2. Sprachliche Mittel': hazi/meghirdetes-elott_ger.md
       - '3. Entwurf der Benutzeroberfläche': hazi/3-felhasznaloi-felulet-kialakitasa/index_ger.md
       - '4. Entwicklung von Multithreading-Anwendungen': hazi/4-tobbszalu-alkalmazasok-fejlesztese/index_ger.md
-      - '5. MVVM': hazi/meghirdetes-elott_ger.md
+      - '5. MVVM': hazi/5-mvvm/index_ger.md
       - '6. Entwurfsmuster': hazi/meghirdetes-elott_ger.md
       - 'Entwicklungsumgebung': hazi/fejlesztokornyezet/index_ger.md
