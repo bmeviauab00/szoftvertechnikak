@@ -192,10 +192,10 @@ Készíts egy integrációs tesztet az `Anonymizer` osztályhoz, a következők 
     3. Az `Assert.AreEqual` hívással ellenőrizd, hogy az anonimizálás során előállt kimeneti állomány tartalma megegyezik-e a várt tartalommal. A várt tartalom a `@"TestFiles\us-500-01-maskedname.processed-expected.txt"` fájlban érhető el (ez megtalálható a projekt `TestFiles` mappájában, nézd meg a tartalmát). 
     Tipp: egy fájl tartalmát pl. a `File.ReadAllBytes` statikus művelettel egy lépésben be lehet olvasni.
 4. Ellenőrizd, hogy az integrációs teszt hiba nélkül lefut.
-   1. Buildeld meg a projektet
-   2. Nyisd meg a Test Explorert (Test/Test Explorer menü)
-   3. A teszt futtatására a Test Explorer nézet tetején található eszközsávon levő gombokkal van lehetőség. De a teszt debuggolására is van lehetőség, jobb gombbal a tesztre kattintva és a Debug menü kiválasztásával: ez nagyon hasznos tud lenni, ha a tesztünk hibásan fut, és szeretnénk töréspontok segítségével a kódon lépkedni, illetve a változók értékét megnézni.
-   4. Ha a teszt hiba nélkül fut le, a teszthez tartozó ikon zöld lesz. Ha hibával, akkor piros, és a hibaüzenetről a tesztet kiválasztva Test Explorer nézet alján kapunk bővebb információt.
+    1. Buildeld meg a projektet
+    2. Nyisd meg a Test Explorert (Test/Test Explorer menü)
+    3. A teszt futtatására a Test Explorer nézet tetején található eszközsávon levő gombokkal van lehetőség. De a teszt debuggolására is van lehetőség, jobb gombbal a tesztre kattintva és a Debug menü kiválasztásával: ez nagyon hasznos tud lenni, ha a tesztünk hibásan fut, és szeretnénk töréspontok segítségével a kódon lépkedni, illetve a változók értékét megnézni.
+    4. Ha a teszt hiba nélkül fut le, a teszthez tartozó ikon zöld lesz. Ha hibával, akkor piros, és a hibaüzenetről a tesztet kiválasztva Test Explorer nézet alján kapunk bővebb információt.
 
 ## 7. Opcionális feladat - Unit teszt készítése
 
