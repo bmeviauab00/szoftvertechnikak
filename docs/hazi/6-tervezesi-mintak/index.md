@@ -116,6 +116,8 @@ Feladat: Alakítsd át a Strategy-DI projektben található megoldást olyan mó
 
 A következő lépés egységtesztek készítése (lenne) az `Anonymizer` osztályhoz. Ehhez olyan, ún. mock strategy implementációkat kell bevezetni, melyek nemcsak tesztadatokat szolgáltatnak (természetesen gyorsan, fájlkezelés nélkül), hanem ellenőrzéseket is végeznek (adott logikai egység valóban jól működik-e). Ez most bonyolultnak hangzik, de szerencsére a legtöbb modern keretrendszerben van rá könyvtár támogatás (.NET-ben a [moq](https://github.com/devlooped/moq)). Ennek alkalmazása túlmutat a tárgy keretein, így a feladatunk egységtesztelhetőséghez kapcsolódó vonulatát ebben a pontban lezárjuk.
 
+A feladat végeztével, a kimeneti fájl tartalmának ellenőrzésével mindenképpen győződj meg arról, hogy az anonimizálás valóban lefut!
+
 !!! example "3. feladat BEADANDÓ"
     - Illessz be egy képernyőképet, melyen az `Anonymizer` osztály konstruktora és a `Run` függvény implementációja látszik (`f3.1.png`).
 
