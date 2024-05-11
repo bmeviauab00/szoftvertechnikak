@@ -1,0 +1,1900 @@
+
+<!doctype html>
+<html lang="hu" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Benedek Zoltán">
+      
+      
+        <link rel="canonical" href="https://bmeviauab00.github.io/szoftvertechnikak/2024/hazi/6-tervezesi-mintak/index_ger/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.9">
+    
+    
+      
+        <title>6. HF - Entwurfsmuster (Erweiterbarkeit) - BMEVIAUAB00 Szoftvertechnikák</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.f2e4d321.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../extra-material-theme.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="aut" data-md-color-primary="aut" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#6-hf-entwurfsmuster-erweiterbarkeit" class="md-skip">
+          Kihagyás
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Élőfej">
+    <a href="../../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-header__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
+      
+  <img src="../../../img/logo-bme-aut.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BMEVIAUAB00 Szoftvertechnikák
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6. HF - Entwurfsmuster (Erweiterbarkeit)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="aut" data-md-color-primary="aut" data-md-color-accent="red"  aria-label="Váltás sötét témára"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Váltás sötét témára" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="indigo"  aria-label="Váltás világos témára"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Váltás világos témára" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Keresés" placeholder="Keresés" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Keresés">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Törlés" aria-label="Törlés" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Keresés inicializálása
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bmeviauab00/szoftvertechnikak
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Lapok" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Szoftvertechnikák (2024-től)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../labor/1-model-es-kod-kapcsolata/" class="md-tabs__link">
+          
+  
+  Laborok
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Önálló/házi feladatok
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../labor/1-model-es-kod-kapcsolata/index_eng/" class="md-tabs__link">
+          
+  
+  English course labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../labor/1-model-es-kod-kapcsolata/index_ger/" class="md-tabs__link">
+          
+  
+  Deutschkurs-Labore
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../meghirdetes-elott_ger/" class="md-tabs__link">
+          
+  
+  Hausaufgaben
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigáció" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-nav__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
+      
+  <img src="../../../img/logo-bme-aut.png" alt="logo">
+
+    </a>
+    BMEVIAUAB00 Szoftvertechnikák
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bmeviauab00/szoftvertechnikak
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Szoftvertechnikák (2024-től)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Laborok
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Laborok
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/1-model-es-kod-kapcsolata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. A modell és a kód kapcsolata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/2-nyelvi-eszkozok/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Nyelvi eszközök
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/3-felhasznaloi-felulet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. A felhasználói felület kialakítása
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/4-tobbszalu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Többszálú alkalmazások készítése
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/5-mvvm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/6-tervezesi-mintak/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Tervezési minták (kiterjeszthetőség)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/7-adatkezeles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Adatkezelés
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Önálló/házi feladatok
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Önálló/házi feladatok
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Útmutató
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-model-es-kod-kapcsolata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. HF - A modell és a kód kapcsolata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-nyelvi-eszkozok/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. HF - Nyelvi eszközök
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-felhasznaloi-felulet-kialakitasa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. HF - Felhasználói felület kialakítása
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-tobbszalu-alkalmazasok-fejlesztese/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. HF - Többszálú alkalmazások fejlesztése
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-mvvm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. HF - MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. HF - Tervezési minták
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../imsc-liftsystem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IMSc HF - Liftrendszer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fejlesztokornyezet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fejlesztőkörnyezet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    English course labs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            English course labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/1-model-es-kod-kapcsolata/index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Relationship between the model and the code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/2-nyelvi-eszkozok/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/3-felhasznaloi-felulet/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/4-tobbszalu/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/5-mvvm/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/6-tervezesi-mintak/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/7-adatkezeles/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Deutschkurs-Labore
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Deutschkurs-Labore
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/1-model-es-kod-kapcsolata/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Beziehung zwischen dem Modell und dem Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/2-nyelvi-eszkozok/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Sprachliche Mittel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/3-felhasznaloi-felulet/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Entwurf der Benutzeroberfläche
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/4-tobbszalu/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Erstellung von mehrfädigen Anwendungen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/5-mvvm/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/6-tervezesi-mintak/index_ger.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/7-adatkezeles/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Verwaltung der Daten
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hausaufgaben
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Hausaufgaben
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Beziehung zwischen dem Modell und dem Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Sprachliche Mittel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-felhasznaloi-felulet-kialakitasa/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Entwurf der Benutzeroberfläche
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-tobbszalu-alkalmazasok-fejlesztese/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Entwicklung von Multithreading-Anwendungen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-mvvm/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Entwurfsmuster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fejlesztokornyezet/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entwicklungsumgebung
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tartalomjegyzék
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#das-verfahren-fur-die-einreichung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Das Verfahren für die Einreichung
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-verfasst-am" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Verfasst am
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-aufgabe-null-strategie" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Aufgabe - Null-Strategie
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-aufgabe-prufbarkeit" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Aufgabe - Prüfbarkeit
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-aufgabe-einstellung-von-delegierten" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Aufgabe - Einstellung von Delegierten
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-aufgabe-verwendung-von-delegaten-mit-wiederverwendbarer-logik" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Aufgabe - Verwendung von Delegaten mit wiederverwendbarer Logik
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#das-konzept-des-refactoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Das Konzept des Refactoring
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-optionale-aufgabe-erstellen-eines-integrationstests" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Optionale Aufgabe - Erstellen eines Integrationstests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-optionale-aufgabe-erstellen-eines-einheitstests" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Optionale Aufgabe - Erstellen eines Einheitstests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zusammenfassung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Zusammenfassung
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Zusammenfassung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uberblick-uber-unseren-arbeitsablauf" class="md-nav__link">
+    <span class="md-ellipsis">
+      Überblick über unseren Arbeitsablauf
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grad-der-wiederverwendbarkeit-und-erweiterbarkeit-in-jeder-losung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grad der Wiederverwendbarkeit und Erweiterbarkeit in jeder Lösung
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uberblick-uber-die-erweiterungstechniken" class="md-nav__link">
+    <span class="md-ellipsis">
+      Überblick über die Erweiterungstechniken
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/bmeviauab00/szoftvertechnikak/edit/master/docs/hazi/6-tervezesi-mintak/index_ger.md" title="Oldal szerkesztése" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="6-hf-entwurfsmuster-erweiterbarkeit">6. HF - Entwurfsmuster (Erweiterbarkeit)<a class="headerlink" href="#6-hf-entwurfsmuster-erweiterbarkeit" title="Permanent link">&para;</a></h1>
+<p>In der Hausaufgabe werden wir die Datenverarbeitungs-/Anonymisierungsanwendung entwickeln, die im zugehörigen Labor<a href="../../labor/5-entwurfsbeispiele/index.md">(Labor 6 - Entwurfsmuster (Erweiterbarkeit)</a>) begonnen wurde.</p>
+<p>Die eigenständige Aufgabe baut auf den in den Vorlesungen vorgestellten Entwurfsmustern auf:
+- "Vorlesung 08 - Entwurfsmuster 1" Vortrag: großes Kapitel "Grundlegende Entwurfsmuster in Bezug auf Erweiterbarkeit und Ausdehnung": Einführungsbeispiel, Template-Methode, Strategie, Open/Closed-Prinzip, SRP-Prinzip, andere Techniken (Methodenreferenz/Lambda)
+- "Vorlesung 09 - Entwurfsmuster 1" Vortrag: Dependency Injection Muster</p>
+<p><a href="../../labor/5-tervezesi-mintak/index_ger.md">Übung 6 - Entwurfsmuster (Erweiterbarkeit)</a> liefert den praktischen Hintergrund für die Übungen.</p>
+<p>Das Ziel der unabhängigen Übung:</p>
+<ul>
+<li>Verwendung von verwandten Entwurfsmustern und anderen Erweiterbarkeitstechniken</li>
+<li>Übung der Konzepte von Integrations- und Einheitstests</li>
+</ul>
+<p>Die erforderliche Entwicklungsumgebung wird <a href="../../fejlesztokornyezet/index_ger/">hier</a> beschrieben. Diese Hausaufgabe erfordert keine WinUI (sie muss im Kontext einer konsolenbasierten Anwendung durchgeführt werden), kann also in einer Linux/MacOS-Umgebung erledigt werden.</p>
+<h2 id="das-verfahren-fur-die-einreichung">Das Verfahren für die Einreichung<a class="headerlink" href="#das-verfahren-fur-die-einreichung" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Der grundlegende Prozess ist derselbe wie zuvor. Erstellen Sie mit GitHub Classroom ein Repository für sich selbst. Sie finden die Einladungs-URL in Moodle (Sie können sie sehen, indem Sie auf den Link*"GitHub classroom links for homework*" auf der Startseite des Fachs klicken). Es ist wichtig, dass Sie die richtige Einladungs-URL für diese Hausaufgabe verwenden (jede Hausaufgabe hat eine andere URL). Klonen Sie das resultierende Repository. Dazu gehört auch die erwartete Struktur der Lösung. Nachdem Sie die Aufgaben erledigt haben, übergeben Sie Ihre Lösung alt und drücken Sie sie alt.</li>
+<li>Um mit den geklonten Dateien zu arbeiten, öffnen Sie <code>Patterns-Extensibility.sln</code>.</li>
+<li>:Ausruf: In den Übungen werden Sie aufgefordert, <strong>einen Screenshot von</strong> einem Teil Ihrer Lösung zu machen, da dies beweist, dass Sie Ihre Lösung selbst erstellt haben. **Der erwartete Inhalt der Screenshots ist immer in der Aufgabe angegeben.
+**Die Screenshots sollten als Teil der Lösung eingereicht werden, legen Sie sie in den Stammordner Ihres Repositorys (neben neptun.txt).
+Die Screenshots werden dann zusammen mit dem Inhalt des Git-Repositorys auf GitHub hochgeladen.
+Da das Repository privat ist, ist es für niemanden außer den Ausbildern sichtbar.
+Wenn Sie Inhalte im Screenshot haben, die Sie nicht hochladen möchten, können Sie diese aus dem Screenshot ausblenden.</li>
+<li>:Ausruf: Diese Aufgabe enthält keinen sinnvollen Pre-Checker: Sie wird nach jedem Push ausgeführt, prüft aber nur, ob neptun.txt gefüllt ist. Die inhaltliche Überprüfung wird von den Laborleitern nach Ablauf der Frist durchgeführt.</li>
+</ul>
+<h2 id="1-verfasst-am">1. Verfasst am<a class="headerlink" href="#1-verfasst-am" title="Permanent link">&para;</a></h2>
+<p>Die Hausaufgaben basieren auf den folgenden Punkten:</p>
+<ul>
+<li>Kenntnisse der Strategie und des zugehörigen Entwurfsmusters Dependency Injection (DI)</li>
+<li>Genaues Verständnis der Anwendung dieser Proben im Kontext der Aufgabe des Labors (Anonymisierung)</li>
+</ul>
+<p>Der Ausgangszustand der Hausaufgabe entspricht dem Endzustand von Labor 6: Diese Hausaufgabenlösung ist das Projekt "Strategie-DI". Um zu starten/booten, müssen Sie dieses Projekt als Startprojekt festlegen (Rechtsklick,<em>"Als Startprojekt festlegen</em>"). Sehen Sie sich den Quellcode genau an und verstehen Sie ihn.</p>
+<ul>
+<li>Die Datei <code>Program.cs</code> enthält drei <code>Anonymizer</code>, die mit verschiedenen Strategieimplementierungen parametrisiert sind. Um sich daran zu gewöhnen, lohnt es sich, sie nacheinander auszuprobieren/auszuführen und zu sehen, ob die Anonymisierung und Fortschrittsbehandlung tatsächlich gemäß der gewählten Strategieimplementierung erfolgt (zur Erinnerung aus dem Labor: die Anonymisierungseingabe ist us-500.csv im Ordner "binDebugnet8.0", die Ausgabe ist "us-500.processed.txt" im selben Ordner).</li>
+<li>Es lohnt sich auch, den Code ab <code>Program.cs</code> zu durchlaufen und Haltepunkte zu setzen (dies kann auch zur Wiederholung und zum Verständnis beitragen). </li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Dependency Injection (manuell) vs. Dependency Injection Container</p>
+<p>Im Labor und in dieser Hausaufgabe werden wir eine einfache, manuelle Version von Dependency Injection verwenden (die auch in der Vorlesung verwendet wurde). In diesem Fall werden die Klassenabhängigkeiten manuell instanziiert und im Klassenkonstruktor übergeben. Für alternative und komplexere Anwendungen wird häufig ein Dependency Injection Container verwendet, in dem Sie für jeden Schnittstellentyp registrieren können, welche Implementierung Sie verwenden möchten. Wir haben diese Technik "zufällig" im MVVM-Labor verwendet, aber die Verwendung von DI-Containern ist nicht Teil des Lehrplans. Die manuelle Version ist jedoch von entscheidender Bedeutung, denn ohne sie ist die Verwendung des Strategiemusters sinnlos.</p>
+</div>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> Beantworten Sie in eigenen Worten die folgenden Fragen in der Datei <code>readme.md</code> im Ordner " <em>Aufgaben"</em>:</p>
+<ul>
+<li>Was bietet die Strategie in Kombination mit der DI-Probe im Laborbeispiel, welche Vorteile ergeben sich aus ihrer gemeinsamen Verwendung?</li>
+<li>Was bedeutet es, dass durch die Verwendung des Strategiemusters das Open/Closed-Prinzip in der Lösung umgesetzt wird? (Sie können über das Open/Closed-Prinzip in den Vorlesungs- und Übungsunterlagen lesen).</li>
+</ul>
+<h2 id="2-aufgabe-null-strategie">2. Aufgabe - Null-Strategie<a class="headerlink" href="#2-aufgabe-null-strategie" title="Permanent link">&para;</a></h2>
+<p>Die Untersuchung der Parameter des Konstruktors <code>Anonymizer</code> zeigt, dass <code>null</code> als Fortschrittsstrategie angegeben werden kann. Das ist logisch, denn der Nutzer von <code>Anonymizer</code> ist möglicherweise nicht an einer Fortschrittsanzeige interessiert. Dieser Ansatz hat einen Nachteil. In diesem Fall ist die Member-Variable <code>_progress</code> in der Klasse null, so dass die Null-Prüfung erforderlich ist, wenn sie angewendet wird. Überprüfen Sie, ob bei der Verwendung von <code>_progess</code> mit dem Operator <code>?.</code> tatsächlich ein Null-Scan durchgeführt wird. Aber das ist ein gefährliches Spiel, denn wenn in komplexeren Fällen auch nur eine einzige Nullprüfung übersehen wird, erhält man zur Laufzeit <code>NullReferenceException</code>. Nullreferenzfehler wie dieser gehören zu den häufigsten.</p>
+<p>Aufgabe: Erarbeiten Sie eine Lösung, die die oben erwähnte Möglichkeit des Scheiterns ausschließt. Hinweis: Sie benötigen eine Lösung, bei der das Tag <code>_progress</code> niemals Null sein kann. Versuchen Sie zunächst, die Lösung selbst zu finden.</p>
+<details class="tip">
+<summary>Lösungsprinzip</summary>
+<p>Der "Trick" zur Lösung ist folgender. Es sollte eine Implementierung der Strategie <code>IProgress</code> (z. B. <code>NullProgress</code> ) erstellt werden, die verwendet wird, wenn keine Fortschrittsinformationen benötigt werden. Diese Implementierung tut nichts während des "Fortschritts", der Funktionskörper ist leer. Wenn der Konstruktor von <code>Anonymizer</code> null als Klasseninstanzfortschritt angibt, erstellen Sie ein Objekt <code>NullProgress</code> im Konstruktor und setzen Sie das Mitglied <code>_progress</code> auf dieses. Jetzt kann <code>_progress</code> niemals null sein, und die Nullprüfung sollte aus dem Code entfernt werden.</p>
+<p>Diese Technik hat auch einen Namen: <strong>Null-Objekt</strong>.</p>
+</details>
+<h2 id="3-aufgabe-prufbarkeit">3. Aufgabe - Prüfbarkeit<a class="headerlink" href="#3-aufgabe-prufbarkeit" title="Permanent link">&para;</a></h2>
+<p>Beachten Sie, dass es noch viele Aspekte der Klasse <code>Anonymizer</code> gibt, die durch eine unserer Lösungen erweitert werden könnten. Dazu gehören unter anderem:</p>
+<ul>
+<li>Verwaltung der <strong>Eingaben</strong>: Jetzt wird nur noch das dateibasierte, spezifische CSV-Format unterstützt.</li>
+<li><strong>Output-Management</strong>: Jetzt wird nur noch das dateibasierte, spezifische CSV-Format unterstützt.</li>
+</ul>
+<p>Sie sollten aufgrund des SRP-Prinzips von der Klasse getrennt und in eine andere Klasse versetzt werden (lesen Sie, was das SRP-Prinzip bedeutet). Die Entkopplung sollte nicht bedingungslos erweiterbar sein, da es nicht notwendig ist, mit verschiedenen Ein- und Ausgängen arbeiten zu können. Daher würde die Strategieprobe nicht für die Trennung verwendet werden.</p>
+<p>Es gibt jedoch noch einen weiteren kritischen Aspekt, der nicht diskutiert wurde (und in der älteren, klassischen Entwurfsmusterliteratur nicht unbedingt erwähnt wird). Dies ist die Testbarkeit von Einheiten.</p>
+<p>Im Moment können wir automatische <strong>Integrationstests</strong> für unsere Klasse <code>Anonymizer</code> schreiben, aber keine automatischen <strong>Unit-Tests</strong>:</p>
+<ul>
+<li>Die Integrationstests testen den gesamten Vorgang in einem: Sie umfassen die Eingabeverarbeitung, die Datenverarbeitung und die Ausgabeerzeugung. In unserem Beispiel ist es ganz einfach: Halten Sie einige CVS-Eingabedateien an und prüfen Sie, ob die erwartete Ausgabedatei erzeugt wird.</li>
+<li>Integrationstests können sehr langsam sein: Sie nehmen häufig Eingaben aus Dateien, Datenbanken oder Cloud-basierten Diensten entgegen oder dienen als Ausgabe. Bei einem größeren Produkt - wenn es viele Tausende von Tests gibt - ist diese Langsamkeit ein begrenzender Faktor, wir können weniger oft testen und/oder wir können keine gute Testabdeckung erreichen.</li>
+</ul>
+<p>Aus diesem Grund erreichen wir eine höhere Codeabdeckung oft nicht mit langsameren <strong>Integrationstests</strong>, sondern mit sehr schnellen <strong>Unit-Tests</strong>. Sie <strong>testen eine einzelne logische Einheit im Code ohne langsamen Datei-/Datenbank-/Netzwerk-/Cloud-Zugriff</strong>, aber dies ist blitzschnell. So können wir in einer bestimmten Zeit eine Menge mit guter Testabdeckung durchführen.</p>
+<div class="admonition note">
+<p class="admonition-title">Testpyramide</p>
+<p>Dies wird in der Regel durch eine Testpyramide veranschaulicht, von der in der Literatur verschiedene Formen verwendet wurden. Eine einfache Variante ist:</p>
+<p><a class="glightbox" href="../images/testing-pyramid.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Tesztpiramis" src="../images/testing-pyramid.png" /></a></p>
+<p>Je höher man in der Pyramide steht, desto umfassender sind die Tests, aber desto langsamer und teurer sind sie auch. Wir neigen also dazu, weniger davon zu machen (und damit eine geringere Codeabdeckung zu erreichen). An der Spitze der Pyramide stehen automatisierte E2E- (End-to-End) oder GUI-Tests. Im Folgenden finden Sie Integrationstests, die mehrere Einheiten/Module in einem testen. An der Basis der Pyramide befinden sich die Unit-Tests, von denen wir die meisten durchführen (die Basis der Pyramide ist die breiteste).</p>
+<p>Lustige Tatsache: Wenn Unit-Tests während der Entwicklung eines Produkts lange Zeit vernachlässigt werden, ist es sehr schwierig, Unit-Tests im Nachhinein durchzuführen, da die Codestruktur dies nicht unterstützt. Es wird also nur sehr wenige dieser Tests geben, ergänzt durch einige Integrationstests und bestenfalls viele, viele End-to-End-/GUI-Tests durch Testteams (was aber bei einem komplexen Produkt oft keine gute Testabdeckung ergibt). Im Gegensatz zu einer Pyramide hat diese die Form einer Eistüte, stellen Sie sich einfach ein paar Kugeln oben drauf vor. Es ist auch als Eiscreme-"Probe" bekannt (und es ist nicht die Eiscreme, die wir mögen). Es sei jedoch darauf hingewiesen, dass alles an seinem Platz behandelt werden sollte: es gibt Ausnahmen (Anwendungen, bei denen die Logik der einzelnen Teile gering ist, die gesamte Anwendung wird von der Integration sehr einfacher Teile beherrscht: in solchen Fällen sind Integrationstests natürlich übergewichtig).</p>
+</div>
+<p>Klassencode ist oft nicht standardmäßig unit-testbar. In seiner jetzigen Form ist <code>Anonymizer</code> eine davon. Es ist eingebaut, dass es nur mit langsamen, dateibasierten Eingaben arbeiten kann. Wenn wir aber beispielsweise die Logik der Operation <code>Run</code> testen wollen, spielt es keine Rolle, ob die Daten aus einer Datei kommen (langsam) oder ob wir einfach den <code>new</code> Operator verwenden, um einige <code>Person</code> Objekte aus dem Code für den Test zu generieren (um Größenordnungen schneller).</p>
+<p>Die Lösung - unseren Code unit-testbar zu machen - ist einfach:</p>
+<div class="grid cards">
+<ul>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" />
+  <em>Trennen Sie unter Verwendung des Strategy (+DI) Patterns (oder Delegates) jegliche Logik (z.B. Input/Output Handling), die das Testen behindert oder verlangsamt, von der zu testenden Klasse</em>.* Wir erstellen Implementierungen, die die tatsächliche Logik implementieren, und Scheinimplementierungen, die das Testen erleichtern.*</li>
+</ul>
+</div>
+<div class="grid cards">
+<ul>
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" />
+  <em>Dementsprechend verwenden wir das Strategy-Muster oft nicht, weil wir mehrere Verhaltensweisen für die Bedürfnisse des Kunden einschließen müssen, sondern um unseren Code unit-testbar zu machen</em>.</li>
+</ul>
+</div>
+<p>Dementsprechend werden wir eine einheitlich getestete Version unserer Lösung vorbereiten, in der die Eingabe- und Ausgabeverarbeitung mit Hilfe des Strategiemusters entkoppelt ist.</p>
+<p>Aufgabe: Passen Sie die Lösung im Strategy-DI-Projekt so an, dass die Klasseneinheit nach dem Strategy-Muster getestet werden kann. Weitere Einzelheiten:</p>
+<ul>
+<li>Legen Sie einen Ordner <code>InputReaders</code> an, in dem Sie eine Schnittstelle für die Eingabeverarbeitungsstrategie namens <code>IInputReader</code> (mit einer einzigen Operation <code>List&lt;Person&gt; Read()</code> ) einführen und von der Klasse <code>Anonymizer</code> aus, dem Strategiemuster folgend, die Eingabeverarbeitung in einer Strategieimplementierung namens <code>CsvInputReader</code> organisieren. Diese Klasse erhält den Pfad zur Datei im Konstruktorparameter, aus dem sie ihre Eingabe liest.</li>
+<li>Führen Sie einen Ordner <code>ResultWriters</code> ein, in dem Sie eine Strategie-Schnittstelle einführen, um ein Ergebnis namens <code>IResultWriter</code> (mit einer einzigen Operation <code>void Write(List&lt;Person&gt; persons)</code> ) auszugeben, und organisieren Sie von der Klasse <code>Anonymizer</code> aus, dem Strategie-Muster folgend, die Ausgabe, die in eine Strategie-Implementierung namens <code>CsvResultWriter</code> geschrieben werden soll. Diese Klasse erhält in einem Konstruktorparameter den Pfad zu der Datei, in die die Ausgabe geschrieben werden soll.</li>
+<li>Erweitern Sie die Klasse <code>Anonymizer</code>, einschließlich ihres Konstruktors (Strategie + DI-Muster), so dass sie mit jeder <code>IInputReader</code> und <code>IResultWriter</code> Implementierung verwendet werden kann.</li>
+<li>Ändern Sie in der Datei <code>Program.cs</code> die Verwendung der Klasse <code>Anonymizer</code>, um die neu eingeführten Klassen <code>CsvInputReader</code> und <code>CsvResultWriter</code> als Parameter zu übergeben.</li>
+</ul>
+<p>Der nächste Schritt ist (wäre), Unit-Tests für die Klasse <code>Anonymizer</code> zu erstellen. Dies erfordert die Einführung so genannter Mock-Strategie-Implementierungen, die nicht nur Testdaten liefern (natürlich schnell und ohne Dateibehandlung), sondern auch Prüfungen durchführen (ob eine bestimmte logische Einheit tatsächlich korrekt funktioniert). Das hört sich kompliziert an, aber glücklicherweise haben die meisten modernen Frameworks Bibliotheksunterstützung dafür (.NET hat <a href="https://github.com/devlooped/moq">moq</a>). Ihre Anwendung würde den Rahmen dieses Themas sprengen, so dass der Teil "Testbarkeit der Einheiten" unserer Übung an dieser Stelle abgeschlossen ist.</p>
+<div class="admonition example">
+<p class="admonition-title">Übung 3 KUNDE</p>
+<ul>
+<li>Fügen Sie ein Bildschirmfoto ein, das den Konstruktor der Klasse <code>Anonymizer</code> und die Implementierung der Funktion <code>Run</code> (<code>f3.1.png</code>) zeigt.</li>
+</ul>
+</div>
+<h2 id="4-aufgabe-einstellung-von-delegierten">4. Aufgabe - Einstellung von Delegierten<a class="headerlink" href="#4-aufgabe-einstellung-von-delegierten" title="Permanent link">&para;</a></h2>
+<p>Heutzutage verbreiten sich Werkzeuge, die die funktionale Programmierung in ehemals streng objektorientierten Sprachen unterstützen, rasant, und Anwendungsentwickler setzen sie zunehmend ein (weil sie oft das Gleiche mit deutlich weniger Code und weniger "Zeremonien" erreichen können). Ein solches Werkzeug in C# ist der Delegat und der damit verbundene Lambda-Ausdruck.</p>
+<p>Wie wir zu Beginn des Semesters gesehen haben, ermöglichen es uns Delegierte, Code zu schreiben, der nicht über bestimmte Logik/Verhaltensweisen verfügt, sondern "von außen" empfangen wird. So kann beispielsweise eine Ordnungsfunktion als Delegierter übergeben werden, um anzugeben, wie zwei Elemente verglichen werden sollen oder nach welchem Feld/welcher Eigenschaft der Vergleich durchgeführt werden soll (und damit letztlich die gewünschte Reihenfolge zu bestimmen).</p>
+<p>Dementsprechend ist die Verwendung von Delegaten eine weitere Alternative (neben Template Method und Strategy), um Code wiederverwendbar/erweiterbar zu machen und Erweiterungspunkte einzuführen.</p>
+<p>Im nächsten Schritt werden wir die bisher mit dem Strategy-Pattern implementierte Fortschrittsbehandlung auf eine Delegatenbasis umstellen (es wird keine neue Funktionalität eingeführt, dies ist eine rein "technische" Umstellung).</p>
+<p>Aufgabe: Ändern Sie die Lösung im Projekt Strategy-DI so, dass die Fortschrittsverwaltung auf der Basis von Delegierten anstelle von Strategy implementiert wird. Weitere Einzelheiten:</p>
+<ul>
+<li>Implementieren Sie keinen eigenen Delegatentyp (verwenden Sie den von .NET bereitgestellten Typ <code>Action</code> ).</li>
+<li>Verwenden Sie die bestehenden Klassen <code>SimpleProgress</code> und <code>PercentProgress</code> nicht in Ihrer Lösung (löschen Sie sie aber auch nicht!).</li>
+<li>Der Benutzer von <code>Anonymizer</code> sollte weiterhin <code>null</code>im Konstruktor angeben können, wenn er keine Progress-Handler verwenden möchte.</li>
+<li>Kommentieren Sie in der Datei <code>Program.cs</code> die bisherige Verwendung von <code>Anonymizer</code> aus. Führen Sie an gleicher Stelle ein neues Beispiel für die Verwendung von <code>Anonymizer</code> ein, bei dem der Progress-Handler als Lambda-Ausdruck angegeben wird, und der Lambda-Ausdruck genau die Logik des vorherigen "einfachen Fortschritts" implementiert. Der "prozentuale Fortschritt" benötigt keine ähnliche Implementierung, er wird in dieser Lösung nicht unterstützt (wir werden in der nächsten Übung darauf zurückkommen).</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tipps</p>
+<ul>
+<li>Das Prinzip einer delegatenbasierten Lösung ist dem der Strategie sehr ähnlich: nur statt Strategien in den Membervariablen der Klasse zu empfangen und zu speichern (über Schnittstellenreferenzen), empfängt und speichert sie Delegaten und ruft die Funktionen, auf die sie sich beziehen, in den Erweiterungspunkten auf.</li>
+<li>Sie haben etwas Ähnliches bereits in Hausaufgabe 2 im Abschnitt ReportPrinter gemacht ;).</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Übung 4 KUNDE</p>
+<ul>
+<li>Fügen Sie ein Bildschirmfoto ein, das den Konstruktor der Klasse <code>Anonymizer</code> und die Implementierung der Funktion <code>Run</code> zeigt (<code>f4.1.png</code>).</li>
+<li>Fügen Sie ein Bildschirmfoto ein, das den Inhalt der Datei <code>Program.cs</code> zeigt (insbesondere die neuen Teile) (<code>f4.2.png</code>).</li>
+</ul>
+</div>
+<h2 id="5-aufgabe-verwendung-von-delegaten-mit-wiederverwendbarer-logik">5. Aufgabe - Verwendung von Delegaten mit wiederverwendbarer Logik<a class="headerlink" href="#5-aufgabe-verwendung-von-delegaten-mit-wiederverwendbarer-logik" title="Permanent link">&para;</a></h2>
+<p>In der vorangegangenen Übung sind wir davon ausgegangen, dass die Logik des "einfachen Fortschritts" und des "prozentualen Fortschritts" nur einmal verwendet wurde, so dass sie nicht wiederverwendet werden musste. Dementsprechend wurde die Logik z. B. des "einfachen Fortschritts" in der einfachsten Form, nämlich als Lambda-Ausdruck, angegeben (es musste keine separate Funktion eingeführt werden). Wenn Sie dem Delegaten jedes Mal, wenn Sie <code>Anonymizer</code> erstellen, eine andere Implementierung geben, ist diese lambda-basierte Lösung perfekt.</p>
+<p>Was aber, wenn wir die "einfache Fortschrittslogik" aus dem obigen Beispiel für mehrere <code>Anonymizer</code> Objekte an verschiedenen Orten verwenden wollen? Es wäre ein schwerwiegender Fehler, den Lambda-Ausdruck mit Copy-Paste zu "vervielfältigen", da dies zu einer Verdoppelung des Codes führen würde (dies würde dem <strong>DRY-Prinzip</strong> (<strong>"Do Not Repeat Yourself</strong>") widersprechen).</p>
+<p>Frage: Gibt es eine Möglichkeit, wiederverwendbaren Code für Delegierte bereitzustellen? Ja, natürlich, da Delegierte keine Lambda-Ausdrücke verwenden müssen, können sie für gewöhnliche Operationen (statisch oder nicht statisch) verwendet werden, wie wir bereits früher im Semester gesehen und in vielen Fällen verwendet haben.</p>
+<p>Wenn Sie die Logik des "einfachen Fortschritts" und/oder des "prozentualen Fortschritts" bei der Verwendung von Delegaten wiederverwendbar machen wollen, fügen Sie sie in eine separate Funktion in einer Klasse/Klassen ein, die am besten zu diesem Fall passt, und übergeben Sie eine solche Aktion als Parameter an den <code>Anonymizer</code> -Konstruktor.</p>
+<p>Aufgabe: Erweitern Sie die bisherige Lösung, so dass die Logik des "einfachen Fortschritts" und des "prozentualen Fortschritts" wiederverwendet werden kann. Weitere Einzelheiten:</p>
+<ul>
+<li>Implementieren Sie die Logik des "einfachen Fortschritts" und des "prozentualen Fortschritts" in zwei statischen Operationen einer neu eingeführten statischen Klasse <code>AllProgresses</code> (die Klasse sollte im Stammverzeichnis des Projekts abgelegt werden).</li>
+<li>Führen Sie zwei neue <code>Anonymizer</code> Verwendungen in <code>Program.cs</code> zusätzlich zu den bestehenden ein, die die beiden <code>AllProgresses</code> Operationen verwenden (verwenden Sie hier kein Lambda).</li>
+<li>Die bestehende Schnittstelle <code>IProgress</code> und ihre Implementierungen könnten gelöscht werden (da sie nicht mehr verwendet werden). Löschen Sie diese jedoch NICHT, um die Fortschrittslogik Ihrer bisherigen Lösung zu überprüfen.</li>
+</ul>
+<p>Wir sind bereit, wir prüfen die Lösung:</p>
+<ul>
+<li>Es kann darauf hingewiesen werden, dass die delegatenbasierte Lösung weniger feierlich war als die Strategie: Es mussten keine Schnittstellen- und Implementierungsklassen eingeführt werden (wir konnten die eingebauten generischen Delegatetypen <code>Action</code> und <code>Func</code> verwenden).</li>
+<li>Die einfachste Art, die völlig "ad hoc"-Logik auszudrücken, ist in Lambda-Ausdrücken. Wenn jedoch wiederverwendbare Logik benötigt wird, sollten Sie "traditionelle" wiederverwendbare Funktionen einführen.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Übung 5 - SUBMIT</p>
+<ul>
+<li>Fügen Sie ein Bildschirmfoto ein, das den Inhalt der Datei <code>AllProgresses.cs</code> zeigt (<code>f5.1.png</code>).</li>
+<li>Fügen Sie ein Bildschirmfoto ein, das den Inhalt der Datei <code>Program.cs</code> zeigt (insbesondere die neuen Teile) (<code>f5.2.png</code>).</li>
+</ul>
+</div>
+<h2 id="das-konzept-des-refactoring">Das Konzept des Refactoring<a class="headerlink" href="#das-konzept-des-refactoring" title="Permanent link">&para;</a></h2>
+<p>Während des Praktikums und der Hausaufgaben gab es mehrere Schritte, in denen der Code so verändert wurde, dass sich das äußere Verhalten der Anwendung nicht änderte, sondern nur ihre interne Struktur. Damit soll eine bessere Codequalität in gewisser Hinsicht erreicht werden. Dieser Code heißt <code>refaktorálásának</code> ( <code>refactoring</code> auf Englisch). Dies ist ein sehr wichtiges Konzept, das wir in unserer täglichen Arbeit sehr häufig verwenden. Es gibt eine eigene Literatur, und die wichtigsten Techniken werden später näher erläutert. Die seriöseren Entwicklungswerkzeuge verfügen über integrierte Unterstützung für bestimmte Refactoring-Operationen: Visual Studio ist in dieser Hinsicht nicht das stärkste Programm, aber es unterstützt einige grundlegende Operationen (z. B. Methode extrahieren, Basisklasse extrahieren usw.). Wir haben dies manuell geübt, daher wird es keine spezielle Übung geben, aber Sie sollten mit dem Konzept des Refactoring vertraut sein.</p>
+<h2 id="6-optionale-aufgabe-erstellen-eines-integrationstests">6. Optionale Aufgabe - Erstellen eines Integrationstests<a class="headerlink" href="#6-optionale-aufgabe-erstellen-eines-integrationstests" title="Permanent link">&para;</a></h2>
+<p>Durch das Lösen dieser Aufgabe können Sie +1 IMSc-Punkt verdienen.</p>
+<p>Das Konzept des Integrationstests wurde in der vorangegangenen Übung 3 vorgestellt. Das Ziel dieser optionalen Übung ist es, dies anhand einer einfachen Aufgabe zu üben und besser zu verstehen. </p>
+<p>Erstellen Sie einen Integrationstest für die Klasse <code>Anonymizer</code>, wie folgt:</p>
+<ol>
+<li>In Solution arbeiten Sie mit dem Projekt <code>IntegrationTest</code>, das im Ordner <code>Test</code> vorbereitet wurde. Dies ist ein NUnit-Testprojekt.</li>
+<li>In diesem Projekt haben wir bereits einen Projektverweis auf das Projekt <code>Strategy-DI</code> hinzugefügt, so dass wir die (öffentlichen) Klassen im Projekt <code>Strategy-DI</code> sehen können. Dies ist natürlich eine Voraussetzung dafür, dass wir sie testen können. Prüfen Sie, ob der Projektverweis existiert (im Solution Explorer unter dem Projekt im Knoten Abhängigkeiten/Projekte).</li>
+<li>In der Klasse <code>AnonymizerIntegrationTest</code> gibt es bereits einen Testvorgang namens <code>Anonymize_CleanInput_MaskNames_Test</code> (Testvorgänge sollten das Attribut <code>[Test]</code> haben, es ist bereits für diesen Vorgang vorbereitet). Der Stamm der Operation ist im Moment noch leer, daran müssen wir in den nächsten Schritten arbeiten.<ol>
+<li>Erstellen Sie ein Objekt <code>Anonymizer</code>, das<ul>
+<li>arbeitet mit der Eingabe <code>@"TestFilesus-500-01-clean.input.csv"</code> (sie befindet sich im Ordner <em>TestFiles</em> des Projekts, siehe Inhalt),</li>
+<li>die Ausgabe sollte die Datei <code>@"us-500-01-maskedname.processed.txt"</code> sein,</li>
+<li>verwendet <code>NameMaskingAnonymizerAlgorithm</code>mit dem Parameter "***".</li>
+</ul>
+</li>
+<li>Führen Sie den Anonymisierer aus, indem Sie die Operation <code>Run</code> aufrufen, um die Speicherdatei zu erstellen.</li>
+<li>Rufen Sie <code>Assert.AreEqual</code> auf, um zu überprüfen, ob die vom Anonymisierungsprozess erzeugte Ausgabedatei dem erwarteten Inhalt entspricht. Der erwartete Inhalt steht in der Datei <code>@"TestFilesus-500-01-maskedname.processed-expected.txt"</code> zur Verfügung (sie befindet sich im Projektordner <code>TestFiles</code>, siehe Inhalt). 
+Hinweis: Der Inhalt einer Datei kann z.B. mit der statischen Operation <code>File.ReadAllBytes</code> in einem Schritt gelesen werden.</li>
+</ol>
+</li>
+<li>Prüfen Sie, ob der Integrationstest fehlerfrei läuft.<ol>
+<li>Erstellen Sie Ihr Projekt</li>
+<li>Test Explorer öffnen (Menü Test/Test Explorer)</li>
+<li>Der Test kann über die Schaltflächen in der Symbolleiste oben in der Test-Explorer-Ansicht ausgeführt werden. Es ist aber auch möglich, den Test zu debuggen, indem Sie mit der rechten Maustaste auf den Test klicken und das Menü Debuggen auswählen: Dies kann sehr nützlich sein, wenn Ihr Test fehlerhaft läuft und Sie den Code mithilfe von Haltepunkten durchgehen oder den Wert von Variablen überprüfen möchten.</li>
+<li>Wenn der Test fehlerfrei verläuft, wird das Symbol für den Test grün angezeigt. Wenn ein Fehler auftritt, wird er rot angezeigt, und Sie können weitere Informationen über die Fehlermeldung erhalten, indem Sie den Test unten in der Test-Explorer-Ansicht auswählen.</li>
+</ol>
+</li>
+</ol>
+<h2 id="7-optionale-aufgabe-erstellen-eines-einheitstests">7. Optionale Aufgabe - Erstellen eines Einheitstests<a class="headerlink" href="#7-optionale-aufgabe-erstellen-eines-einheitstests" title="Permanent link">&para;</a></h2>
+<p>Durch Lösen dieser Aufgabe können +2 IMSc-Punkte erzielt werden.</p>
+<p>Das Konzept der Einheitstests wurde in der vorherigen Übung 3 eingeführt. Der Zweck dieser optionalen Übung ist es, dies anhand einer Aufgabe zu üben und besser zu verstehen.</p>
+<p>Vorbereitung:</p>
+<ol>
+<li>Fügen Sie der Projektmappe ein neues Projekt vom Typ "NUnit Test Project" mit dem Namen "UnitTest" hinzu (Rechtsklick auf Projektmappe im Projektmappen-Explorer/Hinzufügen/Neues Projekt).</li>
+<li>Fügen Sie in diesem neuen Projekt eine Projektreferenz zum Projekt <code>Strategy-DI</code> hinzu, damit die in <code>Strategy-DI</code>definierten Typen im Projekt verfügbar sind (klicken Sie mit der rechten Maustaste auf den Knoten Abhängigkeiten des Unit-Test-Projekts/Projektreferenz hinzufügen, markieren Sie im angezeigten Fenster das Projekt <code>Strategy-DI</code>, "OK").</li>
+<li>Das Projekt erstellt eine Datei <code>UnitTest1.cs</code>, die eine Klasse <code>Test</code> enthält. Diese sollten <code>AnonymizerTest</code>genannt werden. </li>
+</ol>
+<p>Erstellen Sie einen Einheitstest für die Klasse <code>Anonymizer</code>, der prüft, ob die Operation <code>Run</code> den Anonymisierungsalgorithmus mit genau denselben Personendaten aufruft, die <code>Anonymizer</code> in seiner Eingabe liest (wenn es keine zu bereinigenden Städtenamen gibt). </p>
+<ul>
+<li>Die Testfunktion sollte den Namen <code>RunShouldCallAlgorithmForEachInput</code>tragen.</li>
+<li>:Ausruf: Es ist wichtig, einen sehr schnellen Unit-Test zu schreiben, keinen Integrationstest: Wir wollen also nur die Logik von <code>Run</code> selbst testen, ohne jegliche Dateiverarbeitung. Die Lösung darf keine Dateiverwaltung haben!</li>
+<li>Tipp: Erstellen Sie 2-3 <code>Person</code> Objekte im Speicher und verwenden Sie sie als Eingabe.</li>
+<li>Tipp: Arbeiten Sie mit personenbezogenen Eingabedaten, die von der Funktion <code>TrimCityNames</code> nicht betroffen sind (d. h. keine Daten, die entfernt werden müssen), das erleichtert die Tests.</li>
+<li>Tipp: Erstellen Sie Implementierungen von <code>IInputReader</code>, <code>IAnonymizerAlgorithm</code> (und verwenden Sie <code>Anonymizert</code> mit ihnen), die <strong>geeignete Testdaten bereitstellen und/oder zur Laufzeit Daten sammeln, so dass Sie nach der Laufzeit prüfen können, ob die zu testenden Bedingungen erfüllt sind</strong>. Achten Sie darauf, dass diese Strategieimplementierungen in das Testprojekt aufgenommen werden, da sie nur zu Testzwecken dienen.</li>
+</ul>
+<p>Als weitere Übung können Sie einen weiteren Einheitstest erstellen, um zu prüfen, ob alle Eingabedaten die Ausgabe erreichen. </p>
+<h2 id="zusammenfassung">Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Permanent link">&para;</a></h2>
+<p>Keine Aufgaben mehr 😊. Wenn Sie aber zum Beispiel wissen wollen, wie "perfekt"/defekt diese Lösung ist oder wann Sie mit der Schablonenmethode, der Strategie oder den Delegierten arbeiten sollten, sollten Sie den folgenden Abschnitt lesen, in dem wir die im Labor begonnene und in der Hausaufgabe abgeschlossene Lösung bewerten.</p>
+<h3 id="uberblick-uber-unseren-arbeitsablauf">Überblick über unseren Arbeitsablauf<a class="headerlink" href="#uberblick-uber-unseren-arbeitsablauf" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Als sich die Anforderungen änderten, entwickelten sich die Entwurfsmuster organisch und andere Techniken wurden während des Refactorings eingeführt. Das ist ganz natürlich, wir arbeiten in der Praxis oft so.</li>
+<li>In jedem Fall beginnt man bei einer komplexeren Aufgabe, vor allem, wenn man nicht über langjährige Erfahrung verfügt, oft mit einer einfacheren Implementierung (das ist das, was man zuerst sieht) und passt sie so an, dass sie die Parameter für die Erweiterbarkeit/Wiederverwendbarkeit aufweist, die man im jeweiligen Kontext wünscht.</li>
+</ul>
+<h3 id="grad-der-wiederverwendbarkeit-und-erweiterbarkeit-in-jeder-losung">Grad der Wiederverwendbarkeit und Erweiterbarkeit in jeder Lösung<a class="headerlink" href="#grad-der-wiederverwendbarkeit-und-erweiterbarkeit-in-jeder-losung" title="Permanent link">&para;</a></h3>
+<p>Wir können versuchen, uns vorzustellen, wie unsere Lösung mit jeder Iteration zunehmend wiederverwendbar und erweiterbar wird:</p>
+<p><a class="glightbox" href="../images/extensibility-levels.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Stufen der Skalierbarkeit und Wiederverwendbarkeit" src="../images/extensibility-levels.png" /></a></p>
+<p>Natürlich sollten die Prozentzahlen nicht zu ernst genommen werden. In jedem Fall sind die Fortschritte deutlich sichtbar.</p>
+<details class="note">
+<summary>Warum geben wir "nur" 70 % für die endgültige Lösung?</summary>
+<p>Es stellt sich die Frage, warum wir etwa 70 % für meine Lösung geben? Unter anderem:</p>
+<ul>
+<li>In der Klasse "Anonymizer" ist die Art der Datenbereinigung fest eingebrannt (Trimmen für eine bestimmte Spalte auf eine bestimmte Weise).</li>
+<li>Wir haben einen sehr wichtigen allgemeinen Grundsatz nicht beachtet: die Trennung von Benutzeroberfläche und Logik. Unser Code schreibt an mehreren Stellen in eine Konsole, so dass er z. B. nicht mit einer grafischen Oberfläche verwendet werden kann!</li>
+<li>Einige unserer Anonymisierungsalgorithmen sind sehr spezifisch. Es könnten allgemeinere Algorithmen entwickelt werden, die beliebige Felder hochstellen (nicht nur den eingebrannten Namen) oder beliebige Felder verbinden (nicht nur das Alter).</li>
+<li>Diese Lösung kann nur mit <code>Person</code>-Objekten funktionieren.</li>
+<li>Es ist nicht möglich, verschiedene Anonymisierungsalgorithmen gleichzeitig zu kombinieren.</li>
+</ul>
+</details>
+<h3 id="uberblick-uber-die-erweiterungstechniken">Überblick über die Erweiterungstechniken<a class="headerlink" href="#uberblick-uber-die-erweiterungstechniken" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Vorlage Methode</strong>: In einem einfachen Fall, in dem man nicht viele Kreuzkombinationen verschiedener Verhaltensaspekte unterstützen muss, stellt dies eine sehr bequeme und einfache Lösung dar, insbesondere wenn man ohnehin Ableitungen verwenden muss. Aber es erzeugt nicht oder nur schwer eine unit-testbare Basisklasse.</li>
+<li><strong>Strategie</strong>: Sie bietet eine sehr flexible Lösung und führt nicht zu einer kombinatorischen Explosion, wenn Sie die Klasse um mehrere Aspekte erweitern und in mehreren Kreuzkombinationen verwenden wollen. In vielen Fällen verwenden wir es nur, um Abhängigkeiten von unserer Klasse über Schnittstellen zu lösen und so unsere Klasse unit-testbar zu machen.</li>
+<li><strong>Delegierter/Lambda</strong>: Dieser Ansatz ist weniger feierlich als die Verwendung von Strategy, da er die Einführung von Schnittstellen und Implementierungsklassen nicht erfordert, und wird daher in modernen objektorientierten Sprachen zunehmend (schnell) verwendet. Dies hat insbesondere dann Vorteile, wenn Sie die Verhaltensweisen nicht wiederverwendbar machen wollen (weil Sie sie dann nur mit einem einzigen Lambda-Ausdruck bereitstellen, ohne neue Klassen/Spezialfunktionen einzuführen). </li>
+</ul>
+<p>Es lohnt sich, zu kompilieren, wenn die Strategie einen Vorteil gegenüber den Delegierten hat/haben kann:</p>
+<ul>
+<li>Wenn ein bestimmter Aspekt der zu erweiternden Klasse mehr als eine (je mehr, desto besser) Operation hat. In diesem Fall werden sie von der Strategie-Schnittstelle "automatisch" zusammengefasst (wie die Schnittstelle <code>IAnonymizerAlgorithm</code> in unserem Beispiel, die die Vorgänge <code>Anonymize</code> und <code>GetAnonymizerDescription</code> zusammenfasst). Sie sind auch in Schnittstellenimplementierungen gruppiert (keine solche Gruppierung für Delegierte). Dies kann die Lösung transparenter machen, und für viele Vorgänge ist dies eindeutig der Fall.</li>
+<li>Die Sprache ist rein objektorientiert und unterstützt keine Delegate/Lambda. Heutzutage unterstützen die meisten modernen OO-Sprachen dies jedoch glücklicherweise in irgendeiner Form (auch Java und C++).</li>
+<li>
+<p>Strategieimplementierungen können ihren Zustand auch in ihren Mitgliedsvariablen speichern, die bei ihrer Erstellung angegeben werden können. Diese wurde verwendet (für <code>NameMaskingAnonymizerAlgorithm</code> war es <code>_mask</code>, für <code>AgeAnonymizerAlgorithm</code> war es <code>_rangeSize</code>). Das bedeutet nicht, dass wir in einem solchen Fall überhaupt keine Delegierten verwenden können, denn:</p>
+<ul>
+<li>können diese Daten bei jedem Delegatenaufruf in einem neu eingeführten Funktionsparameter übergeben werden,</li>
+<li>oder, wenn Lambda verwendet wird, der "Variablenerfassungs"-Mechanismus, der es Lambda-Funktionen ermöglicht, Zustände aus ihrer Umgebung zu übernehmen.</li>
+</ul>
+<p>Diese Lösungen sind jedoch nicht immer anwendbar oder zumindest schwerfällig in der Umsetzung.</p>
+</li>
+</ul>
+<p>In jedem Fall sollte erwähnt werden, dass nicht nur einige der in dieser Übung erwähnten Muster der Erweiterbarkeit und Wiederverwendbarkeit dienen, sondern praktisch alle von ihnen. Wir haben nun einige hervorgehoben, die (auch einschließlich Observer/Iterator/Adapter) vielleicht am häufigsten und am weitesten verbreitet sind und immer noch in Frameworks auftauchen.</p>
+<p>Wenn du bis hierher gelesen hast, verdienst du auf jeden Fall einen extra Daumen hoch 👍!</p>
+<hr>
+<div class="md-source-file">
+  <span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg
+        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z">
+        </path>
+      </svg>
+    </span>
+    <span title="2024. május 11. 16:29:00">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-11T16:29:00+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-11</span>
+    </span>
+  </span>
+
+  
+
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Szerzők">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z">
+        </path>
+      </svg>
+    </span>
+    <span>Szerzők</span>
+    <nav><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
+        <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&v=4?size=72" alt="@Zoltán Benedek">
+      </a></nav>      
+  </span>
+</div>
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Vissza a tetejére
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; BME VIK AUT
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
