@@ -115,7 +115,7 @@ Ez a kód, egy fordítást követően, alapjaiban ugyanazt a megoldást eredmén
 
 * Egyrészt az `ObservableObject` ős már megvalósítja az `INotifyPropertyChanged` interfészt, így a `PropertyChanged` esemény tagot is tartalmazza, ezt a származtatás révén "megörökli" az osztályunk.
 * A fordítás során lefut az MVVM Toolkit kódgenerátora, mely minden `ObservableProperty` attribútummal ellátott tagváltozóhoz generál egy ugyanolyan nevű, de nagybetűvel kezdődő tulajdonságot az osztályba, mely tulajdonság settere elsüti megfelelő feltételek mellett és megfelelő paraméterekkel a `PropertyChanged` eseményt. Hurrá, ezt a kódot akkor nem nekünk kell megírni.
-* Kérdés, hol keletkezi ez a kód. Az osztályunk egy másik "partial" részében. Egy fordítást követően Visual Studio-ban jobb gombbal kattintsunk a `Person` osztály nevén, majd a felugró menüben "Go to Definition". Ekkor egy alsó ablakban két találatot is kapunk: az egyik az általunk írt fenti kód, a másik ("public class Person") a generált részre ugrik egy duplakatt hatására: látszik, hogy viszonylag terjengős kódot generált a kódgenerátor, de ami nekünk fontos, hogy itt található a `Name` és `Age` tulajdonság, benne - többek között - a `OnPropertyChanged` elsütésével.
+* Kérdés, hol keletkezik ez a kód. Az osztályunk egy másik "partial" részében. Egy fordítást követően Visual Studio-ban jobb gombbal kattintsunk a `Person` osztály nevén, majd a felugró menüben "Go to Definition". Ekkor egy alsó ablakban két találatot is kapunk: az egyik az általunk írt fenti kód, a másik ("public class Person") a generált részre ugrik egy duplakatt hatására: látszik, hogy viszonylag terjengős kódot generált a kódgenerátor, de ami nekünk fontos, hogy itt található a `Name` és `Age` tulajdonság, benne - többek között - a `OnPropertyChanged` elsütésével.
 
 :exclamation: A kódgenerátor szokásosan az osztályunk másik "partial" felébe dolgozik, annak érdekében, hogy ne keveredjen az általunk írt és a generált kód! A partial classokat leggyakrabban a kézzel írt és a generált kód "különválasztására" használjuk.
 
@@ -223,7 +223,7 @@ A következő lépésben valósítsd meg a kapcsolódó változásértesítést 
 
 Teszteld is a megoldásod! Ha jól dolgoztál, a gombnak akkor is le kell tiltódnia, ha a TextBoxba kézzel írsz be negatív életkor értéket (és utána kikattintasz a TextBoxból). Gondold át, miért van ez így!
 
-A "+" gombra és a "+Add" gomra is dolgozz ki hasonló megoldást!
+A "+" gombra és a "+Add" gombra is dolgozz ki hasonló megoldást!
 
 * Az életkor maximális "elfogadható" értéke 150 legyen.
 * A név csak akkor elfogadható, ha van benne legalább egy nem whitespace karakter (ez utóbbi ellenőrzésére a string osztály `IsNullOrWhiteSpace` statikus műveletét használd).
