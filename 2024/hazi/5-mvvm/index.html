@@ -1829,7 +1829,7 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
 <ul>
 <li>Egyrészt az <code>ObservableObject</code> ős már megvalósítja az <code>INotifyPropertyChanged</code> interfészt, így a <code>PropertyChanged</code> esemény tagot is tartalmazza, ezt a származtatás révén "megörökli" az osztályunk.</li>
 <li>A fordítás során lefut az MVVM Toolkit kódgenerátora, mely minden <code>ObservableProperty</code> attribútummal ellátott tagváltozóhoz generál egy ugyanolyan nevű, de nagybetűvel kezdődő tulajdonságot az osztályba, mely tulajdonság settere elsüti megfelelő feltételek mellett és megfelelő paraméterekkel a <code>PropertyChanged</code> eseményt. Hurrá, ezt a kódot akkor nem nekünk kell megírni.</li>
-<li>Kérdés, hol keletkezi ez a kód. Az osztályunk egy másik "partial" részében. Egy fordítást követően Visual Studio-ban jobb gombbal kattintsunk a <code>Person</code> osztály nevén, majd a felugró menüben "Go to Definition". Ekkor egy alsó ablakban két találatot is kapunk: az egyik az általunk írt fenti kód, a másik ("public class Person") a generált részre ugrik egy duplakatt hatására: látszik, hogy viszonylag terjengős kódot generált a kódgenerátor, de ami nekünk fontos, hogy itt található a <code>Name</code> és <code>Age</code> tulajdonság, benne - többek között - a <code>OnPropertyChanged</code> elsütésével.</li>
+<li>Kérdés, hol keletkezik ez a kód. Az osztályunk egy másik "partial" részében. Egy fordítást követően Visual Studio-ban jobb gombbal kattintsunk a <code>Person</code> osztály nevén, majd a felugró menüben "Go to Definition". Ekkor egy alsó ablakban két találatot is kapunk: az egyik az általunk írt fenti kód, a másik ("public class Person") a generált részre ugrik egy duplakatt hatására: látszik, hogy viszonylag terjengős kódot generált a kódgenerátor, de ami nekünk fontos, hogy itt található a <code>Name</code> és <code>Age</code> tulajdonság, benne - többek között - a <code>OnPropertyChanged</code> elsütésével.</li>
 </ul>
 <p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> A kódgenerátor szokásosan az osztályunk másik "partial" felébe dolgozik, annak érdekében, hogy ne keveredjen az általunk írt és a generált kód! A partial classokat leggyakrabban a kézzel írt és a generált kód "különválasztására" használjuk.</p>
 <p>Mivel sokkal kevesebb kódot kell írni, a gyakorlatban az MVVM Toolkit alapú megoldást szoktuk használni (de a manuális megoldást is tudni kell, ez alapján érthető, mi is történik a színfalak mögött).</p>
@@ -1937,7 +1937,7 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
 <li>A fentieket külön eseménykezelő függvény bevezetése nélkül is meg lehet oldani (tipp: eseménykezelő megadása lambda kifejezéssel).</li>
 </ul>
 <p>Teszteld is a megoldásod! Ha jól dolgoztál, a gombnak akkor is le kell tiltódnia, ha a TextBoxba kézzel írsz be negatív életkor értéket (és utána kikattintasz a TextBoxból). Gondold át, miért van ez így!</p>
-<p>A "+" gombra és a "+Add" gomra is dolgozz ki hasonló megoldást!</p>
+<p>A "+" gombra és a "+Add" gombra is dolgozz ki hasonló megoldást!</p>
 <ul>
 <li>Az életkor maximális "elfogadható" értéke 150 legyen.</li>
 <li>A név csak akkor elfogadható, ha van benne legalább egy nem whitespace karakter (ez utóbbi ellenőrzésére a string osztály <code>IsNullOrWhiteSpace</code> statikus műveletét használd).</li>
@@ -1994,7 +1994,7 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
 <li>A <code>CanExecute</code> attribútum tulajdonságban egy string formában annak a boollal visszatérő műveletnek vagy tulajdonságnak a nevét lehet megadni, melyet a generált kód a parancs tiltásának/engedélyezésének során használ (a RelayCommand konstruktor második paramétere lesz). Nekünk már van ilyen tulajdonságunk, "IsDecrementEnabled" névben. Azért nem egyszerű string formájában adjuk meg, mert ha utólag valaki átnevezi az <code>IsDecrementEnabled</code> műveletet, akkor a mostani "IsDecrementEnabled" már nem jó műveletre mutatna. A <code>nameof</code> kifejezés használatával ez a probléma elkerülhető. A <code>CanExecute</code> megadása általánosságában nem kötelező (nem adjuk meg, ha nem akarjuk a parancsot soha tiltani).</li>
 </ul>
 </li>
-<li>Teszteld a megoldást (életkor csökkentése), ugyanúgy kell működnie, mint korábban. Egyrészt csökkentenie kell az életkort, másrészt 0 elérésekor le kell tiltania a gombot. Ha ez utóbbi nem működik, akkor egy lehetséges ok, hogy a a <code>DecreaseAgeCommand</code>-ra a <code>NotifyCanExecuteChanged</code> hívását törölted az átalakítás során. Erre most is szükség van, hiszen átalakításunk csak arról szólt, hogy a <code>DecreaseAgeCommand</code>-ot MVVM toolkit alapokon kódgenerátorral, egyszerűbben állítjuk elő.</li>
+<li>Teszteld a megoldást (életkor csökkentése), ugyanúgy kell működnie, mint korábban. Egyrészt csökkentenie kell az életkort, másrészt 0 elérésekor le kell tiltania a gombot. Ha ez utóbbi nem működik, akkor egy lehetséges ok, hogy a <code>DecreaseAgeCommand</code>-ra a <code>NotifyCanExecuteChanged</code> hívását törölted az átalakítás során. Erre most is szükség van, hiszen átalakításunk csak arról szólt, hogy a <code>DecreaseAgeCommand</code>-ot MVVM toolkit alapokon kódgenerátorral, egyszerűbben állítjuk elő.</li>
 </ol>
 <div class="admonition example">
 <p class="admonition-title">BEADANDÓ</p>
@@ -2032,8 +2032,8 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
         </path>
       </svg>
     </span>
-    <span title="2024. május 12. 11:24:15">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-12T11:24:15+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-12</span>
+    <span title="2024. május 12. 19:44:55">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-12T19:44:55+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-12</span>
     </span>
   </span>
 
@@ -2052,6 +2052,8 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
         <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
       </a><a href="https://github.com/forcemagic" target="_blank" rel="noopener noreferrer" class="md-author" title="@Máté Szén">
         <img src="https://avatars.githubusercontent.com/u/25160976?u=8f2accd3cab208ae5337d4d40ab093c3c37b8e52&v=4?size=72" alt="@Máté Szén">
+      </a><a href="https://github.com/norbertkurcsi" target="_blank" rel="noopener noreferrer" class="md-author" title="@Kurcsi Norbert">
+        <img src="https://avatars.githubusercontent.com/u/90260479?u=5dc2891fae39aac8292aedfc0a555941ee742a61&v=4?size=72" alt="@Kurcsi Norbert">
       </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tibor Tóth">
         <img src="https://avatars.githubusercontent.com/u/8333960?u=d26653213d265ecdceeaf20a896d74f479d35450&v=4?size=72" alt="@Tibor Tóth">
       </a></nav>      
