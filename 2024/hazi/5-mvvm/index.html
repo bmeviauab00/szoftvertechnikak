@@ -1988,14 +1988,14 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
 <p>Alakítsuk át a <code>DecreaseAgeCommand</code> kezelését (csak ezt, az <code>IncreaseAgeCommand</code> maradjon!) generált kód alapúra:</p>
 <ol>
 <li>Lásd el a <code>PersonListPageViewModel</code> osztályt a <code>partial</code> kulcsszóval.</li>
-<li>Töröld ki a <code>DecreaseAgeCommand</code> tulajdonságot és ennek példányosítását a konstruktorból.</li>
+<li>Töröld ki a <code>DecreaseAgeCommand</code> tulajdonságot és ennek példányosítását a konstruktorból. </li>
 <li>A <code>DecreaseAge</code> műveletet lásd el ezzel az attribútummal: <code>[RelayCommand(CanExecute = nameof(IsDecrementEnabled))]</code>. <ul>
 <li>Ennek hatására a kódgenerátor bevezet egy <code>RelayCommand</code> tulajdonságot az osztályban, melynek neve a műveletünk neve (<code>DecreaseAge</code>), hozzáfűzve a "Command" stringet. Ezzel meg is kapjuk a korábban kézzel bevezetett <code>DecreaseAgeCommand</code> nevű tulajdonságot.</li>
 <li>A <code>CanExecute</code> attribútum tulajdonságban egy string formában annak a boollal visszatérő műveletnek vagy tulajdonságnak a nevét lehet megadni, melyet a generált kód a parancs tiltásának/engedélyezésének során használ (a RelayCommand konstruktor második paramétere lesz). Nekünk már van ilyen tulajdonságunk, "IsDecrementEnabled" névben. Azért nem egyszerű string formájában adjuk meg, mert ha utólag valaki átnevezi az <code>IsDecrementEnabled</code> műveletet, akkor a mostani "IsDecrementEnabled" már nem jó műveletre mutatna. A <code>nameof</code> kifejezés használatával ez a probléma elkerülhető. A <code>CanExecute</code> megadása általánosságában nem kötelező (nem adjuk meg, ha nem akarjuk a parancsot soha tiltani).</li>
 </ul>
 </li>
+<li>Teszteld a megoldást (életkor csökkentése), ugyanúgy kell működnie, mint korábban. Egyrészt csökkentenie kell az életkort, másrészt 0 elérésekor le kell tiltania a gombot. Ha ez utóbbi nem működik, akkor egy lehetséges ok, hogy a a <code>DecreaseAgeCommand</code>-ra a <code>NotifyCanExecuteChanged</code> hívását törölted az átalakítás során. Erre most is szükség van, hiszen átalakításunk csak arról szólt, hogy a <code>DecreaseAgeCommand</code>-ot MVVM toolkit alapokon kódgenerátorral, egyszerűbben állítjuk elő.</li>
 </ol>
-<p>Teszteld a megoldást (életkor csökkentése), ugyanúgy kell működnie, mint korábban.</p>
 <div class="admonition example">
 <p class="admonition-title">BEADANDÓ</p>
 <p>Készíts egy képernyőmentést <code>f5.png</code> néven az alábbiak szerint:</p>
@@ -2032,8 +2032,8 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
         </path>
       </svg>
     </span>
-    <span title="2024. május 6. 21:53:28">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-06T21:53:28+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-06</span>
+    <span title="2024. május 12. 11:24:15">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-12T11:24:15+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-12</span>
     </span>
   </span>
 
