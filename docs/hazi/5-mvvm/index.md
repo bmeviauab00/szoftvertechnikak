@@ -278,12 +278,11 @@ Az előző feladatban a command tulajdonságok bevezetését és azok példányo
 Alakítsuk át a `DecreaseAgeCommand` kezelését (csak ezt, az `IncreaseAgeCommand` maradjon!) generált kód alapúra:
 
 1. Lásd el a `PersonListPageViewModel` osztályt a `partial` kulcsszóval.
-2. Töröld ki a `DecreaseAgeCommand` tulajdonságot és ennek példányosítását a konstruktorból.
+2. Töröld ki a `DecreaseAgeCommand` tulajdonságot és ennek példányosítását a konstruktorból. 
 3. A `DecreaseAge` műveletet lásd el ezzel az attribútummal: `[RelayCommand(CanExecute = nameof(IsDecrementEnabled))]`. 
     * Ennek hatására a kódgenerátor bevezet egy `RelayCommand` tulajdonságot az osztályban, melynek neve a műveletünk neve (`DecreaseAge`), hozzáfűzve a "Command" stringet. Ezzel meg is kapjuk a korábban kézzel bevezetett `DecreaseAgeCommand` nevű tulajdonságot.
     * A `CanExecute` attribútum tulajdonságban egy string formában annak a boollal visszatérő műveletnek vagy tulajdonságnak a nevét lehet megadni, melyet a generált kód a parancs tiltásának/engedélyezésének során használ (a RelayCommand konstruktor második paramétere lesz). Nekünk már van ilyen tulajdonságunk, "IsDecrementEnabled" névben. Azért nem egyszerű string formájában adjuk meg, mert ha utólag valaki átnevezi az `IsDecrementEnabled` műveletet, akkor a mostani "IsDecrementEnabled" már nem jó műveletre mutatna. A `nameof` kifejezés használatával ez a probléma elkerülhető. A `CanExecute` megadása általánosságában nem kötelező (nem adjuk meg, ha nem akarjuk a parancsot soha tiltani).
-
-Teszteld a megoldást (életkor csökkentése), ugyanúgy kell működnie, mint korábban.
+4. Teszteld a megoldást (életkor csökkentése), ugyanúgy kell működnie, mint korábban. Egyrészt csökkentenie kell az életkort, másrészt 0 elérésekor le kell tiltania a gombot. Ha ez utóbbi nem működik, akkor egy lehetséges ok, hogy a a `DecreaseAgeCommand`-ra a `NotifyCanExecuteChanged` hívását törölted az átalakítás során. Erre most is szükség van, hiszen átalakításunk csak arról szólt, hogy a `DecreaseAgeCommand`-ot MVVM toolkit alapokon kódgenerátorral, egyszerűbben állítjuk elő.
 
 !!! example "BEADANDÓ"
     Készíts egy képernyőmentést `f5.png` néven az alábbiak szerint:
