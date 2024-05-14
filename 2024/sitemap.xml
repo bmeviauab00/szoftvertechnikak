@@ -106,16 +106,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://bmeviauab00.github.io/szoftvertechnikak/2024/hazi/5b-mvvm-advanced/</loc>
-         <lastmod>2024-05-14</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://bmeviauab00.github.io/szoftvertechnikak/2024/hazi/5b-mvvm-advanced/index_ger/</loc>
-         <lastmod>2024-05-14</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://bmeviauab00.github.io/szoftvertechnikak/2024/hazi/6-tervezesi-mintak/</loc>
          <lastmod>2024-05-14</lastmod>
          <changefreq>daily</changefreq>
@@ -162,6 +152,16 @@
     </url>
     <url>
          <loc>https://bmeviauab00.github.io/szoftvertechnikak/2024/hazi/imsc-liftsystem/</loc>
+         <lastmod>2024-05-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://bmeviauab00.github.io/szoftvertechnikak/2024/hazi/imsc-mvvm-receptek/</loc>
+         <lastmod>2024-05-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://bmeviauab00.github.io/szoftvertechnikak/2024/hazi/imsc-mvvm-receptek/index_ger/</loc>
          <lastmod>2024-05-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
