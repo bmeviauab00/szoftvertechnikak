@@ -1,0 +1,2875 @@
+
+<!doctype html>
+<html lang="hu" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Benedek Zoltán">
+      
+      
+        <link rel="canonical" href="https://bmeviauab00.github.io/szoftvertechnikak/2024/labor/6-tervezesi-mintak/index_ger/">
+      
+      
+        <link rel="prev" href="../../5-mvvm/index_ger/">
+      
+      
+        <link rel="next" href="../../7-adatkezeles/index_ger/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.9">
+    
+    
+      
+        <title>6. Entwurfsmuster (Erweiterbarkeit) - BMEVIAUAB00 Szoftvertechnikák</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.f2e4d321.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../extra-material-theme.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="aut" data-md-color-primary="aut" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#6-entwurfsmuster-erweiterbarkeit" class="md-skip">
+          Kihagyás
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Élőfej">
+    <a href="../../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-header__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
+      
+  <img src="../../../img/logo-bme-aut.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BMEVIAUAB00 Szoftvertechnikák
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6. Entwurfsmuster (Erweiterbarkeit)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="aut" data-md-color-primary="aut" data-md-color-accent="red"  aria-label="Váltás sötét témára"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Váltás sötét témára" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="indigo"  aria-label="Váltás világos témára"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Váltás világos témára" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Keresés" placeholder="Keresés" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Keresés">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Törlés" aria-label="Törlés" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Keresés inicializálása
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bmeviauab00/szoftvertechnikak
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Lapok" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Szoftvertechnikák (2024-től)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../1-model-es-kod-kapcsolata/" class="md-tabs__link">
+          
+  
+  Laborok
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../hazi/" class="md-tabs__link">
+          
+  
+  Önálló/házi feladatok
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../1-model-es-kod-kapcsolata/index_eng/" class="md-tabs__link">
+          
+  
+  English course labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../1-model-es-kod-kapcsolata/index_ger/" class="md-tabs__link">
+          
+  
+  Deutschkurs-Labore
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../hazi/meghirdetes-elott_ger/" class="md-tabs__link">
+          
+  
+  Hausaufgaben
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigáció" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-nav__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
+      
+  <img src="../../../img/logo-bme-aut.png" alt="logo">
+
+    </a>
+    BMEVIAUAB00 Szoftvertechnikák
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bmeviauab00/szoftvertechnikak
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Szoftvertechnikák (2024-től)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Laborok
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Laborok
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-model-es-kod-kapcsolata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. A modell és a kód kapcsolata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-nyelvi-eszkozok/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Nyelvi eszközök
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-felhasznaloi-felulet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. A felhasználói felület kialakítása
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-tobbszalu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Többszálú alkalmazások készítése
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-mvvm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Tervezési minták (kiterjeszthetőség)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-adatkezeles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Adatkezelés
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Önálló/házi feladatok
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Önálló/házi feladatok
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Útmutató
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/1-model-es-kod-kapcsolata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. HF - A modell és a kód kapcsolata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/2-nyelvi-eszkozok/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. HF - Nyelvi eszközök
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/3-felhasznaloi-felulet-kialakitasa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. HF - Felhasználói felület kialakítása
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/4-tobbszalu-alkalmazasok-fejlesztese/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. HF - Többszálú alkalmazások fejlesztése
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/5-mvvm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. HF - MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/6-tervezesi-mintak/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. HF - Tervezési minták
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/imsc-liftsystem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IMSc HF - Liftrendszer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/imsc-mvvm-receptek/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IMSc HF - MVVM receptek
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/fejlesztokornyezet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fejlesztőkörnyezet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    English course labs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            English course labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-model-es-kod-kapcsolata/index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Relationship between the model and the code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-nyelvi-eszkozok/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-felhasznaloi-felulet/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-tobbszalu/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-mvvm/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-adatkezeles/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Deutschkurs-Labore
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Deutschkurs-Labore
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-model-es-kod-kapcsolata/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Beziehung zwischen dem Modell und dem Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-nyelvi-eszkozok/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Sprachliche Mittel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-felhasznaloi-felulet/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Entwurf der Benutzeroberfläche
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-tobbszalu/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Erstellung von mehrfädigen Anwendungen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-mvvm/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    6. Entwurfsmuster (Erweiterbarkeit)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    6. Entwurfsmuster (Erweiterbarkeit)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tartalomjegyzék
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#das-ziel-der-ubung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Das Ziel der Übung
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voraussetzungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Voraussetzungen
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Voraussetzungen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theoretischer-hintergrund-ansatz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theoretischer Hintergrund, Ansatz *
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0-aufgabe-kennenlernen-der-aufgabe-und-der-erstanwendung" class="md-nav__link">
+    <span class="md-ellipsis">
+      0. Aufgabe - Kennenlernen der Aufgabe und der Erstanwendung
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0. Aufgabe - Kennenlernen der Aufgabe und der Erstanwendung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#beschreibung-der-aufgabe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beschreibung der Aufgabe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ursprungliche-anforderungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ursprüngliche Anforderungen
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-losung-alles-in-einem-1-startstart" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Lösung - alles in einem (1-Start/Start)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-losung-2-organizedtofunctionsorganizedtofunctions-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Lösung (2-OrganizedToFunctions/OrganizedToFunctions-1)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Lösung (2-OrganizedToFunctions/OrganizedToFunctions-1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bewertung-der-losung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bewertung der Lösung
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-losung-organizedtofunctions-2-twoalgorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Lösung (OrganizedToFunctions-2-TwoAlgorithms)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Lösung (OrganizedToFunctions-2-TwoAlgorithms)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bewertung-der-losung_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bewertung der Lösung
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-losung-3-templatemethodtemplatemethod-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Lösung (3-TemplateMethod/TemplateMethod-1)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Lösung (3-TemplateMethod/TemplateMethod-1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bewertung-der-losung_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bewertung der Lösung
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-megoldas-3-templatemethodtemplatemethod-2-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Megoldás (3-TemplateMethod/TemplateMethod-2-Progress)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-losung-3-templatemethodtemplatemethod-3-progressmultiple" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Lösung (3-TemplateMethod/TemplateMethod-3-ProgressMultiple)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-losung-4-strategiestrategie-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Lösung (4-Strategie/Strategie-1)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Lösung (4-Strategie/Strategie-1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anonymisierungsstrategie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anonymisierungsstrategie
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategie-fur-den-fortschritt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strategie für den Fortschritt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anwendung-der-strategien" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anwendung der Strategien
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bewertung-der-losung_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bewertung der Lösung
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-megoldas-4-strategystrategy-2-di" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Megoldás (4-Strategy/Strategy-2-DI)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Megoldás (4-Strategy/Strategy-2-DI)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bewertung-der-losung_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bewertung der Lösung
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7-adatkezeles/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Datenverwaltung
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hausaufgaben
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Hausaufgaben
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/meghirdetes-elott_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Beziehung zwischen dem Modell und dem Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/meghirdetes-elott_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Sprachliche Mittel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/3-felhasznaloi-felulet-kialakitasa/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Entwurf der Benutzeroberfläche
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/4-tobbszalu-alkalmazasok-fejlesztese/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Entwicklung von Multithreading-Anwendungen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/5-mvvm/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/meghirdetes-elott_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Entwurfsmuster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hazi/fejlesztokornyezet/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entwicklungsumgebung
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tartalomjegyzék
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#das-ziel-der-ubung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Das Ziel der Übung
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voraussetzungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Voraussetzungen
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Voraussetzungen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theoretischer-hintergrund-ansatz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theoretischer Hintergrund, Ansatz *
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0-aufgabe-kennenlernen-der-aufgabe-und-der-erstanwendung" class="md-nav__link">
+    <span class="md-ellipsis">
+      0. Aufgabe - Kennenlernen der Aufgabe und der Erstanwendung
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0. Aufgabe - Kennenlernen der Aufgabe und der Erstanwendung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#beschreibung-der-aufgabe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beschreibung der Aufgabe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ursprungliche-anforderungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ursprüngliche Anforderungen
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-losung-alles-in-einem-1-startstart" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Lösung - alles in einem (1-Start/Start)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-losung-2-organizedtofunctionsorganizedtofunctions-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Lösung (2-OrganizedToFunctions/OrganizedToFunctions-1)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Lösung (2-OrganizedToFunctions/OrganizedToFunctions-1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bewertung-der-losung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bewertung der Lösung
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-losung-organizedtofunctions-2-twoalgorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Lösung (OrganizedToFunctions-2-TwoAlgorithms)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Lösung (OrganizedToFunctions-2-TwoAlgorithms)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bewertung-der-losung_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bewertung der Lösung
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-losung-3-templatemethodtemplatemethod-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Lösung (3-TemplateMethod/TemplateMethod-1)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Lösung (3-TemplateMethod/TemplateMethod-1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bewertung-der-losung_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bewertung der Lösung
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-megoldas-3-templatemethodtemplatemethod-2-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Megoldás (3-TemplateMethod/TemplateMethod-2-Progress)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-losung-3-templatemethodtemplatemethod-3-progressmultiple" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Lösung (3-TemplateMethod/TemplateMethod-3-ProgressMultiple)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-losung-4-strategiestrategie-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Lösung (4-Strategie/Strategie-1)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Lösung (4-Strategie/Strategie-1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anonymisierungsstrategie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anonymisierungsstrategie
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategie-fur-den-fortschritt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strategie für den Fortschritt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anwendung-der-strategien" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anwendung der Strategien
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bewertung-der-losung_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bewertung der Lösung
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-megoldas-4-strategystrategy-2-di" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Megoldás (4-Strategy/Strategy-2-DI)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Megoldás (4-Strategy/Strategy-2-DI)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bewertung-der-losung_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bewertung der Lösung
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/bmeviauab00/szoftvertechnikak/edit/master/docs/labor/6-tervezesi-mintak/index_ger.md" title="Oldal szerkesztése" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="6-entwurfsmuster-erweiterbarkeit">6. Entwurfsmuster (Erweiterbarkeit)<a class="headerlink" href="#6-entwurfsmuster-erweiterbarkeit" title="Permanent link">&para;</a></h1>
+<h2 id="das-ziel-der-ubung">Das Ziel der Übung<a class="headerlink" href="#das-ziel-der-ubung" title="Permanent link">&para;</a></h2>
+<p>Ziele der Übung (anhand eines komplexeren Beispiels aus dem wirklichen Leben):</p>
+<ul>
+<li>Anwendung einiger Designprinzipien zur Förderung von Skalierbarkeit, Wiederverwendbarkeit, Codetransparenz und Wartbarkeit: SRP, OPEN-CLOSED, DRY, KISS, etc.</li>
+<li>Einige der für die Erweiterbarkeit wichtigsten Entwurfsmuster (Template Method, Strategy, Dependency Injection).</li>
+<li>Zusätzliche Techniken (z.B. Delegate/Lambda-Ausdruck) zur Unterstützung von Skalierbarkeit und Wiederverwendbarkeit mit Entwurfsmustern anwenden und kombinieren.</li>
+<li>Code-Refactoring-Übung.</li>
+</ul>
+<p>Verwandte Präsentationen:</p>
+<ul>
+<li>Entwurfsmuster: erweiterungsbezogene Muster (Einführung, Schablonenmethode, Strategie) und das Dependency Injection "Muster".</li>
+</ul>
+<h2 id="voraussetzungen">Voraussetzungen<a class="headerlink" href="#voraussetzungen" title="Permanent link">&para;</a></h2>
+<p>Die für die Durchführung der Übung benötigten Werkzeuge:</p>
+<ul>
+<li>Visual Studio 2022</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Übung unter Linux oder macOS</p>
+<p>Das Übungsmaterial ist grundsätzlich für Windows und Visual Studio gedacht, kann aber auch auf anderen Betriebssystemen mit anderen Entwicklungswerkzeugen (z.B. VS Code, Rider, Visual Studio für Mac) oder sogar mit einem Texteditor und CLI (Kommandozeilen)-Tools durchgeführt werden. Dies wird dadurch ermöglicht, dass die Beispiele im Kontext einer einfachen Konsolenanwendung präsentiert werden (keine Windows-spezifischen Elemente) und das .NET 8 SDK auf Linux und macOS unterstützt wird. <a href="https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code">Hallo Welt unter Linux</a>.</p>
+</div>
+<h3 id="theoretischer-hintergrund-ansatz">Theoretischer Hintergrund, Ansatz *<a class="headerlink" href="#theoretischer-hintergrund-ansatz" title="Permanent link">&para;</a></h3>
+<p>Bei der Entwicklung komplexerer Anwendungen müssen wir eine Reihe von Designentscheidungen treffen, wobei mehrere Optionen zur Auswahl stehen. Wenn wir die Wartungsfreundlichkeit und die Möglichkeit der einfachen Weiterentwicklung unserer Anwendung nicht im Auge behalten, kann die Entwicklung schnell zu einem Alptraum werden. Kundenwünsche nach Änderungen und Erweiterungen erfordern eine umfangreiche kontinuierliche Neuschreibung/Änderung des Codes: Dies führt zu neuen Fehlern und erfordert einen erheblichen Arbeitsaufwand für umfangreiche Code-Neu-Tests!</p>
+<p>Unser Ziel ist es, diesen Änderungs- und Erweiterungsbedarf zu decken, indem wir den Code an einigen wenigen, genau definierten Stellen erweitern, ohne den bestehenden Code wesentlich zu verändern. Das Schlüsselwort lautet: <strong>Erweiterung</strong> im Gegensatz zur <strong>Änderung</strong>. Damit zusammenhängend: Wenn bestimmte Logiken erweitert werden können, sind sie auch allgemeiner, und wir können sie leichter in mehr Kontexten verwenden. Langfristig gesehen kommen wir auf diese Weise schneller voran, der Code ist kürzer und doppelter Code wird vermieden (wodurch der Code leichter zu pflegen ist).</p>
+<p>Die <strong>Entwurfsmuster</strong> zeigen bewährte Lösungen für einige häufig auftretende Entwurfsprobleme: Diese Lösungen tragen dazu bei, dass unser Code einfacher zu erweitern, zu pflegen und wiederzuverwenden ist. In dieser Übung konzentrieren wir uns auf Muster, Entwurfsprinzipien und einige Programmierwerkzeuge, die bei diesen Problemen helfen können. Aber wir wollen es nicht übertreiben: Es lohnt sich nur dann, ein bestimmtes Entwurfsmuster zu verwenden, wenn es einen echten Nutzen bringt. Andernfalls wird die Implementierung nur unnötig kompliziert. Vor diesem Hintergrund ist es nicht unser Ziel (und oft auch gar nicht möglich), alle zukünftigen Erweiterungsbedürfnisse vorherzusehen oder sehr weit im Voraus darüber nachzudenken. Der Punkt ist, dass wir, selbst wenn wir von einer einfachen Lösung ausgehen und jedes Problem erkennen, unseren Code ständig überarbeiten, um ihn an den richtigen Stellen erweiterbar und wiederverwendbar zu machen, je nach unseren aktuellen Anforderungen (funktional und nicht funktional) und unserer Voraussicht.</p>
+<p>Es ist erwähnenswert, dass verwandte Entwurfsmuster und Sprachtools auch sehr dabei helfen, unseren Code <strong>unit-testbar</strong> zu machen: In vielen Unternehmen ist es bei der Entwicklung eines Softwareprodukts eine (legitime) Anforderung an die Entwickler, Unit-Tests mit hoher Codeabdeckung zu erstellen. Dies ist jedoch praktisch unmöglich, wenn die Einheiten/Klassen Ihres Codes zu eng gekoppelt sind.</p>
+<h2 id="0-aufgabe-kennenlernen-der-aufgabe-und-der-erstanwendung">0. Aufgabe - Kennenlernen der Aufgabe und der Erstanwendung<a class="headerlink" href="#0-aufgabe-kennenlernen-der-aufgabe-und-der-erstanwendung" title="Permanent link">&para;</a></h2>
+<p>Klonen Sie <a href="https://github.com/bmeviauab00/lab-patterns-extensibility-kiindulo">das Repository der</a>ursprünglichen Anwendung für Labor 6:</p>
+<ul>
+<li>Öffnen Sie eine Eingabeaufforderung</li>
+<li>Navigieren Sie zu einem Ordner Ihrer Wahl, zum Beispiel c:workNEPTUN</li>
+<li>Geben Sie den folgenden Befehl ein: <code>git clone https://github.com/bmeviauab00/lab-patterns-extensibility-kiindulo.git</code></li>
+<li>Öffnen Sie die Lösung <em>Lab-Patterns-Extensibility.sln</em> in Visual Studio.</li>
+</ul>
+<h3 id="beschreibung-der-aufgabe">Beschreibung der Aufgabe<a class="headerlink" href="#beschreibung-der-aufgabe" title="Permanent link">&para;</a></h3>
+<p>Im Labor werden wir eine konsolenbasierte Datenverarbeitungsanwendung (genauer gesagt, eine Anonymisierungsanwendung) entsprechend den sich entwickelnden Bedürfnissen erweitern, und zwar an verschiedenen Punkten und mit verschiedenen Techniken. In der ersten Übung wird auch das Konzept der Anonymisierung vorgestellt.</p>
+<p>Die Eingabe in die Anwendung ist eine CSV-Textdatei, in der jede Zeile Daten für eine bestimmte Person enthält. Öffnen Sie im Dateisystem die Datei us-500.csv im Ordner <em>Data</em> (durch Doppelklick oder mit Notepad/Notepad). Wir sehen, dass wir zwischen "", getrennt durch ein Komma, die Daten für jede Person haben (sie sind nicht real). Schauen wir uns die erste Zeile an:</p>
+<div class="highlight"><pre><span></span><code>&quot;James&quot;, &quot;Rhymes&quot;, &quot;Benton, John B Jr&quot;, &quot;6649 N Blue Gum St&quot;, &quot;New Orleans&quot;, &quot;Orleans&quot;, &quot;LA&quot;, &quot;70116&quot;, &quot;504-621-8927&quot;, &quot;504-845-1427&quot;, &quot;30&quot;, &quot;65&quot;, &quot;Herzbezogen&quot;, &quot;jRhymes@gmail.com&quot;
+</code></pre></div>
+<p>Die Person in der ersten Reihe heißt James Rhymes, arbeitet für "Benton, John B Jr.", gefolgt von einigen Adressfeldern, 30 Jahre alt, 65 kg Körpergewicht. Das folgende Feld gibt Auskunft darüber, welche schwerere Krankheit Sie haben (in der Zeile oben ist es "Herzkrankheit"). Die letzte Spalte enthält die E-Mail-Adresse der Person.</p>
+<details class="note">
+<summary>Quelle und genaues Format der Daten *</summary>
+<p>Datenquelle: <a href="https://www.briandunning.com/sample-data/">https://www.briandunning.com/sample-data/,</a> mit einigen Spalten (Alter, Gewicht, Krankheit). Die Reihenfolge der Felder: Vorname, Nachname, Unternehmen, Adresse, Stadt, Landkreis (falls zutreffend), Bundesland/Provinz (falls zutreffend), Postleitzahl, Telefon 1, Telefon 2, Alter, Gewicht, Krankheit, E-Mail</p>
+</details>
+<p>Die Hauptaufgabe der Anwendung besteht darin, diese Daten entsprechend den aktuellen Bedürfnissen zu anonymisieren und sie dann in eine CSV-Textdatei auszugeben. Der Zweck der Anonymisierung besteht darin, die Daten so umzuwandeln, dass die Personen im Datensatz nicht mehr identifizierbar sind, die Daten aber weiterhin für die Erstellung von Berichten verwendet werden können. Die Anonymisierung ist ein eigener, sehr ernster und anspruchsvoller Bereich der Datenverarbeitung. Die Übung zielt nicht darauf ab, Lösungen zu entwickeln, die in einem realen Kontext anwendbar oder sogar in jeder Hinsicht sinnvoll sind. Für uns ist eigentlich nur der "Einsatz" einer Art von Datenverarbeitungsalgorithmus für die Darstellung von Mustern wichtig. Dies kann einen etwas "aufregenderen" Rahmen bieten als einfache Datenfilterung/ Sequenzierung/etc. basierte Datenverarbeitung (die von .NET standardmäßig unterstützt wird).</p>
+<div class="admonition note">
+<p class="admonition-title">Einige Gedanken zur Anonymisierung</p>
+<p>Man könnte meinen, dass die Anonymisierung ein einfaches Problem ist. So müssen Sie beispielsweise nur die Namen der Personen, die Adresse, die Hausnummer, die Telefonnummern und die E-Mail-Adresse entfernen oder mit einem Sternchen versehen, und schon sind Sie fertig. Zum Beispiel würde die erste Zeile unserer Eingabe die Ausgabe sein:</p>
+<div class="highlight"><pre><span></span><code>&quot;***&quot;, &quot;***&quot;, &quot;Benton, John B Jr&quot;, &quot;***&quot;, &quot;New Orleans &quot;, &quot;Orleans&quot;, &quot;LA&quot;, &quot;70116&quot;, &quot;***&quot;, &quot;***&quot;, &quot;30&quot;, &quot;65&quot;, &quot;herzbezogen&quot;, &quot;***&quot;
+</code></pre></div>
+<p>Dies ist jedoch bei weitem nicht der Fall, insbesondere wenn es um wirklich große Daten geht. Stellen Sie sich ein kleines Dorf vor, in dem es nicht viele Menschen gibt. Nehmen wir an, eine der auf diese Weise anonymisierten Personen ist 14 Jahre alt, aber stark übergewichtig und wiegt 95 kg. Dies ist eine seltene "Kombination", und es besteht eine gute Chance, dass keine andere Person mit diesen Parametern im Dorf lebt. Wenn einer seiner Klassenkameraden (ein Achtklässler, er ist 14) sich die "anonymisierten" Daten ansieht, wird er wissen, wer er ist (es gibt keinen anderen Achtklässler in der Schule, der so übergewichtig ist), er wird die Person identifizieren. Sie werden zum Beispiel wissen, welche Krankheit die Person hat. Lektion: Daten können im Kontext aufschlussreich sein.</p>
+<p>Was ist die Lösung? Stadt, Alter und Körpergewicht können nicht gelöscht/gestrichen werden, da sie gemeldet werden müssen. Eine typische Lösung besteht darin, nach der Anonymisierung nicht das genaue Alter/Gewicht einzugeben, sondern Bereiche (d. h. die Daten zu verallgemeinern): z. B. für die oben genannte Person Alter 10..20 Jahre, Gewicht 80..100 kg, und diese Werte für diese Person in die Ausgabedatei einzugeben. Es ist nicht mehr möglich, die Personen zu identifizieren. Wir werden diese Technik später noch anwenden.</p>
+</div>
+<h3 id="ursprungliche-anforderungen">Ursprüngliche Anforderungen<a class="headerlink" href="#ursprungliche-anforderungen" title="Permanent link">&para;</a></h3>
+<p>Ursprüngliche Anforderungen an die Bewerbung:</p>
+<ol>
+<li>Von einem bestimmten Client empfangene Dateien (alle im gleichen Format) müssen mit dem gleichen Anonymisierungsalgorithmus in das gleiche Ausgabeformat konvertiert werden. Die Anonymisierung sollte lediglich darin bestehen, den Vor- und Nachnamen "auszubuchstabieren".</li>
+<li>Eine gewisse Datenbereinigung ist erforderlich.  <code>_</code> <code>#</code> In den Eingabedaten kann es am Anfang/Ende der Spalte, die die Stadt enthält, redundante Zeichen geben, die entfernt werden sollten (Trimm-Operation).</li>
+<li>Nach der Verarbeitung jeder Zeile sollte in die Konsole geschrieben werden, dass die Zeile verarbeitet wurde, und nach der Verarbeitung jeder Zeile sollten einige zusammenfassende Informationen angezeigt werden: wie viele Zeilen verarbeitet wurden und bei wie vielen der Stadtname gekürzt wurde.</li>
+<li>Ein <strong>entscheidender Punkt</strong>: Die Anwendung wird nur für einen kurzen Zeitraum benötigt, und wir haben nicht die Absicht, sie in Zukunft zu erweitern.</li>
+</ol>
+<p>Hinweis: Um mit weniger Feldern im Code zu arbeiten und die Ausgabe transparenter zu gestalten, lassen wir bei der Verarbeitung einige weitere Felder weg.</p>
+<p>Ein Beispiel: Die erste Zeile unserer Eingabedatei ist die erwartete Ausgabe:</p>
+<div class="highlight"><pre><span></span><code>***; ***; LA; New Orleans; 30; 65; Herzbezogen
+</code></pre></div>
+<h2 id="1-losung-alles-in-einem-1-startstart">1. Lösung - alles in einem (1-Start/Start)<a class="headerlink" href="#1-losung-alles-in-einem-1-startstart" title="Permanent link">&para;</a></h2>
+<p>Im Visual Studio Solution Explorer sehen Sie Ordner, deren Namen mit den Zahlen 1 bis 4 beginnen. Diese enthalten die Lösungen für jede Arbeitsiteration. Die Lösung der ersten Runde befindet sich im Ordner "1-Start" unter dem Projektnamen "Start". Schauen wir uns die Dateien im Projekt an:</p>
+<ul>
+<li><code>Person.cs</code> - Sie enthält die Daten einer Person, die für uns von Interesse ist, und wir lesen die Daten einer Person in ihre Objekte ein.</li>
+<li><code>Programm.cs</code> - Die gesamte Logik ist als Funktion dieses Main implementiert, "getrennt" durch Code-Einträge. Wenn die Logik ein wenig komplizierter wird, werden wir nach ein oder zwei Tagen (Stunden?) Schwierigkeiten haben, unseren eigenen Code zu überprüfen und zu verstehen. Wir sollten diese Lösung gar nicht erst in Betracht ziehen.</li>
+</ul>
+<p>Insgesamt ist die Lösung sehr einfach, da dem Code keine lange Zukunft vorausgesagt wird. Aber die "skriptartige", in eine Funktion gegossene "All-in-one"-Lösung ist auch nicht der richtige Weg, sie macht es sehr schwierig, den Code <strong>zu sehen</strong> und <strong>zu verstehen</strong>. Lassen Sie uns das nicht weiter betrachten.</p>
+<h2 id="2-losung-2-organizedtofunctionsorganizedtofunctions-1">2. Lösung (2-OrganizedToFunctions/OrganizedToFunctions-1)<a class="headerlink" href="#2-losung-2-organizedtofunctionsorganizedtofunctions-1" title="Permanent link">&para;</a></h2>
+<p>Gehen wir in Visual Studio zu der Lösung über, die sich im Projekt "OrganizedToFunctions-1" im Ordner "2-OrganizedToFunctions" befindet. Das ist viel sympathischer, weil wir die Logik in Funktionen zerlegt haben. Schauen wir uns kurz den Code an:</p>
+<p><code>Anonymizer.cs</code></p>
+<ul>
+<li><code>Laufen lassen</code> Die Funktion ist das "Rückgrat", sie enthält die Steuerlogik und ruft die für die einzelnen Schritte zuständigen Funktionen auf.</li>
+<li><code>ReadFromInput</code> <code>Person</code> <code>Person</code> operation: scannt die Quelldatei, erstellt für jede Zeile ein Objekt und gibt eine Liste der gescannten Objekte zurück.</li>
+<li><code>TrimCityNames</code>: Führt eine Datenbereinigung durch (Abschneiden von Städtenamen).</li>
+<li><code>Anonym</code>:  <code>Person</code> <code>Person</code> Bei jedem gescannten Objekt wird es aufgerufen und ist dafür verantwortlich, ein neues Objekt zurückzugeben, das bereits die anonymisierten Daten enthält.</li>
+<li><code>WriteToOutput</code> <code>Person</code>: schreibt die bereits anonymisierten Objekte in die Ausgabedatei.</li>
+<li><code>PrintSummary</code>: gibt die Zusammenfassung am Ende der Verarbeitung auf der Konsole aus.</li>
+</ul>
+<p><code>Programm.cs</code></p>
+<ul>
+<li><code>Anonym</code> <code>Laufen lassen</code> Erzeugt ein Objekt und führt es durch den Aufruf von . Es ist ersichtlich, dass die Zeichenkette, die zur Maskierung während der Anonymisierung verwendet wird, in einem Konstruktorparameter angegeben werden muss.</li>
+</ul>
+<p>Probieren wir es aus, lassen wir es laufen! Um dies zu tun, sollte "OrganizedToFunctions-1" das Startprojekt in Visual Studio sein (mit der rechten Maustaste darauf klicken und <em>als Startprojekt festlegen</em>), dann starten Sie es:</p>
+<p><a class="glightbox" href="bilder/OrganizedToFunctions-1-Konsole-out.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Ausgabe auf der Konsole" src="bilder/OrganizedToFunctions-1-Konsole-out.png" /></a></p>
+<p>Die Ausgabedatei kann in einem Dateimanager in einem Ordner mit dem Namen "OrganizedToFunctions-1binDebugnet8.0" oder ähnlichem mit dem Namen "us-500.processed.txt" angezeigt werden. Öffnen wir sie und sehen wir uns die Daten an.</p>
+<h3 id="bewertung-der-losung">Bewertung der Lösung<a class="headerlink" href="#bewertung-der-losung" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Die Lösung ist grundsätzlich gut strukturiert und leicht zu verstehen.</li>
+<li>Folgt dem <mark>**KISS (Keep It Stupid Simple)</mark>** prinzip, ohne unnötige Komplikationen. Das ist gut, denn es gibt keinen potenziellen künftigen Entwicklungsbedarf, keine Notwendigkeit, verschiedene Formate, Logiken usw. zu unterstützen.</li>
+<li>
+<p>Unsere Lösung folgt jedoch nicht einem der grundlegendsten und bekanntesten Gestaltungsprinzipien, nämlich dem <mark>**Single Responsibility Principle (kurz: SRP)</mark>** allgemein bekannt als SRP. Sie geht davon aus, dass eine Abteilung - vereinfacht ausgedrückt - nur eine Aufgabe hat (im Grunde nur eine Sache).</p>
+<ul>
+<li><code>Anonym</code> Unsere Abteilung hat zweifellos viele Aufgaben: Verarbeitung von Input, Datenbereinigung, Anonymisierung, Erstellung von Output usw.</li>
+<li>Dieses Problem ist in unserem Fall nicht spürbar und stellt kein Problem dar, da die Umsetzung jeder dieser Aufgaben einfach ist und in eine kürzere Funktion "passt". Wären diese jedoch komplexer und in mehreren Funktionen implementiert, müssten sie definitiv in einer eigenen Klasse organisiert werden.</li>
+</ul>
+<details class="note">
+<summary>Warum ist es ein Problem, wenn eine Abteilung mehr Aufgaben hat? *</summary>
+<ul>
+<li>Es ist schwieriger zu verstehen, wie es funktioniert, weil es nicht auf eine Sache konzentriert ist.</li>
+<li>Wenn eine dieser Zuständigkeiten geändert werden muss, muss eine große, multidisziplinäre Abteilung geändert und erneut getestet werden.</li>
+</ul>
+</details>
+</li>
+<li>
+<p>Sie können automatisierte Integrationstests (Input-Output) für die Lösung schreiben, aber keine "echten" Unit-Tests.</p>
+</li>
+</ul>
+<h2 id="3-losung-organizedtofunctions-2-twoalgorithms">3. Lösung (OrganizedToFunctions-2-TwoAlgorithms)<a class="headerlink" href="#3-losung-organizedtofunctions-2-twoalgorithms" title="Permanent link">&para;</a></h2>
+<p>Im Gegensatz zu früheren "Plänen" haben sich neue Bedürfnisse der Nutzer ergeben. Unser Kunde hat seine Meinung geändert und verlangt für einen anderen Datensatz einen anderen Anonymisierungsalgorithmus: Das Alter der Personen soll in Banden gespeichert werden, das genaue Alter der Personen darf nicht offenbart werden. Der Einfachheit halber werden wir in diesem Fall die Namen der Personen nicht anonymisieren. Betrachten Sie dies also als eine Art "Pseudo"-Anonymisierung (es macht immer noch Sinn, aber es ist nicht ganz korrekt, es Anonymisierung zu nennen).</p>
+<p>Unsere Lösung - die sowohl den alten als auch den neuen Algorithmus (einen nach dem anderen) unterstützt - finden Sie im VS-Lösungsprojekt <em>OrganizedToFunctions-2-TwoAlgorithms</em>.  <code>Anonymizer</code> Schauen wir uns die Klasse, das Grundprinzip der Lösung an (überprüfen Sie diese im Code):</p>
+<ul>
+<li><code>AnonymizerMode</code> <code>Anonym</code> Wir haben einen Enum-Typ eingeführt, der den Modus (Algorithmus) angibt, in dem die Klasse verwendet wird.</li>
+<li><code>Anonymizer</code> <code>Anonymize_MaskName</code> Die Klasse verfügt über zwei Anonymisierungsoperationen: , <code>Anonymize_AgeRange</code></li>
+<li><code>Anonymizer</code> <code>_anonymizerMode</code> <code>_anonymizerMode</code> Die Klasse speichert den zu verwendenden Algorithmus im Member: für die beiden Modi werden zwei separate Konstruktoren eingeführt, die den Wert von .</li>
+<li><code>Anonymizer</code> <code>Run</code> <code>GetAnonymizerDescription</code> <code>_anonymizerMode</code> Die Klasse prüft an mehreren Stellen (z.B. bei Operationen) auf den Wert von und gabelt sich in Abhängigkeit davon auf.</li>
+<li>
+<p><code>GetAnonymizerDescription</code>In ist dies notwendig, da die Aufgabe dieses Vorgangs darin besteht, eine einzeilige Beschreibung des Anonymisierungsalgorithmus zu erstellen, die am Ende der Verarbeitung in der "Zusammenfassung" angezeigt wird.  <code>PintSummary</code> Sehen wir uns den Code für die Aufrufe dieser Aktion an. So sieht die Zusammenfassung auf der Konsole aus, wenn ein Altersanonymisierer mit einem Bereich von 20 Jahren verwendet wird:</p>
+<p><code>Summary - Anonymizer (Age anonymizer with range size 20): Persons: 500, trimmed: 2</code></p>
+</li>
+</ul>
+<h3 id="bewertung-der-losung_1">Bewertung der Lösung<a class="headerlink" href="#bewertung-der-losung_1" title="Permanent link">&para;</a></h3>
+<p>Insgesamt ist unsere Lösung in Bezug auf die Codequalität <strong>schlechter</strong> als zuvor. In der Vergangenheit gab es kein Problem damit, dass es in Bezug auf Anonymisierungsalgorithmen nicht erweiterbar war, da es keinen Bedarf dafür gab. Wenn aber einmal die Notwendigkeit besteht, einen neuen Algorithmus einzuführen, ist es ein Fehler, unsere Lösung in dieser Hinsicht nicht erweiterbar zu machen: Von nun an würden wir lieber damit rechnen, dass in Zukunft zusätzliche Algorithmen eingeführt werden müssen.</p>
+<p><code>if``switch</code> Warum behaupten wir, dass unser Code nicht erweitert werden kann, wenn "nur" ein neuer Enum-Wert und eine zusätzliche / Verzweigung an einer Stelle des Codes eingeführt werden soll, wenn ein neuer Algorithmus eingeführt werden soll?</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> <strong>Prinzip Offen/Geschlossen</strong><br />
+Entscheidend ist, dass eine Klasse dann als erweiterbar gilt, wenn es möglich ist, ein neues Verhalten (in unserem Fall einen neuen Algorithmus) einzuführen <strong>, ohne</strong> sie in irgendeiner Weise <strong>zu verändern</strong>, <strong>indem man</strong> einfach den Code <strong>erweitert/erweitert</strong>.  <code>Anonymizer</code> Mit anderen Worten, in unserem Fall sollte der Code von nicht angetastet werden, was eindeutig nicht der Fall ist. Dies ist das berühmte <strong>Offen/Geschlossen-Prinzip</strong>: Die Klasse sollte offen für Erweiterungen und geschlossen für Änderungen sein. Die Änderung des Codes ist problematisch, da sie wahrscheinlich neue Fehler einführt und der geänderte Code immer wieder neu getestet werden muss, was einen erheblichen Zeit- und Kostenaufwand bedeutet.</p>
+<p>Was genau ist das Ziel und wie können wir es erreichen? Es gibt Teile unseres Klassenzimmers, die wir nicht verbrennen wollen:</p>
+<ul>
+<li>Dies sind keine Daten, sondern <mark>**verhaltensweisen (Code, Logik)</mark>**.</li>
+<li><code>if``switch</code> Wir lösen das Problem nicht mit / : Wir führen "Erweiterungspunkte" ein und schaffen es irgendwie, "beliebigen" Code in ihnen laufen zu lassen.</li>
+<li>Wir setzen den Code dieser variablen/fallabhängigen Teile <strong>in andere Klassen</strong> (in einer Weise, die für unsere Klasse "austauschbar" ist)!</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Denken Sie nicht an Zauberei, wir werden die Werkzeuge verwenden, die wir bereits kennen: Vererbung mit abstrakten/virtuellen Funktionen, oder Schnittstellen, oder Delegaten.</p>
+</div>
+<p><code>Anonymizer</code> Suchen Sie nach Teilen, die fallabhängig sind, variable Logik, so dass es nicht gut ist, sie in die Klasse zu brennen:</p>
+<ul>
+<li><code>Anonymize_MaskName</code>Das eine ist die Anonymisierungslogik selbst: /<code>Anonymize_AgeRange</code></li>
+<li>Die andere ist die <code>GetAnonymizerDescription</code></li>
+</ul>
+<p>Diese sollten von der Klasse entkoppelt werden, an diesen Stellen sollte die Klasse erweitert werden. Die folgende Abbildung veranschaulicht das allgemeine Ziel *:</p>
+<details class="note">
+<summary>Veranschaulichung des allgemeinen Lösungsprinzips</summary>
+<p><a class="glightbox" href="../images/illustrate-extensibility.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Extensibility illustration" src="../images/illustrate-extensibility.png" /></a></p>
+</details>
+<p>Wir werden uns drei spezifische Entwurfsmuster und -techniken ansehen, um die oben genannten Ziele zu erreichen:</p>
+<ul>
+<li>Vorlage Methodenentwurf Muster</li>
+<li>Strategieentwurfsmuster (einschließlich Dependency Injection)</li>
+<li>Delegate (optional mit Lambda-Ausdruck)</li>
+</ul>
+<p>Eigentlich haben wir sie alle in unserem Studium verwendet, aber jetzt werden wir sie noch besser kennen lernen und ihre Verwendung noch umfassender üben. Die ersten beiden im Labor und die dritte in einer entsprechenden Hausaufgabe.</p>
+<h2 id="4-losung-3-templatemethodtemplatemethod-1">4. Lösung (3-TemplateMethod/TemplateMethod-1)<a class="headerlink" href="#4-losung-3-templatemethodtemplatemethod-1" title="Permanent link">&para;</a></h2>
+<p>In diesem Schritt werden wir das Entwurfsmuster <strong>Template Method</strong> verwenden, um unsere Lösung an den erforderlichen Stellen erweiterbar zu machen.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Der Name des Musters ist "irreführend": Es hat nichts mit den in C++ erlernten Template-Methoden zu tun!</p>
+</div>
+<details class="info">
+<summary>Klassendiagramm der auf der Schablonenmethode basierenden Lösung</summary>
+<p>Das folgende UML-Klassendiagramm veranschaulicht die auf der Schablonenmethode basierende Lösung und konzentriert sich auf das Wesentliche:</p>
+<p><a class="glightbox" href="../images/template-method-goal.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Template Method UML osztálydiagram cél" src="../images/template-method-goal.png" /></a></p>
+</details>
+<p>Im Beispiel beruht die Trennung zwischen "unveränderlichen" und "veränderlichen" Teilen auf den folgenden Grundsätzen (es lohnt sich, diese im obigen Klassendiagramm zu verstehen, das auf unser Beispiel angewandt wird):</p>
+<ul>
+<li>Die "gemeinsamen/ungemeinsamen" Teile werden in eine Vorgängerklasse eingeordnet.</li>
+<li>Dabei sind die Erweiterungspunkte die Einführung von abstrakten/virtuellen Funktionen, die an den Erweiterungspunkten aufgerufen werden.</li>
+<li>Ihre fallspezifische Implementierung ist in den Nachfolgeklassen untergebracht.</li>
+</ul>
+<p>Der bekannte "Trick" besteht darin, dass beim Aufruf der abstrakten/virtuellen Funktionen durch den Vorgänger der fallabhängige Code des Nachfolgers aufgerufen wird.</p>
+<p><code>enum</code> <code>if``switch</code> Im Folgenden wird die frühere , oder /-basierte Lösung in eine <strong>Template-Methoden-basierte</strong> Lösung umgewandelt (diese wird keine Aufzählung mehr haben). Wir führen eine Vorgängerklasse und zwei vom Algorithmus abhängige Nachkommen ein.</p>
+<p>Wir müssen unseren Code entsprechend umstrukturieren. In der VS-Lösung, im Ordner "3-TemplateMethod", enthält das Projekt "TemplateMethod-0-Begin" den Code unserer vorherigen Lösung (eine "Kopie" davon), lassen Sie uns in diesem Projekt arbeiten:</p>
+<ol>
+<li><code>Anonymizer</code> <code>AnonymizerBase</code>Benennen Sie die Klasse um in (z. B. indem Sie auf den Klassennamen in der Quelldatei zeigen und <span class="keys"><kbd class="key-f2">F2</kbd></span>drücken).</li>
+<li><code>NameMaskingAnonymizer</code> <code>AgeAnonymizer</code> Fügen Sie eine Klasse und eine Klasse zu dem Projekt hinzu (Rechtsklick auf das Projekt, <em>Hinzufügen/Klasse</em>).</li>
+<li><code>AnonymizerBase</code>Extrahieren Sie sie aus</li>
+<li>
+<p><code>AnonymizerBase</code> <code>NameMaskingAnonymizer</code>Verschieben Sie die entsprechenden Teile von nach :</p>
+<ol>
+<li><code>_mask</code> Die Mitgliedsvariable .</li>
+<li><code>string inputFileName, string mask</code> <code>NameMaskingAnonymizer</code>Der Konstruktor, umbenannt in ,<ol>
+<li><code>_anonymizerMode = AnonymizerMode.Name;</code> zeile wird gelöscht,</li>
+<li>
+<p><code>this</code> <code>base</code> anstelle von .</p>
+<details class="example">
+<summary>Konstrukteurscode</summary>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">NameMaskingAnonymizer</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">inputFileName</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">mask</span><span class="p">):</span><span class="w"> </span><span class="k">base</span><span class="p">(</span><span class="n">inputFileName</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">_mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mask</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p><code>AnonymizerBase</code> <code>AgeAnonymizer</code>Verschieben Sie die entsprechenden Teile von nach :</p>
+<ol>
+<li><code>_rangeSize</code> Die Mitgliedsvariable .</li>
+<li><code>string inputFileName, string rangeSize</code> <code>AgeAnonymizer</code>Der Konstruktor, umbenannt in ,<ol>
+<li><code>_anonymizerMode = AnonymizerMode.Age;</code> zeile wird gelöscht,</li>
+<li>
+<p><code>this</code> <code>base</code> anstelle von .</p>
+<details class="example">
+<summary>Konstrukteurscode</summary>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">AgeAnonymizer</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">inputFileName</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rangeSize</span><span class="p">):</span><span class="w"> </span><span class="k">base</span><span class="p">(</span><span class="n">inputFileName</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">_rangeSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rangeSize</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p><code>AnonymizerBase</code>Bei :</p>
+<ol>
+<li><code>AnonymizerMode</code> Löschen Sie den Aufzählungstyp .</li>
+<li><code>_anonymizerMode</code> Wir löschen den Tag .</li>
+</ol>
+</li>
+</ol>
+<p><code>AnonymizerBase</code> Suchen Sie nach Teilen, die fallabhängig sind, nach variabler Logik, so dass Sie diese nicht in die Klasse einbauen wollen, die wiederverwendbar sein soll:</p>
+<ul>
+<li><code>Anonymize_MaskName``Anonymize_AgeRange</code>Einer ist / ,</li>
+<li><code>GetAnonymizerDescription</code>das andere ist .</li>
+</ul>
+<p>Dem Muster folgend führen wir abstrakte (oder möglicherweise virtuelle) Funktionen für diese in der Vorgängerklasse ein und rufen sie auf, und überschreiben ihre fallabhängigen Implementierungen in den Nachfolgeklassen:</p>
+<ol>
+<li><code>AnonymizerBase</code> <code>class</code> <code>abstract</code> Machen Sie die Klasse abstrakt (das Schlüsselwort vor ).</li>
+<li>
+<p><code>AnonymizerBase</code>Geben wir eine neue URL in</p>
+<div class="highlight"><pre><span></span><code><span class="k">protected</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="nf">Anonymize</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="w"> </span><span class="n">person</span><span class="p">);</span>
+</code></pre></div>
+<p>(diese ist für die Anonymisierung zuständig).</p>
+</li>
+<li>
+<p><code>Anonymize_MaskName</code> <code>NameMaskingAnonymizer</code> <code>Anonymize</code> Verschieben Sie die Operation in die Klasse und ändern Sie die Signatur so, dass die übergeordnete abstrakte Funktion überschrieben wird:</p>
+<div class="highlight"><pre><span></span><code><span class="k">protected</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="nf">Anonymize</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">Person</span><span class="p">(</span><span class="n">_mask</span><span class="p">,</span><span class="w"> </span><span class="n">_mask</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">CompanyName</span><span class="p">,</span>
+<span class="w">        </span><span class="n">person</span><span class="p">.</span><span class="n">Address</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">City</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">State</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Age</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Weight</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Decease</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>mask</code> <code>_mask</code> Der Funktionskörper muss nur umgeschrieben werden, um die Mitgliedsvariable anstelle des veralteten Parameters zu verwenden.</p>
+</li>
+<li>
+<p><code>Anonymisieren_Altersbereich</code> <code>AgeAnonymizer</code> <code>Anonymize</code> In völliger Analogie zum vorherigen Schritt verschieben Sie die Operation in die Klasse und ändern ihre Signatur so, dass die übergeordnete abstrakte Funktion überschrieben wird:</p>
+<div class="highlight"><pre><span></span><code><span class="k">protected</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="nf">Anonymize</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>rangeSize</code> <code>_rangeSize</code> Der Funktionskörper muss nur umgeschrieben werden, um die Mitgliedsvariable anstelle des veralteten Parameters zu verwenden.</p>
+</li>
+<li>
+<p><code>AnonymizerBase</code> <code>Run</code> <code>if``else</code> <code>Anonymize</code> In der Funktion der Klasse können wir nun die Aufrufe in / durch einen einfachen abstrakten Funktionsaufruf ersetzen:</p>
+<del class="critic block">
+<div class="highlight"><pre><span></span><code><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_anonymizerMode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">AnonymizerMode</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span>
+<span class="w">    </span><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Anonymize_MaskName</span><span class="p">(</span><span class="n">persons</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">_mask</span><span class="p">);</span>
+<span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">_anonymizerMode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">AnonymizerMode</span><span class="p">.</span><span class="n">Age</span><span class="p">)</span>
+<span class="w">    </span><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Anonymize_AgeRange</span><span class="p">(</span><span class="n">persons</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">_rangeSize</span><span class="p">);</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">NotSupportedException</span><span class="p">(</span><span class="s">&quot;The requested anonymization mode is not supported.&quot;</span><span class="p">);</span>
+</code></pre></div>
+</del>
+<p>stattdessen:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Anonymize</span><span class="p">(</span><span class="n">persons</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</code></pre></div>
+</li>
+</ol>
+<p>Einer unserer Verlängerungspunkte ist fertig.  <code>GetAnonymizerDescription</code> Es gibt aber noch eine weitere, die ebenfalls fallspezifisch ist. Die Umwandlung ist der vorherigen Reihe von Schritten sehr ähnlich:</p>
+<ol>
+<li>
+<p><code>AnonymizerBase</code> <code>GetAnonymizerDescription</code> <code>NameMaskingAnonymizer</code> <code>override</code> <code>NameMaskingAnonymizer</code>Die Operation der Klasse wird nach , einschließlich des Schlüsselworts in der Signatur, kopiert, wobei nur die Logik für im Funktionskörper verbleibt:</p>
+<div class="highlight"><pre><span></span><code><span class="k">protected</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetAnonymizerDescription</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;NameMasking anonymizer with mask {_mask}&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p><code>AnonymizerBase</code> <code>GetAnonymizerDescription</code> <code>AgeAnonymizer</code> <code>override</code> <code>AgeAnonymizer</code>Kopieren wir die Operation nach , einschließlich des Schlüsselworts in der Signatur, und lassen wir nur die Logik für im Funktionskörper:</p>
+<div class="highlight"><pre><span></span><code><span class="k">protected</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetAnonymizerDescription</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;Age anonymizer with range size {_rangeSize}&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p><code>AnonymizerBase</code> <code>GetAnonymizerDescription</code> Die Frage ist, was man mit der Operation in .  <code>NameMaskingAnonymizer</code> Dies wird nicht abstrahiert, sondern in eine virtuelle Abhängigkeit umgewandelt, da wir hier ein sinnvolles Standardverhalten bereitstellen können: Wir geben einfach den Namen der Klasse zurück (der für die Klasse z. B. "NameMaskingAnonymizer" lauten würde).  <code>switch</code> Auf jeden Fall wird dadurch die starre Struktur beseitigt:</p>
+<div class="highlight"><pre><span></span><code><span class="k">protected</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetAnonymizerDescription</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nf">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Reflexion</p>
+<p><code>GetType()</code> <code>Type</code> Mit der vom Objektvorgänger geerbten Operation erhalten wir ein Objekt des Typs für unsere Klasse. Dies gehört zum Thema <strong>Reflexion</strong>, über das wir in einer Vorlesung am Ende des Semesters mehr erfahren werden.</p>
+</div>
+</li>
+</ol>
+<p><code>Programm.cs</code> <code>Main</code> <code>AnonymizerBase</code> Es bleibt nur noch eines zu tun: Je nach , versuchen wir nun, den Vorgänger zu replizieren (wegen der früheren Umbenennung). Stattdessen sollte es einer der beiden Abkömmlinge sein. Pl.:</p>
+<div class="highlight"><pre><span></span><code><span class="n">NameMaskingAnonymizer</span><span class="w"> </span><span class="n">anonymizer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">(</span><span class="s">&quot;us-500.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;***&quot;</span><span class="p">);</span>
+<span class="n">anonymizer</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
+</code></pre></div>
+<p>Wir sind bereit. Probieren wir es aus, um ein besseres "Gefühl" dafür zu bekommen, wie Erweiterungspunkte wirklich funktionieren (aber wenn Sie während des Praktikums wenig Zeit haben, ist das nicht besonders wichtig, wir haben ähnliche Dinge im Zusammenhang mit C++/Java in früheren Semestern getan):</p>
+<ul>
+<li>In Visual Studio sollte das Projekt <em>TemplateMethod-0-Begin</em> das Startprojekt sein, wenn es nicht bereits eingestellt ist.</li>
+<li><code>AnonymizerBase</code> <code>var person = Anonymize(persons[i]);</code> Setzen Sie einen Haltepunkt in der Zeile der Klasse.</li>
+<li>Wenn der Debugger hier anhält, während er läuft, ++verwenden Sie f11++zur Eingabe.</li>
+<li><code>AgeAnonymizer</code> Wir erfahren, dass die Operation des Nachkommens aufgerufen wird.</li>
+</ul>
+<p>Wir können einen Blick auf das Klassendiagramm der Lösung werfen:</p>
+<details>
+<summary>Template Method based solution class diagram *</summary>
+<p><a class="glightbox" href="bilder/vorlage-methode.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Template Method based solution class diagram" src="bilder/vorlage-methode.png" /></a></p>
+</details>
+<div class="admonition note">
+<p class="admonition-title"><code>3-TemplateMethod/TemplateMethod-1</code> Die Lösung für unsere bisherige Arbeit finden Sie im Projekt, falls Sie sie benötigen.</p>
+</div>
+<details>
+<summary>Das Muster heißt Schablonenmethode</summary>
+<p>, weil es sich - am Beispiel unserer Anwendung - um "Schablonenmethoden" handelt, die eine schablonenartige Logik, einen Rahmen, definieren, in dem bestimmte Schritte nicht gebunden sind.  <code>Run</code> <code>PrintSummary</code> Ihr "Code" wird abstrakten/virtuellen Funktionen überlassen, und ihre Implementierung wird von den abgeleiteten Klassen definiert.</p>
+</details>
+<h3 id="bewertung-der-losung_2">Bewertung der Lösung<a class="headerlink" href="#bewertung-der-losung_2" title="Permanent link">&para;</a></h3>
+<p>Wir überprüfen die Lösung, um zu sehen, ob sie unsere Ziele erreicht:</p>
+<ul>
+<li><code>AnonymizerBase</code> Ist eine wiederverwendbare Klasse geworden.</li>
+<li>Wenn in Zukunft eine neue Anonymisierungslogik benötigt wird, leiten wir sie einfach ab. Es handelt sich nicht um eine Änderung, sondern um eine Verlängerung.</li>
+<li>Damit ist das OPEN/CLOSED-Prinzip erfüllt, d.h. wir können die Logik an den beiden im Ahnen angegebenen Stellen anpassen und erweitern, ohne den Code zu verändern.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Soll unsere Klasse an allen Stellen erweiterbar sein?</p>
+<p><code>AnonymizerBase</code> Beachten Sie, dass wir nicht alle Operationen virtuell gemacht haben (und somit die Klasse an vielen Stellen erweitern). Wir haben dies nur dort getan, wo wir glauben, dass die Logik in Zukunft erweitert werden muss.</p>
+</div>
+<h2 id="5-megoldas-3-templatemethodtemplatemethod-2-progress">5. Megoldás (3-TemplateMethod/TemplateMethod-2-Progress)<a class="headerlink" href="#5-megoldas-3-templatemethodtemplatemethod-2-progress" title="Permanent link">&para;</a></h2>
+<p>T.f.h ein neuer - relativ einfacher - Bedarf entsteht:</p>
+<ul>
+<li>
+<p><code>NameMaskinAnonimizer</code> Für , bleibt die bisherige einfache Fortschrittsanzeige erhalten (nach jeder Zeile wird die Anzahl der erreichten Zeilen ausgegeben),</p>
+<details class="note">
+<summary>Illustration des einfachen Fortschritts</summary>
+<p><a class="glightbox" href="../images/progress-simple.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Illustration des einfachen Fortschritts" src="../images/progress-simple.png" /></a></p>
+</details>
+</li>
+<li>
+<p><code>AgeAnonymizer</code> aber für , sollte die Fortschrittsanzeige anders sein: Sie sollte - nach jeder Zeile aktualisiert - den Prozentsatz der Verarbeitung anzeigen.</p>
+<details class="note">
+<summary>Darstellung des prozentualen Fortschritts</summary>
+<p><a class="glightbox" href="images/fortschritt-prozent.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Darstellung des prozentualen Fortschritts" src="images/fortschritt-prozent.gif" /></a></p>
+<p>(Da wir derzeit nur 500 Datenzeilen haben, werden wir dies am Ende unserer Lösung nicht sehen, es wird in kürzester Zeit auf 100 % steigen)</p>
+</details>
+</li>
+</ul>
+<p><code>Laufen lassen</code> Die Lösung ist sehr einfach: Wir verwenden das Muster der Schablonenmethode in größerem Umfang in der Operation, führen einen Erweiterungspunkt in den Fortschrittsausdruck ein und überlassen die Implementierung einer virtuellen Funktion.</p>
+<p>Springen wir direkt zur fertigen Lösung*(* Projekt*3-TemplateMethod/TemplateMethod-2-Progress* ):</p>
+<ul>
+<li><code>AnonymizerBase</code> <code>PrintProgress</code> neue virtuelle Funktion in der Klasse (druckt standardmäßig nichts aus)</li>
+<li><code>Run</code>-bei diesem Gespräch</li>
+<li><code>NameMaskingAnonymizer</code>- <code>NameMaskingAnonymizer</code>implementierung (Override) in und</li>
+</ul>
+<p>Bislang gibt es keine besonderen Lehren, die man ziehen könnte, aber im nächsten Schritt wird es welche geben.</p>
+<h2 id="6-losung-3-templatemethodtemplatemethod-3-progressmultiple">6. Lösung (3-TemplateMethod/TemplateMethod-3-ProgressMultiple)<a class="headerlink" href="#6-losung-3-templatemethodtemplatemethod-3-progressmultiple" title="Permanent link">&para;</a></h2>
+<p>Es ist ein neuer - und völlig logischer - Bedarf entstanden: In Zukunft kann jeder Anonymisierungsalgorithmus mit jeder Fortschrittsdarstellung verwendet werden. Dies bedeutet derzeit vier Kreuzkombinationen:</p>
+<table>
+<thead>
+<tr>
+<th>Anonym</th>
+<th>Progress</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Namensanonymisierer</td>
+<td>Einfacher Fortschritt</td>
+</tr>
+<tr>
+<td>Namensanonymisierer</td>
+<td>Prozentualer Fortschritt</td>
+</tr>
+<tr>
+<td>Altersanonymisierung</td>
+<td>Einfacher Fortschritt</td>
+</tr>
+<tr>
+<td>Altersanonymisierung</td>
+<td>Prozentualer Fortschritt</td>
+</tr>
+</tbody>
+</table>
+<p>Springen Sie zur fertigen Lösung*(* Projekt*3-TemplateMethod/TemplateMethod-3-ProgressMultiple* ).  <code>Haupt.cd</code> Öffnen Sie statt des Codes das Klassendiagramm im Projekt und überprüfen Sie die Lösung auf der Grundlage dieses Diagramms (oder Sie können das Diagramm unten im Leitfaden sehen).</p>
+<details class="klassendiagramm">
+<summary>Template Method based solution (two aspects)</summary>
+<p><a class="glightbox" href="../images/template-method-progress-multiple.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Klassendiagramm &quot;Template Method based solution (two aspects)" src="../images/template-method-progress-multiple.png" /></a></p>
+</details>
+<p>Man merkt, dass etwas "nicht stimmt", denn jede Kreuzung musste einen eigenen Nachkommen hervorbringen. Es gibt sogar zusätzliche Zwischenklassen in der Hierarchie, um Code-Duplizierung zu vermeiden. Darüber hinaus:</p>
+<ul>
+<li>Wenn wir in Zukunft einen neuen Anonymisierungsalgorithmus einführen, sollten wir (mindestens) so viele neue Klassen schreiben, wie wir Fortschrittstypen unterstützen.</li>
+<li>Wenn in Zukunft eine neue Verlaufsart eingeführt wird, sollten (mindestens) so viele neue Klassen geschrieben werden, wie Anonymisierungsarten unterstützt werden.</li>
+</ul>
+<p>Was hat das Problem verursacht? Die <strong>Notwendigkeit, das Verhalten unserer Klasse um mehrere Aspekte/Dimensionen zu erweitern (in unserem Beispiel Anonymisierung und Fortschritt) und diese in vielen Kreuzkombinationen zu unterstützen</strong>. Müssten wir dies unter neuen Gesichtspunkten tun (z. B. wie man scannt, wie man Output erzeugt), würde das Problem exponentiell "explodieren". In solchen Fällen ist das Entwurfsmuster Template Method nicht anwendbar.</p>
+<h2 id="7-losung-4-strategiestrategie-1">7. Lösung (4-Strategie/Strategie-1)<a class="headerlink" href="#7-losung-4-strategiestrategie-1" title="Permanent link">&para;</a></h2>
+<p>In diesem Schritt werden wir das Entwurfsmuster <strong>Strategy</strong> verwenden, um unsere ursprüngliche Lösung an den erforderlichen Stellen zu erweitern. In der Stichprobe erfolgt die Trennung zwischen "unveränderten/wiederverwendbaren" und "sich ändernden" Teilen nach folgenden Grundsätzen:</p>
+<ul>
+<li>Die "gemeinsamen/ungemeinsamen" Teile werden in einer Klasse zusammengefasst (dieses Mal jedoch nicht als "Elternklasse").</li>
+<li>Im Gegensatz zur Template-Methode verwenden wir Komposition (Containment) statt Vererbung: Wir verlassen uns auf andere Objekte, die als Schnittstellen enthalten sind, um das Verhalten an Erweiterungspunkten zu implementieren (anstelle von abstrakten/virtuellen Funktionen).</li>
+<li>Wir tun dies unabhängig für jeden Aspekt/Dimension des Klassenverhaltens, den wir austauschbar/erweiterbar machen wollen. Wie wir sehen werden, wird dadurch die kombinatorische Explosion vermieden, die wir im vorherigen Kapitel gesehen haben.</li>
+</ul>
+<p>Dies ist in der Praxis viel einfacher, als es sich in der Schrift anfühlt (wir haben es in unseren früheren Studien schon einige Male verwendet). Um das zu verstehen, betrachten wir unser Beispiel.</p>
+<p>Als Nächstes wollen wir das Klassendiagramm betrachten, das die strategiebasierte Lösung veranschaulicht (aufbauend auf der Erklärung, die dem Diagramm folgt).</p>
+<details class="info">
+<summary>Klassendiagramm der strategiebasierten Lösung</summary>
+<p>Das folgende UML-Klassendiagramm veranschaulicht die strategiebasierte Lösung und konzentriert sich auf das Wesentliche:</p>
+<p><a class="glightbox" href="imagesstrategy-goal.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Strategy UML osztálydiagram cél" src="imagesstrategy-goal.png" /></a></p>
+</details>
+<p>Der erste Schritt bei der Verwendung des Strategiemusters besteht darin, zu bestimmen, <strong>wie viele verschiedene Aspekte des Klassenverhaltens</strong> Sie erweiterbar machen wollen. In unserem Beispiel gibt es zwei davon - zumindest im Moment:</p>
+<ul>
+<li>Anonymisierungsbezogenes Verhalten mit zwei Aktionen:<ul>
+<li>Anonymisierungslogik</li>
+<li>Definition der Beschreibung der Anonymisierungslogik (Generierung eines Beschreibungsstrings)</li>
+</ul>
+</li>
+<li>Fortschreitende Behandlung mit einer Aktion:<ul>
+<li>Fortschritt zeigen</li>
+</ul>
+</li>
+</ul>
+<p>Der schwierige Teil ist geschafft, von nun an können Sie im Wesentlichen mechanisch nach dem Strategiemuster arbeiten:</p>
+<ol>
+<li>Für jeden der oben genannten Aspekte sollte eine Strategie-Schnittstelle mit den oben definierten Operationen eingeführt werden, und die entsprechenden Implementierungen sollten vorbereitet werden.</li>
+<li><code>Anonym</code> In der Klasse sollte eine Mitgliedsvariable der Strategie-Schnittstelle eingeführt werden, und die aktuell konfigurierten Strategie-Implementierungsobjekte sollten in den Erweiterungspunkten über diese Mitgliedsvariablen verwendet werden.</li>
+</ol>
+<p>Diese Elemente sind in dem obigen Klassendiagramm dargestellt. Kommen wir nun zum Code. Unsere Startumgebung befindet sich im Ordner "4-Strategy" im Projekt "Strategy-0-Begin", lassen Sie uns darin arbeiten. Dies ist dieselbe Lösung mit enum, die als Ausgangspunkt für das Muster Template Method verwendet wurde. </p>
+<h3 id="anonymisierungsstrategie">Anonymisierungsstrategie<a class="headerlink" href="#anonymisierungsstrategie" title="Permanent link">&para;</a></h3>
+<p>Wir beginnen mit der <strong>Anonymisierungsstrategie/dem Anonymisierungsaspekt</strong>. Implementieren Sie die entsprechende Schnittstelle:</p>
+<ol>
+<li><code>AnonymizerAlgorithms</code> Erstellen Sie im Projekt einen Ordner mit dem Namen (klicken Sie mit der rechten Maustaste auf das Projekt "Strategy-0-Begin" und dann auf das Menü " <em>Add/New Folder</em> "). Legen Sie in den nächsten Schritten jede Schnittstelle und jede Klasse in eine eigene Quelldatei mit eigenem Namen, wie üblich!</li>
+<li>
+<p><code>IAnonymizerAlgorithmus</code> Fügen Sie in diesem Ordner eine Schnittstelle mit dem folgenden Code hinzu:</p>
+<div class="highlight"><span class="filename">IAnonymizerAlgorithm.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IAnonymizerAlgorithm</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Person</span><span class="w"> </span><span class="nf">Anonymize</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetAnonymizerDescription</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>GetAnonymizerDescription</code> Wir können auch für die Operation beobachten, dass wir in modernem C#, wenn wir wollen, Standardimplementierungen für jede Schnittstellenoperation geben können!</p>
+</li>
+</ol>
+<p>Wir bauen jetzt eine Implementierung dieser Schnittstelle für die Anonymisierung von <strong>Namen</strong> (d.h. wir bauen eine Strategieimplementierung). </p>
+<ol>
+<li><code>NameMaskingAnonymizerAlgorithm</code> Fügen Sie demselben Ordner eine Klasse hinzu.</li>
+<li><code>Anonymizer</code> <code>NameMaskingAnonymizerAlgorithm</code> <code>_mask</code> Verschieben Sie in der Klasse die entsprechende Mitgliedsvariable nach :</li>
+<li>
+<p><code>NameMaskingAnonymizerAlgorithm</code>Fügen Sie den folgenden Konstruktor zu :</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">NameMaskingAnonymizerAlgorithm</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">mask</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">_mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mask</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p><code>IAnonymizerAlgorithmus</code> Machen Sie die Schnittstelle verfügbar.  <code>: IAnonymizerAlgorithmus</code> Nachdem Sie die Schnittstelle nach dem Klassennamen eingegeben haben, empfiehlt es sich, das Skelett der Operationen mit Visual Studio zu generieren: Setzen Sie den Cursor auf den Schnittstellennamen (klicken Sie ihn im Quellcode an), verwenden Sie die Tastenkombination 'ctrl' + '.', und wählen Sie dann "Schnittstelle implementieren" aus dem erscheinenden Menü.  <code>GetAnonymizerDescription</code> <code>Anonymize</code> Hinweis: Da es eine Standardimplementierung für die Operation in der Schnittstelle gibt, wird nur die Operation generiert, aber das ist für uns erst einmal in Ordnung. </p>
+</li>
+<li><code>Anonymizer</code> <code>Anonymize_MaskName</code> <code>NameMaskingAnonymizerAlgorithm``Anonymize</code>Verschieben Sie die Wurzel der Operation von der Klasse nach .  <code>mask</code> <code>_mask</code> Der Funktionskörper muss nur umgeschrieben werden, um die Mitgliedsvariable anstelle des nicht mehr vorhandenen Parameters zu verwenden.  <code>Anonymize</code> <code>Anonymize_MaskName</code>Die Klasse wird gelöscht.</li>
+<li>
+<p><code>GetAnonymizerDescription</code>Wir wenden uns nun der Implementierung des Betriebs der Strategie-Schnittstelle zu.  <code>Anonymizer</code> <code>GetAnonymizerDescription</code> <code>NameMaskingAnonymizerAlgorithm</code>Kopieren Sie die Operation der Klasse nach , wobei Sie nur die Logik der Namensanonymisierung im Funktionskörper belassen und die Operation öffentlich machen:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetAnonymizerDescription</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;NameMasking anonymizer with mask {_mask}&quot;</span><span class="p">;</span>
+<span class="p">}</span><span class="w">  </span>
+</code></pre></div>
+</li>
+<li>
+<details class="example">
+<summary>Damit ist unsere Strategieimplementierung für die Namensanonymisierung abgeschlossen, der vollständige Code lautet wie folgt</summary>
+<div class="highlight"><span class="filename">NameMaskingAnonymizerAlgorithm.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">NameMaskingAnonymizerAlgorithm</span><span class="p">:</span><span class="w"> </span><span class="n">IAnonymizerAlgorithm</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">_mask</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">NameMaskingAnonymizerAlgorithm</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">mask</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mask</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="nf">Anonymize</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">Person</span><span class="p">(</span><span class="n">_mask</span><span class="p">,</span><span class="w"> </span><span class="n">_mask</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">CompanyName</span><span class="p">,</span>
+<span class="w">            </span><span class="n">person</span><span class="p">.</span><span class="n">Address</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">City</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">State</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Age</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Weight</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Decease</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetAnonymizerDescription</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;NameMasking anonymizer with mask {_mask}&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+</li>
+</ol>
+<p><code>IAnonymizerAlgorithm</code> Im nächsten Schritt werden wir eine Implementierung unserer Strategie-Schnittstelle zur <strong>Altersanonymisierung</strong> vorbereiten.</p>
+<ol>
+<li><code>AgeAnonymizerAlgorithm</code> Fügen Sie im gleichen Ordner eine Klasse hinzu (AnonymizerAlgorithms).</li>
+<li><code>Anonymizer</code> <code>AgeAnonymizerAlgorithm</code> <code>_rangeSize</code> Verschieben Sie in der Klasse die entsprechende Mitgliedsvariable nach :</li>
+<li>
+<p><code>AgeAnonymizerAlgorithm</code>Fügen Sie den folgenden Konstruktor zu :</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">AgeAnonymizerAlgorithm</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">rangeSize</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">_rangeSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rangeSize</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p><code>IAnonymizerAlgorithm</code> Machen Sie die Schnittstelle verfügbar.  <code>: IAnonymizerAlgorithm</code> <code>Anonymize</code> Nachdem Sie die Schnittstelle nach dem Klassennamen eingegeben haben, empfiehlt es sich auch, das Skelett der Operation mit Visual Studio auf dieselbe Weise wie zuvor zu generieren. </p>
+</li>
+<li><code>Anonymizer</code> <code>Anonymize_AgeRange</code> <code>AgeAnonymizerAlgorithm``Anonymize</code>Verschieben Sie die Wurzel der Operation von der Klasse nach .  <code>rangeSize</code> <code>_rangeSize</code> Der Funktionskörper muss nur umgeschrieben werden, um die Mitgliedsvariable anstelle des nicht mehr vorhandenen Parameters zu verwenden.  <code>Anonymize</code> <code>Anonymize_AgeRange</code>Die Klasse wird gelöscht.</li>
+<li>
+<p><code>GetAnonymizerDescription</code>Wir wenden uns nun der Implementierung des Betriebs der Strategie-Schnittstelle zu.  <code>Anonymizer</code> <code>GetAnonymizerDescription</code> <code>AgeAnonymizerAlgorithm</code>Kopieren Sie die Operation der Klasse nach , wobei Sie nur die Logik der Altersanonymisierung im Funktionskörper beibehalten und die Operation öffentlich machen:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetAnonymizerDescription</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;Age anonymizer with range size {_rangeSize}&quot;</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+</li>
+<li>
+<details class="example">
+<summary>Ezzel a kor anonimizáláshoz tartozó strategy implementációnk elkészült, a teljes kódja a következő lett</summary>
+<div class="highlight"><span class="filename">AgeAnonymizerAlgorithm.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">AgeAnonymizerAlgorithm</span><span class="p">:</span><span class="w"> </span><span class="n">IAnonymizerAlgorithm</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">_rangeSize</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">AgeAnonymizerAlgorithm</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">rangeSize</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_rangeSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rangeSize</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="nf">Anonymize</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// This is whole number integer arithmetics, e.g for 55 / 20 we get 2</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">rangeIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">person</span><span class="p">.</span><span class="n">Age</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">_rangeSize</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="n">newAge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">$&quot;{rangeIndex * _rangeSize}..{(rangeIndex + 1) * _rangeSize}&quot;</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">Person</span><span class="p">(</span><span class="n">person</span><span class="p">.</span><span class="n">FirstName</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">LastName</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">CompanyName</span><span class="p">,</span>
+<span class="w">            </span><span class="n">person</span><span class="p">.</span><span class="n">Address</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">City</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">State</span><span class="p">,</span><span class="w"> </span><span class="n">newAge</span><span class="p">,</span>
+<span class="w">            </span><span class="n">person</span><span class="p">.</span><span class="n">Weight</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Decease</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetAnonymizerDescription</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;Age anonymizer with range size {_rangeSize}&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+</li>
+</ol>
+<p>warning<img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> Beachten Sie, dass die Schnittstelle und ihre Implementierungen sich nur mit der Anonymisierung befassen und keine andere Logik (z.B. Fortschrittsverarbeitung) involviert ist!</p>
+<h3 id="strategie-fur-den-fortschritt">Strategie für den Fortschritt<a class="headerlink" href="#strategie-fur-den-fortschritt" title="Permanent link">&para;</a></h3>
+<p>Im nächsten Schritt stellen wir die Schnittstelle und die Implementierungen <strong>für das Fortschrittsmanagement</strong> vor:</p>
+<ol>
+<li><code>Progresses</code> Erstellen Sie im Projekt einen Ordner mit dem Namen . In den nächsten Schritten legen Sie jede Schnittstelle und Klasse wie üblich in einer eigenen Quelldatei mit eigenem Namen ab.</li>
+<li>
+<p><code>IProgress</code> Fügen Sie in diesem Ordner eine Schnittstelle mit dem folgenden Code hinzu:</p>
+<details class="example">
+<summary>Lösung</summary>
+<div class="highlight"><span class="filename">IProgress.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IProgress</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Report</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Fügen Sie die Implementierung dieser Schnittstelle für einfache Fortschritte in denselben Ordner ein.  <code>Anonymizer</code> <code>PrintProgress</code> Die Implementierung ist von der Operation unserer Klasse "abgeleitet":</p>
+<details class="example">
+<summary>Lösung</summary>
+<div class="highlight"><span class="filename">SimpleProgress.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SimpleProgress</span><span class="p">:</span><span class="w"> </span><span class="n">IProgress</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Report</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;{index + 1}. person processed&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Nehmen Sie die Implementierung dieser Schnittstelle für den prozentualen Fortschritt in denselben Ordner auf. Wir wollen uns nicht mit der Auslegung des Gesetzes befassen.  <code>Anonym</code> In unserer Klasse gibt es dafür keine Lösung, da wir sie nur in unserer auf Vorlagenmethoden basierenden Lösung eingeführt haben (wir haben uns den Code dort nicht angesehen, aber er ist praktisch derselbe):</p>
+<details class="example">
+<summary>Lösung</summary>
+<div class="highlight"><span class="filename">PercentProgress.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PercentProgress</span><span class="p">:</span><span class="w"> </span><span class="n">IProgress</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Report</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">percentage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)((</span><span class="kt">double</span><span class="p">)(</span><span class="n">index</span><span class="o">+</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">100</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">$&quot;rProcessing: {percentage} %&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+</li>
+</ol>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> Beachten Sie, dass sich die Schnittstelle und ihre Implementierungen nur mit der Fortschrittsverarbeitung befassen und keine andere Logik (z.B. Anonymisierung) involviert ist!</p>
+<h3 id="anwendung-der-strategien">Anwendung der Strategien<a class="headerlink" href="#anwendung-der-strategien" title="Permanent link">&para;</a></h3>
+<p>Der nächste wichtige Schritt besteht darin, die anonymisierende Basisklasse mit Hilfe der oben vorgestellten Strategien wiederverwendbar und erweiterbar zu machen.  <code>Anonymizer.cs</code> Bei :</p>
+<ol>
+<li>
+<p>Löschen Sie Folgendes:</p>
+<ul>
+<li><code>AnonymizerMode</code> aufzählungstyp</li>
+<li><code>_anonymizerMode</code> <code>_mask</code> <code>_rangeSize</code> mitglied (oder und Mitglieder, wenn Sie schon einmal hier gewohnt haben)</li>
+</ul>
+</li>
+<li>
+<p>Einführung eines einzigen Strategie-Schnittstellentyp-Tags:</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IProgress</span><span class="w"> </span><span class="n">_progress</span><span class="p">;</span>
+<span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IAnonymizerAlgorithm</span><span class="w"> </span><span class="n">_anonymizerAlgorithm</span><span class="p">;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Fügen Sie die entsprechende Verwendung am Anfang der Datei ein:</p>
+<div class="highlight"><pre><span></span><code><span class="n">mit</span><span class="w"> </span><span class="n">Lab_Extensibility</span><span class="p">.</span><span class="n">AnonymizerAlgorithms</span><span class="p">;</span>
+<span class="n">mit</span><span class="w"> </span><span class="n">Lab_Extensibility</span><span class="p">.</span><span class="n">Progresses</span><span class="p">;</span>
+</code></pre></div>
+</li>
+<li>
+<p><code>_progress</code> <code>_anonymizerAlgorithm</code> Der anfängliche Wert von und, der im vorigen Abschnitt eingeführt wurde, ist Null. Im Konstruktor werden diese Referenzen auf die Implementierung gesetzt, die Ihren Anforderungen entspricht. Pl.:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">Anonymizer</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">inputFileName</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">mask</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">this</span><span class="p">(</span><span class="n">inputFileName</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="hll"><span class="w">    </span><span class="n">_progress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PercentProgress</span><span class="p">();</span>
+</span><span class="hll"><span class="w">    </span><span class="n">_anonymizerAlgorithm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">NameMaskingAnonymizerAlgorithm</span><span class="p">(</span><span class="n">mask</span><span class="p">);</span>
+</span><span class="p">}</span>
+
+<span class="k">public</span><span class="w"> </span><span class="nf">Anonymizer</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">inputFileName</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rangeSize</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">this</span><span class="p">(</span><span class="n">inputFileName</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="hll"><span class="w">    </span><span class="n">_progress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PercentProgress</span><span class="p">();</span>
+</span><span class="hll"><span class="w">    </span><span class="n">_anonymizerAlgorithm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AgeAnonymizerAlgorithm</span><span class="p">(</span><span class="n">rangeSize</span><span class="p">);</span>
+</span><span class="p">}</span>
+</code></pre></div>
+</li>
+</ol>
+<p><code>Anonymizer</code> <code>_anonymizerAlgorithm</code> In der Klasse wird die derzeit implementierte, aber <strong>von der Anonymisierung abhängige</strong> Logik der Strategieimplementierung überlassen, auf die die Mitgliedsvariable verweist:</p>
+<ol>
+<li>
+<p><code>Run</code> <code>if``else</code> <code>Anonymize</code> <code>_anonymizerAlgorithm</code> Als eine Funktion der Klasse werden die Aufrufe im /-Ausdruck nun an das Objekt delegiert:</p>
+<del class="critic block">
+<div class="highlight"><pre><span></span><code><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_anonymizerMode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">AnonymizerMode</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span>
+<span class="w">    </span><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Anonymize_MaskName</span><span class="p">(</span><span class="n">persons</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">_mask</span><span class="p">);</span>
+<span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">_anonymizerMode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">AnonymizerMode</span><span class="p">.</span><span class="n">Age</span><span class="p">)</span>
+<span class="w">    </span><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Anonymize_AgeRange</span><span class="p">(</span><span class="n">persons</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">_rangeSize</span><span class="p">);</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">NotSupportedException</span><span class="p">(</span><span class="s">&quot;The requested anonymization mode is not supported.&quot;</span><span class="p">);</span>
+</code></pre></div>
+</del>
+<p>stattdessen:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_anonymizerAlgorithm</span><span class="p">.</span><span class="n">Anonymize</span><span class="p">(</span><span class="n">persons</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</code></pre></div>
+</li>
+<li>
+<p><code>Anonymize_MaskName</code> <code>Anonymize_AgeRange</code> Falls noch nicht geschehen, löschen Sie die Funktionen und, da ihr Code bereits in die Strategieimplementierungen aufgenommen wurde, die von der Klasse entkoppelt sind.</p>
+</li>
+<li>
+<p><code>PrintSummary</code> <code>switch</code> <code>GetAnonymizerDescription</code>Unsere Funktion ruft den unflexiblen , basierend auf auf.  <code>GetAnonymizerDescription</code> <code>_anonymizerAlgorithm</code> Dieser Aufruf an wird durch eine Delegation an das Objekt ersetzt.  <code>PrintSummary</code> In der Funktion (nur zur Hervorhebung der Grundzüge):</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="n">GetAnonymizerDescription</span><span class="p">()</span><span class="w"> </span><span class="p">...</span>
+</code></pre></div>
+<p>stattdessen:</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="n">_anonymizerAlgorithm</span><span class="p">.</span><span class="n">GetAnonymizerDescription</span><span class="p">()</span><span class="w"> </span><span class="p">...</span>
+</code></pre></div>
+<p><code>GetAnonymizerDescription</code> Ein paar Zeilen weiter unten wird die Funktion aus der Klasse entfernt (ihr Code ist in den entsprechenden Strategieimplementierungen enthalten).</p>
+</li>
+</ol>
+<p><code>Anonymizer</code> Der letzte Schritt besteht darin, den <strong>Progress-Handler</strong> in der Klasse zu ersetzen:</p>
+<ol>
+<li>
+<p><code>_progress</code> Auch hier delegieren wir die Anfrage an unser zuvor eingeführtes Objekt.  <code>Run</code> Sie müssen eine Zeile in der Funktion ersetzen:</p>
+<del class="critic block">
+<div class="highlight"><pre><span></span><code><span class="n">PrintProgress</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</code></pre></div>
+</del>
+<p>stattdessen:</p>
+<div class="highlight"><pre><span></span><code><span class="n">_progress</span><span class="p">.</span><span class="n">Report</span><span class="p">(</span><span class="n">persons</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+</code></pre></div>
+</li>
+<li>
+<p><code>PrintProgress</code> Löschen Sie die Funktion, da sich ihr Code bereits in einer eigenen Strategieimplementierung befindet, die von der Klasse entkoppelt ist.</p>
+</li>
+</ol>
+<p>Wir sind fertig, die fertige Lösung befindet sich im Projekt "4-Strategy/Strategy-1" (wenn Sie irgendwo stecken bleiben oder der Code sich nicht kompilieren lässt, können Sie ihn damit überprüfen).</p>
+<h3 id="bewertung-der-losung_3">Bewertung der Lösung<a class="headerlink" href="#bewertung-der-losung_3" title="Permanent link">&para;</a></h3>
+<p>Wir sind mit der Umsetzung der Strategievorlage fertig. In seiner jetzigen Form wird es jedoch fast nie verwendet.  <code>Anomymizer</code> Überprüfen wir unsere Lösung: Ist sie wirklich wiederverwendbar, und ist es möglich, den Anonymisierungsalgorithmus und die Fortschrittsbehandlung zu ändern, ohne die Klasse zu modifizieren? Dazu müssen Sie prüfen, ob es irgendwo in der Klasse Code gibt, der von der Implementierung abhängig ist.</p>
+<p>Leider finden wir sie. Der Konstruktor wird in die Algorithmus-Implementierung eingebrannt und die Fortschrittsimplementierung wird erstellt. Achten Sie darauf, dies im Code zu überprüfen!  <code>neu</code> Wenn Sie den Algorithmus oder den Fortschrittsmodus ändern wollen, müssen Sie den Typ nach dem Operator in diesen Zeilen umschreiben, wodurch sich die Klasse ändert.</p>
+<p>Viele halten sie - zu Recht - nicht einmal in ihrer jetzigen Form für eine echte strategiebasierte Lösung. Die vollständige Lösung wird im nächsten Schritt umgesetzt.</p>
+<h2 id="8-megoldas-4-strategystrategy-2-di">8. Megoldás (4-Strategy/Strategy-2-DI)<a class="headerlink" href="#8-megoldas-4-strategystrategy-2-di" title="Permanent link">&para;</a></h2>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> <strong>Dependency Injection (DI)</strong><br />
+Die Lösung heißt <strong>Dependency Injection (kurz: DI)</strong>. Die Idee ist, dass die Klasse selbst ihre Verhaltensabhängigkeiten nicht instanziiert (dies sind Strategieimplementierungen), sondern wir sie von außen an sie weitergeben, z. B. in Konstruktorparametern oder sogar in Form von Eigenschaften oder Setter-Operationen. Das wird natürlich als Schnittstellentyp bezeichnet!</p>
+<p><code>Anonymizer</code> Strukturieren Sie die Klasse entsprechend um, so dass sie die Strategieimplementierungen nicht selbst instanziiert, sondern sie als Konstruktorparameter erhält:</p>
+<ol>
+<li>Alle drei Konstruktoren löschen</li>
+<li>
+<p>Betrachten Sie den folgenden Konstruktor:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">Anonymizer</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">inputFileName</span><span class="p">,</span><span class="w"> </span><span class="n">IAnonymizerAlgorithm</span><span class="w"> </span><span class="n">anonymizerAlgorithm</span><span class="p">,</span><span class="w"> </span><span class="n">IProgress</span><span class="w"> </span><span class="n">progress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">ArgumentException</span><span class="p">.</span><span class="n">ThrowIfNullOrEmpty</span><span class="p">(</span><span class="n">inputFileName</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ArgumentNullException</span><span class="p">.</span><span class="n">ThrowIfNull</span><span class="p">(</span><span class="n">anonymizerAlgorithm</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">_inputFileName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inputFileName</span><span class="p">;</span>
+<span class="w">    </span><span class="n">_anonymizerAlgorithm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">anonymizerAlgorithm</span><span class="p">;</span>
+<span class="w">    </span><span class="n">_progress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">progress</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>progress</code> Wie Sie sehen können, ist der Parameter optional, da der Benutzer der Klasse möglicherweise keine Fortschrittsinformationen sehen möchte.</p>
+</li>
+<li>
+<p>Da die _progress-Strategie null sein kann, muss bei ihrer Verwendung ein Nulltest eingeführt werden. Der Operator "." wird durch den Operator "?." ersetzt:</p>
+<div class="highlight"><pre><span></span><code><span class="n">_progress</span><span class="o">?.</span><span class="n">Report</span><span class="p">(</span><span class="n">persons</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+</code></pre></div>
+</li>
+<li>
+<p><code>Anonymizer</code> Jetzt sind wir fertig, die Klasse ist völlig unabhängig von Strategieimplementierungen.  <code>Anonymizer</code> Es ist möglich, die Klasse mit einer beliebigen Kombination von Anonymisierungsalgorithmen und einer beliebigen Verlaufsbehandlung zu verwenden (ohne sie zu modifizieren).  <code>Anonymizer</code> <code>Program.cs</code> <code>Main</code> <code>Main</code> Lassen Sie uns auch drei mit verschiedenen Kombinationen der Datei in der Funktion erstellen (der vorhandene Code wird zuerst aus der Funktion gelöscht):</p>
+<div class="highlight"><pre><span></span><code><span class="n">Anonymizer</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">(</span><span class="s">&quot;us-500.csv&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">NameMaskingAnonymizerAlgorithm</span><span class="p">(</span><span class="s">&quot;***&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">SimpleProgress</span><span class="p">());</span>
+<span class="n">p1</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;--------------------&quot;</span><span class="p">);</span>
+
+<span class="n">Anonymizer</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">(</span><span class="s">&quot;us-500.csv&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">NameMaskingAnonymizerAlgorithm</span><span class="p">(</span><span class="s">&quot;***&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">PercentProgress</span><span class="p">());</span>
+<span class="n">p2</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;--------------------&quot;</span><span class="p">);</span>
+
+<span class="n">Anonymizer</span><span class="w"> </span><span class="n">p3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">(</span><span class="s">&quot;us-500.csv&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">AgeAnonymizerAlgorithm</span><span class="p">(</span><span class="m">20</span><span class="p">),</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">SimpleProgress</span><span class="p">());</span>
+<span class="n">p3</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
+</code></pre></div>
+</li>
+<li>
+<p><code>using</code>Um den Code zum Kochen zu bringen, fügen Sie am Anfang der Datei das Notwendige ein</p>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">Lab_Extensibility.AnonymizerAlgorithms</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Lab_Extensibility.Progresses</span><span class="p">;</span>
+</code></pre></div>
+</li>
+</ol>
+<p>Wir haben es getan, und die fertige Lösung ist im Projekt "4-Strategy/Strategy-2-DI" zu finden (wenn Sie irgendwo stecken bleiben oder der Code sich nicht kompilieren lässt, können Sie ihn damit überprüfen).</p>
+<p>!!!  <code>Program.cs</code> <code>Run</code> Hinweis "Überprüfen der Funktionsweise" In der Übung wird wahrscheinlich keine Zeit dafür sein, aber wenn Sie sich nicht sicher sind, "warum das Strategiemuster funktioniert", warum sich das Verhalten in den vier oben genannten Fällen unterscheidet: Es lohnt sich, in der Datei Haltepunkte für die vier Funktionsaufrufe zu setzen und die Funktionen im Debugger aufzurufen, um zu testen, dass immer die richtige Strategieimplementierung aufgerufen wird.</p>
+<p><code>Main.cd</code>Es gibt ein Klassendiagramm im Projekt ( ), wo Sie auch die fertige Lösung sehen können:</p>
+<details class="note">
+<summary>Klassendiagramm der strategiebasierten Lösung</summary>
+<p>Das folgende UML-Klassendiagramm veranschaulicht unsere strategiebasierte Lösung:</p>
+<p><a class="glightbox" href="imagesstrategy-di.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Strategy DI UML osztálydiagram" src="imagesstrategy-di.png" /></a></p>
+</details>
+<h3 id="bewertung-der-losung_4">Bewertung der Lösung<a class="headerlink" href="#bewertung-der-losung_4" title="Permanent link">&para;</a></h3>
+<p>Wir überprüfen die Lösung, um zu sehen, ob sie unsere Ziele erreicht:</p>
+<ul>
+<li><code>Anonym</code> Ist eine wiederverwendbare Klasse geworden.</li>
+<li><code>IAnonymizerAlgorithmus</code> Wenn in Zukunft eine neue Anonymisierungslogik benötigt wird, muss lediglich eine neue Implementierung eingeführt werden. Es handelt sich nicht um eine Änderung, sondern um eine Verlängerung/Erweiterung.</li>
+<li><code>IProgress</code> Wenn in Zukunft eine neue Fortschrittslogik benötigt wird, ist lediglich eine neue Implementierung erforderlich. Es handelt sich nicht um eine Änderung, sondern um eine Verlängerung.</li>
+<li><code>Anonymizer</code> In den beiden oben genannten Punkten ist das OPEN/CLOSED-Prinzip erfüllt, d.h. wir können die Logik von anpassen und erweitern, ohne den Code zu verändern.</li>
+<li><code>IAnonymizerAlgorithm</code> <code>IProgress</code> <code>Program.cs</code> Hier ist die kombinatorische Explosion, wie sie bei der Schablonenmethode auftritt, nicht zu befürchten: Jede Implementierung kann bequem mit jeder Implementierung verwendet werden, ohne dass neue Klassen für Kombinationen eingeführt werden müssen (wir haben dies in der Datei gesehen).</li>
+</ul>
+<div class="admonition hinweis">
+<p class="admonition-title">Zusätzliche Strategievorteile gegenüber der Template-Methode *</p>
+</div>
+<ul>
+<li>On the fly-Verhalten kann implementiert werden.  <code>Anonymizer</code> <code>SetAnonimizerAlgorithm</code> <code>SetProgress</code> Wenn wir in der Lage sein müssten, das Anonymisierungs- oder Fortschrittsverhalten für ein bestimmtes Objekt nach seiner Erstellung zu ändern, könnten wir das leicht tun (wir müssten nur einen , oder eine Operation einführen, bei der wir die von der Klasse verwendete Strategie auf die im Parameter angegebene Implementierung setzen könnten).</li>
+<li>Unterstützung der Testbarkeit von Einheiten (wir sehen uns das im Labor nicht an).</li>
+</ul>
+<hr>
+<div class="md-source-file">
+  <span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg
+        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z">
+        </path>
+      </svg>
+    </span>
+    <span title="2024. május 18. 20:35:08">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-18T20:35:08+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-18</span>
+    </span>
+  </span>
+
+  
+
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Szerzők">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z">
+        </path>
+      </svg>
+    </span>
+    <span>Szerzők</span>
+    <nav><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
+        <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&v=4?size=72" alt="@Zoltán Benedek">
+      </a></nav>      
+  </span>
+</div>
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Vissza a tetejére
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; BME VIK AUT
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
