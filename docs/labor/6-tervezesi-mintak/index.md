@@ -345,7 +345,7 @@ Az egyik kiterjesztési pontunkkal el is készültünk. De maradt még egy, a `G
     ```
 
     !!! note "Reflexió"
-        Az object ősből örökölt `GetType()` művelettel egy `Type` típúsú objektumot szerzünk az osztályunkra vonatkozóan. Ez a **refelexió** témakörhöz tartozik, erről a félév végén fogunk előadáson részletesebben tanulni.
+        Az object ősből örökölt `GetType()` művelettel egy `Type` típusú objektumot szerzünk az osztályunkra vonatkozóan. Ez a **refelexió** témakörhöz tartozik, erről a félév végén fogunk előadáson részletesebben tanulni.
 
 Egy dolog van már csak hátra: a `Program.cs` `Main` függvényében most az `AnonymizerBase` őst próbáljuk példányosítani (a korábbi átnevezés miatt). Helyette a két leszármazott valamelyikét kellene. Pl.:
 
