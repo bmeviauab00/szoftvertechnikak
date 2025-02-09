@@ -52,7 +52,7 @@ XAML/WinUI technológiákhoz kapcsolódó feladatok esetén (3. házi feladattó
 
 4. Windows App SDK telepítése
     
-    A legfrissebb innen telepíthető: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads. Ugyanakkor a félév során laborokon, házikban az "1.4.4 (1.4.231219000)" verziót használjuk, érdemes ezt telepíteni akkor is, ha újabb verzió jönne ki, mely innen érhető el: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/older-downloads. Egy modern gépre az x64-es verziót kell telepíteni.
+    A legfrissebb innen telepíthető: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads. Ugyanakkor a félév során laborokon, házikban az "1.6.4 (1.6.250108002)" verziót használjuk, érdemes ezt telepíteni akkor is, ha újabb verzió jönne ki, mely innen érhető el: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/older-downloads. Egy modern gépre az x64-es verziót kell telepíteni.
 
 5. Ha a fentiek telepítése után Windows 11-en nem akarna működni, akkor fel kell tenni a Visual Studio telepítőben a Windows 10 SDK-ból a 10.0.19041-et, vagy újabbat (az Idividual Comopnents alatt található)
 

@@ -52,7 +52,7 @@ Für Aufgaben, die sich auf XAML/WinUI-Technologien beziehen (ab Hausaufgabe 3),
 
 4. Windows-SDK installieren
     
-    Es kann installiert werden von: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads. Während des Semesters werden wir "1.4.4 (1.4.231219000)" in Übungen und Tutorien verwenden. Es wird empfohlen, diese Version zu installieren, auch wenn eine neuere Version veröffentlicht wird.
+    Es kann installiert werden von: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads. Während des Semesters werden wir "1.6.4 (1.6.250108002)" in Übungen und Tutorien verwenden. Es wird empfohlen, diese Version zu installieren, auch wenn eine neuere Version veröffentlicht wird.
 
 ### Informationen für MacBook- und Linux-Benutzer
 
