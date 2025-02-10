@@ -493,7 +493,7 @@ public override double GetPrice()
 {
     return yearOfCreation < (DateTime.Today.Year - 4)
         ? 0
-        : newPrice - (DateTime.Today.Year - yearOfCreation) * 5000;
+        : Math.Max(0, newPrice - (DateTime.Today.Year - yearOfCreation) * 5000);
 }
 ```
 
@@ -502,7 +502,7 @@ public override double GetPrice()
 {
     return yearOfCreation < (DateTime.Today.Year - 4)
         ? 0 
-        : newPrice - (DateTime.Today.Year - yearOfCreation) * 2000;
+        : Math.Max(0, newPrice - (DateTime.Today.Year - yearOfCreation) * 2000);
 }
 ```
 
