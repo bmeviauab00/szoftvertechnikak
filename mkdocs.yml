@@ -114,7 +114,7 @@ nav:
       - '5. HF - MVVM': hazi/meghirdetes-elott.md
       - '6. HF - Tervezési minták': hazi/meghirdetes-elott.md
       - 'IMSc HF - Liftrendszer': hazi/meghirdetes-elott.md
-      - 'IMSc HF - MVVM receptek':hazi/meghirdetes-elott.md
+      - 'IMSc HF - MVVM receptek': hazi/meghirdetes-elott.md
       - 'Fejlesztőkörnyezet': hazi/fejlesztokornyezet/index.md
   - "English course labs":
       - labor/1-model-es-kod-kapcsolata/index_eng.md
