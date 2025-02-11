@@ -1497,13 +1497,10 @@
 
 
 <h1 id="interfesz-es-absztrakt-ososztaly">Interfész és absztrakt (ős)osztály<a class="headerlink" href="#interfesz-es-absztrakt-ososztaly" title="Permanent link">&para;</a></h1>
-<p>Utolsó módosítás ideje: 2022.10.15<br />
-Kidolgozta: Benedek Zoltán</p>
 <p>A fejezet nem tartalmaz feladatot, a hallgatók számára ismerteti a kapcsolódó elméletet.</p>
 <h2 id="absztrakt-osztaly">Absztrakt osztály<a class="headerlink" href="#absztrakt-osztaly" title="Permanent link">&para;</a></h2>
-<p>A fogalmak korábbi tárgyak keretében már ismertetésre kerültek, így most csak a legfontosabbakat foglaljuk össze, illetve a C# vonatkozására térünk ki.
-Absztrakt osztály
-Olyan osztály, mely nem példányosítható. C# nyelven az osztálydefinícióban az abstract kulcsszót kell kiírni, pl.:</p>
+<p>A fogalmak korábbi tárgyak keretében már ismertetésre kerültek, így most csak a legfontosabbakat foglaljuk össze, illetve a C# vonatkozására térünk ki.</p>
+<p>Absztrakt osztály: olyan osztály, mely nem példányosítható. C# nyelven az osztálydefinícióban az abstract kulcsszót kell kiírni, pl.:</p>
 <div class="highlight"><pre><span></span><code><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Shape</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <p>Absztrakt osztályoknak lehetnek absztrakt metódusaik, melyeknek nem adjuk meg a törzsét, ezeknél is az abstract kulcsszót kell használni:</p>
@@ -1547,7 +1544,7 @@ Interfészek használatának egy fő célja van. Interfészként hivatkozva egys
 <h2 id="absztrakt-os-es-interfesz-osszehasonlitasa">Absztrakt ős és interfész összehasonlítása<a class="headerlink" href="#absztrakt-os-es-interfesz-osszehasonlitasa" title="Permanent link">&para;</a></h2>
 <p>Az absztrakt ős előnye az interfésszel szemben, hogy adhatunk meg a műveletekre vonatkozóan alapértelmezett implementációt, illetve vehetünk fel tagváltozókat.</p>
 <p>Az interfészek előnye az absztrakt őssel szemben, hogy egy osztály akárhány interfészt implementálhat, míg őse maximum egy lehet.</p>
-<p>Az interfészek használatának van még egy következménye, ami bizonyos esetben kellemetlenségeket okozhat. <strong>Amikor az interfészbe új műveletet veszünk fel, akkor valamennyi implementáló osztályt szintén bővíteni kell, különben a kód nem fordul. Absztrakt ős bővítése esetén ez nincs így: amennyiben új műveletet veszünk fel, lehetőségünk van azt virtuális függvényként felvenni, és így az ősben alapértelmezett implementációt adni rá</strong>. Ez esetben az leszármazottak igény szerint tudják ezt felüldefiniálni, erre nincsenek rákényszerítve. Az interfészek ezen tulajdonsága különösen osztálykönyvtárak/keretrendszerek esetén lehet kellemetlen. Tegyük fel, hogy a .NET új verziójának kiadáskor a keretrendszer egyik interfészébe új műveletet vesznek fel. Ekkor valamennyi alkalmazásban valamennyi implementáló osztályt módosítani kell, különben nem fordul a kód. Ezt kétféleképpen lehet elkerülni. Vagy ősosztály használatával, vagy ha mégis interfészt kellene bővíteni, akkor inkább új interfészt bevezetésével, amely már az új műveletet is tartalmazza. Bár itt az első megközelítés (ősosztály alkalmazása) tűnik első érzésre vonzóbbnak, ennek is van hátránya: ha az alkalmazás fejlesztésekor egy keretrendszerbeli ősből származtatunk, akkor osztályunknak már nem lehet más őse, és ez bizony sok esetben fájdalmas megkötést jelent.</p>
+<p>Az interfészek használatának van még egy következménye, ami bizonyos esetben kellemetlenségeket okozhat. <strong>Amikor az interfészbe új műveletet veszünk fel, akkor valamennyi implementáló osztályt szintén bővíteni kell, különben a kód nem fordul. Absztrakt ős bővítése esetén ez nincs így: amennyiben új műveletet veszünk fel, lehetőségünk van azt virtuális függvényként felvenni, és így az ősben alapértelmezett implementációt adni rá</strong>. Ez esetben az leszármazottak igény szerint tudják ezt felüldefiniálni, erre nincsenek rákényszerítve. Az interfészek ezen tulajdonsága különösen osztálykönyvtárak/keretrendszerek esetén lehet kellemetlen. Tegyük fel, hogy a .NET új verziójának kiadáskor a keretrendszer egyik interfészébe új műveletet vesznek fel. Ekkor valamennyi alkalmazásban valamennyi implementáló osztályt módosítani kell, különben nem fordul a kód. Ezt kétféleképpen lehet elkerülni. Vagy ősosztály használatával, vagy ha mégis interfészt kellene bővíteni, akkor inkább új interfész bevezetésével, amely már az új műveletet is tartalmazza. Bár itt az első megközelítés (ősosztály alkalmazása) tűnik első érzésre vonzóbbnak, ennek is van hátránya: ha az alkalmazás fejlesztésekor egy keretrendszerbeli ősből származtatunk, akkor osztályunknak már nem lehet más őse, és ez bizony sok esetben fájdalmas megkötést jelent.</p>
 <p>Érdemes tudni, hogy C# 8-tól (illetve .NET vagy .NET Core runtime is kell hozzá, .NET Framework alatt nem támogatott) kezdve <strong>interfész műveleteknek is lehet alapértelmezett implementációt adni (default interface methods), így a fenti probléma megoldásához nincs szükség absztrakt osztályra, de interfésznek továbbiakban sem lehet tagváltozója</strong>. Bővebben információ itt:  <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-8.0/default-interface-methods">default interface methods</a>.</p>
 <p>Mivel mind az interfészek, mind az absztrakt ősosztályok alkalmazása járhat negatív következményekkel is, számos esetben a kettő együttes használatával tudjuk kihozni megoldásunkból a maximumot (vagyis lesz a kódunk könnyen bővíthető úgy, hogy nem, vagy csak minimális mértékben tartalmaz kódduplikációt).</p>
 <hr>
@@ -1559,8 +1556,8 @@ Interfészek használatának egy fő célja van. Interfészként hivatkozva egys
         </path>
       </svg>
     </span>
-    <span title="2024. január 25. 19:24:58">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-25T19:24:58+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-25</span>
+    <span title="2025. február 11. 22:27:08">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-11T22:27:08+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-11</span>
     </span>
   </span>
 
