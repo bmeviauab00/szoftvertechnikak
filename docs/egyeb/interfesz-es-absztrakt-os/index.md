@@ -1,15 +1,12 @@
 # Interfész és absztrakt (ős)osztály
 
-Utolsó módosítás ideje: 2022.10.15  
-Kidolgozta: Benedek Zoltán
-
 A fejezet nem tartalmaz feladatot, a hallgatók számára ismerteti a kapcsolódó elméletet.
 
 ## Absztrakt osztály
 
 A fogalmak korábbi tárgyak keretében már ismertetésre kerültek, így most csak a legfontosabbakat foglaljuk össze, illetve a C# vonatkozására térünk ki.
-Absztrakt osztály
-Olyan osztály, mely nem példányosítható. C# nyelven az osztálydefinícióban az abstract kulcsszót kell kiírni, pl.:
+
+Absztrakt osztály: olyan osztály, mely nem példányosítható. C# nyelven az osztálydefinícióban az abstract kulcsszót kell kiírni, pl.:
 
 ```csharp
 abstract class Shape { … }
@@ -72,7 +69,7 @@ Az absztrakt ős előnye az interfésszel szemben, hogy adhatunk meg a művelete
 
 Az interfészek előnye az absztrakt őssel szemben, hogy egy osztály akárhány interfészt implementálhat, míg őse maximum egy lehet.
 
-Az interfészek használatának van még egy következménye, ami bizonyos esetben kellemetlenségeket okozhat. **Amikor az interfészbe új műveletet veszünk fel, akkor valamennyi implementáló osztályt szintén bővíteni kell, különben a kód nem fordul. Absztrakt ős bővítése esetén ez nincs így: amennyiben új műveletet veszünk fel, lehetőségünk van azt virtuális függvényként felvenni, és így az ősben alapértelmezett implementációt adni rá**. Ez esetben az leszármazottak igény szerint tudják ezt felüldefiniálni, erre nincsenek rákényszerítve. Az interfészek ezen tulajdonsága különösen osztálykönyvtárak/keretrendszerek esetén lehet kellemetlen. Tegyük fel, hogy a .NET új verziójának kiadáskor a keretrendszer egyik interfészébe új műveletet vesznek fel. Ekkor valamennyi alkalmazásban valamennyi implementáló osztályt módosítani kell, különben nem fordul a kód. Ezt kétféleképpen lehet elkerülni. Vagy ősosztály használatával, vagy ha mégis interfészt kellene bővíteni, akkor inkább új interfészt bevezetésével, amely már az új műveletet is tartalmazza. Bár itt az első megközelítés (ősosztály alkalmazása) tűnik első érzésre vonzóbbnak, ennek is van hátránya: ha az alkalmazás fejlesztésekor egy keretrendszerbeli ősből származtatunk, akkor osztályunknak már nem lehet más őse, és ez bizony sok esetben fájdalmas megkötést jelent.
+Az interfészek használatának van még egy következménye, ami bizonyos esetben kellemetlenségeket okozhat. **Amikor az interfészbe új műveletet veszünk fel, akkor valamennyi implementáló osztályt szintén bővíteni kell, különben a kód nem fordul. Absztrakt ős bővítése esetén ez nincs így: amennyiben új műveletet veszünk fel, lehetőségünk van azt virtuális függvényként felvenni, és így az ősben alapértelmezett implementációt adni rá**. Ez esetben az leszármazottak igény szerint tudják ezt felüldefiniálni, erre nincsenek rákényszerítve. Az interfészek ezen tulajdonsága különösen osztálykönyvtárak/keretrendszerek esetén lehet kellemetlen. Tegyük fel, hogy a .NET új verziójának kiadáskor a keretrendszer egyik interfészébe új műveletet vesznek fel. Ekkor valamennyi alkalmazásban valamennyi implementáló osztályt módosítani kell, különben nem fordul a kód. Ezt kétféleképpen lehet elkerülni. Vagy ősosztály használatával, vagy ha mégis interfészt kellene bővíteni, akkor inkább új interfész bevezetésével, amely már az új műveletet is tartalmazza. Bár itt az első megközelítés (ősosztály alkalmazása) tűnik első érzésre vonzóbbnak, ennek is van hátránya: ha az alkalmazás fejlesztésekor egy keretrendszerbeli ősből származtatunk, akkor osztályunknak már nem lehet más őse, és ez bizony sok esetben fájdalmas megkötést jelent.
 
 Érdemes tudni, hogy C# 8-tól (illetve .NET vagy .NET Core runtime is kell hozzá, .NET Framework alatt nem támogatott) kezdve **interfész műveleteknek is lehet alapértelmezett implementációt adni (default interface methods), így a fenti probléma megoldásához nincs szükség absztrakt osztályra, de interfésznek továbbiakban sem lehet tagváltozója**. Bővebben információ itt:  [default interface methods](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-8.0/default-interface-methods).
 

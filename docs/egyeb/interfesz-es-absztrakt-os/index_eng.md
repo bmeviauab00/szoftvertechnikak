@@ -1,21 +1,18 @@
 # Interface and abstract (base) class
 
-Last modified date: 2022.10.15
-Edited by Zoltán Benedek
-
-The chapter does not contain an exercise, it introduces the related theory to students.
+The chapter does not contain exercises; instead, it introduces the related theory for the students.
 
 ## Abstract class
 
-The concepts have been covered in previous topics, so for now we will just summarize the most important ones and focus on the C# aspect.
-Abstract class
-A class that cannot be instantiated. In C#, in the class definition, the abstract keyword must be written out, e.g.:
+The concepts have already been introduced within the context of earlier subjects, so now we will only summarize the most important points and focus on their relevance to C#.
+
+Abstract class: a class that cannot be instantiated.  In C#, the abstract keyword must be used in the class definition, for example:
 
 ```csharp
 abstract class Shape { ... }
 ```
 
-Abstract classes may have abstract methods that do not have a root, and for these abstract methods the abstract keyword should be used:
+Abstract classes can have abstract methods, for which no body is provided. The abstract keyword must also be used for these methods:
 
 ```csharp
 ...
@@ -23,12 +20,12 @@ abstract void Draw();
 ...
 ```
 
-There are two purposes for using abstract classes:
+The use of abstract classes can serve two purposes:
 
-- In a class hierarchy, we can map code common to descendants into an abstract common base class, thus avoiding code duplication.
-- We can uniformly refer to descendants as abstract base classes (e.g. heterogeneous collections).
+- In a class hierarchy, common code can be moved into an abstract base class, allowing derived classes to inherit this shared functionality. This helps avoid code duplication.
+- Abstract base classes enable a unified way to reference and manage derived classes, such as in heterogeneous collections.
 
-in .NET, as in Java, a class can have only one base class class.
+In the .NET environment, just like in Java, a class can only have one direct base class (single inheritance).
 
 ## Interface
 
@@ -58,22 +55,22 @@ public class Rect : Shape, ISerializable, IComparable
 }
 ```
 
-In this example, the Rect class is derived from the Shape class and implements the `ISerializable` and `IComparable` interfaces (mandatory to specify the base class first). In a class implementing an interface, all its operations must be implemented, i.e., its trunk must be written (except in the rare case where it is implemented by an abstract operation).
-There is one main purpose for using interfaces. Referenced as an interface, we can uniformly manage all the classes that implement the interface (e.g., a heterogeneous collection). One consequence of this is that **interfaces allow us to write classes and functions that can be used in a wide variety of** ways. For example, we can write a universal Sort ordering function that can be used with any class that implements the IComparable interface.
+In this example, the `Rect` class inherits from the `Shape` class and implements the `ISerializable` and `IComparable` interfaces (the base class must always be specified first). In a class that implements an interface, all of its operations must be implemented, meaning their bodies must be written (except for the rare case where they are implemented with an abstract method).
+The primary purpose of using interfaces is to enable uniform handling of all classes that implement the interface (e.g., in heterogeneous collections). One consequence of this is that **interfaces allow the creation of widely reusable classes and functions**. For example, it is possible to write a universal `Sort` function that can be used with any class that implements the `IComparable` interface.
 
 Other benefits of using the interface include:
 
-- The client only needs to know the interface of the server object to be able to use the server easily.
+- The client only needs to know the interface of the an object to be able to use the server object easily.
 - **If the client only uses the server through the interface, so the internal implementation of the server may change, the client does not need to be modified (nor recompiled)**. Accordingly, the interface is also a contract between the server and the client: as long as the server guarantees support for the interface, the client does not need to change.
 
 ## Comparison of abstract base class and interface
 
 The advantage of the abstract base class over the interface is that you can specify a default implementation for the operations and include member variables.
 
-The advantage of interfaces over abstract ancestors is that a class can implement any number of interfaces, while its base class can implement at most one.
+he advantage of interfaces over abstract base classes is that a class can implement any number of interfaces, whereas it can only inherit from one base class.
 
-There is another consequence of using interfaces, which can cause inconvenience in some cases. **When a new operation is added to the interface, all implementing classes must also be extended, otherwise the code will not compile. This is not the case when extending an abstract base class: if you add a new operation, you have the option to add it as a virtual function, and thus give it a default implementation in the ancestor**. In this case, the descendants can redefine this as they wish, they are not forced to do so. This feature of interfaces can be particularly inconvenient for class libraries/framework systems. Suppose a new version of .NET is released and a new operation is added to one of the interfaces of the framework. All implementing classes in all applications must then be modified, otherwise the code will not compile. There are two ways to avoid this. Either by using a legacy class, or, if an interface should be extended, by introducing a new interface that already contains the new operation. Although the first approach (using an base class class) seems more attractive at first sight, it also has a drawback: if you derive from an ancestor in the framework when developing your application, your class can have no other ancestor, and this is a painful constraint in many cases.
+There is another consequence of using interfaces, which can cause inconvenience in some cases. **When a new operation is added to the interface, all implementing classes must also be extended, otherwise the code will not compile. This is not the case when extending an abstract base class: if you add a new operation, you have the option to add it as a virtual function, and thus give it a default implementation in the derived class**. In this case, the descendants can redefine this as they wish, they are not forced to do so. This feature of interfaces can be particularly inconvenient for class libraries/framework systems. Suppose a new version of .NET is released and a new operation is added to one of the interfaces of the framework. All implementing classes in all applications must then be modified, otherwise the code will not compile. There are two ways to avoid this. Either by using a legacy class, or, if an interface should be extended, by introducing a new interface that already contains the new operation. Although the first approach (using a base class) may seem more appealing at first glance, it also has a drawback: if we derive our class from a framework base class during application development, our class cannot have any other base class, and this can often impose a painful limitation.
 
-It's worth knowing that starting from C# 8 (or .NET or .NET Core runtime, not supported under .NET Framework), **interface operations can be given a default implementation (default interface methods), so no abstract class is needed to solve the above problem, but an interface can no longer have a member variable**. More information here: default interface methods.
+It's worth knowing that starting from C# 8 (or .NET or .NET Core runtime, not supported under .NET Framework), **interface operations can be given a default implementation (default interface methods), so no abstract class is needed to solve the above problem, but an interface still can't have member variables**. More information here: default interface methods.
 
 Since using both interfaces and abstract classes can have negative consequences, in many cases we can get the most out of our solution by using both (i.e., our code can be easily extended with no or minimal code duplication).
