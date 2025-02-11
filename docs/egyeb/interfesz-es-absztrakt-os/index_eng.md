@@ -65,9 +65,9 @@ Other benefits of using the interface include:
 
 ## Comparison of abstract base class and interface
 
-The advantage of the abstract base class over the interface is that you can specify a default implementation for the operations and include member variables.
+The advantage of an abstract base class over an interface is that it allows providing default implementations for operations and adding member variables.
 
-he advantage of interfaces over abstract base classes is that a class can implement any number of interfaces, whereas it can only inherit from one base class.
+The advantage of interfaces over abstract base classes is that a class can implement any number of interfaces, whereas it can only inherit from only one base class.
 
 There is another consequence of using interfaces, which can cause inconvenience in some cases. **When a new operation is added to the interface, all implementing classes must also be extended, otherwise the code will not compile. This is not the case when extending an abstract base class: if you add a new operation, you have the option to add it as a virtual function, and thus give it a default implementation in the derived class**. In this case, the descendants can redefine this as they wish, they are not forced to do so. This feature of interfaces can be particularly inconvenient for class libraries/framework systems. Suppose a new version of .NET is released and a new operation is added to one of the interfaces of the framework. All implementing classes in all applications must then be modified, otherwise the code will not compile. There are two ways to avoid this. Either by using a legacy class, or, if an interface should be extended, by introducing a new interface that already contains the new operation. Although the first approach (using a base class) may seem more appealing at first glance, it also has a drawback: if we derive our class from a framework base class during application development, our class cannot have any other base class, and this can often impose a painful limitation.
 
