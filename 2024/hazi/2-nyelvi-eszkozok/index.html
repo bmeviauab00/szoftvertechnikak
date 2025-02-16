@@ -1732,7 +1732,7 @@ Ezt követően írj egy függvényt, mely a <code>Jedi</code> osztály egy péld
 </div>
 <div class="admonition danger">
 <p class="admonition-title">Fontos</p>
-<p>A mentést és betöltést végző/demonstráló kódot írd egy közös, erre dedikált függvénybe, a függvényt pedig lásd el a <code>[Description("Feladat2")]</code> C# attribútummal (a függvény előtti sorba kell beírni).
+<p>A mentést és betöltést végző/demonstráló kódot írd egy közös, erre dedikált függvénybe, a függvényt pedig lásd el a <code>[Description("Task2")]</code> C# attribútummal (a függvény előtti sorba kell beírni).
 A mentett/betöltött objektum lokális változóként legyen ebben a függvényben megvalósítva.
 Az osztály/függvény neve bármi lehet (pl. kerülhet a <code>Program</code> osztályba is).
 A függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így más (rész)feladathoz tartozót sem.
@@ -1779,7 +1779,7 @@ Külön értesítés jelezze, ha a tanács teljesen kiürül (ehhez ugyanazt az 
 <p>Az esemény típusának ne használj beépített delegate típust, hanem vezess be egy sajátot.</p>
 <div class="admonition danger">
 <p class="admonition-title">Fontos</p>
-<p>A Jeditanács objektumot létrehozó és azt tesztelő (C# eseményére való feliratkozás, <code>Add</code> és <code>Remove</code> hívása) kód kerüljön egy közös, önálló függvénybe, ezt a függvényt pedig lásd el a <code>[Description("Feladat3")]</code> C# attribútummal.
+<p>A Jeditanács objektumot létrehozó és azt tesztelő (C# eseményére való feliratkozás, <code>Add</code> és <code>Remove</code> hívása) kód kerüljön egy közös, önálló függvénybe, ezt a függvényt pedig lásd el a <code>[Description("Task3")]</code> C# attribútummal.
   Az osztály/függvény neve bármi lehet.
   A függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így más (rész)feladathoz tartozót sem.
   A függvényt hívd meg a <code>Program</code> osztály <code>Main</code> függvényéből.</p>
@@ -1912,7 +1912,7 @@ Ezt elég a <code>JediCouncil.Add</code> kapcsán megtenni, a <code>JediCouncil.
 <p>Írj egy dedikált „tesztelő” függvényt is (pl. a <code>Program</code> osztályba), mely meghívja a fenti függvényünket és kiírja a visszaadott jedi lovagok neveit! Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így más (rész)feladathoz tartozót sem.</p>
 <div class="admonition danger">
 <p class="admonition-title">Fontos</p>
-<p>Ezt a „tesztelő” függvényt lásd el a <code>[Description("Feladat4")]</code> C# attribútummal. A függvényt hívd meg a <code>Program</code> osztály <code>Main</code> függvényéből.</p>
+<p>Ezt a „tesztelő” függvényt lásd el a <code>[Description("Task4")]</code> C# attribútummal. A függvényt hívd meg a <code>Program</code> osztály <code>Main</code> függvényéből.</p>
 <p>Lényeges, hogy</p>
 <ul>
 <li>az attribútumot függvény, és NE osztály fölé írd,</li>
@@ -1943,7 +1943,7 @@ A célunk ezzel az, hogy egy olyan inicializáló metódusunk legyen, mely a ké
 Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így más (rész)feladathoz tartozót sem.</p>
 <div class="admonition danger">
 <p class="admonition-title">Fontos</p>
-<p>Ezt a „tesztelő” függvényt lásd el a <code>[Description("Feladat5")]</code> C# attribútummal. A függvényt hívd meg a <code>Program</code> osztály <code>Main</code> függvényéből.</p>
+<p>Ezt a „tesztelő” függvényt lásd el a <code>[Description("Task5")]</code> C# attribútummal. A függvényt hívd meg a <code>Program</code> osztály <code>Main</code> függvényéből.</p>
 <p>Lényeges, hogy</p>
 <ul>
 <li>az attribútumot függvény, és NE osztály fölé írd,</li>
@@ -2063,7 +2063,7 @@ Number of Employees: 2
 <p>A feladat a következő: vezess be egy <code>ReportBuilder</code> osztályt a már meglévő <code>ReportPrinter</code> mintájára, de ez ne a konzolra írjon, hanem egy a teljes riportot tartalmazó stringet állítson elő, melyet egy újonnan bevezetett, <code>GetResult()</code> művelettel lehessen tőle lekérdezni. </p>
 <div class="admonition warning">
 <p class="admonition-title">Beadás</p>
-<p>Ha beadod a feladatot, a <code>ReportBuilder</code>-t példányosító/tesztelő kódot ne a fenti, <code>test6</code> függvénybe tedd, hanem vezess be egy <code>test6b</code> nevű függvényt, és lásd el a <code>[Description("Feladat6b")]</code> attribútummal.</p>
+<p>Ha beadod a feladatot, a <code>ReportBuilder</code>-t példányosító/tesztelő kódot ne a fenti, <code>test6</code> függvénybe tedd, hanem vezess be egy <code>test6b</code> nevű függvényt, és lásd el a <code>[Description("Task6b")]</code> attribútummal.</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tippek a megoldáshoz</p>
@@ -2096,10 +2096,10 @@ Number of Employees: 2
 </div>
 </li>
 <li>
-<p>A property és a függvény működését demonstráld egy erre dedikált közös függvényben, amit láss el a <code>[Description("Feladat7")]</code> attribútummal. Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, viszont a Jeditanács feltöltéséhez az előző feladatban bevezetett segédfüggvényt hívd. A függvényt hívd meg a <code>Program</code> osztály <code>Main</code> függvényéből. </p>
+<p>A property és a függvény működését demonstráld egy erre dedikált közös függvényben, amit láss el a <code>[Description("Task7")]</code> attribútummal. Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, viszont a Jeditanács feltöltéséhez az előző feladatban bevezetett segédfüggvényt hívd. A függvényt hívd meg a <code>Program</code> osztály <code>Main</code> függvényéből. </p>
 <div class="admonition danger">
 <p class="admonition-title">Fontos</p>
-<p>A <code>[Description("Feladat7")]</code> attribútum csak egyetlen függvény fölött szerepelhet.</p>
+<p>A <code>[Description("Task7")]</code> attribútum csak egyetlen függvény fölött szerepelhet.</p>
 </div>
 </li>
 </ul>
@@ -2130,8 +2130,8 @@ Number of Employees: 2
         </path>
       </svg>
     </span>
-    <span title="2024. április 18. 11:23:56">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-18T11:23:56+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-18</span>
+    <span title="2025. február 16. 23:15:52">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-16T23:15:52+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-16</span>
     </span>
   </span>
 
