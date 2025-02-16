@@ -231,7 +231,7 @@ Szükség szerint korrigáld a saját megoldásod!
         }
         ```
 
-    9. Végezetül teszteljük az új osztályunkat egy erre a célra dedikált függvény megírásával (ez történhet pl. a `Program` osztályban), a függvény fölé tegyük oda a `[Description("Feladat3")]` attribútumot! A függvény váza:
+    9. Végezetül teszteljük az új osztályunkat egy erre a célra dedikált függvény megírásával (ez történhet pl. a `Program` osztályban), a függvény fölé tegyük oda a `[Description("Task3")]` attribútumot! A függvény váza:
 
         ```csharp
         // Tanács létrehozása
@@ -368,7 +368,7 @@ A `Program.cs` fájlba vedd fel az alábbi függvényt a `ReportPrinter` kiprób
 ??? tip "ReportPrinter tesztelése"
 
     ```csharp   
-    [Description("Feladat6")]
+    [Description("Task6")]
     static void test6()
     {
         var employees = new Person[] { new Person("Joe", 20), new Person("Jill", 30) };
