@@ -70,7 +70,7 @@ Ezt követően írj egy függvényt, mely a `Jedi` osztály egy példányát egy
     ```
 
 !!! danger "Fontos"
-    A mentést és betöltést végző/demonstráló kódot írd egy közös, erre dedikált függvénybe, a függvényt pedig lásd el a `[Description("Feladat2")]` C# attribútummal (a függvény előtti sorba kell beírni).
+    A mentést és betöltést végző/demonstráló kódot írd egy közös, erre dedikált függvénybe, a függvényt pedig lásd el a `[Description("Task2")]` C# attribútummal (a függvény előtti sorba kell beírni).
     A mentett/betöltött objektum lokális változóként legyen ebben a függvényben megvalósítva.
     Az osztály/függvény neve bármi lehet (pl. kerülhet a `Program` osztályba is).
     A függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így más (rész)feladathoz tartozót sem.
@@ -128,7 +128,7 @@ Az értesítés egy C# eseményen (C# event) keresztül történjen. Az esemény
 Az esemény típusának ne használj beépített delegate típust, hanem vezess be egy sajátot.
 
 !!! danger "Fontos"
-      A Jeditanács objektumot létrehozó és azt tesztelő (C# eseményére való feliratkozás, `Add` és `Remove` hívása) kód kerüljön egy közös, önálló függvénybe, ezt a függvényt pedig lásd el a `[Description("Feladat3")]` C# attribútummal.
+      A Jeditanács objektumot létrehozó és azt tesztelő (C# eseményére való feliratkozás, `Add` és `Remove` hívása) kód kerüljön egy közös, önálló függvénybe, ezt a függvényt pedig lásd el a `[Description("Task3")]` C# attribútummal.
       Az osztály/függvény neve bármi lehet.
       A függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így más (rész)feladathoz tartozót sem.
       A függvényt hívd meg a `Program` osztály `Main` függvényéből.
@@ -271,7 +271,7 @@ Egészítsd ki a `JediCouncil` osztályt egy olyan paraméter nélküli függvé
 Írj egy dedikált „tesztelő” függvényt is (pl. a `Program` osztályba), mely meghívja a fenti függvényünket és kiírja a visszaadott jedi lovagok neveit! Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így más (rész)feladathoz tartozót sem.
 
 !!! danger "Fontos"
-    Ezt a „tesztelő” függvényt lásd el a `[Description("Feladat4")]` C# attribútummal. A függvényt hívd meg a `Program` osztály `Main` függvényéből.
+    Ezt a „tesztelő” függvényt lásd el a `[Description("Task4")]` C# attribútummal. A függvényt hívd meg a `Program` osztály `Main` függvényéből.
 
     Lényeges, hogy
         
@@ -304,7 +304,7 @@ Egészítsd ki a JediCouncil osztályt egy olyan paraméter nélküli függvénn
 Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, így más (rész)feladathoz tartozót sem.
 
 !!! danger "Fontos" 
-    Ezt a „tesztelő” függvényt lásd el a `[Description("Feladat5")]` C# attribútummal. A függvényt hívd meg a `Program` osztály `Main` függvényéből.
+    Ezt a „tesztelő” függvényt lásd el a `[Description("Task5")]` C# attribútummal. A függvényt hívd meg a `Program` osztály `Main` függvényéből.
 
     Lényeges, hogy
         
@@ -432,7 +432,7 @@ A feladatok a következők:
     A feladat a következő: vezess be egy `ReportBuilder` osztályt a már meglévő `ReportPrinter` mintájára, de ez ne a konzolra írjon, hanem egy a teljes riportot tartalmazó stringet állítson elő, melyet egy újonnan bevezetett, `GetResult()` művelettel lehessen tőle lekérdezni. 
 
     !!! warning "Beadás"
-        Ha beadod a feladatot, a `ReportBuilder`-t példányosító/tesztelő kódot ne a fenti, `test6` függvénybe tedd, hanem vezess be egy `test6b` nevű függvényt, és lásd el a `[Description("Feladat6b")]` attribútummal.
+        Ha beadod a feladatot, a `ReportBuilder`-t példányosító/tesztelő kódot ne a fenti, `test6` függvénybe tedd, hanem vezess be egy `test6b` nevű függvényt, és lásd el a `[Description("Task6b")]` attribútummal.
    
     !!! tip "Tippek a megoldáshoz"
         * Célszerű az osztályba egy `StringBuilder` tagváltozót bevezetni, és ennek segítségével dolgozni. Ez nagyságrenddel hatékonyabb, mint a stringek "+"-szal való összefűzögetése.
@@ -460,10 +460,10 @@ Bővítsd ki a `JediCouncil` osztályt.
 
         Emiatt a listán NEM használhatod a beépített `FindAll` műveletét, mivel az általunk használt delegate típus nem lenne kompatibilis a `FindAll` által várt paraméterrel. A tagokon egy `foreach` ciklusban végigiterálva dolgozz!
 
-- A property és a függvény működését demonstráld egy erre dedikált közös függvényben, amit láss el a `[Description("Feladat7")]` attribútummal. Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, viszont a Jeditanács feltöltéséhez az előző feladatban bevezetett segédfüggvényt hívd. A függvényt hívd meg a `Program` osztály `Main` függvényéből. 
+- A property és a függvény működését demonstráld egy erre dedikált közös függvényben, amit láss el a `[Description("Task7")]` attribútummal. Ez a függvény nem szorosan a feladathoz tartozó kódot ne tartalmazzon, viszont a Jeditanács feltöltéséhez az előző feladatban bevezetett segédfüggvényt hívd. A függvényt hívd meg a `Program` osztály `Main` függvényéből. 
 
     !!! danger "Fontos"
-        A `[Description("Feladat7")]` attribútum csak egyetlen függvény fölött szerepelhet.
+        A `[Description("Task7")]` attribútum csak egyetlen függvény fölött szerepelhet.
 
 ### Megoldás
 
