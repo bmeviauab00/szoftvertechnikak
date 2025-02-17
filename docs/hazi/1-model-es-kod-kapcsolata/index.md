@@ -45,12 +45,12 @@ Minden egyes alkalommal, miután a GitHub-ra push-oltál kódot, a GitHub-on aut
 
 ### Kiinduló projekt
 
-A kiindulási környezet a `Feladat1` mappában található, az ebben levő `MusicApp.sln` fájlt nyissuk meg Visual Studioban és ebben a solutionben dolgozzunk.
+A kiindulási környezet a `Task1` mappában található, az ebben levő `MusicApp.sln` fájlt nyissuk meg Visual Studioban és ebben a solutionben dolgozzunk.
 
 !!! warning "Figyelem!"
     Új solution és/vagy projektfájl létrehozása, vagy a projekt más/újabb .NET verziókra targetelése tilos.
 
-A `Feladat1\Input` mappában található egy `music.txt` fájl, mely a feladat bemeneteként használandó.
+A `Task1\Input` mappában található egy `music.txt` fájl, mely a feladat bemeneteként használandó.
 
 ### Feladat
 
@@ -198,16 +198,16 @@ A következő kód egy lehetséges megoldást mutat, a megoldás részleteit a k
 
 ### Kiinduló környezet
 
-A kiindulási környezet a `Feladat2` mappában található, az ebben levő `Shapes.sln` fájlt nyissuk meg Visual Studioban, és ebben a solutionben dolgozzunk.
+A kiindulási környezet a `Task2` mappában található, az ebben levő `Shapes.sln` fájlt nyissuk meg Visual Studioban, és ebben a solutionben dolgozzunk.
 
 !!! warning "Figyelem!"
     Új solution és/vagy projektfájl létrehozása, vagy a projekt más/újabb .NET verziókra targetelése tilos.
 
-A `Feladat2\Shapes` mappában található egy `Controls.dll` fájl, ezt a feladat megoldása során kell majd felhasználni.
+A `Task2\Shapes` mappában található egy `Controls.dll` fájl, ezt a feladat megoldása során kell majd felhasználni.
 
 ### Beadandó (a forráskódon túlmenően)
 
-Két-három bekezdésben a Feladat 2 megoldása során hozott tervezői döntések, a megoldás legfontosabb alapelveinek rövid szöveges összefoglalása, indoklása. Ezt a kiinduló keret `Feladat2` mappájában már megtalálható `readme.md` szövegfájlba kell beleírni tetszőleges markdown formátumban, vagy egyszerű nyers szövegként. Fontos, hogy a `Feladat2` mappában levő fájlba dolgozz (akkor is, ha esetleg a gyökérmappában is van egy azonos nevű fájl).
+Két-három bekezdésben a Feladat 2 megoldása során hozott tervezői döntések, a megoldás legfontosabb alapelveinek rövid szöveges összefoglalása, indoklása. Ezt a kiinduló keret `Task2` mappájában már megtalálható `readme.md` szövegfájlba kell beleírni tetszőleges markdown formátumban, vagy egyszerű nyers szövegként. Fontos, hogy a `Task2` mappában levő fájlba dolgozz (akkor is, ha esetleg a gyökérmappában is van egy azonos nevű fájl).
 
 ### Feladat
 
