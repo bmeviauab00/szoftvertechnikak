@@ -1295,9 +1295,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#nachkommenschaft" class="md-nav__link">
+  <a href="#nachkommen" class="md-nav__link">
     <span class="md-ellipsis">
-      Nachkommenschaft
+      Nachkommen
     </span>
   </a>
   
@@ -1871,9 +1871,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#nachkommenschaft" class="md-nav__link">
+  <a href="#nachkommen" class="md-nav__link">
     <span class="md-ellipsis">
-      Nachkommenschaft
+      Nachkommen
     </span>
   </a>
   
@@ -1975,12 +1975,12 @@
 <p>Es sollte die neueste Version von Visual Studio installiert sein. Die Versionen Community Edition, Professional und Enterprise sind ebenfalls geeignet. Die Community Edition ist kostenlos und kann von der Microsoft-Website heruntergeladen werden. Der Professional ist kostenpflichtig, steht aber auch für Studenten der Universität kostenlos zur Verfügung (auf der Website, im Rahmen des Programms Azure Dev Tools for Teaching).</p>
 <div class="admonition hinweis">
 <p class="admonition-title">Visual Studio Class Diagram support</p>
-<p>Für einige Aufgaben in dieser Übung (und auch für die erste Hausaufgabe) werden wir die Unterstützung des Visual Studio Class Designer nutzen. Visual Studio fügt die Komponente Class Designer während der Installation nicht immer hinzu. Wenn es nicht möglich ist, ein Klassendiagramm zu Ihrem Visual Studio-Projekt hinzuzufügen (weil das Klassendiagramm nicht in der Liste des Fensters aufgeführt ist, das während des Befehls Neues Element hinzufügen angezeigt wird - mehr dazu später in diesem Handbuch), müssen Sie die Komponente Klassendiagramm später installieren:</p>
+<p>Für einige Aufgaben in dieser Übung (und auch für die erste Hausaufgabe) werden wir die Unterstützung des Visual Studio Class Designer nutzen. Visual Studio fügt die Komponente Class Designer während der Installation nicht immer hinzu. Falls es nicht möglich ist, ein Klassendiagramm zum Visual Studio-Projekt hinzuzufügen (weil „Class Diagram“ in der Liste des Fensters, das beim Befehl „Add New Item“ erscheint, nicht gelistet wird - mehr dazu später in dieser Anleitung), muss man die Komponente Klassendiagramm später installieren:</p>
 <ol>
 <li>Starten Sie das Visual Studio-Installationsprogramm (z. B. durch Eingabe von "Visual Studio Installer" im Windows-Startmenü).</li>
 <li>Wählen Sie in dem nun erscheinenden Fenster die Registerkarte "Individual components"</li>
 <li>
-<p>Geben Sie in das Suchfeld "class designer" ein und vergewissern Sie sich, dass "Class Designer" in der gefilterten Liste angekreuzt ist.</p>
+<p>Geben Sie in das Suchfeld "class designer" ein und stellen Sie sicher, dass "Class Designer" in der gefilterten Liste aktiviert ist.</p>
 <p><a class="glightbox" href="../images/vs-isntaller-add-class-diagram.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Installation der Klassendiagramm-Unterstützung" src="../images/vs-isntaller-add-class-diagram.png" /></a></p>
 </li>
 </ol>
@@ -2009,7 +2009,7 @@
 <p>Die Anwendung wird in C# geschrieben. Die kompilierte Anwendung wird von der .NET-Laufzeitumgebung ausgeführt. In der ersten Vorlesung werden die theoretischen Hintergründe des Kompilierens/Ablaufens und die Grundlagen von .NET behandelt.</p>
 <p>Die Schritte zum Erstellen einer Projektmappe und eines Projekts in Visual Studio 2022:</p>
 <ol>
-<li>Starten Sie einen neuen "Neues Projekt erstellen" Dialogfeld, was auf zwei Arten geschehen kann<ul>
+<li>Starten wir den "Neues Projekt erstellen" Dialogfeld, was auf zwei Arten geschehen kann:<ul>
 <li>Verwendung des Startfensters<ol>
 <li>Visual Studio starten</li>
 <li>In der rechten Seitenleiste des erscheinenden Startfensters <em>Create new project</em></li>
@@ -2022,7 +2022,7 @@
 </ul>
 </li>
 <li>
-<p>Wählen Sie im Dialogfeld "Neues Projekt erstellen" die Vorlage " <em>Console app</em> " (und <strong>NICHT</strong> die Vorlage " <em>Console app (.NET Framework)</em>", einschließlich der C#-Vorlage. Dass es sich um C# handelt, ist an der oberen linken Ecke des Vorlagensymbols zu erkennen. Wenn Sie es nicht in der Liste sehen, müssen Sie es suchen/filtern. Sie können danach suchen, falls Sie in der oberen Suchleiste "console" eingeben. Oder verwenden Sie die Dropdown-Felder unten: im ersten (Sprachauswahl) "C#", im dritten (Projekttypauswahl) "Console".</p>
+<p>Wählen wir im Dialogfeld "Neues Projekt erstellen" die Vorlage " <em>Console app</em> " (und <strong>NICHT</strong> die Vorlage " <em>Console app (.NET Framework)</em>", einschließlich der C#-Vorlage. Dass es sich um C# handelt, ist an der oberen linken Ecke des Vorlagensymbols zu erkennen. Wenn man es nicht in der Liste sieht, muss man es suchen/filtern. Man kann danach suchen, falls in der oberen Suchleiste "console" eingibt. Oder die Dropdown-Felder unten können auch verwendet werden: im ersten (Sprachauswahl) "C#", im dritten (Projekttypauswahl) "Console".</p>
 <p><a class="glightbox" href="../images/vs-create-new-project-wizard.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Ein Projekt erstellen" src="../images/vs-create-new-project-wizard.png" /></a></p>
 </li>
 <li>
@@ -2038,11 +2038,11 @@
 <p>Next-Taste am unteren Rand des Dialogfeldes "Neues Projekt erstellen", auf der nächsten Seite:</p>
 <ol>
 <li>Framework: <strong>.NET 8 (Langfristige Unterstützung)</strong>.</li>
-<li>Aktivieren Sie das Kontrollkästchen "Do not use top level statements" (wir werden dies gleich erklären).</li>
+<li>Aktivieren wir das Kontrollkästchen "Do not use top level statements" (wir werden dies gleich erklären).</li>
 </ol>
 </li>
 </ol>
-<p>Das Projekt erstellt auch eine neue Projektmappe, deren Struktur im Visual Studio <em>Solution Explorer</em>-Fenster angezeigt werden kann. Eine Lösung kann aus mehreren Projekten bestehen, und ein Projekt kann aus mehreren Dateien bestehen. Ein Solution ist eine Zusammenfassung der gesamten Arbeitsumgebung (sie hat die Dateierweiterung <code>.sln</code> ), während die Ausgabe eines Projekts typischerweise eine Datei <code>.exe</code> oder <code>.dll</code> ist, d. h. eine Komponente einer komplexen Anwendung/eines komplexen Systems. Projektdateierweiterung für C#-Anwendungen <code>.csproj</code>.</p>
+<p>Das Projekt erstellt auch eine neue Projektmappe, deren Struktur im Visual Studio <em>Solution Explorer</em>-Fenster angezeigt werden kann. Eine Projektmappe (Solution) kann aus mehreren Projekten bestehen, und ein Projekt kann aus mehreren Dateien bestehen. Ein Solution ist eine Zusammenfassung der gesamten Arbeitsumgebung (sie hat die Dateierweiterung <code>.sln</code> ), während die Ausgabe eines Projekts typischerweise eine Datei <code>.exe</code> oder <code>.dll</code> ist, d. h. eine Komponente einer komplexen Anwendung/eines komplexen Systems. Projektdateierweiterung für C#-Anwendungen <code>.csproj</code>.</p>
 <p>Der Inhalt unserer Datei <code>Program.cs</code> ist die folgende:</p>
 <div class="highlight"><span class="filename">Program.cs</span><pre><span></span><code><span class="k">namespace</span><span class="w"> </span><span class="nn">HelloWorld</span>
 <span class="p">{</span>
@@ -2071,14 +2071,14 @@
 <ol>
 <li>
 <p>Führen wir die Anwendung aus (z. B. mit der Taste <span class="keys"><kbd class="key-f5">F5</kbd></span> ).</p>
-<p>Die Struktur des Codes ist sehr ähnlich zu Java und C++. Unsere Klassen sind in Namespaces organisiert. Sie können einen Namespace mit dem Schlüsselwort <code>namespace</code> definieren. Wir können Namespaces mit dem Schlüsselwort <code>using</code> "ins Geltungsbereich bringen". z.B.:</p>
+<p>Die Struktur des Codes ist sehr ähnlich zu Java und C++. Unsere Klassen sind in Namespaces organisiert. Ein Namespace kann mit dem Schlüsselwort <code>namespace</code> definiert werden. Wir können Namespaces mit dem Schlüsselwort <code>using</code> "ins Geltungsbereich bringen". z.B.:</p>
 <div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections.Generic</span><span class="p">;</span>
 </code></pre></div>
 </li>
 <li>
-<p>In einer C#-Konsolenanwendung wird der Eintrittspunkt der Anwendung mit einer statischen Funktion namens <code>Main</code> gegeben. Unser Klassenname kann beliebig sein, in unserem Fall hat VS eine Klasse namens <code>Program</code> erzeugt. Die Parameterliste der Funktion <code>Main</code> ist gebunden: entweder werden keine Parameter angegeben, oder es wird ein <code>string[]</code>angegeben, in dem die Befehlszeilenargumente zur Laufzeit angegeben werden.</p>
+<p>In einer C#-Konsolenanwendung wird der Eintrittspunkt der Anwendung mit einer statischen Funktion namens <code>Main</code> gegeben. Der Name der Klasse kann beliebig gewählt werden, in unserem Fall hat VS eine Klasse namens <code>Program</code> erzeugt. Die Parameterliste der Funktion <code>Main</code> ist gebunden: entweder werden keine Parameter angegeben, oder es wird ein <code>string[]</code>angegeben, in dem die Befehlszeilenargumente zur Laufzeit angegeben werden.</p>
 </li>
-<li>in .NET wird die Klasse <code>Console</code> aus dem Namensraum <code>System</code> verwendet, um die Standardeingabe und -ausgabe zu verarbeiten. Mit der statischen Aktion <code>WriteLine</code> können Sie eine Zeile drucken, mit <code>ReadKey</code> können Sie auf das Drücken einer Taste warten.</li>
+<li>In .NET wird die Klasse <code>Console</code> aus dem Namensraum <code>System</code> verwendet, um die Standardeingabe und -ausgabe zu verarbeiten. Mit der statischen Aktion <code>WriteLine</code> kann man eine Zeile drucken, mit <code>ReadKey</code> kann man auf das Drücken einer Taste warten.</li>
 </ol>
 <div class="admonition tip">
 <p class="admonition-title">Top-Level-Anweisungen, implizite und statische Verwendungen und Namespaces</p>
@@ -2089,7 +2089,7 @@
 <p>Es ist funktionell äquivalent zu dem obigen Code, der die Klasse <code>Program</code> und ihre Funktion <code>Main</code> enthält. Schauen wir uns an, was dies möglich macht (Sie können hier mehr darüber lesen <a href="https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/top-level-statements">https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/top-level-statements</a>, beide neu in C# 10):</p>
 <ul>
 <li><strong>Top level statements</strong>. Die Idee ist, dass man Code direkt in einer einzigen Quelldatei schreiben kann, ohne dass Klassen/<code>Main</code> und andere Funktionsdefinitionen im Projekt vorhanden sind. In diesem Fall setzt der Compiler dies hinter den Kulissen in eine statische <code>Main</code>-Funktion einer Klasse, die wir nicht sehen. Die Motivation für seine Einführung war die Reduzierung von "Boilerplate"-Code für sehr einfache, "skriptartige" Anwendungen.</li>
-<li><strong>Implicit global usings</strong>. Je nachdem, welchen Projekttyp Sie erstellt haben, werden bestimmte Basis-Namensräume automatisch im Hintergrund in allen Quelldateien verwendet (der Compiler verwendet dazu die <em>global using</em>-Direktive). Der Punkt ist: Auf diese Weise müssen Entwickler bestimmte häufig verwendete Namespaces (z.B. <code>System.IO</code>, <code>System.Collections.Generic</code>, etc.) nicht als Quelldateien verwenden.</li>
+<li><strong>Implicit global usings</strong>. Je nachdem, welchen Projekttyp wir erstellt haben, werden bestimmte Basis-Namensräume automatisch im Hintergrund in allen Quelldateien verwendet (der Compiler verwendet dazu die <em>global using</em>-Direktive). Der Punkt ist: Auf diese Weise müssen Entwickler bestimmte häufig verwendete Namespaces (z.B. <code>System.IO</code>, <code>System.Collections.Generic</code>, etc.) nicht in jeder Quelldatei mit <code>using</code> importieren.</li>
 <li>
 <p><strong>Static using</strong>. Es ist möglich, statische Klassen statt Namespaces in C# mit <code>using</code> zu verwenden, so es nicht wichtig ist, diese auszuschreiben, wenn sie verwendet werden. Ein häufiger Fall ist die Verwendung der Klasse "Console" oder "Math".</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="k">using</span><span class="w"> </span><span class="nn">static</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">;</span>
@@ -2146,27 +2146,23 @@
 </ul>
 <h2 id="2-aufgabe-veranschaulichen-der-beziehung-zwischen-uml-und-code">2. Aufgabe - Veranschaulichen der Beziehung zwischen UML und Code<a class="headerlink" href="#2-aufgabe-veranschaulichen-der-beziehung-zwischen-uml-und-code" title="Permanent link">&para;</a></h2>
 <h3 id="aufgabenbeschreibung-equipment-inventory">Aufgabenbeschreibung - Equipment inventory<a class="headerlink" href="#aufgabenbeschreibung-equipment-inventory" title="Permanent link">&para;</a></h3>
-<p>Aufgabe: Wir haben die Aufgabe bekommen, eine Computerteilregister-Anwendung zu entwickeln. Lesen Sie mehr:</p>
+<p>Aufgabe: Wir haben die Aufgabe bekommen, eine Computerteilregister-Anwendung zu entwickeln. Mehr Details:</p>
 <ul>
 <li>Es soll fähig sein, verschiedene Arten von Teilen zu behandeln. Anfänglich sollten die Typen <code>HardDisk</code>, <code>SoundCard</code> und <code>LedDisplay</code> unterstützt werden, aber das System sollte leicht auf neue Typen erweiterbar sein.</li>
 <li>Daten der Teilen: Kaufsjahr, Alter (berechnet), Kaufspreis und aktueller Preis (berechnet), kann aber auch typspezifische Daten enthalten (z. B. Kapazität für <code>HardDisk</code> ).</li>
-<li>Der aktueller Preis hängt von der Art des Teils, dem Einkaufspreis und dem Produktionsjahr des Teils ab. Je älter das Teil ist, desto höher ist der Preisnachlass, aber der Preisnachlass hängt von der Art des Teils ab.</li>
+<li>Der aktueller Preis hängt von der Art des Teils, dem Einkaufspreis und dem Produktionsjahr des Teils ab. Z.B. Je älter das Teil ist, desto höher ist die Ermäßigung, aber die Ermäßigung hängt von dem Typ des Teils ab.</li>
 <li>Es soll fähig sein, die speicherte Teilen aufzulisten.</li>
 <li>Die Klasse <code>LedDisplay</code> muss von einer Klasse <code>DisplayBase</code> abgeleitet sein, und der Quellcode der Klasse <code>DisplayBase</code> darf nicht verändert werden. In diesem Beispiel hat dies nicht viel Sinn, aber in der Praxis treffen wir oft auf ähnliche Situationen, in denen das von uns verwendete Framework/die Plattform verlangt, dass wir von einer eingebauten Klasse ableiten. Typischerweise ist dies der Fall, wenn wir mit Fenstern, Formularen oder benutzerdefinierten Steuerelementen arbeiten: Wir müssen sie von den eingebauten Klassen des Frameworks ableiten, und wir haben den Quellcode des Frameworks nicht (oder wollen ihn zumindest nicht ändern) - z.B. Java, .NET. In unserem Beispiel simulieren wir diese Situation, indem wir eine Ableitung von <code>DisplayBase</code>verlangen.</li>
 </ul>
 <p>Die Implementierung ist erheblich vereinfacht: Die Teile werden nur im Speicher abgelegt, und die Auflistung ist so einfach wie möglich, einfach die Daten der registrierten Teile werden auf die Konsole geschrieben.</p>
 <p>Bei den ersten Gesprächen erhalten wir vom Kunden folgende Information: Ein interner Mitarbeiter hat bereits mit der Entwicklung begonnen, ist aber aus Zeitmangel nur zu einer halbfertigen Lösung gekommen. Ein Teil unserer Aufgabe besteht darin, die halbfertige Lösung zu verstehen und die Aufgabe von dort aus umzusetzen.</p>
 <h3 id="klassendiagramm">Klassendiagramm<a class="headerlink" href="#klassendiagramm" title="Permanent link">&para;</a></h3>
-<p>Öffnen wir die Quellcode-Lösung unseres Kunden <a href="https://github.com/bmeviauab00/lab-modellkod-kiindulo">source code</a> mit dem Ausführen der nachstehenden Schritte.</p>
+<p>Öffnen wir die Projektmappe des <a href="https://github.com/bmeviauab00/lab-modellkod-kiindulo">Quellcodes</a> unseres Kunden mit dem Ausführen der folgenden Schritte.</p>
 <p>Klonen wir das Git-Repository des ursprünglichen Projekts, das online auf GitHub verfügbar ist, in einen eigenen Ordner innerhalb des Ordners <code>C:\Work</code>: z. B.: <code>C:\Work\NEPTUN\lab1</code>. Öffnen wir in diesem neuen Ordner eine Befehlszeile oder Powershell und führen wir den folgenden git-Befehl aus:</p>
 <div class="highlight"><pre><span></span><code>git clone https://github.com/bmeviauab00/lab-modellkod-kiindulo.git
 </code></pre></div>
-<div class="admonition hinweis">
-<p class="admonition-title">Git und GitHub</p>
-<p>Sie werden mehr über Git als Quellcode-Verwaltungssystem im Rahmen der ersten Hausaufgabe erfahren.</p>
-</div>
-<p>Öffnen wir die Visual Studio Solution src/EquipmentInventory.sln im geklonten Ordner.</p>
-<p>Blicken wir die Dateien im Solution Explorer lurz über. Es wäre hilfreich, die Beziehungen zwischen den Klassen in einem Klassendiagramm darzustellen, um sie zu verstehen. Wir wollen ein Klassendiagramm in unser Projekt einfügen. Klicken wir im Solution Explorer mit der rechten Maustaste auf das <strong>Projekt</strong> (nicht auf das Solution!), und wählen wir im Popup-Menü die Option <em>Add/New Item</em>. Dann wählen wir in dem erscheinenden Fenster die Option Class Diagram, geben wir am unten im Fenster Main.cd als der Namen des Diagramms ein, und schließen wir das Fenster mit OK.</p>
+<p>Öffnen wir das Visual Studio Solution src/EquipmentInventory.sln im geklonten Ordner.</p>
+<p>Blicken wir die Dateien im Solution Explorer kurz über. Es wäre hilfreich, die Beziehungen zwischen den Klassen in einem Klassendiagramm darzustellen, um sie zu verstehen. Wir wollen ein Klassendiagramm in unser Projekt einfügen. Klicken wir im Solution Explorer mit der rechten Maustaste auf das <strong>Projekt</strong> (nicht auf das Solution!), und wählen wir im Popup-Menü die Option <em>Add/New Item</em>. Dann wählen wir in dem erscheinenden Fenster die Option Class Diagram, geben wir am unten im Fenster Main.cd als der Namen des Diagramms ein, und schließen wir das Fenster mit OK.</p>
 <div class="admonition warning">
 <p class="admonition-title">Fehlende Class Diagram-Vorlage</p>
 <p>Wenn das Element <em>Class Diagram</em> nicht in der Liste erscheint, ist die entsprechende Komponente von VS nicht installiert. Weitere Informationen hierzu finden Sie im Abschnitt Voraussetzungen in diesem Dokument.</p>
@@ -2185,14 +2181,14 @@
 <p>Wie früher erwähnt, kann eine einheitliche Verwaltung entweder durch die Implementierung einer gemeinsamen Basisklasse oder einer gemeinsamen Schnittstelle erreicht werden. In unserem Fall scheint die gemeinsame Basisklasse (z. B. <code>EquipmentBase</code>) eliminiert zu werden, denn durch ihre Einführung hätte die Klasse <code>LedDisplay</code> zwei Basisklassen: <code>DisplayBase</code>, die obligatorisch ist, und <code>EquipmentBase</code>, die wir zur einheitlichen Verwaltung einführen. Dies ist nicht möglich, in einer .NET-Umgebung kann eine Klasse nur einen Vorgänger haben. Die Lösung, <code>DisplayBase</code>so zu ändern, dass es von <code>EquipmentBase</code>stammt, ist nach unseren Anforderungen nicht möglich (es war eine Anforderung, dass der Quellcode nicht geändert werden durfte). Es bleibt also der schnittstellenbasierte Ansatz. Dies ist sicherlich die Schlussfolgerung des vorherigen Entwicklers der Anwendung, weshalb er die Schnittstelle <code>IEquipment</code> eingeführt hat.</p>
 <p>Fügen wir eine generische Liste von Elementen des Typs <code>IEquipment</code> (keine Eigenschaft, sondern ein Feld!) zur Klasse <code>EquipmentInventory</code> hinzu. Ihre Sichtbarkeit sollte - in dem Bemühen um Integration - <code>private</code>sein. Der Name sollte <code>equipment</code> sein (ohne "s" am Ende, im Englisch ist der Plural von equipment auch equipment). Um eine Membervariable hinzuzufügen, verwenden wir das <em>Class Details</em> Fenster von Visual Studio. Wenn das Fenster nicht sichtbar ist, kann es durch Auswahl von <em>View / Other Windows / Class Details</em> angezeigt werden.</p>
 <p><a class="glightbox" href="../images/class-details.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Details zur Klasse" src="../images/class-details.png" /></a></p>
-<p>Der Typ der Mitgliedsvariablen ist <code>List&lt;IEquipment&gt;</code>. Der .NET-Typ <code>List</code> ist ein dynamisch dehnbares generisches Array (wie <code>ArrayList</code>in Java). Falls wir auf die Klasse <code>EquipmentInventory</code> im Diagramm blicken, so siehen wir, dass nur der Name der Mitgliedsvariablen angezeigt wird, nicht aber der Typ. Klicken wit mit der rechten Maustaste auf den Hintergrund des Diagramms und wählen wir im <em>Change Members Format</em> Menü  die Option <em>Display Full Signature</em>. Das Diagramm zeigt dann den Typ der Mitgliedsvariablen und die vollständige Signatur der Operationen.</p>
+<p>Der Typ der Mitgliedsvariablen ist <code>List&lt;IEquipment&gt;</code>. Der .NET-Typ <code>List</code> ist ein dynamisch dehnbares generisches Array (wie <code>ArrayList</code>in Java). Falls wir auf die Klasse <code>EquipmentInventory</code> im Diagramm blicken, so sehen wir, dass nur der Name der Mitgliedsvariablen angezeigt wird, nicht aber der Typ. Klicken wir mit der rechten Maustaste auf den Hintergrund des Diagramms und wählen wir im <em>Change Members Format</em> Menü  die Option <em>Display Full Signature</em>. Das Diagramm zeigt dann den Typ der Mitgliedsvariablen und die vollständige Signatur der Operationen.</p>
 <p><a class="glightbox" href="../images/equipmentinventory.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="AusrüstungInventar" src="../images/equipmentinventory.png" /></a></p>
 <p>Wenn wir auf die Klasse <code>EquipmentInventory</code> doppelklicken, können wir zum Quellcode navigieren, und wie wir sehen können, erscheint sie im Code tatsächlich als Mitgliedsvariable vom Typ Liste:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">EquipmentInventory</span>
 <span class="p">{</span>
 <span class="hll"><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">IEquipment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">equipment</span><span class="p">;</span>
 </span></code></pre></div>
-<p>Einerseits freuen wir uns darüber, weil Visual Studio Round-Trip-Engineering unterstützt: <strong>Änderungen am Modell spiegeln sich sofort im Code wider und umgekehrt</strong>. Andererseits haben wir bereits darüber gesprochen, dass eine Klasse, die eine Sammlung von Mitgliedern einer anderen Klasse hat, sollte in das UML-Modell als eine Assoziationsbeziehung vom Typ 1-mehr zwischen den beiden Klassen erscheinen. Dies ist noch nicht der Fall in unserem Modell. Glücklicherweise kann die VS-Modellierungsschnittstelle dazu gebracht werden, diese Art von Verbindung in dieser Form anzuzeigen. Klicken wir dazu im Diagramm mit der rechten Maustaste auf die Membervariable equipment und wählen wir im Menü die Option <em>Show as Collection Association</em> aus. Die Schnittstelle <code>IEquipment</code> sollte dann nach rechts verschoben werden, damit im Diagramm genügend Platz für die Darstellung der Assoziationsverbindung und der Rolle der Verbindung bleibt:</p>
+<p>Einerseits freuen wir uns darüber, weil Visual Studio Round-Trip-Engineering unterstützt: <strong>Änderungen am Modell werden sofort in den Code übernommen und umgekehrt</strong>. Andererseits haben wir bereits darüber gesprochen, dass eine Klasse, die eine Sammlung von Mitgliedern einer anderen Klasse hat, sollte in das UML-Modell als eine Assoziationsbeziehung vom Typ 1-mehr zwischen den beiden Klassen erscheinen. Dies ist noch nicht der Fall in unserem Modell. Glücklicherweise kann die VS-Modellierungsschnittstelle dazu gebracht werden, diese Art von Verbindung in dieser Form anzuzeigen. Klicken wir dazu im Diagramm mit der rechten Maustaste auf die Membervariable equipment und wählen wir im Menü die Option <em>Show as Collection Association</em> aus. Die Schnittstelle <code>IEquipment</code> sollte dann nach rechts verschoben werden, damit im Diagramm genügend Platz für die Darstellung der Assoziationsverbindung und der Rolle der Verbindung bleibt:</p>
 <p><a class="glightbox" href="../images/collection-association.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Sammlungsverband" src="../images/collection-association.png" /></a></p>
 <p>Der Doppelpfeil, der auf der "Mehr"-Seite endet, entspricht nicht dem UML-Standard, aber sei man nicht zu traurig darüber, es ist nicht wichtig. Wir freuen uns darüber, dass der Name (und sogar der genaue Typ) der Mitgliedsvariablen am <code>IEquipment</code> Ende der die Beziehung darstellende Pfeil in der Rolle anzeigt ist.</p>
 <p>Navigieren wir zum Quellcode von <code>EquipmentInventory</code> und schreiben wir den Konstruktor, der die Sammlung <code>equipment</code> initialisiert!</p>
@@ -2206,20 +2202,20 @@
 <span class="p">{</span>
 <span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="n">IEquipment</span><span class="w"> </span><span class="n">eq</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">equipment</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;Alter: {eq.GetAge()}\tÉrtéke: {eq.GetPrice()}&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;Alter: {eq.GetAge()}\tPreis: {eq.GetPrice()}&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Mit dem Befehl <code>foreach</code> durchlaufen wir die Elemente. Bei der Verwendung des Befehls <code>foreach</code> sollte <code>in</code> von einer Sammlung gefolgt werden, und <code>in</code> sollte eine Variablendeklaration (in diesem Fall <code>IEquipment eq</code>) vorangestellt werden, wo type der Elementtyp der Sammlung ist. Bei jeder Iteration nimmt diese Variable den Iterationswert der Sammlung an.</p>
 <p>Der Operation <code>Console.WriteLine</code> wird entweder eine einfache Zeichenfolge oder, wie in unserem Fall, eine Formatierungszeichenfolge übergeben. Die Ersetzungen werden durch String-Interpolation gelöst: Die zu ersetzenden Werte müssen zwischen <code>{}</code> angegeben werden. Bei der String-Interpolation muss der String mit <code>$</code> beginnen.</p>
-<p>Schreiben wir eine Funktion mit der Bezeichnung <code>AddEquipment</code>, die ein neues Gerät zu der Menge hinzufügt:</p>
+<p>Schreiben wir eine Funktion mit dem Namen <code>AddEquipment</code>, die ein neues Bestandteil zu der Liste hinzufügt:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">AddEquipment</span><span class="p">(</span><span class="n">IEquipment</span><span class="w"> </span><span class="n">eq</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">     </span><span class="n">equipment</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">eq</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="verwirklichern-von-iequipment">Verwirklichern von IEquipment<a class="headerlink" href="#verwirklichern-von-iequipment" title="Permanent link">&para;</a></h3>
-<p>Wir haben entschieden, die Schnittstelle <code>IEquipment</code> zu verwenden, um die verschiedenen Komponententypen einheitlich zu verwalten. In unserem Fall haben sowohl die Klassen <code>SoundCard</code> als auch <code>HardDisk</code> die Methoden <code>GetAge()</code> und <code>GetPrice()</code>, aber wir können sie nicht einheitlich verwalten (z. B. in einer gemeinsamen Liste speichern). Zu diesem Zweck müssen wir beide Klassen dazu bringen, die Schnittstelle <code>IEquipment</code> zu implementieren. Ändern Sie ihr Quellcode:</p>
+<p>Wir haben entschieden, die Schnittstelle <code>IEquipment</code> zu verwenden, um die verschiedenen Komponententypen einheitlich zu verwalten. In unserem Fall haben sowohl die Klassen <code>SoundCard</code> als auch <code>HardDisk</code> die Methoden <code>GetAge()</code> und <code>GetPrice()</code>, aber wir können sie nicht einheitlich verwalten (z. B. in einer gemeinsamen Liste speichern). Zu diesem Zweck müssen wir beide Klassen dazu bringen, die Schnittstelle <code>IEquipment</code> zu implementieren. Ändern wir ihr Quellcode:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SoundCard</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">HardDisk</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span>
@@ -2246,7 +2242,7 @@
 <p>Arbeiten wir weiter mit der Klasse <code>LedDisplay</code>.  Der Quellcode von <code>DisplayBase</code> kann aufgrund der Anforderungen nicht geändert werden. Aber das ist kein Problem, unsere Klasse <code>LedDisplay</code> wird die Schnittstelle <code>IEquipment</code> implementieren, lassen wir uns den Code entsprechend ändern:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LedDisplay</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">DisplayBase</span><span class="p">,</span><span class="w"> </span><span class="n">IEquipment</span>
 </code></pre></div>
-<p>In der Klasse <code>LedDisplay</code> müssen die Funktionen der Schnittstelle bereits geschrieben sein:</p>
+<p>In der Klasse <code>LedDisplay</code> müssen die Funktionen der Schnittstelle bereits geschrieben werden:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">price</span><span class="p">;</span>
@@ -2271,11 +2267,11 @@
 <p>Eines der Hauptprobleme ist, dass unser Code mit Code-Duplikationen voll ist, die die Wartbarkeit und Erweiterbarkeit zerstören:</p>
 <ul>
 <li>Die Mitglieder <code>yearOfCreation</code> und <code>newPrice</code> gelten für alle Komponententypen (mit Ausnahme des speziellen <code>LedDisplay</code>) und müssen immer mit copy-paste hinzugefügt werden, wenn ein neuer Typ eingeführt wird.</li>
-<li>Die Implementierungsebene der Funktion <code>GetAge</code> ist für alle Komponententypen (mit Ausnahme der speziellen <code>LedDisplay</code>) gleich, auch mit copy-paste wird "vermehrt".</li>
+<li>Die Implementierung der Funktion <code>GetAge</code> ist für alle Komponententypen (mit Ausnahme der speziellen <code>LedDisplay</code>) gleich, auch mit copy-paste wird "vermehrt".</li>
 <li>Die Zeilen in den Konstruktoren, die die Mitglieder <code>yearOfCreation</code> und <code>newPrice</code> initialisieren, werden ebenfalls in jeder Klasse dupliziert.</li>
 </ul>
-<p>Auch wenn diese Codeduplizierung im Moment noch unbedeutend zu sein scheint, wird die Situation mit der Einführung neuer Komponententypen immer schlechter, und es ist besser, künftigen Problemen rechtzeitig vorzubeugen.</p>
-<p>Ein weiteres Problem besteht darin, dass die Auflistung der Teiledaten derzeit schmerzlich unvollständig ist, da es keine Teileart gibt (nur Alter und Preis). Um den Typ anzuzeigen, muss die Schnittstelle IEquipment erweitert werden, z. B. durch Einführung einer Operation namens <code>GetDescription</code>.   Fügen wir der Schnittstelle eine Funktion <code>GetDescription</code> hinzu!</p>
+<p>Auch wenn diese Codeduplizierung im Moment noch unbedeutend zu sein scheint, wird die Situation mit der Einführung neuer Komponententypen immer schlechter, und es ist besser, künftigen Problemen rechtzeitig zu lösen.</p>
+<p>Ein weiteres Problem besteht darin, dass die Auflistung der Teiledaten derzeit schmerzlich unvollständig ist, da kein Typ gelistet wird (nur Alter und Preis). Um den Typ anzuzeigen, muss die Schnittstelle <code>IEquipment</code> erweitert werden, z. B. durch Einführung einer Operation namens <code>GetDescription</code>.   Fügen wir der Schnittstelle eine Funktion <code>GetDescription</code> hinzu!</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IEquipment</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">();</span>
@@ -2283,10 +2279,10 @@
 <span class="hll"><span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">();</span>
 </span><span class="p">}</span>
 </code></pre></div>
-<p>Dann müsste jede Klasse, die die Schnittstelle <code>IEquipment</code> implementiert, diese Methode implementieren, was für viele Klassen eine Menge Arbeit bedeutet (und für eine Mehrkomponenten-Anwendung, d.h. eine Anwendung, die aus mehreren DLLs besteht, oft gar nicht machbar ist, wenn sie nicht in den Händen eines einzigen Entwicklers liegen). Führen wir den Befehl <em>Build</em> aus, um zu überprüfen, ob Sie nach dem Hinzufügen von <code>GetDescription</code> an drei Stellen Übersetzungsfehler erhalten.</p>
+<p>Dann müsste jede Klasse, die die Schnittstelle <code>IEquipment</code> implementiert, diese Methode implementieren, was für viele Klassen eine Menge Arbeit bedeutet (und für eine Mehrkomponenten-Anwendung, d.h. eine Anwendung, die aus mehreren DLLs besteht, oft gar nicht machbar ist, wenn sie nicht in den Händen eines einzigen Entwicklers liegen). Führen wir den Befehl <em>Build</em> aus, um zu überprüfen, ob wir nach dem Hinzufügen von <code>GetDescription</code> an drei Stellen Übersetzungsfehler erhalten.</p>
 <div class="admonition tip">
 <p class="admonition-title">Standardimplementierung in der Schnittstelle festlegen</p>
-<p>Es ist wichtig zu wissen, dass ab C# 8 (genauer .NET oder .NET Core Runtime ist auch nötig, es ist unter .NET Framework nicht unterstützt ) <strong>Schnittstellenoperationen eine Standardimplementierung erhalten können (default interface methods), so dass wir zur Lösung des obigen Problems keine abstrakte Klasse benötigen, aber die Schnittstelle kann keine Mitgliedsvariablen mehr haben</strong>. Weitere Informationen finden Sie hier: <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-8.0/default-interface-methods">default interface methods</a>.</p>
+<p>Es ist wichtig zu wissen, dass ab C# 8 (genauer .NET oder .NET Core Runtime ist auch nötig, es ist unter .NET Framework nicht unterstützt ) <strong>Schnittstellenoperationen eine Standardimplementierung erhalten können (default interface methods), so dass wir zur Lösung des obigen Problems keine abstrakte Klasse benötigen, aber die Schnittstelle kann weiterhin keine Mitgliedsvariablen haben</strong>. Weitere Informationen finden Sie hier: <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-8.0/default-interface-methods">default interface methods</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IEquipment</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">();</span>
@@ -2299,8 +2295,8 @@
 <p>Eine Lösung für beide Probleme ist die Einführung eines gemeinsamen abstrakten Vorfahres (mit Ausnahme der Klasse <code>LedDisplay</code>, auf die wir noch zurückkommen werden). Wir können den Code, der allen Nachkommen gemeinsam ist, dorthin verschieben und eine Standardimplementierung für die neu eingeführte Operation <code>GetDescription</code> bereitstellen. Nennen wir unsere neue abstrakte Basisklasse <code>EquipmentBase</code>. Die Frage ist, ob die Schnittstelle <code>IEquipment</code> noch benötigt wird oder ob sie vollständig durch die neue Klasse <code>EquipmentBase</code> ersetzt werden kann. Wir müssen die Schnittstelle <code>IEquipment</code> beibehalten, weil wir unsere Klasse LedDisplay nicht von <code>EquipmentBase</code>ableiten können: Sie hat bereits eine obligatorische Basisklasse, <code>DisplayBase</code>, deshalb bezieht sich EquipmentInventory in unserer erweiterten Lösung auf die verschiedenen Komponenten als Schnittstelle <code>IEquipment</code>. </p>
 <p>Beginnen wir mit der Umwandlung. Unser Klassendiagramm soll die aktive Registerkarte sein. Ziehen wir aus der <em>Toolbox</em> mit <em>drag&amp;drop</em> ein  <em>Abstract Class</em> Element auf das Diagramm und benennen wir es <code>EquipmentBase</code>.</p>
 <p><a class="glightbox" href="../images/toolbox-abstract-class.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Toolbox - abstrakte Klasse" src="../images/toolbox-abstract-class.png" /></a></p>
-<p>Im Folgenden müssen wir die Klassen <code>SoundCard</code> und <code>HardDisk</code> von <code>EquipmentBase</code>ableiten ( <code>LedDisplay</code>hat bereits einen anderen Vorfahren, so dass wir dies dort nicht tun können). Wählen wir dazu die Verknüpfung <em>Inheritance</em> in der <em>Toolbox</em> und ziehen wir dann eine Linie von der Kindklasse zur Basisklasse sowohl für <code>SoundCard</code> als auch für <code>HardDisk</code>. </p>
-<p>Im nächsten Schritt ändern wir den Code so, dass <code>HardDisk</code> und <code>SoundCard</code> die Schnittstelle <code>IEquipment</code> nicht separat implementieren, sondern ihr gemeinsamer Vorfahre <code>EquipmentBase</code> dies tut. Ändern wir dazu die Klasse <code>EquipmentBase</code> so, dass sie die Schnittstelle implementiert (entweder durch Einfügen eines inheritance Beziehung von <code>EquipmentBase</code>zu <code>IEquipment</code>im Diagramm oder durch Ändern des Quellcodes von <code>EquipmentBase</code> ). Entfernen wir die Implementierung von <code>IEquipment</code> aus den Klassen <code>HardDisk</code> und <code>SoundCard</code> (der Vorgänger implementiert sie bereits).</p>
+<p>Im Folgenden müssen wir die Klassen <code>SoundCard</code> und <code>HardDisk</code> von <code>EquipmentBase</code>ableiten (<code>LedDisplay</code>hat bereits einen anderen Vorfahren, so dass wir dies dort nicht tun können). Wählen wir dazu die Verknüpfung <em>Inheritance</em> in der <em>Toolbox</em> und ziehen wir dann eine Linie von der Kindklasse zur Basisklasse sowohl für <code>SoundCard</code> als auch für <code>HardDisk</code>. </p>
+<p>Im nächsten Schritt ändern wir den Code so, dass <code>HardDisk</code> und <code>SoundCard</code> die Schnittstelle <code>IEquipment</code> nicht separat implementieren, sondern ihr gemeinsamer Vorfahre <code>EquipmentBase</code> dies tut. Ändern wir dazu die Klasse <code>EquipmentBase</code> so, dass sie die Schnittstelle implementiert (entweder durch Einfügen eines inheritance Beziehung von <code>EquipmentBase</code> zu <code>IEquipment</code> im Diagramm oder durch Ändern des Quellcodes von <code>EquipmentBase</code> ). Entfernen wir die Implementierung von <code>IEquipment</code> aus den Klassen <code>HardDisk</code> und <code>SoundCard</code> (der Vorgänger implementiert sie bereits).</p>
 <p>Die relevanten Teile unseres Diagramms und des Quellcodes sehen dann wie folgt aus:</p>
 <p><a class="glightbox" href="../images/class-diagram-eqipmentbase-sc-hd-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="EquipmentBase und HardDisk/SoundCard" src="../images/class-diagram-eqipmentbase-sc-hd-2.png" /></a></p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">EquipmentBase</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span>
@@ -2314,9 +2310,9 @@
 <li>Die Mitglieder <code>newPrice</code> und <code>yearOfCreation</code> sind in den Klassen <code>HardDisk</code> und <code>SoundCard</code> dupliziert: verschieben (nicht kopieren!) wir sie in den gemeinsamen Vorfahren <code>EquipmentBase</code> und geben wir <code>protected</code> Sichtbarkeit.</li>
 <li>Die Operation <code>GetAge</code> wird in den Klassen <code>HardDisk</code> und <code>SoundCard</code> dupliziert, löschen wir die Implementierung aus diesen Klassen und verschieben wir sie in die Klasse <code>EquipmentBase</code>. </li>
 <li>Die Operation <code>GetPrice</code> wird als abstrakte Operation in den Vorgänger aufgenommen. Dies ist eine bewusste Design-Entscheidung, so dass wir nachkommende Klassen zwingen, diesen Vorgang trotzdem zu überschreiben.</li>
-<li>Für <code>GetDescription</code> gilt das Gegenteil: Wir definieren es als virtuell (und nicht abstrakt), d. h. wir geben eine Implementierung im Vorgänger an. Auf diese Weise sind die Nachkommen nicht gezwungen, den Vorgang außer Kraft zu setzen.</li>
+<li>Für <code>GetDescription</code> gilt das Gegenteil: Wir definieren es als virtuell (und nicht abstrakt), d. h. sie erhält bereits in der Basisklasse eine Implementierung. Dadurch sind die abgeleiteten Klassen nicht dazu gezwungen, die Methode zu überschreiben.</li>
 </ul>
-<p>Der entsprechende Code lautet:</p>
+<p>Der entsprechende Code:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">EquipmentBase</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">protected</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">;</span>
@@ -2331,19 +2327,19 @@
 
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">rückgabe</span><span class="w"> </span><span class="s">&quot;EquipmentBase&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;EquipmentBase&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Einige zusätzliche Gedanken zum Codefragment:</p>
 <ul>
-<li>Bei abstrakten Klassen muss das Schlüsselwort "abstrakt" vor das Wort "Klasse" geschrieben werden.</li>
+<li>Bei abstrakten Klassen muss das Schlüsselwort <code>abstract</code> vor das Wort <code>class</code> geschrieben werden.</li>
 <li>Für abstrakte Operationen muss das Schlüsselwort <code>abstract</code> angegeben werden.</li>
-<li>In .NET-Umgebung kann man steuern, ob ein Vorgang virtuell ist oder nicht. In dieser Hinsicht ist es ähnlich wie C++. Wenn man eine Operation virtuell machen will, muss man das Schlüsselwort <code>virtual</code> für die Operation angeben. Zur Erinnerung: Man definiert eine Operation als virtuell, wenn ihre Nachkommen sie überdefinieren. Nur dann ist gewährleistet, dass die Nachfolgeversion aufgerufen wird, wenn die angegebene Operation auf einen Vorgängerverweis angewendet wird.</li>
+<li>In .NET-Umgebung kann man steuern, ob eine Methode virtuell ist oder nicht. In dieser Hinsicht ist es ähnlich wie C++. Wenn man eine Operation virtuell machen will, muss man das Schlüsselwort <code>virtual</code> für die Operation angeben. Zur Erinnerung: Man definiert eine Operation als virtuell, wenn ihre Nachkommen sie überdefinieren (können). Nur dann ist gewährleistet, dass die Nachfolgeversion aufgerufen wird, wenn die angegebene Operation auf einen Vorgängerverweis angewendet wird.</li>
 </ul>
 </div>
-<h3 id="nachkommenschaft">Nachkommenschaft<a class="headerlink" href="#nachkommenschaft" title="Permanent link">&para;</a></h3>
+<h3 id="nachkommen">Nachkommen<a class="headerlink" href="#nachkommen" title="Permanent link">&para;</a></h3>
 <p>Im nächsten Schritt gehen wir zu den Nachkommen von <code>EquipmentBase</code> über. Wenn abstrakte und virtuelle Operationen in C# überschrieben werden, muss das Schlüsselwort <code>override</code> im Nachfahren angegeben werden. Zuerst wird die Methode <code>GetPrice</code> neu definiert:</p>
 <div class="highlight"><span class="filename">HardDisk.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">()</span>
 <span class="p">{</span>
@@ -2375,7 +2371,7 @@
 <p>Die Basisklasse unserer <code>LedDisplay</code> Klasse ist gebunden, ihr Code kann nicht geändert werden, daher können wir sie nicht von <code>EquipmentBase</code>ableiten. Wir können die Funktion <code>GetAge</code> nicht löschen, diese Code-Duplizierung bleibt hier erhalten (aber nur für <code>LedDisplay</code>, die nur eine Klasse unter vielen ist!).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Mit ein wenig zusätzlicher Arbeit könnten wir diese Doppelung beseitigen. Dazu müsste eine statische Hilfsfunktion in eine der Klassen aufgenommen werden (z. B. <code>EquipmentBase</code>) , die das Produktionsjahr ermittelt und das Alter zurückgibt.  <code>EquipmentBase.GetAge</code> und <code>LedDisplay.GetAge</code> würden diese Hilfsfunktion für ihre Ausgabe verwenden.</p>
+<p>Mit ein wenig zusätzlicher Arbeit könnten wir diese Codeduplizierung beseitigen. Dazu müsste eine statische Hilfsfunktion in eine der Klassen aufgenommen werden (z. B. <code>EquipmentBase</code>) , die das Produktionsjahr ermittelt und das Alter zurückgibt.  <code>EquipmentBase.GetAge</code> und <code>LedDisplay.GetAge</code> würden diese Hilfsfunktion für ihre Ausgabe verwenden.</p>
 <p>In unserer Klasse <code>LedDisplay</code> müssen wir noch <code>GetDescription</code> schreiben:</p>
 </div>
 <div class="highlight"><span class="filename">LedDisplay.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">()</span>
@@ -2390,8 +2386,8 @@
 <span class="p">{</span>
 <span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="n">IEquipment</span><span class="w"> </span><span class="n">eq</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">equipment</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;$Description: {eq.GetDescription()}\t&quot;</span><span class="w"> </span><span class="o">+</span>
-<span class="w">            </span><span class="s">$&quot;Alter: {eq.GetAge()}\tValue: {eq.GetPrice()}&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;$Beschreibung: {eq.GetDescription()}\t&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">            </span><span class="s">$&quot;Alter: {eq.GetAge()}\tPreis: {eq.GetPrice()}&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -2403,7 +2399,7 @@
 <span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">newPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newPrice</span><span class="p">;</span>
 </code></pre></div>
 <p>Wenn wir nachdenken, werden diese <code>yearOfCreation</code> und <code>newPrice</code> Mitglieder im Vorfahren definiert, also sollte es seine Verantwortung sein, sie zu initialisieren. Fügen wir einen entsprechenden Konstruktor in <code>EquipmentBase</code>hinzu:</p>
-<div class="highlight"><span class="filename">EquipmentBase.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">EquipmentBase</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">Erstellungsjahr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">neuerPreis</span><span class="p">)</span>
+<div class="highlight"><span class="filename">EquipmentBase.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">EquipmentBase</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newPrice</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">yearOfCreation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">;</span>
 <span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">newPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newPrice</span><span class="p">;</span>
@@ -2426,7 +2422,7 @@
 <ul>
 <li><code>IEquipment</code> als Schnittstelle können wir alle Arten von Teilen einheitlich behandeln, auch solche, bei denen die Basisklasse gebunden war (mit abstrakter Basisklasse allein hätten wir dies nicht erreichen können).</li>
 <li>Durch die Einführung der abstrakten Basisklasse <code>EquipmentBase</code> konnten wir den Code, der in den verschiedenen Komponententypen gemeinsam ist, mit einer Ausnahme in einen gemeinsamen Basisklasse bringen und so Code-Duplikationen vermeiden.</li>
-<li>Durch die Einführung des abstrakten Vorgängers <code>EquipmentBase</code> können wir eine Standardimplementierung für neu eingeführte <code>IEquipment</code> Operationen (z.B. <code>GetDescripton</code>) angeben, so dass wir nicht gezwungen sind, diese in jeder <code>IEquipment</code> Implementierungsklasse anzugeben.</li>
+<li>Durch die Einführung des abstrakten Basisklasse <code>EquipmentBase</code> können wir eine Standardimplementierung für neu eingeführte Methode der Schnittstelle <code>IEquipment</code> (z.B. <code>GetDescripton</code>) angeben, so dass wir nicht gezwungen sind, diese in jeder <code>IEquipment</code> Implementierungsklasse anzugeben.</li>
 </ul>
 <p>Werfen wir abschließend noch einen Blick auf das UML-Klassendiagramm unserer Lösung:</p>
 <p><a class="glightbox" href="../images/class-diagram-final.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Ultimatives Klassendiagramm" src="../images/class-diagram-final.png" /></a></p>
@@ -2437,7 +2433,7 @@
 <h3 id="hinweis-fakultative-hausaufgabe">Hinweis - fakultative Hausaufgabe<a class="headerlink" href="#hinweis-fakultative-hausaufgabe" title="Permanent link">&para;</a></h3>
 <p>Unsere Lösung unterstützt nicht die Anzeige von komponentenspezifischen Daten (z.B. Kapazität für <code>HardDisk</code> ) während der Auflistung. Zu diesem Zweck sollte das Schreiben von Komponentendaten in eine formatierte Zeichenkette von der Klasse <code>EqipmentInventory</code> in die Komponentenklassen verlagert werden, und zwar nach den folgenden Grundsätzen:</p>
 <ul>
-<li>Sie können eine <code>GetFormattedString</code> Operation in die <code>IEquipment</code> Schnittstelle einführen, die ein Objekt vom Typ <code>string</code> zurückgibt. Alternativ kann die Operation <code>System.Object ToString()</code> außer Kraft gesetzt werden. In .NET sind alle Typen implizit von <code>System.Object</code>abgeleitet, das über eine virtuelle Operation <code>ToString()</code> verfügt.</li>
+<li>Sie können eine <code>GetFormattedString</code> Operation in die <code>IEquipment</code> Schnittstelle einführen, die ein Objekt vom Typ <code>string</code> zurückgibt. Alternativ kann die Operation <code>System.Object ToString()</code> überschrieben werden. In .NET sind alle Typen implizit von <code>System.Object</code>abgeleitet, das über eine virtuelle Operation <code>ToString()</code> verfügt.</li>
 <li>In <code>EquipmentBase</code>schreiben Sie die Formatierung der gemensamen Mitglieder (Beschreibung, Preis, Alter) in Strings.</li>
 <li>Wenn eine Komponente auch typspezifische Daten hat, dann überschreibt ihre Klasse die Funktion, die sie in eine Zeichenkette formatiert: Diese Funktion muss zuerst ihren Vorgänger aufrufen (mit dem Schlüsselwort <code>base</code> ), dann ihre eigenen formatierten Daten an sie anhängen und mit dieser Zeichenkette zurückkehren.</li>
 </ul>
@@ -2450,8 +2446,8 @@
         </path>
       </svg>
     </span>
-    <span title="2025. február 11. 18:45:15">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-11T18:45:15+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-11</span>
+    <span title="2025. február 18. 15:40:50">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-18T15:40:50+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-18</span>
     </span>
   </span>
 
