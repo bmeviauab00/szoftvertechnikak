@@ -27,11 +27,11 @@ Die für die Ausführung der Übung benötigten Werkzeuge:
 Es sollte die neueste Version von Visual Studio installiert sein. Die Versionen Community Edition, Professional und Enterprise sind ebenfalls geeignet. Die Community Edition ist kostenlos und kann von der Microsoft-Website heruntergeladen werden. Der Professional ist kostenpflichtig, steht aber auch für Studenten der Universität kostenlos zur Verfügung (auf der Website, im Rahmen des Programms Azure Dev Tools for Teaching).
 
 !!! Hinweis "Visual Studio Class Diagram support"
-    Für einige Aufgaben in dieser Übung (und auch für die erste Hausaufgabe) werden wir die Unterstützung des Visual Studio Class Designer nutzen. Visual Studio fügt die Komponente Class Designer während der Installation nicht immer hinzu. Wenn es nicht möglich ist, ein Klassendiagramm zu Ihrem Visual Studio-Projekt hinzuzufügen (weil das Klassendiagramm nicht in der Liste des Fensters aufgeführt ist, das während des Befehls Neues Element hinzufügen angezeigt wird - mehr dazu später in diesem Handbuch), müssen Sie die Komponente Klassendiagramm später installieren:
+    Für einige Aufgaben in dieser Übung (und auch für die erste Hausaufgabe) werden wir die Unterstützung des Visual Studio Class Designer nutzen. Visual Studio fügt die Komponente Class Designer während der Installation nicht immer hinzu. Falls es nicht möglich ist, ein Klassendiagramm zum Visual Studio-Projekt hinzuzufügen (weil „Class Diagram“ in der Liste des Fensters, das beim Befehl „Add New Item“ erscheint, nicht gelistet wird - mehr dazu später in dieser Anleitung), muss man die Komponente Klassendiagramm später installieren:
 
     1. Starten Sie das Visual Studio-Installationsprogramm (z. B. durch Eingabe von "Visual Studio Installer" im Windows-Startmenü).
     2. Wählen Sie in dem nun erscheinenden Fenster die Registerkarte "Individual components"
-    3. Geben Sie in das Suchfeld "class designer" ein und vergewissern Sie sich, dass "Class Designer" in der gefilterten Liste angekreuzt ist.
+    3. Geben Sie in das Suchfeld "class designer" ein und stellen Sie sicher, dass "Class Designer" in der gefilterten Liste aktiviert ist.
         
         ![Installation der Klassendiagramm-Unterstützung](images/vs-isntaller-add-class-diagram.png)
 
@@ -67,13 +67,13 @@ Die Anwendung wird in C# geschrieben. Die kompilierte Anwendung wird von der .NE
 
 Die Schritte zum Erstellen einer Projektmappe und eines Projekts in Visual Studio 2022:
 
-1. Starten Sie einen neuen "Neues Projekt erstellen" Dialogfeld, was auf zwei Arten geschehen kann
+1. Starten wir den "Neues Projekt erstellen" Dialogfeld, was auf zwei Arten geschehen kann:
     - Verwendung des Startfensters
         1. Visual Studio starten
         2. In der rechten Seitenleiste des erscheinenden Startfensters *Create new project*
     - Bereits in Visual Studio ausgeführt
         1. File / New-Project
-2. Wählen Sie im Dialogfeld "Neues Projekt erstellen" die Vorlage " *Console app* " (und **NICHT** die Vorlage " *Console app (.NET Framework)*", einschließlich der C#-Vorlage. Dass es sich um C# handelt, ist an der oberen linken Ecke des Vorlagensymbols zu erkennen. Wenn Sie es nicht in der Liste sehen, müssen Sie es suchen/filtern. Sie können danach suchen, falls Sie in der oberen Suchleiste "console" eingeben. Oder verwenden Sie die Dropdown-Felder unten: im ersten (Sprachauswahl) "C#", im dritten (Projekttypauswahl) "Console".
+2. Wählen wir im Dialogfeld "Neues Projekt erstellen" die Vorlage " *Console app* " (und **NICHT** die Vorlage " *Console app (.NET Framework)*", einschließlich der C#-Vorlage. Dass es sich um C# handelt, ist an der oberen linken Ecke des Vorlagensymbols zu erkennen. Wenn man es nicht in der Liste sieht, muss man es suchen/filtern. Man kann danach suchen, falls in der oberen Suchleiste "console" eingibt. Oder die Dropdown-Felder unten können auch verwendet werden: im ersten (Sprachauswahl) "C#", im dritten (Projekttypauswahl) "Console".
 
     ![Ein Projekt erstellen](images/vs-create-new-project-wizard.png)
 
@@ -85,9 +85,9 @@ Die Schritte zum Erstellen einer Projektmappe und eines Projekts in Visual Studi
 
 4. Next-Taste am unteren Rand des Dialogfeldes "Neues Projekt erstellen", auf der nächsten Seite:
     1. Framework: **.NET 8 (Langfristige Unterstützung)**.
-    2. Aktivieren Sie das Kontrollkästchen "Do not use top level statements" (wir werden dies gleich erklären).
+    2. Aktivieren wir das Kontrollkästchen "Do not use top level statements" (wir werden dies gleich erklären).
 
-Das Projekt erstellt auch eine neue Projektmappe, deren Struktur im Visual Studio *Solution Explorer*-Fenster angezeigt werden kann. Eine Lösung kann aus mehreren Projekten bestehen, und ein Projekt kann aus mehreren Dateien bestehen. Ein Solution ist eine Zusammenfassung der gesamten Arbeitsumgebung (sie hat die Dateierweiterung `.sln` ), während die Ausgabe eines Projekts typischerweise eine Datei `.exe` oder `.dll` ist, d. h. eine Komponente einer komplexen Anwendung/eines komplexen Systems. Projektdateierweiterung für C#-Anwendungen `.csproj`.
+Das Projekt erstellt auch eine neue Projektmappe, deren Struktur im Visual Studio *Solution Explorer*-Fenster angezeigt werden kann. Eine Projektmappe (Solution) kann aus mehreren Projekten bestehen, und ein Projekt kann aus mehreren Dateien bestehen. Ein Solution ist eine Zusammenfassung der gesamten Arbeitsumgebung (sie hat die Dateierweiterung `.sln` ), während die Ausgabe eines Projekts typischerweise eine Datei `.exe` oder `.dll` ist, d. h. eine Komponente einer komplexen Anwendung/eines komplexen Systems. Projektdateierweiterung für C#-Anwendungen `.csproj`.
 
 Der Inhalt unserer Datei `Program.cs` ist die folgende:
 
@@ -122,14 +122,14 @@ namespace HelloWorld
 
 1. Führen wir die Anwendung aus (z. B. mit der Taste ++f5++ ).
 
-    Die Struktur des Codes ist sehr ähnlich zu Java und C++. Unsere Klassen sind in Namespaces organisiert. Sie können einen Namespace mit dem Schlüsselwort `namespace` definieren. Wir können Namespaces mit dem Schlüsselwort `using` "ins Geltungsbereich bringen". z.B.:
+    Die Struktur des Codes ist sehr ähnlich zu Java und C++. Unsere Klassen sind in Namespaces organisiert. Ein Namespace kann mit dem Schlüsselwort `namespace` definiert werden. Wir können Namespaces mit dem Schlüsselwort `using` "ins Geltungsbereich bringen". z.B.:
 
     ```csharp
     using System.Collections.Generic;
     ```
 
-2. In einer C#-Konsolenanwendung wird der Eintrittspunkt der Anwendung mit einer statischen Funktion namens `Main` gegeben. Unser Klassenname kann beliebig sein, in unserem Fall hat VS eine Klasse namens `Program` erzeugt. Die Parameterliste der Funktion `Main` ist gebunden: entweder werden keine Parameter angegeben, oder es wird ein `string[]`angegeben, in dem die Befehlszeilenargumente zur Laufzeit angegeben werden.
-3. in .NET wird die Klasse `Console` aus dem Namensraum `System` verwendet, um die Standardeingabe und -ausgabe zu verarbeiten. Mit der statischen Aktion `WriteLine` können Sie eine Zeile drucken, mit `ReadKey` können Sie auf das Drücken einer Taste warten.
+2. In einer C#-Konsolenanwendung wird der Eintrittspunkt der Anwendung mit einer statischen Funktion namens `Main` gegeben. Der Name der Klasse kann beliebig gewählt werden, in unserem Fall hat VS eine Klasse namens `Program` erzeugt. Die Parameterliste der Funktion `Main` ist gebunden: entweder werden keine Parameter angegeben, oder es wird ein `string[]`angegeben, in dem die Befehlszeilenargumente zur Laufzeit angegeben werden.
+3. In .NET wird die Klasse `Console` aus dem Namensraum `System` verwendet, um die Standardeingabe und -ausgabe zu verarbeiten. Mit der statischen Aktion `WriteLine` kann man eine Zeile drucken, mit `ReadKey` kann man auf das Drücken einer Taste warten.
 
 !!! tip "Top-Level-Anweisungen, implizite und statische Verwendungen und Namespaces"
     Bei der Projekterstellung haben wir zuvor das Kontrollkästchen "Do not use top level statements" aktiviert. Falls wir dies nicht getan hätten, hätten wir in unserer Datei `Program.cs` nur eine einzige Zeile mit Inhalt gefunden:
@@ -142,7 +142,7 @@ namespace HelloWorld
     Es ist funktionell äquivalent zu dem obigen Code, der die Klasse `Program` und ihre Funktion `Main` enthält. Schauen wir uns an, was dies möglich macht (Sie können hier mehr darüber lesen <https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/top-level-statements>, beide neu in C# 10):
 
     - **Top level statements**. Die Idee ist, dass man Code direkt in einer einzigen Quelldatei schreiben kann, ohne dass Klassen/`Main` und andere Funktionsdefinitionen im Projekt vorhanden sind. In diesem Fall setzt der Compiler dies hinter den Kulissen in eine statische `Main`-Funktion einer Klasse, die wir nicht sehen. Die Motivation für seine Einführung war die Reduzierung von "Boilerplate"-Code für sehr einfache, "skriptartige" Anwendungen.
-    - **Implicit global usings**. Je nachdem, welchen Projekttyp Sie erstellt haben, werden bestimmte Basis-Namensräume automatisch im Hintergrund in allen Quelldateien verwendet (der Compiler verwendet dazu die *global using*-Direktive). Der Punkt ist: Auf diese Weise müssen Entwickler bestimmte häufig verwendete Namespaces (z.B. `System.IO`, `System.Collections.Generic`, etc.) nicht als Quelldateien verwenden.
+    - **Implicit global usings**. Je nachdem, welchen Projekttyp wir erstellt haben, werden bestimmte Basis-Namensräume automatisch im Hintergrund in allen Quelldateien verwendet (der Compiler verwendet dazu die *global using*-Direktive). Der Punkt ist: Auf diese Weise müssen Entwickler bestimmte häufig verwendete Namespaces (z.B. `System.IO`, `System.Collections.Generic`, etc.) nicht in jeder Quelldatei mit `using` importieren.
     - **Static using**. Es ist möglich, statische Klassen statt Namespaces in C# mit `using` zu verwenden, so es nicht wichtig ist, diese auszuschreiben, wenn sie verwendet werden. Ein häufiger Fall ist die Verwendung der Klasse "Console" oder "Math".
 
         ```csharp hl_lines="1 9"
@@ -208,11 +208,11 @@ Themen:
 
 ### Aufgabenbeschreibung - Equipment inventory
 
-Aufgabe: Wir haben die Aufgabe bekommen, eine Computerteilregister-Anwendung zu entwickeln. Lesen Sie mehr:
+Aufgabe: Wir haben die Aufgabe bekommen, eine Computerteilregister-Anwendung zu entwickeln. Mehr Details:
 
 - Es soll fähig sein, verschiedene Arten von Teilen zu behandeln. Anfänglich sollten die Typen `HardDisk`, `SoundCard` und `LedDisplay` unterstützt werden, aber das System sollte leicht auf neue Typen erweiterbar sein.
 - Daten der Teilen: Kaufsjahr, Alter (berechnet), Kaufspreis und aktueller Preis (berechnet), kann aber auch typspezifische Daten enthalten (z. B. Kapazität für `HardDisk` ).
-- Der aktueller Preis hängt von der Art des Teils, dem Einkaufspreis und dem Produktionsjahr des Teils ab. Je älter das Teil ist, desto höher ist der Preisnachlass, aber der Preisnachlass hängt von der Art des Teils ab.
+- Der aktueller Preis hängt von der Art des Teils, dem Einkaufspreis und dem Produktionsjahr des Teils ab. Z.B. Je älter das Teil ist, desto höher ist die Ermäßigung, aber die Ermäßigung hängt von dem Typ des Teils ab.
 - Es soll fähig sein, die speicherte Teilen aufzulisten.
 - Die Klasse `LedDisplay` muss von einer Klasse `DisplayBase` abgeleitet sein, und der Quellcode der Klasse `DisplayBase` darf nicht verändert werden. In diesem Beispiel hat dies nicht viel Sinn, aber in der Praxis treffen wir oft auf ähnliche Situationen, in denen das von uns verwendete Framework/die Plattform verlangt, dass wir von einer eingebauten Klasse ableiten. Typischerweise ist dies der Fall, wenn wir mit Fenstern, Formularen oder benutzerdefinierten Steuerelementen arbeiten: Wir müssen sie von den eingebauten Klassen des Frameworks ableiten, und wir haben den Quellcode des Frameworks nicht (oder wollen ihn zumindest nicht ändern) - z.B. Java, .NET. In unserem Beispiel simulieren wir diese Situation, indem wir eine Ableitung von `DisplayBase`verlangen.
 
@@ -222,7 +222,7 @@ Bei den ersten Gesprächen erhalten wir vom Kunden folgende Information: Ein int
 
 ### Klassendiagramm
 
-Öffnen wir die Quellcode-Lösung unseres Kunden [source code](https://github.com/bmeviauab00/lab-modellkod-kiindulo) mit dem Ausführen der nachstehenden Schritte.
+Öffnen wir die Projektmappe des [Quellcodes](https://github.com/bmeviauab00/lab-modellkod-kiindulo) unseres Kunden mit dem Ausführen der folgenden Schritte.
 
 Klonen wir das Git-Repository des ursprünglichen Projekts, das online auf GitHub verfügbar ist, in einen eigenen Ordner innerhalb des Ordners `C:\Work`: z. B.: `C:\Work\NEPTUN\lab1`. Öffnen wir in diesem neuen Ordner eine Befehlszeile oder Powershell und führen wir den folgenden git-Befehl aus:
 
@@ -230,12 +230,10 @@ Klonen wir das Git-Repository des ursprünglichen Projekts, das online auf GitHu
 git clone https://github.com/bmeviauab00/lab-modellkod-kiindulo.git
 ```
 
-!!! Hinweis "Git und GitHub"
-    Sie werden mehr über Git als Quellcode-Verwaltungssystem im Rahmen der ersten Hausaufgabe erfahren.
 
-Öffnen wir die Visual Studio Solution src/EquipmentInventory.sln im geklonten Ordner.
+Öffnen wir das Visual Studio Solution src/EquipmentInventory.sln im geklonten Ordner.
 
-Blicken wir die Dateien im Solution Explorer lurz über. Es wäre hilfreich, die Beziehungen zwischen den Klassen in einem Klassendiagramm darzustellen, um sie zu verstehen. Wir wollen ein Klassendiagramm in unser Projekt einfügen. Klicken wir im Solution Explorer mit der rechten Maustaste auf das **Projekt** (nicht auf das Solution!), und wählen wir im Popup-Menü die Option *Add/New Item*. Dann wählen wir in dem erscheinenden Fenster die Option Class Diagram, geben wir am unten im Fenster Main.cd als der Namen des Diagramms ein, und schließen wir das Fenster mit OK.
+Blicken wir die Dateien im Solution Explorer kurz über. Es wäre hilfreich, die Beziehungen zwischen den Klassen in einem Klassendiagramm darzustellen, um sie zu verstehen. Wir wollen ein Klassendiagramm in unser Projekt einfügen. Klicken wir im Solution Explorer mit der rechten Maustaste auf das **Projekt** (nicht auf das Solution!), und wählen wir im Popup-Menü die Option *Add/New Item*. Dann wählen wir in dem erscheinenden Fenster die Option Class Diagram, geben wir am unten im Fenster Main.cd als der Namen des Diagramms ein, und schließen wir das Fenster mit OK.
 
 !!! warning "Fehlende Class Diagram-Vorlage"
     Wenn das Element *Class Diagram* nicht in der Liste erscheint, ist die entsprechende Komponente von VS nicht installiert. Weitere Informationen hierzu finden Sie im Abschnitt Voraussetzungen in diesem Dokument.
@@ -261,7 +259,7 @@ Fügen wir eine generische Liste von Elementen des Typs `IEquipment` (keine Eige
 
 ![Details zur Klasse](images/class-details.png)
 
-Der Typ der Mitgliedsvariablen ist `List<IEquipment>`. Der .NET-Typ `List` ist ein dynamisch dehnbares generisches Array (wie `ArrayList`in Java). Falls wir auf die Klasse `EquipmentInventory` im Diagramm blicken, so siehen wir, dass nur der Name der Mitgliedsvariablen angezeigt wird, nicht aber der Typ. Klicken wit mit der rechten Maustaste auf den Hintergrund des Diagramms und wählen wir im *Change Members Format* Menü  die Option *Display Full Signature*. Das Diagramm zeigt dann den Typ der Mitgliedsvariablen und die vollständige Signatur der Operationen.
+Der Typ der Mitgliedsvariablen ist `List<IEquipment>`. Der .NET-Typ `List` ist ein dynamisch dehnbares generisches Array (wie `ArrayList`in Java). Falls wir auf die Klasse `EquipmentInventory` im Diagramm blicken, so sehen wir, dass nur der Name der Mitgliedsvariablen angezeigt wird, nicht aber der Typ. Klicken wir mit der rechten Maustaste auf den Hintergrund des Diagramms und wählen wir im *Change Members Format* Menü  die Option *Display Full Signature*. Das Diagramm zeigt dann den Typ der Mitgliedsvariablen und die vollständige Signatur der Operationen.
 
 ![AusrüstungInventar](images/equipmentinventory.png)
 
@@ -273,7 +271,7 @@ class EquipmentInventory
     private List<IEquipment> equipment;
 ```
 
-Einerseits freuen wir uns darüber, weil Visual Studio Round-Trip-Engineering unterstützt: **Änderungen am Modell spiegeln sich sofort im Code wider und umgekehrt**. Andererseits haben wir bereits darüber gesprochen, dass eine Klasse, die eine Sammlung von Mitgliedern einer anderen Klasse hat, sollte in das UML-Modell als eine Assoziationsbeziehung vom Typ 1-mehr zwischen den beiden Klassen erscheinen. Dies ist noch nicht der Fall in unserem Modell. Glücklicherweise kann die VS-Modellierungsschnittstelle dazu gebracht werden, diese Art von Verbindung in dieser Form anzuzeigen. Klicken wir dazu im Diagramm mit der rechten Maustaste auf die Membervariable equipment und wählen wir im Menü die Option *Show as Collection Association* aus. Die Schnittstelle `IEquipment` sollte dann nach rechts verschoben werden, damit im Diagramm genügend Platz für die Darstellung der Assoziationsverbindung und der Rolle der Verbindung bleibt:
+Einerseits freuen wir uns darüber, weil Visual Studio Round-Trip-Engineering unterstützt: **Änderungen am Modell werden sofort in den Code übernommen und umgekehrt**. Andererseits haben wir bereits darüber gesprochen, dass eine Klasse, die eine Sammlung von Mitgliedern einer anderen Klasse hat, sollte in das UML-Modell als eine Assoziationsbeziehung vom Typ 1-mehr zwischen den beiden Klassen erscheinen. Dies ist noch nicht der Fall in unserem Modell. Glücklicherweise kann die VS-Modellierungsschnittstelle dazu gebracht werden, diese Art von Verbindung in dieser Form anzuzeigen. Klicken wir dazu im Diagramm mit der rechten Maustaste auf die Membervariable equipment und wählen wir im Menü die Option *Show as Collection Association* aus. Die Schnittstelle `IEquipment` sollte dann nach rechts verschoben werden, damit im Diagramm genügend Platz für die Darstellung der Assoziationsverbindung und der Rolle der Verbindung bleibt:
 
 ![Sammlungsverband](images/collection-association.png)
 
@@ -295,7 +293,7 @@ public void ListAll()
 {
     foreach (IEquipment eq in equipment)
     {
-        Console.WriteLine($"Alter: {eq.GetAge()}\tÉrtéke: {eq.GetPrice()}");
+        Console.WriteLine($"Alter: {eq.GetAge()}\tPreis: {eq.GetPrice()}");
     }
 }
 ```
@@ -304,7 +302,7 @@ Mit dem Befehl `foreach` durchlaufen wir die Elemente. Bei der Verwendung des Be
 
 Der Operation `Console.WriteLine` wird entweder eine einfache Zeichenfolge oder, wie in unserem Fall, eine Formatierungszeichenfolge übergeben. Die Ersetzungen werden durch String-Interpolation gelöst: Die zu ersetzenden Werte müssen zwischen `{}` angegeben werden. Bei der String-Interpolation muss der String mit `$` beginnen.
 
-Schreiben wir eine Funktion mit der Bezeichnung `AddEquipment`, die ein neues Gerät zu der Menge hinzufügt:
+Schreiben wir eine Funktion mit dem Namen `AddEquipment`, die ein neues Bestandteil zu der Liste hinzufügt:
 
 ```csharp
 public void AddEquipment(IEquipment eq)
@@ -315,7 +313,7 @@ public void AddEquipment(IEquipment eq)
 
 ### Verwirklichern von IEquipment
 
-Wir haben entschieden, die Schnittstelle `IEquipment` zu verwenden, um die verschiedenen Komponententypen einheitlich zu verwalten. In unserem Fall haben sowohl die Klassen `SoundCard` als auch `HardDisk` die Methoden `GetAge()` und `GetPrice()`, aber wir können sie nicht einheitlich verwalten (z. B. in einer gemeinsamen Liste speichern). Zu diesem Zweck müssen wir beide Klassen dazu bringen, die Schnittstelle `IEquipment` zu implementieren. Ändern Sie ihr Quellcode:
+Wir haben entschieden, die Schnittstelle `IEquipment` zu verwenden, um die verschiedenen Komponententypen einheitlich zu verwalten. In unserem Fall haben sowohl die Klassen `SoundCard` als auch `HardDisk` die Methoden `GetAge()` und `GetPrice()`, aber wir können sie nicht einheitlich verwalten (z. B. in einer gemeinsamen Liste speichern). Zu diesem Zweck müssen wir beide Klassen dazu bringen, die Schnittstelle `IEquipment` zu implementieren. Ändern wir ihr Quellcode:
 
 ```csharp
 public class SoundCard : IEquipment
@@ -356,7 +354,7 @@ Arbeiten wir weiter mit der Klasse `LedDisplay`.  Der Quellcode von `DisplayBase
 public class LedDisplay : DisplayBase, IEquipment
 ```
 
-In der Klasse `LedDisplay` müssen die Funktionen der Schnittstelle bereits geschrieben sein:
+In der Klasse `LedDisplay` müssen die Funktionen der Schnittstelle bereits geschrieben werden:
 
 ```csharp
 public double GetPrice()
@@ -391,12 +389,12 @@ Bewerten wir unsere aktuelle schnittstellenbasierte Lösung.
 Eines der Hauptprobleme ist, dass unser Code mit Code-Duplikationen voll ist, die die Wartbarkeit und Erweiterbarkeit zerstören:
 
 - Die Mitglieder `yearOfCreation` und `newPrice` gelten für alle Komponententypen (mit Ausnahme des speziellen `LedDisplay`) und müssen immer mit copy-paste hinzugefügt werden, wenn ein neuer Typ eingeführt wird.
-- Die Implementierungsebene der Funktion `GetAge` ist für alle Komponententypen (mit Ausnahme der speziellen `LedDisplay`) gleich, auch mit copy-paste wird "vermehrt".
+- Die Implementierung der Funktion `GetAge` ist für alle Komponententypen (mit Ausnahme der speziellen `LedDisplay`) gleich, auch mit copy-paste wird "vermehrt".
 - Die Zeilen in den Konstruktoren, die die Mitglieder `yearOfCreation` und `newPrice` initialisieren, werden ebenfalls in jeder Klasse dupliziert.
 
-Auch wenn diese Codeduplizierung im Moment noch unbedeutend zu sein scheint, wird die Situation mit der Einführung neuer Komponententypen immer schlechter, und es ist besser, künftigen Problemen rechtzeitig vorzubeugen.
+Auch wenn diese Codeduplizierung im Moment noch unbedeutend zu sein scheint, wird die Situation mit der Einführung neuer Komponententypen immer schlechter, und es ist besser, künftigen Problemen rechtzeitig zu lösen.
 
-Ein weiteres Problem besteht darin, dass die Auflistung der Teiledaten derzeit schmerzlich unvollständig ist, da es keine Teileart gibt (nur Alter und Preis). Um den Typ anzuzeigen, muss die Schnittstelle IEquipment erweitert werden, z. B. durch Einführung einer Operation namens `GetDescription`.   Fügen wir der Schnittstelle eine Funktion `GetDescription` hinzu\!
+Ein weiteres Problem besteht darin, dass die Auflistung der Teiledaten derzeit schmerzlich unvollständig ist, da kein Typ gelistet wird (nur Alter und Preis). Um den Typ anzuzeigen, muss die Schnittstelle `IEquipment` erweitert werden, z. B. durch Einführung einer Operation namens `GetDescription`.   Fügen wir der Schnittstelle eine Funktion `GetDescription` hinzu\!
 
 ```csharp hl_lines="5"
 public interface IEquipment
@@ -407,10 +405,10 @@ public interface IEquipment
 }
 ```
 
-Dann müsste jede Klasse, die die Schnittstelle `IEquipment` implementiert, diese Methode implementieren, was für viele Klassen eine Menge Arbeit bedeutet (und für eine Mehrkomponenten-Anwendung, d.h. eine Anwendung, die aus mehreren DLLs besteht, oft gar nicht machbar ist, wenn sie nicht in den Händen eines einzigen Entwicklers liegen). Führen wir den Befehl *Build* aus, um zu überprüfen, ob Sie nach dem Hinzufügen von `GetDescription` an drei Stellen Übersetzungsfehler erhalten.
+Dann müsste jede Klasse, die die Schnittstelle `IEquipment` implementiert, diese Methode implementieren, was für viele Klassen eine Menge Arbeit bedeutet (und für eine Mehrkomponenten-Anwendung, d.h. eine Anwendung, die aus mehreren DLLs besteht, oft gar nicht machbar ist, wenn sie nicht in den Händen eines einzigen Entwicklers liegen). Führen wir den Befehl *Build* aus, um zu überprüfen, ob wir nach dem Hinzufügen von `GetDescription` an drei Stellen Übersetzungsfehler erhalten.
 
 !!! tip "Standardimplementierung in der Schnittstelle festlegen" 
-    Es ist wichtig zu wissen, dass ab C# 8 (genauer .NET oder .NET Core Runtime ist auch nötig, es ist unter .NET Framework nicht unterstützt ) **Schnittstellenoperationen eine Standardimplementierung erhalten können (default interface methods), so dass wir zur Lösung des obigen Problems keine abstrakte Klasse benötigen, aber die Schnittstelle kann keine Mitgliedsvariablen mehr haben**. Weitere Informationen finden Sie hier: [default interface methods](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-8.0/default-interface-methods).
+    Es ist wichtig zu wissen, dass ab C# 8 (genauer .NET oder .NET Core Runtime ist auch nötig, es ist unter .NET Framework nicht unterstützt ) **Schnittstellenoperationen eine Standardimplementierung erhalten können (default interface methods), so dass wir zur Lösung des obigen Problems keine abstrakte Klasse benötigen, aber die Schnittstelle kann weiterhin keine Mitgliedsvariablen haben**. Weitere Informationen finden Sie hier: [default interface methods](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-8.0/default-interface-methods).
 
     ```csharp hl_lines="5"
     public interface IEquipment
@@ -429,9 +427,9 @@ Beginnen wir mit der Umwandlung. Unser Klassendiagramm soll die aktive Registerk
 
 ![Toolbox - abstrakte Klasse](images/toolbox-abstract-class.png)
 
-Im Folgenden müssen wir die Klassen `SoundCard` und `HardDisk` von `EquipmentBase`ableiten ( `LedDisplay`hat bereits einen anderen Vorfahren, so dass wir dies dort nicht tun können). Wählen wir dazu die Verknüpfung *Inheritance* in der *Toolbox* und ziehen wir dann eine Linie von der Kindklasse zur Basisklasse sowohl für `SoundCard` als auch für `HardDisk`. 
+Im Folgenden müssen wir die Klassen `SoundCard` und `HardDisk` von `EquipmentBase`ableiten (`LedDisplay`hat bereits einen anderen Vorfahren, so dass wir dies dort nicht tun können). Wählen wir dazu die Verknüpfung *Inheritance* in der *Toolbox* und ziehen wir dann eine Linie von der Kindklasse zur Basisklasse sowohl für `SoundCard` als auch für `HardDisk`. 
 
-Im nächsten Schritt ändern wir den Code so, dass `HardDisk` und `SoundCard` die Schnittstelle `IEquipment` nicht separat implementieren, sondern ihr gemeinsamer Vorfahre `EquipmentBase` dies tut. Ändern wir dazu die Klasse `EquipmentBase` so, dass sie die Schnittstelle implementiert (entweder durch Einfügen eines inheritance Beziehung von `EquipmentBase`zu `IEquipment`im Diagramm oder durch Ändern des Quellcodes von `EquipmentBase` ). Entfernen wir die Implementierung von `IEquipment` aus den Klassen `HardDisk` und `SoundCard` (der Vorgänger implementiert sie bereits).
+Im nächsten Schritt ändern wir den Code so, dass `HardDisk` und `SoundCard` die Schnittstelle `IEquipment` nicht separat implementieren, sondern ihr gemeinsamer Vorfahre `EquipmentBase` dies tut. Ändern wir dazu die Klasse `EquipmentBase` so, dass sie die Schnittstelle implementiert (entweder durch Einfügen eines inheritance Beziehung von `EquipmentBase` zu `IEquipment` im Diagramm oder durch Ändern des Quellcodes von `EquipmentBase` ). Entfernen wir die Implementierung von `IEquipment` aus den Klassen `HardDisk` und `SoundCard` (der Vorgänger implementiert sie bereits).
 
 Die relevanten Teile unseres Diagramms und des Quellcodes sehen dann wie folgt aus:
 
@@ -454,9 +452,9 @@ Unser Code kann aus mehreren Gründen noch nicht kompiliert werden.  `EquipmentB
 - Die Mitglieder `newPrice` und `yearOfCreation` sind in den Klassen `HardDisk` und `SoundCard` dupliziert: verschieben (nicht kopieren\!) wir sie in den gemeinsamen Vorfahren `EquipmentBase` und geben wir `protected` Sichtbarkeit.
 - Die Operation `GetAge` wird in den Klassen `HardDisk` und `SoundCard` dupliziert, löschen wir die Implementierung aus diesen Klassen und verschieben wir sie in die Klasse `EquipmentBase`. 
 - Die Operation `GetPrice` wird als abstrakte Operation in den Vorgänger aufgenommen. Dies ist eine bewusste Design-Entscheidung, so dass wir nachkommende Klassen zwingen, diesen Vorgang trotzdem zu überschreiben.
-- Für `GetDescription` gilt das Gegenteil: Wir definieren es als virtuell (und nicht abstrakt), d. h. wir geben eine Implementierung im Vorgänger an. Auf diese Weise sind die Nachkommen nicht gezwungen, den Vorgang außer Kraft zu setzen.
+- Für `GetDescription` gilt das Gegenteil: Wir definieren es als virtuell (und nicht abstrakt), d. h. sie erhält bereits in der Basisklasse eine Implementierung. Dadurch sind die abgeleiteten Klassen nicht dazu gezwungen, die Methode zu überschreiben.
 
-Der entsprechende Code lautet:
+Der entsprechende Code:
 
 ```csharp
 public abstract class EquipmentBase : IEquipment
@@ -473,18 +471,18 @@ public abstract class EquipmentBase : IEquipment
 
     public virtual string GetDescription()
     {
-        rückgabe "EquipmentBase";
+        return "EquipmentBase";
     }
 }
 ```
 
 !!! tip "Einige zusätzliche Gedanken zum Codefragment:"
 
-    - Bei abstrakten Klassen muss das Schlüsselwort "abstrakt" vor das Wort "Klasse" geschrieben werden.
+    - Bei abstrakten Klassen muss das Schlüsselwort `abstract` vor das Wort `class` geschrieben werden.
     - Für abstrakte Operationen muss das Schlüsselwort `abstract` angegeben werden.
-    - In .NET-Umgebung kann man steuern, ob ein Vorgang virtuell ist oder nicht. In dieser Hinsicht ist es ähnlich wie C++. Wenn man eine Operation virtuell machen will, muss man das Schlüsselwort `virtual` für die Operation angeben. Zur Erinnerung: Man definiert eine Operation als virtuell, wenn ihre Nachkommen sie überdefinieren. Nur dann ist gewährleistet, dass die Nachfolgeversion aufgerufen wird, wenn die angegebene Operation auf einen Vorgängerverweis angewendet wird.
+    - In .NET-Umgebung kann man steuern, ob eine Methode virtuell ist oder nicht. In dieser Hinsicht ist es ähnlich wie C++. Wenn man eine Operation virtuell machen will, muss man das Schlüsselwort `virtual` für die Operation angeben. Zur Erinnerung: Man definiert eine Operation als virtuell, wenn ihre Nachkommen sie überdefinieren (können). Nur dann ist gewährleistet, dass die Nachfolgeversion aufgerufen wird, wenn die angegebene Operation auf einen Vorgängerverweis angewendet wird.
 
-### Nachkommenschaft
+### Nachkommen
 
 Im nächsten Schritt gehen wir zu den Nachkommen von `EquipmentBase` über. Wenn abstrakte und virtuelle Operationen in C# überschrieben werden, muss das Schlüsselwort `override` im Nachfahren angegeben werden. Zuerst wird die Methode `GetPrice` neu definiert:
 
@@ -529,7 +527,7 @@ Man könnte sich fragen, warum die Entwickler der Sprache C# beschlossen haben, 
 Die Basisklasse unserer `LedDisplay` Klasse ist gebunden, ihr Code kann nicht geändert werden, daher können wir sie nicht von `EquipmentBase`ableiten. Wir können die Funktion `GetAge` nicht löschen, diese Code-Duplizierung bleibt hier erhalten (aber nur für `LedDisplay`, die nur eine Klasse unter vielen ist\!).
 
 !!! note
-    Mit ein wenig zusätzlicher Arbeit könnten wir diese Doppelung beseitigen. Dazu müsste eine statische Hilfsfunktion in eine der Klassen aufgenommen werden (z. B. `EquipmentBase`) , die das Produktionsjahr ermittelt und das Alter zurückgibt.  `EquipmentBase.GetAge` und `LedDisplay.GetAge` würden diese Hilfsfunktion für ihre Ausgabe verwenden.
+    Mit ein wenig zusätzlicher Arbeit könnten wir diese Codeduplizierung beseitigen. Dazu müsste eine statische Hilfsfunktion in eine der Klassen aufgenommen werden (z. B. `EquipmentBase`) , die das Produktionsjahr ermittelt und das Alter zurückgibt.  `EquipmentBase.GetAge` und `LedDisplay.GetAge` würden diese Hilfsfunktion für ihre Ausgabe verwenden.
 
     In unserer Klasse `LedDisplay` müssen wir noch `GetDescription` schreiben:
 
@@ -551,8 +549,8 @@ public void ListAll()
 {
     foreach (IEquipment eq in equipment)
     {
-        Console.WriteLine("$Description: {eq.GetDescription()}\t" +
-            $"Alter: {eq.GetAge()}\tValue: {eq.GetPrice()}");
+        Console.WriteLine("$Beschreibung: {eq.GetDescription()}\t" +
+            $"Alter: {eq.GetAge()}\tPreis: {eq.GetPrice()}");
     }
 }
 ```
@@ -573,7 +571,7 @@ Ein Blick auf unseren Code zeigt, dass es eine weitere Duplikation gibt. Alle Na
 Wenn wir nachdenken, werden diese `yearOfCreation` und `newPrice` Mitglieder im Vorfahren definiert, also sollte es seine Verantwortung sein, sie zu initialisieren. Fügen wir einen entsprechenden Konstruktor in `EquipmentBase`hinzu:
 
 ```csharp title="EquipmentBase.cs"
-public EquipmentBase(int Erstellungsjahr, int neuerPreis)
+public EquipmentBase(int yearOfCreation, int newPrice)
 {
     this.yearOfCreation = yearOfCreation;
     this.newPrice = newPrice;
@@ -603,7 +601,7 @@ Durch die Verwendung einer Kombination aus Schnittstelle und abstrakter Basiskla
 
 - `IEquipment` als Schnittstelle können wir alle Arten von Teilen einheitlich behandeln, auch solche, bei denen die Basisklasse gebunden war (mit abstrakter Basisklasse allein hätten wir dies nicht erreichen können).
 - Durch die Einführung der abstrakten Basisklasse `EquipmentBase` konnten wir den Code, der in den verschiedenen Komponententypen gemeinsam ist, mit einer Ausnahme in einen gemeinsamen Basisklasse bringen und so Code-Duplikationen vermeiden.
-- Durch die Einführung des abstrakten Vorgängers `EquipmentBase` können wir eine Standardimplementierung für neu eingeführte `IEquipment` Operationen (z.B. `GetDescripton`) angeben, so dass wir nicht gezwungen sind, diese in jeder `IEquipment` Implementierungsklasse anzugeben.
+- Durch die Einführung des abstrakten Basisklasse `EquipmentBase` können wir eine Standardimplementierung für neu eingeführte Methode der Schnittstelle `IEquipment` (z.B. `GetDescripton`) angeben, so dass wir nicht gezwungen sind, diese in jeder `IEquipment` Implementierungsklasse anzugeben.
 
 Werfen wir abschließend noch einen Blick auf das UML-Klassendiagramm unserer Lösung:
 
@@ -616,6 +614,6 @@ Werfen wir abschließend noch einen Blick auf das UML-Klassendiagramm unserer L�
 
 Unsere Lösung unterstützt nicht die Anzeige von komponentenspezifischen Daten (z.B. Kapazität für `HardDisk` ) während der Auflistung. Zu diesem Zweck sollte das Schreiben von Komponentendaten in eine formatierte Zeichenkette von der Klasse `EqipmentInventory` in die Komponentenklassen verlagert werden, und zwar nach den folgenden Grundsätzen:
 
-- Sie können eine `GetFormattedString` Operation in die `IEquipment` Schnittstelle einführen, die ein Objekt vom Typ `string` zurückgibt. Alternativ kann die Operation `System.Object ToString()` außer Kraft gesetzt werden. In .NET sind alle Typen implizit von `System.Object`abgeleitet, das über eine virtuelle Operation `ToString()` verfügt.
+- Sie können eine `GetFormattedString` Operation in die `IEquipment` Schnittstelle einführen, die ein Objekt vom Typ `string` zurückgibt. Alternativ kann die Operation `System.Object ToString()` überschrieben werden. In .NET sind alle Typen implizit von `System.Object`abgeleitet, das über eine virtuelle Operation `ToString()` verfügt.
 - In `EquipmentBase`schreiben Sie die Formatierung der gemensamen Mitglieder (Beschreibung, Preis, Alter) in Strings.
 - Wenn eine Komponente auch typspezifische Daten hat, dann überschreibt ihre Klasse die Funktion, die sie in eine Zeichenkette formatiert: Diese Funktion muss zuerst ihren Vorgänger aufrufen (mit dem Schlüsselwort `base` ), dann ihre eigenen formatierten Daten an sie anhängen und mit dieser Zeichenkette zurückkehren.
