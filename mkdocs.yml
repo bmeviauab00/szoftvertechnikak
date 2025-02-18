@@ -124,6 +124,17 @@ nav:
       - labor/5-mvvm/index_eng.md
       - labor/6-tervezesi-mintak/index_eng.md      
       - labor/7-adatkezeles/index_eng.md 
+  - "Homework":
+      - 'Guide': hazi/index_eng.md
+      - '1. HW - The relationship between the model and the code': hazi/meghirdetes-elott_eng.md
+      - '2. HW - Language tools': hazi/meghirdetes-elott_eng.md
+      - '3. HW - Implementing the user interface': hazi/meghirdetes-elott_eng.md
+      - '4. HW - Developing multithreaded applications': hazi/meghirdetes-elott_eng.md
+      - '5. HW - MVVM': hazi/meghirdetes-elott_eng.md
+      - '6. HW - Design patterns': hazi/meghirdetes-elott_eng.md
+      - 'IMSc HW - Liftsystem': hazi/meghirdetes-elott_eng.md
+      - 'IMSc HW - MVVM recipies': hazi/meghirdetes-elott_eng.md
+      - 'Development environment': hazi/fejlesztokornyezet/index_eng.md      
   - "Deutschkurs-Labore":
       - labor/1-model-es-kod-kapcsolata/index_ger.md
       - labor/2-nyelvi-eszkozok/index_ger.md
