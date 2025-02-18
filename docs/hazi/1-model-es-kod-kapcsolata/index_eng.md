@@ -8,12 +8,12 @@ authors: bzolka
 
 There is no lecture associated with this task. The theoretical and practical background for the exercises is provided by the guided laboratory practice "1. The Relationship Between the Model and the Code":
 
-- This laboratory practice is/was conducted by the students with the guidance of the instructor in a supervised manner.
+- This laboratory practice is/was completed by the students with the guidance of the instructor in a supervised manner.
 - A guide accompanies the laboratory practice, detailing the theoretical background and explaining the steps of the solution: [1. Relationship between the model and the code](../../labor/1-model-es-kod-kapcsolata/index_eng.md)
 
-Based on this, the tasks of this independent practice can be completed with the help of the brief guidance following the task description.
+Based on this, the tasks of this homework can be completed with the help of the brief guidance following the task description.
 
-Objectives of the Independent Practice:
+Objectives of the homework:
 
 - Developing a simple .NET application and practicing C# basics
 - Demonstrating the relationship between UML and code
@@ -118,7 +118,7 @@ For reading the text file, use the [`StreamReader`](https://learn.microsoft.com/
 
 In our `Main` function, read the file line by line, create `Song` objects, and store them in a dynamically growing array, `List<Song>`. Be mindful that elements in the file separated by `;` may have whitespace characters (spaces, tabs) before or after them—these should be removed!
 
-The following code presents a possible solution, with details explained in the code comments. This is the first independent task of the semester, and for most students, their first .NET/C# application. Therefore, we provide a sample solution here, but more experienced students are encouraged to attempt it independently.
+The following code presents a possible solution, with details explained in the code comments. This is the first homework of the semester, and for most students, their first .NET/C# application. Therefore, we provide a sample solution here, but more experienced students are encouraged to attempt it independently.
 
 ??? example "Solution"
 
