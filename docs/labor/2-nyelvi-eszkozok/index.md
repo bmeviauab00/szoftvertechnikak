@@ -319,7 +319,7 @@ A következő példánkban lehetővé tesszük, hogy a korábban létrehozott `P
     A  fenti kódrészlet számos fontos szabályt demonstrál:
 
     - A validációs logika általában megelőzi az értesítési logikát.
-    - Az értesítési logika jellegétől függ, hogy az értékadás előtt, vagy után futtatjuk le (ebben az esetben, mivel a "changing" szó egy folyamatban lévő dologra utal, az értesítés megelőzi az értékadást, a bekövetkezést múlt idő jelezni: "changed")
+    - Az értesítési logika jellegétől függ, hogy az értékadás előtt, vagy után futtatjuk le (ebben az esetben, mivel a "changing" szó egy folyamatban lévő dologra utal, az értesítés megelőzi az értékadást, a bekövetkezést múlt idő jelezné: "changed")
     - Fel kell készülnünk rá, hogy a delegate típusú tagváltozóhoz még senki nem rendelt értéket (nincs egy subscriber/előfizető sem). Ilyen esetekben a meghívásuk kivételt okozna, ezért meghívás előtt mindig ellenőrizni kell, hogy a tagváltozó értéke `null`-e.
     - Az esemény elsütésekor a `null` vizsgálatot és az esemény elsütést elegánsabb, tömörebb, és szálbiztosabb formában is meg tudjuk tenni a "`?.`" null-conditional operátorral (C# 6-tól):
 
