@@ -22,4 +22,4 @@ Az, hogy az előellenőrző milyen mélységben ellenőrzi a megoldást, a házi
     ![GitHub actions kimenet](images/eloellenorzo-github-actions.png)
 
 5. Itt a legfontosabb talán a *"Run tests"* lépés.
-Ha valamelyik lépés sikertelen, pipa helyett piros x van a csomópont elején, és a csomópontot kibontva a teszt kimenete utal a hiba okára. Az első házi feladat esetében az "Error Message"-re, ill. az "Assert"-re érdemes szövegesen (control+F) keresni a kimenetben, ennek a környékén szokott lenni hivatkozás a hiba okára.
+Ha valamelyik lépés sikertelen, pipa helyett piros x van a csomópont elején, és a csomópontot kibontva a teszt kimenete utal a hiba okára. Az első házi feladat esetében az "Error Message"-re, ill. az "Assert"-re érdemes szövegesen (control+F) keresni a kimenetben, ennek a környékén szokott lenni hivatkozás a hiba okára. A hibaüzenetek angolul jelennek meg.
