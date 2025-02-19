@@ -5,7 +5,7 @@ The exact requirements for independent/homework assignments can be found on [AUT
 
 ## The Assignments
 
-- [1st HW - Model and code relationship](../hazi/meghirdetes-elott_eng.md)
+- [1st HW - Model and code relationship](../hazi/1-model-es-kod-kapcsolata/index_eng.md)
 - [2nd HW - Language tools](../hazi/meghirdetes-elott_eng.md)
 - [3rd HW - User interface design](../hazi/meghirdetes-elott_eng.md)
 - [4th HW - Multithreaded application development](../hazi/meghirdetes-elott_eng.md)
