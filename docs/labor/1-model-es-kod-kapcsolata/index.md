@@ -330,14 +330,14 @@ public class HardDisk : IEquipment
 
 Ezt követően a `SoundCard` és `HardDisk` osztályban implementálnunk kell az `IEquipment` interfészben levő metódusokat. Azt tapasztaljuk, hogy ezzel nincs most teendők, a `GetPrice` és `GetAge` függvények már meg vannak írva mindkét helyen.
 
-Próbaképpen a `Program.cs` fájlban található `Main` függvényünkben hozzunk létre egy `EquipmentInventory` objektumot, töltsük fel `HardDisk` és `SoundCard` objektumokkal, majd listázzuk a késztelet a konzolra. Ammennyiben nem 2021 az aktuális év, az alábbi soroknál a 2021-es évet írjuk át az aktuális évre, a 2020-at pedig ennél eggyel kisebb számra!
+Próbaképpen a `Program.cs` fájlban található `Main` függvényünkben hozzunk létre egy `EquipmentInventory` objektumot, töltsük fel `HardDisk` és `SoundCard` objektumokkal, majd listázzuk a késztelet a konzolra. Ammennyiben nem 2025 az aktuális év, az alábbi soroknál a 2025-ös évet írjuk át az aktuális évre, a 2024-et pedig ennél eggyel kisebb számra!
 
 ```csharp
 static void Main( string[] args )
 {
     EquipmentInventory ei = new EquipmentInventory();
 
-    ei.AddEquipment(new HardDisk(2023, 30000, 80));
+    ei.AddEquipment(new HardDisk(2025, 30000, 80));
     ei.AddEquipment(new HardDisk(2024, 25000, 120));
     ei.AddEquipment(new HardDisk(2024, 25000, 250));
 
