@@ -2,7 +2,7 @@
 authors: bzolka
 ---
 
-# 1. HW - Relationship between the model and the code
+# 1st HW - Relationship between the model and the code
 
 ## Introduction
 
