@@ -437,6 +437,38 @@ Tasks are the following:
         * Introduce a `StringBuilder` field in the class to handle string operations efficiently. This is significantly more efficient than concatenating strings using `"+"`.
         * The `ReportBuilder` user should not write directly to the console but should provide formatted strings to `ReportBuilder` using built-in delegate types (in this case, `Action` is not suitable). Use lambda expressions for testing as well.
 
+## Task 7 (Optional task) – Using Built-in `Func`/`Action` Generic Delegate Types
+
+Completing this task is not mandatory, but it is highly recommended, as it is core material that may appear on exams. It was covered in lectures but not in lab sessions.
+
+### Task
+
+Extend the `JediCouncil` class.
+
+- Create a property named `Count` with an `int` return type that, when queried, returns the number of Jedi currently in the council. Ensure that this value can only be read (it should not be set).
+
+    !!! tip "Tip"
+        The `JediCouncil` class contains a member variable named `members`, which has a `Count` property. The solution should build upon this.
+
+- Create a function named `CountIf` that also counts the number of council members, but only considers those that meet a specified condition. The function should return an `int` and take a delegate as a parameter, which defines the condition for counting the Jedi (meaning `CountIf` must have a parameter).
+
+    !!! warning "Delegate Type"
+        The delegate type must be one of the built-in generic `Action` / `Func` delegate types (custom delegate types and the built-in `Predicate` type are NOT allowed).
+
+        Because of this, you CANNOT use the built-in `FindAll` method on the list, as the delegate type we use would not be compatible with the parameter expected by `FindAll`. Instead, iterate through the members using a `foreach` loop!
+
+- Demonstrate the functionality of both the property and the function in a dedicated testing function, which should be annotated with `[Description("Task7")]`. This function should contain only relevant test code and should not include unrelated subtasks. For filling the `JediCouncil`, call the helper function introduced in the previous task. Call this function from the `Main` function of the `Program` class.
+
+    !!! danger "Important"
+        The `[Description("Task7")]` attribute should be placed above ONLY ONE function.
+
+### Solution
+
+- The `Count` property should have only a `get` accessor, without a `set` accessor, making it a read-only property.
+- The implementation of the `CountIf` function is similar to Task 4. The difference is that `CountIf` does not return the matching council members but only their count.
+    - The `CountIf` function should take a filtering function as a parameter, with the signature `bool FunctionName(Jedi jedi)`.
+
+
 ## Submission
 
 Checklist:
