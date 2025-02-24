@@ -1754,9 +1754,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#i-generalisation-specialisation-link" class="md-nav__link">
+  <a href="#i-generalization-and-specialization-relationship" class="md-nav__link">
     <span class="md-ellipsis">
-      I. Generalisation, specialisation link
+      I. Generalization and Specialization Relationship
     </span>
   </a>
   
@@ -1773,18 +1773,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#a-building-a-01-multiplicity-association-relation" class="md-nav__link">
+  <a href="#a-mapping-of-an-association-with-01-multiplicity" class="md-nav__link">
     <span class="md-ellipsis">
-      A) Building a 0..1 multiplicity association relation
+      A) Mapping of an association with 0..1 multiplicity
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#b-derivation-for-an-association-relation-with-multiplicity-0n" class="md-nav__link">
+  <a href="#b-mapping-in-the-case-of-a-0n-multiplicity-association" class="md-nav__link">
     <span class="md-ellipsis">
-      B) Derivation for an association relation with multiplicity 0..n
+      B) Mapping in the case of a 0..n multiplicity association
     </span>
   </a>
   
@@ -1796,18 +1796,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#iii-aggregation-inclusion-part-part-relationship" class="md-nav__link">
+  <a href="#iii-aggregation-containment-part-whole-relationship" class="md-nav__link">
     <span class="md-ellipsis">
-      III. Aggregation (inclusion, part-part relationship)
+      III. Aggregation (containment, part-Whole relationship)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#iv-dependency-dependency" class="md-nav__link">
+  <a href="#iv-dependency" class="md-nav__link">
     <span class="md-ellipsis">
-      IV. Dependency (dependency)
+      IV. Dependency
     </span>
   </a>
   
@@ -1842,21 +1842,21 @@
 
 
 <h1 id="theory-of-the-relationship-between-the-uml-class-diagram-and-code">Theory of the relationship between the UML class diagram and code<a class="headerlink" href="#theory-of-the-relationship-between-the-uml-class-diagram-and-code" title="Permanent link">&para;</a></h1>
-<p>Last modified date: 2022.10.15
-Edited by Zoltán Benedek</p>
-<p>The chapter does not contain an exercise, it introduces the related theory to students.</p>
+<p>Last modified date: 2025.02.24<br />
+Prepared by Zoltán Benedek</p>
+<p>The chapter does not contain any exercise, it introduces the related theory to students.</p>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>The chapter gives a brief, sketchy overview of the basics of mapping between the UML class diagram and the source code, as a review of what has already been learned in Software Engineering in the previous semester.</p>
-<p>Today, there are many software development methodologies. They rely on, or require, modelling to varying degrees in the construction of the software. However, there is no doubt that even the most agile, "code-centric" followers of the most "code-centric" approaches find it useful to visually model the more important/complex components and structural elements of software, because of the greater expressive power of the graphical nature of the software.</p>
-<p>Let's say you have to build an application or a specific module of an application. Following our chosen methodology, we will cover the steps of requirements analysis, analysis, design, implementation and testing, probably in several iterations. Let's now focus on the design phase. This will result in a detailed design of the system (at least parts of it), resulting in a detailed/implementation plan or model. At this level, certain elements of the model (e.g. classes) can be explicitly mapped to elements of the programming language chosen to implement the subsystem. If you have a good development/modeling tool, it can generate the class skeleton (e.g. C++, Java, C# classes). Our task is then to fill in the root of the methods in the generated code.</p>
+<p>The chapter provides a brief, outline-based overview of the basics of mapping between UML class diagrams and source code, as a review of what was already learned in the previous semester in the Software Technology course.</p>
+<p>Today, there are many software development methodologies. These methodologies vary in the extent to which they rely on or require modeling during software development. However, it is undeniable that even the followers of the most agile, "code-centric" approaches acknowledge the usefulness of visually modeling key/complex software components and structural elements due to the greater expressiveness of graphical representations.</p>
+<p>Let’s assume our task is to develop an application or a specific module of it. Following our chosen methodology, we will go through the steps of requirements analysis, analysis, design, implementation and testing, probably in multiple iterations. Let's now focus on the design phase. This will result in a detailed design of the system (or at least parts of it), resulting in a detailed/implementation plan and model. At this level, certain elements of the model (e.g. classes) can be explicitly mapped to elements of the programming language chosen for implementing the subsystem. If we have a good development/modeling tool, it can generate class skeletons (e.g. C++, Java, C# classes). Our task then is to fill in the method bodies in the generated code.</p>
 <h3 id="concepts">Concepts<a class="headerlink" href="#concepts" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Forward engineering: generating code from a model. From the detailed plan, the modelling tool can generate the program framework. The advantage is that less coding is needed.</li>
-<li>Reverse engineering: generating a model from code. It helps you understand the code you already have.</li>
-<li>Round-trip engineering: a combination of the previous two. The point is: the model and the code are in sync all the time. If you change the code, the change appears in the model, if you change the model, the change appears in the code.</li>
+<li>Forward engineering: generating code from a model. The modeling tool can generate a program skeleton from the detailed design. The advantage is that less manual coding is needed.</li>
+<li>Reverse engineering: generating a model from existing code. This helps to understand already written code.</li>
+<li>Round-trip engineering: a combined application of the previous two. The key idea is keeping the model and the code synchronized at all times. Changes in the code are reflected in the model, and changes in the model are reflected in the code.</li>
 </ul>
-<p>In order to take advantage of code generation, you need to be aware of the following: you need to know how a given modelling tool maps each model element to elements of a given programming language. The mapping depends on the language and the modelling tool, there is no universal standard. The mappings are usually self-explanatory, there is not usually too much variation.</p>
-<p>In the following we will look at how each model element of the UML class diagram is mapped to source code, and vice versa.</p>
+<p>In order to take advantage of code generation, we must understand how the modeling tool maps specific model elements to elements of the chosen programming language. The mapping depends on both the programming language and the modeling tool, there is no universal standard for it. The mappings are usually intuitive, with little significant variation.</p>
+<p>In the following sections, we will examine how the different elements of a UML class diagram are mapped to source code and vice versa.</p>
 <h2 id="mapping-of-classes">Mapping of classes<a class="headerlink" href="#mapping-of-classes" title="Permanent link">&para;</a></h2>
 <p>It's trivially simple:</p>
 <ul>
@@ -1865,8 +1865,8 @@ Edited by Zoltán Benedek</p>
 <li>UML operation -&gt; operation/method</li>
 </ul>
 <p>An example:</p>
-<p>Shape class</p>
-<p>, which corresponds to the following code in C#:</p>
+<p><a class="glightbox" href="../images/shapeclass.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Shape class" src="../images/shapeclass.png" /></a></p>
+<p>which corresponds to the following C# code:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Shape</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
@@ -1875,15 +1875,15 @@ Edited by Zoltán Benedek</p>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Draw</span><span class="p">(</span><span class="n">Graphics</span><span class="w"> </span><span class="n">gr</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>In the context of visibility, mapping:</p>
+<p>Regarding visibility, the mapping is:</p>
 <ul>
 <li>+: public</li>
 <li>-: private</li>
 <li>#: protected</li>
 </ul>
-<p>A more exciting question is how the relationships between classes are mapped, and this is discussed in the following chapters.</p>
-<h3 id="i-generalisation-specialisation-link">I. Generalisation, specialisation link<a class="headerlink" href="#i-generalisation-specialisation-link" title="Permanent link">&para;</a></h3>
-<p>Generalisation, specialisation</p>
+<p>A more interesting topic is how relationships between classes are mapped, which is explained in the following chapters.</p>
+<h3 id="i-generalization-and-specialization-relationship">I. Generalization and Specialization Relationship<a class="headerlink" href="#i-generalization-and-specialization-relationship" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../images/alt-spec.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Generalization, Specialization" src="../images/alt-spec.png" /></a></p>
 <p>C# mapping:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Base</span>
 <span class="p">{</span><span class="w"> </span><span class="p">};</span>
@@ -1891,11 +1891,11 @@ Edited by Zoltán Benedek</p>
 <span class="p">{</span><span class="w"> </span><span class="p">};</span>
 </code></pre></div>
 <h3 id="ii-association">II. Association<a class="headerlink" href="#ii-association" title="Permanent link">&para;</a></h3>
-<p>This relationship type always implies communication between objects of classes. A department uses the services of another department.</p>
-<h4 id="a-building-a-01-multiplicity-association-relation">A) Building a 0..1 multiplicity association relation<a class="headerlink" href="#a-building-a-01-multiplicity-association-relation" title="Permanent link">&para;</a></h4>
-<p>In this case, the client class contains a pointer or reference through which it can use the services of the target class (call its operations).
+<p>This type of relationship always represents communication between the objects of classes. A given class utilizes the services of another class.</p>
+<h4 id="a-mapping-of-an-association-with-01-multiplicity">A) Mapping of an association with 0..1 multiplicity<a class="headerlink" href="#a-mapping-of-an-association-with-01-multiplicity" title="Permanent link">&para;</a></h4>
+<p>In this case, the client class contains a pointer or reference through which it can use the services of the target class (it can call its operations).
 Example:</p>
-<p>Generalisation, specialisation, single contact</p>
+<p><a class="glightbox" href="../images/association-single.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Generalization, Specialization, Single Relationship" src="../images/association-single.png" /></a></p>
 <p>C++ mapping:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Application</span>
 <span class="p">{</span>
@@ -1916,32 +1916,32 @@ Example:</p>
 <span class="p">{</span>
 <span class="p">};</span>
 </code></pre></div>
-<p>In both cases, we see that <strong>a pointer or reference member variable is added to the client class, whose type is the same as the type of the target class referenced in the association, and the name of the member variable is the role given to the target class for the association relationship</strong>, which in the example is .
-The mapping is logical, since the client can access the target object from any of its operations and call its methods through this pointer/reference.</p>
-<p>Comment. Sometimes the association is two-way, with each class using the services of the other. Often, instead of putting an arrow at both ends of the association, we leave it at both ends. In such a two-way relationship, the role must be specified at both ends of the relationship. During the mapping, we add a pointer/reference to each class to the other.</p>
-<h4 id="b-derivation-for-an-association-relation-with-multiplicity-0n">B) Derivation for an association relation with multiplicity 0..n<a class="headerlink" href="#b-derivation-for-an-association-relation-with-multiplicity-0n" title="Permanent link">&para;</a></h4>
-<p>In this case, a client-side object is related to several target-side objects. Example:</p>
-<p>Generalisation, specialisation, multiple links</p>
-<p>One <code>WindowManager</code> object manages several <code>Window</code> objects. <strong>The mapping takes some collection of objects in the target class into the client class.</strong> This can be an array, list, etc., whichever best suits our purpose in the situation.</p>
-<p>A mapping to the above example in C++:</p>
+<p>In both cases, we see that <strong>a pointer or reference member variable is added to the client class, whose type matches the type of the target class referenced in the association, and the name of the member variable corresponds to the role assigned to the target class in the association</strong>, which in this example is <code>windowManager</code>.
+The mapping is logical, since the client can access the target object from any of its methods and invoke its methods through this pointer/reference.</p>
+<p>Note. The association may be bidirectional, meaning both classes use each other's services. In such cases, instead of putting an arrow at both ends of the association, the arrows at both ends are often omitted. In a bidirectional relationship, the role must be specified at both ends. When mapping, both classes must contain a pointer/reference to the other.</p>
+<h4 id="b-mapping-in-the-case-of-a-0n-multiplicity-association">B) Mapping in the case of a 0..n multiplicity association<a class="headerlink" href="#b-mapping-in-the-case-of-a-0n-multiplicity-association" title="Permanent link">&para;</a></h4>
+<p>In this case, a client-side object is associated with multiple target-side objects. Example:</p>
+<p><a class="glightbox" href="../images/association-multiple.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Generalization, specialization, multiple association" src="../images/association-multiple.png" /></a></p>
+<p>One <code>WindowManager</code> object manages multiple <code>Window</code> objects. <strong>In the mapping process, the client class contains some kind of collection of objects from the target class.</strong> This can be an array, list, etc., depending on what is most suitable for our specific situation.</p>
+<p>A possible mapping for the above example in C++:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">WindowManager</span>
 <span class="p">{</span>
 <span class="w">  </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Window</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">windows</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
-<p>Or in C#:</p>
+<p>And in C#:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">WindowManager</span>
 <span class="p">{</span>
 <span class="w">  </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Window</span><span class="o">&gt;</span><span class="w"> </span><span class="n">windows</span><span class="p">;</span><span class="w"> </span>
 <span class="p">};</span>
 </code></pre></div>
-<h3 id="iii-aggregation-inclusion-part-part-relationship">III. Aggregation (inclusion, part-part relationship)<a class="headerlink" href="#iii-aggregation-inclusion-part-part-relationship" title="Permanent link">&para;</a></h3>
-<p>In general, the mapping is exactly the same as for association.</p>
-<h3 id="iv-dependency-dependency">IV. Dependency (dependency)<a class="headerlink" href="#iv-dependency-dependency" title="Permanent link">&para;</a></h3>
-<p>It represents the loosest link between departments. Example:</p>
-<p>Dependency</p>
-<p>Meaning: the <code>Window</code> class depends on the <code>Graphics</code> class. That is, if the <code>Graphics</code> class is changed, the Window class may also need to be changed.
-This connection type is used when the parameter list/return value of the methods of the class at the beginning of the dependency connection contains the class at the end of the connection. In the example, the <code>onDraw</code> operation of the <code>Window</code> class receives an object of the <code>Graphics</code> class as a parameter, and thus depends on it, since it can call the methods of the <code>Graphics</code> class in the method's trunk. If, for example, the name of the <code>FillRect</code> method of the <code>Graphics</code> class is changed, this change must be reflected in the call location, i.e., in the trunk of the <code>onDraw</code> method of the Window class.</p>
+<h3 id="iii-aggregation-containment-part-whole-relationship">III. Aggregation (containment, part-Whole relationship)<a class="headerlink" href="#iii-aggregation-containment-part-whole-relationship" title="Permanent link">&para;</a></h3>
+<p>Typically, the mapping is done in exactly the same way as for associations.</p>
+<h3 id="iv-dependency">IV. Dependency<a class="headerlink" href="#iv-dependency" title="Permanent link">&para;</a></h3>
+<p>This represents the loosest relationship between classes. Example:</p>
+<p><a class="glightbox" href="../images/dependency.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Dependency" src="../images/dependency.png" /></a></p>
+<p>Its meaning: the <code>Window</code> class depends on the <code>Graphics</code> class. In other words, if the <code>Graphics</code> class changes, it might be necessary to modify the <code>Window</code> class as well.
+This type of relationship is typically used when the methods of the class at the beginning of the dependency relationship include the class at the end of the relationship in their parameter list or return type. In the example, the <code>onDraw</code> operation of the <code>Window</code> class receives an object of the <code>Graphics</code> class as a parameter, making it dependent on it because the method body can call methods from the <code>Graphics</code> class. For example, if we change the name of the <code>FillRect</code> method in the <code>Graphics</code> class, this change must be reflected where the method is called, i.e., in the body of the <code>Window</code> class's <code>onDraw</code> method as well.</p>
 <hr>
 <div class="md-source-file">
   <span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg
@@ -1951,8 +1951,8 @@ This connection type is used when the parameter list/return value of the methods
         </path>
       </svg>
     </span>
-    <span title="2024. január 25. 21:35:52">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-25T21:35:52+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-25</span>
+    <span title="2025. február 24. 15:12:27">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-24T15:12:27+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-24</span>
     </span>
   </span>
 
@@ -1969,6 +1969,8 @@ This connection type is used when the parameter list/return value of the methods
     <span>Szerzők</span>
     <nav><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
         <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&v=4?size=72" alt="@Zoltán Benedek">
+      </a><a href="https://github.com/szucscintialia" target="_blank" rel="noopener noreferrer" class="md-author" title="@Cintia Szücs">
+        <img src="https://avatars.githubusercontent.com/u/26093637?v=4?size=72" alt="@Cintia Szücs">
       </a></nav>      
   </span>
 </div>
