@@ -28,7 +28,7 @@ A description of the required development environment can be found [here](../fej
 
 The initial environment for the homework and the submission of the solution are managed using Git, GitHub, and GitHub Classroom. Main steps:
 
-1. Create a repository for yourself using GitHub Classroom. The invitation URL can be found on Moodle (on the course homepage under the "*GitHub classroom links for homework*" link).
+1. Create a repository for yourself using GitHub Classroom. The invitation URL can be found in the homework notification (sent via Teams or Neptun).
 2. Clone the newly created repository. This will contain the expected structure for the solution.
 3. After completing the tasks, commit and push your solution.
 

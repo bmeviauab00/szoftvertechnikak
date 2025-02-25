@@ -59,4 +59,4 @@ For tasks related to XAML/WinUI technologies (starting from the 3rd homework tas
 
 ### Information for MacBook and Linux Users
 
-The course instructor of the Hungarian course (Zoltán Benedek, https://www.aut.bme.hu/Staff/bzolka) can be contacted via email to request BME Cloud access.
+The lecturer (Dr. Mohammad Saleem, msaleem@aut.bme.hu) can be contacted via email to request BME Cloud access.
