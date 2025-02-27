@@ -1,27 +1,27 @@
 # Theory of the relationship between the UML class diagram and code
 
-Last modified date: 2022.10.15
-Edited by Zoltán Benedek
+Last modified date: 2025.02.24  
+Prepared by Zoltán Benedek
 
-The chapter does not contain an exercise, it introduces the related theory to students.
+The chapter does not contain any exercise, it introduces the related theory to students.
 
 ## Introduction
 
-The chapter gives a brief, sketchy overview of the basics of mapping between the UML class diagram and the source code, as a review of what has already been learned in Software Engineering in the previous semester.
+The chapter provides a brief, outline-based overview of the basics of mapping between UML class diagrams and source code, as a review of what was already learned in the previous semester in the Software Technology course.
 
-Today, there are many software development methodologies. They rely on, or require, modelling to varying degrees in the construction of the software. However, there is no doubt that even the most agile, "code-centric" followers of the most "code-centric" approaches find it useful to visually model the more important/complex components and structural elements of software, because of the greater expressive power of the graphical nature of the software.
+Today, there are many software development methodologies. These methodologies vary in the extent to which they rely on or require modeling during software development. However, it is undeniable that even the followers of the most agile, "code-centric" approaches acknowledge the usefulness of visually modeling key/complex software components and structural elements due to the greater expressiveness of graphical representations.
 
-Let's say you have to build an application or a specific module of an application. Following our chosen methodology, we will cover the steps of requirements analysis, analysis, design, implementation and testing, probably in several iterations. Let's now focus on the design phase. This will result in a detailed design of the system (at least parts of it), resulting in a detailed/implementation plan or model. At this level, certain elements of the model (e.g. classes) can be explicitly mapped to elements of the programming language chosen to implement the subsystem. If you have a good development/modeling tool, it can generate the class skeleton (e.g. C++, Java, C# classes). Our task is then to fill in the root of the methods in the generated code.
+Let’s assume our task is to develop an application or a specific module of it. Following our chosen methodology, we will go through the steps of requirements analysis, analysis, design, implementation and testing, probably in multiple iterations. Let's now focus on the design phase. This will result in a detailed design of the system (or at least parts of it), resulting in a detailed/implementation plan and model. At this level, certain elements of the model (e.g. classes) can be explicitly mapped to elements of the programming language chosen for implementing the subsystem. If we have a good development/modeling tool, it can generate class skeletons (e.g. C++, Java, C# classes). Our task then is to fill in the method bodies in the generated code.
 
 ### Concepts
 
-- Forward engineering: generating code from a model. From the detailed plan, the modelling tool can generate the program framework. The advantage is that less coding is needed.
-- Reverse engineering: generating a model from code. It helps you understand the code you already have.
-- Round-trip engineering: a combination of the previous two. The point is: the model and the code are in sync all the time. If you change the code, the change appears in the model, if you change the model, the change appears in the code.
+- Forward engineering: generating code from a model. The modeling tool can generate a program skeleton from the detailed design. The advantage is that less manual coding is needed.
+- Reverse engineering: generating a model from existing code. This helps to understand already written code.
+- Round-trip engineering: a combined application of the previous two. The key idea is keeping the model and the code synchronized at all times. Changes in the code are reflected in the model, and changes in the model are reflected in the code.
 
-In order to take advantage of code generation, you need to be aware of the following: you need to know how a given modelling tool maps each model element to elements of a given programming language. The mapping depends on the language and the modelling tool, there is no universal standard. The mappings are usually self-explanatory, there is not usually too much variation.
+In order to take advantage of code generation, we must understand how the modeling tool maps specific model elements to elements of the chosen programming language. The mapping depends on both the programming language and the modeling tool, there is no universal standard for it. The mappings are usually intuitive, with little significant variation.
 
-In the following we will look at how each model element of the UML class diagram is mapped to source code, and vice versa.
+In the following sections, we will examine how the different elements of a UML class diagram are mapped to source code and vice versa.
 
 ## Mapping of classes
 
@@ -33,9 +33,9 @@ It's trivially simple:
 
 An example:
 
-Shape class
+![Shape class](images/shapeclass.png)
 
-, which corresponds to the following code in C#:
+which corresponds to the following C# code:
 
 ```csharp
 public abstract class Shape
@@ -47,17 +47,17 @@ public abstract class Shape
 }
 ```
 
-In the context of visibility, mapping:
+Regarding visibility, the mapping is:
 
 - +: public
 - -: private
 - \#: protected
 
-A more exciting question is how the relationships between classes are mapped, and this is discussed in the following chapters.
+A more interesting topic is how relationships between classes are mapped, which is explained in the following chapters.
 
-### I. Generalisation, specialisation link
+### I. Generalization and Specialization Relationship
 
-Generalisation, specialisation
+![Generalization, Specialization](images/alt-spec.png)
 
 C# mapping:
 
@@ -70,14 +70,14 @@ public class Derived : Base
 
 ### II. Association
 
-This relationship type always implies communication between objects of classes. A department uses the services of another department.
+This type of relationship always represents communication between the objects of classes. A given class utilizes the services of another class.
 
-#### A) Building a 0..1 multiplicity association relation
+#### A) Mapping of an association with 0..1 multiplicity
 
-In this case, the client class contains a pointer or reference through which it can use the services of the target class (call its operations).
+In this case, the client class contains a pointer or reference through which it can use the services of the target class (it can call its operations).
 Example:
 
-Generalisation, specialisation, single contact
+![Generalization, Specialization, Single Relationship](images/association-single.png)
 
 C++ mapping:
 
@@ -105,20 +105,20 @@ class WindowManager
 };
 ```
 
-In both cases, we see that **a pointer or reference member variable is added to the client class, whose type is the same as the type of the target class referenced in the association, and the name of the member variable is the role given to the target class for the association relationship**, which in the example is .
-The mapping is logical, since the client can access the target object from any of its operations and call its methods through this pointer/reference.
+In both cases, we see that **a pointer or reference member variable is added to the client class, whose type matches the type of the target class referenced in the association, and the name of the member variable corresponds to the role assigned to the target class in the association**, which in this example is `windowManager`.
+The mapping is logical, since the client can access the target object from any of its methods and invoke its methods through this pointer/reference.
 
-Comment. Sometimes the association is two-way, with each class using the services of the other. Often, instead of putting an arrow at both ends of the association, we leave it at both ends. In such a two-way relationship, the role must be specified at both ends of the relationship. During the mapping, we add a pointer/reference to each class to the other.
+Note. The association may be bidirectional, meaning both classes use each other's services. In such cases, instead of putting an arrow at both ends of the association, the arrows at both ends are often omitted. In a bidirectional relationship, the role must be specified at both ends. When mapping, both classes must contain a pointer/reference to the other.
 
-#### B) Derivation for an association relation with multiplicity 0..n
+#### B) Mapping in the case of a 0..n multiplicity association
 
-In this case, a client-side object is related to several target-side objects. Example:
+In this case, a client-side object is associated with multiple target-side objects. Example:
 
-Generalisation, specialisation, multiple links
+![Generalization, specialization, multiple association](images/association-multiple.png)
 
-One `WindowManager` object manages several `Window` objects. **The mapping takes some collection of objects in the target class into the client class.** This can be an array, list, etc., whichever best suits our purpose in the situation.
+One `WindowManager` object manages multiple `Window` objects. **In the mapping process, the client class contains some kind of collection of objects from the target class.** This can be an array, list, etc., depending on what is most suitable for our specific situation.
 
-A mapping to the above example in C++:
+A possible mapping for the above example in C++:
 
 ```cpp
 class WindowManager
@@ -127,7 +127,7 @@ class WindowManager
 };
 ```
 
-Or in C#:
+And in C#:
 
 ```csharp
 class WindowManager
@@ -136,15 +136,15 @@ class WindowManager
 };
 ```
 
-### III. Aggregation (inclusion, part-part relationship)
+### III. Aggregation (containment, part-Whole relationship)
 
-In general, the mapping is exactly the same as for association.
+Typically, the mapping is done in exactly the same way as for associations.
 
-### IV. Dependency (dependency)
+### IV. Dependency
 
-It represents the loosest link between departments. Example:
+This represents the loosest relationship between classes. Example:
 
-Dependency
+![Dependency](images/dependency.png)
 
-Meaning: the `Window` class depends on the `Graphics` class. That is, if the `Graphics` class is changed, the Window class may also need to be changed.
-This connection type is used when the parameter list/return value of the methods of the class at the beginning of the dependency connection contains the class at the end of the connection. In the example, the `onDraw` operation of the `Window` class receives an object of the `Graphics` class as a parameter, and thus depends on it, since it can call the methods of the `Graphics` class in the method's trunk. If, for example, the name of the `FillRect` method of the `Graphics` class is changed, this change must be reflected in the call location, i.e., in the trunk of the `onDraw` method of the Window class.
+Its meaning: the `Window` class depends on the `Graphics` class. In other words, if the `Graphics` class changes, it might be necessary to modify the `Window` class as well.
+This type of relationship is typically used when the methods of the class at the beginning of the dependency relationship include the class at the end of the relationship in their parameter list or return type. In the example, the `onDraw` operation of the `Window` class receives an object of the `Graphics` class as a parameter, making it dependent on it because the method body can call methods from the `Graphics` class. For example, if we change the name of the `FillRect` method in the `Graphics` class, this change must be reflected where the method is called, i.e., in the body of the `Window` class's `onDraw` method as well.

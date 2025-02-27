@@ -2,17 +2,17 @@
 
 The chapter does not contain exercises; instead, it introduces the related theory for the students.
 
-## Abstract class
+## Abstract class 
 
 The concepts have already been introduced within the context of earlier subjects, so now we will only summarize the most important points and focus on their relevance to C#.
 
-Abstract class: a class that cannot be instantiated.  In C#, the abstract keyword must be used in the class definition, for example:
+Abstract class: a class that cannot be instantiated.  In C#, the `abstract` keyword must be used in the class definition, for example:
 
 ```csharp
 abstract class Shape { ... }
 ```
 
-Abstract classes can have abstract methods, for which no body is provided. The abstract keyword must also be used for these methods:
+Abstract classes can have abstract methods, where the body is not provided, and the `abstract` keyword must also be used for these:
 
 ```csharp
 ...
@@ -20,18 +20,18 @@ abstract void Draw();
 ...
 ```
 
-The use of abstract classes can serve two purposes:
+There are two purposes for using abstract classes:
 
-- In a class hierarchy, common code can be moved into an abstract base class, allowing derived classes to inherit this shared functionality. This helps avoid code duplication.
-- Abstract base classes enable a unified way to reference and manage derived classes, such as in heterogeneous collections.
+- In a class hierarchy, we can place common code for the descendants in an abstract common base class, thus avoiding code duplication.
+- We can uniformly handle descendants by referring to them as abstract ancestors (e.g., heterogeneous collections).
 
-In the .NET environment, just like in Java, a class can only have one direct base class (single inheritance).
+In the .NET environment, just like in Java, a class can only have one base class (single inheritance).
 
 ## Interface
 
-An interface is nothing more than a set of operations. In fact, it corresponds to an abstract class whose all operations are abstract.
+An interface is nothing more than a set of operations. Essentially, it corresponds to an abstract class where all the methods are abstract.
 
-In C# you can define an interface with the `interface` keyword:
+In C#, we can define an interface using the `interface` keyword:
 
 ```csharp
 public interface ISerializable 
@@ -55,22 +55,22 @@ public class Rect : Shape, ISerializable, IComparable
 }
 ```
 
-In this example, the `Rect` class inherits from the `Shape` class and implements the `ISerializable` and `IComparable` interfaces (the base class must always be specified first). In a class that implements an interface, all of its operations must be implemented, meaning their bodies must be written (except for the rare case where they are implemented with an abstract method).
-The primary purpose of using interfaces is to enable uniform handling of all classes that implement the interface (e.g., in heterogeneous collections). One consequence of this is that **interfaces allow the creation of widely reusable classes and functions**. For example, it is possible to write a universal `Sort` function that can be used with any class that implements the `IComparable` interface.
+In this example, the `Rect` class inherits from the `Shape` class and implements the `ISerializable` and `IComparable` interfaces (the base class must always be specified first). The class implementing the interface must implement all of its operations, meaning it must define the body of the methods (except in the rare case when they are implemented with an abstract method).
+The main purpose of using interfaces is to enable uniform handling of all classes that implement the interface (e.g., in heterogeneous collections). A consequence of this is that **interfaces allow us to write classes and functions that can be widely used**. For example, it is possible to write a universal `Sort` function that can be used with any class that implements the `IComparable` interface.
 
-Other benefits of using the interface include:
+Other advantages of using the interface include:
 
-- The client only needs to know the interface of the an object to be able to use the server object easily.
-- **If the client only uses the server through the interface, so the internal implementation of the server may change, the client does not need to be modified (nor recompiled)**. Accordingly, the interface is also a contract between the server and the client: as long as the server guarantees support for the interface, the client does not need to change.
+- The client only needs to be familiar with the server object’s interface, making it simple to use the server.
+- **If the client uses the server through the interface only, the server's internal implementation can change, and the client doesn’t need to be modified (or even recompiled)**. Accordingly, the interface acts as a contract between the server and the client: as long as the server guarantees support for the interface, the client does not need to change.
 
 ## Comparison of abstract base class and interface
 
-The advantage of an abstract base class over an interface is that it allows providing default implementations for operations and adding member variables.
+The advantage of an abstract base class over an interface is that we can provide default implementations for the methods and add member variables.
 
-The advantage of interfaces over abstract base classes is that a class can implement any number of interfaces, whereas it can only inherit from only one base class.
+The advantage of interfaces over abstract base classes is that a class can implement any number of interfaces, while it can have at most one base class.
 
-There is another consequence of using interfaces, which can cause inconvenience in some cases. **When a new operation is added to the interface, all implementing classes must also be extended, otherwise the code will not compile. This is not the case when extending an abstract base class: if you add a new operation, you have the option to add it as a virtual function, and thus give it a default implementation in the derived class**. In this case, the descendants can redefine this as they wish, they are not forced to do so. This feature of interfaces can be particularly inconvenient for class libraries/framework systems. Suppose a new version of .NET is released and a new operation is added to one of the interfaces of the framework. All implementing classes in all applications must then be modified, otherwise the code will not compile. There are two ways to avoid this. Either by using a legacy class, or, if an interface should be extended, by introducing a new interface that already contains the new operation. Although the first approach (using a base class) may seem more appealing at first glance, it also has a drawback: if we derive our class from a framework base class during application development, our class cannot have any other base class, and this can often impose a painful limitation.
+There is another consequence of using interfaces, which can cause inconvenience in some cases. **When a new operation is added to the interface, all implementing classes must also be extended, otherwise the code will not compile. In contrast, when we extend an abstract base class, this is not the case: if we add a new method, we can add it as a virtual function and provide a default implementation in the base class**. In this case, the derived classes can override it if necessary, but they are not forced to. This property of interfaces can be particularly inconvenient in class libraries/frameworks. Let’s assume that a new version of the .NET framework adds a new method to one of its interfaces. Then, in all applications, all implementing classes must be modified, or the code will not compile. There are two ways to avoid this. Either by using a base class, or if we must extend an interface, by introducing a new interface that includes the new method. Although the first approach (using a base class) may seem more attractive at first, it also has a downside: if we derive our class from a framework base class during application development, our class cannot have any other base class, and this can be a painful restriction in many cases.
 
-It's worth knowing that starting from C# 8 (or .NET or .NET Core runtime, not supported under .NET Framework), **interface operations can be given a default implementation (default interface methods), so no abstract class is needed to solve the above problem, but an interface still can't have member variables**. More information here: default interface methods.
+It's worth to know that starting from C# 8 (and with .NET or .NET Core runtime, as it is not supported under .NET Framework), **interface methods can have default implementations  (default interface methods), so no abstract class is needed to solve the above problem, but an interfaces still cannot have member variables**. More information here: [default interface methods](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-8.0/default-interface-methods).
 
-Since using both interfaces and abstract classes can have negative consequences, in many cases we can get the most out of our solution by using both (i.e., our code can be easily extended with no or minimal code duplication).
+Since both interfaces and abstract base classes can have negative consequences, in many cases, we can get the most out of our solution by using both together (i.e., our code will be easily extensible without or with minimal code duplication).
