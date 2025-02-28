@@ -1,0 +1,2486 @@
+
+<!doctype html>
+<html lang="hu" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Benedek Zoltán">
+      
+      
+        <link rel="canonical" href="https://bmeviauab00.github.io/szoftvertechnikak/2024/hazi/2-nyelvi-eszkozok/index_eng/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.9">
+    
+    
+      
+        <title>2nd Homework - language tools - BMEVIAUAB00 Szoftvertechnikák</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.f2e4d321.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../extra-material-theme.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="aut" data-md-color-primary="aut" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2nd-homework-language-tools" class="md-skip">
+          Kihagyás
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Élőfej">
+    <a href="../../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-header__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
+      
+  <img src="../../../img/logo-bme-aut.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BMEVIAUAB00 Szoftvertechnikák
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2<sup>nd</sup> Homework - language tools
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="aut" data-md-color-primary="aut" data-md-color-accent="red"  aria-label="Váltás sötét témára"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Váltás sötét témára" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="indigo"  aria-label="Váltás világos témára"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Váltás világos témára" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Keresés" placeholder="Keresés" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Keresés">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Törlés" aria-label="Törlés" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Keresés inicializálása
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bmeviauab00/szoftvertechnikak
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Lapok" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Szoftvertechnikák (2024-től)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../labor/1-model-es-kod-kapcsolata/" class="md-tabs__link">
+          
+  
+  Laborok
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Önálló/házi feladatok
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../labor/1-model-es-kod-kapcsolata/index_eng/" class="md-tabs__link">
+          
+  
+  English course labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../index_eng/" class="md-tabs__link">
+          
+  
+  Homework
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../labor/1-model-es-kod-kapcsolata/index_ger/" class="md-tabs__link">
+          
+  
+  Deutschkurs-Labore
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../meghirdetes-elott_ger/" class="md-tabs__link">
+          
+  
+  Hausaufgaben
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigáció" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-nav__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
+      
+  <img src="../../../img/logo-bme-aut.png" alt="logo">
+
+    </a>
+    BMEVIAUAB00 Szoftvertechnikák
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bmeviauab00/szoftvertechnikak
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Szoftvertechnikák (2024-től)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Laborok
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Laborok
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/1-model-es-kod-kapcsolata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. A modell és a kód kapcsolata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/2-nyelvi-eszkozok/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Nyelvi eszközök
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/3-felhasznaloi-felulet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. A felhasználói felület kialakítása
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/4-tobbszalu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Többszálú alkalmazások készítése
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/5-mvvm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/6-tervezesi-mintak/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Tervezési minták (kiterjeszthetőség)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/7-adatkezeles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Adatkezelés
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Önálló/házi feladatok
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Önálló/házi feladatok
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Útmutató
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-model-es-kod-kapcsolata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. HF - A modell és a kód kapcsolata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. HF - Nyelvi eszközök
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. HF - Felhasználói felület kialakítása
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. HF - Többszálú alkalmazások fejlesztése
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. HF - MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. HF - Tervezési minták
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IMSc HF - Liftrendszer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IMSc HF - MVVM receptek
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fejlesztokornyezet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fejlesztőkörnyezet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    English course labs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            English course labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/1-model-es-kod-kapcsolata/index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. The relationship between the model and the code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/2-nyelvi-eszkozok/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/3-felhasznaloi-felulet/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/4-tobbszalu/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/5-mvvm/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/6-tervezesi-mintak/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/7-adatkezeles/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Homework
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Homework
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-model-es-kod-kapcsolata/index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. HW - The relationship between the model and the code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. HW - Language tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. HW - Implementing the user interface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. HW - Developing multithreaded applications
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. HW - MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. HW - Design patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IMSc HW - Liftsystem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IMSc HW - MVVM recipies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fejlesztokornyezet/index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Development environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Deutschkurs-Labore
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Deutschkurs-Labore
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/1-model-es-kod-kapcsolata/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Beziehung zwischen dem Modell und dem Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/2-nyelvi-eszkozok/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Sprachliche Mittel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/3-felhasznaloi-felulet/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Entwurf der Benutzeroberfläche
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/4-tobbszalu/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Erstellung von mehrfädigen Anwendungen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/5-mvvm/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/6-tervezesi-mintak/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Entwurfsmuster (Erweiterbarkeit)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/7-adatkezeles/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Datenverwaltung
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hausaufgaben
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Hausaufgaben
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Beziehung zwischen dem Modell und dem Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Sprachliche Mittel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-felhasznaloi-felulet-kialakitasa/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Entwurf der Benutzeroberfläche
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-tobbszalu-alkalmazasok-fejlesztese/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Entwicklung von Multithreading-Anwendungen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-mvvm/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Entwurfsmuster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fejlesztokornyezet/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entwicklungsumgebung
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tartalomjegyzék
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submission-process-pre-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Submission Process &amp; Pre-evaluation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-1-the-phantom-menace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 1 – The Phantom Menace
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Task 1 – The Phantom Menace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-2-attack-of-the-clones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 2 – Attack of the Clones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Task 2 – Attack of the Clones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-3-revenge-of-the-sith" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 3 – Revenge of the Sith
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Task 3 – Revenge of the Sith">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-4-delegates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 4 – Delegates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Task 4 – Delegates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-5-lambda-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 5 – Lambda Expressions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-6-using-actionfunc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 6 – Using Action/Func
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-7-optional-task-using-built-in-funcaction-generic-delegate-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 7 (Optional task) – Using Built-in Func/Action Generic Delegate Types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Task 7 (Optional task) – Using Built-in Func/Action Generic Delegate Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submission" class="md-nav__link">
+    <span class="md-ellipsis">
+      Submission
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/bmeviauab00/szoftvertechnikak/edit/master/docs/hazi/2-nyelvi-eszkozok/index_eng.md" title="Oldal szerkesztése" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="2nd-homework-language-tools">2<sup>nd</sup> Homework - language tools<a class="headerlink" href="#2nd-homework-language-tools" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>This independent assignment builds on the content presented in the <a href="../../labor/2-nyelvi-eszkozok/index_eng.md">2<sup>nd</sup> Lab - Language Tools</a> lab session.</p>
+<p>Based on the above, the tasks in this independent exercise can be completed with the guidance provided after the task descriptions.</p>
+<p>Goals of the independent exercise:</p>
+<ul>
+<li>Practicing the use of properties</li>
+<li>Applying delegates and events</li>
+<li>Practicing the use of .NET attributes</li>
+<li>Utilizing basic collection types</li>
+<li>Practicing lambda expressions</li>
+</ul>
+<p>A description of the necessary development environment can be found <a href="../../fejlesztokornyezet/index_eng/">here</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Usage of C# 12 (and newer) language features</p>
+<p>When solving the homework, C# 12 and newer language features (e.g., primary constructor) must not be used, as the verification system running on GitHub does not yet support them.</p>
+</div>
+<h2 id="submission-process-pre-evaluation">Submission Process &amp; Pre-evaluation<a class="headerlink" href="#submission-process-pre-evaluation" title="Permanent link">&para;</a></h2>
+<p>The submission process is the same as for the first homework (detailed instructions can be found at the usual location, see <a href="../../hf-folyamat/index_eng/">Homework Workflow and Using Git/GitHub</a>):</p>
+<ol>
+<li>Use GitHub Classroom to create a repository for yourself. The invitation URL can be found in the notification message or post (see Teams or Neptun). It is important to use the correct invitation URL corresponding to this homework assignment (each homework has a different URL).</li>
+<li>Clone the newly created repository. This will contain the expected structure of the solution.</li>
+<li>After completing the tasks, commit and push your solution.</li>
+</ol>
+<p>The pre-evaluation process also works as usual. Detailed instructions: <a href="../../eloellenorzes-ertekeles/index_eng/">Pre-evaluation and official grading of the homework</a>.</p>
+<h2 id="task-1-the-phantom-menace">Task 1 – The Phantom Menace<a class="headerlink" href="#task-1-the-phantom-menace" title="Permanent link">&para;</a></h2>
+<h3 id="task">Task<a class="headerlink" href="#task" title="Permanent link">&para;</a></h3>
+<p>As is widely known, Jedi knights derive their power from small life forms living in their cells, called midi-chlorians. The highest midi-chlorian level ever recorded (above 20,000) was measured in Anakin Skywalker.</p>
+<p>Create a class named <code>Jedi</code>, which has a <code>string</code> type property <code>Name</code> and an <code>int</code> type property <code>MidiChlorianCount</code>.
+For the latter, ensure that the <code>MidiChlorianCount</code> value cannot be set to 35 or lower. If someone attempts this, the class must throw an exception.
+For validation, choose the simplest and cleanest solution: use a simple <code>if</code> statement in the property setter and throw an exception. The <code>if</code> statement should not have an <code>else</code> branch, and there is no need to use <code>return</code>.</p>
+<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">&para;</a></h2>
+<p>The task can be solved in a manner similar to <a href="../../labor/2-nyelvi-eszkozok/index_eng.md">Lab 2, Task 1</a>.
+In the <code>MidiChlorianCount</code> property setter, throw an exception if an invalid value is provided. This can be done using the following statement:</p>
+<div class="highlight"><pre><span></span><code><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">ArgumentException</span><span class="p">(</span><span class="s">&quot;You are not a true Jedi!&quot;</span><span class="p">);</span>
+</code></pre></div>
+<h2 id="task-2-attack-of-the-clones">Task 2 – Attack of the Clones<a class="headerlink" href="#task-2-attack-of-the-clones" title="Permanent link">&para;</a></h2>
+<h3 id="task_1">Task<a class="headerlink" href="#task_1" title="Permanent link">&para;</a></h3>
+<p>Extend the class created in Task 1 with attributes so that when a <code>Jedi</code> object is serialized into an XML file using the <code>XmlSerializer</code> class, its properties appear as XML attributes in Hungarian.
+Then, write a function that serializes an instance of the <code>Jedi</code> class into a text file and then reads it back into a new object (effectively cloning the original object).</p>
+<div class="admonition tip">
+<p class="admonition-title">XML Serializer Attributes</p>
+<p>Place the XML serialization attributes above the properties, not the member variables!</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">The Jedi Class Must Be Public</p>
+<p>The XML serializer can only process public classes, so ensure that the <code>Jedi</code> class is public:
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Jedi</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...}</span>
+</code></pre></div></p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Important</p>
+<p>Write the save and load demonstration code in a dedicated function, and annotate it with the <code>[Description("Task2")]</code> C# attribute (this should be placed in the line before the function declaration).
+The saved/loaded object should be implemented as a local variable within this function.
+The class/function name can be anything (e.g., it can be placed inside the <code>Program</code> class).
+The function should contain only the relevant code and should not include unrelated subtasks.
+Call this function from the <code>Main</code> function of the <code>Program</code> class.
+To use the above attribute, you need to include the <code>System.ComponentModel</code> namespace.</p>
+<p>Key requirements:</p>
+<ul>
+<li>The attribute should be placed above a function, NOT a class.</li>
+<li>The attribute should be applied to the function that performs testing, not the one implementing the logic.</li>
+<li><strong>The attribute should only appear above one function.</strong></li>
+</ul>
+</div>
+<h3 id="solution_1">Solution<a class="headerlink" href="#solution_1" title="Permanent link">&para;</a></h3>
+<p>The solution follows the approach of <a href="../../labor/2-nyelvi-eszkozok/index_eng.md">Lab 2, Task 4</a>.
+We provide the following guidance:</p>
+<ul>
+<li>
+<p>After serialization, the XML file should look like this:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;Jedi</span><span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;...&quot;</span><span class="w"> </span><span class="na">Nev=</span><span class="s">&quot;Obi-Wan&quot;</span><span class="w"> </span><span class="na">MidiChlorianSzam=</span><span class="s">&quot;15000&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>It is essential that each Jedi appears as a <code>Jedi</code> XML element, their name as <code>Nev</code>, and their midi-chlorian count as <code>MidiChlorianSzam</code> XML attributes.</p>
+</li>
+<li>
+<p>Since we did not examine example code for deserializing objects during the lab, we provide one here:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">serializer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XmlSerializer</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">Jedi</span><span class="p">));</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileStream</span><span class="p">(</span><span class="s">&quot;jedi.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">FileMode</span><span class="p">.</span><span class="n">Open</span><span class="p">);</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Jedi</span><span class="p">)</span><span class="n">serializer</span><span class="p">.</span><span class="n">Deserialize</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span>
+<span class="n">stream</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+</code></pre></div>
+<p>The above code first creates a serializer (<code>serializer</code>), which is later used for reading the data.
+The reading operation is performed from a file named <code>jedi.txt</code>, which is opened in the second line for reading (note that if we intended to write to it, we would have needed to specify <code>FileMode.Create</code>).</p>
+</li>
+</ul>
+<h2 id="task-3-revenge-of-the-sith">Task 3 – Revenge of the Sith<a class="headerlink" href="#task-3-revenge-of-the-sith" title="Permanent link">&para;</a></h2>
+<h3 id="task_2">Task<a class="headerlink" href="#task_2" title="Permanent link">&para;</a></h3>
+<p>The Jedi Council has been experiencing high turnover recently.
+To track changes more easily, create a class that keeps a record of council members and sends text notifications about any changes via an event!
+The list should be modified with two functions.
+The <code>Add</code> function should register a new Jedi knight in the council, while the <code>Remove</code> function should remove the <strong>last</strong> added council member.
+A separate notification should indicate when the council becomes empty (use the same event as for other changes, but with a different message).</p>
+<p>The council members (<code>members</code>) should be stored in a <code>List&lt;Jedi&gt;</code> member variable. The <code>Add</code> function should append new elements to this list, while the <code>Remove</code> function should always remove the <strong>last</strong> added member using the generic list's <code>RemoveAt</code> method (the index of the last element can be determined from the list length, which is provided by the <code>Count</code> property).</p>
+<p>Notifications should be handled via a C# event. The event delegate type should take a simple <code>string</code> as a parameter. Adding a new member, removing individual members, and removing the last member should each trigger a different message. Fire the event directly within the <code>Add</code> and <code>Remove</code> methods (do not introduce a helper function for this).</p>
+<p>Do not use a built-in delegate type for the event; instead, define a custom one.</p>
+<div class="admonition danger">
+<p class="admonition-title">Important</p>
+<p>The code for creating and testing the Jedi Council object (subscribing to its C# event, calling <code>Add</code> and <code>Remove</code>) should be placed in a single dedicated function, which should be annotated with the <code>[Description("Task3")]</code> C# attribute.
+  The class/function name can be anything.
+  The function should contain only code relevant to this task and should not include other subtasks.
+  Call this function from the <code>Main</code> function of the <code>Program</code> class.</p>
+<p>Key requirements:</p>
+<ul>
+<li>The attribute should be placed above a function, NOT a class.</li>
+<li>The attribute should be applied to the function that performs testing, not the one implementing the logic.</li>
+<li>The attribute should only appear above a single function.</li>
+</ul>
+</div>
+<h3 id="solution_2">Solution<a class="headerlink" href="#solution_2" title="Permanent link">&para;</a></h3>
+<p>The solution builds on several parts of Lab 2. The introduction of the new event should follow the approach described in Tasks 2 and 3, while council members should be stored in a list.</p>
+<p>Try solving the task independently based on the above information. Once finished, compare your solution with the reference solution provided in the expandable section below!
+Adjust your solution as needed.</p>
+<div class="admonition tip">
+<p class="admonition-title">Public Visibility</p>
+<p>The example assumes that the involved classes, properties, and delegates have public visibility.
+If you encounter strange compilation errors or if <code>XmlSerializer</code> throws a runtime error, first check that all relevant elements have the appropriate public visibility settings.</p>
+</div>
+<details class="example">
+<summary>Reference Solution</summary>
+<p>The steps for the reference solution are as follows:</p>
+<ol>
+<li>Create a new class named <code>JediCouncil</code>.</li>
+<li>Add a <code>List&lt;Jedi&gt;</code> type field and initialize it with an empty list.</li>
+<li>
+<p>Implement the <code>Add</code> and <code>Remove</code> functions.</p>
+<p>After completing these steps, the following code is obtained:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">JediCouncil</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Jedi</span><span class="o">&gt;</span><span class="w"> </span><span class="n">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Jedi</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Add</span><span class="p">(</span><span class="n">Jedi</span><span class="w"> </span><span class="n">newJedi</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">members</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">newJedi</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Remove</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Removes the last member of the list</span>
+<span class="w">        </span><span class="n">members</span><span class="p">.</span><span class="n">RemoveAt</span><span class="p">(</span><span class="n">members</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Next, implement event handling.</p>
+</li>
+<li>
+<p>Define a new delegate type (outside the class, as it is a type) that will pass notification messages:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">delegate</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CouncilChangedDelegate</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+</code></pre></div>
+</li>
+<li>
+<p>Extend the <code>JediCouncil</code> class with the event handler:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">JediCouncil</span>
+<span class="p">{</span>
+<span class="hll"><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">event</span><span class="w"> </span><span class="n">CouncilChangedDelegate</span><span class="w"> </span><span class="n">CouncilChanged</span><span class="p">;</span>
+</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Trigger the event when a new council member is added. To do this, modify the <code>Add</code> method.</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Add</span><span class="p">(</span><span class="n">Jedi</span><span class="w"> </span><span class="n">newJedi</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">members</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">newJedi</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// TODO: Trigger the event here.</span>
+<span class="w">    </span><span class="c1">// Ensure it is only triggered if at least one subscriber is present.</span>
+<span class="w">    </span><span class="c1">// Use the modern ?.Invoke approach instead of verbose null checking.</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Trigger the event when a council member leaves! Differentiate the case when the council becomes completely empty. To do this, modify the <code>Remove</code> method.</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Remove</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Removes the last member of the list</span>
+<span class="w">    </span><span class="n">members</span><span class="p">.</span><span class="n">RemoveAt</span><span class="p">(</span><span class="n">members</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// TODO: Trigger the event here.</span>
+<span class="w">    </span><span class="c1">// Ensure it is only triggered if at least one subscriber is present.</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>To test our solution, add a <code>MessageReceived</code> function in the class where you want to test event subscription and handling (e.g., the <code>Program</code> class). This function will subscribe to <code>JediCouncil</code> notifications.</p>
+<div class="highlight"><span class="filename">Program.cs</span><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">MessageReceived</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Finally, test our new class by writing a dedicated function (this can be in the <code>Program</code> class). Add the <code>[Description("Task3")]</code> attribute above the function! The function template:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Create the council</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">council</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JediCouncil</span><span class="p">();</span>
+
+<span class="c1">// TODO: Subscribe to the CouncilChanged event of the council</span>
+
+<span class="c1">// TODO: Add two Jedi objects to the council using the Add method</span>
+
+<span class="n">council</span><span class="p">.</span><span class="n">Remove</span><span class="p">();</span>
+<span class="n">council</span><span class="p">.</span><span class="n">Remove</span><span class="p">();</span>
+</code></pre></div>
+</li>
+<li>
+<p>If everything is implemented correctly, the following output should appear when the program is executed:</p>
+<div class="highlight"><pre><span></span><code>A new member has joined
+A new member has joined
+I sense a disturbance in the Force
+The council has fallen!
+</code></pre></div>
+</li>
+</ol>
+</details>
+<div class="admonition tip">
+<p class="admonition-title">Null Checking for Events</p>
+<p>If you used explicit <code>null</code> checks in <code>JediCouncil.Add</code> to determine whether there is at least one subscriber, update your approach to the more modern <code>?.Invoke</code> method, which performs the same check in a more concise manner without explicit <code>null</code> validation. This change is required for <code>JediCouncil.Add</code>, but for <code>JediCouncil.Remove</code>, both approaches are acceptable.</p>
+</div>
+<h2 id="task-4-delegates">Task 4 – Delegates<a class="headerlink" href="#task-4-delegates" title="Permanent link">&para;</a></h2>
+<h3 id="task_3">Task<a class="headerlink" href="#task_3" title="Permanent link">&para;</a></h3>
+<p>Extend the <code>JediCouncil</code> class with a parameterless function (<strong>the function name must end with <code>_Delegate</code>, this is mandatory</strong>) that returns all members of the Jedi Council whose midi-chlorian count is <strong>below 530</strong>!</p>
+<ul>
+<li>Use a function, not a property, for the query.</li>
+<li>Within the function, use the <code>FindAll()</code> method of the <code>List&lt;Jedi&gt;</code> class to filter members.</li>
+<li>In this task, you are <strong>NOT allowed to use lambda expressions</strong>!</li>
+</ul>
+<p>Write a dedicated "test" function (e.g., in the <code>Program</code> class) that calls the above function and prints the names of the returned Jedi knights! This function should contain only the relevant test code and should not include unrelated subtasks.</p>
+<div class="admonition danger">
+<p class="admonition-title">Important</p>
+<p>Annotate this "test" function with <code>[Description("Task4")]</code> in C#. Call this function from the <code>Main</code> function of the <code>Program</code> class.</p>
+<p>Key requirements:</p>
+<ul>
+<li>The attribute should be placed above a function, NOT a class.</li>
+<li>The attribute should be applied to the function that performs testing, not the one implementing the logic.</li>
+<li>The attribute should only appear above a single function.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Extract Initialization</p>
+<p>Introduce a separate static method (e.g., in the <code>Program</code> class) that takes a <code>JediCouncil</code> object as a parameter and adds at least three initialized <code>Jedi</code> objects using the <code>Add</code> method.
+The goal is to have an initialization method that can be reused in later tasks, avoiding redundant initialization code.</p>
+</div>
+<h3 id="solution_3">Solution<a class="headerlink" href="#solution_3" title="Permanent link">&para;</a></h3>
+<p>The solution follows the approach of Lab 2, Task 6. Here are some guidelines:</p>
+<ul>
+<li>The function may return multiple results, so its return type should be <code>List&lt;Jedi&gt;</code>.</li>
+<li>The <code>FindAll</code> method expects a filtering function with the signature <code>bool FunctionName(Jedi j)</code>.</li>
+</ul>
+<h2 id="task-5-lambda-expressions">Task 5 – Lambda Expressions<a class="headerlink" href="#task-5-lambda-expressions" title="Permanent link">&para;</a></h2>
+<p>This task is similar to the previous one, but now we will use lambda expressions. This topic was covered in both lectures and labs (<a href="../../labor/2-nyelvi-eszkozok/index_eng.md">Lab 2, Task 6</a>).</p>
+<p>Extend the <code>JediCouncil</code> class with a parameterless function (<strong>the function name must end with <code>_Lambda</code>, this is mandatory</strong>) that returns all members of the Jedi Council whose midi-chlorian count is <strong>below 1000</strong>!</p>
+<ul>
+<li>Use a function, not a property, for the query.</li>
+<li>Within the function, use the <code>FindAll()</code> method of the <code>List&lt;Jedi&gt;</code> class to filter members.</li>
+<li>You <strong>must</strong> use a lambda expression (either a statement or an expression lambda)!</li>
+</ul>
+<p>Write a dedicated "test" function (e.g., in the <code>Program</code> class) that calls the above function and prints the names of the returned Jedi knights!<br />
+This function should contain only the relevant test code and should not include unrelated subtasks.</p>
+<div class="admonition danger">
+<p class="admonition-title">Important</p>
+<p>Annotate this "test" function with <code>[Description("Task5")]</code> in C#. Call this function from the <code>Main</code> function of the <code>Program</code> class.</p>
+<p>Key requirements:</p>
+<ul>
+<li>The attribute should be placed above a function, NOT a class.</li>
+<li>The attribute should be applied to the function that performs testing, not the one implementing the logic.</li>
+<li>The attribute should only appear above a single function.</li>
+</ul>
+</div>
+<h2 id="task-6-using-actionfunc">Task 6 – Using <code>Action</code>/<code>Func</code><a class="headerlink" href="#task-6-using-actionfunc" title="Permanent link">&para;</a></h2>
+<p>Follow the detailed instructions. This topic was not covered in the lab (due to time constraints), but it is an essential topic in the course.</p>
+<p>Add <code>Person</code> and <code>ReportPrinter</code> classes to the project (each in a separate file named after the class, within the default <code>ModernLangToolsApp</code> namespace) with the following content:</p>
+<details class="tip">
+<summary>Person and ReportPrinter Classes</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Person</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">Person</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Age</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ReportPrinter</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IEnumerable</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span><span class="w"> </span><span class="n">people</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">Action</span><span class="w"> </span><span class="n">headerPrinter</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">ReportPrinter</span><span class="p">(</span><span class="n">IEnumerable</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span><span class="w"> </span><span class="n">people</span><span class="p">,</span><span class="w"> </span><span class="n">Action</span><span class="w"> </span><span class="n">headerPrinter</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">people</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">people</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">headerPrinter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">headerPrinter</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">PrintReport</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">headerPrinter</span><span class="p">();</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;-----------------------------------------&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">person</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">people</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">$&quot;{++i}. &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Person&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;--------------- Summary -----------------&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Footer&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<p>This <code>ReportPrinter</code> class is used to generate a formatted report in the console for the persons provided in its constructor, structured in a header/data/footer format.<br />
+Add the following function to the <code>Program.cs</code> file to test the <code>ReportPrinter</code>, and call this function from the <code>Main</code> function:</p>
+<details class="tip">
+<summary>Testing ReportPrinter</summary>
+<div class="highlight"><pre><span></span><code><span class="na">[Description(&quot;Task6&quot;)]</span>
+<span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">test6</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="s">&quot;Joe&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">20</span><span class="p">),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="s">&quot;Jill&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">30</span><span class="p">)</span><span class="w"> </span><span class="p">};</span>
+
+<span class="w">    </span><span class="n">ReportPrinter</span><span class="w"> </span><span class="n">reportPrinter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ReportPrinter</span><span class="p">(</span>
+<span class="w">        </span><span class="n">employees</span><span class="p">,</span>
+<span class="w">        </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Employees&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">reportPrinter</span><span class="p">.</span><span class="n">PrintReport</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<p>Run the application. The following output will appear in the console:</p>
+<p><div class="highlight"><pre><span></span><code>Employees
+-----------------------------------------
+1. Person
+2. Person
+--------------- Summary -----------------
+Footer
+</code></pre></div>
+The first row above the "----" represents the header. Below, each person is displayed with a hardcoded "Person" text, followed by the footer section below the "----", which currently only contains a hardcoded "Footer" text.</p>
+<p>In the solution, you can see that the header text is not hardcoded inside the <code>ReportPrinter</code> class. Instead, the <code>ReportPrinter</code> user provides it through the constructor as a delegate, in this case, a lambda expression. The delegate type used is the built-in .NET <code>Action</code> type.</p>
+<p>Tasks are the following:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You MUST NOT use a custom delegate type in this solution. Only the built-in .NET delegate types are allowed; otherwise, the solution will not be accepted.</p>
+</div>
+<ol>
+<li>
+<p>Modify the <code>ReportPrinter</code> class so that the user can specify not only the header but also the footer as a delegate in the constructor.</p>
+</li>
+<li>
+<p>Further modify the <code>ReportPrinter</code> class so that instead of displaying the fixed "Person" text for each individual, the user of <code>ReportPrinter</code> can specify how each person's data is displayed in the console using a delegate provided in the constructor.  It is <strong>important</strong> that the serial number at the beginning of each row must always be displayed and cannot be modified by the <code>ReportPrinter</code> user. This means that <code>ReportPrinter</code> itself must handle this output.</p>
+<div class="admonition tip">
+<p class="admonition-title">Solution Approach</p>
+<p>Use a similar approach as for the header and footer, but ensure that the <code>ReportPrinter</code> user receives the person object so they can format and display the data appropriately.</p>
+</div>
+</li>
+<li>
+<p>Modify the <code>ReportPrinter</code> usage in <code>Program.cs</code> (using appropriate lambda expressions) so that the console output looks like this:</p>
+<div class="highlight"><pre><span></span><code>Employees
+-----------------------------------------
+1. Name: Joe (Age: 20)
+2. Name: Jill (Age: 30)
+--------------- Summary -----------------
+Number of Employees: 2
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Displaying the Employee Count in the Footer</p>
+<p>To properly display the number of employees in the footer, you will need to understand "variable capturing" (covered in Lecture 3 under "Variable Capturing, Closure").</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Homework Evaluation</p>
+<p>The automatic GitHub checker does NOT verify whether you correctly modified <code>ReportPrinter</code> and its usage for "Task 6". Be sure to thoroughly test your solution so that any issues do not only become apparent during manual homework evaluation after the deadline.<br />
+<em>(Update: Since March 13, 2024, partial automatic verification is available for this task.)</em></p>
+</div>
+</li>
+<li>
+<p>The following task is optional but provides a good opportunity to practice using the built-in <code>Func</code> delegates.<br />
+   One major limitation of the <code>ReportPrinter</code> class is that it only allows the output report to be displayed on the console. A more flexible solution would allow generating the report as a string instead, which could then be used as needed (e.g., written to a file).</p>
+<p>The task is as follows: introduce a <code>ReportBuilder</code> class modeled after <code>ReportPrinter</code>, but instead of writing to the console, it should generate a string containing the entire report, which can be retrieved using a new <code>GetResult()</code> method.</p>
+<div class="admonition warning">
+<p class="admonition-title">Submission</p>
+<p>If you submit this task, do not include the instantiation/testing code for <code>ReportBuilder</code> in the <code>test6</code> function. Instead, introduce a <code>test6b</code> function and annotate it with <code>[Description("Task6b")]</code>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Solution Hints</p>
+<ul>
+<li>Introduce a <code>StringBuilder</code> field in the class to handle string operations efficiently. This is significantly more efficient than concatenating strings using <code>"+"</code>.</li>
+<li>The <code>ReportBuilder</code> user should not write directly to the console but should provide formatted strings to <code>ReportBuilder</code> using built-in delegate types (in this case, <code>Action</code> is not suitable). Use lambda expressions for testing as well.</li>
+</ul>
+</div>
+</li>
+</ol>
+<h2 id="task-7-optional-task-using-built-in-funcaction-generic-delegate-types">Task 7 (Optional task) – Using Built-in <code>Func</code>/<code>Action</code> Generic Delegate Types<a class="headerlink" href="#task-7-optional-task-using-built-in-funcaction-generic-delegate-types" title="Permanent link">&para;</a></h2>
+<p>Completing this task is not mandatory, but it is highly recommended, as it is core material that may appear on exams. It was covered in lectures but not in lab sessions.</p>
+<h3 id="task_4">Task<a class="headerlink" href="#task_4" title="Permanent link">&para;</a></h3>
+<p>Extend the <code>JediCouncil</code> class.</p>
+<ul>
+<li>
+<p>Create a property named <code>Count</code> with an <code>int</code> return type that, when queried, returns the number of Jedi currently in the council. Ensure that this value can only be read (it should not be set).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <code>JediCouncil</code> class contains a member variable named <code>members</code>, which has a <code>Count</code> property. The solution should build upon this.</p>
+</div>
+</li>
+<li>
+<p>Create a function named <code>CountIf</code> that also counts the number of council members, but only considers those that meet a specified condition. The function should return an <code>int</code> and take a delegate as a parameter, which defines the condition for counting the Jedi (meaning <code>CountIf</code> must have a parameter).</p>
+<div class="admonition warning">
+<p class="admonition-title">Delegate Type</p>
+<p>The delegate type must be one of the built-in generic <code>Action</code> / <code>Func</code> delegate types (custom delegate types and the built-in <code>Predicate</code> type are NOT allowed).</p>
+<p>Because of this, you CANNOT use the built-in <code>FindAll</code> method on the list, as the delegate type we use would not be compatible with the parameter expected by <code>FindAll</code>. Instead, iterate through the members using a <code>foreach</code> loop!</p>
+</div>
+</li>
+<li>
+<p>Demonstrate the functionality of both the property and the function in a dedicated testing function, which should be annotated with <code>[Description("Task7")]</code>. This function should contain only relevant test code and should not include unrelated subtasks. For filling the <code>JediCouncil</code>, call the helper function introduced in the previous task. Call this function from the <code>Main</code> function of the <code>Program</code> class.</p>
+<div class="admonition danger">
+<p class="admonition-title">Important</p>
+<p>The <code>[Description("Task7")]</code> attribute should be placed above ONLY ONE function.</p>
+</div>
+</li>
+</ul>
+<h3 id="solution_4">Solution<a class="headerlink" href="#solution_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The <code>Count</code> property should have only a <code>get</code> accessor, without a <code>set</code> accessor, making it a read-only property.</li>
+<li>The implementation of the <code>CountIf</code> function is similar to Task 4. The difference is that <code>CountIf</code> does not return the matching council members but only their count.<ul>
+<li>The <code>CountIf</code> function should take a filtering function as a parameter, with the signature <code>bool FunctionName(Jedi jedi)</code>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="submission">Submission<a class="headerlink" href="#submission" title="Permanent link">&para;</a></h2>
+<p>Checklist:</p>
+<h1 id="checklist-for-submitting-homework">Checklist for submitting homework<a class="headerlink" href="#checklist-for-submitting-homework" title="Permanent link">&para;</a></h1>
+<ul>
+<li>Enter your Neptun code in the neptun.txt file located in the root directory of the repository. The code should be in uppercase letters only, and the file should contain only these six characters—nothing else.</li>
+<li>Work within the solution/projects downloaded from GitHub, not in a newly created project.</li>
+<li>If you are not yet experienced in using Visual Studio's Git features, after pushing your changes (or at the latest when you consider your homework submitted), it is advisable to check the repository on GitHub's web interface to ensure that all changes have been successfully uploaded.</li>
+<li>After pushing, check on GitHub to see if the GitHub Action-based pre-check has run without errors.</li>
+<li>Assignments will only be accepted if they are fully completed and meet all the requirements. Do not expect acceptance of non-compiling code or partial solutions.</li>
+<li>Naturally, you must submit your own work, as it will be evaluated.</li>
+</ul>
+<hr>
+<div class="md-source-file">
+  <span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg
+        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z">
+        </path>
+      </svg>
+    </span>
+    <span title="2025. február 24. 00:29:36">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-24T00:29:36+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-24</span>
+    </span>
+  </span>
+
+  
+
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Szerzők">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z">
+        </path>
+      </svg>
+    </span>
+    <span>Szerzők</span>
+    <nav><a href="https://github.com/BenceKovari" target="_blank" rel="noopener noreferrer" class="md-author" title="@BenceKovari">
+        <img src="https://avatars.githubusercontent.com/BenceKovari?size=72" alt="@BenceKovari">
+      </a><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@bzolka">
+        <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
+      </a><a href="https://github.com/szinuccsi" target="_blank" rel="noopener noreferrer" class="md-author" title="@None">
+        <img src="https://avatars.githubusercontent.com/u/44683763?v=4?size=72" alt="@None">
+      </a></nav>      
+  </span>
+</div>
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Vissza a tetejére
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; BME VIK AUT
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
