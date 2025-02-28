@@ -80,7 +80,7 @@ Die Lösung dieser Aufgabe kann auf ähnliche Weise wie in [Labor 2, Aufgabe 4](
 
     ```xml
     <?xml version="1.0"?>
-    <Jedi xmlns:xsi="..." Nev="Obi-Wan" MidiChlorianSzam="15000" />
+    <Jedi xmlns:xsi="..." Name="Obi-Wan" MidiChlorianCount="15000" />
     ```
 
     Es ist wichtig, dass jeder Jedi als XML-Element `Jedi` erscheint, sein Name `Name`, seine Midichlorian-Nummer `MidiChlorianCount` als XML-Attribut.

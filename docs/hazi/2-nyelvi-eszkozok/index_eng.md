@@ -91,10 +91,10 @@ We provide the following guidance:
 
     ```xml
     <?xml version="1.0"?>
-    <Jedi xmlns:xsi="..." Nev="Obi-Wan" MidiChlorianSzam="15000" />
+    <Jedi xmlns:xsi="..." Name="Obi-Wan" MidiChlorianCount="15000" />
     ```
 
-    It is essential that each Jedi appears as a `Jedi` XML element, their name as `Nev`, and their midi-chlorian count as `MidiChlorianSzam` XML attributes.
+    It is essential that each Jedi appears as a `Jedi` XML element, their name as `Name`, and their midi-chlorian count as `MidiChlorianCount` XML attributes.
 
 - Since we did not examine example code for deserializing objects during the lab, we provide one here:
 
