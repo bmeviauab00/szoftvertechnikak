@@ -58,7 +58,7 @@ The laboratory is guided, and tasks are carried out together based on the instru
 
     ```git clone https://github.com/bmeviauab00/lab-modellkod-kiindulo -b megoldas```
 
-    You need to have the command-line git installed on your machine, more information [here](../../hazi/git-github-github-classroom/index.md#git-telepitese).
+    You need to have the command-line git installed on your machine, more information [here](../../hazi/git-github-github-classroom/index_eng.md#git-telepitese).
 
 ## Task 1 - Creating a "Hello world" .NET console application
 
