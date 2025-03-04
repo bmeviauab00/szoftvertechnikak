@@ -108,7 +108,7 @@ nav:
   - "Önálló/házi feladatok":
       - 'Útmutató': hazi/index.md
       - '1. HF - A modell és a kód kapcsolata': hazi/1-model-es-kod-kapcsolata/index.md
-      - '2. HF - Nyelvi eszközök': hazi/meghirdetes-elott.md
+      - '2. HF - Nyelvi eszközök': hazi/2-nyelvi-eszkozok/index.md
       - '3. HF - Felhasználói felület kialakítása': hazi/meghirdetes-elott.md
       - '4. HF - Többszálú alkalmazások fejlesztése': hazi/meghirdetes-elott.md
       - '5. HF - MVVM': hazi/meghirdetes-elott.md
@@ -127,7 +127,7 @@ nav:
   - "Homework":
       - 'Guide': hazi/index_eng.md
       - '1. HW - The relationship between the model and the code': hazi/1-model-es-kod-kapcsolata/index_eng.md
-      - '2. HW - Language tools': hazi/meghirdetes-elott_eng.md
+      - '2. HW - Language tools': hazi/2-nyelvi-eszkozok/index_eng.md
       - '3. HW - Implementing the user interface': hazi/meghirdetes-elott_eng.md
       - '4. HW - Developing multithreaded applications': hazi/meghirdetes-elott_eng.md
       - '5. HW - MVVM': hazi/meghirdetes-elott_eng.md
