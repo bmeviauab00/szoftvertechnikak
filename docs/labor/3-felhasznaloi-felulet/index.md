@@ -451,7 +451,7 @@ A felületünk még nem úgy néz ki, mint amit szeretnénk, finomítsunk kicsit
     * `HorizontalAlignment="Center"`
 * Legyen 300px széles
     * `Width="300"`
-* Legyen a sorok között 10px, az oszlopok között 5px távolság és tartsunk 20px távolságot a konténer szélétől
+* Legyen a sorok között 5px, az oszlopok között 10px a távolság és tartsunk 20px távolságot a konténer szélétől
     * `RowSpacing="5" ColumnSpacing="10" Margin="20"`
 * Igazítsuk a címkéket (`TextBlock`) függőlegesen középre
     * `VerticalAlignment="Center"`

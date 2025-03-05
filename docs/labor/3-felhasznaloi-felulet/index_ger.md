@@ -450,7 +450,7 @@ Unsere Oberfläche sieht nicht so aus, wie wir sie haben wollen, also müssen wi
     * `HorizontalAlignment="Center"`
 * 300px breit machen
     * `Width="300"`
-* Halten wir 10px zwischen den Zeilen, 5px zwischen den Spalten und 20px vom Rand des Containers
+* Halten wir 5px zwischen den Zeilen, 10px zwischen den Spalten und 20px vom Rand des Containers
     * `RowSpacing="5" ColumnSpacing="10" Margin="20"`
 * Richten wir die Bezeichnungen (`TexBlock`) vertikal in der Mitte aus
     * `VerticalAlignment="Center"`
