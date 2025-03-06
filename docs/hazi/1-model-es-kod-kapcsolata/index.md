@@ -128,7 +128,7 @@ A következő kód egy lehetséges megoldást mutat, a megoldás részleteit a k
 
     public class Program
     {
-        // A Main függvény a Program osztályon belül található, ezt itt nem jelüljük
+        // A Main függvény a Program osztályon belül található, ezt itt nem jelöljük
         public static void Main(string[] args)
         {
             // Ebben tároljuk a dal objektumokat
