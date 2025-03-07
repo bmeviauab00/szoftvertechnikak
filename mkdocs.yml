@@ -102,7 +102,7 @@ nav:
       - labor/2-nyelvi-eszkozok/index.md
       - labor/3-felhasznaloi-felulet/index.md
       - labor/4-tobbszalu/index.md
-      - labor/5-mvvm/index.md
+      - "5. MVVM": labor/meghirdetes-elott.md
       - labor/6-tervezesi-mintak/index.md      
       - labor/7-adatkezeles/index.md      
   - "Önálló/házi feladatok":
@@ -121,7 +121,7 @@ nav:
       - labor/2-nyelvi-eszkozok/index_eng.md
       - labor/3-felhasznaloi-felulet/index_eng.md
       - labor/4-tobbszalu/index_eng.md
-      - labor/5-mvvm/index_eng.md
+      - "5. MVVM": labor/meghirdetes-elott_eng.md
       - labor/6-tervezesi-mintak/index_eng.md      
       - labor/7-adatkezeles/index_eng.md 
   - "Homework":
@@ -140,8 +140,8 @@ nav:
       - labor/2-nyelvi-eszkozok/index_ger.md
       - labor/3-felhasznaloi-felulet/index_ger.md
       - labor/4-tobbszalu/index_ger.md
-      - labor/5-mvvm/index_ger.md
-      - labor/6-tervezesi-mintak/index_ger.md      
+      - "5. MVVM": labor/meghirdetes-elott_ger.md
+      - labor/6-tervezesi-mintak/index_ger.md
       - labor/7-adatkezeles/index_ger.md
   - "Hausaufgaben":
       - '1. Beziehung zwischen dem Modell und dem Code': hazi/meghirdetes-elott_ger.md
