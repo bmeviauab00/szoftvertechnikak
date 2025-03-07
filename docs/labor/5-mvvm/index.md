@@ -1,0 +1,542 @@
+---
+authors: tibitoth
+---
+
+# 5. MVVM
+
+## A gyakorlat célja
+
+A labor során egy egyszerű alkalmazást fogunk refaktorálni MVVM minta segítségével a jobb átláthatóság és karbantarthatóság jegyében.
+
+## Előfeltételek
+
+A labor elvégzéséhez szükséges eszközök:
+
+* Windows 10 vagy Windows 11 operációs rendszer (Linux és macOS nem alkalmas)
+* Visual Studio 2022
+    * Windows Desktop Development Workload
+
+## Kiinduló projekt
+
+Klónozzuk le a kiinduló projektet az alábbi paranccsal:
+
+```cmd
+git clone https://github.com/bmeviauab00/TODO
+```
+
+??? success "A kész megoldás letöltése"
+    :exclamation: Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, így értelmetlen a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.
+
+    A megoldás [GitHubon érhető el](https://github.com/bmeviauab00/TODO/tree/megoldas) a `megoldas` ágon. A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre a `megoldas` ágat:
+
+    `git clone https://github.com/bmeviauab00/TODO -b megoldas`
+
+## Az MVVM mintáról
+
+Az MVVM (Model-View-ViewModel) egy architekturális tervezési minta, amelyet a XAML alkalmazások fejlesztése során használhatunk, de gyakran más kliens oldali technológiák esetében is megjelenik (pl.: Android, iOS, Angular stb.).
+Az MVVM minta célja, hogy a felhasználói felületet és a mögötte lévő logikát szétválassza, és ezzel egy lazább csatolású alkalmazást hozzon létre, ami növeli a tesztelhetőséget, a karbantarthatóságot és az újrafelhasználhatóságot.
+
+Az MVVM minta három (+1) fő részből áll:
+
+* **Model**: Domainspecifikus adatokat fog össze, melyet a ViewModel-ek használhatnak az adatok tárolására. Pl. Recipe/Product/Order osztály, egy recept/termék/megrendelés adatait fogja össze.
+* **View**: A felhasználói felület leírását tartalmazza, (és a tisztán a nézetekhez kapcsolódó logikát, pl. animációk kezelését). Tipikusan `Window`, `Page`, `UserControl` leszármazott osztály, XAML-beli deklaratív leírással, a code-behind sokszor üres (mert a logika a ViewModel-ben van).
+* **ViewModel**: A nézethez tartozó logika van benne: tartalmazza a nézet állapotát és a nézeten végrehajtható műveleteket. **Független** a nézettől, a laza csatolást a ViewModel és a nézet között adatkötés biztosítja (a nézet vezérlői kötnek a ViewModel tulajdonságaihoz). Unit tesztelhető!
+* **Services** (szolgáltatások): Az alkalmazás üzleti/alkalmazás logikáját tartalmazó osztályok, amelyeket a ViewModel-ek használnak. Ha minden üzleti logika a ViewModel-ekben lenne, azok túl bonyolultak és átláthatatlanok lennének. Ez nem az MVVM minta része, de itt említjük meg, mert mi is így fogjuk felépíteni az alkalmazás architektúráját.
+
+<figure markdown>
+![MVVM](images/mvvm.drawio.png)
+</figure>
+
+:exclamation: Mihez készítünk ViewModel osztályokat?
+
+* Az egyes **nézetekhez** (pl. `Window`, `Page`, `Dialog`, `UserControl`) mindig készítünk ViewModel osztályt, és belőle egy nézethez egy objektumot hozunk létre.  Pl. `MainPage`-hez `MainPageViewModel`, `DancerDialog`-hoz `DancerDialogViewModel`. Ezt a gyakorlat során is alkalmazzuk.
+* Az egyes **modell** osztályokhoz (pl. `Recipe`, `Product`, `Dancer` stb.) opcionálisan készíthetünk csomagoló ViewModel osztályokat (pl. `RecipeViewModel`, `ProductViewModel`, `DancerViewModel`), ilyeneket a gyakorlat során **nem** fogunk készíteni. Ez azért van, mert nem a Strict, hanem a Relaxed MVVM mintát követjük (lásd előadás).
+
+## 0. Feladat - Kiinduló projekt áttekintése
+
+Az alkalmazásunk egy egyszerű könyveket listázó alkalmazás, ahol a könyvek egy `ItemsView`-ban jelennek meg táblázatos formában.
+A lista felett pedig egy `ComboBox` található, amellyel a könyvek szűrhetők műfaj szerint.
+A szűrő egy _Clear_ gombbal törölhető.
+
+!!! tip "ComboBox és ItemsView"
+    A `ComboBox` és az `ItemsView` is alapvetően listás vezérlők, amiket az `ItemsSource` tulajdonság segítségével tudjuk adatokkal feltölteni.
+
+    A `ComboBox` egy legördülő menü, amely lehetővé teszi a felhasználó számára, hogy kiválasszon egy elemet a listából, 
+
+    Az `ItemsView` egy táblázatos megjelenítést biztosít, ahol több elem is látható egyszerre. Az `ItemsView` lehetőséget biztosít több fajta megjelenítési módra, például rácsos vagy listás nézetre is, amit a `Layout` tulajdonsággal állíthatunk be. Küldönség az előző laborban használt `ListView`-hoz képest, hogy a lista elem sablokonban mindenképpen egy `ItemContainer` objektumnak kell szerepelnie gyökér elemként.
+
+<figure markdown>
+![Kiinduló felület](images/kiindulo.png)
+</figure>
+
+**Próbáljuk ki!**
+
+A kiinduló projektben az alkalmazás logikája a `BooksPage.xaml.cs` fájlban található, a felhasználói felület pedig a `BooksPage.xaml` fájlban.
+Ez a megoldás nem MVVM mintát követ, így a felhasználói felület és a mögötte lévő logika szorosan összefonódik, szinte már-már spagetti kód jelleget öltve.
+Erre jó példa, hogy ebben a fájlban található az adatok betöltése közvetlenül a vezérlők adatait manipulálva.
+Az inteakciók lekezelése is eseménykezelőkben történik, ami egy idő után átláthatatlanná válik.
+
+!!! note "Adatok betöltése ADO.NET-tel SQLite adatbázisból"
+    Az alkalmazásban az adatok tárolására SQLite adatbázist használunk, amelyet ADO.NET-tel érünk el. Ezt a technológiát a labor során nem fogjuk részletesen bemutatni, a félév végén fogunk még foglalkozni vele.
+
+Esetlünkben a példaadatokat a `SeedDatabase` függvény tölti fel, amely a `BooksPage` konstruktorában kerül meghívásra.
+A `LoadGenres` és `LoadBooks` függvények pedig a legördülő menü és a táblázat feltöltéséért felelnek.
+
+A legördülő menű aktuális kiválasztásának megváltozását és _Clear_ gomb megnyomását egy-egy eseménykezelő függvény kezeli le, amik újratöltik a listát a kiválasztott műfaj szerint.
+
+## 1. Feladat - MVVM minta bevezetése
+
+A labor során a kiinduló projektet MVVM mintára fogjuk átalakítani.
+
+### Model
+
+Kezdjük a modell osztályunkkal.
+A `BooksPage.xaml.cs` fájlban található `Book` osztályunkat helyezzük át egy új `Models` mappába.
+
+```csharp
+namespace Lab.Mvvm.Models;
+
+public class Book
+{
+    public string Title { get; set; }
+    public string Genre { get; set; }
+    public string ImageUrl { get; set; }
+
+    // Other properties like Author, ISBN etc.
+}
+```
+
+### Service
+
+Az adatok betöltéséért felelős kódot helyezzük át egy új `BookService` nevű osztályba, amit egy újonnan létrehozott `Services` mappába helyezünk el.
+
+A `BookService` osztályban a `SeedDatabase`, `LoadGenres` és `LoadBooks` függvényeket fogjuk elhelyezni, és emeljük át a `_connectionString` mezőt is.
+
+A függvények láthatóságát állítsuk `public`-ra, hogy a ViewModel osztályunk elérhesse őket.
+
+A `SeedDatabase` függvény így rendben van, de a másik két függvényben több UI elemet is használunk, amiktől meg kell szabaduljunk.
+Alakítsuk át a függvényeket, hogy csak a szükséges adatokat adják vissza, és ne közvetlenül a UI elemeket használják. Nevezzük is át őket `GetGenres` és `GetBooks`-ra.
+
+A `LoadGenres` függvényben egy `List<string>` típusú listát fogunk visszaadni.
+
+A `LoadBooks` függvényben pedig egy `List<Book>` típusú listát fogunk visszaadni.
+Itt arra is gondolnunk kell, hogy korábban a `ComboBox` kiválasztott értékét használtuk a lekérdezéshez, most viszont ezt a paramétert át kell adnunk a függvénynek opcionálisan.
+
+```csharp hl_lines="11, 16, 20, 23, 29, 34, 36, 43"
+using Lab.Mvvm.Models;
+using Microsoft.Data.Sqlite;
+using System.Collections.Generic;
+
+namespace Lab.Mvvm.Services;
+
+public class BookService
+{
+    private readonly string _connectionString = "Data Source=books.db";
+
+    public void SeedDatabase()
+    {
+        // ...
+    }
+
+    public List<string> GetGenres()
+    {
+        // ...
+
+        return genres;
+    }
+
+    public List<Book> GetBooks(string genre = null)
+    {
+        using var connection = new SqliteConnection(_connectionString);
+        connection.Open();
+
+        string query = "SELECT Title, Genre, ImageUrl FROM books";
+        if (genre != null)
+        {
+            query += " WHERE Genre = @genre";
+        }
+        using var command = new SqliteCommand(query, connection);
+        if (genre != null)
+        {
+            command.Parameters.AddWithValue("@genre", genre);
+        }
+
+        List<Book> books = [];
+        
+        // ...
+
+        return books;
+    }
+}
+```
+
+A `SeedDatabase` metódust hívjuk meg az alkalmazás indulásakor, hogy a könyvek és műfajok adatai betöltődjenek az adatbázisba. Ezt az `App.xaml.cs` fájlban a `OnLaunched` metódusban tehetjük meg legkönnyebben.
+
+```csharp title="App.xaml.cs" hl_lines="6"
+protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+{
+    m_window = new MainWindow();
+    m_window.Activate();
+
+    new BookService().SeedDatabase();
+}
+```
+
+### ViewModel
+
+Készítsük el a `BooksPageViewModel` osztályt egy új `ViewModels` mappába, amely a nézet állapotát és a rajta végrehajtható műveleteket fogja tartalmazni.
+
+Ha belegondolunk, a `BooksPage`-nek az alábbi állapotai vannak:
+
+* A könyvek listája
+* A műfajok listája a legördülő menüben
+* A kiválasztott műfaj
+
+Ezeket vegyük fel tulajdonságokként a `BooksPageViewModel` osztályba, és implementáljuk az előző laboron tanult `INotifyPropertyChanged` interfész alapú változásértesítést az adatkötéshez.
+
+```csharp
+using Lab.Mvvm.Models;
+
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
+namespace Lab.Mvvm.ViewModels;
+
+public class BooksPageViewModel : INotifyPropertyChanged
+{
+    private List<Book> _books;
+    public List<Book> Books
+    { 
+        get => _books;
+        set => SetProperty(ref _books, value);
+    }
+
+    private List<string> _genres;
+    public List<string> Genres
+    {
+        get => _genres;
+        set => SetProperty(ref _genres, value);
+    }
+
+    private string _selectedGenre;
+    public string SelectedGenre
+    { 
+        get => _selectedGenre;
+        set => SetProperty(ref _selectedGenre, value);
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    protected virtual bool SetProperty<T>(ref T property, T value, [CallerMemberName] string propertyName = null)
+    {
+        if (object.Equals(property, value))
+            return false;
+        property = value;
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        return true;
+    }
+}
+```
+
+!!! tip "SetProperty"
+    Az `SetProperty` metódus egy segédfüggvény, amely megkönnyíti a tulajdonságok beállítását és a változásértesítést.
+
+    A `ref` kulcsszó lehetővé teszi, hogy a metódus közvetlenül módosítsa a változó értékét (nem csak a referencia kerül átadásra, hanem így maga referencia is módosítható, hogy a változó hova mutasson).
+
+    A `CallerMemberName` attribútum automatikusan átadja a hívó tag (itt property) nevét, így nem kell mindenhol megadni a tulajdonság nevét kézzel.
+
+    A visszatérési érték `true`, ha a tulajdonság értéke megváltozott, és `false`, ha nem. Ez segít majd a későbbiekben eldönteni, hogy történt-e változás a tulajdonság értékében.
+
+Az adatok beltöltését a `BookService` osztály segítségével fogjuk megvalósítani. Példányosítjük a `BookService` osztályt, és a konstruktorában betöltjük a műfajokat és a könyveket.
+
+
+
+```csharp
+private readonly BookService _booksService;
+
+public BooksPageViewModel()
+{
+    _booksService = new BookService();
+    Genres = _booksService.GetGenres();
+    LoadBooks();
+}
+
+private void LoadBooks()
+{
+    Books = _booksService.GetBooks(SelectedGenre);
+}
+```
+
+A könyv betöltést ne csak a konstorban kell elvégezni, hanem a `SelectedGenre` tulajdonság setterében is, hogy a kiválasztott műfaj megváltozása esetén újra betöltsük a könyveket.
+A `SelectedGenre` setterében a `LoadBooks` metódust hívjuk meg, ha változás történt.
+
+```csharp hl_lines="5-9"
+private string _selectedGenre;
+public string SelectedGenre
+{
+    get => _selectedGenre;
+    set
+    {
+        if (SetProperty(ref _selectedGenre, value))
+            LoadBooks();
+    }
+}
+```
+
+### View
+
+Most már csak a nézetet kell átalakítanunk, hogy a ViewModel-t használja.
+
+Hozzunk létre a `BooksPage.xaml.cs` fájlban egy új `BooksPageViewModel` típusú propertyt, és adjunk neki értéket egy új `BooksPageViewModel` példány létrehozásával.
+
+```csharp
+public BooksPageViewModel ViewModel { get; } = new BooksPageViewModel();
+```
+
+!!! warning "readonly property vs getter only propert"
+    Emlékezzünk vissza, hogy a readonly property és a getter only property között lényeges különbség van. A fenti példában readonly propertyt használunk, ami azt jelenti, hogy a `ViewModel` property értéke csak egyszer jön létre. Ezzel szemben a getter only property esetén minden egyes híváskor új példányt hozunnánk létre, ami nem kívánt viselkedést okozna: ~~``public BooksPageViewModel ViewModel => new BooksPageViewModel();``~~
+
+Minden mást töröljünk ki a `BooksPage.xaml.cs` fájlból a konstruktor `InitializeComponent()` hívásán kívül.
+
+A `BooksPage.xaml` fájlban innestől kezdve használhatjuk a `ViewModel` propertyt az adatkötéshez.
+
+A `ComboBox` esetében törölnünk kell az esemény feliratkozást és állítsunk adatkötést a `SelectedItem` és az `ItemsSource` tulajdonságokhoz.
+
+```xml hl_lines="4-5"
+<ComboBox x:Name="genreFilterComboBox"
+          Grid.Row="1"
+          PlaceholderText="Filter Genre"
+          ItemsSource="{x:Bind ViewModel.Genres}"
+          SelectedItem="{x:Bind ViewModel.SelectedGenre, Mode=TwoWay}" />
+```
+
+A _Clear_ gomb esetében is töröljük a `Click` esemény feliratkozást. Ennek a viselkedését majd csak később implementáljuk a ViewModel-ben.
+
+```xml
+<Button x:Name="clearGenreFilterButton"
+        Content="Clear" />
+```
+
+Az `ItemsView`-ban is adatkötést kell használnunk a `ItemsSource` tulajdonsághoz. Továbbá megváltozott az adatsablon típusa is, mert már nem a `local` nevű névtérből hivatkozzuk a `Book` osztályt, hanem a `Lab.Mvvm.Models` névtérből.
+
+```xml hl_lines="3, 7, 15"
+<Page x:Class="Lab.Mvvm.BooksPage"
+      // ...
+      xmlns:model="using:Lab.Mvvm.Models">
+
+<ItemsView x:Name="booksGridView"
+           Grid.Row="2"
+           ItemsSource="{x:Bind ViewModel.Books, Mode=OneWay}">
+    <ItemsView.Layout>
+        <LinedFlowLayout ItemsStretch="Fill"
+                         LineHeight="160"
+                         LineSpacing="5"
+                         MinItemSpacing="5" />
+    </ItemsView.Layout>
+    <ItemsView.ItemTemplate>
+        <DataTemplate x:DataType="model:Book">
+            // ...
+        </DataTemplate>
+    </ItemsView.ItemTemplate>
+</ItemsView>
+```
+
+??? warning "Klasszikus Binding használata"
+    Ha klasszikus bindingot használunk `x:Bind` helyett, akkor a `DataContext`-et a `BooksPage` konstruktorában kell beállítani a ViewModel példányára.
+
+**Próbáljuk ki!**
+
+Az alkalmazásunknak az előzőekhez hasonlóan kell működnie (kivéve a _Clear_ gomb), de most már MVVM mintát követ az alkalmazásunk architektúrája.
+
+## 2. Feladat - MVVMToolkit
+
+MVVM mintát ritkán szoktunk kizárólag a .NET keretrendszerre támaszkodva implementálni.
+Érdemes használni valamilyen MVVM könyvtárat, amelyek segítségével a kódunk tömörebb, átláthatóbb, és kevesebb boilerplate kódot fog tartalmazni.
+A könyvtárak közül a legelterjedtebbek a következők:
+
+* [MVVM Toolkit](https://learn.microsoft.com/en-us/dotnet/communitytoolkit/mvvm/): Microsoft által gondozott MVVM könyvtár
+* [Prism](https://prismlibrary.com/): Régen Microsoft gondozásában állt és nagyon elterjedt volt, de már külső fejlesztők tartják karban és fizetős lett idő közben.
+* [ReactiveUI](https://reactiveui.net/): A Reactive Extensions (Rx) könyvtárakat használja a ViewModel állapotának kezelésére, és a View-ViewModel közötti adatkötésre. Ez a könyvtár nyújtja a legtöbb szolgáltatást, de a legnehezebben tanulható is.
+* [Uno.Extensions](https://platform.uno/uno-extensions/): MVVM Toolkitre épül, de több olyan szolgáltatást is tartalmaz, amelyek a WinUI keretrendszer hiányosságait pótolják.
+* A [Windows Template Studio](https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs) egy Visual Studio kiegészítő, ami komplexebb WinUI alkalmazások kiinduló projektsablonját teszi elérhetővé.
+
+A labor során a Microsoft által gondozott MVVM Toolkitet fogjuk kipróbálni.
+
+### Telepítés
+
+A MVVM Toolkit telepítéséhez nyissuk meg a NuGet Package Manager-t a Visual Studio-ban, és keressük meg a `CommunityToolkit.Mvvm` csomagot.
+Ez valójában a projektfájlban a `PackageReference`-t fogja létrehozni:
+
+```xml
+<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+```
+
+### ObservableObject és ObservableProperty
+
+A `INotifyPropertyChanged` interfész implementálása helyett használhatjuk a `ObservableObject` osztályt, amely már implementálja ezt az interfészt és több segédfüggvényt is tartalmaz, amelyek megkönnyítik a tulajdonságok beállítását és a változásértesítést. Továbbá lehetőségünk van az `ObservableProperty` attribútum használatára is, amely egy kódgenerátort vezérel, így automatikusan létrehozhatók a tulajdonságok boilderplate kód nélkül, kizárólag a mezők deklarálásával.
+
+Ehhez a `CommunityToolkit.Mvvm.ComponentModel` névtérben található `ObservableObject` osztályból kell leszármaznia a `BooksPageViewModel` osztályunknak.
+
+A source generator használatához azt osztályt `partial` kulcsszóval kell ellátni, hogy a generált kód és a kézi kód külön fájlokban kaphassanak helyet.
+
+A fullproperty szintaxis helyett pedig elég megtartanunk a mezőket, amikre az `ObservableProperty` attribútumot helyezzük el.
+
+```csharp hl_lines="1, 5, 8, 11"
+public partial class BooksPageViewModel : ObservableObject
+{
+    // ...
+
+    [ObservableProperty]
+    private List<Book> _books;
+
+    [ObservableProperty]
+    private List<string> _genres;
+
+    [ObservableProperty]
+    private string _selectedGenre;
+
+    // ...
+}
+```
+
+Ellenőrízhetjük, hogy milyen kód generálódott, ha például ++f12++-vel navigálunk a `Genres` tulajdonságra.
+
+!!! tip "ObservableProperty attribútum property-re"
+    Az `ObservableProperty` attribútumot mezők helyett property-kre is alkalmazhatjuk egy [új C# nyelvi funkció segítéségével](https://devblogs.microsoft.com/dotnet/announcing-the-dotnet-community-toolkit-840/#partial-properties-support-for-the-mvvm-toolkit-🎉), ehhez viszont preview C# verziót kellene használnunk, így ezt idén még kihagyjuk.
+
+**Próbáljuk ki!**
+
+Azt talapsztaljuk, hogy a könyvek betöltődnek, de a műfaj kiválasztásakor nem töltődnek be újra a könyvek.
+Igen, mert korábban a változásra meghívtuk a `LoadBooks` metódust.
+
+3 lehetőségünk van:
+
+1. Visszalakítjuk a `SelectedGenre` propertyt nem kódgenerált változatra, hogy a settert tudjuk módosítani.
+2. Feliratkozunk a `PropertyChanged` eseményre a konstruktorban, és a `LoadBooks` metódust hívjuk meg, ha a `SelectedGenre` property változik.
+3. Használjuk a kódgeneráltor által elkészített partial metódusokat, amikkel kibővíthetjük a setterek viselkedését.
+
+A 3. lehetőség tűnik a legegyszerűbbnek, ehhez viszont ismerni kell a partial metódusok működését.
+A partial metódusok olyan metódusok, amelyeket egy másik fájlban deklarálunk, és a fordító automatikusan összekapcsolja őket a megfelelő megvalsítással. Ráadásul a partial metódusokat nem kell megvalósítanunk kötelezően.
+Esetünkben a kódgenerátor deklarálja őket, és hívja meg ezeket a setterekben.
+
+Készítsünk hát egy implementációt az `OnSelectedGenreChanged(string value)` partial metódusra, amelyben meghívjuk a `LoadBooks` metódust.
+
+```csharp title="BooksPageViewModel.cs"
+partial void OnSelectedGenreChanged(string value) => LoadBooks();
+```
+
+**Próbáljuk ki!**
+
+Most már a műfaj kiválasztásakor újra betöltődnek a könyvek is.
+
+## 3. Feladat - Command
+
+Publikálja a ViewModel a View felé a műveleteket most `ICommand` interfészt megvalósító objektumokon keresztül.
+
+!!! tip "ICommand"
+    Az `ICommand` előnye, hogy összefogjuk egy objektumba a műveletet és annak végrejhatósági állapotát, aminek változásáról még eseményt is publikál.
+
+    ```csharp
+    public interface ICommand
+    {
+        event EventHandler? CanExecuteChanged;
+        bool CanExecute(object? parameter);
+        void Execute(object? parameter);
+    }
+    ```
+
+    Ezt a mechanizmust használja a `Button` vezérlő is, amelynek `Command` tulajdonságához rendelhetjük a ViewModel-ben definiált parancsokat.
+
+### ICommand használata
+
+Készítsünk egy `ICommand` típusú propertyt a `BooksPageViewModel` osztályban, amely üríti a kiválasztott műfajt.
+Megvalósításként a `RelayCommand` osztályt fogjuk használni, amely a `CommunityToolkit.Mvvm.Input` névtérben található. Ebből készítünk egy új példányt a konstruktorban, ahol egy lambda kifejezésben definiáljuk a parancs végrehajtását.
+
+```csharp title="BooksPageViewModel.cs" hl_lines="5, 8"
+public BooksPageViewModel()
+{
+    // ...
+
+    ClearFilterCommand = new RelayCommand(() => SelectedGenre = null);
+}
+
+public ICommand ClearFilterCommand { get; }
+```
+
+Kössük rá a _Clear_ gomb `Command` tulajdonságára a `ClearFilterCommand` propertyt.
+
+```xml title="BooksPage.xaml" hl_lines="2"
+<Button Content="Clear"
+        Command="{x:Bind ViewModel.ClearFilterCommand}" />
+```
+
+**Próbáljuk ki!** Működik a _ Clear_ gomb, a kiválasztott műfaj törlődik.
+
+Ami viszont még nem működik, az a gomb letiltása, ha nincs kiválasztott műfaj.
+
+Ehhez a `RelayCommand` osztály konstruktorában megadhatunk egy `Func<bool>` típúsú függvényt, amely megmondja, hogy a parancs végrehajtható-e vagy sem.
+
+```csharp title="BooksPageViewModel.cs konstruktora" hl_lines="3"
+ClearFilterCommand = new RelayCommand(
+    execute: () => SelectedGenre = null,
+    canExecute: () => SelectedGenre != null);
+```
+
+Viszont UI csak akkor frissül, és ezáltal a `canExecute` paraméterben megadott függvény csak akkor hívódik meg, ha az `ICommand.CanExecuteChanged` eseménye elsütésre kerül.
+Ezt az `IRelayCommand` interfészen keresztül (ami egyben `ICommand` is) mi is meg tudjuk tenni, ha a `SelectedGenre` property setterében meghívjuk a `NotifyCanExecuteChanged()` metódust.
+
+Módosítsuk a property típusát `IRelayCommand`-ra. 
+
+```csharp title="BooksPageViewModel.cs"
+public IRelayCommand ClearFilterCommand { get; }
+```
+
+A `NotifyCanExecuteChanged()` metódust pedig a `OnSelectedGenreChanged` partial metódusban hívjuk meg.
+
+```csharp title="BooksPageViewModel.cs"
+partial void OnSelectedGenreChanged(string value)
+{
+    LoadBooks();
+    ClearFilterCommand.NotifyCanExecuteChanged();
+}
+```
+
+**Próbáljuk ki!** Most már a _Clear_ gomb letiltásra kerül, ha nincs kiválasztott műfaj.
+
+### Command MVVMToolkit kódgenerátorral
+
+A `RelayCommand` property kézi deklarálása és példányosítása helyett használhatjuk a `RelayCommand` attribútumot is egy **függvényen**, amely automatikusan legenerálja a szükséges körítést a kódgenerátor segítségével.
+
+Töröljük ki a korábban használt `ClearFilterCommand` propertyt és a konstruktorban való példányosítást.
+
+Helyette hozzunk létre egy új `ClearFilter` nevű metódust, amely a `RelayCommand` attribútum segítéségével a háttérben legenerálja a szükséges command propertyt.
+
+A `CanExecute` logikához pedig behivatkozhatunk egy másik metódust vagy propetyt, amely megadha a parancs végrehajthatóságát.
+
+```csharp title="BooksPageViewModel.cs"
+private bool IsClearFilterCommandEnabled => SelectedGenre != null;
+
+[RelayCommand(CanExecute = nameof(IsClearFilterCommandEnabled))]
+private void ClearFilter() => SelectedGenre = null;
+```
+
+**Próbáljuk ki!**
+
+Ráadásul a `NotifyCanExecuteChanged` is kiváltható deklaratívan attribútumok.
+Esetünkben a `NotifyCanExecuteChangedFor`-ral kötjük össze a `SelectedGenre` változását a `ClearFilterCommand` végrehajtahtóságával.
+Így az `OnSelectedGenreChanged` partial metódusunból törölhetjük az esemény elsütését.
+
+```csharp title="BooksPageViewModel.cs" hl_lines="2"
+[ObservableProperty]
+[NotifyCanExecuteChangedFor(nameof(ClearFilterCommand))]
+private string _selectedGenre;
+
+partial void OnSelectedGenreChanged(string value)
+{
+    LoadBooks();
+}
+```
+
+**Próbáljuk ki!**
