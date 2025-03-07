@@ -56,7 +56,7 @@ throw new ArgumentException("You are not a true Jedi!");
 
 ### Task
 
-Extend the class created in Task 1 with attributes so that when a `Jedi` object is serialized into an XML file using the `XmlSerializer` class, its properties appear as XML attributes in Hungarian.
+Extend the class created in Task 1 with attributes so that when a `Jedi` object is serialized into an XML file using the `XmlSerializer` class, its properties appear as XML attributes with names `JediName` and `JediMidiChlorianCount` respectively.
 Then, write a function that serializes an instance of the `Jedi` class into a text file and then reads it back into a new object (effectively cloning the original object).
 
 !!! tip "XML Serializer Attributes"
@@ -91,10 +91,10 @@ We provide the following guidance:
 
     ```xml
     <?xml version="1.0"?>
-    <Jedi xmlns:xsi="..." Name="Obi-Wan" MidiChlorianCount="15000" />
+    <Jedi xmlns:xsi="..." JediName="Obi-Wan" JediMidiChlorianCount="15000" />
     ```
 
-    It is essential that each Jedi appears as a `Jedi` XML element, their name as `Name`, and their midi-chlorian count as `MidiChlorianCount` XML attributes.
+    It is essential that each Jedi appears as a `Jedi` XML element, their name as `JediName`, and their midi-chlorian count as `JediMidiChlorianCount` XML attributes.
 
 - Since we did not examine example code for deserializing objects during the lab, we provide one here:
 
