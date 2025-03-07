@@ -221,6 +221,21 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://bmeviauab00.github.io/szoftvertechnikak/2024/labor/meghirdetes-elott/</loc>
+         <lastmod>2025-03-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://bmeviauab00.github.io/szoftvertechnikak/2024/labor/meghirdetes-elott_eng/</loc>
+         <lastmod>2025-03-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://bmeviauab00.github.io/szoftvertechnikak/2024/labor/meghirdetes-elott_ger/</loc>
+         <lastmod>2025-03-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://bmeviauab00.github.io/szoftvertechnikak/2024/labor/1-model-es-kod-kapcsolata/</loc>
          <lastmod>2025-03-07</lastmod>
          <changefreq>daily</changefreq>
@@ -271,16 +286,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://bmeviauab00.github.io/szoftvertechnikak/2024/labor/5-mvvm/</loc>
-         <lastmod>2025-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://bmeviauab00.github.io/szoftvertechnikak/2024/labor/5-mvvm/index_ger/</loc>
-         <lastmod>2025-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://bmeviauab00.github.io/szoftvertechnikak/2024/labor/6-tervezesi-mintak/</loc>
          <lastmod>2025-03-07</lastmod>
          <changefreq>daily</changefreq>
@@ -297,6 +302,16 @@
     </url>
     <url>
          <loc>https://bmeviauab00.github.io/szoftvertechnikak/2024/labor/7-adatkezeles/index_ger/</loc>
+         <lastmod>2025-03-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://bmeviauab00.github.io/szoftvertechnikak/2024/labor/old-5-mvvm/</loc>
+         <lastmod>2025-03-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://bmeviauab00.github.io/szoftvertechnikak/2024/labor/old-5-mvvm/index_ger/</loc>
          <lastmod>2025-03-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
