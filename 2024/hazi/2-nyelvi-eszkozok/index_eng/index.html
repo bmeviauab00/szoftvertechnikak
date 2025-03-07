@@ -2251,7 +2251,7 @@ In the <code>MidiChlorianCount</code> property setter, throw an exception if an 
 </code></pre></div>
 <h2 id="task-2-attack-of-the-clones">Task 2 – Attack of the Clones<a class="headerlink" href="#task-2-attack-of-the-clones" title="Permanent link">&para;</a></h2>
 <h3 id="task_1">Task<a class="headerlink" href="#task_1" title="Permanent link">&para;</a></h3>
-<p>Extend the class created in Task 1 with attributes so that when a <code>Jedi</code> object is serialized into an XML file using the <code>XmlSerializer</code> class, its properties appear as XML attributes in Hungarian.
+<p>Extend the class created in Task 1 with attributes so that when a <code>Jedi</code> object is serialized into an XML file using the <code>XmlSerializer</code> class, its properties appear as XML attributes with names <code>JediName</code> and <code>JediMidiChlorianCount</code> respectively.
 Then, write a function that serializes an instance of the <code>Jedi</code> class into a text file and then reads it back into a new object (effectively cloning the original object).</p>
 <div class="admonition tip">
 <p class="admonition-title">XML Serializer Attributes</p>
@@ -2285,9 +2285,9 @@ We provide the following guidance:</p>
 <li>
 <p>After serialization, the XML file should look like this:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
-<span class="nt">&lt;Jedi</span><span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;...&quot;</span><span class="w"> </span><span class="na">Name=</span><span class="s">&quot;Obi-Wan&quot;</span><span class="w"> </span><span class="na">MidiChlorianCount=</span><span class="s">&quot;15000&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;Jedi</span><span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;...&quot;</span><span class="w"> </span><span class="na">JediName=</span><span class="s">&quot;Obi-Wan&quot;</span><span class="w"> </span><span class="na">JediMidiChlorianCount=</span><span class="s">&quot;15000&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 </code></pre></div>
-<p>It is essential that each Jedi appears as a <code>Jedi</code> XML element, their name as <code>Name</code>, and their midi-chlorian count as <code>MidiChlorianCount</code> XML attributes.</p>
+<p>It is essential that each Jedi appears as a <code>Jedi</code> XML element, their name as <code>JediName</code>, and their midi-chlorian count as <code>JediMidiChlorianCount</code> XML attributes.</p>
 </li>
 <li>
 <p>Since we did not examine example code for deserializing objects during the lab, we provide one here:</p>
@@ -2663,8 +2663,8 @@ Number of Employees: 2
         </path>
       </svg>
     </span>
-    <span title="2025. február 28. 16:24:12">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. február 28. 16:24:12"><span class="timeago" datetime="2025-02-28T16:24:12+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. február 28. 16:24:12">2025-02-28</span>
+    <span title="2025. március 7. 09:40:41">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. március 7. 09:40:41"><span class="timeago" datetime="2025-03-07T09:40:41+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. március 7. 09:40:41">2025-03-07</span>
     </span>
   </span>
 
