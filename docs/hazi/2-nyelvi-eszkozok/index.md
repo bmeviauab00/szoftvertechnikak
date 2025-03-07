@@ -94,10 +94,10 @@ A megoldáshoz az alábbi segítségeket adjuk:
 
     ```xml
     <?xml version="1.0"?>
-    <Jedi xmlns:xsi="..." Name="Obi-Wan" MidiChlorianCount="15000" />
+    <Jedi xmlns:xsi="..." Név="Obi-Wan" MidiChlorianSzám="15000" />
     ```
 
-    Lényeges, hogy az egyes Jedik `Jedi` XML elemként, nevük `Name`, a midichlorianszámuk `MidiChlorianCount` XML attribútumként jelenjen meg.
+    Lényeges, hogy az egyes Jedik `Jedi` XML elemként, nevük `Név`, a midichlorianszámuk `MidiChlorianSzám` XML attribútumként jelenjen meg.
 
 - A sorosított objektumok visszatöltésére a labor során nem néztünk példakódot, ezért ezt itt megadjuk:
 
