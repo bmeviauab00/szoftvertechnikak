@@ -2501,7 +2501,7 @@ A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk,
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">HardDisk</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span>
 </code></pre></div>
 <p>Ezt követően a <code>SoundCard</code> és <code>HardDisk</code> osztályban implementálnunk kell az <code>IEquipment</code> interfészben levő metódusokat. Azt tapasztaljuk, hogy ezzel nincs most teendők, a <code>GetPrice</code> és <code>GetAge</code> függvények már meg vannak írva mindkét helyen.</p>
-<p>Próbaképpen a <code>Program.cs</code> fájlban található <code>Main</code> függvényünkben hozzunk létre egy <code>EquipmentInventory</code> objektumot, töltsük fel <code>HardDisk</code> és <code>SoundCard</code> objektumokkal, majd listázzuk a késztelet a konzolra. Ammennyiben nem 2021 az aktuális év, az alábbi soroknál a 2021-es évet írjuk át az aktuális évre, a 2020-at pedig ennél eggyel kisebb számra!</p>
+<p>Próbaképpen a <code>Program.cs</code> fájlban található <code>Main</code> függvényünkben hozzunk létre egy <code>EquipmentInventory</code> objektumot, töltsük fel <code>HardDisk</code> és <code>SoundCard</code> objektumokkal, majd listázzuk a késztelet a konzolra. Ammennyiben nem 2025 az aktuális év, az alábbi soroknál a 2025-ös évet írjuk át az aktuális évre, a 2024-et pedig ennél eggyel kisebb számra!</p>
 <div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="w"> </span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">EquipmentInventory</span><span class="w"> </span><span class="n">ei</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EquipmentInventory</span><span class="p">();</span>
@@ -2533,9 +2533,9 @@ A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk,
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">manufacturingYear</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Bővítsük a <code>Main</code> függvényünket is, vegyünk fel két <code>LedDisplay</code> objektumot a készletünkbe (itt is él, hogy ammennyiben nem 2021 az aktuális év, az alábbi soroknál a 2021-es évet írjuk át az aktuális évre, a 2020-at pedig ennél eggyel kisebb számra!</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">LedDisplay</span><span class="p">(</span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="m">80000</span><span class="p">,</span><span class="w"> </span><span class="m">17</span><span class="p">,</span><span class="w"> </span><span class="m">16</span><span class="p">));</span>
-</span><span class="hll"><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">LedDisplay</span><span class="w"> </span><span class="p">(</span><span class="m">2021</span><span class="p">,</span><span class="w"> </span><span class="m">70000</span><span class="p">,</span><span class="w"> </span><span class="m">17</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">));</span>
+<p>Bővítsük a <code>Main</code> függvényünket is, vegyünk fel két <code>LedDisplay</code> objektumot a készletünkbe (itt is él, hogy ammennyiben nem 2025 az aktuális év, az alábbi soroknál a 2025-ös évet írjuk át az aktuális évre, a 2024-et pedig ennél eggyel kisebb számra!</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">LedDisplay</span><span class="p">(</span><span class="m">2024</span><span class="p">,</span><span class="w"> </span><span class="m">80000</span><span class="p">,</span><span class="w"> </span><span class="m">17</span><span class="p">,</span><span class="w"> </span><span class="m">16</span><span class="p">));</span>
+</span><span class="hll"><span class="n">ei</span><span class="p">.</span><span class="n">AddEquipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">LedDisplay</span><span class="w"> </span><span class="p">(</span><span class="m">2025</span><span class="p">,</span><span class="w"> </span><span class="m">70000</span><span class="p">,</span><span class="w"> </span><span class="m">17</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">));</span>
 </span>
 <span class="n">ei</span><span class="p">.</span><span class="n">ListAll</span><span class="p">();</span>
 <span class="n">Console</span><span class="p">.</span><span class="n">ReadKey</span><span class="p">();</span>
@@ -2726,8 +2726,8 @@ A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk,
         </path>
       </svg>
     </span>
-    <span title="2025. február 11. 18:45:15">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. február 11. 18:45:15"><span class="timeago" datetime="2025-02-11T18:45:15+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. február 11. 18:45:15">2025-02-11</span>
+    <span title="2025. február 19. 11:23:04">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. február 19. 11:23:04"><span class="timeago" datetime="2025-02-19T11:23:04+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. február 19. 11:23:04">2025-02-19</span>
     </span>
   </span>
 
@@ -2744,6 +2744,8 @@ A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk,
     <span>Szerzők</span>
     <nav><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@bzolka">
         <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
+      </a><a href="https://github.com/duszmox" target="_blank" rel="noopener noreferrer" class="md-author" title="@Gyula Kiri">
+        <img src="https://avatars.githubusercontent.com/u/38438001?u=f108331c7d27f2f13ad95f1a8a2ee52ed3200c85&v=4?size=72" alt="@Gyula Kiri">
       </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tibor Tóth">
         <img src="https://avatars.githubusercontent.com/u/8333960?u=d26653213d265ecdceeaf20a896d74f479d35450&v=4?size=72" alt="@Tibor Tóth">
       </a><a href="https://github.com/zbenedek-mirango" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
