@@ -21,7 +21,7 @@ A labor elvégzéséhez szükséges eszközök:
 Klónozzuk le a kiinduló projektet az alábbi paranccsal:
 
 ```cmd
-git clone https://github.com/bmeviauab00/TODO
+git clone https://github.com/bmeviauab00/lab-mvvm-kiindulo
 ```
 
 ??? success "A kész megoldás letöltése"
@@ -29,7 +29,7 @@ git clone https://github.com/bmeviauab00/TODO
 
     A megoldás [GitHubon érhető el](https://github.com/bmeviauab00/TODO/tree/megoldas) a `megoldas` ágon. A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre a `megoldas` ágat:
 
-    `git clone https://github.com/bmeviauab00/TODO -b megoldas`
+    `git clone https://github.com/bmeviauab00/lab-mvvm-kiindulo -b megoldas`
 
 ## Az MVVM mintáról
 
