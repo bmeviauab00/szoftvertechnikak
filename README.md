@@ -1,6 +1,6 @@
 # BMEVIAUAB00 Szoftvertechnikák
 
-![Build docs](https://github.com/bmeviauab00/szoftvertechnikak/workflows/Build%20docs/badge.svg?branch=main)
+[![Build docs](https://github.com/bmeviauab00/szoftvertechnikak/actions/workflows/github-pages.yml/badge.svg)](https://github.com/bmeviauab00/szoftvertechnikak/actions/workflows/github-pages.yml)
 
 [BMEVIAUAB00 Szoftvertechnikák](https://www.aut.bme.hu/Course/VIAUAB00/) tárgy jegyzetei, labor anyagai, házi feladatai.
 
