@@ -436,7 +436,7 @@ Még magyarázatra szorulhat a `ListView`-nál megadott `Grid.ColumnSpan="2"` cs
 
 Próbáljuk ki az alkalmazást (ha nem fordul a kód, akkor töröljük a code behind fájlban a `RecordButton_Click` eseménykezelőt).
 
-Jelen állapotában a `Grid` kitölti a teljes teret vízszintesen és függőlegesen is. Mi ennek az oka? A vezérlők elrendezésének egyik alapilére a `HorizontalAlignment` és `VerticalAlignment`  tulajdonságuk. **Ezek azt határozzák meg, hogy vízszintesen és függőlegesen hol helyezkedjen el az adott vezérlő az őt tartalmazó konténerben (vagyis a szülő vezérlőben)**. A lehetséges értékek:
+Jelen állapotában a `Grid` kitölti a teljes teret vízszintesen és függőlegesen is. Mi ennek az oka? A vezérlők elrendezésének egyik alappillére a `HorizontalAlignment` és `VerticalAlignment`  tulajdonságuk. **Ezek azt határozzák meg, hogy vízszintesen és függőlegesen hol helyezkedjen el az adott vezérlő az őt tartalmazó konténerben (vagyis a szülő vezérlőben)**. A lehetséges értékek:
 
 * `VerticalAlignment`: `Top`, `Center`, `Bottom`, `Stretch` (felülre, középre, alulra igazítva, vagy tér kitöltése függőlegesen)
 * `HorizontalAlignment`: `Left`, `Center`, `Right`, `Stretch` (balra, középre, jobbra igazítva, vagy tér kitöltése vízszintesen)
