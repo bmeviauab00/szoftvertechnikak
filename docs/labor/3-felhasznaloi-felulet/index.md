@@ -189,7 +189,7 @@ Az eredmény a következő:
 ![record button](images/record-button.png)
 
 !!! note "XAML vektorgrafikus vezérlők"
-    Lényeges, hogy a XAML vezérlők nagy része vektorgrafikus. Ez a gomb ugyanolyan élesen fog kinézni (nem tapasztalunk "pixelesedést") bármilyen bármilyen DPI  ill. nagyítás mellett nézzük.
+    Lényeges, hogy a XAML vezérlők nagy része vektorgrafikus. Ez a gomb ugyanolyan élesen fog kinézni (nem tapasztalunk "pixelesedést") bármilyen DPI ill. nagyítás mellett nézzük.
 
 A XAML-ben példányosított vezérlők tulajdonságainak megadására három lehetőség van (ezeket részben használtuk is már):
 
