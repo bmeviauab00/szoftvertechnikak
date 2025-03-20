@@ -1798,18 +1798,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-opcionalis-feladat-3-imsc-pontert-teendo-szerkesztese" class="md-nav__link">
+  <a href="#submission" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Opcionális feladat 3 IMSc pontért - Teendő szerkesztése
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#beadas" class="md-nav__link">
-    <span class="md-ellipsis">
-      Beadás
+      Submission
     </span>
   </a>
   
@@ -2120,111 +2111,83 @@ Here, <code>GetForeground</code> is a public static function within the <code>Ma
 <summary>Controlling form visibility</summary>
 <p>If implemented correctly, the form should be visible only when EditedTodo is not null (consider whether this holds true). Based on this, several approaches can be used, but the simplest is property-based binding with <code>x:Bind</code>:</p>
 <ol>
-<li>
-<p>Introduce a new boolean property in <code>MainPage</code> (e.g., <code>IsFormVisible</code>).
-2.</p>
-</li>
-<li>
-<p>Ez pontosan akkor legyen igaz, amikor az <code>EditedTodo</code> nem null. Ennek a karbantartása a mi feladatunk, pl. az <code>EditedTodo</code> setterében.</p>
-</li>
-<li>Ezt a tulajdonságot lehet adatkötni az űrlapunkat reprezentáló konténer láthatóságához (<code>Visibility</code> tulajdonság). Igaz, hogy a típusuk nem egyezik, de WinUI alatt van automatikus konverzió a <code>bool</code> és <code>Visibility</code> típusok között.</li>
-<li>Gondoljunk arra is, hogy amikor a forrás tulajdonság (<code>IsFormVisible</code>) változik, a hozzá kötött cél tulajdonságot (vezérlő láthatóság) esetünkben mindig frissíteni kell. Mire van ehhez szükség? (Tipp: a <strong>tulajdonságot közvetlenül tartalmazó osztálynak</strong> - gondoljuk át, esetünkben ez melyik osztály - egy megfelelő interfészt meg kell valósítania stb.)</li>
+<li>Introduce a new boolean property in <code>MainPage</code> (e.g., <code>IsFormVisible</code>).</li>
+<li>Set <code>IsFormVisible</code> to true whenever EditedTodo is not null. This must be maintained manually, e.g., in the EditedTodo setter.</li>
+<li>Bind this property to the <code>Visibility</code> of the container representing the form. Although <code>Visibility</code> is not a boolean, WinUI automatically converts <code>bool</code> to <code>Visibility</code>.</li>
+<li>Ensure that when the source property (<code>IsFormVisible</code>) changes, the bound UI property (control visibility) is updated. (Hint: The class containing <code>IsFormVisible</code> must implement an appropriate interface to notify about changes.)</li>
 </ol>
 <details>
-<summary>Alternatív lehetőségek a megoldásra</summary>
-<p>Egyéb alternatívák alkalmazása is lehetséges (csak érdekességképpen, de ne ezeket alkalmazzuk a megoldás során):</p>
+<summary>Alternative Approaches</summary>
+<p>Other solutions could be used, but stick to the method above for this assignment:</p>
 <ol>
-<li>Függvény alapú adatkötés megvalósítása, de esetünkben ez körülményesebb lenne.<ul>
-<li>A <code>x:Bind</code> alapon kötött függvénynek a megjelenítés és elrejtéshez az <code>EditedTodo</code> property <code>null</code> vagy nem <code>null</code> értékét kell konvertálni <code>Visibility</code>-re.</li>
-<li>Az adatkötés során a <code>FallbackValue='Collapsed'</code> beállítást is használnunk kell, mert sajnos az <code>x:Bind</code> alapértelmezetten nem hívja meg a függvényt, ha az érték <code>null</code>.</li>
-<li>A kötött függvénynek paraméterben meg kell adni azt a tulajdonságot, melynek változása esetén az adatkötést frissíteni kell, illetve a tulajdonságra vonatkozó változásértesítést itt is meg kell valósítani.</li>
+<li>Function-based binding using x:Bind, but this would be more complex:<ul>
+<li>The function should convert <code>EditedTodo</code> being null/non-null to <code>Visibility</code>.</li>
+<li>FallbackValue='Collapsed' must be used since <code>x:Bind</code> does not call functions when bound properties are null by default.</li>
+<li>The function needs to take a parameter indicating which property should trigger updates, and property change notifications must be handled manually.</li>
 </ul>
 </li>
-<li>Konverter alkalmazása.</li>
+<li>Using a converter to transform <code>bool</code> to <code>Visibility</code>.</li>
 </ol>
 </details>
 </details>
 <details class="tip">
-<summary>Prioritások listája</summary>
-<p>A <code>ComboBox</code>-ban a <code>Priority</code> felsorolt típus értékeit jelenítsük meg. Ehhez használhatjuk a <code>Enum.GetValues</code> függvényt, amihez készítsünk egy tulajdonságot a <code>MainPage.xaml.cs</code>-ben.</p>
+<summary>Priority list</summary>
+<p>The <code>ComboBox</code> should display all values of the Priority enum. To achieve this, use <code>Enum.GetValues</code> and define a property in <code>MainPage.xaml.cs</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Priority</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Priorities</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Enum</span><span class="p">.</span><span class="n">GetValues</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">Priority</span><span class="p">)).</span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">Priority</span><span class="o">&gt;</span><span class="p">().</span><span class="n">ToList</span><span class="p">();</span>
 </code></pre></div>
-<p>A <code>ComboBox</code> <code>ItemsSource</code> tulajdonságához kössük az <code>Priorities</code> listát.</p>
+<p>Bind this list to the <code>ItemsSource</code> of the <code>ComboBox</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;ComboBox</span><span class="w"> </span><span class="na">ItemsSource=</span><span class="s">&quot;{x:Bind Priorities}&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 </code></pre></div>
-<p>A fenti példában az <code>ItemsSource</code> csak azt határozza meg, hogy milyen elemek jelenjenek meg a <code>ComboBox</code> listájában. De ez semmit nem mond arról, hogy a <code>ComboBox</code> kiválasztott elemét mihez kell kötni. Ehhez szükség van még egy adatkötésre. Laboron ez nem szerepelt, előadásanyagban pl. a <code>SelectedItem</code>-re érdemes rákeresni (minden előfordulását érdemes megnézni).</p>
+<p>However, this only defines the list of available values. To bind the selected value, another data binding must be added. (Check lecture materials for <code>SelectedItem</code>. It's worth reviewing all mentions of it.)</p>
 </details>
 <details class="tip">
-<summary>Néhány fontosabb vezérlő tulajdonság</summary>
+<summary>Key Control Properties</summary>
 <ul>
-<li>A <code>CheckBox</code> vezérlő <code>IsChecked</code> (és nem a <code>Checked</code>!) tulajdonsága. A mellette jobbra megjelenő szöveg a <code>Content</code> tulajdonságával adható meg.</li>
-<li><code>DatePicker</code> vezérlő <code>Date</code> tulajdonsága</li>
+<li><code>CheckBox</code>: Use <code>IsChecked</code> (not <code>Checked!</code>) to store the checked state. The accompanying label text can be set via the <code>Content</code> property.</li>
+<li><code>DatePicker</code>: The selected date is stored in the <code>Date</code> property.</li>
 </ul>
 </details>
 <details class="tip">
-<summary>Furcsa, adatkötéshez kapcsolódó NullReferenceException</summary>
-<p>Ha egy "megfoghatatlannak" tűnő <code>NullReferenceException</code>-t kapsz az új elem felvételekor, akkor ellenőrizd, hogy a <code>ComboBox</code> esetében a <code>SelectedValue</code>-t kötötted-e esetleg a <code>SelectedItem</code> helyett (a <code>SelectedItem</code> használandó).</p>
+<summary>Strange NullReferenceException in data binding</summary>
+<p>If you encounter an unexpected <code>NullReferenceException</code> when adding a new item, check whether you accidentally bound <code>ComboBox</code> <code>SelectedValue</code> instead of <code>SelectedItem</code>. Always use <code>SelectedItem</code> for binding in this case.</p>
 </details>
 <div class="admonition example">
-<p class="admonition-title">3. feladat BEADANDÓ</p>
-<p>Illessz be egy képernyőképet az alkalmazásról, ahol az új teendő felvétele látható még mentés előtt! (<code>f3.1.png</code>)</p>
-<p>Illessz be egy képernyőképet az alkalmazásról, ahol az előző képen lévő teendő a listába került és eltűnt az űrlap! (<code>f3.2.png</code>)</p>
+<p class="admonition-title">Task 3 - Submission requirement</p>
+<p>Insert a <strong>screenshot</strong> of the application where the new task entry form is visible before saving! (<code>f3.1.png</code>)
+Insert a <strong>screenshot</strong> of the application where the previously entered task appears in the list and the form has disappeared! (<code>f3.2.png</code>)</p>
 </div>
 <div class="admonition warning">
-<p class="admonition-title">Fontos kritériumok</p>
-<p>Az alábbiakban megadunk néhány fontos kritériumot, melyek mindenképpen feltételei a házi feladat elfogadásának:</p>
+<p class="admonition-title">Important criteria</p>
+<p>The following criteria are mandatory for the homework to be accepted:</p>
 <ul>
-<li>A feladatkiírás kikötötte, hogy a listában és az űrlapon levő vezélők esetében is adatkötéssel kell dolgozni. Olyan megoldás nem elfogadható, mely ezt megkerüli. Így például nem lehet a code behind fájlban (<code>MainPage.xaml.cs</code>) olyan kód, mely az űrlapokon levő vezérlők tulajdonságait (pl. TextBox Text tulajdonsága) közvetlenül kérdezi le vagy állítja.</li>
-<li>Az előző pont alól két kivétel van: <ul>
-<li>A <code>ListView</code> <code>SelectedItem</code> tulajdonsága közvetlenül állítandó.</li>
-<li>Az űrlap láthatóságának szabályozása adatkötés nélkül is elfogadható (bár nem a legszebb megoldás, és a gyakorlás kedvéért is érdemesebb adatkötéssel dolgozni).</li>
+<li>The task description explicitly requires that both the list and form controls must use data binding. Any solution that bypasses data binding is not acceptable. For example, the code-behind file (<code>MainPage.xaml.cs</code>) must NOT contain code that directly reads or modifies form control properties (e.g., <code>TextBox.Text</code>).</li>
+<li>Two exceptions to this rule: <ul>
+<li>The <code>ListView.SelectedItem</code> property should be set directly.  </li>
+<li>Controlling form visibility without data binding is acceptable (though using data binding is recommended for better practice).  </li>
 </ul>
 </li>
-<li>Amikor egy új to-do elem felvétele történik, és korábban már történt egy ilyen elem felvétele, akkor a korábbi elem adatai NEM lehetnek benne az űrlap vezérlőiben.</li>
+<li>If a new task is added after a previous task, the previous task's data must NOT remain in the form controls.</li>
 </ul>
 </div>
-<p>Opcionális gyakorló feladatok</p>
+<p>Optional Practice Tasks</p>
 <details class="tip">
-<summary>Opcionális gyakorló feladat 1 - Űrlap görgethetővé tétele</summary>
-<p>Ehhez mindössze be kell csomagolni az űrlapot egy <code>ScrollViewer</code> vezérlőbe (illetve ne feledkezzünk meg arról, hogy így már ez lesz a legkülső elem a grid cellában, így rá vonatkozóan kell megadni a gridbeli pozíciót). Ha ezt megvalósítod, benne lehet a beadott megoldásodban.</p>
+<summary>Optional Practice Task 1 - Making the Form Scrollable</summary>
+<p>Wrap the form inside a ScrollViewer control. Note: Since the ScrollViewer will now be the outermost element in the grid cell, its grid position must be specified.If implemented, this can be included in the submitted solution.</p>
 </details>
 <details class="tip">
-<summary>Opcionális gyakorló feladat 2 - Fix szélességű űrlap</summary>
-<p>Jelen megoldásunkban az űrlap automatikusan méreteződik az ablakkal. Jó gyakorlási lehetőség ennek olyan átalakítása, mely esetben az űrlap fix szélességű (pl. 500 pixel) és olyan magasságú, mint a benne levő elemek össz magassága. Ha az űrlap esetén StackPanellel dolgoztál, ehhez mindössze három attribútumot kell felvenni vagy megváltoztatni. Ezt a viselkedést az alábbi animált kép illusztrálja. Lényeges, hogy beadni a korábbi megoldást kell, nem ez az opcionális feladatban leírt viselkedést!
-<a class="glightbox" href="../images/newtodo-resizing-optional.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Fix méretű űrlap" src="../images/newtodo-resizing-optional.gif" /></a></p>
+<summary>Optional Practice Task 2 - Fixed-Width Form</summary>
+<p>In the current solution, the form resizes automatically with the window. A good practice task is to modify the form so that it has a fixed width (e.g., 500 pixels) and its height matches the total height of its contents. If you used a StackPanel for the form layout, only three attributes need to be added or modified. The animation below illustrates this behavior. Note: The submitted solution must follow the original requirement (auto-resizing form), not the behavior from this optional task.
+<a class="glightbox" href="../images/newtodo-resizing-optional.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Fixed-size form" src="../images/newtodo-resizing-optional.gif" /></a></p>
 </details>
-<h2 id="4-opcionalis-feladat-3-imsc-pontert-teendo-szerkesztese">4. Opcionális feladat 3 IMSc pontért - Teendő szerkesztése<a class="headerlink" href="#4-opcionalis-feladat-3-imsc-pontert-teendo-szerkesztese" title="Permanent link">&para;</a></h2>
-<p>Valósítsd meg a teendők szerkesztésének lehetőségét az alábbiak szerint:</p>
+<h2 id="submission">Submission<a class="headerlink" href="#submission" title="Permanent link">&para;</a></h2>
+<p>Checklist Reminder</p>
 <ul>
-<li>A felületen a teendők listában az elemre kattintva, az adott teendő adatai a szerkesztő felületen (a korábbi feladatban bevezetett űrlapon) kerüljenek megjelenítésre, ahol azok így szerkeszthetőek és menthetőek lesznek.</li>
-<li>A mentés során a listában a szerkesztett teendő adatai frissüljenek, és az űrlap tűnjön el.</li>
-</ul>
-<details class="success">
-<summary>Megoldási tippek</summary>
-<ul>
-<li>Érdemes karbantartani a teendők egyedi azonosítóját a beszúrás során, hogy meg tudjuk különböztetni mentéskor, szerkesztés vagy beszúrás esete áll fenn. Pl. beszúrás esetén használhatjuk a -1 értéket, melyet mentés során lecserélünk az eddig használtaknál eggyel nagyobb számra. De tegyük fel, hogy a -1 is egy olyan érték, mellyel rendelkezhet egy érvényes to-do objektum. Mit lehet ekkor tenni? A <code>TodoItem</code> osztályban az <code>Id</code> típusát alakítsuk át <code>int?</code>-re. A <code>?</code>-lel az érték típusok (<code>int</code>, <code>bool</code>, <code>char</code>, <code>enum</code>, <code>struct</code> stb.) is felvehetnek <code>null</code> értéket. Ezeket nullable érték típusoknak (nullable value types) nevezzük. Ezek a <code>Nullable&lt;T&gt;</code> .NET struktúrára képződnek le fordítás során, melyek tartalmazzák az eredeti változót, illetve egy flag-et, mely jelzi, ki van-e töltve az érték, vagy sem. Bővebben <a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-value-types">itt</a> és <a href="https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1">itt</a> lehet ezekről olvasni. Alkalmazzuk ezt a megoldás során.</li>
-<li>A lista elemre kattintáshoz a <code>ListView</code> <code>ItemClick</code> eseményét célszerű használni, miután bekapcsoltuk a <code>IsItemClickEnabled</code> tulajdonságot a <code>ListView</code>-n. Az újonnan kiválasztott listaelem kapcsán információt az eseménykezelő <code>ItemClickEventArgs</code> paraméterében kapunk. </li>
-<li>A szerkesztendő adatok kezelésére több megoldás is elképzelhető, ezekből az egyik: <ul>
-<li>Az <code>EditedTodo</code> property-t állítsuk be a szerkesztett teendőre a kattintáskor.</li>
-<li>A mentés gombra kattintva a <code>Todos</code> listában cseréljük le a szerkesztett teendőt az <code>EditedTodo</code> értékére. Valójában ugyanazt az elemet cseréljük le önmagára, de a <code>ListView</code> így frissülni tud.</li>
-</ul>
-</li>
-</ul>
-</details>
-<div class="admonition example">
-<p class="admonition-title">4. iMSc feladat BEADANDÓ</p>
-<p>Illessz be egy képernyőképet az alkalmazásról, ahol egy meglévő elemre kattintva kitöltődik az űrlap! (<code>f4.imsc.1.png</code>)</p>
-<p>Illessz be egy képernyőképet az alkalmazásról, ahol az előző képen kiválasztott teendő mentés hatására frissül a listában! (<code>f4.imsc.2.png</code>)</p>
-</div>
-<h2 id="beadas">Beadás<a class="headerlink" href="#beadas" title="Permanent link">&para;</a></h2>
-<p>Ellenőrzőlista ismétlésképpen:</p>
-<ul>
-<li>A repository gyökérmappájában található neptun.txt fájlba írd bele a Neptun kódod, csupa nagybetűvel. A fájlban csak ez a hat karakter legyen, semmi más.</li>
-<li>A GitHub-ról leöltött kiinduló solutionben/projektekben kell dolgozni, nem újonnan létrehozottban.</li>
-<li>Amíg nem vagy rutinos a Visual Studio Git szolgáltatásainak használatában, a push-t követően (legkésőbb akkor, amikor a házi feladatot beadottnak tekintjük) célszerű ellenőrizni a GitHub webes felületén a repository-ban a fájlokra való rápillantással, hogy valóban minden változtatást feltöltöttél-e.</li>
-<li>A GitHub felületén ellenőrizd a push-t követően, hogy a GitHub Action alapú előellenőrző hiba nélkül lefutott-e.</li>
-<li>Lényeges, hogy a feladatok csak akkor kerülnek elfogadásra, ha teljesen elkészülnek, és minden tekintetben teljesítik a követelményeket. Nem forduló kód, illetve részleges megoldás elfogadásában nem érdemes bízni.</li>
-<li>Természetesen saját munkát kell beadni (hiszen értékelésre kerül).</li>
+<li>Enter your Neptun code in the neptun.txt file located in the root directory of the repository. The code should be in uppercase letters only, and the file should contain only these six characters—nothing else.</li>
+<li>Work within the solution/projects downloaded from GitHub, not in a newly created project.</li>
+<li>If you are not yet experienced in using Visual Studio's Git features, after pushing your changes (or at the latest when you consider your homework submitted), it is advisable to check the repository on GitHub's web interface to ensure that all changes have been successfully uploaded.</li>
+<li>After pushing, check on GitHub to see if the GitHub Action-based pre-check has run without errors.</li>
+<li>Assignments will only be accepted if they are fully completed and meet all the requirements. Do not expect acceptance of non-compiling code or partial solutions.</li>
+<li>Naturally, you must submit your own work, as it will be evaluated.</li>
 </ul>
 <hr>
 <div class="md-source-file">
@@ -2235,8 +2198,8 @@ Here, <code>GetForeground</code> is a public static function within the <code>Ma
         </path>
       </svg>
     </span>
-    <span title="2025. március 20. 18:31:26">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. március 20. 18:31:26"><span class="timeago" datetime="2025-03-20T18:31:26+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. március 20. 18:31:26">2025-03-20</span>
+    <span title="2025. március 20. 18:52:15">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. március 20. 18:52:15"><span class="timeago" datetime="2025-03-20T18:52:15+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. március 20. 18:52:15">2025-03-20</span>
     </span>
   </span>
 
