@@ -1,0 +1,2317 @@
+
+<!doctype html>
+<html lang="hu" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Benedek Zoltán">
+      
+      
+        <link rel="canonical" href="https://bmeviauab00.github.io/szoftvertechnikak/2024/hazi/3-felhasznaloi-felulet-kialakitasa/index_eng/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.9">
+    
+    
+      
+        <title>3rd Homework - The design of the user interface - BMEVIAUAB00 Szoftvertechnikák</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.f2e4d321.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../extra-material-theme.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="aut" data-md-color-primary="aut" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3rd-homework-the-design-of-the-user-interface" class="md-skip">
+          Kihagyás
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Élőfej">
+    <a href="../../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-header__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
+      
+  <img src="../../../img/logo-bme-aut.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BMEVIAUAB00 Szoftvertechnikák
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3<sup>rd</sup> Homework - The design of the user interface
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="aut" data-md-color-primary="aut" data-md-color-accent="red"  aria-label="Váltás sötét témára"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Váltás sötét témára" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="indigo"  aria-label="Váltás világos témára"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Váltás világos témára" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Keresés" placeholder="Keresés" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Keresés">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Törlés" aria-label="Törlés" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Keresés inicializálása
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bmeviauab00/szoftvertechnikak
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Lapok" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Szoftvertechnikák (2024-től)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../labor/1-model-es-kod-kapcsolata/" class="md-tabs__link">
+          
+  
+  Laborok
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Önálló/házi feladatok
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../labor/1-model-es-kod-kapcsolata/index_eng/" class="md-tabs__link">
+          
+  
+  English course labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../index_eng/" class="md-tabs__link">
+          
+  
+  Homework
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../labor/1-model-es-kod-kapcsolata/index_ger/" class="md-tabs__link">
+          
+  
+  Deutschkurs-Labore
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../meghirdetes-elott_ger/" class="md-tabs__link">
+          
+  
+  Hausaufgaben
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigáció" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-nav__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
+      
+  <img src="../../../img/logo-bme-aut.png" alt="logo">
+
+    </a>
+    BMEVIAUAB00 Szoftvertechnikák
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bmeviauab00/szoftvertechnikak
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Szoftvertechnikák (2024-től)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Laborok
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Laborok
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/1-model-es-kod-kapcsolata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. A modell és a kód kapcsolata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/2-nyelvi-eszkozok/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Nyelvi eszközök
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/3-felhasznaloi-felulet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. A felhasználói felület kialakítása
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/4-tobbszalu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Többszálú alkalmazások készítése
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/6-tervezesi-mintak/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Tervezési minták (kiterjeszthetőség)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/7-adatkezeles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Adatkezelés
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Önálló/házi feladatok
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Önálló/házi feladatok
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Útmutató
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-model-es-kod-kapcsolata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. HF - A modell és a kód kapcsolata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-nyelvi-eszkozok/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. HF - Nyelvi eszközök
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. HF - Felhasználói felület kialakítása
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. HF - Többszálú alkalmazások fejlesztése
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. HF - MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. HF - Tervezési minták
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IMSc HF - Liftrendszer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IMSc HF - MVVM receptek
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fejlesztokornyezet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fejlesztőkörnyezet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    English course labs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            English course labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/1-model-es-kod-kapcsolata/index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. The relationship between the model and the code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/2-nyelvi-eszkozok/index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Language tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/3-felhasznaloi-felulet/index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. The design of the user interface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/4-tobbszalu/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/meghirdetes-elott_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/6-tervezesi-mintak/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/7-adatkezeles/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Homework
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Homework
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-model-es-kod-kapcsolata/index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. HW - The relationship between the model and the code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-nyelvi-eszkozok/index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. HW - Language tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. HW - Implementing the user interface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. HW - Developing multithreaded applications
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. HW - MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. HW - Design patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IMSc HW - Liftsystem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IMSc HW - MVVM recipies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fejlesztokornyezet/index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Development environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Deutschkurs-Labore
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Deutschkurs-Labore
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/1-model-es-kod-kapcsolata/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Beziehung zwischen dem Modell und dem Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/2-nyelvi-eszkozok/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Sprachliche Mittel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/3-felhasznaloi-felulet/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Entwurf der Benutzeroberfläche
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/4-tobbszalu/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Erstellung von mehrfädigen Anwendungen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/meghirdetes-elott_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/6-tervezesi-mintak/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Entwurfsmuster (Erweiterbarkeit)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/7-adatkezeles/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Datenverwaltung
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hausaufgaben
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Hausaufgaben
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Beziehung zwischen dem Modell und dem Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Sprachliche Mittel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Entwurf der Benutzeroberfläche
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-tobbszalu-alkalmazasok-fejlesztese/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Entwicklung von Multithreading-Anwendungen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-mvvm/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Entwurfsmuster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fejlesztokornyezet/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entwicklungsumgebung
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tartalomjegyzék
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submission-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Submission process
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restrictions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restrictions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-1-model-creation-and-test-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 1 - Model creation and test data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-2-page-layout-and-list-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 2 - Page layout and list display
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Task 2 - Page layout and list display">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layout
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      List display
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-3-adding-a-new-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 3 - Adding a new task
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-opcionalis-feladat-3-imsc-pontert-teendo-szerkesztese" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Opcionális feladat 3 IMSc pontért - Teendő szerkesztése
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beadás
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/bmeviauab00/szoftvertechnikak/edit/master/docs/hazi/3-felhasznaloi-felulet-kialakitasa/index_eng.md" title="Oldal szerkesztése" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="3rd-homework-the-design-of-the-user-interface">3<sup>rd</sup> Homework - The design of the user interface<a class="headerlink" href="#3rd-homework-the-design-of-the-user-interface" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>In this homework, you will develop a simple task management application where users can list, create, and modify tasks.</p>
+<p>This independent task builds upon the content covered in XAML lectures. Its practical foundation is based on the <a href="../../../labor/3-felhasznaloi-felulet/index_eng/">3<sup>rd</sup> lab – The design of the user interface</a> exercise.</p>
+<p>Based on the above, the tasks in this independent exercise can be completed independently with the help of the short guidelines following the task descriptions (sometimes collapsed by default).</p>
+<p>Objectives:</p>
+<ul>
+<li>Practicing the use of the XAML interface description language</li>
+<li>Practicing the use of basic controls (table, button, text box, lists)</li>
+<li>Handling user interactions with event-driven programming</li>
+<li>Displaying data in the UI using data binding</li>
+</ul>
+<p>A description of the necessary development environment can be found <a href="../../fejlesztokornyezet/index_eng/">here</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Environment for WinUI3 development</p>
+<p>Additional components must be installed compared to previous labs. The <a href="../../fejlesztokornyezet/index_eng/">above page</a> mentions that the ".NET desktop development" Visual Studio Workload is required. Additionally, at the bottom of the same page, there is a "WinUI support" section. Make sure to follow the listed steps! </p>
+</div>
+<h2 id="submission-process">Submission process<a class="headerlink" href="#submission-process" title="Permanent link">&para;</a></h2>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" />  <a href="../../hf-folyamat/index_eng/">Although the basics are similar</a>, there are important differences in the process and requirements compared to previous homework assignments. Therefore, be sure to read the following carefully.</p>
+<ul>
+<li>The general process remains the same as before. Use GitHub Classroom to create a repository for yourself. The invitation URL can be found in the Teams post about the homework. Make sure to use the correct invitation URL corresponding to this specific homework (each homework has a different URL). Clone the newly created repository, which will contain the expected structure for your solution. After completing the tasks, commit and push your solution.</li>
+<li>Among the cloned files, open and work in <code>TodoXaml.sln</code>.</li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> Some tasks require you to take <strong>screenshots</strong> of certain parts of your solution to prove that you created it yourself. <strong>The required content of the screenshots is explicitly specified in each task.</strong> Screenshots must be submitted as part of your solution and placed in the root directory of your repository (next to neptun.txt). This ensures that the screenshots are uploaded to GitHub along with the repository content. Since the repository is private, only instructors can see it. If the screenshot contains any content you do not wish to upload, you may blur it or cut it out.</li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> There is no substantive pre-checker for this assignment: while an automated check will run after each push, <strong>it will only verify that neptun.txt is filled out. The actual evaluation will be conducted by the lab instructors after the submission deadline.</strong></li>
+</ul>
+<h2 id="restrictions">Restrictions<a class="headerlink" href="#restrictions" title="Permanent link">&para;</a></h2>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> <strong>MVVM Pattern - Do not use!</strong>
+    In this homework, do not use the MVVM pattern (not even in any of the later subtasks), and do not introduce a <code>ViewModel</code> class. MVVM will be the subject of a later homework assignment.</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> <strong>Layout - Keep it simple</strong>
+    As in most cases, the basic page layout for this homework should be created using a <code>Grid</code>. However, when designing the internal sections, prioritize simplicity: where a <code>StackPanel</code> is sufficient, avoid using <code>Grid</code>.</p>
+<h2 id="task-1-model-creation-and-test-data">Task 1 - Model creation and test data<a class="headerlink" href="#task-1-model-creation-and-test-data" title="Permanent link">&para;</a></h2>
+<p>Within the project, create a <code>Models</code> folder in Visual Studio Solution Explorer and add the class and enum type shown in the diagram below. The <code>TodoItem</code> class will store the task data, and an enumerated type will be used for priority.</p>
+<figure>
+<p><a class="glightbox" href="../images/model.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Model" src="../images/model.png" /></a></p>
+</figure>
+<p>Both types should be public (add the <code>public</code> keyword before <code>class</code> and <code>enum</code>), otherwise, you may encounter an "Inconsistent accessibility" error during compilation.</p>
+<p>The <code>MainPage</code> will display the list of tasks. For now, use in-memory test data, which should be created in <code>MainPage.xaml.cs</code>, located inside the <code>Views</code> folder. Here, introduce a <code>List&lt;TodoItem&gt;</code> property named <code>Todos</code> (which will later be bound to the <code>ListView</code> control on the UI using data binding). This list should contain <code>TodoItem</code> objects.</p>
+<div class="highlight"><span class="filename">MainPage.xaml.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">TodoItem</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Todos</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">TodoItem</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Add Neptun code to neptun.txt&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;NEPTUN&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Priority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Priority</span><span class="p">.</span><span class="n">Normal</span><span class="p">,</span>
+<span class="w">        </span><span class="n">IsDone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Deadline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DateTime</span><span class="p">(</span><span class="m">2024</span><span class="p">,</span><span class="w"> </span><span class="m">11</span><span class="p">,</span><span class="w"> </span><span class="m">08</span><span class="p">)</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">TodoItem</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Buy milk&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Should be lactose and gluten free!&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Priority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Priority</span><span class="p">.</span><span class="n">Low</span><span class="p">,</span>
+<span class="w">        </span><span class="n">IsDone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Deadline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTimeOffset</span><span class="p">.</span><span class="n">Now</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromDays</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">TodoItem</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Do the Computer Graphics homework&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Ray tracing, make it shiny and gleamy! :)&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Priority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Priority</span><span class="p">.</span><span class="n">High</span><span class="p">,</span>
+<span class="w">        </span><span class="n">IsDone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Deadline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DateTime</span><span class="p">(</span><span class="m">2024</span><span class="p">,</span><span class="w"> </span><span class="m">11</span><span class="p">,</span><span class="w"> </span><span class="m">08</span><span class="p">)</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div>
+<details class="note">
+<summary>Explanation of the code above</summary>
+<p>The code snippet above combines several modern C# language features:</p>
+<ul>
+<li>It uses an auto-implemented property (see Lab 2).  </li>
+<li>It is initialized.  </li>
+<li>The <code>new</code> keyword does not specify a type because the compiler can infer it (see Lab 2, "Target-typed new expressions").  </li>
+<li>The elements of the collection are listed within <code>{}</code> (see Lab 2, "Collection initializer syntax").  </li>
+</ul>
+</details>
+<div class="admonition note">
+<p class="admonition-title"><code>MainPage</code> class</p>
+<p>In this homework, we work within the <code>MainPage</code> class, which inherits from the built-in <code>Page</code> class. The <code>Page</code> class facilitates navigation between pages within a window. Although this feature is not used in the current task, it is good to familiarize yourself with it. Since our application consists of a single page, the main window simply instantiates a <code>MainPage</code> object (you can check this in the <code>MainWindow.xaml</code> file).</p>
+</div>
+<h2 id="task-2-page-layout-and-list-display">Task 2 - Page layout and list display<a class="headerlink" href="#task-2-page-layout-and-list-display" title="Permanent link">&para;</a></h2>
+<h3 id="layout">Layout<a class="headerlink" href="#layout" title="Permanent link">&para;</a></h3>
+<p>In <code>MainPage.xaml</code>, create the user interface that will display the task list.</p>
+<figure>
+<p><a class="glightbox" href="../images/mainpage.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="MainPage" src="../images/mainpage.png" /></a>
+<figurecaption>Task management application with a list view</figurecaption></p>
+</figure>
+<p>As shown in the above diagram, which displays three tasks, the task details should be displayed in a vertical list. Task priorities are indicated by colors. Completed tasks have a checkmark on the right side.</p>
+<p>The interface elements should be structured as follows:</p>
+<ul>
+<li>Inside <code>MainPage</code>, use a <code>Grid</code> layout with two rows and two columns. The first column should have a fixed width (e.g., 300 px), while the second column should take up the remaining available space.</li>
+<li>
+<p>In the first row of the first column, place a <code>CommandBar</code> control containing a title and a button. The following example provides guidance for this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;CommandBar</span><span class="w"> </span><span class="na">VerticalContentAlignment=</span><span class="s">&quot;Center&quot;</span>
+<span class="w">            </span><span class="na">Background=</span><span class="s">&quot;{ThemeResource AppBarBackgroundThemeBrush}&quot;</span>
+<span class="w">            </span><span class="na">DefaultLabelPosition=</span><span class="s">&quot;Right&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;CommandBar.Content&gt;</span>
+<span class="w">        </span><span class="nt">&lt;TextBlock</span><span class="w"> </span><span class="na">Margin=</span><span class="s">&quot;12,0,0,0&quot;</span>
+<span class="w">                   </span><span class="na">Style=</span><span class="s">&quot;{ThemeResource SubtitleTextBlockStyle}&quot;</span>
+<span class="w">                   </span><span class="na">Text=</span><span class="s">&quot;To-Dos&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/CommandBar.Content&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;AppBarButton</span><span class="w"> </span><span class="na">Icon=</span><span class="s">&quot;Add&quot;</span>
+<span class="w">                  </span><span class="na">Label=</span><span class="s">&quot;Add&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/CommandBar&gt;</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Light/dark appearance</p>
+<p>Depending on your Windows settings (light/dark mode), the interface may appear with light colors on a dark background. This is completely normal.By default, WinUI applications adapt to the operating system's theme settings, which is why this behavior occurs.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">ThemeResource</p>
+<p>The example uses <code>ThemeResource</code> values to set colors and styles that automatically adjust based on the application's theme. For instance, <code>AppBarBackgroundThemeBrush</code> will apply the appropriate background color depending on whether the theme is light or dark.</p>
+<p>For more details, refer to the <a href="https://docs.microsoft.com/en-us/windows/uwp/design/style/color#theme-resources">documentation</a> and <a href="winui3gallery://item/Colors">WinUI 3 Gallery App Colors</a>.</p>
+</div>
+</li>
+</ul>
+<p>If everything is set up correctly, when you run the application, the <code>CommandBar</code> should appear in the appropriate position.</p>
+<h3 id="list-display">List display<a class="headerlink" href="#list-display" title="Permanent link">&para;</a></h3>
+<p>In the cell below the <code>CommandBar</code>, add a <code>ListView</code> to display the list of tasks (Todos) with the following content.
+The UI should be updated dynamically using data binding, ensuring that the elements displayed are bound to the previously defined Todos list. Each task should be displayed as follows:</p>
+<ul>
+<li>Task title<ul>
+<li>Use <strong>SemiBold</strong> font style.</li>
+<li>Color based on priority:<ul>
+<li>High priority: A shade of red</li>
+<li>Normal priority: Default foreground color.</li>
+<li>Low priority: A shade of blue.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Task completion indicator: a checkmark icon aligned to the right of the task title if the task is completed.</li>
+<li>Task description</li>
+<li>Task deadline displayed in <code>yyyy.MM.dd</code> format</li>
+<li>The <code>ListView</code> background should match the <code>CommandBar</code> to create a continuous left-aligned section.</li>
+</ul>
+<details class="tip">
+<summary>Binding elements in the list</summary>
+<p>Always consider whether you are binding to a single object or a list, and apply the appropriate binding technique! In this homework, the order of elements may differ from how they were covered in the lab sessions.</p>
+</details>
+<details class="tip">
+<summary>Conditional formatting</summary>
+<p>You can use either a converter or an <code>x:Bind</code> function binding to set the title color dynamically based on priority.</p>
+<ul>
+<li>
+<p>Example of an <code>x:Bind</code> function binding:</p>
+<p><div class="highlight"><pre><span></span><code>Foreground=&quot;{x:Bind<span class="w"> </span>local:MainPage.GetForeground(Priority)}&quot;
+</code></pre></div>
+Here, <code>GetForeground</code> is a public static function within the <code>MainPage</code> class that returns the appropriate <code>Brush</code> object based on the <code>Priority</code> enumeration type. Normally, the function does not need to be static, but since it is used inside a <code>DataTemplate</code>, the context of <code>x:Bind</code> will be the list item rather than the page instance.</p>
+</li>
+<li>
+<p>Example of using a converter </p>
+<p>To use a converter, create a new class inside a <code>Converters</code> folder that implements the <code>IValueConverter</code> interface.</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PriorityBrushConverter</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IValueConverter</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">object</span><span class="w"> </span><span class="nf">Convert</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="k">value</span><span class="p">,</span><span class="w"> </span><span class="n">Type</span><span class="w"> </span><span class="n">targetType</span><span class="p">,</span><span class="w"> </span><span class="kt">object</span><span class="w"> </span><span class="n">parameter</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">language</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// TODO return a SolidColorBrush instance</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">object</span><span class="w"> </span><span class="nf">ConvertBack</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="k">value</span><span class="p">,</span><span class="w"> </span><span class="n">Type</span><span class="w"> </span><span class="n">targetType</span><span class="p">,</span><span class="w"> </span><span class="kt">object</span><span class="w"> </span><span class="n">parameter</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">language</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">NotImplementedException</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Instantiate the converter within the resources of <code>MainPage</code>.</p>
+<div class="highlight"><pre><span></span><code>xmlns:c=&quot;using:TodoXaml.Converters&quot;
+
+<span class="nt">&lt;Page.Resources&gt;</span>
+<span class="w">    </span><span class="nt">&lt;c:PriorityBrushConverter</span><span class="w"> </span><span class="na">x:Key=</span><span class="s">&quot;PriorityBrushConverter&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/Page.Resources&gt;</span>
+</code></pre></div>
+<p>Use the converter as a static resource in data binding:</p>
+<div class="highlight"><pre><span></span><code>Foreground=&quot;{x:Bind<span class="w"> </span>Priority,<span class="w"> </span>Converter={StaticResource<span class="w"> </span>PriorityBrushConverter}}&quot;
+</code></pre></div>
+</li>
+</ul>
+<p>To instantiate brushes, use the SolidColorBrush class, or alternatively, use built-in brushes in C# code (as shown above with ThemeResource).</p>
+<div class="highlight"><pre><span></span><code><span class="k">new</span><span class="w"> </span><span class="nf">SolidColorBrush</span><span class="p">(</span><span class="n">Colors</span><span class="p">.</span><span class="n">Red</span><span class="p">);</span>
+
+<span class="p">(</span><span class="n">Brush</span><span class="p">)</span><span class="n">App</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">Resources</span><span class="p">[</span><span class="s">&quot;ApplicationForegroundThemeBrush&quot;</span><span class="p">]</span>
+</code></pre></div>
+</details>
+<details class="tip">
+<summary>Bold Font Style</summary>
+<p>Font characteristics are determined by properties with names starting with "Font...": <code>FontFamily</code>, <code>FontSize</code>, <code>FontStyle</code>, <code>FontStretch</code> and <code>FontWeight</code>.</p>
+</details>
+<details class="tip">
+<summary>Checkmark icon visibility</summary>
+<p>Use a <code>SymbolIcon</code> for the checkmark and set its <code>Symbol</code> property to <code>Accept</code>.</p>
+<p>The checkmark icon should be displayed based on a boolean value converted to a <code>Visibility</code> type. While a converter could be used, this conversion is so common that <strong><code>x:Bind</code> automatically converts a <code>bool</code> to <code>Visibility</code></strong>.</p>
+</details>
+<details class="tip">
+<summary>Aligning the checkmark icon</summary>
+<p>The task title and checkmark icon should be in the same row (one aligned left, the other right). Tip: You can use a single-cell <code>Grid</code>. In a <code>Grid</code>, multiple controls can be placed in the same cell, while each control's alignment is individually controlled. This technique was used in Lab 2 to display names and ages in a <code>ListView</code> <code>DataTemplate</code>.</p>
+</details>
+<details class="tip">
+<summary>Formatting dates</summary>
+<p>The deadline date can be formatted using a converter or an <code>x:Bind</code> function binding. One approach is binding <code>DateTime.ToString</code> with parameters:</p>
+<div class="highlight"><pre><span></span><code>Text=&quot;{x:Bind<span class="w"> </span>Deadline.ToString(&#39;yyyy.MM.dd&#39;,<span class="w"> </span>x:Null)}&quot;
+</code></pre></div>
+<p>The <code>x:Null</code> is required because the <code>ToString</code> function expects a second parameter, which can be <code>null</code> in this case.</p>
+</details>
+<details class="tip">
+<summary>Spacing between list items</summary>
+<p>The provided screenshot example shows that there is vertical spacing between list items, improving readability. By default, this spacing is not present. Since a DataTemplate will already be used for displaying items, a small adjustment (e.g., setting Margin/Padding) can create adequate spacing between list items for better readability. </p>
+</details>
+<div class="admonition example">
+<p class="admonition-title">Task 2 - Submission requirement</p>
+<p>Insert a <strong>screenshot</strong> of the application where one task in the list has either its <strong>title or description set to your NEPTUN code!</strong> (<code>f2.png</code>)</p>
+</div>
+<h2 id="task-3-adding-a-new-task">Task 3 - Adding a new task<a class="headerlink" href="#task-3-adding-a-new-task" title="Permanent link">&para;</a></h2>
+<p>On the right side of the grid, in row 1, display the text "To-Do item" with:</p>
+<ul>
+<li>A font size of 25,</li>
+<li>Horizontally aligned to the left,</li>
+<li>Vertically centered,</li>
+<li>20 pixels of left padding.</li>
+</ul>
+<p>Clicking the <strong>Add</strong> button should display a form in row 2, allowing the user to add a new task.</p>
+<p>The form should look like this:</p>
+<figure>
+<p><a class="glightbox" href="../images/newtodo.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="New Todo" src="../images/newtodo.png" /></a>
+<figurecaption>To-Do Item Editor Form</figurecaption></p>
+</figure>
+<p>The form should contain the following elements in a vertical layout:</p>
+<ul>
+<li><strong>Title</strong>: Text input field</li>
+<li><strong>Description</strong>: Multi-line text input field (accepts line breaks with Enter, set AcceptsReturn="True").</li>
+<li><strong>Deadline</strong>: Date picker (<code>DatePicker</code>) (Note: This is why the model uses the <code>DateTimeOffset</code> type.)</li>
+<li><strong>Priority</strong>: Dropdown list (<code>ComboBox</code>) containing values from the <code>Priority</code> enum.</li>
+<li><strong>Completion Status</strong>: Checkbox (<code>CheckBox</code>).</li>
+<li><strong>Save</strong>: <code>Button</code> with built-in accent style (<code>Style="{StaticResource AccentButtonStyle}"</code>).</li>
+</ul>
+<p>You do not need to create a custom control (e.g., <code>UserControl</code>) for this form. Simply use a layout panel that best fits the task.</p>
+<p>Additional guidance on implementing some of the requirements is available in the collapsible sections below.</p>
+<p>Functional requirements:</p>
+<ul>
+<li>The form should only be visible after clicking the <strong>Add</strong> button and should disappear once the task is saved.</li>
+<li>Clicking the <strong>Save</strong> button should add the entered data to the list and hide the form.</li>
+<li>Clicking the <strong>Add</strong> button should clear the currently selected item in the list (<code>SelectedItem</code>).</li>
+<li>Optional: Make the form scrollable if its content does not fit on the screen (use <code>ScrollViewer</code>).</li>
+</ul>
+<p>Form layout</p>
+<ul>
+<li>Use the <code>Header</code> property in <code>TextBox</code>, <code>ComboBox</code>, and <code>DatePicker</code> controls to define their labels instead of adding separate <code>TextBlock</code> elements.</li>
+<li>Ensure sufficient spacing between form elements. It should be about 15 pixels (use the <code>StackPanel</code> <code>Spacing</code> property for easy control).</li>
+<li>Add a visible border to the form: This is not for styling but to clearly show where the form is placed (alternatively, a background color change could be used.). Set <code>BorderThickness="1"</code> and <code>BorderBrush="LightGray"</code> for clear visibility.</li>
+<li>Apply margins: Left, right, and bottom margins should be 8 px. Top margin should be 0 px. This ensures consistent spacing between the form and its container, even when the window is resized.</li>
+<li>Maintain spacing inside the form: Add 15 px padding at the top and bottom. Add 10 px padding on the left and right. Instead of setting margins individually for each control, adjust the container’s <strong>padding</strong> to maintain spacing between the form’s border and its contents.</li>
+<li>
+<p>Ensure the form and textboxes resize with the window, as illustrated below:</p>
+<details class="note">
+<summary>Illustration of form behavior and expected sizes</summary>
+<p><a class="glightbox" href="../images/newtodo-resizing.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Resizing" src="../images/newtodo-resizing.gif" /></a>
+<a class="glightbox" href="../images/newtodo-annotated.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Size annotations" src="../images/newtodo-annotated.png" /></a></p>
+</details>
+</li>
+</ul>
+<details class="success">
+<summary>Steps to implement the save functionality</summary>
+<ol>
+<li>Store form data in a new <code>TodoItem</code> object bound to UI elements using two-way data binding. Introduce a property named <code>EditedTodo</code>. Then two possible approaches are working:<ol>
+<li>EditedTodo is initially null. When the user starts adding a new task, create a new EditedTodo object to hold the task data. On save, add this object to the list. Every time a new task is added, EditedTodo points to a new object.</li>
+<li>Use a shared EditedTodo object for all task entries. Initialize it when the page is created. When a user adds a task (or after saving), reset EditedTodo with default values. On save, create a copy of EditedTodo and add it to the list.</li>
+</ol>
+</li>
+<li>The following guidance focuses on the first approach, but you should try implementing it independently first.</li>
+<li>Initialize EditedTodo as null and instantiate it when the <strong>Add</strong> button is clicked.</li>
+<li>On save, add the edited task object to the <code>Todos</code> list. Ensure that the UI updates when the list contents change (this may require modifying how data is stored).</li>
+<li>After saving, reset the EditedTodo property to null. This ensures that the form fields are empty when adding a new task instead of retaining the previous task’s data. Test your solution! Does resetting EditedTodo alone ensure that the UI updates? Consider what’s needed for bound controls to refresh when EditedTodo changes.
+    (Hint: The concern here is not that properties of the <code>TodoItem</code> change, but that MainPage’s <code>EditedTodo</code> property itself is updated. What interface needs to be implemented in the containing class?)</li>
+</ol>
+</details>
+<details class="success">
+<summary>Controlling form visibility</summary>
+<p>If implemented correctly, the form should be visible only when EditedTodo is not null (consider whether this holds true). Based on this, several approaches can be used, but the simplest is property-based binding with <code>x:Bind</code>:</p>
+<ol>
+<li>
+<p>Introduce a new boolean property in <code>MainPage</code> (e.g., <code>IsFormVisible</code>).
+2.</p>
+</li>
+<li>
+<p>Ez pontosan akkor legyen igaz, amikor az <code>EditedTodo</code> nem null. Ennek a karbantartása a mi feladatunk, pl. az <code>EditedTodo</code> setterében.</p>
+</li>
+<li>Ezt a tulajdonságot lehet adatkötni az űrlapunkat reprezentáló konténer láthatóságához (<code>Visibility</code> tulajdonság). Igaz, hogy a típusuk nem egyezik, de WinUI alatt van automatikus konverzió a <code>bool</code> és <code>Visibility</code> típusok között.</li>
+<li>Gondoljunk arra is, hogy amikor a forrás tulajdonság (<code>IsFormVisible</code>) változik, a hozzá kötött cél tulajdonságot (vezérlő láthatóság) esetünkben mindig frissíteni kell. Mire van ehhez szükség? (Tipp: a <strong>tulajdonságot közvetlenül tartalmazó osztálynak</strong> - gondoljuk át, esetünkben ez melyik osztály - egy megfelelő interfészt meg kell valósítania stb.)</li>
+</ol>
+<details>
+<summary>Alternatív lehetőségek a megoldásra</summary>
+<p>Egyéb alternatívák alkalmazása is lehetséges (csak érdekességképpen, de ne ezeket alkalmazzuk a megoldás során):</p>
+<ol>
+<li>Függvény alapú adatkötés megvalósítása, de esetünkben ez körülményesebb lenne.<ul>
+<li>A <code>x:Bind</code> alapon kötött függvénynek a megjelenítés és elrejtéshez az <code>EditedTodo</code> property <code>null</code> vagy nem <code>null</code> értékét kell konvertálni <code>Visibility</code>-re.</li>
+<li>Az adatkötés során a <code>FallbackValue='Collapsed'</code> beállítást is használnunk kell, mert sajnos az <code>x:Bind</code> alapértelmezetten nem hívja meg a függvényt, ha az érték <code>null</code>.</li>
+<li>A kötött függvénynek paraméterben meg kell adni azt a tulajdonságot, melynek változása esetén az adatkötést frissíteni kell, illetve a tulajdonságra vonatkozó változásértesítést itt is meg kell valósítani.</li>
+</ul>
+</li>
+<li>Konverter alkalmazása.</li>
+</ol>
+</details>
+</details>
+<details class="tip">
+<summary>Prioritások listája</summary>
+<p>A <code>ComboBox</code>-ban a <code>Priority</code> felsorolt típus értékeit jelenítsük meg. Ehhez használhatjuk a <code>Enum.GetValues</code> függvényt, amihez készítsünk egy tulajdonságot a <code>MainPage.xaml.cs</code>-ben.</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Priority</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Priorities</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Enum</span><span class="p">.</span><span class="n">GetValues</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">Priority</span><span class="p">)).</span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">Priority</span><span class="o">&gt;</span><span class="p">().</span><span class="n">ToList</span><span class="p">();</span>
+</code></pre></div>
+<p>A <code>ComboBox</code> <code>ItemsSource</code> tulajdonságához kössük az <code>Priorities</code> listát.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;ComboBox</span><span class="w"> </span><span class="na">ItemsSource=</span><span class="s">&quot;{x:Bind Priorities}&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>A fenti példában az <code>ItemsSource</code> csak azt határozza meg, hogy milyen elemek jelenjenek meg a <code>ComboBox</code> listájában. De ez semmit nem mond arról, hogy a <code>ComboBox</code> kiválasztott elemét mihez kell kötni. Ehhez szükség van még egy adatkötésre. Laboron ez nem szerepelt, előadásanyagban pl. a <code>SelectedItem</code>-re érdemes rákeresni (minden előfordulását érdemes megnézni).</p>
+</details>
+<details class="tip">
+<summary>Néhány fontosabb vezérlő tulajdonság</summary>
+<ul>
+<li>A <code>CheckBox</code> vezérlő <code>IsChecked</code> (és nem a <code>Checked</code>!) tulajdonsága. A mellette jobbra megjelenő szöveg a <code>Content</code> tulajdonságával adható meg.</li>
+<li><code>DatePicker</code> vezérlő <code>Date</code> tulajdonsága</li>
+</ul>
+</details>
+<details class="tip">
+<summary>Furcsa, adatkötéshez kapcsolódó NullReferenceException</summary>
+<p>Ha egy "megfoghatatlannak" tűnő <code>NullReferenceException</code>-t kapsz az új elem felvételekor, akkor ellenőrizd, hogy a <code>ComboBox</code> esetében a <code>SelectedValue</code>-t kötötted-e esetleg a <code>SelectedItem</code> helyett (a <code>SelectedItem</code> használandó).</p>
+</details>
+<div class="admonition example">
+<p class="admonition-title">3. feladat BEADANDÓ</p>
+<p>Illessz be egy képernyőképet az alkalmazásról, ahol az új teendő felvétele látható még mentés előtt! (<code>f3.1.png</code>)</p>
+<p>Illessz be egy képernyőképet az alkalmazásról, ahol az előző képen lévő teendő a listába került és eltűnt az űrlap! (<code>f3.2.png</code>)</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Fontos kritériumok</p>
+<p>Az alábbiakban megadunk néhány fontos kritériumot, melyek mindenképpen feltételei a házi feladat elfogadásának:</p>
+<ul>
+<li>A feladatkiírás kikötötte, hogy a listában és az űrlapon levő vezélők esetében is adatkötéssel kell dolgozni. Olyan megoldás nem elfogadható, mely ezt megkerüli. Így például nem lehet a code behind fájlban (<code>MainPage.xaml.cs</code>) olyan kód, mely az űrlapokon levő vezérlők tulajdonságait (pl. TextBox Text tulajdonsága) közvetlenül kérdezi le vagy állítja.</li>
+<li>Az előző pont alól két kivétel van: <ul>
+<li>A <code>ListView</code> <code>SelectedItem</code> tulajdonsága közvetlenül állítandó.</li>
+<li>Az űrlap láthatóságának szabályozása adatkötés nélkül is elfogadható (bár nem a legszebb megoldás, és a gyakorlás kedvéért is érdemesebb adatkötéssel dolgozni).</li>
+</ul>
+</li>
+<li>Amikor egy új to-do elem felvétele történik, és korábban már történt egy ilyen elem felvétele, akkor a korábbi elem adatai NEM lehetnek benne az űrlap vezérlőiben.</li>
+</ul>
+</div>
+<p>Opcionális gyakorló feladatok</p>
+<details class="tip">
+<summary>Opcionális gyakorló feladat 1 - Űrlap görgethetővé tétele</summary>
+<p>Ehhez mindössze be kell csomagolni az űrlapot egy <code>ScrollViewer</code> vezérlőbe (illetve ne feledkezzünk meg arról, hogy így már ez lesz a legkülső elem a grid cellában, így rá vonatkozóan kell megadni a gridbeli pozíciót). Ha ezt megvalósítod, benne lehet a beadott megoldásodban.</p>
+</details>
+<details class="tip">
+<summary>Opcionális gyakorló feladat 2 - Fix szélességű űrlap</summary>
+<p>Jelen megoldásunkban az űrlap automatikusan méreteződik az ablakkal. Jó gyakorlási lehetőség ennek olyan átalakítása, mely esetben az űrlap fix szélességű (pl. 500 pixel) és olyan magasságú, mint a benne levő elemek össz magassága. Ha az űrlap esetén StackPanellel dolgoztál, ehhez mindössze három attribútumot kell felvenni vagy megváltoztatni. Ezt a viselkedést az alábbi animált kép illusztrálja. Lényeges, hogy beadni a korábbi megoldást kell, nem ez az opcionális feladatban leírt viselkedést!
+<a class="glightbox" href="../images/newtodo-resizing-optional.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Fix méretű űrlap" src="../images/newtodo-resizing-optional.gif" /></a></p>
+</details>
+<h2 id="4-opcionalis-feladat-3-imsc-pontert-teendo-szerkesztese">4. Opcionális feladat 3 IMSc pontért - Teendő szerkesztése<a class="headerlink" href="#4-opcionalis-feladat-3-imsc-pontert-teendo-szerkesztese" title="Permanent link">&para;</a></h2>
+<p>Valósítsd meg a teendők szerkesztésének lehetőségét az alábbiak szerint:</p>
+<ul>
+<li>A felületen a teendők listában az elemre kattintva, az adott teendő adatai a szerkesztő felületen (a korábbi feladatban bevezetett űrlapon) kerüljenek megjelenítésre, ahol azok így szerkeszthetőek és menthetőek lesznek.</li>
+<li>A mentés során a listában a szerkesztett teendő adatai frissüljenek, és az űrlap tűnjön el.</li>
+</ul>
+<details class="success">
+<summary>Megoldási tippek</summary>
+<ul>
+<li>Érdemes karbantartani a teendők egyedi azonosítóját a beszúrás során, hogy meg tudjuk különböztetni mentéskor, szerkesztés vagy beszúrás esete áll fenn. Pl. beszúrás esetén használhatjuk a -1 értéket, melyet mentés során lecserélünk az eddig használtaknál eggyel nagyobb számra. De tegyük fel, hogy a -1 is egy olyan érték, mellyel rendelkezhet egy érvényes to-do objektum. Mit lehet ekkor tenni? A <code>TodoItem</code> osztályban az <code>Id</code> típusát alakítsuk át <code>int?</code>-re. A <code>?</code>-lel az érték típusok (<code>int</code>, <code>bool</code>, <code>char</code>, <code>enum</code>, <code>struct</code> stb.) is felvehetnek <code>null</code> értéket. Ezeket nullable érték típusoknak (nullable value types) nevezzük. Ezek a <code>Nullable&lt;T&gt;</code> .NET struktúrára képződnek le fordítás során, melyek tartalmazzák az eredeti változót, illetve egy flag-et, mely jelzi, ki van-e töltve az érték, vagy sem. Bővebben <a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-value-types">itt</a> és <a href="https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1">itt</a> lehet ezekről olvasni. Alkalmazzuk ezt a megoldás során.</li>
+<li>A lista elemre kattintáshoz a <code>ListView</code> <code>ItemClick</code> eseményét célszerű használni, miután bekapcsoltuk a <code>IsItemClickEnabled</code> tulajdonságot a <code>ListView</code>-n. Az újonnan kiválasztott listaelem kapcsán információt az eseménykezelő <code>ItemClickEventArgs</code> paraméterében kapunk. </li>
+<li>A szerkesztendő adatok kezelésére több megoldás is elképzelhető, ezekből az egyik: <ul>
+<li>Az <code>EditedTodo</code> property-t állítsuk be a szerkesztett teendőre a kattintáskor.</li>
+<li>A mentés gombra kattintva a <code>Todos</code> listában cseréljük le a szerkesztett teendőt az <code>EditedTodo</code> értékére. Valójában ugyanazt az elemet cseréljük le önmagára, de a <code>ListView</code> így frissülni tud.</li>
+</ul>
+</li>
+</ul>
+</details>
+<div class="admonition example">
+<p class="admonition-title">4. iMSc feladat BEADANDÓ</p>
+<p>Illessz be egy képernyőképet az alkalmazásról, ahol egy meglévő elemre kattintva kitöltődik az űrlap! (<code>f4.imsc.1.png</code>)</p>
+<p>Illessz be egy képernyőképet az alkalmazásról, ahol az előző képen kiválasztott teendő mentés hatására frissül a listában! (<code>f4.imsc.2.png</code>)</p>
+</div>
+<h2 id="beadas">Beadás<a class="headerlink" href="#beadas" title="Permanent link">&para;</a></h2>
+<p>Ellenőrzőlista ismétlésképpen:</p>
+<ul>
+<li>A repository gyökérmappájában található neptun.txt fájlba írd bele a Neptun kódod, csupa nagybetűvel. A fájlban csak ez a hat karakter legyen, semmi más.</li>
+<li>A GitHub-ról leöltött kiinduló solutionben/projektekben kell dolgozni, nem újonnan létrehozottban.</li>
+<li>Amíg nem vagy rutinos a Visual Studio Git szolgáltatásainak használatában, a push-t követően (legkésőbb akkor, amikor a házi feladatot beadottnak tekintjük) célszerű ellenőrizni a GitHub webes felületén a repository-ban a fájlokra való rápillantással, hogy valóban minden változtatást feltöltöttél-e.</li>
+<li>A GitHub felületén ellenőrizd a push-t követően, hogy a GitHub Action alapú előellenőrző hiba nélkül lefutott-e.</li>
+<li>Lényeges, hogy a feladatok csak akkor kerülnek elfogadásra, ha teljesen elkészülnek, és minden tekintetben teljesítik a követelményeket. Nem forduló kód, illetve részleges megoldás elfogadásában nem érdemes bízni.</li>
+<li>Természetesen saját munkát kell beadni (hiszen értékelésre kerül).</li>
+</ul>
+<hr>
+<div class="md-source-file">
+  <span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg
+        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z">
+        </path>
+      </svg>
+    </span>
+    <span title="2025. március 20. 18:31:26">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. március 20. 18:31:26"><span class="timeago" datetime="2025-03-20T18:31:26+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. március 20. 18:31:26">2025-03-20</span>
+    </span>
+  </span>
+
+  
+
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Szerzők">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z">
+        </path>
+      </svg>
+    </span>
+    <span>Szerzők</span>
+    <nav><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@tibitoth">
+        <img src="https://avatars.githubusercontent.com/tibitoth?size=72" alt="@tibitoth">
+      </a><a href="https://github.com/szinuccsi" target="_blank" rel="noopener noreferrer" class="md-author" title="@None">
+        <img src="https://avatars.githubusercontent.com/u/44683763?v=4?size=72" alt="@None">
+      </a></nav>      
+  </span>
+</div>
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Vissza a tetejére
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; BME VIK AUT
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
