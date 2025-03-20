@@ -15,7 +15,7 @@ A labor elvégzéséhez szükséges eszközök:
 
 A szükséges fejlesztőkörnyezetről [itt](../../hazi/fejlesztokornyezet/index.md) található leírás.
 
-!!! warning "Fejlesztőkörnyezet WinUI3 fejlesztéshez"
+!!! warning "Fejlesztőkörnyezet WinUI 3 fejlesztéshez"
     A korábbi laborokhoz képest plusz komponensek telepítése szükséges. A [fenti](../../hazi/fejlesztokornyezet/index.md) oldal említi, hogy szükség van a ".NET desktop development" Visual Studio Workload telepítésére, valamint ugyanitt az oldal alján van egy "WinUI támogatás" fejezet, az itt megadott lépéseket is mindenképpen meg kell tenni!
 
 ## Megoldás
@@ -189,7 +189,7 @@ Az eredmény a következő:
 ![record button](images/record-button.png)
 
 !!! note "XAML vektorgrafikus vezérlők"
-    Lényeges, hogy a XAML vezérlők nagy része vektorgrafikus. Ez a gomb ugyanolyan élesen fog kinézni (nem tapasztalunk "pixelesedést") bármilyen bármilyen DPI  ill. nagyítás mellett nézzük.
+    Lényeges, hogy a XAML vezérlők nagy része vektorgrafikus. Ez a gomb ugyanolyan élesen fog kinézni (nem tapasztalunk "pixelesedést") bármilyen DPI ill. nagyítás mellett nézzük.
 
 A XAML-ben példányosított vezérlők tulajdonságainak megadására három lehetőség van (ezeket részben használtuk is már):
 
@@ -436,7 +436,7 @@ Még magyarázatra szorulhat a `ListView`-nál megadott `Grid.ColumnSpan="2"` cs
 
 Próbáljuk ki az alkalmazást (ha nem fordul a kód, akkor töröljük a code behind fájlban a `RecordButton_Click` eseménykezelőt).
 
-Jelen állapotában a `Grid` kitölti a teljes teret vízszintesen és függőlegesen is. Mi ennek az oka? A vezérlők elrendezésének egyik alapilére a `HorizontalAlignment` és `VerticalAlignment`  tulajdonságuk. **Ezek azt határozzák meg, hogy vízszintesen és függőlegesen hol helyezkedjen el az adott vezérlő az őt tartalmazó konténerben (vagyis a szülő vezérlőben)**. A lehetséges értékek:
+Jelen állapotában a `Grid` kitölti a teljes teret vízszintesen és függőlegesen is. Mi ennek az oka? A vezérlők elrendezésének egyik alappillére a `HorizontalAlignment` és `VerticalAlignment`  tulajdonságuk. **Ezek azt határozzák meg, hogy vízszintesen és függőlegesen hol helyezkedjen el az adott vezérlő az őt tartalmazó konténerben (vagyis a szülő vezérlőben)**. A lehetséges értékek:
 
 * `VerticalAlignment`: `Top`, `Center`, `Bottom`, `Stretch` (felülre, középre, alulra igazítva, vagy tér kitöltése függőlegesen)
 * `HorizontalAlignment`: `Left`, `Center`, `Right`, `Stretch` (balra, középre, jobbra igazítva, vagy tér kitöltése vízszintesen)
@@ -733,7 +733,7 @@ Alapértelmezetten ugyanis a `ListView` `ToString()`-et hív a listaelemeken, am
 **A `DataTemplate` egy olyan felületsablon, melyet a `ListView` (he megadjuk az `ItemTemplate` tulajdonságának) minden elemére alkalmazni fog a megjelenítés során.**
 
 Mivel az `x:Bind` fordítás idejű adatkötés, ezért az adatok típusát is meg kell adnunk az adatsablonban az `x:DataType` attribútummal. A fenti példában a `model:Person`-t adtuk meg, vagyis azt szeretnénk, hogy a `model` **prefix** a kódunk `HelloXaml.Models` névterére képződjön le (hiszen ebben van a `Person` osztály). Ehhez a XAML fájlunk elején a `Window` tag attribútumaihoz fel kell vegyük a következő **névtér deklarációt** is:
-`xmlns:model="using:HelloXaml.Models"` (ezt követően a `model` prefix használható lesz). Ezt megtehetjük kézzel, vagy a Visual Studio segítségével is: csak kattintsunk bele az aláhúzott (hibásnak megjelölt) `model:Person`szövegbe, majd kattintsuk a sor elején megjelenő lámpácskán (vagy `Ctrl` + `.` billentyűkombináció), és válasszuk ki a megjelenő *"Add xmlns using:HelloXaml.Models"* elemet.
+`xmlns:model="using:HelloXaml.Models"` (ezt követően a `model` prefix használható lesz). Ezt megtehetjük kézzel, vagy a Visual Studio segítségével is: csak kattintsunk bele az aláhúzott (hibásnak megjelölt) `model:Person`szövegbe, majd kattintsunk a sor elején megjelenő lámpácskára (vagy `Ctrl` + `.` billentyűkombináció), és válasszuk ki a megjelenő *"Add xmlns using:HelloXaml.Models"* elemet.
 
 
 Próbáljuk ki! Most már jól jelennek meg a listában az elemek.
