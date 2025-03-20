@@ -303,89 +303,66 @@ Form layout
     If implemented correctly, the form should be visible only when EditedTodo is not null (consider whether this holds true). Based on this, several approaches can be used, but the simplest is property-based binding with `x:Bind`:
 
     1. Introduce a new boolean property in `MainPage` (e.g., `IsFormVisible`).
-    2.
+    2. Set `IsFormVisible` to true whenever EditedTodo is not null. This must be maintained manually, e.g., in the EditedTodo setter.
+    3. Bind this property to the `Visibility` of the container representing the form. Although `Visibility` is not a boolean, WinUI automatically converts `bool` to `Visibility`.
+    4. Ensure that when the source property (`IsFormVisible`) changes, the bound UI property (control visibility) is updated. (Hint: The class containing `IsFormVisible` must implement an appropriate interface to notify about changes.)
+        
+    ??? "Alternative Approaches"
 
-    2. Ez pontosan akkor legyen igaz, amikor az `EditedTodo` nem null. Ennek a karbantartása a mi feladatunk, pl. az `EditedTodo` setterében.
-    3. Ezt a tulajdonságot lehet adatkötni az űrlapunkat reprezentáló konténer láthatóságához (`Visibility` tulajdonság). Igaz, hogy a típusuk nem egyezik, de WinUI alatt van automatikus konverzió a `bool` és `Visibility` típusok között.
-    4. Gondoljunk arra is, hogy amikor a forrás tulajdonság (`IsFormVisible`) változik, a hozzá kötött cél tulajdonságot (vezérlő láthatóság) esetünkben mindig frissíteni kell. Mire van ehhez szükség? (Tipp: a **tulajdonságot közvetlenül tartalmazó osztálynak** - gondoljuk át, esetünkben ez melyik osztály - egy megfelelő interfészt meg kell valósítania stb.)
-        
-    ??? "Alternatív lehetőségek a megoldásra"
-        
-        Egyéb alternatívák alkalmazása is lehetséges (csak érdekességképpen, de ne ezeket alkalmazzuk a megoldás során):
-        
-        1. Függvény alapú adatkötés megvalósítása, de esetünkben ez körülményesebb lenne.
-            * A `x:Bind` alapon kötött függvénynek a megjelenítés és elrejtéshez az `EditedTodo` property `null` vagy nem `null` értékét kell konvertálni `Visibility`-re.
-            * Az adatkötés során a `FallbackValue='Collapsed'` beállítást is használnunk kell, mert sajnos az `x:Bind` alapértelmezetten nem hívja meg a függvényt, ha az érték `null`.
-            * A kötött függvénynek paraméterben meg kell adni azt a tulajdonságot, melynek változása esetén az adatkötést frissíteni kell, illetve a tulajdonságra vonatkozó változásértesítést itt is meg kell valósítani.
-        2. Konverter alkalmazása.
+        Other solutions could be used, but stick to the method above for this assignment:
 
-??? tip "Prioritások listája"
-    A `ComboBox`-ban a `Priority` felsorolt típus értékeit jelenítsük meg. Ehhez használhatjuk a `Enum.GetValues` függvényt, amihez készítsünk egy tulajdonságot a `MainPage.xaml.cs`-ben.
+        1. Function-based binding using x:Bind, but this would be more complex:
+            * The function should convert `EditedTodo` being null/non-null to `Visibility`.
+            * FallbackValue='Collapsed' must be used since `x:Bind` does not call functions when bound properties are null by default.
+            * The function needs to take a parameter indicating which property should trigger updates, and property change notifications must be handled manually.
+        2. Using a converter to transform `bool` to `Visibility`.
+
+??? tip "Priority list"
+    The `ComboBox` should display all values of the Priority enum. To achieve this, use `Enum.GetValues` and define a property in `MainPage.xaml.cs`:
 
     ```csharp
     public List<Priority> Priorities { get; } = Enum.GetValues(typeof(Priority)).Cast<Priority>().ToList();
     ```
 
-    A `ComboBox` `ItemsSource` tulajdonságához kössük az `Priorities` listát.
+    Bind this list to the `ItemsSource` of the `ComboBox`:
 
     ```xml
     <ComboBox ItemsSource="{x:Bind Priorities}" />
     ```
 
-    A fenti példában az `ItemsSource` csak azt határozza meg, hogy milyen elemek jelenjenek meg a `ComboBox` listájában. De ez semmit nem mond arról, hogy a `ComboBox` kiválasztott elemét mihez kell kötni. Ehhez szükség van még egy adatkötésre. Laboron ez nem szerepelt, előadásanyagban pl. a `SelectedItem`-re érdemes rákeresni (minden előfordulását érdemes megnézni).
+    However, this only defines the list of available values. To bind the selected value, another data binding must be added. (Check lecture materials for `SelectedItem`. It's worth reviewing all mentions of it.)
 
-??? tip "Néhány fontosabb vezérlő tulajdonság"
-    * A `CheckBox` vezérlő `IsChecked` (és nem a `Checked`!) tulajdonsága. A mellette jobbra megjelenő szöveg a `Content` tulajdonságával adható meg.
-    * `DatePicker` vezérlő `Date` tulajdonsága
+??? tip "Key Control Properties"
+    * `CheckBox`: Use `IsChecked` (not `Checked!`) to store the checked state. The accompanying label text can be set via the `Content` property.
+    * `DatePicker`: The selected date is stored in the `Date` property.
 
-??? tip "Furcsa, adatkötéshez kapcsolódó NullReferenceException"
-    Ha egy "megfoghatatlannak" tűnő `NullReferenceException`-t kapsz az új elem felvételekor, akkor ellenőrizd, hogy a `ComboBox` esetében a `SelectedValue`-t kötötted-e esetleg a `SelectedItem` helyett (a `SelectedItem` használandó).
+??? tip "Strange NullReferenceException in data binding"
+    If you encounter an unexpected `NullReferenceException` when adding a new item, check whether you accidentally bound `ComboBox` `SelectedValue` instead of `SelectedItem`. Always use `SelectedItem` for binding in this case.
 
+!!! example "Task 3 - Submission requirement"
+    Insert a **screenshot** of the application where the new task entry form is visible before saving! (`f3.1.png`)
+    Insert a **screenshot** of the application where the previously entered task appears in the list and the form has disappeared! (`f3.2.png`)
 
-!!! example "3. feladat BEADANDÓ"
-    Illessz be egy képernyőképet az alkalmazásról, ahol az új teendő felvétele látható még mentés előtt! (`f3.1.png`)
+!!! warning "Important criteria"
+    The following criteria are mandatory for the homework to be accepted:
 
-    Illessz be egy képernyőképet az alkalmazásról, ahol az előző képen lévő teendő a listába került és eltűnt az űrlap! (`f3.2.png`)
+    * The task description explicitly requires that both the list and form controls must use data binding. Any solution that bypasses data binding is not acceptable. For example, the code-behind file (`MainPage.xaml.cs`) must NOT contain code that directly reads or modifies form control properties (e.g., `TextBox.Text`).
+    * Two exceptions to this rule: 
+        * The `ListView.SelectedItem` property should be set directly.  
+        * Controlling form visibility without data binding is acceptable (though using data binding is recommended for better practice).  
+    * If a new task is added after a previous task, the previous task's data must NOT remain in the form controls.
 
-!!! warning "Fontos kritériumok"
-    Az alábbiakban megadunk néhány fontos kritériumot, melyek mindenképpen feltételei a házi feladat elfogadásának:
+Optional Practice Tasks
 
-    * A feladatkiírás kikötötte, hogy a listában és az űrlapon levő vezélők esetében is adatkötéssel kell dolgozni. Olyan megoldás nem elfogadható, mely ezt megkerüli. Így például nem lehet a code behind fájlban (`MainPage.xaml.cs`) olyan kód, mely az űrlapokon levő vezérlők tulajdonságait (pl. TextBox Text tulajdonsága) közvetlenül kérdezi le vagy állítja.
-    * Az előző pont alól két kivétel van: 
-        * A `ListView` `SelectedItem` tulajdonsága közvetlenül állítandó.
-        * Az űrlap láthatóságának szabályozása adatkötés nélkül is elfogadható (bár nem a legszebb megoldás, és a gyakorlás kedvéért is érdemesebb adatkötéssel dolgozni).
-    * Amikor egy új to-do elem felvétele történik, és korábban már történt egy ilyen elem felvétele, akkor a korábbi elem adatai NEM lehetnek benne az űrlap vezérlőiben.
+??? tip "Optional Practice Task 1 - Making the Form Scrollable"
+    Wrap the form inside a ScrollViewer control. Note: Since the ScrollViewer will now be the outermost element in the grid cell, its grid position must be specified.If implemented, this can be included in the submitted solution.
 
-Opcionális gyakorló feladatok
+??? tip "Optional Practice Task 2 - Fixed-Width Form"
+    In the current solution, the form resizes automatically with the window. A good practice task is to modify the form so that it has a fixed width (e.g., 500 pixels) and its height matches the total height of its contents. If you used a StackPanel for the form layout, only three attributes need to be added or modified. The animation below illustrates this behavior. Note: The submitted solution must follow the original requirement (auto-resizing form), not the behavior from this optional task.
+    ![Fixed-size form](images/newtodo-resizing-optional.gif)
 
-??? tip "Opcionális gyakorló feladat 1 - Űrlap görgethetővé tétele"
-    Ehhez mindössze be kell csomagolni az űrlapot egy `ScrollViewer` vezérlőbe (illetve ne feledkezzünk meg arról, hogy így már ez lesz a legkülső elem a grid cellában, így rá vonatkozóan kell megadni a gridbeli pozíciót). Ha ezt megvalósítod, benne lehet a beadott megoldásodban.
+## Submission
 
-??? tip "Opcionális gyakorló feladat 2 - Fix szélességű űrlap"
-    Jelen megoldásunkban az űrlap automatikusan méreteződik az ablakkal. Jó gyakorlási lehetőség ennek olyan átalakítása, mely esetben az űrlap fix szélességű (pl. 500 pixel) és olyan magasságú, mint a benne levő elemek össz magassága. Ha az űrlap esetén StackPanellel dolgoztál, ehhez mindössze három attribútumot kell felvenni vagy megváltoztatni. Ezt a viselkedést az alábbi animált kép illusztrálja. Lényeges, hogy beadni a korábbi megoldást kell, nem ez az opcionális feladatban leírt viselkedést!
-    ![Fix méretű űrlap](images/newtodo-resizing-optional.gif)
+Checklist Reminder
 
-## 4. Opcionális feladat 3 IMSc pontért - Teendő szerkesztése
-
-Valósítsd meg a teendők szerkesztésének lehetőségét az alábbiak szerint:
-
-* A felületen a teendők listában az elemre kattintva, az adott teendő adatai a szerkesztő felületen (a korábbi feladatban bevezetett űrlapon) kerüljenek megjelenítésre, ahol azok így szerkeszthetőek és menthetőek lesznek.
-* A mentés során a listában a szerkesztett teendő adatai frissüljenek, és az űrlap tűnjön el.
-
-??? success "Megoldási tippek"
-    * Érdemes karbantartani a teendők egyedi azonosítóját a beszúrás során, hogy meg tudjuk különböztetni mentéskor, szerkesztés vagy beszúrás esete áll fenn. Pl. beszúrás esetén használhatjuk a -1 értéket, melyet mentés során lecserélünk az eddig használtaknál eggyel nagyobb számra. De tegyük fel, hogy a -1 is egy olyan érték, mellyel rendelkezhet egy érvényes to-do objektum. Mit lehet ekkor tenni? A `TodoItem` osztályban az `Id` típusát alakítsuk át `int?`-re. A `?`-lel az érték típusok (`int`, `bool`, `char`, `enum`, `struct` stb.) is felvehetnek `null` értéket. Ezeket nullable érték típusoknak (nullable value types) nevezzük. Ezek a `Nullable<T>` .NET struktúrára képződnek le fordítás során, melyek tartalmazzák az eredeti változót, illetve egy flag-et, mely jelzi, ki van-e töltve az érték, vagy sem. Bővebben [itt](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-value-types) és [itt](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1) lehet ezekről olvasni. Alkalmazzuk ezt a megoldás során.
-    * A lista elemre kattintáshoz a `ListView` `ItemClick` eseményét célszerű használni, miután bekapcsoltuk a `IsItemClickEnabled` tulajdonságot a `ListView`-n. Az újonnan kiválasztott listaelem kapcsán információt az eseménykezelő `ItemClickEventArgs` paraméterében kapunk. 
-    * A szerkesztendő adatok kezelésére több megoldás is elképzelhető, ezekből az egyik: 
-        * Az `EditedTodo` property-t állítsuk be a szerkesztett teendőre a kattintáskor.
-        * A mentés gombra kattintva a `Todos` listában cseréljük le a szerkesztett teendőt az `EditedTodo` értékére. Valójában ugyanazt az elemet cseréljük le önmagára, de a `ListView` így frissülni tud.
-
-!!! example "4. iMSc feladat BEADANDÓ"
-    Illessz be egy képernyőképet az alkalmazásról, ahol egy meglévő elemre kattintva kitöltődik az űrlap! (`f4.imsc.1.png`)
-
-    Illessz be egy képernyőképet az alkalmazásról, ahol az előző képen kiválasztott teendő mentés hatására frissül a listában! (`f4.imsc.2.png`)
-
-## Beadás
-
-Ellenőrzőlista ismétlésképpen:
-
---8<-- "docs/hazi/beadas-ellenorzes/index.md:3"
+--8<-- "docs/hazi/beadas-ellenorzes/index_eng.md:3"
