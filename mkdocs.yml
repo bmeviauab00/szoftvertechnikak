@@ -102,7 +102,7 @@ nav:
       - labor/2-nyelvi-eszkozok/index.md
       - labor/3-felhasznaloi-felulet/index.md
       - labor/4-tobbszalu/index.md
-      - "5. MVVM": labor/meghirdetes-elott.md
+      - labor/5-mvvm/index.md
       - labor/6-tervezesi-mintak/index.md      
       - labor/7-adatkezeles/index.md      
   - "Önálló/házi feladatok":
