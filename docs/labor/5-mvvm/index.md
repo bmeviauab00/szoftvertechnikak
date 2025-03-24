@@ -333,7 +333,7 @@ Hozzunk létre a `BooksPage.xaml.cs` fájlban egy új `BooksPageViewModel` típu
 public BooksPageViewModel ViewModel { get; } = new BooksPageViewModel();
 ```
 
-!!! warning "readonly property vs getter only propert"
+!!! warning "readonly property vs getter only property"
     Emlékezzünk vissza, hogy az autoimplementált (egyszer inicializált) readonly property és a getter only property között lényeges különbség van. A fenti példában autoimplementált readonly propertyt használunk, ami azt jelenti, hogy a `ViewModel` property értéke csak egyszer jön létre. Ezzel szemben a getter only property esetén minden egyes híváskor új példányt hoznánk létre, ami nem kívánt viselkedést okozna: `public BooksPageViewModel ViewModel => new BooksPageViewModel();`
 
 A `BooksPage.xaml` fájlban innentől kezdve használhatjuk a `ViewModel` propertyt az adatkötéshez.
