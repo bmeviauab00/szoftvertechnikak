@@ -2465,7 +2465,7 @@ A <code>SelectedGenre</code> setterében a <code>LoadBooks</code> metódust hív
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">BooksPageViewModel</span><span class="w"> </span><span class="n">ViewModel</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BooksPageViewModel</span><span class="p">();</span>
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">readonly property vs getter only propert</p>
+<p class="admonition-title">readonly property vs getter only property</p>
 <p>Emlékezzünk vissza, hogy az autoimplementált (egyszer inicializált) readonly property és a getter only property között lényeges különbség van. A fenti példában autoimplementált readonly propertyt használunk, ami azt jelenti, hogy a <code>ViewModel</code> property értéke csak egyszer jön létre. Ezzel szemben a getter only property esetén minden egyes híváskor új példányt hoznánk létre, ami nem kívánt viselkedést okozna: <code>public BooksPageViewModel ViewModel =&gt; new BooksPageViewModel();</code></p>
 </div>
 <p>A <code>BooksPage.xaml</code> fájlban innentől kezdve használhatjuk a <code>ViewModel</code> propertyt az adatkötéshez.</p>
@@ -2712,8 +2712,8 @@ Esetünkben a <code>NotifyCanExecuteChangedFor</code>-ral kössük össze a <cod
         </path>
       </svg>
     </span>
-    <span title="2025. március 22. 09:04:37">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. március 22. 09:04:37"><span class="timeago" datetime="2025-03-22T09:04:37+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. március 22. 09:04:37">2025-03-22</span>
+    <span title="2025. március 24. 07:54:38">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. március 24. 07:54:38"><span class="timeago" datetime="2025-03-24T07:54:38+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. március 24. 07:54:38">2025-03-24</span>
     </span>
   </span>
 
