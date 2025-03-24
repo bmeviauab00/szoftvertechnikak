@@ -2018,6 +2018,21 @@ Wie im Allgemeinen, auch in dieser Hausaufgabe sollte das grundlegende Layout de
 <p><a class="glightbox" href="../images/model.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Modell" src="../images/model.png" /></a></p>
 </figure>
 <p>Beide Typen sollten öffentlich sein ( <code>class</code> und <code>enum</code> mit <code>public</code> vorangestellt), da Ihr sonst später bei der Übersetzung einen Fehler "Inconsistent accessibility" erhalten würden.</p>
+<p>Addieren Sie einen Ordner namens <code>Views</code> zu dem Projekt, und eine neue leere Seite namens <code>MainPage</code> zu diesem Ordner (Rechtsklick auf <code>Views</code>: <em>Add/New Item/Blank Page (WinUI 3)</em>). Um diese Seite auf dem Fenster unserer Anwendung anzuzeigen, muss ein <code>MainPage</code> Objekt im Hauptfenster <code>MainWindow.xaml</code> instanziiert werden (Namensraum <code>views</code> soll auch addiert werden):</p>
+<div class="highlight"><span class="filename">MainWindow.xaml</span><pre><span></span><code><span class="w">    </span><span class="nt">&lt;Window</span>
+<span class="w">        </span><span class="na">x:Class=</span><span class="s">&quot;HA3.MainWindow&quot;</span>
+<span class="w">        </span><span class="na">xmlns=</span><span class="s">&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;</span>
+<span class="w">        </span><span class="na">xmlns:x=</span><span class="s">&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;</span>
+<span class="w">        </span><span class="na">xmlns:local=</span><span class="s">&quot;using:HA3&quot;</span>
+<span class="w">        </span><span class="na">xmlns:d=</span><span class="s">&quot;http://schemas.microsoft.com/expression/blend/2008&quot;</span>
+<span class="w">        </span><span class="na">xmlns:mc=</span><span class="s">&quot;http://schemas.openxmlformats.org/markup-compatibility/2006&quot;</span><span class="w"> </span>
+<span class="hll"><span class="w">        </span><span class="na">xmlns:views=</span><span class="s">&quot;using:HA3.Views&quot;</span>
+</span><span class="w">        </span><span class="na">mc:Ignorable=</span><span class="s">&quot;d&quot;</span><span class="nt">&gt;</span>
+
+<span class="hll"><span class="w">        </span><span class="nt">&lt;views:MainPage</span><span class="w"> </span><span class="nt">/&gt;</span><span class="w">    </span>
+</span>
+<span class="w">    </span><span class="nt">&lt;/Window&gt;</span><span class="w"> </span>
+</code></pre></div>
 <p>Auf der Seite <code>MainPage</code> wird eine Liste der zu erledigenden Aufgaben angezeigt. Jetzt verwenden Sie speicherinterne Testdaten, die in <code>MainPage.xaml.cs</code> erstellt wurden: Hier führen Sie eine Eigenschaft <code>List&lt;TodoItem&gt;</code> mit dem Namen <code>Todos</code> ein (die später an das Steuerelement <code>ListView</code> auf der Benutzeroberfläche gebunden wird). Diese Liste enthält <code>TodoItem</code> Objekte.</p>
 <div class="highlight"><span class="filename">MainPage.xaml.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">TodoItem</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Todos</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span>
 <span class="p">{</span>
@@ -2062,7 +2077,7 @@ Wie im Allgemeinen, auch in dieser Hausaufgabe sollte das grundlegende Layout de
 </details>
 <div class="admonition note">
 <p class="admonition-title"><code>MainPage</code> Klasse</p>
-<p>Während der Hausaufgabe werden Sie in der Klasse <code>MainPage</code> arbeiten, die aus der eingebauten Klasse <code>Page</code> abgeleitet ist. Die Klasse <code>Page</code> hilft Ihnen, zwischen den Seiten innerhalb des Fensters zu navigieren. Obwohl sie in dieser Hausaufgaaóbe nicht verwendet wird, lohnt es sich, sich an ihre Verwendung zu gewöhnen. Da unsere Anwendung aus einer einzigen Seite besteht, instanziieren wir einfach ein Objekt <code>MainPage</code> im Hauptfenster (Sie können es sich in der Datei <code>MainWindow.xaml</code> ansehen).</p>
+<p>Während der Hausaufgabe werden Sie in der Klasse <code>MainPage</code> arbeiten, die aus der eingebauten Klasse <code>Page</code> abgeleitet ist. Die Klasse <code>Page</code> hilft Ihnen, zwischen den Seiten innerhalb des Fensters zu navigieren. Obwohl sie in dieser Hausaufgabe nicht verwendet wird, lohnt es sich, sich an ihre Verwendung zu gewöhnen. Da unsere Anwendung aus einer einzigen Seite besteht, instanziieren wir einfach ein Objekt <code>MainPage</code> im Hauptfenster (Sie können es sich in der Datei <code>MainWindow.xaml</code> ansehen).</p>
 </div>
 <h2 id="aufgabe-2-seitenlayout-liste-anzeigen">Aufgabe 2 - Seitenlayout, Liste anzeigen<a class="headerlink" href="#aufgabe-2-seitenlayout-liste-anzeigen" title="Permanent link">&para;</a></h2>
 <h3 id="layout">Layout<a class="headerlink" href="#layout" title="Permanent link">&para;</a></h3>
@@ -2335,8 +2350,8 @@ Foreground="{x:Bind Priority, Converter={StaticResource PriorityBrushConverter}}
         </path>
       </svg>
     </span>
-    <span title="2024. április 18. 09:53:07">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2024. április 18. 09:53:07"><span class="timeago" datetime="2024-04-18T09:53:07+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2024. április 18. 09:53:07">2024-04-18</span>
+    <span title="2025. március 24. 15:08:57">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. március 24. 15:08:57"><span class="timeago" datetime="2025-03-24T15:08:57+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. március 24. 15:08:57">2025-03-24</span>
     </span>
   </span>
 
