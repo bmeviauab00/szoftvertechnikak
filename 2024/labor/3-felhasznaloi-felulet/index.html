@@ -2097,7 +2097,7 @@
 </ul>
 <p>A szükséges fejlesztőkörnyezetről <a href="../../hazi/fejlesztokornyezet/">itt</a> található leírás.</p>
 <div class="admonition warning">
-<p class="admonition-title">Fejlesztőkörnyezet WinUI3 fejlesztéshez</p>
+<p class="admonition-title">Fejlesztőkörnyezet WinUI 3 fejlesztéshez</p>
 <p>A korábbi laborokhoz képest plusz komponensek telepítése szükséges. A <a href="../../hazi/fejlesztokornyezet/">fenti</a> oldal említi, hogy szükség van a ".NET desktop development" Visual Studio Workload telepítésére, valamint ugyanitt az oldal alján van egy "WinUI támogatás" fejezet, az itt megadott lépéseket is mindenképpen meg kell tenni!</p>
 </div>
 <h2 id="megoldas">Megoldás<a class="headerlink" href="#megoldas" title="Permanent link">&para;</a></h2>
@@ -2255,7 +2255,7 @@ Most kézzel fogunk XAML-t írni és ezzel a felületet kialakítani. Vegyünk f
 <p><a class="glightbox" href="images/record-button.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="record button" src="images/record-button.png" /></a></p>
 <div class="admonition note">
 <p class="admonition-title">XAML vektorgrafikus vezérlők</p>
-<p>Lényeges, hogy a XAML vezérlők nagy része vektorgrafikus. Ez a gomb ugyanolyan élesen fog kinézni (nem tapasztalunk "pixelesedést") bármilyen bármilyen DPI  ill. nagyítás mellett nézzük.</p>
+<p>Lényeges, hogy a XAML vezérlők nagy része vektorgrafikus. Ez a gomb ugyanolyan élesen fog kinézni (nem tapasztalunk "pixelesedést") bármilyen DPI ill. nagyítás mellett nézzük.</p>
 </div>
 <p>A XAML-ben példányosított vezérlők tulajdonságainak megadására három lehetőség van (ezeket részben használtuk is már):</p>
 <ul>
@@ -2465,7 +2465,7 @@ Ha több <code>*</code> is szerepel a definíciókban, akkor azok arányosíthat
 </div>
 <p>Még magyarázatra szorulhat a <code>ListView</code>-nál megadott <code>Grid.ColumnSpan="2"</code> csatolt tulajdonság: a <code>ColumnSpan</code> és <code>RowSpan</code> azt határozzák meg, hány oszlopon illetve soron "átívelően" helyezkedjen el a vezérlő. A példánkban a <code>ListView</code> mindkét oszlopot kitölti.</p>
 <p>Próbáljuk ki az alkalmazást (ha nem fordul a kód, akkor töröljük a code behind fájlban a <code>RecordButton_Click</code> eseménykezelőt).</p>
-<p>Jelen állapotában a <code>Grid</code> kitölti a teljes teret vízszintesen és függőlegesen is. Mi ennek az oka? A vezérlők elrendezésének egyik alapilére a <code>HorizontalAlignment</code> és <code>VerticalAlignment</code>  tulajdonságuk. <strong>Ezek azt határozzák meg, hogy vízszintesen és függőlegesen hol helyezkedjen el az adott vezérlő az őt tartalmazó konténerben (vagyis a szülő vezérlőben)</strong>. A lehetséges értékek:</p>
+<p>Jelen állapotában a <code>Grid</code> kitölti a teljes teret vízszintesen és függőlegesen is. Mi ennek az oka? A vezérlők elrendezésének egyik alappillére a <code>HorizontalAlignment</code> és <code>VerticalAlignment</code>  tulajdonságuk. <strong>Ezek azt határozzák meg, hogy vízszintesen és függőlegesen hol helyezkedjen el az adott vezérlő az őt tartalmazó konténerben (vagyis a szülő vezérlőben)</strong>. A lehetséges értékek:</p>
 <ul>
 <li><code>VerticalAlignment</code>: <code>Top</code>, <code>Center</code>, <code>Bottom</code>, <code>Stretch</code> (felülre, középre, alulra igazítva, vagy tér kitöltése függőlegesen)</li>
 <li><code>HorizontalAlignment</code>: <code>Left</code>, <code>Center</code>, <code>Right</code>, <code>Stretch</code> (balra, középre, jobbra igazítva, vagy tér kitöltése vízszintesen)</li>
@@ -2725,7 +2725,7 @@ Alapértelmezetten ugyanis a <code>ListView</code> <code>ToString()</code>-et h�
 </code></pre></div>
 <p><strong>A <code>DataTemplate</code> egy olyan felületsablon, melyet a <code>ListView</code> (he megadjuk az <code>ItemTemplate</code> tulajdonságának) minden elemére alkalmazni fog a megjelenítés során.</strong></p>
 <p>Mivel az <code>x:Bind</code> fordítás idejű adatkötés, ezért az adatok típusát is meg kell adnunk az adatsablonban az <code>x:DataType</code> attribútummal. A fenti példában a <code>model:Person</code>-t adtuk meg, vagyis azt szeretnénk, hogy a <code>model</code> <strong>prefix</strong> a kódunk <code>HelloXaml.Models</code> névterére képződjön le (hiszen ebben van a <code>Person</code> osztály). Ehhez a XAML fájlunk elején a <code>Window</code> tag attribútumaihoz fel kell vegyük a következő <strong>névtér deklarációt</strong> is:
-<code>xmlns:model="using:HelloXaml.Models"</code> (ezt követően a <code>model</code> prefix használható lesz). Ezt megtehetjük kézzel, vagy a Visual Studio segítségével is: csak kattintsunk bele az aláhúzott (hibásnak megjelölt) <code>model:Person</code>szövegbe, majd kattintsuk a sor elején megjelenő lámpácskán (vagy <code>Ctrl</code> + <code>.</code> billentyűkombináció), és válasszuk ki a megjelenő <em>"Add xmlns using:HelloXaml.Models"</em> elemet.</p>
+<code>xmlns:model="using:HelloXaml.Models"</code> (ezt követően a <code>model</code> prefix használható lesz). Ezt megtehetjük kézzel, vagy a Visual Studio segítségével is: csak kattintsunk bele az aláhúzott (hibásnak megjelölt) <code>model:Person</code>szövegbe, majd kattintsunk a sor elején megjelenő lámpácskára (vagy <code>Ctrl</code> + <code>.</code> billentyűkombináció), és válasszuk ki a megjelenő <em>"Add xmlns using:HelloXaml.Models"</em> elemet.</p>
 <p>Próbáljuk ki! Most már jól jelennek meg a listában az elemek.</p>
 <p>Az <em>Add</em> gomb hatására rakjuk bele a listába az űrlapon található személy adataival egy új <code>Person</code> másolatát, majd töröljük ki az űrlap adatait a <code>NewPerson</code> objektumunkban.</p>
 <p>Ehhez vezessünk be egy <code>Click</code> eseménykezelőt az <em>Add</em> gombunkra:</p>
@@ -2774,8 +2774,8 @@ Alapértelmezetten ugyanis a <code>ListView</code> <code>ToString()</code>-et h�
         </path>
       </svg>
     </span>
-    <span title="2025. március 5. 13:40:58">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. március 5. 13:40:58"><span class="timeago" datetime="2025-03-05T13:40:58+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. március 5. 13:40:58">2025-03-05</span>
+    <span title="2025. március 18. 20:06:49">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. március 18. 20:06:49"><span class="timeago" datetime="2025-03-18T20:06:49+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. március 18. 20:06:49">2025-03-18</span>
     </span>
   </span>
 
@@ -2796,6 +2796,8 @@ Alapértelmezetten ugyanis a <code>ListView</code> <code>ToString()</code>-et h�
         <img src="https://avatars.githubusercontent.com/u/47510515?u=853a81ff1cc1f87f5d90dcc93cac5d06a4260755&v=4?size=72" alt="@Mate Varga">
       </a><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
         <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&v=4?size=72" alt="@Zoltán Benedek">
+      </a><a href="https://github.com/lyozi" target="_blank" rel="noopener noreferrer" class="md-author" title="@Urak József">
+        <img src="https://avatars.githubusercontent.com/u/124312789?v=4?size=72" alt="@Urak József">
       </a><a href="https://github.com/norbertkurcsi" target="_blank" rel="noopener noreferrer" class="md-author" title="@Kurcsi Norbert">
         <img src="https://avatars.githubusercontent.com/u/90260479?u=5dc2891fae39aac8292aedfc0a555941ee742a61&v=4?size=72" alt="@Kurcsi Norbert">
       </a><a href="https://github.com/zbenedek-mirango" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
