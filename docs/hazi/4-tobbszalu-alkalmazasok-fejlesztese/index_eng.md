@@ -429,3 +429,64 @@ private void UpdateBikeUI(Bike bike)
         tbBike.Text = "%"; // display a cup
 }
 ```
+
+!!! danger "Important"
+    Even if you follow the above steps/principles correctly, your solution may still not work as expected. When starting the race, the following exception may be thrown in the `UpdateBikeUI` method when accessing the `TextBlock` associated with the bike: `System.Runtime.InteropServices.COMException: 'The application called an interface that was marshalled for a different thread. (0x8001010E (RPC_E_WRONG_THREAD))'`
+
+What is the reason for this error? Before opening the reminder below, try to figure it out yourself based on what you've learned in lectures/labs.
+
+??? tip "Reminder"
+    **In WinUI, you may only access a UI element/control from the same thread that created it — UI elements are not thread-safe, and they will throw exceptions if you attempt to access them "incorrectly" from another thread.**
+
+The solution will be developed in the next subtask.
+
+### Using the DispatcherQueue
+
+In our case, the specific issue is caused by the fact that when the Game's state changes, the notification delegate in the `Game` class is called from the worker threads associated with the bikes. As a result, the registered handler `MainWindow.UpdateBikeUI` is also called from these worker threads. However, inside `UpdateBikeUI`, we access UI elements (such as the `TextBlock` representing a bike), which were created on the main (UI) thread — and therefore should only be accessed from the main thread.
+
+:exclamation: The solution is to use the `DispatcherQueue`, **which allows us to "forward" a method call from a background thread to the main UI thread, where UI elements can safely be accessed.** The use of `DispatcherQueue` has been covered in detail during lectures and in the corresponding lab.
+
+Task: Modify the `MainWindow.UpdateBikeUI` method so that UI element access is done from the correct thread using `DispatcherQueue`. This will prevent the exception you've been encountering.
+
+!!! example "TO BE SUBMITTED" 
+    Before proceeding to the next task, you must take a screenshot.
+
+    Create a screenshot named `Task6.png` as follows:
+
+    - Start the application. If needed, resize the window to take up less screen space.
+    - In the background, Visual Studio should be open with MainWindow.xaml.cs visible.
+    - Zoom in so that the `UpdateBikeUI` method of the `MainWindow` class is visible. In the foreground, the application window should be shown.
+
+!!! warning "Implementing a similar game in real-world scenarios" 
+    In practice, we would not use threads to implement a game like this. Using a timer to update bike positions would be much more practical, allowing the whole game to remain single-threaded, thus avoiding many of the challenges introduced by multithreading. (In this assignment, however, our goal is specifically to practice multithreading techniques.)
+
+
+<!-- 
+## Optional task (not mandatory)
+
+### Task
+
+Enable stopping the bicycles via a button click:
+
+- Add a button to the right of the others with the label *Stop Race*.
+- Clicking the *Stop Race* button should stop all bicycles and terminate the threads running them. Introduce a public method called `StopRace` in the `Game` class for this purpose.
+- The race should be stoppable even before it is started.
+- After stopping the race, the `StopRace` method should wait until all threads have actually finished executing.
+- Once the race has been stopped (*Stop Race* clicked), no other button should be clickable (set the `IsEnabled` property of all buttons to false).
+
+### Solution
+
+Below are some key elements of the solution:
+
+- Add a *Stop Race* button to the UI, implement a click handler, and from there call the newly introduced `Game.StopRace` method.
+- To stop the threads, introduce a flag variable that the bike thread loops can monitor. Use a `bool` variable named `raceEnded`, and modify the thread function so that if it becomes true, the thread exits (use return).
+- However, the boolean variable alone is not sufficient.
+When a bike is waiting at the starting line or in the depot, its thread is blocked, waiting on an event — and therefore it cannot check the `raceEnded` flag. Thus, you must also introduce a new `ManualResetEvent` to signal the stop event (this can be awaited too).
+- In the *Stop Race* button click (inside `Game.StopRace`), set both the boolean flag and the `ManualResetEvent` to a signaled state.
+- In the bike thread function, comment out (but don't delete!) the existing event wait logic, and replace it with a new implementation using the `ManualResetEvent` you just created.
+The bikes will still need to wait, but now the wait should also break immediately if the stop signal is received.
+- If stopping was requested, the thread must exit (e.g. with a `return`).
+- In the `Game.StopRace` method, after signaling the threads, wait for them to finish using `Join()` on each thread. For this, you need to store the thread objects when they are started — use a member variable like `List<Thread>`.
+
+Note: An alternative solution for stopping threads — instead of using a boolean and `ManualResetEvent` — would be to call `Interrupt` on each thread and handle the resulting `ThreadInterruptedException` in the thread function. This technique was covered in the lecture. 
+-->
