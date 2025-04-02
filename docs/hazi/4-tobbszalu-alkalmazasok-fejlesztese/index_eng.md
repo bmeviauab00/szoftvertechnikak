@@ -488,5 +488,12 @@ The bikes will still need to wait, but now the wait should also break immediatel
 - If stopping was requested, the thread must exit (e.g. with a `return`).
 - In the `Game.StopRace` method, after signaling the threads, wait for them to finish using `Join()` on each thread. For this, you need to store the thread objects when they are started — use a member variable like `List<Thread>`.
 
-Note: An alternative solution for stopping threads — instead of using a boolean and `ManualResetEvent` — would be to call `Interrupt` on each thread and handle the resulting `ThreadInterruptedException` in the thread function. This technique was covered in the lecture. 
+Note: An alternative solution for stopping threads — instead of using a boolean and `ManualResetEvent` — would be to call `Interrupt` on each thread and handle the resulting `ThreadInterruptedException` in the thread function. This technique was covered in the lecture.
+
+!!! example "TO BE SUBMITTED" 
+    Take a screenshot named `Task_Optional.png` as follows:
+
+    - Start the application. If necessary, resize the window so it takes up less screen space.
+    - In the background, Visual Studio should be open with Game.cs visible.
+    - Zoom in so the thread function of the Game class is visible. In the foreground, the application window should be visible.
 -->
