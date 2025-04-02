@@ -373,7 +373,7 @@ You don't need to do anything with the logged values (e.g., no need to display t
 !!! Note "Thread-safe collections in System.Collections.Concurrent" 
     If you used a suitable collection from the `System.Collections.Concurrent` namespace (e.g., `ConcurrentQueue` instead of `List<T>`), then explicit locking would not be necessary. This namespace contains collection types designed to be thread-safe.
 
-### Task 6 – Refreshing the UI on every change (Accessing UI elements from worker threads)
+## Task 6 – Refreshing the UI on every change (Accessing UI elements from worker threads)
 
 In the current implementation, the UI is refreshed periodically at fixed intervals using a timer. Now, we will replace this solution. Refactor your implementation so that the UI is updated immediately whenever the state of the `Game` changes. The timer-based updates should no longer be used.
 
