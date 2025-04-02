@@ -762,10 +762,12 @@ private void AddButton_Click(object sender, RoutedEventArgs e)
 
 Nem jelenik meg a listában az új elem, mert a `ListView` nem értesül arról, hogy új elem került a listába. Ezt könnyen orvosolhatjuk: a `List<Persont>`-t cseréljük le `ObservableCollection<Person>`-re:
 
-```csharp
+```csharp hl_lines="1"
 public ObservableCollection<Person> People { get; set; }
+
+public MainWindow()
+{
 ```
-Ne felejtsük el megváltoztatni a MainWindow()-ban a listát inicializáló sort!
 
 !!! tip "`ObservableCollection<T>`"
     Fontos, hogy itt nem maga a `People` tulajdonság értéke változott, hanem a `List<Person>` objektum tartalma, ezért nem az `INotifyPropertyChanged` interfész a megoldás, hanem az `INotifyCollectionChanged` interfész, melyet az `ObservableCollection` implementál.
