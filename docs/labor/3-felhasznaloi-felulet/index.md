@@ -768,6 +768,7 @@ public ObservableCollection<Person> People { get; set; }
 
 public MainWindow()
 {
+  ...
 ```
 
 !!! tip "`ObservableCollection<T>`"
