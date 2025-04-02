@@ -115,7 +115,8 @@ Most kézzel fogunk XAML-t írni és ezzel a felületet kialakítani. Vegyünk f
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:HelloXaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:model="using:HelloXaml.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="using:HelloXaml.Models"
     mc:Ignorable="d">
 
     <Grid>
