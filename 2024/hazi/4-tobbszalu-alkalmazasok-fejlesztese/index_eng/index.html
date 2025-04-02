@@ -1,0 +1,2451 @@
+
+<!doctype html>
+<html lang="hu" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Benedek Zoltán">
+      
+      
+        <link rel="canonical" href="https://bmeviauab00.github.io/szoftvertechnikak/2024/hazi/4-tobbszalu-alkalmazasok-fejlesztese/index_eng/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.9">
+    
+    
+      
+        <title>4th Homework – Developing multithreaded applications - BMEVIAUAB00 Szoftvertechnikák</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.f2e4d321.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../extra-material-theme.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="aut" data-md-color-primary="aut" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4th-homework-developing-multithreaded-applications" class="md-skip">
+          Kihagyás
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Élőfej">
+    <a href="../../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-header__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
+      
+  <img src="../../../img/logo-bme-aut.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BMEVIAUAB00 Szoftvertechnikák
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4<sup>th</sup> Homework – Developing multithreaded applications
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="aut" data-md-color-primary="aut" data-md-color-accent="red"  aria-label="Váltás sötét témára"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Váltás sötét témára" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="indigo"  aria-label="Váltás világos témára"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Váltás világos témára" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Keresés" placeholder="Keresés" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Keresés">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Törlés" aria-label="Törlés" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Keresés inicializálása
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bmeviauab00/szoftvertechnikak
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Lapok" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Szoftvertechnikák (2024-től)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../labor/1-model-es-kod-kapcsolata/" class="md-tabs__link">
+          
+  
+  Laborok
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Önálló/házi feladatok
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../labor/1-model-es-kod-kapcsolata/index_eng/" class="md-tabs__link">
+          
+  
+  English course labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../index_eng/" class="md-tabs__link">
+          
+  
+  Homework
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../labor/1-model-es-kod-kapcsolata/index_ger/" class="md-tabs__link">
+          
+  
+  Deutschkurs-Labore
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../meghirdetes-elott_ger/" class="md-tabs__link">
+          
+  
+  Hausaufgaben
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigáció" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="BMEVIAUAB00 Szoftvertechnikák" class="md-nav__button md-logo" aria-label="BMEVIAUAB00 Szoftvertechnikák" data-md-component="logo">
+      
+  <img src="../../../img/logo-bme-aut.png" alt="logo">
+
+    </a>
+    BMEVIAUAB00 Szoftvertechnikák
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bmeviauab00/szoftvertechnikak" title="Főoldalra ugrás" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bmeviauab00/szoftvertechnikak
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Szoftvertechnikák (2024-től)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Laborok
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Laborok
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/1-model-es-kod-kapcsolata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. A modell és a kód kapcsolata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/2-nyelvi-eszkozok/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Nyelvi eszközök
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/3-felhasznaloi-felulet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. A felhasználói felület kialakítása
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/4-tobbszalu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Többszálú alkalmazások készítése
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/5-mvvm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/6-tervezesi-mintak/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Tervezési minták (kiterjeszthetőség)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/7-adatkezeles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Adatkezelés
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Önálló/házi feladatok
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Önálló/házi feladatok
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Útmutató
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-model-es-kod-kapcsolata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. HF - A modell és a kód kapcsolata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-nyelvi-eszkozok/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. HF - Nyelvi eszközök
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-felhasznaloi-felulet-kialakitasa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. HF - Felhasználói felület kialakítása
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. HF - Többszálú alkalmazások fejlesztése
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. HF - MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. HF - Tervezési minták
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IMSc HF - Liftrendszer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IMSc HF - MVVM receptek
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fejlesztokornyezet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fejlesztőkörnyezet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    English course labs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            English course labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/1-model-es-kod-kapcsolata/index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. The relationship between the model and the code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/2-nyelvi-eszkozok/index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Language tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/3-felhasznaloi-felulet/index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. The design of the user interface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/4-tobbszalu/index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Developing multithreaded applications
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/meghirdetes-elott_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/6-tervezesi-mintak/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/7-adatkezeles/index_eng.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Homework
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Homework
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-model-es-kod-kapcsolata/index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. HW - The relationship between the model and the code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-nyelvi-eszkozok/index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. HW - Language tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-felhasznaloi-felulet-kialakitasa/index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. HW - Implementing the user interface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. HW - Developing multithreaded applications
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. HW - MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. HW - Design patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IMSc HW - Liftsystem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IMSc HW - MVVM recipies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fejlesztokornyezet/index_eng/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Development environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Deutschkurs-Labore
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Deutschkurs-Labore
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/1-model-es-kod-kapcsolata/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Beziehung zwischen dem Modell und dem Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/2-nyelvi-eszkozok/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Sprachliche Mittel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/3-felhasznaloi-felulet/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Entwurf der Benutzeroberfläche
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/4-tobbszalu/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Erstellung von mehrfädigen Anwendungen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/meghirdetes-elott_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/6-tervezesi-mintak/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Entwurfsmuster (Erweiterbarkeit)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labor/7-adatkezeles/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Datenverwaltung
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hausaufgaben
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Hausaufgaben
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Beziehung zwischen dem Modell und dem Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Sprachliche Mittel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-felhasznaloi-felulet-kialakitasa/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Entwurf der Benutzeroberfläche
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Entwicklung von Multithreading-Anwendungen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5-mvvm/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. MVVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meghirdetes-elott_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Entwurfsmuster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fejlesztokornyezet/index_ger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entwicklungsumgebung
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tartalomjegyzék
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submission-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Submission process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Submission process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application logic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#display" class="md-nav__link">
+    <span class="md-ellipsis">
+      Display
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-1-updating-the-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 1 – Updating the UI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Task 1 – Updating the UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamically-handling-any-number-of-bicycles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamically handling any number of bicycles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementing-ui-refresh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing UI refresh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#main-window-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main window header
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-2-preparing-the-race" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 2 – Preparing the race
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-2-starting-the-race" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 2 – Starting the race
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-3-releasing-racers-from-the-depot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 3 – Releasing racers from the depot
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-4-implementing-the-winning-bicycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 4 – Implementing the winning bicycle
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-5-mutual-exclusion-and-volatile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 5 – Mutual exclusion and volatile
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-5-step-logging-non-thread-safe-net-collections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 5 – Step logging (non-thread-safe .NET collections)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Task 5 – Step logging (non-thread-safe .NET collections)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task-6-refreshing-the-ui-on-every-change-accessing-ui-elements-from-worker-threads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 6 – Refreshing the UI on every change (Accessing UI elements from worker threads)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementing-ui-notification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing UI notification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-dispatcherqueue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the DispatcherQueue
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/bmeviauab00/szoftvertechnikak/edit/master/docs/hazi/4-tobbszalu-alkalmazasok-fejlesztese/index_eng.md" title="Oldal szerkesztése" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="4th-homework-developing-multithreaded-applications">4<sup>th</sup> Homework – Developing multithreaded applications<a class="headerlink" href="#4th-homework-developing-multithreaded-applications" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>This independent homework builds upon the content covered in the lectures on concurrent/multithreaded application development.
+Its practical background is based on the lab session: <a href="../../../labor/4-tobbszalu/index_eng/">Lab 4 – Developing multithreaded applications</a>.</p>
+<p>With this foundation, the tasks in this assignment can be completed using the short guidelines following each task description. The purpose of this homework is to deepen your understanding of the following concepts:</p>
+<ul>
+<li>Starting and stopping threads, thread functions</li>
+<li>Signaling and waiting for signals (<code>ManualResetEvent</code>, <code>AutoResetEvent</code>)</li>
+<li>Mutual exclusion using <code>lock</code></li>
+<li>Accessing WinUI UI elements from worker threads</li>
+<li>Practicing the use of delegates (<code>Action&lt;T&gt;</code>)</li>
+<li>Practicing UI design: using timers, manipulating UI elements from code-behind (not directly related to threading)</li>
+</ul>
+<p>The required development environment is the usual one, described <a href="../../fejlesztokornyezet/index_eng/">here</a> — including the required Windows App SDK.</p>
+<div class="admonition warning">
+<p class="admonition-title">Checker Information</p>
+<p>There is no functional automatic pre-checker for this homework: although a check runs after each push, it only verifies that neptun.txt is filled out and that there are no compile errors. The actual evaluation will be carried out by the lab instructors after the deadline.</p>
+</div>
+<h2 id="submission-process">Submission process<a class="headerlink" href="#submission-process" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The process is similar to previous homework assignments. Use GitHub Classroom to create your repository. The invitation link is available on Teams and Aut portal on the course homepage. Make sure to use the correct invitation link for this specific assignment (each homework has a different URL). Clone the repository that is created — it will contain the expected structure for your solution. After completing the tasks, commit and push your work.</li>
+<li>Fill in your Neptun code in the neptun.txt file!</li>
+<li>Open and work in the provided <code>MultiThreadedApp.sln</code> file from the cloned folder.</li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> Some tasks require you to submit <strong>screenshots</strong> showing parts of your solution. These screenshots serve as proof that the work is your own. <strong>The exact content expected in each screenshot is described in the task instructions.</strong> Screenshots must be included in your submission and placed in the root folder of your repository (next to neptun.txt). These will be uploaded to GitHub along with the rest of the repository. Since your repository is private, only instructors will have access to it. If a screenshot contains any information you do not wish to share, you may blur or redact that part before uploading.</li>
+</ul>
+<p>Task 0 – Overview of the starter solution</p>
+<p>In this assignment, you'll be developing an application that simulates a bicycle race. A core design principle of the implementation is <strong>the separation of application logic and UI</strong>: The application logic must not depend on the UI in any way. The UI, naturally, does depend on the application logic, as it reflects its current state.</p>
+<p>The provided starter solution already includes some logic related to both the application and the UI. Let’s run the application and take a look at its interface:</p>
+<p><a class="glightbox" href="../images/app-ui.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Initial UI" src="../images/app-ui.png" /></a></p>
+<p>-The top section of the window displays the race track. On the left, bicycles are lined up. The start line, a mid-race checkpoint (depot), and the finish line are shown further to the right. 
+- The bottom section contains buttons for controlling the race. These buttons are not yet functional, but the following behavior will be implemented:
+    - <code>Prepare Race</code>: Prepares the race by creating bicycle objects and lining them up at the start line.
+    - <code>Start Race</code>: Starts the race, causing bicycles to compete and advance toward the depot, where they will wait.
+    - <code>Start Next Bike From Depot</code>: Releases one bicycle from the depot toward the finish line. This button can be pressed multiple times—each press allows one more bicycle to continue.</p>
+<p>The following animation illustrates what the final working simulation should look like:</p>
+<p><a class="glightbox" href="../images/app-ui-anim.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Target UI" src="../images/app-ui-anim.gif" /></a></p>
+<p>Simulation mechanics work as folloes (not yet implemented):
+- Each bicycle will be associated with its own separate thread.
+- The race simulation is structured into iterations: in each iteration, a thread (if not waiting at the starting gate or in the depot) will advance its bicycle forward by a random value. This continues until the bicycle reaches the finish line.</p>
+<p>You can toggle between light and dark themes using the keyboard shortcut ++Ctrl+T++. This function is already implemented.</p>
+<h3 id="application-logic">Application logic<a class="headerlink" href="#application-logic" title="Permanent link">&para;</a></h3>
+<p>In the starter framework, the <strong>application logic</strong> classes are only partially implemented. These classes are located in the <code>AppLogic</code> folder/namespace. Here's an overview of their structure and current functionality:</p>
+<ul>
+<li><code>Bike</code>: Represents a single bicycle in the race, with the following properties: start number, current position on the track, an a flag that indicates whether this bike won the race. The <code>Step</code> method is implemented to step the bike by a random distance during the race.</li>
+<li><code>Game</code>: Handles the core logic for controlling the game (this could be split into smaller parts, but for simplicity, we will primarily work in this class).<ul>
+<li>Constants defining the positions of the race track elements: <code>StartLinePosition</code>,  <code>DepoPosition</code>, <code>FinishLinePosition</code></li>
+<li>A list of bicycles in the race: <code>Bikes</code></li>
+<li><code>PrepareRace</code> method: Prepares the race by creating the bikes. Currently uses a helper method CreateBike() to create 3 bikes. This method will also be responsible for lining the bikes up at the start line.</li>
+<li><code>StartBikes</code> method: Not yet implemented. Starts the race. Each bike thread competes to reach the depot, where they will then wait.</li>
+<li><code>StartNextBikeFromDepo</code>: Not yet implemented. Starts one bike from the depot toward the finish line. Only a single bike is started per button click.</li>
+</ul>
+</li>
+</ul>
+<h3 id="display">Display<a class="headerlink" href="#display" title="Permanent link">&para;</a></h3>
+<p>The <strong>UI layer</strong> in the starter project is already well-prepared, though you’ll still be making adjustments and enhancements.</p>
+<p>The UI is defined in <code>MainWindow.xaml</code>, following these key principles:</p>
+<ul>
+<li>The main layout uses a standard <code>Grid</code> with two rows. The first row (with <code>*</code> height) contains the race track and bikes. The second row (with <code>Auto</code> height) contains a <code>StackPanel</code> holding the control buttons.</li>
+<li>The race track is composed of <code>Rectangle</code> objects (background, start line, depot, finish line), and text labels use <code>TextBlock</code> elements — some of which are rotated.</li>
+<li>All bicycles are placed inside a vertical <code>StackPanel</code>, with each bike represented by a <code>TextBlock</code> (Font: <code>Webdings</code>, character: <code>b</code>). (A FontIcon could have been used, but TextBlock was chosen for simplicity and familiarity.)</li>
+<li>All UI elements (track and bikes container) are positioned in row 0 of the Grid. Drawing order follows the declaration order in XAML. Elements are positioned using alignment and margins. The bike positions will be updated by setting the left margin on each <code>TextBlock</code>. An alternative layout approach would have been to use a <code>Canvas</code>, positioning elements using Left, Top, Width, and Height — but the current solution uses margin-based layout.</li>
+</ul>
+<p>Check the MainWindow.cs code-behind file as well. Key members and methods:</p>
+<ul>
+<li><code>game</code> field: A reference to the Game object, which holds the simulation state.</li>
+<li><code>bikeTextBlocks</code> field: A list for storing the <code>TextBlock</code> objects representing the bikes. Initially empty — you will manage this list as part of the implementation.</li>
+<li>Constructor: Sets the X positions of the start line, depot, and finish line using constants from the Game class. This is done by adjusting the left margin (<code>Margin</code>) of each rectangle (since the elements are left-aligned within their container). Registers the ++Ctrl+t++ keyboard shortcut via the <code>AddKeyboardAcceleratorToChangeTheme()</code> helper method to toggle between light and dark themes.</li>
+<li><code>PrepareRaceButton_Click</code>, 
+<code>StartRaceButton_Click</code>, 
+<code>StartNextFromDepoButton_Click</code>:  these are wired to the respective control buttons in the UI.</li>
+<li><code>UpdateUI</code> method: This method is crucial: it updates the UI based on the current state of the game. Iterates through all bikes and updates the TextBlock positions based on the bikes’ Position values. This is done by adjusting the left margin of each bike's <code>TextBlock</code>. This method is not yet called anywhere, so the UI currently does not update during the simulation — you'll need to invoke this method later to reflect changes on screen.</li>
+</ul>
+<h2 id="task-1-updating-the-ui">Task 1 – Updating the UI<a class="headerlink" href="#task-1-updating-the-ui" title="Permanent link">&para;</a></h2>
+<p>Right now, even if the game state changes during execution, the UI doesn't reflect it. The three bicycles are hardcoded in <code>MainWindow.xaml</code>, and the <code>UpdateUI()</code> method is never called. Before implementing the game logic, let’s modify the UI logic so it can dynamically reflect the game's current state.</p>
+<h3 id="dynamically-handling-any-number-of-bicycles">Dynamically handling any number of bicycles<a class="headerlink" href="#dynamically-handling-any-number-of-bicycles" title="Permanent link">&para;</a></h3>
+<p>Currently, the XAML has three hardcoded <code>TextBlock</code> elements for bikes. This only allows three racers, which is limiting. Let’s refactor the UI to support any number of bicycles. As a first step, remove the three hardcoded TextBlock definitions for the bicycles from <code>MainWindow.xaml</code> (comment out the three lines). After that, in the code-behind file, in the <code>PrepareRaceButton_Click</code> event handler, after preparing the race (the <code>game.PrepareRace()</code> call):</p>
+<ol>
+<li>Dynamically create a corresponding <code>TextBlock</code> object for each bicycle in the game object (<code>game.Bikes</code> property). The properties of the created TextBlock should exactly match those that were removed from the XAML file (<code>FontFamily</code>, <code>FontSize</code>, <code>Margin</code>, <code>Text</code>).</li>
+<li>Add the created <code>TextBlock</code> objects as children of the <code>StackPanel</code> named <code>bikesPanel</code> (the <code>TextBlock</code>s you commented out in the XAML were also children of this panel — check this!). Use <code>bikesPanel.Children.Add</code> to add them.</li>
+<li>Also add the created <code>TextBlock</code> objects to the <code>bikeTextBlocks</code> list. This is important — as seen in the code — because the <code>UpdateUI</code> method uses the <code>bikeTextBlocks</code> list to locate the <code>TextBlock</code> corresponding to each bike (it matches them by array index).</li>
+</ol>
+<p>The application's behavior will change slightly (this is intentional): no bicycles will appear at startup — they will only be displayed after clicking the <code>Prepare Race</code> button.</p>
+<p>Try to implement the solution yourself by following the steps above, then verify that your implementation generally matches the solution described.</p>
+<details class="tip">
+<summary>Solution</summary>
+<div class="highlight"><pre><span></span><code><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">bike</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">game</span><span class="p">.</span><span class="n">Bikes</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">bikeTextBlock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TextBlock</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">FontFamily</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FontFamily</span><span class="p">(</span><span class="s">&quot;Webdings&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">FontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">64</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Margin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Thickness</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="n">bikesPanel</span><span class="p">.</span><span class="n">Children</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">bikeTextBlock</span><span class="p">);</span>
+<span class="w">    </span><span class="n">bikeTextBlocks</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">bikeTextBlock</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h3 id="implementing-ui-refresh">Implementing UI refresh<a class="headerlink" href="#implementing-ui-refresh" title="Permanent link">&para;</a></h3>
+<p>Now we have exactly as many <code>TextBlock</code> elements as there are bikes in the game object.
+And we can refresh the display at any time using the <code>UpdateUI</code> method — to reflect the current state of <code>game</code>. The key question now is: when should we call this function? In other words, when should we update the UI? There are several possible strategies:</p>
+<ul>
+<li>a) Every time the <code>Game</code> state changes.</li>
+<li>b) At regular intervals (e.g., every 100 ms), using a timer to update the UI "continuously."</li>
+</ul>
+<p>Both approaches have their pros and cons. Option b) is often simpler — you don’t need to track exactly when the <code>Game</code> state changes. However, it may trigger unnecessary updates if nothing changed. On the other hand, it's more efficient in cases where changes are frequent — we don’t need to refresh the UI for every little update; just refresh periodically, which is good enough visually. For simplicity, we'll go with option b) — periodic updates using a timer.</p>
+<p>In WinUI 3, for handling periodic events (especially when UI elements need to be accessed from the timer), it is recommended to use the <code>DispatcherTimer</code> class.</p>
+<p>Add a field to <code>MainWindow</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">DispatcherTimer</span><span class="w"> </span><span class="n">timer</span><span class="p">;</span>
+</code></pre></div>
+<p>Next, in the constructor of MainWindow, instantiate the timer, assign an event handler to its <code>Tick</code> event (this will be called periodically), set the interval to 100 milliseconds using the <code>Interval</code> property, and start the timer:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">MainWindow</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+
+<span class="w">    </span><span class="n">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DispatcherTimer</span><span class="p">();</span>
+<span class="w">    </span><span class="n">timer</span><span class="p">.</span><span class="n">Tick</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Timer_Tick</span><span class="p">;</span>
+<span class="w">    </span><span class="n">timer</span><span class="p">.</span><span class="n">Interval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromMilliseconds</span><span class="p">(</span><span class="m">100</span><span class="p">);</span>
+<span class="w">    </span><span class="n">timer</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Timer_Tick</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="kt">object</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UpdateUI</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>As you can see, the UI is refreshed in the timer’s event handler by calling <code>UpdateUI</code>.</p>
+<p>The question is: how can we test whether our solution is working correctly — specifically, whether the <code>Timer_Tick</code> event handler is actually being called every 100 ms? To verify this, temporarily trace the current time (formatted appropriately) to the Visual Studio Output window from within the event handler:</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Timer_Tick</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="kt">object</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="n">Diagnostics</span><span class="p">.</span><span class="n">Trace</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;Time: {DateTime.Now.ToString(&quot;</span><span class="n">hh</span><span class="p">:</span><span class="n">mm</span><span class="p">:</span><span class="n">ss</span><span class="p">.</span><span class="n">fff</span><span class="s">&quot;)}&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">UpdateUI</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The <code>Trace.WriteLine</code> method writes a line to the Visual Studio Output window, and <code>DateTime.Now</code> is used to get the current time. We format it into a readable string using the <code>ToString</code> method. Run the application (make sure to run it in debug mode, i.e. by pressing ++F5++), and check the Visual Studio Output window to confirm that a new line appears every 100 ms.
+If everything works correctly, comment out the trace line.</p>
+<div class="admonition note">
+<p class="admonition-title">Precision of DispatcherTimer</p>
+<p>You may observe that the <code>DispatcherTimer</code> is not particularly precise, but it is perfectly suitable for our needs. One important characteristic is that it runs on the UI thread (its <code>Tick</code> event is raised there), which means we can access and modify UI elements directly from within the handler (<code>Timer_Tick</code>).</p>
+</div>
+<h3 id="main-window-header">Main window header<a class="headerlink" href="#main-window-header" title="Permanent link">&para;</a></h3>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> The title of the main window must be "Tour de France - [YOUR NEPTUN CODE]". For example, if your Neptun code is ABCDEF, the full title should be: Tour de France - ABCDEF. To do this, set the <code>Title</code> property in the <code>MainWindow.xaml</code> file to that string.</p>
+<h2 id="task-2-preparing-the-race">Task 2 – Preparing the race<a class="headerlink" href="#task-2-preparing-the-race" title="Permanent link">&para;</a></h2>
+<p>Now that the display logic is complete, we shift our focus to application logic and thread management. From here on, we will primarily work in the <code>Game</code> class.</p>
+<p>Reminder:</p>
+<ul>
+<li>Each bicycle will have its own separate thread.</li>
+<li>The game/simulation runs in iterations: in each iteration, the thread: step the bike by a random distance (if not waiting at start or in depot), an continues until it reaches the finish line.</li>
+</ul>
+<p>Steps to implement:</p>
+<ol>
+<li>At the end of the <code>CreateBike</code> method in the <code>Game</code> class, start a new thread for the newly created bike.</li>
+<li>The thread function should be defined in the <code>Game</code> class.</li>
+<li>The <code>CreateBike</code> method should pass the bike object as a parameter to the thread function — this is the bike the thread will control.</li>
+<li>Ensure that threads do not prevent the application from closing. This means threads must be marked as background threads, so they don’t block the process from exiting when the window is closed.</li>
+<li>
+<p>The thread function, for now, should implement the following loop:</p>
+<p>In each iteration:</p>
+<div class="highlight"><pre><span></span><code>- Move the bike using a random step by calling its `Step()` method.
+- Sleep the thread for 100 milliseconds.
+</code></pre></div>
+<p>This motion should continue until the bike reaches the start line, i.e., its position is equal to or greater than <code>StartLinePosition</code>.</p>
+</li>
+</ol>
+<p>Try to implement the above steps on your own based on what you learned in the lectures and lab sessions. You can test your solution using the debugger, or simply by running the application and clicking the <code>Prepare Race</code> button: if everything is working correctly, the bikes should gradually roll forward until they reach the start line.</p>
+<p>We will provide a solution for these steps as well,
+but you will learn much more if you try to solve it yourself first — use the provided solution only for verification purposes.</p>
+<details class="tip">
+<summary>Solution</summary>
+<p>The thread method in the <code>Game</code> class:</p>
+<div class="highlight"><pre><span></span><code><span class="k">void</span><span class="w"> </span><span class="nf">BikeThreadFunction</span><span class="p">(</span><span class="kt">object</span><span class="w"> </span><span class="n">bikeAsObject</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Bike</span><span class="w"> </span><span class="n">bike</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Bike</span><span class="p">)</span><span class="n">bikeAsObject</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">bike</span><span class="p">.</span><span class="n">Position</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">StartLinePosition</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">bike</span><span class="p">.</span><span class="n">Step</span><span class="p">();</span>
+
+<span class="w">        </span><span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">100</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>As you can see, for the thread function, we used the overload that takes an object parameter, not the parameterless version. This is because the thread function needs to receive the bike instance it will control.</p>
+<p>Starting the thread at the end of the <code>CreateBike</code> method:</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CreateBike</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">thread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Thread</span><span class="p">(</span><span class="n">BikeThreadFunction</span><span class="p">);</span>
+<span class="w">    </span><span class="n">thread</span><span class="p">.</span><span class="n">IsBackground</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// The thread must not block exiting the process</span>
+<span class="w">    </span><span class="n">thread</span><span class="p">.</span><span class="n">Start</span><span class="p">(</span><span class="n">bike</span><span class="p">);</span><span class="w"> </span><span class="c1">// Giving the bike object as a parameter</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<div class="admonition example">
+<p class="admonition-title">TO BE SUBMITTED</p>
+<p>Before moving on to the next task, you need to take a screenshot.</p>
+<p>Create a screenshot named <code>Task1.png</code> with the following setup:</p>
+<ul>
+<li>Start the application. If necessary, resize the window so it doesn’t take up too much space on the screen.</li>
+<li>In the background, Visual Studio should be open with <code>Game.cs</code> visible.</li>
+<li>In Visual Studio, zoom so that both the <code>CreateBike</code> and <code>BikeThreadFunction</code> methods of the <code>Game</code> class are visible. In the foreground, your application window should be shown.</li>
+</ul>
+</div>
+<h2 id="task-2-starting-the-race">Task 2 – Starting the race<a class="headerlink" href="#task-2-starting-the-race" title="Permanent link">&para;</a></h2>
+<p>Implement the race start from the start line and let it run until the bikes reach the depot, following these guidelines:</p>
+<ul>
+<li>The race should be started by the <code>StartBikes</code> method in the <code>Game</code> class, which is already called when the <code>Start Race</code> button is clicked.</li>
+<li>It is important that <code>StartBikes</code> does not start new threads. Instead, existing threads should be waiting, and they should resume execution as a result of the <code>StartBikes</code> method being called.</li>
+<li>If the user clicks the <code>Start Race</code> button before the bikes have reached the start line, the bikes do not need to stop at the start line anymore (but it is also acceptable if the application simply ignores the button press in such a case).</li>
+<li>The bikes should move all the way to the depot (until their position reaches the value defined by the <code>DepoPosition</code> field).</li>
+<li>Make your changes in the <code>Game</code> class.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Hint for the solution</p>
+<p>Since all racers should start at the same time after waiting, it is recommended to use a <code>ManualResetEvent</code> object to handle the wait and starting mechanism.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">TO BE SUBMITTED</p>
+<p>Before moving on to the next task, you need to take a screenshot.</p>
+<p>Create a screenshot named <code>Task2.png</code> with the following setup:</p>
+<ul>
+<li>Start the application. If necessary, resize the window so it doesn’t take up too much space on the screen.</li>
+<li>In the background, Visual Studio should be open with <code>Game.cs</code> visible.</li>
+<li>In Visual Studio, zoom so that the <code>BikeThreadFunction</code> method of the <code>Game</code> class is visible. In the foreground, your application window should be shown.</li>
+</ul>
+</div>
+<h2 id="task-3-releasing-racers-from-the-depot">Task 3 – Releasing racers from the depot<a class="headerlink" href="#task-3-releasing-racers-from-the-depot" title="Permanent link">&para;</a></h2>
+<p>Implement the logic for releasing racers from the depot and allowing them to race to the finish line, following these guidelines:</p>
+<ul>
+<li>Each racer should be released from the depot by the <code>StartNextBikeFromDepo</code> method in the <code>Game</code> class, which is already called when the <code>Start Next Bike From Depo</code> button is clicked.</li>
+<li>Each button click should allow only one racer to leave the depot.</li>
+<li>It is important that <code>StartNextBikeFromDepo</code> does not create new threads. Instead, existing threads should wait, and resume execution as a result of calling <code>StartNextBikeFromDepo</code>.</li>
+<li>If the user clicks the <code>Start Next Bike From Depo</code> button before any bikes have reached the depot, then a bike may continue as soon as it arrives (but it's also perfectly acceptable if the app simply ignores the button click in such cases).</li>
+<li>The bikes should move all the way to the finish line (until their position reaches the value defined by <code>FinishLinePosition</code>). Once a bike reaches the finish line, its associated thread should terminate.</li>
+<li>Make your changes in the <code>Game</code> class.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Hint for the solution</p>
+<p>The solution is similar to the previous task, but this time, instead of using a <code>ManualResetEvent</code>, you should use a different (but similar) type of synchronization object...</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">TO BE SUBMITTED</p>
+<p>Before moving on to the next task, you need to take a screenshot.</p>
+<p>Create a screenshot named <code>Task3.png</code> with the following setup:</p>
+<ul>
+<li>Start the application. If necessary, resize the window so it doesn’t take up too much space on the screen.</li>
+<li>In the background, Visual Studio should be open with <code>Game.cs</code> visible.</li>
+<li>In Visual Studio, zoom so that the <code>BikeThreadFunction</code> method of the <code>Game</code> class is visible. In the foreground, your application window should be shown.</li>
+</ul>
+</div>
+<h2 id="task-4-implementing-the-winning-bicycle">Task 4 – Implementing the winning bicycle<a class="headerlink" href="#task-4-implementing-the-winning-bicycle" title="Permanent link">&para;</a></h2>
+<p>Implement the logic for determining and displaying the winning bicycle according to the following guidelines:</p>
+<ul>
+<li>The winner is the first bike to reach the finish line (its position first reaches the value defined by the <code>FinishLinePosition</code> field).</li>
+<li>In your solution, use the fact that the <code>Bike</code> class already contains a <code>isWinner</code> field, which is initially false. It can be set to true using the <code>SetAsWinner</code> method, and its value can be queried using the <code>IsWinner</code> property.</li>
+<li>The decision as to whether a bike is the winner should be made within the thread function associated with that bike in the <code>Game</code> class — place the winner selection logic there.</li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> It is critical that only one winner exists.
+If more than one bike is marked as the winner (i.e., <code>SetAsWinner</code> is called for multiple bikes), this is a serious error.</li>
+<li>Work in the <code>Game</code> class.</li>
+</ul>
+<p>Before implementing the logic, we’ll improve the display slightly to make the winning bike visually distinct.
+In the <code>UpdateUI</code> method of the <code>MainWindow</code> class, add a small extra logic: If the given bike is a winner, change its display to a trophy icon. To do this, set the Text property of the corresponding <code>TextBlock</code> to "%":</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">UpdateUI</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">game</span><span class="p">.</span><span class="n">Bikes</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="p">...</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bike</span><span class="p">.</span><span class="n">IsWinner</span><span class="p">)</span>
+<span class="w">            </span><span class="n">tbBike</span><span class="p">.</span><span class="n">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Implement the logic yourself based on the following guidelines and tips.</p>
+<div class="admonition tip">
+<p class="admonition-title">Guidelines and tips for the solution</p>
+<ul>
+<li>To determine whether a winner has already been declared, add a helper variable <code>bool hasWinner</code> in the <code>Game</code> class (this should indicate whether a winner has already been assigned).</li>
+<li>A very similar example was shown during the lecture in the topic "Using lock", with a detailed explanation.</li>
+<li>Your solution must still function correctly — meaning only one winner — even if a long artificial delay is introduced between checking <code>hasWinner</code> and setting it to true. This simulates a scenario where the thread unluckily loses execution time right at that point, and bikes are released from the depot almost simultaneously, reaching the finish line close together.</li>
+<li>For testing, insert a line like <code>Thread.Sleep(2000)</code> between the check and the assignment to <code>hasWinner</code>. After testing, comment this line out. During testing, release bikes from the depot as close to each other as possible (e.g., rapid button clicks) so they arrive at the finish nearly at the same time. If more than one bike becomes a winner (i.e., turns into a trophy), then your solution is incorrect and not properly synchronized.</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">TO BE SUBMITTED</p>
+<p>Before moving on to the next task, you need to take a screenshot.</p>
+<p>Create a screenshot named <code>Task4.png</code> with the following setup:</p>
+<ul>
+<li>Start the application. If necessary, resize the window so it doesn’t take up too much space on the screen.</li>
+<li>In the background, Visual Studio should be open with <code>Game.cs</code> visible.</li>
+<li>In Visual Studio, zoom so that the <code>BikeThreadFunction</code> method of the <code>Game</code> class is visible. </li>
+<li>In the foreground, your application window should be shown.</li>
+</ul>
+</div>
+<h2 id="task-5-mutual-exclusion-and-volatile">Task 5 – Mutual exclusion and volatile<a class="headerlink" href="#task-5-mutual-exclusion-and-volatile" title="Permanent link">&para;</a></h2>
+<p>In the previous task, we saw that checking and setting <code>hasWinner</code> needed to be made atomic, meaning we had to ensure mutual exclusion during this process. Now, the question is: are there any other parts of the application where mutual exclusion should have been applied to maintain consistency? To answer this, we need to examine which variables are accessed from multiple threads (i.e., written by one and read by another). The following variables are involved:</p>
+<ul>
+<li>The <code>position</code> field in the <code>Bike</code> class. This is modified by the bike’s thread using the <code>+=</code> operator, and read by the main thread via the <code>Position</code> property during rendering. The question is: could this cause any inconsistency?
+Reading and writing int variables with the <code>=</code> operator is atomic — so that would be fine. However, the <code>+=</code> operator is not atomic — it consists of multiple steps: read, increment, write. (If it’s unclear why this is a problem, be sure to review the lecture slides on this topic.) If multiple threads used <code>+=</code> on the same variable at the same time, that could cause inconsistency. But let’s think carefully: in our case, only one thread at a time uses <code>+=</code>, and the other thread only reads position. This means the reading thread may get either the before or after value of the increment, but that's acceptable. Conclusion: No need to implement mutual exclusion here.</li>
+<li>The <code>isWinner</code> field in the <code>Bike</code> class: It is set by the bike’s thread using <code>SetAsWinner</code>, and read by the main thread using the <code>IsWinner</code> property during rendering. Its type is <code>bool</code>, and reading/writing a bool is atomic, so no need for mutual exclusion.</li>
+<li>The <code>hasWinner</code> field in the <code>Game</code> class: Also a bool, so its read/write operations are atomic. However, we had an additional requirement: only one bike can win. Because of that, mutual exclusion was necessary, and we implemented it in the previous task using lock.</li>
+</ul>
+<p>You might now think all is fine — but it's not case. <strong>Even when atomicity is guaranteed, a thread may not see the updated value of a shared variable due to caching (e.g., in a CPU register).
+This means a thread might still see an old value even after the variable has been changed by another thread.</strong> To prevent this, such shared variables should be marked as <code>volatile</code>. This keyword ensures the variable is always read from and written to main memory, not a cached copy. (The behavior of volatile is a bit more complex, and it's explained in more detail in the lectures.)
+Important Note: there is no need to use <code>volatile</code> if the variable is only accessed within <code>lock</code> blocks or if it's modified via the <code>Interlocked</code> class. Therefore, mark the following fields as volatile: <code>position</code> and <code>isWinner</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Bike</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">volatile</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">65</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">volatile</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isWinner</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="task-5-step-logging-non-thread-safe-net-collections">Task 5 – Step logging (non-thread-safe .NET collections)<a class="headerlink" href="#task-5-step-logging-non-thread-safe-net-collections" title="Permanent link">&para;</a></h2>
+<p>Implement logging of every single step taken by the bikes during the race. In the <code>Game</code> class, store these steps in a single shared <code>List&lt;int&gt;</code> variable (common for all bikes).
+You don't need to do anything with the logged values (e.g., no need to display them). Use the fact that the <code>Step</code> method in the <code>Bike</code> class returns the step size as an int — this is the value that should be logged (just add it to the list).</p>
+<details class="tip">
+<summary>Hint for the solution</summary>
+<p>The <code>List&lt;T&gt;</code> class is not thread-safe, and since it will be written to from multiple threads, you must ensure mutual exclusion when accessing it. Use the <code>lock</code> statement to safely add to the list.</p>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Thread-safe collections in System.Collections.Concurrent</p>
+<p>If you used a suitable collection from the <code>System.Collections.Concurrent</code> namespace (e.g., <code>ConcurrentQueue</code> instead of <code>List&lt;T&gt;</code>), then explicit locking would not be necessary. This namespace contains collection types designed to be thread-safe.</p>
+</div>
+<h3 id="task-6-refreshing-the-ui-on-every-change-accessing-ui-elements-from-worker-threads">Task 6 – Refreshing the UI on every change (Accessing UI elements from worker threads)<a class="headerlink" href="#task-6-refreshing-the-ui-on-every-change-accessing-ui-elements-from-worker-threads" title="Permanent link">&para;</a></h3>
+<p>In the current implementation, the UI is refreshed periodically at fixed intervals using a timer. Now, we will replace this solution. Refactor your implementation so that the UI is updated immediately whenever the state of the <code>Game</code> changes. The timer-based updates should no longer be used.</p>
+<p>The next section will present an overview of possible solutions and select one of them. But before reading on, try to think about it yourself — what kind of approach would be most appropriate here? A key requirement is that no solution is acceptable if it introduces a dependency from the application logic (<code>Game</code> class) to the UI. Remember our core principle: the application logic must not depend in any way on the presentation logic (the UI).</p>
+<h3 id="implementing-ui-notification">Implementing UI notification<a class="headerlink" href="#implementing-ui-notification" title="Permanent link">&para;</a></h3>
+<p>Alternatives:</p>
+<ol>
+<li>We could apply the Observer design pattern. This will be covered later in the semester, although it's worth noting that C# events are based on the core concepts of the Observer pattern.</li>
+<li>A straightforward solution would be to introduce a C# event (e.g., <code>BikeStateChanged</code>), raised by the Game class whenever a bike’s state changes, passing the Bike object as a parameter. This would be a clean, general-purpose solution: any class could subscribe to the event at any time. Following Microsoft’s recommendations, this would require defining a custom <code>EventArgs</code> subclass and a new delegate type (or using the built-in <code>EventHandler&lt;TEventArgs&gt;</code> generic delegate).</li>
+<li>
+<p>While the C# event-based approach in the previous paragraph is fully "correct", our needs are more specific — we don’t necessarily want arbitrary classes to subscribe to the event. Therefore, we’ll implement a more targeted solution (and this is the approach we'll use). This approach still uses a delegate, but it does not introduce a C# event, and is designed to notify only a single object — the <code>MainWindow</code>, which is responsible for updating the UI whenever a bike’s state changes. This approach consists of the following components:</p>
+<ul>
+<li><code>Game</code> class as the "notifier":<ul>
+<li>The function (delegate object) that the <code>Game</code> class will invoke when a bike’s state changes is passed to it as a parameter to the <code>PrepareRace</code> method. The <code>Game</code> class stores it in a member variable.</li>
+<li>This parameter and field should be of type <code>Action&lt;Bike&gt;</code> (we’ve already learned about <code>Action</code> and <code>Action&lt;T&gt;</code>).</li>
+<li>Whenever a bike’s state changes (position or winner status inside the thread function), the <code>Game</code> class invokes the stored delegate — but only if it is not null (use <code>?.Invoke</code>) — passing the updated Bike object as a parameter. This is how it notifies the subscriber.</li>
+</ul>
+</li>
+<li><code>MainWindow</code> as the "subscriber":<ul>
+<li>In the <code>MainWindow</code> class, implement a method called <code>UpdateBikeUI(Bike bike)</code>, and pass this method as a delegate when calling <code>Game.PrepareRace</code>. In <code>UpdateBikeUI</code>, make sure the <code>TextBlock</code> corresponding to the given bike object is updated accordingly.</li>
+<li>This is why we use an <code>Action&lt;Bike&gt;</code> delegate rather than just <code>Action</code>: it allows the Game to specify which bike changed, so that <code>MainWindow.UpdateBikeUI</code> can update only that bike’s display.</li>
+</ul>
+</li>
+<li>Comment out the timer startup (<code>timer.Start()</code> in the <code>MainWindow</code> constructor) — because now UI updates are handled using the delegate-based notification (<code>Action&lt;Bike&gt;</code>), and we no longer need periodic updates.</li>
+</ul>
+</li>
+</ol>
+<p>Implement the notification mechanism described in point 3 above!
+Below, we'll provide the implementation of <code>MainWindow.UpdateBikeUI</code>, which updates the <code>TextBlock</code> display for the given <code>Bike</code> object:</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">UpdateBikeUI</span><span class="p">(</span><span class="n">Bike</span><span class="w"> </span><span class="n">bike</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// It may happen that UpdateBikeUI is called so early that</span>
+<span class="w">    </span><span class="c1">// bikeTextBlocks has not yet been populated — in that case,</span>
+<span class="w">    </span><span class="c1">// we can’t update the UI yet, so just return.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bikeTextBlocks</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">game</span><span class="p">.</span><span class="n">Bikes</span><span class="p">.</span><span class="n">Count</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">marginAdjustmentForWheel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">8</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Find the TextBlock corresponding to the bike (by using the same index).</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">tbBike</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bikeTextBlocks</span><span class="p">[</span><span class="n">game</span><span class="p">.</span><span class="n">Bikes</span><span class="p">.</span><span class="n">IndexOf</span><span class="p">(</span><span class="n">bike</span><span class="p">)];</span>
+
+<span class="w">    </span><span class="c1">// Do not set the bike&#39;s position yet if its size has not been</span>
+<span class="w">    </span><span class="c1">// determined by the layout system (otherwise the bike would &quot;jump,&quot;</span>
+<span class="w">    </span><span class="c1">// since in the margin calculation below, we&#39;d use an invalid width of 0).</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tbBike</span><span class="p">.</span><span class="n">ActualWidth</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// The window’s (0,0) point is the origin — positions like start/depot/finish are</span>
+<span class="w">    </span><span class="c1">// measured relative to this.  </span>
+<span class="w">    </span><span class="c1">// The right side of the icon is the wheel, but we want to align that with the left edge,</span>
+<span class="w">    </span><span class="c1">// so we need to subtract ActualWidth.</span>
+<span class="w">    </span><span class="n">tbBike</span><span class="p">.</span><span class="n">Margin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Thickness</span><span class="p">(</span><span class="n">bike</span><span class="p">.</span><span class="n">Position</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tbBike</span><span class="p">.</span><span class="n">ActualWidth</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">marginAdjustmentForWheel</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bike</span><span class="p">.</span><span class="n">IsWinner</span><span class="p">)</span>
+<span class="w">        </span><span class="n">tbBike</span><span class="p">.</span><span class="n">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// display a cup</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Important</p>
+<p>Even if you follow the above steps/principles correctly, your solution may still not work as expected. When starting the race, the following exception may be thrown in the <code>UpdateBikeUI</code> method when accessing the <code>TextBlock</code> associated with the bike: <code>System.Runtime.InteropServices.COMException: 'The application called an interface that was marshalled for a different thread. (0x8001010E (RPC_E_WRONG_THREAD))'</code></p>
+</div>
+<p>What is the reason for this error? Before opening the reminder below, try to figure it out yourself based on what you've learned in lectures/labs.</p>
+<details class="tip">
+<summary>Reminder</summary>
+<p><strong>In WinUI, you may only access a UI element/control from the same thread that created it — UI elements are not thread-safe, and they will throw exceptions if you attempt to access them "incorrectly" from another thread.</strong></p>
+</details>
+<p>The solution will be developed in the next subtask.</p>
+<h3 id="using-the-dispatcherqueue">Using the DispatcherQueue<a class="headerlink" href="#using-the-dispatcherqueue" title="Permanent link">&para;</a></h3>
+<p>In our case, the specific issue is caused by the fact that when the Game's state changes, the notification delegate in the <code>Game</code> class is called from the worker threads associated with the bikes. As a result, the registered handler <code>MainWindow.UpdateBikeUI</code> is also called from these worker threads. However, inside <code>UpdateBikeUI</code>, we access UI elements (such as the <code>TextBlock</code> representing a bike), which were created on the main (UI) thread — and therefore should only be accessed from the main thread.</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> The solution is to use the <code>DispatcherQueue</code>, <strong>which allows us to "forward" a method call from a background thread to the main UI thread, where UI elements can safely be accessed.</strong> The use of <code>DispatcherQueue</code> has been covered in detail during lectures and in the corresponding lab.</p>
+<p>Task: Modify the <code>MainWindow.UpdateBikeUI</code> method so that UI element access is done from the correct thread using <code>DispatcherQueue</code>. This will prevent the exception you've been encountering.</p>
+<div class="admonition example">
+<p class="admonition-title">TO BE SUBMITTED</p>
+<p>Before proceeding to the next task, you must take a screenshot.</p>
+<p>Create a screenshot named <code>Task6.png</code> as follows:</p>
+<ul>
+<li>Start the application. If needed, resize the window to take up less screen space.</li>
+<li>In the background, Visual Studio should be open with MainWindow.xaml.cs visible.</li>
+<li>Zoom in so that the <code>UpdateBikeUI</code> method of the <code>MainWindow</code> class is visible. In the foreground, the application window should be shown.</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Implementing a similar game in real-world scenarios</p>
+<p>In practice, we would not use threads to implement a game like this. Using a timer to update bike positions would be much more practical, allowing the whole game to remain single-threaded, thus avoiding many of the challenges introduced by multithreading. (In this assignment, however, our goal is specifically to practice multithreading techniques.)</p>
+</div>
+<!-- 
+## Optional task (not mandatory)
+
+### Task
+
+Enable stopping the bicycles via a button click:
+
+- Add a button to the right of the others with the label *Stop Race*.
+- Clicking the *Stop Race* button should stop all bicycles and terminate the threads running them. Introduce a public method called `StopRace` in the `Game` class for this purpose.
+- The race should be stoppable even before it is started.
+- After stopping the race, the `StopRace` method should wait until all threads have actually finished executing.
+- Once the race has been stopped (*Stop Race* clicked), no other button should be clickable (set the `IsEnabled` property of all buttons to false).
+
+### Solution
+
+Below are some key elements of the solution:
+
+- Add a *Stop Race* button to the UI, implement a click handler, and from there call the newly introduced `Game.StopRace` method.
+- To stop the threads, introduce a flag variable that the bike thread loops can monitor. Use a `bool` variable named `raceEnded`, and modify the thread function so that if it becomes true, the thread exits (use return).
+- However, the boolean variable alone is not sufficient.
+When a bike is waiting at the starting line or in the depot, its thread is blocked, waiting on an event — and therefore it cannot check the `raceEnded` flag. Thus, you must also introduce a new `ManualResetEvent` to signal the stop event (this can be awaited too).
+- In the *Stop Race* button click (inside `Game.StopRace`), set both the boolean flag and the `ManualResetEvent` to a signaled state.
+- In the bike thread function, comment out (but don't delete!) the existing event wait logic, and replace it with a new implementation using the `ManualResetEvent` you just created.
+The bikes will still need to wait, but now the wait should also break immediately if the stop signal is received.
+- If stopping was requested, the thread must exit (e.g. with a `return`).
+- In the `Game.StopRace` method, after signaling the threads, wait for them to finish using `Join()` on each thread. For this, you need to store the thread objects when they are started — use a member variable like `List<Thread>`.
+
+Note: An alternative solution for stopping threads — instead of using a boolean and `ManualResetEvent` — would be to call `Interrupt` on each thread and handle the resulting `ThreadInterruptedException` in the thread function. This technique was covered in the lecture.
+
+!!! example "TO BE SUBMITTED" 
+    Take a screenshot named `Task_Optional.png` as follows:
+
+    - Start the application. If necessary, resize the window so it takes up less screen space.
+    - In the background, Visual Studio should be open with Game.cs visible.
+    - Zoom in so the thread function of the Game class is visible. In the foreground, the application window should be visible.
+-->
+<hr>
+<div class="md-source-file">
+  <span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg
+        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z">
+        </path>
+      </svg>
+    </span>
+    <span title="2025. április 2. 17:28:35">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 2. 17:28:35"><span class="timeago" datetime="2025-04-02T17:28:35+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 2. 17:28:35">2025-04-02</span>
+    </span>
+  </span>
+
+  
+
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Szerzők">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z">
+        </path>
+      </svg>
+    </span>
+    <span>Szerzők</span>
+    <nav><a href="https://github.com/BenceKovari" target="_blank" rel="noopener noreferrer" class="md-author" title="@BenceKovari">
+        <img src="https://avatars.githubusercontent.com/BenceKovari?size=72" alt="@BenceKovari">
+      </a><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@bzolka">
+        <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
+      </a><a href="https://github.com/szinuccsi" target="_blank" rel="noopener noreferrer" class="md-author" title="@None">
+        <img src="https://avatars.githubusercontent.com/u/44683763?v=4?size=72" alt="@None">
+      </a></nav>      
+  </span>
+</div>
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Vissza a tetejére
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; BME VIK AUT
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
