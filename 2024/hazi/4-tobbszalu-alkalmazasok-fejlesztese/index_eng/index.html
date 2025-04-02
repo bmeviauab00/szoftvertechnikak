@@ -1375,17 +1375,17 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Task 5 – Step logging (non-thread-safe .NET collections)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#task-6-refreshing-the-ui-on-every-change-accessing-ui-elements-from-worker-threads" class="md-nav__link">
     <span class="md-ellipsis">
       Task 6 – Refreshing the UI on every change (Accessing UI elements from worker threads)
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Task 6 – Refreshing the UI on every change (Accessing UI elements from worker threads)">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#implementing-ui-notification" class="md-nav__link">
@@ -2077,17 +2077,17 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Task 5 – Step logging (non-thread-safe .NET collections)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#task-6-refreshing-the-ui-on-every-change-accessing-ui-elements-from-worker-threads" class="md-nav__link">
     <span class="md-ellipsis">
       Task 6 – Refreshing the UI on every change (Accessing UI elements from worker threads)
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Task 6 – Refreshing the UI on every change (Accessing UI elements from worker threads)">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#implementing-ui-notification" class="md-nav__link">
@@ -2459,7 +2459,7 @@ You don't need to do anything with the logged values (e.g., no need to display t
 <p class="admonition-title">Thread-safe collections in System.Collections.Concurrent</p>
 <p>If you used a suitable collection from the <code>System.Collections.Concurrent</code> namespace (e.g., <code>ConcurrentQueue</code> instead of <code>List&lt;T&gt;</code>), then explicit locking would not be necessary. This namespace contains collection types designed to be thread-safe.</p>
 </div>
-<h3 id="task-6-refreshing-the-ui-on-every-change-accessing-ui-elements-from-worker-threads">Task 6 – Refreshing the UI on every change (Accessing UI elements from worker threads)<a class="headerlink" href="#task-6-refreshing-the-ui-on-every-change-accessing-ui-elements-from-worker-threads" title="Permanent link">&para;</a></h3>
+<h2 id="task-6-refreshing-the-ui-on-every-change-accessing-ui-elements-from-worker-threads">Task 6 – Refreshing the UI on every change (Accessing UI elements from worker threads)<a class="headerlink" href="#task-6-refreshing-the-ui-on-every-change-accessing-ui-elements-from-worker-threads" title="Permanent link">&para;</a></h2>
 <p>In the current implementation, the UI is refreshed periodically at fixed intervals using a timer. Now, we will replace this solution. Refactor your implementation so that the UI is updated immediately whenever the state of the <code>Game</code> changes. The timer-based updates should no longer be used.</p>
 <p>The next section will present an overview of possible solutions and select one of them. But before reading on, try to think about it yourself — what kind of approach would be most appropriate here? A key requirement is that no solution is acceptable if it introduces a dependency from the application logic (<code>Game</code> class) to the UI. Remember our core principle: the application logic must not depend in any way on the presentation logic (the UI).</p>
 <h3 id="implementing-ui-notification">Implementing UI notification<a class="headerlink" href="#implementing-ui-notification" title="Permanent link">&para;</a></h3>
@@ -2589,8 +2589,8 @@ Note: An alternative solution for stopping threads — instead of using a boolea
         </path>
       </svg>
     </span>
-    <span title="2025. április 2. 17:28:35">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 2. 17:28:35"><span class="timeago" datetime="2025-04-02T17:28:35+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 2. 17:28:35">2025-04-02</span>
+    <span title="2025. április 2. 18:12:53">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 2. 18:12:53"><span class="timeago" datetime="2025-04-02T18:12:53+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 2. 18:12:53">2025-04-02</span>
     </span>
   </span>
 
