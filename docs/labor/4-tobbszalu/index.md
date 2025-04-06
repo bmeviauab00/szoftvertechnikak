@@ -314,7 +314,7 @@ A feladatok ideiglenes tárolására a kiinduló projektünkben már némiképpe
 
     A feldolgozó szálak előtérszálak, kilépéskor megakadályozzák a processz megszűnését. Az egyik megoldás az lehetne, ha a szálak `IsBackground` tulajdonságát `true`-ra állítanánk a létrehozásukat követően. A másik megoldás, hogy kilépéskor gondoskodunk a feldolgozó szálak kiléptetéséről. Egyelőre tegyük félre ezt a problémát, később visszatérünk rá.
 
-5. Indítsuk el az alkalmazást azt tapasztaljuk, hogy miután kattintunk a _Calculate Result_ gombon (csak egyszer kattintsunk rajta) nagy valószínűséggel kivételt fogunk kapni. A probléma az, hogy a `DataFifo` nem szálbiztos, inkonzisztensé vált. Két eredő ok is húzódik a háttérben:
+5. Indítsuk el az alkalmazást. Azt tapasztaljuk, hogy miután kattintunk a _Calculate Result_ gombon (csak egyszer kattintsunk rajta) nagy valószínűséggel kivételt fogunk kapni. A probléma az, hogy a `DataFifo` nem szálbiztos, inkonzisztensé vált. Két eredő ok is húzódik a háttérben:
 
 ### Probléma 1
 
@@ -613,7 +613,7 @@ Korábban félretettük azt a problémát, hogy az ablakunk bezárásakor a proc
 		    return;
     ```
 
-7. Futtassuk az alkalmazást, és ellenőrizzük, kilépéskor az processzünk valóban befejezi-e a futását.
+7. Futtassuk az alkalmazást, és ellenőrizzük, kilépéskor a processzünk valóban befejezi-e a futását.
 
 ## Kitekintés: Task, async, await
 
