@@ -27,7 +27,7 @@ git clone https://github.com/bmeviauab00/lab-mvvm-kiindulo
 ??? success "A kész megoldás letöltése"
     :exclamation: Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, így értelmetlen a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.
 
-    A megoldás [GitHubon érhető el](https://github.com/bmeviauab00/TODO/tree/megoldas) a `megoldas` ágon. A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre a `megoldas` ágat:
+    A megoldás [GitHubon érhető el](https://github.com/bmeviauab00/lab-mvvm-kiindulo/tree/megoldas) a `megoldas` ágon. A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre a `megoldas` ágat:
 
     `git clone https://github.com/bmeviauab00/lab-mvvm-kiindulo -b megoldas`
 
