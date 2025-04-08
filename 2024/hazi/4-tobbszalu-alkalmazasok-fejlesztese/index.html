@@ -2608,8 +2608,8 @@ Fontos megjegyzés: a <code>volatile</code> alkalmazására nincs szükség, ha 
 <p>A megoldást a következő részfeladatban dolgozzuk ki.</p>
 <h3 id="a-dispatecherqueue-alkalmazasa">A DispatecherQueue alkalmazása<a class="headerlink" href="#a-dispatecherqueue-alkalmazasa" title="Permanent link">&para;</a></h3>
 <p>Esetünkben a konkrét problémát az okozza, hogy amikor a <code>Game</code> állapota megváltozik, akkor <code>Game</code> osztályban a változásértesítő delegate hívása a biciklikhez tartozó munkaszálakon történik, így a beregisztrált <code>MainWindow.UpdateBikeUI</code> kezelőfüggvény is ezekről a szálakról hívódik. Az <code>UpdateBikeUI</code> függvényben hozzáférünk a felületelemekhez (biciklihez tartozó <code>TextBlock</code>- hoz). De ezeket a felületelemeket a főszálból hoztuk létre: így csak a fő szálból szabad(na) hozzájuk férni.</p>
-<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> A problémára a <code>DispatcherQueue</code> alkalmazása jelent megoldást, mellyel <strong>a munkaszálakból a hívást "át tudjuk játszani" a főszálba, melyből már hozzá tudunk férni a vezérlőkhöz</strong>. A <code>DispacherQueue</code> alkalmazása előadáson és a kapcsolódó laboron is részletesen ismertetésre került.</p>
-<p>Feladat: módosítsd úgy a <code>MainWindow.UpdateBikeUI</code> függvényt, hogy a <code>DispacherQueue</code> alkalmazásával a megfelelő szálból történjen a felületelemekhez történő hozzáférés (és így a mostani kivételt el tudd kerülni).</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> A problémára a <code>DispatcherQueue</code> alkalmazása jelent megoldást, mellyel <strong>a munkaszálakból a hívást "át tudjuk játszani" a főszálba, melyből már hozzá tudunk férni a vezérlőkhöz</strong>. A <code>DispatcherQueue</code> alkalmazása előadáson és a kapcsolódó laboron is részletesen ismertetésre került.</p>
+<p>Feladat: módosítsd úgy a <code>MainWindow.UpdateBikeUI</code> függvényt, hogy a <code>DispatcherQueue</code> alkalmazásával a megfelelő szálból történjen a felületelemekhez történő hozzáférés (és így a mostani kivételt el tudd kerülni).</p>
 <div class="admonition example">
 <p class="admonition-title">BEADANDÓ</p>
 <p>Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.</p>
@@ -2664,8 +2664,8 @@ Fontos megjegyzés: a <code>volatile</code> alkalmazására nincs szükség, ha 
         </path>
       </svg>
     </span>
-    <span title="2025. április 8. 20:55:32">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 8. 20:55:32"><span class="timeago" datetime="2025-04-08T20:55:32+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 8. 20:55:32">2025-04-08</span>
+    <span title="2025. április 8. 21:16:35">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 8. 21:16:35"><span class="timeago" datetime="2025-04-08T21:16:35+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 8. 21:16:35">2025-04-08</span>
     </span>
   </span>
 
