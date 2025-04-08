@@ -435,9 +435,9 @@ A megoldást a következő részfeladatban dolgozzuk ki.
 
 Esetünkben a konkrét problémát az okozza, hogy amikor a `Game` állapota megváltozik, akkor `Game` osztályban a változásértesítő delegate hívása a biciklikhez tartozó munkaszálakon történik, így a beregisztrált `MainWindow.UpdateBikeUI` kezelőfüggvény is ezekről a szálakról hívódik. Az `UpdateBikeUI` függvényben hozzáférünk a felületelemekhez (biciklihez tartozó `TextBlock`- hoz). De ezeket a felületelemeket a főszálból hoztuk létre: így csak a fő szálból szabad(na) hozzájuk férni.
 
-:exclamation: A problémára a `DispatcherQueue` alkalmazása jelent megoldást, mellyel **a munkaszálakból a hívást "át tudjuk játszani" a főszálba, melyből már hozzá tudunk férni a vezérlőkhöz**. A `DispacherQueue` alkalmazása előadáson és a kapcsolódó laboron is részletesen ismertetésre került.
+:exclamation: A problémára a `DispatcherQueue` alkalmazása jelent megoldást, mellyel **a munkaszálakból a hívást "át tudjuk játszani" a főszálba, melyből már hozzá tudunk férni a vezérlőkhöz**. A `DispatcherQueue` alkalmazása előadáson és a kapcsolódó laboron is részletesen ismertetésre került.
 
-Feladat: módosítsd úgy a `MainWindow.UpdateBikeUI` függvényt, hogy a `DispacherQueue` alkalmazásával a megfelelő szálból történjen a felületelemekhez történő hozzáférés (és így a mostani kivételt el tudd kerülni).
+Feladat: módosítsd úgy a `MainWindow.UpdateBikeUI` függvényt, hogy a `DispatcherQueue` alkalmazásával a megfelelő szálból történjen a felületelemekhez történő hozzáférés (és így a mostani kivételt el tudd kerülni).
 
 !!! example "BEADANDÓ"
     Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
