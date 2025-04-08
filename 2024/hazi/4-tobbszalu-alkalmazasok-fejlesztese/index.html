@@ -2561,7 +2561,7 @@ Fontos megjegyzés: a <code>volatile</code> alkalmazására nincs szükség, ha 
 </li>
 <li><code>MainWindow</code>, mint "előfizető":<ul>
 <li>A <code>MainWindow</code> osztályban be kell vezetni egy <code>UpdateBikeUI(Bike bike)</code> függvényt, és a <code>Game.PrepareRace</code> hívásakor ezt kell átadni paraméterként (delegate objektumként). Ebben az <code>UpdateBikeUI</code> függvényben kell gondoskodni arról, hogy a paraméterként kapott bicikli objektumhoz tartozó felületelem (<code>TextBlock</code>) frissüljön.</li>
-<li>Az előző pontban válik egyértelművé, miért <code>Action&lt;Bike&gt;</code> típusú delegate-et használtunk, és miért nem pl. <code>Action</code>-t: a <code>Game</code> a értesítés/visszahívás során így meg tudja adna, mely bicikli változott, és a visszahívott/beregisztrált függvény (esetünkben <code>MainWindow.UpdateBikeUI</code>) így megkapja ezt paraméterben, és így tudja a megjelenését frissíteni (kapott bicikli állapota alapján).</li>
+<li>Az előző pontban válik egyértelművé, miért <code>Action&lt;Bike&gt;</code> típusú delegate-et használtunk, és miért nem pl. <code>Action</code>-t: a <code>Game</code> a értesítés/visszahívás során így meg tudja adni, mely bicikli változott, és a visszahívott/beregisztrált függvény (esetünkben <code>MainWindow.UpdateBikeUI</code>) így megkapja ezt paraméterben, és így tudja a megjelenését frissíteni (kapott bicikli állapota alapján).</li>
 </ul>
 </li>
 <li>Az időzítő indítását (<code>MainWindow</code> konstruktorban <code>timer.Start()</code> hívás) kommentezd ki (hiszen a felület frissítését már a fenti <code>Action&lt;Bike&gt;</code>) alapú értesítés/visszahívás segítségével oldjuk meg.</li>
@@ -2664,8 +2664,8 @@ Fontos megjegyzés: a <code>volatile</code> alkalmazására nincs szükség, ha 
         </path>
       </svg>
     </span>
-    <span title="2025. április 7. 14:38:07">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 7. 14:38:07"><span class="timeago" datetime="2025-04-07T14:38:07+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 7. 14:38:07">2025-04-07</span>
+    <span title="2025. április 8. 20:55:32">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 8. 20:55:32"><span class="timeago" datetime="2025-04-08T20:55:32+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 8. 20:55:32">2025-04-08</span>
     </span>
   </span>
 
