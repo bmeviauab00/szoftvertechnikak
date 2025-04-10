@@ -341,7 +341,7 @@ private void RecordButton_Click(object sender, RoutedEventArgs e)
 
 Az eseménykezelőnek két paramétere van: a küldő objektum (`object sender`) és az esemény paramétereit/körülményeit tartalmazó paraméter (`EventArgs e`). Nézzük ezeket részletesebben:
 
-* `object sender`: Az esemény kiváltója. Esetünkben ez maga a gomb, `Button`-ra kasztolva használhatnánk is. Ritkán használjuk ez a paramétert.
+* `object sender`: Az esemény kiváltója. Esetünkben ez maga a gomb, `Button`-ra kasztolva használhatnánk is. Ritkán használjuk ezt a paramétert.
 * A második paraméter mindig `EventArgs` típusú, vagy annak leszármazottja (ez az esemény típusától függ), melyben az esemény paramétereit kapjuk meg. A `Click` esemény esetében ez `RoutedEventArgs` típusú.
   
 !!! Note "Eseményargumentumok"
