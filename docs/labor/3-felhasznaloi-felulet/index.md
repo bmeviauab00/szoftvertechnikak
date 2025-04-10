@@ -730,7 +730,7 @@ Alapértelmezetten ugyanis a `ListView` `ToString()`-et hív a listaelemeken, am
 </ListView>
 ```
 
-**A `DataTemplate` egy olyan felületsablon, melyet a `ListView` (he megadjuk az `ItemTemplate` tulajdonságának) minden elemére alkalmazni fog a megjelenítés során.**
+**A `DataTemplate` egy olyan felületsablon, melyet a `ListView` (ha megadjuk az `ItemTemplate` tulajdonságának) minden elemére alkalmazni fog a megjelenítés során.**
 
 Mivel az `x:Bind` fordítás idejű adatkötés, ezért az adatok típusát is meg kell adnunk az adatsablonban az `x:DataType` attribútummal. A fenti példában a `model:Person`-t adtuk meg, vagyis azt szeretnénk, hogy a `model` **prefix** a kódunk `HelloXaml.Models` névterére képződjön le (hiszen ebben van a `Person` osztály). Ehhez a XAML fájlunk elején a `Window` tag attribútumaihoz fel kell vegyük a következő **névtér deklarációt** is:
 `xmlns:model="using:HelloXaml.Models"` (ezt követően a `model` prefix használható lesz). Ezt megtehetjük kézzel, vagy a Visual Studio segítségével is: csak kattintsunk bele az aláhúzott (hibásnak megjelölt) `model:Person`szövegbe, majd kattintsunk a sor elején megjelenő lámpácskára (vagy `Ctrl` + `.` billentyűkombináció), és válasszuk ki a megjelenő *"Add xmlns using:HelloXaml.Models"* elemet.
