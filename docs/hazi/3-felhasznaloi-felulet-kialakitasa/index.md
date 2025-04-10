@@ -241,7 +241,7 @@ A `CommandBar` alatti cellában egy listába (`ListView`) kerüljenek a teendők
     Az útmutató képernyőmentésén látszik, hogy a listaelemek között függőlegesen van kihagyott hely, a listaelemek így jól elkülönülnek. Alapesetben ez nincs így. Szerencsére a megoldás során úgyis kell DataTemplate-et alkalmazni az elemek megjelenítésére, így ennek kicsi hangolásával (tipp: egyetlen Margin/Padding megadása) könnyedén elérhetjük, hogy a listaelemek között legyen némi hely a jobb olvashatóság érdekében. 
 
 !!! example "2. feladat BEADANDÓ"
-    Illessz be egy képernyőképet az alkalmazásról, ahol az egyik teendőnek a listában a neve vagy leírása a NEPTUN kódod legyen! (`f2.png`)
+    Illessz be egy képernyőképet az alkalmazásról, ahol az egyik teendőnek a listában a neve vagy leírása a saját (!) NEPTUN kódod legyen! (`f2.png`)
 
 ## 3. feladat - Új teendő hozzáadása
 
