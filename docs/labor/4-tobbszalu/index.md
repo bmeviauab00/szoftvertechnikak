@@ -570,6 +570,23 @@ Korábban félretettük azt a problémát, hogy az ablakunk bezárásakor a proc
         {
             lock (_syncRoot)
             {
+                if (_innerList.Count > 0)
+                {
+                    data = _innerList[0];
+                    _innerList.RemoveAt(0);
+                    if (_innerList.Count == 0)
+                    {
+                    _hasData.Reset();
+                    }
+
+                    return true;
+                }
+            }
+        }
+
+        data = null;
+        return false;
+    }
     ```
 
 3. `MainWindow.xaml.cs`-ban vegyünk fel egy flag tagváltozót a bezárás jelzésére:
