@@ -121,7 +121,7 @@ nav:
       - labor/2-nyelvi-eszkozok/index_eng.md
       - labor/3-felhasznaloi-felulet/index_eng.md
       - labor/4-tobbszalu/index_eng.md
-      - "5. MVVM": labor/meghirdetes-elott_eng.md
+      - labor/5-mvvm/index_eng.md
       - labor/6-tervezesi-mintak/index_eng.md      
       - labor/7-adatkezeles/index_eng.md 
   - "Homework":
