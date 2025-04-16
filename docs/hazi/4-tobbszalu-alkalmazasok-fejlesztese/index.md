@@ -182,7 +182,7 @@ Futtassuk az alkalmazást (lényeges, hogy debuggolva, vagyis az ++f5++ billenty
 
 :exclamation: A főablak fejléce a "Tour de France" szöveg legyen, hozzáfűzve a saját Neptun kódod: (pl. "ABCDEF" Neptun kód esetén "Tour de France - ABCDEF"), fontos, hogy ez legyen a szöveg! Ehhez a főablakunk `Title` tulajdonságát állítsuk be erre a szövegre a `MainWindow.xaml` fájlban.
 
-## Feladat 2 – A verseny előkészítése
+## Feladat 2.1 – A verseny előkészítése
 
 A fentiek során el is készültünk a megjelenítési logikával, a fókuszunkat most már az alkalmazáslogikára, és az ahhoz kapcsolódó szálkezelési témakörre helyezzük át. Ennek megfelelően mostantól elsődlegesen a `Game` osztályban fogunk dolgozni.
 
@@ -250,7 +250,7 @@ Ezekhez a lépésekhez még adunk megoldást (de sokkal többet tanulsz belőle,
     - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `Game` osztály `CreateBike` és `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
 
-## Feladat 2 – A verseny indítása
+## Feladat 2.2 – A verseny indítása
 
 Valósítsd meg a verseny indítását a rajtvonalról és futtatását mindaddig, amíg a biciklik meg nem érkeznek a depóba, a következő irányelveknek megfelelően:
 
@@ -339,7 +339,7 @@ A logikát ezt követően önállóan valósítsd meg, az alábbi irányleveknek
     - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `Game` osztály `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
 
-## Feladat 5 – Kölcsönös kizárás, valamint volatile
+## Feladat 5.1 – Kölcsönös kizárás, valamint volatile
 
 Az előző feladatban láttuk, hogy a hasWinner lekérdezését és beállítását "oszthatatlanná", "atomivá" kellett tegyük, vagyis ennek során meg kellett valósítsuk a kölcsönös kizárást. Kérdés, van-e esetleg már olyan más logika is az alkalmazásban, ahol ezt meg kellet volna tenni a konzisztencia garantálásának érdekében. Ehhez azt kell megvizsgáljuk, melyek azok a változók, melyeket több szálból is írunk (vagy egyikből írunk és másikból olvasunk). A következők érintettek:
 
@@ -357,7 +357,7 @@ class Bike
     private volatile bool isWinner;
 ```
 
-## Feladat 5 – Lépések naplózása (nem szálbiztos .NET osztályok)
+## Feladat 5.2 – Lépések naplózása (nem szálbiztos .NET osztályok)
 
 Valósítsd meg a verseny során a biciklik által megtett minden egyes lépés naplózását a `Game` osztályban egy (minden biciklire közös) `List<int>` típusú változóba. A naplózott értékekkel nem kell semmit csinálni (pl. megjeleníteni sem). A megoldás során ki kell használni, hogy a `Bike` osztály `Step` művelete visszaadja a megtett lépést egy `int` változó formájában, ezt kell naplózni (csak bele kell tenni a listába).
 
