@@ -2173,7 +2173,7 @@
 
 <h1 id="5-mvvm">5. MVVM<a class="headerlink" href="#5-mvvm" title="Permanent link">&para;</a></h1>
 <h2 id="das-ziel-der-ubung">Das Ziel der Übung<a class="headerlink" href="#das-ziel-der-ubung" title="Permanent link">&para;</a></h2>
-<p>In dieser Übung werden wir eine einfache Anwendung mit Hilfe des MVVM-Musters refaktorisiere,num eine bessere Transparenz und Wartbarkeit zu erreichen.</p>
+<p>In dieser Übung werden wir eine einfache Anwendung mit Hilfe des MVVM-Musters refaktorisieren, um eine bessere Transparenz und Wartbarkeit zu erreichen.</p>
 <h2 id="voraussetzungen">Voraussetzungen<a class="headerlink" href="#voraussetzungen" title="Permanent link">&para;</a></h2>
 <p>Die für die Durchführung der Übung benötigten Werkzeuge:</p>
 <ul>
@@ -2234,7 +2234,7 @@ Der Filter kann mit einem <em>Clear</em>-Knopf zurückgesetzt werden.</p>
 </ul>
 </div>
 <p>Im Ausgangsprojekt befindet sich die Anwendungslogik in der Datei <code>BooksPage.xaml.cs</code>, und die Benutzeroberfläche in <code>BooksPage.xaml</code>.
-Diese Lösung folgt <strong>nicht</strong> dem MVVM-Muster, Diese Lösung folgt nicht dem MVVM-Muster, wodurch die Benutzeroberfläche und die zugrunde liegende Logik eng miteinander verflochten sind, was fast schon den Charakter von Spaghetti-Code annimmt.</p>
+Diese Lösung folgt <strong>nicht</strong> dem MVVM-Muster, wodurch die Benutzeroberfläche und die zugrunde liegende Logik eng miteinander verflochten sind, was fast schon den Charakter von Spaghetti-Code annimmt.</p>
 <p>Ein gutes Beispiel dafür ist, dass das Laden der Daten direkt im Code-Behind geschieht, und werden die UI-Elemente direkt manipuliert.<br />
 Interaktionen werden auch in Ereignishandlern behandelt, was nach einer Weile undurchsichtig wird und die Zuständigkeiten sind gemischt.</p>
 <p>In unserem Fall werden die Beispieldaten über die Funktion <code>SeedDatabase</code> geladen, die im Konstruktor von <code>BooksPage</code> aufgerufen wird.<br />
@@ -2465,27 +2465,22 @@ Im Setter von <code>SelectedGenre</code> soll die Methode <code>LoadBooks</code>
 </code></pre></div>
 <h3 id="view">View<a class="headerlink" href="#view" title="Permanent link">&para;</a></h3>
 <p>Jetzt muss nur noch die Ansicht angepasst werden, sodass sie das ViewModel verwendet.</p>
-<p>Fügen wir in der Datei <code>BooksPage.xaml.cs</code> eine neue, readonly Eigenschaft vom Typ <code>BooksPageViewModel</code> hinzu,<br />
-und weisen wir ihr eine neue Instanz von <code>BooksPageViewModel</code> zu.</p>
+<p>Fügen wir in der Datei <code>BooksPage.xaml.cs</code> eine neue, readonly Eigenschaft vom Typ <code>BooksPageViewModel</code> hinzu, und weisen wir ihr eine neue Instanz von <code>BooksPageViewModel</code> zu.</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">BooksPageViewModel</span><span class="w"> </span><span class="n">ViewModel</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BooksPageViewModel</span><span class="p">();</span>
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">readonly property vs getter-only property</p>
-<p>Erinnern wir uns daran, dass es einen wichtigen Unterschied zwischen einer automatisch implementierten readonly Eigenschaft (die einmalig initialisiert wird)<br />
-und einer Eigenschaft mit nur einem Getter gibt. Im obigen Beispiel verwenden wir eine automatisch implementierte readonly Eigenschaft,<br />
-was bedeutet, dass der Wert der <code>ViewModel</code>-Eigenschaft nur einmalig beim Erstellen gesetzt wird.<br />
-Im Gegensatz dazu würde eine Getter-only Eigenschaft – wie z. B. <code>public BooksPageViewModel ViewModel =&gt; new BooksPageViewModel();</code> –<br />
-bei jedem Zugriff eine neue Instanz erzeugen, was zu unerwünschtem Verhalten führen würde.</p>
+<p>Erinnern wir uns daran, dass es einen wichtigen Unterschied zwischen einer automatisch implementierten readonly Eigenschaft (die einmalig initialisiert wird) und einer Eigenschaft mit nur einem Getter gibt. Im obigen Beispiel verwenden wir eine automatisch implementierte readonly Eigenschaft, was bedeutet, dass der Wert der <code>ViewModel</code>-Eigenschaft nur einmalig beim Erstellen gesetzt wird.
+Im Gegensatz dazu würde eine Getter-only Eigenschaft – wie z. B. <code>public BooksPageViewModel ViewModel =&gt; new BooksPageViewModel();</code> – bei jedem Zugriff eine neue Instanz erzeugen, was zu unerwünschtem Verhalten führen würde.</p>
 </div>
 <p>Im <code>BooksPage.xaml</code> können wir ab jetzt die <code>ViewModel</code>-Eigenschaft für Datenverbindung verwenden.</p>
 <ul>
 <li>
 <p>Konzentrieren wir uns zunächst auf das <code>ComboBox</code>-Element:</p>
 <ul>
-<li>Die Eigenschaften <code>SelectedItem</code> und <code>ItemsSource</code> wurden in der Ausgangslösung noch manuell im Code-Behind gesetzt.<br />
-  Konvertieren wir ihre Behandlung in eine auf Datenverbindung basierende Lösung: Binden wir sie an die Eigenschaften des im Code-Behind definierten ViewModel-Objekts, entsprechend dem MVVM-Muster.</li>
-<li>Entfernen wir im XAML die <code>SelectionChanged</code>-Ereignisabonnement sowie im Code-Behind die Methode <code>GenreFilterComboBox_SelectionChanged</code>,<br />
-  da diese durch die Datenverbindung von <code>SelectedItem</code> überflüssig geworden ist.</li>
+<li>Die Eigenschaften <code>SelectedItem</code> und <code>ItemsSource</code> wurden in der Ausgangslösung noch manuell im Code-Behind gesetzt.
+Konvertieren wir ihre Behandlung in eine auf Datenverbindung basierende Lösung: Binden wir sie an die Eigenschaften des im Code-Behind definierten ViewModel-Objekts, entsprechend dem MVVM-Muster.</li>
+<li>Entfernen wir die <code>SelectionChanged</code>-Ereignisabonnement im XAML sowie die Methode <code>GenreFilterComboBox_SelectionChanged</code> im Code-Behind, da diese durch die Datenverbindung von <code>SelectedItem</code> überflüssig geworden ist.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;ComboBox</span><span class="w"> </span><span class="na">x:Name=</span><span class="s">&quot;genreFilterComboBox&quot;</span>
 <span class="w">        </span><span class="na">Grid.Row=</span><span class="s">&quot;1&quot;</span>
@@ -2495,8 +2490,8 @@ bei jedem Zugriff eine neue Instanz erzeugen, was zu unerwünschtem Verhalten f�
 </span></code></pre></div>
 </li>
 <li>
-<p>Auch beim <em>Clear</em>-Button entfernen wir die <code>Click</code>-Ereignisabonnement im XAML sowie den <code>GenreFilterComboBox_SelectionChanged</code>-Ereignishandler im Code-Behind.<br />
-  Das gewünschte Verhalten wird später im ViewModel implementiert.</p>
+<p>Auch beim <em>Clear</em>-Button entfernen wir die <code>Click</code>-Ereignisabonnement im XAML sowie den <code>GenreFilterComboBox_SelectionChanged</code>-Ereignishandler im Code-Behind.
+Das gewünschte Verhalten wird später im ViewModel implementiert.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;Button</span><span class="w"> </span><span class="na">x:Name=</span><span class="s">&quot;clearGenreFilterButton&quot;</span>
 <span class="w">        </span><span class="na">Content=</span><span class="s">&quot;Clear&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 </code></pre></div>
@@ -2574,7 +2569,7 @@ Außerdem haben wir die Möglichkeit, das <code>ObservableProperty</code>-Attrib
 </li>
 </ul>
 <p>Es ist wichtig, dass wir in der vorherigen <code>BooksPageViewModel</code>-Lösung die Membervariablen (außer <code>_booksService</code>), die Eigenschaften (denn diese werden vom Code-Generator erzeugt), das <code>PropertyChanged</code>-Ereignis und die <code>SetProperty</code>-Methode löschen. <img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> Nach der Umstellung sollten wir das Projekt einmal bauen (z.B. über das Menü "Build/Build Solution"). Ohne diesen Schritt werden die Kompilierungsfehler nicht behoben, da Visual Studio viele Fehler im Code anzeigen wird. Das ist logisch, denn die gebundenen Properties werden erst beim Bauen des Projekts vom Code-Generator in einer "versteckten" Datei erstellt.</p>
-<p>Wir können überprüfen, welcher Code generiert wurde, indem wir z.B. mit <code>++F12++</code> zur <code>Genres</code>-Property navigieren (in der XAML-Datei, wenn der Cursor auf der Bindung <code>ViewModel.Genres</code> steht).</p>
+<p>Wir können überprüfen, welcher Code generiert wurde, indem wir z.B. mit <span class="keys"><kbd class="key-f12">F12</kbd></span> zur <code>Genres</code>-Property navigieren (in der XAML-Datei, wenn der Cursor auf der Bindung <code>ViewModel.Genres</code> steht).</p>
 <div class="admonition tip">
 <p class="admonition-title">Verwendung des <code>ObservableProperty</code>-Attributs auf eine Eigenschaft</p>
 <p>Das <code>ObservableProperty</code>-Attribut kann statt auf Felder auch auf Eigenschaften angewendet werden, mit Hilfe einer <a href="https://devblogs.microsoft.com/dotnet/announcing-the-dotnet-community-toolkit-840/#partial-properties-support-for-the-mvvm-toolkit-🎉">neuen C#-Sprachfunktion</a>. Dafür müsste jedoch eine Preview-Version von C# verwendet werden, was wir in diesem Jahr noch auslassen.</p>
@@ -2639,13 +2634,13 @@ Wir erstellen eine neue Instanz davon im Konstruktor von <code>BooksPageViewMode
 <h3 id="icommand-ausfuhrbarkeitszustand">ICommand-Ausführbarkeitszustand<a class="headerlink" href="#icommand-ausfuhrbarkeitszustand" title="Permanent link">&para;</a></h3>
 <p>Was noch nicht funktioniert, ist das Deaktivieren des Buttons, wenn kein Genre ausgewählt wurde.</p>
 <p>Dazu geben wir im Konstruktor der <code>RelayCommand</code>-Klasse eine <code>Func&lt;bool&gt;</code>-Funktion als zweiten Parameter an, die angibt, ob der Befehl ausgeführt werden kann oder nicht (die <code>CanExecute</code>-Methode des Befehls ruft diese Lambda-Funktion auf).</p>
-<div class="highlight"><span class="filename">BooksPageViewModel.cs konstruktora</span><pre><span></span><code><span class="n">ClearFilterCommand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RelayCommand</span><span class="p">(</span>
+<div class="highlight"><span class="filename">Konstruktor von BooksPageViewModel.cs</span><pre><span></span><code><span class="n">ClearFilterCommand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RelayCommand</span><span class="p">(</span>
 <span class="w">    </span><span class="n">execute</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">SelectedGenre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">,</span>
 <span class="hll"><span class="w">    </span><span class="n">canExecute</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">SelectedGenre</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">);</span>
 </span></code></pre></div>
 <div class="admonition note paraméter nevek">
 <p class="admonition-title">Note</p>
-<p>Im obigen Code sind execute: und canExecute: Beispiele für die Verwendung eines allgemeinen C#-Sprachtools: In C# ist es bei der Übergabe von Parametern zu einer Funktionsaufruf möglich, den <strong>Namen</strong> des Parameters vor dem <code>:</code> anzugeben.  Dies wird selten verwendet, da es mehr Tippen erfordert, aber manchmal, wenn es die Lesbarkeit des Codes erheblich verbessert, können wir es in Betracht ziehen.</p>
+<p>Im obigen Code sind <code>execute:</code> und <code>canExecute:</code> Beispiele für die Verwendung eines allgemeinen C#-Sprachtools: In C# ist es bei der Übergabe von Parametern zu einer Funktionsaufruf möglich, den <strong>Namen</strong> des Parameters vor dem <code>:</code> anzugeben.  Dies wird selten verwendet, da es mehr Tippen erfordert, aber manchmal, wenn es die Lesbarkeit des Codes erheblich verbessert, können wir es in Betracht ziehen.</p>
 </div>
 <p>Allerdings wird die UI nur dann aktualisiert - und damit die im <code>canExecute</code> angegebene Funktion nur dann aufgerufen -, wenn das <code>ICommand.CanExecuteChanged</code>-Ereignis ausgelöst wird.</p>
 <p>Dieses Ereignis können wir durch die <code>IRelayCommand</code>-Schnittstelle (das auch <code>ICommand</code> ist) selbst auslösen, wenn wir die <code>NotifyCanExecuteChanged()</code>-Methode im Setter der <code>SelectedGenre</code>-Eigenschaft aufrufen.</p>
@@ -2724,8 +2719,8 @@ So können wir das Auslösen des Ereignisses aus unserer <code>OnSelectedGenreCh
         </path>
       </svg>
     </span>
-    <span title="2025. április 15. 18:48:41">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 15. 18:48:41"><span class="timeago" datetime="2025-04-15T18:48:41+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 15. 18:48:41">2025-04-15</span>
+    <span title="2025. április 16. 09:57:31">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 16. 09:57:31"><span class="timeago" datetime="2025-04-16T09:57:31+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 16. 09:57:31">2025-04-16</span>
     </span>
   </span>
 
