@@ -6,7 +6,7 @@ authors: tibitoth
 
 ## Das Ziel der Übung
 
-In dieser Übung werden wir eine einfache Anwendung mit Hilfe des MVVM-Musters refaktorisiere,num eine bessere Transparenz und Wartbarkeit zu erreichen.
+In dieser Übung werden wir eine einfache Anwendung mit Hilfe des MVVM-Musters refaktorisieren, um eine bessere Transparenz und Wartbarkeit zu erreichen.
 
 ## Voraussetzungen
 
@@ -76,7 +76,7 @@ Der Filter kann mit einem _Clear_-Knopf zurückgesetzt werden.
     * Die `ItemsView` zeigt mehrere Elemente gleichzeitig in tabellarischer Form an. Sie erlaubt verschiedene Layouts (z. B. Grid oder Liste), einstellbar über die `Layout`-Eigenschaft. Im Unterschied zur im vorherigen Labor verwendeten `ListView` muss das Wurzelelement in einer Listenelementvorlage immer ein `ItemContainer` sein.
 
 Im Ausgangsprojekt befindet sich die Anwendungslogik in der Datei `BooksPage.xaml.cs`, und die Benutzeroberfläche in `BooksPage.xaml`.
-Diese Lösung folgt **nicht** dem MVVM-Muster, Diese Lösung folgt nicht dem MVVM-Muster, wodurch die Benutzeroberfläche und die zugrunde liegende Logik eng miteinander verflochten sind, was fast schon den Charakter von Spaghetti-Code annimmt.
+Diese Lösung folgt **nicht** dem MVVM-Muster, wodurch die Benutzeroberfläche und die zugrunde liegende Logik eng miteinander verflochten sind, was fast schon den Charakter von Spaghetti-Code annimmt.
 
 Ein gutes Beispiel dafür ist, dass das Laden der Daten direkt im Code-Behind geschieht, und werden die UI-Elemente direkt manipuliert.  
 Interaktionen werden auch in Ereignishandlern behandelt, was nach einer Weile undurchsichtig wird und die Zuständigkeiten sind gemischt.
@@ -334,27 +334,22 @@ public string SelectedGenre
 
 Jetzt muss nur noch die Ansicht angepasst werden, sodass sie das ViewModel verwendet.
 
-Fügen wir in der Datei `BooksPage.xaml.cs` eine neue, readonly Eigenschaft vom Typ `BooksPageViewModel` hinzu,  
-und weisen wir ihr eine neue Instanz von `BooksPageViewModel` zu.
+Fügen wir in der Datei `BooksPage.xaml.cs` eine neue, readonly Eigenschaft vom Typ `BooksPageViewModel` hinzu, und weisen wir ihr eine neue Instanz von `BooksPageViewModel` zu.
 
 ```csharp
 public BooksPageViewModel ViewModel { get; } = new BooksPageViewModel();
 ```
 
 !!! warning "readonly property vs getter-only property"
-    Erinnern wir uns daran, dass es einen wichtigen Unterschied zwischen einer automatisch implementierten readonly Eigenschaft (die einmalig initialisiert wird)  
-    und einer Eigenschaft mit nur einem Getter gibt. Im obigen Beispiel verwenden wir eine automatisch implementierte readonly Eigenschaft,  
-    was bedeutet, dass der Wert der `ViewModel`-Eigenschaft nur einmalig beim Erstellen gesetzt wird.  
-    Im Gegensatz dazu würde eine Getter-only Eigenschaft – wie z. B. `public BooksPageViewModel ViewModel => new BooksPageViewModel();` –  
-    bei jedem Zugriff eine neue Instanz erzeugen, was zu unerwünschtem Verhalten führen würde.
+    Erinnern wir uns daran, dass es einen wichtigen Unterschied zwischen einer automatisch implementierten readonly Eigenschaft (die einmalig initialisiert wird) und einer Eigenschaft mit nur einem Getter gibt. Im obigen Beispiel verwenden wir eine automatisch implementierte readonly Eigenschaft, was bedeutet, dass der Wert der `ViewModel`-Eigenschaft nur einmalig beim Erstellen gesetzt wird.
+    Im Gegensatz dazu würde eine Getter-only Eigenschaft – wie z. B. `public BooksPageViewModel ViewModel => new BooksPageViewModel();` – bei jedem Zugriff eine neue Instanz erzeugen, was zu unerwünschtem Verhalten führen würde.
 
 Im `BooksPage.xaml` können wir ab jetzt die `ViewModel`-Eigenschaft für Datenverbindung verwenden.
 
 * Konzentrieren wir uns zunächst auf das `ComboBox`-Element:
-    * Die Eigenschaften `SelectedItem` und `ItemsSource` wurden in der Ausgangslösung noch manuell im Code-Behind gesetzt.  
-      Konvertieren wir ihre Behandlung in eine auf Datenverbindung basierende Lösung: Binden wir sie an die Eigenschaften des im Code-Behind definierten ViewModel-Objekts, entsprechend dem MVVM-Muster.
-    * Entfernen wir im XAML die `SelectionChanged`-Ereignisabonnement sowie im Code-Behind die Methode `GenreFilterComboBox_SelectionChanged`,  
-      da diese durch die Datenverbindung von `SelectedItem` überflüssig geworden ist.
+    * Die Eigenschaften `SelectedItem` und `ItemsSource` wurden in der Ausgangslösung noch manuell im Code-Behind gesetzt.
+    Konvertieren wir ihre Behandlung in eine auf Datenverbindung basierende Lösung: Binden wir sie an die Eigenschaften des im Code-Behind definierten ViewModel-Objekts, entsprechend dem MVVM-Muster.
+    * Entfernen wir die `SelectionChanged`-Ereignisabonnement im XAML sowie die Methode `GenreFilterComboBox_SelectionChanged` im Code-Behind, da diese durch die Datenverbindung von `SelectedItem` überflüssig geworden ist.
 
     ```xml hl_lines="4-5"
     <ComboBox x:Name="genreFilterComboBox"
@@ -364,8 +359,8 @@ Im `BooksPage.xaml` können wir ab jetzt die `ViewModel`-Eigenschaft für Datenv
             SelectedItem="{x:Bind ViewModel.SelectedGenre, Mode=TwoWay}" />
     ```
 
-* Auch beim _Clear_-Button entfernen wir die `Click`-Ereignisabonnement im XAML sowie den `GenreFilterComboBox_SelectionChanged`-Ereignishandler im Code-Behind.  
-  Das gewünschte Verhalten wird später im ViewModel implementiert.
+* Auch beim _Clear_-Button entfernen wir die `Click`-Ereignisabonnement im XAML sowie den `GenreFilterComboBox_SelectionChanged`-Ereignishandler im Code-Behind.
+Das gewünschte Verhalten wird später im ViewModel implementiert.
 
     ```xml
     <Button x:Name="clearGenreFilterButton"
@@ -454,7 +449,7 @@ Außerdem haben wir die Möglichkeit, das `ObservableProperty`-Attribut zu verwe
 
 Es ist wichtig, dass wir in der vorherigen `BooksPageViewModel`-Lösung die Membervariablen (außer `_booksService`), die Eigenschaften (denn diese werden vom Code-Generator erzeugt), das `PropertyChanged`-Ereignis und die `SetProperty`-Methode löschen. :exclamation: Nach der Umstellung sollten wir das Projekt einmal bauen (z.B. über das Menü "Build/Build Solution"). Ohne diesen Schritt werden die Kompilierungsfehler nicht behoben, da Visual Studio viele Fehler im Code anzeigen wird. Das ist logisch, denn die gebundenen Properties werden erst beim Bauen des Projekts vom Code-Generator in einer "versteckten" Datei erstellt.
 
-Wir können überprüfen, welcher Code generiert wurde, indem wir z.B. mit `++F12++` zur `Genres`-Property navigieren (in der XAML-Datei, wenn der Cursor auf der Bindung `ViewModel.Genres` steht).
+Wir können überprüfen, welcher Code generiert wurde, indem wir z.B. mit ++f12++ zur `Genres`-Property navigieren (in der XAML-Datei, wenn der Cursor auf der Bindung `ViewModel.Genres` steht).
 
 !!! tip "Verwendung des `ObservableProperty`-Attributs auf eine Eigenschaft"
     Das `ObservableProperty`-Attribut kann statt auf Felder auch auf Eigenschaften angewendet werden, mit Hilfe einer [neuen C#-Sprachfunktion](https://devblogs.microsoft.com/dotnet/announcing-the-dotnet-community-toolkit-840/#partial-properties-support-for-the-mvvm-toolkit-🎉). Dafür müsste jedoch eine Preview-Version von C# verwendet werden, was wir in diesem Jahr noch auslassen.
@@ -544,14 +539,14 @@ Was noch nicht funktioniert, ist das Deaktivieren des Buttons, wenn kein Genre a
 
 Dazu geben wir im Konstruktor der `RelayCommand`-Klasse eine `Func<bool>`-Funktion als zweiten Parameter an, die angibt, ob der Befehl ausgeführt werden kann oder nicht (die `CanExecute`-Methode des Befehls ruft diese Lambda-Funktion auf).
 
-```csharp title="BooksPageViewModel.cs konstruktora" hl_lines="3"
+```csharp title="Konstruktor von BooksPageViewModel.cs" hl_lines="3"
 ClearFilterCommand = new RelayCommand(
     execute: () => SelectedGenre = null,
     canExecute: () => SelectedGenre != null);
 ```
 
 !!! note Paraméter nevek
-    Im obigen Code sind execute: und canExecute: Beispiele für die Verwendung eines allgemeinen C#-Sprachtools: In C# ist es bei der Übergabe von Parametern zu einer Funktionsaufruf möglich, den **Namen** des Parameters vor dem `:` anzugeben.  Dies wird selten verwendet, da es mehr Tippen erfordert, aber manchmal, wenn es die Lesbarkeit des Codes erheblich verbessert, können wir es in Betracht ziehen.
+    Im obigen Code sind `execute:` und `canExecute:` Beispiele für die Verwendung eines allgemeinen C#-Sprachtools: In C# ist es bei der Übergabe von Parametern zu einer Funktionsaufruf möglich, den **Namen** des Parameters vor dem `:` anzugeben.  Dies wird selten verwendet, da es mehr Tippen erfordert, aber manchmal, wenn es die Lesbarkeit des Codes erheblich verbessert, können wir es in Betracht ziehen.
 
 Allerdings wird die UI nur dann aktualisiert - und damit die im `canExecute` angegebene Funktion nur dann aufgerufen -, wenn das `ICommand.CanExecuteChanged`-Ereignis ausgelöst wird.
 
