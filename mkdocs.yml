@@ -113,7 +113,7 @@ nav:
       - '4. HF - Többszálú alkalmazások fejlesztése': hazi/4-tobbszalu-alkalmazasok-fejlesztese/index.md
       - '5. HF - MVVM': hazi/5-mvvm/index.md
       - '6. HF - Tervezési minták': hazi/meghirdetes-elott.md
-      - 'IMSc HF - Liftrendszer': hazi/meghirdetes-elott.md
+      - 'IMSc HF - Liftrendszer': hazi/imsc-liftsystem/index.md
       - 'IMSc HF - MVVM receptek': hazi/meghirdetes-elott.md
       - 'Fejlesztőkörnyezet': hazi/fejlesztokornyezet/index.md
   - "English course labs":

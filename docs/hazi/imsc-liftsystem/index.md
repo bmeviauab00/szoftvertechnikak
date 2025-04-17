@@ -8,7 +8,7 @@ authors: bzolka, BenceKovari
 
 A házi feladatban egy konzol alapú alkalmazást kell elkészíteni, mely egy liftrendszert szimulál, az Observer tervezési mintára építve.
 
-A megvalósításért 7 IMSc pont szerezhető.
+A megvalósításért 5 IMSc pont szerezhető.
 
 A házi feladat az Observer és Adapter tervezési minta ismeretére épít (lásd kapcsolódó tervezési minták előadásanyag). 
 
