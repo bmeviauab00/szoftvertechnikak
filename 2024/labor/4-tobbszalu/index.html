@@ -709,9 +709,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-feladat-tegyuk-szabiztossa-a-datafifo-osztalyt" class="md-nav__link">
+  <a href="#6-feladat-tegyuk-szalbiztossa-a-datafifo-osztalyt" class="md-nav__link">
     <span class="md-ellipsis">
-      6. feladat – Tegyük szábiztossá a DataFifo osztályt
+      6. feladat – Tegyük szálbiztossá a DataFifo osztályt
     </span>
   </a>
   
@@ -2089,9 +2089,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-feladat-tegyuk-szabiztossa-a-datafifo-osztalyt" class="md-nav__link">
+  <a href="#6-feladat-tegyuk-szalbiztossa-a-datafifo-osztalyt" class="md-nav__link">
     <span class="md-ellipsis">
-      6. feladat – Tegyük szábiztossá a DataFifo osztályt
+      6. feladat – Tegyük szálbiztossá a DataFifo osztályt
     </span>
   </a>
   
@@ -2464,7 +2464,7 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 <h3 id="problema-2">Probléma 2<a class="headerlink" href="#problema-2" title="Permanent link">&para;</a></h3>
 <p>A <code>DataFifo</code> osztály egyidőben több szálból is hozzáférhet a <code>List&lt;double[]&gt;</code> típusú <code>_innerList</code> tagváltozóhoz. Ugyanakkor, ha megnézzük a <code>List&lt;T&gt;</code> dokumentációját, azt találjuk, hogy az osztály nem szálbiztos (not thread safe). Ez esetben viszont ezt nem tehetjük meg, nekünk kell a <strong>kölcsönös kizárást</strong> zárakkal biztosítanunk: meg kell oldjuk, hogy a szálaink egyidőben csak egy metódusához / tulajdonságához / tagváltozójához férjenek hozzá (pontosabban inkonzisztencia csak egyidejű írás, illetve egyidejű írás és olvasás esetén léphet fel, de az írókat és az olvasókat a legtöbb esetben nem szoktuk megkülönböztetni, itt sem tesszük).</p>
 <p>A következő lépésben a <code>DataFifo</code> osztályunkat szálbiztossá tesszük, amivel megakadályozzuk, hogy a fenti két probléma bekövetkezhessen.</p>
-<h2 id="6-feladat-tegyuk-szabiztossa-a-datafifo-osztalyt">6. feladat – Tegyük szábiztossá a DataFifo osztályt<a class="headerlink" href="#6-feladat-tegyuk-szabiztossa-a-datafifo-osztalyt" title="Permanent link">&para;</a></h2>
+<h2 id="6-feladat-tegyuk-szalbiztossa-a-datafifo-osztalyt">6. feladat – Tegyük szálbiztossá a DataFifo osztályt<a class="headerlink" href="#6-feladat-tegyuk-szalbiztossa-a-datafifo-osztalyt" title="Permanent link">&para;</a></h2>
 <p>A <code>DataFifo</code> osztály szálbiztossá tételéhez szükségünk van egy objektumra (ez bármilyen referencia típusú objektum lehet), melyet kulcsként használhatunk a zárolásnál. Ezt követően a <code>lock</code> kulcsszó segítségével el tudjuk érni, hogy egyszerre mindig csak egy szál tartózkodjon az adott kulccsal védett blokkokban.</p>
 <ol>
 <li>
@@ -2729,8 +2729,8 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
         </path>
       </svg>
     </span>
-    <span title="2025. április 6. 01:18:36">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 6. 01:18:36"><span class="timeago" datetime="2025-04-06T01:18:36+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 6. 01:18:36">2025-04-06</span>
+    <span title="2025. április 18. 16:27:01">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 18. 16:27:01"><span class="timeago" datetime="2025-04-18T16:27:01+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 18. 16:27:01">2025-04-18</span>
     </span>
   </span>
 
