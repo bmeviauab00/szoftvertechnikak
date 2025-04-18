@@ -431,7 +431,7 @@ Mi ennek a hibának az oka? Mielőtt az alábbi emlékeztetőt kinyitod, próbá
 
 A megoldást a következő részfeladatban dolgozzuk ki.
 
-### A DispatecherQueue alkalmazása
+### A DispatcherQueue alkalmazása
 
 Esetünkben a konkrét problémát az okozza, hogy amikor a `Game` állapota megváltozik, akkor `Game` osztályban a változásértesítő delegate hívása a biciklikhez tartozó munkaszálakon történik, így a beregisztrált `MainWindow.UpdateBikeUI` kezelőfüggvény is ezekről a szálakról hívódik. Az `UpdateBikeUI` függvényben hozzáférünk a felületelemekhez (biciklihez tartozó `TextBlock`- hoz). De ezeket a felületelemeket a főszálból hoztuk létre: így csak a fő szálból szabad(na) hozzájuk férni.
 
