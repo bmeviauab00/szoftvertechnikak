@@ -1832,9 +1832,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dispatecherqueue-verwenden" class="md-nav__link">
+  <a href="#dispatcherqueue-verwenden" class="md-nav__link">
     <span class="md-ellipsis">
-      DispatecherQueue verwenden
+      DispatcherQueue verwenden
     </span>
   </a>
   
@@ -2150,9 +2150,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dispatecherqueue-verwenden" class="md-nav__link">
+  <a href="#dispatcherqueue-verwenden" class="md-nav__link">
     <span class="md-ellipsis">
-      DispatecherQueue verwenden
+      DispatcherQueue verwenden
     </span>
   </a>
   
@@ -2604,7 +2604,7 @@ Wichtiger Hinweis: <code>volatile</code> muss nicht verwendet werden, wenn die V
 <p><strong>Auf eine WinUI-Oberflächenelement/einen WinUI-Controller kann nur von dem Thread aus zugegriffen werden, der das Oberflächenelement erstellt hat, da diese Oberflächenelement nicht fadensicher sind und eine Ausnahme auslösen, wenn Sie versuchen, sie "falsch" zu verwenden</strong>.</p>
 </details>
 <p>Die Lösung wird in der nächsten Teilaufgabe ausgearbeitet.</p>
-<h3 id="dispatecherqueue-verwenden">DispatecherQueue verwenden<a class="headerlink" href="#dispatecherqueue-verwenden" title="Permanent link">&para;</a></h3>
+<h3 id="dispatcherqueue-verwenden">DispatcherQueue verwenden<a class="headerlink" href="#dispatcherqueue-verwenden" title="Permanent link">&para;</a></h3>
 <p>In unserem Fall besteht das Problem darin, dass bei einer Änderung des Zustands von <code>Game</code>, wird der Delegat für die Änderungsbenachrichtigung in der Klasse <code>Game</code> in den mit den Fahrräder verbundenen Arbeitsthreads aufgerufen. So die registrierte Handlerfunktion <code>MainWindow.UpdateBikeUI</code> wird auch in diesen Threads aufgerufen. Die Funktion <code>UpdateBikeUI</code> wird für den Zugriff auf die Oberflächenelemente verwendet (<code>TextBlock</code> für Fahrrad). Diese Oberflächenelemente werden jedoch vom Haupt-Thread aus erstellt: Sie sind also nur vom Haupt-Thread aus erreichbar.</p>
 <p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> Die Lösung für dieses Problem ist die Verwendung von <code>DispatcherQueue</code>, die es uns <strong>ermöglicht, den Aufruf von den Arbeitsthreads auf den Hauptthread "umzuleiten", von dem aus wir auf die Steuerelemente zugreifen können</strong>. Auch die Verwendung von <code>DispacherQueue</code> wurde in der Vorlesung und im dazugehörigen Labor ausführlich erläutert.</p>
 <p>Aufgabe: Ändern Sie die Funktion <code>MainWindow.UpdateBikeUI</code> so, dass <code>DispacherQueue</code> verwendet wird, um auf die Oberflächenelemente vom richtigen Thread aus zuzugreifen (und somit die aktuelle Ausnahme zu vermeiden).</p>
@@ -2662,8 +2662,8 @@ Wichtiger Hinweis: <code>volatile</code> muss nicht verwendet werden, wenn die V
         </path>
       </svg>
     </span>
-    <span title="2024. április 19. 21:47:37">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2024. április 19. 21:47:37"><span class="timeago" datetime="2024-04-19T21:47:37+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2024. április 19. 21:47:37">2024-04-19</span>
+    <span title="2025. április 18. 17:40:33">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 18. 17:40:33"><span class="timeago" datetime="2025-04-18T17:40:33+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 18. 17:40:33">2025-04-18</span>
     </span>
   </span>
 
