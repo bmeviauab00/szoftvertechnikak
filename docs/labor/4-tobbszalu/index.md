@@ -337,7 +337,7 @@ A `DataFifo` osztály egyidőben több szálból is hozzáférhet a `List<double
 
 A következő lépésben a `DataFifo` osztályunkat szálbiztossá tesszük, amivel megakadályozzuk, hogy a fenti két probléma bekövetkezhessen.
 
-## 6. feladat – Tegyük szábiztossá a DataFifo osztályt
+## 6. feladat – Tegyük szálbiztossá a DataFifo osztályt
 
 A `DataFifo` osztály szálbiztossá tételéhez szükségünk van egy objektumra (ez bármilyen referencia típusú objektum lehet), melyet kulcsként használhatunk a zárolásnál. Ezt követően a `lock` kulcsszó segítségével el tudjuk érni, hogy egyszerre mindig csak egy szál tartózkodjon az adott kulccsal védett blokkokban.
 
