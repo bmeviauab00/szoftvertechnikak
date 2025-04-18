@@ -280,7 +280,7 @@ A feladatok ideiglenes tárolására a kiinduló projektünkben már némiképpe
     }
     ```
 
-2. Készítsük el az új szálkezelő függvény naív implementációját az űrlap osztályunkban:
+2. Készítsük el az új szálkezelő függvény naiv implementációját az űrlap osztályunkban:
 
     ```cs
     private void WorkerThread()
