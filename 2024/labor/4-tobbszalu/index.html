@@ -2675,6 +2675,23 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 </span><span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">lock</span><span class="w"> </span><span class="p">(</span><span class="n">_syncRoot</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_innerList</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_innerList</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
+<span class="w">                </span><span class="n">_innerList</span><span class="p">.</span><span class="n">RemoveAt</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_innerList</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                </span><span class="n">_hasData</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 </li>
 <li>
@@ -2729,8 +2746,8 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
         </path>
       </svg>
     </span>
-    <span title="2025. április 18. 17:00:10">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 18. 17:00:10"><span class="timeago" datetime="2025-04-18T17:00:10+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 18. 17:00:10">2025-04-18</span>
+    <span title="2025. április 18. 17:26:17">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 18. 17:26:17"><span class="timeago" datetime="2025-04-18T17:26:17+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 18. 17:26:17">2025-04-18</span>
     </span>
   </span>
 

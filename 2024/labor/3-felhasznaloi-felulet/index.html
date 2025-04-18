@@ -2384,7 +2384,7 @@ Most kézzel fogunk XAML-t írni és ezzel a felületet kialakítani. Vegyünk f
 </div>
 <p>Az eseménykezelőnek két paramétere van: a küldő objektum (<code>object sender</code>) és az esemény paramétereit/körülményeit tartalmazó paraméter (<code>EventArgs e</code>). Nézzük ezeket részletesebben:</p>
 <ul>
-<li><code>object sender</code>: Az esemény kiváltója. Esetünkben ez maga a gomb, <code>Button</code>-ra kasztolva használhatnánk is. Ritkán használjuk ez a paramétert.</li>
+<li><code>object sender</code>: Az esemény kiváltója. Esetünkben ez maga a gomb, <code>Button</code>-ra kasztolva használhatnánk is. Ritkán használjuk ezt a paramétert.</li>
 <li>A második paraméter mindig <code>EventArgs</code> típusú, vagy annak leszármazottja (ez az esemény típusától függ), melyben az esemény paramétereit kapjuk meg. A <code>Click</code> esemény esetében ez <code>RoutedEventArgs</code> típusú.</li>
 </ul>
 <div class="admonition note">
@@ -2723,7 +2723,7 @@ Alapértelmezetten ugyanis a <code>ListView</code> <code>ToString()</code>-et h�
 <span class="w">    </span><span class="nt">&lt;/ListView.ItemTemplate&gt;</span>
 <span class="nt">&lt;/ListView&gt;</span>
 </code></pre></div>
-<p><strong>A <code>DataTemplate</code> egy olyan felületsablon, melyet a <code>ListView</code> (he megadjuk az <code>ItemTemplate</code> tulajdonságának) minden elemére alkalmazni fog a megjelenítés során.</strong></p>
+<p><strong>A <code>DataTemplate</code> egy olyan felületsablon, melyet a <code>ListView</code> (ha megadjuk az <code>ItemTemplate</code> tulajdonságának) minden elemére alkalmazni fog a megjelenítés során.</strong></p>
 <p>Mivel az <code>x:Bind</code> fordítás idejű adatkötés, ezért az adatok típusát is meg kell adnunk az adatsablonban az <code>x:DataType</code> attribútummal. A fenti példában a <code>model:Person</code>-t adtuk meg, vagyis azt szeretnénk, hogy a <code>model</code> <strong>prefix</strong> a kódunk <code>HelloXaml.Models</code> névterére képződjön le (hiszen ebben van a <code>Person</code> osztály). Ehhez a XAML fájlunk elején a <code>Window</code> tag attribútumaihoz fel kell vegyük a következő <strong>névtér deklarációt</strong> is:
 <code>xmlns:model="using:HelloXaml.Models"</code> (ezt követően a <code>model</code> prefix használható lesz). Ezt megtehetjük kézzel, vagy a Visual Studio segítségével is: csak kattintsunk bele az aláhúzott (hibásnak megjelölt) <code>model:Person</code>szövegbe, majd kattintsunk a sor elején megjelenő lámpácskára (vagy <code>Ctrl</code> + <code>.</code> billentyűkombináció), és válasszuk ki a megjelenő <em>"Add xmlns using:HelloXaml.Models"</em> elemet.</p>
 <p>Próbáljuk ki! Most már jól jelennek meg a listában az elemek.</p>
@@ -2774,8 +2774,8 @@ Alapértelmezetten ugyanis a <code>ListView</code> <code>ToString()</code>-et h�
         </path>
       </svg>
     </span>
-    <span title="2025. március 18. 20:06:49">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. március 18. 20:06:49"><span class="timeago" datetime="2025-03-18T20:06:49+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. március 18. 20:06:49">2025-03-18</span>
+    <span title="2025. április 10. 17:52:49">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 10. 17:52:49"><span class="timeago" datetime="2025-04-10T17:52:49+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 10. 17:52:49">2025-04-10</span>
     </span>
   </span>
 
