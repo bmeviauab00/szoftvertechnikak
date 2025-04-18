@@ -2494,12 +2494,11 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 <span class="w">            </span><span class="n">_innerList</span><span class="p">.</span><span class="n">RemoveAt</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
-<span class="hll"><span class="w">    </span><span class="p">}</span>
-</span><span class="p">}</span>
-</code></pre></div>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="hll"><span class="p">}</span>
+</span></code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Surround with</p>
 <p>Használjuk a Visual Studio <em>Surround with</em> funkcióját a CTRL + K, CTRL + S billentyű kombinációjával a körülvenni kívánt kijelölt kódrészleten.</p>
@@ -2553,10 +2552,9 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 </span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 </li>
@@ -2610,10 +2608,9 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w">        </span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Próbáljuk ki az alkalmazást, most már jól működik.</p>
@@ -2672,8 +2669,8 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">TryGet</span><span class="p">(</span><span class="k">out</span><span class="w"> </span><span class="kt">double</span><span class="p">[]</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="hll"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">WaitHandle</span><span class="p">.</span><span class="n">WaitAny</span><span class="p">(</span><span class="k">new</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_hasData</span><span class="p">,</span><span class="w"> </span><span class="n">_releaseTryGet</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
-</span><span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">lock</span><span class="w"> </span><span class="p">(</span><span class="n">_syncRoot</span><span class="p">)</span>
+</span><span class="hll"><span class="w">    </span><span class="p">{</span>
+</span><span class="w">        </span><span class="k">lock</span><span class="w"> </span><span class="p">(</span><span class="n">_syncRoot</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_innerList</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
 <span class="w">            </span><span class="p">{</span>
@@ -2681,14 +2678,14 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
 <span class="w">                </span><span class="n">_innerList</span><span class="p">.</span><span class="n">RemoveAt</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
 <span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_innerList</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                </span><span class="n">_hasData</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
+<span class="w">                    </span><span class="n">_hasData</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
 <span class="w">                </span><span class="p">}</span>
 
 <span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
+<span class="hll"><span class="w">    </span><span class="p">}</span>
+</span>
 <span class="w">    </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
 <span class="p">}</span>
@@ -2746,8 +2743,8 @@ Alkalmazásunkban azért kaptunk kivételt, mert a <code>resultListBox</code> ve
         </path>
       </svg>
     </span>
-    <span title="2025. április 18. 17:26:17">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 18. 17:26:17"><span class="timeago" datetime="2025-04-18T17:26:17+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 18. 17:26:17">2025-04-18</span>
+    <span title="2025. április 18. 17:33:29">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 18. 17:33:29"><span class="timeago" datetime="2025-04-18T17:33:29+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 18. 17:33:29">2025-04-18</span>
     </span>
   </span>
 
