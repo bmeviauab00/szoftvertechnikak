@@ -372,10 +372,9 @@ A `DataFifo` osztály szálbiztossá tételéhez szükségünk van egy objektumr
                 _innerList.RemoveAt(0);
                 return true;
             }
-
-            data = null;
-            return false;
         }
+        data = null;
+        return false;
     }
     ```
 
@@ -437,10 +436,9 @@ A következőkben úgy fogjuk módosítani az alkalmazást, hogy blokkolva vára
 
                 return true;
             }
-
-            data = null;
-            return false;
         }
+        data = null;
+        return false;
     }
     ```
 
@@ -501,10 +499,9 @@ Az előző pontban megoldottuk a jelzést, ám ez önmagában nem sokat ér, his
 
                 return true;
             }
-
-            data = null;
-            return false;
         }
+        data = null;
+        return false;        
     }
     ```
 
@@ -563,7 +560,7 @@ Korábban félretettük azt a problémát, hogy az ablakunk bezárásakor a proc
 
 2.	A `TryGet`-ben erre az eseményre is várakozzunk. A `WaitAny` metódus akkor engedi tovább a futtatást, ha a paraméterként megadott `WaitHandle` típusú objektumok közül valamelyik jelzett állapotba kerül, és visszaadja annak tömbbéli indexét. Tényleges adatfeldolgozást pedig csak akkor szeretnénk, ha a `_hasData` jelzett (amikor is a `WaitAny` 0-val tér vissza).
 
-    ```cs hl_lines="3"
+    ```cs hl_lines="3 4 19"
     public bool TryGet(out double[] data)
     {
         if (WaitHandle.WaitAny(new[] { _hasData, _releaseTryGet }) == 0)
@@ -576,7 +573,7 @@ Korábban félretettük azt a problémát, hogy az ablakunk bezárásakor a proc
                     _innerList.RemoveAt(0);
                     if (_innerList.Count == 0)
                     {
-                    _hasData.Reset();
+                        _hasData.Reset();
                     }
 
                     return true;
