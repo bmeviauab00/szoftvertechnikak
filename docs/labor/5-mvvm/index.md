@@ -453,7 +453,7 @@ Három lehetőségünk van:
 
 1. Visszalakítjuk a `SelectedGenre` propertyt nem kódgenerált változatra, hogy a settert mi tudjuk definiálni.
 2. Feliratkozunk a ViewModel `PropertyChanged` eseményre a konstruktorban, az eseménykezelőnkben a `LoadBooks` metódust meghívjuk, ha a `SelectedGenre` property változik.
-3. Használjuk a kódgeneráltor által elkészített partial metódusokat, melyekkel kibővíthetjük a setterek viselkedését.
+3. Használjuk a kódgenerátor által elkészített partial metódusokat, melyekkel kibővíthetjük a setterek viselkedését.
 
 A 3. lehetőség tűnik a legegyszerűbbnek, ehhez viszont ismerni kell a partial metódusok működését (erről a tárgy keretében nem volt még szó).
 A partial metódusok olyan metódusok, amelyeknek a deklarációja és definíciója külön (egy adott partial classhoz) tartozó fájlokban kap helyet, és amiket a fordító automatikusan összekapcsol. Ráadásul a partial metódusokat nem kell megvalósítanunk kötelezően.
