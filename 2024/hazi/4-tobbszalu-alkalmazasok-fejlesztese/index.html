@@ -959,9 +959,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#a-dispatecherqueue-alkalmazasa" class="md-nav__link">
+  <a href="#a-dispatcherqueue-alkalmazasa" class="md-nav__link">
     <span class="md-ellipsis">
-      A DispatecherQueue alkalmazása
+      A DispatcherQueue alkalmazása
     </span>
   </a>
   
@@ -2150,9 +2150,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#a-dispatecherqueue-alkalmazasa" class="md-nav__link">
+  <a href="#a-dispatcherqueue-alkalmazasa" class="md-nav__link">
     <span class="md-ellipsis">
-      A DispatecherQueue alkalmazása
+      A DispatcherQueue alkalmazása
     </span>
   </a>
   
@@ -2606,7 +2606,7 @@ Fontos megjegyzés: a <code>volatile</code> alkalmazására nincs szükség, ha 
 <p><strong>Egy WinUI felületelemhez/vezérlőhöz csak abból a szálból lehet hozzáférni, mely az adott felületelemet létrehozta, ugyanis ezek a felületelemek nem szálbiztosak, és kivétel dobásával jelzik, ha mégis „rosszul” próbáljuk őket használni.</strong></p>
 </details>
 <p>A megoldást a következő részfeladatban dolgozzuk ki.</p>
-<h3 id="a-dispatecherqueue-alkalmazasa">A DispatecherQueue alkalmazása<a class="headerlink" href="#a-dispatecherqueue-alkalmazasa" title="Permanent link">&para;</a></h3>
+<h3 id="a-dispatcherqueue-alkalmazasa">A DispatcherQueue alkalmazása<a class="headerlink" href="#a-dispatcherqueue-alkalmazasa" title="Permanent link">&para;</a></h3>
 <p>Esetünkben a konkrét problémát az okozza, hogy amikor a <code>Game</code> állapota megváltozik, akkor <code>Game</code> osztályban a változásértesítő delegate hívása a biciklikhez tartozó munkaszálakon történik, így a beregisztrált <code>MainWindow.UpdateBikeUI</code> kezelőfüggvény is ezekről a szálakról hívódik. Az <code>UpdateBikeUI</code> függvényben hozzáférünk a felületelemekhez (biciklihez tartozó <code>TextBlock</code>- hoz). De ezeket a felületelemeket a főszálból hoztuk létre: így csak a fő szálból szabad(na) hozzájuk férni.</p>
 <p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> A problémára a <code>DispatcherQueue</code> alkalmazása jelent megoldást, mellyel <strong>a munkaszálakból a hívást "át tudjuk játszani" a főszálba, melyből már hozzá tudunk férni a vezérlőkhöz</strong>. A <code>DispatcherQueue</code> alkalmazása előadáson és a kapcsolódó laboron is részletesen ismertetésre került.</p>
 <p>Feladat: módosítsd úgy a <code>MainWindow.UpdateBikeUI</code> függvényt, hogy a <code>DispatcherQueue</code> alkalmazásával a megfelelő szálból történjen a felületelemekhez történő hozzáférés (és így a mostani kivételt el tudd kerülni).</p>
@@ -2664,8 +2664,8 @@ Fontos megjegyzés: a <code>volatile</code> alkalmazására nincs szükség, ha 
         </path>
       </svg>
     </span>
-    <span title="2025. április 18. 17:00:10">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 18. 17:00:10"><span class="timeago" datetime="2025-04-18T17:00:10+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 18. 17:00:10">2025-04-18</span>
+    <span title="2025. április 18. 17:39:40">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 18. 17:39:40"><span class="timeago" datetime="2025-04-18T17:39:40+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 18. 17:39:40">2025-04-18</span>
     </span>
   </span>
 
@@ -2686,6 +2686,8 @@ Fontos megjegyzés: a <code>volatile</code> alkalmazására nincs szükség, ha 
         <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
       </a><a href="https://github.com/homok43" target="_blank" rel="noopener noreferrer" class="md-author" title="@None">
         <img src="https://avatars.githubusercontent.com/u/16989201?u=0e27954064045c1000b2eccf6dbf2cd8b33e2b0f&v=4?size=72" alt="@None">
+      </a><a href="https://github.com/lyozi" target="_blank" rel="noopener noreferrer" class="md-author" title="@Urak József">
+        <img src="https://avatars.githubusercontent.com/u/124312789?v=4?size=72" alt="@Urak József">
       </a><a href="https://github.com/NBiTech" target="_blank" rel="noopener noreferrer" class="md-author" title="@Nagy Benedek">
         <img src="https://avatars.githubusercontent.com/u/48951990?u=aad4a115542ff6253cb6183bc649c64d7444be80&v=4?size=72" alt="@Nagy Benedek">
       </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tibor Tóth">
