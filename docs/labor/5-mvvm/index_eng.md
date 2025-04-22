@@ -214,9 +214,8 @@ Call the `SeedDatabase` method when the application starts, so that the book and
 protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
 {
     m_window = new MainWindow();
-    m_window.Activate();
-
     new BookService().SeedDatabase();
+    m_window.Activate();
 }
 ```
 

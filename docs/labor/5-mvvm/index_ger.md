@@ -221,9 +221,8 @@ Dies kann am einfachsten in der Methode `OnLaunched` in der Datei `App.xaml.cs` 
 protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
 {
     m_window = new MainWindow();
-    m_window.Activate();
-
     new BookService().SeedDatabase();
+    m_window.Activate();
 }
 ```
 
