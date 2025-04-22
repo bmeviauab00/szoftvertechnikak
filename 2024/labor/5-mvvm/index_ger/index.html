@@ -2368,11 +2368,10 @@ Dies kann am einfachsten in der Methode <code>OnLaunched</code> in der Datei <co
 <div class="highlight"><span class="filename">App.xaml.cs</span><pre><span></span><code><span class="k">protected</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnLaunched</span><span class="p">(</span><span class="n">Microsoft</span><span class="p">.</span><span class="n">UI</span><span class="p">.</span><span class="n">Xaml</span><span class="p">.</span><span class="n">LaunchActivatedEventArgs</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">m_window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MainWindow</span><span class="p">();</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">BookService</span><span class="p">().</span><span class="n">SeedDatabase</span><span class="p">();</span>
 <span class="w">    </span><span class="n">m_window</span><span class="p">.</span><span class="n">Activate</span><span class="p">();</span>
-
-<span class="hll"><span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">BookService</span><span class="p">().</span><span class="n">SeedDatabase</span><span class="p">();</span>
-</span><span class="p">}</span>
-</code></pre></div>
+<span class="hll"><span class="p">}</span>
+</span></code></pre></div>
 <h3 id="viewmodel">ViewModel<a class="headerlink" href="#viewmodel" title="Permanent link">&para;</a></h3>
 <p>Erstellen wir die neue Klasse <code>BooksPageViewModel</code>, die zu <code>BooksPage</code> gehört, in einem neuen Ordner namens <code>ViewModels</code>. Diese Klasse übernimmt – ganz klassisch für ein ViewModel – den Zustand der Ansicht sowie die darauf ausführbaren Operationen, also die <strong>Darstellungslogik</strong> für die <code>BooksPage</code>-Ansicht.</p>
 <p>Wenn wir darüber nachdenken, enthält <code>BooksPage</code> die folgenden Zustandsinformationen:</p>
@@ -2719,8 +2718,8 @@ So können wir das Auslösen des Ereignisses aus unserer <code>OnSelectedGenreCh
         </path>
       </svg>
     </span>
-    <span title="2025. április 16. 09:57:31">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 16. 09:57:31"><span class="timeago" datetime="2025-04-16T09:57:31+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 16. 09:57:31">2025-04-16</span>
+    <span title="2025. április 22. 21:04:31">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 22. 21:04:31"><span class="timeago" datetime="2025-04-22T21:04:31+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 22. 21:04:31">2025-04-22</span>
     </span>
   </span>
 
@@ -2737,6 +2736,8 @@ So können wir das Auslösen des Ereignisses aus unserer <code>OnSelectedGenreCh
     <span>Szerzők</span>
     <nav><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@tibitoth">
         <img src="https://avatars.githubusercontent.com/tibitoth?size=72" alt="@tibitoth">
+      </a><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
+        <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&v=4?size=72" alt="@Zoltán Benedek">
       </a><a href="https://github.com/szucscintialia" target="_blank" rel="noopener noreferrer" class="md-author" title="@Cintia Szücs">
         <img src="https://avatars.githubusercontent.com/u/26093637?v=4?size=72" alt="@Cintia Szücs">
       </a></nav>      

@@ -2365,11 +2365,10 @@ Ezt az <code>App.xaml.cs</code> fájlban a <code>OnLaunched</code> metódusban t
 <div class="highlight"><span class="filename">App.xaml.cs</span><pre><span></span><code><span class="k">protected</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnLaunched</span><span class="p">(</span><span class="n">Microsoft</span><span class="p">.</span><span class="n">UI</span><span class="p">.</span><span class="n">Xaml</span><span class="p">.</span><span class="n">LaunchActivatedEventArgs</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">m_window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MainWindow</span><span class="p">();</span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">BookService</span><span class="p">().</span><span class="n">SeedDatabase</span><span class="p">();</span>
 <span class="w">    </span><span class="n">m_window</span><span class="p">.</span><span class="n">Activate</span><span class="p">();</span>
-
-<span class="hll"><span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">BookService</span><span class="p">().</span><span class="n">SeedDatabase</span><span class="p">();</span>
-</span><span class="p">}</span>
-</code></pre></div>
+<span class="hll"><span class="p">}</span>
+</span></code></pre></div>
 <h3 id="viewmodel">ViewModel<a class="headerlink" href="#viewmodel" title="Permanent link">&para;</a></h3>
 <p>Készítsük el az új (<code>BooksPage</code>-hez tartozó) <code>BooksPageViewModel</code> osztályt egy új <code>ViewModels</code> mappába. Ez, mint egy klasszikus ViewModel, a nézet állapotát és a rajta végrehajtható műveleteket fogja tartalmazni - vagyis a <code>BooksPage</code> nézethez tartozó <strong>megjelenítési logikát</strong>.</p>
 <p>Ha belegondolunk, a <code>BooksPage</code> az alábbi állapotinformációkat tartalmazza:</p>
@@ -2712,8 +2711,8 @@ Esetünkben a <code>NotifyCanExecuteChangedFor</code>-ral kössük össze a <cod
         </path>
       </svg>
     </span>
-    <span title="2025. április 14. 15:31:10">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 14. 15:31:10"><span class="timeago" datetime="2025-04-14T15:31:10+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 14. 15:31:10">2025-04-14</span>
+    <span title="2025. április 22. 21:04:31">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 22. 21:04:31"><span class="timeago" datetime="2025-04-22T21:04:31+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 22. 21:04:31">2025-04-22</span>
     </span>
   </span>
 
