@@ -9,7 +9,7 @@ authors: bzolka
 In dieser Hausaufgabe werden wir die während der 3. Laborübung (XAML) implementierte Anwendung für Personenregistrierung so verändern, dass sie auf dem MVVM-Muster basiert, und wir werden das MVVM-Toolkit kennenlernen.
 
 Die Hausaufgabe baut auf dem MVVM-Thema auf, das am Ende der WinUI-Vorlesungsreihe behandelt wurde.
-Hinweis: [Labor 5 - MVVM-Labor](../../labor/5-mvvm/index_ger.md) ist sehr abwechslungsreich und zeigt neben vielen anderen Themen ein Beispiel für das MVVM-Muster im Kontext einer komplexeren Anwendung. Die vorliegende Hausaufgabe ist fokussierter, in kleineren Schritten aufgebaut: In unserem Fall wird die Lösung dieser Hausaufgabe helfen, um die zugehörige Teile von [Lab 5 - MVVM](../../labor/5-mvvm/index_ger.md) zu verstehen.
+Die praktische Grundlage für die Aufgaben bildet die [5. Laborübung – MVVM](../../labor/5-mvvm/index.md).
 
 Durch das Durcharbeiten des zugehörigen Vorlesungsmaterials können die Aufgaben dieser eigenständigen Übung mit Hilfe der kürzeren Leitfäden, die auf die Aufgabenbeschreibung folgen (manchmal standardmäßig eingefaltet), selbständig bearbeitet werden.
 
