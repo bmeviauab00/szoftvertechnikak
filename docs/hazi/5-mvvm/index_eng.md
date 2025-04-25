@@ -168,3 +168,126 @@ What does the MVVM pattern mean for our example?
 * The `PersonListPageViewModel` will work with the model and handle user interactions (event handlers).
 * Since we are using the Relaxed MVVM pattern (not Strict MVVM), we do not need to introduce a wrapper `PersonViewModel` around the `Person` model class.
 
+Task: Refactor the existing logic to follow the MVVM (Model-View-ViewModel) pattern as described above. Move the `PersonListPageViewModel` class into a newly created `ViewModels` folder. Try to figure out the solution yourself based on the provided hints! Here's a helpful tip in advance (since this part is a bit trickier): for events, you can bind event handler methods using data binding — see the the lecture. (After the refactor, event handlers must only be specified via bindings.) Also important: You can only bind to public properties or methods, so keep that in mind when refactoring!
+
+??? "Tips / solution validation"
+    1. From `PersonListPage.xaml.cs`, you should move almost everything (except the `this.InitializeComponent()` call in the constructor) into the new `PersonListPageViewModel` class. These are part of the UI logic, which belongs in the ViewModel.
+    2. The `PersonListPageViewModel` class must be public.
+    3. In the `PersonListPage.xaml.cs` code-behind, add a public `ViewModel` property of type `PersonListPageViewModel` with a getter only, and initialize it to a new object. This means the View creates and holds a reference to the ViewModel.
+    4. In `PersonListPage.xaml`, update the bindings for the two `TextBox` objects properly. Since `NewPerson.Name` and `NewPerson.Age` are now one level deeper, you need to bind to them through the `ViewModel` property.
+    5. In `PersonListPage.xaml`, you need to adjust the event handlers (`Click`) in three places. This is trickier:
+        * You can no longer define event handlers using the old syntax (`Click="SomeHandler"`) because the handlers are no longer in the code-behind — they have been moved to the ViewModel.
+        * Instead, you must bind the handlers using command bindings, as shown in the lecture. This works because the `ViewModel` property in the code-behind gives access to the `PersonListPageViewModel` instance, which contains the handler methods (`AddButton_Click`, `IncreaseButton_Click`, `DecreaseButton_Click`).
+        * Make sure these handler methods are public, otherwise the bindings won't work — you must change them from private to public.
+
+Further essential modifications:
+
+* In the ViewModel, the current names of the `Click` event handlers are: `AddButton_Click`, `IncreaseButton_Click`, and `DecreaseButton_Click`. This is not ideal. In a ViewModel, we don't think in terms of "event handlers", but rather in terms of modifier methods that alter the state of the ViewModel. Much better, more expressive names for these methods would be: `AddPersonToList`, `IncreaseAge` and `DecreaseAge`. Rename the functions accordingly! And of course, continue to use data binding to bind these methods to the `Click` events in the XAML file.
+* These functions currently have the parameter list "`object sender, RoutedEventArgs e`". However, these parameters are not used for anything.
+Fortunately, the x:Bind event binding is flexible enough to allow methods without parameters — it will still work just fine. In light of this, remove the unused parameters from the three functions in our ViewModel. This will result in a cleaner and more elegant solution.
+
+Make sure that after these changes, the application still behaves exactly the same as it did before!
+
+What did we gain by converting our earlier solution to an MVVM-based one? The answer is given in the lecture material. Here's a quick highlight of the benefits:
+
+* Responsibilities are nicely separated, no more mixing of concerns, which makes things easier to understand:
+    * UI-independent logic (Model and related classes)
+    * UI logic (ViewModel)
+    * Pure UI appearance (View)
+* Since the UI logic is separate, it can (and should) be unit tested independently.
+
+!!! example "SUBMISSION REQUIRED"
+    Take a screenshot named `f2.png` as follows:
+
+    - Launch the application. If needed, resize it to make it smaller so it doesn’t take up too much screen space.
+    - In the background, Visual Studio should be open with the `PersonListPageViewModel.cs` file displayed.
+
+## Task 3 - Enabling/disabling Controls
+
+In its current state, the application behaves a bit oddly: you can use the "–" button to reduce someone's age into negative values, or the "+" to push it beyond 150. Also, the "+Add" button allows adding a person with nonsensical properties. We need to disable these buttons when the action doesn’t make sense, and enable them when it does.
+
+As the next step, let's implement the disabling/enabling of the "–" button appropriately. The button should only be enabled when the person’s age is greater than 0.
+
+Try to implement this yourself first, at least lay down the basics! Be sure to use a data binding–based solution, as only this is acceptable. If you get stuck or your solution doesn’t "want" to work, rethink what might be the issue, and adjust your implementation according to the following:
+
+Multiple valid solutions are possible for this problem. What they all have in common is that the `IsEnabled` property of the “–” button is bound in some way. In our chosen solution, we bind it to a newly introduced bool property inside `PersonListPageViewModel`.
+
+``` csharp title="PersonListPageViewModel.cs"
+    public bool IsDecrementEnabled
+    {
+        get { return NewPerson.Age > 0; }
+    }
+```
+
+``` xml title="PersonListPage.xaml-be a '-' gombhoz"
+    IsEnabled="{x:Bind ViewModel.IsDecrementEnabled, Mode=OneWay}"
+```
+
+Let’s try it out! Unfortunately, it doesn’t work: the "–" button is not disabled when the age becomes 0 or less (e.g. by clicking the button multiple times). If we place a breakpoint inside the `IsDecrementEnabled` property and then launch the application, we’ll notice that the property is only queried once by the bound control — during application startup. Even after repeatedly clicking the "–" button, it won’t be queried again. Try it yourself!
+
+Think through what’s causing this, and only then continue with the guide.
+
+??? tip "Explanation"
+    According to what we’ve learned earlier, data binding only queries a source property’s value when it receives a change notification via `INotifyPropertyChanged`! In our current solution, even though the `Age` property of the `NewPerson` object changes, there’s no notification that the dependent `IsDecrementEnabled` property has changed as a result.
+
+Next step: Implement the corresponding change notification in the `PersonListPageViewModel` class:
+
+* Use MVVM Toolkit foundations to implement the `INotifyPropertyChanged` interface:
+    * Derive from `ObservableObject`.
+    * The `IsDecrementEnabled` property can remain as a getter-only property — it does not need to be based on `[ObservableProperty]`. (Although rewriting it that way is also a valid and fully acceptable solution for the assignment — just be aware the next steps work slightly differently in that case.)
+* Try to implement the following on your own, in the ViewModel class (note: the `Person` class remains unchanged): when `NewPerson.Age` changes, trigger a call to `OnPropertyChanged`, which is inherited from `ObservableObject`, to notify that `IsDecrementEnabled` has changed. Hint: the `Person` class already implements `INotifyPropertyChanged`, so you can subscribe to its `PropertyChanged` event! For simplicity, it’s okay if you notify a change to `IsDecrementEnabled` even when the logical value might not have actually changed.
+* You can achieve all of this without writing a separate handler method — hint: use a lambda expression to assign the event handler.
+
+Test your solution! If everything is working correctly, the "–" button should also become disabled if you manually type a negative age value into the TextBox and then click outside the TextBox. Take a moment to think about why this works!
+
+Next, implement a similar solution for both the "+" button and the "+Add" button.
+
+* The maximum acceptable age should be 150.
+* A name is only acceptable if it contains at least one non-whitespace character. (Use the static method `string.IsNullOrWhiteSpace` for this validation.)
+* You don’t need to handle cases where the user types a non-numeric value into the age TextBox. (This is not manageable with the current implementation anyway.)
+
+During testing, you may notice that if you delete the name in the TextBox, the +Add button’s enabled state does not update immediately. It only changes after leaving (unfocusing) the TextBox.
+Why is this? This happens because the default binding behavior is to update the bound source only when the TextBox loses focus. Modify your implementation so that the update happens on every keystroke, without needing to leave the TextBox.
+
+!!! example "SUBMISSION REQUIRED"
+    Take a screenshot named `f3.png` as follows:
+    
+    - Start the application. If needed, resize it so it doesn’t take up too much screen space.
+    - In the app, reduce the age to 0.
+    - In the background, have Visual Studio open with the `PersonListPageViewModel.cs` file visible.
+
+## Task 4 – Using Command
+
+At the moment, handling the "–" button requires us to do two things:
+
+* Execute an event handler when `Click` is triggered
+* Enable or disable the button using the `IsEnabled` property
+
+However, certain controls — like buttons — support doing both via a Command-based approach, using a command object. You can learn more about the Command design pattern from the "Design Patterns 3" lecture (although that only covers the basic Command pattern, which supports execution but not enabling/disabling). The MVVM-specific implementation of the Command pattern is introduced at the end of the WinUI lecture series.
+
+The basic principle: Instead of using `Click` and `IsEnabled`, the button’s `Command` property is set to a command object that implements the `ICommand` interface. Execution and enabling/disabling are now handled entirely by the command object.
+
+Normally, each command would require its own `ICommand` implementation. But this would mean creating a separate class for each command — a lot of boilerplate. Thankfully, the MVVM Toolkit helps here. It provides a `RelayCommand` class that implements `ICommand`. This class is flexible enough to handle any command via delegates passed to its constructor, so there’s no need to create additional command classes. How does this work?
+The `RelayCommand` constructor takes two delegates:
+
+* The first parameter is the code to execute when the command is run.
+* The second parameter (optional) is the code that returns a bool indicating whether the command should be enabled. If it returns true, the command is enabled; otherwise, it's disabled.
+
+Your next step: convert the handling of the "–" button to use the command pattern. Try to implement most of this on your own, based on the related WinUI lecture slides. Execution is relatively simple, but handling enabling/disabling requires a bit more. Main steps:
+
+* In your ViewModel, introduce a public `RelayCommand` property with only a getter, e.g. named `DecreaseAgeCommand`. Unlike the lecture slides, in our case the `RelayCommand` does not need a generic parameter, because our handler method (`DecreaseAge`) takes no arguments.
+* In the ViewModel constructor, assign a value to this new property.
+Pass appropriate delegates to the `RelayCommand` constructor (one for execution, one for `CanExecute`).
+* In `PersonListPage.xaml`: remove the current `Click` and `IsEnabled` bindings on the "–" button. Instead, bind the button’s `Command` property to the `DecreaseAgeCommand` you just added in the ViewModel.
+
+If we try it out, the command execution works, but the enable/disable logic doesn’t. If we observe carefully, the button always remains visually enabled. This actually makes sense. While the `RelayCommand` is capable of calling the function passed as the second constructor parameter (used to determine its enabled state), it has no way of knowing that it should re-evaluate this every time `NewPerson.Age` changes! But we can fix this: in the ViewModel’s constructor, we already subscribed to `NewPerson.PropertyChanged`. Based on this, we can do the following: whenever Age changes (or even when it might change — it’s okay if we notify a bit too often), call the `NotifyCanExecuteChanged()` method on the `DecreaseAgeCommand`. This method has a very descriptive name: it notifies the command that the condition determining whether it should be enabled or disabled may have changed. As a result, the command will update itself, or more precisely, it will update the enabled state of the associated button.
+
+Refactor the handling of the "+" button in the same way, using a command-based approach. Do not modify the handling of the "+Add" button.
+
+!!! example "SUBMISSION REQUIRED"
+    Take a screenshot named `f4.png` as follows:
+
+    - Launch the application. Resize it if needed so it doesn’t take up too much screen space.
+    - In the app, make sure the name TextBox is empty.
+    - In the background, have Visual Studio open with the `PersonListPageViewModel.cs` file visible.
+
