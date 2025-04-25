@@ -291,3 +291,23 @@ Refactor the handling of the "+" button in the same way, using a command-based a
     - In the app, make sure the name TextBox is empty.
     - In the background, have Visual Studio open with the `PersonListPageViewModel.cs` file visible.
 
+## Task 5 - Using Command with MVVM Toolkit code generation
+
+In the previous task, we introduced and instantiated command properties manually. The MVVM Toolkit can simplify this — with the appropriate attribute, it can automatically generate the property and its instantiation.
+
+Let’s now refactor the handling of the `DecreaseAgeCommand` (and only this one — leave `IncreaseAgeCommand` as it is) using generated code.
+
+1. Mark the `PersonListPageViewModel` class as `partial`.
+2. Delete the `DecreaseAgeCommand` property and its instantiation from the constructor.
+3. Add the following attribute to the `DecreaseAge` method: `[RelayCommand(CanExecute = nameof(IsDecrementEnabled))]`.
+    * This will cause the code generator to create a `RelayCommand` property named `DecreaseAgeCommand` — that's the method name (`DecreaseAge`) plus the "Command" suffix.
+    * The `CanExecute` attribute allows you to specify the name of a method or property (as a string) that returns a bool, which the command uses to determine if it should be enabled or disabled. We already have such a property: `IsDecrementEnabled`. We don’t use a plain string like "IsDecrementEnabled" because if someone later renames the property, it would no longer point to the right member. Using `nameof(IsDecrementEnabled)` ensures the reference is safe and refactor-friendly. In general, specifying `CanExecute` is optional — don’t include it if you want the command to always be enabled.
+4. Test your solution (decreasing age). It should behave exactly like before. Decrease the age. Disable the button when age reaches 0. If disabling the button doesn’t work: A likely cause is that you deleted the call to `DecreaseAgeCommand.NotifyCanExecuteChanged()` during the refactor. You still need this call! The refactor only changes how the command is declared — the rest of the logic still applies.
+
+!!! example "SUBMISSION REQUIRED"
+    Take a screenshot named `f5.png` as follows:
+
+    - Launch the application. Resize it if necessary so it doesn’t take up too much screen space.
+    - In the background, Visual Studio should be open with the `PersonListPageViewModel.cs` file visible.
+
+## Task 6 – Strict MVVM
