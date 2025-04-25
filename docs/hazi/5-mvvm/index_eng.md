@@ -311,3 +311,17 @@ Let’s now refactor the handling of the `DecreaseAgeCommand` (and only this one
     - In the background, Visual Studio should be open with the `PersonListPageViewModel.cs` file visible.
 
 ## Task 6 – Strict MVVM
+
+Our current solution follows the Relaxed MVVM approach. In the following steps, let’s think through what this actually means, and what it would entail if we were to switch to a Strict MVVM approach (**we won’t actually implement it — this is just a conceptual exercise**).
+
+In our current solution (Relaxed MVVM), the View binds directly to the `Person` model class, and the `PersonPageViewModel` also uses the `Person` model. This approach has the advantage of simplicity. However, it has a downside: we were forced to implement the `INotifyPropertyChanged` interface in the `Person` model class (even if using the MVVM Toolkit) — otherwise data binding wouldn't work correctly. There are scenarios where we don’t want to "pollute" our model class with logic that serves the UI. Instead, we want to keep the model as pure as possible. In such cases, the Strict MVVM approach is the solution. Think it through based on the lecture slides — **you don’t need to implement or document anything!**
+
+??? tip "Strict MVVM–based solution"
+    * The `Person` model class would no longer implement the `INotifyPropertyChanged` interface — the class would be simplified and contain only basic properties (this is the goal).
+    * We would need to introduce a `PersonViewModel` class (which would wrap a `Person` model object). Inside this:
+        * Define `Name` and `Age` properties.
+        * Implement the `INotifyPropertyChanged` interface:
+            * Inherit from `ObservableObject`
+            * Use the 'SetProperty' helper method (inherited from 'ObservableObject') inside the property setters to raise 'PropertyChanged' events.
+
+* The `PersonPageViewModel` (which belongs to the View) would also need to be updated to work with the new `PersonViewModel` instead of the `Person` model directly.
