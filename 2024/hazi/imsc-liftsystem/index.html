@@ -900,6 +900,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#4-feladat-lift-leptetese-a-chain-of-responsibility-minta-segitsegevel" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. feladat - Lift léptetése a Chain of Responsibility minta segítségével
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1860,6 +1869,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#4-feladat-lift-leptetese-a-chain-of-responsibility-minta-segitsegevel" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. feladat - Lift léptetése a Chain of Responsibility minta segítségével
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1886,7 +1904,7 @@
 <h1 id="imsc-hf-liftrendszer">IMSc. HF - Liftrendszer<a class="headerlink" href="#imsc-hf-liftrendszer" title="Permanent link">&para;</a></h1>
 <h2 id="bevezetes">Bevezetés<a class="headerlink" href="#bevezetes" title="Permanent link">&para;</a></h2>
 <p>A házi feladatban egy konzol alapú alkalmazást kell elkészíteni, mely egy liftrendszert szimulál, az Observer tervezési mintára építve.</p>
-<p>A megvalósításért 5 IMSc pont szerezhető.</p>
+<p>A megvalósításért 7 IMSc pont szerezhető.</p>
 <p>A házi feladat az Observer és Adapter tervezési minta ismeretére épít (lásd kapcsolódó tervezési minták előadásanyag). </p>
 <p>A szükséges fejlesztőkörnyezetről <a href="../fejlesztokornyezet/">itt</a> található leírás. Ez egy konzolos alkalmazás, akár Linux/Mac környezetben is megvalósítható.</p>
 <h2 id="a-beadas-menete">A beadás menete<a class="headerlink" href="#a-beadas-menete" title="Permanent link">&para;</a></h2>
@@ -2024,6 +2042,22 @@
 </ul>
 <p>A megoldás működésének illusztrálása:</p>
 <p><a class="glightbox" href="images/two-lifts-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="2 lifts" src="images/two-lifts-3.png" /></a></p>
+<h2 id="4-feladat-lift-leptetese-a-chain-of-responsibility-minta-segitsegevel">4. feladat - Lift léptetése a Chain of Responsibility minta segítségével<a class="headerlink" href="#4-feladat-lift-leptetese-a-chain-of-responsibility-minta-segitsegevel" title="Permanent link">&para;</a></h2>
+<p>Jelen megoldásban a lift léptetésének megvalósítása be van égetve a <code>Lift</code> osztály <code>Step</code> műveletébe. A feladat a lift léptetésének rugalmasabbá tétele. A következőket kell támogatni:</p>
+<ul>
+<li>A már meglévő, véletlenszerű elakadás.</li>
+<li>Vészleállás mód. Amikor a liftre bekapcsolják a vészleállás módot, a <code>Step</code> művelet nem léptetheti a liftet semmilyen irányba (egészen a vészleállás mód deaktiválásáig).</li>
+<li>Legyen lehetőség a léptetés művelet viselkedésének kényelmes konfigurálására, további viselkedések bevezetésére és a meglévő/újonnan bevezetett viselkedések tetszőleges kombinálására <strong>anélkül, hogy a <code>Step</code> művelet kódját módosítani kellene!</strong></li>
+</ul>
+<p>A megoldáshoz a Chain of Responsibility tervezési mintát kell alkalmazni. A minta nem szerepel előadáson, de az online források alapján könnyen megismerhető. </p>
+<details class="tip">
+<summary>Megoldás alapelve - kis segítség</summary>
+<p>Három konkrét Handler osztályt célszerű bevezetni és a <code>Lift</code> osztály konstruktorában megfelelő sorrendben "összefűzni", a <code>Step</code> műveletben pedig ezt használni.</p>
+</details>
+<details class="tip">
+<summary>Megoldás alapelve - nagyobb segítség</summary>
+<p>A három Handler osztály: egy az alapértelmezett léptetésnek, egy a véletlenszerű elakadásnak, egy a vészleállásnak. Ez utóbbiba kell egy property, mely engedélyezi az emergency üzemmódot, és ezt a property-t a Lift osztályban bevezetett másik propertyn keresztül elérhetővé kell tenni a külvilág számára.</p>
+</details>
 <hr>
 <div class="md-source-file">
   <span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg
@@ -2033,8 +2067,8 @@
         </path>
       </svg>
     </span>
-    <span title="2025. április 17. 18:00:13">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 17. 18:00:13"><span class="timeago" datetime="2025-04-17T18:00:13+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 17. 18:00:13">2025-04-17</span>
+    <span title="2025. április 27. 12:19:12">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 27. 12:19:12"><span class="timeago" datetime="2025-04-27T12:19:12+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 27. 12:19:12">2025-04-27</span>
     </span>
   </span>
 
