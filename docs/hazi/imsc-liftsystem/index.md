@@ -178,4 +178,4 @@ A megoldáshoz a Chain of Responsibility tervezési mintát kell alkalmazni. A m
     Három konkrét Handler osztályt célszerű bevezetni és a `Lift` osztály konstruktorában megfelelő sorrendben "összefűzni", a `Step` műveletben pedig ezt használni.
 
 ??? tip "Megoldás alapelve - nagyobb segítség"
-    A három Handler osztály: egy az alapértelmezett léptetésnek, egy a véletlenszerű elakadásnak, egy a vészleállásnak. Ez utóbbiba kell egy property, mely engedélyezi az emergency üzemmódot, és ezt a property-t a Lift osztályban bevezetett másik propertyn keresztül elérhetővé kell tenni a külvilág számára.
+    A három Handler osztály: egy az alapértelmezett léptetésnek, egy a véletlenszerű elakadásnak, egy a vészleállásnak. Ez utóbbiba kell egy property, mely engedélyezi az emergency üzemmódot, és ezt a property-t a `Lift` osztályban bevezetett másik propertyn keresztül elérhetővé kell tenni a külvilág számára.
