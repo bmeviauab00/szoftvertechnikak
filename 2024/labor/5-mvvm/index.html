@@ -2426,7 +2426,7 @@ Ezt az <code>App.xaml.cs</code> fájlban a <code>OnLaunched</code> metódusban t
 <p class="admonition-title">SetProperty</p>
 <p>Az <code>SetProperty</code> metódus egy segédfüggvény, amely megkönnyíti a tulajdonságok beállítását és a változásértesítést.</p>
 <p>A visszatérési érték <code>true</code>, ha a tulajdonság értéke megváltozott, és <code>false</code>, ha nem. Ez segít majd a későbbiekben eldönteni, hogy történt-e változás a tulajdonság értékében.</p>
-<p>A <code>ref</code> kulcsszó lehetővé teszi, hogy a metódus közvetlenül módosítsa a változó értékét (nem csak a referencia kerül átadásra, hanem maga referencia is módosítható, hogy az eredeti változó hova mutasson).</p>
+<p>A <code>ref</code> kulcsszó lehetővé teszi, hogy a metódus közvetlenül módosítsa a változó értékét (nem csak a referencia kerül átadásra, hanem maga a referencia is módosítható, így megváltoztatható, hogy az eredeti változó hova mutat).</p>
 <p>A <code>CallerMemberName</code> attribútum automatikusan átadja a hívó  (itt property) nevét, így nem kell mindenhol megadni a tulajdonság nevét kézzel.</p>
 </div>
 <p>Az adatok betöltését a <code>BookService</code> osztály segítségével fogjuk megvalósítani (görgessünk fel az útmutatóban, és a bevezető MVVM ábrán nézzük meg, hogy valóban a ViewModel használja a Service osztályt/osztályokat). Példányosítsuk a <code>BookService</code> osztályt, és a konstruktorában töltsük be a műfajokat és a könyveket.</p>
@@ -2535,7 +2535,7 @@ Ez valójában a projektfájlban az alábbi <code>PackageReference</code> bejegy
 Továbbá lehetőségünk van az <code>ObservableProperty</code> attribútum használatára is, amely egy kódgenerátort vezérel, így automatikusan létrehozhatóak a tulajdonságok kézzel írt boilerplate kód nélkül, kizárólag a mezők attributált deklarálásával. Hajtsuk végre az alábbi átalakításokat:</p>
 <ul>
 <li>
-<p>A <code>BooksPageViewModel</code> osztályunknak az <code>CommunityToolkit.Mvvm.ComponentModel</code> névtérben található <code>ObservableObject</code> osztályból kell leszármaznia.</p>
+<p>A <code>BooksPageViewModel</code> osztályunknak a <code>CommunityToolkit.Mvvm.ComponentModel</code> névtérben található <code>ObservableObject</code> osztályból kell leszármaznia.</p>
 </li>
 <li>
 <p>A source generator használatához azt osztályt <code>partial</code> kulcsszóval kell ellátni, hogy a generált kód és a kézi kód külön fájlokban kaphassanak helyet.</p>
@@ -2576,7 +2576,7 @@ Igen, mert korábban a <code>SelectedGenre</code> változására meghívtuk a <c
 <li>Használjuk a kódgenerátor által elkészített partial metódusokat, melyekkel kibővíthetjük a setterek viselkedését.</li>
 </ol>
 <p>A 3. lehetőség tűnik a legegyszerűbbnek, ehhez viszont ismerni kell a partial metódusok működését (erről a tárgy keretében nem volt még szó).
-A partial metódusok olyan metódusok, amelyeknek a deklarációja és definíciója külön (egy adott partial classhoz) tartozó fájlokban kap helyet, és amiket a fordító automatikusan összekapcsol. Ráadásul a partial metódusokat nem kell megvalósítanunk kötelezően.
+A partial metódusok olyan metódusok, amelyeknek a deklarációja és definíciója külön (egy adott partial classhoz tartozó) fájlokban kap helyet, és amiket a fordító automatikusan összekapcsol. Ráadásul a partial metódusok megvalósítása nem kötelező.
 Esetünkben a kódgenerátor deklarálja őket, hívja meg ezeket a setterekben, és mi implementálhatjuk őket a <code>BooksPageViewModel</code> osztályban.</p>
 <p>Készítsünk egy implementációt az <code>OnSelectedGenreChanged(string value)</code> partial metódusra, amelyben meghívjuk a <code>LoadBooks</code> metódust.</p>
 <div class="highlight"><span class="filename">BooksPageViewModel.cs</span><pre><span></span><code><span class="k">partial</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnSelectedGenreChanged</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="k">value</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">LoadBooks</span><span class="p">();</span>
@@ -2588,7 +2588,7 @@ Esetünkben a kódgenerátor deklarálja őket, hívja meg ezeket a setterekben,
 <p>A felhasználói felületek kialakításakor két feladatunk van:</p>
 <ul>
 <li>Adatok <strong>megjelenítése</strong> a felületen. Ezt az MVVM minta alapú megoldásunkban adatkötéssel elegánsan megoldottuk.</li>
-<li>A felhasználói <strong>interakciók/parancsok</strong> kezelése. Az eredeti megoldásunkban ez eseménykezelőkkel volt megoldva, majd ezeket szintén "elegánsan" mindenestől töröltük (emiatt nem működik a <code>Clear</code> gomb). A következőkben azt vizsgáljuk meg, hogy az MVVM minta alkalmazásával milyen megoldást lehet erre alkalmazni (spoiler: ViewModel-ben definiált commandok vagy műveletek kötése a View-ba).</li>
+<li>A felhasználói <strong>interakciók/parancsok</strong> kezelése. Az eredeti megoldásunkban ez eseménykezelőkkel volt megoldva, majd ezeket szintén "elegánsan" mindenestől töröltük (emiatt nem működik a <code>Clear</code> gomb). A következőkben azt vizsgáljuk meg, hogy az MVVM minta alkalmazásával milyen megoldás kínálkozik erre (spoiler: ViewModel-ben definiált commandok vagy műveletek kötése a View-ba).</li>
 </ul>
 <p>A ViewModel tipikusan publikálja a rajta végrehajtható műveleteket a View felé. Ezt megtehetjük publikus függvényeken keresztül vagy egy <code>ICommand</code> interfészt megvalósító objektumokon keresztül.</p>
 <div class="admonition tip">
@@ -2602,7 +2602,7 @@ Esetünkben a kódgenerátor deklarálja őket, hívja meg ezeket a setterekben,
 <span class="p">}</span>
 </code></pre></div>
 <p>Ezt a mechanizmust használja a <code>Button</code> vezérlő is, amelynek <code>Command</code> tulajdonságához rendelhetjük a ViewModel-ben definiált parancsokat.</p>
-<p>Az <code>ICommand</code>-ban definiált műveletek közül legfontosabb számunkra az <code>Execute</code>, mely a parancs futtatásakor hívódik meg. A <code>CanExecute</code>-tal a felület le tudja kérdezni a felület a parancstól, hogy adott pillanatban a parancs végrejaktható-e (pl. a gomb tiltott/engedélyezett lesz ennek megfelelően). A <code>CanExecuteChanged</code> eseménnyel pedig - az esemény nevének megfelelően - azt tudja jelezni a parancs a felület felé, hogy a parancs "CanExecute" állapota megváltozott, a felületnek frissítenie kell a tiltott/engedélyezett állapotát.</p>
+<p>Az <code>ICommand</code>-ban definiált műveletek közül legfontosabb számunkra az <code>Execute</code>, mely a parancs futtatásakor hívódik meg. A <code>CanExecute</code>-tal a felület le tudja kérdezni a parancstól, hogy adott pillanatban végrejaktható-e (pl. a gomb tiltott/engedélyezett lesz ennek megfelelően). A <code>CanExecuteChanged</code> eseménnyel pedig - az esemény nevének megfelelően - azt tudja jelezni a parancs a felület felé, hogy a parancs "CanExecute" állapota megváltozott, a felületnek frissítenie kell a tiltott/engedélyezett állapotát.</p>
 </div>
 <h3 id="icommand-hasznalata">ICommand használata<a class="headerlink" href="#icommand-hasznalata" title="Permanent link">&para;</a></h3>
 <p>Készítsünk egy <code>ICommand</code> típusú propertyt a <code>BooksPageViewModel</code> osztályban, amely "nem beállított" állapotba teszi a kiválasztott műfajt (a Clear gombnál használjuk majd).
@@ -2687,7 +2687,7 @@ Esetünkben a <code>NotifyCanExecuteChangedFor</code>-ral kössük össze a <cod
 <p>Nem minden vezérlő támogatja a <code>Command</code> mintát közvetlenül. Ilyenkor két lehetőségünk van:</p>
 <ol>
 <li>
-<p>Használhatunk <code>x:Bind</code> adatkötést, amely nem csak a tulajdonságokhoz, hanem eseménykezelőkhöz is használható. Így akát ViewModel-ben lévő eseménykezelőt is köthetünk a vezérlő eseményéhez. Ennek hátránya, hogy sértheti az MVVM mintát, mivel a ViewModel függeni fog a View-tól (pl.: eseménykezelő szignatúra és paraméterek tekintetében).</p>
+<p>Használhatunk <code>x:Bind</code> adatkötést, amely nem csak a tulajdonságokhoz, hanem eseménykezelőkhöz is használható. Így akár ViewModel-ben lévő eseménykezelőt is köthetünk a vezérlő eseményéhez. Ennek hátránya, hogy sértheti az MVVM mintát, mivel a ViewModel függeni fog a View-tól (pl.: eseménykezelő szignatúra és paraméterek tekintetében).</p>
 </li>
 <li>
 <p>Továbbra is Command mintát használunk, de az adott vezérlő kívánt eseményét egy úgynevezett Behavior segítségével köthetjük a ViewModelhez. A Behavior egy olyan osztály, amely lehetővé teszi, hogy a vezérlő viselkedését módosítsuk anélkül, hogy közvetlenül módosítanánk a vezérlő kódját. Esetünkben a <a href="https://www.nuget.org/packages/Microsoft.Xaml.Behaviors.WinUI.Managed">Microsoft.Xaml.Behaviors</a> csomagot kell telepítenünk, melyben előre elkészítve található olyan behavior, amivel <a href="https://github.com/Microsoft/XamlBehaviors/wiki/InvokeCommandAction">eseményeket tudunk Command meghívássá konvertálni</a>.</p>
@@ -2711,8 +2711,8 @@ Esetünkben a <code>NotifyCanExecuteChangedFor</code>-ral kössük össze a <cod
         </path>
       </svg>
     </span>
-    <span title="2025. április 22. 21:04:31">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 22. 21:04:31"><span class="timeago" datetime="2025-04-22T21:04:31+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 22. 21:04:31">2025-04-22</span>
+    <span title="2025. április 28. 12:13:15">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 28. 12:13:15"><span class="timeago" datetime="2025-04-28T12:13:15+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 28. 12:13:15">2025-04-28</span>
     </span>
   </span>
 
@@ -2733,6 +2733,8 @@ Esetünkben a <code>NotifyCanExecuteChangedFor</code>-ral kössük össze a <cod
         <img src="https://avatars.githubusercontent.com/u/153456187?v=4?size=72" alt="@None">
       </a><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
         <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&v=4?size=72" alt="@Zoltán Benedek">
+      </a><a href="https://github.com/lyozi" target="_blank" rel="noopener noreferrer" class="md-author" title="@Urak József">
+        <img src="https://avatars.githubusercontent.com/u/124312789?v=4?size=72" alt="@Urak József">
       </a><a href="https://github.com/zsotroav" target="_blank" rel="noopener noreferrer" class="md-author" title="@None">
         <img src="https://avatars.githubusercontent.com/u/49715074?u=69a8e472802fd39dc7117b1b2cad5eaf66f529c1&v=4?size=72" alt="@None">
       </a></nav>      
