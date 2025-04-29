@@ -2332,7 +2332,7 @@ Első lépésben távolítsuk el a <code>MainWindow.xaml</code>-ből a három bi
 </ul>
 <p>Általánosságában mindkét megoldásnak lehetnek előnyei és hátrányai. A b) bizonyos tekintetben egyszerűbb (nem kell tudni, mikor változik a <code>Game</code> állapota), ugyanakkor felesleges frissítés is történhet (ha nem változott az állapot két frissítés között). De hatékonyabb is lehet, ha az állapot nagyon gyakran változik, és nem akarjuk minden változáskor a felületet frissíteni, elég adott időközönként egyszer (pl. a szemünk úgysem tudja lekövetni).
 Esetünkben - elsősorban egyszerűsége miatt - a "b)", vagyis időzítő alapú megoldást választjuk.</p>
-<p>WinUI 3 környezetben periodikus események kezelésére a <code>DispatchTimer</code> osztály alkalmazása javasolt (különösen, ha a felületelemekhez is hozzá kívánunk férni az időzített műveletben).</p>
+<p>WinUI 3 környezetben periodikus események kezelésére a <code>DispatcherTimer</code> osztály alkalmazása javasolt (különösen, ha a felületelemekhez is hozzá kívánunk férni az időzített műveletben).</p>
 <p>A <code>MainWindow</code> osztályban vezessünk be egy tagváltozót:</p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">DispatcherTimer</span><span class="w"> </span><span class="n">timer</span><span class="p">;</span>
 </code></pre></div>
