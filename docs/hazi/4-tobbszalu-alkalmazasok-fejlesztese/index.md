@@ -78,7 +78,7 @@ A felület kialakítása a `MainWindow.xaml`-ben található, a következő alap
 - Az egyes bicikliket egy vertikális `StackPanel`-en helyeztük el. A bicikliket egy-egy `TextBlock` objektummal jelenítjük meg (`Webdings` betűtípus, `b` betű). Használhattunk volna `FontIcon`-t is, a `TextBlock`-ra csak azért esett a választásunk, mert ezzel már korábban megismerkedtünk.
 - A pálya valamennyi elemét és a bicikliket tartalmazó `StackPanel`-t is a `Grid` első (technikailag 0-dik) sorában helyeztük el. Ezek a definiálásuk sorrendjében rajzolódnak ki, az igazítások és margók által meghatározott helyen. A biciklik `TextBlock`-jának pozícionálására is a margót használjuk majd. Egy alternatíva megoldás lett volna, ha minden felületelemet egy `Canvas`-re helyeztünk volna el, és azon állítottuk volna be az elemek abszolút pozícióját és méretét (Left, Top, Width, Height) a margók alkalmazása helyett.
 
-Az ablakhoz tartozó `MainWindow.cs` code behind fájlt is nézzük meg, főbb elemei a következők:
+Az ablakhoz tartozó `MainWindow.xaml.cs` code behind fájlt is nézzük meg, főbb elemei a következők:
 
 - `game` tagváltozó: Maga a `Game` játékobjektum, melynek állapotát a főablak megjeleníti.
 - `bikeTextBlocks` tagváltozó: Ebben a listában tároljuk majd a bicikliket megjelenítő `TextBlock` objektumokat. Egyelőre üres, a karbantartását nekünk kell majd megvalósítani.
@@ -182,7 +182,7 @@ Futtassuk az alkalmazást (lényeges, hogy debuggolva, vagyis az ++f5++ billenty
 
 :exclamation: A főablak fejléce a "Tour de France" szöveg legyen, hozzáfűzve a saját Neptun kódod: (pl. "ABCDEF" Neptun kód esetén "Tour de France - ABCDEF"), fontos, hogy ez legyen a szöveg! Ehhez a főablakunk `Title` tulajdonságát állítsuk be erre a szövegre a `MainWindow.xaml` fájlban.
 
-## Feladat 2.1 – A verseny előkészítése
+## Feladat 2 – A verseny előkészítése
 
 A fentiek során el is készültünk a megjelenítési logikával, a fókuszunkat most már az alkalmazáslogikára, és az ahhoz kapcsolódó szálkezelési témakörre helyezzük át. Ennek megfelelően mostantól elsődlegesen a `Game` osztályban fogunk dolgozni.
 
@@ -244,13 +244,13 @@ Ezekhez a lépésekhez még adunk megoldást (de sokkal többet tanulsz belőle,
 !!! example "BEADANDÓ"
     Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
 
-    Készíts egy képernyőmentést `Feladat1.png` néven az alábbiak szerint:
+    Készíts egy képernyőmentést `Feladat2.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `Game` osztály `CreateBike` és `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
 
-## Feladat 2.2 – A verseny indítása
+## Feladat 3 – A verseny indítása
 
 Valósítsd meg a verseny indítását a rajtvonalról és futtatását mindaddig, amíg a biciklik meg nem érkeznek a depóba, a következő irányelveknek megfelelően:
 
@@ -267,13 +267,13 @@ Valósítsd meg a verseny indítását a rajtvonalról és futtatását mindaddi
 !!! example "BEADANDÓ"
     Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
 
-    Készíts egy képernyőmentést `Feladat2.png` néven az alábbiak szerint:
+    Készíts egy képernyőmentést `Feladat3.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `Game` osztály `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
 
-## Feladat 3 – A versenyzők indítása a depóból
+## Feladat 4 – A versenyzők indítása a depóból
 
 Valósítsd meg a versenyzők indítását a depóból és futtatását mindaddig, amíg a biciklik meg nem érkeznek a célba, a következő irányelveknek megfelelően:
 
@@ -290,13 +290,13 @@ Valósítsd meg a versenyzők indítását a depóból és futtatását mindaddi
 !!! example "BEADANDÓ"
     Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
 
-    Készíts egy képernyőmentést `Feladat3.png` néven az alábbiak szerint:
+    Készíts egy képernyőmentést `Feladat4.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `Game` osztály `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
 
-## Feladat 4 – Győztes bicikli megvalósítása
+## Feladat 5 – Győztes bicikli megvalósítása
 
 Valósítsd meg a győztes bicikli meghatározásának és megjelenítésének logikáját, a következő irányelveknek megfelelően:
 
@@ -333,13 +333,13 @@ A logikát ezt követően önállóan valósítsd meg, az alábbi irányleveknek
 !!! example "BEADANDÓ"
     Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
 
-    Készíts egy képernyőmentést `Feladat4.png` néven az alábbiak szerint:
+    Készíts egy képernyőmentést `Feladat5.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `Game` osztály `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
 
-## Feladat 5.1 – Kölcsönös kizárás, valamint volatile
+## Feladat 6 – Kölcsönös kizárás, valamint volatile
 
 Az előző feladatban láttuk, hogy a hasWinner lekérdezését és beállítását "oszthatatlanná", "atomivá" kellett tegyük, vagyis ennek során meg kellett valósítsuk a kölcsönös kizárást. Kérdés, van-e esetleg már olyan más logika is az alkalmazásban, ahol ezt meg kellet volna tenni a konzisztencia garantálásának érdekében. Ehhez azt kell megvizsgáljuk, melyek azok a változók, melyeket több szálból is írunk (vagy egyikből írunk és másikból olvasunk). A következők érintettek:
 
@@ -357,7 +357,7 @@ class Bike
     private volatile bool isWinner;
 ```
 
-## Feladat 5.2 – Lépések naplózása (nem szálbiztos .NET osztályok)
+## Feladat 7 – Lépések naplózása (nem szálbiztos .NET osztályok)
 
 Valósítsd meg a verseny során a biciklik által megtett minden egyes lépés naplózását a `Game` osztályban egy (minden biciklire közös) `List<int>` típusú változóba. A naplózott értékekkel nem kell semmit csinálni (pl. megjeleníteni sem). A megoldás során ki kell használni, hogy a `Bike` osztály `Step` művelete visszaadja a megtett lépést egy `int` változó formájában, ezt kell naplózni (csak bele kell tenni a listába).
 
@@ -367,7 +367,7 @@ Valósítsd meg a verseny során a biciklik által megtett minden egyes lépés 
 !!! Note "System.Collections.Concurrent névtér gyűjteményosztályai"
     Ha a `List<T>` helyett egy a célnak megfelelő, `System.Collections.Concurrent` névtérbeli osztály objektumába naplóznánk (pl. `ConcurrentQueue`), akkor nem lenne szükség a kölcsönös kizárás megvalósítására, mert ebben a névtérben szálbiztos (thread safe) gyűjteményosztályok találhatók.
 
-## Feladat 6 – Felület frissítése minden változás esetén (felhasználói felületelemek elérése munkaszálakból)
+## Feladat 8 – Felület frissítése minden változás esetén (felhasználói felületelemek elérése munkaszálakból)
 
 Aktuális megoldásunkban a felület frissítését periodikusan, adott időközönként valósítjuk meg egy időzítő segítségével. Ezt a megoldást most lecseréljük. Alakítsd át a megoldást úgy, hogy a felület frissítése minden esetben azonnal megtörténjen, amikor a `Game` állapota megváltozik (az időzített frissítést pedig már ne használd).
 
@@ -431,7 +431,7 @@ Mi ennek a hibának az oka? Mielőtt az alábbi emlékeztetőt kinyitod, próbá
 
 A megoldást a következő részfeladatban dolgozzuk ki.
 
-### A DispatecherQueue alkalmazása
+### A DispatcherQueue alkalmazása
 
 Esetünkben a konkrét problémát az okozza, hogy amikor a `Game` állapota megváltozik, akkor `Game` osztályban a változásértesítő delegate hívása a biciklikhez tartozó munkaszálakon történik, így a beregisztrált `MainWindow.UpdateBikeUI` kezelőfüggvény is ezekről a szálakról hívódik. Az `UpdateBikeUI` függvényben hozzáférünk a felületelemekhez (biciklihez tartozó `TextBlock`- hoz). De ezeket a felületelemeket a főszálból hoztuk létre: így csak a fő szálból szabad(na) hozzájuk férni.
 
@@ -442,14 +442,14 @@ Feladat: módosítsd úgy a `MainWindow.UpdateBikeUI` függvényt, hogy a `Dispa
 !!! example "BEADANDÓ"
     Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
 
-    Készíts egy képernyőmentést `Feladat6.png` néven az alábbiak szerint:
+    Készíts egy képernyőmentést `Feladat8.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `MainWindow.xaml.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `MainWindow` osztály `UpdateBikeUI` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
 
 !!! warning "Hasonló játék megvalósítása a gyakorlatban"
-    Lényeges, hogy egy hasonló "játék" megvalósítására nem szoktunk szálakat indítani: a biciklik léptetésére egy timer sokkal praktikusabb lenne, mert az egész játék egyszálú maradhatna, és elkerülhetnénk számos, a többszálúságból adódó nehézsége (jelen feladat keretében a célunk értelemszerűen pont a többszálúság témakörének gyakorlása volt).
+    Lényeges, hogy egy hasonló "játék" megvalósítására nem szoktunk szálakat indítani: a biciklik léptetésére egy timer sokkal praktikusabb lenne, mert az egész játék egyszálú maradhatna, és elkerülhetnénk számos, a többszálúságból adódó nehézséget (jelen feladat keretében a célunk értelemszerűen pont a többszálúság témakörének gyakorlása volt).
 
 ## Opcionális feladat – 2 IMSc pontért
 
