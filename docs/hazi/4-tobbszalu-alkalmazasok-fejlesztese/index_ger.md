@@ -434,7 +434,7 @@ Was ist der Grund für diesen Fehler? Bevor Sie die folgende Erinnerung öffnen,
 
 Die Lösung wird in der nächsten Teilaufgabe ausgearbeitet.
 
-### DispatecherQueue verwenden
+### DispatcherQueue verwenden
 
 In unserem Fall besteht das Problem darin, dass bei einer Änderung des Zustands von `Game`, wird der Delegat für die Änderungsbenachrichtigung in der Klasse `Game` in den mit den Fahrräder verbundenen Arbeitsthreads aufgerufen. So die registrierte Handlerfunktion `MainWindow.UpdateBikeUI` wird auch in diesen Threads aufgerufen. Die Funktion `UpdateBikeUI` wird für den Zugriff auf die Oberflächenelemente verwendet (`TextBlock` für Fahrrad). Diese Oberflächenelemente werden jedoch vom Haupt-Thread aus erstellt: Sie sind also nur vom Haupt-Thread aus erreichbar.
 

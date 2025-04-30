@@ -215,9 +215,8 @@ Ezt az `App.xaml.cs` fájlban a `OnLaunched` metódusban tehetjük meg legkönny
 protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
 {
     m_window = new MainWindow();
-    m_window.Activate();
-
     new BookService().SeedDatabase();
+    m_window.Activate();
 }
 ```
 
@@ -284,7 +283,7 @@ public class BooksPageViewModel : INotifyPropertyChanged
 
     A visszatérési érték `true`, ha a tulajdonság értéke megváltozott, és `false`, ha nem. Ez segít majd a későbbiekben eldönteni, hogy történt-e változás a tulajdonság értékében.
 
-    A `ref` kulcsszó lehetővé teszi, hogy a metódus közvetlenül módosítsa a változó értékét (nem csak a referencia kerül átadásra, hanem maga referencia is módosítható, hogy az eredeti változó hova mutasson).
+    A `ref` kulcsszó lehetővé teszi, hogy a metódus közvetlenül módosítsa a változó értékét (nem csak a referencia kerül átadásra, hanem maga a referencia is módosítható, így megváltoztatható, hogy az eredeti változó hova mutat).
 
     A `CallerMemberName` attribútum automatikusan átadja a hívó  (itt property) nevét, így nem kell mindenhol megadni a tulajdonság nevét kézzel.
 
@@ -413,7 +412,7 @@ Ez valójában a projektfájlban az alábbi `PackageReference` bejegyzést fogja
 A BooksPageViewModel osztályunkban az `INotifyPropertyChanged` megvalósítása meglehetősen terjengős.  A `INotifyPropertyChanged` interfész közvetlen implementálása helyett használhatjuk a `ObservableObject` osztályt, amely már implementálja ezt az interfészt és több segédfüggvényt is tartalmaz, amelyek megkönnyítik a tulajdonságok beállítását és a változásértesítést.
 Továbbá lehetőségünk van az `ObservableProperty` attribútum használatára is, amely egy kódgenerátort vezérel, így automatikusan létrehozhatóak a tulajdonságok kézzel írt boilerplate kód nélkül, kizárólag a mezők attributált deklarálásával. Hajtsuk végre az alábbi átalakításokat:
 
-* A `BooksPageViewModel` osztályunknak az `CommunityToolkit.Mvvm.ComponentModel` névtérben található `ObservableObject` osztályból kell leszármaznia.
+* A `BooksPageViewModel` osztályunknak a `CommunityToolkit.Mvvm.ComponentModel` névtérben található `ObservableObject` osztályból kell leszármaznia.
 
 * A source generator használatához azt osztályt `partial` kulcsszóval kell ellátni, hogy a generált kód és a kézi kód külön fájlokban kaphassanak helyet.
 
@@ -453,10 +452,10 @@ Három lehetőségünk van:
 
 1. Visszalakítjuk a `SelectedGenre` propertyt nem kódgenerált változatra, hogy a settert mi tudjuk definiálni.
 2. Feliratkozunk a ViewModel `PropertyChanged` eseményre a konstruktorban, az eseménykezelőnkben a `LoadBooks` metódust meghívjuk, ha a `SelectedGenre` property változik.
-3. Használjuk a kódgeneráltor által elkészített partial metódusokat, melyekkel kibővíthetjük a setterek viselkedését.
+3. Használjuk a kódgenerátor által elkészített partial metódusokat, melyekkel kibővíthetjük a setterek viselkedését.
 
 A 3. lehetőség tűnik a legegyszerűbbnek, ehhez viszont ismerni kell a partial metódusok működését (erről a tárgy keretében nem volt még szó).
-A partial metódusok olyan metódusok, amelyeknek a deklarációja és definíciója külön (egy adott partial classhoz) tartozó fájlokban kap helyet, és amiket a fordító automatikusan összekapcsol. Ráadásul a partial metódusokat nem kell megvalósítanunk kötelezően.
+A partial metódusok olyan metódusok, amelyeknek a deklarációja és definíciója külön (egy adott partial classhoz tartozó) fájlokban kap helyet, és amiket a fordító automatikusan összekapcsol. Ráadásul a partial metódusok megvalósítása nem kötelező.
 Esetünkben a kódgenerátor deklarálja őket, hívja meg ezeket a setterekben, és mi implementálhatjuk őket a `BooksPageViewModel` osztályban.
 
 Készítsünk egy implementációt az `OnSelectedGenreChanged(string value)` partial metódusra, amelyben meghívjuk a `LoadBooks` metódust.
@@ -476,7 +475,7 @@ Most már a műfaj kiválasztásakor újra betöltődnek a könyvek is.
 A felhasználói felületek kialakításakor két feladatunk van:
 
 * Adatok **megjelenítése** a felületen. Ezt az MVVM minta alapú megoldásunkban adatkötéssel elegánsan megoldottuk.
-* A felhasználói **interakciók/parancsok** kezelése. Az eredeti megoldásunkban ez eseménykezelőkkel volt megoldva, majd ezeket szintén "elegánsan" mindenestől töröltük (emiatt nem működik a `Clear` gomb). A következőkben azt vizsgáljuk meg, hogy az MVVM minta alkalmazásával milyen megoldást lehet erre alkalmazni (spoiler: ViewModel-ben definiált commandok vagy műveletek kötése a View-ba).
+* A felhasználói **interakciók/parancsok** kezelése. Az eredeti megoldásunkban ez eseménykezelőkkel volt megoldva, majd ezeket szintén "elegánsan" mindenestől töröltük (emiatt nem működik a `Clear` gomb). A következőkben azt vizsgáljuk meg, hogy az MVVM minta alkalmazásával milyen megoldás kínálkozik erre (spoiler: ViewModel-ben definiált commandok vagy műveletek kötése a View-ba).
 
 A ViewModel tipikusan publikálja a rajta végrehajtható műveleteket a View felé. Ezt megtehetjük publikus függvényeken keresztül vagy egy `ICommand` interfészt megvalósító objektumokon keresztül.
 
@@ -494,7 +493,7 @@ A ViewModel tipikusan publikálja a rajta végrehajtható műveleteket a View fe
     
     Ezt a mechanizmust használja a `Button` vezérlő is, amelynek `Command` tulajdonságához rendelhetjük a ViewModel-ben definiált parancsokat.
 
-    Az `ICommand`-ban definiált műveletek közül legfontosabb számunkra az `Execute`, mely a parancs futtatásakor hívódik meg. A `CanExecute`-tal a felület le tudja kérdezni a felület a parancstól, hogy adott pillanatban a parancs végrejaktható-e (pl. a gomb tiltott/engedélyezett lesz ennek megfelelően). A `CanExecuteChanged` eseménnyel pedig - az esemény nevének megfelelően - azt tudja jelezni a parancs a felület felé, hogy a parancs "CanExecute" állapota megváltozott, a felületnek frissítenie kell a tiltott/engedélyezett állapotát.
+    Az `ICommand`-ban definiált műveletek közül legfontosabb számunkra az `Execute`, mely a parancs futtatásakor hívódik meg. A `CanExecute`-tal a felület le tudja kérdezni a parancstól, hogy adott pillanatban végrejaktható-e (pl. a gomb tiltott/engedélyezett lesz ennek megfelelően). A `CanExecuteChanged` eseménnyel pedig - az esemény nevének megfelelően - azt tudja jelezni a parancs a felület felé, hogy a parancs "CanExecute" állapota megváltozott, a felületnek frissítenie kell a tiltott/engedélyezett állapotát.
 
 ### ICommand használata
 
@@ -605,7 +604,7 @@ partial void OnSelectedGenreChanged(string value)
 ??? tip "Ha nem támogatott a Command minta közvetlenül"
     Nem minden vezérlő támogatja a `Command` mintát közvetlenül. Ilyenkor két lehetőségünk van:
 
-    1. Használhatunk `x:Bind` adatkötést, amely nem csak a tulajdonságokhoz, hanem eseménykezelőkhöz is használható. Így akát ViewModel-ben lévő eseménykezelőt is köthetünk a vezérlő eseményéhez. Ennek hátránya, hogy sértheti az MVVM mintát, mivel a ViewModel függeni fog a View-tól (pl.: eseménykezelő szignatúra és paraméterek tekintetében).
+    1. Használhatunk `x:Bind` adatkötést, amely nem csak a tulajdonságokhoz, hanem eseménykezelőkhöz is használható. Így akár ViewModel-ben lévő eseménykezelőt is köthetünk a vezérlő eseményéhez. Ennek hátránya, hogy sértheti az MVVM mintát, mivel a ViewModel függeni fog a View-tól (pl.: eseménykezelő szignatúra és paraméterek tekintetében).
    
     2. Továbbra is Command mintát használunk, de az adott vezérlő kívánt eseményét egy úgynevezett Behavior segítségével köthetjük a ViewModelhez. A Behavior egy olyan osztály, amely lehetővé teszi, hogy a vezérlő viselkedését módosítsuk anélkül, hogy közvetlenül módosítanánk a vezérlő kódját. Esetünkben a [Microsoft.Xaml.Behaviors](https://www.nuget.org/packages/Microsoft.Xaml.Behaviors.WinUI.Managed) csomagot kell telepítenünk, melyben előre elkészítve található olyan behavior, amivel [eseményeket tudunk Command meghívássá konvertálni](https://github.com/Microsoft/XamlBehaviors/wiki/InvokeCommandAction).
 

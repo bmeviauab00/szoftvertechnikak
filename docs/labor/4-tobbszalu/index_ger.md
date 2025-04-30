@@ -31,7 +31,7 @@ Die für die Durchführung der Übung benötigten Werkzeuge:
 ??? success "Laden Sie die fertige Lösung herunter"
     :exclamation: Es ist wichtig, dass Sie sich während des Praktikums an die Anleitung halten. Es ist verboten (und sinnlos), die fertige Lösung herunterzuladen. Allerdings kann es bei der anschließenden Selbsteinübung nützlich sein, die fertige Lösung zu überprüfen, daher stellen wir sie zur Verfügung.
 
-    Die Lösung ist [verfügbar auf GitHub] (https://github.com/bmeviauab00/lab-tobbszalu-kiindulo/tree/megoldas). Der einfachste Weg, es herunterzuladen, ist, den `git clone`-Zweig von der Kommandozeile aus zu klonen:
+    Die Lösung ist [verfügbar auf GitHub](https://github.com/bmeviauab00/lab-tobbszalu-kiindulo/tree/megoldas). Der einfachste Weg, es herunterzuladen, ist, den `git clone`-Zweig von der Kommandozeile aus zu klonen:
 
     `git clone https://github.com/bmeviauab00/lab-tobbszalu-kiindulo -b solved`
 

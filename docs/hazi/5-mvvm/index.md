@@ -8,8 +8,7 @@ authors: bzolka
 
 A házi feladatban a 3. XAML laboron megvalósított személy regisztrációs alkalmazást alakítjuk át olyan módon, hogy az MVVM mintára épüljön, valamint megismerkedünk az MVVM Toolkit alkalmazásával.
 
-Az önálló feladat a WinUI előadássorozat végén elhangzott MVVM témakörre épít.
-Megjegyzés: az [5. labor – MVVM](../../labor/5-mvvm/index.md) labor nagyon szerteágazó, és egy komplexebb alkalmazás kontextusában mutat példát az MVVM minta alkalmazására, sok más témakör mellett. Jelen házi feladat sokkal fókuszáltabb, kisebb lépésekben építkezik: estünkben esetben inkább a jelen házi feladat megoldása segíti az [5. labor – MVVM](../../labor/5-mvvm/index.md) kapcsolódó részeinek könnyebb megértését.
+Az önálló feladat a WinUI előadássorozat végén elhangzott MVVM témakörre épít. A feladatok gyakorlati hátteréül a [5. labor – MVVM](../../labor/5-mvvm/index.md) laborgyakorlat szolgál.
 
 Az kapcsolódó előadásanyag feldolgozásával, jelen önálló gyakorlat feladatai a feladatleírást követő rövidebb iránymutatás segítségével (néha alapértelmezetten összecsukva) önállóan elvégezhetők.
 

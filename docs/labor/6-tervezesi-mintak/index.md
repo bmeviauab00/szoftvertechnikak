@@ -83,7 +83,7 @@ Az alkalmazással szemben támasztott kiinduló követelmények:
 1. Egy adott ügyféltől kapott fájlokat (mindnek ugyanaz a formátuma) kell ugyanazzal az anonimizáló algoritmussal, ugyanabba a kimeneti formátumba konvertálni. Az anonimizálás egyszerűen a keresztnév és vezetéknév "kicsillagozásából" álljon.
 2. Szükség van némi adattisztításra. A bemeneti adatokban a várost tartalmazó oszlop elején/végén lehetnek felesleges `_` és `#` karakterek, ezeket el kell távolítani (trim művelet).
 3. Ki kell írni minden sor feldolgozása után a konzolra, hogy a sor feldolgozása megtörtént, ill. a minden adat feldolgozás után némi összesítő információt (Summary) is meg kell jeleníteni: hány sort dolgoztunk fel, és mennyinél kellett a városnevet trimmelni.
-4. **Lényeges szempont**: az alkalmazásra csak rövid időre lesz szükség, nem a kívánjuk későbbiekben bővíteni.
+4. **Lényeges szempont**: az alkalmazásra csak rövid időre lesz szükség, nem kívánjuk későbbiekben bővíteni.
 
 Megjegyzés: annak érdekében, hogy a kódban kevesebb mezővel kelljen dolgozni, és a kimenet is átláthatóbb legyen, elhagyunk még néhány mezőt a feldolgozás során.
 
@@ -149,7 +149,7 @@ A megoldásunkat - mely egyaránt támogatja a régi és az új algoritmust (egy
 
 * Bevezettünk egy `AnonymizerMode` enum típust, mely meghatározza, hogy melyik üzemmódban (algoritmussal) használjuk az `Anonymizer` osztályt.
 * Az `Anonymizer` osztálynak két anonimizáló művelete van: `Anonymize_MaskName`, `Anonymize_AgeRange`
-* Az `Anonymizer` osztály a `_anonymizerMode` tagjában tárolja, melyik algoritmust kell használni: a két üzemmódhoz két külön konstruktort vezettünk be, ezek állítják be az `_anonymizerMode` értékét.
+* Az `Anonymizer` osztály az `_anonymizerMode` tagjában tárolja, melyik algoritmust kell használni: a két üzemmódhoz két külön konstruktort vezettünk be, ezek állítják be az `_anonymizerMode` értékét.
 * Az `Anonymizer` osztály több helyen is megvizsgálja (pl. `Run`, `GetAnonymizerDescription` műveletek), hogy mi az `_anonymizerMode` értéke, és ennek függvényében elágazik.
   * A `GetAnonymizerDescription`-ben azért kell ezt megtenni, mert ennek a műveletnek a feladata az anonimizáló algoritmusról egy egysoros leírás előállítása, melyet a feldolgozás végén a "summary"-ben megjelenít. Nézzünk rá a `PintSummary` kódjára, ez a művelet hívja. Pl. ez jelenik meg a konzolon összefoglalóként, ha életkor anonimizálót használunk 20-as range-dzsel:
   
@@ -185,7 +185,7 @@ Ezeket kell leválasztani az osztályról, ezekben a pontokban kell kiterjeszthe
 
     ![Extensibility illustration](images/illustrate-extensibility.png)
 
-A három konkrét tervezési mintát, ill. technikát nézünk meg a fentiek megvalósítására:
+Három konkrét tervezési mintát, ill. technikát nézünk meg a fentiek megvalósítására:
 
 * Template Method tervezési minta
 * Strategy tervezési minta (Dependency Injectionnel egyetemben)

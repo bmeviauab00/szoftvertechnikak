@@ -111,9 +111,9 @@ nav:
       - '2. HF - Nyelvi eszközök': hazi/2-nyelvi-eszkozok/index.md
       - '3. HF - Felhasználói felület kialakítása': hazi/3-felhasznaloi-felulet-kialakitasa/index.md
       - '4. HF - Többszálú alkalmazások fejlesztése': hazi/4-tobbszalu-alkalmazasok-fejlesztese/index.md
-      - '5. HF - MVVM': hazi/meghirdetes-elott.md
+      - '5. HF - MVVM': hazi/5-mvvm/index.md
       - '6. HF - Tervezési minták': hazi/meghirdetes-elott.md
-      - 'IMSc HF - Liftrendszer': hazi/meghirdetes-elott.md
+      - 'IMSc HF - Liftrendszer': hazi/imsc-liftsystem/index.md
       - 'IMSc HF - MVVM receptek': hazi/meghirdetes-elott.md
       - 'Fejlesztőkörnyezet': hazi/fejlesztokornyezet/index.md
   - "English course labs":
@@ -121,7 +121,7 @@ nav:
       - labor/2-nyelvi-eszkozok/index_eng.md
       - labor/3-felhasznaloi-felulet/index_eng.md
       - labor/4-tobbszalu/index_eng.md
-      - "5. MVVM": labor/meghirdetes-elott_eng.md
+      - labor/5-mvvm/index_eng.md
       - labor/6-tervezesi-mintak/index_eng.md      
       - labor/7-adatkezeles/index_eng.md 
   - "Homework":
@@ -130,7 +130,7 @@ nav:
       - '2. HW - Language tools': hazi/2-nyelvi-eszkozok/index_eng.md
       - '3. HW - Implementing the user interface': hazi/3-felhasznaloi-felulet-kialakitasa/index_eng.md
       - '4. HW - Developing multithreaded applications': hazi/4-tobbszalu-alkalmazasok-fejlesztese/index_eng.md
-      - '5. HW - MVVM': hazi/meghirdetes-elott_eng.md
+      - '5. HW - MVVM': hazi/5-mvvm/index_eng.md
       - '6. HW - Design patterns': hazi/meghirdetes-elott_eng.md
       - 'IMSc HW - Liftsystem': hazi/meghirdetes-elott_eng.md
       - 'IMSc HW - MVVM recipies': hazi/meghirdetes-elott_eng.md
@@ -140,7 +140,7 @@ nav:
       - labor/2-nyelvi-eszkozok/index_ger.md
       - labor/3-felhasznaloi-felulet/index_ger.md
       - labor/4-tobbszalu/index_ger.md
-      - "5. MVVM": labor/meghirdetes-elott_ger.md
+      - labor/5-mvvm/index_ger.md
       - labor/6-tervezesi-mintak/index_ger.md
       - labor/7-adatkezeles/index_ger.md
   - "Hausaufgaben":

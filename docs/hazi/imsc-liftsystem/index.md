@@ -46,7 +46,6 @@ Készíts egy `LiftDoor` osztályt, mely egy liftajtót reprezentál:
 * A jövőben a továbbfejlesztés során lehetnek más `Subject` osztályok is, ezért be kell vezetni egy `Subject` ősosztályt a kódduplikáció elkerülésére (de a házi feladatban csak egy subject lesz).
 * :exclamation: A megoldás NEM építhet .NET event-ekre (ugyanezen osztályokkal/interfészekkel pl. Java nyelven is megvalósíthatónak kell lennie).
 
-
 A liftrendszer konfiguráció összeállításért és a szimuláció futtatásáért egy `LiftSystemModel` osztály legyen a felelős. Ennek forráskódját alább megadjuk, ebből kell egy példányt a `Main` függvényben létrehozni, és a `Run` függvényét meghívni:
 
 ```csharp
@@ -164,3 +163,19 @@ Illesszük be az Adapter minta segítségével a fenti osztályt a megoldásunkb
 A megoldás működésének illusztrálása:
 
 ![2 lifts](images/two-lifts-3.png)
+
+## 4. feladat - Lift léptetése a Chain of Responsibility minta segítségével
+
+Jelen megoldásban a lift léptetésének megvalósítása be van égetve a `Lift` osztály `Step` műveletébe. A feladat a lift léptetésének rugalmasabbá tétele. A következőket kell támogatni:
+
+* A már meglévő, véletlenszerű elakadás.
+* Vészleállás mód. Amikor a liftre bekapcsolják a vészleállás módot, a `Step` művelet nem léptetheti a liftet semmilyen irányba (egészen a vészleállás mód deaktiválásáig).
+* Legyen lehetőség a léptetés művelet viselkedésének kényelmes konfigurálására, további viselkedések bevezetésére és a meglévő/újonnan bevezetett viselkedések tetszőleges kombinálására **anélkül, hogy a `Step` művelet kódját módosítani kellene!**
+
+A megoldáshoz a Chain of Responsibility tervezési mintát kell alkalmazni. A minta nem szerepel előadáson, de az online források alapján könnyen megismerhető. 
+
+??? tip "Megoldás alapelve - kis segítség"
+    Három konkrét Handler osztályt célszerű bevezetni és a `Lift` osztály konstruktorában megfelelő sorrendben "összefűzni", a `Step` műveletben pedig ezt használni.
+
+??? tip "Megoldás alapelve - nagyobb segítség"
+    A három Handler osztály: egy az alapértelmezett léptetésnek, egy a véletlenszerű elakadásnak, egy a vészleállásnak. Ez utóbbiba kell egy property, mely engedélyezi az emergency üzemmódot, és ezt a property-t a `Lift` osztályban bevezetett másik propertyn keresztül elérhetővé kell tenni a külvilág számára.
