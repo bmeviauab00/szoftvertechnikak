@@ -124,7 +124,7 @@ Próbáljuk a megoldást magunktól megvalósítani a fenti pontokat követve, m
 
 ### A felületfrissítés megvalósítása
 
-Most már pontosan annyi `TextBlock`-unk lesz, ahány bicikli van a `game` objektumban. Sőt, az `UpdateUI` művelettel tudjuk is a felületet bármikor frissíteni (a `game` aktuális állapotának megfelelően). A következő kardinális kérdés: mikor hívjuk ez a függvényt, vagyis mikor frissítsük a felületet. Több megoldás közül választhatunk:
+Most már pontosan annyi `TextBlock`-unk lesz, ahány bicikli van a `game` objektumban. Sőt, az `UpdateUI` művelettel tudjuk is a felületet bármikor frissíteni (a `game` aktuális állapotának megfelelően). A következő kardinális kérdés: mikor hívjuk ezt a függvényt, vagyis mikor frissítsük a felületet. Több megoldás közül választhatunk:
 
 - a) Mindig, amikor a `Game` állapota megváltozik.
 - b) Adott időközönként (pl. 100 ms-ként) "folyamatosan", egy időzítő segítségével.
