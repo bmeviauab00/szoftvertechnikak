@@ -128,7 +128,7 @@ Mivel sokkal kevesebb kódot kell írni, a gyakorlatban az MVVM Toolkit alapú m
   
 ## Feladat 2 - Áttérés MVVM alapú megoldásra
 
-Az előző lépésben, bár az MVVM Toolkitet használtuk, még nem tértünk át MVVM alapú megoldára (a toolkitet csak az INPC egyszerűbb megvalósítására használtuk). 
+Az előző lépésben, bár az MVVM Toolkitet használtuk, még nem tértünk át MVVM alapú megoldásra (a toolkitet csak az INPC egyszerűbb megvalósítására használtuk). 
 
 A következőkben átalakítjuk az alkalmazásunk architektúráját, hogy az MVVM koncepcióját kövesse. Az egyszerűbb megvalósítás érdekében építünk az MVVM Toolkitre.
 
