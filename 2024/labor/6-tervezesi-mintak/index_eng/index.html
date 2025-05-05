@@ -10,13 +10,13 @@
         <meta name="author" content="Benedek Zoltán">
       
       
-        <link rel="canonical" href="https://bmeviauab00.github.io/szoftvertechnikak/2024/labor/6-tervezesi-mintak/index_ger/">
+        <link rel="canonical" href="https://bmeviauab00.github.io/szoftvertechnikak/2024/labor/6-tervezesi-mintak/index_eng/">
       
       
-        <link rel="prev" href="../../5-mvvm/index_ger/">
+        <link rel="prev" href="../../5-mvvm/index_eng/">
       
       
-        <link rel="next" href="../../7-adatkezeles/index_ger/">
+        <link rel="next" href="../../../hazi/index_eng/">
       
       
       <link rel="icon" href="../../../img/favicon.ico">
@@ -24,7 +24,7 @@
     
     
       
-        <title>6. Entwurfsmuster (Erweiterbarkeit) - BMEVIAUAB00 Szoftvertechnikák</title>
+        <title>6. Design patterns (extensibility) - BMEVIAUAB00 Szoftvertechnikák</title>
       
     
     
@@ -89,7 +89,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#6-entwurfsmuster-erweiterbarkeit" class="md-skip">
+        <a href="#6-design-patterns-extensibility" class="md-skip">
           Kihagyás
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              6. Entwurfsmuster (Erweiterbarkeit)
+              6. Design patterns (extensibility)
             
           </span>
         </div>
@@ -286,10 +286,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../1-model-es-kod-kapcsolata/index_eng/" class="md-tabs__link">
           
   
@@ -322,12 +324,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../../1-model-es-kod-kapcsolata/index_ger/" class="md-tabs__link">
           
   
@@ -851,23 +851,28 @@
       
   
   
+    
   
   
+  
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -878,7 +883,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             English course labs
@@ -994,10 +999,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../index_eng/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    6. Design patterns (extensibility)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1006,6 +1031,266 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tartalomjegyzék
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-aim-of-the-laboratory" class="md-nav__link">
+    <span class="md-ellipsis">
+      The aim of the laboratory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theoretical-background-and-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theoretical background and approach *
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-0-getting-familiar-with-the-assignment-and-the-starter-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task 0 – Getting familiar with the assignment and the starter application
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Task 0 – Getting familiar with the assignment and the starter application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initial-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution-1-all-in-one-1-startstart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution 1 - All-in-one (1-Start/Start)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution-2-2-organizedtofunctionsorganizedtofunctions-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution 2 (2-OrganizedToFunctions/OrganizedToFunctions-1)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solution 2 (2-OrganizedToFunctions/OrganizedToFunctions-1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#evaluation-of-the-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evaluation of the solution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution-3-organizedtofunctions-2-twoalgorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution 3 (OrganizedToFunctions-2-TwoAlgorithms)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solution 3 (OrganizedToFunctions-2-TwoAlgorithms)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#evaluation-of-the-solution_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evaluation of the solution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution-4-3-templatemethodtemplatemethod-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution 4 (3-TemplateMethod/TemplateMethod-1)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solution 4 (3-TemplateMethod/TemplateMethod-1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#evaluation-of-the-solution_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evaluation of the solution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution-5-3-templatemethodtemplatemethod-2-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution 5 (3-TemplateMethod/TemplateMethod-2-Progress)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution-6-3-templatemethodtemplatemethod-3-progressmultiple" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution 6 (3-TemplateMethod/TemplateMethod-3-ProgressMultiple)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution-7-4-strategystrategy-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution 7 (4-Strategy/Strategy-1)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solution 7 (4-Strategy/Strategy-1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anonymization-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anonymization strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#progress-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Progress strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applying-the-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applying the strategies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluation-of-the-solution_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evaluation of the solution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution-8-4-strategystrategy-2-di" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution 8 (4-Strategy/Strategy-2-DI)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solution 8 (4-Strategy/Strategy-2-DI)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#evaluation-of-the-solution_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evaluation of the solution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1277,28 +1562,23 @@
       
   
   
-    
   
   
-  
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1309,7 +1589,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Deutschkurs-Labore
@@ -1425,30 +1705,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    6. Entwurfsmuster (Erweiterbarkeit)
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../index_ger/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1457,266 +1717,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tartalomjegyzék
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#das-ziel-der-ubung" class="md-nav__link">
-    <span class="md-ellipsis">
-      Das Ziel der Übung
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#voraussetzungen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Voraussetzungen
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Voraussetzungen">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#theoretischer-hintergrund-ansatz" class="md-nav__link">
-    <span class="md-ellipsis">
-      Theoretischer Hintergrund, Ansatz *
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#0-aufgabe-kennenlernen-der-aufgabe-und-der-erstanwendung" class="md-nav__link">
-    <span class="md-ellipsis">
-      0. Aufgabe - Kennenlernen der Aufgabe und der Erstanwendung
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="0. Aufgabe - Kennenlernen der Aufgabe und der Erstanwendung">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#beschreibung-der-aufgabe" class="md-nav__link">
-    <span class="md-ellipsis">
-      Beschreibung der Aufgabe
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ursprungliche-anforderungen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ursprüngliche Anforderungen
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-losung-alles-in-einem-1-startstart" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Lösung - alles in einem (1-Start/Start)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-losung-2-organizedtofunctionsorganizedtofunctions-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Lösung (2-OrganizedToFunctions/OrganizedToFunctions-1)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Lösung (2-OrganizedToFunctions/OrganizedToFunctions-1)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bewertung-der-losung" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bewertung der Lösung
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-losung-organizedtofunctions-2-twoalgorithms" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Lösung (OrganizedToFunctions-2-TwoAlgorithms)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Lösung (OrganizedToFunctions-2-TwoAlgorithms)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bewertung-der-losung_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bewertung der Lösung
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-losung-3-templatemethodtemplatemethod-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Lösung (3-TemplateMethod/TemplateMethod-1)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Lösung (3-TemplateMethod/TemplateMethod-1)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bewertung-der-losung_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bewertung der Lösung
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-megoldas-3-templatemethodtemplatemethod-2-progress" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Megoldás (3-TemplateMethod/TemplateMethod-2-Progress)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-losung-3-templatemethodtemplatemethod-3-progressmultiple" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Lösung (3-TemplateMethod/TemplateMethod-3-ProgressMultiple)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-losung-4-strategiestrategie-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Lösung (4-Strategie/Strategie-1)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Lösung (4-Strategie/Strategie-1)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#anonymisierungsstrategie" class="md-nav__link">
-    <span class="md-ellipsis">
-      Anonymisierungsstrategie
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#strategie-fur-den-fortschritt" class="md-nav__link">
-    <span class="md-ellipsis">
-      Strategie für den Fortschritt
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#anwendung-der-strategien" class="md-nav__link">
-    <span class="md-ellipsis">
-      Anwendung der Strategien
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bewertung-der-losung_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bewertung der Lösung
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-megoldas-4-strategystrategy-2-di" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Megoldás (4-Strategy/Strategy-2-DI)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="8. Megoldás (4-Strategy/Strategy-2-DI)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bewertung-der-losung_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bewertung der Lösung
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1969,28 +1969,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#das-ziel-der-ubung" class="md-nav__link">
+  <a href="#the-aim-of-the-laboratory" class="md-nav__link">
     <span class="md-ellipsis">
-      Das Ziel der Übung
+      The aim of the laboratory
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#voraussetzungen" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      Voraussetzungen
+      Prerequisites
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Voraussetzungen">
+    <nav class="md-nav" aria-label="Prerequisites">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#theoretischer-hintergrund-ansatz" class="md-nav__link">
+  <a href="#theoretical-background-and-approach" class="md-nav__link">
     <span class="md-ellipsis">
-      Theoretischer Hintergrund, Ansatz *
+      Theoretical background and approach *
     </span>
   </a>
   
@@ -2002,28 +2002,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#0-aufgabe-kennenlernen-der-aufgabe-und-der-erstanwendung" class="md-nav__link">
+  <a href="#task-0-getting-familiar-with-the-assignment-and-the-starter-application" class="md-nav__link">
     <span class="md-ellipsis">
-      0. Aufgabe - Kennenlernen der Aufgabe und der Erstanwendung
+      Task 0 – Getting familiar with the assignment and the starter application
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="0. Aufgabe - Kennenlernen der Aufgabe und der Erstanwendung">
+    <nav class="md-nav" aria-label="Task 0 – Getting familiar with the assignment and the starter application">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#beschreibung-der-aufgabe" class="md-nav__link">
+  <a href="#task-description" class="md-nav__link">
     <span class="md-ellipsis">
-      Beschreibung der Aufgabe
+      Task description
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ursprungliche-anforderungen" class="md-nav__link">
+  <a href="#initial-requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      Ursprüngliche Anforderungen
+      Initial requirements
     </span>
   </a>
   
@@ -2035,28 +2035,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-losung-alles-in-einem-1-startstart" class="md-nav__link">
+  <a href="#solution-1-all-in-one-1-startstart" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Lösung - alles in einem (1-Start/Start)
+      Solution 1 - All-in-one (1-Start/Start)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-losung-2-organizedtofunctionsorganizedtofunctions-1" class="md-nav__link">
+  <a href="#solution-2-2-organizedtofunctionsorganizedtofunctions-1" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Lösung (2-OrganizedToFunctions/OrganizedToFunctions-1)
+      Solution 2 (2-OrganizedToFunctions/OrganizedToFunctions-1)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Lösung (2-OrganizedToFunctions/OrganizedToFunctions-1)">
+    <nav class="md-nav" aria-label="Solution 2 (2-OrganizedToFunctions/OrganizedToFunctions-1)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bewertung-der-losung" class="md-nav__link">
+  <a href="#evaluation-of-the-solution" class="md-nav__link">
     <span class="md-ellipsis">
-      Bewertung der Lösung
+      Evaluation of the solution
     </span>
   </a>
   
@@ -2068,19 +2068,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-losung-organizedtofunctions-2-twoalgorithms" class="md-nav__link">
+  <a href="#solution-3-organizedtofunctions-2-twoalgorithms" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Lösung (OrganizedToFunctions-2-TwoAlgorithms)
+      Solution 3 (OrganizedToFunctions-2-TwoAlgorithms)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. Lösung (OrganizedToFunctions-2-TwoAlgorithms)">
+    <nav class="md-nav" aria-label="Solution 3 (OrganizedToFunctions-2-TwoAlgorithms)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bewertung-der-losung_1" class="md-nav__link">
+  <a href="#evaluation-of-the-solution_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Bewertung der Lösung
+      Evaluation of the solution
     </span>
   </a>
   
@@ -2092,19 +2092,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-losung-3-templatemethodtemplatemethod-1" class="md-nav__link">
+  <a href="#solution-4-3-templatemethodtemplatemethod-1" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Lösung (3-TemplateMethod/TemplateMethod-1)
+      Solution 4 (3-TemplateMethod/TemplateMethod-1)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. Lösung (3-TemplateMethod/TemplateMethod-1)">
+    <nav class="md-nav" aria-label="Solution 4 (3-TemplateMethod/TemplateMethod-1)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bewertung-der-losung_2" class="md-nav__link">
+  <a href="#evaluation-of-the-solution_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Bewertung der Lösung
+      Evaluation of the solution
     </span>
   </a>
   
@@ -2116,64 +2116,64 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-megoldas-3-templatemethodtemplatemethod-2-progress" class="md-nav__link">
+  <a href="#solution-5-3-templatemethodtemplatemethod-2-progress" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Megoldás (3-TemplateMethod/TemplateMethod-2-Progress)
+      Solution 5 (3-TemplateMethod/TemplateMethod-2-Progress)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-losung-3-templatemethodtemplatemethod-3-progressmultiple" class="md-nav__link">
+  <a href="#solution-6-3-templatemethodtemplatemethod-3-progressmultiple" class="md-nav__link">
     <span class="md-ellipsis">
-      6. Lösung (3-TemplateMethod/TemplateMethod-3-ProgressMultiple)
+      Solution 6 (3-TemplateMethod/TemplateMethod-3-ProgressMultiple)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-losung-4-strategiestrategie-1" class="md-nav__link">
+  <a href="#solution-7-4-strategystrategy-1" class="md-nav__link">
     <span class="md-ellipsis">
-      7. Lösung (4-Strategie/Strategie-1)
+      Solution 7 (4-Strategy/Strategy-1)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="7. Lösung (4-Strategie/Strategie-1)">
+    <nav class="md-nav" aria-label="Solution 7 (4-Strategy/Strategy-1)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#anonymisierungsstrategie" class="md-nav__link">
+  <a href="#anonymization-strategy" class="md-nav__link">
     <span class="md-ellipsis">
-      Anonymisierungsstrategie
+      Anonymization strategy
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#strategie-fur-den-fortschritt" class="md-nav__link">
+  <a href="#progress-strategy" class="md-nav__link">
     <span class="md-ellipsis">
-      Strategie für den Fortschritt
+      Progress strategy
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#anwendung-der-strategien" class="md-nav__link">
+  <a href="#applying-the-strategies" class="md-nav__link">
     <span class="md-ellipsis">
-      Anwendung der Strategien
+      Applying the strategies
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#bewertung-der-losung_3" class="md-nav__link">
+  <a href="#evaluation-of-the-solution_3" class="md-nav__link">
     <span class="md-ellipsis">
-      Bewertung der Lösung
+      Evaluation of the solution
     </span>
   </a>
   
@@ -2185,19 +2185,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-megoldas-4-strategystrategy-2-di" class="md-nav__link">
+  <a href="#solution-8-4-strategystrategy-2-di" class="md-nav__link">
     <span class="md-ellipsis">
-      8. Megoldás (4-Strategy/Strategy-2-DI)
+      Solution 8 (4-Strategy/Strategy-2-DI)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="8. Megoldás (4-Strategy/Strategy-2-DI)">
+    <nav class="md-nav" aria-label="Solution 8 (4-Strategy/Strategy-2-DI)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bewertung-der-losung_4" class="md-nav__link">
+  <a href="#evaluation-of-the-solution_4" class="md-nav__link">
     <span class="md-ellipsis">
-      Bewertung der Lösung
+      Evaluation of the solution
     </span>
   </a>
   
@@ -2223,7 +2223,7 @@
                   
 
   
-    <a href="https://github.com/bmeviauab00/szoftvertechnikak/edit/master/docs/labor/6-tervezesi-mintak/index_ger.md" title="Oldal szerkesztése" class="md-content__button md-icon">
+    <a href="https://github.com/bmeviauab00/szoftvertechnikak/edit/master/docs/labor/6-tervezesi-mintak/index_eng.md" title="Oldal szerkesztése" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -2231,198 +2231,198 @@
   
 
 
-<h1 id="6-entwurfsmuster-erweiterbarkeit">6. Entwurfsmuster (Erweiterbarkeit)<a class="headerlink" href="#6-entwurfsmuster-erweiterbarkeit" title="Permanent link">&para;</a></h1>
-<h2 id="das-ziel-der-ubung">Das Ziel der Übung<a class="headerlink" href="#das-ziel-der-ubung" title="Permanent link">&para;</a></h2>
-<p>Ziele der Übung (anhand eines komplexeren Beispiels aus dem wirklichen Leben):</p>
+<h1 id="6-design-patterns-extensibility">6. Design patterns (extensibility)<a class="headerlink" href="#6-design-patterns-extensibility" title="Permanent link">&para;</a></h1>
+<h2 id="the-aim-of-the-laboratory">The aim of the laboratory<a class="headerlink" href="#the-aim-of-the-laboratory" title="Permanent link">&para;</a></h2>
+<p>The goals of this laboratory (based on a more complex, real-life example):</p>
 <ul>
-<li>Anwendung einiger Designprinzipien zur Förderung von Skalierbarkeit, Wiederverwendbarkeit, Codetransparenz und Wartbarkeit: SRP, OPEN-CLOSED, DRY, KISS, etc.</li>
-<li>Einige der für die Erweiterbarkeit wichtigsten Entwurfsmuster (Template Method, Strategy, Dependency Injection).</li>
-<li>Zusätzliche Techniken (z.B. Delegate/Lambda-Ausdruck) zur Unterstützung von Skalierbarkeit und Wiederverwendbarkeit mit Entwurfsmustern anwenden und kombinieren.</li>
-<li>Code-Refactoring-Übung.</li>
+<li>Practicing some basic design principles that support extensibility, reusability, code clarity, and maintainability: SRP, OPEN-CLOSED, DRY, KISS, etc.</li>
+<li>Applying design patterns most closely related to extensibility (Template Method, Strategy, Dependency Injection).</li>
+<li>Practicing and combining additional techniques that support extensibility and reusability (e.g. delegate/lambda expressions) with design patterns.</li>
+<li>Practicing code refactoring.</li>
 </ul>
-<p>Verwandte Präsentationen:</p>
+<p>Related lectures:</p>
 <ul>
-<li>Entwurfsmuster: erweiterungsbezogene Muster (Einführung, Schablonenmethode, Strategie) und das Dependency Injection "Muster".</li>
+<li>Design patterns: patterns related to extensibility (introduction, Template Method, Strategy), as well as the “pattern” of Dependency Injection.</li>
 </ul>
-<h2 id="voraussetzungen">Voraussetzungen<a class="headerlink" href="#voraussetzungen" title="Permanent link">&para;</a></h2>
-<p>Die für die Durchführung der Übung benötigten Werkzeuge:</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>Tools required for completing the laboratory:</p>
 <ul>
 <li>Visual Studio 2022</li>
 </ul>
 <div class="admonition tip">
-<p class="admonition-title">Übung unter Linux oder macOS</p>
-<p>Das Übungsmaterial ist grundsätzlich für Windows und Visual Studio gedacht, kann aber auch auf anderen Betriebssystemen mit anderen Entwicklungswerkzeugen (z.B. VS Code, Rider, Visual Studio für Mac) oder sogar mit einem Texteditor und CLI (Kommandozeilen)-Tools durchgeführt werden. Dies wird dadurch ermöglicht, dass die Beispiele im Kontext einer einfachen Konsolenanwendung präsentiert werden (keine Windows-spezifischen Elemente) und das .NET 8 SDK auf Linux und macOS unterstützt wird. <a href="https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code">Hallo Welt unter Linux</a>.</p>
+<p class="admonition-title">Laboratory on Linux or macOS</p>
+<p>The material for this laboratory is primarily intended for Windows and Visual Studio, but it can also be completed on other operating systems with different development tools (e.g., VS Code, Rider, Visual Studio for Mac), or even with a simple text editor and CLI tools. This is made possible by the fact that the examples are presented in the context of a simple Console application (no Windows-specific elements), and the .NET 8 SDK is supported on Linux and macOS. <a href="https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code">Hello World on Linux</a>.</p>
 </div>
-<h3 id="theoretischer-hintergrund-ansatz">Theoretischer Hintergrund, Ansatz *<a class="headerlink" href="#theoretischer-hintergrund-ansatz" title="Permanent link">&para;</a></h3>
-<p>Bei der Entwicklung komplexerer Anwendungen müssen wir eine Reihe von Designentscheidungen treffen, wobei mehrere Optionen zur Auswahl stehen. Wenn wir die Wartungsfreundlichkeit und die Möglichkeit der einfachen Weiterentwicklung unserer Anwendung nicht im Auge behalten, kann die Entwicklung schnell zu einem Alptraum werden. Kundenwünsche nach Änderungen und Erweiterungen erfordern eine umfangreiche kontinuierliche Neuschreibung/Änderung des Codes: Dies führt zu neuen Fehlern und erfordert einen erheblichen Arbeitsaufwand für umfangreiche Code-Neu-Tests!</p>
-<p>Unser Ziel ist es, diesen Änderungs- und Erweiterungsbedarf zu decken, indem wir den Code an einigen wenigen, genau definierten Stellen erweitern, ohne den bestehenden Code wesentlich zu verändern. Das Schlüsselwort lautet: <strong>Erweiterung</strong> im Gegensatz zur <strong>Änderung</strong>. Damit zusammenhängend: Wenn bestimmte Logiken erweitert werden können, sind sie auch allgemeiner, und wir können sie leichter in mehr Kontexten verwenden. Langfristig gesehen kommen wir auf diese Weise schneller voran, der Code ist kürzer und doppelter Code wird vermieden (wodurch der Code leichter zu pflegen ist).</p>
-<p>Die <strong>Entwurfsmuster</strong> zeigen bewährte Lösungen für einige häufig auftretende Entwurfsprobleme: Diese Lösungen tragen dazu bei, dass unser Code einfacher zu erweitern, zu pflegen und wiederzuverwenden ist. In dieser Übung konzentrieren wir uns auf Muster, Entwurfsprinzipien und einige Programmierwerkzeuge, die bei diesen Problemen helfen können. Aber wir wollen es nicht übertreiben: Es lohnt sich nur dann, ein bestimmtes Entwurfsmuster zu verwenden, wenn es einen echten Nutzen bringt. Andernfalls wird die Implementierung nur unnötig kompliziert. Vor diesem Hintergrund ist es nicht unser Ziel (und oft auch gar nicht möglich), alle zukünftigen Erweiterungsbedürfnisse vorherzusehen oder sehr weit im Voraus darüber nachzudenken. Der Punkt ist, dass wir, selbst wenn wir von einer einfachen Lösung ausgehen und jedes Problem erkennen, unseren Code ständig überarbeiten, um ihn an den richtigen Stellen erweiterbar und wiederverwendbar zu machen, je nach unseren aktuellen Anforderungen (funktional und nicht funktional) und unserer Voraussicht.</p>
-<p>Es ist erwähnenswert, dass verwandte Entwurfsmuster und Sprachtools auch sehr dabei helfen, unseren Code <strong>unit-testbar</strong> zu machen: In vielen Unternehmen ist es bei der Entwicklung eines Softwareprodukts eine (legitime) Anforderung an die Entwickler, Unit-Tests mit hoher Codeabdeckung zu erstellen. Dies ist jedoch praktisch unmöglich, wenn die Einheiten/Klassen Ihres Codes zu eng gekoppelt sind.</p>
-<h2 id="0-aufgabe-kennenlernen-der-aufgabe-und-der-erstanwendung">0. Aufgabe - Kennenlernen der Aufgabe und der Erstanwendung<a class="headerlink" href="#0-aufgabe-kennenlernen-der-aufgabe-und-der-erstanwendung" title="Permanent link">&para;</a></h2>
-<p>Klonen Sie <a href="https://github.com/bmeviauab00/lab-patterns-extensibility-kiindulo">das Repository der</a>ursprünglichen Anwendung für Labor 6:</p>
+<h3 id="theoretical-background-and-approach">Theoretical background and approach *<a class="headerlink" href="#theoretical-background-and-approach" title="Permanent link">&para;</a></h3>
+<p>When developing more complex applications, we face numerous design decisions where we must choose from various options. If we do not consider maintainability and extensibility during these decisions, development can quickly become a nightmare. Client requests for changes and enhancements often require large-scale code rewrites/modifications, which can introduce new bugs and require significant effort for retesting the codebase.</p>
+<p>Our goal is to implement such change and extension requirements by extending the code at a few well-defined points — without significantly modifying existing code. The keyword is: <strong>extension</strong> instead of <strong>modification</strong>. Relatedly, if certain logic is extensible, it will also be more general, and can be reused more easily in multiple contexts. In the long run, this leads to faster progress, shorter code, and avoids code duplication (which also improves maintainability).</p>
+<p><strong>Design patterns</strong> provide proven solutions to common design problems: they help make our code more extensible, maintainable, and as reusable as possible. This laboratory focuses on those patterns, design principles, and programming tools that address the above issues. However, we should avoid overengineering: only apply a design pattern if it provides real benefits in a given case. Otherwise, it just adds unnecessary complexity. In this spirit, our goal is not (and often not even possible) to foresee every future extensibility need. The key is to start from a simple solution, recognize issues as they arise, and continuously refactor our code to meet current (functional and non-functional) requirements and improve extensibility and reusability where appropriate.</p>
+<p>It’s also worth noting that related design patterns and language tools can greatly assist in making our code <strong>unit testable</strong>: in many companies, it's a (justified) basic expectation during software development that developers write unit tests with high code coverage. However, achieving this is practically impossible if the units/classes in our code are too tightly coupled.</p>
+<h2 id="task-0-getting-familiar-with-the-assignment-and-the-starter-application">Task 0 – Getting familiar with the assignment and the starter application<a class="headerlink" href="#task-0-getting-familiar-with-the-assignment-and-the-starter-application" title="Permanent link">&para;</a></h2>
+<p>Clone the starting application repository for Lab 6 from the following <a href="https://github.com/bmeviauab00/lab-patterns-extensibility-kiindulo">repository</a>:</p>
 <ul>
-<li>Öffnen Sie eine Eingabeaufforderung</li>
-<li>Navigieren Sie zu einem Ordner Ihrer Wahl, zum Beispiel c:workNEPTUN</li>
-<li>Geben Sie den folgenden Befehl ein: <code>git clone https://github.com/bmeviauab00/lab-patterns-extensibility-kiindulo.git</code></li>
-<li>Öffnen Sie die Lösung <em>Lab-Patterns-Extensibility.sln</em> in Visual Studio.</li>
+<li>Open a command prompt</li>
+<li>Navigate to any folder, for example: <code>c:\work\NEPTUN</code></li>
+<li>Run the following command: <code>git clone https://github.com/bmeviauab00/lab-patterns-extensibility-kiindulo.git</code></li>
+<li>Open the <em>Lab-Patterns-Extensibility.sln</em> solution in Visual Studio.</li>
 </ul>
-<h3 id="beschreibung-der-aufgabe">Beschreibung der Aufgabe<a class="headerlink" href="#beschreibung-der-aufgabe" title="Permanent link">&para;</a></h3>
-<p>Im Labor werden wir eine konsolenbasierte Datenverarbeitungsanwendung (genauer gesagt, eine Anonymisierungsanwendung) entsprechend den sich entwickelnden Bedürfnissen erweitern, und zwar an verschiedenen Punkten und mit verschiedenen Techniken. In der ersten Übung wird auch das Konzept der Anonymisierung vorgestellt.</p>
-<p>Die Eingabe in die Anwendung ist eine CSV-Textdatei, in der jede Zeile Daten für eine bestimmte Person enthält. Öffnen Sie im Dateisystem die Datei us-500.csv im Ordner <em>Data</em> (durch Doppelklick oder mit Notepad/Notepad). Wir sehen, dass wir zwischen "", getrennt durch ein Komma, die Daten für jede Person haben (sie sind nicht real). Schauen wir uns die erste Zeile an:</p>
-<div class="highlight"><pre><span></span><code>&quot;James&quot;, &quot;Rhymes&quot;, &quot;Benton, John B Jr&quot;, &quot;6649 N Blue Gum St&quot;, &quot;New Orleans&quot;, &quot;Orleans&quot;, &quot;LA&quot;, &quot;70116&quot;, &quot;504-621-8927&quot;, &quot;504-845-1427&quot;, &quot;30&quot;, &quot;65&quot;, &quot;Herzbezogen&quot;, &quot;jRhymes@gmail.com&quot;
+<h3 id="task-description">Task description<a class="headerlink" href="#task-description" title="Permanent link">&para;</a></h3>
+<p>During this lab, we will work on a console-based data processing (more precisely, anonymizing) application, making it extensible in different ways using various techniques, in response to continuously evolving requirements. As part of the first task, we’ll also get familiar with the concept of anonymization.</p>
+<p>The input of the application is a CSV text file, where each line contains data related to a particular person. Open the <em>us-500.csv</em> file in the <em>Data</em> folder of the filesystem (double-click it or open with Notepad). You will see the data of individuals listed in quotes and separated by commas (note: these are not real individuals). Let’s look at the first line:</p>
+<div class="highlight"><pre><span></span><code>&quot;James&quot;,&quot;Rhymes&quot;,&quot;Benton, John B Jr&quot;,&quot;6649 N Blue Gum St&quot;,&quot;New Orleans &quot;,&quot;Orleans&quot;,&quot;LA&quot;,&quot;70116&quot;,&quot;504-621-8927&quot;,&quot;504-845-1427&quot;,&quot;30&quot;,&quot;65&quot;,&quot;Heart-related&quot;,&quot;jRhymes@gmail.com&quot;
 </code></pre></div>
-<p>Die Person in der ersten Reihe heißt James Rhymes, arbeitet für "Benton, John B Jr.", gefolgt von einigen Adressfeldern, 30 Jahre alt, 65 kg Körpergewicht. Das folgende Feld gibt Auskunft darüber, welche schwerere Krankheit Sie haben (in der Zeile oben ist es "Herzkrankheit"). Die letzte Spalte enthält die E-Mail-Adresse der Person.</p>
+<p>The first person in the data row is named James Rhymes and works at the company "Benton, John B Jr". The next few fields represent address-related data. He is 30 years old and weighs 65 kg. The following field describes a more serious illness (in this case, "Heart-related"). The last column contains the person's email address.</p>
 <details class="note">
-<summary>Quelle und genaues Format der Daten *</summary>
-<p>Datenquelle: <a href="https://www.briandunning.com/sample-data/">https://www.briandunning.com/sample-data/,</a> mit einigen Spalten (Alter, Gewicht, Krankheit). Die Reihenfolge der Felder: Vorname, Nachname, Unternehmen, Adresse, Stadt, Landkreis (falls zutreffend), Bundesland/Provinz (falls zutreffend), Postleitzahl, Telefon 1, Telefon 2, Alter, Gewicht, Krankheit, E-Mail</p>
+<summary>Source and exact format of the data *</summary>
+<p>The data source is: <a href="https://www.briandunning.com/sample-data/">https://www.briandunning.com/sample-data/</a>, with a few extra fields added (age, weight, illness). The field order is: First Name, Last Name, Company, Address, City, County (where applicable), State/Province (where applicable), ZIP/Postal Code, Phone 1, Phone 2, Age, Weight, Illness, Email.</p>
 </details>
-<p>Die Hauptaufgabe der Anwendung besteht darin, diese Daten entsprechend den aktuellen Bedürfnissen zu anonymisieren und sie dann in eine CSV-Textdatei auszugeben. Der Zweck der Anonymisierung besteht darin, die Daten so umzuwandeln, dass die Personen im Datensatz nicht mehr identifizierbar sind, die Daten aber weiterhin für die Erstellung von Berichten verwendet werden können. Die Anonymisierung ist ein eigener, sehr ernster und anspruchsvoller Bereich der Datenverarbeitung. Die Übung zielt nicht darauf ab, Lösungen zu entwickeln, die in einem realen Kontext anwendbar oder sogar in jeder Hinsicht sinnvoll sind. Für uns ist eigentlich nur der "Einsatz" einer Art von Datenverarbeitungsalgorithmus für die Darstellung von Mustern wichtig. Dies kann einen etwas "aufregenderen" Rahmen bieten als einfache Datenfilterung/ Sequenzierung/etc. basierte Datenverarbeitung (die von .NET standardmäßig unterstützt wird).</p>
+<p>The primary function of the application is to anonymize these records based on the current requirements and write the results to an output CSV text file. The goal of anonymization is to transform the data in such a way that individuals cannot be identified, while still allowing for meaningful reporting. Anonymization is a distinct, serious, and challenging area in data processing. In this lab, our goal is not to develop solutions that are usable in real-world environments or entirely meaningful. The main focus is on applying a data processing algorithm to demonstrate software design patterns. This provides a more engaging context than simple data filtering/sorting/etc., which .NET already supports natively.</p>
 <div class="admonition note">
-<p class="admonition-title">Einige Gedanken zur Anonymisierung</p>
-<p>Man könnte meinen, dass die Anonymisierung ein einfaches Problem ist. So müssen Sie beispielsweise nur die Namen der Personen, die Adresse, die Hausnummer, die Telefonnummern und die E-Mail-Adresse entfernen oder mit einem Sternchen versehen, und schon sind Sie fertig. Zum Beispiel würde die erste Zeile unserer Eingabe die Ausgabe sein:</p>
-<div class="highlight"><pre><span></span><code>&quot;***&quot;, &quot;***&quot;, &quot;Benton, John B Jr&quot;, &quot;***&quot;, &quot;New Orleans &quot;, &quot;Orleans&quot;, &quot;LA&quot;, &quot;70116&quot;, &quot;***&quot;, &quot;***&quot;, &quot;30&quot;, &quot;65&quot;, &quot;herzbezogen&quot;, &quot;***&quot;
+<p class="admonition-title">A few thoughts about anonymization</p>
+<p>At first glance, anonymization might seem like a simple problem. For example, one might think it's enough to remove or mask people's names, street addresses, phone numbers, and email addresses. For example, for the first row of our input, the output might look like this:</p>
+<div class="highlight"><pre><span></span><code>&quot;***&quot;,&quot;***&quot;,&quot;Benton, John B Jr&quot;,&quot;***&quot;,&quot;New Orleans &quot;,&quot;Orleans&quot;,&quot;LA&quot;,&quot;70116&quot;,&quot;***&quot;,&quot;***&quot;,&quot;30&quot;,&quot;65&quot;,&quot;Heart-related&quot;,&quot;***&quot;
 </code></pre></div>
-<p>Dies ist jedoch bei weitem nicht der Fall, insbesondere wenn es um wirklich große Daten geht. Stellen Sie sich ein kleines Dorf vor, in dem es nicht viele Menschen gibt. Nehmen wir an, eine der auf diese Weise anonymisierten Personen ist 14 Jahre alt, aber stark übergewichtig und wiegt 95 kg. Dies ist eine seltene "Kombination", und es besteht eine gute Chance, dass keine andere Person mit diesen Parametern im Dorf lebt. Wenn einer seiner Klassenkameraden (ein Achtklässler, er ist 14) sich die "anonymisierten" Daten ansieht, wird er wissen, wer er ist (es gibt keinen anderen Achtklässler in der Schule, der so übergewichtig ist), er wird die Person identifizieren. Sie werden zum Beispiel wissen, welche Krankheit die Person hat. Lektion: Daten können im Kontext aufschlussreich sein.</p>
-<p>Was ist die Lösung? Stadt, Alter und Körpergewicht können nicht gelöscht/gestrichen werden, da sie gemeldet werden müssen. Eine typische Lösung besteht darin, nach der Anonymisierung nicht das genaue Alter/Gewicht einzugeben, sondern Bereiche (d. h. die Daten zu verallgemeinern): z. B. für die oben genannte Person Alter 10..20 Jahre, Gewicht 80..100 kg, und diese Werte für diese Person in die Ausgabedatei einzugeben. Es ist nicht mehr möglich, die Personen zu identifizieren. Wir werden diese Technik später noch anwenden.</p>
+<p>But it’s not that simple, especially when dealing with large amounts of data. Imagine a small village where only a few people live. Suppose an anonymized person is 14 years old and weighs 95 kg. This is a rare ‘combination’, there is a good chance that no other person with these parameters lives in the village. If one of his classmates (an eighth grader, he is 14) looks at the ‘anonymised’ data, he will know who he is (there is no other eighth grader in the school who is that overweight), he will identify the person. So, for example, you he/she will know what illness the person has. Lesson: data can be revealing in context.</p>
+<p>So, what’s the solution? We can’t just remove or mask the city, age, or weight because we need them for reporting. A common approach is to generalize the data instead of showing exact values. For example, instead of showing an exact age or weight, we show a range (e.g., 10–20 years, 80–100 kg). This way, individuals cannot be identified. We will also use this technique later on.</p>
 </div>
-<h3 id="ursprungliche-anforderungen">Ursprüngliche Anforderungen<a class="headerlink" href="#ursprungliche-anforderungen" title="Permanent link">&para;</a></h3>
-<p>Ursprüngliche Anforderungen an die Bewerbung:</p>
+<h3 id="initial-requirements">Initial requirements<a class="headerlink" href="#initial-requirements" title="Permanent link">&para;</a></h3>
+<p>The initial requirements for the application are:</p>
 <ol>
-<li>Von einem bestimmten Client empfangene Dateien (alle im gleichen Format) müssen mit dem gleichen Anonymisierungsalgorithmus in das gleiche Ausgabeformat konvertiert werden. Die Anonymisierung sollte lediglich darin bestehen, den Vor- und Nachnamen "auszubuchstabieren".</li>
-<li>Eine gewisse Datenbereinigung ist erforderlich.  <code>_</code> <code>#</code> In den Eingabedaten kann es am Anfang/Ende der Spalte, die die Stadt enthält, redundante Zeichen geben, die entfernt werden sollten (Trimm-Operation).</li>
-<li>Nach der Verarbeitung jeder Zeile sollte in die Konsole geschrieben werden, dass die Zeile verarbeitet wurde, und nach der Verarbeitung jeder Zeile sollten einige zusammenfassende Informationen angezeigt werden: wie viele Zeilen verarbeitet wurden und bei wie vielen der Stadtname gekürzt wurde.</li>
-<li>Ein <strong>entscheidender Punkt</strong>: Die Anwendung wird nur für einen kurzen Zeitraum benötigt, und wir haben nicht die Absicht, sie in Zukunft zu erweitern.</li>
+<li>Files received from a specific client (all with the same format) must be converted using the same anonymizing algorithm into the same output format. The anonymization should simply involve "masking" the first and last names.</li>
+<li>Some data cleaning is needed. There may be unnecessary <code>_</code> and <code>#</code> characters at the beginning or end of the city field in the input data, and these should be removed (trim operation).</li>
+<li>After processing each row, the application must print to the console that the row has been processed, and after processing all the data, some summary information should be displayed: how many rows were processed and how many required trimming of the city name.</li>
+<li><strong>Key aspect</strong>: The application will be used only for a short period and is not intended to be expanded later.</li>
 </ol>
-<p>Hinweis: Um mit weniger Feldern im Code zu arbeiten und die Ausgabe transparenter zu gestalten, lassen wir bei der Verarbeitung einige weitere Felder weg.</p>
-<p>Ein Beispiel: Die erste Zeile unserer Eingabedatei ist die erwartete Ausgabe:</p>
-<div class="highlight"><pre><span></span><code>***; ***; LA; New Orleans; 30; 65; Herzbezogen
+<p>Note: In order to work with fewer fields in the code and to make the output clearer, a few fields will be omitted during processing.</p>
+<p>For example, the expected output for the first row of our input file would be:</p>
+<div class="highlight"><pre><span></span><code>***; ***; LA; New Orleans; 30; 65; Heart-related
 </code></pre></div>
-<h2 id="1-losung-alles-in-einem-1-startstart">1. Lösung - alles in einem (1-Start/Start)<a class="headerlink" href="#1-losung-alles-in-einem-1-startstart" title="Permanent link">&para;</a></h2>
-<p>Im Visual Studio Solution Explorer sehen Sie Ordner, deren Namen mit den Zahlen 1 bis 4 beginnen. Diese enthalten die Lösungen für jede Arbeitsiteration. Die Lösung der ersten Runde befindet sich im Ordner "1-Start" unter dem Projektnamen "Start". Schauen wir uns die Dateien im Projekt an:</p>
+<h2 id="solution-1-all-in-one-1-startstart">Solution 1 - All-in-one (1-Start/Start)<a class="headerlink" href="#solution-1-all-in-one-1-startstart" title="Permanent link">&para;</a></h2>
+<p>In the Visual Studio Solution Explorer, we see folders named with numbers 1 through 4. These contain the solutions for each iteration of work. The first solution is located in the "1-Start" folder under the project name "Start". Let’s take a look at the files in the project:</p>
 <ul>
-<li><code>Person.cs</code> - Sie enthält die Daten einer Person, die für uns von Interesse ist, und wir lesen die Daten einer Person in ihre Objekte ein.</li>
-<li><code>Programm.cs</code> - Die gesamte Logik ist als Funktion dieses Main implementiert, "getrennt" durch Code-Einträge. Wenn die Logik ein wenig komplizierter wird, werden wir nach ein oder zwei Tagen (Stunden?) Schwierigkeiten haben, unseren eigenen Code zu überprüfen und zu verstehen. Wir sollten diese Lösung gar nicht erst in Betracht ziehen.</li>
+<li><code>Person.cs</code> - Contains the data of a person that is of interest to us. We read each person’s data into objects of this class.</li>
+<li><code>Program.cs</code> - The main function is implemented here, with all the logic, "separated" by code comments. If the logic becomes more complicated, even after a few days (or hours), we might struggle to understand our own code. Let’s not focus on this solution.</li>
 </ul>
-<p>Insgesamt ist die Lösung sehr einfach, da dem Code keine lange Zukunft vorausgesagt wird. Aber die "skriptartige", in eine Funktion gegossene "All-in-one"-Lösung ist auch nicht der richtige Weg, sie macht es sehr schwierig, den Code <strong>zu sehen</strong> und <strong>zu verstehen</strong>. Lassen Sie uns das nicht weiter betrachten.</p>
-<h2 id="2-losung-2-organizedtofunctionsorganizedtofunctions-1">2. Lösung (2-OrganizedToFunctions/OrganizedToFunctions-1)<a class="headerlink" href="#2-losung-2-organizedtofunctionsorganizedtofunctions-1" title="Permanent link">&para;</a></h2>
-<p>Gehen wir in Visual Studio zu der Lösung über, die sich im Projekt "OrganizedToFunctions-1" im Ordner "2-OrganizedToFunctions" befindet. Das ist viel sympathischer, weil wir die Logik in Funktionen zerlegt haben. Schauen wir uns kurz den Code an:</p>
+<p>Overall, the solution is very simple since we don’t foresee a long future for the code. However, the “script-like,” “all-in-one” solution that puts everything in one function is still not the best direction. It makes the code <strong>hard to understand</strong> and <strong>difficult to follow</strong>. Let’s not delve into this further.</p>
+<h2 id="solution-2-2-organizedtofunctionsorganizedtofunctions-1">Solution 2 (2-OrganizedToFunctions/OrganizedToFunctions-1)<a class="headerlink" href="#solution-2-2-organizedtofunctionsorganizedtofunctions-1" title="Permanent link">&para;</a></h2>
+<p>Let’s move on to the solution found in the "2-OrganizedToFunctions" folder, in the project "OrganizedToFunctions-1" in Visual Studio. This solution is much more appealing because we have split the logic into functions. Let’s review the code briefly:</p>
 <p><code>Anonymizer.cs</code></p>
 <ul>
-<li><code>Laufen lassen</code> Die Funktion ist das "Rückgrat", sie enthält die Steuerlogik und ruft die für die einzelnen Schritte zuständigen Funktionen auf.</li>
-<li><code>ReadFromInput</code> <code>Person</code> <code>Person</code> operation: scannt die Quelldatei, erstellt für jede Zeile ein Objekt und gibt eine Liste der gescannten Objekte zurück.</li>
-<li><code>TrimCityNames</code>: Führt eine Datenbereinigung durch (Abschneiden von Städtenamen).</li>
-<li><code>Anonym</code>:  <code>Person</code> <code>Person</code> Bei jedem gescannten Objekt wird es aufgerufen und ist dafür verantwortlich, ein neues Objekt zurückzugeben, das bereits die anonymisierten Daten enthält.</li>
-<li><code>WriteToOutput</code> <code>Person</code>: schreibt die bereits anonymisierten Objekte in die Ausgabedatei.</li>
-<li><code>PrintSummary</code>: gibt die Zusammenfassung am Ende der Verarbeitung auf der Konsole aus.</li>
+<li>The <code>Run</code> function is the "backbone" and contains the control logic. It calls the functions responsible for each step.</li>
+<li><code>ReadFromInput</code>: This function reads the source file, creates a <code>Person</code> object for each line, and returns a list of the read <code>Person</code> objects.</li>
+<li><code>TrimCityNames</code>: It performs data cleaning (trimming the city names).</li>
+<li><code>Anonymize</code>: It’s called for each <code>Person</code> object read and is responsible for returning a new <code>Person</code> object with anonymized data.</li>
+<li><code>WriteToOutput</code>: Writes the anonymized <code>Person</code> objects to the output file.</li>
+<li><code>PrintSummary</code>: Prints the summary of the process to the console at the end.</li>
 </ul>
-<p><code>Programm.cs</code></p>
+<p><code>Program.cs</code></p>
 <ul>
-<li><code>Anonym</code> <code>Laufen lassen</code> Erzeugt ein Objekt und führt es durch den Aufruf von . Es ist ersichtlich, dass die Zeichenkette, die zur Maskierung während der Anonymisierung verwendet wird, in einem Konstruktorparameter angegeben werden muss.</li>
+<li>Creates an <code>Anonymizer</code> object and runs it with the <code>Run</code> function. Notice that the string used for masking in the anonymization process is provided as a constructor parameter.</li>
 </ul>
-<p>Probieren wir es aus, lassen wir es laufen! Um dies zu tun, sollte "OrganizedToFunctions-1" das Startprojekt in Visual Studio sein (mit der rechten Maustaste darauf klicken und <em>als Startprojekt festlegen</em>), dann starten Sie es:</p>
-<p><a class="glightbox" href="bilder/OrganizedToFunctions-1-Konsole-out.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Ausgabe auf der Konsole" src="bilder/OrganizedToFunctions-1-Konsole-out.png" /></a></p>
-<p>Die Ausgabedatei kann in einem Dateimanager in einem Ordner mit dem Namen "OrganizedToFunctions-1binDebugnet8.0" oder ähnlichem mit dem Namen "us-500.processed.txt" angezeigt werden. Öffnen wir sie und sehen wir uns die Daten an.</p>
-<h3 id="bewertung-der-losung">Bewertung der Lösung<a class="headerlink" href="#bewertung-der-losung" title="Permanent link">&para;</a></h3>
+<p>Let’s try running it! Set "OrganizedToFunctions-1" as the startup project in Visual Studio (right-click and <em>Set as Startup Project</em>), then run it:</p>
+<p><a class="glightbox" href="../images/OrganizedToFunctions-1-console-out.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Console output" src="../images/OrganizedToFunctions-1-console-out.png" /></a></p>
+<p>The output file can be found in the file manager in the "OrganizedToFunctions-1\bin\Debug\net8.0\" or a similarly named folder as "us-500.processed.txt". Open it and take a look at the data.</p>
+<h3 id="evaluation-of-the-solution">Evaluation of the solution<a class="headerlink" href="#evaluation-of-the-solution" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Die Lösung ist grundsätzlich gut strukturiert und leicht zu verstehen.</li>
-<li>Folgt dem <mark>**KISS (Keep It Stupid Simple)</mark>** prinzip, ohne unnötige Komplikationen. Das ist gut, denn es gibt keinen potenziellen künftigen Entwicklungsbedarf, keine Notwendigkeit, verschiedene Formate, Logiken usw. zu unterstützen.</li>
+<li>The solution is fundamentally well-structured and easy to understand.</li>
+<li>It follows the <strong><mark>KISS (Keep It Stupid Simple)</mark></strong> principle, avoiding unnecessary complications. This is good because there are no anticipated future development needs, and there is no need to support different formats, logic, etc.</li>
 <li>
-<p>Unsere Lösung folgt jedoch nicht einem der grundlegendsten und bekanntesten Gestaltungsprinzipien, nämlich dem <mark>**Single Responsibility Principle (kurz: SRP)</mark>** allgemein bekannt als SRP. Sie geht davon aus, dass eine Abteilung - vereinfacht ausgedrückt - nur eine Aufgabe hat (im Grunde nur eine Sache).</p>
+<p>However, the solution does not follow one of the most fundamental and well-known design principles, namely the <strong><mark>Single Responsibility Principle (SRP)</mark></strong>. This principle expects that each class should have only one responsibility (it should focus on just one thing).</p>
 <ul>
-<li><code>Anonym</code> Unsere Abteilung hat zweifellos viele Aufgaben: Verarbeitung von Input, Datenbereinigung, Anonymisierung, Erstellung von Output usw.</li>
-<li>Dieses Problem ist in unserem Fall nicht spürbar und stellt kein Problem dar, da die Umsetzung jeder dieser Aufgaben einfach ist und in eine kürzere Funktion "passt". Wären diese jedoch komplexer und in mehreren Funktionen implementiert, müssten sie definitiv in einer eigenen Klasse organisiert werden.</li>
+<li>It’s clear that the <code>Anonymizer</code> class has multiple responsibilities: processing input, data cleaning, anonymization, producing output, etc.</li>
+<li>This problem is not immediately noticeable and doesn’t cause any issues for us because each responsibility is simple and "fits" into a short function. But if any of these responsibilities became more complex, or were implemented in multiple functions, they should definitely be organized into separate classes.</li>
 </ul>
 <details class="note">
-<summary>Warum ist es ein Problem, wenn eine Abteilung mehr Aufgaben hat? *</summary>
+<summary>Why is it problematic if a class has multiple responsibilities? *</summary>
 <ul>
-<li>Es ist schwieriger zu verstehen, wie es funktioniert, weil es nicht auf eine Sache konzentriert ist.</li>
-<li>Wenn eine dieser Zuständigkeiten geändert werden muss, muss eine große, multidisziplinäre Abteilung geändert und erneut getestet werden.</li>
+<li>It becomes harder to understand its operation because it doesn’t focus on a single task.</li>
+<li>If any responsibility needs to change, the large class handling multiple tasks must be modified and retested.</li>
 </ul>
 </details>
 </li>
 <li>
-<p>Sie können automatisierte Integrationstests (Input-Output) für die Lösung schreiben, aber keine "echten" Unit-Tests.</p>
+<p>Automated integration (input-output) tests can be written for the solution, but "real" unit tests are not feasible.</p>
 </li>
 </ul>
-<h2 id="3-losung-organizedtofunctions-2-twoalgorithms">3. Lösung (OrganizedToFunctions-2-TwoAlgorithms)<a class="headerlink" href="#3-losung-organizedtofunctions-2-twoalgorithms" title="Permanent link">&para;</a></h2>
-<p>Im Gegensatz zu früheren "Plänen" haben sich neue Bedürfnisse der Nutzer ergeben. Unser Kunde hat seine Meinung geändert und verlangt für einen anderen Datensatz einen anderen Anonymisierungsalgorithmus: Das Alter der Personen soll in Banden gespeichert werden, das genaue Alter der Personen darf nicht offenbart werden. Der Einfachheit halber werden wir in diesem Fall die Namen der Personen nicht anonymisieren. Betrachten Sie dies also als eine Art "Pseudo"-Anonymisierung (es macht immer noch Sinn, aber es ist nicht ganz korrekt, es Anonymisierung zu nennen).</p>
-<p>Unsere Lösung - die sowohl den alten als auch den neuen Algorithmus (einen nach dem anderen) unterstützt - finden Sie im VS-Lösungsprojekt <em>OrganizedToFunctions-2-TwoAlgorithms</em>.  <code>Anonymizer</code> Schauen wir uns die Klasse, das Grundprinzip der Lösung an (überprüfen Sie diese im Code):</p>
+<h2 id="solution-3-organizedtofunctions-2-twoalgorithms">Solution 3 (OrganizedToFunctions-2-TwoAlgorithms)<a class="headerlink" href="#solution-3-organizedtofunctions-2-twoalgorithms" title="Permanent link">&para;</a></h2>
+<p>In contrast to the previous "plans", new user requirements have emerged. Our client changed his mind and now requests a different anonymization algorithm for a new data set: the ages of the individuals need to be stored in ranges, so the exact ages of the people should not be revealed. For simplicity, we will not anonymize the names in this case, considering it a "pseudo" anonymization (it can still make sense, but it’s not entirely accurate to call it anonymization).</p>
+<p>Our solution, which supports both the old and the new algorithm (but only one at a time), can be found in the Visual Studio project <em>OrganizedToFunctions-2-TwoAlgorithms</em>. Let's take a look at the <code>Anonymizer</code> class, focusing on the design principles:</p>
 <ul>
-<li><code>AnonymizerMode</code> <code>Anonym</code> Wir haben einen Enum-Typ eingeführt, der den Modus (Algorithmus) angibt, in dem die Klasse verwendet wird.</li>
-<li><code>Anonymizer</code> <code>Anonymize_MaskName</code> Die Klasse verfügt über zwei Anonymisierungsoperationen: , <code>Anonymize_AgeRange</code></li>
-<li><code>Anonymizer</code> <code>_anonymizerMode</code> <code>_anonymizerMode</code> Die Klasse speichert den zu verwendenden Algorithmus im Member: für die beiden Modi werden zwei separate Konstruktoren eingeführt, die den Wert von .</li>
-<li><code>Anonymizer</code> <code>Run</code> <code>GetAnonymizerDescription</code> <code>_anonymizerMode</code> Die Klasse prüft an mehreren Stellen (z.B. bei Operationen) auf den Wert von und gabelt sich in Abhängigkeit davon auf.</li>
+<li>We introduced an <code>AnonymizerMode</code> enum type to determine which mode (algorithm) we will use for the <code>Anonymizer</code> class.</li>
+<li>The <code>Anonymizer</code> class now has two anonymization operations: <code>Anonymize_MaskName</code> and <code>Anonymize_AgeRange</code>.</li>
+<li>The <code>Anonymizer</code> class stores the selected algorithm mode in the <code>_anonymizerMode</code> field. Two constructors have been created to set the <code>_anonymizerMode</code> based on the chosen mode.</li>
+<li>The <code>Anonymizer</code> class checks the value of <code>_anonymizerMode</code> in several places (e.g., <code>Run</code>, <code>GetAnonymizerDescription</code> methods) and branches accordingly.</li>
 <li>
-<p><code>GetAnonymizerDescription</code>In ist dies notwendig, da die Aufgabe dieses Vorgangs darin besteht, eine einzeilige Beschreibung des Anonymisierungsalgorithmus zu erstellen, die am Ende der Verarbeitung in der "Zusammenfassung" angezeigt wird.  <code>PintSummary</code> Sehen wir uns den Code für die Aufrufe dieser Aktion an. So sieht die Zusammenfassung auf der Konsole aus, wenn ein Altersanonymisierer mit einem Bereich von 20 Jahren verwendet wird:</p>
+<p>In the <code>GetAnonymizerDescription</code> method, this check is essential because it is responsible for generating a one-line description of the anonymization algorithm. This description appears in the "summary" at the end of the process. For instance, if we are using the age anonymizer with a 20-year range, this summary will look like:</p>
 <p><code>Summary - Anonymizer (Age anonymizer with range size 20): Persons: 500, trimmed: 2</code></p>
 </li>
 </ul>
-<h3 id="bewertung-der-losung_1">Bewertung der Lösung<a class="headerlink" href="#bewertung-der-losung_1" title="Permanent link">&para;</a></h3>
-<p>Insgesamt ist unsere Lösung in Bezug auf die Codequalität <strong>schlechter</strong> als zuvor. In der Vergangenheit gab es kein Problem damit, dass es in Bezug auf Anonymisierungsalgorithmen nicht erweiterbar war, da es keinen Bedarf dafür gab. Wenn aber einmal die Notwendigkeit besteht, einen neuen Algorithmus einzuführen, ist es ein Fehler, unsere Lösung in dieser Hinsicht nicht erweiterbar zu machen: Von nun an würden wir lieber damit rechnen, dass in Zukunft zusätzliche Algorithmen eingeführt werden müssen.</p>
-<p><code>if``switch</code> Warum behaupten wir, dass unser Code nicht erweitert werden kann, wenn "nur" ein neuer Enum-Wert und eine zusätzliche / Verzweigung an einer Stelle des Codes eingeführt werden soll, wenn ein neuer Algorithmus eingeführt werden soll?</p>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> <strong>Prinzip Offen/Geschlossen</strong><br />
-Entscheidend ist, dass eine Klasse dann als erweiterbar gilt, wenn es möglich ist, ein neues Verhalten (in unserem Fall einen neuen Algorithmus) einzuführen <strong>, ohne</strong> sie in irgendeiner Weise <strong>zu verändern</strong>, <strong>indem man</strong> einfach den Code <strong>erweitert/erweitert</strong>.  <code>Anonymizer</code> Mit anderen Worten, in unserem Fall sollte der Code von nicht angetastet werden, was eindeutig nicht der Fall ist. Dies ist das berühmte <strong>Offen/Geschlossen-Prinzip</strong>: Die Klasse sollte offen für Erweiterungen und geschlossen für Änderungen sein. Die Änderung des Codes ist problematisch, da sie wahrscheinlich neue Fehler einführt und der geänderte Code immer wieder neu getestet werden muss, was einen erheblichen Zeit- und Kostenaufwand bedeutet.</p>
-<p>Was genau ist das Ziel und wie können wir es erreichen? Es gibt Teile unseres Klassenzimmers, die wir nicht verbrennen wollen:</p>
+<h3 id="evaluation-of-the-solution_1">Evaluation of the solution<a class="headerlink" href="#evaluation-of-the-solution_1" title="Permanent link">&para;</a></h3>
+<p>Overall, our solution has <strong>worse code quality</strong> compared to the previous one. Initially, it wasn’t an issue that the anonymization algorithms were not extendable because there was no demand for it. However, once the need to introduce a new algorithm arose, it became a problem that we didn’t make the solution extensible: now, we can expect that more algorithms will be introduced in the future.</p>
+<p>Why do we say that our code is not extendable when "only" a new enum value and an extra <code>if</code>/<code>switch</code> branch should be introduced at some point in the code when a new algorithm should be introduced?</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> <strong>Open/Closed Principle</strong><br />
+The key point is that we consider a class extendable if new behavior (in our case, new algorithms) can be introduced <strong>without modifying</strong> the class itself, simply by <strong>extending</strong> or <strong>adding</strong> to the code. In other words, in this case, we should not need to modify the <code>Anonymizer</code> class, which is clearly not the case. This principle is known as the <strong>Open/Closed Principle</strong>: the class should be <em>Open for Extension, Closed for Modification</em>. The problem with modifying the code is that we likely introduce new bugs and need to retest the modified code, which can result in significant time/cost investment.</p>
+<p>What is the exact goal, and how can we achieve it? There are certain parts of our class that we don’t want to hard-code:</p>
 <ul>
-<li>Dies sind keine Daten, sondern <mark>**verhaltensweisen (Code, Logik)</mark>**.</li>
-<li><code>if``switch</code> Wir lösen das Problem nicht mit / : Wir führen "Erweiterungspunkte" ein und schaffen es irgendwie, "beliebigen" Code in ihnen laufen zu lassen.</li>
-<li>Wir setzen den Code dieser variablen/fallabhängigen Teile <strong>in andere Klassen</strong> (in einer Weise, die für unsere Klasse "austauschbar" ist)!</li>
+<li>These are not data, but <strong><mark>behaviors (code, logic)</mark></strong>.</li>
+<li>We don't solve these using <code>if</code>/<code>switch</code> statements: we introduce "extension points" and somehow allow "any" code to run in those places.</li>
+<li>The variable, case-dependent parts of the code should be moved <strong>to other classes</strong> (in a replaceable manner from the perspective of the class)!</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Denken Sie nicht an Zauberei, wir werden die Werkzeuge verwenden, die wir bereits kennen: Vererbung mit abstrakten/virtuellen Funktionen, oder Schnittstellen, oder Delegaten.</p>
+<p>No magic here, we’ll use the tools we already know: inheritance with abstract/virtual methods, interfaces, or delegates.</p>
 </div>
-<p><code>Anonymizer</code> Suchen Sie nach Teilen, die fallabhängig sind, variable Logik, so dass es nicht gut ist, sie in die Klasse zu brennen:</p>
+<p>Let’s identify the parts of our class that involve case-dependent, variable logic, and shouldn’t be hard-coded into the <code>Anonymizer</code> class:</p>
 <ul>
-<li><code>Anonymize_MaskName</code>Das eine ist die Anonymisierungslogik selbst: /<code>Anonymize_AgeRange</code></li>
-<li>Die andere ist die <code>GetAnonymizerDescription</code></li>
+<li>One is the anonymization logic: <code>Anonymize_MaskName</code>/<code>Anonymize_AgeRange</code></li>
+<li>The other is the <code>GetAnonymizerDescription</code></li>
 </ul>
-<p>Diese sollten von der Klasse entkoppelt werden, an diesen Stellen sollte die Klasse erweitert werden. Die folgende Abbildung veranschaulicht das allgemeine Ziel *:</p>
+<p>These need to be decoupled from the class, and we need to make these points extendable. The following diagram illustrates the general goal:</p>
 <details class="note">
-<summary>Veranschaulichung des allgemeinen Lösungsprinzips</summary>
+<summary>Illustration of the general solution approach</summary>
 <p><a class="glightbox" href="../images/illustrate-extensibility.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Extensibility illustration" src="../images/illustrate-extensibility.png" /></a></p>
 </details>
-<p>Wir werden uns drei spezifische Entwurfsmuster und -techniken ansehen, um die oben genannten Ziele zu erreichen:</p>
+<p>We’ll look at three specific design patterns/techniques for achieving the above:</p>
 <ul>
-<li>Vorlage Methodenentwurf Muster</li>
-<li>Strategieentwurfsmuster (einschließlich Dependency Injection)</li>
-<li>Delegate (optional mit Lambda-Ausdruck)</li>
+<li>Template Method pattern</li>
+<li>Strategy pattern (with Dependency Injection)</li>
+<li>Delegate (optionally with Lambda expressions)</li>
 </ul>
-<p>Eigentlich haben wir sie alle in unserem Studium verwendet, aber jetzt werden wir sie noch besser kennen lernen und ihre Verwendung noch umfassender üben. Die ersten beiden im Labor und die dritte in einer entsprechenden Hausaufgabe.</p>
-<h2 id="4-losung-3-templatemethodtemplatemethod-1">4. Lösung (3-TemplateMethod/TemplateMethod-1)<a class="headerlink" href="#4-losung-3-templatemethodtemplatemethod-1" title="Permanent link">&para;</a></h2>
-<p>In diesem Schritt werden wir das Entwurfsmuster <strong>Template Method</strong> verwenden, um unsere Lösung an den erforderlichen Stellen erweiterbar zu machen.</p>
+<p>We have actually used these patterns during our studies before, but now we’ll explore them more deeply and practice applying them in a broader context. We will apply the first two in the lab, and the third will be practiced in a related homework assignment.</p>
+<h2 id="solution-4-3-templatemethodtemplatemethod-1">Solution 4 (3-TemplateMethod/TemplateMethod-1)<a class="headerlink" href="#solution-4-3-templatemethodtemplatemethod-1" title="Permanent link">&para;</a></h2>
+<p>In this step, we will apply the <strong>Template Method</strong> design pattern to make our solution extendable at the necessary points.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Der Name des Musters ist "irreführend": Es hat nichts mit den in C++ erlernten Template-Methoden zu tun!</p>
+<p>The name of the pattern is "misleading": it has nothing to do with the template methods we learned in C++!</p>
 </div>
 <details class="info">
-<summary>Klassendiagramm der auf der Schablonenmethode basierenden Lösung</summary>
-<p>Das folgende UML-Klassendiagramm veranschaulicht die auf der Schablonenmethode basierende Lösung und konzentriert sich auf das Wesentliche:</p>
-<p><a class="glightbox" href="../images/template-method-goal.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Template Method UML osztálydiagram cél" src="../images/template-method-goal.png" /></a></p>
+<summary>Template Method-based solution class diagram</summary>
+<p>The following UML class diagram illustrates the Template Method-based solution, focusing on the core concepts:</p>
+<p><a class="glightbox" href="../images/template-method-goal.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Template Method UML class diagram goal" src="../images/template-method-goal.png" /></a></p>
 </details>
-<p>Im Beispiel beruht die Trennung zwischen "unveränderlichen" und "veränderlichen" Teilen auf den folgenden Grundsätzen (es lohnt sich, diese im obigen Klassendiagramm zu verstehen, das auf unser Beispiel angewandt wird):</p>
+<p>In the pattern, the following principles help separate the "unchanging" and "changing" parts of the code (it's worth understanding these concepts, based on the above class diagram and applying them to our example):</p>
 <ul>
-<li>Die "gemeinsamen/ungemeinsamen" Teile werden in eine Vorgängerklasse eingeordnet.</li>
-<li>Dabei sind die Erweiterungspunkte die Einführung von abstrakten/virtuellen Funktionen, die an den Erweiterungspunkten aufgerufen werden.</li>
-<li>Ihre fallspezifische Implementierung ist in den Nachfolgeklassen untergebracht.</li>
+<li>The "common/unchanging" parts are placed in a base class.</li>
+<li>We introduce extension points in this base class using abstract/virtual methods, which will be called in the extension points.</li>
+<li>The case-dependent implementation of these methods goes into the derived classes.</li>
 </ul>
-<p>Der bekannte "Trick" besteht darin, dass beim Aufruf der abstrakten/virtuellen Funktionen durch den Vorgänger der fallabhängige Code des Nachfolgers aufgerufen wird.</p>
-<p><code>enum</code> <code>if``switch</code> Im Folgenden wird die frühere , oder /-basierte Lösung in eine <strong>Template-Methoden-basierte</strong> Lösung umgewandelt (diese wird keine Aufzählung mehr haben). Wir führen eine Vorgängerklasse und zwei vom Algorithmus abhängige Nachkommen ein.</p>
-<p>Wir müssen unseren Code entsprechend umstrukturieren. In der VS-Lösung, im Ordner "3-TemplateMethod", enthält das Projekt "TemplateMethod-0-Begin" den Code unserer vorherigen Lösung (eine "Kopie" davon), lassen Sie uns in diesem Projekt arbeiten:</p>
+<p>The "trick" is that when the base class calls these abstract/virtual methods, the case-dependent code in the derived classes gets executed.</p>
+<p>Next, we will refactor the previous <code>enum</code> and <code>if</code>/<code>switch</code> based solution to follow the <strong>Template Method</strong> pattern (and there will be no <code>enum</code> anymore). We will introduce a base class and two algorithm-dependent derived classes.</p>
+<p>Let's proceed with the following steps to refactor the code accordingly. The Visual Studio solution in the "3-TemplateMethod" folder, within the "TemplateMethod-0-Begin" project, contains the previous solution's code (a "copy" of it), which is where we will work:</p>
 <ol>
-<li><code>Anonymizer</code> <code>AnonymizerBase</code>Benennen Sie die Klasse um in (z. B. indem Sie auf den Klassennamen in der Quelldatei zeigen und <span class="keys"><kbd class="key-f2">F2</kbd></span>drücken).</li>
-<li><code>NameMaskingAnonymizer</code> <code>AgeAnonymizer</code> Fügen Sie eine Klasse und eine Klasse zu dem Projekt hinzu (Rechtsklick auf das Projekt, <em>Hinzufügen/Klasse</em>).</li>
-<li><code>AnonymizerBase</code>Extrahieren Sie sie aus</li>
+<li>Rename the <code>Anonymizer</code> class to <code>AnonymizerBase</code> (e.g., right-click the class name in the source file and press <span class="keys"><kbd class="key-f2">F2</kbd></span> to rename).</li>
+<li>Add two new classes to the project: <code>NameMaskingAnonymizer</code> and <code>AgeAnonymizer</code> (right-click on the project, select <em>Add</em> &gt; <em>Class</em>).</li>
+<li>Derive <code>NameMaskingAnonymizer</code> and <code>AgeAnonymizer</code> from <code>AnonymizerBase</code>.</li>
 <li>
-<p><code>AnonymizerBase</code> <code>NameMaskingAnonymizer</code>Verschieben Sie die entsprechenden Teile von nach :</p>
+<p>Move the following parts from <code>AnonymizerBase</code> to <code>NameMaskingAnonymizer</code>:</p>
 <ol>
-<li><code>_mask</code> Die Mitgliedsvariable .</li>
-<li><code>string inputFileName, string mask</code> <code>NameMaskingAnonymizer</code>Der Konstruktor, umbenannt in ,<ol>
-<li><code>_anonymizerMode = AnonymizerMode.Name;</code> zeile wird gelöscht,</li>
+<li>The <code>_mask</code> field.</li>
+<li>The constructor with parameters <code>string inputFileName, string mask</code>, renaming it to <code>NameMaskingAnonymizer</code>, and:<ol>
+<li>Removing the line <code>_anonymizerMode = AnonymizerMode.Name;</code>.</li>
 <li>
-<p><code>this</code> <code>base</code> anstelle von .</p>
+<p>Replacing the <code>this</code> constructor call with a <code>base</code> constructor call.</p>
 <details class="example">
-<summary>Konstrukteurscode</summary>
+<summary>Constructor code</summary>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">NameMaskingAnonymizer</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">inputFileName</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">mask</span><span class="p">):</span><span class="w"> </span><span class="k">base</span><span class="p">(</span><span class="n">inputFileName</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">_mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mask</span><span class="p">;</span>
@@ -2435,15 +2435,15 @@ Entscheidend ist, dass eine Klasse dann als erweiterbar gilt, wenn es möglich i
 </ol>
 </li>
 <li>
-<p><code>AnonymizerBase</code> <code>AgeAnonymizer</code>Verschieben Sie die entsprechenden Teile von nach :</p>
+<p>Move the relevant parts from <code>AnonymizerBase</code> to <code>AgeAnonymizer</code>:</p>
 <ol>
-<li><code>_rangeSize</code> Die Mitgliedsvariable .</li>
-<li><code>string inputFileName, string rangeSize</code> <code>AgeAnonymizer</code>Der Konstruktor, umbenannt in ,<ol>
-<li><code>_anonymizerMode = AnonymizerMode.Age;</code> zeile wird gelöscht,</li>
+<li>The <code>_rangeSize</code> member variable.</li>
+<li>The constructor with parameters <code>string inputFileName, int rangeSize</code>, renamed to <code>AgeAnonymizer</code>:<ol>
+<li>Remove the line <code>_anonymizerMode = AnonymizerMode.Age;</code>.</li>
 <li>
-<p><code>this</code> <code>base</code> anstelle von .</p>
+<p>Replace the <code>this</code> constructor call with a <code>base</code> constructor call.</p>
 <details class="example">
-<summary>Konstrukteurscode</summary>
+<summary>Constructor code</summary>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">AgeAnonymizer</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">inputFileName</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rangeSize</span><span class="p">):</span><span class="w"> </span><span class="k">base</span><span class="p">(</span><span class="n">inputFileName</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">_rangeSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rangeSize</span><span class="p">;</span>
@@ -2456,48 +2456,49 @@ Entscheidend ist, dass eine Klasse dann als erweiterbar gilt, wenn es möglich i
 </ol>
 </li>
 <li>
-<p><code>AnonymizerBase</code>Bei :</p>
+<p>In the <code>AnonymizerBase</code> class:</p>
 <ol>
-<li><code>AnonymizerMode</code> Löschen Sie den Aufzählungstyp .</li>
-<li><code>_anonymizerMode</code> Wir löschen den Tag .</li>
+<li>Delete the <code>AnonymizerMode</code> enum type.</li>
+<li>Delete the <code>_anonymizerMode</code> member.</li>
 </ol>
 </li>
 </ol>
-<p><code>AnonymizerBase</code> Suchen Sie nach Teilen, die fallabhängig sind, nach variabler Logik, so dass Sie diese nicht in die Klasse einbauen wollen, die wiederverwendbar sein soll:</p>
+<p>Identify the parts of the logic that are case-dependent and should not be hard-coded into the reusable <code>AnonymizerBase</code> class:</p>
 <ul>
-<li><code>Anonymize_MaskName``Anonymize_AgeRange</code>Einer ist / ,</li>
-<li><code>GetAnonymizerDescription</code>das andere ist .</li>
+<li>One is <code>Anonymize_MaskName</code> / <code>Anonymize_AgeRange</code>,</li>
+<li>The other is <code>GetAnonymizerDescription</code>.</li>
 </ul>
-<p>Dem Muster folgend führen wir abstrakte (oder möglicherweise virtuelle) Funktionen für diese in der Vorgängerklasse ein und rufen sie auf, und überschreiben ihre fallabhängigen Implementierungen in den Nachfolgeklassen:</p>
+<p>Following the Template Method pattern, introduce abstract (or optionally virtual) methods in the base class for these, and call them from within the base class. The case-specific implementations should be placed in the derived classes using <code>override</code>.</p>
 <ol>
-<li><code>AnonymizerBase</code> <code>class</code> <code>abstract</code> Machen Sie die Klasse abstrakt (das Schlüsselwort vor ).</li>
+<li>Mark the <code>AnonymizerBase</code> class as abstract (add the <code>abstract</code> keyword before <code>class</code>).</li>
 <li>
-<p><code>AnonymizerBase</code>Geben wir eine neue URL in</p>
-<div class="highlight"><pre><span></span><code><span class="k">protected</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="nf">Anonymize</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="w"> </span><span class="n">person</span><span class="p">);</span>
+<p>In <code>AnonymizerBase</code>, introduce the following abstract method:</p>
+<div class="highlight"><pre><span></span><code><span class="k">protected</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="nf">Anonymize</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">);</span>
 </code></pre></div>
-<p>(diese ist für die Anonymisierung zuständig).</p>
+<p>This method will be responsible for performing the anonymization.</p>
 </li>
 <li>
-<p><code>Anonymize_MaskName</code> <code>NameMaskingAnonymizer</code> <code>Anonymize</code> Verschieben Sie die Operation in die Klasse und ändern Sie die Signatur so, dass die übergeordnete abstrakte Funktion überschrieben wird:</p>
+<p>Move the <code>Anonymize_MaskName</code> method to the <code>NameMaskingAnonymizer</code> class and modify its signature so that it overrides the abstract <code>Anonymize</code> method defined in the base class:</p>
 <div class="highlight"><pre><span></span><code><span class="k">protected</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="nf">Anonymize</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">Person</span><span class="p">(</span><span class="n">_mask</span><span class="p">,</span><span class="w"> </span><span class="n">_mask</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">CompanyName</span><span class="p">,</span>
-<span class="w">        </span><span class="n">person</span><span class="p">.</span><span class="n">Address</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">City</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">State</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Age</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Weight</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Decease</span><span class="p">);</span>
+<span class="w">       </span><span class="n">person</span><span class="p">.</span><span class="n">Address</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">City</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">State</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Age</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Weight</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Decease</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>mask</code> <code>_mask</code> Der Funktionskörper muss nur umgeschrieben werden, um die Mitgliedsvariable anstelle des veralteten Parameters zu verwenden.</p>
+<p>The body of the function only needs to be modified so that it uses the <code>_mask</code> member variable instead of the removed <code>mask</code> parameter.</p>
 </li>
 <li>
-<p><code>Anonymisieren_Altersbereich</code> <code>AgeAnonymizer</code> <code>Anonymize</code> In völliger Analogie zum vorherigen Schritt verschieben Sie die Operation in die Klasse und ändern ihre Signatur so, dass die übergeordnete abstrakte Funktion überschrieben wird:</p>
+<p>In a completely analogous way to the previous step, move the <code>Anonymize_AgeRange</code> method to the <code>AgeAnonymizer</code> class, and modify its signature so that it overrides the <code>Anonymize</code> abstract function in the base class:</p>
 <div class="highlight"><pre><span></span><code><span class="k">protected</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="nf">Anonymize</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>rangeSize</code> <code>_rangeSize</code> Der Funktionskörper muss nur umgeschrieben werden, um die Mitgliedsvariable anstelle des veralteten Parameters zu verwenden.</p>
+<p>The body of the function only needs to be modified so that it uses the <code>_rangeSize</code> member variable instead of the removed <code>rangeSize</code> parameter.</p>
 </li>
 <li>
-<p><code>AnonymizerBase</code> <code>Run</code> <code>if``else</code> <code>Anonymize</code> In der Funktion der Klasse können wir nun die Aufrufe in / durch einen einfachen abstrakten Funktionsaufruf ersetzen:</p>
+<p>In the <code>Run</code> function of the <code>AnonymizerBase</code> class, we can now replace the <code>Anonymize</code> calls in the <code>if</code>/<code>else</code> expression with a simple call to the abstract function.</p>
+<p>Replace:</p>
 <del class="critic block">
 <div class="highlight"><pre><span></span><code><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">;</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_anonymizerMode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">AnonymizerMode</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span>
@@ -2508,15 +2509,15 @@ Entscheidend ist, dass eine Klasse dann als erweiterbar gilt, wenn es möglich i
 <span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">NotSupportedException</span><span class="p">(</span><span class="s">&quot;The requested anonymization mode is not supported.&quot;</span><span class="p">);</span>
 </code></pre></div>
 </del>
-<p>stattdessen:</p>
+<p>with:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Anonymize</span><span class="p">(</span><span class="n">persons</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
 </code></pre></div>
 </li>
 </ol>
-<p>Einer unserer Verlängerungspunkte ist fertig.  <code>GetAnonymizerDescription</code> Es gibt aber noch eine weitere, die ebenfalls fallspezifisch ist. Die Umwandlung ist der vorherigen Reihe von Schritten sehr ähnlich:</p>
+<p>We have completed one of our extension points. However, there is still one remaining, the <code>GetAnonymizerDescription</code>, which is also case-dependent. Its transformation is very similar to the previous series of steps:</p>
 <ol>
 <li>
-<p><code>AnonymizerBase</code> <code>GetAnonymizerDescription</code> <code>NameMaskingAnonymizer</code> <code>override</code> <code>NameMaskingAnonymizer</code>Die Operation der Klasse wird nach , einschließlich des Schlüsselworts in der Signatur, kopiert, wobei nur die Logik für im Funktionskörper verbleibt:</p>
+<p>Copy the <code>GetAnonymizerDescription</code> method from the <code>AnonymizerBase</code> class to the <code>NameMaskingAnonymizer</code>, including the <code>override</code> keyword in the signature, keeping only the logic relevant to <code>NameMaskingAnonymizer</code> in the method body:</p>
 <div class="highlight"><pre><span></span><code><span class="k">protected</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetAnonymizerDescription</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;NameMasking anonymizer with mask {_mask}&quot;</span><span class="p">;</span>
@@ -2524,7 +2525,7 @@ Entscheidend ist, dass eine Klasse dann als erweiterbar gilt, wenn es möglich i
 </code></pre></div>
 </li>
 <li>
-<p><code>AnonymizerBase</code> <code>GetAnonymizerDescription</code> <code>AgeAnonymizer</code> <code>override</code> <code>AgeAnonymizer</code>Kopieren wir die Operation nach , einschließlich des Schlüsselworts in der Signatur, und lassen wir nur die Logik für im Funktionskörper:</p>
+<p>Copy the <code>GetAnonymizerDescription</code> method from <code>AnonymizerBase</code> to the <code>AgeAnonymizer</code>, including the <code>override</code> keyword in the signature, keeping only the logic relevant to <code>AgeAnonymizer</code> in the method body:</p>
 <div class="highlight"><pre><span></span><code><span class="k">protected</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetAnonymizerDescription</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;Age anonymizer with range size {_rangeSize}&quot;</span><span class="p">;</span>
@@ -2532,171 +2533,171 @@ Entscheidend ist, dass eine Klasse dann als erweiterbar gilt, wenn es möglich i
 </code></pre></div>
 </li>
 <li>
-<p><code>AnonymizerBase</code> <code>GetAnonymizerDescription</code> Die Frage ist, was man mit der Operation in .  <code>NameMaskingAnonymizer</code> Dies wird nicht abstrahiert, sondern in eine virtuelle Abhängigkeit umgewandelt, da wir hier ein sinnvolles Standardverhalten bereitstellen können: Wir geben einfach den Namen der Klasse zurück (der für die Klasse z. B. "NameMaskingAnonymizer" lauten würde).  <code>switch</code> Auf jeden Fall wird dadurch die starre Struktur beseitigt:</p>
+<p>The question is what to do with the <code>GetAnonymizerDescription</code> method in <code>AnonymizerBase</code>. We will make it a virtual method, not abstract, since we can provide a meaningful default behavior here: simply return the class name (which would be "NameMaskingAnonymizer" for the <code>NameMaskingAnonymizer</code> class, for example). With this, we also get rid of the rigid <code>switch</code> structure:</p>
 <div class="highlight"><pre><span></span><code><span class="k">protected</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetAnonymizerDescription</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nf">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="admonition note">
-<p class="admonition-title">Reflexion</p>
-<p><code>GetType()</code> <code>Type</code> Mit der vom Objektvorgänger geerbten Operation erhalten wir ein Objekt des Typs für unsere Klasse. Dies gehört zum Thema <strong>Reflexion</strong>, über das wir in einer Vorlesung am Ende des Semesters mehr erfahren werden.</p>
+<p class="admonition-title">Reflection</p>
+<p>The <code>GetType()</code> method, inherited from the <code>object</code> base class, returns a <code>Type</code> object for our class. This is part of <strong>reflection</strong>, a topic we will study in more detail in the lecture at the end of the semester.</p>
 </div>
 </li>
 </ol>
-<p><code>Programm.cs</code> <code>Main</code> <code>AnonymizerBase</code> Es bleibt nur noch eines zu tun: Je nach , versuchen wir nun, den Vorgänger zu replizieren (wegen der früheren Umbenennung). Stattdessen sollte es einer der beiden Abkömmlinge sein. Pl.:</p>
+<p>There is only one thing left: in the <code>Program.cs</code> <code>Main</code> method, we now try to instantiate the <code>AnonymizerBase</code> base class (due to the previous renaming). Instead, we should instantiate one of the two derived classes. For example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">NameMaskingAnonymizer</span><span class="w"> </span><span class="n">anonymizer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">(</span><span class="s">&quot;us-500.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;***&quot;</span><span class="p">);</span>
 <span class="n">anonymizer</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
 </code></pre></div>
-<p>Wir sind bereit. Probieren wir es aus, um ein besseres "Gefühl" dafür zu bekommen, wie Erweiterungspunkte wirklich funktionieren (aber wenn Sie während des Praktikums wenig Zeit haben, ist das nicht besonders wichtig, wir haben ähnliche Dinge im Zusammenhang mit C++/Java in früheren Semestern getan):</p>
+<p>We are done. Let's test it to better "feel" if the extension points truly work (but if we are short on time during the lab, this is not particularly important, as we've done similar things in previous semesters in C++/Java context):</p>
 <ul>
-<li>In Visual Studio sollte das Projekt <em>TemplateMethod-0-Begin</em> das Startprojekt sein, wenn es nicht bereits eingestellt ist.</li>
-<li><code>AnonymizerBase</code> <code>var person = Anonymize(persons[i]);</code> Setzen Sie einen Haltepunkt in der Zeile der Klasse.</li>
-<li>Wenn der Debugger hier anhält, während er läuft, ++verwenden Sie f11++zur Eingabe.</li>
-<li><code>AgeAnonymizer</code> Wir erfahren, dass die Operation des Nachkommens aufgerufen wird.</li>
+<li>In Visual Studio, set the <em>TemplateMethod-0-Begin</em> project as the startup project if we haven't already.</li>
+<li>Set a breakpoint on the <code>var person = Anonymize(persons[i]);</code> line in the <code>AnonymizerBase</code> class.</li>
+<li>When the debugger stops at this point during runtime, press <code>F11</code> to step into it.</li>
+<li>You will observe that the <code>AgeAnonymizer</code> subclass method is called.</li>
 </ul>
-<p>Wir können einen Blick auf das Klassendiagramm der Lösung werfen:</p>
+<p>Let's take a look at the solution's class diagram:</p>
 <details>
 <summary>Template Method based solution class diagram *</summary>
-<p><a class="glightbox" href="bilder/vorlage-methode.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Template Method based solution class diagram" src="bilder/vorlage-methode.png" /></a></p>
+<p><a class="glightbox" href="../images/template-method.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Template Method based solution class diagram" src="../images/template-method.png" /></a></p>
 </details>
 <div class="admonition note">
-<p class="admonition-title"><code>3-TemplateMethod/TemplateMethod-1</code> Die Lösung für unsere bisherige Arbeit finden Sie im Projekt, falls Sie sie benötigen.</p>
+<p class="admonition-title">The solution of our work can be found in the <code>3-TemplateMethod/TemplateMethod-1</code> project, in case you need it.</p>
 </div>
 <details>
-<summary>Das Muster heißt Schablonenmethode</summary>
-<p>, weil es sich - am Beispiel unserer Anwendung - um "Schablonenmethoden" handelt, die eine schablonenartige Logik, einen Rahmen, definieren, in dem bestimmte Schritte nicht gebunden sind.  <code>Run</code> <code>PrintSummary</code> Ihr "Code" wird abstrakten/virtuellen Funktionen überlassen, und ihre Implementierung wird von den abgeleiteten Klassen definiert.</p>
+<summary>Why is the pattern called Template Method? *</summary>
+<p>The pattern is named Template Method because, using our application as an example, the <code>Run</code> and <code>PrintSummary</code> are "template methods" that define a skeleton logic, a framework, in which certain steps are left undefined. We leave the "code" for these steps to abstract/virtual functions, and the derived classes define their implementation.</p>
 </details>
-<h3 id="bewertung-der-losung_2">Bewertung der Lösung<a class="headerlink" href="#bewertung-der-losung_2" title="Permanent link">&para;</a></h3>
-<p>Wir überprüfen die Lösung, um zu sehen, ob sie unsere Ziele erreicht:</p>
+<h3 id="evaluation-of-the-solution_2">Evaluation of the solution<a class="headerlink" href="#evaluation-of-the-solution_2" title="Permanent link">&para;</a></h3>
+<p>Let's check if the solution meets our goals:</p>
 <ul>
-<li><code>AnonymizerBase</code> Ist eine wiederverwendbare Klasse geworden.</li>
-<li>Wenn in Zukunft eine neue Anonymisierungslogik benötigt wird, leiten wir sie einfach ab. Es handelt sich nicht um eine Änderung, sondern um eine Verlängerung.</li>
-<li>Damit ist das OPEN/CLOSED-Prinzip erfüllt, d.h. wir können die Logik an den beiden im Ahnen angegebenen Stellen anpassen und erweitern, ohne den Code zu verändern.</li>
+<li>The <code>AnonymizerBase</code> class has become more reusable.</li>
+<li>If we need a new anonymization logic in the future, we simply derive from it. This is an extension, not a modification.</li>
+<li>Accordingly, the OPEN/CLOSED principle is fulfilled, meaning we can customize and extend the logic at the two points defined in the base class without modifying its code.</li>
 </ul>
 <div class="admonition note">
-<p class="admonition-title">Soll unsere Klasse an allen Stellen erweiterbar sein?</p>
-<p><code>AnonymizerBase</code> Beachten Sie, dass wir nicht alle Operationen virtuell gemacht haben (und somit die Klasse an vielen Stellen erweitern). Wir haben dies nur dort getan, wo wir glauben, dass die Logik in Zukunft erweitert werden muss.</p>
+<p class="admonition-title">Should every method in our class be extensible?</p>
+<p>Note that we didn't make every method in <code>AnonymizerBase</code> virtual (thus not making the class extensible at every point). We only made them virtual where we believe future logic extension might be necessary.</p>
 </div>
-<h2 id="5-megoldas-3-templatemethodtemplatemethod-2-progress">5. Megoldás (3-TemplateMethod/TemplateMethod-2-Progress)<a class="headerlink" href="#5-megoldas-3-templatemethodtemplatemethod-2-progress" title="Permanent link">&para;</a></h2>
-<p>T.f.h ein neuer - relativ einfacher - Bedarf entsteht:</p>
+<h2 id="solution-5-3-templatemethodtemplatemethod-2-progress">Solution 5 (3-TemplateMethod/TemplateMethod-2-Progress)<a class="headerlink" href="#solution-5-3-templatemethodtemplatemethod-2-progress" title="Permanent link">&para;</a></h2>
+<p>Let's say a new, relatively simple requirement arises:</p>
 <ul>
 <li>
-<p><code>NameMaskinAnonimizer</code> Für , bleibt die bisherige einfache Fortschrittsanzeige erhalten (nach jeder Zeile wird die Anzahl der erreichten Zeilen ausgegeben),</p>
+<p>For the <code>NameMaskingAnonymizer</code>, we keep the previous simple progress display (after every row, we print out which row we are currently processing),</p>
 <details class="note">
-<summary>Illustration des einfachen Fortschritts</summary>
-<p><a class="glightbox" href="../images/progress-simple.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Illustration des einfachen Fortschritts" src="../images/progress-simple.png" /></a></p>
+<summary>Simple progress illustration</summary>
+<p><a class="glightbox" href="../images/progress-simple.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Simple progress illustration" src="../images/progress-simple.png" /></a></p>
 </details>
 </li>
 <li>
-<p><code>AgeAnonymizer</code> aber für , sollte die Fortschrittsanzeige anders sein: Sie sollte - nach jeder Zeile aktualisiert - den Prozentsatz der Verarbeitung anzeigen.</p>
+<p>However, for the <code>AgeAnonymizer</code>, the progress display needs to be different: we need to show, updated after every row, the percentage of processing completed.</p>
 <details class="note">
-<summary>Darstellung des prozentualen Fortschritts</summary>
-<p><a class="glightbox" href="images/fortschritt-prozent.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Darstellung des prozentualen Fortschritts" src="images/fortschritt-prozent.gif" /></a></p>
-<p>(Da wir derzeit nur 500 Datenzeilen haben, werden wir dies am Ende unserer Lösung nicht sehen, es wird in kürzester Zeit auf 100 % steigen)</p>
+<summary>Percentage progress illustration</summary>
+<p><a class="glightbox" href="../images/progress-percent.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Percentage progress illustration" src="../images/progress-percent.gif" /></a></p>
+<p>(Since we currently have few data (only 500 rows), we won’t see this as expected at the end of our solution, it will jump to 100% in no time)</p>
 </details>
 </li>
 </ul>
-<p><code>Laufen lassen</code> Die Lösung ist sehr einfach: Wir verwenden das Muster der Schablonenmethode in größerem Umfang in der Operation, führen einen Erweiterungspunkt in den Fortschrittsausdruck ein und überlassen die Implementierung einer virtuellen Funktion.</p>
-<p>Springen wir direkt zur fertigen Lösung*(* Projekt*3-TemplateMethod/TemplateMethod-2-Progress* ):</p>
+<p>The solution is very simple: by applying the Template Method pattern more broadly in the <code>Run</code> method, we introduce an extension point for the progress display, and delegate the implementation to a virtual function.</p>
+<p>Let's jump straight to the completed solution (<em>3-TemplateMethod/TemplateMethod-2-Progress</em> project):</p>
 <ul>
-<li><code>AnonymizerBase</code> <code>PrintProgress</code> neue virtuelle Funktion in der Klasse (druckt standardmäßig nichts aus)</li>
-<li><code>Run</code>-bei diesem Gespräch</li>
-<li><code>NameMaskingAnonymizer</code>- <code>NameMaskingAnonymizer</code>implementierung (Override) in und</li>
+<li>In the <code>AnonymizerBase</code> class, a new <code>PrintProgress</code> virtual function (by default, it doesn't print anything)</li>
+<li>In <code>Run</code>, a call to this function</li>
+<li>Implementations (override) in <code>NameMaskingAnonymizer</code> and <code>AgeAnonymizer</code> as needed</li>
 </ul>
-<p>Bislang gibt es keine besonderen Lehren, die man ziehen könnte, aber im nächsten Schritt wird es welche geben.</p>
-<h2 id="6-losung-3-templatemethodtemplatemethod-3-progressmultiple">6. Lösung (3-TemplateMethod/TemplateMethod-3-ProgressMultiple)<a class="headerlink" href="#6-losung-3-templatemethodtemplatemethod-3-progressmultiple" title="Permanent link">&para;</a></h2>
-<p>Es ist ein neuer - und völlig logischer - Bedarf entstanden: In Zukunft kann jeder Anonymisierungsalgorithmus mit jeder Fortschrittsdarstellung verwendet werden. Dies bedeutet derzeit vier Kreuzkombinationen:</p>
+<p>Currently, there is no significant learning to be gained from this, but in the next step, there will be.</p>
+<h2 id="solution-6-3-templatemethodtemplatemethod-3-progressmultiple">Solution 6 (3-TemplateMethod/TemplateMethod-3-ProgressMultiple)<a class="headerlink" href="#solution-6-3-templatemethodtemplatemethod-3-progressmultiple" title="Permanent link">&para;</a></h2>
+<p>A new - and entirely logical - requirement has emerged: in the future, any anonymization algorithm should be usable with any progress display. Currently, this means four cross-combinations:</p>
 <table>
 <thead>
 <tr>
-<th>Anonym</th>
+<th>Anonymizer</th>
 <th>Progress</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Namensanonymisierer</td>
-<td>Einfacher Fortschritt</td>
+<td>Name anonymizer</td>
+<td>Simple progress</td>
 </tr>
 <tr>
-<td>Namensanonymisierer</td>
-<td>Prozentualer Fortschritt</td>
+<td>Name anonymizer</td>
+<td>Percentage progress</td>
 </tr>
 <tr>
-<td>Altersanonymisierung</td>
-<td>Einfacher Fortschritt</td>
+<td>Age anonymizer</td>
+<td>Simple progress</td>
 </tr>
 <tr>
-<td>Altersanonymisierung</td>
-<td>Prozentualer Fortschritt</td>
+<td>Age anonymizer</td>
+<td>Percentage progress</td>
 </tr>
 </tbody>
 </table>
-<p>Springen Sie zur fertigen Lösung*(* Projekt*3-TemplateMethod/TemplateMethod-3-ProgressMultiple* ).  <code>Haupt.cd</code> Öffnen Sie statt des Codes das Klassendiagramm im Projekt und überprüfen Sie die Lösung auf der Grundlage dieses Diagramms (oder Sie können das Diagramm unten im Leitfaden sehen).</p>
-<details class="klassendiagramm">
-<summary>Template Method based solution (two aspects)</summary>
-<p><a class="glightbox" href="../images/template-method-progress-multiple.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Klassendiagramm &quot;Template Method based solution (two aspects)" src="../images/template-method-progress-multiple.png" /></a></p>
+<p>Let's jump to the completed solution (<em>3-TemplateMethod/TemplateMethod-3-ProgressMultiple</em> project). Instead of code, open the <code>Main.cd</code> class diagram in the project, and let's review the solution based on that (or we can view the diagram below in the guide).</p>
+<details>
+<summary>Template Method-based solution (two aspects) class diagram</summary>
+<p><a class="glightbox" href="../images/template-method-progress-multiple.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Template Method-based solution (two aspects) class diagram" src="../images/template-method-progress-multiple.png" /></a></p>
 </details>
-<p>Man merkt, dass etwas "nicht stimmt", denn jede Kreuzung musste einen eigenen Nachkommen hervorbringen. Es gibt sogar zusätzliche Zwischenklassen in der Hierarchie, um Code-Duplizierung zu vermeiden. Darüber hinaus:</p>
+<p>It’s noticeable that something is "wrong" here, as we had to create a separate subclass for each cross-combination. To reduce code duplication, additional intermediate classes are also present in the hierarchy. Moreover:</p>
 <ul>
-<li>Wenn wir in Zukunft einen neuen Anonymisierungsalgorithmus einführen, sollten wir (mindestens) so viele neue Klassen schreiben, wie wir Fortschrittstypen unterstützen.</li>
-<li>Wenn in Zukunft eine neue Verlaufsart eingeführt wird, sollten (mindestens) so viele neue Klassen geschrieben werden, wie Anonymisierungsarten unterstützt werden.</li>
+<li>If a new anonymization algorithm is introduced in the future, we will need to write at least as many new classes as there are progress types supported.</li>
+<li>If a new progress type is introduced in the future, we will need to write at least as many new classes as there are anonymizer types supported.</li>
 </ul>
-<p>Was hat das Problem verursacht? Die <strong>Notwendigkeit, das Verhalten unserer Klasse um mehrere Aspekte/Dimensionen zu erweitern (in unserem Beispiel Anonymisierung und Fortschritt) und diese in vielen Kreuzkombinationen zu unterstützen</strong>. Müssten wir dies unter neuen Gesichtspunkten tun (z. B. wie man scannt, wie man Output erzeugt), würde das Problem exponentiell "explodieren". In solchen Fällen ist das Entwurfsmuster Template Method nicht anwendbar.</p>
-<h2 id="7-losung-4-strategiestrategie-1">7. Lösung (4-Strategie/Strategie-1)<a class="headerlink" href="#7-losung-4-strategiestrategie-1" title="Permanent link">&para;</a></h2>
-<p>In diesem Schritt werden wir das Entwurfsmuster <strong>Strategy</strong> verwenden, um unsere ursprüngliche Lösung an den erforderlichen Stellen zu erweitern. In der Stichprobe erfolgt die Trennung zwischen "unveränderten/wiederverwendbaren" und "sich ändernden" Teilen nach folgenden Grundsätzen:</p>
+<p>What caused the problem? The fact that <strong>the behavior of our class needs to be extendable along multiple dimensions/aspects (in our case, anonymization and progress), and these need to be supported in many cross-combinations</strong>. If we had to add more aspects (e.g., reading methods, output generation), the problem would grow exponentially. In such cases, the Template Method design pattern is not applicable.</p>
+<h2 id="solution-7-4-strategystrategy-1">Solution 7 (4-Strategy/Strategy-1)<a class="headerlink" href="#solution-7-4-strategystrategy-1" title="Permanent link">&para;</a></h2>
+<p>In this step, we will use the <strong>Strategy</strong> design pattern to make our initial solution extendable at the necessary points. The pattern separates the "unchanging/reusable" and "changing" parts based on the following principles:</p>
 <ul>
-<li>Die "gemeinsamen/ungemeinsamen" Teile werden in einer Klasse zusammengefasst (dieses Mal jedoch nicht als "Elternklasse").</li>
-<li>Im Gegensatz zur Template-Methode verwenden wir Komposition (Containment) statt Vererbung: Wir verlassen uns auf andere Objekte, die als Schnittstellen enthalten sind, um das Verhalten an Erweiterungspunkten zu implementieren (anstelle von abstrakten/virtuellen Funktionen).</li>
-<li>Wir tun dies unabhängig für jeden Aspekt/Dimension des Klassenverhaltens, den wir austauschbar/erweiterbar machen wollen. Wie wir sehen werden, wird dadurch die kombinatorische Explosion vermieden, die wir im vorherigen Kapitel gesehen haben.</li>
+<li>The "common/unchanging" parts are placed in a specific class (but this will not be a "base class").</li>
+<li>Unlike Template Method, we will use composition (containment) rather than inheritance: we delegate the implementation of behavior in the extension points to other objects contained as interfaces (rather than abstract/virtual functions).</li>
+<li>We do this for every aspect/dimension of the class behavior that we want to make replaceable/extensible, independently. As we will see, this avoids the combinatorial explosion we experienced in the previous chapter.</li>
 </ul>
-<p>Dies ist in der Praxis viel einfacher, als es sich in der Schrift anfühlt (wir haben es in unseren früheren Studien schon einige Male verwendet). Um das zu verstehen, betrachten wir unser Beispiel.</p>
-<p>Als Nächstes wollen wir das Klassendiagramm betrachten, das die strategiebasierte Lösung veranschaulicht (aufbauend auf der Erklärung, die dem Diagramm folgt).</p>
+<p>This is much simpler in practice than it may seem when described (we have already used it several times in our previous studies). Let's understand it in the context of our example.</p>
+<p>Below, let's take a look at the class diagram illustrating the Strategy-based solution (building on the explanation that follows the diagram).</p>
 <details class="info">
-<summary>Klassendiagramm der strategiebasierten Lösung</summary>
-<p>Das folgende UML-Klassendiagramm veranschaulicht die strategiebasierte Lösung und konzentriert sich auf das Wesentliche:</p>
-<p><a class="glightbox" href="imagesstrategy-goal.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Strategy UML osztálydiagram cél" src="imagesstrategy-goal.png" /></a></p>
+<summary>Strategy-based solution class diagram</summary>
+<p>The following UML class diagram illustrates the Strategy-based solution, focusing on the key aspects:
+<a class="glightbox" href="../images/strategy-goal.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Strategy UML class diagram goal" src="../images/strategy-goal.png" /></a></p>
 </details>
-<p>Der erste Schritt bei der Verwendung des Strategiemusters besteht darin, zu bestimmen, <strong>wie viele verschiedene Aspekte des Klassenverhaltens</strong> Sie erweiterbar machen wollen. In unserem Beispiel gibt es zwei davon - zumindest im Moment:</p>
+<p>The first step in applying the Strategy pattern is to determine <strong>how many different aspects of the class behavior</strong> we want to make extendable. In our example, at least for now, there are two:</p>
 <ul>
-<li>Anonymisierungsbezogenes Verhalten mit zwei Aktionen:<ul>
-<li>Anonymisierungslogik</li>
-<li>Definition der Beschreibung der Anonymisierungslogik (Generierung eines Beschreibungsstrings)</li>
+<li>Behavior related to anonymization, which consists of two operations:<ul>
+<li>Anonymization logic</li>
+<li>Defining the description of the anonymization logic (producing the description string)</li>
 </ul>
 </li>
-<li>Fortschreitende Behandlung mit einer Aktion:<ul>
-<li>Fortschritt zeigen</li>
+<li>Progress handling, which consists of one operation:<ul>
+<li>Displaying progress</li>
 </ul>
 </li>
 </ul>
-<p>Der schwierige Teil ist geschafft, von nun an können Sie im Wesentlichen mechanisch nach dem Strategiemuster arbeiten:</p>
+<p>The hard part is done, from here on we can basically work mechanically following the Strategy pattern:</p>
 <ol>
-<li>Für jeden der oben genannten Aspekte sollte eine Strategie-Schnittstelle mit den oben definierten Operationen eingeführt werden, und die entsprechenden Implementierungen sollten vorbereitet werden.</li>
-<li><code>Anonym</code> In der Klasse sollte eine Mitgliedsvariable der Strategie-Schnittstelle eingeführt werden, und die aktuell konfigurierten Strategie-Implementierungsobjekte sollten in den Erweiterungspunkten über diese Mitgliedsvariablen verwendet werden.</li>
+<li>For each of the above aspects, we need to introduce a strategy interface with the operations defined above, and create the corresponding implementations.</li>
+<li>In the <code>Anonymizer</code> class, we need to introduce a strategy interface member variable, and in the extension points, use the currently set strategy implementation objects through these member variables.</li>
 </ol>
-<p>Diese Elemente sind in dem obigen Klassendiagramm dargestellt. Kommen wir nun zum Code. Unsere Startumgebung befindet sich im Ordner "4-Strategy" im Projekt "Strategy-0-Begin", lassen Sie uns darin arbeiten. Dies ist dieselbe Lösung mit enum, die als Ausgangspunkt für das Muster Template Method verwendet wurde. </p>
-<h3 id="anonymisierungsstrategie">Anonymisierungsstrategie<a class="headerlink" href="#anonymisierungsstrategie" title="Permanent link">&para;</a></h3>
-<p>Wir beginnen mit der <strong>Anonymisierungsstrategie/dem Anonymisierungsaspekt</strong>. Implementieren Sie die entsprechende Schnittstelle:</p>
+<p>These elements are already present in the class diagram above. Now, let's move on to the code. Our starting environment is in the "Strategy-0-Begin" project in the "4-Strategy" folder, let's work in it. This is the same solution that uses enums, which we used as a starting point for the Template Method pattern as well.</p>
+<h3 id="anonymization-strategy">Anonymization strategy<a class="headerlink" href="#anonymization-strategy" title="Permanent link">&para;</a></h3>
+<p>We start with handling the <strong>anonymization strategy/aspect</strong>. Let's introduce the corresponding interface:</p>
 <ol>
-<li><code>AnonymizerAlgorithms</code> Erstellen Sie im Projekt einen Ordner mit dem Namen (klicken Sie mit der rechten Maustaste auf das Projekt "Strategy-0-Begin" und dann auf das Menü " <em>Add/New Folder</em> "). Legen Sie in den nächsten Schritten jede Schnittstelle und jede Klasse in eine eigene Quelldatei mit eigenem Namen, wie üblich!</li>
+<li>Create a folder named <code>AnonymizerAlgorithms</code> in the project (right-click on the "Strategy-0-Begin" project, then select <em>Add/New Folder</em> from the menu). In the following steps, let's place each interface and class into a separate source file, according to its name.</li>
 <li>
-<p><code>IAnonymizerAlgorithmus</code> Fügen Sie in diesem Ordner eine Schnittstelle mit dem folgenden Code hinzu:</p>
+<p>Add in this folder an <code>IAnonymizerAlgorithm</code> interface with the following code:</p>
 <div class="highlight"><span class="filename">IAnonymizerAlgorithm.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IAnonymizerAlgorithm</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">Person</span><span class="w"> </span><span class="nf">Anonymize</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">);</span>
 <span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetAnonymizerDescription</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>GetAnonymizerDescription</code> Wir können auch für die Operation beobachten, dass wir in modernem C#, wenn wir wollen, Standardimplementierungen für jede Schnittstellenoperation geben können!</p>
+<p>We can also observe that for the <code>GetAnonymizerDescription</code> method, in modern C#, we can provide default implementations for interface methods if we wish.</p>
 </li>
 </ol>
-<p>Wir bauen jetzt eine Implementierung dieser Schnittstelle für die Anonymisierung von <strong>Namen</strong> (d.h. wir bauen eine Strategieimplementierung). </p>
+<p>Now let's implement the <strong>name</strong> anonymization strategy (i.e., a strategy implementation for name anonymization).</p>
 <ol>
-<li><code>NameMaskingAnonymizerAlgorithm</code> Fügen Sie demselben Ordner eine Klasse hinzu.</li>
-<li><code>Anonymizer</code> <code>NameMaskingAnonymizerAlgorithm</code> <code>_mask</code> Verschieben Sie in der Klasse die entsprechende Mitgliedsvariable nach :</li>
+<li>Create a class <code>NameMaskingAnonymizerAlgorithm</code> in the same folder.</li>
+<li>Move the <code>_mask</code> field from the <code>Anonymizer</code> class to the <code>NameMaskingAnonymizerAlgorithm</code>.</li>
 <li>
-<p><code>NameMaskingAnonymizerAlgorithm</code>Fügen Sie den folgenden Konstruktor zu :</p>
+<p>Add the following constructor to <code>NameMaskingAnonymizerAlgorithm</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">NameMaskingAnonymizerAlgorithm</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">mask</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">_mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mask</span><span class="p">;</span>
@@ -2704,20 +2705,20 @@ Entscheidend ist, dass eine Klasse dann als erweiterbar gilt, wenn es möglich i
 </code></pre></div>
 </li>
 <li>
-<p><code>IAnonymizerAlgorithmus</code> Machen Sie die Schnittstelle verfügbar.  <code>: IAnonymizerAlgorithmus</code> Nachdem Sie die Schnittstelle nach dem Klassennamen eingegeben haben, empfiehlt es sich, das Skelett der Operationen mit Visual Studio zu generieren: Setzen Sie den Cursor auf den Schnittstellennamen (klicken Sie ihn im Quellcode an), verwenden Sie die Tastenkombination 'ctrl' + '.', und wählen Sie dann "Schnittstelle implementieren" aus dem erscheinenden Menü.  <code>GetAnonymizerDescription</code> <code>Anonymize</code> Hinweis: Da es eine Standardimplementierung für die Operation in der Schnittstelle gibt, wird nur die Operation generiert, aber das ist für uns erst einmal in Ordnung. </p>
+<p>Implement the <code>IAnonymizerAlgorithm</code> interface. After adding <code>: IAnonymizerAlgorithm</code> to the class name, it is advisable to use Visual Studio's code generation feature for the method skeletons: place the cursor on the interface name (click on it in the source code), press 'ctrl' + '.' and from the menu, choose "Implement interface". Note: since there is a default implementation for <code>GetAnonymizerDescription</code> in the interface, only the <code>Anonymize</code> method will be generated, which is fine for now.</p>
 </li>
-<li><code>Anonymizer</code> <code>Anonymize_MaskName</code> <code>NameMaskingAnonymizerAlgorithm``Anonymize</code>Verschieben Sie die Wurzel der Operation von der Klasse nach .  <code>mask</code> <code>_mask</code> Der Funktionskörper muss nur umgeschrieben werden, um die Mitgliedsvariable anstelle des nicht mehr vorhandenen Parameters zu verwenden.  <code>Anonymize</code> <code>Anonymize_MaskName</code>Die Klasse wird gelöscht.</li>
+<li>Move the body of the <code>Anonymize_MaskName</code> method from the <code>Anonymizer</code> class to the <code>Anonymize</code> method in <code>NameMaskingAnonymizerAlgorithm</code>. The only change in the method body is to use the <code>_mask</code> field instead of the now non-existent <code>mask</code> parameter. Also, delete the <code>Anonymize_MaskName</code> method in the <code>Anonymizer</code> class.</li>
 <li>
-<p><code>GetAnonymizerDescription</code>Wir wenden uns nun der Implementierung des Betriebs der Strategie-Schnittstelle zu.  <code>Anonymizer</code> <code>GetAnonymizerDescription</code> <code>NameMaskingAnonymizerAlgorithm</code>Kopieren Sie die Operation der Klasse nach , wobei Sie nur die Logik der Namensanonymisierung im Funktionskörper belassen und die Operation öffentlich machen:</p>
+<p>Finally, let's implement the <code>GetAnonymizerDescription</code> method of the strategy interface. Copy the <code>GetAnonymizerDescription</code> method from the <code>Anonymizer</code> class to the <code>NameMaskingAnonymizerAlgorithm</code>, and keep only the logic relevant to the name anonymizer, making the method public:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetAnonymizerDescription</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;NameMasking anonymizer with mask {_mask}&quot;</span><span class="p">;</span>
-<span class="p">}</span><span class="w">  </span>
+<span class="p">}</span>
 </code></pre></div>
 </li>
 <li>
 <details class="example">
-<summary>Damit ist unsere Strategieimplementierung für die Namensanonymisierung abgeschlossen, der vollständige Code lautet wie folgt</summary>
+<summary>Our strategy implementation for name anonymization is completed, its full code is the following:</summary>
 <div class="highlight"><span class="filename">NameMaskingAnonymizerAlgorithm.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">NameMaskingAnonymizerAlgorithm</span><span class="p">:</span><span class="w"> </span><span class="n">IAnonymizerAlgorithm</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">_mask</span><span class="p">;</span>
@@ -2742,12 +2743,12 @@ Entscheidend ist, dass eine Klasse dann als erweiterbar gilt, wenn es möglich i
 </details>
 </li>
 </ol>
-<p><code>IAnonymizerAlgorithm</code> Im nächsten Schritt werden wir eine Implementierung unserer Strategie-Schnittstelle zur <strong>Altersanonymisierung</strong> vorbereiten.</p>
+<p>In the next step, we will create the implementation of our <code>IAnonymizerAlgorithm</code> strategy interface related to <strong>age</strong> anonymization.</p>
 <ol>
-<li><code>AgeAnonymizerAlgorithm</code> Fügen Sie im gleichen Ordner eine Klasse hinzu (AnonymizerAlgorithms).</li>
-<li><code>Anonymizer</code> <code>AgeAnonymizerAlgorithm</code> <code>_rangeSize</code> Verschieben Sie in der Klasse die entsprechende Mitgliedsvariable nach :</li>
+<li>Add an <code>AgeAnonymizerAlgorithm</code> class in the same folder (AnonymizerAlgorithms).</li>
+<li>Move the relevant <code>_rangeSize</code> field from the <code>Anonymizer</code> class into <code>AgeAnonymizerAlgorithm</code>.</li>
 <li>
-<p><code>AgeAnonymizerAlgorithm</code>Fügen Sie den folgenden Konstruktor zu :</p>
+<p>Add the following constructor to <code>AgeAnonymizerAlgorithm</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">AgeAnonymizerAlgorithm</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">rangeSize</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">_rangeSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rangeSize</span><span class="p">;</span>
@@ -2755,11 +2756,13 @@ Entscheidend ist, dass eine Klasse dann als erweiterbar gilt, wenn es möglich i
 </code></pre></div>
 </li>
 <li>
-<p><code>IAnonymizerAlgorithm</code> Machen Sie die Schnittstelle verfügbar.  <code>: IAnonymizerAlgorithm</code> <code>Anonymize</code> Nachdem Sie die Schnittstelle nach dem Klassennamen eingegeben haben, empfiehlt es sich auch, das Skelett der Operation mit Visual Studio auf dieselbe Weise wie zuvor zu generieren. </p>
+<p>Implement the <code>IAnonymizerAlgorithm</code> interface. After adding <code>: IAnonymizerAlgorithm</code> after the class name, it's again recommended to generate the method skeletons for <code>Anonymize</code> using Visual Studio, similar to the previous case.</p>
 </li>
-<li><code>Anonymizer</code> <code>Anonymize_AgeRange</code> <code>AgeAnonymizerAlgorithm``Anonymize</code>Verschieben Sie die Wurzel der Operation von der Klasse nach .  <code>rangeSize</code> <code>_rangeSize</code> Der Funktionskörper muss nur umgeschrieben werden, um die Mitgliedsvariable anstelle des nicht mehr vorhandenen Parameters zu verwenden.  <code>Anonymize</code> <code>Anonymize_AgeRange</code>Die Klasse wird gelöscht.</li>
 <li>
-<p><code>GetAnonymizerDescription</code>Wir wenden uns nun der Implementierung des Betriebs der Strategie-Schnittstelle zu.  <code>Anonymizer</code> <code>GetAnonymizerDescription</code> <code>AgeAnonymizerAlgorithm</code>Kopieren Sie die Operation der Klasse nach , wobei Sie nur die Logik der Altersanonymisierung im Funktionskörper beibehalten und die Operation öffentlich machen:</p>
+<p>Move the body of the <code>Anonymize_AgeRange</code> method from the <code>Anonymizer</code> class into the <code>Anonymize</code> method of <code>AgeAnonymizerAlgorithm</code>. In the method body, simply replace the now-nonexistent <code>rangeSize</code> parameter with the <code>_rangeSize</code> field. Afterwards, delete the <code>Anonymize_AgeRange</code> method from the <code>Anonymizer</code> class.</p>
+</li>
+<li>
+<p>Now implement the <code>GetAnonymizerDescription</code> method from the strategy interface. Copy the implementation of <code>GetAnonymizerDescription</code> from the <code>Anonymizer</code> class into <code>AgeAnonymizerAlgorithm</code>, but only keep the logic related to age anonymization, and make the method public:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetAnonymizerDescription</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;Age anonymizer with range size {_rangeSize}&quot;</span><span class="p">;</span>
@@ -2768,7 +2771,7 @@ Entscheidend ist, dass eine Klasse dann als erweiterbar gilt, wenn es möglich i
 </li>
 <li>
 <details class="example">
-<summary>Ezzel a kor anonimizáláshoz tartozó strategy implementációnk elkészült, a teljes kódja a következő lett</summary>
+<summary>Our strategy implementation for age anonymization is completed, its full code is the following:</summary>
 <div class="highlight"><span class="filename">AgeAnonymizerAlgorithm.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">AgeAnonymizerAlgorithm</span><span class="p">:</span><span class="w"> </span><span class="n">IAnonymizerAlgorithm</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">_rangeSize</span><span class="p">;</span>
@@ -2780,9 +2783,9 @@ Entscheidend ist, dass eine Klasse dann als erweiterbar gilt, wenn es möglich i
 
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="nf">Anonymize</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// This is whole number integer arithmetics, e.g for 55 / 20 we get 2</span>
+<span class="w">        </span><span class="c1">// This is whole number integer arithmetic, e.g. for 55 / 20 we get 2</span>
 <span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">rangeIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">person</span><span class="p">.</span><span class="n">Age</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">_rangeSize</span><span class="p">;</span>
-<span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="n">newAge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">$&quot;{rangeIndex * _rangeSize}..{(rangeIndex + 1) * _rangeSize}&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="n">newAge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">$&quot;{rangeIndex * _rangeSize}..   {(rangeIndex + 1) * _rangeSize}&quot;</span><span class="p">;</span>
 
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">Person</span><span class="p">(</span><span class="n">person</span><span class="p">.</span><span class="n">FirstName</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">LastName</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">CompanyName</span><span class="p">,</span>
 <span class="w">            </span><span class="n">person</span><span class="p">.</span><span class="n">Address</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">City</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">State</span><span class="p">,</span><span class="w"> </span><span class="n">newAge</span><span class="p">,</span>
@@ -2798,15 +2801,17 @@ Entscheidend ist, dass eine Klasse dann als erweiterbar gilt, wenn es möglich i
 </details>
 </li>
 </ol>
-<p>warning<img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> Beachten Sie, dass die Schnittstelle und ihre Implementierungen sich nur mit der Anonymisierung befassen und keine andere Logik (z.B. Fortschrittsverarbeitung) involviert ist!</p>
-<h3 id="strategie-fur-den-fortschritt">Strategie für den Fortschritt<a class="headerlink" href="#strategie-fur-den-fortschritt" title="Permanent link">&para;</a></h3>
-<p>Im nächsten Schritt stellen wir die Schnittstelle und die Implementierungen <strong>für das Fortschrittsmanagement</strong> vor:</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> Make sure to note that the interface and its implementations deal exclusively with <strong>anonymization logic</strong> —  no other logic (e.g., progress handling) is included here!</p>
+<h3 id="progress-strategy">Progress strategy<a class="headerlink" href="#progress-strategy" title="Permanent link">&para;</a></h3>
+<p>In the next step, let’s introduce the interface and implementations related to <strong>progress handling</strong>:</p>
 <ol>
-<li><code>Progresses</code> Erstellen Sie im Projekt einen Ordner mit dem Namen . In den nächsten Schritten legen Sie jede Schnittstelle und Klasse wie üblich in einer eigenen Quelldatei mit eigenem Namen ab.</li>
 <li>
-<p><code>IProgress</code> Fügen Sie in diesem Ordner eine Schnittstelle mit dem folgenden Code hinzu:</p>
+<p>Create a folder named <code>Progresses</code> in the project. In the next steps, place each interface and class into a separate source file, named accordingly, as usual.</p>
+</li>
+<li>
+<p>Add an <code>IProgress</code> interface in this folder with the following code:</p>
 <details class="example">
-<summary>Lösung</summary>
+<summary>Solution</summary>
 <div class="highlight"><span class="filename">IProgress.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IProgress</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Report</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">);</span>
@@ -2815,10 +2820,10 @@ Entscheidend ist, dass eine Klasse dann als erweiterbar gilt, wenn es möglich i
 </details>
 </li>
 <li>
-<p>Fügen Sie die Implementierung dieser Schnittstelle für einfache Fortschritte in denselben Ordner ein.  <code>Anonymizer</code> <code>PrintProgress</code> Die Implementierung ist von der Operation unserer Klasse "abgeleitet":</p>
+<p>Add the simple progress implementaion of this interface in the same folder. The implementation is "derived" from the <code>PrintProgress</code> method in the <code>Anonymizer</code> class:</p>
 <details class="example">
-<summary>Lösung</summary>
-<div class="highlight"><span class="filename">SimpleProgress.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SimpleProgress</span><span class="p">:</span><span class="w"> </span><span class="n">IProgress</span>
+<summary>Solution</summary>
+<div class="highlight"><span class="filename">SimpleProgress.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SimpleProgress</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IProgress</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Report</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
@@ -2829,16 +2834,16 @@ Entscheidend ist, dass eine Klasse dann als erweiterbar gilt, wenn es möglich i
 </details>
 </li>
 <li>
-<p>Nehmen Sie die Implementierung dieser Schnittstelle für den prozentualen Fortschritt in denselben Ordner auf. Wir wollen uns nicht mit der Auslegung des Gesetzes befassen.  <code>Anonym</code> In unserer Klasse gibt es dafür keine Lösung, da wir sie nur in unserer auf Vorlagenmethoden basierenden Lösung eingeführt haben (wir haben uns den Code dort nicht angesehen, aber er ist praktisch derselbe):</p>
+<p>Add the percentage-based progress implementation of this interface in the same folder. We won’t go into the details of the code logic. There's no direct equivalent for this in the <code>Anonymizer</code> class, as it was only introduced in our template method–based solution (we didn’t inspect that code, but this is essentially its core idea):</p>
 <details class="example">
-<summary>Lösung</summary>
-<div class="highlight"><span class="filename">PercentProgress.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PercentProgress</span><span class="p">:</span><span class="w"> </span><span class="n">IProgress</span>
+<summary>Solution</summary>
+<div class="highlight"><span class="filename">PercentProgress.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PercentProgress</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IProgress</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Report</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">percentage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)((</span><span class="kt">double</span><span class="p">)(</span><span class="n">index</span><span class="o">+</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">100</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">percentage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)((</span><span class="kt">double</span><span class="p">)(</span><span class="n">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">100</span><span class="p">);</span>
 
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">$&quot;rProcessing: {percentage} %&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">$&quot;\rProcessing: {percentage} %&quot;</span><span class="p">);</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
 <span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span>
@@ -2848,31 +2853,29 @@ Entscheidend ist, dass eine Klasse dann als erweiterbar gilt, wenn es möglich i
 </details>
 </li>
 </ol>
-<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> Beachten Sie, dass sich die Schnittstelle und ihre Implementierungen nur mit der Fortschrittsverarbeitung befassen und keine andere Logik (z.B. Anonymisierung) involviert ist!</p>
-<h3 id="anwendung-der-strategien">Anwendung der Strategien<a class="headerlink" href="#anwendung-der-strategien" title="Permanent link">&para;</a></h3>
-<p>Der nächste wichtige Schritt besteht darin, die anonymisierende Basisklasse mit Hilfe der oben vorgestellten Strategien wiederverwendbar und erweiterbar zu machen.  <code>Anonymizer.cs</code> Bei :</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2757.svg" title=":exclamation:" /> Make sure to note that the interface and its implementations deal exclusively with <strong>progress handling</strong> — no other logic (e.g., anonymization) is included here!</p>
+<h3 id="applying-the-strategies">Applying the strategies<a class="headerlink" href="#applying-the-strategies" title="Permanent link">&para;</a></h3>
+<p>The next important step is to make the anonymizer base class reusable and extensible using the strategies we’ve just introduced. In the <code>Anonymizer.cs</code> file:</p>
 <ol>
+<li>Remove the following:</li>
+<li>The <code>AnonymizerMode</code> enum type.</li>
 <li>
-<p>Löschen Sie Folgendes:</p>
-<ul>
-<li><code>AnonymizerMode</code> aufzählungstyp</li>
-<li><code>_anonymizerMode</code> <code>_mask</code> <code>_rangeSize</code> mitglied (oder und Mitglieder, wenn Sie schon einmal hier gewohnt haben)</li>
-</ul>
+<p>The <code>_anonymizerMode</code> field (as well as <code>_mask</code> and <code>_rangeSize</code>, if they still remain).</p>
 </li>
 <li>
-<p>Einführung eines einzigen Strategie-Schnittstellentyp-Tags:</p>
+<p>Introduce strategy interface-type fields:</p>
 <div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IProgress</span><span class="w"> </span><span class="n">_progress</span><span class="p">;</span>
 <span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IAnonymizerAlgorithm</span><span class="w"> </span><span class="n">_anonymizerAlgorithm</span><span class="p">;</span>
 </code></pre></div>
 </li>
 <li>
-<p>Fügen Sie die entsprechende Verwendung am Anfang der Datei ein:</p>
-<div class="highlight"><pre><span></span><code><span class="n">mit</span><span class="w"> </span><span class="n">Lab_Extensibility</span><span class="p">.</span><span class="n">AnonymizerAlgorithms</span><span class="p">;</span>
-<span class="n">mit</span><span class="w"> </span><span class="n">Lab_Extensibility</span><span class="p">.</span><span class="n">Progresses</span><span class="p">;</span>
+<p>Add the appropriate using directives to the top of the file:</p>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">Lab_Extensibility.AnonymizerAlgorithms</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Lab_Extensibility.Progresses</span><span class="p">;</span>
 </code></pre></div>
 </li>
 <li>
-<p><code>_progress</code> <code>_anonymizerAlgorithm</code> Der anfängliche Wert von und, der im vorigen Abschnitt eingeführt wurde, ist Null. Im Konstruktor werden diese Referenzen auf die Implementierung gesetzt, die Ihren Anforderungen entspricht. Pl.:</p>
+<p>The initial values of <code>_progress</code> and <code>_anonymizerAlgorithm</code>  introduced in the previous section are null, set these references in the constructor to the implementation that suits our needs. For example:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">Anonymizer</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">inputFileName</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">mask</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">this</span><span class="p">(</span><span class="n">inputFileName</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="hll"><span class="w">    </span><span class="n">_progress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PercentProgress</span><span class="p">();</span>
@@ -2887,12 +2890,13 @@ Entscheidend ist, dass eine Klasse dann als erweiterbar gilt, wenn es möglich i
 </code></pre></div>
 </li>
 </ol>
-<p><code>Anonymizer</code> <code>_anonymizerAlgorithm</code> In der Klasse wird die derzeit implementierte, aber <strong>von der Anonymisierung abhängige</strong> Logik der Strategieimplementierung überlassen, auf die die Mitgliedsvariable verweist:</p>
+<p>In the <code>Anonymizer</code> class, delegate the currently hardcoded but <strong>anonymization-dependent</strong> logic to the strategy implementation referenced by <code>_anonymizerAlgorithm</code>.</p>
 <ol>
 <li>
-<p><code>Run</code> <code>if``else</code> <code>Anonymize</code> <code>_anonymizerAlgorithm</code> Als eine Funktion der Klasse werden die Aufrufe im /-Ausdruck nun an das Objekt delegiert:</p>
+<p>Delegate the <code>Anonymize</code> calls in the <code>if</code>/<code>else</code> expressions in the <code>Run</code> function of the <code>Anonymizer</code> class, to the <code>_anonymizerAlgorithm</code> object.</p>
+<p>Replace:</p>
 <del class="critic block">
-<div class="highlight"><pre><span></span><code><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">;</span>
+<p><div class="highlight"><pre><span></span><code><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">;</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_anonymizerMode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">AnonymizerMode</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span>
 <span class="w">    </span><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Anonymize_MaskName</span><span class="p">(</span><span class="n">persons</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">_mask</span><span class="p">);</span>
 <span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">_anonymizerMode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">AnonymizerMode</span><span class="p">.</span><span class="n">Age</span><span class="p">)</span>
@@ -2900,53 +2904,57 @@ Entscheidend ist, dass eine Klasse dann als erweiterbar gilt, wenn es möglich i
 <span class="k">else</span>
 <span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">NotSupportedException</span><span class="p">(</span><span class="s">&quot;The requested anonymization mode is not supported.&quot;</span><span class="p">);</span>
 </code></pre></div>
-</del>
-<p>stattdessen:</p>
+</del></p>
+<p>with:</p>
 <div class="highlight"><pre><span></span><code><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_anonymizerAlgorithm</span><span class="p">.</span><span class="n">Anonymize</span><span class="p">(</span><span class="n">persons</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
 </code></pre></div>
 </li>
 <li>
-<p><code>Anonymize_MaskName</code> <code>Anonymize_AgeRange</code> Falls noch nicht geschehen, löschen Sie die Funktionen und, da ihr Code bereits in die Strategieimplementierungen aufgenommen wurde, die von der Klasse entkoppelt sind.</p>
+<p>If we haven't done so already, delete the <code>Anonymize_MaskName</code> and <code>Anonymize_AgeRange</code> functions, since their code has already been moved into the corresponding strategy implementations, detached from the class.</p>
 </li>
 <li>
-<p><code>PrintSummary</code> <code>switch</code> <code>GetAnonymizerDescription</code>Unsere Funktion ruft den unflexiblen , basierend auf auf.  <code>GetAnonymizerDescription</code> <code>_anonymizerAlgorithm</code> Dieser Aufruf an wird durch eine Delegation an das Objekt ersetzt.  <code>PrintSummary</code> In der Funktion (nur zur Hervorhebung der Grundzüge):</p>
+<p>Our <code>PrintSummary</code> function currently calls the rigid, <code>switch</code>-based <code>GetAnonymizerDescription</code>. Replace this <code>GetAnonymizerDescription</code> call by delegating it to the <code>_anonymizerAlgorithm</code> object. In the <code>PrintSummary</code> function (highlighting only the relevant part):</p>
+<p>Instead of:</p>
+<del class="critic block">
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="n">GetAnonymizerDescription</span><span class="p">()</span><span class="w"> </span><span class="p">...</span>
 </code></pre></div>
-<p>stattdessen:</p>
+</del>
+<p>Use:</p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="n">_anonymizerAlgorithm</span><span class="p">.</span><span class="n">GetAnonymizerDescription</span><span class="p">()</span><span class="w"> </span><span class="p">...</span>
 </code></pre></div>
-<p><code>GetAnonymizerDescription</code> Ein paar Zeilen weiter unten wird die Funktion aus der Klasse entfernt (ihr Code ist in den entsprechenden Strategieimplementierungen enthalten).</p>
+<p>A few lines below, also delete the <code>GetAnonymizerDescription</code> function from the class (its code has already been moved into the appropriate strategy implementations).</p>
 </li>
 </ol>
-<p><code>Anonymizer</code> Der letzte Schritt besteht darin, den <strong>Progress-Handler</strong> in der Klasse zu ersetzen:</p>
+<p>The last step is to replace the <strong>progress handling</strong> hard-coded in the <code>Anonymizer</code> class:</p>
 <ol>
 <li>
-<p><code>_progress</code> Auch hier delegieren wir die Anfrage an unser zuvor eingeführtes Objekt.  <code>Run</code> Sie müssen eine Zeile in der Funktion ersetzen:</p>
+<p>Here, delegate the request to the previously introduced <code>_progress</code> object. In the <code>Run</code> function, replace one line as follows:</p>
+<p>Instead of:</p>
 <del class="critic block">
 <div class="highlight"><pre><span></span><code><span class="n">PrintProgress</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
 </code></pre></div>
 </del>
-<p>stattdessen:</p>
+<p>Use:</p>
 <div class="highlight"><pre><span></span><code><span class="n">_progress</span><span class="p">.</span><span class="n">Report</span><span class="p">(</span><span class="n">persons</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
 </code></pre></div>
 </li>
 <li>
-<p><code>PrintProgress</code> Löschen Sie die Funktion, da sich ihr Code bereits in einer eigenen Strategieimplementierung befindet, die von der Klasse entkoppelt ist.</p>
+<p>Delete the <code>PrintProgress</code> function, as its code has already been moved to a suitable strategy implementation, detached from the class.</p>
 </li>
 </ol>
-<p>Wir sind fertig, die fertige Lösung befindet sich im Projekt "4-Strategy/Strategy-1" (wenn Sie irgendwo stecken bleiben oder der Code sich nicht kompilieren lässt, können Sie ihn damit überprüfen).</p>
-<h3 id="bewertung-der-losung_3">Bewertung der Lösung<a class="headerlink" href="#bewertung-der-losung_3" title="Permanent link">&para;</a></h3>
-<p>Wir sind mit der Umsetzung der Strategievorlage fertig. In seiner jetzigen Form wird es jedoch fast nie verwendet.  <code>Anomymizer</code> Überprüfen wir unsere Lösung: Ist sie wirklich wiederverwendbar, und ist es möglich, den Anonymisierungsalgorithmus und die Fortschrittsbehandlung zu ändern, ohne die Klasse zu modifizieren? Dazu müssen Sie prüfen, ob es irgendwo in der Klasse Code gibt, der von der Implementierung abhängig ist.</p>
-<p>Leider finden wir sie. Der Konstruktor wird in die Algorithmus-Implementierung eingebrannt und die Fortschrittsimplementierung wird erstellt. Achten Sie darauf, dies im Code zu überprüfen!  <code>neu</code> Wenn Sie den Algorithmus oder den Fortschrittsmodus ändern wollen, müssen Sie den Typ nach dem Operator in diesen Zeilen umschreiben, wodurch sich die Klasse ändert.</p>
-<p>Viele halten sie - zu Recht - nicht einmal in ihrer jetzigen Form für eine echte strategiebasierte Lösung. Die vollständige Lösung wird im nächsten Schritt umgesetzt.</p>
-<h2 id="8-megoldas-4-strategystrategy-2-di">8. Megoldás (4-Strategy/Strategy-2-DI)<a class="headerlink" href="#8-megoldas-4-strategystrategy-2-di" title="Permanent link">&para;</a></h2>
+<p>We are done. The completed solution can be found in the "4-Strategy/Strategy-1" project (if we are stuck somewhere or the code doesn't compile, we can compare it with this).</p>
+<h3 id="evaluation-of-the-solution_3">Evaluation of the solution<a class="headerlink" href="#evaluation-of-the-solution_3" title="Permanent link">&para;</a></h3>
+<p>We are finished with the introduction of the strategy pattern. However, in its current form, it is almost never used. Let's check our solution: is it truly reusable, and is it possible to change the anonymizer algorithm or progress handling without modifying the <code>Anonymizer</code> class? To do this, we need to examine whether there is any code in the class that is implementation-dependent.</p>
+<p>Unfortunately, we can find such code. The constructor is hard-coded to create specific algorithm and progress implementations. We must check this in the code! If we want to change the algorithm or progress mode, we will have to modify the type after the <code>new</code> operator in these lines, which means modifying the class itself.</p>
+<p>Many — quite justifiably — do not consider this a true strategy-based solution in its current form. We will implement the complete solution in the next step.</p>
+<h2 id="solution-8-4-strategystrategy-2-di">Solution 8 (4-Strategy/Strategy-2-DI)<a class="headerlink" href="#solution-8-4-strategystrategy-2-di" title="Permanent link">&para;</a></h2>
 <p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/26a0.svg" title=":warning:" /> <strong>Dependency Injection (DI)</strong><br />
-Die Lösung heißt <strong>Dependency Injection (kurz: DI)</strong>. Die Idee ist, dass die Klasse selbst ihre Verhaltensabhängigkeiten nicht instanziiert (dies sind Strategieimplementierungen), sondern wir sie von außen an sie weitergeben, z. B. in Konstruktorparametern oder sogar in Form von Eigenschaften oder Setter-Operationen. Das wird natürlich als Schnittstellentyp bezeichnet!</p>
-<p><code>Anonymizer</code> Strukturieren Sie die Klasse entsprechend um, so dass sie die Strategieimplementierungen nicht selbst instanziiert, sondern sie als Konstruktorparameter erhält:</p>
+The solution is applying <strong>Dependency Injection (DI)</strong>. The idea is that not the class itself instantiates its behavioural dependencies (these are the strategy implementations), but we pass them to it from outside, e.g. in constructor parameters, or even in the form of properties or setter operations. Referenced as interface types, of course!</p>
+<p>Let's refactor the <code>Anonymizer</code> class accordingly, so that it doesn't instantiate the strategy implementations itself, but instead receives them as constructor parameters:</p>
 <ol>
-<li>Alle drei Konstruktoren löschen</li>
+<li>Delete all three constructors.</li>
 <li>
-<p>Betrachten Sie den folgenden Konstruktor:</p>
+<p>Add the following constructor:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">Anonymizer</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">inputFileName</span><span class="p">,</span><span class="w"> </span><span class="n">IAnonymizerAlgorithm</span><span class="w"> </span><span class="n">anonymizerAlgorithm</span><span class="p">,</span><span class="w"> </span><span class="n">IProgress</span><span class="w"> </span><span class="n">progress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">ArgumentException</span><span class="p">.</span><span class="n">ThrowIfNullOrEmpty</span><span class="p">(</span><span class="n">inputFileName</span><span class="p">);</span>
@@ -2957,15 +2965,15 @@ Die Lösung heißt <strong>Dependency Injection (kurz: DI)</strong>. Die Idee is
 <span class="w">    </span><span class="n">_progress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">progress</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>progress</code> Wie Sie sehen können, ist der Parameter optional, da der Benutzer der Klasse möglicherweise keine Fortschrittsinformationen sehen möchte.</p>
+<p>As we can see, providing the <code>progress</code> parameter is optional, as the class user may not be interested in any progress information.</p>
 </li>
 <li>
-<p>Da die _progress-Strategie null sein kann, muss bei ihrer Verwendung ein Nulltest eingeführt werden. Der Operator "." wird durch den Operator "?." ersetzt:</p>
-<div class="highlight"><pre><span></span><code><span class="n">_progress</span><span class="o">?.</span><span class="n">Report</span><span class="p">(</span><span class="n">persons</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+<p>Since the <code>_progress</code> strategy can be null, we need to introduce a null check during its usage. Instead of using the <code>.</code> operator, we will use the <code>?.</code> operator:</p>
+<div class="highlight"><pre><span></span><code><span class="n">_progress</span><span class="o">?.</span><span class="n">Report</span><span class="p">(</span><span class="n">persons</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
 </code></pre></div>
 </li>
 <li>
-<p><code>Anonymizer</code> Jetzt sind wir fertig, die Klasse ist völlig unabhängig von Strategieimplementierungen.  <code>Anonymizer</code> Es ist möglich, die Klasse mit einer beliebigen Kombination von Anonymisierungsalgorithmen und einer beliebigen Verlaufsbehandlung zu verwenden (ohne sie zu modifizieren).  <code>Anonymizer</code> <code>Program.cs</code> <code>Main</code> <code>Main</code> Lassen Sie uns auch drei mit verschiedenen Kombinationen der Datei in der Funktion erstellen (der vorhandene Code wird zuerst aus der Funktion gelöscht):</p>
+<p>Now we are done, the <code>Anonymizer</code> class has become completely independent of the strategy implementations. We can use the <code>Anonymizer</code> class with any combination of anonymizer algorithms and progress handling (without modifying the class itself). Let's create three <code>Anonymizer</code> instances with different combinations in the <code>Main</code> method of the <code>Program.cs</code> file (make sure to delete the existing code in the <code>Main</code> method before):</p>
 <div class="highlight"><pre><span></span><code><span class="n">Anonymizer</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">(</span><span class="s">&quot;us-500.csv&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">NameMaskingAnonymizerAlgorithm</span><span class="p">(</span><span class="s">&quot;***&quot;</span><span class="p">),</span>
 <span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">SimpleProgress</span><span class="p">());</span>
@@ -2987,36 +2995,39 @@ Die Lösung heißt <strong>Dependency Injection (kurz: DI)</strong>. Die Idee is
 </code></pre></div>
 </li>
 <li>
-<p><code>using</code>Um den Code zum Kochen zu bringen, fügen Sie am Anfang der Datei das Notwendige ein</p>
+<p>To ensure the code compiles, add the necessary <code>using</code> statements at the top of the file:</p>
 <div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">Lab_Extensibility.AnonymizerAlgorithms</span><span class="p">;</span>
 <span class="k">using</span><span class="w"> </span><span class="nn">Lab_Extensibility.Progresses</span><span class="p">;</span>
 </code></pre></div>
 </li>
 </ol>
-<p>Wir haben es getan, und die fertige Lösung ist im Projekt "4-Strategy/Strategy-2-DI" zu finden (wenn Sie irgendwo stecken bleiben oder der Code sich nicht kompilieren lässt, können Sie ihn damit überprüfen).</p>
-<p>!!!  <code>Program.cs</code> <code>Run</code> Hinweis "Überprüfen der Funktionsweise" In der Übung wird wahrscheinlich keine Zeit dafür sein, aber wenn Sie sich nicht sicher sind, "warum das Strategiemuster funktioniert", warum sich das Verhalten in den vier oben genannten Fällen unterscheidet: Es lohnt sich, in der Datei Haltepunkte für die vier Funktionsaufrufe zu setzen und die Funktionen im Debugger aufzurufen, um zu testen, dass immer die richtige Strategieimplementierung aufgerufen wird.</p>
-<p><code>Main.cd</code>Es gibt ein Klassendiagramm im Projekt ( ), wo Sie auch die fertige Lösung sehen können:</p>
-<details class="note">
-<summary>Klassendiagramm der strategiebasierten Lösung</summary>
-<p>Das folgende UML-Klassendiagramm veranschaulicht unsere strategiebasierte Lösung:</p>
-<p><a class="glightbox" href="imagesstrategy-di.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Strategy DI UML osztálydiagram" src="imagesstrategy-di.png" /></a></p>
-</details>
-<h3 id="bewertung-der-losung_4">Bewertung der Lösung<a class="headerlink" href="#bewertung-der-losung_4" title="Permanent link">&para;</a></h3>
-<p>Wir überprüfen die Lösung, um zu sehen, ob sie unsere Ziele erreicht:</p>
-<ul>
-<li><code>Anonym</code> Ist eine wiederverwendbare Klasse geworden.</li>
-<li><code>IAnonymizerAlgorithmus</code> Wenn in Zukunft eine neue Anonymisierungslogik benötigt wird, muss lediglich eine neue Implementierung eingeführt werden. Es handelt sich nicht um eine Änderung, sondern um eine Verlängerung/Erweiterung.</li>
-<li><code>IProgress</code> Wenn in Zukunft eine neue Fortschrittslogik benötigt wird, ist lediglich eine neue Implementierung erforderlich. Es handelt sich nicht um eine Änderung, sondern um eine Verlängerung.</li>
-<li><code>Anonymizer</code> In den beiden oben genannten Punkten ist das OPEN/CLOSED-Prinzip erfüllt, d.h. wir können die Logik von anpassen und erweitern, ohne den Code zu verändern.</li>
-<li><code>IAnonymizerAlgorithm</code> <code>IProgress</code> <code>Program.cs</code> Hier ist die kombinatorische Explosion, wie sie bei der Schablonenmethode auftritt, nicht zu befürchten: Jede Implementierung kann bequem mit jeder Implementierung verwendet werden, ohne dass neue Klassen für Kombinationen eingeführt werden müssen (wir haben dies in der Datei gesehen).</li>
-</ul>
-<div class="admonition hinweis">
-<p class="admonition-title">Zusätzliche Strategievorteile gegenüber der Template-Methode *</p>
+<p>We are done, and the complete solution can be found in the "4-Strategy/Strategy-2-DI" project (if you encounter issues or the code doesn't compile, you can compare it with this project).</p>
+<div class="admonition note">
+<p class="admonition-title">Checking the functionality</p>
+<p>During the laboratory, there might not be time for this, but for anyone unsure about "why the strategy pattern works" and how the behavior will differ for the four cases above: it is recommended to set breakpoints in the <code>Program.cs</code> file for the four <code>Run</code> method calls and step through the functions in the debugger to verify that the correct strategy implementation is invoked.</p>
 </div>
+<p>An object diagram (<code>Main.cd</code>) is included in the project, where the final solution can also be reviewed:</p>
+<details class="note">
+<summary>Strategy-based solution class diagram</summary>
+<p>The following UML class diagram illustrates our strategy-based solution:</p>
+<p><a class="glightbox" href="../images/strategy-di.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Strategy DI UML class diagram" src="../images/strategy-di.png" /></a></p>
+</details>
+<h3 id="evaluation-of-the-solution_4">Evaluation of the solution<a class="headerlink" href="#evaluation-of-the-solution_4" title="Permanent link">&para;</a></h3>
+<p>Let's check whether the solution meets our goals:</p>
 <ul>
-<li>On the fly-Verhalten kann implementiert werden.  <code>Anonymizer</code> <code>SetAnonimizerAlgorithm</code> <code>SetProgress</code> Wenn wir in der Lage sein müssten, das Anonymisierungs- oder Fortschrittsverhalten für ein bestimmtes Objekt nach seiner Erstellung zu ändern, könnten wir das leicht tun (wir müssten nur einen , oder eine Operation einführen, bei der wir die von der Klasse verwendete Strategie auf die im Parameter angegebene Implementierung setzen könnten).</li>
-<li>Unterstützung der Testbarkeit von Einheiten (wir sehen uns das im Labor nicht an).</li>
+<li>The <code>Anonymizer</code> class has become more reusable.</li>
+<li>If a new anonymization logic is needed in the future, only a new <code>IAnonymizerAlgorithm</code> implementation needs to be introduced. This is an extension, not a modification.</li>
+<li>If a new progress logic is required in the future, only a new <code>IProgress</code> implementation needs to be introduced. This is an extension, not a modification.</li>
+<li>Both of the above points adhere to the OPEN/CLOSED principle, meaning that we can customize and extend the logic of <code>Anonymizer</code> without modifying its code.</li>
+<li>There is no risk of the combinatorial explosion seen in the Template Method pattern: any <code>IAnonymizerAlgorithm</code> implementation can be conveniently used with any <code>IProgress</code> implementation, and we do not need to introduce new classes for each combination (this was demonstrated in the <code>Program.cs</code> file).</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Additional Strategy advantages over Template Method *</p>
+<ul>
+<li>The behavior can be changed at runtime. If there is a need to change the anonymization or progress behavior after an <code>Anonymizer</code> object has been created, it can easily be done (we could simply introduce <code>SetAnonymizerAlgorithm</code> and <code>SetProgress</code> methods that would set the strategy used by the class to the implementation passed in as a parameter).</li>
+<li>Supports unit testing (this is not covered in this laboratory).</li>
+</ul>
+</div>
 <hr>
 <div class="md-source-file">
   <span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg
@@ -3026,8 +3037,8 @@ Die Lösung heißt <strong>Dependency Injection (kurz: DI)</strong>. Die Idee is
         </path>
       </svg>
     </span>
-    <span title="2024. május 18. 20:35:08">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2024. május 18. 20:35:08"><span class="timeago" datetime="2024-05-18T20:35:08+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2024. május 18. 20:35:08">2024-05-18</span>
+    <span title="2025. május 5. 20:18:11">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. május 5. 20:18:11"><span class="timeago" datetime="2025-05-05T20:18:11+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. május 5. 20:18:11">2025-05-05</span>
     </span>
   </span>
 
@@ -3042,8 +3053,10 @@ Die Lösung heißt <strong>Dependency Injection (kurz: DI)</strong>. Die Idee is
       </svg>
     </span>
     <span>Szerzők</span>
-    <nav><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
-        <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&v=4?size=72" alt="@Zoltán Benedek">
+    <nav><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@bzolka">
+        <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
+      </a><a href="https://github.com/szucscintialia" target="_blank" rel="noopener noreferrer" class="md-author" title="@Cintia Szücs">
+        <img src="https://avatars.githubusercontent.com/u/26093637?v=4?size=72" alt="@Cintia Szücs">
       </a></nav>      
   </span>
 </div>
