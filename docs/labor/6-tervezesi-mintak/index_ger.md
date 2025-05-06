@@ -361,7 +361,7 @@ Wir sind fertig! Versuchen wir nun, die Erweiterungspunkte besser zu verstehen, 
 
 Werfen wir einen Blick auf das Klassendiagramm der Lösung:
 
-??? "Klassendiagramm der Template Method basiertes Lösungs*"
+??? "Klassendiagramm der Template Method basiertes Lösung*"
     ![Template Method basiertes Lösungs-Klassendiagramm](images/template-method.png)
 
 !!! note "Unsere bisherige Lösung ist im `3-TemplateMethod/TemplateMethod-1` Projekt zu finden, falls wir sie brauchen."
@@ -444,7 +444,7 @@ Im Folgenden betrachten wir das Klassendiagramm, das die Strategy-basierte Lösu
 ??? info "Klassendiagramm der Strategie-basierte Lösung"
     Das folgende UML-Klassendiagramm veranschaulicht die strategie-basierte Lösung, mit Fokus auf das Wesentliche:
 
-    ![Strategie UML Klassendiagramm Ziel](images\strategy-goal.png)
+    ![Strategie UML Klassendiagramm Ziel](images/strategy-goal.png)
 
 Der erste Schritt bei der Anwendung des Strategy-Musters ist die Bestimmung, **wie viele verschiedene Aspekte des Verhaltens der Klasse** wir erweiterbar machen möchten. In unserem Beispiel gibt es vorerst - zumindest - zwei:
 
