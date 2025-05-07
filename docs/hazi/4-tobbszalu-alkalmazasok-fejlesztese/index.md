@@ -244,13 +244,13 @@ Ezekhez a lépésekhez még adunk megoldást (de sokkal többet tanulsz belőle,
 !!! example "BEADANDÓ"
     Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
 
-    Készíts egy képernyőmentést `Feladat1.png` néven az alábbiak szerint:
+    Készíts egy képernyőmentést `Feladat2.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `Game` osztály `CreateBike` és `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
 
-## Feladat 2 – A verseny indítása
+## Feladat 3 – A verseny indítása
 
 Valósítsd meg a verseny indítását a rajtvonalról és futtatását mindaddig, amíg a biciklik meg nem érkeznek a depóba, a következő irányelveknek megfelelően:
 
@@ -267,13 +267,13 @@ Valósítsd meg a verseny indítását a rajtvonalról és futtatását mindaddi
 !!! example "BEADANDÓ"
     Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
 
-    Készíts egy képernyőmentést `Feladat2.png` néven az alábbiak szerint:
+    Készíts egy képernyőmentést `Feladat3.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `Game` osztály `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
 
-## Feladat 3 – A versenyzők indítása a depóból
+## Feladat 4 – A versenyzők indítása a depóból
 
 Valósítsd meg a versenyzők indítását a depóból és futtatását mindaddig, amíg a biciklik meg nem érkeznek a célba, a következő irányelveknek megfelelően:
 
@@ -290,13 +290,13 @@ Valósítsd meg a versenyzők indítását a depóból és futtatását mindaddi
 !!! example "BEADANDÓ"
     Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
 
-    Készíts egy képernyőmentést `Feladat3.png` néven az alábbiak szerint:
+    Készíts egy képernyőmentést `Feladat4.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `Game` osztály `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
 
-## Feladat 4 – Győztes bicikli megvalósítása
+## Feladat 5 – Győztes bicikli megvalósítása
 
 Valósítsd meg a győztes bicikli meghatározásának és megjelenítésének logikáját, a következő irányelveknek megfelelően:
 
@@ -333,13 +333,13 @@ A logikát ezt követően önállóan valósítsd meg, az alábbi irányleveknek
 !!! example "BEADANDÓ"
     Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
 
-    Készíts egy képernyőmentést `Feladat4.png` néven az alábbiak szerint:
+    Készíts egy képernyőmentést `Feladat5.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `Game` osztály `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
 
-## Feladat 5 – Kölcsönös kizárás, valamint volatile
+## Feladat 6 – Kölcsönös kizárás, valamint volatile
 
 Az előző feladatban láttuk, hogy a hasWinner lekérdezését és beállítását "oszthatatlanná", "atomivá" kellett tegyük, vagyis ennek során meg kellett valósítsuk a kölcsönös kizárást. Kérdés, van-e esetleg már olyan más logika is az alkalmazásban, ahol ezt meg kellet volna tenni a konzisztencia garantálásának érdekében. Ehhez azt kell megvizsgáljuk, melyek azok a változók, melyeket több szálból is írunk (vagy egyikből írunk és másikból olvasunk). A következők érintettek:
 
@@ -357,7 +357,7 @@ class Bike
     private volatile bool isWinner;
 ```
 
-## Feladat 5 – Lépések naplózása (nem szálbiztos .NET osztályok)
+## Feladat 7 – Lépések naplózása (nem szálbiztos .NET osztályok)
 
 Valósítsd meg a verseny során a biciklik által megtett minden egyes lépés naplózását a `Game` osztályban egy (minden biciklire közös) `List<int>` típusú változóba. A naplózott értékekkel nem kell semmit csinálni (pl. megjeleníteni sem). A megoldás során ki kell használni, hogy a `Bike` osztály `Step` művelete visszaadja a megtett lépést egy `int` változó formájában, ezt kell naplózni (csak bele kell tenni a listába).
 
@@ -367,7 +367,7 @@ Valósítsd meg a verseny során a biciklik által megtett minden egyes lépés 
 !!! Note "System.Collections.Concurrent névtér gyűjteményosztályai"
     Ha a `List<T>` helyett egy a célnak megfelelő, `System.Collections.Concurrent` névtérbeli osztály objektumába naplóznánk (pl. `ConcurrentQueue`), akkor nem lenne szükség a kölcsönös kizárás megvalósítására, mert ebben a névtérben szálbiztos (thread safe) gyűjteményosztályok találhatók.
 
-## Feladat 6 – Felület frissítése minden változás esetén (felhasználói felületelemek elérése munkaszálakból)
+## Feladat 8 – Felület frissítése minden változás esetén (felhasználói felületelemek elérése munkaszálakból)
 
 Aktuális megoldásunkban a felület frissítését periodikusan, adott időközönként valósítjuk meg egy időzítő segítségével. Ezt a megoldást most lecseréljük. Alakítsd át a megoldást úgy, hogy a felület frissítése minden esetben azonnal megtörténjen, amikor a `Game` állapota megváltozik (az időzített frissítést pedig már ne használd).
 
@@ -442,7 +442,7 @@ Feladat: módosítsd úgy a `MainWindow.UpdateBikeUI` függvényt, hogy a `Dispa
 !!! example "BEADANDÓ"
     Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
 
-    Készíts egy képernyőmentést `Feladat6.png` néven az alábbiak szerint:
+    Készíts egy képernyőmentést `Feladat8.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `MainWindow.xaml.cs` megnyitva,
