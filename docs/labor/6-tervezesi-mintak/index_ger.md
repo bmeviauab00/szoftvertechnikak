@@ -29,7 +29,7 @@ Für die Durchführung der Übung benötigte Werkzeuge:
 
 Bei der Entwicklung komplexerer Anwendungen müssen wir zahlreiche Designentscheidungen treffen, bei denen oft mehrere Möglichkeiten zur Auswahl stehen. Wenn wir in diesen Punkten nicht auf einfache Wartbarkeit und einfache Erweiterbarkeit unserer Anwendung achten, kann die Entwicklung schnell zum Albtraum werden. Änderungs- und Erweiterungswünsche des Kunden erfordern eine ständige, umfassende Umstrukturierung des Codes: dabei entstehen neue Fehler, und es ist erheblicher Aufwand für umfassende Retests notwendig!
 
-Unser Ziel ist es, solche Änderungs- und Erweiterungswünsche durch Erweiterungen an wenigen, gut definierten Stellen im Code – **ohne** wesentliche Änderungen am bestehenden Code – umsetzen zu können. Das Schlüsselwort ist: statt **Änderung** lieber **Erweiterung**. Damit verbunden gilt: Wenn bestimmte Logiken erweiterbar sind, dann sind sie auch allgemeiner und können in mehreren Kontexten leichter wiederverwendet werden. So kommen wir langfristig schneller voran, unser Code wird kürzer, wir vermeiden Code-Duplikationen (was wiederum die Wartbarkeit erhöht).
+Unser Ziel ist es, solche Änderungs- und Erweiterungswünsche durch Erweiterungen an wenigen, gut definierten Stellen im Code – ohne wesentliche Änderungen am bestehenden Code – umsetzen zu können. Das Schlüsselwort ist: statt **Änderung** lieber **Erweiterung**. Damit verbunden gilt: Wenn bestimmte Logiken erweiterbar sind, dann sind sie auch allgemeiner und können in mehreren Kontexten leichter wiederverwendet werden. So kommen wir langfristig schneller voran, unser Code wird kürzer, wir vermeiden Code-Duplikationen (was wiederum die Wartbarkeit erhöht).
 
 **Entwurfsmuster** zeigen bewährte Lösungen für häufig auftretende Entwurfsprobleme: Sie helfen dabei, unseren Code leichter erweiterbar, wartbar und so weit wie möglich wiederverwendbar zu gestalten. In dieser Übung konzentrieren wir uns auf solche Muster, Prinzipien und einige Programmierwerkzeuge, die helfen, die oben genannten Probleme zu lösen.
 Aber man soll es nicht übertreiben: Ein bestimmtes Entwurfsmuster sollte nur dann eingesetzt werden, wenn es tatsächlich einen Vorteil bringt. Andernfalls erhöht es nur unnötig die Komplexität der Implementierung.
@@ -50,7 +50,7 @@ Klonen wir das Repository der Ausgangsanwendung zur 6. Übung [von hier](https:/
 
 Im Labor werden wir eine konsolenbasierte Datenverarbeitungsanwendung (genauer gesagt, eine Anonymisierungsanwendung) entsprechend den sich fortlaufend entwickelnder Anforderungen erweitern – entlang verschiedener Aspekte und unter Anwendung unterschiedlicher Techniken. In der ersten Aufgabe wird auch das Konzept der Anonymisierung vorgestellt.
 
-Die Eingabe in die Anwendung ist eine CSV-Textdatei, in der jede Zeile Daten zu einer bestimmten Person enthält. Öffnen wir im Dateisystem die Datei *us-500.csv* im Ordner *Data* (durch Doppelklick oder mit Notepad).  Wir sehen, dass die Daten zu den einzelnen Personen in Anführungszeichen ("") und durch Kommas getrennt dargestellt sind (es handelt sich um fiktive Daten). Schauen wir uns die erste Zeile an:
+Die Eingabe in die Anwendung ist eine CSV-Textdatei, in der jede Zeile Daten zu einer bestimmten Person enthält. Öffnen wir im Dateisystem die Datei *us-500.csv* im Ordner *Data* (durch Doppelklick oder mit Notepad).  Wir sehen, dass die Daten zu den einzelnen Personen in Anführungszeichen (" ") und durch Kommas getrennt dargestellt sind (es handelt sich um fiktive Daten). Schauen wir uns die erste Zeile an:
   
 ```
 "James","Rhymes","Benton, John B Jr","6649 N Blue Gum St","New Orleans ","Orleans","LA","70116","504-621-8927","504-845-1427","30","65","Heart-related","jRhymes@gmail.com"
@@ -278,7 +278,7 @@ Dem Muster folgend führen wir in der Basisklasse abstrakte (oder möglicherweis
     }
     ```
 
-    Der Körper der Methode muss nur so geändert werden, dass anstelle des entfernten `mask`-Parameters die `_mask`-MemberVariable verwendet wird.
+    Der Körper der Methode muss nur so geändert werden, dass anstelle des entfernten `mask`-Parameters die `_mask`-Membervariable verwendet wird.
 
 4. Auf die gleiche Weise wie im vorherigen Schritt verschieben wir die Methode `Anonymize_AgeRange` in die `AgeAnonymizer`-Klasse und ändern ihre Signatur so, dass sie die abstrakte Methode `Anonymize` der Basisklasse überschreibt:
 
@@ -289,7 +289,7 @@ Dem Muster folgend führen wir in der Basisklasse abstrakte (oder möglicherweis
     }
     ```
 
-    Der Körper der Methode muss nur so geändert werden, dass anstelle des entfernten `rangeSize`-Parameters die `_rangeSize`-MemberVariable verwendet wird.
+    Der Körper der Methode muss nur so geändert werden, dass anstelle des entfernten `rangeSize`-Parameters die `_rangeSize`-Membervariable verwendet wird.
 
 5. In der `Run`-Methode der `AnonymizerBase`-Klasse können wir die `Anonymize`-Aufrufe im `if`/`else`-Ausdruck jetzt durch einen einfachen Aufruf der abstrakten Methode ersetzen:
 
