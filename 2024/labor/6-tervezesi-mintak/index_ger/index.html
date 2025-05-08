@@ -2255,7 +2255,7 @@
 </div>
 <h3 id="theoretischer-hintergrund-denkweise">Theoretischer Hintergrund, Denkweise *<a class="headerlink" href="#theoretischer-hintergrund-denkweise" title="Permanent link">&para;</a></h3>
 <p>Bei der Entwicklung komplexerer Anwendungen müssen wir zahlreiche Designentscheidungen treffen, bei denen oft mehrere Möglichkeiten zur Auswahl stehen. Wenn wir in diesen Punkten nicht auf einfache Wartbarkeit und einfache Erweiterbarkeit unserer Anwendung achten, kann die Entwicklung schnell zum Albtraum werden. Änderungs- und Erweiterungswünsche des Kunden erfordern eine ständige, umfassende Umstrukturierung des Codes: dabei entstehen neue Fehler, und es ist erheblicher Aufwand für umfassende Retests notwendig!</p>
-<p>Unser Ziel ist es, solche Änderungs- und Erweiterungswünsche durch Erweiterungen an wenigen, gut definierten Stellen im Code – <strong>ohne</strong> wesentliche Änderungen am bestehenden Code – umsetzen zu können. Das Schlüsselwort ist: statt <strong>Änderung</strong> lieber <strong>Erweiterung</strong>. Damit verbunden gilt: Wenn bestimmte Logiken erweiterbar sind, dann sind sie auch allgemeiner und können in mehreren Kontexten leichter wiederverwendet werden. So kommen wir langfristig schneller voran, unser Code wird kürzer, wir vermeiden Code-Duplikationen (was wiederum die Wartbarkeit erhöht).</p>
+<p>Unser Ziel ist es, solche Änderungs- und Erweiterungswünsche durch Erweiterungen an wenigen, gut definierten Stellen im Code – ohne wesentliche Änderungen am bestehenden Code – umsetzen zu können. Das Schlüsselwort ist: statt <strong>Änderung</strong> lieber <strong>Erweiterung</strong>. Damit verbunden gilt: Wenn bestimmte Logiken erweiterbar sind, dann sind sie auch allgemeiner und können in mehreren Kontexten leichter wiederverwendet werden. So kommen wir langfristig schneller voran, unser Code wird kürzer, wir vermeiden Code-Duplikationen (was wiederum die Wartbarkeit erhöht).</p>
 <p><strong>Entwurfsmuster</strong> zeigen bewährte Lösungen für häufig auftretende Entwurfsprobleme: Sie helfen dabei, unseren Code leichter erweiterbar, wartbar und so weit wie möglich wiederverwendbar zu gestalten. In dieser Übung konzentrieren wir uns auf solche Muster, Prinzipien und einige Programmierwerkzeuge, die helfen, die oben genannten Probleme zu lösen.
 Aber man soll es nicht übertreiben: Ein bestimmtes Entwurfsmuster sollte nur dann eingesetzt werden, wenn es tatsächlich einen Vorteil bringt. Andernfalls erhöht es nur unnötig die Komplexität der Implementierung.
 Vor diesem Hintergrund ist es nicht unser Ziel (und oft auch gar nicht möglich), alle zukünftigen Erweiterungsbedürfnisse vorherzusehen oder im Voraus zu durchdenken. Wichtig ist, dass wir – auch ausgehend von einer einfachen Lösung – unsere Probleme erkennen und den Code kontinuierlich so refaktorisieren, dass er den aktuellen (funktionalen und nicht-funktionalen) Anforderungen entspricht und an den richtigen Stellen besser erweiterbar und wiederverwendbar wird.</p>
@@ -2270,7 +2270,7 @@ Vor diesem Hintergrund ist es nicht unser Ziel (und oft auch gar nicht möglich)
 </ul>
 <h3 id="beschreibung-der-aufgabe">Beschreibung der Aufgabe<a class="headerlink" href="#beschreibung-der-aufgabe" title="Permanent link">&para;</a></h3>
 <p>Im Labor werden wir eine konsolenbasierte Datenverarbeitungsanwendung (genauer gesagt, eine Anonymisierungsanwendung) entsprechend den sich fortlaufend entwickelnder Anforderungen erweitern – entlang verschiedener Aspekte und unter Anwendung unterschiedlicher Techniken. In der ersten Aufgabe wird auch das Konzept der Anonymisierung vorgestellt.</p>
-<p>Die Eingabe in die Anwendung ist eine CSV-Textdatei, in der jede Zeile Daten zu einer bestimmten Person enthält. Öffnen wir im Dateisystem die Datei <em>us-500.csv</em> im Ordner <em>Data</em> (durch Doppelklick oder mit Notepad).  Wir sehen, dass die Daten zu den einzelnen Personen in Anführungszeichen ("") und durch Kommas getrennt dargestellt sind (es handelt sich um fiktive Daten). Schauen wir uns die erste Zeile an:</p>
+<p>Die Eingabe in die Anwendung ist eine CSV-Textdatei, in der jede Zeile Daten zu einer bestimmten Person enthält. Öffnen wir im Dateisystem die Datei <em>us-500.csv</em> im Ordner <em>Data</em> (durch Doppelklick oder mit Notepad).  Wir sehen, dass die Daten zu den einzelnen Personen in Anführungszeichen (" ") und durch Kommas getrennt dargestellt sind (es handelt sich um fiktive Daten). Schauen wir uns die erste Zeile an:</p>
 <div class="highlight"><pre><span></span><code>&quot;James&quot;,&quot;Rhymes&quot;,&quot;Benton, John B Jr&quot;,&quot;6649 N Blue Gum St&quot;,&quot;New Orleans &quot;,&quot;Orleans&quot;,&quot;LA&quot;,&quot;70116&quot;,&quot;504-621-8927&quot;,&quot;504-845-1427&quot;,&quot;30&quot;,&quot;65&quot;,&quot;Heart-related&quot;,&quot;jRhymes@gmail.com&quot;
 </code></pre></div>
 <p>Die Person in der ersten Zeile heißt James Rhymes, arbeitet bei der Firma "Benton, John B Jr", danach folgen einige Adressfelder, er ist 30 Jahre alt und wiegt 65 kg. Das nachfolgende Feld beschreibt eine schwerwiegende Erkrankung (in der obigen Zeile: „Heart-related“). Die letzte Spalte enthält die E-Mail-Adresse der Person.</p>
@@ -2488,7 +2488,7 @@ Es ist entscheidend, dass wir eine Klasse nur dann als erweiterbar betrachten, w
 <span class="w">        </span><span class="n">person</span><span class="p">.</span><span class="n">Address</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">City</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">State</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Age</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Weight</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">Decease</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Der Körper der Methode muss nur so geändert werden, dass anstelle des entfernten <code>mask</code>-Parameters die <code>_mask</code>-MemberVariable verwendet wird.</p>
+<p>Der Körper der Methode muss nur so geändert werden, dass anstelle des entfernten <code>mask</code>-Parameters die <code>_mask</code>-Membervariable verwendet wird.</p>
 </li>
 <li>
 <p>Auf die gleiche Weise wie im vorherigen Schritt verschieben wir die Methode <code>Anonymize_AgeRange</code> in die <code>AgeAnonymizer</code>-Klasse und ändern ihre Signatur so, dass sie die abstrakte Methode <code>Anonymize</code> der Basisklasse überschreibt:</p>
@@ -2497,7 +2497,7 @@ Es ist entscheidend, dass wir eine Klasse nur dann als erweiterbar betrachten, w
 <span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Der Körper der Methode muss nur so geändert werden, dass anstelle des entfernten <code>rangeSize</code>-Parameters die <code>_rangeSize</code>-MemberVariable verwendet wird.</p>
+<p>Der Körper der Methode muss nur so geändert werden, dass anstelle des entfernten <code>rangeSize</code>-Parameters die <code>_rangeSize</code>-Membervariable verwendet wird.</p>
 </li>
 <li>
 <p>In der <code>Run</code>-Methode der <code>AnonymizerBase</code>-Klasse können wir die <code>Anonymize</code>-Aufrufe im <code>if</code>/<code>else</code>-Ausdruck jetzt durch einen einfachen Aufruf der abstrakten Methode ersetzen:</p>
@@ -3036,8 +3036,8 @@ Die Lösung besteht in der Anwendung von <strong>Dependency Injection (kurz DI)<
         </path>
       </svg>
     </span>
-    <span title="2025. május 6. 19:20:54">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. május 6. 19:20:54"><span class="timeago" datetime="2025-05-06T19:20:54+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. május 6. 19:20:54">2025-05-06</span>
+    <span title="2025. május 8. 12:33:03">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. május 8. 12:33:03"><span class="timeago" datetime="2025-05-08T12:33:03+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. május 8. 12:33:03">2025-05-08</span>
     </span>
   </span>
 
