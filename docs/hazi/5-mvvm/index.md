@@ -210,7 +210,7 @@ Próbáljuk ki! Sajnos nem működik, a "-" gomb nem tiltódik le, amikor 0 vagy
 Gondold át, mi okozza ezt, és csak utána haladj tovább az útmutatóval!
 
 ??? tip "Indoklás"
-    A korábban tanultaknak megfelelően az adatkötés csak akkor kérdezi le a forrástulajdonság (esetünkben `IsDecrementEnabled`) értékét, ha annak változásáról az `INotifyPropertyChanged` segítségével értesítést kap! Márpedig, jelen megoldásunkban hiába változik a `NewPerson` objektum `Age` tulajdonsága, ennek megtörténtekor a semmiféle értesítés nincs az erre épülő `IsDecrementEnabled` tulajdonság megváltozásáról!
+    A korábban tanultaknak megfelelően az adatkötés csak akkor kérdezi le a forrástulajdonság (esetünkben `IsDecrementEnabled`) értékét, ha annak változásáról az `INotifyPropertyChanged` segítségével értesítést kap! Márpedig, jelen megoldásunkban hiába változik a `NewPerson` objektum `Age` tulajdonsága, ennek megtörténtekor semmiféle értesítés nincs az erre épülő `IsDecrementEnabled` tulajdonság megváltozásáról!
 
 A következő lépésben valósítsd meg a kapcsolódó változásértesítést a `PersonListPageViewModel` osztályban:
 
