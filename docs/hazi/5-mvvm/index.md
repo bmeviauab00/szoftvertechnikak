@@ -65,7 +65,7 @@ Bemelegítésképpen/ismétlésképpen - a kódot (`PersonListPage.xaml` és `Pe
     
  Az alkalmazást futtatva ellenőrizd, hogy a '+' és '-' gombok hatására eszközölt `NewPerson.Age` változások valóban érvényre jutnak az életkort megjelenítő `TextBox`-ban. 
 
-A `Person` osztályban látszik, hogy az `INotifyPropertyChanged` megvalósítása és a kapcsolódó kód igencsak terjengős. Nézd meg az előadásanyagban, milyen alternatívák vannak az interfész megvalósítására (az "INPC példa 1" című diától kezdődően kb. négy dia a négy lehetőség illusztrálására)! A legtömörebb legoldást az MVVM Toolkit alkalmazása jelenti. A következő lépésben jelen terjengősebb "manuális" INPC megvalósítást átalakítjuk MVVM toolkit alapúra.
+A `Person` osztályban látszik, hogy az `INotifyPropertyChanged` megvalósítása és a kapcsolódó kód igencsak terjengős. Nézd meg az előadásanyagban, milyen alternatívák vannak az interfész megvalósítására (az "INPC példa 1" című diától kezdődően kb. négy dia a négy lehetőség illusztrálására)! A legtömörebb megoldást az MVVM Toolkit alkalmazása jelenti. A következő lépésben jelen terjengősebb "manuális" INPC megvalósítást átalakítjuk MVVM toolkit alapúra.
 
 ### Feladat 1/a - MVVM Toolkit NuGet referencia felvétele
 
