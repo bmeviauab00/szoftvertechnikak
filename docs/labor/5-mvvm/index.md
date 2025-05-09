@@ -338,7 +338,7 @@ public BooksPageViewModel ViewModel { get; } = new BooksPageViewModel();
 A `BooksPage.xaml` fájlban innentől kezdve használhatjuk a `ViewModel` propertyt az adatkötéshez.
 
 * Fókuszáljunk első körben a `ComboBox`-ra:
-    * A `SelectedItem` és az `ItemsSource` tulajdonságokat a kiinduló megoldásban a code-behind fájlban kézzel manipuláltuk. Ezeket kezelését alakítsuk át adatkötés alapú megoldásra: az MVVM mintának megfelelőan a code-behindban definiált ViewModel objektum tulajdonságaihoz kötjük.
+    * A `SelectedItem` és az `ItemsSource` tulajdonságokat a kiinduló megoldásban a code-behind fájlban kézzel manipuláltuk. Ezek kezelését alakítsuk át adatkötés alapú megoldásra: az MVVM mintának megfelelőan a code-behindban definiált ViewModel objektum tulajdonságaihoz kötjük.
     * Töröljük a xaml fájlban a `SelectionChanged` esemény feliratkozást és a code-behindban a `GenreFilterComboBox_SelectionChanged` eseménykezelőt (erre a `SelectedItem` adatkötése miatt nincs már szükség).
 
     ```xml hl_lines="4-5"
@@ -390,7 +390,7 @@ MVVM mintát ritkán szoktunk kizárólag a .NET keretrendszerre támaszkodva im
 A könyvtárak közül a legelterjedtebbek a következők:
 
 * [MVVM Toolkit](https://learn.microsoft.com/en-us/dotnet/communitytoolkit/mvvm/): Microsoft által gondozott MVVM könyvtár.
-* [Prism](https://prismlibrary.com/): Régen Microsoft gondozásában állt és nagyon elterjedt volt, de már külső fejlesztők tartják karban és fizetős lett idő közben.
+* [Prism](https://prismlibrary.com/): Régen a Microsoft gondozásában állt és nagyon elterjedt volt, de már külső fejlesztők tartják karban és fizetős lett idő közben.
 * [ReactiveUI](https://reactiveui.net/): A Reactive Extensions (Rx) könyvtárakat használja a ViewModel állapotának kezelésére, és a View-ViewModel közötti adatkötésre. Ez a könyvtár nyújtja a legtöbb szolgáltatást, de a legnehezebben tanulható is.
 * [Uno.Extensions](https://platform.uno/uno-extensions/): MVVM Toolkitre épül, de több olyan szolgáltatást is tartalmaz, amelyek a WinUI keretrendszer hiányosságait pótolják.
 * A [Windows Template Studio](https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs) egy Visual Studio kiegészítő, ami komplexebb WinUI alkalmazások kiinduló projektsablonját teszi elérhetővé.
@@ -493,7 +493,7 @@ A ViewModel tipikusan publikálja a rajta végrehajtható műveleteket a View fe
     
     Ezt a mechanizmust használja a `Button` vezérlő is, amelynek `Command` tulajdonságához rendelhetjük a ViewModel-ben definiált parancsokat.
 
-    Az `ICommand`-ban definiált műveletek közül legfontosabb számunkra az `Execute`, mely a parancs futtatásakor hívódik meg. A `CanExecute`-tal a felület le tudja kérdezni a parancstól, hogy adott pillanatban végrejaktható-e (pl. a gomb tiltott/engedélyezett lesz ennek megfelelően). A `CanExecuteChanged` eseménnyel pedig - az esemény nevének megfelelően - azt tudja jelezni a parancs a felület felé, hogy a parancs "CanExecute" állapota megváltozott, a felületnek frissítenie kell a tiltott/engedélyezett állapotát.
+    Az `ICommand`-ban definiált műveletek közül legfontosabb számunkra az `Execute`, mely a parancs futtatásakor hívódik meg. A `CanExecute`-tal a felület le tudja kérdezni a parancstól, hogy adott pillanatban végrehajtható-e (pl. a gomb tiltott/engedélyezett lesz ennek megfelelően). A `CanExecuteChanged` eseménnyel pedig - az esemény nevének megfelelően - azt tudja jelezni a parancs a felület felé, hogy a parancs "CanExecute" állapota megváltozott, a felületnek frissítenie kell a tiltott/engedélyezett állapotát.
 
 ### ICommand használata
 
@@ -536,7 +536,7 @@ ClearFilterCommand = new RelayCommand(
 ```
 
 !!! note Paraméter nevek
-    A fenti kódban az `execute:` és `canExecute:` egy általános C# nyelvi eszköz alkalmazására mutat példát: C#-ban egy függvény hívásakor paraméterek megadásakor lehetőség van a paraméter **nevének** megadására (`:` előtt). Ezt ritkán alkalmazzuk, mert többet kell gépelni, viszont néha - amikor nagyban segíti - a kód olvashatóságát, érdemes megfontolni a használatát.
+    A fenti kódban az `execute:` és `canExecute:` egy általános C# nyelvi eszköz alkalmazására mutat példát: C#-ban egy függvény hívásakor paraméterek megadásakor lehetőség van a paraméter **nevének** megadására (`:` előtt). Ezt ritkán alkalmazzuk, mert többet kell gépelni, viszont néha - amikor nagyban segíti a kód olvashatóságát - érdemes megfontolni a használatát.
 
 Viszont a UI csak akkor frissül - és ezáltal a `canExecute` paraméterben megadott függvény csak akkor hívódik meg -, ha az `ICommand.CanExecuteChanged` eseménye elsütésre kerül.
 

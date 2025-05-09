@@ -172,7 +172,7 @@ Jelen megoldásban a lift léptetésének megvalósítása be van égetve a `Lif
 * Vészleállás mód. Amikor a liftre bekapcsolják a vészleállás módot, a `Step` művelet nem léptetheti a liftet semmilyen irányba (egészen a vészleállás mód deaktiválásáig).
 * Legyen lehetőség a léptetés művelet viselkedésének kényelmes konfigurálására, további viselkedések bevezetésére és a meglévő/újonnan bevezetett viselkedések tetszőleges kombinálására **anélkül, hogy a `Step` művelet kódját módosítani kellene!**
 
-A megoldáshoz a Chain of Responsibility tervezési mintát kell alkalmazni. A minta nem szerepel előadáson, de az online források alapján könnyen megismerhető. 
+A megoldáshoz a Chain of Responsibility tervezési mintát kell alkalmazni. A minta nem szerepel előadáson, de online források alapján könnyen megismerhető. 
 
 ??? tip "Megoldás alapelve - kis segítség"
     Három konkrét Handler osztályt célszerű bevezetni és a `Lift` osztály konstruktorában megfelelő sorrendben "összefűzni", a `Step` műveletben pedig ezt használni.
