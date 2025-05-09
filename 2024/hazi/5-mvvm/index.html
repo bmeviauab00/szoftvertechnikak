@@ -2041,7 +2041,7 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
 <p>Az alkalmazásban a <code>PersonListPage.xaml</code>-ben a <code>TextBox</code>-ok <code>Text</code> tulajdonsága (ez a cél tulajdonság) hozzá vannak kötve a code behindban levő <code>Person</code> típusú <code>NewPerson</code> tag <code>Age</code> és <code>Name</code> tulajdonságaihoz (ezek a források a két adatkötésben). Nézzük meg a kódban, hogy a <code>NewPerson.Name</code> és <code>NewPerson.Age</code> forrás tulajdonságokat <strong>változtatjuk is a kódban</strong>: a vezérlő csak akkor tud ezekről értesülni (és így szinkronban maradni a forrással), ha ezekről a <code>Name</code> és <code>Age</code> változásokról értesítést kap. Emiatt az <code>Age</code> és <code>Name</code> tulajdonságokat tartalmazó osztálynak, vagyis a <code>Person</code>-nek meg kell valósítania az <code>INotifyPropertyChanged</code> interfészt, és a tulajdonságok változásakor el kell sütnie a <code>PropertyChanged</code> eseményt megfelelően paraméterezve.</p>
 </details>
 <p>Az alkalmazást futtatva ellenőrizd, hogy a '+' és '-' gombok hatására eszközölt <code>NewPerson.Age</code> változások valóban érvényre jutnak az életkort megjelenítő <code>TextBox</code>-ban. </p>
-<p>A <code>Person</code> osztályban látszik, hogy az <code>INotifyPropertyChanged</code> megvalósítása és a kapcsolódó kód igencsak terjengős. Nézd meg az előadásanyagban, milyen alternatívák vannak az interfész megvalósítására (az "INPC példa 1" című diától kezdődően kb. négy dia a négy lehetőség illusztrálására)! A legtömörebb legoldást az MVVM Toolkit alkalmazása jelenti. A következő lépésben jelen terjengősebb "manuális" INPC megvalósítást átalakítjuk MVVM toolkit alapúra.</p>
+<p>A <code>Person</code> osztályban látszik, hogy az <code>INotifyPropertyChanged</code> megvalósítása és a kapcsolódó kód igencsak terjengős. Nézd meg az előadásanyagban, milyen alternatívák vannak az interfész megvalósítására (az "INPC példa 1" című diától kezdődően kb. négy dia a négy lehetőség illusztrálására)! A legtömörebb megoldást az MVVM Toolkit alkalmazása jelenti. A következő lépésben jelen terjengősebb "manuális" INPC megvalósítást átalakítjuk MVVM toolkit alapúra.</p>
 <h3 id="feladat-1a-mvvm-toolkit-nuget-referencia-felvetele">Feladat 1/a - MVVM Toolkit NuGet referencia felvétele<a class="headerlink" href="#feladat-1a-mvvm-toolkit-nuget-referencia-felvetele" title="Permanent link">&para;</a></h3>
 <p>Első lépésben NuGet referenciát kell tenni az MVVM Toolkitre annak érdekében, hogy használni lehessen a projektben. </p>
 <p><strong>Feladat</strong>: Vegyél fel egy NuGet referenciát a projektben a "CommunityToolkit.Mvvm" NuGet csomagra. Ez a Visual Studio oldal írja le, hogyan lehet egy NuGet referenciát a projektbe felvenni <a href="https://learn.microsoft.com/en-us/nuget/quickstart/install-and-use-a-package-in-visual-studio#nuget-package-manager">NuGet Package Manager</a>. Az előző link az oldalon belül a "NuGet Package Manager" fejezetre ugrik, az itt megadott négy lépést kell követni (természetesen azzal a különbséggel, hogy nem a "Newtonsoft.Json" hanem a "CommunityToolkit.Mvvm" csomagra kell a referenciát felvenni).</p>
@@ -2283,8 +2283,8 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
         </path>
       </svg>
     </span>
-    <span title="2025. május 9. 18:12:22">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. május 9. 18:12:22"><span class="timeago" datetime="2025-05-09T18:12:22+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. május 9. 18:12:22">2025-05-09</span>
+    <span title="2025. május 9. 18:20:17">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. május 9. 18:20:17"><span class="timeago" datetime="2025-05-09T18:20:17+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. május 9. 18:20:17">2025-05-09</span>
     </span>
   </span>
 
@@ -2303,6 +2303,8 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
         <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
       </a><a href="https://github.com/forcemagic" target="_blank" rel="noopener noreferrer" class="md-author" title="@Máté Szén">
         <img src="https://avatars.githubusercontent.com/u/25160976?u=8f2accd3cab208ae5337d4d40ab093c3c37b8e52&v=4?size=72" alt="@Máté Szén">
+      </a><a href="https://github.com/KovacsHunor" target="_blank" rel="noopener noreferrer" class="md-author" title="@Hunor">
+        <img src="https://avatars.githubusercontent.com/u/88990144?u=d73eeafc93d8e24155e550464f0cacee92e8c50b&v=4?size=72" alt="@Hunor">
       </a><a href="https://github.com/nemetbence203" target="_blank" rel="noopener noreferrer" class="md-author" title="@None">
         <img src="https://avatars.githubusercontent.com/u/180311962?u=e55ac7562ba8bcbc451cf032bc3c9330d1de8526&v=4?size=72" alt="@None">
       </a><a href="https://github.com/norbertkurcsi" target="_blank" rel="noopener noreferrer" class="md-author" title="@Kurcsi Norbert">
