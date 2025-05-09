@@ -2430,7 +2430,7 @@ A <code>SelectedGenre</code> setterében a <code>LoadBooks</code> metódust hív
 <li>
 <p>Fókuszáljunk első körben a <code>ComboBox</code>-ra:</p>
 <ul>
-<li>A <code>SelectedItem</code> és az <code>ItemsSource</code> tulajdonságokat a kiinduló megoldásban a code-behind fájlban kézzel manipuláltuk. Ezeket kezelését alakítsuk át adatkötés alapú megoldásra: az MVVM mintának megfelelőan a code-behindban definiált ViewModel objektum tulajdonságaihoz kötjük.</li>
+<li>A <code>SelectedItem</code> és az <code>ItemsSource</code> tulajdonságokat a kiinduló megoldásban a code-behind fájlban kézzel manipuláltuk. Ezek kezelését alakítsuk át adatkötés alapú megoldásra: az MVVM mintának megfelelőan a code-behindban definiált ViewModel objektum tulajdonságaihoz kötjük.</li>
 <li>Töröljük a xaml fájlban a <code>SelectionChanged</code> esemény feliratkozást és a code-behindban a <code>GenreFilterComboBox_SelectionChanged</code> eseménykezelőt (erre a <code>SelectedItem</code> adatkötése miatt nincs már szükség).</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;ComboBox</span><span class="w"> </span><span class="na">x:Name=</span><span class="s">&quot;genreFilterComboBox&quot;</span>
@@ -2476,7 +2476,7 @@ A <code>SelectedGenre</code> setterében a <code>LoadBooks</code> metódust hív
 A könyvtárak közül a legelterjedtebbek a következők:</p>
 <ul>
 <li><a href="https://learn.microsoft.com/en-us/dotnet/communitytoolkit/mvvm/">MVVM Toolkit</a>: Microsoft által gondozott MVVM könyvtár.</li>
-<li><a href="https://prismlibrary.com/">Prism</a>: Régen Microsoft gondozásában állt és nagyon elterjedt volt, de már külső fejlesztők tartják karban és fizetős lett idő közben.</li>
+<li><a href="https://prismlibrary.com/">Prism</a>: Régen a Microsoft gondozásában állt és nagyon elterjedt volt, de már külső fejlesztők tartják karban és fizetős lett idő közben.</li>
 <li><a href="https://reactiveui.net/">ReactiveUI</a>: A Reactive Extensions (Rx) könyvtárakat használja a ViewModel állapotának kezelésére, és a View-ViewModel közötti adatkötésre. Ez a könyvtár nyújtja a legtöbb szolgáltatást, de a legnehezebben tanulható is.</li>
 <li><a href="https://platform.uno/uno-extensions/">Uno.Extensions</a>: MVVM Toolkitre épül, de több olyan szolgáltatást is tartalmaz, amelyek a WinUI keretrendszer hiányosságait pótolják.</li>
 <li>A <a href="https://marketplace.visualstudio.com/items?itemName=TemplateStudio.TemplateStudioForWinUICs">Windows Template Studio</a> egy Visual Studio kiegészítő, ami komplexebb WinUI alkalmazások kiinduló projektsablonját teszi elérhetővé.</li>
@@ -2560,7 +2560,7 @@ Esetünkben a kódgenerátor deklarálja őket, hívja meg ezeket a setterekben,
 <span class="p">}</span>
 </code></pre></div>
 <p>Ezt a mechanizmust használja a <code>Button</code> vezérlő is, amelynek <code>Command</code> tulajdonságához rendelhetjük a ViewModel-ben definiált parancsokat.</p>
-<p>Az <code>ICommand</code>-ban definiált műveletek közül legfontosabb számunkra az <code>Execute</code>, mely a parancs futtatásakor hívódik meg. A <code>CanExecute</code>-tal a felület le tudja kérdezni a parancstól, hogy adott pillanatban végrejaktható-e (pl. a gomb tiltott/engedélyezett lesz ennek megfelelően). A <code>CanExecuteChanged</code> eseménnyel pedig - az esemény nevének megfelelően - azt tudja jelezni a parancs a felület felé, hogy a parancs "CanExecute" állapota megváltozott, a felületnek frissítenie kell a tiltott/engedélyezett állapotát.</p>
+<p>Az <code>ICommand</code>-ban definiált műveletek közül legfontosabb számunkra az <code>Execute</code>, mely a parancs futtatásakor hívódik meg. A <code>CanExecute</code>-tal a felület le tudja kérdezni a parancstól, hogy adott pillanatban végrehajtható-e (pl. a gomb tiltott/engedélyezett lesz ennek megfelelően). A <code>CanExecuteChanged</code> eseménnyel pedig - az esemény nevének megfelelően - azt tudja jelezni a parancs a felület felé, hogy a parancs "CanExecute" állapota megváltozott, a felületnek frissítenie kell a tiltott/engedélyezett állapotát.</p>
 </div>
 <h3 id="icommand-hasznalata">ICommand használata<a class="headerlink" href="#icommand-hasznalata" title="Permanent link">&para;</a></h3>
 <p>Készítsünk egy <code>ICommand</code> típusú propertyt a <code>BooksPageViewModel</code> osztályban, amely "nem beállított" állapotba teszi a kiválasztott műfajt (a Clear gombnál használjuk majd).
@@ -2590,7 +2590,7 @@ Ebből készítünk egy új példányt a <code>BooksPageViewModel</code> konstru
 </span></code></pre></div>
 <div class="admonition note paraméter nevek">
 <p class="admonition-title">Note</p>
-<p>A fenti kódban az <code>execute:</code> és <code>canExecute:</code> egy általános C# nyelvi eszköz alkalmazására mutat példát: C#-ban egy függvény hívásakor paraméterek megadásakor lehetőség van a paraméter <strong>nevének</strong> megadására (<code>:</code> előtt). Ezt ritkán alkalmazzuk, mert többet kell gépelni, viszont néha - amikor nagyban segíti - a kód olvashatóságát, érdemes megfontolni a használatát.</p>
+<p>A fenti kódban az <code>execute:</code> és <code>canExecute:</code> egy általános C# nyelvi eszköz alkalmazására mutat példát: C#-ban egy függvény hívásakor paraméterek megadásakor lehetőség van a paraméter <strong>nevének</strong> megadására (<code>:</code> előtt). Ezt ritkán alkalmazzuk, mert többet kell gépelni, viszont néha - amikor nagyban segíti a kód olvashatóságát - érdemes megfontolni a használatát.</p>
 </div>
 <p>Viszont a UI csak akkor frissül - és ezáltal a <code>canExecute</code> paraméterben megadott függvény csak akkor hívódik meg -, ha az <code>ICommand.CanExecuteChanged</code> eseménye elsütésre kerül.</p>
 <p>Ezt az esemény elsütést az <code>IRelayCommand</code> interfészen keresztül (ami egyben <code>ICommand</code> is) mi is ki tudjuk váltani, ha a <code>SelectedGenre</code> property setterében meghívjuk a <code>NotifyCanExecuteChanged()</code> metódust.</p>
@@ -2669,8 +2669,8 @@ Esetünkben a <code>NotifyCanExecuteChangedFor</code>-ral kössük össze a <cod
         </path>
       </svg>
     </span>
-    <span title="2025. április 28. 12:13:15">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 28. 12:13:15"><span class="timeago" datetime="2025-04-28T12:13:15+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 28. 12:13:15">2025-04-28</span>
+    <span title="2025. május 9. 18:41:23">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. május 9. 18:41:23"><span class="timeago" datetime="2025-05-09T18:41:23+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. május 9. 18:41:23">2025-05-09</span>
     </span>
   </span>
 

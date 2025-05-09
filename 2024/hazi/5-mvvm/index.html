@@ -2184,7 +2184,7 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
 <li>Az <code>IsDecrementEnabled</code> tulajdonság maradhat a mostani formájában (egy getter only property), nem szükséges <code>[ObservableProperty]</code> alapúra átírni (de az is jó megoldás, és a házi feladat tekintetében is teljesen elfogadható, csak kicsit másként kell dolgozni a következő lépésekben).</li>
 </ul>
 </li>
-<li>Próbáld magadtól megvalósítani a következőt a ViewModel osztályban (a <code>Person</code> osztály marad változatlan): amikor a <code>NewPerson.Age</code> változik, akkor az <code>ObservableObject</code> ősből örökölt <code>OnPropertyChanged</code> hívásával jelezzük a <code>IsDecrementEnabled</code> tulajdonság változását. Tipp: a <code>Person</code> osztály már rendelkezik <code>PropertyChanged</code> eseménnyel, hiszen maga is megvalósítja az <code>INotifyPropertyChanged</code> interfészt, erre az eseményre fel lehet iratkozni! Az egyszerűség érdekében az nem zavar minket, ha az <code>IsDecrementEnabled</code> változását esetleg akkor is jelezzük, ha tulajdonképen "logikailag" esetleg nem is változik.</li>
+<li>Próbáld magadtól megvalósítani a következőt a ViewModel osztályban (a <code>Person</code> osztály marad változatlan): amikor a <code>NewPerson.Age</code> változik, akkor az <code>ObservableObject</code> ősből örökölt <code>OnPropertyChanged</code> hívásával jelezzük a <code>IsDecrementEnabled</code> tulajdonság változását. Tipp: a <code>Person</code> osztály már rendelkezik <code>PropertyChanged</code> eseménnyel, hiszen maga is megvalósítja az <code>INotifyPropertyChanged</code> interfészt, erre az eseményre fel lehet iratkozni! Az egyszerűség érdekében az nem zavar minket, ha az <code>IsDecrementEnabled</code> változását esetleg akkor is jelezzük, ha tulajdonképpen "logikailag" esetleg nem is változik.</li>
 <li>A fentieket külön eseménykezelő függvény bevezetése nélkül is meg lehet oldani (tipp: eseménykezelő megadása lambda kifejezéssel).</li>
 </ul>
 <p>Teszteld is a megoldásod! Ha jól dolgoztál, a gombnak akkor is le kell tiltódnia, ha a TextBoxba kézzel írsz be negatív életkor értéket (és utána kikattintasz a TextBoxból). Gondold át, miért van ez így!</p>
@@ -2283,8 +2283,8 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
         </path>
       </svg>
     </span>
-    <span title="2025. május 9. 18:21:35">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. május 9. 18:21:35"><span class="timeago" datetime="2025-05-09T18:21:35+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. május 9. 18:21:35">2025-05-09</span>
+    <span title="2025. május 9. 18:41:23">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. május 9. 18:41:23"><span class="timeago" datetime="2025-05-09T18:41:23+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. május 9. 18:41:23">2025-05-09</span>
     </span>
   </span>
 
