@@ -251,7 +251,7 @@ Az alapelv a következő: a gombnál a `Click` és `IsEnabled` "megadása" helye
 Alapesetben egy alkalmazásban minden parancshoz egy külön `ICommand` implementációt kellene készíteni. Ez azonban sok parancs esetén sok osztály bevezetését igényli. Az MVVM Toolkit ebben is a segítségünkre siet. Biztosít egy `RelayCommand` osztályt, mely megvalósítja az `ICommand` interfészt. Ez az osztály bármilyen parancs/kód futtatására használható, így nem kell további command osztályokat bevezetni. Hogyan lehetséges ez? Úgy, hogy a `RelayCommand`-nak konstruktor paraméterekben, két delegate formájában tudjuk a végrehajtáshoz és a tiltáshoz/engedélyezéshez tartozó kódot megadni:
 
 * Első paraméter a parancs futtatásakor végrehajtandó kód.
-* Második paraméter az (az opcionális) a kód, melyet a command hív annak ellenőrzésére, hogy engedélyezni/tiltani kell magát (az itt megadott függvénynek bool-lal kell visszatérnie, true esetben engedélyezett lesz a parancs).
+* Második paraméter az (az opcionális) kód, melyet a command hív annak ellenőrzésére, hogy engedélyezze/tiltsa magát (az itt megadott függvénynek bool-lal kell visszatérnie, true esetben engedélyezett lesz a parancs).
 
 A következő lépésben a "-" gomb kezelését alakítjuk át command alapúra. Először próbáld a nagyját önállóan megvalósítani a kapcsolódó WinUI előadásanyag alapján. A parancs futtatása egyszerűbb, de a parancs tiltás-engedélyezéshez lesz még teendőnk. Főbb lépések:
 
