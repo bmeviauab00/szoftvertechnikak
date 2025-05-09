@@ -2255,7 +2255,7 @@
 </div>
 <h3 id="elmeleti-hatter-szemleletmod">Elméleti háttér, szemléletmód *<a class="headerlink" href="#elmeleti-hatter-szemleletmod" title="Permanent link">&para;</a></h3>
 <p>A komplexebb alkalmazások fejlesztése során számos tervezői döntést kell meghoznunk, melyek során több lehetőség közül is választhatunk. Amennyiben ezen pontokban nem tartjuk szem előtt az alkalmazásunk könnyű karbantarthatóságát, illetve egyszerűen megvalósítható továbbfejlesztési lehetőségét, könnyen hamar rémálommá válhat a fejlesztés. A megrendelői változtatási és bővítési igények a kód nagymértékű folyamatos átírását/módosítását igénylik: ennek során új hibák születnek, illetve jelentős munkát kell fektetni a kód nagy léptékű újratesztelésébe is!</p>
-<p>A célunk az, hogy az ilyen változtatási és bővítési igényeket a kód pár jól meghatározott pontjában történő bővítésével - a meglévő kód érdemi módosítása nélkül - meg tudjuk valósítani. A kulcsszó: <strong>módosítással</strong> szemben <strong>bővítés</strong>. Ehhez kapcsolódóan: amennyiben bizonyos logikáink kiterjeszthetők, akkor azok általánosabbak is leszek, több kontextusban könnyebben is fel tudjuk ezeket használni. Így hosszabb távon gyorsabban haladunk, rövidebb a kód, elkerüljük a kódduplikációt (ezáltal könnyebben karbantartható is a kód).</p>
+<p>A célunk az, hogy az ilyen változtatási és bővítési igényeket a kód pár jól meghatározott pontjában történő bővítésével - a meglévő kód érdemi módosítása nélkül - meg tudjuk valósítani. A kulcsszó: <strong>módosítással</strong> szemben <strong>bővítés</strong>. Ehhez kapcsolódóan: amennyiben bizonyos logikáink kiterjeszthetőek, akkor azok általánosabbak is lesznek, több kontextusban könnyebben is fel tudjuk ezeket használni. Így hosszabb távon gyorsabban haladunk, rövidebb a kód, elkerüljük a kódduplikációt (ezáltal könnyebben karbantartható is a kód).</p>
 <p>A <strong>tervezési minták</strong> jól bevált megoldásokat mutatnak bizonyos gyakran előforduló tervezési problémákra: ezen megoldások abban segítenek, hogy kódunk könnyebben bővíthető, karbantartható és minél nagyobb mértékben újrafelhasználható legyen. Jelen gyakorlat keretében azon mintákra, tervezési elvekre és néhány programozói eszközre fókuszálunk, melyek a fenti problémákon segítenek.
 Ugyanakkor ne essünk át a ló túloldalára: csak akkor érdemes egy adott tervezési mintát bevetni, ha adott esetben valós előnyt jelent az alkalmazása. Ellenkező esetben csak a megvalósítás komplexitását növeli feleslegesen.
 Ennek tükrében nem is célunk (és sokszor nincs is rá lehetőségünk), hogy minden jövőbeli kiterjeszthetőségi igényt előre megérezzünk, illetve nagyon előre átgondoljunk. A lényeg az, hogy akár egy egyszerű megoldásból kiindulva, az egyes problémákat felismerve, a kódunkat folyamatosan refaktoráljuk úgy, hogy az aktuális (funkcionális és nemfunkcionális) követelményeknek és előrelátásunk szerint a megfelelő pontokban tegyük kódunkat könnyebben kiterjeszthetővé és újrafelhasználhatóvá.</p>
@@ -2278,7 +2278,7 @@ Ennek tükrében nem is célunk (és sokszor nincs is rá lehetőségünk), hogy
 <summary>Adatok forrása és pontos formátuma *</summary>
 <p>Az adatok forrása: <a href="https://www.briandunning.com/sample-data/">https://www.briandunning.com/sample-data/</a>, pár oszloppal (kor, súly, betegség) kiegészítve. A mezők sorrendje: First Name, Last Name, Company, Address, City, County (where applicable), State/Province (where applicable), ZIP/Postal Code, Phone 1, Phone 2, Age, Weight, Illness, Email</p>
 </details>
-<p>Az alkalmazás alapfeladata, hogy ezeket az adatokat az aktuális igényeknek megfelelően anonimizálja, majd egy kimeneti CSV szövegfájlba kiírja. Az anonimizálás célja, hogy az adatok átalakításával adathalmazban levő személyeket beazonosíthatatlanná tegye, de olyan módon, hogy az adatokból mégis lehessen kimutatásokat készíteni. Az anonimizálás egy különálló, nagyon komoly és sok kihívást rejtő adatfeldolgozási szakterület. A gyakorlat keretében nem célunk, hogy valós környezetben is használható, vagy akár minden tekintetben értelmes megoldásokat dolgozzunk ki. Számunkra tulajdonképpen csak egy valamilyen adatfeldolgozó algoritmus "bevetése" a fontos a minták bemutatásához. Ez talán kicsit "izgalmasabb" keretet ad, mint egy egyszerű adatszűrés/sorrendezés/stb. alapú adatfeldolgozás (melyeket ráadásul a .NET már eleve beépítve támogat).</p>
+<p>Az alkalmazás alapfeladata, hogy ezeket az adatokat az aktuális igényeknek megfelelően anonimizálja, majd egy kimeneti CSV szövegfájlba kiírja. Az anonimizálás célja, hogy az adatok átalakításával az adathalmazban levő személyeket beazonosíthatatlanná tegye, de olyan módon, hogy az adatokból mégis lehessen kimutatásokat készíteni. Az anonimizálás egy különálló, nagyon komoly és sok kihívást rejtő adatfeldolgozási szakterület. A gyakorlat keretében nem célunk, hogy valós környezetben is használható, vagy akár minden tekintetben értelmes megoldásokat dolgozzunk ki. Számunkra tulajdonképpen csak egy valamilyen adatfeldolgozó algoritmus "bevetése" a fontos a minták bemutatásához. Ez talán kicsit "izgalmasabb" keretet ad, mint egy egyszerű adatszűrés/sorrendezés/stb. alapú adatfeldolgozás (melyeket ráadásul a .NET már eleve beépítve támogat).</p>
 <div class="admonition note">
 <p class="admonition-title">Pár gondolat az anonimizálásról</p>
 <p>Azt gondolhatnánk, hogy az anonimizálás egy egyszerű problémakör. Pl. csak el kell távolítani, vagy ki kell "csillagozni" a személyek neveit, lakcíméből az utca-házszámot, telefonszámokat, e-mail címet, és meg is vagyunk. Például a bemenetünk első sorára ez lenne a kimenet:</p>
@@ -2323,7 +2323,7 @@ Ennek tükrében nem is célunk (és sokszor nincs is rá lehetőségünk), hogy
 </ul>
 <p>Próbáljuk ki, futtassuk! Ehhez a "OrganizedToFunctions-1" legyen Visual Studioban a startup projekt (jobb katt rajta, és <em>Set as Startup Project</em>), majd futtassuk:</p>
 <p><a class="glightbox" href="images/OrganizedToFunctions-1-console-out.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Console output" src="images/OrganizedToFunctions-1-console-out.png" /></a></p>
-<p>A kimeneti fájt fájlkezelőben tudjuk megnézni, az "OrganizedToFunctions-1\bin\Debug\net8.0\" vagy hasonló nevű mappában találjuk, "us-500.processed.txt" néven. Nyissuk meg, és vessünk egy pillantást az adatokra.</p>
+<p>A kimeneti fájlt fájlkezelőben tudjuk megnézni, az "OrganizedToFunctions-1\bin\Debug\net8.0\" vagy hasonló nevű mappában találjuk, "us-500.processed.txt" néven. Nyissuk meg, és vessünk egy pillantást az adatokra.</p>
 <h3 id="a-megoldas-ertekelese">A megoldás értékelése<a class="headerlink" href="#a-megoldas-ertekelese" title="Permanent link">&para;</a></h3>
 <ul>
 <li>A megoldás alapvetően jól strukturált, könnyen megérthető.</li>
@@ -2369,7 +2369,7 @@ Kulcsfontosságú, hogy egy osztályt akkor tekintünk kiterjeszthetőnek, ha an
 <ul>
 <li>Ezek nem adatok, hanem <strong><mark>viselkedések (kód, logika)</mark></strong>.</li>
 <li>Nem <code>if</code>/<code>switch</code> utasításokkal oldjuk meg: "kiterjesztési pontokat" vezetünk be, és valamilyen módon megoldjuk, hogy ezekben "tetszőleges" kód lefuthasson.</li>
-<li>Ezek változó/esetfüggő részek kódját <strong>más osztályokba</strong> tesszük (az osztályunk szempontjából "lecserélhető" módon)!</li>
+<li>Ezen változó/esetfüggő részek kódját <strong>más osztályokba</strong> tesszük (az osztályunk szempontjából "lecserélhető" módon)!</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2414,7 +2414,7 @@ Kulcsfontosságú, hogy egy osztályt akkor tekintünk kiterjeszthetőnek, ha an
 <p>Alakítsuk át a kódunkat ennek megfelelően. A VS solution-ben a "3-TemplateMethod" mappában a "TemplateMethod-0-Begin" projekt tartalmazza a korábbi megoldásunk kódját (annak "másolatát"), ebben a projektben dolgozzunk:</p>
 <ol>
 <li>Nevezzük át az <code>Anonymizer</code> osztályt <code>AnonymizerBase</code>-re (pl. az osztály nevére állva a forrásfájlban és <span class="keys"><kbd class="key-f2">F2</kbd></span>-t nyomva).</li>
-<li>Vegyünk fel az projektbe egy <code>NameMaskingAnonymizer</code> és egy <code>AgeAnonymizer</code> osztályt (projekten jobb katt, <em>Add</em>/<em>Class</em>).</li>
+<li>Vegyünk fel a projektbe egy <code>NameMaskingAnonymizer</code> és egy <code>AgeAnonymizer</code> osztályt (projekten jobb katt, <em>Add</em>/<em>Class</em>).</li>
 <li>Származtassuk az <code>AnonymizerBase</code>-ből őket</li>
 <li>
 <p>Az <code>AnonymizerBase</code>-ből mozgassuk át a <code>NameMaskingAnonymizer</code>-be az ide tartozó részeket:</p>
@@ -2491,7 +2491,7 @@ Kulcsfontosságú, hogy egy osztályt akkor tekintünk kiterjeszthetőnek, ha an
 <p>A függvény törzsét csak annyiban kell átírni, hogy ne a megszüntetett <code>mask</code> paramétert, hanem a <code>_mask</code> tagváltozót használja.</p>
 </li>
 <li>
-<p>Az előző lépéssel teljesen analóg módon az <code>Anonymize_AgeRange</code> műveletet mozgassuk át a <code>AgeAnonymizer</code> osztályba, és alakítsuk át a szignatúráját úgy, hogy override-olja az ősbeli <code>Anonymize</code> absztrakt függvényt:</p>
+<p>Az előző lépéssel teljesen analóg módon az <code>Anonymize_AgeRange</code> műveletet mozgassuk át az <code>AgeAnonymizer</code> osztályba, és alakítsuk át a szignatúráját úgy, hogy override-olja az ősbeli <code>Anonymize</code> absztrakt függvényt:</p>
 <div class="highlight"><pre><span></span><code><span class="k">protected</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="nf">Anonymize</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="p">...</span>
@@ -2556,7 +2556,7 @@ Kulcsfontosságú, hogy egy osztályt akkor tekintünk kiterjeszthetőnek, ha an
 <li>Visual Studioban a <em>TemplateMethod-0-Begin</em> projekt legyen a startup projekt, ha ezt eddig még nem állítottuk be.</li>
 <li>Tegyünk egy töréspontot az <code>AnonymizerBase</code> osztály <code>var person = Anonymize(persons[i]);</code> sorára.</li>
 <li>Amikor futás közben itt megáll a debugger, <span class="keys"><kbd class="key-f11">F11</kbd></span>-gyel lépjünk bele.</li>
-<li>Az tapasztaljuk, hogy a  leszármazott <code>AgeAnonymizer</code> művelete hívódik.</li>
+<li>Az tapasztaljuk, hogy a  leszármazott <code>NameMaskingAnonymizer</code> művelete hívódik.</li>
 </ul>
 <p>Vethetünk egy pillantást a megoldás osztálydiagramjára:</p>
 <details>
@@ -2585,7 +2585,7 @@ Kulcsfontosságú, hogy egy osztályt akkor tekintünk kiterjeszthetőnek, ha an
 <p>T.f.h új - viszonylag egyszerű - igény merül fel:</p>
 <ul>
 <li>
-<p>A <code>NameMaskinAnonimizer</code> esetén marad ugyan a korábbi egyszerű progress kijelzés (minden sor után kiírjuk, hányadiknál tartottunk),</p>
+<p>A <code>NameMaskinAnonymizer</code> esetén marad ugyan a korábbi egyszerű progress kijelzés (minden sor után kiírjuk, hányadiknál tartottunk),</p>
 <details class="note">
 <summary>Egyszerű progress illusztrálása</summary>
 <p><a class="glightbox" href="images/progress-simple.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Egyszerű progress illusztrálása" src="images/progress-simple.png" /></a></p>
@@ -2707,11 +2707,11 @@ Kulcsfontosságú, hogy egy osztályt akkor tekintünk kiterjeszthetőnek, ha an
 </code></pre></div>
 </li>
 <li>
-<p>Valósítsuk meg a <code>IAnonymizerAlgorithm</code> interfészt. Miután az osztály neve után beírjuk a <code>: IAnonymizerAlgorithm</code> interfészt, célszerű a műveletek vázát a Visual Studioval legeneráltatni: tegyük a kurzort a interfész nevére (kattintsunk rá a forráskódban), használjuk a 'ctrl' + '.' billentyűkombinációt, majd a megjelenő menüben "Implement interface" kiválasztása. Megjegyzés: mivel a <code>GetAnonymizerDescription</code> művelethez van alapértelmezett implementáció az interfészben, csak az <code>Anonymize</code> művelet generálódik le, de ez most nekünk egyelőre rendben van így. </p>
+<p>Valósítsuk meg az <code>IAnonymizerAlgorithm</code> interfészt. Miután az osztály neve után beírjuk a <code>: IAnonymizerAlgorithm</code> interfészt, célszerű a műveletek vázát a Visual Studioval legeneráltatni: tegyük a kurzort a interfész nevére (kattintsunk rá a forráskódban), használjuk a 'ctrl' + '.' billentyűkombinációt, majd a megjelenő menüben "Implement interface" kiválasztása. Megjegyzés: mivel a <code>GetAnonymizerDescription</code> művelethez van alapértelmezett implementáció az interfészben, csak az <code>Anonymize</code> művelet generálódik le, de ez most nekünk egyelőre rendben van így. </p>
 </li>
 <li>Az <code>Anonymizer</code> osztályból vegyük át a <code>Anonymize_MaskName</code> művelet törzsét a <code>NameMaskingAnonymizerAlgorithm</code>.<code>Anonymize</code>-be. A függvény törzsét csak annyiban kell átírni, hogy ne a már nem létező <code>mask</code> paramétert, hanem a <code>_mask</code> tagváltozót használja. Az <code>Anonymize</code> osztály <code>Anonymize_MaskName</code>-et pedig töröljük.</li>
 <li>
-<p>A stategy interfész <code>GetAnonymizerDescription</code>műveletének megvalósítására térünk most át. Az <code>Anonymizer</code> osztály <code>GetAnonymizerDescription</code> műveletét másoljuk át a <code>NameMaskingAnonymizerAlgorithm</code>-be, a függvény törzsében csak a név anonimizálóra vonatkozó logikát meghagyva, a műveletet publikussá téve:</p>
+<p>A strategy interfész <code>GetAnonymizerDescription</code>műveletének megvalósítására térünk most át. Az <code>Anonymizer</code> osztály <code>GetAnonymizerDescription</code> műveletét másoljuk át a <code>NameMaskingAnonymizerAlgorithm</code>-be, a függvény törzsében csak a név anonimizálóra vonatkozó logikát meghagyva, a műveletet publikussá téve:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetAnonymizerDescription</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;NameMasking anonymizer with mask {_mask}&quot;</span><span class="p">;</span>
@@ -2758,11 +2758,11 @@ Kulcsfontosságú, hogy egy osztályt akkor tekintünk kiterjeszthetőnek, ha an
 </code></pre></div>
 </li>
 <li>
-<p>Valósítsuk meg a <code>IAnonymizerAlgorithm</code> interfészt. Miután az osztály neve után beírjuk a <code>: IAnonymizerAlgorithm</code> interfészt, most is célszerű az <code>Anonymize</code> művelet vázát a Visual Studioval a korábbihoz hasonló módon legeneráltatni. </p>
+<p>Valósítsuk meg az <code>IAnonymizerAlgorithm</code> interfészt. Miután az osztály neve után beírjuk a <code>: IAnonymizerAlgorithm</code> interfészt, most is célszerű az <code>Anonymize</code> művelet vázát a Visual Studioval a korábbihoz hasonló módon legeneráltatni. </p>
 </li>
 <li>Az <code>Anonymizer</code> osztályból vegyük át az <code>Anonymize_AgeRange</code> művelet törzsét a <code>AgeAnonymizerAlgorithm</code>.<code>Anonymize</code>-be. A függvény törzsét csak annyiban kell átírni, hogy ne a már nem létező <code>rangeSize</code> paramétert, hanem a <code>_rangeSize</code> tagváltozót használja. Az <code>Anonymize</code> osztály <code>Anonymize_AgeRange</code>-et pedig töröljük.</li>
 <li>
-<p>A stategy interfész <code>GetAnonymizerDescription</code>műveletének megvalósítására térünk most át. Az <code>Anonymizer</code> osztály <code>GetAnonymizerDescription</code> műveletét másoljuk át az <code>AgeAnonymizerAlgorithm</code>-be, a függvény törzsében csak a kor anonimizálóra vonatkozó logikát meghagyva, a műveletet publikussá téve:</p>
+<p>A strategy interfész <code>GetAnonymizerDescription</code>műveletének megvalósítására térünk most át. Az <code>Anonymizer</code> osztály <code>GetAnonymizerDescription</code> műveletét másoljuk át az <code>AgeAnonymizerAlgorithm</code>-be, a függvény törzsében csak a kor anonimizálóra vonatkozó logikát meghagyva, a műveletet publikussá téve:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetAnonymizerDescription</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;Age anonymizer with range size {_rangeSize}&quot;</span><span class="p">;</span>
@@ -2869,7 +2869,7 @@ Kulcsfontosságú, hogy egy osztályt akkor tekintünk kiterjeszthetőnek, ha an
 </code></pre></div>
 </li>
 <li>
-<p>A fájl elejére szúrjunk be a megfelelő usingokat:</p>
+<p>A fájl elejére szúrjuk be a megfelelő usingokat:</p>
 <div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">Lab_Extensibility.AnonymizerAlgorithms</span><span class="p">;</span>
 <span class="k">using</span><span class="w"> </span><span class="nn">Lab_Extensibility.Progresses</span><span class="p">;</span>
 </code></pre></div>
@@ -2939,7 +2939,7 @@ Kulcsfontosságú, hogy egy osztályt akkor tekintünk kiterjeszthetőnek, ha an
 </ol>
 <p>Elkészültünk, a kész megoldás a "4-Strategy/Strategy-1" projektben meg is található (ha valahol elakadtunk, vagy nem fordul a kód, ezzel össze lehet nézni).</p>
 <h3 id="a-megoldas-ertekelese_3">A megoldás értékelése<a class="headerlink" href="#a-megoldas-ertekelese_3" title="Permanent link">&para;</a></h3>
-<p>A strategy minta bevezetésével elkészültünk. Jelen formájában ugyanakkor szinte soha nem használjuk. Ellenőrizzük a megoldásunkat: valóban újrafelhasználható, és az <code>Anomymizer</code> osztály módosítása nélkül lehetőség van-e az anonimizáló algoritmus, illetve a progress kezelés megváltoztatására? Ehhez azt kell megnézni, bárhol az osztályban van-e olyan kód, mely implementáció függő.</p>
+<p>A strategy minta bevezetésével elkészültünk. Jelen formájában ugyanakkor szinte soha nem használjuk. Ellenőrizzük a megoldásunkat: valóban újrafelhasználható, és az <code>Anonymizer</code> osztály módosítása nélkül lehetőség van-e az anonimizáló algoritmus, illetve a progress kezelés megváltoztatására? Ehhez azt kell megnézni, bárhol az osztályban van-e olyan kód, mely implementáció függő.</p>
 <p>Sajnos találunk ilyet. A konstruktorba be van égetve, milyen algoritmus implementációt és progress implementációt hozunk létre. Ezt mindenképpen nézzük meg a kódban! Ha algoritmus vagy progress módot akarunk változtatni, ezekben a sorokban át kell írni a <code>new</code> operátor utáni típust, mely így az osztály módosításával jár.</p>
 <p>Sokan - teljesen jogosan - ezt jelen formájában nem is tekintik igazi Strategy alapú megoldásnak. A teljes körű megoldást a következő lépésben valósítjuk meg.</p>
 <h2 id="8-megoldas-4-strategystrategy-2-di">8. Megoldás (4-Strategy/Strategy-2-DI)<a class="headerlink" href="#8-megoldas-4-strategystrategy-2-di" title="Permanent link">&para;</a></h2>
@@ -3019,7 +3019,7 @@ A megoldást a <strong>Dependency Injection (röviden DI)</strong> alkalmazása 
 <div class="admonition note">
 <p class="admonition-title">További Strategy előnyök a Template Methoddal szemben *</p>
 <ul>
-<li>Futás közben lecserélhető viselkedés is megvalósítható. Ha szükség lenne arra, hogy egy adott <code>Anonymizer</code> objektumra vonatkozóan a létrehozása után meg tudjuk változtatni az anonimizáló vagy progress viselkedést, akkor azt könnyen meg tudnánk tenni (csak egy <code>SetAnonimizerAlgorithm</code>, ill. <code>SetProgress</code> műveletet kellene bevezetni, melyben a paraméterben megkapott implementációra lehetne állítani az osztály által használt strategy-t).</li>
+<li>Futás közben lecserélhető viselkedés is megvalósítható. Ha szükség lenne arra, hogy egy adott <code>Anonymizer</code> objektumra vonatkozóan a létrehozása után meg tudjuk változtatni az anonimizáló vagy progress viselkedést, akkor azt könnyen meg tudnánk tenni (csak egy <code>SetAnonimyzerAlgorithm</code>, ill. <code>SetProgress</code> műveletet kellene bevezetni, melyben a paraméterben megkapott implementációra lehetne állítani az osztály által használt strategy-t).</li>
 <li>Egységtesztelhetőség támogatása (laboron ezt nem nézzük).</li>
 </ul>
 </div>
@@ -3032,8 +3032,8 @@ A megoldást a <strong>Dependency Injection (röviden DI)</strong> alkalmazása 
         </path>
       </svg>
     </span>
-    <span title="2025. április 21. 20:41:29">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 21. 20:41:29"><span class="timeago" datetime="2025-04-21T20:41:29+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 21. 20:41:29">2025-04-21</span>
+    <span title="2025. május 9. 00:42:46">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. május 9. 00:42:46"><span class="timeago" datetime="2025-05-09T00:42:46+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. május 9. 00:42:46">2025-05-09</span>
     </span>
   </span>
 
@@ -3050,6 +3050,8 @@ A megoldást a <strong>Dependency Injection (röviden DI)</strong> alkalmazása 
     <span>Szerzők</span>
     <nav><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@bzolka">
         <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
+      </a><a href="https://github.com/lyozi" target="_blank" rel="noopener noreferrer" class="md-author" title="@Urak József">
+        <img src="https://avatars.githubusercontent.com/u/124312789?v=4?size=72" alt="@Urak József">
       </a></nav>      
   </span>
 </div>
