@@ -248,10 +248,10 @@ Bizonyos vezérlők - ilyen a gomb is - támogatják, hogy ezt a kettőt, a Comm
 
 Az alapelv a következő: a gombnál a `Click` és `IsEnabled` "megadása" helyett a gomb `Command` tulajdonságát állítjuk egy `ICommand` interfészt megvalósító command objektumra. A futtatás, illetve tiltás/engedélyezés már ezen command objektum feladata.
 
-Alapesetben egy alkalmazásban minden parancshoz egy külön `ICommand` implementációt kellene készíteni. Ez azonban sok parancs esetén sok osztály bevezetését igényli. Az MVVM Toolkit ebben is a segítségünkre siet. Biztosít egy `RelayCommand` osztályt, mely megvalósítja az `ICommand` interfészt. Ez az osztály bármilyen parancs/kód futtatására használható, így nem kell további command osztályokat bevezetni. Hogyan lehetséges ez? Úgy, hogy a `RelayCommand`-nak konstruktor paraméterekben, két delegate formájában tudjuk a végrehajtáshoz és a tiltáshoz/engedélyezéshez tartozók kódot:
+Alapesetben egy alkalmazásban minden parancshoz egy külön `ICommand` implementációt kellene készíteni. Ez azonban sok parancs esetén sok osztály bevezetését igényli. Az MVVM Toolkit ebben is a segítségünkre siet. Biztosít egy `RelayCommand` osztályt, mely megvalósítja az `ICommand` interfészt. Ez az osztály bármilyen parancs/kód futtatására használható, így nem kell további command osztályokat bevezetni. Hogyan lehetséges ez? Úgy, hogy a `RelayCommand`-nak konstruktor paraméterekben, két delegate formájában tudjuk a végrehajtáshoz és a tiltáshoz/engedélyezéshez tartozó kódot megadni:
 
-* Első paraméterben a parancs futtatásakor végrehajtandó kódot adjuk meg.
-* Második paraméterben (ez opcionális) azt a kódot, melyet a command hív annak ellenőrzésére, hogy engedélyezni/tiltani kell magát (az itt megadott függvénynek  bool-lal kell visszatérnie, true esetben engedélyezett lesz a parancs).
+* Első paraméter a parancs futtatásakor végrehajtandó kód.
+* Második paraméter az (az opcionális) kód, melyet a command hív annak ellenőrzésére, hogy engedélyezze/tiltsa magát (az itt megadott függvénynek bool-lal kell visszatérnie, true esetben engedélyezett lesz a parancs).
 
 A következő lépésben a "-" gomb kezelését alakítjuk át command alapúra. Először próbáld a nagyját önállóan megvalósítani a kapcsolódó WinUI előadásanyag alapján. A parancs futtatása egyszerűbb, de a parancs tiltás-engedélyezéshez lesz még teendőnk. Főbb lépések:
 
