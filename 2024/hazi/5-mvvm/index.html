@@ -2093,7 +2093,7 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
 </ul>
 </div>
 <h2 id="feladat-2-atteres-mvvm-alapu-megoldasra">Feladat 2 - Áttérés MVVM alapú megoldásra<a class="headerlink" href="#feladat-2-atteres-mvvm-alapu-megoldasra" title="Permanent link">&para;</a></h2>
-<p>Az előző lépésben, bár az MVVM Toolkitet használtuk, még nem tértünk át MVVM alapú megoldára (a toolkitet csak az INPC egyszerűbb megvalósítására használtuk). </p>
+<p>Az előző lépésben, bár az MVVM Toolkitet használtuk, még nem tértünk át MVVM alapú megoldásra (a toolkitet csak az INPC egyszerűbb megvalósítására használtuk). </p>
 <p>A következőkben átalakítjuk az alkalmazásunk architektúráját, hogy az MVVM koncepcióját kövesse. Az egyszerűbb megvalósítás érdekében építünk az MVVM Toolkitre.</p>
 <p><strong>Feladat</strong>: Dolgozd fel a kapcsolódó előadásanyagot (WinUI anyagrész végén található):</p>
 <ul>
@@ -2175,7 +2175,7 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
 <p>Gondold át, mi okozza ezt, és csak utána haladj tovább az útmutatóval!</p>
 <details class="tip">
 <summary>Indoklás</summary>
-<p>A korábban tanultaknak megfelelően az adatkötés csak akkor kérdezi le a forrástulajdonság (esetünkben <code>IsDecrementEnabled</code>) értékét, ha annak változásáról az <code>INotifyPropertyChanged</code> segítségével értesítést kap! Márpedig, jelen megoldásunkban hiába változik a <code>NewPerson</code> objektum <code>Age</code> tulajdonsága, ennek megtörténtekor a semmiféle értesítés nincs az erre épülő <code>IsDecrementEnabled</code> tulajdonság megváltozásáról!</p>
+<p>A korábban tanultaknak megfelelően az adatkötés csak akkor kérdezi le a forrástulajdonság (esetünkben <code>IsDecrementEnabled</code>) értékét, ha annak változásáról az <code>INotifyPropertyChanged</code> segítségével értesítést kap! Márpedig, jelen megoldásunkban hiába változik a <code>NewPerson</code> objektum <code>Age</code> tulajdonsága, ennek megtörténtekor semmiféle értesítés nincs az erre épülő <code>IsDecrementEnabled</code> tulajdonság megváltozásáról!</p>
 </details>
 <p>A következő lépésben valósítsd meg a kapcsolódó változásértesítést a <code>PersonListPageViewModel</code> osztályban:</p>
 <ul>
@@ -2283,8 +2283,8 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
         </path>
       </svg>
     </span>
-    <span title="2025. május 9. 18:20:17">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. május 9. 18:20:17"><span class="timeago" datetime="2025-05-09T18:20:17+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. május 9. 18:20:17">2025-05-09</span>
+    <span title="2025. május 9. 18:21:35">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. május 9. 18:21:35"><span class="timeago" datetime="2025-05-09T18:21:35+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. május 9. 18:21:35">2025-05-09</span>
     </span>
   </span>
 
