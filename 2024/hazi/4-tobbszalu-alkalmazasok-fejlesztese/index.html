@@ -2502,7 +2502,7 @@ Fontos megjegyzés: a <code>volatile</code> alkalmazására nincs szükség, ha 
 </div>
 <h2 id="feladat-6-felulet-frissitese-minden-valtozas-eseten-felhasznaloi-feluletelemek-elerese-munkaszalakbol">Feladat 6 – Felület frissítése minden változás esetén (felhasználói felületelemek elérése munkaszálakból)<a class="headerlink" href="#feladat-6-felulet-frissitese-minden-valtozas-eseten-felhasznaloi-feluletelemek-elerese-munkaszalakbol" title="Permanent link">&para;</a></h2>
 <p>Aktuális megoldásunkban a felület frissítését periodikusan, adott időközönként valósítjuk meg egy időzítő segítségével. Ezt a megoldást most lecseréljük. Alakítsd át a megoldást úgy, hogy a felület frissítése minden esetben azonnal megtörténjen, amikor a <code>Game</code> állapota megváltozik (az időzített frissítést pedig már ne használd).</p>
-<p>A következő fejezetben a lehetséges megoldások röviden áttekintésre kerülnek, és választunk is egyet közülük, de előbb próbáld magadtól átgondolni, milyen megoldást célszerű ehhez választani. Kulcsfontosságú, hogy csak olyan megoldás fogadható el, mely nem vezet be az alkalmazáslogikában (<code>Game</code> osztály) függőséget a felültettől. Emlékezzünk vissza, az alapelvünk az volt, hogy az alkalmazáslogika nem függhet semmilyen szinten a felület logikától!</p>
+<p>A következő fejezetben a lehetséges megoldások röviden áttekintésre kerülnek, és választunk is egyet közülük, de előbb próbáld magadtól átgondolni, milyen megoldást célszerű ehhez választani. Kulcsfontosságú, hogy csak olyan megoldás fogadható el, mely nem vezet be az alkalmazáslogikában (<code>Game</code> osztály) függőséget a felülettől. Emlékezzünk vissza, az alapelvünk az volt, hogy az alkalmazáslogika nem függhet semmilyen szinten a felület logikától!</p>
 <h3 id="a-felulet-ertesitesenek-megvalositasa">A felület értesítésének megvalósítása<a class="headerlink" href="#a-felulet-ertesitesenek-megvalositasa" title="Permanent link">&para;</a></h3>
 <p>Alternatívák:</p>
 <ol>
@@ -2519,7 +2519,7 @@ Fontos megjegyzés: a <code>volatile</code> alkalmazására nincs szükség, ha 
 </li>
 <li><code>MainWindow</code>, mint "előfizető":<ul>
 <li>A <code>MainWindow</code> osztályban be kell vezetni egy <code>UpdateBikeUI(Bike bike)</code> függvényt, és a <code>Game.PrepareRace</code> hívásakor ezt kell átadni paraméterként (delegate objektumként). Ebben az <code>UpdateBikeUI</code> függvényben kell gondoskodni arról, hogy a paraméterként kapott bicikli objektumhoz tartozó felületelem (<code>TextBlock</code>) frissüljön.</li>
-<li>Az előző pontban válik egyértelművé, miért <code>Action&lt;Bike&gt;</code> típusú delegate-et használtunk, és miért nem pl. <code>Action</code>-t: a <code>Game</code> a értesítés/visszahívás során így meg tudja adni, mely bicikli változott, és a visszahívott/beregisztrált függvény (esetünkben <code>MainWindow.UpdateBikeUI</code>) így megkapja ezt paraméterben, és így tudja a megjelenését frissíteni (kapott bicikli állapota alapján).</li>
+<li>Az előző pontban válik egyértelművé, miért <code>Action&lt;Bike&gt;</code> típusú delegate-et használtunk, és miért nem pl. <code>Action</code>-t: a <code>Game</code> az értesítés/visszahívás során így meg tudja adni, mely bicikli változott, és a visszahívott/beregisztrált függvény (esetünkben <code>MainWindow.UpdateBikeUI</code>) így megkapja ezt paraméterben, és így tudja a megjelenését frissíteni (kapott bicikli állapota alapján).</li>
 </ul>
 </li>
 <li>Az időzítő indítását (<code>MainWindow</code> konstruktorban <code>timer.Start()</code> hívás) kommentezd ki (hiszen a felület frissítését már a fenti <code>Action&lt;Bike&gt;</code>) alapú értesítés/visszahívás segítségével oldjuk meg.</li>
@@ -2622,8 +2622,8 @@ Fontos megjegyzés: a <code>volatile</code> alkalmazására nincs szükség, ha 
         </path>
       </svg>
     </span>
-    <span title="2025. április 30. 22:53:15">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 30. 22:53:15"><span class="timeago" datetime="2025-04-30T22:53:15+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 30. 22:53:15">2025-04-30</span>
+    <span title="2025. május 9. 18:18:35">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. május 9. 18:18:35"><span class="timeago" datetime="2025-05-09T18:18:35+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. május 9. 18:18:35">2025-05-09</span>
     </span>
   </span>
 
