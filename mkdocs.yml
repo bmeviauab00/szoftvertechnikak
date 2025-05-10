@@ -130,7 +130,7 @@ nav:
       - '3. HW - Implementing the user interface': hazi/3-felhasznaloi-felulet-kialakitasa/index_eng.md
       - '4. HW - Developing multithreaded applications': hazi/4-tobbszalu-alkalmazasok-fejlesztese/index_eng.md
       - '5. HW - MVVM': hazi/5-mvvm/index_eng.md
-      - '6. HW - Design patterns': hazi/meghirdetes-elott_eng.md
+      - '6. HW - Design patterns': hazi/6-tervezesi-mintak/index_eng.md
       - 'IMSc HW - Liftsystem': hazi/meghirdetes-elott_eng.md
       - 'Development environment': hazi/fejlesztokornyezet/index_eng.md      
   - "Deutschkurs-Labore":
