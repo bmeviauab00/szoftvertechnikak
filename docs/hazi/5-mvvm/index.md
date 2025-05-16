@@ -157,7 +157,7 @@ Feladat: alakítsd át a meglévő logikát így, hogy a fenti elveket követő 
     2. A `PersonListPageViewModel` publikus osztály legyen.
     3. A `PersonListPage` code behindba fel kell venni egy ViewModel nevű, `PersonListPageViewModel` típusú, csak getterrel rendelkező auto implementált tulajdonságot, és ezt egy új objektumra inicializálni is kell. Vagyis a view hozza létre és tartalmazza a ViewModel-t!
     4. A `PersonListPage.xaml`-ben a két `TextBox` adatkötését megfelelően igazítani kell (a `NewPerson.Name` és `NewPerson.Age` már egy szinttel mélyebben, a code behind ViewModel tulajdonságán keresztül érhető el).
-    5. A `PersonListPage.xaml`-ben az eseménykezelők (`Click`) igazítása három helyen. Ezt trükkösebb. Eseménykezelő függvény az eddig alkalmazott szintaktikával nem adható már meg, mert az eseménykezelők nem a code behindban találhatók (átkerültek a ViewModel-be). 
+    5. A `PersonListPage.xaml`-ben az eseménykezelők (`Click`) igazítása három helyen. Ez trükkösebb. Eseménykezelő függvény az eddig alkalmazott szintaktikával nem adható már meg, mert az eseménykezelők nem a code behindban találhatók (átkerültek a ViewModel-be). 
          * Az eseményekhez az eseménykezelő műveleteket adatkötéssel is meg lehet adni! Lásd előadás dia "Események és funkciók kötése" címmel. Ez nekünk azért jó, mert a code behind ViewModel tulajdonságában ott a `PersonListPageViewModel` objektum, melyben ott vannak az eseménykezelők (`AddButton_Click`, `IncreaseButton_Click`, `DecreaseButton_Click`), ezeket kell kötött tulajdonságként megadni az adatkötésben (pl. `ViewModel.AddButton_Click` stb.).
          * Fontos, hogy az eseménykezelő függvények legyenek publikusak, máskülönben nem működik az adatkötés (át kell alakítani privátról).
 
