@@ -775,7 +775,7 @@ Alakítsuk át ennek megfelelően az `Anonymizer` osztályt úgy, hogy ne maga p
     _progress?.Report(persons.Count,i);
     ```
 
-4. Most már elkészültünk, az `Anonymizer` osztály teljesen független lett a strategy implementációktól. Lehetőségünk van az `Anonymizer` osztályt bármilyen anonimizáló algoritmus és bármilyen progress kezelés kombinációval használni (annak módosítása nélkül). Hozzunk is létre három `Anonymizer` különböző kombinációkkal a `Program.cs` fájl `Main` függvényében (a meglévő kódot előtte töröljük a `Main` függvényből):
+4. Most már elkészültünk, az `Anonymizer` osztály teljesen független lett a strategy implementációktól. Lehetőségünk van az `Anonymizer` osztályt bármilyen anonimizáló algoritmus és bármilyen progress kezelés kombinációval használni (annak módosítása nélkül). Hozzunk is létre három `Anonymizer` példányt különböző kombinációkkal a `Program.cs` fájl `Main` függvényében (a meglévő kódot előtte töröljük a `Main` függvényből):
 
     ``` csharp
     Anonymizer p1 = new("us-500.csv",
