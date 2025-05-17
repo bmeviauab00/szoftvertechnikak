@@ -116,6 +116,7 @@ Most kézzel fogunk XAML-t írni és ezzel a felületet kialakítani. Vegyünk f
     xmlns:local="using:HelloXaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="using:HelloXaml.Models"
     mc:Ignorable="d">
 
     <Grid>
@@ -669,8 +670,8 @@ Indítsuk el az alkalmazást, majd ezt követően tegyünk egy töréspontot a `
 Ez azért van így, mert fentebb `OneWay` adatkötést használtunk, mely csak az adatforrásból a felületre irányú adatkötést jelent. Ha azt szeretnénk, hogy az adatkötés a másik irányba is működjön (vezérlőből adatforrásba), ahhoz  **`TwoWay`**-re kell állítsuk az adatkötés módját. Ezt **kétirányű adatkötésnek** nevezzük.
 
 ```xml
-Text="{x:Bind Name, Mode=TwoWay}"
-Text="{x:Bind Age, Mode=TwoWay}"
+Text="{x:Bind NewPerson.Name, Mode=TwoWay}"
+Text="{x:Bind NewPerson.Age, Mode=TwoWay}"
 ```
 
 Próbáljuk ki! Így az adatkötés már mindkét irányba működik:
@@ -762,8 +763,12 @@ private void AddButton_Click(object sender, RoutedEventArgs e)
 
 Nem jelenik meg a listában az új elem, mert a `ListView` nem értesül arról, hogy új elem került a listába. Ezt könnyen orvosolhatjuk: a `List<Persont>`-t cseréljük le `ObservableCollection<Person>`-re:
 
-```csharp
+```csharp hl_lines="1"
 public ObservableCollection<Person> People { get; set; }
+
+public MainWindow()
+{
+  ...
 ```
 
 !!! tip "`ObservableCollection<T>`"
