@@ -239,7 +239,7 @@ A tesztelés során azt tapasztaljuk, hogy ha pl. kitöröljük a nevet a név T
 
 ## Feladat 4 - Command használata
 
-Jelen pillanatban a "-" gomb vonatkozásában esetében két feladatunk van:
+Jelen pillanatban a "-" gomb vonatkozásában két feladatunk van:
 
 * A `Click` esetén az eseménykezelő művelet futtatása
 * A gomb tiltása/engedélyezése az `IsEnabled` tulajdonság segítségével
