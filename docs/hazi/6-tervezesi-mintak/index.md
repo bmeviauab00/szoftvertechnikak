@@ -6,7 +6,7 @@ authors: bzolka
 
 A házi feladatban a kapcsolódó laboron ([6. labor – Tervezési minták (kiterjeszthetőség)](../../labor/6-tervezesi-mintak/index.md)) elkezdett adatfeldolgozó/anonimizáló alkalmazást fogjuk továbbfejleszteni.
 
-Az önálló feladat az tervezési minták előadásokon elhangzottakra épít:
+Az önálló feladat a "Tervezési minták" előadásokon elhangzottakra épít:
 - "Előadás 08 - Tervezési minták 1" előadás: "Bővíthetőséghez, kiterjeszthetőséghez kapcsolódó alap tervezési minták" nagyfejezet: bevezető példa, Template Method, Strategy, Open/Closed elv, SRP elv, egyéb technikák (metódusreferencia/lambda)
 - "Előadás 09 - Tervezési minták 1" előadás: Dependency Injection minta
 
