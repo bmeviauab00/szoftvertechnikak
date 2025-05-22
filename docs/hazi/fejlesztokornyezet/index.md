@@ -56,6 +56,10 @@ XAML/WinUI technológiákhoz kapcsolódó feladatok esetén (3. házi feladattó
 
 5. Ha a fentiek telepítése után Windows 11-en nem akarna működni, akkor fel kell tenni a Visual Studio telepítőben a Windows 10 SDK-ból a 10.0.19041-et, vagy újabbat (az Idividual Comopnents alatt található)
 
+#### Adatbázis támogatás
+
+Ez csak azoknak szól, akik laboron saját gépen dolgoznak: a 7. Adatkezelés laborhoz a Visual Studio telepítőjében szükség van az "SQL Server Data Tools" komponens telepítésére az "Individual Components" oldalon.
+
 ### MacBook és Linux használók számára információk
 
 A tárgy felelős oktatójától (Benedek Zoltán) BME Cloud hozzáférés igénylelhető e-mailben.
