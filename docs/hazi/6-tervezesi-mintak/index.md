@@ -45,7 +45,7 @@ A házi feladat kiinduló állapota megfelel a 6. labor végállapotának: ez a 
 !!! note "Dependency Injection (manuális) vs. Dependency Injection Container"
     A labor során, és jelen házi feladatban a Dependency Injection egyszerű, manuális változatát használjuk (előadáson is ez szerepel). Ez esetben az osztály függőségeit manuálisan példányosítjuk és adjuk át az osztály konstruktorában. Alternatív és komplexebb alkalmazások esetében gyakran használt alternatíva egy Dependency Injection Container alkalmazása, melybe beregisztrálhatjuk, hogy az egyes interfész típusokhoz milyen implementációt kívánunk használni. A DI konténerek alkalmazása a tárgy keretében nem szerepelt, nem tananyag. A manuális változata viszont az, és kiemelt fontosságú, hiszen enélkül nincs értelme a Strategy minta alkalmazásának.
 
-:warning: Saját szavaiddal megfogalmazva adj rövid választ a *Feladatok* mappában találtható `readme.md` fájlban az alábbi kérdésekre:
+:warning: Saját szavaiddal megfogalmazva adj rövid választ a *Feladatok* mappában találtható (vagyis nem a gyökérben található !!!) `readme.md` fájlban az alábbi kérdésekre:
 
 - Mit biztosít a Strategy a DI mintával kombinálva a labor példa keretében, mik az együttes alkalmazásuk előnyei?
 - Mit jelent az, hogy a Strategy minta alkalmazásával az Open/Closed elv megvalósul a megoldásban? (az Open/Closed elvről az előadás és laboranyagban is olvashatsz).
