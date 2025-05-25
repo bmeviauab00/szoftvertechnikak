@@ -2127,7 +2127,7 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
 <li>A <code>PersonListPageViewModel</code> publikus osztály legyen.</li>
 <li>A <code>PersonListPage</code> code behindba fel kell venni egy ViewModel nevű, <code>PersonListPageViewModel</code> típusú, csak getterrel rendelkező auto implementált tulajdonságot, és ezt egy új objektumra inicializálni is kell. Vagyis a view hozza létre és tartalmazza a ViewModel-t!</li>
 <li>A <code>PersonListPage.xaml</code>-ben a két <code>TextBox</code> adatkötését megfelelően igazítani kell (a <code>NewPerson.Name</code> és <code>NewPerson.Age</code> már egy szinttel mélyebben, a code behind ViewModel tulajdonságán keresztül érhető el).</li>
-<li>A <code>PersonListPage.xaml</code>-ben az eseménykezelők (<code>Click</code>) igazítása három helyen. Ezt trükkösebb. Eseménykezelő függvény az eddig alkalmazott szintaktikával nem adható már meg, mert az eseménykezelők nem a code behindban találhatók (átkerültek a ViewModel-be). <ul>
+<li>A <code>PersonListPage.xaml</code>-ben az eseménykezelők (<code>Click</code>) igazítása három helyen. Ez trükkösebb. Eseménykezelő függvény az eddig alkalmazott szintaktikával nem adható már meg, mert az eseménykezelők nem a code behindban találhatók (átkerültek a ViewModel-be). <ul>
 <li>Az eseményekhez az eseménykezelő műveleteket adatkötéssel is meg lehet adni! Lásd előadás dia "Események és funkciók kötése" címmel. Ez nekünk azért jó, mert a code behind ViewModel tulajdonságában ott a <code>PersonListPageViewModel</code> objektum, melyben ott vannak az eseménykezelők (<code>AddButton_Click</code>, <code>IncreaseButton_Click</code>, <code>DecreaseButton_Click</code>), ezeket kell kötött tulajdonságként megadni az adatkötésben (pl. <code>ViewModel.AddButton_Click</code> stb.).</li>
 <li>Fontos, hogy az eseménykezelő függvények legyenek publikusak, máskülönben nem működik az adatkötés (át kell alakítani privátról).</li>
 </ul>
@@ -2205,7 +2205,7 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
 </ul>
 </div>
 <h2 id="feladat-4-command-hasznalata">Feladat 4 - Command használata<a class="headerlink" href="#feladat-4-command-hasznalata" title="Permanent link">&para;</a></h2>
-<p>Jelen pillanatban a "-" gomb vonatkozásában esetében két feladatunk van:</p>
+<p>Jelen pillanatban a "-" gomb vonatkozásában két feladatunk van:</p>
 <ul>
 <li>A <code>Click</code> esetén az eseménykezelő művelet futtatása</li>
 <li>A gomb tiltása/engedélyezése az <code>IsEnabled</code> tulajdonság segítségével</li>
@@ -2283,8 +2283,8 @@ A labor végállapotához képest egy kisebb változást tartalmaz. Laboron a fe
         </path>
       </svg>
     </span>
-    <span title="2025. május 18. 02:48:42">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. május 18. 02:48:42"><span class="timeago" datetime="2025-05-18T02:48:42+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. május 18. 02:48:42">2025-05-18</span>
+    <span title="2025. május 25. 11:01:54">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. május 25. 11:01:54"><span class="timeago" datetime="2025-05-25T11:01:54+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. május 25. 11:01:54">2025-05-25</span>
     </span>
   </span>
 
