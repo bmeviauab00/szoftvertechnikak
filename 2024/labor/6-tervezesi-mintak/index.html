@@ -2968,7 +2968,7 @@ A megoldást a <strong>Dependency Injection (röviden DI)</strong> alkalmazása 
 </code></pre></div>
 </li>
 <li>
-<p>Most már elkészültünk, az <code>Anonymizer</code> osztály teljesen független lett a strategy implementációktól. Lehetőségünk van az <code>Anonymizer</code> osztályt bármilyen anonimizáló algoritmus és bármilyen progress kezelés kombinációval használni (annak módosítása nélkül). Hozzunk is létre három <code>Anonymizer</code> különböző kombinációkkal a <code>Program.cs</code> fájl <code>Main</code> függvényében (a meglévő kódot előtte töröljük a <code>Main</code> függvényből):</p>
+<p>Most már elkészültünk, az <code>Anonymizer</code> osztály teljesen független lett a strategy implementációktól. Lehetőségünk van az <code>Anonymizer</code> osztályt bármilyen anonimizáló algoritmus és bármilyen progress kezelés kombinációval használni (annak módosítása nélkül). Hozzunk is létre három <code>Anonymizer</code> példányt különböző kombinációkkal a <code>Program.cs</code> fájl <code>Main</code> függvényében (a meglévő kódot előtte töröljük a <code>Main</code> függvényből):</p>
 <div class="highlight"><pre><span></span><code><span class="n">Anonymizer</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">(</span><span class="s">&quot;us-500.csv&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">NameMaskingAnonymizerAlgorithm</span><span class="p">(</span><span class="s">&quot;***&quot;</span><span class="p">),</span>
 <span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">SimpleProgress</span><span class="p">());</span>
@@ -3032,8 +3032,8 @@ A megoldást a <strong>Dependency Injection (röviden DI)</strong> alkalmazása 
         </path>
       </svg>
     </span>
-    <span title="2025. május 9. 00:42:46">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. május 9. 00:42:46"><span class="timeago" datetime="2025-05-09T00:42:46+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. május 9. 00:42:46">2025-05-09</span>
+    <span title="2025. május 16. 20:20:58">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. május 16. 20:20:58"><span class="timeago" datetime="2025-05-16T20:20:58+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. május 16. 20:20:58">2025-05-16</span>
     </span>
   </span>
 
@@ -3052,6 +3052,8 @@ A megoldást a <strong>Dependency Injection (röviden DI)</strong> alkalmazása 
         <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
       </a><a href="https://github.com/lyozi" target="_blank" rel="noopener noreferrer" class="md-author" title="@Urak József">
         <img src="https://avatars.githubusercontent.com/u/124312789?v=4?size=72" alt="@Urak József">
+      </a><a href="https://github.com/nemetbence203" target="_blank" rel="noopener noreferrer" class="md-author" title="@None">
+        <img src="https://avatars.githubusercontent.com/u/180311962?u=e55ac7562ba8bcbc451cf032bc3c9330d1de8526&v=4?size=72" alt="@None">
       </a></nav>      
   </span>
 </div>
