@@ -199,6 +199,9 @@ Készíts egy integrációs tesztet az `Anonymizer` osztályhoz, a következők 
     3. A teszt futtatására a Test Explorer nézet tetején található eszközsávon levő gombokkal van lehetőség. De a teszt debuggolására is van lehetőség, jobb gombbal a tesztre kattintva és a Debug menü kiválasztásával: ez nagyon hasznos tud lenni, ha a tesztünk hibásan fut, és szeretnénk töréspontok segítségével a kódon lépkedni, illetve a változók értékét megnézni.
     4. Ha a teszt hiba nélkül fut le, a teszthez tartozó ikon zöld lesz. Ha hibával, akkor piros, és a hibaüzenetről a tesztet kiválasztva Test Explorer nézet alján kapunk bővebb információt.
 
+!!! example "6. feladat BEADANDÓ"
+    - Illessz be egy képernyőképet, melyen az integrációs teszted forráskódja látszik (`f6-IMSc.png`).
+
 ## 7. Opcionális feladat - Unit teszt készítése
 
 A feladat megoldásával +2 IMSc pont szerezhető.
@@ -220,6 +223,9 @@ Készíts egy egységtesztet az `Anonymizer` osztályhoz, mely ellenőrzi, hogy 
 * Tipp: Olyan `IInputReader`, `IAnonymizerAlgorithm` implementációkat hozz létre (és az `Anonymizert` ezekkel használd), **melyek megfelelő tesztadatokat biztosítanak, és/vagy futás közben adatokat gyűjtenek annak érdekében, hogy a futás után ellenőrizni tudd ezen adatok alapján, hogy a tesztelendő feltételek teljesülnek**. Ezeket a strategy implementációkat mindenképpen a teszt projektben vedd fel, mert csak a tesztelést szolgálják.
 
 További gyakorlásképpen készíthetsz egy olyan másik egységtesztet, mely azt ellenőrzi, hogy minden bemeneti személyadat eljut-e a kimenetre is. 
+
+!!! example "7. feladat BEADANDÓ"
+    - Illessz be egy képernyőképet, melyen a unit teszted forráskódja látszik (`f7-IMSc.png`).
 
 ## Összegzés
 
