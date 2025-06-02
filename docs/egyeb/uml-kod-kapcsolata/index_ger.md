@@ -1,41 +1,41 @@
-# Theorie der Beziehung zwischen dem UML-Klassendiagramm und dem Code
+# Die Theorie der Beziehung zwischen UML-Klassendiagramm und Code
 
-Letztes Änderungsdatum: 2022.10.15  
+Letzte Änderung: 15.10.2022  
 Ausgearbeitet von: Zoltán Benedek
 
-Das Kapitel enthält keine Übung, sondern bietet den Studierenden eine Einführung in die entsprechende Theorie.
+Dieses Kapitel enthält keine Übungsaufgabe, sondern stellt den Studierenden die zugehörige Theorie vor.
 
 ## Einführung
 
-Das Kapitel gibt einen kurzen Überblick über die Grundlagen des Mappings zwischen dem UML-Klassendiagramm und dem Quellcode, als Wiederholung dessen, was bereits im vorherigen Semester in Softwarechnologien gelernt wurde.
+Das Kapitel gibt einen kurzen, skizzenhaften Überblick über die Grundlagen der Abbildung zwischen UML-Klassendiagramm und Quellcode, als Wiederholung der im vorherigen Semester im Fach Softwaretechnologie gelernten Inhalte.
 
-Heutzutage gibt es viele Softwareentwicklungsmethoden. Sie stützen sich bei der Erstellung der Software in unterschiedlichem Maße auf die Modellierung bzw. erfordern diese. Es besteht jedoch kein Zweifel daran, dass selbst die Anhänger der agilsten, "code-zentrierten" Ansätze es für nützlich halten, die wichtigeren/komplexeren Komponenten und Strukturelemente der Software visuell zu modellieren, da deren grafische Natur eine größere Ausdruckskraft hat.
+Heutzutage gibt es zahlreiche Softwareentwicklungsmethoden. Diese bauen in unterschiedlichem Maße darauf auf bzw. verlangen, dass während der Softwareerstellung Modellierung angewandt wird. Es steht jedoch außer Zweifel, dass selbst Anhänger der agilsten, am meisten „codezentrierten“ Vorgehensweisen die visuelle Modellierung wichtiger/komplexerer Komponenten und Strukturelemente der Software wegen ihrer größeren Ausdruckskraft durch die grafische Form als nützlich erachten.
 
-Nehmen wir an, man muss eine Anwendung oder ein bestimmtes Modul einer Anwendung erstellen. Nach der von sich gewählten Methodik wird man die Schritte Anforderungsanalyse, Analyse, Entwurf, Implementierung und Test durchführen, wahrscheinlich in mehreren Iterationen. Konzentrieren wir uns nun auf die Entwurfsphase. Das Ergebnis ist ein detaillierter Entwurf des Systems (zumindest von Teilen davon), der in einen detaillierten Plan oder ein Modell für die Umsetzung mündet. Auf dieser Ebene können bestimmte Elemente des Modells (z. B. Klassen) explizit auf Elemente der für die Implementierung des Teilsystems gewählten Programmiersprache abgebildet werden. Wenn man über ein gutes Entwicklungs-/Modellierungswerkzeug verfügt, kann dieses das Klassenskelett (z. B. C++, Java-, C#-Klassen) generieren. Unsere Aufgabe besteht nun darin, die Wurzel der Methoden in den generierten Code einzutragen.
+Nehmen wir an, unsere Aufgabe ist die Erstellung einer Anwendung oder eines bestimmten Moduls davon. Folgend unserer gewählten Methodologie, durchlaufen wir – wahrscheinlich in mehreren Iterationen – die Schritte Anforderungsanalyse, Analyse, Entwurf, Implementierung und Test. Konzentrieren wir uns jetzt auf die Entwurfsphase. Dabei entsteht der detaillierte Entwurf des Systems (bzw. bestimmter Teile davon), dessen Ergebnis der detaillierte/Implementierungsplan und das Modell sind. Auf dieser Ebene lassen sich bestimmte Elemente im Modell (z. B. Klassen) eindeutig auf die Elemente der Programmiersprache abbilden, die für die Implementierung des jeweiligen Subsystems gewählt wurde. Wenn unser Entwickler-/Modellierungswerkzeug gut ist, kann es das Skelett der Klasse generieren (z. B. C++, Java, C# Klassen). Unsere Aufgabe ist es anschließend, die Methodenkörper im generierten Code zu füllen.
 
-### Konzepte
+### Begriffe
 
-- Forward Engineering: Generierung von Code aus einem Modell. Aus dem detaillierten Plan kann das Modellierungswerkzeug das Programmgerüst erstellen. Der Vorteil ist, dass weniger Kodierung erforderlich ist.
-- Reverse Engineering: Generierung eines Modells aus Code. Es hilft Ihnen, den bereits vorhandenen Code zu verstehen.
-- Round-Trip-Engineering: eine Kombination der beiden vorgenannten Verfahren. Der springende Punkt ist, dass das Modell und der Code ständig synchronisiert sind. Wenn Sie den Code ändern, erscheint die Änderung im Modell, wenn Sie das Modell ändern, erscheint die Änderung im Code.
+- Forward Engineering: Code-Generierung aus dem Modell. Aus dem detaillierten Entwurf kann das Modellierungswerkzeug das Programmskelett generieren. Vorteil: es muss weniger kodiert werden.
+- Reverse Engineering: Modell-Generierung aus Code. Hilft, bereits fertigen Code zu verstehen.
+- Round-Trip Engineering: die kombinierte Anwendung der beiden vorherigen. Das Wesentliche: Modell und Code sind durchgängig synchron. Wenn im Code eine Änderung vorgenommen wird, erscheint diese Änderung im Modell, und wenn im Modell eine Änderung erfolgt, wird diese im Code sichtbar.
 
-Um die Vorteile der Codegenerierung nutzen zu können, muss man Folgendes wissen: man muss wissen, wie ein bestimmtes Modellierungswerkzeug jedes Modellelement auf Elemente einer bestimmten Programmiersprache abbildet. Das Mapping hängt von der Sprache und dem Modellierungswerkzeug ab, es gibt keinen universellen Standard. Die Zuordnungen sind in der Regel selbsterklärend, es gibt in der Regel nicht allzu viele Variationen.
+Um die Vorteile der Code-Generierung nutzen zu können, muss man Folgendes wissen: Man muss verstehen, wie das jeweilige Modellierungswerkzeug die einzelnen Modellelemente auf die Elemente der jeweiligen Programmiersprache abbildet. Die Abbildung hängt von der Sprache und dem Modellierungswerkzeug ab; es gibt keinen universellen Standard. Die Abbildungen sind meist selbsterklärend, größere Abweichungen sind selten.
 
-Im Folgenden werden wir uns ansehen, wie jedes Modellelement des UML-Klassendiagramms auf den Quellcode abgebildet wird und umgekehrt.
+Im Folgenden betrachten wir, wie die einzelnen Modellelemente eines UML-Klassendiagramms in Quellcode abgebildet werden und umgekehrt.
 
-## Zuordnung von Klassen
+## Abbildung der Klassen
 
-Es ist trivial einfach:
+Man kann sagen, es ist trivial einfach:
 
 - UML-Klasse -> Klasse
-- UML-Attribut -> Mitgliedsvariable
-- UML-Operation -> Funktion/Method
+- UML-Attribut -> Feld (Membervariable)
+- UML-Operation -> Methode
 
 Ein Beispiel:
 
-![Klasse Shape](images/shapeclass.png)
+![Shape-Klasse](images/shapeclass.png)
 
-, was folgendem Code in C# entspricht:
+entspricht folgendem Code in C#:
 
 ```csharp
 public abstract class Shape
@@ -47,19 +47,19 @@ public abstract class Shape
 }
 ```
 
-Im Zusammenhang mit der Sichtbarkeit, Kartierung:
+Bezüglich der Sichtbarkeit erfolgt die Abbildung wie folgt:
 
 - +: public
 - -: private
-- \# : protected
+- \#: protected
 
-Eine spannendere Frage ist, wie die Beziehungen zwischen den Klassen abgebildet werden, und dies wird in den folgenden Kapiteln diskutiert.
+Eine spannendere Fragestellung ist, wie die Beziehungen zwischen Klassen abgebildet werden, dies wird in den folgenden Kapiteln behandelt.
 
-### I. Generalisierung und Spezialisierung
+### I. Generalisierungs- und Spezialisierungsbeziehung
 
 ![Generalisierung, Spezialisierung](images/alt-spec.png)
 
-C#-Zuordnung:
+Abbildung in C#:
 
 ```csharp
 public class Base
@@ -70,18 +70,19 @@ public class Derived : Base
 
 ### II. Assoziation
 
-Dieser Beziehungstyp impliziert immer eine Kommunikation zwischen Objekten von Klassen. Eine Abteilung nimmt die Dienste einer anderen Abteilung in Anspruch.
+Dieser Beziehungstyp bedeutet immer Kommunikation zwischen den Objekten der Klassen. Eine bestimmte Klasse nutzt die Dienste einer anderen Klasse.
 
-#### A) Aufbau einer 0..1-Multiplizitäts-Assoziationsbeziehung
+#### A) Abbildung bei einer 0..1-Multiplizitäts-Assoziationsbeziehung
 
-In diesem Fall enthält die Client-Klasse einen Zeiger oder Verweis, über den sie die Dienste der Zielklasse nutzen (ihre Operationen aufrufen) kann. Beispiel:
+In diesem Fall enthält die Client-Klasse einen Zeiger oder eine Referenz, über die sie die Dienste der Zielklasse in Anspruch nehmen kann (d.h. deren Methoden aufrufen kann).  
+Beispiel:
 
-![Generalisierung, Spezialisierung, einheitlicher Ansprechpartner](images/association-single.png)
+![Generalisierung, Spezialisierung, einzelne Beziehung](images/association-single.png)
 
-C++-Zuordnung:
+Abbildung in C++:
 
 ```cpp
-klasse Bewerbung
+class Application
 {
    WindowManager* windowManager;
 };
@@ -91,7 +92,7 @@ class WindowManager
 };
 ```
 
-C#-Zuordnung (keine Zeiger, nur Referenzen):
+Abbildung in C# (es gibt keine Zeiger, nur Referenzen):
 
 ```csharp
 class Application
@@ -104,19 +105,20 @@ class WindowManager
 };
 ```
 
-In beiden Fällen sehen wir, dass **wir der Client-Klasse eine Zeiger- oder Referenz-Member-Variable hinzufügen, die vom gleichen Typ ist wie die Zielklasse, auf die in der Assoziation verwiesen wird, und der Name der Member-Variable ist die Rolle, die der Zielklasse für die Assoziationsbeziehung gegeben wurde**, die in diesem Beispiel `windowManager`ist. Die Zuordnung ist logisch, da der Client auf das Zielobjekt aus jeder seiner Operationen zugreifen und seine Methoden über diesen Zeiger/Verweis aufrufen kann.
+In beiden Fällen sehen wir, dass **die Client-Klasse einen Zeiger- oder Referenz-Membervariable erhält, deren Typ mit dem der Zielklasse im Assoziationsverhältnis übereinstimmt, und deren Name der Rolle (role) entspricht, die in der Assoziation für die Zielklasse angegeben ist**, im Beispiel also `windowManager`.  
+Die Abbildung ist logisch, da der Client über diesen Zeiger / diese Referenz auf das Zielobjekt zugreifen und dessen Methoden aufrufen kann.
 
-Kommentar. Manchmal ist die Assoziation in beide Richtungen, wobei jede Klasse die Dienste der anderen nutzt. Anstatt einen Pfeil an beiden Enden der Assoziation anzubringen, lassen wir ihn oft an beiden Enden stehen. In einer solchen wechselseitigen Beziehung muss die Rolle an beiden Enden der Beziehung angegeben werden. Während des Mappings fügen wir einen Zeiger/Referenz auf jede Klasse der anderen hinzu.
+Bemerkung: Es kann vorkommen, dass die Assoziation bidirektional ist, das heißt, beide Klassen nutzen die Dienste der jeweils anderen. In diesem Fall, anstatt einen Pfeil an beiden Enden der Assoziation anzubringen, wird er oft an beiden Enden weggelassen. In einer solchen zweiseitigen Assoziation muss die Rolle (role) an beiden Enden der Assoziation angegeben werden. In der Abbildung erhält dann jede Klasse einen Zeiger/eine Referenz auf die jeweils andere.
 
-#### B) Ableitung für eine Assoziationsbeziehung mit der Multiplizität 0..n
+#### B) Abbildung bei 0..n-Multiplizitäts-Assoziationsbeziehung
 
-In diesem Fall ist ein Objekt auf der Client-Seite mit mehreren Objekten auf der Zielseite verbunden. Beispiel:
+In diesem Fall steht ein clientseitiges Objekt in Beziehung zu mehreren zielseitigen Objekten. Beispiel:
 
-![Generalisierung, Spezialisierung, Mehrfachverknüpfungen](images/association-multiple.png)
+![Verallgemeinerung, Spezialisierung, Mehrfachverbindung](images/association-multiple.png)
 
-Ein `WindowManager` Objekt verwaltet mehrere `Window` Objekte. **Das Mapping übernimmt eine Sammlung von Objekten der Zielklasse in die Client-Klasse.** Dabei kann es sich um ein Array, eine Liste usw. handeln, je nachdem, was für unsere Zwecke in der jeweiligen Situation am besten geeignet ist.
+Ein `WindowManager`-Objekt verwaltet mehrere `Window`-Objekte. **Bei der Abbildung wird in der Client-Klasse eine Sammlung von Zielobjekten aufgenommen.** Das kann ein Array, eine Liste usw. sein, je nachdem, was in der jeweiligen Situation am besten passt.
 
-Eine Abbildung des obigen Beispiels in C++:
+Eine mögliche Abbildung für das obige Beispiel in C++:
 
 ```cpp
 class WindowManager
@@ -125,7 +127,7 @@ class WindowManager
 };
 ```
 
-Oder in C#:
+Und im C#:
 
 ```csharp
 class WindowManager
@@ -134,14 +136,16 @@ class WindowManager
 };
 ```
 
-### III. Aggregation (Einbeziehung, Teil-Ganzes-Beziehung)
+### III. Aggregation (Inklusion, Teil-Ganzes-Beziehung)
 
-Im Allgemeinen ist die Zuordnung genau die gleiche wie bei der Assoziation.
+Im Allgemeinen erfolgt die Abbildung genauso wie bei der Assoziation.
 
-### IV. Abhängigkeit (Dependenz)
+### IV. Abhängigkeit (dependency)
 
-Sie stellt die lockerste Verbindung zwischen den Abteilungen dar. Beispiel:
+Dies stellt die lockerste Beziehung zwischen Klassen dar. Beispiel:
 
-![Abhängigkeit](images/dependency.png)
+![Dependency](images/dependency.png)
 
-Das bedeutet: Die Klasse `Window` hängt von der Klasse `Graphics` ab. Das heißt, wenn die Klasse `Graphics` geändert wird, muss möglicherweise auch die Klasse Window geändert werden. Diese Art der Beziehung wird verwendet, wenn die Parameterliste/Rückgabewerte der Methoden der Klasse am Anfang der Abhängigkeitsbeziehung die Klasse am Ende der Beziehung enthält. Im Beispiel erhält die Operation `onDraw` der Klasse `Window` ein Objekt der Klasse `Graphics` als Parameter und ist somit von dieser abhängig, da sie die Methoden der Klasse `Graphics` im Stamm der Methode aufrufen kann. Wird z.B. der Name der Methode `FillRect` der Klasse `Graphics` geändert, muss sich diese Änderung in der Aufrufstelle, d.h. im Stamm der Methode onDraw der Klasse `Window` widerspiegeln.
+Die Bedeutung: Die Klasse `Window` hängt von der Klasse `Graphics` ab. Das heißt, wenn sich die Klasse `Graphics` ändert, muss eventuell auch die Klasse `Window` angepasst werden.  
+Diese Art der Beziehung wird verwendet, wenn die Methoden der Klasse am Anfang der Abhängigkeitsbeziehung in ihrer Parameterliste oder ihrem Rückgabewert die Klasse am Ende der Beziehung verwenden.  
+Im Beispiel erhält die Methode `onDraw` der Klasse `Window` als Parameter ein Objekt der Klasse `Graphics`, wodurch eine Abhängigkeit besteht, da in ihrem Methodenkörper Methoden der Klasse `Graphics` aufgerufen werden können. Wenn beispielsweise der Name der Methode `FillRect` der Klasse `Graphics` geändert wird, muss diese Änderung an allen Aufrufstellen vorgenommen werden, also auch im Methodenkörper von `Window`'s `onDraw`.
