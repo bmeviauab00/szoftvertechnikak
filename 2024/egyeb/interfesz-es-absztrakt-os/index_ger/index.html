@@ -20,7 +20,7 @@
     
     
       
-        <title>Schnittstelle und abstrakte (angestammte) Klasse - BMEVIAUAB00 Szoftvertechnikák</title>
+        <title>Schnittstellen und abstrakte (Basis-)Klassen - BMEVIAUAB00 Szoftvertechnikák</title>
       
     
     
@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#schnittstelle-und-abstrakte-angestammte-klasse" class="md-skip">
+        <a href="#schnittstellen-und-abstrakte-basis-klassen" class="md-skip">
           Kihagyás
         </a>
       
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Schnittstelle und abstrakte (angestammte) Klasse
+              Schnittstellen und abstrakte (Basis-)Klassen
             
           </span>
         </div>
@@ -1696,9 +1696,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#vergleich-von-abstraktem-vorfahren-und-schnittstelle" class="md-nav__link">
+  <a href="#vergleich-von-abstrakter-basisklasse-und-schnittstelle" class="md-nav__link">
     <span class="md-ellipsis">
-      Vergleich von abstraktem Vorfahren und Schnittstelle
+      Vergleich von abstrakter Basisklasse und Schnittstelle
     </span>
   </a>
   
@@ -1727,28 +1727,27 @@
   
 
 
-<h1 id="schnittstelle-und-abstrakte-angestammte-klasse">Schnittstelle und abstrakte (angestammte) Klasse<a class="headerlink" href="#schnittstelle-und-abstrakte-angestammte-klasse" title="Permanent link">&para;</a></h1>
-<p>Letztes Änderungsdatum: 2022.10.15<br />
-Er hat trainiert: Zoltán Benedek</p>
-<p>Das Kapitel enthält keine Übung, sondern bietet den Studierenden eine Einführung in die entsprechende Theorie.</p>
+<h1 id="schnittstellen-und-abstrakte-basis-klassen">Schnittstellen und abstrakte (Basis-)Klassen<a class="headerlink" href="#schnittstellen-und-abstrakte-basis-klassen" title="Permanent link">&para;</a></h1>
+<p>Dieses Kapitel enthält keine Übungsaufgabe, sondern stellt den Studierenden die zugehörige Theorie vor.</p>
 <h2 id="abstrakte-klasse">Abstrakte Klasse<a class="headerlink" href="#abstrakte-klasse" title="Permanent link">&para;</a></h2>
-<p>Die Konzepte wurden bereits in früheren Themen behandelt, so dass wir jetzt nur die wichtigsten zusammenfassen und uns auf den C#-Aspekt konzentrieren werden. Abstrakte Klasse Eine Klasse, die nicht instanziiert werden kann. In C# sollte in der Klassendefinition das abstrakte Schlüsselwort geschrieben werden, z.B.:</p>
-<div class="highlight"><pre><span></span><code><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Shape</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<p>Die Konzepte wurden bereits in früheren Kursen behandelt, daher fassen wir hier nur das Wichtigste zusammen und gehen speziell auf die Umsetzung in C# ein.</p>
+<p>Eine abstrakte Klasse ist eine Klasse, die nicht instanziiert werden kann. In C# muss das Schlüsselwort <code>abstract</code> in die Klassendefinition geschrieben werden, z. B.:</p>
+<div class="highlight"><pre><span></span><code><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Shape</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">…</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
-<p>Abstrakte Klassen können abstrakte Methoden haben, die keine Wurzel haben, und für diese abstrakten Methoden sollte das Schlüsselwort abstract verwendet werden:</p>
-<div class="highlight"><pre><span></span><code><span class="p">..</span>
+<p>Abstrakte Klassen können abstrakte Methoden enthalten, bei denen kein Methodenkörper angegeben wird. Auch hier muss das Schlüsselwort <code>abstract</code> verwendet werden:</p>
+<div class="highlight"><pre><span></span><code><span class="err">…</span>
 <span class="k">abstract</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Draw</span><span class="p">();</span>
-<span class="p">..</span>
+<span class="err">…</span>
 </code></pre></div>
-<p>Es gibt zwei Gründe für die Verwendung abstrakter Klassen:</p>
+<p>Die Verwendung abstrakter Klassen kann zwei Ziele haben:</p>
 <ul>
-<li>In einer Klassenhierarchie können wir Code, der allen Nachkommen gemeinsam ist, auf einen abstrakten gemeinsamen Vorfahren abbilden und so Code-Duplikation vermeiden.</li>
-<li>Wir können uns einheitlich auf Nachkommen als abstrakte Vorfahren beziehen (z. B. heterogene Sammlungen).</li>
+<li>In einer Klassenhierarchie kann gemeinsamer Code der abgeleiteten Klassen in eine abstrakte gemeinsame Basisklasse ausgelagert werden, wodurch Code-Duplikationen vermieden werden.</li>
+<li>Abgeleitete Klassen können einheitlich über die abstrakte Basisklasse referenziert und behandelt werden (z. B. in heterogenen Sammlungen).</li>
 </ul>
-<p>in .NET, wie auch in Java, kann eine Klasse nur eine Vorgängerklasse haben.</p>
+<p>In der .NET-Umgebung, ebenso wie in der Programmiersprache Java, kann eine Klasse nur eine einzige Basisklasse haben.</p>
 <h2 id="schnittstelle">Schnittstelle<a class="headerlink" href="#schnittstelle" title="Permanent link">&para;</a></h2>
-<p>Eine Schnittstelle ist nichts anderes als eine Reihe von Operationen. Sie entspricht in der Tat einer abstrakten Klasse, deren sämtliche Operationen abstrakt sind.</p>
-<p>In C# können Sie eine Schnittstelle mit dem Schlüsselwort <code>interface</code> definieren:</p>
+<p>Ein Interface ist nichts anderes als eine Menge von Operationen. Im Grunde entspricht es einer abstrakten Klasse, bei der alle Methoden abstrakt sind.</p>
+<p>In C# kann ein Interface mit dem Schlüsselwort <code>interface</code> definiert werden:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">ISerializable</span><span class="w"> </span>
 <span class="p">{</span>
 <span class="w">   </span><span class="k">void</span><span class="w"> </span><span class="nf">WriteToStream</span><span class="p">(</span><span class="n">Stream</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
@@ -1760,24 +1759,25 @@ Er hat trainiert: Zoltán Benedek</p>
 <span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="nf">CompareTo</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">obj</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Während eine Klasse nur einen Vorfahren haben kann, kann sie eine beliebige Anzahl von Schnittstellen implementieren:</p>
+<p>Während eine Klasse nur eine Basisklasse haben kann, kann sie beliebig viele Schnittstellen implementieren:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Rect</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Shape</span><span class="p">,</span><span class="w"> </span><span class="n">ISerializable</span><span class="p">,</span><span class="w"> </span><span class="n">IComparable</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="p">..</span>
+<span class="w">    </span><span class="err">…</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>In diesem Beispiel ist die Klasse Rect von der Klasse Shape abgeleitet und implementiert die Schnittstellen <code>ISerializable</code> und <code>IComparable</code> (die Vorgängerklasse muss zuerst angegeben werden). In der Klasse, die die Schnittstelle implementiert, müssen alle ihre Operationen implementiert werden, d. h. ihr Stamm muss geschrieben werden (außer in dem seltenen Fall, dass sie durch eine abstrakte Operation implementiert wird). Die Verwendung von Schnittstellen hat vor allem einen Zweck. Als Schnittstelle referenziert, können wir alle Klassen, die die Schnittstelle implementieren, einheitlich verwalten (z. B. heterogene Sammlung). Eine Folge davon ist, dass <strong>Schnittstellen es Ihnen ermöglichen, Klassen und Funktionen zu schreiben, die auf vielfältige</strong> Weise <strong>verwendet werden können</strong>. Wir können zum Beispiel eine universelle Sortierfunktion schreiben, die mit jeder Klasse verwendet werden kann, die die Schnittstelle IComparable implementiert.</p>
-<p>Weitere Vorteile der Nutzung der Schnittstelle sind:</p>
+<p>In diesem Beispiel erbt die Klasse <code>Rect</code> von der Klasse <code>Shape</code> und implementiert außerdem die Schnittstellen <code>ISerializable</code> und <code>IComparable</code> (wobei die Basisklasse zwingend zuerst angegeben werden muss). In der Klasse, die eine Schnittstelle implementiert, müssen alle Operationen der Schnittstelle implementiert werden, das heißt, der Methodenkörper muss geschrieben werden (außer in dem seltenen Fall, dass eine abstrakte Methode implementiert wird).<br />
+Die Verwendung von Schnittstellen hat einen Hauptzweck. Als Schnittstelle referenziert, können alle Klassen, die die Schnittstelle implementieren, einheitlich behandelt werden. (z. B. heterogene Sammlungen). Eine Folge davon ist: <strong>Schnittstellen ermöglichen das Schreiben von breit verwendbaren Klassen und Funktionen</strong>. Zum Beispiel kann man eine universelle Sortierfunktion schreiben, die mit jeder Klasse verwendet werden kann, die die Schnittstelle <code>IComparable</code> implementiert.</p>
+<p>Weitere Vorteile der Verwendung von Schnittstellen sind:</p>
 <ul>
-<li>Der Client muss nur die Schnittstelle des Serverobjekts kennen, um den Server problemlos nutzen zu können.</li>
-<li><strong>Wenn der Client den Server nur über die Schnittstelle nutzt, so dass sich die interne Implementierung des Servers ändern kann, muss der Client nicht geändert (und auch nicht neu kompiliert) werden</strong>. Dementsprechend ist die Schnittstelle auch ein Vertrag zwischen dem Server und dem Client: Solange der Server die Unterstützung für die Schnittstelle garantiert, braucht der Client nicht zu wechseln.</li>
+<li>Der Client muss nur die Schnittstelle des Service-Objekts kennen, so kann er den Service einfach verwenden.</li>
+<li><strong>Wenn der Client den Service nur über die Schnittstelle nutzt, kann sich die interne Implementierung des Service ändern, ohne dass der Client angepasst (oder neu kompiliert) werden muss</strong>. Dementsprechend stellt die Schnittstelle auch einen Vertrag zwischen Service und Client dar: solange der Service die Schnittstelle garantiert, muss der Client nicht geändert werden.</li>
 </ul>
-<h2 id="vergleich-von-abstraktem-vorfahren-und-schnittstelle">Vergleich von abstraktem Vorfahren und Schnittstelle<a class="headerlink" href="#vergleich-von-abstraktem-vorfahren-und-schnittstelle" title="Permanent link">&para;</a></h2>
-<p>Der Vorteil des abstrakten Vorgängers gegenüber der Schnittstelle besteht darin, dass Sie eine Standardimplementierung für die Operationen angeben und Membervariablen einschließen können.</p>
-<p>Der Vorteil von Schnittstellen gegenüber abstrakten Vorfahren besteht darin, dass eine Klasse eine beliebige Anzahl von Schnittstellen implementieren kann, während ihr Vorfahre höchstens eine implementieren kann.</p>
-<p>Die Verwendung von Schnittstellen hat noch eine weitere Konsequenz, die in einigen Fällen zu Unannehmlichkeiten führen kann. <strong>Wenn eine neue Operation zur Schnittstelle hinzugefügt wird, müssen alle implementierenden Klassen ebenfalls erweitert werden, sonst lässt sich der Code nicht kompilieren. Dies ist bei der Erweiterung eines abstrakten Vorgängers nicht der Fall: Wenn Sie eine neue Operation hinzufügen, haben Sie die Möglichkeit, sie als virtuelle Funktion hinzuzufügen und ihr somit eine Standardimplementierung im Vorgänger zu geben</strong>. In diesem Fall können die Nachkommen dies nach Belieben umdefinieren, sie sind nicht dazu gezwungen. Diese Eigenschaft von Schnittstellen kann für Klassenbibliotheken/Framework-Systeme besonders unangenehm sein. Angenommen, eine neue Version von .NET wird veröffentlicht und eine neue Operation wird zu einer der Schnittstellen des Frameworks hinzugefügt. Alle implementierenden Klassen in allen Anwendungen müssen dann geändert werden, da der Code sonst nicht kompiliert werden kann. Es gibt zwei Möglichkeiten, dies zu vermeiden. Entweder durch Verwendung einer Legacy-Klasse oder, wenn eine Schnittstelle erweitert werden soll, durch Einführung einer neuen Schnittstelle, die die neue Operation bereits enthält. Obwohl der erste Ansatz (Verwendung einer Vorgängerklasse) auf den ersten Blick attraktiver erscheint, hat er auch einen Nachteil: Wenn Sie bei der Entwicklung Ihrer Anwendung von einem Vorgänger im Framework ableiten, kann Ihre Klasse keinen weiteren Vorgänger haben, und das ist in vielen Fällen eine schmerzhafte Einschränkung.</p>
-<p>Es ist wichtig zu wissen, dass ab C# 8 (oder .NET oder .NET Core Runtime, nicht unterstützt unter .NET Framework), <strong>Schnittstellenoperationen eine Standardimplementierung (Standardschnittstellenmethoden) gegeben werden kann, so dass keine abstrakte Klasse benötigt wird, um das obige Problem zu lösen, aber eine Schnittstelle kann nicht mehr eine Mitgliedsvariable haben</strong>. Weitere Informationen finden Sie hier: <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-8.0/default-interface-methods">Standardschnittstellenmethoden</a>.</p>
-<p>Da sowohl die Verwendung von Schnittstellen als auch von abstrakten Klassen negative Folgen haben kann, können wir in vielen Fällen das meiste aus unserer Lösung herausholen, wenn wir beides verwenden (d. h. unser Code kann ohne oder mit nur minimaler Code-Duplizierung leicht erweitert werden).</p>
+<h2 id="vergleich-von-abstrakter-basisklasse-und-schnittstelle">Vergleich von abstrakter Basisklasse und Schnittstelle<a class="headerlink" href="#vergleich-von-abstrakter-basisklasse-und-schnittstelle" title="Permanent link">&para;</a></h2>
+<p>Der Vorteil der abstrakten Basisklasse gegenüber der Schnittstelle besteht darin, dass man für Operationen eine Standardimplementierung bereitstellen und auch Membervariablen definieren kann.</p>
+<p>Der Vorteil der Schnittstellen gegenüber der abstrakten Basisklasse ist, dass eine Klasse beliebig viele Schnittstellen implementieren kann, während sie nur eine Basisklasse haben kann.</p>
+<p>Die Verwendung von Schnittstellen hat noch eine weitere Folge, die in bestimmten Fällen unangenehm sein kann. <strong>Wenn man einer Schnittstelle eine neue Methode hinzufügt, müssen alle implementierenden Klassen ebenfalls erweitert werden, sonst kompiliert der Code nicht. Beim Erweitern einer abstrakten Basisklasse ist das nicht so: dort kann die neue Methode als virtuelle Funktion mit einer Standardimplementierung eingeführt werden</strong>. In diesem Fall können die Unterklassen die Methode bei Bedarf überschreiben, sind dazu aber nicht gezwungen. Diese Eigenschaft von Schnittstellen kann insbesondere bei Klassenbibliotheken oder Frameworks problematisch sein. Nehmen wir an, bei der Veröffentlichung einer neuen .NET-Version wird eine neue Funktion zu einer der Schnittstellen des Frameworks hinzugefügt. Dann müssten alle implementierenden Klassen in allen Anwendungen geändert werden, sonst kompiliert der Code nicht. Das kann man auf zwei Arten vermeiden: Entweder durch die Verwendung einer Basisklasse oder indem man, falls eine Schnittstelle erweitert werden muss, besser eine neue Schnittstelle mit der neuen Methode einführt. Obwohl die erste Variante (Verwendung einer Basisklasse) auf den ersten Blick attraktiver wirkt, hat sie auch Nachteile: Wenn man von einer Framework-Basisklasse ableitet, kann die eigene Klasse keine andere Basisklasse mehr haben, was oft eine schmerzhafte Einschränkung ist.</p>
+<p>Es lohnt sich zu wissen, dass ab C# 8 (bzw. .NET oder .NET Core Runtime, nicht unterstützt im .NET Framework) können <strong>Schnittstellen auch Standardimplementierungen für Methoden enthalten (default interface methods), wodurch das oben genannte Problem gelöst werden kann, ohne dass eine abstrakte Klasse benötigt wird. Allerdings können Schnittstellen weiterhin keine Membervariablen haben.</strong> Mehr Informationen dazu hier: <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-8.0/default-interface-methods">default interface methods</a>.</p>
+<p>Da sowohl die Verwendung von Schnittstellen als auch von abstrakten Basisklassen Nachteile haben kann, nutzt man in vielen Fällen eine Kombination beider Konzepte, um das Maximum aus der Lösung herauszuholen (das heißt, der Code wird leicht erweiterbar, ohne oder mit nur minimaler Code-Duplikation).</p>
 <hr>
 <div class="md-source-file">
   <span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg
@@ -1787,8 +1787,8 @@ Er hat trainiert: Zoltán Benedek</p>
         </path>
       </svg>
     </span>
-    <span title="2024. február 12. 18:14:38">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2024. február 12. 18:14:38"><span class="timeago" datetime="2024-02-12T18:14:38+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2024. február 12. 18:14:38">2024-02-12</span>
+    <span title="2025. június 2. 15:17:43">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. június 2. 15:17:43 CEST"><span class="timeago" datetime="2025-06-02T15:17:43+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. június 2. 15:17:43 CEST">2025-06-02</span>
     </span>
   </span>
 
@@ -1805,6 +1805,8 @@ Er hat trainiert: Zoltán Benedek</p>
     <span>Szerzők</span>
     <nav><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
         <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&v=4?size=72" alt="@Zoltán Benedek">
+      </a><a href="https://github.com/szucscintialia" target="_blank" rel="noopener noreferrer" class="md-author" title="@Cintia Szücs">
+        <img src="https://avatars.githubusercontent.com/u/26093637?v=4?size=72" alt="@Cintia Szücs">
       </a></nav>      
   </span>
 </div>

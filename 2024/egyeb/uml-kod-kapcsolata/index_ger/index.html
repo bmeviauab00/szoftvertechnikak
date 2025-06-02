@@ -20,7 +20,7 @@
     
     
       
-        <title>Theorie der Beziehung zwischen dem UML-Klassendiagramm und dem Code - BMEVIAUAB00 Szoftvertechnikák</title>
+        <title>Die Theorie der Beziehung zwischen UML-Klassendiagramm und Code - BMEVIAUAB00 Szoftvertechnikák</title>
       
     
     
@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#theorie-der-beziehung-zwischen-dem-uml-klassendiagramm-und-dem-code" class="md-skip">
+        <a href="#die-theorie-der-beziehung-zwischen-uml-klassendiagramm-und-code" class="md-skip">
           Kihagyás
         </a>
       
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Theorie der Beziehung zwischen dem UML-Klassendiagramm und dem Code
+              Die Theorie der Beziehung zwischen UML-Klassendiagramm und Code
             
           </span>
         </div>
@@ -1688,9 +1688,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#konzepte" class="md-nav__link">
+  <a href="#begriffe" class="md-nav__link">
     <span class="md-ellipsis">
-      Konzepte
+      Begriffe
     </span>
   </a>
   
@@ -1702,19 +1702,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#zuordnung-von-klassen" class="md-nav__link">
+  <a href="#abbildung-der-klassen" class="md-nav__link">
     <span class="md-ellipsis">
-      Zuordnung von Klassen
+      Abbildung der Klassen
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Zuordnung von Klassen">
+    <nav class="md-nav" aria-label="Abbildung der Klassen">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#i-generalisierung-und-spezialisierung" class="md-nav__link">
+  <a href="#i-generalisierungs-und-spezialisierungsbeziehung" class="md-nav__link">
     <span class="md-ellipsis">
-      I. Generalisierung und Spezialisierung
+      I. Generalisierungs- und Spezialisierungsbeziehung
     </span>
   </a>
   
@@ -1731,18 +1731,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#a-aufbau-einer-01-multiplizitats-assoziationsbeziehung" class="md-nav__link">
+  <a href="#a-abbildung-bei-einer-01-multiplizitats-assoziationsbeziehung" class="md-nav__link">
     <span class="md-ellipsis">
-      A) Aufbau einer 0..1-Multiplizitäts-Assoziationsbeziehung
+      A) Abbildung bei einer 0..1-Multiplizitäts-Assoziationsbeziehung
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#b-ableitung-fur-eine-assoziationsbeziehung-mit-der-multiplizitat-0n" class="md-nav__link">
+  <a href="#b-abbildung-bei-0n-multiplizitats-assoziationsbeziehung" class="md-nav__link">
     <span class="md-ellipsis">
-      B) Ableitung für eine Assoziationsbeziehung mit der Multiplizität 0..n
+      B) Abbildung bei 0..n-Multiplizitäts-Assoziationsbeziehung
     </span>
   </a>
   
@@ -1754,18 +1754,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#iii-aggregation-einbeziehung-teil-ganzes-beziehung" class="md-nav__link">
+  <a href="#iii-aggregation-inklusion-teil-ganzes-beziehung" class="md-nav__link">
     <span class="md-ellipsis">
-      III. Aggregation (Einbeziehung, Teil-Ganzes-Beziehung)
+      III. Aggregation (Inklusion, Teil-Ganzes-Beziehung)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#iv-abhangigkeit-dependenz" class="md-nav__link">
+  <a href="#iv-abhangigkeit-dependency" class="md-nav__link">
     <span class="md-ellipsis">
-      IV. Abhängigkeit (Dependenz)
+      IV. Abhängigkeit (dependency)
     </span>
   </a>
   
@@ -1799,32 +1799,32 @@
   
 
 
-<h1 id="theorie-der-beziehung-zwischen-dem-uml-klassendiagramm-und-dem-code">Theorie der Beziehung zwischen dem UML-Klassendiagramm und dem Code<a class="headerlink" href="#theorie-der-beziehung-zwischen-dem-uml-klassendiagramm-und-dem-code" title="Permanent link">&para;</a></h1>
-<p>Letztes Änderungsdatum: 2022.10.15<br />
+<h1 id="die-theorie-der-beziehung-zwischen-uml-klassendiagramm-und-code">Die Theorie der Beziehung zwischen UML-Klassendiagramm und Code<a class="headerlink" href="#die-theorie-der-beziehung-zwischen-uml-klassendiagramm-und-code" title="Permanent link">&para;</a></h1>
+<p>Letzte Änderung: 15.10.2022<br />
 Ausgearbeitet von: Zoltán Benedek</p>
-<p>Das Kapitel enthält keine Übung, sondern bietet den Studierenden eine Einführung in die entsprechende Theorie.</p>
+<p>Dieses Kapitel enthält keine Übungsaufgabe, sondern stellt den Studierenden die zugehörige Theorie vor.</p>
 <h2 id="einfuhrung">Einführung<a class="headerlink" href="#einfuhrung" title="Permanent link">&para;</a></h2>
-<p>Das Kapitel gibt einen kurzen Überblick über die Grundlagen des Mappings zwischen dem UML-Klassendiagramm und dem Quellcode, als Wiederholung dessen, was bereits im vorherigen Semester in Softwarechnologien gelernt wurde.</p>
-<p>Heutzutage gibt es viele Softwareentwicklungsmethoden. Sie stützen sich bei der Erstellung der Software in unterschiedlichem Maße auf die Modellierung bzw. erfordern diese. Es besteht jedoch kein Zweifel daran, dass selbst die Anhänger der agilsten, "code-zentrierten" Ansätze es für nützlich halten, die wichtigeren/komplexeren Komponenten und Strukturelemente der Software visuell zu modellieren, da deren grafische Natur eine größere Ausdruckskraft hat.</p>
-<p>Nehmen wir an, man muss eine Anwendung oder ein bestimmtes Modul einer Anwendung erstellen. Nach der von sich gewählten Methodik wird man die Schritte Anforderungsanalyse, Analyse, Entwurf, Implementierung und Test durchführen, wahrscheinlich in mehreren Iterationen. Konzentrieren wir uns nun auf die Entwurfsphase. Das Ergebnis ist ein detaillierter Entwurf des Systems (zumindest von Teilen davon), der in einen detaillierten Plan oder ein Modell für die Umsetzung mündet. Auf dieser Ebene können bestimmte Elemente des Modells (z. B. Klassen) explizit auf Elemente der für die Implementierung des Teilsystems gewählten Programmiersprache abgebildet werden. Wenn man über ein gutes Entwicklungs-/Modellierungswerkzeug verfügt, kann dieses das Klassenskelett (z. B. C++, Java-, C#-Klassen) generieren. Unsere Aufgabe besteht nun darin, die Wurzel der Methoden in den generierten Code einzutragen.</p>
-<h3 id="konzepte">Konzepte<a class="headerlink" href="#konzepte" title="Permanent link">&para;</a></h3>
+<p>Das Kapitel gibt einen kurzen, skizzenhaften Überblick über die Grundlagen der Abbildung zwischen UML-Klassendiagramm und Quellcode, als Wiederholung der im vorherigen Semester im Fach Softwaretechnologie gelernten Inhalte.</p>
+<p>Heutzutage gibt es zahlreiche Softwareentwicklungsmethoden. Diese bauen in unterschiedlichem Maße darauf auf bzw. verlangen, dass während der Softwareerstellung Modellierung angewandt wird. Es steht jedoch außer Zweifel, dass selbst Anhänger der agilsten, am meisten „codezentrierten“ Vorgehensweisen die visuelle Modellierung wichtiger/komplexerer Komponenten und Strukturelemente der Software wegen ihrer größeren Ausdruckskraft durch die grafische Form als nützlich erachten.</p>
+<p>Nehmen wir an, unsere Aufgabe ist die Erstellung einer Anwendung oder eines bestimmten Moduls davon. Folgend unserer gewählten Methodologie, durchlaufen wir – wahrscheinlich in mehreren Iterationen – die Schritte Anforderungsanalyse, Analyse, Entwurf, Implementierung und Test. Konzentrieren wir uns jetzt auf die Entwurfsphase. Dabei entsteht der detaillierte Entwurf des Systems (bzw. bestimmter Teile davon), dessen Ergebnis der detaillierte/Implementierungsplan und das Modell sind. Auf dieser Ebene lassen sich bestimmte Elemente im Modell (z. B. Klassen) eindeutig auf die Elemente der Programmiersprache abbilden, die für die Implementierung des jeweiligen Subsystems gewählt wurde. Wenn unser Entwickler-/Modellierungswerkzeug gut ist, kann es das Skelett der Klasse generieren (z. B. C++, Java, C# Klassen). Unsere Aufgabe ist es anschließend, die Methodenkörper im generierten Code zu füllen.</p>
+<h3 id="begriffe">Begriffe<a class="headerlink" href="#begriffe" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Forward Engineering: Generierung von Code aus einem Modell. Aus dem detaillierten Plan kann das Modellierungswerkzeug das Programmgerüst erstellen. Der Vorteil ist, dass weniger Kodierung erforderlich ist.</li>
-<li>Reverse Engineering: Generierung eines Modells aus Code. Es hilft Ihnen, den bereits vorhandenen Code zu verstehen.</li>
-<li>Round-Trip-Engineering: eine Kombination der beiden vorgenannten Verfahren. Der springende Punkt ist, dass das Modell und der Code ständig synchronisiert sind. Wenn Sie den Code ändern, erscheint die Änderung im Modell, wenn Sie das Modell ändern, erscheint die Änderung im Code.</li>
+<li>Forward Engineering: Code-Generierung aus dem Modell. Aus dem detaillierten Entwurf kann das Modellierungswerkzeug das Programmskelett generieren. Vorteil: es muss weniger kodiert werden.</li>
+<li>Reverse Engineering: Modell-Generierung aus Code. Hilft, bereits fertigen Code zu verstehen.</li>
+<li>Round-Trip Engineering: die kombinierte Anwendung der beiden vorherigen. Das Wesentliche: Modell und Code sind durchgängig synchron. Wenn im Code eine Änderung vorgenommen wird, erscheint diese Änderung im Modell, und wenn im Modell eine Änderung erfolgt, wird diese im Code sichtbar.</li>
 </ul>
-<p>Um die Vorteile der Codegenerierung nutzen zu können, muss man Folgendes wissen: man muss wissen, wie ein bestimmtes Modellierungswerkzeug jedes Modellelement auf Elemente einer bestimmten Programmiersprache abbildet. Das Mapping hängt von der Sprache und dem Modellierungswerkzeug ab, es gibt keinen universellen Standard. Die Zuordnungen sind in der Regel selbsterklärend, es gibt in der Regel nicht allzu viele Variationen.</p>
-<p>Im Folgenden werden wir uns ansehen, wie jedes Modellelement des UML-Klassendiagramms auf den Quellcode abgebildet wird und umgekehrt.</p>
-<h2 id="zuordnung-von-klassen">Zuordnung von Klassen<a class="headerlink" href="#zuordnung-von-klassen" title="Permanent link">&para;</a></h2>
-<p>Es ist trivial einfach:</p>
+<p>Um die Vorteile der Code-Generierung nutzen zu können, muss man Folgendes wissen: Man muss verstehen, wie das jeweilige Modellierungswerkzeug die einzelnen Modellelemente auf die Elemente der jeweiligen Programmiersprache abbildet. Die Abbildung hängt von der Sprache und dem Modellierungswerkzeug ab; es gibt keinen universellen Standard. Die Abbildungen sind meist selbsterklärend, größere Abweichungen sind selten.</p>
+<p>Im Folgenden betrachten wir, wie die einzelnen Modellelemente eines UML-Klassendiagramms in Quellcode abgebildet werden und umgekehrt.</p>
+<h2 id="abbildung-der-klassen">Abbildung der Klassen<a class="headerlink" href="#abbildung-der-klassen" title="Permanent link">&para;</a></h2>
+<p>Man kann sagen, es ist trivial einfach:</p>
 <ul>
 <li>UML-Klasse -&gt; Klasse</li>
-<li>UML-Attribut -&gt; Mitgliedsvariable</li>
-<li>UML-Operation -&gt; Funktion/Method</li>
+<li>UML-Attribut -&gt; Feld (Membervariable)</li>
+<li>UML-Operation -&gt; Methode</li>
 </ul>
 <p>Ein Beispiel:</p>
-<p><a class="glightbox" href="../images/shapeclass.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Klasse Shape" src="../images/shapeclass.png" /></a></p>
-<p>, was folgendem Code in C# entspricht:</p>
+<p><a class="glightbox" href="../images/shapeclass.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Shape-Klasse" src="../images/shapeclass.png" /></a></p>
+<p>entspricht folgendem Code in C#:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Shape</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
@@ -1833,28 +1833,29 @@ Ausgearbeitet von: Zoltán Benedek</p>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Draw</span><span class="p">(</span><span class="n">Graphics</span><span class="w"> </span><span class="n">gr</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Im Zusammenhang mit der Sichtbarkeit, Kartierung:</p>
+<p>Bezüglich der Sichtbarkeit erfolgt die Abbildung wie folgt:</p>
 <ul>
 <li>+: public</li>
 <li>-: private</li>
-<li># : protected</li>
+<li>#: protected</li>
 </ul>
-<p>Eine spannendere Frage ist, wie die Beziehungen zwischen den Klassen abgebildet werden, und dies wird in den folgenden Kapiteln diskutiert.</p>
-<h3 id="i-generalisierung-und-spezialisierung">I. Generalisierung und Spezialisierung<a class="headerlink" href="#i-generalisierung-und-spezialisierung" title="Permanent link">&para;</a></h3>
+<p>Eine spannendere Fragestellung ist, wie die Beziehungen zwischen Klassen abgebildet werden, dies wird in den folgenden Kapiteln behandelt.</p>
+<h3 id="i-generalisierungs-und-spezialisierungsbeziehung">I. Generalisierungs- und Spezialisierungsbeziehung<a class="headerlink" href="#i-generalisierungs-und-spezialisierungsbeziehung" title="Permanent link">&para;</a></h3>
 <p><a class="glightbox" href="../images/alt-spec.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Generalisierung, Spezialisierung" src="../images/alt-spec.png" /></a></p>
-<p>C#-Zuordnung:</p>
+<p>Abbildung in C#:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Base</span>
 <span class="p">{</span><span class="w"> </span><span class="p">};</span>
 <span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Derived</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Base</span>
 <span class="p">{</span><span class="w"> </span><span class="p">};</span>
 </code></pre></div>
 <h3 id="ii-assoziation">II. Assoziation<a class="headerlink" href="#ii-assoziation" title="Permanent link">&para;</a></h3>
-<p>Dieser Beziehungstyp impliziert immer eine Kommunikation zwischen Objekten von Klassen. Eine Abteilung nimmt die Dienste einer anderen Abteilung in Anspruch.</p>
-<h4 id="a-aufbau-einer-01-multiplizitats-assoziationsbeziehung">A) Aufbau einer 0..1-Multiplizitäts-Assoziationsbeziehung<a class="headerlink" href="#a-aufbau-einer-01-multiplizitats-assoziationsbeziehung" title="Permanent link">&para;</a></h4>
-<p>In diesem Fall enthält die Client-Klasse einen Zeiger oder Verweis, über den sie die Dienste der Zielklasse nutzen (ihre Operationen aufrufen) kann. Beispiel:</p>
-<p><a class="glightbox" href="../images/association-single.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Generalisierung, Spezialisierung, einheitlicher Ansprechpartner" src="../images/association-single.png" /></a></p>
-<p>C++-Zuordnung:</p>
-<div class="highlight"><pre><span></span><code><span class="n">klasse</span><span class="w"> </span><span class="n">Bewerbung</span>
+<p>Dieser Beziehungstyp bedeutet immer Kommunikation zwischen den Objekten der Klassen. Eine bestimmte Klasse nutzt die Dienste einer anderen Klasse.</p>
+<h4 id="a-abbildung-bei-einer-01-multiplizitats-assoziationsbeziehung">A) Abbildung bei einer 0..1-Multiplizitäts-Assoziationsbeziehung<a class="headerlink" href="#a-abbildung-bei-einer-01-multiplizitats-assoziationsbeziehung" title="Permanent link">&para;</a></h4>
+<p>In diesem Fall enthält die Client-Klasse einen Zeiger oder eine Referenz, über die sie die Dienste der Zielklasse in Anspruch nehmen kann (d.h. deren Methoden aufrufen kann).<br />
+Beispiel:</p>
+<p><a class="glightbox" href="../images/association-single.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Generalisierung, Spezialisierung, einzelne Beziehung" src="../images/association-single.png" /></a></p>
+<p>Abbildung in C++:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Application</span>
 <span class="p">{</span>
 <span class="w">   </span><span class="n">WindowManager</span><span class="o">*</span><span class="w"> </span><span class="n">windowManager</span><span class="p">;</span>
 <span class="p">};</span>
@@ -1863,7 +1864,7 @@ Ausgearbeitet von: Zoltán Benedek</p>
 <span class="p">{</span>
 <span class="p">};</span>
 </code></pre></div>
-<p>C#-Zuordnung (keine Zeiger, nur Referenzen):</p>
+<p>Abbildung in C# (es gibt keine Zeiger, nur Referenzen):</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Application</span>
 <span class="p">{</span>
 <span class="w">   </span><span class="n">WindowManager</span><span class="w"> </span><span class="n">windowManager</span><span class="p">;</span>
@@ -1873,30 +1874,33 @@ Ausgearbeitet von: Zoltán Benedek</p>
 <span class="p">{</span>
 <span class="p">};</span>
 </code></pre></div>
-<p>In beiden Fällen sehen wir, dass <strong>wir der Client-Klasse eine Zeiger- oder Referenz-Member-Variable hinzufügen, die vom gleichen Typ ist wie die Zielklasse, auf die in der Assoziation verwiesen wird, und der Name der Member-Variable ist die Rolle, die der Zielklasse für die Assoziationsbeziehung gegeben wurde</strong>, die in diesem Beispiel <code>windowManager</code>ist. Die Zuordnung ist logisch, da der Client auf das Zielobjekt aus jeder seiner Operationen zugreifen und seine Methoden über diesen Zeiger/Verweis aufrufen kann.</p>
-<p>Kommentar. Manchmal ist die Assoziation in beide Richtungen, wobei jede Klasse die Dienste der anderen nutzt. Anstatt einen Pfeil an beiden Enden der Assoziation anzubringen, lassen wir ihn oft an beiden Enden stehen. In einer solchen wechselseitigen Beziehung muss die Rolle an beiden Enden der Beziehung angegeben werden. Während des Mappings fügen wir einen Zeiger/Referenz auf jede Klasse der anderen hinzu.</p>
-<h4 id="b-ableitung-fur-eine-assoziationsbeziehung-mit-der-multiplizitat-0n">B) Ableitung für eine Assoziationsbeziehung mit der Multiplizität 0..n<a class="headerlink" href="#b-ableitung-fur-eine-assoziationsbeziehung-mit-der-multiplizitat-0n" title="Permanent link">&para;</a></h4>
-<p>In diesem Fall ist ein Objekt auf der Client-Seite mit mehreren Objekten auf der Zielseite verbunden. Beispiel:</p>
-<p><a class="glightbox" href="../images/association-multiple.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Generalisierung, Spezialisierung, Mehrfachverknüpfungen" src="../images/association-multiple.png" /></a></p>
-<p>Ein <code>WindowManager</code> Objekt verwaltet mehrere <code>Window</code> Objekte. <strong>Das Mapping übernimmt eine Sammlung von Objekten der Zielklasse in die Client-Klasse.</strong> Dabei kann es sich um ein Array, eine Liste usw. handeln, je nachdem, was für unsere Zwecke in der jeweiligen Situation am besten geeignet ist.</p>
-<p>Eine Abbildung des obigen Beispiels in C++:</p>
+<p>In beiden Fällen sehen wir, dass <strong>die Client-Klasse einen Zeiger- oder Referenz-Membervariable erhält, deren Typ mit dem der Zielklasse im Assoziationsverhältnis übereinstimmt, und deren Name der Rolle (role) entspricht, die in der Assoziation für die Zielklasse angegeben ist</strong>, im Beispiel also <code>windowManager</code>.<br />
+Die Abbildung ist logisch, da der Client über diesen Zeiger / diese Referenz auf das Zielobjekt zugreifen und dessen Methoden aufrufen kann.</p>
+<p>Bemerkung: Es kann vorkommen, dass die Assoziation bidirektional ist, das heißt, beide Klassen nutzen die Dienste der jeweils anderen. In diesem Fall, anstatt einen Pfeil an beiden Enden der Assoziation anzubringen, wird er oft an beiden Enden weggelassen. In einer solchen zweiseitigen Assoziation muss die Rolle (role) an beiden Enden der Assoziation angegeben werden. In der Abbildung erhält dann jede Klasse einen Zeiger/eine Referenz auf die jeweils andere.</p>
+<h4 id="b-abbildung-bei-0n-multiplizitats-assoziationsbeziehung">B) Abbildung bei 0..n-Multiplizitäts-Assoziationsbeziehung<a class="headerlink" href="#b-abbildung-bei-0n-multiplizitats-assoziationsbeziehung" title="Permanent link">&para;</a></h4>
+<p>In diesem Fall steht ein clientseitiges Objekt in Beziehung zu mehreren zielseitigen Objekten. Beispiel:</p>
+<p><a class="glightbox" href="../images/association-multiple.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Verallgemeinerung, Spezialisierung, Mehrfachverbindung" src="../images/association-multiple.png" /></a></p>
+<p>Ein <code>WindowManager</code>-Objekt verwaltet mehrere <code>Window</code>-Objekte. <strong>Bei der Abbildung wird in der Client-Klasse eine Sammlung von Zielobjekten aufgenommen.</strong> Das kann ein Array, eine Liste usw. sein, je nachdem, was in der jeweiligen Situation am besten passt.</p>
+<p>Eine mögliche Abbildung für das obige Beispiel in C++:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">WindowManager</span>
 <span class="p">{</span>
 <span class="w">  </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Window</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">windows</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
-<p>Oder in C#:</p>
+<p>Und im C#:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">WindowManager</span>
 <span class="p">{</span>
 <span class="w">  </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Window</span><span class="o">&gt;</span><span class="w"> </span><span class="n">windows</span><span class="p">;</span><span class="w"> </span>
 <span class="p">};</span>
 </code></pre></div>
-<h3 id="iii-aggregation-einbeziehung-teil-ganzes-beziehung">III. Aggregation (Einbeziehung, Teil-Ganzes-Beziehung)<a class="headerlink" href="#iii-aggregation-einbeziehung-teil-ganzes-beziehung" title="Permanent link">&para;</a></h3>
-<p>Im Allgemeinen ist die Zuordnung genau die gleiche wie bei der Assoziation.</p>
-<h3 id="iv-abhangigkeit-dependenz">IV. Abhängigkeit (Dependenz)<a class="headerlink" href="#iv-abhangigkeit-dependenz" title="Permanent link">&para;</a></h3>
-<p>Sie stellt die lockerste Verbindung zwischen den Abteilungen dar. Beispiel:</p>
-<p><a class="glightbox" href="../images/dependency.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Abhängigkeit" src="../images/dependency.png" /></a></p>
-<p>Das bedeutet: Die Klasse <code>Window</code> hängt von der Klasse <code>Graphics</code> ab. Das heißt, wenn die Klasse <code>Graphics</code> geändert wird, muss möglicherweise auch die Klasse Window geändert werden. Diese Art der Beziehung wird verwendet, wenn die Parameterliste/Rückgabewerte der Methoden der Klasse am Anfang der Abhängigkeitsbeziehung die Klasse am Ende der Beziehung enthält. Im Beispiel erhält die Operation <code>onDraw</code> der Klasse <code>Window</code> ein Objekt der Klasse <code>Graphics</code> als Parameter und ist somit von dieser abhängig, da sie die Methoden der Klasse <code>Graphics</code> im Stamm der Methode aufrufen kann. Wird z.B. der Name der Methode <code>FillRect</code> der Klasse <code>Graphics</code> geändert, muss sich diese Änderung in der Aufrufstelle, d.h. im Stamm der Methode onDraw der Klasse <code>Window</code> widerspiegeln.</p>
+<h3 id="iii-aggregation-inklusion-teil-ganzes-beziehung">III. Aggregation (Inklusion, Teil-Ganzes-Beziehung)<a class="headerlink" href="#iii-aggregation-inklusion-teil-ganzes-beziehung" title="Permanent link">&para;</a></h3>
+<p>Im Allgemeinen erfolgt die Abbildung genauso wie bei der Assoziation.</p>
+<h3 id="iv-abhangigkeit-dependency">IV. Abhängigkeit (dependency)<a class="headerlink" href="#iv-abhangigkeit-dependency" title="Permanent link">&para;</a></h3>
+<p>Dies stellt die lockerste Beziehung zwischen Klassen dar. Beispiel:</p>
+<p><a class="glightbox" href="../images/dependency.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Dependency" src="../images/dependency.png" /></a></p>
+<p>Die Bedeutung: Die Klasse <code>Window</code> hängt von der Klasse <code>Graphics</code> ab. Das heißt, wenn sich die Klasse <code>Graphics</code> ändert, muss eventuell auch die Klasse <code>Window</code> angepasst werden.<br />
+Diese Art der Beziehung wird verwendet, wenn die Methoden der Klasse am Anfang der Abhängigkeitsbeziehung in ihrer Parameterliste oder ihrem Rückgabewert die Klasse am Ende der Beziehung verwenden.<br />
+Im Beispiel erhält die Methode <code>onDraw</code> der Klasse <code>Window</code> als Parameter ein Objekt der Klasse <code>Graphics</code>, wodurch eine Abhängigkeit besteht, da in ihrem Methodenkörper Methoden der Klasse <code>Graphics</code> aufgerufen werden können. Wenn beispielsweise der Name der Methode <code>FillRect</code> der Klasse <code>Graphics</code> geändert wird, muss diese Änderung an allen Aufrufstellen vorgenommen werden, also auch im Methodenkörper von <code>Window</code>'s <code>onDraw</code>.</p>
 <hr>
 <div class="md-source-file">
   <span class="md-source-file__fact"> <span class="md-icon" title="Utolsó frissítés"> <svg
@@ -1906,8 +1910,8 @@ Ausgearbeitet von: Zoltán Benedek</p>
         </path>
       </svg>
     </span>
-    <span title="2024. február 20. 09:54:42">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2024. február 20. 09:54:42"><span class="timeago" datetime="2024-02-20T09:54:42+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2024. február 20. 09:54:42">2024-02-20</span>
+    <span title="2025. június 2. 15:17:43">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. június 2. 15:17:43 CEST"><span class="timeago" datetime="2025-06-02T15:17:43+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. június 2. 15:17:43 CEST">2025-06-02</span>
     </span>
   </span>
 
