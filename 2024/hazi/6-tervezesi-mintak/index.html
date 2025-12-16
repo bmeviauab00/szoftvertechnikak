@@ -2056,7 +2056,7 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
 <p>Ugyanakkor van még egy kritikus szempont, melyről nem beszéltünk (és a régebbi, klasszikus design pattern irodalmak sem feltétlen emlegetik). Ez az egységtesztelhetőség.</p>
 <p>Jelen pillanatban az <code>Anonymizer</code> osztályunkhoz automata <strong>integrációs teszteket</strong> tudunk írni, automata <strong>egységteszteket</strong> nem:</p>
 <ul>
-<li>Az integrációs tesztek a teljes működést egyben vizsgálják: ebben benne van a bemenet feldolgozása, adatfeldolgozás, kimenet előállítása. Ez példánkban egyszerű: előállítunk bizonyos bemeneti CVS állományokat, és megnézzük, a várt kimeneti állomány állítódik-e elő.</li>
+<li>Az integrációs tesztek a teljes működést egyben vizsgálják: ebben benne van a bemenet feldolgozása, adatfeldolgozás, kimenet előállítása. Ez példánkban egyszerű: előállítunk bizonyos bemeneti CSV állományokat, és megnézzük, a várt kimeneti állomány állítódik-e elő.</li>
 <li>Az integrációs tesztek nagyon lassúak tudnak lenni: sokszor fájlokból, adatbázisokból, felhő alapú szolgáltatásokból veszik a bemenetet, illetve ezek szolgálnak kimenetként. Egy nagyobb termék esetében - mikor sok ezer teszt van - ez a lassúság korlátozó tényező, ritkábban tudjuk futtatni és/vagy nem tudunk jó tesztlefedettséget elérni.</li>
 </ul>
 <p>A fentiek miatt sokszor nagyobb kódlefedettséget nem a lassabb integrációs, hanem nagyon gyorsan futó <strong>egységtesztekkel</strong> szoktunk/tudunk elérni. Ezek mindenféle <strong>lassú fájl/adatbázis/hálózat/felhő elérés nélkül önmagában egy-egy logikai egységet tesztelnek a kódban</strong>, ezt viszont így már villámgyorsan. Így sokat tudunk futtatni adott idő alatt, jó tesztlefedettséggel.</p>
@@ -2255,8 +2255,8 @@ Tipp: egy fájl tartalmát pl. a <code>File.ReadAllBytes</code> statikus művele
         </path>
       </svg>
     </span>
-    <span title="2025. május 25. 11:07:32">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. május 25. 11:07:32 CEST"><span class="timeago" datetime="2025-05-25T11:07:32+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. május 25. 11:07:32 CEST">2025-05-25</span>
+    <span title="2025. december 16. 16:28:56">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. december 16. 16:28:56 CET"><span class="timeago" datetime="2025-12-16T16:28:56+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. december 16. 16:28:56 CET">2025-12-16</span>
     </span>
   </span>
 
@@ -2274,6 +2274,8 @@ Tipp: egy fájl tartalmát pl. a <code>File.ReadAllBytes</code> statikus művele
         <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
       </a><a href="https://github.com/koppanybme" target="_blank" rel="noopener noreferrer" class="md-author" title="@None">
         <img src="https://avatars.githubusercontent.com/u/162472536?v=4?size=72" alt="@None">
+      </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tibor Tóth">
+        <img src="https://avatars.githubusercontent.com/u/8333960?u=d26653213d265ecdceeaf20a896d74f479d35450&amp;v=4?size=72" alt="@Tibor Tóth">
       </a></nav>      
   </span>
 </div>
