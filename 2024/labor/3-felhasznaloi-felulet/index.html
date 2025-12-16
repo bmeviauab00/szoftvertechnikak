@@ -2161,12 +2161,13 @@ Most kézzel fogunk XAML-t írni és ezzel a felületet kialakítani. Vegyünk f
 <span class="w">    </span><span class="na">xmlns:local=</span><span class="s">"using:HelloXaml"</span>
 <span class="w">    </span><span class="na">xmlns:d=</span><span class="s">"http://schemas.microsoft.com/expression/blend/2008"</span>
 <span class="w">    </span><span class="na">xmlns:mc=</span><span class="s">"http://schemas.openxmlformats.org/markup-compatibility/2006"</span>
+<span class="w">    </span><span class="na">xmlns:model=</span><span class="s">"using:HelloXaml.Models"</span>
 <span class="w">    </span><span class="na">mc:Ignorable=</span><span class="s">"d"</span><span class="nt">&gt;</span>
-
-<span class="hll"><span class="w">    </span><span class="nt">&lt;Grid&gt;</span>
-</span>
-<span class="hll"><span class="w">    </span><span class="nt">&lt;/Grid&gt;</span>
-</span><span class="nt">&lt;/Window&gt;</span>
+<span class="hll">
+</span><span class="w">    </span><span class="nt">&lt;Grid&gt;</span>
+<span class="hll">
+</span><span class="w">    </span><span class="nt">&lt;/Grid&gt;</span>
+<span class="nt">&lt;/Window&gt;</span>
 </code></pre></div>
 <p>Futtassuk az alkalmazást (pl. az <span class="keys"><kbd class="key-f5">F5</kbd></span> billentyűvel). A <code>Grid</code> most kitölti a teljes ablakot, a színe megegyezik az ablak háttérszínével, ezért szemmel nem tudjuk megkülönböztetni.</p>
 <p>A következő feladatok során hagyjuk futni az alkalmazást, hogy azonnal láthassuk a felületen eszközölt módosításainkat.</p>
@@ -2631,8 +2632,8 @@ Lehetőségünk van akár saját Markup Extension-t is készíteni, de ez nem ta
 </code></pre></div>
 <p>Indítsuk el az alkalmazást, majd ezt követően tegyünk egy töréspontot a <code>Person</code> osztály <code>Name</code> tulajdonságának setterébe (<code>if (name != value)</code> sor) , és próbáljuk, hogy vissza irányba is működik-e az adatkötés: ha megváltoztatjuk az egyik <code>TextBox</code> értékét, megváltozik-e a <code>NewPerson</code> objektum <code>Name</code> tulajdonsága? Gépeljünk valamit a Name-hez tartozó szövegdobozba, majd kattintsunk át egy másik mezőbe: ekkor a Textbox tartalma "véglegesítődik", tartalma vissza kellene íródjon az adatforrásba, de mégsem történik meg, nem fut rá a kód a töréspontunkra.</p>
 <p>Ez azért van így, mert fentebb <code>OneWay</code> adatkötést használtunk, mely csak az adatforrásból a felületre irányú adatkötést jelent. Ha azt szeretnénk, hogy az adatkötés a másik irányba is működjön (vezérlőből adatforrásba), ahhoz  <strong><code>TwoWay</code></strong>-re kell állítsuk az adatkötés módját. Ezt <strong>kétirányű adatkötésnek</strong> nevezzük.</p>
-<div class="highlight"><pre><span></span><code>Text="{x:Bind<span class="w"> </span>Name,<span class="w"> </span>Mode=TwoWay}"
-Text="{x:Bind<span class="w"> </span>Age,<span class="w"> </span>Mode=TwoWay}"
+<div class="highlight"><pre><span></span><code>Text="{x:Bind<span class="w"> </span>NewPerson.Name,<span class="w"> </span>Mode=TwoWay}"
+Text="{x:Bind<span class="w"> </span>NewPerson.Age,<span class="w"> </span>Mode=TwoWay}"
 </code></pre></div>
 <p>Próbáljuk ki! Így az adatkötés már mindkét irányba működik:</p>
 <ul>
@@ -2656,8 +2657,8 @@ Vegyük fel a <code>Person</code>-ök listáját a nézetünk code-behind fájlj
 
 <span class="hll"><span class="w">    </span><span class="n">People</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span><span class="p">()</span>
 </span><span class="hll"><span class="w">    </span><span class="p">{</span>
-</span><span class="hll"><span class="w">      </span><span class="k">new</span><span class="w"> </span><span class="nf">Person</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Peter Griffin"</span><span class="p">,</span><span class="w"> </span><span class="n">Age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="p">},</span>
-</span><span class="hll"><span class="w">      </span><span class="k">new</span><span class="w"> </span><span class="nf">Person</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Homer Simpson"</span><span class="p">,</span><span class="w"> </span><span class="n">Age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">42</span><span class="w"> </span><span class="p">},</span>
+</span><span class="hll"><span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="nf">Person</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Peter Griffin"</span><span class="p">,</span><span class="w"> </span><span class="n">Age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="p">},</span>
+</span><span class="hll"><span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="nf">Person</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Homer Simpson"</span><span class="p">,</span><span class="w"> </span><span class="n">Age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">42</span><span class="w"> </span><span class="p">},</span>
 </span><span class="hll"><span class="w">    </span><span class="p">};</span>
 </span><span class="p">}</span>
 </code></pre></div>
@@ -2700,7 +2701,17 @@ Alapértelmezetten ugyanis a <code>ListView</code> <code>ToString()</code>-et h�
 <span class="p">}</span>
 </code></pre></div>
 <p>Nem jelenik meg a listában az új elem, mert a <code>ListView</code> nem értesül arról, hogy új elem került a listába. Ezt könnyen orvosolhatjuk: a <code>List&lt;Persont&gt;</code>-t cseréljük le <code>ObservableCollection&lt;Person&gt;</code>-re:</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">ObservableCollection</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span><span class="w"> </span><span class="n">People</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="k">public</span><span class="w"> </span><span class="n">ObservableCollection</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span><span class="w"> </span><span class="n">People</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span>
+<span class="k">public</span><span class="w"> </span><span class="nf">MainWindow</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="hll"><span class="w">    </span><span class="n">People</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ObservableCollection</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span><span class="p">()</span>
+</span><span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="nf">Person</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Peter Griffin"</span><span class="p">,</span><span class="w"> </span><span class="n">Age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="nf">Person</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Homer Simpson"</span><span class="p">,</span><span class="w"> </span><span class="n">Age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">42</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="p">}</span>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title"><code>ObservableCollection&lt;T&gt;</code></p>
@@ -2728,8 +2739,8 @@ Alapértelmezetten ugyanis a <code>ListView</code> <code>ToString()</code>-et h�
         </path>
       </svg>
     </span>
-    <span title="2025. április 10. 17:52:49">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 10. 17:52:49 CEST"><span class="timeago" datetime="2025-04-10T17:52:49+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 10. 17:52:49 CEST">2025-04-10</span>
+    <span title="2025. december 16. 16:24:14">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. december 16. 16:24:14 CET"><span class="timeago" datetime="2025-12-16T16:24:14+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. december 16. 16:24:14 CET">2025-12-16</span>
     </span>
   </span>
 
@@ -2751,6 +2762,8 @@ Alapértelmezetten ugyanis a <code>ListView</code> <code>ToString()</code>-et h�
         <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&amp;v=4?size=72" alt="@Zoltán Benedek">
       </a><a href="https://github.com/lyozi" target="_blank" rel="noopener noreferrer" class="md-author" title="@Urak József">
         <img src="https://avatars.githubusercontent.com/u/124312789?v=4?size=72" alt="@Urak József">
+      </a><a href="https://github.com/matefon" target="_blank" rel="noopener noreferrer" class="md-author" title="@M. Vincze">
+        <img src="https://avatars.githubusercontent.com/u/68391179?u=79862ab7d1982c228cd078a89ca835d7b6f75b7f&amp;v=4?size=72" alt="@M. Vincze">
       </a><a href="https://github.com/norbertkurcsi" target="_blank" rel="noopener noreferrer" class="md-author" title="@Kurcsi Norbert">
         <img src="https://avatars.githubusercontent.com/u/90260479?u=5dc2891fae39aac8292aedfc0a555941ee742a61&amp;v=4?size=72" alt="@Kurcsi Norbert">
       </a><a href="https://github.com/zbenedek-mirango" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
