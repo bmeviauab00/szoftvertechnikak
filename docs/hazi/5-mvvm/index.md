@@ -8,8 +8,7 @@ authors: bzolka
 
 A házi feladatban a 3. XAML laboron megvalósított személy regisztrációs alkalmazást alakítjuk át olyan módon, hogy az MVVM mintára épüljön, valamint megismerkedünk az MVVM Toolkit alkalmazásával.
 
-Az önálló feladat a WinUI előadássorozat végén elhangzott MVVM témakörre épít.
-Megjegyzés: az [5. labor – MVVM](../../labor/5-mvvm/index.md) labor nagyon szerteágazó, és egy komplexebb alkalmazás kontextusában mutat példát az MVVM minta alkalmazására, sok más témakör mellett. Jelen házi feladat sokkal fókuszáltabb, kisebb lépésekben építkezik: estünkben esetben inkább a jelen házi feladat megoldása segíti az [5. labor – MVVM](../../labor/5-mvvm/index.md) kapcsolódó részeinek könnyebb megértését.
+Az önálló feladat a WinUI előadássorozat végén elhangzott MVVM témakörre épít. A feladatok gyakorlati hátteréül a [5. labor – MVVM](../../labor/5-mvvm/index.md) laborgyakorlat szolgál.
 
 Az kapcsolódó előadásanyag feldolgozásával, jelen önálló gyakorlat feladatai a feladatleírást követő rövidebb iránymutatás segítségével (néha alapértelmezetten összecsukva) önállóan elvégezhetők.
 
@@ -66,7 +65,7 @@ Bemelegítésképpen/ismétlésképpen - a kódot (`PersonListPage.xaml` és `Pe
     
  Az alkalmazást futtatva ellenőrizd, hogy a '+' és '-' gombok hatására eszközölt `NewPerson.Age` változások valóban érvényre jutnak az életkort megjelenítő `TextBox`-ban. 
 
-A `Person` osztályban látszik, hogy az `INotifyPropertyChanged` megvalósítása és a kapcsolódó kód igencsak terjengős. Nézd meg az előadásanyagban, milyen alternatívák vannak az interfész megvalósítására (az "INPC példa 1" című diától kezdődően kb. négy dia a négy lehetőség illusztrálására)! A legtömörebb legoldást az MVVM Toolkit alkalmazása jelenti. A következő lépésben jelen terjengősebb "manuális" INPC megvalósítást átalakítjuk MVVM toolkit alapúra.
+A `Person` osztályban látszik, hogy az `INotifyPropertyChanged` megvalósítása és a kapcsolódó kód igencsak terjengős. Nézd meg az előadásanyagban, milyen alternatívák vannak az interfész megvalósítására (az "INPC példa 1" című diától kezdődően kb. négy dia a négy lehetőség illusztrálására)! A legtömörebb megoldást az MVVM Toolkit alkalmazása jelenti. A következő lépésben jelen terjengősebb "manuális" INPC megvalósítást átalakítjuk MVVM toolkit alapúra.
 
 ### Feladat 1/a - MVVM Toolkit NuGet referencia felvétele
 
@@ -129,7 +128,7 @@ Mivel sokkal kevesebb kódot kell írni, a gyakorlatban az MVVM Toolkit alapú m
   
 ## Feladat 2 - Áttérés MVVM alapú megoldásra
 
-Az előző lépésben, bár az MVVM Toolkitet használtuk, még nem tértünk át MVVM alapú megoldára (a toolkitet csak az INPC egyszerűbb megvalósítására használtuk). 
+Az előző lépésben, bár az MVVM Toolkitet használtuk, még nem tértünk át MVVM alapú megoldásra (a toolkitet csak az INPC egyszerűbb megvalósítására használtuk). 
 
 A következőkben átalakítjuk az alkalmazásunk architektúráját, hogy az MVVM koncepcióját kövesse. Az egyszerűbb megvalósítás érdekében építünk az MVVM Toolkitre.
 
@@ -158,7 +157,7 @@ Feladat: alakítsd át a meglévő logikát így, hogy a fenti elveket követő 
     2. A `PersonListPageViewModel` publikus osztály legyen.
     3. A `PersonListPage` code behindba fel kell venni egy ViewModel nevű, `PersonListPageViewModel` típusú, csak getterrel rendelkező auto implementált tulajdonságot, és ezt egy új objektumra inicializálni is kell. Vagyis a view hozza létre és tartalmazza a ViewModel-t!
     4. A `PersonListPage.xaml`-ben a két `TextBox` adatkötését megfelelően igazítani kell (a `NewPerson.Name` és `NewPerson.Age` már egy szinttel mélyebben, a code behind ViewModel tulajdonságán keresztül érhető el).
-    5. A `PersonListPage.xaml`-ben az eseménykezelők (`Click`) igazítása három helyen. Ezt trükkösebb. Eseménykezelő függvény az eddig alkalmazott szintaktikával nem adható már meg, mert az eseménykezelők nem a code behindban találhatók (átkerültek a ViewModel-be). 
+    5. A `PersonListPage.xaml`-ben az eseménykezelők (`Click`) igazítása három helyen. Ez trükkösebb. Eseménykezelő függvény az eddig alkalmazott szintaktikával nem adható már meg, mert az eseménykezelők nem a code behindban találhatók (átkerültek a ViewModel-be). 
          * Az eseményekhez az eseménykezelő műveleteket adatkötéssel is meg lehet adni! Lásd előadás dia "Események és funkciók kötése" címmel. Ez nekünk azért jó, mert a code behind ViewModel tulajdonságában ott a `PersonListPageViewModel` objektum, melyben ott vannak az eseménykezelők (`AddButton_Click`, `IncreaseButton_Click`, `DecreaseButton_Click`), ezeket kell kötött tulajdonságként megadni az adatkötésben (pl. `ViewModel.AddButton_Click` stb.).
          * Fontos, hogy az eseménykezelő függvények legyenek publikusak, máskülönben nem működik az adatkötés (át kell alakítani privátról).
 
@@ -211,14 +210,14 @@ Próbáljuk ki! Sajnos nem működik, a "-" gomb nem tiltódik le, amikor 0 vagy
 Gondold át, mi okozza ezt, és csak utána haladj tovább az útmutatóval!
 
 ??? tip "Indoklás"
-    A korábban tanultaknak megfelelően az adatkötés csak akkor kérdezi le a forrástulajdonság (esetünkben `IsDecrementEnabled`) értékét, ha annak változásáról az `INotifyPropertyChanged` segítségével értesítést kap! Márpedig, jelen megoldásunkban hiába változik a `NewPerson` objektum `Age` tulajdonsága, ennek megtörténtekor a semmiféle értesítés nincs az erre épülő `IsDecrementEnabled` tulajdonság megváltozásáról!
+    A korábban tanultaknak megfelelően az adatkötés csak akkor kérdezi le a forrástulajdonság (esetünkben `IsDecrementEnabled`) értékét, ha annak változásáról az `INotifyPropertyChanged` segítségével értesítést kap! Márpedig, jelen megoldásunkban hiába változik a `NewPerson` objektum `Age` tulajdonsága, ennek megtörténtekor semmiféle értesítés nincs az erre épülő `IsDecrementEnabled` tulajdonság megváltozásáról!
 
 A következő lépésben valósítsd meg a kapcsolódó változásértesítést a `PersonListPageViewModel` osztályban:
 
 * MVVM Toolkit "alapokon" valósítsd meg az `INotifyPropertyChanged` interfészt
     * `ObservableObject` származtatást használj.
     * Az `IsDecrementEnabled` tulajdonság maradhat a mostani formájában (egy getter only property), nem szükséges `[ObservableProperty]` alapúra átírni (de az is jó megoldás, és a házi feladat tekintetében is teljesen elfogadható, csak kicsit másként kell dolgozni a következő lépésekben).
-* Próbáld magadtól megvalósítani a következőt a ViewModel osztályban (a `Person` osztály marad változatlan): amikor a `NewPerson.Age` változik, akkor az `ObservableObject` ősből örökölt `OnPropertyChanged` hívásával jelezzük a `IsDecrementEnabled` tulajdonság változását. Tipp: a `Person` osztály már rendelkezik `PropertyChanged` eseménnyel, hiszen maga is megvalósítja az `INotifyPropertyChanged` interfészt, erre az eseményre fel lehet iratkozni! Az egyszerűség érdekében az nem zavar minket, ha az `IsDecrementEnabled` változását esetleg akkor is jelezzük, ha tulajdonképen "logikailag" esetleg nem is változik.
+* Próbáld magadtól megvalósítani a következőt a ViewModel osztályban (a `Person` osztály marad változatlan): amikor a `NewPerson.Age` változik, akkor az `ObservableObject` ősből örökölt `OnPropertyChanged` hívásával jelezzük a `IsDecrementEnabled` tulajdonság változását. Tipp: a `Person` osztály már rendelkezik `PropertyChanged` eseménnyel, hiszen maga is megvalósítja az `INotifyPropertyChanged` interfészt, erre az eseményre fel lehet iratkozni! Az egyszerűség érdekében az nem zavar minket, ha az `IsDecrementEnabled` változását esetleg akkor is jelezzük, ha tulajdonképpen "logikailag" esetleg nem is változik.
 * A fentieket külön eseménykezelő függvény bevezetése nélkül is meg lehet oldani (tipp: eseménykezelő megadása lambda kifejezéssel).
 
 Teszteld is a megoldásod! Ha jól dolgoztál, a gombnak akkor is le kell tiltódnia, ha a TextBoxba kézzel írsz be negatív életkor értéket (és utána kikattintasz a TextBoxból). Gondold át, miért van ez így!
@@ -240,7 +239,7 @@ A tesztelés során azt tapasztaljuk, hogy ha pl. kitöröljük a nevet a név T
 
 ## Feladat 4 - Command használata
 
-Jelen pillanatban a "-" gomb vonatkozásában esetében két feladatunk van:
+Jelen pillanatban a "-" gomb vonatkozásában két feladatunk van:
 
 * A `Click` esetén az eseménykezelő művelet futtatása
 * A gomb tiltása/engedélyezése az `IsEnabled` tulajdonság segítségével
@@ -249,10 +248,10 @@ Bizonyos vezérlők - ilyen a gomb is - támogatják, hogy ezt a kettőt, a Comm
 
 Az alapelv a következő: a gombnál a `Click` és `IsEnabled` "megadása" helyett a gomb `Command` tulajdonságát állítjuk egy `ICommand` interfészt megvalósító command objektumra. A futtatás, illetve tiltás/engedélyezés már ezen command objektum feladata.
 
-Alapesetben egy alkalmazásban minden parancshoz egy külön `ICommand` implementációt kellene készíteni. Ez azonban sok parancs esetén sok osztály bevezetését igényli. Az MVVM Toolkit ebben is a segítségünkre siet. Biztosít egy `RelayCommand` osztályt, mely megvalósítja az `ICommand` interfészt. Ez az osztály bármilyen parancs/kód futtatására használható, így nem kell további command osztályokat bevezetni. Hogyan lehetséges ez? Úgy, hogy a `RelayCommand`-nak konstruktor paraméterekben, két delegate formájában tudjuk a végrehajtáshoz és a tiltáshoz/engedélyezéshez tartozók kódot:
+Alapesetben egy alkalmazásban minden parancshoz egy külön `ICommand` implementációt kellene készíteni. Ez azonban sok parancs esetén sok osztály bevezetését igényli. Az MVVM Toolkit ebben is a segítségünkre siet. Biztosít egy `RelayCommand` osztályt, mely megvalósítja az `ICommand` interfészt. Ez az osztály bármilyen parancs/kód futtatására használható, így nem kell további command osztályokat bevezetni. Hogyan lehetséges ez? Úgy, hogy a `RelayCommand`-nak konstruktor paraméterekben, két delegate formájában tudjuk a végrehajtáshoz és a tiltáshoz/engedélyezéshez tartozó kódot megadni:
 
-* Első paraméterben a parancs futtatásakor végrehajtandó kódot adjuk meg.
-* Második paraméterben (ez opcionális) azt a kódot, melyet a command hív annak ellenőrzésére, hogy engedélyezni/tiltani kell magát (az itt megadott függvénynek  bool-lal kell visszatérnie, true esetben engedélyezett lesz a parancs).
+* Első paraméter a parancs futtatásakor végrehajtandó kód.
+* Második paraméter az (az opcionális) kód, melyet a command hív annak ellenőrzésére, hogy engedélyezze/tiltsa magát (az itt megadott függvénynek bool-lal kell visszatérnie, true esetben engedélyezett lesz a parancs).
 
 A következő lépésben a "-" gomb kezelését alakítjuk át command alapúra. Először próbáld a nagyját önállóan megvalósítani a kapcsolódó WinUI előadásanyag alapján. A parancs futtatása egyszerűbb, de a parancs tiltás-engedélyezéshez lesz még teendőnk. Főbb lépések:
 
@@ -262,7 +261,7 @@ A következő lépésben a "-" gomb kezelését alakítjuk át command alapúra.
 
 Ha kipróbáljuk, a parancs futtatás működik, a tiltás/engedélyezés viszont még nem: ha jól megfigyeljük, a gomb mindig engedélyezett marad megjelenésében. Ennek, kicsit jobban belegondolva, logikus oka van: a `RelayCommand` meg tudja ugyan hívni a második konstruktor paraméterében megadott műveletet az állapot ellenőrzéséhez, de nem tudja, hogy minden `NewPerson.Age` változáskor meg kellene ezt tennie! Ezen tudunk segíteni. A ViewModel-ünk konstruktorában már feliratkoztunk korábban a `NewPerson.PropertyChanged` eseményre: erre építve, amikor változik az életkor (vagy amikor változhat, az nem probléma, ha néha feleslegesen megtesszük) hívd meg a `DecreaseAgeCommand` `NotifyCanExecuteChanged` műveletét. Ennek a műveletnek nagyon beszédes neve van: értesíti a parancsot, hogy megváltoz(hat)ott azon állapot, mely alapján a parancs tiltott/engedélyezett állapota épít. Így a parancs frissíteni fogja magát, pontosabban a parancshoz tartozó gomb állapotát.
 
-Írd át "+" gomb kezelését is hasonlóan, parancs alapúra! A "+Add" gomb kezelését ne változtasd meg!
+Írd át a "+" gomb kezelését is hasonlóan, parancs alapúra! A "+Add" gomb kezelését ne változtasd meg!
 
 !!! example "BEADANDÓ"
     Készíts egy képernyőmentést `f4.png` néven az alábbiak szerint:

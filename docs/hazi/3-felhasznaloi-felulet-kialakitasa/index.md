@@ -241,7 +241,7 @@ A `CommandBar` alatti cellában egy listába (`ListView`) kerüljenek a teendők
     Az útmutató képernyőmentésén látszik, hogy a listaelemek között függőlegesen van kihagyott hely, a listaelemek így jól elkülönülnek. Alapesetben ez nincs így. Szerencsére a megoldás során úgyis kell DataTemplate-et alkalmazni az elemek megjelenítésére, így ennek kicsi hangolásával (tipp: egyetlen Margin/Padding megadása) könnyedén elérhetjük, hogy a listaelemek között legyen némi hely a jobb olvashatóság érdekében. 
 
 !!! example "2. feladat BEADANDÓ"
-    Illessz be egy képernyőképet az alkalmazásról, ahol az egyik teendőnek a listában a neve vagy leírása a NEPTUN kódod legyen! (`f2.png`)
+    Illessz be egy képernyőképet az alkalmazásról, ahol az egyik teendőnek a listában a neve vagy leírása a saját (!) NEPTUN kódod legyen! (`f2.png`)
 
 ## 3. feladat - Új teendő hozzáadása
 
@@ -350,7 +350,7 @@ Az űrlap elrendezése
 !!! warning "Fontos kritériumok"
     Az alábbiakban megadunk néhány fontos kritériumot, melyek mindenképpen feltételei a házi feladat elfogadásának:
 
-    * A feladatkiírás kikötötte, hogy a listában és az űrlapon levő vezélők esetében is adatkötéssel kell dolgozni. Olyan megoldás nem elfogadható, mely ezt megkerüli. Így például nem lehet a code behind fájlban (`MainPage.xaml.cs`) olyan kód, mely az űrlapokon levő vezérlők tulajdonságait (pl. TextBox Text tulajdonsága) közvetlenül kérdezi le vagy állítja.
+    * A feladatkiírás kikötötte, hogy a listában és az űrlapon levő vezérlők esetében is adatkötéssel kell dolgozni. Olyan megoldás nem elfogadható, mely ezt megkerüli. Így például nem lehet a code behind fájlban (`MainPage.xaml.cs`) olyan kód, mely az űrlapokon levő vezérlők tulajdonságait (pl. TextBox Text tulajdonsága) közvetlenül kérdezi le vagy állítja.
     * Az előző pont alól két kivétel van: 
         * A `ListView` `SelectedItem` tulajdonsága közvetlenül állítandó.
         * Az űrlap láthatóságának szabályozása adatkötés nélkül is elfogadható (bár nem a legszebb megoldás, és a gyakorlás kedvéért is érdemesebb adatkötéssel dolgozni).

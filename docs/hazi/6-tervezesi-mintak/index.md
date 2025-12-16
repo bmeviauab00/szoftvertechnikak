@@ -4,13 +4,13 @@ authors: bzolka
 
 # 6. HF - Tervezési minták (kiterjeszthetőség)
 
-A házi feladatban a kapcsolódó laboron ([6. labor – Tervezési minták (kiterjeszthetőség)](../../labor/5-tervezesi-mintak/index.md)) elkezdett adatfeldolgozó/anonimizáló alkalmazást fogjuk továbbfejleszteni.
+A házi feladatban a kapcsolódó laboron ([6. labor – Tervezési minták (kiterjeszthetőség)](../../labor/6-tervezesi-mintak/index.md)) elkezdett adatfeldolgozó/anonimizáló alkalmazást fogjuk továbbfejleszteni.
 
-Az önálló feladat az tervezési minták előadásokon elhangzottakra épít:
+Az önálló feladat a "Tervezési minták" előadásokon elhangzottakra épít:
 - "Előadás 08 - Tervezési minták 1" előadás: "Bővíthetőséghez, kiterjeszthetőséghez kapcsolódó alap tervezési minták" nagyfejezet: bevezető példa, Template Method, Strategy, Open/Closed elv, SRP elv, egyéb technikák (metódusreferencia/lambda)
 - "Előadás 09 - Tervezési minták 1" előadás: Dependency Injection minta
 
-A feladatok gyakorlati hátteréül a [6. labor – Tervezési minták (kiterjeszthetőség)](../../labor/5-tervezesi-mintak/index.md) laborgyakorlat szolgál.
+A feladatok gyakorlati hátteréül a [6. labor – Tervezési minták (kiterjeszthetőség)](../../labor/6-tervezesi-mintak/index.md) laborgyakorlat szolgál.
 
 Az önálló gyakorlat célja:
 
@@ -43,9 +43,9 @@ A házi feladat kiinduló állapota megfelel a 6. labor végállapotának: ez a 
 - Szintén érdemes a `Program.cs` fájlban kiindulva, töréspontokat elhelyezve végig lépkedni a kódon (ez is segítheti az ismétlést/teljes megértést). 
 
 !!! note "Dependency Injection (manuális) vs. Dependency Injection Container"
-    A labor során, és jelen házi feladatban a Dependency Injection egyszerű, manuális változatát használjuk (előadáson is ez szerepel). Ez esetben az osztály függőségeit manuálisan példányosítjuk és adjuk át az osztály konstruktorában. Alternatív és komplexebb alkalmazások esetében gyakran használt alternatíva egy Dependency Injection Container alkalmazása, melybe beregisztrálhatjuk, hogy az egyes interfész típusokhoz milyen implementációt kívánunk használni. Az MVVM labor során "mellékesen" használtuk ezt a technikát, de a DI konténerek alkalmazása nem tananyag. A manuális változata viszont az, és kiemelt fontosságú, hiszen enélkül nincs értelme a Strategy minta alkalmazásának.
+    A labor során, és jelen házi feladatban a Dependency Injection egyszerű, manuális változatát használjuk (előadáson is ez szerepel). Ez esetben az osztály függőségeit manuálisan példányosítjuk és adjuk át az osztály konstruktorában. Alternatív és komplexebb alkalmazások esetében gyakran használt alternatíva egy Dependency Injection Container alkalmazása, melybe beregisztrálhatjuk, hogy az egyes interfész típusokhoz milyen implementációt kívánunk használni. A DI konténerek alkalmazása a tárgy keretében nem szerepelt, nem tananyag. A manuális változata viszont az, és kiemelt fontosságú, hiszen enélkül nincs értelme a Strategy minta alkalmazásának.
 
-:warning: Saját szavaiddal megfogalmazva adj rövid választ a *Feladatok* mappában találtható `readme.md` fájlban az alábbi kérdésekre:
+:warning: Saját szavaiddal megfogalmazva adj rövid választ a *Feladatok* mappában találtható (vagyis nem a gyökérben található !!!) `readme.md` fájlban az alábbi kérdésekre:
 
 - Mit biztosít a Strategy a DI mintával kombinálva a labor példa keretében, mik az együttes alkalmazásuk előnyei?
 - Mit jelent az, hogy a Strategy minta alkalmazásával az Open/Closed elv megvalósul a megoldásban? (az Open/Closed elvről az előadás és laboranyagban is olvashatsz).
@@ -74,7 +74,7 @@ Ugyanakkor van még egy kritikus szempont, melyről nem beszéltünk (és a rég
 
 Jelen pillanatban az `Anonymizer` osztályunkhoz automata **integrációs teszteket** tudunk írni, automata **egységteszteket** nem:
 
-* Az integrációs tesztek a teljes működést egyben vizsgálják: ebben benne van a bemenet feldolgozása, adatfeldolgozás, kimenet előállítása. Ez példánkban egyszerű: elállítunk bizonyos bemeneti CVS állományokat, és megnézzük, a várt kimeneti állomány állítódik-e elő.
+* Az integrációs tesztek a teljes működést egyben vizsgálják: ebben benne van a bemenet feldolgozása, adatfeldolgozás, kimenet előállítása. Ez példánkban egyszerű: előállítunk bizonyos bemeneti CVS állományokat, és megnézzük, a várt kimeneti állomány állítódik-e elő.
 * Az integrációs tesztek nagyon lassúak tudnak lenni: sokszor fájlokból, adatbázisokból, felhő alapú szolgáltatásokból veszik a bemenetet, illetve ezek szolgálnak kimenetként. Egy nagyobb termék esetében - mikor sok ezer teszt van - ez a lassúság korlátozó tényező, ritkábban tudjuk futtatni és/vagy nem tudunk jó tesztlefedettséget elérni.
 
 A fentiek miatt sokszor nagyobb kódlefedettséget nem a lassabb integrációs, hanem nagyon gyorsan futó **egységtesztekkel** szoktunk/tudunk elérni. Ezek mindenféle **lassú fájl/adatbázis/hálózat/felhő elérés nélkül önmagában egy-egy logikai egységet tesztelnek a kódban**, ezt viszont így már villámgyorsan. Így sokat tudunk futtatni adott idő alatt, jó tesztlefedettséggel.
@@ -125,7 +125,7 @@ A feladat végeztével, a kimeneti fájl tartalmának ellenőrzésével mindenk�
 
 Napjainkban rohamosan terjed a korábban szigorúan objektumorientált nyelvekben is a funkcionális programozást támogató eszközök megjelenése, és az alkalmazásfejlesztők is egyre nagyobb szeretettel alkalmazzák ezeket (merthogy sokszor jelentősen rövidebb kóddal, kisebb "ceremóniával" lehet ugyanazt segítségükkel megvalósítani). Egy ilyen eszköz C# nyelven a delegate, és ehhez kapcsolódóan a lambda kifejezés.
 
-Mint a félév során korábban láttuk, delegate-ek segítségével olyan kódot tudunk írni, melybe bizonyos logikák/viselkedések nincsenek beégetve, ezeket "kívülről" kap meg a kód. Pl. egy sorrendező függvénynek delegate formájában adjuk át paraméterként, hogyan kell két elemet összehasonlítani, vagy mely mezője/tulajdonsága szerint kell az összehasonlítást elvégezni (így végső soron meghatározni a kívánt sorrendet).
+Mint a félév során korábban láttuk, delegate-ek segítségével olyan kódot tudunk írni, melybe bizonyos logikák/viselkedések nincsenek beégetve, ezeket "kívülről" kapja meg a kód. Pl. egy sorrendező függvénynek delegate formájában adjuk át paraméterként, hogyan kell két elemet összehasonlítani, vagy mely mezője/tulajdonsága szerint kell az összehasonlítást elvégezni (így végső soron meghatározni a kívánt sorrendet).
 
 Ennek megfelelően a delegate-ek alkalmazása egy újabb alternatíva (a Template Method és a Strategy mellett) a kód újrafelhasználhatóvá/kiterjeszthetővé tételére, kiterjesztési pontok bevezetésére.
 
@@ -148,7 +148,7 @@ Feladat: Alakítsd át a Strategy-DI projektben található megoldást olyan mó
 
 ## 5. Feladat - Delegate-ek alkalmazása újrafelhasználható logikával
 
-Az előző feladatban feltettük, hogy a "simple progress" és a "percent progress" logikáját csak egyszer használtuk, így nem kellett újrafelhasznélhatóvá tenni. Ennek megfelelően pl. a "simple progress" logikáját a lehető legegyszerűbb formában, egy lambda kifejezéssel adtuk meg (nem kellett külön függvényt bevezetni rá). Amennyiben az `Anonymizer` létrehozásakor a delegate-nek mindig más és más implementációt adunk meg, akkor ez a lambda alapú megoldás tökéletes.
+Az előző feladatban feltettük, hogy a "simple progress" és a "percent progress" logikáját csak egyszer használtuk, így nem kellett újrafelhasználhatóvá tenni. Ennek megfelelően pl. a "simple progress" logikáját a lehető legegyszerűbb formában, egy lambda kifejezéssel adtuk meg (nem kellett külön függvényt bevezetni rá). Amennyiben az `Anonymizer` létrehozásakor a delegate-nek mindig más és más implementációt adunk meg, akkor ez a lambda alapú megoldás tökéletes.
 
 Viszont mi a helyzet akkor, ha a fenti példában szereplő "simple progress" logikát több helyen, több `Anonymizer` objektumnál is fel szeretnénk használni? Súlyos hiba lenne a lambda kifejezést copy-paste-tel "szaporítani", kódduplikációhoz vezetne (ellentmondana a "**Do Not Repeat Yourself**", röviden **DRY** elvnek).
 
@@ -199,6 +199,9 @@ Készíts egy integrációs tesztet az `Anonymizer` osztályhoz, a következők 
     3. A teszt futtatására a Test Explorer nézet tetején található eszközsávon levő gombokkal van lehetőség. De a teszt debuggolására is van lehetőség, jobb gombbal a tesztre kattintva és a Debug menü kiválasztásával: ez nagyon hasznos tud lenni, ha a tesztünk hibásan fut, és szeretnénk töréspontok segítségével a kódon lépkedni, illetve a változók értékét megnézni.
     4. Ha a teszt hiba nélkül fut le, a teszthez tartozó ikon zöld lesz. Ha hibával, akkor piros, és a hibaüzenetről a tesztet kiválasztva Test Explorer nézet alján kapunk bővebb információt.
 
+!!! example "6. feladat BEADANDÓ"
+    - Illessz be egy képernyőképet, melyen az integrációs teszted forráskódja látszik (`f6-IMSc.png`).
+
 ## 7. Opcionális feladat - Unit teszt készítése
 
 A feladat megoldásával +2 IMSc pont szerezhető.
@@ -220,6 +223,9 @@ Készíts egy egységtesztet az `Anonymizer` osztályhoz, mely ellenőrzi, hogy 
 * Tipp: Olyan `IInputReader`, `IAnonymizerAlgorithm` implementációkat hozz létre (és az `Anonymizert` ezekkel használd), **melyek megfelelő tesztadatokat biztosítanak, és/vagy futás közben adatokat gyűjtenek annak érdekében, hogy a futás után ellenőrizni tudd ezen adatok alapján, hogy a tesztelendő feltételek teljesülnek**. Ezeket a strategy implementációkat mindenképpen a teszt projektben vedd fel, mert csak a tesztelést szolgálják.
 
 További gyakorlásképpen készíthetsz egy olyan másik egységtesztet, mely azt ellenőrzi, hogy minden bemeneti személyadat eljut-e a kimenetre is. 
+
+!!! example "7. feladat BEADANDÓ"
+    - Illessz be egy képernyőképet, melyen a unit teszted forráskódja látszik (`f7-IMSc.png`).
 
 ## Összegzés
 

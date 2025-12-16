@@ -94,7 +94,7 @@ A kiinduló projektben megtaláljuk a _Algorithm.dll_-t. Ebben lefordított form
 
         Itt valójában nem egy másik Visual Studio projektre adunk referenciát, de így a legegyszerűbb előhozni ezt az ablakot.
 
-        Megemlítendő még, hogy külső osztálykönyvtárak esetében már nem DLL-eket szoktunk referálni egy rendes projektben, hanem a .NET csomagkezelő rendeszeréből a NuGet-ről szokás a külső csomagokat beszerezni. Most az _Algorithm.dll_ esetünkben nincs NuGet-en publikálva, ezért kell kézzel felvegyük azt.
+        Megemlítendő még, hogy külső osztálykönyvtárak esetében már nem DLL-eket szoktunk referálni egy rendes projektben, hanem a .NET csomagkezelő rendszeréből a NuGet-ről szokás a külső csomagokat beszerezni. Most az _Algorithm.dll_ esetünkben nincs NuGet-en publikálva, ezért kell kézzel felvegyük azt.
 
 2. Az előugró ablak jobb alsó sarokban található _Browse_ gomb segítségével keressük meg és válasszuk ki projekt _External_ almappájában található _Algorithms.dll_ fájlt, majd hagyjuk jóvá a hozzáadást az OK gombbal!
 
@@ -280,7 +280,7 @@ A feladatok ideiglenes tárolására a kiinduló projektünkben már némiképpe
     }
     ```
 
-2. Készítsük el az új szálkezelő függvény naív implementációját az űrlap osztályunkban:
+2. Készítsük el az új szálkezelő függvény naiv implementációját az űrlap osztályunkban:
 
     ```cs
     private void WorkerThread()
@@ -314,7 +314,7 @@ A feladatok ideiglenes tárolására a kiinduló projektünkben már némiképpe
 
     A feldolgozó szálak előtérszálak, kilépéskor megakadályozzák a processz megszűnését. Az egyik megoldás az lehetne, ha a szálak `IsBackground` tulajdonságát `true`-ra állítanánk a létrehozásukat követően. A másik megoldás, hogy kilépéskor gondoskodunk a feldolgozó szálak kiléptetéséről. Egyelőre tegyük félre ezt a problémát, később visszatérünk rá.
 
-5. Indítsuk el az alkalmazást azt tapasztaljuk, hogy miután kattintunk a _Calculate Result_ gombon (csak egyszer kattintsunk rajta) nagy valószínűséggel kivételt fogunk kapni. A probléma az, hogy a `DataFifo` nem szálbiztos, inkonzisztensé vált. Két eredő ok is húzódik a háttérben:
+5. Indítsuk el az alkalmazást. Azt tapasztaljuk, hogy miután kattintunk a _Calculate Result_ gombon (csak egyszer kattintsunk rajta) nagy valószínűséggel kivételt fogunk kapni. A probléma az, hogy a `DataFifo` nem szálbiztos, inkonzisztensé vált. Két eredő ok is húzódik a háttérben:
 
 ### Probléma 1
 
@@ -337,7 +337,7 @@ A `DataFifo` osztály egyidőben több szálból is hozzáférhet a `List<double
 
 A következő lépésben a `DataFifo` osztályunkat szálbiztossá tesszük, amivel megakadályozzuk, hogy a fenti két probléma bekövetkezhessen.
 
-## 6. feladat – Tegyük szábiztossá a DataFifo osztályt
+## 6. feladat – Tegyük szálbiztossá a DataFifo osztályt
 
 A `DataFifo` osztály szálbiztossá tételéhez szükségünk van egy objektumra (ez bármilyen referencia típusú objektum lehet), melyet kulcsként használhatunk a zárolásnál. Ezt követően a `lock` kulcsszó segítségével el tudjuk érni, hogy egyszerre mindig csak egy szál tartózkodjon az adott kulccsal védett blokkokban.
 
@@ -372,10 +372,9 @@ A `DataFifo` osztály szálbiztossá tételéhez szükségünk van egy objektumr
                 _innerList.RemoveAt(0);
                 return true;
             }
-
-            data = null;
-            return false;
         }
+        data = null;
+        return false;
     }
     ```
 
@@ -437,10 +436,9 @@ A következőkben úgy fogjuk módosítani az alkalmazást, hogy blokkolva vára
 
                 return true;
             }
-
-            data = null;
-            return false;
         }
+        data = null;
+        return false;
     }
     ```
 
@@ -501,10 +499,9 @@ Az előző pontban megoldottuk a jelzést, ám ez önmagában nem sokat ér, his
 
                 return true;
             }
-
-            data = null;
-            return false;
         }
+        data = null;
+        return false;        
     }
     ```
 
@@ -563,13 +560,30 @@ Korábban félretettük azt a problémát, hogy az ablakunk bezárásakor a proc
 
 2.	A `TryGet`-ben erre az eseményre is várakozzunk. A `WaitAny` metódus akkor engedi tovább a futtatást, ha a paraméterként megadott `WaitHandle` típusú objektumok közül valamelyik jelzett állapotba kerül, és visszaadja annak tömbbéli indexét. Tényleges adatfeldolgozást pedig csak akkor szeretnénk, ha a `_hasData` jelzett (amikor is a `WaitAny` 0-val tér vissza).
 
-    ```cs hl_lines="3"
+    ```cs hl_lines="3 4 19"
     public bool TryGet(out double[] data)
     {
         if (WaitHandle.WaitAny(new[] { _hasData, _releaseTryGet }) == 0)
         {
             lock (_syncRoot)
             {
+                if (_innerList.Count > 0)
+                {
+                    data = _innerList[0];
+                    _innerList.RemoveAt(0);
+                    if (_innerList.Count == 0)
+                    {
+                        _hasData.Reset();
+                    }
+
+                    return true;
+                }
+            }
+        }
+
+        data = null;
+        return false;
+    }
     ```
 
 3. `MainWindow.xaml.cs`-ban vegyünk fel egy flag tagváltozót a bezárás jelzésére:
@@ -613,7 +627,7 @@ Korábban félretettük azt a problémát, hogy az ablakunk bezárásakor a proc
 		    return;
     ```
 
-7. Futtassuk az alkalmazást, és ellenőrizzük, kilépéskor az processzünk valóban befejezi-e a futását.
+7. Futtassuk az alkalmazást, és ellenőrizzük, kilépéskor a processzünk valóban befejezi-e a futását.
 
 ## Kitekintés: Task, async, await
 

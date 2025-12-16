@@ -78,7 +78,7 @@ A felület kialakítása a `MainWindow.xaml`-ben található, a következő alap
 - Az egyes bicikliket egy vertikális `StackPanel`-en helyeztük el. A bicikliket egy-egy `TextBlock` objektummal jelenítjük meg (`Webdings` betűtípus, `b` betű). Használhattunk volna `FontIcon`-t is, a `TextBlock`-ra csak azért esett a választásunk, mert ezzel már korábban megismerkedtünk.
 - A pálya valamennyi elemét és a bicikliket tartalmazó `StackPanel`-t is a `Grid` első (technikailag 0-dik) sorában helyeztük el. Ezek a definiálásuk sorrendjében rajzolódnak ki, az igazítások és margók által meghatározott helyen. A biciklik `TextBlock`-jának pozícionálására is a margót használjuk majd. Egy alternatíva megoldás lett volna, ha minden felületelemet egy `Canvas`-re helyeztünk volna el, és azon állítottuk volna be az elemek abszolút pozícióját és méretét (Left, Top, Width, Height) a margók alkalmazása helyett.
 
-Az ablakhoz tartozó `MainWindow.cs` code behind fájlt is nézzük meg, főbb elemei a következők:
+Az ablakhoz tartozó `MainWindow.xaml.cs` code behind fájlt is nézzük meg, főbb elemei a következők:
 
 - `game` tagváltozó: Maga a `Game` játékobjektum, melynek állapotát a főablak megjeleníti.
 - `bikeTextBlocks` tagváltozó: Ebben a listában tároljuk majd a bicikliket megjelenítő `TextBlock` objektumokat. Egyelőre üres, a karbantartását nekünk kell majd megvalósítani.
@@ -124,7 +124,7 @@ Próbáljuk a megoldást magunktól megvalósítani a fenti pontokat követve, m
 
 ### A felületfrissítés megvalósítása
 
-Most már pontosan annyi `TextBlock`-unk lesz, ahány bicikli van a `game` objektumban. Sőt, az `UpdateUI` művelettel tudjuk is a felületet bármikor frissíteni (a `game` aktuális állapotának megfelelően). A következő kardinális kérdés: mikor hívjuk ez a függvényt, vagyis mikor frissítsük a felületet. Több megoldás közül választhatunk:
+Most már pontosan annyi `TextBlock`-unk lesz, ahány bicikli van a `game` objektumban. Sőt, az `UpdateUI` művelettel tudjuk is a felületet bármikor frissíteni (a `game` aktuális állapotának megfelelően). A következő kardinális kérdés: mikor hívjuk ezt a függvényt, vagyis mikor frissítsük a felületet. Több megoldás közül választhatunk:
 
 - a) Mindig, amikor a `Game` állapota megváltozik.
 - b) Adott időközönként (pl. 100 ms-ként) "folyamatosan", egy időzítő segítségével.
@@ -132,7 +132,7 @@ Most már pontosan annyi `TextBlock`-unk lesz, ahány bicikli van a `game` objek
 Általánosságában mindkét megoldásnak lehetnek előnyei és hátrányai. A b) bizonyos tekintetben egyszerűbb (nem kell tudni, mikor változik a `Game` állapota), ugyanakkor felesleges frissítés is történhet (ha nem változott az állapot két frissítés között). De hatékonyabb is lehet, ha az állapot nagyon gyakran változik, és nem akarjuk minden változáskor a felületet frissíteni, elég adott időközönként egyszer (pl. a szemünk úgysem tudja lekövetni).
 Esetünkben - elsősorban egyszerűsége miatt - a "b)", vagyis időzítő alapú megoldást választjuk.
 
-WinUI 3 környezetben periodikus események kezelésére a `DispatchTimer` osztály alkalmazása javasolt (különösen, ha a felületelemekhez is hozzá kívánunk férni az időzített műveletben).
+WinUI 3 környezetben periodikus események kezelésére a `DispatcherTimer` osztály alkalmazása javasolt (különösen, ha a felületelemekhez is hozzá kívánunk férni az időzített műveletben).
 
 A `MainWindow` osztályban vezessünk be egy tagváltozót:
  
@@ -244,13 +244,13 @@ Ezekhez a lépésekhez még adunk megoldást (de sokkal többet tanulsz belőle,
 !!! example "BEADANDÓ"
     Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
 
-    Készíts egy képernyőmentést `Feladat1.png` néven az alábbiak szerint:
+    Készíts egy képernyőmentést `Feladat2.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `Game` osztály `CreateBike` és `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
 
-## Feladat 2 – A verseny indítása
+## Feladat 3 – A verseny indítása
 
 Valósítsd meg a verseny indítását a rajtvonalról és futtatását mindaddig, amíg a biciklik meg nem érkeznek a depóba, a következő irányelveknek megfelelően:
 
@@ -267,13 +267,13 @@ Valósítsd meg a verseny indítását a rajtvonalról és futtatását mindaddi
 !!! example "BEADANDÓ"
     Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
 
-    Készíts egy képernyőmentést `Feladat2.png` néven az alábbiak szerint:
+    Készíts egy képernyőmentést `Feladat3.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `Game` osztály `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
 
-## Feladat 3 – A versenyzők indítása a depóból
+## Feladat 4 – A versenyzők indítása a depóból
 
 Valósítsd meg a versenyzők indítását a depóból és futtatását mindaddig, amíg a biciklik meg nem érkeznek a célba, a következő irányelveknek megfelelően:
 
@@ -290,13 +290,13 @@ Valósítsd meg a versenyzők indítását a depóból és futtatását mindaddi
 !!! example "BEADANDÓ"
     Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
 
-    Készíts egy képernyőmentést `Feladat3.png` néven az alábbiak szerint:
+    Készíts egy képernyőmentést `Feladat4.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `Game` osztály `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
 
-## Feladat 4 – Győztes bicikli megvalósítása
+## Feladat 5 – Győztes bicikli megvalósítása
 
 Valósítsd meg a győztes bicikli meghatározásának és megjelenítésének logikáját, a következő irányelveknek megfelelően:
 
@@ -333,19 +333,19 @@ A logikát ezt követően önállóan valósítsd meg, az alábbi irányleveknek
 !!! example "BEADANDÓ"
     Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
 
-    Készíts egy képernyőmentést `Feladat4.png` néven az alábbiak szerint:
+    Készíts egy képernyőmentést `Feladat5.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `Game` osztály `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
 
-## Feladat 5 – Kölcsönös kizárás, valamint volatile
+## Feladat 6 – Kölcsönös kizárás, valamint volatile
 
 Az előző feladatban láttuk, hogy a hasWinner lekérdezését és beállítását "oszthatatlanná", "atomivá" kellett tegyük, vagyis ennek során meg kellett valósítsuk a kölcsönös kizárást. Kérdés, van-e esetleg már olyan más logika is az alkalmazásban, ahol ezt meg kellet volna tenni a konzisztencia garantálásának érdekében. Ehhez azt kell megvizsgáljuk, melyek azok a változók, melyeket több szálból is írunk (vagy egyikből írunk és másikból olvasunk). A következők érintettek:
 
 - `Bike` osztály `position` tagja. Ezt a biciklik szálfüggvénye módosítja a `+=` operátorral, a főszál pedig olvassa a `Position` property segítségével a megjelenítés során. Kérdés, lehet-e ebből bármiféle inkonzisztencia (mert ha igen, akkor meg kellene valósítani a kölcsönös kizárást, pl. a `lock` utasítás segítségével). Ez mélyebb átgondolást igényel. Az `int` típusú változók olvasása és írása (sima `=` operátor) atomi, így ez rendben is volna. Csakhogy itt módosításra nem az `=`, hanem `+=` operátort használjuk. A `+=` operátor nem atomi, több lépésből áll: változó kiolvasása, növelése, majd visszaírása (ha nem tiszta, pontosan miért és milyen probléma léphet fel, mindenképpen nézd át a kapcsolódó előadás diát). Így, ha több szál is használja "egyszerre" a `+=` operátort ugyanazon a változón, akkor abból inkonzisztencia lehet. De ne kapkodjunk, gondoljunk bele jobban: a mi esetünkben egyszerre egy szál hív `+=`-t, a másik szálunk csak olvassa a `position` értékét. Ebből nem lehet inkonzisztencia, mert egyszerűen csak arról van szó, hogy az olvasás előtt vagy a növelés előtti értéket, vagy az utáni értéket kapja meg az olvasó szál (ha szinte pont egyszerre olvas a += operátor-t végrehajtó másik szállal). Így kijelenthetjük, ennek kapcsán nincs szükség kölcsönös kizárás megvalósítására.
 - `Bike` osztály `isWinner` tagja. Ezt a biciklik szálfüggvénye módosítja a `SetAsWinner` hívásával, a főszál pedig olvassa az `IsWinner` property segítségével a megjelenítés során. Típusa `bool`, melynek írása és olvasása atomi, így nincs szükség kölcsönös kizárás megvalósítására.
-- `Game` osztály `hasWinner` tagja. Típusa bool, melynek írása és olvasása atomi, így amiatt szükség kölcsönös kizárás megvalósítására. De volt egy plusz feltételünk: csak egy győztes lehet versenyben, emiatt mégis szükség volt kölcsönös kizárás megvalósítására (ezt az előző feladatban meg is tettük).
+- `Game` osztály `hasWinner` tagja. Típusa bool, melynek írása és olvasása atomi, így amiatt nincs szükség kölcsönös kizárás megvalósítására. De volt egy plusz feltételünk: csak egy győztes lehet versenyben, emiatt mégis szükség volt kölcsönös kizárás megvalósítására (ezt az előző feladatban meg is tettük).
 
 Azt is mondhatnánk, hogy a fenti három változó tekintetében akkor minden rendben is van, de ez nincs így. **Amikor a változók értékét az egyik szál módosítja, előfordulhat, hogy a változók értékét a rendszer cache-eli (pl. regiszterben), így a másik szál a változtatás után is a korábbi értéket látja**. Ennek megakadályozására ezeket a változókat volatile-nak kell definiálni a `volatile` kulcsszóval, mely a változó megváltoztatása után garantálja, hogy annak kiírása megtörténik a memóriába, és a másik szál friss értéket olvas (a `volatile` működése ennél valamivel összetettebb, előadáson bővebben kifejtésre kerül).
 Fontos megjegyzés: a `volatile` alkalmazására nincs szükség, ha az adott változót `lock` blokkból írjuk és olvassuk, vagy az `Interlocked` osztály segítségével módosítjuk. Amiatt csak a `position` és az `isWinner` esetében vezessük be:
@@ -357,7 +357,7 @@ class Bike
     private volatile bool isWinner;
 ```
 
-## Feladat 5 – Lépések naplózása (nem szálbiztos .NET osztályok)
+## Feladat 7 – Lépések naplózása (nem szálbiztos .NET osztályok)
 
 Valósítsd meg a verseny során a biciklik által megtett minden egyes lépés naplózását a `Game` osztályban egy (minden biciklire közös) `List<int>` típusú változóba. A naplózott értékekkel nem kell semmit csinálni (pl. megjeleníteni sem). A megoldás során ki kell használni, hogy a `Bike` osztály `Step` művelete visszaadja a megtett lépést egy `int` változó formájában, ezt kell naplózni (csak bele kell tenni a listába).
 
@@ -367,11 +367,11 @@ Valósítsd meg a verseny során a biciklik által megtett minden egyes lépés 
 !!! Note "System.Collections.Concurrent névtér gyűjteményosztályai"
     Ha a `List<T>` helyett egy a célnak megfelelő, `System.Collections.Concurrent` névtérbeli osztály objektumába naplóznánk (pl. `ConcurrentQueue`), akkor nem lenne szükség a kölcsönös kizárás megvalósítására, mert ebben a névtérben szálbiztos (thread safe) gyűjteményosztályok találhatók.
 
-## Feladat 6 – Felület frissítése minden változás esetén (felhasználói felületelemek elérése munkaszálakból)
+## Feladat 8 – Felület frissítése minden változás esetén (felhasználói felületelemek elérése munkaszálakból)
 
 Aktuális megoldásunkban a felület frissítését periodikusan, adott időközönként valósítjuk meg egy időzítő segítségével. Ezt a megoldást most lecseréljük. Alakítsd át a megoldást úgy, hogy a felület frissítése minden esetben azonnal megtörténjen, amikor a `Game` állapota megváltozik (az időzített frissítést pedig már ne használd).
 
-A következő fejezetben a lehetséges megoldások röviden áttekintésre kerülnek, és választunk is egyet közülük, de előbb próbáld magadtól átgondolni, milyen megoldást célszerű ehhez választani. Kulcsfontosságú, hogy csak olyan megoldás fogadható el, mely nem vezet be az alkalmazáslogikában (`Game` osztály) függőséget a felültettől. Emlékezzünk vissza, az alapelvünk az volt, hogy az alkalmazáslogika nem függhet semmilyen szinten a felület logikától!
+A következő fejezetben a lehetséges megoldások röviden áttekintésre kerülnek, és választunk is egyet közülük, de előbb próbáld magadtól átgondolni, milyen megoldást célszerű ehhez választani. Kulcsfontosságú, hogy csak olyan megoldás fogadható el, mely nem vezet be az alkalmazáslogikában (`Game` osztály) függőséget a felülettől. Emlékezzünk vissza, az alapelvünk az volt, hogy az alkalmazáslogika nem függhet semmilyen szinten a felület logikától!
 
 ### A felület értesítésének megvalósítása
 
@@ -387,7 +387,7 @@ Alternatívák:
         - Amikor megváltozik egy bicikli állapota (helye vagy "nyertes" állapota a szálfüggvényben), akkor a `Game` osztály hívja meg ezt a tagváltozóban tárolt függvényt (de csak ha nem null, vagyis ez a függvény már be lett állítva, ill. a `?.Invoke` is használható), paraméterként átadva neki a megváltozott bicikli objektumot. Ezáltal értesíti az előfizetőt.
     - `MainWindow`, mint "előfizető":
         - A `MainWindow` osztályban be kell vezetni egy `UpdateBikeUI(Bike bike)` függvényt, és a `Game.PrepareRace` hívásakor ezt kell átadni paraméterként (delegate objektumként). Ebben az `UpdateBikeUI` függvényben kell gondoskodni arról, hogy a paraméterként kapott bicikli objektumhoz tartozó felületelem (`TextBlock`) frissüljön.
-        - Az előző pontban válik egyértelművé, miért `Action<Bike>` típusú delegate-et használtunk, és miért nem pl. `Action`-t: a `Game` a értesítés/visszahívás során így meg tudja adna, mely bicikli változott, és a visszahívott/beregisztrált függvény (esetünkben `MainWindow.UpdateBikeUI`) így megkapja ezt paraméterben, és így tudja a megjelenését frissíteni (kapott bicikli állapota alapján).
+        - Az előző pontban válik egyértelművé, miért `Action<Bike>` típusú delegate-et használtunk, és miért nem pl. `Action`-t: a `Game` az értesítés/visszahívás során így meg tudja adni, mely bicikli változott, és a visszahívott/beregisztrált függvény (esetünkben `MainWindow.UpdateBikeUI`) így megkapja ezt paraméterben, és így tudja a megjelenését frissíteni (kapott bicikli állapota alapján).
     - Az időzítő indítását (`MainWindow` konstruktorban `timer.Start()` hívás) kommentezd ki (hiszen a felület frissítését már a fenti `Action<Bike>`) alapú értesítés/visszahívás segítségével oldjuk meg.
 
 Valósítsd meg a fenti 3. pontban vázolt értesítést! A `MainWindow.UpdateBikeUI` implementációját megadjuk segítségképpen (a lényege az, hogy a paraméterben kapott `Bike` alapján frissíti a biciklit megjelenítő `TextBlock`-ot):
@@ -431,25 +431,25 @@ Mi ennek a hibának az oka? Mielőtt az alábbi emlékeztetőt kinyitod, próbá
 
 A megoldást a következő részfeladatban dolgozzuk ki.
 
-### A DispatecherQueue alkalmazása
+### A DispatcherQueue alkalmazása
 
-Esetünkben a konkrét problémát az okozza, hogy amikor a `Game` állapota megváltozik, akkor `Game` osztályban a változásértesítő delegate hívása a biciklikhez tartozó munkaszálakon történik, így a beregisztrált `MainWindow.UpdateBikeUI` kezelőfüggvény is ezekről a szálakról hívódik. Az `UpdateBikeUI` függvényben hozzáférünk a felületelemekhez (biciklihez tartozó `TextBlock`- hoz). De ezeket a felületelemeket a főszálból hoztuk létre: így csak a fő szálból szabad(na) hozzájuk férni.
+Esetünkben a konkrét problémát az okozza, hogy amikor a `Game` állapota megváltozik, akkor a `Game` osztályban a változásértesítő delegate hívása a biciklikhez tartozó munkaszálakon történik, így a beregisztrált `MainWindow.UpdateBikeUI` kezelőfüggvény is ezekről a szálakról hívódik. Az `UpdateBikeUI` függvényben hozzáférünk a felületelemekhez (biciklihez tartozó `TextBlock`- hoz). De ezeket a felületelemeket a főszálból hoztuk létre: így csak a fő szálból szabad(na) hozzájuk férni.
 
-:exclamation: A problémára a `DispatcherQueue` alkalmazása jelent megoldást, mellyel **a munkaszálakból a hívást "át tudjuk játszani" a főszálba, melyből már hozzá tudunk férni a vezérlőkhöz**. A `DispacherQueue` alkalmazása előadáson és a kapcsolódó laboron is részletesen ismertetésre került.
+:exclamation: A problémára a `DispatcherQueue` alkalmazása jelent megoldást, mellyel **a munkaszálakból a hívást "át tudjuk játszani" a főszálba, melyből már hozzá tudunk férni a vezérlőkhöz**. A `DispatcherQueue` alkalmazása előadáson és a kapcsolódó laboron is részletesen ismertetésre került.
 
-Feladat: módosítsd úgy a `MainWindow.UpdateBikeUI` függvényt, hogy a `DispacherQueue` alkalmazásával a megfelelő szálból történjen a felületelemekhez történő hozzáférés (és így a mostani kivételt el tudd kerülni).
+Feladat: módosítsd úgy a `MainWindow.UpdateBikeUI` függvényt, hogy a `DispatcherQueue` alkalmazásával a megfelelő szálból történjen a felületelemekhez történő hozzáférés (és így a mostani kivételt el tudd kerülni).
 
 !!! example "BEADANDÓ"
     Mielőtt továbbmennél a következő feladatra, egy képernyőmentést kell készítened.
 
-    Készíts egy képernyőmentést `Feladat6.png` néven az alábbiak szerint:
+    Készíts egy képernyőmentést `Feladat8.png` néven az alábbiak szerint:
 
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `MainWindow.xaml.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `MainWindow` osztály `UpdateBikeUI` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
 
 !!! warning "Hasonló játék megvalósítása a gyakorlatban"
-    Lényeges, hogy egy hasonló "játék" megvalósítására nem szoktunk szálakat indítani: a biciklik léptetésére egy timer sokkal praktikusabb lenne, mert az egész játék egyszálú maradhatna, és elkerülhetnénk számos, a többszálúságból adódó nehézsége (jelen feladat keretében a célunk értelemszerűen pont a többszálúság témakörének gyakorlása volt).
+    Lényeges, hogy egy hasonló "játék" megvalósítására nem szoktunk szálakat indítani: a biciklik léptetésére egy timer sokkal praktikusabb lenne, mert az egész játék egyszálú maradhatna, és elkerülhetnénk számos, a többszálúságból adódó nehézséget (jelen feladat keretében a célunk értelemszerűen pont a többszálúság témakörének gyakorlása volt).
 
 ## Opcionális feladat – 2 IMSc pontért
 

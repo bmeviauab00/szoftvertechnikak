@@ -7,10 +7,10 @@ The exact requirements for independent/homework assignments can be found on [AUT
 
 - [1st HW - Model and code relationship](../hazi/1-model-es-kod-kapcsolata/index_eng.md)
 - [2nd HW - Language tools](../hazi/2-nyelvi-eszkozok/index_eng.md)
-- [3rd HW - User interface design](../hazi/meghirdetes-elott_eng.md)
-- [4th HW - Multithreaded application development](../hazi/meghirdetes-elott_eng.md)
-- [5th HW - MVVM](../hazi/meghirdetes-elott_eng.md)
-- [6th HW - Design patterns](../hazi/meghirdetes-elott_eng.md)
+- [3rd HW - User interface design](../hazi/3-felhasznaloi-felulet-kialakitasa/index_eng.md)
+- [4th HW - Multithreaded application development](../hazi/4-tobbszalu-alkalmazasok-fejlesztese/index_eng.md)
+- [5th HW - MVVM](../hazi/5-mvvm/index_eng.md)
+- [6th HW - Design patterns](../hazi/6-tervezesi-mintak/index_eng.md)
 
 ## Submitting assignments
 

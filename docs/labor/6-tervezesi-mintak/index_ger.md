@@ -1,230 +1,231 @@
 ---
 autoren: bzolka
 ---
-
 # 6. Entwurfsmuster (Erweiterbarkeit)
 
 ## Das Ziel der Übung
 
-Ziele der Übung (anhand eines komplexeren Beispiels aus dem wirklichen Leben):
+Ziele der Übung (anhand eines komplexeren, praxisnahen Beispiels):
 
-- Anwendung einiger Designprinzipien zur Förderung von Skalierbarkeit, Wiederverwendbarkeit, Codetransparenz und Wartbarkeit: SRP, OPEN-CLOSED, DRY, KISS, etc.
-- Einige der für die Erweiterbarkeit wichtigsten Entwurfsmuster (Template Method, Strategy, Dependency Injection).
-- Zusätzliche Techniken (z.B. Delegate/Lambda-Ausdruck) zur Unterstützung von Skalierbarkeit und Wiederverwendbarkeit mit Entwurfsmustern anwenden und kombinieren.
-- Code-Refactoring-Übung.
+- Üben einiger grundlegender Entwurfsprinzipien, die Erweiterbarkeit, Wiederverwendbarkeit, Codeübersichtlichkeit und Wartbarkeit fördern: SRP, OPEN-CLOSED, DRY, KISS usw.
+- Anwendung einiger Entwurfsmuster, die besonders mit Erweiterbarkeit in Verbindung stehen (Template Method, Strategy, Dependency Injection).
+- Üben und Kombinieren weiterer Techniken zur Unterstützung von Erweiterbarkeit und Wiederverwendbarkeit (z. B. Delegates/Lambda-Ausdrücke) mit Entwurfsmustern.
+- Übung zur Refaktorisierung von Code.
 
-Verwandte Präsentationen:
+Zugehörige Vorlesungen:
 
-- Entwurfsmuster: erweiterungsbezogene Muster (Einführung, Schablonenmethode, Strategie) und das Dependency Injection "Muster".
+- Entwurfsmuster: Muster im Zusammenhang mit Erweiterbarkeit (Einführung, Template Method, Strategy) sowie das „Muster“ der Dependency Injection.
 
 ## Voraussetzungen
 
-Die für die Durchführung der Übung benötigten Werkzeuge:
+Für die Durchführung der Übung benötigte Werkzeuge:
 
 - Visual Studio 2022
 
 !!! tip "Übung unter Linux oder macOS"
-    Das Übungsmaterial ist grundsätzlich für Windows und Visual Studio gedacht, kann aber auch auf anderen Betriebssystemen mit anderen Entwicklungswerkzeugen (z.B. VS Code, Rider, Visual Studio für Mac) oder sogar mit einem Texteditor und CLI (Kommandozeilen)-Tools durchgeführt werden. Dies wird dadurch ermöglicht, dass die Beispiele im Kontext einer einfachen Konsolenanwendung präsentiert werden (keine Windows-spezifischen Elemente) und das .NET 8 SDK auf Linux und macOS unterstützt wird. [Hallo Welt unter Linux](https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code).
+    Das Übungsmaterial wurde grundsätzlich für Windows und Visual Studio erstellt, kann aber auch unter anderen Betriebssystemen mit anderen Entwicklungsumgebungen (z. B. VS Code, Rider, Visual Studio for Mac) oder sogar mit einem Texteditor und CLI-Tools durchgeführt werden. Dies ist möglich, weil die Beispiele im Kontext einer einfachen Konsolenanwendung dargestellt werden (es gibt keine Windows-spezifischen Elemente), und das .NET 8 SDK wird unter Linux und macOS unterstützt. [Hello World unter Linux](https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code).
 
-### Theoretischer Hintergrund, Ansatz *
+### Theoretischer Hintergrund, Denkweise *
 
-Bei der Entwicklung komplexerer Anwendungen müssen wir eine Reihe von Designentscheidungen treffen, wobei mehrere Optionen zur Auswahl stehen. Wenn wir die Wartungsfreundlichkeit und die Möglichkeit der einfachen Weiterentwicklung unserer Anwendung nicht im Auge behalten, kann die Entwicklung schnell zu einem Alptraum werden. Kundenwünsche nach Änderungen und Erweiterungen erfordern eine umfangreiche kontinuierliche Neuschreibung/Änderung des Codes: Dies führt zu neuen Fehlern und erfordert einen erheblichen Arbeitsaufwand für umfangreiche Code-Neu-Tests!
+Bei der Entwicklung komplexerer Anwendungen müssen wir zahlreiche Designentscheidungen treffen, bei denen oft mehrere Möglichkeiten zur Auswahl stehen. Wenn wir in diesen Punkten nicht auf einfache Wartbarkeit und einfache Erweiterbarkeit unserer Anwendung achten, kann die Entwicklung schnell zum Albtraum werden. Änderungs- und Erweiterungswünsche des Kunden erfordern eine ständige, umfassende Umstrukturierung des Codes: dabei entstehen neue Fehler, und es ist erheblicher Aufwand für umfassende Retests notwendig!
 
-Unser Ziel ist es, diesen Änderungs- und Erweiterungsbedarf zu decken, indem wir den Code an einigen wenigen, genau definierten Stellen erweitern, ohne den bestehenden Code wesentlich zu verändern. Das Schlüsselwort lautet: **Erweiterung** im Gegensatz zur **Änderung**. Damit zusammenhängend: Wenn bestimmte Logiken erweitert werden können, sind sie auch allgemeiner, und wir können sie leichter in mehr Kontexten verwenden. Langfristig gesehen kommen wir auf diese Weise schneller voran, der Code ist kürzer und doppelter Code wird vermieden (wodurch der Code leichter zu pflegen ist).
+Unser Ziel ist es, solche Änderungs- und Erweiterungswünsche durch Erweiterungen an wenigen, gut definierten Stellen im Code – ohne wesentliche Änderungen am bestehenden Code – umsetzen zu können. Das Schlüsselwort ist: statt **Änderung** lieber **Erweiterung**. Damit verbunden gilt: Wenn bestimmte Logiken erweiterbar sind, dann sind sie auch allgemeiner und können in mehreren Kontexten leichter wiederverwendet werden. So kommen wir langfristig schneller voran, unser Code wird kürzer, wir vermeiden Code-Duplikationen (was wiederum die Wartbarkeit erhöht).
 
-Die **Entwurfsmuster** zeigen bewährte Lösungen für einige häufig auftretende Entwurfsprobleme: Diese Lösungen tragen dazu bei, dass unser Code einfacher zu erweitern, zu pflegen und wiederzuverwenden ist. In dieser Übung konzentrieren wir uns auf Muster, Entwurfsprinzipien und einige Programmierwerkzeuge, die bei diesen Problemen helfen können. Aber wir wollen es nicht übertreiben: Es lohnt sich nur dann, ein bestimmtes Entwurfsmuster zu verwenden, wenn es einen echten Nutzen bringt. Andernfalls wird die Implementierung nur unnötig kompliziert. Vor diesem Hintergrund ist es nicht unser Ziel (und oft auch gar nicht möglich), alle zukünftigen Erweiterungsbedürfnisse vorherzusehen oder sehr weit im Voraus darüber nachzudenken. Der Punkt ist, dass wir, selbst wenn wir von einer einfachen Lösung ausgehen und jedes Problem erkennen, unseren Code ständig überarbeiten, um ihn an den richtigen Stellen erweiterbar und wiederverwendbar zu machen, je nach unseren aktuellen Anforderungen (funktional und nicht funktional) und unserer Voraussicht.
+**Entwurfsmuster** zeigen bewährte Lösungen für häufig auftretende Entwurfsprobleme: Sie helfen dabei, unseren Code leichter erweiterbar, wartbar und so weit wie möglich wiederverwendbar zu gestalten. In dieser Übung konzentrieren wir uns auf solche Muster, Prinzipien und einige Programmierwerkzeuge, die helfen, die oben genannten Probleme zu lösen.
+Aber man soll es nicht übertreiben: Ein bestimmtes Entwurfsmuster sollte nur dann eingesetzt werden, wenn es tatsächlich einen Vorteil bringt. Andernfalls erhöht es nur unnötig die Komplexität der Implementierung.
+Vor diesem Hintergrund ist es nicht unser Ziel (und oft auch gar nicht möglich), alle zukünftigen Erweiterungsbedürfnisse vorherzusehen oder im Voraus zu durchdenken. Wichtig ist, dass wir – auch ausgehend von einer einfachen Lösung – unsere Probleme erkennen und den Code kontinuierlich so refaktorisieren, dass er den aktuellen (funktionalen und nicht-funktionalen) Anforderungen entspricht und an den richtigen Stellen besser erweiterbar und wiederverwendbar wird.
 
-Es ist erwähnenswert, dass verwandte Entwurfsmuster und Sprachtools auch sehr dabei helfen, unseren Code **unit-testbar** zu machen: In vielen Unternehmen ist es bei der Entwicklung eines Softwareprodukts eine (legitime) Anforderung an die Entwickler, Unit-Tests mit hoher Codeabdeckung zu erstellen. Dies ist jedoch praktisch unmöglich, wenn die Einheiten/Klassen Ihres Codes zu eng gekoppelt sind.
+Es sei auch erwähnt, dass entsprechende Entwurfsmuster und Sprachmittel auch bei der **Unit-Testbarkeit** unseres Codes eine große Hilfe darstellen: In vielen Unternehmen ist es bei der Entwicklung von Softwareprodukten (zurecht) eine Grundanforderung an die Entwickler, dass sie Unit-Tests mit hoher Codeabdeckung erstellen. Dies ist jedoch praktisch unmöglich, wenn unsere Codeeinheiten/Klassen zu eng miteinander gekoppelt sind.
 
-## 0. Aufgabe - Kennenlernen der Aufgabe und der Erstanwendung
+## 0. Aufgabe – Kennenlernen der Aufgabe und der Ausgangsanwendung
 
-Klonen Sie [das Repository der](https://github.com/bmeviauab00/lab-patterns-extensibility-kiindulo)ursprünglichen Anwendung für Labor 6:
+Klonen wir das Repository der Ausgangsanwendung zur 6. Übung [von hier](https://github.com/bmeviauab00/lab-patterns-extensibility-kiindulo):
 
-- Öffnen Sie eine Eingabeaufforderung
-- Navigieren Sie zu einem Ordner Ihrer Wahl, zum Beispiel c:workNEPTUN
-- Geben Sie den folgenden Befehl ein: `git clone https://github.com/bmeviauab00/lab-patterns-extensibility-kiindulo.git`
-- Öffnen Sie die Lösung *Lab-Patterns-Extensibility.sln* in Visual Studio.
+- Öffne eine Kommandozeile (Command Prompt)
+- Navigiere in einen beliebigen Ordner, z. B. nach `c:\work\NEPTUN`
+- Führe folgenden Befehl aus: `git clone https://github.com/bmeviauab00/lab-patterns-extensibility-kiindulo.git`
+- Öffne die Solution _Lab-Patterns-Extensibility.sln_ in Visual Studio.
 
 ### Beschreibung der Aufgabe
 
-Im Labor werden wir eine konsolenbasierte Datenverarbeitungsanwendung (genauer gesagt, eine Anonymisierungsanwendung) entsprechend den sich entwickelnden Bedürfnissen erweitern, und zwar an verschiedenen Punkten und mit verschiedenen Techniken. In der ersten Übung wird auch das Konzept der Anonymisierung vorgestellt.
+Im Labor werden wir eine konsolenbasierte Datenverarbeitungsanwendung (genauer gesagt, eine Anonymisierungsanwendung) entsprechend den sich fortlaufend entwickelnder Anforderungen erweitern – entlang verschiedener Aspekte und unter Anwendung unterschiedlicher Techniken. In der ersten Aufgabe wird auch das Konzept der Anonymisierung vorgestellt.
 
-Die Eingabe in die Anwendung ist eine CSV-Textdatei, in der jede Zeile Daten für eine bestimmte Person enthält. Öffnen Sie im Dateisystem die Datei us-500.csv im Ordner *Data* (durch Doppelklick oder mit Notepad/Notepad). Wir sehen, dass wir zwischen "", getrennt durch ein Komma, die Daten für jede Person haben (sie sind nicht real). Schauen wir uns die erste Zeile an:
+Die Eingabe in die Anwendung ist eine CSV-Textdatei, in der jede Zeile Daten zu einer bestimmten Person enthält. Öffnen wir im Dateisystem die Datei *us-500.csv* im Ordner *Data* (durch Doppelklick oder mit Notepad).  Wir sehen, dass die Daten zu den einzelnen Personen in Anführungszeichen (" ") und durch Kommas getrennt dargestellt sind (es handelt sich um fiktive Daten). Schauen wir uns die erste Zeile an:
   
 ```
-"James", "Rhymes", "Benton, John B Jr", "6649 N Blue Gum St", "New Orleans", "Orleans", "LA", "70116", "504-621-8927", "504-845-1427", "30", "65", "Herzbezogen", "jRhymes@gmail.com"
+"James","Rhymes","Benton, John B Jr","6649 N Blue Gum St","New Orleans ","Orleans","LA","70116","504-621-8927","504-845-1427","30","65","Heart-related","jRhymes@gmail.com"
 ```
 
-Die Person in der ersten Reihe heißt James Rhymes, arbeitet für "Benton, John B Jr.", gefolgt von einigen Adressfeldern, 30 Jahre alt, 65 kg Körpergewicht. Das folgende Feld gibt Auskunft darüber, welche schwerere Krankheit Sie haben (in der Zeile oben ist es "Herzkrankheit"). Die letzte Spalte enthält die E-Mail-Adresse der Person.
+Die Person in der ersten Zeile heißt James Rhymes, arbeitet bei der Firma "Benton, John B Jr", danach folgen einige Adressfelder, er ist 30 Jahre alt und wiegt 65 kg. Das nachfolgende Feld beschreibt eine schwerwiegende Erkrankung (in der obigen Zeile: „Heart-related“). Die letzte Spalte enthält die E-Mail-Adresse der Person.
 
-??? note "Quelle und genaues Format der Daten *"
-    Datenquelle: [https://www.briandunning.com/sample-data/,](https://www.briandunning.com/sample-data/) mit einigen Spalten (Alter, Gewicht, Krankheit). Die Reihenfolge der Felder: Vorname, Nachname, Unternehmen, Adresse, Stadt, Landkreis (falls zutreffend), Bundesland/Provinz (falls zutreffend), Postleitzahl, Telefon 1, Telefon 2, Alter, Gewicht, Krankheit, E-Mail
+??? note "Datenquelle und genaues Format *"
+    Die Daten stammen von: https://www.briandunning.com/sample-data/, ergänzt um einige zusätzliche Spalten (Alter, Gewicht, Krankheit). Die Reihenfolge der Felder: First Name, Last Name, Company, Address, City, County (falls zutreffend), State/Province (falls zutreffend), ZIP/Postal Code, Phone 1, Phone 2, Age, Weight, Illness, Email
 
-Die Hauptaufgabe der Anwendung besteht darin, diese Daten entsprechend den aktuellen Bedürfnissen zu anonymisieren und sie dann in eine CSV-Textdatei auszugeben. Der Zweck der Anonymisierung besteht darin, die Daten so umzuwandeln, dass die Personen im Datensatz nicht mehr identifizierbar sind, die Daten aber weiterhin für die Erstellung von Berichten verwendet werden können. Die Anonymisierung ist ein eigener, sehr ernster und anspruchsvoller Bereich der Datenverarbeitung. Die Übung zielt nicht darauf ab, Lösungen zu entwickeln, die in einem realen Kontext anwendbar oder sogar in jeder Hinsicht sinnvoll sind. Für uns ist eigentlich nur der "Einsatz" einer Art von Datenverarbeitungsalgorithmus für die Darstellung von Mustern wichtig. Dies kann einen etwas "aufregenderen" Rahmen bieten als einfache Datenfilterung/ Sequenzierung/etc. basierte Datenverarbeitung (die von .NET standardmäßig unterstützt wird).
+Die Hauptaufgabe der Anwendung besteht darin, diese Daten je nach aktueller Anforderung zu anonymisieren und in eine Ausgabedatei im CSV-Textformat zu schreiben. Ziel der Anonymisierung ist es, die Personen in der Datenmenge durch Transformationen unkenntlich zu machen – allerdings auf eine Weise, die dennoch statistische Auswertungen über die Daten ermöglicht. Anonymisierung ist ein eigenständiger, sehr anspruchsvoller und herausfordernder Bereich der Datenverarbeitung. In dieser Übung ist es nicht unser Ziel, Lösungen zu entwickeln, die in realen Szenarien einsetzbar oder in jeder Hinsicht sinnvoll sind. Für uns ist eigentlich die Anwendung eines beliebigen Datenverarbeitungsalgorithmus wichtig, um die Entwurfsmuster zu demonstrieren. Dies liefert einen etwas „spannenderen“ Rahmen als einfache Filter-, Sortier- oder ähnliche Datenverarbeitung (die von .NET standardmäßig unterstützt wird).
 
 !!! note "Einige Gedanken zur Anonymisierung"
-
-    Man könnte meinen, dass die Anonymisierung ein einfaches Problem ist. So müssen Sie beispielsweise nur die Namen der Personen, die Adresse, die Hausnummer, die Telefonnummern und die E-Mail-Adresse entfernen oder mit einem Sternchen versehen, und schon sind Sie fertig. Zum Beispiel würde die erste Zeile unserer Eingabe die Ausgabe sein:
+    Man könnte meinen, dass die Anonymisierung ein einfaches Problem ist. Zum Beispiel müsste man nur die Namen der Personen entfernen oder durch Sternchen ersetzen, ebenso wie die Straßenadresse, Telefonnummern und E-Mail-Adresse – und schon wäre man fertig. Für die erste Zeile unserer Eingabedateri sähe die Ausgabe dann so aus:
 
     ```
-    "***", "***", "Benton, John B Jr", "***", "New Orleans ", "Orleans", "LA", "70116", "***", "***", "30", "65", "herzbezogen", "***"
+    "***","***","Benton, John B Jr","***","New Orleans ","Orleans","LA","70116","***","***","30","65","Heart-related","***"
     ```
 
-    Dies ist jedoch bei weitem nicht der Fall, insbesondere wenn es um wirklich große Daten geht. Stellen Sie sich ein kleines Dorf vor, in dem es nicht viele Menschen gibt. Nehmen wir an, eine der auf diese Weise anonymisierten Personen ist 14 Jahre alt, aber stark übergewichtig und wiegt 95 kg. Dies ist eine seltene "Kombination", und es besteht eine gute Chance, dass keine andere Person mit diesen Parametern im Dorf lebt. Wenn einer seiner Klassenkameraden (ein Achtklässler, er ist 14) sich die "anonymisierten" Daten ansieht, wird er wissen, wer er ist (es gibt keinen anderen Achtklässler in der Schule, der so übergewichtig ist), er wird die Person identifizieren. Sie werden zum Beispiel wissen, welche Krankheit die Person hat. Lektion: Daten können im Kontext aufschlussreich sein.
+    Doch so einfach ist es nicht – vor allem nicht bei großen Datenmengen. Denken wir zum Beispiel an ein kleines Dorf mit wenigen Einwohnern. Angenommen, eine auf die oben beschriebene Weise anonymisierte Person ist 14 Jahre alt, aber extrem übergewichtig, etwa 95 kg. Das ist eine seltene „Kombination“, es ist sehr wahrscheinlich, dass niemand sonst im Dorf solche Merkmale aufweist. Wenn jemand aus seiner Schulklasse (8. Klasse, da 14 Jahre alt) die „anonymisierten“ Daten sieht, wird er sofort wissen, um wen es sich handelt (es gibt keinen anderen übergewichtigen Achtklässler an der Schule). So erfährt er z. B. auch, welche Krankheit die Person hat. Fazit: Zusammenhänge zwischen den Daten können Rückschlüsse auf die Identität zulassen.
     
-    Was ist die Lösung? Stadt, Alter und Körpergewicht können nicht gelöscht/gestrichen werden, da sie gemeldet werden müssen. Eine typische Lösung besteht darin, nach der Anonymisierung nicht das genaue Alter/Gewicht einzugeben, sondern Bereiche (d. h. die Daten zu verallgemeinern): z. B. für die oben genannte Person Alter 10..20 Jahre, Gewicht 80..100 kg, und diese Werte für diese Person in die Ausgabedatei einzugeben. Es ist nicht mehr möglich, die Personen zu identifizieren. Wir werden diese Technik später noch anwenden.
+    Was ist die Lösung? Stadt, Alter und Gewicht können nicht entfernt oder mit Sternchen ersetzt werden, da genau zu diesen Merkmalen Auswertungen durchgeführt werden sollen. Eine typische Lösung: Anstelle des genauen Alters oder Gewichts werden nach der Anonymisierung Intervalle angegeben (also eine Generalisierung der Daten). Für die obige Person würde man z. B. „10–20 Jahre“ beim Alter und „80–100 kg“ beim Gewicht angeben – und genau diese Werte würden in die Ausgabedatei geschrieben. Auf diese Weise ist keine eindeutige Identifikation der Person mehr möglich. Diese Technik werden wir später noch anwenden.
 
-### Ursprüngliche Anforderungen
+### Ausgangsanforderungen
 
-Ursprüngliche Anforderungen an die Bewerbung:
+Die Ausgangsanforderungen an die Anwendung:
 
-1. Von einem bestimmten Client empfangene Dateien (alle im gleichen Format) müssen mit dem gleichen Anonymisierungsalgorithmus in das gleiche Ausgabeformat konvertiert werden. Die Anonymisierung sollte lediglich darin bestehen, den Vor- und Nachnamen "auszubuchstabieren".
-2. Eine gewisse Datenbereinigung ist erforderlich.  `_` `#` In den Eingabedaten kann es am Anfang/Ende der Spalte, die die Stadt enthält, redundante Zeichen geben, die entfernt werden sollten (Trimm-Operation).
-3. Nach der Verarbeitung jeder Zeile sollte in die Konsole geschrieben werden, dass die Zeile verarbeitet wurde, und nach der Verarbeitung jeder Zeile sollten einige zusammenfassende Informationen angezeigt werden: wie viele Zeilen verarbeitet wurden und bei wie vielen der Stadtname gekürzt wurde.
-4. Ein **entscheidender Punkt**: Die Anwendung wird nur für einen kurzen Zeitraum benötigt, und wir haben nicht die Absicht, sie in Zukunft zu erweitern.
+1. Es sollen von einem bestimmten Kunden empfangene Dateien (alle im gleichen Format) verarbeitet werden, die mit demselben Anonymisierungsalgorithmus in dasselbe Ausgabeformat konvertiert werden. Die Anonymisierung soll lediglich darin bestehen, Vor- und Nachnamen mit Sternchen zu ersetzen.
+2. Eine gewisse Datenbereinigung ist notwendig. In der Spalte mit dem Stadtnamen können am Anfang oder Ende überflüssige `_`- oder `#`-Zeichen vorkommen, diese müssen entfernt werden (Trim-Operation).
+3. Nach der Verarbeitung jeder Zeile soll eine Nachricht auf der Konsole ausgegeben werden, dass die Zeile verarbeitet wurde. Außerdem sollen nach der vollständigen Verarbeitung aller Daten zusammenfassende Informationen (Summary) angezeigt werden: wie viele Zeilen wurden verarbeitet, und in wie vielen Fällen musste der Stadtname getrimmt werden.
+4. **Wichtiger Aspekt**: Die Anwendung wird nur für kurze Zeit benötigt und soll in Zukunft nicht erweitert werden.
 
-Hinweis: Um mit weniger Feldern im Code zu arbeiten und die Ausgabe transparenter zu gestalten, lassen wir bei der Verarbeitung einige weitere Felder weg.
+Hinweis: Um den Code übersichtlicher zu halten und weniger Felder verarbeiten zu müssen, werden einige Felder bei der Verarbeitung weggelassen.
 
-Ein Beispiel: Die erste Zeile unserer Eingabedatei ist die erwartete Ausgabe:
+Beispiel für die erwartete Ausgabe der ersten Zeile aus der Eingabedatei:
 
 ```
-***; ***; LA; New Orleans; 30; 65; Herzbezogen
+***; ***; LA; New Orleans; 30; 65; Heart-related
 ```
 
-## 1. Lösung - alles in einem (1-Start/Start)
+## 1. Lösung – Alles in einem (1-Start/Start)
 
-Im Visual Studio Solution Explorer sehen Sie Ordner, deren Namen mit den Zahlen 1 bis 4 beginnen. Diese enthalten die Lösungen für jede Arbeitsiteration. Die Lösung der ersten Runde befindet sich im Ordner "1-Start" unter dem Projektnamen "Start". Schauen wir uns die Dateien im Projekt an:
+Im Solution Explorer von Visual Studio sehen wir Ordner mit Namen, die mit den Zahlen 1 bis 4 beginnen. Diese enthalten die Lösungen zu den jeweiligen Arbeitsiterationen. Die erste Lösung befindet sich im Ordner „1-Start“ unter dem Projektnamen „Start“. Werfen wir einen Blick auf die im Projekt enthaltenen Dateien:
 
-* `Person.cs` - Sie enthält die Daten einer Person, die für uns von Interesse ist, und wir lesen die Daten einer Person in ihre Objekte ein.
-* `Programm.cs` - Die gesamte Logik ist als Funktion dieses Main implementiert, "getrennt" durch Code-Einträge. Wenn die Logik ein wenig komplizierter wird, werden wir nach ein oder zwei Tagen (Stunden?) Schwierigkeiten haben, unseren eigenen Code zu überprüfen und zu verstehen. Wir sollten diese Lösung gar nicht erst in Betracht ziehen.
+* `Person.cs` – Enthält die für uns relevanten Daten einer Person. Die Daten einer einzelnen Person werden in Objekte dieser Klasse eingelesen.
+* `Program.cs` – In der Main-Funktion dieser Datei ist die gesamte Logik implementiert, durch Kommentare  "getrennt". Sobald die Logik etwas komplexer wird, wird es bereits nach wenigen Tagen (oder Stunden?) schwierig sein, den eigenen Code zu überblicken und zu verstehen. Diese Lösung ist daher nicht weiter von Interesse.
 
-Insgesamt ist die Lösung sehr einfach, da dem Code keine lange Zukunft vorausgesagt wird. Aber die "skriptartige", in eine Funktion gegossene "All-in-one"-Lösung ist auch nicht der richtige Weg, sie macht es sehr schwierig, den Code **zu sehen** und **zu verstehen**. Lassen Sie uns das nicht weiter betrachten.
+Insgesamt ist die Lösung sehr einfach gehalten, da für den Code keine lange Lebensdauer erwartet wird. Dennoch ist eine „skriptartige“ Lösung, bei der sich alles in einer einzigen Funktion befindet, auch in solchen Fällen nicht empfehlenswert – sie erschwert erheblich das **Verständnis** und die **Übersichtlichkeit** des Codes. Daher sollten wir uns damit nicht weiter beschäftigen.
 
 ## 2. Lösung (2-OrganizedToFunctions/OrganizedToFunctions-1)
 
-Gehen wir in Visual Studio zu der Lösung über, die sich im Projekt "OrganizedToFunctions-1" im Ordner "2-OrganizedToFunctions" befindet. Das ist viel sympathischer, weil wir die Logik in Funktionen zerlegt haben. Schauen wir uns kurz den Code an:
+Wechseln wir im Visual Studio zum Projekt „OrganizedToFunctions-1“, das sich im Ordner „2-OrganizedToFunctions“ befindet. Diese Lösung ist bereits deutlich sympathischer, da die Logik in Funktionen aufgeteilt wurde. Werfen wir einen kurzen Blick auf den Code:
 
 `Anonymizer.cs`
 
-  *  `Laufen lassen` Die Funktion ist das "Rückgrat", sie enthält die Steuerlogik und ruft die für die einzelnen Schritte zuständigen Funktionen auf.
-  * `ReadFromInput` `Person` `Person` operation: scannt die Quelldatei, erstellt für jede Zeile ein Objekt und gibt eine Liste der gescannten Objekte zurück.
-  * `TrimCityNames`: Führt eine Datenbereinigung durch (Abschneiden von Städtenamen).
-  * `Anonym`:  `Person` `Person` Bei jedem gescannten Objekt wird es aufgerufen und ist dafür verantwortlich, ein neues Objekt zurückzugeben, das bereits die anonymisierten Daten enthält.
-  * `WriteToOutput` `Person`: schreibt die bereits anonymisierten Objekte in die Ausgabedatei.
-  * `PrintSummary`: gibt die Zusammenfassung am Ende der Verarbeitung auf der Konsole aus.
+  * Die Funktion `Run` bildet das „Rückgrat“ der Anwendung. Sie enthält die Steuerlogik und ruft die einzelnen, für die jeweiligen Schritte zuständigen Funktionen auf.
+  * `ReadFromInput`: Liest die Quelldatei ein, erstellt für jede Zeile ein `Person`-Objekt und gibt eine Liste der eingelesenen `Person`-Objekte zurück.
+  * `TrimCityNames`: Führt die Datenbereinigung durch (Trimmen der Städtenamen).
+  * `Anonymize`: Wird für jedes eingelesene `Person`-Objekt aufgerufen und gibt ein neues `Person`-Objekt zurück, das die anonymisierten Daten enthält.
+  * `WriteToOutput`: Schreibt die bereits anonymisierten `Person`-Objekte in die Ausgabedatei.
+  * `PrintSummary`: Gibt eine Zusammenfassung der Verarbeitung am Ende in der Konsole aus.
 
-`Programm.cs`
+`Program.cs`
 
-  *  `Anonym` `Laufen lassen` Erzeugt ein Objekt und führt es durch den Aufruf von . Es ist ersichtlich, dass die Zeichenkette, die zur Maskierung während der Anonymisierung verwendet wird, in einem Konstruktorparameter angegeben werden muss.
+  * Erstellt ein `Anonymizer`-Objekt und führt es durch einen Aufruf der `Run`-Funktion aus. Es ist ersichtlich, dass der String für das Maskieren während der Anonymisierung als Konstruktorparameter übergeben werden muss.
 
-Probieren wir es aus, lassen wir es laufen! Um dies zu tun, sollte "OrganizedToFunctions-1" das Startprojekt in Visual Studio sein (mit der rechten Maustaste darauf klicken und *als Startprojekt festlegen*), dann starten Sie es:
+Probieren wir es aus, und führen wir das Projekt aus! Stellen wir sicher, dass „OrganizedToFunctions-1“ im Visual Studio als Startprojekt festgelegt ist (Rechtsklick darauf und *Set as Startup Project*), und starten wir es dann:
 
-![Ausgabe auf der Konsole](bilder/OrganizedToFunctions-1-Konsole-out.png)
+![Console output](images/OrganizedToFunctions-1-console-out.png)
 
-Die Ausgabedatei kann in einem Dateimanager in einem Ordner mit dem Namen "OrganizedToFunctions-1binDebugnet8.0" oder ähnlichem mit dem Namen "us-500.processed.txt" angezeigt werden. Öffnen wir sie und sehen wir uns die Daten an.
+Die Ausgabedatei können wir im Datei-Explorer finden, sie befindet sich im Ordner „OrganizedToFunctions-1\bin\Debug\net8.0\" oder einem ähnlichen Ordner und hat den Namen „us-500.processed.txt“. Öffnen wir diese Datei und werfen einen Blick auf die Daten.
 
 ### Bewertung der Lösung
 
-* Die Lösung ist grundsätzlich gut strukturiert und leicht zu verstehen.
-* Folgt dem ==**KISS (Keep It Stupid Simple)==** prinzip, ohne unnötige Komplikationen. Das ist gut, denn es gibt keinen potenziellen künftigen Entwicklungsbedarf, keine Notwendigkeit, verschiedene Formate, Logiken usw. zu unterstützen.
-* Unsere Lösung folgt jedoch nicht einem der grundlegendsten und bekanntesten Gestaltungsprinzipien, nämlich dem ==**Single Responsibility Principle (kurz: SRP)==** allgemein bekannt als SRP. Sie geht davon aus, dass eine Abteilung - vereinfacht ausgedrückt - nur eine Aufgabe hat (im Grunde nur eine Sache).
+* Die Lösung ist grundsätzlich gut strukturiert und leicht verständlich.
+* Sie folgt dem **==KISS (Keep It Stupid Simple)==**-Prinzip, verwendet keine unnötigen Komplikationen. Das ist gut, da keine potenziellen zukünftigen Erweiterungen zu erwarten sind und keine unterschiedlichen Formate, Logiken usw. unterstützt werden müssen.
+* Unsere Lösung folgt jedoch nicht einem der grundlegendsten und bekanntesten Entwurfsprinzipien, das unter dem Namen **==Single Responsibility Principle (SRP)==** bekannt ist. Dieses besagt - vereinfacht ausgedrückt -, dass eine Klasse nur eine Verantwortung haben sollte (sich grundsätzlich nur mit einer Sache beschäftigen sollte).
   
-    *  `Anonym` Unsere Abteilung hat zweifellos viele Aufgaben: Verarbeitung von Input, Datenbereinigung, Anonymisierung, Erstellung von Output usw.
-    * Dieses Problem ist in unserem Fall nicht spürbar und stellt kein Problem dar, da die Umsetzung jeder dieser Aufgaben einfach ist und in eine kürzere Funktion "passt". Wären diese jedoch komplexer und in mehreren Funktionen implementiert, müssten sie definitiv in einer eigenen Klasse organisiert werden.
+    * Zweifellos hat unsere `Anonymizer`-Klasse mehrere Verantwortlichkeiten: Eingabeverarbeitung, Datenbereinigung, Anonymisierung, Ausgabeerstellung usw.
+    * Dieses Problem fällt bei uns jedoch nicht auf und verursacht keine Probleme, weil jede dieser Verantwortlichkeiten einfach umgesetzt ist und in eine kürzere Funktion passt. Wenn jedoch eine der Verantwortlichkeiten komplexer wäre und in mehreren Funktionen umgesetzt werden müsste, sollte sie auf jeden Fall in eine separate Klasse ausgelagert werden.
 
-    ??? note "Warum ist es ein Problem, wenn eine Abteilung mehr Aufgaben hat? *"
+    ??? note "Warum ist es problematisch, wenn eine Klasse mehrere Verantwortlichkeiten hat? *"
 
-        * Es ist schwieriger zu verstehen, wie es funktioniert, weil es nicht auf eine Sache konzentriert ist.
-        * Wenn eine dieser Zuständigkeiten geändert werden muss, muss eine große, multidisziplinäre Abteilung geändert und erneut getestet werden.
+        * Es wird schwieriger, ihr Verhalten zu verstehen, weil sie sich nicht nur auf eine Aufgabe konzentriert.
+        * Wenn Änderungen in einer der Verantwortlichkeiten erforderlich sind, muss eine große Klasse geändert und neu getestet werden.
   
-* Sie können automatisierte Integrationstests (Input-Output) für die Lösung schreiben, aber keine "echten" Unit-Tests.
+* Für die Lösung können automatisierte Integrations- (Input-Output) Tests geschrieben werden, aber „echte“ Unit-Tests sind nicht möglich.
 
 ## 3. Lösung (OrganizedToFunctions-2-TwoAlgorithms)
 
-Im Gegensatz zu früheren "Plänen" haben sich neue Bedürfnisse der Nutzer ergeben. Unser Kunde hat seine Meinung geändert und verlangt für einen anderen Datensatz einen anderen Anonymisierungsalgorithmus: Das Alter der Personen soll in Banden gespeichert werden, das genaue Alter der Personen darf nicht offenbart werden. Der Einfachheit halber werden wir in diesem Fall die Namen der Personen nicht anonymisieren. Betrachten Sie dies also als eine Art "Pseudo"-Anonymisierung (es macht immer noch Sinn, aber es ist nicht ganz korrekt, es Anonymisierung zu nennen).
+Im Gegensatz zu den vorherigen "Plänen" sind neue Benutzeranforderungen aufgetreten. Unser Kunde hat seine Meinung geändert und bittet um die Implementierung eines anderen Anonymisierungsalgorithmus für einen anderen Datensatz: Das Alter der Personen muss in Bereichen gespeichert werden, das genaue Alter darf nicht erkennbar sein. Zur Vereinfachung werden in diesem Fall die Namen der Personen nicht anonymisiert, betrachten wir dies als eine Art "Pseudo"-Anonymisierung (es macht immer noch Sinn, ist es nicht ganz korrekt, dies Anonymisierung zu nennen).
 
-Unsere Lösung - die sowohl den alten als auch den neuen Algorithmus (einen nach dem anderen) unterstützt - finden Sie im VS-Lösungsprojekt *OrganizedToFunctions-2-TwoAlgorithms*.  `Anonymizer` Schauen wir uns die Klasse, das Grundprinzip der Lösung an (überprüfen Sie diese im Code):
+Unsere Lösung, die sowohl den alten als auch den neuen Algorithmus unterstützt (aber immer nur einen von beiden), befindet sich im VS-Projekt *OrganizedToFunctions-2-TwoAlgorithms*. Werfen wir einen Blick auf die `Anonymizer`-Klasse. Die Grundprinzipien der Lösung (lassen wir uns diese im Code durchgehen):
 
-*  `AnonymizerMode` `Anonym` Wir haben einen Enum-Typ eingeführt, der den Modus (Algorithmus) angibt, in dem die Klasse verwendet wird.
-*  `Anonymizer` `Anonymize_MaskName` Die Klasse verfügt über zwei Anonymisierungsoperationen: , `Anonymize_AgeRange`
-*  `Anonymizer` `_anonymizerMode` `_anonymizerMode` Die Klasse speichert den zu verwendenden Algorithmus im Member: für die beiden Modi werden zwei separate Konstruktoren eingeführt, die den Wert von .
-*  `Anonymizer` `Run` `GetAnonymizerDescription` `_anonymizerMode` Die Klasse prüft an mehreren Stellen (z.B. bei Operationen) auf den Wert von und gabelt sich in Abhängigkeit davon auf.
-  *  `GetAnonymizerDescription`In ist dies notwendig, da die Aufgabe dieses Vorgangs darin besteht, eine einzeilige Beschreibung des Anonymisierungsalgorithmus zu erstellen, die am Ende der Verarbeitung in der "Zusammenfassung" angezeigt wird.  `PintSummary` Sehen wir uns den Code für die Aufrufe dieser Aktion an. So sieht die Zusammenfassung auf der Konsole aus, wenn ein Altersanonymisierer mit einem Bereich von 20 Jahren verwendet wird:
-  
+* Wir haben einen `AnonymizerMode`-Enum-Typ eingeführt, der festlegt, in welchem Modus (mit welchem Algorithmus) die `Anonymizer`-Klasse verwendet wird.
+* Die `Anonymizer`-Klasse hat zwei Anonymisierungsoperationen: `Anonymize_MaskName`, `Anonymize_AgeRange`.
+* Die `Anonymizer`-Klasse speichert im `_anonymizerMode`-Feld, welcher Algorithmus verwendet werden soll: Für die beiden Modi haben wir zwei verschiedene Konstruktoren eingeführt, die den Wert von `_anonymizerMode` festlegen.
+* Die `Anonymizer`-Klasse überprüft an mehreren Stellen (z.B. in den Methoden `Run` und `GetAnonymizerDescription`), welchen Wert `_anonymizerMode` hat, und verzweigt sich entsprechend.
+  * In `GetAnonymizerDescription` muss dies getan werden, da diese Methode dafür verantwortlich ist, eine einzeilige Beschreibung des Anonymisierungsalgorithmus zu erstellen, die am Ende der Verarbeitung im "Summary" angezeigt wird. Werfen wir einen Blick auf den Code von `PrintSummary`, der diese Methode aufruft. Zum Beispiel wird dies als Zusammenfassung auf der Konsole angezeigt, wenn wir den Altersanonymisierer mit einem Bereich von 20 verwenden:
+
       ```Summary - Anonymizer (Age anonymizer with range size 20): Persons: 500, trimmed: 2```
 
 ### Bewertung der Lösung
 
-Insgesamt ist unsere Lösung in Bezug auf die Codequalität **schlechter** als zuvor. In der Vergangenheit gab es kein Problem damit, dass es in Bezug auf Anonymisierungsalgorithmen nicht erweiterbar war, da es keinen Bedarf dafür gab. Wenn aber einmal die Notwendigkeit besteht, einen neuen Algorithmus einzuführen, ist es ein Fehler, unsere Lösung in dieser Hinsicht nicht erweiterbar zu machen: Von nun an würden wir lieber damit rechnen, dass in Zukunft zusätzliche Algorithmen eingeführt werden müssen.
+Insgesamt ist die Qualität unseres Codes im Vergleich zum Vorherigen **schlechter** geworden.  
+Früher war es kein Problem, dass die Anonymisierungsalgorithmen nicht erweiterbar waren, da es keine Nachfrage danach gab. Aber sobald der Bedarf für einen neuen Algorithmus aufgetreten ist, war es ein Fehler, die Lösung in dieser Hinsicht nicht erweiterbar zu machen: Ab jetzt müssen wir lieber damit rechnen, dass weitere Algorithmen in der Zukunft eingeführt werden müssen.
 
- `if``switch` Warum behaupten wir, dass unser Code nicht erweitert werden kann, wenn "nur" ein neuer Enum-Wert und eine zusätzliche / Verzweigung an einer Stelle des Codes eingeführt werden soll, wenn ein neuer Algorithmus eingeführt werden soll?
+Warum behaupten wir, dass unser Code nicht erweiterbar ist, wenn "nur" ein neuer Enum-Wert und ein paar zusätzliche `if`/`switch`-Zweige im Code hinzugefügt werden müssen, wenn ein neuer Algorithmus eingeführt wird?
 
-:warning: **Prinzip Offen/Geschlossen**  
-Entscheidend ist, dass eine Klasse dann als erweiterbar gilt, wenn es möglich ist, ein neues Verhalten (in unserem Fall einen neuen Algorithmus) einzuführen **, ohne** sie in irgendeiner Weise **zu verändern**, **indem man** einfach den Code **erweitert/erweitert**.  `Anonymizer` Mit anderen Worten, in unserem Fall sollte der Code von nicht angetastet werden, was eindeutig nicht der Fall ist. Dies ist das berühmte **Offen/Geschlossen-Prinzip**: Die Klasse sollte offen für Erweiterungen und geschlossen für Änderungen sein. Die Änderung des Codes ist problematisch, da sie wahrscheinlich neue Fehler einführt und der geänderte Code immer wieder neu getestet werden muss, was einen erheblichen Zeit- und Kostenaufwand bedeutet.
+:warning: **Open/Closed Principle**  
+Es ist entscheidend, dass wir eine Klasse nur dann als erweiterbar betrachten, wenn es möglich ist, neues Verhalten (in unserem Fall einen neuen Algorithmus) **ohne Modifikation** der Klasse einzuführen, indem wir nur den Code **erweitern/vergrößern**. Das bedeutet, dass der Code der `Anonymizer`-Klasse nicht verändert werden sollte, was hier eindeutig nicht der Fall ist. Dies ist das berühmte **Open/Closed Principle**: Die Klasse sollte für Erweiterungen offen und für Änderungen geschlossen sein. Das Problem bei der Modifikation des Codes ist, dass durch diese Änderungen sehr wahrscheinlich neue Bugs eingeführt werden und der modifizierte Code immer wieder getestet werden muss, was erhebliche Zeit- und Kostenaufwände verursachen kann.
 
-Was genau ist das Ziel und wie können wir es erreichen? Es gibt Teile unseres Klassenzimmers, die wir nicht verbrennen wollen:
+Was ist das genaue Ziel und wie erreichen wir es? Es gibt Teile in unserer Klasse, die wir nicht "einbrennen" möchten:
 
-* Dies sind keine Daten, sondern ==**verhaltensweisen (Code, Logik)==**.
-*  `if``switch` Wir lösen das Problem nicht mit / : Wir führen "Erweiterungspunkte" ein und schaffen es irgendwie, "beliebigen" Code in ihnen laufen zu lassen.
-* Wir setzen den Code dieser variablen/fallabhängigen Teile **in andere Klassen** (in einer Weise, die für unsere Klasse "austauschbar" ist)!
+* Diese sind keine Daten, sondern **==Verhalten (Code, Logik)==**.
+* Wir lösen es nicht mit `if`/`switch`-Befehlen: Wir führen "Erweiterungspunkte" ein und stellen sicher, dass an diesen Stellen "beliebiger" Code ausgeführt werden kann.
+* Den Code dieser variablen/fallspezifischen Teile legen wir **in andere Klassen** (die aus der Perspektive unserer Klasse "austauschbar" sind)!
 
-!!! note
-    Denken Sie nicht an Zauberei, wir werden die Werkzeuge verwenden, die wir bereits kennen: Vererbung mit abstrakten/virtuellen Funktionen, oder Schnittstellen, oder Delegaten.
+!!! note  
+    Denken wir nicht an irgendwelche Zauberei, wir werden dafür die bekannten Werkzeuge verwenden: Vererbung mit abstrakten/virtuellen Funktionen, Schnittstellen oder Delegaten.
 
- `Anonymizer` Suchen Sie nach Teilen, die fallabhängig sind, variable Logik, so dass es nicht gut ist, sie in die Klasse zu brennen:
+Suchen wir nach den Teilen, die fallabhängige, variable Logik enthalten, und die daher nicht direkt in die `Anonymizer`-Klasse eingebaut werden sollten:
 
-*  `Anonymize_MaskName`Das eine ist die Anonymisierungslogik selbst: /`Anonymize_AgeRange`
-* Die andere ist die `GetAnonymizerDescription`
+* Eine der Logiken ist die Anonymisierungslogik: `Anonymize_MaskName`/`Anonymize_AgeRange`
+* Die andere ist `GetAnonymizerDescription`
 
-Diese sollten von der Klasse entkoppelt werden, an diesen Stellen sollte die Klasse erweitert werden. Die folgende Abbildung veranschaulicht das allgemeine Ziel *:
+Diese müssen vom Code der Klasse getrennt werden, und an diesen Stellen muss die Klasse erweiterbar gemacht werden. Die folgende Abbildung zeigt das allgemeine Ziel:
 
-??? note "Veranschaulichung des allgemeinen Lösungsprinzips"
+??? note "Illustration der allgemeinen Lösungsmethode"
 
     ![Extensibility illustration](images/illustrate-extensibility.png)
 
 Wir werden uns drei spezifische Entwurfsmuster und -techniken ansehen, um die oben genannten Ziele zu erreichen:
 
-* Vorlage Methodenentwurf Muster
-* Strategieentwurfsmuster (einschließlich Dependency Injection)
+* Template Method Entwurfsmuster
+* Strategy Entwurfsmuster (einschließlich Dependency Injection)
 * Delegate (optional mit Lambda-Ausdruck)
 
-Eigentlich haben wir sie alle in unserem Studium verwendet, aber jetzt werden wir sie noch besser kennen lernen und ihre Verwendung noch umfassender üben. Die ersten beiden im Labor und die dritte in einer entsprechenden Hausaufgabe.
+Eigentlich haben wir diese Konzepte bereits in unseren Studien verwendet, aber jetzt werden wir sie noch besser kennen lernen und ihre Anwendung umfassender üben. Die ersten beiden werden wir im Labor untersuchen, das dritte wird dann im Rahmen einer zugehörigen Hausaufgabe behandelt.
 
 ## 4. Lösung (3-TemplateMethod/TemplateMethod-1)
 
-In diesem Schritt werden wir das Entwurfsmuster **Template Method** verwenden, um unsere Lösung an den erforderlichen Stellen erweiterbar zu machen.
+In diesem Schritt werden wir mit der Anwendung des **Template Method** Entwurfsmusters unsere Lösung an den erforderlichen Punkten erweiterbar machen.
 
-!!! note
+!!! note  
     Der Name des Musters ist "irreführend": Es hat nichts mit den in C++ erlernten Template-Methoden zu tun!
 
-??? info "Klassendiagramm der auf der Schablonenmethode basierenden Lösung"
-    Das folgende UML-Klassendiagramm veranschaulicht die auf der Schablonenmethode basierende Lösung und konzentriert sich auf das Wesentliche:
+??? info "Klassendiagramm der Template Method basierte Lösung"  
+    Das folgende UML-Klassendiagramm veranschaulicht die Template-Methoden-basierte Lösung mit einem Fokus auf die wesentlichen Punkte:
 
-    ![Template Method UML osztálydiagram cél](images/template-method-goal.png)
+    ![Template Method UML Klassendiagramm Ziel](images/template-method-goal.png)
 
-Im Beispiel beruht die Trennung zwischen "unveränderlichen" und "veränderlichen" Teilen auf den folgenden Grundsätzen (es lohnt sich, diese im obigen Klassendiagramm zu verstehen, das auf unser Beispiel angewandt wird):
+Im Muster wird die Trennung der "unveränderlichen" und "variablen" Teile nach den folgenden Prinzipien umgesetzt (es ist sinnvoll, diese anhand des oben gezeigten Klassendiagramms - angewendet auf unser Beispiel - zu verstehen):
 
-* Die "gemeinsamen/ungemeinsamen" Teile werden in eine Vorgängerklasse eingeordnet.
-* Dabei sind die Erweiterungspunkte die Einführung von abstrakten/virtuellen Funktionen, die an den Erweiterungspunkten aufgerufen werden.
-* Ihre fallspezifische Implementierung ist in den Nachfolgeklassen untergebracht.
+* Die "gemeinsamen/unveränderlichen" Teile kommen in eine Basisklasse.
+* Erweiterungspunkte werden hier durch die Einführung abstrakter/virtueller Funktionen geschaffen, die an den Erweiterungspunkten aufgerufen werden.
+* Die fallabhängige Implementierung dieser Erweiterungspunkte kommt in die abgeleiteten Klassen.
 
-Der bekannte "Trick" besteht darin, dass beim Aufruf der abstrakten/virtuellen Funktionen durch den Vorgänger der fallabhängige Code des Nachfolgers aufgerufen wird.
+Der bekannte "Trick" besteht darin, dass, wenn die Basisklasse die abstrakten/virtuellen Funktionen aufruft, der fallabhängige Code in den abgeleiteten Klassen ausgeführt wird.
 
- `enum` `if``switch` Im Folgenden wird die frühere , oder /-basierte Lösung in eine **Template-Methoden-basierte** Lösung umgewandelt (diese wird keine Aufzählung mehr haben). Wir führen eine Vorgängerklasse und zwei vom Algorithmus abhängige Nachkommen ein.
+In den folgenden Schritten werden wir die vorherige `enum`- bzw. `if`/`switch`-basierte Lösung in eine **Template Method** Lösung umwandeln (es wird kein `enum` mehr verwendet). Wir werden eine Basisklasse und zwei algorithmusabhängige abgeleitete Klassen einführen.
 
-Wir müssen unseren Code entsprechend umstrukturieren. In der VS-Lösung, im Ordner "3-TemplateMethod", enthält das Projekt "TemplateMethod-0-Begin" den Code unserer vorherigen Lösung (eine "Kopie" davon), lassen Sie uns in diesem Projekt arbeiten:
+Lassen wir uns den Code entsprechend anpassen. Im Visual Studio Solution "3-TemplateMethod" befindet sich das Projekt "TemplateMethod-0-Begin", das eine Kopie unserer vorherigen Lösung enthält. In diesem Projekt werden wir arbeiten:
 
-1.  `Anonymizer` `AnonymizerBase`Benennen Sie die Klasse um in (z. B. indem Sie auf den Klassennamen in der Quelldatei zeigen und ++f2++drücken).
-2.  `NameMaskingAnonymizer` `AgeAnonymizer` Fügen Sie eine Klasse und eine Klasse zu dem Projekt hinzu (Rechtsklick auf das Projekt, *Hinzufügen/Klasse*).
-3.  `AnonymizerBase`Extrahieren Sie sie aus
-4.  `AnonymizerBase` `NameMaskingAnonymizer`Verschieben Sie die entsprechenden Teile von nach :
-    1.  `_mask` Die Mitgliedsvariable .
-    2.  `string inputFileName, string mask` `NameMaskingAnonymizer`Der Konstruktor, umbenannt in ,
-        1. `_anonymizerMode = AnonymizerMode.Name;` zeile wird gelöscht,
-        2.  `this` `base` anstelle von .
+1. Benennen wir die Klasse `Anonymizer` in `AnonymizerBase` um (z. B. in der Quelldatei mit Rechtsklick auf den Klassennamen und Drücken von ++f2++).
+2. Fügen wir dem Projekt eine `NameMaskingAnonymizer`- und eine `AgeAnonymizer`-Klasse hinzu (Rechtsklick im Projekt, *Add*/*Class*).
+3. Erben wir die Klassen `NameMaskingAnonymizer` und `AgeAnonymizer` von der `AnonymizerBase`.
+4. Verschieben wir die entsprechenden Teile aus der `AnonymizerBase` in die `NameMaskingAnonymizer`:
+    1. Die `_mask`-Mitgliedsvariable.
+    2. Der Konstruktor mit den Parametern `string inputFileName, string mask`, umbenannt zu `NameMaskingAnonymizer`, wobei:
+        1. Die Zeile `_anonymizerMode = AnonymizerMode.Name;` entfernt wird.
+        2. Anstelle von `this` verwenden wir `base` für den Konstruktoraufruf.
       
-            ??? example "Konstrukteurscode"
-      
+            ??? example "Der Konstruktor Code"
+
                 ``` csharp
                 public NameMaskingAnonymizer(string inputFileName, string mask): base(inputFileName)
                 {
@@ -232,13 +233,13 @@ Wir müssen unseren Code entsprechend umstrukturieren. In der VS-Lösung, im Ord
                 }
                 ```
 
-5.  `AnonymizerBase` `AgeAnonymizer`Verschieben Sie die entsprechenden Teile von nach :
-    1.  `_rangeSize` Die Mitgliedsvariable .
-    2.  `string inputFileName, string rangeSize` `AgeAnonymizer`Der Konstruktor, umbenannt in ,
-        1. `_anonymizerMode = AnonymizerMode.Age;` zeile wird gelöscht,
-        2.  `this` `base` anstelle von .
+5. Verschieben wir die entsprechenden Teile aus der `AnonymizerBase` in die `AgeAnonymizer`:
+    1. Die `_rangeSize`-Mitgliedsvariable.
+    2. Der Konstruktor mit den Parametern `string inputFileName, string rangeSize`, umbenannt zu `AgeAnonymizer`, wobei:
+        1. Die Zeile `_anonymizerMode = AnonymizerMode.Age;` entfernt wird.
+        2. Anstelle von `this` verwenden wir `base` für den Konstruktoraufruf.
 
-            ??? example "Konstrukteurscode"
+            ??? example "Der Konstruktor Code"
       
                 ``` csharp
                 public AgeAnonymizer(string inputFileName, int rangeSize): base(inputFileName)
@@ -247,27 +248,27 @@ Wir müssen unseren Code entsprechend umstrukturieren. In der VS-Lösung, im Ord
                 }
                 ```
 
-6.  `AnonymizerBase`Bei :
-      1.  `AnonymizerMode` Löschen Sie den Aufzählungstyp .
-      2.  `_anonymizerMode` Wir löschen den Tag .
+6. In der `AnonymizerBase`:
+    1. Löschen wir den `AnonymizerMode` Aufzählungstyp.
+    2. Löschen wir das `_anonymizerMode`-Feld.
 
- `AnonymizerBase` Suchen Sie nach Teilen, die fallabhängig sind, nach variabler Logik, so dass Sie diese nicht in die Klasse einbauen wollen, die wiederverwendbar sein soll:
+Suchen wir die Teile, die fallabhängige, variable Logiken enthalten, die wir nicht in die wiederverwendbare `AnonymizerBase`-Klasse einbetten möchten:
 
-*  `Anonymize_MaskName``Anonymize_AgeRange`Einer ist / ,
-*  `GetAnonymizerDescription`das andere ist .
+* Eine davon ist `Anonymize_MaskName`/`Anonymize_AgeRange`,
+* die andere ist `GetAnonymizerDescription`.
 
-Dem Muster folgend führen wir abstrakte (oder möglicherweise virtuelle) Funktionen für diese in der Vorgängerklasse ein und rufen sie auf, und überschreiben ihre fallabhängigen Implementierungen in den Nachfolgeklassen:
+Dem Muster folgend führen wir in der Basisklasse abstrakte (oder möglicherweise virtuelle) Methoden ein und rufen diese auf, wobei die fallabhängigen Implementierungen in den abgeleiteten Klassen platziert werden (mit `override`):
 
-1.  `AnonymizerBase` `class` `abstract` Machen Sie die Klasse abstrakt (das Schlüsselwort vor ).
-2.  `AnonymizerBase`Geben wir eine neue URL in
+1. Machen wir die `AnonymizerBase`-Klasse abstrakt (indem wir das Schlüsselwort `abstract` vor `class` setzen).
+2. Fügen wir in `AnonymizerBase` die folgende Methode hinzu:
 
     ``` csharp
-    protected abstract Person Anonymize(Person person person);
+    protected abstract Person Anonymize(Person person);
     ```
 
-    (diese ist für die Anonymisierung zuständig).
+    Diese Methode wird für die Durchführung der Anonymisierung verantwortlich sein.
 
-3.  `Anonymize_MaskName` `NameMaskingAnonymizer` `Anonymize` Verschieben Sie die Operation in die Klasse und ändern Sie die Signatur so, dass die übergeordnete abstrakte Funktion überschrieben wird:
+3. Bewegen wir die Methode `Anonymize_MaskName` in die `NameMaskingAnonymizer`-Klasse und ändern wir ihre Signatur, sodass sie die abstrakte Methode `Anonymize` der Basisklasse überschreibt:
 
     ``` csharp
     protected override Person Anonymize(Person person)
@@ -277,9 +278,9 @@ Dem Muster folgend führen wir abstrakte (oder möglicherweise virtuelle) Funkti
     }
     ```
 
-     `mask` `_mask` Der Funktionskörper muss nur umgeschrieben werden, um die Mitgliedsvariable anstelle des veralteten Parameters zu verwenden.
+    Der Körper der Methode muss nur so geändert werden, dass anstelle des entfernten `mask`-Parameters die `_mask`-Membervariable verwendet wird.
 
-4.  `Anonymisieren_Altersbereich` `AgeAnonymizer` `Anonymize` In völliger Analogie zum vorherigen Schritt verschieben Sie die Operation in die Klasse und ändern ihre Signatur so, dass die übergeordnete abstrakte Funktion überschrieben wird:
+4. Auf die gleiche Weise wie im vorherigen Schritt verschieben wir die Methode `Anonymize_AgeRange` in die `AgeAnonymizer`-Klasse und ändern ihre Signatur so, dass sie die abstrakte Methode `Anonymize` der Basisklasse überschreibt:
 
     ``` csharp
     protected override Person Anonymize(Person person)
@@ -288,12 +289,12 @@ Dem Muster folgend führen wir abstrakte (oder möglicherweise virtuelle) Funkti
     }
     ```
 
-     `rangeSize` `_rangeSize` Der Funktionskörper muss nur umgeschrieben werden, um die Mitgliedsvariable anstelle des veralteten Parameters zu verwenden.
+    Der Körper der Methode muss nur so geändert werden, dass anstelle des entfernten `rangeSize`-Parameters die `_rangeSize`-Membervariable verwendet wird.
 
-5.  `AnonymizerBase` `Run` `if``else` `Anonymize` In der Funktion der Klasse können wir nun die Aufrufe in / durch einen einfachen abstrakten Funktionsaufruf ersetzen:
+5. In der `Run`-Methode der `AnonymizerBase`-Klasse können wir die `Anonymize`-Aufrufe im `if`/`else`-Ausdruck jetzt durch einen einfachen Aufruf der abstrakten Methode ersetzen:
 
     {--
-
+    
     ``` csharp
     Person person;
     if (_anonymizerMode == AnonymizerMode.Name)
@@ -306,15 +307,15 @@ Dem Muster folgend führen wir abstrakte (oder möglicherweise virtuelle) Funkti
 
     --}
 
-    stattdessen:
+    Stattdessen:
 
     ``` csharp
     var person = Anonymize(persons[i]);
     ```
 
-Einer unserer Verlängerungspunkte ist fertig.  `GetAnonymizerDescription` Es gibt aber noch eine weitere, die ebenfalls fallspezifisch ist. Die Umwandlung ist der vorherigen Reihe von Schritten sehr ähnlich:
+Ein unserer Erweiterungspunkte ist fertig. Es bleibt jedoch noch einer, `GetAnonymizerDescription`, deren Behandlung ebenfalls fallspezifisch ist. Die Umwandlung davon ist sehr ähnlich zu den vorherigen Schritten:
 
-1.  `AnonymizerBase` `GetAnonymizerDescription` `NameMaskingAnonymizer` `override` `NameMaskingAnonymizer`Die Operation der Klasse wird nach , einschließlich des Schlüsselworts in der Signatur, kopiert, wobei nur die Logik für im Funktionskörper verbleibt:
+1. Kopieren wir die Methode `GetAnonymizerDescription` aus der Klasse `AnonymizerBase` in die Klasse `NameMaskingAnonymizer`, fügen wir das Schlüsselwort `override` in die Signatur ein und lassen wir im Funktionskörper nur die Logik, die für `NameMaskingAnonymizer` gilt:
 
     ``` csharp
     protected override string GetAnonymizerDescription()
@@ -323,7 +324,7 @@ Einer unserer Verlängerungspunkte ist fertig.  `GetAnonymizerDescription` Es gi
     }
     ```
 
- 2.  `AnonymizerBase` `GetAnonymizerDescription` `AgeAnonymizer` `override` `AgeAnonymizer`Kopieren wir die Operation nach , einschließlich des Schlüsselworts in der Signatur, und lassen wir nur die Logik für im Funktionskörper:
+2. Kopieren wir die Methode `GetAnonymizerDescription` aus der Klasse `AnonymizerBase` auch in die Klasse `AgeAnonymizer`, fügen wir das Schlüsselwort `override` in die Signatur ein und lassen wir im Funktionskörper nur die Logik, die für `AgeAnonymizer` gilt:
 
     ``` csharp
     protected override string GetAnonymizerDescription()
@@ -332,7 +333,7 @@ Einer unserer Verlängerungspunkte ist fertig.  `GetAnonymizerDescription` Es gi
     }
     ```
 
-3.  `AnonymizerBase` `GetAnonymizerDescription` Die Frage ist, was man mit der Operation in .  `NameMaskingAnonymizer` Dies wird nicht abstrahiert, sondern in eine virtuelle Abhängigkeit umgewandelt, da wir hier ein sinnvolles Standardverhalten bereitstellen können: Wir geben einfach den Namen der Klasse zurück (der für die Klasse z. B. "NameMaskingAnonymizer" lauten würde).  `switch` Auf jeden Fall wird dadurch die starre Struktur beseitigt:
+3. Die Frage ist, was wir mit der Methode `GetAnonymizerDescription` in `AnonymizerBase` machen. Wir machen sie nicht abstrakt, sondern zu einer virtuellen Methode, da wir hier ein sinnvolles Standardverhalten bereitstellen können: Wir geben einfach den Namen der Klasse zurück (der z.B. für die Klasse `NameMaskingAnonymizer` "NameMaskingAnonymizer" wäre). Auf diese Weise befreien wir uns von der starren `switch`-Struktur:
 
     ``` csharp
     protected virtual string GetAnonymizerDescription()
@@ -342,130 +343,130 @@ Einer unserer Verlängerungspunkte ist fertig.  `GetAnonymizerDescription` Es gi
     ```
 
     !!! note "Reflexion"
-        `GetType()` `Type` Mit der vom Objektvorgänger geerbten Operation erhalten wir ein Objekt des Typs für unsere Klasse. Dies gehört zum Thema **Reflexion**, über das wir in einer Vorlesung am Ende des Semesters mehr erfahren werden.
+        Mit der aus der `object`-Klasse geerbten Methode `GetType()` erhalten wir ein `Type`-Objekt, das Informationen über die Klasse enthält. Dies gehört zum Thema **Reflexion**, über das wir am Ende des Semesters in einer Vorlesung ausführlicher lernen werden.
 
- `Programm.cs` `Main` `AnonymizerBase` Es bleibt nur noch eines zu tun: Je nach , versuchen wir nun, den Vorgänger zu replizieren (wegen der früheren Umbenennung). Stattdessen sollte es einer der beiden Abkömmlinge sein. Pl.:
+Es bleibt nur noch eine Sache: In der `Main`-Methode der `Program.cs` versuchen wir nun, die Basisklasse `AnonymizerBase` zu instanziieren (aufgrund der vorherigen Umbenennung). Stattdessen sollten wir eine der beiden abgeleiteten Klassen verwenden. Zum Beispiel:
 
 ``` csharp
 NameMaskingAnonymizer anonymizer = new("us-500.csv", "***");
 anonymizer.Run();
 ```
 
-Wir sind bereit. Probieren wir es aus, um ein besseres "Gefühl" dafür zu bekommen, wie Erweiterungspunkte wirklich funktionieren (aber wenn Sie während des Praktikums wenig Zeit haben, ist das nicht besonders wichtig, wir haben ähnliche Dinge im Zusammenhang mit C++/Java in früheren Semestern getan):
+Wir sind fertig! Versuchen wir nun, die Erweiterungspunkte besser zu verstehen, um sicherzustellen, dass sie wirklich funktionieren (aber falls wir im Labor wenig Zeit haben, ist das nicht unbedingt wichtig; etwas Ähnliches haben wir bereits in früheren Semestern in C++/Java durchgeführt):
 
-* In Visual Studio sollte das Projekt *TemplateMethod-0-Begin* das Startprojekt sein, wenn es nicht bereits eingestellt ist.
-*  `AnonymizerBase` `var person = Anonymize(persons[i]);` Setzen Sie einen Haltepunkt in der Zeile der Klasse.
-* Wenn der Debugger hier anhält, während er läuft, ++verwenden Sie f11++zur Eingabe.
-*  `AgeAnonymizer` Wir erfahren, dass die Operation des Nachkommens aufgerufen wird.
+* Stellen wir sicher, dass das Projekt *TemplateMethod-0-Begin* das Startprojekt in Visual Studio ist, falls wir das noch nicht eingestellt haben.
+* Setzen wir einen Haltepunkt in der `AnonymizerBase`-Klasse auf die Zeile `var person = Anonymize(persons[i]);`.
+* Wenn der Debugger während der Ausführung hier anhält, drücken wir `F11`, um in die Methode hineinzugehen.
+* Wir werden feststellen, dass die Methode der abgeleiteten Klasse `AgeAnonymizer` aufgerufen wird.
 
-Wir können einen Blick auf das Klassendiagramm der Lösung werfen:
+Werfen wir einen Blick auf das Klassendiagramm der Lösung:
 
-??? "Template Method based solution class diagram *"
-    ![Template Method based solution class diagram](bilder/vorlage-methode.png)
+??? "Klassendiagramm der Template Method basiertes Lösung*"
+    ![Template Method basiertes Lösungs-Klassendiagramm](images/template-method.png)
 
-!!! note "`3-TemplateMethod/TemplateMethod-1` Die Lösung für unsere bisherige Arbeit finden Sie im Projekt, falls Sie sie benötigen."
+!!! note "Unsere bisherige Lösung ist im `3-TemplateMethod/TemplateMethod-1` Projekt zu finden, falls wir sie brauchen."
 
-??? "Das Muster heißt Schablonenmethode"
-    , weil es sich - am Beispiel unserer Anwendung - um "Schablonenmethoden" handelt, die eine schablonenartige Logik, einen Rahmen, definieren, in dem bestimmte Schritte nicht gebunden sind.  `Run` `PrintSummary` Ihr "Code" wird abstrakten/virtuellen Funktionen überlassen, und ihre Implementierung wird von den abgeleiteten Klassen definiert.
+??? "Warum heißt das Muster Template Method? *"
+    Das Muster trägt den Namen "Template Method", weil - unter Verwendung unserer Anwendung als Beispiel - die Methoden `Run` und `PrintSummary` "Schablonenmethoden" sind, die eine schablonenartige Logik oder Struktur definieren, in der bestimmte Schritte nicht festgelegt sind. Diese Code-Teile werden an abstrakte/virtuelle Methoden delegiert, und die abgeleiteten Klassen bestimmen deren Implementierung.
 
 ### Bewertung der Lösung
 
-Wir überprüfen die Lösung, um zu sehen, ob sie unsere Ziele erreicht:
+Überprüfen wir, ob die Lösung unsere Ziele erfüllt:
 
-*  `AnonymizerBase` Ist eine wiederverwendbare Klasse geworden.
-* Wenn in Zukunft eine neue Anonymisierungslogik benötigt wird, leiten wir sie einfach ab. Es handelt sich nicht um eine Änderung, sondern um eine Verlängerung.
-* Damit ist das OPEN/CLOSED-Prinzip erfüllt, d.h. wir können die Logik an den beiden im Ahnen angegebenen Stellen anpassen und erweitern, ohne den Code zu verändern.
+* Die `AnonymizerBase`-Klasse wurde wiederverwendbarer.
+* Wenn in Zukunft eine neue Anonymisierungslogik erforderlich ist, müssen wir nur davon ableiten. Dies ist keine Modifikation, sondern eine Erweiterung.
+* Entsprechend wird das OPEN/CLOSED-Prinzip eingehalten, das heißt, wir können die Logik an den beiden Punkten im Basisklassen-Code anpassen und erweitern, ohne den Code der Basisklasse zu ändern.
 
-!!! note "Soll unsere Klasse an allen Stellen erweiterbar sein?"
-    `AnonymizerBase` Beachten Sie, dass wir nicht alle Operationen virtuell gemacht haben (und somit die Klasse an vielen Stellen erweitern). Wir haben dies nur dort getan, wo wir glauben, dass die Logik in Zukunft erweitert werden muss.
+!!! note "Soll jede Methode unserer Klasse erweiterbar sein?"
+    Beachten wir, dass wir nicht jede Methode der `AnonymizerBase`-Klasse virtuell gemacht haben, um die Klasse an jeder Stelle erweiterbar zu machen. Wir haben dies nur dort getan, wo wir glauben, dass es in Zukunft erforderlich sein könnte, die Logik zu erweitern.
 
-## 5. Megoldás (3-TemplateMethod/TemplateMethod-2-Progress)
+## 5. Lösung (3-TemplateMethod/TemplateMethod-2-Progress)
 
-T.f.h ein neuer - relativ einfacher - Bedarf entsteht:
+Nehmen wir an, dass es eine neue - relativ einfache - Anforderung gibt:
 
-*  `NameMaskinAnonimizer` Für , bleibt die bisherige einfache Fortschrittsanzeige erhalten (nach jeder Zeile wird die Anzahl der erreichten Zeilen ausgegeben),
+* Beim `NameMaskingAnonymizer` bleibt die bisher einfache Fortschrittsanzeige bestehen (wir geben nach jeder Zeile an, wie weit wir sind),
 
-    ??? note "Illustration des einfachen Fortschritts"
-        ![Illustration des einfachen Fortschritts](images/progress-simple.png)
+    ??? note "Einfache Fortschrittsanzeige"
+        ![Einfache Fortschrittsanzeige](images/progress-simple.png)
 
-*  `AgeAnonymizer` aber für , sollte die Fortschrittsanzeige anders sein: Sie sollte - nach jeder Zeile aktualisiert - den Prozentsatz der Verarbeitung anzeigen.
+* Beim `AgeAnonymizer` muss die Fortschrittsanzeige jedoch anders aussehen: Es soll nach jeder Zeile angezeigt werden, wie viel Prozent der Verarbeitung abgeschlossen sind.
 
-    ??? note "Darstellung des prozentualen Fortschritts"
-        ![Darstellung des prozentualen Fortschritts](images/fortschritt-prozent.gif)
+    ??? note "Prozentuale Fortschrittsanzeige"
+        ![Prozentuale Fortschrittsanzeige](images/progress-percent.gif)
         
-        (Da wir derzeit nur 500 Datenzeilen haben, werden wir dies am Ende unserer Lösung nicht sehen, es wird in kürzester Zeit auf 100 % steigen)
+        (Da wir derzeit nur wenige Daten haben (nur 500 Zeilen), wird diese Lösung am Ende schnell auf 100% springen.)
 
- `Laufen lassen` Die Lösung ist sehr einfach: Wir verwenden das Muster der Schablonenmethode in größerem Umfang in der Operation, führen einen Erweiterungspunkt in den Fortschrittsausdruck ein und überlassen die Implementierung einer virtuellen Funktion.
+Die Lösung ist sehr einfach: Wir wenden das Template Method-Muster in der `Run`-Methode weiter an und führen auch für die Fortschrittsanzeige einen Erweiterungspunkt ein, indem wir die Implementierung in eine virtuelle Methode auslagern.
 
-Springen wir direkt zur fertigen Lösung*(* Projekt*3-TemplateMethod/TemplateMethod-2-Progress* ):
+Springen wir direkt zur fertigen Lösung (*3-TemplateMethod/TemplateMethod-2-Progress* Projekt):
 
-* `AnonymizerBase` `PrintProgress` neue virtuelle Funktion in der Klasse (druckt standardmäßig nichts aus)
-* `Run`-bei diesem Gespräch
-* `NameMaskingAnonymizer`- `NameMaskingAnonymizer`implementierung (Override) in und
-  
-Bislang gibt es keine besonderen Lehren, die man ziehen könnte, aber im nächsten Schritt wird es welche geben.
+* In der `AnonymizerBase`-Klasse neue virtuelle Funktion `PrintProgress` (gibt standardmäßig nichts aus)
+* Aufruf dieser Funktion in `Run`
+* Entsprechende Implementierung in `NameMaskingAnonymizer` und `AgeAnonymizer` (override)
+
+Dies hat zunächst keine wesentlichen Erkenntnisse, aber im nächsten Schritt wird es welche geben.
 
 ## 6. Lösung (3-TemplateMethod/TemplateMethod-3-ProgressMultiple)
 
-Es ist ein neuer - und völlig logischer - Bedarf entstanden: In Zukunft kann jeder Anonymisierungsalgorithmus mit jeder Fortschrittsdarstellung verwendet werden. Dies bedeutet derzeit vier Kreuzkombinationen:
+Ein neuer - und völlig logischer - Bedarf ist aufgetaucht: In Zukunft soll jeder Anonymisierungsalgorithmus mit jeder Art der Fortschrittsanzeige verwendet werden können. Dies bedeutet derzeit vier Kreuzkombinationen:
 
-|Anonym|Progress|
+| Anonymisierer       | Fortschritt       |
 | ------------------- | ----------------- |
-|Namensanonymisierer|Einfacher Fortschritt|
-|Namensanonymisierer|Prozentualer Fortschritt|
-|Altersanonymisierung|Einfacher Fortschritt|
-|Altersanonymisierung|Prozentualer Fortschritt|
+| Namensanonymisierer | Einfache Fortschritte |
+| Namensanonymisierer | Prozentualer Fortschritt |
+| Altersanonymisierer | Einfache Fortschritte |
+| Altersanonymisierer | Prozentualer Fortschritt |
 
-Springen Sie zur fertigen Lösung*(* Projekt*3-TemplateMethod/TemplateMethod-3-ProgressMultiple* ).  `Haupt.cd` Öffnen Sie statt des Codes das Klassendiagramm im Projekt und überprüfen Sie die Lösung auf der Grundlage dieses Diagramms (oder Sie können das Diagramm unten im Leitfaden sehen).
+Springen wir zur fertigen Lösung (*3-TemplateMethod/TemplateMethod-3-ProgressMultiple* Projekt). Statt des Codes öffnen wir das `Main.cd` Klassendiagramm im Projekt und betrachten die Lösung anhand dieses Diagramms (oder wir können das Diagramm unten in der Anleitung ansehen).
 
-??? klassendiagramm "Template Method based solution (two aspects)"
-    ![Klassendiagramm "Template Method based solution (two aspects)](images/template-method-progress-multiple.png)
+??? "Template Method basierte Lösung (zwei Aspekte) Klassendiagramm"
+    ![Template Method basierte Lösung (zwei Aspekte) Klassendiagramm](images/template-method-progress-multiple.png)
 
-Man merkt, dass etwas "nicht stimmt", denn jede Kreuzung musste einen eigenen Nachkommen hervorbringen. Es gibt sogar zusätzliche Zwischenklassen in der Hierarchie, um Code-Duplizierung zu vermeiden. Darüber hinaus:
+Es ist spürbar, dass etwas "nicht stimmt", da für jede Kreuzkombination eine separate abgeleitete Klasse erstellt werden musste. Um den Code-Duplikationen zu verringern, gibt es sogar zusätzliche, Zwischenklassen in der Hierarchie. Außerdem:
 
-* Wenn wir in Zukunft einen neuen Anonymisierungsalgorithmus einführen, sollten wir (mindestens) so viele neue Klassen schreiben, wie wir Fortschrittstypen unterstützen.
-* Wenn in Zukunft eine neue Verlaufsart eingeführt wird, sollten (mindestens) so viele neue Klassen geschrieben werden, wie Anonymisierungsarten unterstützt werden.
+* Wenn wir in Zukunft einen neuen Anonymisierungsalgorithmus einführen, müssen wir so viele neue Klassen schreiben (mindestens), wie viele Fortschrittstypen wir unterstützen.
+* Wenn wir in Zukunft einen neuen Fortschrittstyp einführen, müssen wir so viele neue Klassen schreiben (mindestens), wie viele Anonymisierungstypen wir unterstützen.
 
-Was hat das Problem verursacht? Die **Notwendigkeit, das Verhalten unserer Klasse um mehrere Aspekte/Dimensionen zu erweitern (in unserem Beispiel Anonymisierung und Fortschritt) und diese in vielen Kreuzkombinationen zu unterstützen**. Müssten wir dies unter neuen Gesichtspunkten tun (z. B. wie man scannt, wie man Output erzeugt), würde das Problem exponentiell "explodieren". In solchen Fällen ist das Entwurfsmuster Template Method nicht anwendbar.
+Was hat das Problem verursacht? Dass **das Verhalten unserer Klassen entlang mehrerer Dimensionen/Aspekte (in unserem Beispiel Anonymisierung und Fortschritt) erweiterbar gemacht werden muss, und diese in vielen Kreuzkombinationen unterstützt werden müssen**. Wenn wir weitere Aspekte hinzufügen müssten (z.B. Art des Lesens oder Generierung der Ausgabe), würde das Problem exponentiell "explodieren". In solchen Fällen ist das Template-Method-Designmuster nicht anwendbar.
 
-## 7. Lösung (4-Strategie/Strategie-1)
+## 7. Lösung (4-Strategy/Strategy-1)
 
-In diesem Schritt werden wir das Entwurfsmuster **Strategy** verwenden, um unsere ursprüngliche Lösung an den erforderlichen Stellen zu erweitern. In der Stichprobe erfolgt die Trennung zwischen "unveränderten/wiederverwendbaren" und "sich ändernden" Teilen nach folgenden Grundsätzen:
+In diesem Schritt werden wir das **Strategy**-Entwurfsmuster anwenden, um unsere ursprüngliche Lösung an den erforderlichen Stellen erweiterbar zu machen. Im Muster wird die Trennung der "unveränderlichen/wiederverwendbaren" und "veränderbaren" Teile wie folgt umgesetzt:
 
-* Die "gemeinsamen/ungemeinsamen" Teile werden in einer Klasse zusammengefasst (dieses Mal jedoch nicht als "Elternklasse").
-* Im Gegensatz zur Template-Methode verwenden wir Komposition (Containment) statt Vererbung: Wir verlassen uns auf andere Objekte, die als Schnittstellen enthalten sind, um das Verhalten an Erweiterungspunkten zu implementieren (anstelle von abstrakten/virtuellen Funktionen).
-* Wir tun dies unabhängig für jeden Aspekt/Dimension des Klassenverhaltens, den wir austauschbar/erweiterbar machen wollen. Wie wir sehen werden, wird dadurch die kombinatorische Explosion vermieden, die wir im vorherigen Kapitel gesehen haben.
+* Die "gemeinsamen/unveränderlichen" Teile werden in eine bestimmte Klasse eingefügt (aber es wird keine "Basisklasse" sein).
+* Im Gegensatz zum Template Method-Muster verwenden wir hier keine Vererbung, sondern Komposition (Enthaltensein): Das Verhalten in den Erweiterungspunkten wird auf andere Objekte übertragen, die als Schnittstellen enthalten sind (und nicht auf abstrakte/virtuelle Funktionen).
+* Dies wird für jeden Aspekt des Verhaltens der Klasse durchgeführt, den wir ersetzbar/erweiterbar machen wollen, unabhängig voneinander. Wie wir sehen werden, kann so die kombinatorische Explosion, die im vorherigen Kapitel auftrat, vermieden werden.
 
-Dies ist in der Praxis viel einfacher, als es sich in der Schrift anfühlt (wir haben es in unseren früheren Studien schon einige Male verwendet). Um das zu verstehen, betrachten wir unser Beispiel.
+Das ist in der Praxis viel einfacher, als es in der Theorie erscheint (wir haben es auch schon in früheren Studien verwendet). Um das zu verstehen, betrachten wir unser Beispiel.
 
-Als Nächstes wollen wir das Klassendiagramm betrachten, das die strategiebasierte Lösung veranschaulicht (aufbauend auf der Erklärung, die dem Diagramm folgt).
+Im Folgenden betrachten wir das Klassendiagramm, das die Strategy-basierte Lösung veranschaulicht (auf die Erklärung nach dem Diagramm basierend).
 
-??? info "Klassendiagramm der strategiebasierten Lösung"
-    Das folgende UML-Klassendiagramm veranschaulicht die strategiebasierte Lösung und konzentriert sich auf das Wesentliche:
+??? info "Klassendiagramm der Strategie-basierte Lösung"
+    Das folgende UML-Klassendiagramm veranschaulicht die strategie-basierte Lösung, mit Fokus auf das Wesentliche:
 
-    ![Strategy UML osztálydiagram cél](imagesstrategy-goal.png)
+    ![Strategie UML Klassendiagramm Ziel](images/strategy-goal.png)
 
-Der erste Schritt bei der Verwendung des Strategiemusters besteht darin, zu bestimmen, **wie viele verschiedene Aspekte des Klassenverhaltens** Sie erweiterbar machen wollen. In unserem Beispiel gibt es zwei davon - zumindest im Moment:
+Der erste Schritt bei der Anwendung des Strategy-Musters ist die Bestimmung, **wie viele verschiedene Aspekte des Verhaltens der Klasse** wir erweiterbar machen möchten. In unserem Beispiel gibt es vorerst - zumindest - zwei:
 
-* Anonymisierungsbezogenes Verhalten mit zwei Aktionen:
+* Verhalten im Zusammenhang mit der Anonymisierung, das zwei Operationen umfasst:
     * Anonymisierungslogik
-    * Definition der Beschreibung der Anonymisierungslogik (Generierung eines Beschreibungsstrings)
-* Fortschreitende Behandlung mit einer Aktion:
-    * Fortschritt zeigen
+    * Bestimmung der Beschreibung der Anonymisierungslogik (Erzeugung des Beschreibungstextes)
+* Fortschrittsbehandlung, die eine Operation umfasst:
+    * Fortschrittsanzeige
 
-Der schwierige Teil ist geschafft, von nun an können Sie im Wesentlichen mechanisch nach dem Strategiemuster arbeiten:
+Der schwierigste Teil ist damit erledigt, ab jetzt kann man grundsätzlich mechanisch arbeiten, indem man dem Strategy-Muster folgt:
 
-1. Für jeden der oben genannten Aspekte sollte eine Strategie-Schnittstelle mit den oben definierten Operationen eingeführt werden, und die entsprechenden Implementierungen sollten vorbereitet werden.
-2.  `Anonym` In der Klasse sollte eine Mitgliedsvariable der Strategie-Schnittstelle eingeführt werden, und die aktuell konfigurierten Strategie-Implementierungsobjekte sollten in den Erweiterungspunkten über diese Mitgliedsvariablen verwendet werden.
+1. Für jeden der oben genannten Aspekte muss ein eigenes Strategy-Interface eingeführt werden, mit den oben definierten Operationen, und für jedes müssen die entsprechende Implementierungen erstellt werden.
+2. In der `Anonymizer`-Klasse muss für jedes Strategy-Interface eine Mitgliedsvariable eingeführt werden, und in den Erweiterungspunkten wird über diese Mitgliedsvariablen die aktuell eingestellte Strategy-Implementierung verwendet.
 
-Diese Elemente sind in dem obigen Klassendiagramm dargestellt. Kommen wir nun zum Code. Unsere Startumgebung befindet sich im Ordner "4-Strategy" im Projekt "Strategy-0-Begin", lassen Sie uns darin arbeiten. Dies ist dieselbe Lösung mit enum, die als Ausgangspunkt für das Muster Template Method verwendet wurde. 
+Diese Elemente erscheinen auch im obigen Klassendiagramm. Jetzt wechseln wir zum Code. Unsere Ausgangsumgebung befindet sich im "4-Strategy"-Ordner im "Strategy-0-Begin"-Projekt, in dem wir weiterarbeiten werden. Dies ist dieselbe Lösung, die das Enum verwendet, wie die, die wir auch als Ausgangspunkt für das Template Method-Muster verwendet haben.
 
 ### Anonymisierungsstrategie
 
-Wir beginnen mit der **Anonymisierungsstrategie/dem Anonymisierungsaspekt**. Implementieren Sie die entsprechende Schnittstelle:
+Wir beginnen mit der Verwaltung der **Anonymisierungsstrategie/-aspekts**. Führen wir die zugehörige Schnittstelle ein:
 
-1.  `AnonymizerAlgorithms` Erstellen Sie im Projekt einen Ordner mit dem Namen (klicken Sie mit der rechten Maustaste auf das Projekt "Strategy-0-Begin" und dann auf das Menü " *Add/New Folder* "). Legen Sie in den nächsten Schritten jede Schnittstelle und jede Klasse in eine eigene Quelldatei mit eigenem Namen, wie üblich!
-2.  `IAnonymizerAlgorithmus` Fügen Sie in diesem Ordner eine Schnittstelle mit dem folgenden Code hinzu:
+1. Erstellen wir im Projekt einen Ordner namens `AnonymizerAlgorithms` (Rechtsklick auf das "Strategy-0-Begin"-Projekt, dann *Add/New Folder* Menü). In den nächsten Schritten fügen wir jede Schnittstelle und Klasse in eine separate Datei mit dem entsprechenden Namen im gewohnten Format ein!
+2. Fügen wir in diesem Ordner eine Schnittstelle `IAnonymizerAlgorithm` mit folgendem Code hinzu:
 
     ``` csharp title="IAnonymizerAlgorithm.cs"
     public interface IAnonymizerAlgorithm
@@ -475,13 +476,13 @@ Wir beginnen mit der **Anonymisierungsstrategie/dem Anonymisierungsaspekt**. Imp
     }
     ```
 
-     `GetAnonymizerDescription` Wir können auch für die Operation beobachten, dass wir in modernem C#, wenn wir wollen, Standardimplementierungen für jede Schnittstellenoperation geben können!
+    Es ist auch bemerkenswert, dass wir in modernen C#-Versionen bei Bedarf den Methoden in Schnittstellen eine Standardimplementierung geben können, wie es bei der Methode `GetAnonymizerDescription` der Fall ist!
 
-Wir bauen jetzt eine Implementierung dieser Schnittstelle für die Anonymisierung von **Namen** (d.h. wir bauen eine Strategieimplementierung). 
+Jetzt erstellen wir die Implementierung für die Anonymisierung von **Namen** (also eine Strategy-Implementierung).
 
-1.  `NameMaskingAnonymizerAlgorithm` Fügen Sie demselben Ordner eine Klasse hinzu.
-2.  `Anonymizer` `NameMaskingAnonymizerAlgorithm` `_mask` Verschieben Sie in der Klasse die entsprechende Mitgliedsvariable nach :
-3.  `NameMaskingAnonymizerAlgorithm`Fügen Sie den folgenden Konstruktor zu :
+1. Fügen wir eine `NameMaskingAnonymizerAlgorithm` Klasse in denselben Ordner hinzu.
+2. Verschieben wir die zugehörige `_mask` Mitgliedsvariable aus der `Anonymizer`-Klasse in die `NameMaskingAnonymizerAlgorithm` Klasse.
+3. Fügen wir folgenden Konstruktor in die `NameMaskingAnonymizerAlgorithm` Klasse ein:
 
     ``` csharp
     public NameMaskingAnonymizerAlgorithm(string mask)
@@ -490,18 +491,19 @@ Wir bauen jetzt eine Implementierung dieser Schnittstelle für die Anonymisierun
     }
     ```
 
-4.  `IAnonymizerAlgorithmus` Machen Sie die Schnittstelle verfügbar.  `: IAnonymizerAlgorithmus` Nachdem Sie die Schnittstelle nach dem Klassennamen eingegeben haben, empfiehlt es sich, das Skelett der Operationen mit Visual Studio zu generieren: Setzen Sie den Cursor auf den Schnittstellennamen (klicken Sie ihn im Quellcode an), verwenden Sie die Tastenkombination 'ctrl' + '.', und wählen Sie dann "Schnittstelle implementieren" aus dem erscheinenden Menü.  `GetAnonymizerDescription` `Anonymize` Hinweis: Da es eine Standardimplementierung für die Operation in der Schnittstelle gibt, wird nur die Operation generiert, aber das ist für uns erst einmal in Ordnung. 
-5.  `Anonymizer` `Anonymize_MaskName` `NameMaskingAnonymizerAlgorithm``Anonymize`Verschieben Sie die Wurzel der Operation von der Klasse nach .  `mask` `_mask` Der Funktionskörper muss nur umgeschrieben werden, um die Mitgliedsvariable anstelle des nicht mehr vorhandenen Parameters zu verwenden.  `Anonymize` `Anonymize_MaskName`Die Klasse wird gelöscht.
-6.  `GetAnonymizerDescription`Wir wenden uns nun der Implementierung des Betriebs der Strategie-Schnittstelle zu.  `Anonymizer` `GetAnonymizerDescription` `NameMaskingAnonymizerAlgorithm`Kopieren Sie die Operation der Klasse nach , wobei Sie nur die Logik der Namensanonymisierung im Funktionskörper belassen und die Operation öffentlich machen:
+4. Implementieren wir die `IAnonymizerAlgorithm` Schnittstelle. Nachdem wir den Schnittstellennamen nach dem Klassennamen als `: IAnonymizerAlgorithm` hinzugefügt haben, ist es sinnvoll, mit Visual Studio das Grundgerüst für die Methoden zu erzeugen: Platzieren wir den Cursor auf den Schnittstellennamen (klicken wir im Quellcode darauf), verwenden wir die Tastenkombination 'ctrl' + '.', und wählen wir im Menü "Implement interface". Hinweis: Da es für die `GetAnonymizerDescription` Methode bereits eine Standardimplementierung in der Schnittstelle gibt, wird nur die `Anonymize` Methode generiert. Das ist momentan in Ordnung.
+5. Übernehmen wir den Code der `Anonymize_MaskName` Methode aus der `Anonymizer`-Klasse in die `Anonymize` Methode der `NameMaskingAnonymizerAlgorithm`. Der Methodenkörper muss nur so geändert werden, dass nicht mehr der nicht mehr existierende `mask` Parameter, sondern die `_mask` Membervariable verwendet wird. Löschen wir dann die `Anonymize` Methode in der `Anonymizer` Klasse.
+
+6. Jetzt wenden wir uns der Implementierung der `GetAnonymizerDescription` Methode im Strategy Interface zu. Kopieren wir die `GetAnonymizerDescription` Methode aus der `Anonymizer` Klasse in die `NameMaskingAnonymizerAlgorithm` Klasse und lassen wir nur die Logik für den Namensanonymisierer übrig, indem wir die Methode öffentlich machen:
 
     ``` csharp
     public string GetAnonymizerDescription()
     {
         return $"NameMasking anonymizer with mask {_mask}";
-    }  
+    }
     ```
 
-8. ??? example "Damit ist unsere Strategieimplementierung für die Namensanonymisierung abgeschlossen, der vollständige Code lautet wie folgt"
+8. ??? example "Mit dieser Implementierung haben wir die Strategy für die Namensanonymisierung abgeschlossen. Der vollständige Code sieht nun wie folgt aus:"
 
         ``` csharp title="NameMaskingAnonymizerAlgorithm.cs"
         public class NameMaskingAnonymizerAlgorithm: IAnonymizerAlgorithm
@@ -526,11 +528,11 @@ Wir bauen jetzt eine Implementierung dieser Schnittstelle für die Anonymisierun
         }
         ```
 
- `IAnonymizerAlgorithm` Im nächsten Schritt werden wir eine Implementierung unserer Strategie-Schnittstelle zur **Altersanonymisierung** vorbereiten.
+Im nächsten Schritt erstellen wir die Implementierung des `IAnonymizerAlgorithm` Strategy-Interfaces für die Anonymisierung von **Alter**.
 
-1.  `AgeAnonymizerAlgorithm` Fügen Sie im gleichen Ordner eine Klasse hinzu (AnonymizerAlgorithms).
-2.  `Anonymizer` `AgeAnonymizerAlgorithm` `_rangeSize` Verschieben Sie in der Klasse die entsprechende Mitgliedsvariable nach :
-3.  `AgeAnonymizerAlgorithm`Fügen Sie den folgenden Konstruktor zu :
+1. Erstellen wir eine `AgeAnonymizerAlgorithm`-Klasse im gleichen Ordner (AnonymizerAlgorithms).
+2. Verschieben wir die zugehörige `_rangeSize`-Membervariable aus der `Anonymizer`-Klasse in die `AgeAnonymizerAlgorithm`-Klasse.
+3. Fügen wir den folgenden Konstruktor in die `AgeAnonymizerAlgorithm`-Klasse ein:
 
     ``` csharp
     public AgeAnonymizerAlgorithm(int rangeSize)
@@ -539,9 +541,9 @@ Wir bauen jetzt eine Implementierung dieser Schnittstelle für die Anonymisierun
     }
     ```
 
-4.  `IAnonymizerAlgorithm` Machen Sie die Schnittstelle verfügbar.  `: IAnonymizerAlgorithm` `Anonymize` Nachdem Sie die Schnittstelle nach dem Klassennamen eingegeben haben, empfiehlt es sich auch, das Skelett der Operation mit Visual Studio auf dieselbe Weise wie zuvor zu generieren. 
-5.  `Anonymizer` `Anonymize_AgeRange` `AgeAnonymizerAlgorithm``Anonymize`Verschieben Sie die Wurzel der Operation von der Klasse nach .  `rangeSize` `_rangeSize` Der Funktionskörper muss nur umgeschrieben werden, um die Mitgliedsvariable anstelle des nicht mehr vorhandenen Parameters zu verwenden.  `Anonymize` `Anonymize_AgeRange`Die Klasse wird gelöscht.
-6.  `GetAnonymizerDescription`Wir wenden uns nun der Implementierung des Betriebs der Strategie-Schnittstelle zu.  `Anonymizer` `GetAnonymizerDescription` `AgeAnonymizerAlgorithm`Kopieren Sie die Operation der Klasse nach , wobei Sie nur die Logik der Altersanonymisierung im Funktionskörper beibehalten und die Operation öffentlich machen:
+4. Implementieren wir die `IAnonymizerAlgorithm`-Schnittstelle. Nachdem wir den Schnittstellennamen `: IAnonymizerAlgorithm` nach dem Klassennamen hinzugefügt haben, ist es ratsam, das Skelett der `Anonymize`-Methode mithilfe von Visual Studio wie zuvor zu generieren.
+5. Übertragen wir den Code der `Anonymize_AgeRange`-Methode aus der `Anonymizer`-Klasse in die `AgeAnonymizerAlgorithm`.`Anonymize`-Methode. Der Code muss nur so angepasst werden, dass anstelle des nicht mehr existierenden `rangeSize`-Parameters nun die `_rangeSize`-Membervariable verwendet wird. Löschen wir dann die `Anonymize_AgeRange`-Methode in der `Anonymizer`-Klasse.
+6. Jetzt gehen wir weiter mit der Implementierung der `GetAnonymizerDescription`-Methode des Strategy-Interfaces. Kopieren wir die `GetAnonymizerDescription`-Methode aus der `Anonymizer`-Klasse in die `AgeAnonymizerAlgorithm`-Klasse und lassen wir im Methodenkörper nur die Logik für die Altersanonymisierung, und machen wir die Methode öffentlich:
 
     ``` csharp
     public string GetAnonymizerDescription()
@@ -550,7 +552,7 @@ Wir bauen jetzt eine Implementierung dieser Schnittstelle für die Anonymisierun
     } 
     ```
 
-7. ??? example "Ezzel a kor anonimizáláshoz tartozó strategy implementációnk elkészült, a teljes kódja a következő lett"
+7. ??? example "Damit ist die Implementierung der Strategie für die Altersanonymisierung abgeschlossen, der gesamte Code lautet wie folgt"
 
         ``` csharp title="AgeAnonymizerAlgorithm.cs"
         public class AgeAnonymizerAlgorithm: IAnonymizerAlgorithm
@@ -580,15 +582,14 @@ Wir bauen jetzt eine Implementierung dieser Schnittstelle für die Anonymisierun
         }
         ```
 
+:exclamation: Beachten wir unbedingt, dass die Schnittstelle und ihre Implementierungen ausschließlich mit der Anonymisierung zu tun haben, ohne jegliche andere Logik (z. B. Fortschrittsanzeige)!
 
-warning:exclamation: Beachten Sie, dass die Schnittstelle und ihre Implementierungen sich nur mit der Anonymisierung befassen und keine andere Logik (z.B. Fortschrittsverarbeitung) involviert ist!
+### Fortschrittsstrategie
 
-### Strategie für den Fortschritt
+Im nächsten Schritt führen wir die Schnittstelle und die Implementierungen für die **Fortschrittsanzeige** ein:
 
-Im nächsten Schritt stellen wir die Schnittstelle und die Implementierungen **für das Fortschrittsmanagement** vor:
-
-1.  `Progresses` Erstellen Sie im Projekt einen Ordner mit dem Namen . In den nächsten Schritten legen Sie jede Schnittstelle und Klasse wie üblich in einer eigenen Quelldatei mit eigenem Namen ab.
-2.  `IProgress` Fügen Sie in diesem Ordner eine Schnittstelle mit dem folgenden Code hinzu:
+1. Erstellen wir im Projekt einen Ordner namens `Progresses`. In den folgenden Schritten fügen wir jede Schnittstelle und jede Klasse in eine separate, benannte Quelldatei gemäß den üblichen Konventionen ein.
+2. Fügen wir in diesem Ordner eine `IProgress`-Schnittstelle mit folgendem Code hinzu:
 
     ??? example "Lösung"
 
@@ -599,7 +600,7 @@ Im nächsten Schritt stellen wir die Schnittstelle und die Implementierungen **f
         }
         ```
 
-3. Fügen Sie die Implementierung dieser Schnittstelle für einfache Fortschritte in denselben Ordner ein.  `Anonymizer` `PrintProgress` Die Implementierung ist von der Operation unserer Klasse "abgeleitet":
+3. Fügen wir eine Implementierung dieser Schnittstelle für den einfachen Fortschritt in denselben Ordner ein. Die Implementierung wurde aus der `PrintProgress`-Methode unserer `Anonymizer`-Klasse abgeleitet:
 
     ??? example "Lösung"
 
@@ -613,7 +614,7 @@ Im nächsten Schritt stellen wir die Schnittstelle und die Implementierungen **f
         }
         ```
 
-4. Nehmen Sie die Implementierung dieser Schnittstelle für den prozentualen Fortschritt in denselben Ordner auf. Wir wollen uns nicht mit der Auslegung des Gesetzes befassen.  `Anonym` In unserer Klasse gibt es dafür keine Lösung, da wir sie nur in unserer auf Vorlagenmethoden basierenden Lösung eingeführt haben (wir haben uns den Code dort nicht angesehen, aber er ist praktisch derselbe):
+4. Fügen wir eine Implementierung dieser Schnittstelle für den Prozentsatz-Fortschritt in denselben Ordner ein. Wir werden uns nicht mit der Interpretation des Codes befassen. Diese Lösung existiert in unserer `Anonymizer`-Klasse nicht, da wir sie nur in unserer Template Method-basierten Lösung eingeführt haben (die wir dort nicht im Detail betrachtet haben, aber sie ist praktisch identisch in ihrer Logik):
 
     ??? example "Lösung"
 
@@ -624,7 +625,7 @@ Im nächsten Schritt stellen wir die Schnittstelle und die Implementierungen **f
             {
                 int percentage = (int)((double)(index+1) / count * 100);
 
-                Console.Write($"rProcessing: {percentage} %");
+                Console.Write($"\rProcessing: {percentage} %");
 
                 if (index == count - 1)
                     Console.WriteLine();
@@ -632,31 +633,31 @@ Im nächsten Schritt stellen wir die Schnittstelle und die Implementierungen **f
         }
         ```
 
-:exclamation: Beachten Sie, dass sich die Schnittstelle und ihre Implementierungen nur mit der Fortschrittsverarbeitung befassen und keine andere Logik (z.B. Anonymisierung) involviert ist!
+:exclamation: Beachten wir unbedingt, dass die Schnittstelle und ihre Implementierungen ausschließlich mit der Fortschrittsanzeige zu tun haben, ohne jegliche andere Logik (z. B. Anonymisierung)!
 
 ### Anwendung der Strategien
 
-Der nächste wichtige Schritt besteht darin, die anonymisierende Basisklasse mit Hilfe der oben vorgestellten Strategien wiederverwendbar und erweiterbar zu machen.  `Anonymizer.cs` Bei :
+Der nächste wichtige Schritt ist es, die Basisklasse des Anonymisierers mithilfe der oben eingeführten Strategien wiederverwendbar und erweiterbar zu machen. Im `Anonymizer.cs`-Datei:
 
-1. Löschen Sie Folgendes:
-      * `AnonymizerMode` aufzählungstyp
-      * `_anonymizerMode` `_mask` `_rangeSize` mitglied (oder und Mitglieder, wenn Sie schon einmal hier gewohnt haben)
+1. Löschen wir das Folgende:
+      * `AnonymizerMode`-Enum-Typ
+      * `_anonymizerMode`-Feld (sowie die Felder `_mask` und `_rangeSize`, falls diese vorher noch vorhanden sind)
   
-2. Einführung eines einzigen Strategie-Schnittstellentyp-Tags:
+2. Führen wir jeweils ein Strategie-Interface-Typ-Feld ein:
 
     ``` csharp
     private readonly IProgress _progress;
     private readonly IAnonymizerAlgorithm _anonymizerAlgorithm;
     ```
 
-3. Fügen Sie die entsprechende Verwendung am Anfang der Datei ein:
+3. Fügen wir am Anfang der Datei die entsprechenden `using`-Anweisungen hinzu:
 
     ``` csharp
-    mit Lab_Extensibility.AnonymizerAlgorithms;
-    mit Lab_Extensibility.Progresses;
+    using Lab_Extensibility.AnonymizerAlgorithms;
+    using Lab_Extensibility.Progresses;
     ```
 
-4.  `_progress` `_anonymizerAlgorithm` Der anfängliche Wert von und, der im vorigen Abschnitt eingeführt wurde, ist Null. Im Konstruktor werden diese Referenzen auf die Implementierung gesetzt, die Ihren Anforderungen entspricht. Pl.:
+4. Die in dem vorherigen Punkt eingeführten Felder `_progress` und `_anonymizerAlgorithm` haben anfangs den Wert `null`. Im Konstruktor setzen wir diese Referenzen auf die für unsere Anforderungen passende Implementierung. Zum Beispiel:
 
     ``` csharp hl_lines="3-4 9-10"
     public Anonymizer(string inputFileName, string mask) : this(inputFileName)
@@ -672,9 +673,9 @@ Der nächste wichtige Schritt besteht darin, die anonymisierende Basisklasse mit
     }
     ```
 
- `Anonymizer` `_anonymizerAlgorithm` In der Klasse wird die derzeit implementierte, aber **von der Anonymisierung abhängige** Logik der Strategieimplementierung überlassen, auf die die Mitgliedsvariable verweist:
+Im `Anonymizer`-Klasse übergeben wir die aktuell eingebettete, aber **anonymisierungsabhängige** Logik an die von der `_anonymizerAlgorithm`-Membervariable referenzierte Strategy-Implementierung:
 
-1.  `Run` `if``else` `Anonymize` `_anonymizerAlgorithm` Als eine Funktion der Klasse werden die Aufrufe im /-Ausdruck nun an das Objekt delegiert:
+1. In der `Run`-Methode der Klasse delegieren wir die `Anonymize`-Aufrufe, die sich im `if`/`else`-Ausdruck befinden, nun an das `_anonymizerAlgorithm`-Objekt:
 
     {--
 
@@ -690,31 +691,35 @@ Der nächste wichtige Schritt besteht darin, die anonymisierende Basisklasse mit
 
     --}
 
-    stattdessen:
+    Stattdessen:
 
     ``` csharp
     Person person = _anonymizerAlgorithm.Anonymize(persons[i]);
     ```
 
-2.  `Anonymize_MaskName` `Anonymize_AgeRange` Falls noch nicht geschehen, löschen Sie die Funktionen und, da ihr Code bereits in die Strategieimplementierungen aufgenommen wurde, die von der Klasse entkoppelt sind.
+2. Falls wir dies noch nicht getan haben, löschen wir die `Anonymize_MaskName`- und `Anonymize_AgeRange`-Methoden, da deren Code jetzt in die Strategy-Implementierungen verschoben wurde und vom Rest der Klasse getrennt ist.
 
-4.  `PrintSummary` `switch` `GetAnonymizerDescription`Unsere Funktion ruft den unflexiblen , basierend auf auf.  `GetAnonymizerDescription` `_anonymizerAlgorithm` Dieser Aufruf an wird durch eine Delegation an das Objekt ersetzt.  `PrintSummary` In der Funktion (nur zur Hervorhebung der Grundzüge):
+4. Unsere `PrintSummary`-Methode ruft die unflexible, auf `switch` basierende `GetAnonymizerDescription`-Methode auf. Diese `GetAnonymizerDescription`-Methode ersetzen wir, delegieren sie an das `_anonymizerAlgorithm`-Objekt. In der `PrintSummary`-Methode (nur das Wesentliche hervorgehoben):
 
+    {--
+    
     ``` csharp
         ... GetAnonymizerDescription() ...
     ```
 
-    stattdessen:
+    --}
+
+    Stattdessen:
 
     ``` csharp
         ... _anonymizerAlgorithm.GetAnonymizerDescription() ...
     ```
 
-     `GetAnonymizerDescription` Ein paar Zeilen weiter unten wird die Funktion aus der Klasse entfernt (ihr Code ist in den entsprechenden Strategieimplementierungen enthalten).
+    Ein paar Zeilen weiter unten löschen wir die `GetAnonymizerDescription`-Methode aus der Klasse (ihr Code wurde in die entsprechenden Strategy-Implementierungen verschoben).
 
- `Anonymizer` Der letzte Schritt besteht darin, den **Progress-Handler** in der Klasse zu ersetzen:
+Der letzte Schritt ist der Austausch der im `Anonymizer`-Klasse eingebetteten **Fortschrittsverwaltung**:
 
-1.  `_progress` Auch hier delegieren wir die Anfrage an unser zuvor eingeführtes Objekt.  `Run` Sie müssen eine Zeile in der Funktion ersetzen:
+1. Auch hier delegieren wir die Anfrage an das zuvor eingeführte `_progress`-Objekt. In der `Run`-Methode muss eine Zeile ausgetauscht werden:
 
     {--
 
@@ -724,33 +729,33 @@ Der nächste wichtige Schritt besteht darin, die anonymisierende Basisklasse mit
 
     --}
 
-    stattdessen:
+    Stattdessen:
 
     ``` csharp
     _progress.Report(persons.Count, i);
     ```
 
-2.  `PrintProgress` Löschen Sie die Funktion, da sich ihr Code bereits in einer eigenen Strategieimplementierung befindet, die von der Klasse entkoppelt ist.
+2. Löschen wir die `PrintProgress`-Methode, da ihr Code nun in eine passende Strategy-Implementierung verschoben wurde und von der Klasse getrennt ist.
 
-Wir sind fertig, die fertige Lösung befindet sich im Projekt "4-Strategy/Strategy-1" (wenn Sie irgendwo stecken bleiben oder der Code sich nicht kompilieren lässt, können Sie ihn damit überprüfen).
+Wir sind fertig, die fertige Lösung befindet sich im "4-Strategy/Strategy-1"-Projekt (falls wir irgendwo stecken geblieben sind oder der Code nicht kompiliert, können wir ihn hier mit der Lösung vergleichen).
 
 ### Bewertung der Lösung
 
-Wir sind mit der Umsetzung der Strategievorlage fertig. In seiner jetzigen Form wird es jedoch fast nie verwendet.  `Anomymizer` Überprüfen wir unsere Lösung: Ist sie wirklich wiederverwendbar, und ist es möglich, den Anonymisierungsalgorithmus und die Fortschrittsbehandlung zu ändern, ohne die Klasse zu modifizieren? Dazu müssen Sie prüfen, ob es irgendwo in der Klasse Code gibt, der von der Implementierung abhängig ist.
+Mit der Einführung des Strategy-Musters sind wir fertig. In seiner jetzigen Form wird es jedoch so gut wie nie verwendet. Überprüfen wir unsere Lösung: Ist sie tatsächlich wiederverwendbar, und ist es möglich, den Anonymisierungsalgorithmus sowie die Fortschrittsbehandlung zu ändern, ohne die `Anonymizer`-Klasse zu modifizieren? Dafür müssen wir überprüfen, ob es im Code irgendwo Implementierungsabhängigkeiten gibt.
 
-Leider finden wir sie. Der Konstruktor wird in die Algorithmus-Implementierung eingebrannt und die Fortschrittsimplementierung wird erstellt. Achten Sie darauf, dies im Code zu überprüfen!  `neu` Wenn Sie den Algorithmus oder den Fortschrittsmodus ändern wollen, müssen Sie den Typ nach dem Operator in diesen Zeilen umschreiben, wodurch sich die Klasse ändert.
+Leider finden wir solche Stellen. Im Konstruktor ist festgelegt, welche Implementierung des Algorithmus und der Fortschrittsbehandlung erstellt wird. Dies müssen wir unbedingt im Code beachten! Wenn wir den Algorithmus oder den Fortschrittsmodus ändern möchten, müssen wir den Typ hinter dem `new`-Operator in diesen Zeilen ändern, was eine Modifikation der Klasse mit sich bringt.
 
-Viele halten sie - zu Recht - nicht einmal in ihrer jetzigen Form für eine echte strategiebasierte Lösung. Die vollständige Lösung wird im nächsten Schritt umgesetzt.
+Viele – völlig zu Recht – betrachten dies in dieser Form nicht als eine echte Strategie-basierte Lösung. Die vollständige Lösung werden wir im nächsten Schritt umsetzen.
 
-## 8. Megoldás (4-Strategy/Strategy-2-DI)
+## 8. Lösung (4-Strategy/Strategy-2-DI)
 
 :warning: **Dependency Injection (DI)**  
-Die Lösung heißt **Dependency Injection (kurz: DI)**. Die Idee ist, dass die Klasse selbst ihre Verhaltensabhängigkeiten nicht instanziiert (dies sind Strategieimplementierungen), sondern wir sie von außen an sie weitergeben, z. B. in Konstruktorparametern oder sogar in Form von Eigenschaften oder Setter-Operationen. Das wird natürlich als Schnittstellentyp bezeichnet!
+Die Lösung besteht in der Anwendung von **Dependency Injection (kurz DI)**. Das Prinzip dabei ist, dass die Klasse ihre Verhaltensabhängigkeiten (diese sind die Strategy-Implementierungen) nicht selbst instanziiert, sondern diese von außen übergeben bekommt, z. B. als Konstruktorparameter oder sogar als Properties oder Setter-Methoden. Natürlich unter der Verwendung von Schnittstellentypen!
 
- `Anonymizer` Strukturieren Sie die Klasse entsprechend um, so dass sie die Strategieimplementierungen nicht selbst instanziiert, sondern sie als Konstruktorparameter erhält:
+Passen wir die `Anonymizer`-Klasse entsprechend an, sodass wir die Strategy-Implementierungen nicht selbst instanziieren, sondern diese über Konstruktorparameter erhalten:
 
-1. Alle drei Konstruktoren löschen
-2. Betrachten Sie den folgenden Konstruktor:
+1. Löschen wir alle drei Konstruktoren.
+2. Fügen wir den folgenden Konstruktor hinzu:
 
     ``` csharp
     public Anonymizer(string inputFileName, IAnonymizerAlgorithm anonymizerAlgorithm, IProgress progress = null)
@@ -764,15 +769,15 @@ Die Lösung heißt **Dependency Injection (kurz: DI)**. Die Idee ist, dass die K
     }
     ```
 
-     `progress` Wie Sie sehen können, ist der Parameter optional, da der Benutzer der Klasse möglicherweise keine Fortschrittsinformationen sehen möchte.
+    Wie zu sehen ist, ist die Angabe des `progress`-Parameters nicht zwingend erforderlich, da der Benutzer der Klasse möglicherweise keine Fortschrittsinformationen benötigt.
 
-3. Da die _progress-Strategie null sein kann, muss bei ihrer Verwendung ein Nulltest eingeführt werden. Der Operator "." wird durch den Operator "?." ersetzt:
+3. Da die _progress-Strategie auch null sein kann, müssen wir eine Nullprüfung während der Verwendung einführen. Anstelle des "."-Operators verwenden wir den "?."-Operator:
 
     ``` csharp
     _progress?.Report(persons.Count,i);
     ```
 
-4.  `Anonymizer` Jetzt sind wir fertig, die Klasse ist völlig unabhängig von Strategieimplementierungen.  `Anonymizer` Es ist möglich, die Klasse mit einer beliebigen Kombination von Anonymisierungsalgorithmen und einer beliebigen Verlaufsbehandlung zu verwenden (ohne sie zu modifizieren).  `Anonymizer` `Program.cs` `Main` `Main` Lassen Sie uns auch drei mit verschiedenen Kombinationen der Datei in der Funktion erstellen (der vorhandene Code wird zuerst aus der Funktion gelöscht):
+4. Jetzt sind wir fertig, die `Anonymizer`-Klasse ist vollständig von den Strategy-Implementierungen entkoppelt. Wir haben nun die Möglichkeit, die `Anonymizer`-Klasse mit jeder beliebigen Kombination von Anonymisierungsalgorithmen und Fortschrittsbehandlungen zu verwenden (ohne die Klasse selbst zu ändern). Erstellen wir drei `Anonymizer`-Instanzen mit verschiedenen Kombinationen im `Main`-Methode der `Program.cs`-Datei (löschen wir den bestehenden Code zuvor aus der `Main`-Methode):
 
     ``` csharp
     Anonymizer p1 = new("us-500.csv",
@@ -795,34 +800,35 @@ Die Lösung heißt **Dependency Injection (kurz: DI)**. Die Idee ist, dass die K
     p3.Run();
     ```
 
-5.  `using`Um den Code zum Kochen zu bringen, fügen Sie am Anfang der Datei das Notwendige ein
+5. Um sicherzustellen, dass der Code funktioniert, fügen wir am Anfang der Datei die erforderlichen `using`-Anweisungen ein:
 
     ``` csharp
     using Lab_Extensibility.AnonymizerAlgorithms;
     using Lab_Extensibility.Progresses;
     ```
 
-Wir haben es getan, und die fertige Lösung ist im Projekt "4-Strategy/Strategy-2-DI" zu finden (wenn Sie irgendwo stecken bleiben oder der Code sich nicht kompilieren lässt, können Sie ihn damit überprüfen).
+Wir sind fertig, die Lösung ist im Projekt "4-Strategy/Strategy-2-DI" zu finden (falls wir irgendwo stecken bleiben oder der Code nicht kompiliert, können wir dies mit der Lösung vergleichen).
 
-!!!  `Program.cs` `Run` Hinweis "Überprüfen der Funktionsweise" In der Übung wird wahrscheinlich keine Zeit dafür sein, aber wenn Sie sich nicht sicher sind, "warum das Strategiemuster funktioniert", warum sich das Verhalten in den vier oben genannten Fällen unterscheidet: Es lohnt sich, in der Datei Haltepunkte für die vier Funktionsaufrufe zu setzen und die Funktionen im Debugger aufzurufen, um zu testen, dass immer die richtige Strategieimplementierung aufgerufen wird.
+!!! Hinweis "Überprüfung der Funktionsweise"
+    Während der Übung wird wahrscheinlich keine Zeit für diese Überprüfung bleiben, aber wer sich unsicher ist, "warum das Strategy-Muster funktioniert" und warum sich das Verhalten in den oben genannten vier Fällen unterscheidet, sollte Breakpoints in der `Program.cs`-Datei an den vier `Run`-Funktionsaufrufen setzen und durch die Funktionen im Debugger eintreten, um zu überprüfen, dass immer die richtige Strategy-Implementierung aufgerufen wird.
 
-`Main.cd`Es gibt ein Klassendiagramm im Projekt ( ), wo Sie auch die fertige Lösung sehen können:
+Im Projekt befindet sich ein Klassendiagramm (`Main.cd`), das die fertige Lösung ebenfalls veranschaulicht:
 
-??? note "Klassendiagramm der strategiebasierten Lösung"
-    Das folgende UML-Klassendiagramm veranschaulicht unsere strategiebasierte Lösung:
+??? Hinweis "Klassendiagramm der Strategy-basierten Lösung"
+    Das folgende UML-Klassendiagramm veranschaulicht unsere Strategy-basierte Lösung:
 
-    ![Strategy DI UML osztálydiagram](imagesstrategy-di.png)
+    ![Strategy DI UML Klassendiagramm](images/strategy-di.png)
 
 ### Bewertung der Lösung
 
-Wir überprüfen die Lösung, um zu sehen, ob sie unsere Ziele erreicht:
+Überprüfen wir, ob die Lösung unsere Ziele erreicht:
 
-*  `Anonym` Ist eine wiederverwendbare Klasse geworden.
-*  `IAnonymizerAlgorithmus` Wenn in Zukunft eine neue Anonymisierungslogik benötigt wird, muss lediglich eine neue Implementierung eingeführt werden. Es handelt sich nicht um eine Änderung, sondern um eine Verlängerung/Erweiterung.
-*  `IProgress` Wenn in Zukunft eine neue Fortschrittslogik benötigt wird, ist lediglich eine neue Implementierung erforderlich. Es handelt sich nicht um eine Änderung, sondern um eine Verlängerung.
-*  `Anonymizer` In den beiden oben genannten Punkten ist das OPEN/CLOSED-Prinzip erfüllt, d.h. wir können die Logik von anpassen und erweitern, ohne den Code zu verändern.
-*  `IAnonymizerAlgorithm` `IProgress` `Program.cs` Hier ist die kombinatorische Explosion, wie sie bei der Schablonenmethode auftritt, nicht zu befürchten: Jede Implementierung kann bequem mit jeder Implementierung verwendet werden, ohne dass neue Klassen für Kombinationen eingeführt werden müssen (wir haben dies in der Datei gesehen).
+* Der `Anonymizer` ist zu einer wiederverwendba(re)ren Klasse geworden.
+* Wenn in der Zukunft eine neue Anonymisierungslogik benötigt wird, muss nur eine neue `IAnonymizerAlgorithm`-Implementierung eingeführt werden. Dies ist keine Änderung, sondern eine Erweiterung.
+* Wenn in der Zukunft eine neue Fortschrittslogik benötigt wird, muss nur eine neue `IProgress`-Implementierung eingeführt werden. Dies ist keine Änderung, sondern eine Erweiterung.
+* Die beiden obigen Punkte erfüllen das OPEN/CLOSED-Prinzip, d. h. wir können die Logik des `Anonymizer` anpassen und erweitern, ohne den Code der Klasse zu ändern.
+* Hier müssen wir nicht die kombinatorische Explosion für die Template Method befürchten: Jede `IAnonymizerAlgorithm`-Implementierung kann bequem mit jeder `IProgress`-Implementierung verwendet werden, ohne dass neue Klassen für die Kombinationen eingeführt werden müssen (dies haben wir in der `Program.cs`-Datei gesehen).
 
-!!! Hinweis "Zusätzliche Strategievorteile gegenüber der Template-Methode *"
-   * On the fly-Verhalten kann implementiert werden.  `Anonymizer` `SetAnonimizerAlgorithm` `SetProgress` Wenn wir in der Lage sein müssten, das Anonymisierungs- oder Fortschrittsverhalten für ein bestimmtes Objekt nach seiner Erstellung zu ändern, könnten wir das leicht tun (wir müssten nur einen , oder eine Operation einführen, bei der wir die von der Klasse verwendete Strategie auf die im Parameter angegebene Implementierung setzen könnten).
-   * Unterstützung der Testbarkeit von Einheiten (wir sehen uns das im Labor nicht an).
+!!! Note "Weitere Vorteile von Strategy im Vergleich zur Template Method *"
+    * Es kann auch ein Verhalten zur Laufzeit ersetzt werden. Wenn es notwendig wäre, dass wir nach der Erstellung eines bestimmten `Anonymizer`-Objekts das Anonymisierungs- oder Progress-Verhalten ändern können, dann könnten wir das leicht tun (wir müssten nur eine `SetAnonimizerAlgorithm`- bzw. `SetProgress`-Methode einführen, in der das erhaltene Implementierung auf das von der Klasse verwendete Strategy gesetzt wird).
+    * Unterstützung der Unit-Tests (dies betrachten wir im Labor nicht).

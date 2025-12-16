@@ -49,6 +49,24 @@ Erstellen Sie ein neuen Projekt mit Visual Studio (WinUI 3 Projekt, Blank App, P
 
 Beide Typen sollten öffentlich sein ( `class` und `enum` mit `public` vorangestellt), da Ihr sonst später bei der Übersetzung einen Fehler "Inconsistent accessibility" erhalten würden.
 
+Addieren Sie einen Ordner namens `Views` zu dem Projekt, und eine neue leere Seite namens `MainPage` zu diesem Ordner (Rechtsklick auf `Views`: _Add/New Item/Blank Page (WinUI 3)_). Um diese Seite auf dem Fenster unserer Anwendung anzuzeigen, muss ein `MainPage` Objekt im Hauptfenster `MainWindow.xaml` instanziiert werden (Namensraum `views` soll auch addiert werden):
+
+```xml title="MainWindow.xaml" hl_lines="8 11"
+    <Window
+        x:Class="HA3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="using:HA3"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:views="using:HA3.Views"
+        mc:Ignorable="d">
+
+        <views:MainPage />    
+    
+    </Window> 
+```
+
 Auf der Seite `MainPage` wird eine Liste der zu erledigenden Aufgaben angezeigt. Jetzt verwenden Sie speicherinterne Testdaten, die in `MainPage.xaml.cs` erstellt wurden: Hier führen Sie eine Eigenschaft `List<TodoItem>` mit dem Namen `Todos` ein (die später an das Steuerelement `ListView` auf der Benutzeroberfläche gebunden wird). Diese Liste enthält `TodoItem` Objekte.
 
 ```csharp title="MainPage.xaml.cs"
@@ -93,7 +111,7 @@ public List<TodoItem> Todos { get; set; } = new()
     * Die Sammlungselemente werden in `{}` aufgelistet (siehe Labor 2 "Collection initializer syntax").
 
 !!! note "`MainPage` Klasse"
-    Während der Hausaufgabe werden Sie in der Klasse `MainPage` arbeiten, die aus der eingebauten Klasse `Page` abgeleitet ist. Die Klasse `Page` hilft Ihnen, zwischen den Seiten innerhalb des Fensters zu navigieren. Obwohl sie in dieser Hausaufgaaóbe nicht verwendet wird, lohnt es sich, sich an ihre Verwendung zu gewöhnen. Da unsere Anwendung aus einer einzigen Seite besteht, instanziieren wir einfach ein Objekt `MainPage` im Hauptfenster (Sie können es sich in der Datei `MainWindow.xaml` ansehen).
+    Während der Hausaufgabe werden Sie in der Klasse `MainPage` arbeiten, die aus der eingebauten Klasse `Page` abgeleitet ist. Die Klasse `Page` hilft Ihnen, zwischen den Seiten innerhalb des Fensters zu navigieren. Obwohl sie in dieser Hausaufgabe nicht verwendet wird, lohnt es sich, sich an ihre Verwendung zu gewöhnen. Da unsere Anwendung aus einer einzigen Seite besteht, instanziieren wir einfach ein Objekt `MainPage` im Hauptfenster (Sie können es sich in der Datei `MainWindow.xaml` ansehen).
 
 ## Aufgabe 2 - Seitenlayout, Liste anzeigen
 

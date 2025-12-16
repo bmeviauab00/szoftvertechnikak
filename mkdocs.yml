@@ -102,7 +102,7 @@ nav:
       - labor/2-nyelvi-eszkozok/index.md
       - labor/3-felhasznaloi-felulet/index.md
       - labor/4-tobbszalu/index.md
-      - "5. MVVM": labor/meghirdetes-elott.md
+      - labor/5-mvvm/index.md
       - labor/6-tervezesi-mintak/index.md      
       - labor/7-adatkezeles/index.md      
   - "Önálló/házi feladatok":
@@ -110,37 +110,35 @@ nav:
       - '1. HF - A modell és a kód kapcsolata': hazi/1-model-es-kod-kapcsolata/index.md
       - '2. HF - Nyelvi eszközök': hazi/2-nyelvi-eszkozok/index.md
       - '3. HF - Felhasználói felület kialakítása': hazi/3-felhasznaloi-felulet-kialakitasa/index.md
-      - '4. HF - Többszálú alkalmazások fejlesztése': hazi/meghirdetes-elott.md
-      - '5. HF - MVVM': hazi/meghirdetes-elott.md
-      - '6. HF - Tervezési minták': hazi/meghirdetes-elott.md
-      - 'IMSc HF - Liftrendszer': hazi/meghirdetes-elott.md
-      - 'IMSc HF - MVVM receptek': hazi/meghirdetes-elott.md
+      - '4. HF - Többszálú alkalmazások fejlesztése': hazi/4-tobbszalu-alkalmazasok-fejlesztese/index.md
+      - '5. HF - MVVM': hazi/5-mvvm/index.md
+      - '6. HF - Tervezési minták': hazi/6-tervezesi-mintak/index.md
+      - 'IMSc HF - Liftrendszer': hazi/imsc-liftsystem/index.md
       - 'Fejlesztőkörnyezet': hazi/fejlesztokornyezet/index.md
   - "English course labs":
       - labor/1-model-es-kod-kapcsolata/index_eng.md
       - labor/2-nyelvi-eszkozok/index_eng.md
       - labor/3-felhasznaloi-felulet/index_eng.md
       - labor/4-tobbszalu/index_eng.md
-      - "5. MVVM": labor/meghirdetes-elott_eng.md
+      - labor/5-mvvm/index_eng.md
       - labor/6-tervezesi-mintak/index_eng.md      
       - labor/7-adatkezeles/index_eng.md 
   - "Homework":
       - 'Guide': hazi/index_eng.md
       - '1. HW - The relationship between the model and the code': hazi/1-model-es-kod-kapcsolata/index_eng.md
       - '2. HW - Language tools': hazi/2-nyelvi-eszkozok/index_eng.md
-      - '3. HW - Implementing the user interface': hazi/meghirdetes-elott_eng.md
-      - '4. HW - Developing multithreaded applications': hazi/meghirdetes-elott_eng.md
-      - '5. HW - MVVM': hazi/meghirdetes-elott_eng.md
-      - '6. HW - Design patterns': hazi/meghirdetes-elott_eng.md
+      - '3. HW - Implementing the user interface': hazi/3-felhasznaloi-felulet-kialakitasa/index_eng.md
+      - '4. HW - Developing multithreaded applications': hazi/4-tobbszalu-alkalmazasok-fejlesztese/index_eng.md
+      - '5. HW - MVVM': hazi/5-mvvm/index_eng.md
+      - '6. HW - Design patterns': hazi/6-tervezesi-mintak/index_eng.md
       - 'IMSc HW - Liftsystem': hazi/meghirdetes-elott_eng.md
-      - 'IMSc HW - MVVM recipies': hazi/meghirdetes-elott_eng.md
       - 'Development environment': hazi/fejlesztokornyezet/index_eng.md      
   - "Deutschkurs-Labore":
       - labor/1-model-es-kod-kapcsolata/index_ger.md
       - labor/2-nyelvi-eszkozok/index_ger.md
       - labor/3-felhasznaloi-felulet/index_ger.md
       - labor/4-tobbszalu/index_ger.md
-      - "5. MVVM": labor/meghirdetes-elott_ger.md
+      - labor/5-mvvm/index_ger.md
       - labor/6-tervezesi-mintak/index_ger.md
       - labor/7-adatkezeles/index_ger.md
   - "Hausaufgaben":
@@ -149,5 +147,5 @@ nav:
       - '3. Entwurf der Benutzeroberfläche': hazi/3-felhasznaloi-felulet-kialakitasa/index_ger.md
       - '4. Entwicklung von Multithreading-Anwendungen': hazi/4-tobbszalu-alkalmazasok-fejlesztese/index_ger.md
       - '5. MVVM': hazi/5-mvvm/index_ger.md
-      - '6. Entwurfsmuster': hazi/meghirdetes-elott_ger.md
+      - '6. Entwurfsmuster': hazi/6-tervezesi-mintak/index_ger.md
       - 'Entwicklungsumgebung': hazi/fejlesztokornyezet/index_ger.md

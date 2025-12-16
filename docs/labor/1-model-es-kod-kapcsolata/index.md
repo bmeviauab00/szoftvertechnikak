@@ -330,7 +330,7 @@ public class HardDisk : IEquipment
 
 Ezt követően a `SoundCard` és `HardDisk` osztályban implementálnunk kell az `IEquipment` interfészben levő metódusokat. Azt tapasztaljuk, hogy ezzel nincs most teendők, a `GetPrice` és `GetAge` függvények már meg vannak írva mindkét helyen.
 
-Próbaképpen a `Program.cs` fájlban található `Main` függvényünkben hozzunk létre egy `EquipmentInventory` objektumot, töltsük fel `HardDisk` és `SoundCard` objektumokkal, majd listázzuk a késztelet a konzolra. Ammennyiben nem 2025 az aktuális év, az alábbi soroknál a 2025-ös évet írjuk át az aktuális évre, a 2024-et pedig ennél eggyel kisebb számra!
+Próbaképpen a `Program.cs` fájlban található `Main` függvényünkben hozzunk létre egy `EquipmentInventory` objektumot, töltsük fel `HardDisk` és `SoundCard` objektumokkal, majd listázzuk a késztelet a konzolra. Amennyiben nem 2025 az aktuális év, az alábbi soroknál a 2025-ös évet írjuk át az aktuális évre, a 2024-et pedig ennél eggyel kisebb számra!
 
 ```csharp
 static void Main( string[] args )
@@ -373,7 +373,7 @@ public int GetAge()
 }
 ```
 
-Bővítsük a `Main` függvényünket is, vegyünk fel két `LedDisplay` objektumot a készletünkbe (itt is él, hogy ammennyiben nem 2025 az aktuális év, az alábbi soroknál a 2025-ös évet írjuk át az aktuális évre, a 2024-et pedig ennél eggyel kisebb számra!
+Bővítsük a `Main` függvényünket is, vegyünk fel két `LedDisplay` objektumot a készletünkbe (itt is él, hogy amennyiben nem 2025 az aktuális év, az alábbi soroknál a 2025-ös évet írjuk át az aktuális évre, a 2024-et pedig ennél eggyel kisebb számra!
 
 ```csharp hl_lines="1 2"
 ei.AddEquipment(new LedDisplay(2024, 80000, 17, 16));
