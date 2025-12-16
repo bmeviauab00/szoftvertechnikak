@@ -2286,7 +2286,7 @@ Entfernen Sie zunächst die "eingebrannte" <code>TextBlock</code> Definition fü
 </ul>
 <p>Im Allgemeinen können beide Lösungen Vor- und Nachteile haben. Option b) ist in mancher Hinsicht einfacher (man muss nicht wissen, wann sich der Zustand von <code>Game</code> ändert), aber sie kann auch redundant sein (wenn sich der Zustand zwischen zwei Aktualisierungen nicht geändert hat). Es kann aber auch effizienter sein, wenn sich der Zustand sehr oft ändert und man die Oberfläche nicht bei jeder Änderung aktualisieren möchte, sondern nur einmal in einem bestimmten Intervall (z. B. wenn die Augen es sowieso nicht verfolgen können).
 In unserem Fall haben wir uns für die "b"- oder zeitgesteuerte Lösung entschieden, hauptsächlich wegen der Einfachheit.</p>
-<p>In einer WinUI 3-Umgebung wird empfohlen, die Klasse <code>DispatchTimer</code> zu verwenden, um periodische Ereignisse zu behandeln (insbesondere, wenn Sie auf Oberflächenelemente zugreifen wollen), die zeitgesteuert ablaufen.</p>
+<p>In einer WinUI 3-Umgebung wird empfohlen, die Klasse <code>DispatcherTimer</code> zu verwenden, um periodische Ereignisse zu behandeln (insbesondere, wenn Sie auf Oberflächenelemente zugreifen wollen), die zeitgesteuert ablaufen.</p>
 <p>Führen Sie in der Klasse <code>MainWindow</code> eine Mitgliedsvariable ein:</p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">DispatcherTimer</span><span class="w"> </span><span class="n">timer</span><span class="p">;</span>
 </code></pre></div>
@@ -2616,8 +2616,8 @@ Wichtiger Hinweis: <code>volatile</code> muss nicht verwendet werden, wenn die V
         </path>
       </svg>
     </span>
-    <span title="2025. április 18. 17:40:33">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 18. 17:40:33 CEST"><span class="timeago" datetime="2025-04-18T17:40:33+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 18. 17:40:33 CEST">2025-04-18</span>
+    <span title="2025. december 16. 15:39:48">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. december 16. 15:39:48 CET"><span class="timeago" datetime="2025-12-16T15:39:48+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. december 16. 15:39:48 CET">2025-12-16</span>
     </span>
   </span>
 
@@ -2637,6 +2637,8 @@ Wichtiger Hinweis: <code>volatile</code> muss nicht verwendet werden, wenn die V
         <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
       </a><a href="https://github.com/szucscintialia" target="_blank" rel="noopener noreferrer" class="md-author" title="@Cintia Szücs">
         <img src="https://avatars.githubusercontent.com/u/26093637?v=4?size=72" alt="@Cintia Szücs">
+      </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tibor Tóth">
+        <img src="https://avatars.githubusercontent.com/u/8333960?u=d26653213d265ecdceeaf20a896d74f479d35450&amp;v=4?size=72" alt="@Tibor Tóth">
       </a></nav>      
   </span>
 </div>
