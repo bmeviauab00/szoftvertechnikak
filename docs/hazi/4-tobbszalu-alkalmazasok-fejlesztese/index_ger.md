@@ -135,7 +135,7 @@ Jetzt haben wir genau so viele `TextBlock`, wie es Fahrräder im Objekt `game` g
 Im Allgemeinen können beide Lösungen Vor- und Nachteile haben. Option b) ist in mancher Hinsicht einfacher (man muss nicht wissen, wann sich der Zustand von `Game` ändert), aber sie kann auch redundant sein (wenn sich der Zustand zwischen zwei Aktualisierungen nicht geändert hat). Es kann aber auch effizienter sein, wenn sich der Zustand sehr oft ändert und man die Oberfläche nicht bei jeder Änderung aktualisieren möchte, sondern nur einmal in einem bestimmten Intervall (z. B. wenn die Augen es sowieso nicht verfolgen können).
 In unserem Fall haben wir uns für die "b"- oder zeitgesteuerte Lösung entschieden, hauptsächlich wegen der Einfachheit.
 
-In einer WinUI 3-Umgebung wird empfohlen, die Klasse `DispatchTimer` zu verwenden, um periodische Ereignisse zu behandeln (insbesondere, wenn Sie auf Oberflächenelemente zugreifen wollen), die zeitgesteuert ablaufen.
+In einer WinUI 3-Umgebung wird empfohlen, die Klasse `DispatcherTimer` zu verwenden, um periodische Ereignisse zu behandeln (insbesondere, wenn Sie auf Oberflächenelemente zugreifen wollen), die zeitgesteuert ablaufen.
 
 Führen Sie in der Klasse `MainWindow` eine Mitgliedsvariable ein:
  
