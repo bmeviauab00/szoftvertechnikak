@@ -699,8 +699,8 @@ public MainWindow()
 
     People = new List<Person>()
     {
-      new Person() { Name = "Peter Griffin", Age = 40 },
-      new Person() { Name = "Homer Simpson", Age = 42 },
+        new Person() { Name = "Peter Griffin", Age = 40 },
+        new Person() { Name = "Homer Simpson", Age = 42 },
     };
 }
 ```
@@ -763,12 +763,18 @@ private void AddButton_Click(object sender, RoutedEventArgs e)
 
 Nem jelenik meg a listában az új elem, mert a `ListView` nem értesül arról, hogy új elem került a listába. Ezt könnyen orvosolhatjuk: a `List<Persont>`-t cseréljük le `ObservableCollection<Person>`-re:
 
-```csharp hl_lines="1"
+```csharp hl_lines="1 6"
 public ObservableCollection<Person> People { get; set; }
 
 public MainWindow()
 {
-  ...
+    // ...
+    People = new ObservableCollection<Person>()
+    {
+        new Person() { Name = "Peter Griffin", Age = 40 },
+        new Person() { Name = "Homer Simpson", Age = 42 },
+    };
+}
 ```
 
 !!! tip "`ObservableCollection<T>`"
