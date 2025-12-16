@@ -4,7 +4,7 @@ In this course, our goal is not to learn Git and GitHub in detail, but to focus 
 
 ## Git
 
-Git is a widely used, feature-rich, freely downloadable, and installable distributed version control system. Unlike centralized systems (TFS, CVS, SVN), in Git, developers do not work in a single central repository but each has their own local repository instance.
+Git is a widely used, feature-rich, freely downloadable, and installable distributed version control system. Unlike centralized systems (TFS, SVN), in Git, developers do not work in a single central repository but each has their own local repository instance.
 
 A Git **repository** (repo) is essentially a regular directory in the file system containing files (such as source code) and subdirectories, along with a ".git" subdirectory that stores all additional information related to version control.
 

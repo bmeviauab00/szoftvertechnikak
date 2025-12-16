@@ -4,7 +4,7 @@ A tárgy keretében nem célunk a Git és GitHub részletes megismerése, csak a
 
 ## Git
 
-A Git egy sok szolgáltatással rendelkező, rendkívül népszerű és elterjedt, ingyenesen letölthető és telepíthető, elosztottan is használható verziókezelő rendszer. A központosított rendszerekhez képest (TFS, CVS, SVN) a GIT esetében nem egyetlen központi repository-ba dolgoznak a fejlesztők, hanem mindenki egy saját lokális repository példánnyal rendelkezik.
+A Git egy sok szolgáltatással rendelkező, rendkívül népszerű és elterjedt, ingyenesen letölthető és telepíthető, elosztottan is használható verziókezelő rendszer. A központosított rendszerekhez képest (TFS, SVN) a GIT esetében nem egyetlen központi repository-ba dolgoznak a fejlesztők, hanem mindenki egy saját lokális repository példánnyal rendelkezik.
 
 Egy Git **repository** (becenevén repó) nem más, mint egy közönséges könyvtár a fájlrendszerben, benne állományokkal (pl. forráskód) és alkönyvtárakkal, illetve egy ".git" alkönyvtárral, melyben minden, a verziókezeléshez kapcsolódó extra információ megtalálható.
 
