@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2878,7 +2878,7 @@ Ennek tükrében nem is célunk (és sokszor nincs is rá lehetőségünk), hogy
 <p>Összegészében megoldásunk kódminőség tekintetében a korábbinál <strong>rosszabb</strong> lett.
 Korábban nem volt probléma, hogy anonimizáló algoritmusok tekintetében nem volt kiterjeszthető, hiszen nem volt rá igény. De ha már egyszer felmerült az igény új algoritmus bevezetésére, akkor hiba ebben a tekintetben nem kiterjeszthetővé tenni a megoldásunkat: ettől kezdve sokkal inkább számítunk arra, hogy újabb további algoritmusokat kell bevezetni a jövőben.</p>
 <p>Miért állítjuk azt, hogy a kódunk nem kiterjeszthető, amikor "csak" egy új enum értéket, és egy-egy plusz <code>if</code>/<code>switch</code> ágat kell a kód néhány pontjára bevezetni, amikor új algoritmust kell majd bevezetni?</p>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:"> <strong>Open/Closed principle</strong><br>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" title=":warning:"> <strong>Open/Closed principle</strong><br>
 Kulcsfontosságú, hogy egy osztályt akkor tekintünk kiterjeszthetőnek, ha annak bármilyen nemű <strong>módosítása nélkül</strong>, pusztán a kód <strong>kiterjesztésével/bővítésével</strong> lehet új viselkedést (esetünkben új algoritmust) bevezetni. Vagyis esetünkben az <code>Anonymizer</code> kódjához nem szabadna hozzányúlni, ami egyértelműen nem teljesül. Ez a híres <strong>Open/Closed principle/elv</strong>: the class should be Open for Extension, Closed for Modification. A kód módosítása azért probléma, mert annak során jó eséllyel új bugokat vezetünk be, ill. a módosított kódot mindig újra kell tesztelni, ez pedig jelentős idő/költségráfordítási igényt jelenthet.</p>
 <p>Mi is a pontos cél, és hogyan érjük ezt el? Vannak olyan részek az osztályunkban, melyeket nem szeretnénk beégetni:</p>
 <ul>
@@ -3316,7 +3316,7 @@ Kulcsfontosságú, hogy egy osztályt akkor tekintünk kiterjeszthetőnek, ha an
 </details>
 </li>
 </ol>
-<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> Mindenképpen figyeljük meg, hogy az interfész és a megvalósításai kizárólag az anonimizálással foglalkoznak, semmiféle más logika (pl. progress kezelés) nincs itt!</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Mindenképpen figyeljük meg, hogy az interfész és a megvalósításai kizárólag az anonimizálással foglalkoznak, semmiféle más logika (pl. progress kezelés) nincs itt!</p>
 <h3 id="progress-strategia">Progress stratégia<a class="headerlink" href="#progress-strategia" title="Permanent link">¶</a></h3>
 <p>A következő lépésben vezessük be a <strong>progress kezeléshez</strong> tartozó interfészt és implementációkat:</p>
 <ol>
@@ -3366,7 +3366,7 @@ Kulcsfontosságú, hogy egy osztályt akkor tekintünk kiterjeszthetőnek, ha an
 </details>
 </li>
 </ol>
-<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> Mindenképpen figyeljük meg, hogy az interfész és a megvalósításai kizárólag a progress kezeléssel foglalkoznak, semmiféle más logika (pl. anonimizálás) nincs itt!</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Mindenképpen figyeljük meg, hogy az interfész és a megvalósításai kizárólag a progress kezeléssel foglalkoznak, semmiféle más logika (pl. anonimizálás) nincs itt!</p>
 <h3 id="a-strategiak-alkalmazasa">A stratégiák alkalmazása<a class="headerlink" href="#a-strategiak-alkalmazasa" title="Permanent link">¶</a></h3>
 <p>A következő fontos lépés az anonimizáló alaposztály újrafelhasználhatóvá és kiterjeszthetővé tétele a fent bevezetett strategy-k segítségével. Az <code>Anonymizer.cs</code> fájlban:</p>
 <ol>
@@ -3458,7 +3458,7 @@ Kulcsfontosságú, hogy egy osztályt akkor tekintünk kiterjeszthetőnek, ha an
 <p>Sajnos találunk ilyet. A konstruktorba be van égetve, milyen algoritmus implementációt és progress implementációt hozunk létre. Ezt mindenképpen nézzük meg a kódban! Ha algoritmus vagy progress módot akarunk változtatni, ezekben a sorokban át kell írni a <code>new</code> operátor utáni típust, mely így az osztály módosításával jár.</p>
 <p>Sokan - teljesen jogosan - ezt jelen formájában nem is tekintik igazi Strategy alapú megoldásnak. A teljes körű megoldást a következő lépésben valósítjuk meg.</p>
 <h2 id="8-megoldas-4-strategystrategy-2-di">8. Megoldás (4-Strategy/Strategy-2-DI)<a class="headerlink" href="#8-megoldas-4-strategystrategy-2-di" title="Permanent link">¶</a></h2>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:"> <strong>Dependency Injection (DI)</strong><br>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" title=":warning:"> <strong>Dependency Injection (DI)</strong><br>
 A megoldást a <strong>Dependency Injection (röviden DI)</strong> alkalmazása jelenti. Ennek lényege az, hogy nem maga az osztály példányosítja a viselkedésbeli függőségeit (ezek a strategy implementációk), hanem ezeket kívülről adjuk át neki, pl. konstruktor paraméterekben, vagy akár property-k vagy setter műveletek formájában. Természetesen interfész típusként hivatkozva!</p>
 <p>Alakítsuk át ennek megfelelően az <code>Anonymizer</code> osztályt úgy, hogy ne maga példányosítsa a strategy implementációit, hanem konstruktor paraméterekben kapja meg azokat:</p>
 <ol>
@@ -3615,10 +3615,10 @@ A megoldást a <strong>Dependency Injection (röviden DI)</strong> alkalmazása 
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       

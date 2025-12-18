@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2492,12 +2492,12 @@
 <ul>
 <li>The submission process is the same as in previous assignments. Use GitHub Classroom to create a personal repository. The invitation URL is available on Teams and on AUT portal. Make sure you use the correct URL specific to this homework (each homework has its own unique link). Clone the repository that gets created — it will include the expected structure for your solution. After completing the tasks, commit and push your work.</li>
 <li>Open and work in the <code>Patterns-Extensibility.sln</code> solution file found among the cloned files.</li>
-<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> The tasks require you to take <strong>screenshots</strong> of specific parts of your solution, which serve as proof that you created the solution yourself. <strong>The expected content of each screenshot is clearly specified in the individual tasks.</strong> 
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> The tasks require you to take <strong>screenshots</strong> of specific parts of your solution, which serve as proof that you created the solution yourself. <strong>The expected content of each screenshot is clearly specified in the individual tasks.</strong> 
 These screenshots must be submitted as part of your solution — place them in the root folder of your repository (next to neptun.txt).
 The screenshots will be uploaded to GitHub along with the rest of the repository.
 Since the repository is private, only instructors will have access to it.
 If any screenshot includes content you don’t want to share, you may blur or redact it.</li>
-<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> This assignment does not include a functional pre-checker: Although a check runs after each push, it only verifies whether neptun.txt is filled out. The actual evaluation will be performed by the lab instructors after the deadline.</li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> This assignment does not include a functional pre-checker: Although a check runs after each push, it only verifies whether neptun.txt is filled out. The actual evaluation will be performed by the lab instructors after the deadline.</li>
 </ul>
 <h2 id="task-1">Task 1<a class="headerlink" href="#task-1" title="Permanent link">¶</a></h2>
 <p>The foundation of this homework assignment is the following:</p>
@@ -2514,7 +2514,7 @@ If any screenshot includes content you don’t want to share, you may blur or re
 <p class="admonition-title">Dependency Injection (Manual) vs. Dependency Injection Container</p>
 <p>In the lab — and in this homework — we use the simple, manual form of Dependency Injection (this is also what is shown in the lecture). In this case, dependencies of a class are manually instantiated and passed into the constructor. In more complex real-world applications, it is common to use a Dependency Injection Container,  where you can register which implementation to use for each interface type.  However, DI containers are not covered in this course and are not part of the curriculum. The manual version of DI <strong>is required</strong> and critically important — without it, applying the Strategy pattern would not make sense.</p>
 </div>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:"> In your own words, provide short answers to the following questions in the <code>readme.md</code> file located in the <em>Feladatok</em> folder:</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" title=":warning:"> In your own words, provide short answers to the following questions in the <code>readme.md</code> file located in the <em>Feladatok</em> folder:</p>
 <ul>
 <li>What does combining the Strategy pattern with Dependency Injection provide in the context of the lab example? What are the advantages of using them together?</li>
 <li>What does it mean that applying the Strategy pattern results in satisfying the Open/Closed Principle in the solution? (You can read about the Open/Closed Principle in the lecture and lab materials.)</li>
@@ -2552,13 +2552,13 @@ If any screenshot includes content you don’t want to share, you may blur or re
 <p>The solution — to make our code unit-testable — is simple:</p>
 <div class="grid cards">
 <ul>
-<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:">
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" title=":warning:">
     <em>Using the Strategy (+DI) pattern (or delegates), we separate the logic that hinders or slows down testing (e.g., input/output handling) from the class we want to unit test. We then create real implementations for production use and mock implementations to aid testing.</em></li>
 </ul>
 </div>
 <div class="grid cards">
 <ul>
-<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:">
+<li><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" title=":warning:">
     <em>Therefore, we often use the Strategy pattern not because multiple behaviors are required due to client needs, but to make our code unit-testable.</em></li>
 </ul>
 </div>
@@ -2668,7 +2668,7 @@ Tip: You can read the entire content of a file in one step using the static meth
 <p>Create a unit test for the Anonymizer class that verifies: That the <code>Run</code> method calls the anonymizer algorithm with exactly the same person records, in the same order, that the <code>Anonymizer</code> reads from the input (assuming there are no city names to trim).</p>
 <ul>
 <li>The test method should be named: <code>RunShouldCallAlgorithmForEachInput</code></li>
-<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> It is crucial to write a very fast unit test, not an integration test — so we only want to test the logic of <code>Run</code> in isolation, without any file processing. There must be no file handling in your solution!</li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> It is crucial to write a very fast unit test, not an integration test — so we only want to test the logic of <code>Run</code> in isolation, without any file processing. There must be no file handling in your solution!</li>
 <li>Tip: Create 2–3 <code>Person</code> objects in memory and use them as input.</li>
 <li>Tip: Use input data for which the <code>TrimCityNames</code> function has no effect (i.e., no cities that should be trimmed), to simplify testing.</li>
 <li>Tip: Create your own test implementations of <code>IInputReader</code> and <code>IAnonymizerAlgorithm</code> (and pass them to <code>Anonymizer</code>) that: <strong>provide the appropriate test data, and/or collect information during execution, so you can verify after the run that the tested conditions are met</strong>. These strategy implementations should be declared inside the test project, since they are only used for testing.</li>
@@ -2792,10 +2792,10 @@ Tip: You can read the entire content of a file in one step using the static meth
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="../../../js/timeago.min.js"></script>
       

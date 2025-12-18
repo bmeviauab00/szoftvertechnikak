@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2399,7 +2399,7 @@
 </code></pre></div>
 <details class="success">
 <summary>Laden Sie die fertige Lösung herunter</summary>
-<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> Es ist wichtig, dass Sie sich während des Praktikums an die Anleitung halten. Es ist verboten (und sinnlos), die fertige Lösung herunterzuladen. Allerdings kann es bei der anschließenden Selbsteinübung nützlich sein, die fertige Lösung zu überprüfen, daher stellen wir sie zur Verfügung.</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Es ist wichtig, dass Sie sich während des Praktikums an die Anleitung halten. Es ist verboten (und sinnlos), die fertige Lösung herunterzuladen. Allerdings kann es bei der anschließenden Selbsteinübung nützlich sein, die fertige Lösung zu überprüfen, daher stellen wir sie zur Verfügung.</p>
 <p>Die Lösung ist [auf GitHub] (<a href="https://github.com/bmeviauab00/lab-mvvm-kiindulo">https://github.com/bmeviauab00/lab-mvvm-kiindulo</a>) im <code>solve</code>-Zweig verfügbar. Der einfachste Weg, es herunterzuladen, ist, den <code>git clone</code>-Zweig von der Kommandozeile aus zu klonen:</p>
 <p><code>git clone https://github.com/bmeviauab00/lab-mvvm-kiindulo -b solved</code></p>
 </details>
@@ -2422,7 +2422,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/mvvm.drawio.png" data-desc-position="bottom"><img alt="MVVM" src="../images/mvvm.drawio.png"></a></p>
 </figure>
-<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> Wozu erstellen wir ViewModel-Klassen?</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Wozu erstellen wir ViewModel-Klassen?</p>
 <ul>
 <li>Wir erstellen immer eine ViewModel-Klasse für jede <strong>Ansicht</strong> (z.B. Window, Page, Dialog, UserControl) und erzeugen daraus je ein Objekt für jede Ansicht.  Z.B. MainPage für MainPageViewModel, DancerDialog für DancerDialogViewModel. Wir wenden dies in der Praxis an.</li>
 <li>Für jede <strong>Modellklasse</strong> (z.B. Recipe, Product, Dancer  usw.) können Sie optional Wrapper-ViewModel-Klassen erstellen (z.B. RecipeViewModel, ProductViewModel, DancerViewModel), aber wir werden sie in dieser Übung <strong>nicht</strong> erstellen. Das liegt daran, dass wir nicht dem Strict MVVM-Muster folgen, sondern dem Relaxed MVVM-Muster (siehe Vorlesung).</li>
@@ -2857,7 +2857,7 @@ Der Lebenszyklus von Abhängigkeiten wird dann von einer speziellen Komponente, 
 <span class="p">}</span>
 </code></pre></div>
 <p>Dies veranlasst den Compiler, die Commandsklasse und die Eigenschaft im ViewModel als <code>RecipeSelectedCommand</code> zu generieren.</p>
-<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> Der Befehl und das ViewModel sind vorbereitet, aber die View weiß noch nichts über den Befehl. Unser Befehl im ViewModel muss mit den üblichen Techniken an das entsprechende Ereignis in der View gebunden werden. Verwenden wir für MVVM immer das Command-Muster wie dieses! Das Schöne an diesem Ansatz ist, dass er vollständig mit der standardmäßigen direktionalen Datenverbindung von View-&gt;ViewModel durchgeführt wird (die wir bereits mehrfach verwendet haben).</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Der Befehl und das ViewModel sind vorbereitet, aber die View weiß noch nichts über den Befehl. Unser Befehl im ViewModel muss mit den üblichen Techniken an das entsprechende Ereignis in der View gebunden werden. Verwenden wir für MVVM immer das Command-Muster wie dieses! Das Schöne an diesem Ansatz ist, dass er vollständig mit der standardmäßigen direktionalen Datenverbindung von View-&gt;ViewModel durchgeführt wird (die wir bereits mehrfach verwendet haben).</p>
 <p>Binden wir daher auf <code>MainPage</code> die Eigenschaft <code>AdaptiveGridView</code> <code>ItemClickCommand</code> an <code>RecipeSelectedCommand</code>.</p>
 <div class="highlight"><pre><span></span><code>ItemClickCommand="{x:Bind<span class="w"> </span>ViewModel.RecipeSelectedCommand}"
 </code></pre></div>
@@ -3199,10 +3199,10 @@ Text="{x:Bind<span class="w"> </span>ViewModel.NewCommentText,<span class="w"> <
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="../../../js/timeago.min.js"></script>
       

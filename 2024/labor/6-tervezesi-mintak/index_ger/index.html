@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2878,7 +2878,7 @@ Vor diesem Hintergrund ist es nicht unser Ziel (und oft auch gar nicht möglich)
 <p>Insgesamt ist die Qualität unseres Codes im Vergleich zum Vorherigen <strong>schlechter</strong> geworden.<br>
 Früher war es kein Problem, dass die Anonymisierungsalgorithmen nicht erweiterbar waren, da es keine Nachfrage danach gab. Aber sobald der Bedarf für einen neuen Algorithmus aufgetreten ist, war es ein Fehler, die Lösung in dieser Hinsicht nicht erweiterbar zu machen: Ab jetzt müssen wir lieber damit rechnen, dass weitere Algorithmen in der Zukunft eingeführt werden müssen.</p>
 <p>Warum behaupten wir, dass unser Code nicht erweiterbar ist, wenn "nur" ein neuer Enum-Wert und ein paar zusätzliche <code>if</code>/<code>switch</code>-Zweige im Code hinzugefügt werden müssen, wenn ein neuer Algorithmus eingeführt wird?</p>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:"> <strong>Open/Closed Principle</strong><br>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" title=":warning:"> <strong>Open/Closed Principle</strong><br>
 Es ist entscheidend, dass wir eine Klasse nur dann als erweiterbar betrachten, wenn es möglich ist, neues Verhalten (in unserem Fall einen neuen Algorithmus) <strong>ohne Modifikation</strong> der Klasse einzuführen, indem wir nur den Code <strong>erweitern/vergrößern</strong>. Das bedeutet, dass der Code der <code>Anonymizer</code>-Klasse nicht verändert werden sollte, was hier eindeutig nicht der Fall ist. Dies ist das berühmte <strong>Open/Closed Principle</strong>: Die Klasse sollte für Erweiterungen offen und für Änderungen geschlossen sein. Das Problem bei der Modifikation des Codes ist, dass durch diese Änderungen sehr wahrscheinlich neue Bugs eingeführt werden und der modifizierte Code immer wieder getestet werden muss, was erhebliche Zeit- und Kostenaufwände verursachen kann.</p>
 <p>Was ist das genaue Ziel und wie erreichen wir es? Es gibt Teile in unserer Klasse, die wir nicht "einbrennen" möchten:</p>
 <ul>
@@ -3318,7 +3318,7 @@ Es ist entscheidend, dass wir eine Klasse nur dann als erweiterbar betrachten, w
 </details>
 </li>
 </ol>
-<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> Beachten wir unbedingt, dass die Schnittstelle und ihre Implementierungen ausschließlich mit der Anonymisierung zu tun haben, ohne jegliche andere Logik (z. B. Fortschrittsanzeige)!</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Beachten wir unbedingt, dass die Schnittstelle und ihre Implementierungen ausschließlich mit der Anonymisierung zu tun haben, ohne jegliche andere Logik (z. B. Fortschrittsanzeige)!</p>
 <h3 id="fortschrittsstrategie">Fortschrittsstrategie<a class="headerlink" href="#fortschrittsstrategie" title="Permanent link">¶</a></h3>
 <p>Im nächsten Schritt führen wir die Schnittstelle und die Implementierungen für die <strong>Fortschrittsanzeige</strong> ein:</p>
 <ol>
@@ -3368,7 +3368,7 @@ Es ist entscheidend, dass wir eine Klasse nur dann als erweiterbar betrachten, w
 </details>
 </li>
 </ol>
-<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> Beachten wir unbedingt, dass die Schnittstelle und ihre Implementierungen ausschließlich mit der Fortschrittsanzeige zu tun haben, ohne jegliche andere Logik (z. B. Anonymisierung)!</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Beachten wir unbedingt, dass die Schnittstelle und ihre Implementierungen ausschließlich mit der Fortschrittsanzeige zu tun haben, ohne jegliche andere Logik (z. B. Anonymisierung)!</p>
 <h3 id="anwendung-der-strategien">Anwendung der Strategien<a class="headerlink" href="#anwendung-der-strategien" title="Permanent link">¶</a></h3>
 <p>Der nächste wichtige Schritt ist es, die Basisklasse des Anonymisierers mithilfe der oben eingeführten Strategien wiederverwendbar und erweiterbar zu machen. Im <code>Anonymizer.cs</code>-Datei:</p>
 <ol>
@@ -3462,7 +3462,7 @@ Es ist entscheidend, dass wir eine Klasse nur dann als erweiterbar betrachten, w
 <p>Leider finden wir solche Stellen. Im Konstruktor ist festgelegt, welche Implementierung des Algorithmus und der Fortschrittsbehandlung erstellt wird. Dies müssen wir unbedingt im Code beachten! Wenn wir den Algorithmus oder den Fortschrittsmodus ändern möchten, müssen wir den Typ hinter dem <code>new</code>-Operator in diesen Zeilen ändern, was eine Modifikation der Klasse mit sich bringt.</p>
 <p>Viele – völlig zu Recht – betrachten dies in dieser Form nicht als eine echte Strategie-basierte Lösung. Die vollständige Lösung werden wir im nächsten Schritt umsetzen.</p>
 <h2 id="8-losung-4-strategystrategy-2-di">8. Lösung (4-Strategy/Strategy-2-DI)<a class="headerlink" href="#8-losung-4-strategystrategy-2-di" title="Permanent link">¶</a></h2>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:"> <strong>Dependency Injection (DI)</strong><br>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" title=":warning:"> <strong>Dependency Injection (DI)</strong><br>
 Die Lösung besteht in der Anwendung von <strong>Dependency Injection (kurz DI)</strong>. Das Prinzip dabei ist, dass die Klasse ihre Verhaltensabhängigkeiten (diese sind die Strategy-Implementierungen) nicht selbst instanziiert, sondern diese von außen übergeben bekommt, z. B. als Konstruktorparameter oder sogar als Properties oder Setter-Methoden. Natürlich unter der Verwendung von Schnittstellentypen!</p>
 <p>Passen wir die <code>Anonymizer</code>-Klasse entsprechend an, sodass wir die Strategy-Implementierungen nicht selbst instanziieren, sondern diese über Konstruktorparameter erhalten:</p>
 <ol>
@@ -3617,10 +3617,10 @@ Die Lösung besteht in der Anwendung von <strong>Dependency Injection (kurz DI)<
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="../../../js/timeago.min.js"></script>
       

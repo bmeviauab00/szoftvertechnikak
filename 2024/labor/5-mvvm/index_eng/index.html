@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2650,7 +2650,7 @@
 </code></pre></div>
 <details class="success">
 <summary>Download the completed solution</summary>
-<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> It is essential to work following the instructor during the lab, it is forbidden (and pointless) to download the final solution in advance. However, during subsequent independent practice, it can be useful to review the final solution, so we make it available.</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> It is essential to work following the instructor during the lab, it is forbidden (and pointless) to download the final solution in advance. However, during subsequent independent practice, it can be useful to review the final solution, so we make it available.</p>
 <p>The solution is available on <a href="https://github.com/bmeviauab00/lab-mvvm-kiindulo/tree/megoldas">GitHub</a> on the <code>megoldas</code> branch. The easiest way to download it is to use the <code>git clone</code> command from the command line and clone the <code>megoldas</code> branch:</p>
 <p><code>git clone https://github.com/bmeviauab00/lab-mvvm-kiindulo -b megoldas</code></p>
 </details>
@@ -2666,7 +2666,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/mvvm.drawio.png" data-desc-position="bottom"><img alt="MVVM" src="../images/mvvm.drawio.png"></a></p>
 </figure>
-<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> When do we create ViewModel classes?</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> When do we create ViewModel classes?</p>
 <ul>
 <li>For each <strong>view</strong> (e.g., <code>Window</code>, <code>Page</code>, <code>Dialog</code>, <code>UserControl</code>), we typically create a ViewModel class and instantiate one object of it per view. For example, <code>MainPage</code> gets a <code>MainPageViewModel</code>, and <code>DancerDialog</code> gets a <code>DancerDialogViewModel</code>. We will follow this approach during the lab.</li>
 <li>For each <strong>model</strong> class (e.g., <code>Recipe</code>, <code>Product</code>, <code>Dancer</code>, etc.), we may optionally create wrapper ViewModel classes (e.g., <code>RecipeViewModel</code>, <code>ProductViewModel</code>, <code>DancerViewModel</code>), but we <strong>will not</strong> do this in this lab. This is because we are following the Relaxed MVVM pattern instead of the Strict one (see the lecture).</li>
@@ -2982,7 +2982,7 @@ Specifically, we should introduce a new namespace (<code>models</code>) and use 
 <p>During the lab, we will try the MVVM Toolkit maintained by Microsoft.</p>
 <h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">¶</a></h3>
 <p>To install the MVVM Toolkit, open the NuGet Package Manager in Visual Studio (right-click on the project and select "Manage NuGet Packages"), and search for the <code>CommunityToolkit.Mvvm</code> package. 
-<img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> It is important to install version 8.4.0 in the lab environments!
+<img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> It is important to install version 8.4.0 in the lab environments!
 This will actually create the following <code>PackageReference</code> entry in the project file (we can manually add it alongside the other PackageReferences instead of following the steps above):</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;PackageReference</span><span class="w"> </span><span class="na">Include=</span><span class="s">"CommunityToolkit.Mvvm"</span><span class="w"> </span><span class="na">Version=</span><span class="s">"8.4.0"</span><span class="w"> </span><span class="nt">/&gt;</span>
 </code></pre></div>
@@ -3016,7 +3016,7 @@ Additionally, we have the option to use the <code>ObservableProperty</code> attr
 </code></pre></div>
 </li>
 </ul>
-<p>It is important that we remove the member variables (except for <code>_booksService</code>), the properties (since these are generated by the code generator), the <code>PropertyChanged</code> event, and the <code>SetProperty</code> method from the previous <code>BooksPageViewModel</code> solution. <img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> After the transformation, let's perform a build (e.g., Build/Build Solution menu): without this, the compilation errors won't be resolved, and Visual Studio will report many errors in the code. This is logical because the data-bound properties are generated by the code generator only during the build (in a "hidden" file).</p>
+<p>It is important that we remove the member variables (except for <code>_booksService</code>), the properties (since these are generated by the code generator), the <code>PropertyChanged</code> event, and the <code>SetProperty</code> method from the previous <code>BooksPageViewModel</code> solution. <img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> After the transformation, let's perform a build (e.g., Build/Build Solution menu): without this, the compilation errors won't be resolved, and Visual Studio will report many errors in the code. This is logical because the data-bound properties are generated by the code generator only during the build (in a "hidden" file).</p>
 <p>We can check what code has been generated by navigating to the <code>Genres</code> property using ++F12++ (in the XAML file, place the cursor on <code>ViewModel.Genres</code> in the <code>ItemsSource</code> data binding).</p>
 <div class="admonition tip">
 <p class="admonition-title">ObservableProperty attribute on property</p>
@@ -3235,10 +3235,10 @@ This way, we can remove the event trigger from our <code>OnSelectedGenreChanged<
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="../../../js/timeago.min.js"></script>
       

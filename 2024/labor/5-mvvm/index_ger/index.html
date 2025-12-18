@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2650,7 +2650,7 @@
 </code></pre></div>
 <details class="success">
 <summary>Die fertige Lösung herunterladen</summary>
-<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> Es ist wichtig, dass Sie sich während des Praktikums an die Anleitung halten.</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Es ist wichtig, dass Sie sich während des Praktikums an die Anleitung halten.</p>
 <p>Für das spätere selbstständige Üben kann es jedoch hilfreich sein, die fertige Lösung durchzusehen, daher stellen wir sie zur Verfügung. Es ist verboten (und sinnlos), die fertige Lösung herunterzuladen. Allerdings kann es bei der anschließenden Selbsteinübung nützlich sein, die fertige Lösung zu überprüfen, daher stellen wir sie zur Verfügung.</p>
 <p>Die Lösung ist <a href="https://github.com/bmeviauab00/lab-mvvm-kiindulo/tree/megoldas">auf GitHub verfügbar</a> im Branch <code>megoldas</code>. Die einfachste Möglichkeit zum Herunterladen ist die Verwendung des folgenden Befehls:</p>
 <p><code>git clone https://github.com/bmeviauab00/lab-mvvm-kiindulo -b megoldas</code></p>
@@ -2668,7 +2668,7 @@
 <figure>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/mvvm.drawio.png" data-desc-position="bottom"><img alt="MVVM" src="../images/mvvm.drawio.png"></a></p>
 </figure>
-<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> Wann erstellen wir ViewModel-Klassen?</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Wann erstellen wir ViewModel-Klassen?</p>
 <ul>
 <li>Für jede <strong>Ansicht/View</strong> (z. B. <code>Window</code>, <code>Page</code>, <code>Dialog</code>, <code>UserControl</code>) erstellen wir typischerweise eine ViewModel-Klasse und instanziieren davon ein Objekt. Zum Beispiel <code>MainPageViewModel</code> für <code>MainPage</code>, <code>DancerDialogViewModel</code> für <code>DancerDialog</code>. Dies wird auch im Labor angewendet.</li>
 <li>Für die einzelnen <strong>Model-Klassen</strong> (z. B. <code>Recipe</code>, <code>Product</code>, <code>Dancer</code> usw.) können optional Wrapper-ViewModels erstellt werden (z. B. <code>RecipeViewModel</code>, <code>ProductViewModel</code>, <code>DancerViewModel</code>), das werden wir im Labor jedoch <strong>nicht</strong> tun. Der Grund dafür ist, dass wir nicht dem Strict MVVM Muster folgen, sondern dem Relaxed MVVM Muster (siehe Vorlesung).</li>
@@ -2994,7 +2994,7 @@ Einige der bekanntesten Bibliotheken sind:</p>
 <p>Im Labor werden wir das von Microsoft betreute MVVM Toolkit ausprobieren.</p>
 <h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">¶</a></h3>
 <p>Um das MVVM Toolkit zu installieren, öffnen wir den NuGet Package Manager in Visual Studio (Rechtsklick auf das Projekt und dann "Manage NuGet Packages") und suchen wir nach dem Paket <code>CommunityToolkit.Mvvm</code>. 
-<img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> Es ist wichtig, dass wir die Version 8.4.0 in den Laborräumen installieren!
+<img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Es ist wichtig, dass wir die Version 8.4.0 in den Laborräumen installieren!
 Dies wird im Projektdatei die folgende <code>PackageReference</code>-Zeile erstellen (wir können sie auch manuell hinzufügen, anstatt die oben beschriebenen Schritte zu befolgen und sie zu den anderen <code>PackageReference</code>-Elementen hinzuzufügen):</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;PackageReference</span><span class="w"> </span><span class="na">Include=</span><span class="s">"CommunityToolkit.Mvvm"</span><span class="w"> </span><span class="na">Version=</span><span class="s">"8.4.0"</span><span class="w"> </span><span class="nt">/&gt;</span>
 </code></pre></div>
@@ -3028,7 +3028,7 @@ Außerdem haben wir die Möglichkeit, das <code>ObservableProperty</code>-Attrib
 </code></pre></div>
 </li>
 </ul>
-<p>Es ist wichtig, dass wir in der vorherigen <code>BooksPageViewModel</code>-Lösung die Membervariablen (außer <code>_booksService</code>), die Eigenschaften (denn diese werden vom Code-Generator erzeugt), das <code>PropertyChanged</code>-Ereignis und die <code>SetProperty</code>-Methode löschen. <img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> Nach der Umstellung sollten wir das Projekt einmal bauen (z.B. über das Menü "Build/Build Solution"). Ohne diesen Schritt werden die Kompilierungsfehler nicht behoben, da Visual Studio viele Fehler im Code anzeigen wird. Das ist logisch, denn die gebundenen Properties werden erst beim Bauen des Projekts vom Code-Generator in einer "versteckten" Datei erstellt.</p>
+<p>Es ist wichtig, dass wir in der vorherigen <code>BooksPageViewModel</code>-Lösung die Membervariablen (außer <code>_booksService</code>), die Eigenschaften (denn diese werden vom Code-Generator erzeugt), das <code>PropertyChanged</code>-Ereignis und die <code>SetProperty</code>-Methode löschen. <img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Nach der Umstellung sollten wir das Projekt einmal bauen (z.B. über das Menü "Build/Build Solution"). Ohne diesen Schritt werden die Kompilierungsfehler nicht behoben, da Visual Studio viele Fehler im Code anzeigen wird. Das ist logisch, denn die gebundenen Properties werden erst beim Bauen des Projekts vom Code-Generator in einer "versteckten" Datei erstellt.</p>
 <p>Wir können überprüfen, welcher Code generiert wurde, indem wir z.B. mit <span class="keys"><kbd class="key-f12">F12</kbd></span> zur <code>Genres</code>-Property navigieren (in der XAML-Datei, wenn der Cursor auf der Bindung <code>ViewModel.Genres</code> steht).</p>
 <div class="admonition tip">
 <p class="admonition-title">Verwendung des <code>ObservableProperty</code>-Attributs auf eine Eigenschaft</p>
@@ -3247,10 +3247,10 @@ So können wir das Auslösen des Ereignisses aus unserer <code>OnSelectedGenreCh
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="../../../js/timeago.min.js"></script>
       

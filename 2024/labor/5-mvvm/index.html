@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2650,7 +2650,7 @@
 </code></pre></div>
 <details class="success">
 <summary>A kész megoldás letöltése</summary>
-<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, így értelmetlen a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, így értelmetlen a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.</p>
 <p>A megoldás <a href="https://github.com/bmeviauab00/lab-mvvm-kiindulo/tree/megoldas">GitHubon érhető el</a> a <code>megoldas</code> ágon. A legegyszerűbb mód a letöltésére, ha parancssorból a <code>git clone</code> utasítással leklónozzuk a gépünkre a <code>megoldas</code> ágat:</p>
 <p><code>git clone https://github.com/bmeviauab00/lab-mvvm-kiindulo -b megoldas</code></p>
 </details>
@@ -2667,7 +2667,7 @@ Az MVVM minta célja, hogy a felhasználói felületet és a mögötte lévő lo
 <figure>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/mvvm.drawio.png" data-desc-position="bottom"><img alt="MVVM" src="images/mvvm.drawio.png"></a></p>
 </figure>
-<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> Mihez készítünk ViewModel osztályokat?</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Mihez készítünk ViewModel osztályokat?</p>
 <ul>
 <li>Az egyes <strong>nézetekhez</strong> (pl. <code>Window</code>, <code>Page</code>, <code>Dialog</code>, <code>UserControl</code>) tipikusan készítünk ViewModel osztályt, és belőle egy nézethez egy objektumot hozunk létre.  Pl. <code>MainPage</code>-hez <code>MainPageViewModel</code>, <code>DancerDialog</code>-hoz <code>DancerDialogViewModel</code>. Ezt a gyakorlat során is alkalmazzuk.</li>
 <li>Az egyes <strong>modell</strong> osztályokhoz (pl. <code>Recipe</code>, <code>Product</code>, <code>Dancer</code> stb.) opcionálisan készíthetünk csomagoló ViewModel osztályokat (pl. <code>RecipeViewModel</code>, <code>ProductViewModel</code>, <code>DancerViewModel</code>), ilyeneket a gyakorlat során <strong>nem</strong> fogunk készíteni. Ez azért van, mert nem a Strict, hanem a Relaxed MVVM mintát követjük (lásd előadás).</li>
@@ -2987,7 +2987,7 @@ A könyvtárak közül a legelterjedtebbek a következők:</p>
 <p>A labor során a Microsoft által gondozott MVVM Toolkitet fogjuk kipróbálni.</p>
 <h3 id="telepites">Telepítés<a class="headerlink" href="#telepites" title="Permanent link">¶</a></h3>
 <p>A MVVM Toolkit telepítéséhez nyissuk meg a NuGet Package Manager-t a Visual Studio-ban (jobb katt a projekten majd "Manage Nuget Packages"), és keressük meg a <code>CommunityToolkit.Mvvm</code> csomagot. 
-<img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> Lényeges, hogy a labortermekben a 8.4.0-s verziót telepítsük!
+<img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Lényeges, hogy a labortermekben a 8.4.0-s verziót telepítsük!
 Ez valójában a projektfájlban az alábbi <code>PackageReference</code> bejegyzést fogja létrehozni (akár kézzel is felvehetjük a fenti lépések helyett a többi PackageReference mellé):</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;PackageReference</span><span class="w"> </span><span class="na">Include=</span><span class="s">"CommunityToolkit.Mvvm"</span><span class="w"> </span><span class="na">Version=</span><span class="s">"8.4.0"</span><span class="w"> </span><span class="nt">/&gt;</span>
 </code></pre></div>
@@ -3021,7 +3021,7 @@ Továbbá lehetőségünk van az <code>ObservableProperty</code> attribútum has
 </code></pre></div>
 </li>
 </ul>
-<p>Lényeges, hogy a korábbi <code>BooksPageViewModel</code> megoldásból töröljük a tagváltozókat (a _booksService kivételével), a property-ket (hiszen ezeket a kódgenerátor hozza létre), a <code>PropertyChanged</code> eseményt és a <code>SetProperty</code> műveletet. <img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> az átalakítás után buildeljünk egyet (pl. Build/Build solution menü): enélkül a fordítási hibák nem szűnnek meg, a Visual Studio számos hibát jelez a kódban. Ez logikus is, hiszen az adatkötött propertyket a kódgenerátor csak a build során generálja le (egy "rejtett" állományban).</p>
+<p>Lényeges, hogy a korábbi <code>BooksPageViewModel</code> megoldásból töröljük a tagváltozókat (a _booksService kivételével), a property-ket (hiszen ezeket a kódgenerátor hozza létre), a <code>PropertyChanged</code> eseményt és a <code>SetProperty</code> műveletet. <img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> az átalakítás után buildeljünk egyet (pl. Build/Build solution menü): enélkül a fordítási hibák nem szűnnek meg, a Visual Studio számos hibát jelez a kódban. Ez logikus is, hiszen az adatkötött propertyket a kódgenerátor csak a build során generálja le (egy "rejtett" állományban).</p>
 <p>Ellenőrizhetjük, hogy milyen kód generálódott, ha például <span class="keys"><kbd class="key-f12">F12</kbd></span>-vel navigálunk a <code>Genres</code> tulajdonságra (a xaml fájlban az <code>ItemsSource</code> adatkötésnél a kurzorral a <code>ViewModel.Genres</code>-en állva).</p>
 <div class="admonition tip">
 <p class="admonition-title">ObservableProperty attribútum property-re</p>
@@ -3244,10 +3244,10 @@ Esetünkben a <code>NotifyCanExecuteChangedFor</code>-ral kössük össze a <cod
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       

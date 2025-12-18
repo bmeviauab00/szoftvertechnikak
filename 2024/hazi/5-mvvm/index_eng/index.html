@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2493,16 +2493,16 @@
 It is important to use the correct invitation URL for this specific assignment (each homework has a different URL). Clone the repository that gets created — it will include the expected folder structure for your solution. After completing the tasks, commit and push your work.</li>
 <li>Open and work in the <code>HelloXaml.sln</code> solution file from the cloned folder.</li>
 <li>
-<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> Many tasks require you to take <strong>screenshots</strong> of parts of your solution, which serve as proof that you created the solution yourself.
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Many tasks require you to take <strong>screenshots</strong> of parts of your solution, which serve as proof that you created the solution yourself.
 <strong>The required content of each screenshot is specified clearly within the task descriptions.</strong> Save the screenshots as part of your submission — place them in the root folder of your repository (next to neptun.txt). These screenshots will be uploaded to GitHub along with the rest of your project.
 Since the repository is private, only the instructors can access it. If a screenshot includes anything you don’t want to upload, you may blur or crop that part before submission.</p>
 </li>
 <li>
-<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> This assignment does not include a functional pre-checker: Although a check will run after each push, it only verifies whether neptun.txt is filled out. The actual evaluation will be performed by the lab instructors after the deadline.</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> This assignment does not include a functional pre-checker: Although a check will run after each push, it only verifies whether neptun.txt is filled out. The actual evaluation will be performed by the lab instructors after the deadline.</p>
 </li>
 </ul>
 <h2 id="constraints">Constraints<a class="headerlink" href="#constraints" title="Permanent link">¶</a></h2>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:"> <strong>Use of the MVVM Pattern is Mandatory!</strong>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" title=":warning:"> <strong>Use of the MVVM Pattern is Mandatory!</strong>
     This homework is focused on practicing the MVVM pattern, so applying the MVVM architecture is required for all tasks. Any deviation from this requirement will result in rejection of the submission during evaluation.</p>
 <h2 id="task-0-reviewing-the-initial-state">Task 0 – Reviewing the initial state<a class="headerlink" href="#task-0-reviewing-the-initial-state" title="Permanent link">¶</a></h2>
 <p>The starting state is essentially the same as the final state of <a href="../../../labor/3-felhasznaloi-felulet/index_eng/">Lab 3 – The design of the user interface</a>. That is, an application where users can enter personal data into a list. Compared to the lab's final state, there's one small change. In the lab, the entire UI was defined in <code>MainWindow.xaml</code> (and the corresponding code-behind file). In this initial solution, that code has been moved to the <code>PersonListPage.xaml</code> (and its code-behind file) located in the Views folder. <code>PersonListPage</code> is not a <code>Window</code> but rather a class derived from <code>Page</code> (check this in the code-behind file!). Otherwise, nothing else has changed. As its name implies, a <code>Page</code> represents a "page" in an application: it cannot display itself alone — it must be placed inside a window. The advantage of using pages is that it allows navigation between different views (<code>Page</code> objects) inside the same window. We will not use navigation in this assignment — we will have only one page. The sole purpose of using a <code>Page</code> here is to demonstrate that in an MVVM architecture, views can be implemented using not only <code>Window</code> objects, but also <code>Page</code> objects.</p>
@@ -2511,7 +2511,7 @@ Since the repository is private, only the instructors can access it. If a screen
 </code></pre></div>
 <p>Check the code to confirm that this is indeed the case!</p>
 <h2 id="mainwindow-title">MainWindow title<a class="headerlink" href="#mainwindow-title" title="Permanent link">¶</a></h2>
-<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> The title of the main window must be the text "MVVM - [YOUR NEPTUN CODE]". For example, if your Neptun code is ABCDEF, the full title should be: MVVM - ABCDEF. To do this, set the <code>Title</code> property in the <code>MainWindow.xaml</code> file.</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> The title of the main window must be the text "MVVM - [YOUR NEPTUN CODE]". For example, if your Neptun code is ABCDEF, the full title should be: MVVM - ABCDEF. To do this, set the <code>Title</code> property in the <code>MainWindow.xaml</code> file.</p>
 <h2 id="task-1-using-the-mvvm-toolkit">Task 1 – Using the MVVM Toolkit<a class="headerlink" href="#task-1-using-the-mvvm-toolkit" title="Permanent link">¶</a></h2>
 <p>In the existing application, the <code>Person</code> class located in the <code>Models</code> folder already implements the <code>INotifyPropertyChanged</code> interface (also known as INPC). This means it exposes a <code>PropertyChanged</code> event, and within the set methods of both <code>Name</code> and <code>Age</code>, it raises the <code>PropertyChanged</code> event to notify about changes. (Examine this carefully in the <code>Person.cs</code> file.)</p>
 <p>As a warm-up or refresher — after reviewing the code (<code>PersonListPage.xaml</code> and <code>PersonListPage.xaml.cs</code>) thoroughly and running the application — try to answer this question for yourself: Why was implementing <code>INotifyPropertyChanged</code> necessary in this application?</p>
@@ -2534,7 +2534,7 @@ The link jumps directly to the "NuGet Package Manager" section — just follow t
 <li>This is the core idea behind NuGet: the repository remains small, because the project file only contains references to the NuGet packages.</li>
 <li>When someone clones the solution and builds it for the first time, the referenced NuGet packages are automatically downloaded from the online NuGet sources.</li>
 </ul>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/26a0.svg" title=":warning:"> Understanding the concepts related to NuGet is important — they are an essential part of the curriculum!</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" title=":warning:"> Understanding the concepts related to NuGet is important — they are an essential part of the curriculum!</p>
 <p>A NuGet reference is essentially just a single line in the <code>.csproj</code> project file. In Solution Explorer, click on the "HelloXaml" project node, open the <code>.csproj</code> file, and check that the following line is present
 (the version number may differ):</p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="o">&lt;</span><span class="n">PackageReference</span><span class="w"> </span><span class="n">Include</span><span class="o">=</span><span class="s">"CommunityToolkit.Mvvm"</span><span class="w"> </span><span class="n">Version</span><span class="o">=</span><span class="s">"8.2.2"</span><span class="w"> </span><span class="o">/&gt;</span>
@@ -2576,7 +2576,7 @@ For every field marked with the <code>[ObservableProperty]</code> attribute, it 
 <li>The question is: where is this generated code? In another partial part of our class. After compiling, right-click on the class name <code>Person</code> in Visual Studio and select "Go to Definition". In the bottom panel, you’ll see two entries: one pointing to your original source code,
 and the other (labeled "public class Person") pointing to the generated partial class. Double-clicking that entry shows the generated code, which is quite verbose. But what matters is that this is where the <code>Name</code> and <code>Age</code> properties are defined, including the call to <code>OnPropertyChanged</code>.</li>
 </ul>
-<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> The source generator always outputs code into a separate "partial" class to keep user-written and generated code separate. Partial classes are commonly used to organize manually written and automatically generated code into separate files.</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> The source generator always outputs code into a separate "partial" class to keep user-written and generated code separate. Partial classes are commonly used to organize manually written and automatically generated code into separate files.</p>
 <p>Since much less code needs to be written, in practice we typically use the MVVM Toolkit-based solution
 (but it's also important to understand the manual implementation, as it helps you understand what’s happening behind the scenes).</p>
 <div class="admonition example">
@@ -2605,10 +2605,10 @@ To keep implementation simple, we will continue to use the MVVM Toolkit.</p>
 <ul>
 <li>The Model class is the existing <code>Person</code> class in the <code>Models</code> folder — it represents a person's data. It contains NO UI logic and is completely independent from any form of presentation.</li>
 <li>Currently, all UI-related declarations and logic are in <code>PersonListPage</code>.
-<img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> We will now split <code>PersonListPage</code> into two parts:<ul>
+<img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> We will now split <code>PersonListPage</code> into two parts:<ul>
 <li><code>PersonListPage.xaml</code> and its code-behind will become the View.</li>
 <li>We'll introduce a ViewModel called <code>PersonListPageViewModel</code>.<ul>
-<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> It is essential that all display logic currently in the code-behind of <code>PersonListPage</code> be moved into <code>PersonListPageViewModel</code>.
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> It is essential that all display logic currently in the code-behind of <code>PersonListPage</code> be moved into <code>PersonListPageViewModel</code>.
 <strong>The core idea of MVVM is that the View should contain only the layout, and the ViewModel should contain all the UI logic.</strong></li>
 </ul>
 </li>
@@ -2616,7 +2616,7 @@ To keep implementation simple, we will continue to use the MVVM Toolkit.</p>
 </li>
 <li>Another cornerstone of the MVVM pattern: The View holds a reference to its ViewModel, typically via a property.<ul>
 <li>In our case, this means <code>PersonListPage</code> must have a property of type <code>PersonListPageViewModel</code>.</li>
-<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> This is crucial because it allows the <code>PersonListPage.xaml</code> file to bind to properties and event handlers defined in the ViewModel!</li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> This is crucial because it allows the <code>PersonListPage.xaml</code> file to bind to properties and event handlers defined in the ViewModel!</li>
 </ul>
 </li>
 <li>The <code>PersonListPageViewModel</code> will work with the model and handle user interactions (event handlers).</li>
@@ -2858,10 +2858,10 @@ Pass appropriate delegates to the <code>RelayCommand</code> constructor (one for
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="../../../js/timeago.min.js"></script>
       
