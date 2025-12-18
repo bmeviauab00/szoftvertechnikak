@@ -11,11 +11,11 @@ Das Ziel der Übung ist, die Grundlagen der Entwicklung von Thick-Client-Anwendu
 
 Die für die Durchführung des Labors benötigten Werkzeuge:
 
-* Betriebssystem Windows 10 oder Windows 11 (Linux und macOS nicht geeignet)
-* Visual Studio 2022
-  * Windows Desktop Entwicklung Workload
+* Betriebssystem Windows 11 (Linux und macOS nicht geeignet)
+* Visual Studio 2026
+    * Windows Desktop Entwicklung Workload
 
-    ![desktop-Arbeitslast](images/desktop-workload.png)
+      ![desktop-Arbeitslast](images/desktop-workload.png)
 
 ## Lösung
 

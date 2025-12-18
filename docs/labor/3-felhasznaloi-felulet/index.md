@@ -11,7 +11,7 @@ A gyakorlat célja megismerkedni a vastagkliens alkalmazások fejlesztésének a
 
 A labor elvégzéséhez szükséges eszközök:
 
-* Windows 10 vagy Windows 11 operációs rendszer (Linux és macOS nem alkalmas)
+* Windows 11 operációs rendszer (Linux és macOS nem alkalmas)
 
 A szükséges fejlesztőkörnyezetről [itt](../../hazi/fejlesztokornyezet/index.md) található leírás.
 

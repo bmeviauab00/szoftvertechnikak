@@ -22,10 +22,10 @@ Kapcsolódó előadások: a 2. előadás és a 3. előadás eleje – Nyelvi esz
 
 A gyakorlat elvégzéséhez szükséges eszközök:
 
-- Visual Studio 2022
+- Visual Studio 2026
 
 !!! tip "Gyakorlat Linuxon vagy macOS alatt"
-    A gyakorlat anyag alapvetően Windowsra és Visual Studiora készült, de az elvégezhető más operációs rendszereken is más fejlesztőeszközökkel (pl. VS Code, Rider, Visual Studio for Mac), vagy akár egy szövegszerkesztővel és CLI (parancssori) eszközökkel. Ezt az teszi lehetővé, hogy a példák egy egyszerű Console alkalmazás kontextusában kerülnek ismertetésre (nincsenek Windows specifikus elemek),  a .NET SDK pedig támogatott Linuxon és macOS alatt. [Hello World Linuxon](https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code)
+    A gyakorlat anyag alapvetően Windowsra és Visual Studiora készült, de az elvégezhető más operációs rendszereken is más fejlesztőeszközökkel (pl. VS Code, Rider), vagy akár egy szövegszerkesztővel és CLI (parancssori) eszközökkel. Ezt az teszi lehetővé, hogy a példák egy egyszerű Console alkalmazás kontextusában kerülnek ismertetésre (nincsenek Windows specifikus elemek),  a .NET SDK pedig támogatott Linuxon és macOS alatt. [Hello World Linuxon](https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code)
 
 ## Bevezető
 
@@ -123,7 +123,7 @@ A következő példában egy `Person` nevű osztályt fogunk elkészíteni, mely
         - `switch`: switch utasítás
         - `cw`: Console.WriteLine
 
-        Ilyen snippeteket egyébként mi is [készíthetünk](https://learn.microsoft.com/en-us/visualstudio/ide/walkthrough-creating-a-code-snippet?view=vs-2022).
+        Ilyen snippeteket egyébként mi is [készíthetünk](https://learn.microsoft.com/en-us/visualstudio/ide/walkthrough-creating-a-code-snippet).
 
 2. Egészítsük ki a `Program.cs` fájl `Main` függvényét, hogy kipróbálhassuk az új tulajdonságunkat.
 

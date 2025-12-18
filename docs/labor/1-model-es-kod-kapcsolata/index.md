@@ -22,7 +22,7 @@ A gyakorlat célja:
 
 A gyakorlat elvégzéséhez szükséges eszközök:
 
-- Visual Studio 2022
+- Visual Studio 2026
 
 Visual Studio-ból a legfrissebb verziót célszerű feltenni. A Community Edition, Professional és az Enterprise verzió is megfelel. A Community Edition ingyenes, letölthető a Microsoft honlapjáról. A Professional fizetős, de az egyetem hallgatói számára ez is ingyenesen elérhető (<https://azureforeducation.microsoft.com/devtools> honlapon, az Azure Dev Tools for Teaching program keretében).
 
@@ -66,7 +66,7 @@ A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, amely a konzol
 
 Az alkalmazást C# nyelven készítjük el. A lefordított alkalmazás futtatását a .NET runtime végzi. A fordítás/futtatás elméleti hátterét, valamint a .NET alapjait az első előadás ismerteti.
 
-A solution és azon belüli projekt létrehozásának lépései Visual Studio 2022 esetén:
+A solution és azon belüli projekt létrehozásának lépései Visual Studio 2026 esetén:
 
 1. Új projekt varázsló elindítása, melyre két mód is van
     - Indítóablak segítségével
@@ -85,7 +85,7 @@ A solution és azon belüli projekt létrehozásának lépései Visual Studio 20
     4. Place solution and project in the same directory: nincs pipa (de nincs különösebb jelentősége).
 
 4. Next gomb az varázslóablak alján, a következő varázslóoldalon:
-    1. Framework: **.NET 8 (Long-term support)**.
+    1. Framework: **.NET 10 (Long-term support)**.
     2. A "Do not use top level statements" jelölőnégyzetet pipáljuk be (ennek magyarázatára mindjárt visszatérünk).
 
 A projekttel egy új solution is létrejön, mely struktúrája a Visual Studio *Solution Explorer* ablakában tekinthető át. Egy solution több projectből állhat, egy project pedig több fájlból. A solution a teljes munkakörnyezetet fogja össze (egy `.sln` kiterjesztésű fájl tartozik hozzá), míg egy projekt kimenete egy `.exe` vagy `.dll` fájl jellemzően, vagyis egy összetett alkalmazás/rendszer egy komponensét állítja elő. A projektfájlok kiterjesztése C# alkalmazások esetén `.csproj`.

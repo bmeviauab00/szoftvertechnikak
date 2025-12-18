@@ -240,7 +240,7 @@ Wir haben die Aufgabe, die erste Version einer CAD-Anwendung zu entwickeln, die 
 - Spätestens am Ende der Implementierung erstellen Sie in Visual Studio Solution ein Klassendiagramm, in dem Sie die Klassen der Lösung übersichtlich anordnen können. Zeigen Sie Assoziationsbeziehungen als Assoziation, nicht als Mitgliedsvariable*(Als Assoziation anzeigen* oder*Als Assoziation* anzeigen). *Als Sammlungsverband anzeigen*, siehe [Laboranleitung 1](../../labor/1-model-es-kod-kapcsolata/index_ger.md)).
 
     !!! tip "Klassendiagrammkomponente"
-        Visual Studio 2022 fügt die *Klassendesignerkomponente* bei der Installation nicht immer hinzu. Wenn es nicht möglich ist, ein Klassendiagramm zum Visual Studio-Projekt hinzuzufügen (weil das *Klassendiagramm* nicht in der Liste des Fensters aufgeführt ist, das während des Befehls *Hinzufügen / Neues Element* erscheint), muss die Komponente *Klassendiagramm* nachträglich installiert werden. Weitere Informationen hierzu finden Sie auf der Seite Entwicklungsumgebung in diesem Handbuch.
+        Visual Studio 2026 fügt die *Klassendesignerkomponente* bei der Installation nicht immer hinzu. Wenn es nicht möglich ist, ein Klassendiagramm zum Visual Studio-Projekt hinzuzufügen (weil das *Klassendiagramm* nicht in der Liste des Fensters aufgeführt ist, das während des Befehls *Hinzufügen / Neues Element* erscheint), muss die Komponente *Klassendiagramm* nachträglich installiert werden. Weitere Informationen hierzu finden Sie auf der Seite Entwicklungsumgebung in diesem Handbuch.
 
 Wir nehmen erhebliche Vereinfachungen bei der Umsetzung vor:
 
@@ -273,12 +273,12 @@ Damit haben wir in unserem Projekt einen Verweis auf `Controls.dll`hinzugefügt,
 
 ![Steuerelemente.dll](images/controlsdll.png)
 
-Die Klasse `Textbox`, von der unsere Klasse `TextArea` abgeleitet werden soll, befindet sich im Namespace `Controls`.  Die Klasse `TextBox` hat einen Konstruktor mit vier Parametern, den x- und y-Koordinaten sowie der Breite und Höhe. Bei Bedarf kann der *Object Browser *Ihnen helfen, andere Operationen zu entdecken. Der *Object Browser *kann durch Auswahl des Menüs *Object Browser *aus dem Menü *Ansicht* geöffnet werden. Der *Object Browser *wird in einer neuen Registerkarte angezeigt.
+Die Klasse `Textbox`, von der unsere Klasse `TextArea` abgeleitet werden soll, befindet sich im Namespace `Controls`.  Die Klasse `TextBox` hat einen Konstruktor mit vier Parametern, den x- und y-Koordinaten sowie der Breite und Höhe. Bei Bedarf kann der *Object Browser* Ihnen helfen, andere Operationen zu entdecken. Der *Object Browser* kann durch Auswahl des Menüs *Object Browser* aus dem Menü *Ansicht* geöffnet werden. Der *Object Browser* wird in einer neuen Registerkarte angezeigt.
 
 !!! note "Wenn die Objektbrowser-Ansicht leer ist"
-    Visual Studio 2022 zeigt im Objektbrowser nichts an (nur den Text "Keine Informationen"), solange keine Quelldatei geöffnet ist. Wenn Sie feststellen, dass die Object Browser-Ansicht leer ist, öffnen Sie einfach die Datei Program.cs im Projektmappen-Explorer und wechseln Sie zurück zur Registerkarte Object Browser, wo die Komponenten nun angezeigt werden. 
+    Visual Studio 2026 zeigt im Objektbrowser nichts an (nur den Text "Keine Informationen"), solange keine Quelldatei geöffnet ist. Wenn Sie feststellen, dass die Object Browser-Ansicht leer ist, öffnen Sie einfach die Datei Program.cs im Projektmappen-Explorer und wechseln Sie zurück zur Registerkarte Object Browser, wo die Komponenten nun angezeigt werden. 
 
-Wenn Sie im *Object Browser *auf die Komponente `Controls` klicken und jeden Knoten (Namensraum, Klasse) auswählen, werden die Attribute dieses Knotens angezeigt: Wenn Sie z. B. auf den Klassennamen klicken, werden die Mitglieder der Klasse angezeigt.
+Wenn Sie im *Object Browser* auf die Komponente `Controls` klicken und jeden Knoten (Namensraum, Klasse) auswählen, werden die Attribute dieses Knotens angezeigt: Wenn Sie z. B. auf den Klassennamen klicken, werden die Mitglieder der Klasse angezeigt.
 
 
 ![Object Browser](images/object-browser.png)

@@ -22,10 +22,10 @@ Related lectures: Lecture 2 and the beginning of Lecture 3 – Language Tools.
 
 Tools needed to complete the laboratory:
 
-- Visual Studio 2022
+- Visual Studio 2026
 
 !!! tip "Exercise on Linux or macOS"
-    The exercise material is primarily designed for Windows and Visual Studio, but it can also be completed on other operating systems using different development tools (e.g., VS Code, Rider, Visual Studio for Mac), or even with a text editor and CLI (command-line) tools. This is possible because the examples are presented in the context of a simple Console application (without Windows-specific elements), and the .NET SDK is supported on Linux and macOS. [Hello World on Linux](https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code)
+    The exercise material is primarily designed for Windows and Visual Studio, but it can also be completed on other operating systems using different development tools (e.g., VS Code, Rider), or even with a text editor and CLI (command-line) tools. This is possible because the examples are presented in the context of a simple Console application (without Windows-specific elements), and the .NET SDK is supported on Linux and macOS. [Hello World on Linux](https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code)
 
 ## Introduction
 
@@ -122,7 +122,7 @@ In the following example, we will create a `Person` class that represents a pers
         - `switch`: switch statement
         - `cw`: Console.WriteLine
 
-        We can even create our own [snippets](https://learn.microsoft.com/en-us/visualstudio/ide/walkthrough-creating-a-code-snippet?view=vs-2022).
+        We can even create our own [snippets](https://learn.microsoft.com/en-us/visualstudio/ide/walkthrough-creating-a-code-snippet).
 
 2. Modify the `Main` function in the `Program.cs` file to test the new property.
 

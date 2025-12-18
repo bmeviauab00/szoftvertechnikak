@@ -22,9 +22,9 @@ Zugehörige Vorlesungen: Entwicklung konkurrierender (meghrfädigen) Anwendungen
 
 Die für die Durchführung der Übung benötigten Werkzeuge:
 
-- Visual Studio 2022
+- Visual Studio 2026
     - Windows Desktop Development Workload
-- Betriebssystem Windows 10 oder Windows 11 (Linux und macOS nicht geeignet)
+- Betriebssystem Windows 11 (Linux und macOS nicht geeignet)
 
 ## Lösung
 

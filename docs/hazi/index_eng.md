@@ -30,4 +30,4 @@ Certain assignments require you to take a screenshot of a specific part of your 
 
 ## Required tools
 
-The primary development environment required is Visual Studio 2022. A more detailed description can be found [here](./fejlesztokornyezet/index_eng.md).
+The primary development environment required is Visual Studio 2026. A more detailed description can be found [here](./fejlesztokornyezet/index_eng.md).

@@ -22,9 +22,9 @@ Related lectures: Developing concurrent (multithreaded) applications.
 
 Tools needed to complete the laboratory:
 
-- Visual Studio 2022
+- Visual Studio 2026
     - Windows Desktop Development Workload
-- Windows 10 or Windows 11 operating system (Linux and macOS are not suitable)
+- Windows 11 operating system (Linux and macOS are not suitable)
 
 ## Solution
 

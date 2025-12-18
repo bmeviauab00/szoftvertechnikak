@@ -12,8 +12,8 @@ In dieser Übung werden wir eine einfache Anwendung mit Hilfe des MVVM-Musters r
 
 Die für die Durchführung der Übung benötigten Werkzeuge:
 
-* Windows 10 oder Windows 11 (Linux und macOS sind nicht geeignet)
-* Visual Studio 2022
+* Windows 11 (Linux und macOS sind nicht geeignet)
+* Visual Studio 2026
     * Windows Desktop Development Workload
 
 ## Ausgangsprojekt

@@ -22,7 +22,7 @@ The aim of the laboratory:
 
 Tools needed to complete the laboratory:
 
-- Visual Studio 2022
+- Visual Studio 2026
 
 It is recommended to install the latest version of Visual Studio. The Community Edition, Professional and Enterprise versions are also suitable. The Community Edition is free and can be downloaded from the Microsoft website. The Professional is paid, but it is also available free of charge to students of the university (on the website <https://azureforeducation.microsoft.com/devtools>, as part of the Azure Dev Tools for Teaching programme).
 
@@ -66,7 +66,7 @@ The task is to create a C# console application that prints the text "Hello world
 
 The application is written in C#. The compiled application is run by the .NET runtime. The theoretical background of compiling/running and the basics of .NET are covered in the first lecture.
 
-The steps to create a solution and a project within it in Visual Studio 2022:
+The steps to create a solution and a project within it in Visual Studio 2026:
 
 1. Start a new project wizard, which can be done in two ways
     - Using the startup window
@@ -85,7 +85,7 @@ The steps to create a solution and a project within it in Visual Studio 2022:
     4. Place solution and project in the same directory: no tick (but not particularly significant).
 
 4. Next button at the bottom of the wizard window, on the next wizard page:
-    1. Framework: **.NET 8 (Long-term support).**
+    1. Framework: **.NET 10 (Long-term support).**
     2. Check the "Do not use top level statements" checkbox (we will return to this explanation shortly).
 
 The project also creates a new solution, whose structure can be viewed in the Visual Studio *Solution Explorer* window. A solution can consist of several projects, and a project can consist of several files. A solution is a summary of the entire working environment (it includes a file with the extension `.sln`), while the output of a project is typically a file `.exe` or `.dll`, i.e. a component of a complex application/system. The project file extension for C# applications is `.csproj`.

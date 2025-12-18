@@ -25,7 +25,7 @@ Beyond these basics, Git offers many additional features, such as viewing the co
 
 ## GitHub
 
-GitHub is an online service and platform (https://github.com) that provides comprehensive Git support. For public repositories (accessible to everyone), it is completely free. Over time, GitHub has become the leading platform for version-controlled code storage and the home of most open-source projects.
+GitHub is an online service and platform (<https://github.com>) that provides comprehensive Git support. For public repositories (accessible to everyone), it is completely free. Over time, GitHub has become the leading platform for version-controlled code storage and the home of most open-source projects.
 
 ## GitHub Classroom
 
@@ -46,10 +46,10 @@ In practice, both approaches are often combined. Cloning a repository is often q
 
 ## Installing Git
 
-If Git is not yet installed on your computer and you want to use it from the command line, you can download it for Windows from: https://git-scm.com/download/win. For other operating systems, visit: https://git-scm.com/downloads.
+If Git is not yet installed on your computer and you want to use it from the command line, you can download it for Windows from: <https://git-scm.com/download/win>. For other operating systems, visit: <https://git-scm.com/downloads>.
 
 !!! warning "Installing Git Credential Manager"
     GitHub no longer supports simple username/password authentication. If you receive the error message "Support for password authentication was removed" when logging in via the command line, this is the reason. There are two ways to resolve this issue:
-    
+
     * The simplest solution is to install "Git Credential Manager." It can be selected during Git installation by checking the appropriate box, or it can be installed separately from [here](https://github.com/git-ecosystem/git-credential-manager/releases). After installation, no additional configuration is needed; Git will automatically use it and guide the user through a browser-based (OAuth) authentication process, also storing credentials for convenience.
     * Alternatively, you can use a PAT (Personal Access Token). More information is available [here](https://stackoverflow.com/questions/68775869/message-support-for-password-authentication-was-removed).

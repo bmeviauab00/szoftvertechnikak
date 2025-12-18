@@ -14,8 +14,8 @@ Related lectures: Data management, ADO.NET basics.
 
 Tools required for completing the laboratory:
 
-- Visual Studio 2022  
-- Windows 10 or Windows 11 operating system  
+- Visual Studio 2026  
+- Windows 11 operating system  
 - During the laboratory, we will use *SQL Server Object Explorer* in Visual Studio to navigate between database objects and execute queries. This may require the *SQL Server Data Tools* component, which can be most easily installed via the *Individual Components* tab in the Visual Studio Installer, but it is also included in the *Data Storage and Processing* workload.
 
 !!! tip "Laboratory on Linux or Mac"
@@ -183,7 +183,7 @@ The task is to create a C# console application that uses the records from the `S
 
 1. Create a C# console application. Make sure to select the *Console App* project type and **NOT** *Console App (.NET Framework)*:
     - Name the project *AdoExample*
-    - Set the Target Framework to *.NET 8*
+    - Set the Target Framework to *.NET 10*
     - Check the option *Do not use top-level statements*
 
 2. Find the connection string in the SQL Server Object Explorer (SSOE): right-click your database connection (as highlighted in red in the image below) and select Properties.

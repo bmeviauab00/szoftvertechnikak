@@ -1,3 +1,7 @@
+---
+authors: bzolka
+---
+
 # Schnittstellen und abstrakte (Basis-)Klassen
 
 Dieses Kapitel enthält keine Übungsaufgabe, sondern stellt den Studierenden die zugehörige Theorie vor.

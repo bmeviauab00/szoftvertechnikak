@@ -13,4 +13,5 @@ A házi feladatok leírása csak a félév folyamán fokozatosan, a meghirdetés
 - [2. HF - Nyelvi eszközök](../hazi/2-nyelvi-eszkozok/index.md)
 - [3. HF - Felhasználói felület kialakítása](../hazi/3-felhasznaloi-felulet-kialakitasa/index.md)
 - [4. HF - Többszálú alkalmazások fejlesztése](../hazi/4-tobbszalu-alkalmazasok-fejlesztese/index.md)
-- [5. HF - Document-View architektúra](../hazi/5-document-view-architectura/index.md)
+- [5. HF - MVVM](../hazi/5-mvvm/index.md)
+- [6. HF - Tervezési minták](../hazi/6-tervezési-mintak/index.md)

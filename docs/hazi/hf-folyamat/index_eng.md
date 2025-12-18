@@ -154,7 +154,7 @@ Throughout the semester, each class, interface, etc., should be placed in its ow
 Even if you're not used to it, using Git in the command line can often be faster than navigating through GUI menus. Here’s a simple workflow:
 
 1. Clone the repository (only needed once):
-   `git clone https://github.com/bmeviauab00/hazi1-2022-myusername`
+   `git clone https://github.com/bmeviauab00/hazi1-2026-myusername`
 
 2. Make changes in your local repository.
 
@@ -172,7 +172,6 @@ Even if you're not used to it, using Git in the command line can often be faster
 
 Notes:
 
-
 - If multiple people are working on the same Git branch, before step 6 (push), a `git pull` may be necessary to incorporate changes made by others into your local repository (without this, you won't be able to push). It may be useful to add the `--rebase` option to the pull command to avoid creating an additional merge commit, but we won’t go into the explanation here.
 
 - As mentioned earlier, every commit is associated with a username and an email address. If these are not configured in Git, an error message will appear when committing. You can set them in Git’s global configuration using the following commands (you only need to do this once, replacing the placeholders with your actual information):
@@ -187,4 +186,3 @@ Notes:
     `git add -A & git commit -m "All tests run" & git push`
 
     If using PowerShell, replace `&` with `;` as the separator.
-

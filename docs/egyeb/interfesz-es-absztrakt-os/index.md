@@ -1,3 +1,7 @@
+---
+authors: bzolka
+---
+
 # Interfész és absztrakt (ős)osztály
 
 A fejezet nem tartalmaz feladatot, a hallgatók számára ismerteti a kapcsolódó elméletet.

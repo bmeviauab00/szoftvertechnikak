@@ -21,10 +21,10 @@ Related lectures:
 
 Tools required for completing the laboratory:
 
-- Visual Studio 2022
+- Visual Studio 2026
 
 !!! tip "Laboratory on Linux or macOS"
-    The material for this laboratory is primarily intended for Windows and Visual Studio, but it can also be completed on other operating systems with different development tools (e.g., VS Code, Rider, Visual Studio for Mac), or even with a simple text editor and CLI tools. This is made possible by the fact that the examples are presented in the context of a simple Console application (no Windows-specific elements), and the .NET 8 SDK is supported on Linux and macOS. [Hello World on Linux](https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code).
+    The material for this laboratory is primarily intended for Windows and Visual Studio, but it can also be completed on other operating systems with different development tools (e.g., VS Code, Rider), or even with a simple text editor and CLI tools. This is made possible by the fact that the examples are presented in the context of a simple Console application (no Windows-specific elements), and the .NET 10 SDK is supported on Linux and macOS. [Hello World on Linux](https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code).
 
 ### Theoretical background and approach *
 
