@@ -1,8 +1,12 @@
+---
+authors: bzolka
+---
+
 # Interface and abstract (base) class
 
 The chapter does not contain exercises; instead, it introduces the related theory for the students.
 
-## Abstract class 
+## Abstract class
 
 The concepts have already been introduced within the context of earlier subjects, so now we will only summarize the most important points and focus on their relevance to C#.
 

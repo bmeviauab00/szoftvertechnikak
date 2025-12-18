@@ -1,5 +1,5 @@
 ---
-autoren: bzolka
+author: bzolka
 ---
 
 # 1. Beziehung zwischen dem Modell und dem Code
@@ -22,7 +22,7 @@ Das Ziel der Übung:
 
 Die für die Ausführung der Übung benötigten Werkzeuge:
 
-- Visual Studio 2022
+- Visual Studio 2026
 
 Es sollte die neueste Version von Visual Studio installiert sein. Die Versionen Community Edition, Professional und Enterprise sind ebenfalls geeignet. Die Community Edition ist kostenlos und kann von der Microsoft-Website heruntergeladen werden. Der Professional ist kostenpflichtig, steht aber auch für Studenten der Universität kostenlos zur Verfügung (auf der Website, im Rahmen des Programms Azure Dev Tools for Teaching).
 
@@ -65,7 +65,7 @@ Die Aufgabe ist die Erstellung einer C#-Konsolenanwendung, die den Text "Hello w
 
 Die Anwendung wird in C# geschrieben. Die kompilierte Anwendung wird von der .NET-Laufzeitumgebung ausgeführt. In der ersten Vorlesung werden die theoretischen Hintergründe des Kompilierens/Ablaufens und die Grundlagen von .NET behandelt.
 
-Die Schritte zum Erstellen einer Projektmappe und eines Projekts in Visual Studio 2022:
+Die Schritte zum Erstellen einer Projektmappe und eines Projekts in Visual Studio 2026:
 
 1. Starten wir den "Neues Projekt erstellen" Dialogfeld, was auf zwei Arten geschehen kann:
     - Verwendung des Startfensters
@@ -84,7 +84,7 @@ Die Schritte zum Erstellen einer Projektmappe und eines Projekts in Visual Studi
     4. Place solution and project in the same directory: kein Häkchen (aber nicht besonders wichtig).
 
 4. Next-Taste am unteren Rand des Dialogfeldes "Neues Projekt erstellen", auf der nächsten Seite:
-    1. Framework: **.NET 8 (Langfristige Unterstützung)**.
+    1. Framework: **.NET 10 (Langfristige Unterstützung)**.
     2. Aktivieren wir das Kontrollkästchen "Do not use top level statements" (wir werden dies gleich erklären).
 
 Das Projekt erstellt auch eine neue Projektmappe, deren Struktur im Visual Studio *Solution Explorer*-Fenster angezeigt werden kann. Eine Projektmappe (Solution) kann aus mehreren Projekten bestehen, und ein Projekt kann aus mehreren Dateien bestehen. Ein Solution ist eine Zusammenfassung der gesamten Arbeitsumgebung (sie hat die Dateierweiterung `.sln` ), während die Ausgabe eines Projekts typischerweise eine Datei `.exe` oder `.dll` ist, d. h. eine Komponente einer komplexen Anwendung/eines komplexen Systems. Projektdateierweiterung für C#-Anwendungen `.csproj`.

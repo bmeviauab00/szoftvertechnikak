@@ -1,7 +1,8 @@
-# Theory of the relationship between the UML class diagram and code
+---
+authors: bzolka
+---
 
-Last modified date: 2025.02.24  
-Prepared by Zoltán Benedek
+# Theory of the relationship between the UML class diagram and code
 
 The chapter does not contain any exercise, it introduces the related theory to students.
 

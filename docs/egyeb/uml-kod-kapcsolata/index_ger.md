@@ -1,7 +1,8 @@
-# Die Theorie der Beziehung zwischen UML-Klassendiagramm und Code
+---
+authors: bzolka
+---
 
-Letzte Änderung: 15.10.2022  
-Ausgearbeitet von: Zoltán Benedek
+# Die Theorie der Beziehung zwischen UML-Klassendiagramm und Code
 
 Dieses Kapitel enthält keine Übungsaufgabe, sondern stellt den Studierenden die zugehörige Theorie vor.
 
