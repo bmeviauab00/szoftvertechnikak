@@ -13,8 +13,8 @@ Kapcsolódó előadások: Adatkezelés, ADO.NET alapismeretek.
 
 A gyakorlat elvégzéséhez szükséges eszközök:
 
-- Visual Studio 2022
-- Windows 10 vagy Windows 11 operációs rendszer
+- Visual Studio 2026
+- Windows 11 operációs rendszer
 - A gyakorlat során Visual Studio-ban az *SQL Server Object Explorer*-t fogjuk használni az adatbázis objektumok közötti navigálására és a lekérdezések futtatására. Ehhez szükség lehet az *SQL Server Data Tools* komponensre, melyet legegyszerűbben az *Individual Components* oldalon tudunk telepíteni a Visual Studio Installer-ben, de a *Data Storage and Processing* workload is tartalmazza ezt.
 
 !!! tip "Gyakorlat Linuxon vagy Macen"
@@ -181,7 +181,7 @@ A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, amely használ
 
 1. Hozzunk létre egy C# nyelvű konzolos alkalmazást. A projekt típusa *Console App* legyen, és **NE** a *Console App (.NET Framework)*:
     - A projekt neve legyen *AdoExample*
-    - A Target Framework legyen *.NET 8*
+    - A Target Framework legyen *.NET 10*
     - Pipáljuk be a *Do not use top-level statements* kapcsolót
   
 2. Keressük ki a connection string-et az SSOE-ből: jobbklikk az adatbázis-kapcsolatunkon (pirossal jelölve az alábbi ábrán) / Properties.

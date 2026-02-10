@@ -220,7 +220,7 @@ You have been assigned to develop the first version of a CAD application capable
 - By the end of the implementation, create a class diagram in Visual Studio that clearly presents the relationships between the classes. Use *Show as Association* or *Show as Collection Association* instead of member variables when representing relationships. (See [1st Lab - instructions](../../labor/1-model-es-kod-kapcsolata/index_eng.md))
 
     !!! tip "Class Diagram Component"
-        Visual Studio 2022 does not always install the *Class Designer* component by default. If the *Class Diagram* option is unavailable when adding a new item, install the *Class Diagram* component manually. See [Development environment](../fejlesztokornyezet/index_eng.md) for further details.
+        Visual Studio 2026 does not always install the *Class Designer* component by default. If the *Class Diagram* option is unavailable when adding a new item, install the *Class Diagram* component manually. See [Development environment](../fejlesztokornyezet/index_eng.md) for further details.
 
 During the implementation, we apply significant simplifications:
 
@@ -255,7 +255,7 @@ The `Textbox` class, from which `TextArea` must inherit, is located in the `Cont
 If needed, the *Object Browser* can help explore additional methods. The *Object Browser* can be opened by selecting the *Object Browser* option from the *View* menu. It will appear in a new tab.
 
 !!! note "If Object Browser appears empty"
-    In Visual Studio 2022, the Object Browser sometimes does not display content unless a source file is open. Open `Program.cs` and then switch back to the Object Browser to see the components.
+    In Visual Studio 2026, the Object Browser sometimes does not display content unless a source file is open. Open `Program.cs` and then switch back to the Object Browser to see the components.
 
 In the Object Browser, expanding the `Controls` component and selecting individual nodes (namespace, class) will display the properties of the selected node. For example, when selecting a class, its members will be shown.
 

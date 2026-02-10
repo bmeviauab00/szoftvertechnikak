@@ -12,8 +12,8 @@ During this lab, we will refactor a simple application using the MVVM pattern to
 
 Tools required for completing the lab:
 
-* Windows 10 or Windows 11 operating system (Linux and macOS are not suitable)
-* Visual Studio 2022
+* Windows 11 operating system (Linux and macOS are not suitable)
+* Visual Studio 2026
     * Windows Desktop Development Workload
 
 ## Starter Project

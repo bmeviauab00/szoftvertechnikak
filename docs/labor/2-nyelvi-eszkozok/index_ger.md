@@ -22,7 +22,7 @@ Zugehörige Vorlesungen: Vorlesung 2 und Anfang der Vorlesung 3 - Sprachliche Mi
 
 Die für die Durchführung der Übung benötigten Werkzeuge:
 
-- Visual Studio 2022
+- Visual Studio 2026
 
 !!! tip "Übung unter Linux oder macOS"
     Das Übungsmaterial ist grundsätzlich für Windows und Visual Studio gedacht, kann aber auch auf anderen Betriebssystemen mit anderen Entwicklungswerkzeugen (z.B. VS Code, Rider, Visual Studio für Mac) oder sogar mit einem Texteditor und CLI (Kommandozeilen)-Tools durchgeführt werden. Dies wird dadurch ermöglicht, dass die Beispiele im Kontext einer einfachen Konsolenanwendung präsentiert werden (keine Windows-spezifischen Elemente) und das .NET SDK auf Linux und macOS unterstützt wird. [Hello World unter Linuxon](https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code)
@@ -123,7 +123,7 @@ Im folgenden Beispiel erstellen wir eine Klasse namens `Person`, die eine Person
         - `switch`: Schaltbefehl
         - `cw`: Console.WriteLine
 
-        Wir können solche Schnipseln [herstellen](https://learn.microsoft.com/en-us/visualstudio/ide/walkthrough-creating-a-code-snippet?view=vs-2022).
+        Wir können solche Schnipseln [herstellen](https://learn.microsoft.com/en-us/visualstudio/ide/walkthrough-creating-a-code-snippet).
 
 2. Ergnänzen wir die Funktion `Main` in der Datei `Program.cs`, um unsere neue Eigenschaft zu testen.
 

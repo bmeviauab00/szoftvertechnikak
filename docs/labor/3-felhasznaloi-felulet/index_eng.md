@@ -11,7 +11,7 @@ The goal of this laboratory is to familiarize ourselves with the basics of thick
 
 Tools required for the lab:
 
-* Windows 10 or Windows 11 operating system (Linux and macOS are not suitable)
+* Windows 11 operating system (Linux and macOS are not suitable)
 
 A description of the necessary development environment can be found [here](../../hazi/fejlesztokornyezet/index_eng.md).
 

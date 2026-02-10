@@ -13,8 +13,8 @@ Zugehörige Präsentationen: Datenverwaltung, ADO.NET-Grundlagen.
 
 Die für die Durchführung der Übung benötigten Werkzeuge:
 
-- Visual Studio 2022
-- Betriebssystem Windows 10 oder Windows 11
+- Visual Studio 2026
+- Betriebssystem Windows 11
 - In dieser Übung werden wir den *SQL Server Object Explorer* in Visual Studio verwenden, um zwischen Datenbankobjekten zu navigieren und Abfragen auszuführen. Dazu ist möglicherweise die Komponente *SQL Server Data Tools* erforderlich, die am einfachsten auf der Seite *Individual Components* im Visual Studio Installer installiert wird, aber auch im Workload *Data Storage and Processing* enthalten ist.
 
 !!! tip "Übung unter Linux oder Mac"
@@ -181,8 +181,8 @@ Die Aufgabe ist eine C#-Konsolenanwendung zu erstellen, die die Datensätze der 
 
 1. Erstellen Sie eine Konsolenanwendung in C#. Der Projekttyp sollte *Console App* und **NICHT** *Console App (.NET Framework)* sein:
     - Der Projektname sollte *AdoExample* lauten
-    - Das Target Framework sollte *.NET 8* sein
-    - Aktivieren Sie die Option *Do not use top-level statements* 
+    - Das Target Framework sollte *.NET 10* sein
+    - Aktivieren Sie die Option *Do not use top-level statements*
   
 2. Suchen Sie die Verbindungsstring (connection string) aus der SSOE: Klicken Sie mit der rechten Maustaste auf unsere Datenbankverbindung (in der Abbildung unten rot markiert) / Properties.
 

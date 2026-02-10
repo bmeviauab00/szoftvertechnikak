@@ -1,3 +1,7 @@
+---
+authors: bzolka
+---
+
 # Az UML osztálydiagram és a kód kapcsolatának elmélete
 
 Utolsó módosítás ideje: 2022.10.15  
