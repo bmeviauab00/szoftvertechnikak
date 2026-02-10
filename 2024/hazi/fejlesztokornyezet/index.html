@@ -2358,13 +2358,14 @@
 
 <h1 id="fejlesztokornyezet-hazi-feladatokhoz">Fejlesztőkörnyezet házi feladatokhoz<a class="headerlink" href="#fejlesztokornyezet-hazi-feladatokhoz" title="Permanent link">¶</a></h1>
 <h2 id="bevezetes">Bevezetés<a class="headerlink" href="#bevezetes" title="Permanent link">¶</a></h2>
-<p>A félév során a házi feladatok megoldásához a <strong>Visual Studio 2022</strong> fejlesztőkörnyezetet kell használni (a Visual Studio for Mac nem alkalmas). Ennek futtatásához Windows operációs rendszerre van szükség.  Ha telepítve van már a gépünkre a Visual Studio 2022, akkor a Start menüből indítsuk el a „Visual Studio Installer”-t. Ez induláskor ellenőrzi, érhető-e el Visual Studio-ból újabb változat online, és ha igen, az Update gombra kattintva indítsuk is el a legfrissebb verzió telepítését.</p>
+<p>A félév során a házi feladatok megoldásához a <strong>Visual Studio 2026</strong> fejlesztőkörnyezetet kell használni. Ennek futtatásához Windows operációs rendszerre van szükség. Ha telepítve van már a gépünkre a Visual Studio 2026, akkor a Start menüből indítsuk el a „Visual Studio Installer”-t. Ez induláskor ellenőrzi, érhető-e el Visual Studio-ból újabb változat online, és ha igen, az Update gombra kattintva indítsuk is el a legfrissebb verzió telepítését.</p>
 <details class="note">
 <summary>Miért is van szükség Visual Studiora és Windowsra?</summary>
-<p>VS Code, illetve a Visual Studio for Mac a következők miatt nem használhatók:</p>
+<p>VS Code, vagy pl. a JetBrains Rider a következők miatt nem használhatók:</p>
 <ul>
 <li>Nem támogatják az UML (szerű) modellezést, melyre az első házi feladatnál szükség van.</li>
 <li>Érdemben nem támogatják a <em>WinUI3</em> felhasználói felülettel rendelkező .NET alkalmazások fejlesztését (erre a 3. házi feladattól kezdődően építenek bizonyos házi feladatok).</li>
+<li>A laboranyagokat és a házi feladatot egy támogatott fejlesztőkörnyezethez írjuk, így a laborokon és otthon is ugyanazt a megszokott környezetet használjuk.</li>
 </ul>
 </details>
 <h3 id="visual-studio-edition-ok">Visual Studio edition-ök<a class="headerlink" href="#visual-studio-edition-ok" title="Permanent link">¶</a></h3>
@@ -2374,7 +2375,7 @@
 <li>Természetesen a <em>Professional</em> és <em>Enterprise</em> változatok is használhatók, a tárgy vonatkozásában ugyanakkor ezek érdemi pluszt nem adnak. Ezek az egyébként fizetős változatok az egyetem hallgatói számára ingyenesen elérhetők (a <a href="https://azureforeducation.microsoft.com/devtools">https://azureforeducation.microsoft.com/devtools</a> honlapon, az Azure Dev Tools for Teaching program keretében).</li>
 </ul>
 <h3 id="telepitendo-komponensek">Telepítendő komponensek<a class="headerlink" href="#telepitendo-komponensek" title="Permanent link">¶</a></h3>
-<p>A tárgy első előadása röviden kitér a .NET különböző változataira (.NET Framework, .NET Core, .NET 5-8 és  stb.). A feladatok megoldásához a .NET 8-et használjuk a félév során. A Visual Studio ezt telepíti, de szükség van a ".NET desktop development" Visual Studio Workload telepítésére:</p>
+<p>A tárgy első előadása röviden kitér a .NET különböző változataira (.NET Framework 4.x, .NET 5+ (korábban .NET Core) és  stb.). A feladatok megoldásához a .NET 10-et használjuk a félév során. A Visual Studio ezt telepíti, de szükség van a ".NET desktop development" Visual Studio Workload telepítésére:</p>
 <ol>
 <li>Visual Studio telepítő indítása (pl. a Windows Start menüben a „Visual Studio Installer” begépelésével).</li>
 <li>Modify gombra kattintás</li>
@@ -2404,7 +2405,7 @@
 </li>
 <li>
 <p>"Windows App SDK C# templates" Visual Studio komponens telepítése.</p>
-<p>A Visual Studio telepítőben válasszuk ki a ".NET Desktop Development" workload-ot, jobb oldalt az "Installation details" panelen alul pipáljuk a "Windows App SDK C# Templates" komponenst, majd jobb alsó sarokban "Modify" gomb. </p>
+<p>A Visual Studio telepítőben válasszuk ki a ".NET Desktop Development" workload-ot, jobb oldalt az "Installation details" panelen alul pipáljuk a "Windows App SDK C# Templates" komponenst, majd jobb alsó sarokban "Modify" gomb.</p>
 </li>
 <li>
 <p>Windows App SDK telepítése</p>
@@ -2425,8 +2426,8 @@
         </path>
       </svg>
     </span>
-    <span title="2025. május 22. 20:39:45">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. május 22. 20:39:45 CEST"><span class="timeago" datetime="2025-05-22T20:39:45+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. május 22. 20:39:45 CEST">2025-05-22</span>
+    <span title="2025. december 18. 22:33:38">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. december 18. 22:33:38 CET"><span class="timeago" datetime="2025-12-18T22:33:38+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. december 18. 22:33:38 CET">2025-12-18</span>
     </span>
   </span>
 
@@ -2440,10 +2441,10 @@
       </svg>
     </span>
     <span>Szerzők</span>
-    <nav><a href="https://github.com/Bence021" target="_blank" rel="noopener noreferrer" class="md-author" title="@Szabó Bence Zsolt">
-        <img src="https://avatars.githubusercontent.com/u/57870824?u=4a55e53053aac40393239eca035a92f9ab5724e1&amp;v=4?size=72" alt="@Szabó Bence Zsolt">
-      </a><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
+    <nav><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
         <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&amp;v=4?size=72" alt="@Zoltán Benedek">
+      </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tibor Tóth">
+        <img src="https://avatars.githubusercontent.com/u/8333960?u=d26653213d265ecdceeaf20a896d74f479d35450&amp;v=4?size=72" alt="@Tibor Tóth">
       </a></nav>      
   </span>
 </div>

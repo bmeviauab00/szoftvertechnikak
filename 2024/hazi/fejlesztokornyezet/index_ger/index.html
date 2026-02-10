@@ -2334,13 +2334,14 @@
 
 <h1 id="entwicklungsumgebung-fur-hausaufgaben">Entwicklungsumgebung für Hausaufgaben<a class="headerlink" href="#entwicklungsumgebung-fur-hausaufgaben" title="Permanent link">¶</a></h1>
 <h2 id="einfuhrung">Einführung<a class="headerlink" href="#einfuhrung" title="Permanent link">¶</a></h2>
-<p>Für die Hausaufgaben während des Semesters muss die Entwicklungsumgebung <strong>Visual Studio 2022</strong> verwendet werden (Visual Studio für Mac ist nicht geeignet). Zum Ausführen benötigen Sie ein Windows-Betriebssystem.  Wenn Sie Visual Studio 2022 bereits auf Ihrem Computer installiert haben, starten Sie den "Visual Studio Installer" über das Startmenü. Dadurch wird beim Start geprüft, ob eine neuere Version von Visual Studio online verfügbar ist. Ist dies der Fall, klicken Sie auf Aktualisieren, um die Installation der neuesten Version zu starten.</p>
+<p>Für die Hausaufgaben während des Semesters muss die Entwicklungsumgebung <strong>Visual Studio 2026</strong> verwendet werden. Zum Ausführen benötigen Sie ein Windows-Betriebssystem.  Wenn Sie Visual Studio 2026 bereits auf Ihrem Computer installiert haben, starten Sie den "Visual Studio Installer" über das Startmenü. Dadurch wird beim Start geprüft, ob eine neuere Version von Visual Studio online verfügbar ist. Ist dies der Fall, klicken Sie auf Aktualisieren, um die Installation der neuesten Version zu starten.</p>
 <details class="hinweis">
 <summary>Warum brauche ich Visual Studio und Windows?</summary>
-<p>VS Code oder Visual Studio für Mac kann aus folgenden Gründen nicht verwendet werden:</p>
+<p>VS Code oder JetBrains Rider kann aus folgenden Gründen nicht verwendet werden:</p>
 <ul>
 <li>Sie unterstützen keine UML-ähnliche Modellierung, die für die erste Hausaufgabe benötigt wird.</li>
 <li>Sie unterstützen nicht die Entwicklung von .NET-Anwendungen mit der Benutzeroberfläche <em>WinUI3</em> (einige Hausaufgaben ab Hausaufgabe 3 bauen darauf auf).</li>
+<li>Die Laborunterlagen und die Hausaufgaben sind für eine unterstützte Entwicklungsumgebung geschrieben, sodass wir in den Laboren und zu Hause dieselbe vertraute Umgebung verwenden.</li>
 </ul>
 </details>
 <h3 id="visual-studio-ausgabe-ok">Visual Studio Ausgabe-ök<a class="headerlink" href="#visual-studio-ausgabe-ok" title="Permanent link">¶</a></h3>
@@ -2350,7 +2351,7 @@
 <li>Die <em>Professional-</em> und <em>Enterprise-Versionen</em> können natürlich auch verwendet werden, bieten aber keinen inhaltlichen Mehrwert. Diese kostenpflichtigen Versionen sind für Universitätsstudenten kostenlos erhältlich (unter <a href="https://azureforeducation.microsoft.com/devtools">https://azureforeducation.microsoft.com/devtools</a>, als Teil des Azure Dev Tools for Teaching Programms).</li>
 </ul>
 <h3 id="zu-installierende-komponenten">Zu installierende Komponenten<a class="headerlink" href="#zu-installierende-komponenten" title="Permanent link">¶</a></h3>
-<p>In der ersten Vorlesung des Kurses werden kurz die verschiedenen Versionen von .NET (.NET Framework, .NET Core, .NET 5-8 usw.) behandelt. Wir werden .NET 8 verwenden, um die Probleme während des Semesters zu lösen. Visual Studio installiert dies, aber Sie müssen den ".NET Desktop Development" Visual Studio Workload installieren:</p>
+<p>In der ersten Vorlesung des Kurses werden kurz die verschiedenen Versionen von .NET (.NET Framework 4.x, .NET 5+ (früher .NET Core) usw.) behandelt. Wir werden .NET 10 verwenden, um die Probleme während des Semesters zu lösen. Visual Studio installiert dies, aber Sie müssen den ".NET Desktop Development" Visual Studio Workload installieren:</p>
 <ol>
 <li>Starten Sie das Visual Studio-Installationsprogramm (z. B. durch Eingabe von "Visual Studio Installer" im Windows-Startmenü).</li>
 <li>Klicken Sie auf die Schaltfläche Ändern</li>
@@ -2380,7 +2381,7 @@
 </li>
 <li>
 <p>installation der Visual Studio Komponente "Windows App SDK C# Templates".</p>
-<p>Wählen Sie im Visual Studio-Installationsprogramm den Workload ".NET Desktop Development", markieren Sie die Komponente "Windows App SDK C# Templates" im Bereich "Installationsdetails" auf der rechten Seite und klicken Sie dann auf die Schaltfläche "Ändern" in der rechten unteren Ecke. </p>
+<p>Wählen Sie im Visual Studio-Installationsprogramm den Workload ".NET Desktop Development", markieren Sie die Komponente "Windows App SDK C# Templates" im Bereich "Installationsdetails" auf der rechten Seite und klicken Sie dann auf die Schaltfläche "Ändern" in der rechten unteren Ecke.</p>
 </li>
 <li>
 <p>Windows-SDK installieren</p>
@@ -2396,8 +2397,8 @@
         </path>
       </svg>
     </span>
-    <span title="2025. február 9. 14:33:30">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. február 9. 14:33:30 CET"><span class="timeago" datetime="2025-02-09T14:33:30+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. február 9. 14:33:30 CET">2025-02-09</span>
+    <span title="2025. december 18. 22:33:38">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. december 18. 22:33:38 CET"><span class="timeago" datetime="2025-12-18T22:33:38+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. december 18. 22:33:38 CET">2025-12-18</span>
     </span>
   </span>
 
@@ -2413,6 +2414,8 @@
     <span>Szerzők</span>
     <nav><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
         <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&amp;v=4?size=72" alt="@Zoltán Benedek">
+      </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tibor Tóth">
+        <img src="https://avatars.githubusercontent.com/u/8333960?u=d26653213d265ecdceeaf20a896d74f479d35450&amp;v=4?size=72" alt="@Tibor Tóth">
       </a></nav>      
   </span>
 </div>
