@@ -46,17 +46,13 @@ For tasks related to XAML/WinUI technologies (starting from the 3rd homework tas
 
 1. Enable "Developer mode" on the computer. You should search for "Developer settings".
 
-2. In the Visual Studio installer, make sure that the ".NET Desktop Development" workload is installed (if not, check and install it).
+2. In the Visual Studio installer, make sure that the ".NET Desktop Development" and the "WinUI application development" workloads are installed (if not, check and install it).
 
-3. Install the "Windows App SDK C# templates" Visual Studio component.
+3. Install the Windows App SDK
 
-    In the Visual Studio installer, select the ".NET Desktop Development" workload, then in the "Installation details" panel on the right, scroll down and check the "Windows App SDK C# Templates" component, then click "Modify" in the bottom-right corner.
+    The latest version can be downloaded from here: <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>. However, during the semester, we will use the "1.8.4 (1.8.260101001)" version for labs and homework, so it is recommended to install this version, even if a newer version is released. It can be found here: <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/older-downloads>. You should install the x64 version for a modern machine.
 
-4. Install the Windows App SDK
-
-    The latest version can be downloaded from here: <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>. However, during the semester, we will use the "1.6.4 (1.6.250108002)" version for labs and homework, so it is recommended to install this version, even if a newer version is released. It can be found here: <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/older-downloads>. You should install the x64 version for a modern machine.
-
-5. If Windows 11 does not work after these steps, you may need to install version 10.0.19041 or later of the Windows 10 SDK (found under Individual Components in the Visual Studio installer).
+4. If Windows 11 does not work after these steps, you may need to install version 10.0.19041 or later of the Windows 10 SDK (found under Individual Components in the Visual Studio installer).
 
 ### Information for MacBook and Linux Users
 
