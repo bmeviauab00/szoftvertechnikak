@@ -45,15 +45,11 @@ Für Aufgaben, die sich auf XAML/WinUI-Technologien beziehen (ab Hausaufgabe 3),
 
 1. Der "Entwicklermodus" muss auf dem Computer aktiviert sein. Suchen Sie im Windows-Startmenü nach "Entwicklereinstellungen" (je nachdem, ob Sie ein englisches oder ungarisches Windows verwenden).
 
-2. Vergewissern Sie sich im Visual Studio-Installationsprogramm, dass der ".NET Desktop Development"-Workload installiert ist (falls nicht, entfernen Sie die Markierung und installieren Sie ihn)
+2. Vergewissern Sie sich im Visual Studio-Installationsprogramm, dass der ".NET Desktop Development"-Workload und der „WinUI application development“-Workload installiert sind (falls nicht, entfernen Sie die Markierung und installieren Sie ihn)
 
-3. installation der Visual Studio Komponente "Windows App SDK C# Templates".
+3. Windows-SDK installieren
 
-    Wählen Sie im Visual Studio-Installationsprogramm den Workload ".NET Desktop Development", markieren Sie die Komponente "Windows App SDK C# Templates" im Bereich "Installationsdetails" auf der rechten Seite und klicken Sie dann auf die Schaltfläche "Ändern" in der rechten unteren Ecke.
-
-4. Windows-SDK installieren
-
-    Es kann installiert werden von: <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>. Während des Semesters werden wir "1.6.4 (1.6.250108002)" in Übungen und Tutorien verwenden. Es wird empfohlen, diese Version zu installieren, auch wenn eine neuere Version veröffentlicht wird.
+    Es kann installiert werden von: <https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads>. Während des Semesters werden wir "1.8.4 (1.8.260101001)" in Übungen und Tutorien verwenden. Es wird empfohlen, diese Version zu installieren, auch wenn eine neuere Version veröffentlicht wird.
 
 ### Informationen für MacBook- und Linux-Benutzer
 
