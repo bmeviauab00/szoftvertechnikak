@@ -60,9 +60,9 @@ A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek e
 
     Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ [itt](../../hazi/git-github-github-classroom/index.md#git-telepitese).
 
-## 1. Feladat - „Hello world” .NET konzol alkalmazás elkészítése
+## 1. Feladat - „Hello world” .NET konzolalkalmazás elkészítése
 
-A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, amely a konzolra kiírja a „Hello world!” szöveget.
+A feladat egy olyan C# nyelvű konzolalkalmazás elkészítése, amely a konzolra kiírja a „Hello world!” szöveget.
 
 Az alkalmazást C# nyelven készítjük el. A lefordított alkalmazás futtatását a .NET runtime végzi. A fordítás/futtatás elméleti hátterét, valamint a .NET alapjait az első előadás ismerteti.
 
@@ -74,21 +74,21 @@ A solution és azon belüli projekt létrehozásának lépései Visual Studio 20
         2. A megjelenő indítóablak jobb oldali sávjában *Create new project*
     - Már futó Visual Studio-ban
         1. File / New-Project
-2. A Create new project varázslóban a *Console app* (és **NEM** a *Console app (.NET Framework)* sablont válasszuk ki, ebből is a C#-osat. Azt, hogy C#-os, a sablon ikonjának bal felső sarka jelzi. Ha nem látjuk a listában, rá kell keresni/szűrni. Rákereshetünk a felső keresősávban a „console” beírásával. Vagy az alatta levő lenyíló mezők segítségével: az elsőben (nyelvkiválasztó) „C#”, a harmadikban (projekttípus kiválasztó) „Console”.
+2. A Create new project varázslóban a *Console app* (és **NE** a *Console app (.NET Framework)* sablont válasszuk ki), ebből is a C#-osat. Azt, hogy C#-os, a sablon ikonjának bal felső sarka jelzi. Ha nem látjuk a listában, rá kell keresni/szűrni. Rákereshetünk a felső keresősávban a „console” beírásával. Vagy az alatta levő lenyíló mezők segítségével: az elsőben (nyelvkiválasztó) „C#”, a harmadikban (projekttípus kiválasztó) „Console”.
 
     ![Projekt létrehozása](images/vs-create-new-project-wizard.png)
 
-3. Next gomb az varázslóablak alján, a következő varázslóoldalon:
+3. Next gomb a varázslóablak alján, a következő varázslóoldalon:
     1. Project name: **Hello World**
     2. Location: a laborokban a **c:\work\<sajátnév>** mappába dolgozzunk, ehhez van írási jogunk.
     3. Solution name: **Hello World** (elvileg ez be is lesz írva, mire ideérünk)
     4. Place solution and project in the same directory: nincs pipa (de nincs különösebb jelentősége).
 
-4. Next gomb az varázslóablak alján, a következő varázslóoldalon:
+4. Next gomb a varázslóablak alján, a következő varázslóoldalon:
     1. Framework: **.NET 10 (Long-term support)**.
     2. A "Do not use top level statements" jelölőnégyzetet pipáljuk be (ennek magyarázatára mindjárt visszatérünk).
 
-A projekttel egy új solution is létrejön, mely struktúrája a Visual Studio *Solution Explorer* ablakában tekinthető át. Egy solution több projectből állhat, egy project pedig több fájlból. A solution a teljes munkakörnyezetet fogja össze (egy `.sln` kiterjesztésű fájl tartozik hozzá), míg egy projekt kimenete egy `.exe` vagy `.dll` fájl jellemzően, vagyis egy összetett alkalmazás/rendszer egy komponensét állítja elő. A projektfájlok kiterjesztése C# alkalmazások esetén `.csproj`.
+A projekttel egy új solution is létrejön, melynek struktúrája a Visual Studio *Solution Explorer* ablakában tekinthető át. Egy solution több projectből állhat, egy project pedig több fájlból. A solution a teljes munkakörnyezetet fogja össze (egy `.sln` kiterjesztésű fájl tartozik hozzá), míg egy projekt kimenete egy `.exe` vagy `.dll` fájl jellemzően, vagyis egy összetett alkalmazás/rendszer egy komponensét állítja elő. A projektfájlok kiterjesztése C# alkalmazások esetén `.csproj`.
 
 A `Program.cs` fájlunk tartalma a következő:
 
@@ -129,7 +129,7 @@ namespace HelloWorld
     using System.Collections.Generic;
     ```
 
-2. Egy konzolos C# alkalmazásban az alkalmazásunk belépési pontját egy statikus `Main` nevű függvény megírásával adjuk meg. Az osztályunk neve bármi lehet, a VS egy `Program` nevű osztályt generált esetünkben. A `Main` függvény paraméterlistája kötött: vagy ne adjunk meg paramétereket, vagy egy `string[]`-öt adjunk meg, amiben futás közben megkapjuk az parancssori argumentumokat.
+2. Egy konzolos C# alkalmazásban az alkalmazásunk belépési pontját egy statikus `Main` nevű függvény megírásával adjuk meg. Az osztályunk neve bármi lehet, a VS egy `Program` nevű osztályt generált esetünkben. A `Main` függvény paraméterlistája kötött: vagy ne adjunk meg paramétereket, vagy egy `string[]`-öt adjunk meg, amiben futás közben megkapjuk a parancssori argumentumokat.
 3. .NET-ben a standard ki és bemenet kezelésére a `System` névtér `Console` osztálya használandó. A `WriteLine` statikus műveletével egy sort tudunk kiírni, a `ReadKey` művelettel egy billentyű lenyomására várakozhatunk.
 
 !!! tip  "Top level statements, Implicit és static usings és névterek"
@@ -209,15 +209,15 @@ Témakörök:
 
 ### Feladat leírása - Equipment inventory
 
-Feladat: Egy számítógépalkatrész nyilvántartó alkalmazás kifejlesztésével bíztak meg bennünket. Bővebben:
+Feladat: Egy számítógépalkatrész-nyilvántartó alkalmazás kifejlesztésével bíztak meg bennünket. Bővebben:
 
 - Különböző típusú alkatrészeket kell tudni kezelni. Kezdetben a `HardDisk`, `SoundCard` és `LedDisplay` típusokat kell támogatni, de a rendszer legyen könnyen bővíthető új típusokkal.
 - Az alkatrészekhez tartozó adatok: beszerzés éve, életkora (számított), beszerzési ára és aktuális ára (számított), de ezeken felül típusfüggő adatokat is tartalmazhatnak (pl. a `HardDisk` esetében a kapacitás).
-- Az aktuális ár függ az alkatrész típusától, a beszerzési ártól és az alkatrész gyártási évétől. Pl. minél öregebb egy alkatrész, annál nagyobb kedvezményt adunk rá, de a kedvezmény mértéke függ az alkatrész típustól is.
+- Az aktuális ár függ az alkatrésztípusától, a beszerzési ártól és az alkatrész gyártási évétől. Pl. minél öregebb egy alkatrész, annál nagyobb kedvezményt adunk rá, de a kedvezmény mértéke függ az alkatrésztípustól is.
 - Listázni kell tudni a készleten levő alkatrészeket.
 - A `LedDisplay` osztálynak kötelezően egy `DisplayBase` osztályból kell származnia, és a `DisplayBase` osztály forráskódja nem megváltoztatható. Jelen példában ennek nincs sok értelme, a gyakorlatban azonban gyakran találkozunk hasonló helyzettel, amikor is az általunk használt keretrendszer/platform előírja, hogy adott esetben egy-egy beépített osztályból kell származtassunk. Tipikusan ez a helyzet, amikor ablakokkal, űrlapokkal, saját vezérlőtípusokkal dolgozunk: ezeket a keretrendszer beépített osztályaiból kell származtatnunk, és a keretrendszer  - pl. Java, .NET - forráskódja nem áll rendelkezésünkre (de legalábbis biztosan nem akarjuk megváltoztatni). A példánkban a `DisplayBase`-ből való származtatás előírásával ezt a helyzetet szimuláljuk.
 
-A megvalósítás során jelentős egyszerűsítéssel élünk: az alkatrészeket csak memóriában tarjuk nyilván, a listázás is a lehető legegyszerűbb, egyszerűen csak kiírjuk a nyilvántartott alkatrészek adatait a konzolra.
+A megvalósítás során jelentős egyszerűsítéssel élünk: az alkatrészeket csak memóriában tartjuk nyilván, a listázás is a lehető legegyszerűbb, egyszerűen csak kiírjuk a nyilvántartott alkatrészek adatait a konzolra.
 
 A kezdeti egyeztetések során a megrendelőnktől a következő információt kapjuk: egy belső munkatársuk már elindult a fejlesztéssel, de idő hiányában csak félkész megoldásig jutott. A feladatunk részét képezi a félkész megoldás megismerése, illetve ebből kiindulva kell a feladatot megvalósítani.
 
@@ -236,7 +236,7 @@ git clone https://github.com/bmeviauab00/lab-modellkod-kiindulo.git
 
 Nyissuk meg a leklónozott mappában található src/EquipmentInventory.sln Visual Studio solutiont.
 
-A Solution Explorerben szemmel fussuk át a fájlokat. Az megértést segítené, ha egy osztálydiagramon megjelenítenénk az osztályok közötti kapcsolatokat. Vegyünk is fel egy osztálydiagramot a projektünkbe. A Solution Explorerben a **projekten** (és nem a solution-ön!) jobb gombbal kattintva a felugró menüben az *Add/New Item* elemet választva, majd a megjelenő ablakban a Class Diagram elemet válasszuk ki, az ablak alján a diagram nevének a Main.cd-t adjuk meg, és OK-zuk le az ablakot.
+A Solution Explorerben szemmel fussuk át a fájlokat. A megértést segítené, ha egy osztálydiagramon megjelenítenénk az osztályok közötti kapcsolatokat. Vegyünk is fel egy osztálydiagramot a projektünkbe. A Solution Explorerben a **projekten** (és nem a solution-ön!) jobb gombbal kattintva a felugró menüben az *Add/New Item* elemet választva, majd a megjelenő ablakban a Class Diagram elemet válasszuk ki, az ablak alján a diagram nevének a Main.cd-t adjuk meg, és OK-zuk le az ablakot.
 
 !!! warning "Class Diagram hiányzó sablon"
     Ha a *Class Diagram* elem nem jelenik meg a listában, akkor nincs telepítve a VS megfelelő komponense. Erről jelen dokumentum [Előfeltételek](#elofeltetelek) fejezetében olvashatsz bővebben.
@@ -249,13 +249,13 @@ Az osztályokhoz tartozó forráskódot is megnézhetjük, akár a diagramon a m
 A következőket tapasztaljuk:
 
 - A `SoundCard`, `HardDisk` és `LedDisplay` osztályok viszonylag jól kidolgozottak, rendelkeznek a szükséges attribútumokkal és lekérdező függvényekkel.
-- Az `LedDisplay` a követelményeknek megfelelően a `DisplayBase` osztályból származik.
+- A `LedDisplay` a követelményeknek megfelelően a `DisplayBase` osztályból származik.
 - Az `EquipmentInventory` felelős ugyan a készleten levő alkatrészek nyilvántartásáért, de gyakorlatilag semmi nincs ebből megvalósítva.
 - Találunk egy `IEquipment` interfészt, `GetAge` és `GetPrice` műveletekkel
 
 ### EquipmentInventory
 
-Álljunk neki a megoldás kidolgozásának. Először is az alapkoncepciókat fektessük le. Az `EquipmentInventory` osztályban egy heterogén kollekcióban tároljuk a különböző alkatrész típusokat. Ez a kulcsa az alkatrészek egységes kezelésének, vagyis annak, hogy a megoldásunk új alkatrésztípusokkal könnyen bővíthető legyen.
+Álljunk neki a megoldás kidolgozásának. Először is az alapkoncepciókat fektessük le. Az `EquipmentInventory` osztályban egy heterogén kollekcióban tároljuk a különböző alkatrésztípusokat. Ez a kulcsa az alkatrészek egységes kezelésének, vagyis annak, hogy a megoldásunk új alkatrésztípusokkal könnyen bővíthető legyen.
 
 Mint korábban taglaltuk, az egységes kezelést vagy közös ősosztály, vagy közös interfész bevezetésével lehet megoldani. Esetünkben a közös ősosztály (pl. `EquipmentBase`) úgy tűnik, kiesik, mert ennek bevezetésével az `LedDisplay` osztálynak két ősosztálya is lenne: a kötelezőnek kikötött `DisplayBase`, és az általunk az egységes kezelésre bevezetett `EquipmentBase`. Ez nem lehetséges, .NET környezetben egy osztálynak csak egy őse lehet. Az a megoldás pedig, hogy a `DisplayBase`-t úgy módosítjuk, hogy ő is az `EquipmentBase`-ből származik, a követelményünknek megfelelően nem lehetséges (kikötés volt, hogy a forráskódja nem módosítható). Marad tehát az interfész alapú megközelítés. Minden bizonnyal az alkalmazás korábbi fejlesztője is erre a következtetésre jutott, ezért is vezette be az `IEquipment` interfészt.
 
@@ -318,7 +318,7 @@ public void AddEquipment(IEquipment eq)
 
 ### IEquipment megvalósítók
 
-Korábbi döntésünk értelmében az `IEquipment` interfészt használjuk az különböző alkatrész típusok egységes kezelésére. Estünkben mind a `SoundCard`, mind a `HardDisk` osztály rendelkezik `GetAge()` és `GetPrice()` metódussal, mégsem tudjuk őket egységesen kezelni (pl. közös listában tárolni). Ahhoz, hogy ezt meg tudjuk tenni, el kell érnünk, hogy mindkét osztály megvalósítsa az `IEquipment` interfészt. Módosítsuk a forrásukat:
+Korábbi döntésünk értelmében az `IEquipment` interfészt használjuk az különböző alkatrésztípusok egységes kezelésére. Esetünkben mind a `SoundCard`, mind a `HardDisk` osztály rendelkezik `GetAge()` és `GetPrice()` metódussal, mégsem tudjuk őket egységesen kezelni (pl. közös listában tárolni). Ahhoz, hogy ezt meg tudjuk tenni, el kell érnünk, hogy mindkét osztály megvalósítsa az `IEquipment` interfészt. Módosítsuk a forrásukat:
 
 ```csharp
 public class SoundCard : IEquipment
@@ -328,9 +328,9 @@ public class SoundCard : IEquipment
 public class HardDisk : IEquipment
 ```
 
-Ezt követően a `SoundCard` és `HardDisk` osztályban implementálnunk kell az `IEquipment` interfészben levő metódusokat. Azt tapasztaljuk, hogy ezzel nincs most teendők, a `GetPrice` és `GetAge` függvények már meg vannak írva mindkét helyen.
+Ezt követően a `SoundCard` és `HardDisk` osztályban implementálnunk kell az `IEquipment` interfészben levő metódusokat. Azt tapasztaljuk, hogy ezzel nincs most teendőnk, a `GetPrice` és `GetAge` függvények már meg vannak írva mindkét helyen.
 
-Próbaképpen a `Program.cs` fájlban található `Main` függvényünkben hozzunk létre egy `EquipmentInventory` objektumot, töltsük fel `HardDisk` és `SoundCard` objektumokkal, majd listázzuk a késztelet a konzolra. Amennyiben nem 2025 az aktuális év, az alábbi soroknál a 2025-ös évet írjuk át az aktuális évre, a 2024-et pedig ennél eggyel kisebb számra!
+Próbaképpen a `Program.cs` fájlban található `Main` függvényünkben hozzunk létre egy `EquipmentInventory` objektumot, töltsük fel `HardDisk` és `SoundCard` objektumokkal, majd listázzuk a készletet a konzolra. Amennyiben nem 2025 az aktuális év, az alábbi soroknál a 2025-ös évet írjuk át az aktuális évre, a 2024-et pedig ennél eggyel kisebb számra!
 
 ```csharp
 static void Main( string[] args )
@@ -393,13 +393,13 @@ Tesztelésképpen futtassuk az alkalmazást.
 
 Az egyik fő probléma, hogy kódunk tele van a karbantarthatóságot és bővíthetőséget romboló kódduplikációval:
 
-- A `yearOfCreation` és `newPrice` tagok minden alkatrész típusban (kivéve a speciális `LedDisplay`-t) közösek, ezeket új típus bevezetésekor is copy-paste technikával át kell venni.
-- A `GetAge` függvény implementációja szinten minden alkatrész típusban (kivéve a speciális `LedDisplay`-t) azonos, szintén copy-paste-tel „szaporítandó”.
+- A `yearOfCreation` és `newPrice` tagok minden alkatrésztípusban (kivéve a speciális `LedDisplay`-t) közösek, ezeket új típus bevezetésekor is copy-paste technikával át kell venni.
+- A `GetAge` függvény implementációja szinten minden alkatrésztípusban (kivéve a speciális `LedDisplay`-t) azonos, szintén copy-paste-tel „szaporítandó”.
 - A konstruktorok `yearOfCreation` és `newPrice` tagokat inicializáló sorai szintén duplikáltak az egyes osztályokban.
 
-Bár ez a kódduplikáció egyelőre nem tűnik jelentősnek, új alkatrész típusok bevezetésével egyre inkább elmérgesedik a helyzet, jobb időben elejét venni a jövőbeli fájdalmaknak.
+Bár ez a kódduplikáció egyelőre nem tűnik jelentősnek, új alkatrésztípusok bevezetésével egyre inkább elmérgesedik a helyzet, jobb időben elejét venni a jövőbeli fájdalmaknak.
 
-A másik probléma abból adódik, hogy az alkatrész adatok listázása jelenleg fájdalmasan hiányos, nem jelenik meg az alkatrész típusa (csak a kora és az ára). A típus megjelenítéséhez az IEquipment interfészt bővíteni kell, pl. egy `GetDescription` nevű művelet bevezetésével.  Vegyünk is fel egy `GetDescription` függvényt az interfészbe!
+A másik probléma abból adódik, hogy az alkatrészadatok listázása jelenleg fájdalmasan hiányos, nem jelenik meg az alkatrésztípusa (csak a kora és az ára). A típus megjelenítéséhez az IEquipment interfészt bővíteni kell, pl. egy `GetDescription` nevű művelet bevezetésével.  Vegyünk is fel egy `GetDescription` függvényt az interfészbe!
 
 ```csharp hl_lines="5"
 public interface IEquipment
@@ -509,7 +509,7 @@ public override double GetPrice()
 }
 ```
 
-A következőkben lépésben a `GetDescription` műveletet írjuk meg a `HardDisk` és `SoundCard` osztályokban. Mivel itt az ősbeli virtuális függvényt definiáljuk felül, szintén meg kell adni az `override` kulcsszót:
+A következő lépésben a `GetDescription` műveletet írjuk meg a `HardDisk` és `SoundCard` osztályokban. Mivel itt az ősbeli virtuális függvényt definiáljuk felül, szintén meg kell adni az `override` kulcsszót:
 
 ```csharp title="HardDisk.cs"
 public override string GetDescription()
@@ -560,7 +560,7 @@ public void ListAll()
 }
 ```
 
-Így már sokkal informatívabb kimetet kapunk az alkalmazás futtatásakor:
+Így már sokkal informatívabb kimenetet kapunk az alkalmazás futtatásakor:
 
 ![Console kimenet](images/console-out-2.png)
 
@@ -606,7 +606,7 @@ Az interfész és absztrakt ős együttes használatával sikerült a legkeveseb
 
 - `IEquipment` interfészként hivatkozva egységesen tudjuk kezelni az alkatrészek valamennyi típusát, még azokat is, melyeknél az ősosztály meg volt kötve (pusztán absztrakt ős használatával ezt nem tudtuk volna elérni).
 - Az `EquipmentBase` absztrakt ős bevezetésével egy kivételtől eltekintve a különböző alkatrésztípusokra közös kódot fel tudtuk vinni egy közös ősbe, így el tudtuk kerülni a kódduplikációt.
-- Az `EquipmentBase` absztrakt ős bevezetésével alapértelmezett implementációt tudunk megadni az újonnan bevezetett `IEquipment` műveletek esetében (pl. `GetDescripton`), így nem vagyunk rákényszerítve, hogy minden `IEquipment` implementációs osztályban meg kelljen azt adni.
+- Az `EquipmentBase` absztrakt ős bevezetésével alapértelmezett implementációt tudunk megadni az újonnan bevezetett `IEquipment` műveletek esetében (pl. `GetDescription`), így nem vagyunk rákényszerítve, hogy minden `IEquipment` implementációs osztályban meg kelljen azt adni.
 
 Zárásképpen vessünk egy pillantást megoldásunk UML (szerű) osztálydiagramjára:
 
@@ -617,7 +617,7 @@ Zárásképpen vessünk egy pillantást megoldásunk UML (szerű) osztálydiagra
 
 ### Megjegyzés - opcionális házi gyakorló feladat
 
-Jelen megoldásunk nem támogatja az alkatrészspecifikus adatok (pl. `HardDisk` esetében a kapacitás) megjelenítését a listázás során. Ahhoz, hogy ezt meg tudjuk tenni, az alkatrész adatok formázott stringbe írását az `EqipmentInventory` osztályból az alkatrész osztályokba kellene vinni, a következő elveknek megfelelően:
+Jelen megoldásunk nem támogatja az alkatrészspecifikus adatok (pl. `HardDisk` esetében a kapacitás) megjelenítését a listázás során. Ahhoz, hogy ezt meg tudjuk tenni, az alkatrészadatok formázott stringbe írását az `EquipmentInventory` osztályból az alkatrészosztályokba kellene vinni, a következő elveknek megfelelően:
 
 - Bevezethetünk ehhez az `IEquipment` interfészbe egy `GetFormattedString` műveletet, mely egy `string` típusú objektummal tér vissza. Alternatív megoldás lehet, ha a `System.Object ToString()` műveletét definiáljuk felül. .NET-ben ugyanis minden típus implicit módon a `System.Object`-ből származik, aminek van egy virtuális `ToString()` művelete.
 - Az `EquipmentBase`-ben megírjuk a közös tagok (leírás, ár, kor) stringbe formázását.
