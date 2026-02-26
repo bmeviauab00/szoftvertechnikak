@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2548,7 +2548,7 @@
 <h2 id="megoldas">Megoldás<a class="headerlink" href="#megoldas" title="Permanent link">¶</a></h2>
 <details class="success">
 <summary>A kész megoldás letöltése</summary>
-<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, tilos (és értelmetlen) a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Lényeges, hogy a labor során a laborvezetőt követve kell dolgozni, tilos (és értelmetlen) a kész megoldás letöltése. Ugyanakkor az utólagos önálló gyakorlás során hasznos lehet a kész megoldás áttekintése, így ezt elérhetővé tesszük.</p>
 <p>A megoldás <a href="https://github.com/bmeviauab00/lab-XAML-kiindulo">GitHubon érhető el</a> a <code>megoldas</code> ágon. A legegyszerűbb mód a letöltésére, ha parancssorból a <code>git clone</code> utasítással leklónozzuk a gépünkre a <code>megoldas</code> ágat:</p>
 <p><code>git clone https://github.com/bmeviauab00/lab-xaml-kiindulo -b megoldas</code></p>
 <p>Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ <a href="../../hazi/git-github-github-classroom/#git-telepitese">itt</a>.</p>
@@ -2678,7 +2678,7 @@ Most kézzel fogunk XAML-t írni és ezzel a felületet kialakítani. Vegyünk f
 <span class="c1">// Az előző a sorhoz XAML fájlban a Gridnek meg kellene adni az x:Name="rootGrid" </span>
 <span class="c1">// attribútumot, hogy rootGrid néven elérhető legyen a code-behind fájlban</span>
 </code></pre></div>
-<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> Ez a példa nagyon jól szemlélteti, hogy a XAML alapvetően egy objektumpéldányosító nyelv, és támogatja objektumok tulajdonságainak beállítását.</p>
+<p><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Ez a példa nagyon jól szemlélteti, hogy a XAML alapvetően egy objektumpéldányosító nyelv, és támogatja objektumok tulajdonságainak beállítását.</p>
 <p>A <code>Content</code> tulajdonság különleges, nem csak XML attribútumban lehet megadni, hanem tagen (XML elemen) belül is.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;Button&gt;</span>Hello<span class="w"> </span>WinUI<span class="w"> </span>App!<span class="nt">&lt;/Button&gt;</span>
 </code></pre></div>
@@ -2738,7 +2738,7 @@ Most kézzel fogunk XAML-t írni és ezzel a felületet kialakítani. Vegyünk f
 <p>Ez a <code>Grid</code> <code>Background</code> tulajdonságát állítja be a megadott <code>SolidColorBrush</code>-ra. Ez az ún. "property element syntax" alapú tulajdonságmegadás.</p>
 <ul>
 <li>A név onnan ered, hogy a tulajdonságot egy XML elem (és pl. nem XML attribútum) formájában adjuk meg.</li>
-<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> Itt a <code>&lt;Grid.Background&gt;</code> elem nem objektumpéldányt hoz létre, hanem az adott (esetünkben <code>Background</code>) property értékét állítja be a megfelelő objektum példányára (esetünkben egy <code>SolidColorBrush</code>-ra). Ezt az XML elem nevében levő pont alapján lehet tudni.</li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Itt a <code>&lt;Grid.Background&gt;</code> elem nem objektumpéldányt hoz létre, hanem az adott (esetünkben <code>Background</code>) property értékét állítja be a megfelelő objektum példányára (esetünkben egy <code>SolidColorBrush</code>-ra). Ezt az XML elem nevében levő pont alapján lehet tudni.</li>
 <li>Ez "terjengősebb" forma tulajdonság megadására, de teljes rugalmasságot biztosít. </li>
 </ul>
 <p>Cseréljük le a <code>SolidColorBrush</code>-t egy színátmenetes <code>Brush</code>-ra (<code>LinearGradientBrush</code>):</p>
@@ -2810,7 +2810,7 @@ Most kézzel fogunk XAML-t írni és ezzel a felületet kialakítani. Vegyünk f
 <p>Előkészítő lépésként adjunk nevet a <code>TextBlock</code> vezérlőnknek, hogy a code-behind fájlból hivatkozni tudjunk majd rá a későbbiekben:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;TextBlock</span><span class="w"> </span><span class="na">x:Name=</span><span class="s">"recordTextBlock"</span><span class="w"> </span><span class="na">Text=</span><span class="s">"Record"</span><span class="w"> </span><span class="na">Margin=</span><span class="s">"10,0,0,0"</span><span class="w"> </span><span class="nt">/&gt;</span>
 </code></pre></div>
-<p>Az <code>x:Name</code> a XAML parsernek szól, és ezen a néven fog létrehozni egy tagváltozót az osztályunkban, mely az adott vezérlő referenciáját tartalmazza. <img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2757.svg" title=":exclamation:"> Gondoljuk át: mivel tagváltozó lesz, a code-behind fájlban el tudjuk érni, hiszen az egy "partial része" ugyanazon osztálynak!</p>
+<p>Az <code>x:Name</code> a XAML parsernek szól, és ezen a néven fog létrehozni egy tagváltozót az osztályunkban, mely az adott vezérlő referenciáját tartalmazza. <img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Gondoljuk át: mivel tagváltozó lesz, a code-behind fájlban el tudjuk érni, hiszen az egy "partial része" ugyanazon osztálynak!</p>
 <div class="admonition tip">
 <p class="admonition-title">Elnevezett vezérlők</p>
 <p>Ne adjunk nevet azoknak a vezérlőknek, melyekre nem akarunk hivatkozni. (Szoktassuk magunkat arra, hogy csak arra hivatkozunk közvetlenül, amire nagyon muszáj. Ebben az adatkötés is segít majd.)</p>
@@ -3306,10 +3306,10 @@ Alapértelmezetten ugyanis a <code>ListView</code> <code>ToString()</code>-et h�
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.instant", "navigation.top", "search.suggest", "content.action.edit", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "V\u00e1g\u00f3lapra m\u00e1solva", "clipboard.copy": "M\u00e1sol\u00e1s v\u00e1g\u00f3lapra", "search.result.more.one": "1 tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.more.other": "# tov\u00e1bbi tal\u00e1lat az oldalon", "search.result.none": "Nincs tal\u00e1lat", "search.result.one": "1 egyez\u0151 dokumentum", "search.result.other": "# egyez\u0151 dokumentum", "search.result.placeholder": "Keres\u00e9shez \u00edrj ide valamit", "search.result.term.missing": "\u00dcres", "select.version": "Verzi\u00f3v\u00e1lt\u00e1s"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       
