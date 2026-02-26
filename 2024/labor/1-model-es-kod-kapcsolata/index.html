@@ -611,10 +611,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-feladat-hello-world-net-konzol-alkalmazas-elkeszitese" class="md-nav__link">
+  <a href="#1-feladat-hello-world-net-konzolalkalmazas-elkeszitese" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Feladat - „Hello world” .NET konzol alkalmazás elkészítése
+        1. Feladat - „Hello world” .NET konzolalkalmazás elkészítése
       
     </span>
   </a>
@@ -2458,10 +2458,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-feladat-hello-world-net-konzol-alkalmazas-elkeszitese" class="md-nav__link">
+  <a href="#1-feladat-hello-world-net-konzolalkalmazas-elkeszitese" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Feladat - „Hello world” .NET konzol alkalmazás elkészítése
+        1. Feladat - „Hello world” .NET konzolalkalmazás elkészítése
       
     </span>
   </a>
@@ -2751,8 +2751,8 @@ A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek e
 <p><code>git clone https://github.com/bmeviauab00/lab-modellkod-kiindulo -b megoldas</code></p>
 <p>Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ <a href="../../hazi/git-github-github-classroom/#git-telepitese">itt</a>.</p>
 </details>
-<h2 id="1-feladat-hello-world-net-konzol-alkalmazas-elkeszitese">1. Feladat - „Hello world” .NET konzol alkalmazás elkészítése<a class="headerlink" href="#1-feladat-hello-world-net-konzol-alkalmazas-elkeszitese" title="Permanent link">¶</a></h2>
-<p>A feladat egy olyan C# nyelvű konzol alkalmazás elkészítése, amely a konzolra kiírja a „Hello world!” szöveget.</p>
+<h2 id="1-feladat-hello-world-net-konzolalkalmazas-elkeszitese">1. Feladat - „Hello world” .NET konzolalkalmazás elkészítése<a class="headerlink" href="#1-feladat-hello-world-net-konzolalkalmazas-elkeszitese" title="Permanent link">¶</a></h2>
+<p>A feladat egy olyan C# nyelvű konzolalkalmazás elkészítése, amely a konzolra kiírja a „Hello world!” szöveget.</p>
 <p>Az alkalmazást C# nyelven készítjük el. A lefordított alkalmazás futtatását a .NET runtime végzi. A fordítás/futtatás elméleti hátterét, valamint a .NET alapjait az első előadás ismerteti.</p>
 <p>A solution és azon belüli projekt létrehozásának lépései Visual Studio 2026 esetén:</p>
 <ol>
@@ -2769,11 +2769,11 @@ A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek e
 </ul>
 </li>
 <li>
-<p>A Create new project varázslóban a <em>Console app</em> (és <strong>NEM</strong> a <em>Console app (.NET Framework)</em> sablont válasszuk ki, ebből is a C#-osat. Azt, hogy C#-os, a sablon ikonjának bal felső sarka jelzi. Ha nem látjuk a listában, rá kell keresni/szűrni. Rákereshetünk a felső keresősávban a „console” beírásával. Vagy az alatta levő lenyíló mezők segítségével: az elsőben (nyelvkiválasztó) „C#”, a harmadikban (projekttípus kiválasztó) „Console”.</p>
+<p>A Create new project varázslóban a <em>Console app</em> (és <strong>NE</strong> a <em>Console app (.NET Framework)</em> sablont válasszuk ki), ebből is a C#-osat. Azt, hogy C#-os, a sablon ikonjának bal felső sarka jelzi. Ha nem látjuk a listában, rá kell keresni/szűrni. Rákereshetünk a felső keresősávban a „console” beírásával. Vagy az alatta levő lenyíló mezők segítségével: az elsőben (nyelvkiválasztó) „C#”, a harmadikban (projekttípus kiválasztó) „Console”.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/vs-create-new-project-wizard.png" data-desc-position="bottom"><img alt="Projekt létrehozása" src="images/vs-create-new-project-wizard.png"></a></p>
 </li>
 <li>
-<p>Next gomb az varázslóablak alján, a következő varázslóoldalon:</p>
+<p>Next gomb a varázslóablak alján, a következő varázslóoldalon:</p>
 <ol>
 <li>Project name: <strong>Hello World</strong></li>
 <li>Location: a laborokban a <strong>c:\work\<sajátnév></sajátnév></strong> mappába dolgozzunk, ehhez van írási jogunk.</li>
@@ -2782,7 +2782,7 @@ A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek e
 </ol>
 </li>
 <li>
-<p>Next gomb az varázslóablak alján, a következő varázslóoldalon:</p>
+<p>Next gomb a varázslóablak alján, a következő varázslóoldalon:</p>
 <ol>
 <li>Framework: <strong>.NET 10 (Long-term support)</strong>.</li>
 <li>A "Do not use top level statements" jelölőnégyzetet pipáljuk be (ennek magyarázatára mindjárt visszatérünk).</li>
@@ -2823,7 +2823,7 @@ A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek e
 </code></pre></div>
 </li>
 <li>
-<p>Egy konzolos C# alkalmazásban az alkalmazásunk belépési pontját egy statikus <code>Main</code> nevű függvény megírásával adjuk meg. Az osztályunk neve bármi lehet, a VS egy <code>Program</code> nevű osztályt generált esetünkben. A <code>Main</code> függvény paraméterlistája kötött: vagy ne adjunk meg paramétereket, vagy egy <code>string[]</code>-öt adjunk meg, amiben futás közben megkapjuk az parancssori argumentumokat.</p>
+<p>Egy konzolos C# alkalmazásban az alkalmazásunk belépési pontját egy statikus <code>Main</code> nevű függvény megírásával adjuk meg. Az osztályunk neve bármi lehet, a VS egy <code>Program</code> nevű osztályt generált esetünkben. A <code>Main</code> függvény paraméterlistája kötött: vagy ne adjunk meg paramétereket, vagy egy <code>string[]</code>-öt adjunk meg, amiben futás közben megkapjuk a parancssori argumentumokat.</p>
 </li>
 <li>.NET-ben a standard ki és bemenet kezelésére a <code>System</code> névtér <code>Console</code> osztálya használandó. A <code>WriteLine</code> statikus műveletével egy sort tudunk kiírni, a <code>ReadKey</code> művelettel egy billentyű lenyomására várakozhatunk.</li>
 </ol>
@@ -2893,15 +2893,15 @@ A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek e
 </ul>
 <h2 id="2-feladat-az-uml-es-a-kod-kapcsolatanak-szemleltetese">2. Feladat - Az UML és a kód kapcsolatának szemléltetése<a class="headerlink" href="#2-feladat-az-uml-es-a-kod-kapcsolatanak-szemleltetese" title="Permanent link">¶</a></h2>
 <h3 id="feladat-leirasa-equipment-inventory">Feladat leírása - Equipment inventory<a class="headerlink" href="#feladat-leirasa-equipment-inventory" title="Permanent link">¶</a></h3>
-<p>Feladat: Egy számítógépalkatrész nyilvántartó alkalmazás kifejlesztésével bíztak meg bennünket. Bővebben:</p>
+<p>Feladat: Egy számítógépalkatrész-nyilvántartó alkalmazás kifejlesztésével bíztak meg bennünket. Bővebben:</p>
 <ul>
 <li>Különböző típusú alkatrészeket kell tudni kezelni. Kezdetben a <code>HardDisk</code>, <code>SoundCard</code> és <code>LedDisplay</code> típusokat kell támogatni, de a rendszer legyen könnyen bővíthető új típusokkal.</li>
 <li>Az alkatrészekhez tartozó adatok: beszerzés éve, életkora (számított), beszerzési ára és aktuális ára (számított), de ezeken felül típusfüggő adatokat is tartalmazhatnak (pl. a <code>HardDisk</code> esetében a kapacitás).</li>
-<li>Az aktuális ár függ az alkatrész típusától, a beszerzési ártól és az alkatrész gyártási évétől. Pl. minél öregebb egy alkatrész, annál nagyobb kedvezményt adunk rá, de a kedvezmény mértéke függ az alkatrész típustól is.</li>
+<li>Az aktuális ár függ az alkatrész típusától, a beszerzési ártól és az alkatrész gyártási évétől. Pl. minél öregebb egy alkatrész, annál nagyobb kedvezményt adunk rá, de a kedvezmény mértéke függ az alkatrésztípustól is.</li>
 <li>Listázni kell tudni a készleten levő alkatrészeket.</li>
 <li>A <code>LedDisplay</code> osztálynak kötelezően egy <code>DisplayBase</code> osztályból kell származnia, és a <code>DisplayBase</code> osztály forráskódja nem megváltoztatható. Jelen példában ennek nincs sok értelme, a gyakorlatban azonban gyakran találkozunk hasonló helyzettel, amikor is az általunk használt keretrendszer/platform előírja, hogy adott esetben egy-egy beépített osztályból kell származtassunk. Tipikusan ez a helyzet, amikor ablakokkal, űrlapokkal, saját vezérlőtípusokkal dolgozunk: ezeket a keretrendszer beépített osztályaiból kell származtatnunk, és a keretrendszer  - pl. Java, .NET - forráskódja nem áll rendelkezésünkre (de legalábbis biztosan nem akarjuk megváltoztatni). A példánkban a <code>DisplayBase</code>-ből való származtatás előírásával ezt a helyzetet szimuláljuk.</li>
 </ul>
-<p>A megvalósítás során jelentős egyszerűsítéssel élünk: az alkatrészeket csak memóriában tarjuk nyilván, a listázás is a lehető legegyszerűbb, egyszerűen csak kiírjuk a nyilvántartott alkatrészek adatait a konzolra.</p>
+<p>A megvalósítás során jelentős egyszerűsítéssel élünk: az alkatrészeket csak memóriában tartjuk nyilván, a listázás is a lehető legegyszerűbb, egyszerűen csak kiírjuk a nyilvántartott alkatrészek adatait a konzolra.</p>
 <p>A kezdeti egyeztetések során a megrendelőnktől a következő információt kapjuk: egy belső munkatársuk már elindult a fejlesztéssel, de idő hiányában csak félkész megoldásig jutott. A feladatunk részét képezi a félkész megoldás megismerése, illetve ebből kiindulva kell a feladatot megvalósítani.</p>
 <h3 id="class-diagram">Class Diagram<a class="headerlink" href="#class-diagram" title="Permanent link">¶</a></h3>
 <p>Nyissuk meg a megrendelőnktől kapott <a href="https://github.com/bmeviauab00/lab-modellkod-kiindulo">forráskód</a> solution-jét, melyet a következő lépéseket követve tudunk megtenni.</p>
@@ -2913,7 +2913,7 @@ A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek e
 <p>A Git-ről, mint forráskódkezelő rendszerről, az első házi feladat kontextusában olvashatunk majd bővebben.</p>
 </div>
 <p>Nyissuk meg a leklónozott mappában található src/EquipmentInventory.sln Visual Studio solutiont.</p>
-<p>A Solution Explorerben szemmel fussuk át a fájlokat. Az megértést segítené, ha egy osztálydiagramon megjelenítenénk az osztályok közötti kapcsolatokat. Vegyünk is fel egy osztálydiagramot a projektünkbe. A Solution Explorerben a <strong>projekten</strong> (és nem a solution-ön!) jobb gombbal kattintva a felugró menüben az <em>Add/New Item</em> elemet választva, majd a megjelenő ablakban a Class Diagram elemet válasszuk ki, az ablak alján a diagram nevének a Main.cd-t adjuk meg, és OK-zuk le az ablakot.</p>
+<p>A Solution Explorerben szemmel fussuk át a fájlokat. A megértést segítené, ha egy osztálydiagramon megjelenítenénk az osztályok közötti kapcsolatokat. Vegyünk is fel egy osztálydiagramot a projektünkbe. A Solution Explorerben a <strong>projekten</strong> (és nem a solution-ön!) jobb gombbal kattintva a felugró menüben az <em>Add/New Item</em> elemet választva, majd a megjelenő ablakban a Class Diagram elemet válasszuk ki, az ablak alján a diagram nevének a Main.cd-t adjuk meg, és OK-zuk le az ablakot.</p>
 <div class="admonition warning">
 <p class="admonition-title">Class Diagram hiányzó sablon</p>
 <p>Ha a <em>Class Diagram</em> elem nem jelenik meg a listában, akkor nincs telepítve a VS megfelelő komponense. Erről jelen dokumentum <a href="#elofeltetelek">Előfeltételek</a> fejezetében olvashatsz bővebben.</p>
@@ -2924,12 +2924,12 @@ A gyakorlat vezetett, gyakorlatvezető instrukciói alapján együtt kerülnek e
 A következőket tapasztaljuk:</p>
 <ul>
 <li>A <code>SoundCard</code>, <code>HardDisk</code> és <code>LedDisplay</code> osztályok viszonylag jól kidolgozottak, rendelkeznek a szükséges attribútumokkal és lekérdező függvényekkel.</li>
-<li>Az <code>LedDisplay</code> a követelményeknek megfelelően a <code>DisplayBase</code> osztályból származik.</li>
+<li>A <code>LedDisplay</code> a követelményeknek megfelelően a <code>DisplayBase</code> osztályból származik.</li>
 <li>Az <code>EquipmentInventory</code> felelős ugyan a készleten levő alkatrészek nyilvántartásáért, de gyakorlatilag semmi nincs ebből megvalósítva.</li>
 <li>Találunk egy <code>IEquipment</code> interfészt, <code>GetAge</code> és <code>GetPrice</code> műveletekkel</li>
 </ul>
 <h3 id="equipmentinventory">EquipmentInventory<a class="headerlink" href="#equipmentinventory" title="Permanent link">¶</a></h3>
-<p>Álljunk neki a megoldás kidolgozásának. Először is az alapkoncepciókat fektessük le. Az <code>EquipmentInventory</code> osztályban egy heterogén kollekcióban tároljuk a különböző alkatrész típusokat. Ez a kulcsa az alkatrészek egységes kezelésének, vagyis annak, hogy a megoldásunk új alkatrésztípusokkal könnyen bővíthető legyen.</p>
+<p>Álljunk neki a megoldás kidolgozásának. Először is az alapkoncepciókat fektessük le. Az <code>EquipmentInventory</code> osztályban egy heterogén kollekcióban tároljuk a különböző alkatrésztípusokat. Ez a kulcsa az alkatrészek egységes kezelésének, vagyis annak, hogy a megoldásunk új alkatrésztípusokkal könnyen bővíthető legyen.</p>
 <p>Mint korábban taglaltuk, az egységes kezelést vagy közös ősosztály, vagy közös interfész bevezetésével lehet megoldani. Esetünkben a közös ősosztály (pl. <code>EquipmentBase</code>) úgy tűnik, kiesik, mert ennek bevezetésével az <code>LedDisplay</code> osztálynak két ősosztálya is lenne: a kötelezőnek kikötött <code>DisplayBase</code>, és az általunk az egységes kezelésre bevezetett <code>EquipmentBase</code>. Ez nem lehetséges, .NET környezetben egy osztálynak csak egy őse lehet. Az a megoldás pedig, hogy a <code>DisplayBase</code>-t úgy módosítjuk, hogy ő is az <code>EquipmentBase</code>-ből származik, a követelményünknek megfelelően nem lehetséges (kikötés volt, hogy a forráskódja nem módosítható). Marad tehát az interfész alapú megközelítés. Minden bizonnyal az alkalmazás korábbi fejlesztője is erre a következtetésre jutott, ezért is vezette be az <code>IEquipment</code> interfészt.</p>
 <p>Vegyünk fel egy <code>IEquipment</code> típusú elemekből álló generikus listát (ne property-t hanem field-et!) az <code>EquipmentInventory</code> osztályba. A láthatósága – az egységbezárásra törekedve – legyen <code>private</code>. A neve legyen <code>equipment</code> (ne legyen „s” a végén, angolban az equipment többes száma is equipment). A tagváltozó felvételéhez a Visual Studio <em>Class Details</em> ablakát használjuk. Ha az ablak nem látható, a <em>View / Other Windows / Class Details</em> menü kiválasztásával jeleníthető meg.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/class-details.png" data-desc-position="bottom"><img alt="Class Details" src="images/class-details.png"></a></p>
@@ -2968,13 +2968,13 @@ A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk,
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="iequipment-megvalositok">IEquipment megvalósítók<a class="headerlink" href="#iequipment-megvalositok" title="Permanent link">¶</a></h3>
-<p>Korábbi döntésünk értelmében az <code>IEquipment</code> interfészt használjuk az különböző alkatrész típusok egységes kezelésére. Estünkben mind a <code>SoundCard</code>, mind a <code>HardDisk</code> osztály rendelkezik <code>GetAge()</code> és <code>GetPrice()</code> metódussal, mégsem tudjuk őket egységesen kezelni (pl. közös listában tárolni). Ahhoz, hogy ezt meg tudjuk tenni, el kell érnünk, hogy mindkét osztály megvalósítsa az <code>IEquipment</code> interfészt. Módosítsuk a forrásukat:</p>
+<p>Korábbi döntésünk értelmében az <code>IEquipment</code> interfészt használjuk az különböző alkatrésztípusok egységes kezelésére. Esetünkben mind a <code>SoundCard</code>, mind a <code>HardDisk</code> osztály rendelkezik <code>GetAge()</code> és <code>GetPrice()</code> metódussal, mégsem tudjuk őket egységesen kezelni (pl. közös listában tárolni). Ahhoz, hogy ezt meg tudjuk tenni, el kell érnünk, hogy mindkét osztály megvalósítsa az <code>IEquipment</code> interfészt. Módosítsuk a forrásukat:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SoundCard</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">HardDisk</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span>
 </code></pre></div>
-<p>Ezt követően a <code>SoundCard</code> és <code>HardDisk</code> osztályban implementálnunk kell az <code>IEquipment</code> interfészben levő metódusokat. Azt tapasztaljuk, hogy ezzel nincs most teendők, a <code>GetPrice</code> és <code>GetAge</code> függvények már meg vannak írva mindkét helyen.</p>
-<p>Próbaképpen a <code>Program.cs</code> fájlban található <code>Main</code> függvényünkben hozzunk létre egy <code>EquipmentInventory</code> objektumot, töltsük fel <code>HardDisk</code> és <code>SoundCard</code> objektumokkal, majd listázzuk a késztelet a konzolra. Amennyiben nem 2025 az aktuális év, az alábbi soroknál a 2025-ös évet írjuk át az aktuális évre, a 2024-et pedig ennél eggyel kisebb számra!</p>
+<p>Ezt követően a <code>SoundCard</code> és <code>HardDisk</code> osztályban implementálnunk kell az <code>IEquipment</code> interfészben levő metódusokat. Azt tapasztaljuk, hogy ezzel nincs most teendőnk, a <code>GetPrice</code> és <code>GetAge</code> függvények már meg vannak írva mindkét helyen.</p>
+<p>Próbaképpen a <code>Program.cs</code> fájlban található <code>Main</code> függvényünkben hozzunk létre egy <code>EquipmentInventory</code> objektumot, töltsük fel <code>HardDisk</code> és <code>SoundCard</code> objektumokkal, majd listázzuk a készletet a konzolra. Amennyiben nem 2025 az aktuális év, az alábbi soroknál a 2025-ös évet írjuk át az aktuális évre, a 2024-et pedig ennél eggyel kisebb számra!</p>
 <div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="w"> </span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">EquipmentInventory</span><span class="w"> </span><span class="n">ei</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EquipmentInventory</span><span class="p">();</span>
@@ -3019,12 +3019,12 @@ A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk,
 <p>Értékeljük a jelenlegi, interfész alapú megoldásunkat.</p>
 <p>Az egyik fő probléma, hogy kódunk tele van a karbantarthatóságot és bővíthetőséget romboló kódduplikációval:</p>
 <ul>
-<li>A <code>yearOfCreation</code> és <code>newPrice</code> tagok minden alkatrész típusban (kivéve a speciális <code>LedDisplay</code>-t) közösek, ezeket új típus bevezetésekor is copy-paste technikával át kell venni.</li>
-<li>A <code>GetAge</code> függvény implementációja szinten minden alkatrész típusban (kivéve a speciális <code>LedDisplay</code>-t) azonos, szintén copy-paste-tel „szaporítandó”.</li>
+<li>A <code>yearOfCreation</code> és <code>newPrice</code> tagok minden alkatrésztípusban (kivéve a speciális <code>LedDisplay</code>-t) közösek, ezeket új típus bevezetésekor is copy-paste technikával át kell venni.</li>
+<li>A <code>GetAge</code> függvény implementációja szinten minden alkatrésztípusban (kivéve a speciális <code>LedDisplay</code>-t) azonos, szintén copy-paste-tel „szaporítandó”.</li>
 <li>A konstruktorok <code>yearOfCreation</code> és <code>newPrice</code> tagokat inicializáló sorai szintén duplikáltak az egyes osztályokban.</li>
 </ul>
-<p>Bár ez a kódduplikáció egyelőre nem tűnik jelentősnek, új alkatrész típusok bevezetésével egyre inkább elmérgesedik a helyzet, jobb időben elejét venni a jövőbeli fájdalmaknak.</p>
-<p>A másik probléma abból adódik, hogy az alkatrész adatok listázása jelenleg fájdalmasan hiányos, nem jelenik meg az alkatrész típusa (csak a kora és az ára). A típus megjelenítéséhez az IEquipment interfészt bővíteni kell, pl. egy <code>GetDescription</code> nevű művelet bevezetésével.  Vegyünk is fel egy <code>GetDescription</code> függvényt az interfészbe!</p>
+<p>Bár ez a kódduplikáció egyelőre nem tűnik jelentősnek, új alkatrésztípusok bevezetésével egyre inkább elmérgesedik a helyzet, jobb időben elejét venni a jövőbeli fájdalmaknak.</p>
+<p>A másik probléma abból adódik, hogy az alkatrészadatok listázása jelenleg fájdalmasan hiányos, nem jelenik meg az alkatrésztípusa (csak a kora és az ára). A típus megjelenítéséhez az IEquipment interfészt bővíteni kell, pl. egy <code>GetDescription</code> nevű művelet bevezetésével.  Vegyünk is fel egy <code>GetDescription</code> függvényt az interfészbe!</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IEquipment</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">();</span>
@@ -3108,7 +3108,7 @@ A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk,
 <span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="n">newPrice</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Today</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">yearOfCreation</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2000</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>A következőkben lépésben a <code>GetDescription</code> műveletet írjuk meg a <code>HardDisk</code> és <code>SoundCard</code> osztályokban. Mivel itt az ősbeli virtuális függvényt definiáljuk felül, szintén meg kell adni az <code>override</code> kulcsszót:</p>
+<p>A következő lépésben a <code>GetDescription</code> műveletet írjuk meg a <code>HardDisk</code> és <code>SoundCard</code> osztályokban. Mivel itt az ősbeli virtuális függvényt definiáljuk felül, szintén meg kell adni az <code>override</code> kulcsszót:</p>
 <div class="highlight"><span class="filename">HardDisk.cs</span><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetDescription</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"Hard Disk"</span><span class="p">;</span>
@@ -3144,7 +3144,7 @@ A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk,
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Így már sokkal informatívabb kimetet kapunk az alkalmazás futtatásakor:</p>
+<p>Így már sokkal informatívabb kimenetet kapunk az alkalmazás futtatásakor:</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/console-out-2.png" data-desc-position="bottom"><img alt="Console kimenet" src="images/console-out-2.png"></a></p>
 <h3 id="konstruktor-kodduplikacio">Konstruktor kódduplikáció<a class="headerlink" href="#konstruktor-kodduplikacio" title="Permanent link">¶</a></h3>
 <p>A kódunkat áttekintve még egy helyen találunk kódduplikációt. Valamennyi <code>EquipmentBase</code> leszármazott (<code>HardDisk</code>, <code>SoundCard</code>) konstruktorában ott van ez a két sor:</p>
@@ -3175,7 +3175,7 @@ A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk,
 <ul>
 <li><code>IEquipment</code> interfészként hivatkozva egységesen tudjuk kezelni az alkatrészek valamennyi típusát, még azokat is, melyeknél az ősosztály meg volt kötve (pusztán absztrakt ős használatával ezt nem tudtuk volna elérni).</li>
 <li>Az <code>EquipmentBase</code> absztrakt ős bevezetésével egy kivételtől eltekintve a különböző alkatrésztípusokra közös kódot fel tudtuk vinni egy közös ősbe, így el tudtuk kerülni a kódduplikációt.</li>
-<li>Az <code>EquipmentBase</code> absztrakt ős bevezetésével alapértelmezett implementációt tudunk megadni az újonnan bevezetett <code>IEquipment</code> műveletek esetében (pl. <code>GetDescripton</code>), így nem vagyunk rákényszerítve, hogy minden <code>IEquipment</code> implementációs osztályban meg kelljen azt adni.</li>
+<li>Az <code>EquipmentBase</code> absztrakt ős bevezetésével alapértelmezett implementációt tudunk megadni az újonnan bevezetett <code>IEquipment</code> műveletek esetében (pl. <code>GetDescription</code>), így nem vagyunk rákényszerítve, hogy minden <code>IEquipment</code> implementációs osztályban meg kelljen azt adni.</li>
 </ul>
 <p>Zárásképpen vessünk egy pillantást megoldásunk UML (szerű) osztálydiagramjára:</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/class-diagram-final.png" data-desc-position="bottom"><img alt="Végső osztálydiagram" src="images/class-diagram-final.png"></a></p>
@@ -3184,7 +3184,7 @@ A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk,
 <p>A C# 11 legújabb újdonsága a statikus interfész tagok definiálása, amivel olyan tagokat követelhetünk meg az implementáló osztálytól, amelyek nem az objektum példányra vonatkoznak, hanem az osztálynak kell egy adott statikus taggal rendelkeznie. <a href="https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/static-virtual-interface-members">Bővebben</a></p>
 </div>
 <h3 id="megjegyzes-opcionalis-hazi-gyakorlo-feladat">Megjegyzés - opcionális házi gyakorló feladat<a class="headerlink" href="#megjegyzes-opcionalis-hazi-gyakorlo-feladat" title="Permanent link">¶</a></h3>
-<p>Jelen megoldásunk nem támogatja az alkatrészspecifikus adatok (pl. <code>HardDisk</code> esetében a kapacitás) megjelenítését a listázás során. Ahhoz, hogy ezt meg tudjuk tenni, az alkatrész adatok formázott stringbe írását az <code>EqipmentInventory</code> osztályból az alkatrész osztályokba kellene vinni, a következő elveknek megfelelően:</p>
+<p>Jelen megoldásunk nem támogatja az alkatrészspecifikus adatok (pl. <code>HardDisk</code> esetében a kapacitás) megjelenítését a listázás során. Ahhoz, hogy ezt meg tudjuk tenni, az alkatrészadatok formázott stringbe írását az <code>EquipmentInventory</code> osztályból az alkatrész leszármazott osztályokba kellene vinni, a következő elveknek megfelelően:</p>
 <ul>
 <li>Bevezethetünk ehhez az <code>IEquipment</code> interfészbe egy <code>GetFormattedString</code> műveletet, mely egy <code>string</code> típusú objektummal tér vissza. Alternatív megoldás lehet, ha a <code>System.Object ToString()</code> műveletét definiáljuk felül. .NET-ben ugyanis minden típus implicit módon a <code>System.Object</code>-ből származik, aminek van egy virtuális <code>ToString()</code> művelete.</li>
 <li>Az <code>EquipmentBase</code>-ben megírjuk a közös tagok (leírás, ár, kor) stringbe formázását.</li>
@@ -3197,8 +3197,8 @@ A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk,
         </path>
       </svg>
     </span>
-    <span title="2025. december 18. 22:33:38">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. december 18. 22:33:38 CET"><span class="timeago" datetime="2025-12-18T22:33:38+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. december 18. 22:33:38 CET">2025-12-18</span>
+    <span title="2026. február 26. 21:05:05">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. február 26. 21:05:05 CET"><span class="timeago" datetime="2026-02-26T21:05:05+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. február 26. 21:05:05 CET">2026-02-26</span>
     </span>
   </span>
 
@@ -3216,6 +3216,8 @@ A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk,
         <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
       </a><a href="https://github.com/duszmox" target="_blank" rel="noopener noreferrer" class="md-author" title="@Gyula Kiri">
         <img src="https://avatars.githubusercontent.com/u/38438001?u=cc5534fa4cddeae3bc69e7b2d6d56cef291b87ee&amp;v=4?size=72" alt="@Gyula Kiri">
+      </a><a href="https://github.com/lyozi" target="_blank" rel="noopener noreferrer" class="md-author" title="@Urak József">
+        <img src="https://avatars.githubusercontent.com/u/124312789?v=4?size=72" alt="@Urak József">
       </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tibor Tóth">
         <img src="https://avatars.githubusercontent.com/u/8333960?u=d26653213d265ecdceeaf20a896d74f479d35450&amp;v=4?size=72" alt="@Tibor Tóth">
       </a><a href="https://github.com/zbenedek-mirango" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
