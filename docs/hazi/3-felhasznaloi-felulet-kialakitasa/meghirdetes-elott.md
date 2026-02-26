@@ -1,0 +1,1 @@
+--8<-- "docs/hazi/meghirdetes-elott.md"
