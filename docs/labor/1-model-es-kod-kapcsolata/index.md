@@ -88,7 +88,7 @@ A solution és azon belüli projekt létrehozásának lépései Visual Studio 20
     1. Framework: **.NET 10 (Long-term support)**.
     2. A "Do not use top level statements" jelölőnégyzetet pipáljuk be (ennek magyarázatára mindjárt visszatérünk).
 
-A projekttel egy új solution is létrejön, melynek struktúrája a Visual Studio *Solution Explorer* ablakában tekinthető át. Egy solution több projectből állhat, egy project pedig több fájlból. A solution a teljes munkakörnyezetet fogja össze (egy `.sln` kiterjesztésű fájl tartozik hozzá), míg egy projekt kimenete egy `.exe` vagy `.dll` fájl jellemzően, vagyis egy összetett alkalmazás/rendszer egy komponensét állítja elő. A projektfájlok kiterjesztése C# alkalmazások esetén `.csproj`.
+A projekttel egy új solution is létrejön, mely struktúrája a Visual Studio *Solution Explorer* ablakában tekinthető át. Egy solution több projectből állhat, egy project pedig több fájlból. A solution a teljes munkakörnyezetet fogja össze (egy `.sln` kiterjesztésű fájl tartozik hozzá), míg egy projekt kimenete egy `.exe` vagy `.dll` fájl jellemzően, vagyis egy összetett alkalmazás/rendszer egy komponensét állítja elő. A projektfájlok kiterjesztése C# alkalmazások esetén `.csproj`.
 
 A `Program.cs` fájlunk tartalma a következő:
 
@@ -213,7 +213,7 @@ Feladat: Egy számítógépalkatrész-nyilvántartó alkalmazás kifejlesztésé
 
 - Különböző típusú alkatrészeket kell tudni kezelni. Kezdetben a `HardDisk`, `SoundCard` és `LedDisplay` típusokat kell támogatni, de a rendszer legyen könnyen bővíthető új típusokkal.
 - Az alkatrészekhez tartozó adatok: beszerzés éve, életkora (számított), beszerzési ára és aktuális ára (számított), de ezeken felül típusfüggő adatokat is tartalmazhatnak (pl. a `HardDisk` esetében a kapacitás).
-- Az aktuális ár függ az alkatrésztípusától, a beszerzési ártól és az alkatrész gyártási évétől. Pl. minél öregebb egy alkatrész, annál nagyobb kedvezményt adunk rá, de a kedvezmény mértéke függ az alkatrésztípustól is.
+- Az aktuális ár függ az alkatrész típusától, a beszerzési ártól és az alkatrész gyártási évétől. Pl. minél öregebb egy alkatrész, annál nagyobb kedvezményt adunk rá, de a kedvezmény mértéke függ az alkatrésztípustól is.
 - Listázni kell tudni a készleten levő alkatrészeket.
 - A `LedDisplay` osztálynak kötelezően egy `DisplayBase` osztályból kell származnia, és a `DisplayBase` osztály forráskódja nem megváltoztatható. Jelen példában ennek nincs sok értelme, a gyakorlatban azonban gyakran találkozunk hasonló helyzettel, amikor is az általunk használt keretrendszer/platform előírja, hogy adott esetben egy-egy beépített osztályból kell származtassunk. Tipikusan ez a helyzet, amikor ablakokkal, űrlapokkal, saját vezérlőtípusokkal dolgozunk: ezeket a keretrendszer beépített osztályaiból kell származtatnunk, és a keretrendszer  - pl. Java, .NET - forráskódja nem áll rendelkezésünkre (de legalábbis biztosan nem akarjuk megváltoztatni). A példánkban a `DisplayBase`-ből való származtatás előírásával ezt a helyzetet szimuláljuk.
 
@@ -617,7 +617,7 @@ Zárásképpen vessünk egy pillantást megoldásunk UML (szerű) osztálydiagra
 
 ### Megjegyzés - opcionális házi gyakorló feladat
 
-Jelen megoldásunk nem támogatja az alkatrészspecifikus adatok (pl. `HardDisk` esetében a kapacitás) megjelenítését a listázás során. Ahhoz, hogy ezt meg tudjuk tenni, az alkatrészadatok formázott stringbe írását az `EquipmentInventory` osztályból az alkatrészosztályokba kellene vinni, a következő elveknek megfelelően:
+Jelen megoldásunk nem támogatja az alkatrészspecifikus adatok (pl. `HardDisk` esetében a kapacitás) megjelenítését a listázás során. Ahhoz, hogy ezt meg tudjuk tenni, az alkatrészadatok formázott stringbe írását az `EquipmentInventory` osztályból az alkatrész leszármazott osztályokba kellene vinni, a következő elveknek megfelelően:
 
 - Bevezethetünk ehhez az `IEquipment` interfészbe egy `GetFormattedString` műveletet, mely egy `string` típusú objektummal tér vissza. Alternatív megoldás lehet, ha a `System.Object ToString()` műveletét definiáljuk felül. .NET-ben ugyanis minden típus implicit módon a `System.Object`-ből származik, aminek van egy virtuális `ToString()` művelete.
 - Az `EquipmentBase`-ben megírjuk a közös tagok (leírás, ár, kor) stringbe formázását.
