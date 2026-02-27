@@ -1,6 +1,6 @@
 # A házi feladat előellenőrzése és hivatalos értékelése
 
-Kiegészítés 2026-ban: egy GitHub runtime kompatibilitási probléma miatt az alább ismertetett online előellenőrző (egyelőre) nem használható, helyette az előellenőrző lokális futtatására van lehetőség (a részletek lásd a kapcsolódó Teams hirdetményben). 
+Kiegészítés 2026-ban: egy GitHub runtime kompatibilitási probléma miatt az alább ismertetett online előellenőrző (egyelőre) nem használható, helyette az előellenőrző lokális futtatására van lehetőség (a részletek lásd a kapcsolódó Teams hirdetményben). Ettől függetlenül az alábbiakat mindenképpen érdemes elolvasni, mert olyan információkat is tartalmaz, melyek a lokális előellenőrző futtatásra is érvényesek.
 
 Minden egyes alkalommal, miután a GitHub-ra push-oltál kódot, a GitHub-on automatikusan lefut a feltöltött kód (elő)ellenőrzése, és meg lehet nézni a kimenetét! Az ellenőrzőt maga a GitHub futtatja. A push-t követően a feladat egy várakozási sorba kerül, majd adott idő után lefutnak az ellenőrző tesztek. Azt nem lehet tudni, mennyi ez az idő, a GitHub-on múlik. Amikor csak egy-két feladat van a sorban a szervezetre (ez nálunk a tárgy), akkor a tapasztalatok alapján az ellenőrzés 1-2 percen belül elindul. De ha a tárgy alatt egyszerre sokan kezdik majd feltölteni a megoldást, akkor ez jó eséllyel belassul. Nem érdemes ezért sem az utolsó pillanatra hagyni a beadást: lehet, hogy ekkor a késleltetések miatt már nem kapsz esetleg időben visszajelzést.
 
