@@ -1,92 +1,93 @@
 ---
-suche:
-  ausschließen: wahr
-Autoren: bzolka
+authors: bzolka
 ---
 
-# 1. HF - Beziehung zwischen Modell und Code
+# HA 1 - Beziehung zwischen dem Modell und dem Code
 
 ## Einführung
 
-Die Übung ist nicht mit einer Präsentation verbunden.  Den theoretischen und praktischen Hintergrund für die Übungen liefert das Kapitel "1. Die Beziehung zwischen Modell und Code" wird als angeleitete Laborübung dienen:
+Zu dieser Hausaufgabe gehört keine Vorlesung. Als theoretischer und praktischer Hintergrund für die Hausufgaben dient die Laborübung „1. Beziehung zwischen dem Modell und dem Code“:
 
-- Diese Laborübung wird von den Studierenden unter Anleitung des Tutors gemeinsam durchgeführt.
-- Die Laborübung wird von einem Leitfaden begleitet, der einen detaillierten theoretischen Hintergrund und eine Schritt-für-Schritt-Anleitung für die Herstellung einer Lösung enthält: [1. Beziehung zwischen dem Modell und dem Code](../../labor/1-model-es-kod-kapcsolata/index_ger.md)
+- Diese Laborübung wird/wurde von den Studenten unter Anleitung des Übungsleiters gemeinsam durchgeführt.
+- Zur Laborübung gehört eine Anleitung, die den theoretischen Hintergrund detailliert darstellt und die Erstellung der Lösung Schritt für Schritt erläutert: [1. Die Beziehung zwischen Modell und Code](../../labor/1-model-es-kod-kapcsolata/index_ger.md)
 
-Darauf aufbauend können die Aufgaben dieser Selbstübung mit Hilfe der kürzeren Leitfäden, die der Aufgabenbeschreibung folgen, durchgeführt werden.
+Darauf aufbauend können die Aufgaben dieser Hausaufgabe mit der Hilfe der kürzeren Leitfäden nach der Aufgabenbeschreibung bearbeitet werden.
 
-Das Ziel der unabhängigen Übung:
+Das Ziel der Hausaufgabe:
 
-- Erstellen einer einfachen .NET-Anwendung, Üben der C#-Grundlagen
+- Erstellung einer einfachen .NET-Anwendung, Übung der C#-Grundlagen
 - Veranschaulichung der Beziehung zwischen UML und Code
-- Praktische Anwendung der Schnittstelle und der abstrakten primitiven Klasse
+- Die Anwendungstechnik von Schnittstellen und abstrakten Basisklassen üben
 
 Die erforderliche Entwicklungsumgebung wird [hier](../fejlesztokornyezet/index_ger.md) beschrieben.
 
-## Laden Sie den Ausgangsrahmen herunter, laden Sie die fertige Lösung hoch
+!!! warning "Verwendung von Sprachelementen aus C# 12 (und neuer)"
+    Bei der Lösung der Hausaufgabe dürfen Sprachelementen von C# 12 und neuer (z. B. primary constructor) NICHT verwendet werden, da das auf GitHub laufende Prüfsystem diese noch nicht unterstützt.
 
-Die ursprüngliche Hausaufgabenumgebung wird veröffentlicht und die Lösung wird über Git, GitHub und GitHub Classroom eingereicht. Die wichtigsten Schritte:
+## Herunterladen des Ausgangsrahmen, Hochladen der fertigen Lösung
 
-1. Erstellen Sie mit GitHub Classroom ein Repository für sich selbst. Sie finden die Einladungs-URL in Moodle (Sie können sie sehen, indem Sie auf den Link*"GitHub classroom links for homework*" auf der Startseite des Fachs klicken).
-2. Klonen Sie das resultierende Repository. Dazu gehört auch die erwartete Struktur der Lösung.
-3. Nachdem Sie die Aufgaben erledigt haben, übergeben Sie Ihre Lösung alt und drücken Sie sie alt.
+Die Veröffentlichung der Ausgangsumgebung der Hausaufgabe sowie die Abgabe der Lösung erfolgen mithilfe von Git, GitHub und GitHub Classroom. Die wichtigsten Schritte:
 
-Diese werden hier ausführlicher beschrieben:
+1. Erstelle mit GitHub Classroom ein eigenes Repository. Die Einladungs-URL findest du in Moodle (bei Hausaufgabe 1.).
+2. Klone das so erstellte Repository. Dieses enthält die erwartete Struktur der Lösung.
+3. Nach der Fertigstellung der Aufgaben committe und pushe deine Lösung.
+
+Dazu findest du hier eine ausführlichere Beschreibung:
 
 - [Git, GitHub, GitHub Classroom](../git-github-github-classroom/index.md)
-- [Arbeitsablauf bei Hausaufgaben und Verwendung von Git/GitHub](../hf-folyamat/index.md)
+- [Hausaufgaben-Workflow und die Verwendung von Git/GitHub](../hf-folyamat/index.md)
 
-## Vorabkontrolle und formale Bewertung der Hausaufgaben
+## Vorabprüfung und offizielle Bewertung der Hausaufgabe
 
-Jedes Mal, wenn Sie Code auf GitHub hochladen, führt GitHub automatisch eine (Vor-)Prüfung des hochgeladenen Codes durch und Sie können das Ergebnis sehen! Weitere Informationen dazu finden Sie hier (lesen Sie sie unbedingt): [Vorabkontrolle und formale Bewertung der Hausaufgaben](../eloellenorzes-ertekeles/index.md).
+Jedes Mal, nachdem du Code auf GitHub gepusht hast, wird die (Vorab-)Prüfung des hochgeladenen Codes automatisch auf GitHub ausgeführt, und das Ergebnis kann eingesehen werden! Weitere Informationen dazu findest du hier (unbedingt lesen): [Vorabprüfung und offizielle Bewertung der Hausaufgabe](../eloellenorzes-ertekeles/index.md).
 
-## Aufgabe 1 - Erstellen einer einfachen .NET-Konsolenanwendung
+## Aufgabe 1 – Erstellung einer einfachen .NET-Konsolenanwendung
 
-### Ursprüngliches Projekt
+### Ausgangsprojekt
 
-Die anfängliche Umgebung befindet sich im Ordner `Feladat1`, öffnen Sie die Datei `MusicApp.sln` in Visual Studio und arbeiten Sie in dieser Lösung.
+Die Ausgangsumgebung befindet sich im Ordner `Task1`. Öffne die darin enthaltene Datei `MusicApp.sln` in Visual Studio und arbeite in dieser Solution.
 
 !!! warning "Achtung!"
-    Das Erstellen einer neuen Projektmappe und/oder Projektdatei oder die Ausrichtung des Projekts auf andere/neuere .NET-Versionen ist verboten.
+    Das Erstellen einer neuen Solution und/oder Projektdatei sowie das Targeting des Projekts auf andere/neuere .NET-Versionen ist verboten.
 
-Im Ordner `Feladat1\Input` befindet sich eine Datei `music.txt`, die als Eingabe für die Aufgabe verwendet werden soll.
+Im Ordner `Task1\Input` befindet sich eine Datei `music.txt`, die als Eingabe für die Aufgabe verwendet werden soll.
 
-### Verfasst am
+### Aufgabe
 
-In einem Textstring speichern wir die Titel der Lieder von Komponisten/Interpreten/Ensembles im folgenden Format.
+In einer Textdatei werden die Titel von Songs von Komponisten/Darstellern/Bands im folgenden Format gespeichert.
 
-- Jeder Autor hat eine eigene Zeile.
-- Jede Zeile beginnt mit dem Namen des Autors, gefolgt von `;`, gefolgt von den Titeln der Nummern, getrennt durch `;`.
-- Der Inhalt der Datei wird als gültig angesehen, wenn Leerzeilen oder Zeilen, die nur Leerzeichen (Leerzeichen, Tabulator) enthalten, vorhanden sind.
+- Zu jedem Autor gehört eine eigene Zeile.
+- In jeder Zeile steht zuerst der Name des Autors und `;`, danach – durch `;` getrennt – die Songtitel.
+- Der Inhalt der Datei ist als gültig zu betrachten, auch wenn sie leere oder nur Whitespace-Zeilen (Leerzeichen, Tabulatoren) enthält.
 
-Der Inhalt der beigefügten Datei music.txt ist ähnlich wie der folgende:
+Der Inhalt der beigefügten Datei music.txt ähnelt folgendem:
 
 ```csv
 Adele; Hello; Rolling in the Deep; Skyfall
-Ennio Morricone;	A Fistful Of Dollars; Mann mit der Mundharmonika
+Ennio Morricone;	A Fistful Of Dollars; Man with a Harmonica
 AC/DC; Thunderstruck; T.N.T
 ```
 
-Lesen Sie die Datei in die Liste der Klassenobjekte `Song`.  Ein Objekt `Song` speichert die Daten (Autor und Titel) eines Liedes. Nach dem Scannen schreiben Sie die formatierten Daten der Objekte in folgendem Format auf die Standardausgabe:
+Lies die Datei in eine Liste von Objekten der Klasse `Song` ein. Ein `Song`-Objekt speichert die Daten eines Liedes (Autor und Titel). Nach dem Einlesen sollen die Daten der Objekte formatiert auf die Standardausgabe geschrieben werden, in der folgenden Form:
 
 ```text
-autor1: Autor1_Titel1
-autor1: Autor1_Titel2
+autor1: Autor1_Songtitel1
+autor1: Autor1_Songtitel2
 ...
 autor2: Autor2_Songtitel1
 ...
 usw.
 ```
 
-Für unsere Beispieldatei möchten wir die folgende Ausgabe sehen (die je nach Inhalt der Datei variieren kann):
+Im Fall unserer Beispieldatei möchten wir die folgende Ausgabe sehen (abhängig vom Inhalt der Datei können Abweichungen auftreten):
 
 ![Ergebnis auf der Konsole](images/music-store-console.png)
 
-### Schritte der Umsetzung
+### Schritte der Verwirklichung
 
-Fügen Sie dem Projekt eine Klasse mit dem Namen `Song` hinzu (Rechtsklick auf das Projekt im Solution Explorer, Menü *Hinzufügen / Klasse*).
+Füge dem Projekt eine Klasse mit dem Namen `Song` hinzu (Rechtsklick im Solution Explorer auf das Projekt, im Menü *Add / Class*).
 
-Fügen Sie die erforderlichen Mitglieder und einen passenden Konstruktor ein:
+Füge die notwendigen Membervariablen sowie einen dazu passenden Konstruktor hinzu:
 
 ```csharp
 public class Song
@@ -102,10 +103,10 @@ public class Song
 }
 ```
 
-!!! note "Property"
-    Die Mitgliedsvariablen wurden als `readonly`eingefügt, weil wir nicht wollten, dass sie nach Ausführung des Konstruktors geändert werden können. Eine Alternative wäre die Verwendung von schreibgeschützten Eigenschaften anstelle von schreibgeschützten Mitgliedsvariablen (dies ist ein späterer Kern).
+!!! note "Property"  
+    Die Membervariablen wurden als `readonly` deklariert, da wir nicht wollten, dass sie nach der Ausführung des Konstruktors verändert werden können. Eine Alternative wäre die Verwendung von nur lesbaren Eigenschaften (property) anstelle der readonly-Membervariablen (dies wird später behandelt).  
 
-Im Folgenden werden wir die Operation `ToString`, die vom impliziten Vorfahren `System.Object` geerbt wurde, in unserer Klasse `Song` umdefinieren, um Objektdaten in der gewünschten Form zurückzugeben. Verwenden Sie die String-Interpolation in der Lösung (wir haben dies bereits in der ersten Übung verwendet):
+Im Folgenden überschreiben wir in unserer `Song`-Klasse die implizit von `System.Object` geerbte `ToString`-Methode, damit sie die Objektdaten im vorgeschriebenen Format zurückgibt. In der Lösung verwenden wir Stringinterpolation (dies haben wir bereits im ersten Labor angewendet):
 
 ```csharp
 public override string ToString()
@@ -114,49 +115,49 @@ public override string ToString()
 }
 ```
 
-Die geeignetste Klasse zur Verarbeitung einer Textdatei ist [`StreamReader`](https://learn.microsoft.com/en-us/dotnet/api/system.io.streamreader) im Namensraum `System.IO`. 
+Für die Verarbeitung von Textdateien können wir am bequemsten die [`StreamReader`](https://learn.microsoft.com/en-us/dotnet/api/system.io.streamreader)-Klasse aus dem `System.IO`-Namespace verwenden.  
 
-In unserer Funktion `Main` lesen wir die Datei Zeile für Zeile ein, erstellen die `Song` Objekte und legen sie in ein `List<Song>` dynamisch dehnbares Array. Bitte beachten Sie, dass in der Datei vor/nach den durch `;`getrennten Elementen Leerzeichen (Space, Tab) stehen können, entfernen Sie diese!
+In unserer `Main`-Funktion lesen wir die Datei zeilenweise ein, erstellen die `Song`-Objekte und fügen sie in eine dynamisch wachsende `List<Song>` ein. Achten wir darauf, dass vor und nach den mit `;` getrennten Elementen in der Datei Whitespace-Zeichen (Leerzeichen, Tabulatoren) stehen können, die wir entfernen sollten!  
 
-Der folgende Code zeigt eine mögliche Lösung, deren Einzelheiten in den Codekommentaren erläutert werden. Dies ist die erste eigenständige Aufgabe des Semesters und für die meisten Studenten die erste Anwendung von .NET/C#, daher geben wir Ihnen eine Musterlösung, aber erfahrenere Studenten können es auch selbst versuchen.
+Der folgende Code zeigt eine mögliche Lösung, die Details werden in den Codekommentaren erläutert. Im Verlauf des Semesters ist dies die erste eigenständige Aufgabe, und für die meisten Studenten die erste .NET/C#-Anwendung, daher geben wir hier noch eine Musterlösung, aber die erfahreneren Studierenden steht es jedoch frei, selbstständig zu experimentieren.  
 
-??? Beispiel "Lösung"
+??? example "Lösung"
 
     ```csharp
     namespace MusicApp;
 
     public class Program
     {
-        // Die Funktion Main befindet sich innerhalb der Klasse Program, die hier nicht gezeigt wird
+        
         public static void Main(string[] args)
         {
-            // Hier werden die Liedobjekte gespeichert
-            Liste<Song> songs = new List<Song>();
+            // Wir speichern die Song Objekte in dieser Liste
+            List<Song> songs = new List<Song>();
 
-            // Datei zeilenweise durchsuchen, Liederliste hochladen
+            // Datei zeilenweise einlesen, Aufladen der Liste (List<Song>)
             StreamReader sr = null;
             try
             {
-                // @ steht für @ vor der Zeichenkettenkonstante:
-                // Deaktiviert String Escape,
-                // damit Sie nicht '\\' statt '\\' schreiben müssen.
+                // Bedeutung von @ vor einer String-Konstant:
+                // es schaltet das String Escaping aus,
+                // also wir können einfach '\' statt '\\' schreiben
                 sr = new StreamReader(@"C:\temp\music.txt");
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    // Wenn die Warteschlange leer war
+                    //Wenn die Zeile leer war
                     if (string.IsNullOrWhiteSpace(line))
                         continue;
 
-                    // Die Zeilenvariable enthält die gesamte Zeile,
-                    // geteilt entlang der ;- mit Split
+                    // Die Variable line enthält die ganze Zeile,
+                    // wir können sie einfach mit Split entlang ; aufteilen
                     string[] lineItems = line.Split(';');
 
                     // Erstes Element, in dem wir den Namen des Autors erwarten
-                    // Trim entfernt führende und nachfolgende Weißraumzeichen
+                    // Trim entfernt die Leerzeichen (Space, Tab) vor und nach dem String
                     string artist = lineItems[0].Trim();
 
-                    // Gehen Sie die Lieder durch und fügen Sie sie der Liste hinzu
+                    // Wir gehen durch die Lieder und speichern wir sie in die Liste
                     for (int i = 1; i < lineItems.Length; i++)
                     {
                         Song song = new Song(artist, lineItems[i].Trim());
@@ -166,129 +167,129 @@ Der folgende Code zeigt eine mögliche Lösung, deren Einzelheiten in den Codeko
             }
             catch (Exception e)
             {
-                Console.WriteLine("Die Datei konnte nicht verarbeitet werden.");
-                // e.Message enthält nur den Text der Ausnahme. 
-                // Wenn Sie alle Ausnahmeinformationen (z.B. Stacktrace) ausgeben möchten, 
-                // dann wird e.ToString() gedruckt.
+                Console.WriteLine("A fájl feldolgozása sikertelen.");
+                // Die e.Message enhält nur den Text der Ausnahme.
+                // Falls wir jede Information, die zu dieser Ausnahme gehört,
+                // ausschreiben möchten, dann benutzen wir e.ToString()
                 Console.WriteLine(e.Message);
             }
             finally
             {
-                // Es ist wichtig, dass die Datei abschließend in einem Block geschlossen wird, 
-                // um sicherzustellen, dass wir im Falle einer Ausnahme keine offene Datei haben.
-                // Wir hätten einen using-Block anstelle von try-finally verwenden können,
-                // Das brauchen Sie noch nicht zu wissen (wir werden es in der Mitte des Semesters lernen).
+                // Es ist wichtig, dass die Datai in dem finally Block geschlossen wird 
+                // um sicherzustellen, dass wir im Falle einer Ausnahme keine 
+                // offene Datei haben.
+                // Wir könnten ein using-Block statt try-finally verwenden
+                // (wir werden das später lernen, ihr sollt es noch nicht wissen).
                 if (sr != null)
                     sr.Close();
             }
 
-            // Ausgabe der Lieder in der Liste auf der Konsole
+            // Ausschreiben der Elementen der Liste songs auf die Konsole
             foreach (Song song in songs)
                 Console.WriteLine(song.ToString());
         }
     }
     ```
 
-    Kopieren Sie die Datei "music.txt" in den Ordner "c:\temp" und starten Sie die Anwendung. Der Einfachheit halber haben wir alles in die Funktion `main` aufgenommen, aber in einer "Live"-Umgebung ist es ratsam, den Code in eine separate Verarbeitungsklasse auszulagern.
+    Kopiere die Datei `music.txt` in den Ordner `c:\temp` und führe die Anwendung aus. Zur Vereinfachung haben wir alles in die `Main`-Funktion gepackt; in einer „echten“ Umgebung ist es auf jeden Fall ratsam, den Code in eine separate Verarbeitungs-Klasse auszulagern.  
 
-    Im obigen Beispiel werden eine Reihe grundlegender .NET/C#-Techniken vorgestellt. Es lohnt sich auf jeden Fall, sie zu interpretieren und aus den Notizen im obigen Code zu lernen, und wir werden im Laufe des Semesters auf ihnen aufbauen.
+    Im obigen Beispiel werden viele grundlegende .NET/C#-Techniken gezeigt. Es ist auf jeden Fall empfehlenswert, diese anhand der im Code eingefügten Kommentare zu verstehen und zu lernen, da wir im Verlauf des Semesters darauf aufbauen werden.
 
-## Aufgabe 2 - Beziehung zwischen UML und Code, Schnittstellen und abstrakten Anwendungstechniken
 
-### Ursprüngliche Umgebung
+## Aufgabe 2 - Die Beziehung zwischen UML und Code, Anwendungstechnik der Schnittstelle und der abstrakten Basisklasse
 
-Die anfängliche Umgebung befindet sich im Ordner `Feladat2`, öffnen Sie die Datei `Shapes.sln` in Visual Studio und arbeiten Sie in dieser Lösung.
+### Ausgangsumgebung
+
+Die Ausgangsumgebung befindet sich im Ordner `Task2`. Öffne die darin enthaltene Datei `Shapes.sln` in Visual Studio und arbeite innerhalb dieser Solution.
 
 !!! warning "Achtung!"
-    Das Erstellen einer neuen Projektmappe und/oder Projektdatei oder die Ausrichtung des Projekts auf andere/neuere .NET-Versionen ist verboten.
+    Das Erstellen einer neuen Solution oder Projektdatei, oder das Targeten des Projekts auf andere/neue .NET-Versionen ist verboten.
 
-Es gibt eine Datei `Controls.dll` im Ordner `Feladat2\Shapes`, die Sie zur Lösung des Problems verwenden müssen.
+Im Ordner `Task2\Shapes` befindet sich eine Datei `Controls.dll`, die während der Lösung dieser Aufgabe verwendet werden muss.
 
-### Einzureichen (zusätzlich zum Quellcode)
+### Es soll eingaben (neben dem Quellcode)
 
-In zwei bis drei Absätzen eine kurze textliche Zusammenfassung der bei der Lösung von Aufgabe 2 getroffenen Entwurfsentscheidungen, der wichtigsten Grundsätze der Lösung und der Begründung dafür. Dies sollte in die Textdatei `readme.md` geschrieben werden, die sich bereits im Ordner `Feladat2` des ursprünglichen Frames befindet, in einem beliebigen Markdown-Format oder als einfacher Text. Es ist wichtig, in der Datei im Ordner `Feladat2` zu arbeiten (auch wenn es eine Datei mit demselben Namen im Stammordner gibt).
+Schreibe eine kurze textuelle Zusammenfassung (zwei bis drei Absätze) über die Entwurfsentscheidungen, die während der Lösung von Aufgabe 2 getroffen wurden, sowie über die wichtigsten Prinzipien der Lösung und deren Begründung. Dies soll in die bereits im `Task2`-Ordner vorhandene Datei `readme.md` geschrieben werden, wahlweise in beliebigem Markdown-Format oder als einfacher Text. Arbeite unbedingt in der Datei im `Task2`-Ordner (auch wenn eventuell eine gleichnamige Datei im Stammverzeichnis existiert).
 
-### Verfasst am
+### Aufgabe
 
-Wir haben die Aufgabe, die erste Version einer CAD-Anwendung zu entwickeln, die flächige Vektorgrafiken verarbeiten kann. Lesen Sie mehr:
+Wir sollen die erste Version einer CAD-Anwendung entwickeln, die zweidimensionale vektorgrafische Formen verarbeiten kann. Details:
 
-- Sie müssen in der Lage sein, verschiedene Arten von Formen zu bearbeiten. Zunächst sollten `Square` (Quadrat), `Circle` (Kreis) und `TextArea` unterstützt werden, aber der Code sollte leicht um neue Typen erweiterbar sein.  `TextArea` ist ein editierbares Textfeld.
+- Es sollen verschiedene Typen von Formen unterstützt werden. Anfangs sollen die Typen `Square` (Quadrat), `Circle` (Kreis) und `TextArea` unterstützt werden, der Code soll aber leicht um neue Typen erweiterbar sein. Die `TextArea` ist ein editierbares Textfeld.
 
-    !!! warning "Namen"
-        Achten Sie darauf, dass Sie die Klassen entsprechend den obigen Angaben benennen!
+    !!! warning "Benennung"
+        Die Klassen müssen unbedingt wie oben angegeben benannt werden!
 
-- Die mit den Formen verbundenen Daten: x- und y-Koordinaten sowie Daten, die für die Visualisierung und die Berechnung des Flächeninhalts der Formen erforderlich sind. Zum Beispiel Seitenlänge für ein Quadrat, Breite und Höhe für `TextArea`, Radius für einen Kreis.
+- Daten, die zu den Formen gehören: x- und y-Koordinaten sowie weitere Informationen, die für die Darstellung und die Berechnung der Flächeninhalt der Formen notwendig sind. Z. B. Seitenlänge für ein Quadrat, Breite und Höhe für `TextArea`, Radius für den Kreis.
 
-- Jede Form muss Operationen zur Abfrage ihres Typs, ihrer Koordinaten und ihrer Fläche bieten. Die Typabfrageoperation sollte `string`zurückgeben, und die Operation `GetType` der eingebauten Klasse `Type` sollte in der Implementierung nicht verwendet werden.
+- Jede Form muss Operationen bereitstellen, um ihren Typ, ihre Koordinaten und ihre Fläche abzufragen. Die Typabfrage soll als `string` zurückgegeben werden und die eingebaute `GetType`-Methode der `Type`-Klasse darf nicht verwendet werden.
 
-- Sie müssen in der Lage sein, die im Speicher abgelegten Formen auf der Standardausgabe (Konsole) aufzulisten. Die folgenden Daten werden geschrieben: Art der Form (z. B. für ein Quadrat `Square` usw.), die beiden Koordinaten, Fläche der Form. Die Operation `GetType` der eingebauten Klasse `Type` kann nicht in der Typdeklaration verwendet werden.
+- Die in Speicher gehaltenen Formen sollen auf der Standardausgabe (Konsole) gelistet werden. Folgende Daten sollen dabei ausgegeben werden: Formtyp (z. B. `Square`), die beiden Koordinaten, die Fläche der Form. Die eingebaute `GetType`-Methode darf für die Typanzeige nicht verwendet werden.
 
-- Die Klasse `TextArea` muss aus der Klasse `Textbox` der Klassenbibliothek `Controls.dll` für diese Aufgabe stammen.  `Controls.dll` ist eine .NET-Assembly, die kompiliert wurde, um Klassen zu enthalten.
+- Die `TextArea`-Klasse muss zwingend von der `Textbox`-Klasse der `Controls.dll` vererben. Die `Controls.dll` ist eine .NET-Assembly mit vorcompilierten Klassen.
 
-    !!! failure "Standardimplementierung in Schnittstelle"
-        Geben Sie die Standardimplementierung in der .NET-Schnittstelle an, die in C# 8 und höher unterstützt wird. Dies ist oft eine nützliche Technik, die aber bei der Lösung nicht anwendbar ist; es sollte ein eher "klassischer" Ansatz gewählt werden.
+    !!! failure "Standardimplementierung in Interface"
+        Ab C# 8 Standardimplementierungen in Schnittstellen unterstützt sind. Es kann oft sehr nützlich sein, aber darf diese Technik in der Lösung nicht angewendet werden. Verwende hier einen "klassischeren" Ansatz.
 
-- Bei der Umsetzung ist eine Vereinheitlichung anzustreben: z.B. sollte die Verwaltung der Formen in die Zuständigkeit einer **eigenen Abteilung** fallen.
-  
+- Bei der Implementierung soll Verkapselung gewahrt werden: z. B. soll das Verwalten der Formen von einer **dedizierten Klasse** übernommen werden.
+
     !!! failure
-        Es ist nicht zulässig, Formen in einer lokal erzeugten einfachen Liste in der Funktion `Main` zu speichern! Außerdem sollte die Klasse, die für die Verwaltung zuständig ist, NICHT von der eingebauten Klasse `List` oder einer ähnlichen Klasse abgeleitet werden, sondern sie sollte diese enthalten. Diese Abteilung sollte für die Auflistung der Daten in einer Standardausgabe zuständig sein.
+        Es ist nicht akzeptabel, wenn die Formen in der `Main`-Funktion direkt in einer einfachen Liste gespeichert werden. Zudem darf die verwaltende Klasse NICHT von `List` oder ähnlichen Klassen vererben, sondern sie soll diese enthalten. Das Auflisten der Daten auf der Standardausgabe soll ebenfalls von dieser Klasse übernommen werden.
 
-- Streben Sie bei der Implementierung nach einfacher Erweiterbarkeit, Wartbarkeit und Vermeidung von doppeltem Code (für Mitgliedsvariablen, Operationen, Konstruktoren). Dies sind die wichtigsten Kriterien für die Annahme der Lösung!
+- Die Implementierung soll leicht erweiterbar und wartbar sein, Code-Duplikationen (bei Mitgliedsvariablen, Methoden, Konstruktoren) sollen vermieden werden. Dies sind zentrale Kriterien für die Akzeptanz der Lösung.
 
-- Zeigen Sie ein Beispiel für die Verwendung von Klassen in der Funktion `Main`. 
+- In der `Main`-Funktion soll ein Beispiel für die Nutzung der Klassen gezeigt werden.
 
-- Spätestens am Ende der Implementierung erstellen Sie in Visual Studio Solution ein Klassendiagramm, in dem Sie die Klassen der Lösung übersichtlich anordnen können. Zeigen Sie Assoziationsbeziehungen als Assoziation, nicht als Mitgliedsvariable*(Als Assoziation anzeigen* oder*Als Assoziation* anzeigen). *Als Sammlungsverband anzeigen*, siehe [Laboranleitung 1](../../labor/1-model-es-kod-kapcsolata/index_ger.md)).
+- Spätestens am Ende der Implementierung soll in der Visual Studio Solution ein Klassendiagramm erstellt werden, in dem die Klassen der Solution übersichtlich angeordnet sind. Assoziationsbeziehungen sollen in der Form einer Assoziation dargestellt werden, nicht als Membervariablen (*Show as Association* bzw. *Show as Collection Association*, siehe [die Anleitung der Laborübung 1.](../../labor/1-model-es-kod-kapcsolata/index_ger.md)).
 
-    !!! tip "Klassendiagrammkomponente"
-        Visual Studio 2026 fügt die *Klassendesignerkomponente* bei der Installation nicht immer hinzu. Wenn es nicht möglich ist, ein Klassendiagramm zum Visual Studio-Projekt hinzuzufügen (weil das *Klassendiagramm* nicht in der Liste des Fensters aufgeführt ist, das während des Befehls *Hinzufügen / Neues Element* erscheint), muss die Komponente *Klassendiagramm* nachträglich installiert werden. Weitere Informationen hierzu finden Sie auf der Seite Entwicklungsumgebung in diesem Handbuch.
+    !!! tip "Class Diagram-Komponente"
+        Visual Studio 2026 installiert die *Class Designer*-Komponente nicht immer standardmäßig. Falls das Klassendiagramm nicht hinzugefügt werden kann (weil *Class Diagram* nicht in der Liste unter *Add / New Item* angezeigt wird), muss die Komponente nachträglich installiert werden. Weitere Informationen findest du auf der Seite [Entwicklungsumbgebung](../fejlesztokornyezet/index_ger.md).
 
-Wir nehmen erhebliche Vereinfachungen bei der Umsetzung vor:
+Bei der Verwirklichung wird eine erhebliche Vereinfachung verwendet:
 
-- Formen werden nicht gezeichnet (die notwendigen Fähigkeiten werden später im Semester behandelt).
-- Die Formen sollten nur im Speicher aufgezeichnet werden.
+- Das Zeichnen der Formen wird nicht implementiert (die notwendigen Kenntnisse werden während des Semesters später behandelt).
+- Die Formen müssen nur im Speicher gehalten werden. 
 
 ### Verwendung von Klassenbibliotheken
 
-Die Lösung ist [1. Die Beziehung zwischen dem Modell und dem Code](../../labor/1-model-es-kod-kapcsolata/index_ger.md) kann auf der Grundlage einer Laborübung entwickelt werden. Die vorliegende Aufgabe unterscheidet sich in einem wichtigen Detail: Während wir nur verbal feststellten, dass der Quellcode der Vorfahrenklasse `DisplayBase` nicht veränderbar ist, ist dies im Fall unserer Vorfahrenklasse `Textbox` eine Selbstverständlichkeit, da sie nur als kompilierte DLL verfügbar ist.
+Die Lösung kann nach dem Beispiel der Übung [1. Beziehung zwischen dem Modell und dem Code](../../labor/1-model-es-kod-kapcsolata/index_ger.md) erarbeitet werden. Diese Aufgabe unterscheidet sich in einem wichtigen Punkt: Während dort nur mündlich festgelegt wurde, dass der Quellcode der Oberklasse `DisplayBase` nicht verändert werden darf, ist in diesem Fall die Oberklasse `Textbox` vorgegeben, da sie nur in Form einer kompilierten DLL verfügbar ist.
 
 !!! note 
-    Die Entwicklung von Mehrkomponentenanwendungen, die Zusammenstellung und die Projektreferenz wurden in der ersten Vorlesung behandelt; wenn Sie sich nicht an dieses Thema erinnern, lohnt es sich, es zu wiederholen.
+    Über die Entwicklung von Mehrkomponenten-Anwendungen sowie über Assembly- und Projektreferenzen wurde in der ersten Vorlesung gesprochen. Wenn du dich daran nicht erinnerst, ist es sinnvoll, dieses Thema noch einmal zu wiederholen.
 
-Im Folgenden werden wir uns die Schritte zur Verwendung der Klassen in einer solchen DLL in unserem Code ansehen:
+Im Folgenden sehen wir uns an, welche Schritte erforderlich sind, um Klassen aus einer solchen DLL in unserem Code zu verwenden:
 
+1. Klicke im Visual Studio Solution Explorer mit der rechten Maustaste auf *Dependencies* und wähle *Add Reference* oder *Add Project Reference* (je nachdem, was verfügbar ist).
+2. Wähle im erscheinenden Fenster auf der linken Seite *Browse*:
+   1. Wenn `Controls.dll` in der Liste in der Mitte erscheint, setze ein Häkchen.
+   2. Falls nicht, klicke unten rechts im Fenster auf *Browse...*:
+        1. Navigiere im sich öffnenden Dateibrowser zur `Controls.dll` und doppelklicke darauf, um das Fenster zu schließen.
+        2. Im mittleren Bereich des *Reference Manager*-Fensters sollte `Controls.dll` nun markiert sein. Bestätige mit OK.
+3. Schließe das Fenster mit OK.
 
+??? "Falls die Fehlermeldung 'Reference is invalid or unsupported' erscheint"
+    Sehr selten kann es vorkommen, dass Visual Studio während dieser Schritte die Meldung "Reference is invalid or unsupported" anzeigt. Meist hilft in solchen Fällen eine Neuinstallation von Visual Studio.
 
-1. Klicken Sie im Fenster Visual Studio Solution Explorer mit der rechten Maustaste auf *Abhängigkeiten* und wählen Sie *Verweis hinzufügen* oder *Projektverweis hinzufügen*(je nachdem, was vorhanden ist).
-2. Wählen Sie auf der linken Seite des angezeigten Fensters *Browse*,
-   1. Wenn `Controls.dll` in der Liste in der Mitte des Fensters erscheint, deaktivieren Sie das Kontrollkästchen.
-   2. Wenn sie nicht angezeigt wird, klicken Sie auf die Schaltfläche *Durchsuchen.*.. unten rechts im Fenster.
-        1. Navigieren Sie im angezeigten Dateibrowser-Fenster zur Datei `Controls.dll` und doppelklicken Sie darauf, um das Fenster zu schließen.
-        2. In der Mitte des *Referenzmanager-Fensters* sehen Sie das Häkchen bei `Controls.dll`. Klicken Sie auf OK, um das Fenster zu schließen.
-3. Klicken Sie auf OK, um das Fenster zu schließen.
+Damit haben wir eine Referenz auf `Controls.dll` im Projekt hinzugefügt, so die darin enthaltenen Klassen verwendet werden können (z. B. instanziiert oder davon vererbt). Im Solution Explorer wird unter *Dependencies*, dann *Assemblies* die Referenz *Controls* angezeigt:
 
-??? "Sehr selten, aber es kann vorkommen, dass Visual Studio eine Fehlermeldung"
-    Referenz ist ungültig oder wird nicht unterstützt" anzeigt, wenn Sie die oben genannten Schritte ausführen. In den meisten Fällen hilft eine Neuinstallation von Visual Studio.
+![Controls.dll](images/controlsdll.png)
 
-Damit haben wir in unserem Projekt einen Verweis auf `Controls.dll`hinzugefügt, so dass die darin enthaltenen Klassen verwendet werden können (z. B. können sie instanziiert oder von ihnen abgeleitet werden). Wenn Sie im Projektmappen-Explorer auf *Abhängigkeiten* und dann auf *Baugruppen* klicken, werden *Steuerelemente* angezeigt:
+Die `Textbox`-Klasse, von der unsere `TextArea`-Klasse vererbt werden muss, befindet sich im Namespace `Controls`. Die `TextBox`-Klasse hat einen Konstruktor mit vier Parametern: die x- und y-Koordinaten sowie Breite und Höhe.  
+Falls weitere Informationen benötigt werden, kann der *Object Browser* helfen. Dieser wird über das Menü *View* → *Object Browser* geöffnet und erscheint in einem neuen Tab.
 
-![Steuerelemente.dll](images/controlsdll.png)
+!!! note "Falls die Object Browser-Ansicht leer ist"
+    Visual Studio 2026 zeigt im Object Browser nichts an (nur ein Text beginnend mit „No information“ ist sehbar), solange keine Quelldatei geöffnet ist. Öffne in diesem Fall die Datei `Program.cs` im Solution Explorer und wechsel dann zurück zum Object Browser-Tab, um die Komponenten anzuzeigen.
 
-Die Klasse `Textbox`, von der unsere Klasse `TextArea` abgeleitet werden soll, befindet sich im Namespace `Controls`.  Die Klasse `TextBox` hat einen Konstruktor mit vier Parametern, den x- und y-Koordinaten sowie der Breite und Höhe. Bei Bedarf kann der *Object Browser* Ihnen helfen, andere Operationen zu entdecken. Der *Object Browser* kann durch Auswahl des Menüs *Object Browser* aus dem Menü *Ansicht* geöffnet werden. Der *Object Browser* wird in einer neuen Registerkarte angezeigt.
-
-!!! note "Wenn die Objektbrowser-Ansicht leer ist"
-    Visual Studio 2026 zeigt im Objektbrowser nichts an (nur den Text "Keine Informationen"), solange keine Quelldatei geöffnet ist. Wenn Sie feststellen, dass die Object Browser-Ansicht leer ist, öffnen Sie einfach die Datei Program.cs im Projektmappen-Explorer und wechseln Sie zurück zur Registerkarte Object Browser, wo die Komponenten nun angezeigt werden. 
-
-Wenn Sie im *Object Browser* auf die Komponente `Controls` klicken und jeden Knoten (Namensraum, Klasse) auswählen, werden die Attribute dieses Knotens angezeigt: Wenn Sie z. B. auf den Klassennamen klicken, werden die Mitglieder der Klasse angezeigt.
-
+Im Object Browser können durch Öffnen des `Controls`-Komponente und Auswahl einzelner Knoten (Namespace, Klasse) die Eigenschaften der jeweiligen Elemente eingesehen werden: z. B. werden beim Überfahren des Klassennamens die Klassenmitglieder angezeigt.
 
 ![Object Browser](images/object-browser.png)
 
-Wir haben nun alle Informationen, die wir zur Erfüllung der Aufgabe benötigen.
+Nun stehen alle Informationen für die Lösung der Aufgabe zur Verfügung.
 
-## Vorlegen bei
+## Abgabe
 
-Checkliste für Wiederholungen:
+Checkliste zur Wiederholung:
 
---8<-- "docs/hazi/beadas-ellenorzes/index_ger.md:3"
+--8<-- "docs/hazi/beadas-ellenorzes/index.md:3"
 
-- Vergessen Sie bei Aufgabe 2 nicht, Ihre Lösung unter `readme.md`einzureichen.
+- Vergiss bei Aufgabe 2 nicht, deine Lösung im `readme.md` dokumentieren.
