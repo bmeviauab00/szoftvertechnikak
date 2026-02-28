@@ -81,7 +81,7 @@ Egy egyszerű, bemelegítő feladattal kezdünk. A következő példában egy `P
     Ezt **implicitly typed local variables**-nek, magyarul **implicit típusú lokális változó**-nak nevezzük. Ilyenkor a fordító a kontextusból, az egyenlőségjel jobb oldalából megpróbálja kitalálni a változó típusát, fenti esetben ez egy `Person` lesz. Fontos, hogy ettől a nyelv még statikusan tipusos marad (tehát **nem** úgy működik mint a JavaScript-es `var` kulcsszó), mert a `p` változó típusa a későbbiekben nem változhat meg, ez csak egy egyszerű szintaktikai édesítőszer annek érdekében, hogy tömörebben tudjunk lokális változókat definiálni (ne kelljen a típust "duplán", az `=` bal és jobb oldalán is megadni).
 
     !!! note "Target-typed `new` expressions"
-        Egy másik megközelítés lehet a a C# 9-ben megjelent Target-typed `new` expressions, ahol a new operátor esetén hagyható el a típus, ha az a fordító által kitalálható a kontextusból (pl.: értékadás bal oldala, paraméter típusa stb.). A fenti `Person` konstruktorunk a következőképpen nézne ki:
+        Egy másik megközelítés lehet a a C# 9-ben megjelent Target-typed `new` expressions, ahol a `new` operátor esetén hagyható el a típus, ha az a fordító által kitalálható a kontextusból (pl.: értékadás bal oldala, paraméter típusa stb.). A fenti `Person` konstruktorunk a következőképpen nézne ki:
 
         ```csharp
         Person p = new();
@@ -248,7 +248,7 @@ b) Nem autoimplementált eset
 ```csharp
 private string name;
 ...
-public string Name { get {return name; } }
+public string Name { get { return name; } }
 ```
 
 ### Számított érték (calculated value)
@@ -660,6 +660,28 @@ public required string Name { get; init; }
 ```
 
 Ez azért is hasznos, mert ha egyébként is szeretnénk tulajdonságokat publikálni az osztályból, és egyébként is szeretnénk támogatni az objektum inicializáló szintaxist, akkor így meg tudjuk spórolni a kötelező konstruktor paramétereket.
+
+### Tulajsonságok - field kulcsszó
+
+C# 14-től a `field` kulcsszó segítségével az autoimplementált property-k esetében lehetőség van a getter vagy a setter implementálása egyedileg.
+
+Emlékezzünk vissza a validációval rendelkező `Age` tulajsondásra, ahol csak azért a teljes property szintaxist kellett használni, hogy a setterbe a validációs logikát el tudjuk helyezni.
+Erre megoldást nyújt a `field` kulcsszú, amivel az autoimplementált tulajdonság mezőjéhez férhetünk hozzá a setterben vagy a getterben.
+
+Így megspórolhatjuk ebben az esetben a mező létrehozást és a `get` törzsét.
+
+    ```csharp
+    public int Age
+    {
+        get;
+        set 
+        {
+            if (value < 0)
+                throw new ArgumentException("Érvénytelen életkor!");
+            field = value; 
+        }
+    }
+    ```
 
 
 ## 8. Feladat – Generikus osztályok
