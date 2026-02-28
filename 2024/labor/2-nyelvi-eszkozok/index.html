@@ -849,6 +849,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#tulajsonsagok-field-kulcsszo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tulajsonságok - field kulcsszó
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2679,6 +2690,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#tulajsonsagok-field-kulcsszo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tulajsonságok - field kulcsszó
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2790,7 +2812,7 @@
 <p>Ezt <strong>implicitly typed local variables</strong>-nek, magyarul <strong>implicit típusú lokális változó</strong>-nak nevezzük. Ilyenkor a fordító a kontextusból, az egyenlőségjel jobb oldalából megpróbálja kitalálni a változó típusát, fenti esetben ez egy <code>Person</code> lesz. Fontos, hogy ettől a nyelv még statikusan tipusos marad (tehát <strong>nem</strong> úgy működik mint a JavaScript-es <code>var</code> kulcsszó), mert a <code>p</code> változó típusa a későbbiekben nem változhat meg, ez csak egy egyszerű szintaktikai édesítőszer annek érdekében, hogy tömörebben tudjunk lokális változókat definiálni (ne kelljen a típust "duplán", az <code>=</code> bal és jobb oldalán is megadni).</p>
 <div class="admonition note">
 <p class="admonition-title">Target-typed <code>new</code> expressions</p>
-<p>Egy másik megközelítés lehet a a C# 9-ben megjelent Target-typed <code>new</code> expressions, ahol a new operátor esetén hagyható el a típus, ha az a fordító által kitalálható a kontextusból (pl.: értékadás bal oldala, paraméter típusa stb.). A fenti <code>Person</code> konstruktorunk a következőképpen nézne ki:</p>
+<p>Egy másik megközelítés lehet a a C# 9-ben megjelent Target-typed <code>new</code> expressions, ahol a <code>new</code> operátor esetén hagyható el a típus, ha az a fordító által kitalálható a kontextusból (pl.: értékadás bal oldala, paraméter típusa stb.). A fenti <code>Person</code> konstruktorunk a következőképpen nézne ki:</p>
 <div class="highlight"><pre><span></span><code><span class="n">Person</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
 </code></pre></div>
 <p>Ennek a megközelítésnek az előnye a <code>var</code>-ral szemben, hogy tagváltozók esetében is alkalmazható.</p>
@@ -2936,7 +2958,7 @@ A láthatóság szabályozása autoimplementált és nem autoimplementált tulaj
 <p>b) Nem autoimplementált eset</p>
 <div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
 <span class="p">...</span>
-<span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="p">{</span><span class="k">return</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <h3 id="szamitott-ertek-calculated-value">Számított érték (calculated value)<a class="headerlink" href="#szamitott-ertek-calculated-value" title="Permanent link">¶</a></h3>
 <p>A csak getterrel rendelkező tulajdonságoknak van még egy használati módja. Valamilyen számított érték meghatározására is használható, mely mindig kiszámol egy megadott logika alapján egy értéket, de a "csak olvasható tulajdonság"-gal szemben nincs mögötte közvetlenül a tulajdonsághoz tartozó adattag. Ezt a következő kódrészlet illusztrálja (a kódunkba NE vezessük be):</p>
@@ -3271,6 +3293,24 @@ Mint látható, elhagytuk a {} zárójeleket és a <code>return</code> utasítá
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">required</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">init</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <p>Ez azért is hasznos, mert ha egyébként is szeretnénk tulajdonságokat publikálni az osztályból, és egyébként is szeretnénk támogatni az objektum inicializáló szintaxist, akkor így meg tudjuk spórolni a kötelező konstruktor paramétereket.</p>
+<h3 id="tulajsonsagok-field-kulcsszo">Tulajsonságok - field kulcsszó<a class="headerlink" href="#tulajsonsagok-field-kulcsszo" title="Permanent link">¶</a></h3>
+<p>C# 14-től a <code>field</code> kulcsszó segítségével az autoimplementált property-k esetében lehetőség van a getter vagy a setter implementálása egyedileg.</p>
+<p>Emlékezzünk vissza a validációval rendelkező <code>Age</code> tulajsondásra, ahol csak azért a teljes property szintaxist kellett használni, hogy a setterbe a validációs logikát el tudjuk helyezni.
+Erre megoldást nyújt a <code>field</code> kulcsszú, amivel az autoimplementált tulajdonság mezőjéhez férhetünk hozzá a setterben vagy a getterben.</p>
+<p>Így megspórolhatjuk ebben az esetben a mező létrehozást és a <code>get</code> törzsét.</p>
+<div class="highlight"><pre><span></span><code>```csharp
+public int Age
+{
+    get;
+    set 
+    {
+        if (value &lt; 0)
+            throw new ArgumentException("Érvénytelen életkor!");
+        field = value; 
+    }
+}
+```
+</code></pre></div>
 <h2 id="8-feladat-generikus-osztalyok">8. Feladat – Generikus osztályok<a class="headerlink" href="#8-feladat-generikus-osztalyok" title="Permanent link">¶</a></h2>
 <p>Megjegyzés: erre a feladatra jó eséllyel nem marad idő. Ez esetben célszerű a feladatot gyakorlásképpen otthon elvégezni.</p>
 <p>A .NET generikus osztályai hasonlítanak C++ nyelv template osztályaihoz, de közelebb állnak a Java-ban már megismert generikus osztályokhoz. A segítségükkel általános (több típusra is működő), de ugyanakkor típusbiztos osztályokat hozhatunk létre. Generikus osztályok nélkül, ha általánosan szeretnénk kezelni egy problémát, akkor <code>object</code> típusú adatokat használunk (mert .NET-ben minden osztály az <code>object</code> osztályból származik). Ez a helyzet például az <code>ArrayList</code>-tel is, ami egy általános célú gyűjtemény, tetszőleges, <code>object</code> típusú elemek tárolására alkalmas. Lássunk egy példát az <code>ArrayList</code> használatára:</p>
@@ -3310,8 +3350,8 @@ Mint látható, elhagytuk a {} zárójeleket és a <code>return</code> utasítá
         </path>
       </svg>
     </span>
-    <span title="2025. december 18. 22:33:38">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. december 18. 22:33:38 CET"><span class="timeago" datetime="2025-12-18T22:33:38+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. december 18. 22:33:38 CET">2025-12-18</span>
+    <span title="2026. február 28. 12:53:06">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. február 28. 12:53:06 CET"><span class="timeago" datetime="2026-02-28T12:53:06+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. február 28. 12:53:06 CET">2026-02-28</span>
     </span>
   </span>
 
