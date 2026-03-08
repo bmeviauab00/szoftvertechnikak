@@ -349,14 +349,14 @@ A projektbe vegyél fel egy `Person` és egy `ReportPrinter` osztályt (egy-egy,
         public void PrintReport()
         {
             headerPrinter();
-            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("------------------------------------------");
             int i = 0;
             foreach (var person in people)
             {
                 Console.Write($"{++i}. ");
                 Console.WriteLine("Person");
             }
-            Console.WriteLine("--------------- Summary -----------------");
+            Console.WriteLine("---------------- Summary ------------------");
             Console.WriteLine("Footer");
         }
     }
