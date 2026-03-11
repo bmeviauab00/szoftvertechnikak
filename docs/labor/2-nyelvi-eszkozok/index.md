@@ -661,11 +661,11 @@ public required string Name { get; init; }
 
 Ez azért is hasznos, mert ha egyébként is szeretnénk tulajdonságokat publikálni az osztályból, és egyébként is szeretnénk támogatni az objektum inicializáló szintaxist, akkor így meg tudjuk spórolni a kötelező konstruktor paramétereket.
 
-### Tulajsonságok - field kulcsszó
+### Tulajdonságok - field kulcsszó
 
 C# 14-től a `field` kulcsszó segítségével az autoimplementált property-k esetében lehetőség van a getter vagy a setter implementálása egyedileg.
 
-Emlékezzünk vissza a validációval rendelkező `Age` tulajsondásra, ahol csak azért a teljes property szintaxist kellett használni, hogy a setterbe a validációs logikát el tudjuk helyezni.
+Emlékezzünk vissza a validációval rendelkező `Age` tulajdonságra, ahol csak azért a teljes property szintaxist kellett használni, hogy a setterbe a validációs logikát el tudjuk helyezni.
 Erre megoldást nyújt a `field` kulcsszú, amivel az autoimplementált tulajdonság mezőjéhez férhetünk hozzá a setterben vagy a getterben.
 
 Így megspórolhatjuk ebben az esetben a mező létrehozást és a `get` törzsét.
