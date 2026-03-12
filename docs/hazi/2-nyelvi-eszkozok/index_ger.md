@@ -2,90 +2,91 @@
 autoren: BenceKovari,bzolka
 ---
 
-# 2. HF - Sprachwerkzeuge
+# HA 2 - Sprachliche Mittel
 
 ## Einführung
 
-Die eigenständige Aufgabe baut auf den Vorlesungen der Vorlesung 2 und der ersten Hälfte der Vorlesung 3 auf (diese sind im Vorlesungsmaterial "Vorlesung 02 - Sprachliche Mittel" enthalten). [Labor 2 - Sprachwerkzeuge](../../labor/2-nyelvi-eszkozok/index_ger.md) liefert den praktischen Hintergrund für die Laborübung.
+Die selbstständige Aufgabe baut auf den Inhalten der 2. Vorlesung und der ersten Hälfte der 3. Vorlesung auf. Als praktischer Hintergrund dient die [Laborübung 2. - Sprachliche Mittel](../../labor/2-nyelvi-eszkozok/index_ger.md).
 
-Aufbauend auf den obigen Ausführungen können die Aufgaben in dieser Selbstübung unter Verwendung der kürzeren Richtlinien, die auf die Aufgabenbeschreibung folgen, erledigt werden.
+Aufbauend auf den oben genannten Inhalten können die Aufgaben dieser Hausaufgabe mit der Hilfe der kürzeren Leitfäden nach der Aufgabenbeschreibung gelöst werden.
 
-Das Ziel der unabhängigen Übung:
+Das Ziel der Hausaufgabe:
 
-- Praktische Nutzung von Eigentum
-- Delegierte und Ereignisse verwenden
-- üben Sie die Verwendung von .NET-Attributen
-- Üben der Verwendung grundlegender Sammlungstypen
-- Übung Lambda-Terme
+- Übung der Verwendung von Eigenschaften (property)
+- Anwendung von Delegaten (delegate) und Ereignissen (event)
+- Übung der Verwendung von .NET-Attributen
+- Übung der Verwendung grundlegender Sammlungstypen
+- Übung von Lambda-Ausdrücken
 
 Die erforderliche Entwicklungsumgebung wird [hier](../fejlesztokornyezet/index_ger.md) beschrieben.
 
-!!! warning "Using C# 12 (and newer) language elements"
-    C# 12 und neuere Sprachelemente (z.B. primärer Konstruktor) können in dieser Hausaufgabe nicht verwendet werden, da der Checker auf GitHub sie noch nicht unterstützt.
+!!! warning "Verwendung von Sprachelementen aus C# 12 (und neuer)"
+    Bei der Lösung der Hausaufgabe dürfen Sprachelementen von C# 12 und neuer (z. B. primary constructor) NICHT verwendet werden, da das auf GitHub laufende Prüfsystem diese noch nicht unterstützt.
 
-## Einreichungsverfahren, Pre-Checker
+## Abgabeablauf, Vorprüfung
 
-Der Einreichungsprozess ist derselbe wie bei der ersten Hausaufgabe (siehe Arbeitsablauf bei [Hausaufgaben und Verwendung von Git/GitHub](../hf-folyamat/index.md) für eine detaillierte Beschreibung an der üblichen Stelle):
+Der Ablauf der Eingabe entspricht dem der ersten Hausaufgabe (detaillierte Beschreibung an der üblichen Stelle, siehe [Hausaufgaben-Workflow und die Verwendung von Git/GitHub](../hf-folyamat/index.md)):
 
-1. Erstellen Sie mit GitHub Classroom ein Repository für sich selbst. Sie finden die Einladungs-URL in Moodle (Sie können sie sehen, indem Sie auf den Link*"GitHub classroom links for homework*" auf der Startseite des Fachs klicken). Es ist wichtig, dass Sie die richtige Einladungs-URL für diese Hausaufgabe verwenden (jede Hausaufgabe hat eine andere URL).
-2. Klonen Sie das resultierende Repository. Dazu gehört auch die erwartete Struktur der Lösung.
-3. Nachdem Sie die Aufgaben erledigt haben, übergeben Sie Ihre Lösung alt und drücken Sie sie alt.
+1. Erstelle mit GitHub Classroom ein eigenes Repository. Die Einladungs-URL findest du in Moodle (bei Hausaufgabe 2.). Wichtig ist, dass du die richtige Einladungs-URL für diese Hausaufgabe verwendest (für jede Hausaufgabe gibt es eine andere URL).
+2. Klone das so erstellte Repository. Dieses enthält die erwartete Struktur der Lösung.
+3. Nach der Fertigstellung der Aufgaben committe und pushe deine Lösung.
 
-Auch der Pre-Checker funktioniert wie gewohnt. Ausführliche Beschreibung: [Vorabkontrolle und formale Bewertung der Hausaufgaben]((../eloellenorzes-ertekeles/index.md)).
+Die Vorprüfung funktioniert ebenfalls auf die übliche Weise. Detaillierte Beschreibung: [Vorprüfung und offizielle Bewertung der Hausaufgabe](../eloellenorzes-ertekeles/index.md).
 
-## Aufgabe 1 - Ominöse Schatten
+## Aufgabe 1 – Die dunkle Bedrohung
 
-### Verfasst am
+### Aufgabe
 
-Die Macht der Jedi-Ritter kommt bekanntlich von den winzigen Lebensformen, die in ihren Zellen leben, den Midi-Chlorianern. Der höchste jemals gemessene Midi-Chlor-Wert (über 20.000) wurde bei Anakin Skywalker gemessen.
+Wie es bewusst ist, stammt die Macht der Jedi-Ritter von den kleinen Lebensformen, den sogenannten Midi-Chlorianern, die in ihren Zellen leben. Der bisher höchste gemessene Midi-Chlorian-Wert (über 20.000) wurde bei Anakin Skywalker festgestellt.
 
-Erstellen Sie eine Klasse mit dem Namen `Jedi`, die eine Eigenschaft `Name` vom Typ `string` und eine Eigenschaft `MidiChlorianCount` vom Typ `int` hat. Bei letzterem ist darauf zu achten, dass der Wert von `MidiChlorianCount` nicht auf 35 oder weniger gesetzt werden kann. Wählen Sie für die Validierung die einfachste und sauberste Lösung, die möglich ist: Verwenden Sie ein einfaches `if`im Property Setter und lösen Sie eine Exception aus, keine `else` Verzweigung von `if`, und keine Notwendigkeit, `return` zu verwenden.
+Erstelle eine Klasse mit dem Namen `Jedi`, die eine `string`-Eigenschaft `Name` und eine `int`-Eigenschaft `MidiChlorianCount` hat. Achte im letzteren Fall darauf, dass der Wert von `MidiChlorianCount` nicht auf 35 oder einen kleineren Wert gesetzt werden kann. Wenn jemand dies versucht, muss die Klasse eine Ausnahme auslösen. Wähle bei der Validierung die einfachste und klarste Lösung: Verwende im Setter der Property ein einfaches `if` und löse eine Ausnahme aus. Das `if` soll keinen `else`-Zweig haben, und die Verwendung von `return` ist ebenfalls nicht notwendig.
 
 ### Lösung
 
-Die Lösung dieser Aufgabe kann auf ähnliche Weise vorbereitet werden wie in [Labor 2, Aufgabe 1.](../../labor/2-nyelvi-eszkozok/index_ger.md#1-aufgabe-eigenschaft-property) Lösen Sie im Setter der Eigenschaft `MidiChlorianCount` eine Ausnahme für einen ungültigen Wert aus. Dies kann zum Beispiel mit dem folgenden Befehl geschehen:
+Die Lösung der Aufgabe kann analog zur [1. Aufgabe des 2. Labors](../../labor/2-nyelvi-eszkozok/index_ger.md#1-aufgabe-Eigenschaft-property) erstellt werden. Im Setter der Eigenschaft `MidiChlorianCount` soll bei einem ungültigen Wert eine Ausnahme ausgelöst werden. Dies kann beispielsweise mit der folgenden Anweisung erfolgen:
 
 ```csharp
 throw new ArgumentException("You are not a true jedi!");
 ```
 
-## Aufgabe 2 - Angriff auf die Klone
+## Aufgabe 2 – Angriff der Klonkrieger
 
-### Verfasst am
+### Aufgabe
 
-Fügen Sie der Klasse, die Sie in Übung 1 erstellt haben, Attribute hinzu, so dass, wenn Sie ein Objekt `Jedi` mit der Klasse `XmlSerializer` in eine XML-Datendatei schreiben/zuweisen, seine Eigenschaften in Englisch als XML-Attribute angezeigt werden Schreiben Sie dann eine Funktion, die eine Instanz der Klasse `Jedi` in eine Textdatei sortiert und sie in ein neues Objekt zurückliest (und damit das ursprüngliche Objekt klont).
+Erweitere die in Aufgabe 1 erstellte Klasse mit Attributen, sodass wenn eines `Jedi`-Objekts in eine XML-Datei mithilfe der `XmlSerializer`-Klasse geschrieben/serialisiert wird, die Eigenschaften als XML-Attribute als `JediName` und `JediMidiChlorianCount` angezeigt werden! Schreibe danach eine Funktion, die eine Instanz der `Jedi`-Klasse in eine Textdatei serialisiert und dann wieder in ein neues Objekt einliest (dadurch wird das ursprüngliche Objekt praktisch geklont).
 
-!!! tip "XML-Sortierattribute"
-    Platzieren Sie die Attribute, die die XML-Sortierung steuern, über den Eigenschaften, nicht über den Mitgliedsvariablen!
+!!! tip "Attribute für XML-Serialisierung"
+    Die Attribute, die die XML-Serialisierung steuern, sollen über den Eigenschaften und **nicht** über den Membervariablen platziert werden!
 
-!!! tip "Die Jedi-Klasse sollte öffentlich sein"
-    Der XML-Sorter kann nur mit öffentlichen Klassen arbeiten, daher sollte die Jedi-Klasse öffentlich sein: ```csharp     public class Jedi { ...}     ```
+!!! tip "Die Jedi-Klasse soll öffentlich sein"
+    Der XML-Serializer kann nur mit öffentlichen Klassen arbeiten, daher soll die Jedi-Klasse öffentlich sein:
+    ```csharp
+    public class Jedi { ...}
+    ```
 
 !!! danger "Wichtig"
-    Schreiben Sie den Code zum Speichern und Laden/Demonstrieren in eine gemeinsame dedizierte Funktion, und verweisen Sie auf die Funktion mit dem C#-Attribut `[Description("Task2")]` (das in der Zeile vor der Funktion eingegeben werden muss). Das gespeicherte/geladene Objekt sollte in dieser Funktion als lokale Variable implementiert werden. Der Name der Klasse/Funktion kann beliebig sein (z. B. kann er in der Klasse `Program` stehen). Die Funktion sollte keinen Code enthalten, der nicht strikt mit der Aufgabe und somit auch nicht mit einer anderen (Unter-)Aufgabe zusammenhängt. Rufen Sie die Funktion über die Funktion `Main` der Klasse `Program` auf. Um das oben genannte Attribut zu verwenden, müssen Sie den Namespace `System.ComponentModel` verwenden.
+    Schreibe den Code, der das Specihern und Einlesen verwirklicht/demonstriert, in eine gemeinsame, dafür dedizierte Funktion, und versehe die Funktion mit dem C#-Attribut `[Description("Task2")]` (direkt über die Zeile der Funktion). Das gespeicherte/geladene Objekt soll als lokale Variable in dieser Funktion implementiert werden. Der Name der Klasse/Funktion kann beliebig sein (z. B. kann sie auch in die `Program`-Klasse gesetzt werden). Die Funktion darf keinen Code enthalten, der nicht zur Aufgabe gehört, also auch keinen, der zu anderen (Teil-)Aufgaben gehört. Rufe die Funktion aus der `Main`-Methode der `Program`-Klasse auf. Um das oben genannte Attribut zu verwenden, muss der Namespace `System.ComponentModel` eingebunden werden.
 
-    Es ist wichtig, dass
+    Die folgenden sind wesentlich:
 
-    - attribut über Funktion und NE-Klasse,
-    - schreiben Sie das Attribut nicht über die Funktion, die die Logik implementiert, sondern über die Funktion, die sie testet,
-    - **das Attribut kann nur über einer einzigen Funktion erscheinen.**
-
-
+    - das Attribut soll über die Funktion und NICHT über die Klasse geschrieben werden,  
+    - das Attribut soll über der Test-/Demonstrationsfunktion platziert werden und **nicht** über der Funktion, die die Logik implementiert,  
+    - **das Attribut darf nur über einer einzigen Funktion stehen.**
 
 ### Lösung
 
-Die Lösung dieser Aufgabe kann auf ähnliche Weise wie in [Labor 2, Aufgabe 4](../../labor/2-nyelvi-eszkozok/index_ger.md#4-aufgabe-attribute), vorbereitet werden. Die folgende Hilfe wird angeboten:
+Die Aufgabe kann analog zur [4. Aufgabe des 2. Labors](../../labor/2-nyelvi-eszkozok/index_ger.md#4-aufgabe-attribute) gelöst werden. Für die Lösung geben wir folgende Hilfen:
 
-- Nach der Sortierung sollte die XML-Datei etwa so aussehen:
+- Nach der Serialisierung sollte die XML-Datei in etwa wie folgt aussehen:
 
     ```xml
     <?xml version="1.0"?>
-    <Jedi xmlns:xsi="..." Name="Obi-Wan" MidiChlorianCount="15000" />
+    <Jedi xmlns:xsi="..." JediName="Obi-Wan" JediMidiChlorianCount="15000" />
     ```
 
-    Es ist wichtig, dass jeder Jedi als XML-Element `Jedi` erscheint, sein Name `Name`, seine Midichlorian-Nummer `MidiChlorianCount` als XML-Attribut.
+    Wesentlich ist, dass jede Jedi-Instanz als `Jedi`-XML-Element erscheint, ihr Name als `JediName` und die Midi-Chlorian-Zahl als `JediMidiChlorianCount`-XML-Attribut dargestellt wird.
 
-- Wir haben uns im Labor keinen Beispielcode für die Rückgabe sortierter Objekte angesehen, daher stellen wir ihn hier zur Verfügung:
+- Zum Laden der serialisierten Objekte geben wir hier Beispielcode, da dies im Labor nicht behandelt wurde:
 
     ```csharp
     var serializer = new XmlSerializer(typeof(Jedi));
@@ -94,51 +95,51 @@ Die Lösung dieser Aufgabe kann auf ähnliche Weise wie in [Labor 2, Aufgabe 4](
     stream.Close();
     ```
 
-    In der vorherigen Zeile wird zunächst eine Sortiertabelle (`serializer`) erstellt, die später zur Durchführung der Suche verwendet wird. Gelesen wird aus einer Datei namens `jedi.txt`, die in der zweiten Zeile zum Lesen geöffnet wird (wenn wir schreiben wollten, hätten wir` FileMode.Create`angeben müssen).
+    Der vorherige Code erstellt zuerst einen Serializer (`serializer`), mit dem das Einlesen später durchgeführt wird. Das Einlesen erfolgt aus einer Datei namens `jedi.txt`, die in der zweiten Zeile zum Lesen geöffnet wird (beachte, dass wir beim Schreiben `FileMode.Create` hätten verwenden müssen).
 
-## Herausforderung 3 - Die Rache der Sith
+## Aufgabe 3 – Die Rache der Sith
 
-### Verfasst am
+### Aufgabe
 
-Im Rat der Jedi hat es in letzter Zeit eine hohe Fluktuation gegeben. Um den Überblick über Änderungen zu behalten, erstellen Sie eine Klasse, die Vorstandsmitglieder registrieren und eine Textbenachrichtigung über Änderungen in Form eines Ereignisses senden kann! Die Liste kann mit zwei Funktionen bearbeitet werden. Die Funktion `Add` nimmt einen neuen Jedi-Ritter in den Rat auf, während die Funktion `Remove` das **zuletzt** aufgenommene Ratsmitglied wieder entfernt. Separate Benachrichtigung, wenn der Rat komplett leer ist (verwenden Sie dasselbe Ereignis wie für andere Änderungen, nur mit anderem Text).
+Im Jedi-Rat herrscht in letzter Zeit eine hohe Fluktuation. Um die Änderungen leichter verfolgen zu können, erstelle eine Klasse, die die Mitglieder des Rates verwalten kann und bei jeder Änderung eine Benachrichtigung als Ereignis in Form eines Textes sendet! Die Liste soll über zwei Funktionen manipuliert werden. Die Funktion `Add` registriert einen neuen Jedi-Ritter im Rat, während die Funktion `Remove` das **zuletzt** hinzugefügte Mitglied entfernt. Eine besondere Benachrichtigung zeigt an, wenn der Rat vollständig geleert ist (verwende hierfür dasselbe Ereignis wie für die anderen Änderungen, aber mit anderem Text).
 
-Die Liste der Vorstandsmitglieder (`members`) wird in einer Mitgliedsvariablen des Typs `List<Jedi>` gespeichert, die Funktion `Add` fügt dieser Liste neue Mitglieder hinzu, während die Funktion `Remove` immer das **letzte** durch die generische Liste `RemoveAt` hinzugefügte Mitglied entfernt (der Index des letzten Mitglieds wird durch die Länge der Liste bestimmt, die durch die Eigenschaft `Count` zurückgegeben wird).
+Die Mitglieder (`members`) werden in einer Feldvariablen vom Typ `List<Jedi>` gespeichert. Die Funktion `Add` fügt neue Elemente dieser Liste hinzu, während `Remove` mit dem generischen Listenbefehl `RemoveAt` immer das **zuletzt** hinzugefügte Mitglied entfernt (den Index des letzten Elements kann man über die Länge der Liste ermitteln, die die Property `Count` zurückgibt).
 
-Die Benachrichtigung sollte über ein C#-Ereignis erfolgen. Der Delegatentyp für das Ereignis sollte ein einfacher `string`sein. Das Hinzufügen eines neuen Mitglieds, das Entfernen jedes Mitglieds und das Entfernen des letzten Mitglieds sollte durch einen anderen Nachrichtentext angezeigt werden. Das Auslösen von Ereignissen sollte direkt in `Add` und `Remove` erfolgen (führen Sie keine Hilfsfunktion ein).
+Die Benachrichtigung erfolgt über ein C#-Ereignis (C# event). Der zugehörige Delegate-Typ erhält als Parameter einen einfachen `string`. Die Hinzufügung eines neuen Mitglieds, das Entfernen einzelner Mitglieder und das Entfernen des letzten Mitglieds werden durch Nachrichten mit unterschiedlichem Text signalisiert. Das Auslösen des Events erfolgt direkt in den `Add`- und `Remove`-Operationen (führe dafür keine Hilfsfunktion ein).
 
-Verwenden Sie keinen eingebauten Delegatentyp für den Ereignistyp, sondern führen Sie einen eigenen ein.
+Verwende für den Event-Typ keinen eingebauten Delegate-Typ, sondern definiere einen eigenen.
 
-!!! danger "Wichtig" 
-    Der Code, der das Jeditanács-Objekt erstellt und testet (Abonnieren eines C#-Ereignisses, Aufrufen von `Add` und `Remove` ), sollte in einer gemeinsamen, separaten Funktion untergebracht werden, und diese Funktion sollte durch das C#-Attribut `[Description("Task3")]` dargestellt werden. Der Name der Klasse/Funktion kann beliebig sein. Die Funktion sollte keinen Code enthalten, der nicht strikt mit der Aufgabe und somit auch nicht mit einer anderen (Unter-)Aufgabe zusammenhängt. Rufen Sie die Funktion über die Funktion `Main` der Klasse `Program` auf.
+!!! danger "Wichtig"
+    Der Code zum Erstellen des Jedi-Rats-Objekts und zum Testen (Abonnieren auf C#-Ereignis, Aufrufe von `Add` und `Remove`) soll in eine gemeinsame, dafür dedizierte Funktion geschrieben werden, die mit dem C#-Attribut `[Description("Task3")]` versehen wird. Der Name der Klasse/Funktion kann beliebig sein. Die Funktion darf keinen Code enthalten, der nicht zur Aufgabe gehört, also auch keinen, der zu anderen (Teil-)Aufgaben gehört. Rufe die Funktion aus der `Main`-Methode der `Program`-Klasse auf.
 
-      Es ist wichtig, dass
+    Die folgenden sind wesentlich:
 
-      - attribut über Funktion und NE-Klasse,
-      - schreiben Sie das Attribut nicht über die Funktion, die die Logik implementiert, sondern über die Funktion, die sie testet,
-      - das Attribut kann nur über einer einzigen Funktion erscheinen.
+    - das Attribut soll über die Funktion und NICHT über die Klasse geschrieben werden,  
+    - das Attribut soll über der Test-/Demonstrationsfunktion platziert werden und **nicht** über der Funktion, die die Logik implementiert,  
+    - das Attribut darf nur über einer einzigen Funktion stehen.
 
 ### Lösung
 
-Die Lösung dieses Problems baut auf mehreren Details aus Labor 2 auf. Die Einführung einer neuen Veranstaltung kann wie in den Übungen 2 und 3 beschrieben erfolgen, wobei die Mitglieder des Gremiums in einer Liste eingetragen werden können.
+Die Aufgabe baut auf mehreren Teilen des 2. Labors auf. Die Einführung des neuen Ereignisses kann analog zu den Aufgaben 2 und 3 durchgeführt werden, während die Mitglieder des Rates in einer Liste verwaltet werden.
 
-Versuchen Sie anhand der obigen Informationen, das Problem selbst zu lösen. Wenn Sie fertig sind, lesen Sie die Anleitung im nächsten zu öffnenden Block weiter und vergleichen Sie Ihre Lösung mit der Referenzlösung unten Korrigieren Sie gegebenenfalls Ihre eigene Lösung!
+Versuche anhand der oben genannten Informationen, die Aufgabe selbstständig zu lösen. Wenn du fertig bist, lies die Anleitung im nächsten ausklappbaren Block weiter und vergleiche deine Lösung mit der Referenzlösung unten! Korrigiere deine Lösung falls nötig!
 
 !!! tip "Öffentliche Sichtbarkeit"
-    Das Beispiel baut auf der Tatsache auf, dass die beteiligten Klassen, Eigenschaften und Delegierten öffentlich sichtbar sind. Wenn Sie auf einen seltsamen Übersetzungsfehler stoßen oder `XmlSerializer` zur Laufzeit einen Fehler auslöst, überprüfen Sie zunächst, ob Sie die öffentliche Sichtbarkeit auf allen relevanten Websites korrekt eingestellt haben.
+    Das Beispiel geht davon aus, dass die beteiligten Klassen, Eigenschaften und Delegates öffentlich sind. Wenn du auf seltsame Kompilierungsfehler stößt oder der `XmlSerializer` zur Laufzeit einen Fehler wirft, überprüfe zuerst, ob überall die Sichtbarkeit korrekt auf `public` gesetzt ist.
 
 ??? example "Referenzlösung"
-    Die Schritte der Referenzlösung sind wie folgt:
+    Die Schritte der Referenzlösung sind:
 
-    1. Erstelle eine neue Klasse mit dem Namen `JediCouncil`.
-    2. Man nehme ein Feld vom Typ "Liste<Jedi>" und initialisiere es mit einer leeren Liste.
-    3. Machen Sie die Funktionen "Hinzufügen" und "Entfernen" gültig.
+    1. Erstelle eine neue Klasse namens `JediCouncil`.
+    2. Füge ein Feld vom Typ `List<Jedi>` hinzu und initialisiere es mit einer leeren Liste.
+    3. Implementiere die Methoden `Add` und `Remove`.
 
-        Nach den obigen Schritten erhalten wir den folgenden Code:
+        Nach diesen Schritten erhält man folgenden Code:
 
         ```csharp
         public class JediCouncil
         {
-            Liste<Jedi> members = new List<Jedi>();
+            List<Jedi> members = new List<Jedi>();
 
             public void Add(Jedi newJedi)
             {
@@ -147,21 +148,21 @@ Versuchen Sie anhand der obigen Informationen, das Problem selbst zu lösen. Wen
 
             public void Remove()
             {
-                // Entfernt den letzten Eintrag in der Liste
+                // Entfernt das letzte Element der Liste
                 members.RemoveAt(members.Count - 1);
             }
         }
         ```
 
-        Der nächste Schritt ist die Implementierung der Ereignisbehandlung. 
+        Als nächstes wird die Ereignisbehandlung implementiert.
 
-    4. Definieren Sie einen neuen Delegatentyp (außerhalb der Klasse, da es sich ebenfalls um einen Typ handelt), der den Benachrichtigungstext übergeben wird:
+    4. Definiere einen neuen Delegatetyp (außerhalb der Klasse, da dies ebenfalls ein Typ ist), der die Benachrichtigungstexte überträgt:
 
         ```csharp
         public delegate void CouncilChangedDelegate(string message);
         ```
 
-    5. Fügen Sie die Klasse "JediCouncil" zum Ereignis-Handler hinzu:
+    5. Ergänze die `JediCouncil`-Klasse mit dem Ereignishandler:
 
         ```csharp hl_lines="3"
         public class JediCouncil
@@ -172,126 +173,127 @@ Versuchen Sie anhand der obigen Informationen, das Problem selbst zu lösen. Wen
         }
         ```
 
-    6. Lassen Sie uns das Ereignis feiern, wenn wir ein neues Vorstandsmitglied aufnehmen. Zu diesem Zweck müssen wir die Methode "Hinzufügen" hinzufügen.
+    6. Löse das Ereignis aus, wenn ein neues Mitglied hinzugefügt wird. Hierzu wird die `Add`-Methode erweitert:
 
         ```csharp
         public void Add(Jedi newJedi)
         {
             members.Add(newJedi);
 
-            // TODO: Fry die Veranstaltung hier.
-            // Beachten Sie, dass Sie dies nur tun sollten, wenn Sie mindestens einen Teilnehmer haben.
-            // Verwenden Sie dabei das modernere ?.Invoke und nicht die häufigere Nullprüfung.
+            // TODO: Auslösen des Ereignisses.
+            // Beachte, dass du dies nur tun solltest, wenn mindestens ein Teilnehmer/Abonnent registriert ist.
+            // Verwende die moderne, kurze Syntax ?.Invoke, statt einer Nullprüfung.
         }
         ```
 
-    7. Braten Sie das Ereignis, wenn ein Ratsmitglied geht! Unterscheiden Sie den Fall, dass der Rat völlig leer ist. Dazu müssen wir die Methode `Remove` hinzufügen.
+    7. Löst das Ereignis aus, wenn ein Mitglied entfernt wird. Unterscheide den Fall, dass der Rat vollständig geleert ist. Hierzu die `Remove`-Methode erweitern:
 
         ```csharp
         public void Remove()
         {
-            // Entfernt den letzten Eintrag in der Liste
+            // Entfernt das letzte Element der Liste
             members.RemoveAt(members.Count - 1);
 
-            // TODO: Fry die Veranstaltung hier.
-            // Beachten Sie, dass Sie dies nur tun sollten, wenn Sie mindestens einen Teilnehmer haben.
+            // TODO: Auslösen des Ereignisses.
+            // Beachte, dass du dies nur tun solltest, wenn mindestens ein Teilnehmer/Abonnent registriert ist.
         }
         ```
 
-    8. Um unsere Lösung zu testen, fügen Sie eine Funktion `MessageReceived` zu der Klasse hinzu, in der wir das Ereignisabonnement und die Ereignisbehandlung testen wollen (z.B. die Klasse `Program`). Diese Funktion wird verwendet, um `JediCouncil'-Benachrichtigungen zu abonnieren.
+    8. Um die Lösung zu testen, erstelle eine `MessageReceived`-Funktion in der Klasse, in der wir die Anmeldung für das Ereignis und die Ereignisbehandlung testen möchten (z. B. in der `Program`-Klasse). Diese Funktion werden wir für die Benachrichtigungen des JediCouncil anmelden.
 
-        ```csharp title="Programm.cs"
+        ```csharp title="Program.cs"
         private static void MessageReceived(string message)
         {
-            Console.WriteLine(Nachricht);
+            Console.WriteLine(message);
         }
         ```
 
-    9. Testen Sie schließlich die neue Klasse, indem Sie eine eigene Funktion schreiben (dies kann in der Klasse `Programm` geschehen) und fügen Sie das Attribut `[Description("Task3")]` oberhalb der Funktion hinzu Das Grundgerüst der Funktion:
+    9. Zum Schluss testen wir unsere neue Klasse mit einer für diesen Zweck dedizierte Funktion (z. B. in der `Program`-Klasse), die mit dem `[Description("Task3")]`-Attribut versehen wird. Der Aufbau der Funktion:
 
         ```csharp
-        // Einrichtung des Rates
+        // Erstellen des Rates
         var council = new JediCouncil();
         
-        // TODO: Melden Sie sich hier für die CouncilChanged-Veranstaltung an
+        // TODO: Abonniere das CouncilChanged-Ereignis des councils
         
-        // TODO Hier fügen Sie zwei Jedi-Objekte zum Ratsobjekt hinzu, indem Sie Add
+        // TODO: Füge zwei Jedi-Objekte zum council mit Add hinzu
 
         council.Remove();
         council.Remove();
         ```
 
-    10. Wenn wir unsere Arbeit gut gemacht haben, sollten wir nach der Ausführung des Programms die folgende Ausgabe erhalten:
+    10. Wenn alles korrekt umgesetzt wurde, sollte die Ausgabe des Programms nach dem Ausführen wie folgt aussehen:
 
-        ``Text
-        Wir haben ein neues Mitglied
-        Wir haben ein neues Mitglied
-        Ich spüre eine Störung in der Kraft
+        ```text
+        Ein neues Mitglied wurde hinzugefügt
+        Ein neues Mitglied wurde hinzugefügt
+        Ich spüre eine Erschütterung in der Macht
         Der Rat ist gefallen!
         ```
 
 !!! tip "Nullprüfung von Ereignissen"
-    Wenn Sie `null` in der Operation `JediCouncil.Add` verwendet haben, um zu prüfen, ob es mindestens einen Abonnenten des Ereignisses gibt, konvertieren Sie dies in eine modernere Lösung (unter Verwendung von`?.Invoke`, die die Prüfung auch in einer prägnanteren Form durchführt, aber ohne `null` Prüfung - dies wurde in der zugehörigen Präsentation und im Labor besprochen). Für `JediCouncil.Add` ist dies ausreichend, für `JediCouncil.Remove` sind beide Lösungen vorerst akzeptabel.
+    Wenn du in `JediCouncil.Add` eine Nullprüfung verwendet hast, um sicherzustellen, dass mindestens ein Abonnent existiert, ersetze dies durch eine modernere Lösung (Anwendung von `?.Invoke`, das die Überprüfung ebenfalls in kompakterer Form durchführt, jedoch ohne Nullprüfung – dies wurde auch in der entsprechenden Vorlesung und im Labor behandelt). Dies muss nur für die `JediCouncil.Add` gemacht werden, bei `JediCouncil.Remove` sind derzeit beide Lösungen akzeptabel.
 
-## Aufgabe 4 - Delegierte
+## Aufgabe 4 – Delegaten
 
-### Verfasst am
+### Aufgabe
 
-Ergänzen Sie die Klasse `JediCouncil` um eine parameterlose Funktion**(der Funktionsname muss ** mit** `_Delegate`enden , das ist zwingend erforderlich**), die alle Mitglieder des Jedi-Rates mit einer Midi-Chlorzahl unter **530** zurückgibt
+Ergänze die Klasse `JediCouncil` mit einer parameterlosen Funktion (**der Funktionsname muss auf `_Delegate` enden, das ist obligatorisch**), die als Rückgabewert alle Mitglieder des Jedi-Rats zurückgibt, deren Midi-Chlorian-Zahl **unter 530** liegt!
 
-- Verwenden Sie zur Abfrage eine Funktion, keine Eigenschaft.
-- Um die Mitglieder innerhalb der Funktion zu finden, verwenden Sie die Funktion `FindAll()` der Klasse `List<Jedi>`. 
-- In dieser Übung **können Sie lambda** noch **NICHT verwenden**!
-  
-Schreibe auch eine eigene "Tester"-Funktion (z.B. in der Klasse `Program` ), die unsere obige Funktion aufruft und die Namen der zurückgegebenen Jedi-Ritter ausgibt! Diese Funktion sollte keinen Code enthalten, der nicht strikt mit der Aufgabe und somit auch nicht mit einer anderen (Unter-)Aufgabe zusammenhängt.
+- Verwende für die Abfrage eine Funktion, keine Eigenschaft.
+- Verwende innerhalb der Funktion die Methode `FindAll()` der Klasse `List<Jedi>`, um die Mitglieder zu finden.
+- In dieser Aufgabe darfst du noch **KEINE Lambda-Ausdrücke** verwenden!
 
-!!! danger
-    Gefahr "Wichtig" Siehe diese "Tester"-Funktion mit dem `[Description("Task4")]` C#-Attribut. Rufen Sie die Funktion über die Funktion `Main` der Klasse `Program` auf.
+Schreibe außerdem eine dedizierte Testfunktion (z. B. in der `Program`-Klasse), die unsere oben definierte Funktion aufruft und die Namen der zurückgegebenen Jedi-Ritter ausgibt! Diese Funktion darf keinen Code enthalten, der nicht direkt zur Aufgabe gehört, also auch keinen, der zu anderen (Teil-)Aufgaben gehört.
 
-    Es ist wichtig, dass
-        
-    - attribut über Funktion und NE-Klasse,
-    - schreiben Sie das Attribut nicht über die Funktion, die die Logik implementiert, sondern über die Funktion, die sie testet,
-    - das Attribut kann nur über einer einzigen Funktion erscheinen.
+!!! danger "Wichtig"
+    Diese Testfunktion muss mit dem C#-Attribut `[Description("Task4")]` versehen werden. Rufe die Funktion aus der `Main`-Methode der `Program`-Klasse auf.
 
-!!! tip "Initialisierung auslagern"
-    Führen Sie bei der Implementierung eine eigene statische Methode ein (z.B. in der Klasse `Program` ), die ein Jeditanács-Objekt als Parameter annimmt und durch Aufruf von `Add` mindestens drei parametrisierte `Jedi` -Objekte hinzufügt. Unser Ziel ist es, eine Initialisierungsmethode zu haben, die in der/den späteren Aufgabe(n) verwendet werden kann, ohne dass der entsprechende Initialisierungscode dupliziert werden muss.
+    Die folgenden sind wesentlich:
+
+    - das Attribut soll über die Funktion und NICHT über die Klasse geschrieben werden,  
+    - das Attribut soll über der Testfunktion platziert werden und nicht über der Funktion, die die Logik implementiert,  
+    - das Attribut darf nur über einer einzigen Funktion stehen.
+
+!!! tip "Auslagerung der Initialisierung"
+    Während der Implementierung sollst du eine separate statische Methode einführen (z. B. in der `Program`-Klasse), die als Parameter ein `JediCouncil`-Objekt erhält und darin mindestens drei parametrisierte `Jedi`-Objekte mithilfe von `Add` hinzufügt. Ziel ist es, eine Initialisierungsmethode zu haben, die auch in späteren Aufgaben wiederverwendet werden kann, sodass der entsprechende Initialisierungscode nicht dupliziert werden muss.
 
 ### Lösung
 
-Zur Lösung dieser Aufgabe können Sie Labor 2 Labor 6 als Referenz verwenden. Um Sie zu unterstützen, bieten wir Folgendes an:
+Zur Lösung der Aufgabe kann die 6. Aufgabe des 2. Labors als Referenz verwendet werden. Als Hilfe geben wir Folgendes an:
 
-- unsere Funktion kann mehrere Treffer zurückgeben, daher ist der Rückgabetyp `List<Jedi>`,
-- erwartet in unserem Fall eine Filterfunktion mit `bool Függvénynév(Jedi j)` als Parameter `FindAll`. 
+- Unsere Funktion kann mehrere Suchergebnisse zurückgeben, daher ist der Rückgabetyp `List<Jedi>`.
+- Die Methode `FindAll` erwartet in unserem Fall eine Filterfunktion mit der Signatur `bool Funktionsname(Jedi j)`.
 
-## Übung 5 - Lambda-Ausdrücke
+## Aufgabe 5 – Lambda-Ausdrücke
 
-Die Übung ist dieselbe wie die vorhergehende, nur dass wir diesmal mit Lambda-Ausdrücken arbeiten werden. Dieses Thema wurde sowohl in der Vorlesung als auch im Labor ([Labor 2, Übung 6](../../labor/2-nyelvi-eszkozok/index_ger.md#6-aufgabe-lambda-begriffe)) behandelt.
+Die Aufgabe entspricht der vorherigen, nur dass wir jetzt mit Hilfe eines Lambda-Ausdrucks arbeiten werden. Dieses Thema wurde sowohl in der Vorlesung als auch im Labor behandelt ([2. Labor Aufgabe 6](../../labor/2-nyelvi-eszkozok/index_ger.md#6-aufgabe-lambda-begriffe)).
 
-Füge der Klasse JediCouncil eine Funktion ohne Parameter hinzu**(der Funktionsname muss ** mit** `_Lambda`enden , das ist obligatorisch**), die alle Mitglieder des Jedi-Rates mit einer Midi-Chlorianzahl unter 1000 zurückgibt
+Ergänze die Klasse JediCouncil mit einer parameterlosen Funktion (**der Funktionsname muss auf `_Lambda` enden, das ist obligatorisch**), die als Rückgabewert alle Mitglieder des Jedi-Rates zurückgibt, deren Midi-Chlorian-Wert unter 1000 liegt!
 
-- Verwenden Sie zur Abfrage eine Funktion, keine Eigenschaft.
-- Um die Mitglieder innerhalb der Funktion zu finden, verwenden Sie die Funktion `FindAll()` der Klasse `List<Jedi>`. 
-- In dieser Übung müssen Sie einen Lambda-Ausdruck verwenden (es spielt keine Rolle, ob Sie Anweisungs- oder Ausdrucks-Lambda verwenden)!
-  
-Schreibe auch eine eigene "Tester"-Funktion (z.B. in der Klasse `Program` ), die unsere obige Funktion aufruft und die Namen der zurückgegebenen Jedi-Ritter ausgibt! Diese Funktion sollte keinen Code enthalten, der nicht strikt mit der Aufgabe und somit auch nicht mit einer anderen (Unter-)Aufgabe zusammenhängt.
+- Verwende für die Abfrage eine Funktion und keine Eigenschaft.
+- Verwende innerhalb der Funktion die Methode `FindAll()` der Klasse `List<Jedi>`, um die Mitglieder zu finden.
+- In dieser Aufgabe muss zwingend ein Lambda-Ausdruck verwendet werden (egal ob Statement- oder Expression-Lambda)!
 
-!!! danger "Wichtig"
-    Siehe diese "Tester"-Funktion mit dem `[Description("Task5")]` C#-Attribut. Rufen Sie die Funktion über die Funktion `Main` der Klasse `Program` auf.
+Schreibe auch eine dedizierte Testfunktion (z. B. in der Klasse `Program`), die unsere obige Funktion aufruft und die Namen der zurückgegebenen Jedi-Ritter ausgibt!
+Diese Funktion darf keinen Code enthalten, der nicht direkt zu dieser Aufgabe gehört, also auch keinen, der zu anderen (Teil-)Aufgaben gehört.
 
-    Es ist wichtig, dass
+!!! danger "Wichtig" 
+    Diese Testfunktion muss mit dem C#-Attribut `[Description("Task5")]` versehen werden. Rufe die Funktion aus der `Main`-Funktion der Klasse `Program` auf.
+
+    Die folgenden sind wesentlich:
         
-    - attribut über Funktion und NE-Klasse,
-    - schreiben Sie das Attribut nicht über die Funktion, die die Logik implementiert, sondern über die Funktion, die sie testet,
-    - das Attribut kann nur über einer einzigen Funktion erscheinen.
+    - das Attribut soll über die Funktion und NICHT über die Klasse geschrieben werden,  
+    - das Attribut soll über der Testfunktion platziert werden und nicht über der Funktion, die die Logik implementiert,  
+    - das Attribut darf nur über einer einzigen Funktion stehen.
 
-## Aufgabe 6 - `Action`/`Func` verwenden
+## Aufgabe 6 – Verwendung von `Action`/`Func`
 
-Diese Übung baut auf dem Stoff der Vorlesung 3 auf und war (aus Zeitgründen) nicht Bestandteil des Praktikums. Dennoch handelt es sich um ein wesentliches Kernthema des Fachs.
+Diese Aufgabe basiert auf dem Lehrstoff der 3. Vorlesung und kam im Labor (aufgrund von Zeitmangel) nicht vor. Trotzdem ist dies ein wichtiges Grundthema in diesem Fach.
 
-Fügen Sie dem Projekt eine Klasse `Person` und eine Klasse `ReportPrinter` (jeweils in einer Datei mit dem gleichen Namen wie die Klasse) mit folgendem Inhalt hinzu:
+Füge dem Projekt eine `Person`- und eine `ReportPrinter`-Klasse hinzu (jeweils in eine eigene Datei mit dem gleichen Namen wie die Klasse, im Standard-Namensraum `ModernLangToolsApp`) mit folgendem Inhalt:
 
-??? tip "Person und ReportPrinter Klassen"
+??? tip "Person- und ReportPrinter-Klassen"
 
     ```csharp   
     class Person
@@ -335,9 +337,10 @@ Fügen Sie dem Projekt eine Klasse `Person` und eine Klasse `ReportPrinter` (jew
     }
     ```
 
-Diese Klasse `ReportPrinter` kann verwendet werden, um einen formatierten Bericht über die Daten der in ihrem Konstruktor angegebenen Personen in die Konsole zu schreiben, und zwar in einer Dreifachaufteilung von Kopfzeile/Daten/Fußzeile. Fügen Sie die folgende Funktion zu `Program.cs` hinzu, um `ReportPrinter` zu testen, und rufen Sie sie von `Main` aus auf:
+Diese `ReportPrinter`-Klasse kann verwendet werden, um auf Basis der im Konstruktor übergebenen Personen einen formatierten Bericht in der Konsole auszugeben, aufgeteilt in Kopfzeile/Daten/Fußzeile.
+Füge in die Datei `Program.cs` die folgende Funktion hinzu, um den `ReportPrinter` auszuprobieren, und rufe diese auch aus der `Main`-Funktion auf:
 
-??? tip "Test ReportPrinter"
+??? tip "Testen von ReportPrinter"
 
     ```csharp   
     [Description("Task6")]
@@ -354,7 +357,7 @@ Diese Klasse `ReportPrinter` kann verwendet werden, um einen formatierten Berich
     }
     ```
 
-Führen Sie die Anwendung aus. Die Ausgabe auf der Konsole sieht wie folgt aus:
+Führen wir die Anwendung aus. In der Konsole erhalten wir folgende Ausgabe:
 
 ```
 Employees
@@ -365,23 +368,23 @@ Employees
 Footer
 ```
 
-Die erste Zeile über "----" ist die Kopfzeile. Unter jeder Person befindet sich ein eingebrannter "Person"-Text, dann unter "----" die Fußzeile, vorerst nur mit einem eingebrannten "Footer"-Text.
+In der ersten Zeile über "----" befindet sich die Kopfzeile. Darunter steht für jede Person der fest eingebaute Text "Person", und unter "----" die Fußzeile, vorerst nur mit einem fest eingebauten "Footer"-Text.
 
-In der Lösung können Sie sehen, dass der Überschriftentext nicht in die Klasse `ReportPrinter` eingebrannt wird. Diese wird vom Benutzer von `ReportPrinter` in einem Konstruktorparameter in Form eines Delegaten, in unserem Fall eines Lambda-Ausdrucks, angegeben. Der Delegatentyp ist der in .NET integrierte Typ `Action`. 
+In der Lösung ist zu sehen, dass der Text der Kopfzeile nicht in die Klasse `ReportPrinter` eingebaut ist. Dies wird vom Benutzer des `ReportPrinter` als Konstruktorparameter in Form eines Delegates angegeben, in unserem Fall als Lambda-Ausdruck. Der Delegatetyp ist der in .NET eingebaute Typ `Action`.
 
-Die Aufgaben sind:
+Die Aufgaben sind die folgenden:
 
 !!! warning
-    Sie können NICHT Ihren eigenen Delegattyp in der Lösung verwenden (arbeiten Sie mit .NET eingebauten Delegattypen, die Lösung ist nur dann akzeptabel).
+    In der Lösung darfst du KEINEN eigenen Delegatetyp verwenden (arbeite mit den in .NET eingebauten Delegatetypen, nur dann ist die Lösung akzeptabel).
 
-1. Umstrukturierung der Klasse `ReportPrinter`, so dass der Benutzer der Klasse nicht nur die Kopfzeile, sondern auch die Fußzeile in Form eines Delegaten angeben kann.
+1. Passe die Klasse `ReportPrinter` so an, dass der Benutzer der Klasse nicht nur die Kopfzeile, sondern auch die Fußzeile über einen Delegate im Konstruktor angeben kann.
    
-2. Ändern Sie die Klasse `ReportPrinter` so, dass der feste Text "Person" nicht angezeigt wird, wenn jede Person hinzugefügt wird, sondern der Benutzer der Klasse `ReportPrinter` die Daten jeder Person nach Bedarf über einen Delegaten hinzufügen kann (anstelle des festen Texts "Person"). Es ist wichtig, dass die Zeilennummer immer am Anfang der Zeile steht, sie kann vom Benutzer von `ReportPrinter` nicht geändert werden!
+2. Erweitere die Klasse `ReportPrinter` so, dass beim Ausgeben der einzelnen Personen nicht der feste Text "Person" erscheint, sondern der Benutzer der Klasse die Daten jeder Person mithilfe eines im Konstruktor übergebenen Delegates formatiert ausgeben kann (anstelle des festen "Person"-Textes). Wichtig: Die Zeilennummer am Anfang jeder Zeile muss immer angezeigt werden; dies darf vom Benutzer nicht verändert werden (also weiterhin von der `ReportPrinter`-Klasse ausgegeben werden).
    
-    !!! tip "Tipp für die Lösung"
-        Denken Sie an einen ähnlichen Ansatz wie für die Kopf- und Fußzeile, aber hier muss der Benutzer von `ReportPrinter` das Personenobjekt erhalten, um es formatiert in die Konsole schreiben zu können.
+    !!! tip "Tipp zur Lösung"
+        Verwende einen ähnlichen Ansatz wie bei Kopf- und Fußzeile, aber hier muss der Benutzer des `ReportPrinter` die Person-Objekte erhalten, um diese formatiert auszugeben.
 
-3. Ändern Sie in der Datei `Program.cs` die Verwendung von `ReportPrinter` (mit den entsprechenden Lambda-Ausdrücken), so dass die Ausgabe auf der Konsole lautet:
+3. Passe in der Datei `Program.cs` die Verwendung von `ReportPrinter` an (mit passenden Lambda-Ausdrücken), sodass die Konsolenausgabe wie folgt aussieht:
 
     ```
     Employees
@@ -389,55 +392,62 @@ Die Aufgaben sind:
     1. Name: Joe (Age: 20)
     2. Name: Jill (Age: 30)
     --------------- Summary -----------------
-    Anzahl der Mitarbeiter: 2
+    Number of Employees: 2
     ```
+    
+    !!! tip "Fußzeile mit Mitarbeiteranzahl"
+        Um die Anzahl der Mitarbeiter in der Fußzeile elegant auszugeben, ist Kenntnis über das Thema "variable capturing" erforderlich (siehe 3. Vorlesung, Abschnitt "Variable capturing, closure").
 
-    !!! Warning "Hausaufgabenprüfung"
-        Die Aufgabe "Aufgabe 6", d.h. ob Sie `ReportPrinter`und dessen Verwendung korrekt konvertiert haben, wird NICHT vom automatischen GitHub-Checker geprüft. Testen Sie Ihre Lösung gründlich, damit Sie nicht erst nach dem Abgabetermin bei der manuellen Kontrolle Ihrer Hausaufgaben feststellen, dass sie nicht akzeptabel ist.
+    !!! warning "Überprüfung der Hausaufgabe"
+        Die „Aufgabe 6“, also die korrekte Anpassung von `ReportPrinter` und dessen Nutzung, wird vom automatischen GitHub-Checker NICHT überprüft. Teste deine Lösung gründlich, damit nach der Frist nicht erst bei der manuellen Überprüfung festgestellt wird, dass die Lösung nicht akzeptabel ist.
+        (Ergänzung: ab dem Morgen des 13.03.2024 gibt es dafür teilweise automatische Checks)
 
-4. Die nächste Übung ist optional und bietet Ihnen eine gute Gelegenheit, die eingebauten `Func` Delegierten zu üben. Die Klasse `ReportPrinter` hat einen großen Nachteil: Der Ausgabebericht kann nur auf der Konsole angezeigt werden. Eine flexiblere Lösung wäre, nicht in die Konsole zu schreiben, sondern einen String zu verwenden, um den Bericht zu erstellen. Diese Zeichenkette kann auf beliebige Weise verwendet werden (z. B. in eine Datei schreiben).
+4. Die folgende Aufgabe ist optional und eignet sich zum Üben der eingebauten `Func`-Delegates. Ein Nachteil der Klasse `ReportPrinter` ist, dass der Bericht nur auf der Konsole ausgegeben werden kann. Eine flexiblere Lösung wäre, wenn der Bericht als String erzeugt werden könnte. Diesen String könnte man dann beliebig weiterverwenden (z. B. in eine Datei schreiben).
    
-    Die Aufgabe besteht darin, eine Klasse `ReportBuilder` einzuführen, die auf der bestehenden `ReportPrinter` basiert, aber nicht in die Konsole schreibt, sondern eine Zeichenkette mit dem vollständigen Bericht erzeugt, der durch eine neu eingeführte Operation `GetResult()` abgerufen werden kann. 
+    Die Aufgabe lautet: Führe eine `ReportBuilder`-Klasse nach dem Beispiel der bereits vorhandenen `ReportPrinter` ein, die jedoch nicht auf die Konsole schreibt, sondern einen String mit dem gesamten Bericht erstellt, den man über eine neue Methode `GetResult()` abrufen kann.
+
+    !!! warning "Eingabe"
+        Wenn du diese Aufgabe abgibst, setze den Code zum Instanziieren/Testen von `ReportBuilder` nicht in die obige `test6`-Funktion, sondern erstelle eine neue Funktion `test6b` und versieh sie mit dem Attribut `[Description("Task6b")]`.
    
-    !!! tip "Tipps für die Lösung"
-        * Es ist eine gute Idee, eine `StringBuilder` Mitgliedsvariable in die Klasse einzuführen und mit ihr zu arbeiten. Dies ist um Größenordnungen effizienter als die Verkettung von Zeichenketten mit "+".
-        * In diesem Fall sollte der Benutzer der Klasse `ReportBuilder` nicht mehr in die Konsole schreiben, sondern die an die Ausgabe anzuhängenden Zeichenketten an `ReportBuilder` zurückgeben und dabei die entsprechenden eingebauten Typdelegierten verwenden ( `Action` ist hier nicht geeignet). Verwenden Sie jetzt Lambda-Terme in der Prüfung!
+    !!! tip "Tipps zur Lösung"
+        * Es ist sinnvoll, in der Klasse eine `StringBuilder`-Variable einzuführen und damit zu arbeiten. Dies ist deutlich effizienter, als Strings mit "+" zusammenzufügen.
+        * Der Benutzer von `ReportBuilder` gibt hier nicht mehr auf die Konsole aus, sondern liefert mithilfe geeigneter eingebauter Delegates (hier ist `Action` nicht geeignet) die Strings, die in den Bericht eingefügt werden sollen. Verwende auch hier Lambda-Ausdrücke für die Tests.
 
-## Aufgabe 7 (IMSc) - Verwendung eingebauter `Func`/`Action` generischer Delegatentypen
+## Aufgabe 7 (IMSc) – Verwendung der eingebauten generischen `Func`/`Action`-Delegates
 
-Das Lösen der Aufgabe ist nicht obligatorisch, aber sehr empfehlenswert: Es handelt sich um einen Grundstoff, der in die ZH/Prüfung aufgenommen werden kann. Nicht in einem Labor, nur in einer Vorlesung.
+Die Lösung dieser Aufgabe ist nicht verpflichtend, wird aber dringend empfohlen: sie dient als Grundlage und kann in der Klausur/Prüfung vorkommen. Im Labor kam sie nicht vor, nur in der Vorlesung.
 
-**Die Lösung bringt außerdem +2 IMSc-Punkte ein.**
+**Für die Lösung gibt es +2 IMSc-Punkte.**
 
-### Verfasst am
+### Aufgabe
 
-Erweitern Sie die Klasse `JediCouncil`. 
+Erweitere die Klasse `JediCouncil`.
 
-- Erstellen Sie eine Eigenschaft `Count` mit dem Rückgabewert `int`, die bei jeder Abfrage die aktuelle Anzahl der Jedi im Rat zurückgibt. Achten Sie darauf, dass dieser Wert nur abgefragt (nicht gesetzt) werden kann.
+- Erstelle eine Eigenschaft `Count` vom Typ `int`, die bei jeder Abfrage die aktuelle Anzahl der Jedi im Rat zurückgibt. Achte darauf, dass diese Eigenschaft nur lesbar ist (kein Setter).
 
     !!! tip "Tipp"
-        Die Membervariable members in `JediCouncil`hat eine Eigenschaft `Count`, die Lösung baut darauf auf.
+        Die Membervariable `members` in `JediCouncil` hat eine Eigenschaft `Count`. Die Lösung sollte darauf aufbauen.
 
-- Erstellen Sie eine Funktion namens `CountIf`, die ebenfalls die Anzahl der Ratsmitglieder zählt, aber nur die Ratsmitglieder berücksichtigt, die bestimmte Bedingungen erfüllen. Der Rückgabewert der Funktion ist `int`, und die Bedingung, für die sie die entsprechende Anzahl von Ratsmitgliedern zurückgibt, wird als Parameter über einen Delegaten zurückgegeben ( `CountIf`muss also einen Parameter haben).
+- Erstelle eine Funktion `CountIf`, die ebenfalls dazu dient, Ratmitglieder zu zählen, aber nur solche, die eine bestimmte Bedingung erfüllen. Der Rückgabewert der Funktion ist `int`, und die Bedingung, die die Anzahl der passenden Mitglieder bestimmt, wird über einen Delegate als Parameter übergeben (also muss `CountIf` einen Parameter haben).
 
-    !!! warning "Delegatentyp"
-        Der Delegatentyp muss der richtige der eingebauten generischen `Action` / `Func` Delegatentypen sein (d.h. Sie können nicht Ihren eigenen Delegatentyp oder den eingebauten `Predicate` Typ verwenden).
+    !!! warning "Delegate-Typ"
+        Der Delegate-Typ muss zwingend der entsprechende Typ aus der eingebauten generischen `Action` / `Func`-Delegates sein (d. h. eigene Delegate-Typen oder der eingebaute `Predicate` dürfen nicht verwendet werden).
 
-        Aus diesem Grund können Sie die eingebaute Operation `FindAll` für die Liste NICHT verwenden, da der von uns verwendete Delegatentyp nicht mit dem von `FindAll` erwarteten Parameter kompatibel wäre. Bearbeite die Tags, indem du eine `foreach'-Schleife durchläufst!
+        Daher kann auf der Liste NICHT die eingebaute Methode `FindAll` verwendet werden, da unser gewählter Delegate-Typ damit nicht kompatibel wäre. Arbeite stattdessen mit einer `foreach`-Schleife über die Mitglieder.
 
-- Zeigen Sie die Eigenschaft und die Funktion in einer eigenen gemeinsamen Funktion, die Sie mit dem Attribut `[Description("Task7")]` bereitstellen können. Diese Funktion sollte keinen Code enthalten, der nicht unmittelbar mit der Aufgabe zusammenhängt. Um den Jedi-Rat zu laden, rufen Sie die in der vorherigen Aufgabe vorgestellte Hilfsfunktion auf. Rufen Sie die Funktion über die Funktion `Main` der Klasse `Program` auf. 
+- Demonstriere die Funktionalität der Eigenschaft und der Funktion in einer dafür dedizierten gemeinsamen Funktion, die mit dem Attribut `[Description("Task7")]` versehen wird. Die Funktion darf keinen Code enthalten, der nicht direkt zur Aufgabe gehört, aber rufe die Hilfsfunktion auf, die du in der vorherigen Aufgabe zur Initialisierung des Jedi-Rats eingeführt hast. Rufe die Funktion anschließend aus der `Main`-Methode der Klasse `Program` auf.
 
     !!! danger "Wichtig"
-        Das Attribut `[Description("Task7")]` kann nur oberhalb einer einzigen Funktion verwendet werden.
+        Das Attribut `[Description("Task7")]` darf nur über einer einzigen Funktion stehen.
 
 ### Lösung
 
-- Bei einer Eigenschaft namens `Count` ist nur der Zweig `get` sinnvoll, der Zweig `set` wird also nicht geschrieben. Diese Eigenschaft sollte schreibgeschützt sein.
-- Übung 4 hilft Ihnen, die Funktion `CountIf` zu schreiben. Der Unterschied besteht darin, dass `CountIf` nicht die Anzahl der Ratsmitglieder, sondern nur die Anzahl der Stücke angibt.
-    - Die Funktion `CountIf` sollte eine Filterfunktion mit der Signatur `bool Függvénynév(Jedi jedi)` als Bedingungsparameter erwarten.
+- Im Fall der Eigenschaft `Count` ist nur der `get`-Zweig sinnvoll, daher schreiben wir den `set`-Zweig gar nicht. Es soll eine nur-lesbare Eigenschaft sein.
+- Bei der Implementierung der Funktion `CountIf` hilft Aufgabe 4. Der Unterschied ist, dass `CountIf` nur die Anzahl zurückgibt, nicht die Mitglieder selbst.
+    - Der Delegate-Parameter der Funktion `CountIf` sollte die Signatur `bool Funktionsname(Jedi jedi)` haben.
 
-## Vorlegen bei
+## Eingabe
 
-Checkliste für Wiederholungen:
+Checkliste (zur Wiederholung):
 
---8<-- "docs/hazi/beadas-ellenorzes/index_ger.md:3"
+--8<-- "docs/hazi/beadas-ellenorzes/index.md:3"
