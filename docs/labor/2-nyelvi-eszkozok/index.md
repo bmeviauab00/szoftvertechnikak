@@ -668,21 +668,20 @@ C# 14-től a `field` kulcsszó segítségével az autoimplementált property-k e
 Emlékezzünk vissza a validációval rendelkező `Age` tulajsondásra, ahol csak azért a teljes property szintaxist kellett használni, hogy a setterbe a validációs logikát el tudjuk helyezni.
 Erre megoldást nyújt a `field` kulcsszú, amivel az autoimplementált tulajdonság mezőjéhez férhetünk hozzá a setterben vagy a getterben.
 
-Így megspórolhatjuk ebben az esetben a mező létrehozást és a `get` törzsét.
+Így **nem kell létrehozzuk** a property mögötti mezőt és a `get` törzsét **sem kell definiálnunk**.
 
-    ```csharp
-    public int Age
+```csharp
+public int Age
+{
+    get;
+    set 
     {
-        get;
-        set 
-        {
-            if (value < 0)
-                throw new ArgumentException("Érvénytelen életkor!");
-            field = value; 
-        }
+        if (value < 0)
+            throw new ArgumentException("Érvénytelen életkor!");
+        field = value; 
     }
-    ```
-
+}
+```
 
 ## 8. Feladat – Generikus osztályok
 
