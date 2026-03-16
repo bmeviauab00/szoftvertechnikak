@@ -3297,19 +3297,17 @@ Mint látható, elhagytuk a {} zárójeleket és a <code>return</code> utasítá
 <p>C# 14-től a <code>field</code> kulcsszó segítségével az autoimplementált property-k esetében lehetőség van a getter vagy a setter implementálása egyedileg.</p>
 <p>Emlékezzünk vissza a validációval rendelkező <code>Age</code> tulajsondásra, ahol csak azért a teljes property szintaxist kellett használni, hogy a setterbe a validációs logikát el tudjuk helyezni.
 Erre megoldást nyújt a <code>field</code> kulcsszú, amivel az autoimplementált tulajdonság mezőjéhez férhetünk hozzá a setterben vagy a getterben.</p>
-<p>Így megspórolhatjuk ebben az esetben a mező létrehozást és a <code>get</code> törzsét.</p>
-<div class="highlight"><pre><span></span><code>```csharp
-public int Age
-{
-    get;
-    set 
-    {
-        if (value &lt; 0)
-            throw new ArgumentException("Érvénytelen életkor!");
-        field = value; 
-    }
-}
-```
+<p>Így <strong>nem kell létrehozzuk</strong> a property mögötti mezőt és a <code>get</code> törzsét <strong>sem kell definiálnunk</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Age</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">get</span><span class="p">;</span>
+<span class="w">    </span><span class="k">set</span><span class="w"> </span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">ArgumentException</span><span class="p">(</span><span class="s">"Érvénytelen életkor!"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">field</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">value</span><span class="p">;</span><span class="w"> </span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <h2 id="8-feladat-generikus-osztalyok">8. Feladat – Generikus osztályok<a class="headerlink" href="#8-feladat-generikus-osztalyok" title="Permanent link">¶</a></h2>
 <p>Megjegyzés: erre a feladatra jó eséllyel nem marad idő. Ez esetben célszerű a feladatot gyakorlásképpen otthon elvégezni.</p>
@@ -3350,8 +3348,8 @@ public int Age
         </path>
       </svg>
     </span>
-    <span title="2026. február 28. 12:53:06">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. február 28. 12:53:06 CET"><span class="timeago" datetime="2026-02-28T12:53:06+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. február 28. 12:53:06 CET">2026-02-28</span>
+    <span title="2026. március 16. 10:57:23">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. március 16. 10:57:23 CET"><span class="timeago" datetime="2026-03-16T10:57:23+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. március 16. 10:57:23 CET">2026-03-16</span>
     </span>
   </span>
 
