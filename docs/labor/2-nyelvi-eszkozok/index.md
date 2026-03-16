@@ -661,7 +661,7 @@ public required string Name { get; init; }
 
 Ez azért is hasznos, mert ha egyébként is szeretnénk tulajdonságokat publikálni az osztályból, és egyébként is szeretnénk támogatni az objektum inicializáló szintaxist, akkor így meg tudjuk spórolni a kötelező konstruktor paramétereket.
 
-### Tulajsonságok - field kulcsszó
+### Tulajdonságok - field kulcsszó
 
 C# 14-től a `field` kulcsszó segítségével az autoimplementált property-k esetében lehetőség van a getter vagy a setter implementálása egyedileg.
 
