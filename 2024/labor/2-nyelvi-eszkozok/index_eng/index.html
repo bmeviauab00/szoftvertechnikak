@@ -1411,6 +1411,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#properties-field-keyword" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties - field keyword
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2679,6 +2690,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#properties-field-keyword" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties - field keyword
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3266,6 +3288,22 @@
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">required</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">init</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <p>This is also useful because if we want to publish properties from the class and also want to support the object initializer syntax, we can avoid the need for mandatory constructor parameters.</p>
+<h3 id="properties-field-keyword">Properties - field keyword<a class="headerlink" href="#properties-field-keyword" title="Permanent link">¶</a></h3>
+<p>Starting from C# 14, the <code>field</code> keyword allows us to individually implement the getter or setter of auto-implemented properties.</p>
+<p>Recall the <code>Age</code> property with validation, where we had to use the full property syntax just to place the validation logic inside the setter.
+The <code>field</code> keyword solves this problem, allowing us to access the backing field of the auto-implemented property in the setter or getter.</p>
+<p>This means we <strong>don't need to create</strong> the backing field for the property, and we <strong>don't need to define</strong> the body of the <code>get</code> accessor either.</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Age</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">get</span><span class="p">;</span>
+<span class="w">    </span><span class="k">set</span><span class="w"> </span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">ArgumentException</span><span class="p">(</span><span class="s">"Invalid age!"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">field</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">value</span><span class="p">;</span><span class="w"> </span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="task-8-generic-classes">Task 8 – Generic classes<a class="headerlink" href="#task-8-generic-classes" title="Permanent link">¶</a></h2>
 <p>Note: There may not be time for this task. In that case, it is advisable to complete the task at home for practice.</p>
 <p>.NET's generic classes are similar to C++ template classes, but they are closer to the generic classes already known in Java. With their help, we can create general-purpose (working with multiple types) but type-safe classes. Without generic classes, if we want to handle a problem in a general way, we use <code>object</code> type data (since in .NET, every class inherits from the <code>object</code> class). This is the case, for example, with <code>ArrayList</code>, which is a general-purpose collection capable of storing elements of any <code>object</code> type. Let's look at an example of using <code>ArrayList</code>:</p>
@@ -3305,8 +3343,8 @@
         </path>
       </svg>
     </span>
-    <span title="2025. december 18. 22:33:38">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. december 18. 22:33:38 CET"><span class="timeago" datetime="2025-12-18T22:33:38+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. december 18. 22:33:38 CET">2025-12-18</span>
+    <span title="2026. március 16. 11:03:31">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. március 16. 11:03:31 CET"><span class="timeago" datetime="2026-03-16T11:03:31+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. március 16. 11:03:31 CET">2026-03-16</span>
     </span>
   </span>
 
@@ -3326,6 +3364,8 @@
         <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
       </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@tibitoth">
         <img src="https://avatars.githubusercontent.com/tibitoth?size=72" alt="@tibitoth">
+      </a><a href="https://github.com/Copilot" target="_blank" rel="noopener noreferrer" class="md-author" title="@None">
+        <img src="https://avatars.githubusercontent.com/in/1143301?v=4?size=72" alt="@None">
       </a><a href="https://github.com/szucscintialia" target="_blank" rel="noopener noreferrer" class="md-author" title="@Cintia Szücs">
         <img src="https://avatars.githubusercontent.com/u/26093637?v=4?size=72" alt="@Cintia Szücs">
       </a></nav>      

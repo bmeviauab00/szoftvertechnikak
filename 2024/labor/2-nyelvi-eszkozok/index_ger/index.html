@@ -1973,6 +1973,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#eigenschaften-field-schlusselwort" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eigenschaften - field-Schlüsselwort
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2679,6 +2690,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#eigenschaften-field-schlusselwort" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eigenschaften - field-Schlüsselwort
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3269,6 +3291,22 @@ Wie wir sehen können, haben wir die Klammern und die Anweisung <code>return</co
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">required</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">init</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <p>Dies ist auch deshalb nützlich, weil wir die obligatorischen Konstruktorparameter speichern können, wenn wir die Eigenschaften der Klasse ohnehin veröffentlichen und die Syntax der Objektinitialisierung unterstützen wollen.</p>
+<h3 id="eigenschaften-field-schlusselwort">Eigenschaften - field-Schlüsselwort<a class="headerlink" href="#eigenschaften-field-schlusselwort" title="Permanent link">¶</a></h3>
+<p>Ab C# 14 ermöglicht das Schlüsselwort <code>field</code> bei auto-implementierten Eigenschaften, den Getter oder Setter individuell zu implementieren.</p>
+<p>Erinnern wir uns an die <code>Age</code>-Eigenschaft mit Validierung, bei der wir die vollständige Property-Syntax nur deshalb verwenden mussten, um die Validierungslogik im Setter unterzubringen.
+Das Schlüsselwort <code>field</code> löst dieses Problem, indem es uns ermöglicht, auf das Hintergrundfeld der auto-implementierten Eigenschaft im Setter oder Getter zuzugreifen.</p>
+<p>Damit <strong>müssen wir das Hintergrundfeld</strong> der Eigenschaft <strong>nicht erstellen</strong> und den Rumpf des <code>get</code>-Accessors <strong>müssen wir auch nicht definieren</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Age</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">get</span><span class="p">;</span>
+<span class="w">    </span><span class="k">set</span><span class="w"> </span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">ArgumentException</span><span class="p">(</span><span class="s">"Ungültiges Alter!"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">field</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">value</span><span class="p">;</span><span class="w"> </span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="8-aufgabe-generische-klassen">8. Aufgabe - Generische Klassen<a class="headerlink" href="#8-aufgabe-generische-klassen" title="Permanent link">¶</a></h2>
 <p>Hinweis: Die Zeit für diese Übung reicht wahrscheinlich nicht aus. In diesem Fall ist es ratsam, die Übung zu Hause zu machen.</p>
 <p>Generische Klassen in .NET ähneln den Template-Klassen in C++, sind aber näher an den bereits bekannten generischen Klassen in Java. Sie können verwendet werden, um generische (Multi-Typ), aber typsichere Klassen zu erstellen. Wenn wir ohne generische Klassen ein Problem allgemein behandeln wollen, verwenden wir Daten des Typs <code>object</code> (da in .NET alle Klassen von der Klasse <code>object</code> abgeleitet sind). Dies ist z. B. bei <code>ArrayList</code>der Fall, einer Allzwecksammlung zum Speichern beliebiger Elemente des Typs <code>object</code>.  Schauen wir uns ein Beispiel für die Verwendung von <code>ArrayList</code> an:</p>
@@ -3308,8 +3346,8 @@ Wie wir sehen können, haben wir die Klammern und die Anweisung <code>return</co
         </path>
       </svg>
     </span>
-    <span title="2025. december 18. 22:33:38">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. december 18. 22:33:38 CET"><span class="timeago" datetime="2025-12-18T22:33:38+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. december 18. 22:33:38 CET">2025-12-18</span>
+    <span title="2026. március 16. 11:03:31">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. március 16. 11:03:31 CET"><span class="timeago" datetime="2026-03-16T11:03:31+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. március 16. 11:03:31 CET">2026-03-16</span>
     </span>
   </span>
 
@@ -3325,6 +3363,8 @@ Wie wir sehen können, haben wir die Klammern und die Anweisung <code>return</co
     <span>Szerzők</span>
     <nav><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
         <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&amp;v=4?size=72" alt="@Zoltán Benedek">
+      </a><a href="https://github.com/Copilot" target="_blank" rel="noopener noreferrer" class="md-author" title="@None">
+        <img src="https://avatars.githubusercontent.com/in/1143301?v=4?size=72" alt="@None">
       </a><a href="https://github.com/szucscintialia" target="_blank" rel="noopener noreferrer" class="md-author" title="@Cintia Szücs">
         <img src="https://avatars.githubusercontent.com/u/26093637?v=4?size=72" alt="@Cintia Szücs">
       </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tibor Tóth">
