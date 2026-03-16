@@ -3295,7 +3295,7 @@ Mint látható, elhagytuk a {} zárójeleket és a <code>return</code> utasítá
 <p>Ez azért is hasznos, mert ha egyébként is szeretnénk tulajdonságokat publikálni az osztályból, és egyébként is szeretnénk támogatni az objektum inicializáló szintaxist, akkor így meg tudjuk spórolni a kötelező konstruktor paramétereket.</p>
 <h3 id="tulajdonsagok-field-kulcsszo">Tulajdonságok - field kulcsszó<a class="headerlink" href="#tulajdonsagok-field-kulcsszo" title="Permanent link">¶</a></h3>
 <p>C# 14-től a <code>field</code> kulcsszó segítségével az autoimplementált property-k esetében lehetőség van a getter vagy a setter implementálása egyedileg.</p>
-<p>Emlékezzünk vissza a validációval rendelkező <code>Age</code> tulajsondásra, ahol csak azért a teljes property szintaxist kellett használni, hogy a setterbe a validációs logikát el tudjuk helyezni.
+<p>Emlékezzünk vissza a validációval rendelkező <code>Age</code> tulajdonságra, ahol csak azért a teljes property szintaxist kellett használni, hogy a setterbe a validációs logikát el tudjuk helyezni.
 Erre megoldást nyújt a <code>field</code> kulcsszú, amivel az autoimplementált tulajdonság mezőjéhez férhetünk hozzá a setterben vagy a getterben.</p>
 <p>Így <strong>nem kell létrehozzuk</strong> a property mögötti mezőt és a <code>get</code> törzsét <strong>sem kell definiálnunk</strong>.</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Age</span>
