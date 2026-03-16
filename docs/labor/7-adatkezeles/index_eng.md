@@ -23,7 +23,7 @@ Tools required for completing the laboratory:
 
     - Instead of Visual Studio, use a text editor (e.g., VSCode) and CLI tools.
     - SQL Server has a Linux version, and on Mac it can be run in Docker (Docker is likely the most convenient way to run it on Linux as well).
-    - For data visualization, the cross-platform *Azure Data Studio* tool can be used.
+    - For data visualization, the cross-platform [MSSQL extension for Visual Studio Code](https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code?view=sql-server-ver17) tool can be used.
 
 ## Solution
 

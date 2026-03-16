@@ -22,7 +22,7 @@ Die für die Durchführung der Übung benötigten Werkzeuge:
 
     - Verwenden Sie anstelle von Visual Studio einen Texteditor (z. B.: VSCode) und CLI-Tools.
     - Es gibt eine Linux-Version von SQL Server, und auf dem Mac kann er in Docker ausgeführt werden (aber Docker ist wahrscheinlich der bequemste Weg, um ihn auch unter Linux auszuführen).
-    - Zur Visualisierung der Daten kann das ebenfalls plattformübergreifende Tool *Azure Data Studio* verwendet werden.
+    - Zur Visualisierung der Daten kann das ebenfalls plattformübergreifende Tool [MSSQL extension for Visual Studio Code](https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code?view=sql-server-ver17) verwendet werden.
 
 ## Lösung
 

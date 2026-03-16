@@ -22,7 +22,7 @@ A gyakorlat elvégzéséhez szükséges eszközök:
 
     - Visual Studio helyett, szövegszerkesztővel (pl.: VSCode) és CLI eszközökkel.
     - Az SQL szervernek van Linuxos változata, Mac-en pedig Dockerben futtatható (de Linuxon is talán a Docker legkényelmesebb mód a futtatására).
-    - Az adatok vizualizációjára használható a szintén keresztplatformos *Azure Data Studio* eszköz.
+    - Az adatok vizualizációjára használható a szintén keresztplatformos [MSSQL extension for Visual Studio Code](https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code?view=sql-server-ver17) eszköz.
 
 ## Megoldás
 
@@ -32,8 +32,6 @@ A gyakorlat elvégzéséhez szükséges eszközök:
     A megoldás GitHubon érhető el [itt](https://github.com/bmeviauab00/lab-adatkezeles-megoldas). A legegyszerűbb mód a letöltésére, ha parancssorból a `git clone` utasítással leklónozzuk a gépünkre:
 
     `git clone https://github.com/bmeviauab00/lab-adatkezeles-megoldas`
-
-    Ehhez telepítve kell legyen a gépre a parancssori git, bővebb információ [itt](../../hazi/git-github-github-classroom/index.md#git-telepitese).
 
 ## Bevezető
 
