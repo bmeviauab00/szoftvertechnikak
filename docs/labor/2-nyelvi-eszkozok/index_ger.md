@@ -664,6 +664,27 @@ public required string Name { get; init; }
 
 Dies ist auch deshalb nützlich, weil wir die obligatorischen Konstruktorparameter speichern können, wenn wir die Eigenschaften der Klasse ohnehin veröffentlichen und die Syntax der Objektinitialisierung unterstützen wollen.
 
+### Eigenschaften - field-Schlüsselwort
+
+Ab C# 14 ermöglicht das Schlüsselwort `field` bei auto-implementierten Eigenschaften, den Getter oder Setter individuell zu implementieren.
+
+Erinnern wir uns an die `Age`-Eigenschaft mit Validierung, bei der wir die vollständige Property-Syntax nur deshalb verwenden mussten, um die Validierungslogik im Setter unterzubringen.
+Das Schlüsselwort `field` löst dieses Problem, indem es uns ermöglicht, auf das Hintergrundfeld der auto-implementierten Eigenschaft im Setter oder Getter zuzugreifen.
+
+Damit **müssen wir das Hintergrundfeld** der Eigenschaft **nicht erstellen** und den Rumpf des `get`-Accessors **müssen wir auch nicht definieren**.
+
+```csharp
+public int Age
+{
+    get;
+    set 
+    {
+        if (value < 0)
+            throw new ArgumentException("Ungültiges Alter!");
+        field = value; 
+    }
+}
+```
 
 ## 8. Aufgabe - Generische Klassen
 

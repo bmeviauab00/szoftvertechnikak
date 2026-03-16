@@ -661,6 +661,28 @@ public required string Name { get; init; }
 
 This is also useful because if we want to publish properties from the class and also want to support the object initializer syntax, we can avoid the need for mandatory constructor parameters.
 
+### Properties - field keyword
+
+Starting from C# 14, the `field` keyword allows us to individually implement the getter or setter of auto-implemented properties.
+
+Recall the `Age` property with validation, where we had to use the full property syntax just to place the validation logic inside the setter.
+The `field` keyword solves this problem, allowing us to access the backing field of the auto-implemented property in the setter or getter.
+
+This means we **don't need to create** the backing field for the property, and we **don't need to define** the body of the `get` accessor either.
+
+```csharp
+public int Age
+{
+    get;
+    set 
+    {
+        if (value < 0)
+            throw new ArgumentException("Invalid age!");
+        field = value; 
+    }
+}
+```
+
 ## Task 8 – Generic classes
 
 Note: There may not be time for this task. In that case, it is advisable to complete the task at home for practice.
