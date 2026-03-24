@@ -285,7 +285,7 @@ Egészítsd ki a `JediCouncil` osztályt egy olyan paraméter nélküli függvé
 
 ### Megoldás
 
-A feladat megoldásához a 2. labor 6. feladatát használhatjuk referenciaként. Segítségként megadjuk a következőket:
+A feladat megoldásához a 2. labor 5. feladatát használhatjuk referenciaként. Segítségként megadjuk a következőket:
 
 - a függvényünk akár több találatot is visszaadhat, ezért a visszatérési érték típusa `List<Jedi>`,
 - a `FindAll` paraméterként az esetünkben egy `bool Függvénynév(Jedi j)` szignatúrájú szűrőfüggvényt vár el.
