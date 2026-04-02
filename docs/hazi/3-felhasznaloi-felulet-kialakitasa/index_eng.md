@@ -150,7 +150,7 @@ The UI should be updated dynamically using data binding, ensuring that the eleme
         * High priority: A shade of red
         * Normal priority: Default foreground color.
         * Low priority: A shade of blue.
-* Task completion indicator: a checkmark icon aligned to the right of the task title if the task is completed.
+* Task completion indicator: a checkmark icon aligned to the right of the task title if the task is completed (the control displaying the checkmark must not be visible at all if the task is not completed).
 * Task description
 * Task deadline displayed in `yyyy.MM.dd` format
 * The `ListView` background should match the `CommandBar` to create a continuous left-aligned section.

@@ -153,7 +153,7 @@ A `CommandBar` alatti cellában egy listába (`ListView`) kerüljenek a teendők
         * Magas prioritás: piros egy árnyalata
         * Normál prioritás: beépített előtérszín
         * Alacsony prioritás: kék egy árnyalata
-* A teendő címével egy sorban jobbra rendezve egy pipa ikon, ha a teendő el van végezve
+* A teendő címével egy sorban jobbra rendezve egy pipa ikon, ha a teendő el van végezve (a pipát megjelenítő vezérlő egyáltalán nem lehet látható, ha a feladat nincs kész)
 * Teendő leírása
 * Teendő határideje `yyyy.MM.dd` formátumban
 * A `ListView` háttere legyen azonos a `CommandBar`-éval, így baloldalt egy egybefüggő sávot alkotnak.

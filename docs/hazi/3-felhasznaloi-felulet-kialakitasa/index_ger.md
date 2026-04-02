@@ -165,7 +165,7 @@ Stellen Sie in der Zelle unter `CommandBar` in einer Liste (`ListView`) die Aufg
         * Hohe Priorität: ein roter Farbton
         * Normale Priorität: eingebaute Vordergrundfarbe
         * Niedrige Priorität: ein blauer Farbton
-* Ein Häkchensymbol rechts neben dem Aufgabentitel, wenn die Aufgabe fertig ist
+* Ein Häkchensymbol rechts neben dem Aufgabentitel, wenn die Aufgabe fertig ist (das Steuerelement, das das Häkchen anzeigt, darf überhaupt nicht sichtbar sein, wenn die Aufgabe nicht erledigt ist)
 * Beschreibung der Aufgabe
 * Abgabetermin im Format `yyyy.MM.dd` 
 * Der Hintergrund von `ListView` sollte derselbe sein wie der von `CommandBar`, so dass sie einen durchgehenden Balken auf der linken Seite bilden.
