@@ -288,6 +288,15 @@ Form layout
         ![Resizing](images/newtodo-resizing.gif)
         ![Size annotations](images/newtodo-annotated.png)
 
+!!! warning "Important criteria"
+    The following criteria are mandatory for the homework to be accepted:
+
+    * The task description explicitly requires that both the list and form controls must use data binding. Any solution that bypasses data binding is not acceptable. For example, the code-behind file (`MainPage.xaml.cs`) must NOT contain code that directly reads or modifies form control properties (e.g., `TextBox.Text`).
+    * Two exceptions to this rule: 
+        * The `ListView.SelectedItem` property should be set directly.  
+        * Controlling form visibility without data binding is acceptable (though using data binding is recommended for better practice).  
+    * If a new task is added after a previous task, the previous task's data must NOT remain in the form controls.
+
 ??? success "Steps to implement the save functionality"
     1. Store form data in a new `TodoItem` object bound to UI elements using two-way data binding. Introduce a property named `EditedTodo`. Then two possible approaches are working:
         1. EditedTodo is initially null. When the user starts adding a new task, create a new EditedTodo object to hold the task data. On save, add this object to the list. Every time a new task is added, EditedTodo points to a new object.
@@ -342,15 +351,6 @@ Form layout
 !!! example "Task 3 - Submission requirement"
     Insert a **screenshot** of the application where the new task entry form is visible before saving! (`f3.1.png`)
     Insert a **screenshot** of the application where the previously entered task appears in the list and the form has disappeared! (`f3.2.png`)
-
-!!! warning "Important criteria"
-    The following criteria are mandatory for the homework to be accepted:
-
-    * The task description explicitly requires that both the list and form controls must use data binding. Any solution that bypasses data binding is not acceptable. For example, the code-behind file (`MainPage.xaml.cs`) must NOT contain code that directly reads or modifies form control properties (e.g., `TextBox.Text`).
-    * Two exceptions to this rule: 
-        * The `ListView.SelectedItem` property should be set directly.  
-        * Controlling form visibility without data binding is acceptable (though using data binding is recommended for better practice).  
-    * If a new task is added after a previous task, the previous task's data must NOT remain in the form controls.
 
 Optional Practice Tasks
 

@@ -299,6 +299,15 @@ Layout des Formulars
         ![bei Größenänderung](images/newtodo-resizing.gif)
         ![Einige Abmessungen werden angezeigt](images/newtodo-annotated.png)
 
+!!! warning "Wichtige Kriterien"
+    Die folgenden Kriterien sind zwingend erforderlich, damit die Hausaufgabe akzeptiert wird:
+
+    * Die Aufgabenstellung schreibt ausdrücklich vor, dass sowohl bei den Listen- als auch bei den Formularelementen Datenbindung verwendet werden muss. Eine Lösung, die die Datenbindung umgeht, ist nicht akzeptabel. Beispielsweise darf die Code-Behind-Datei (`MainPage.xaml.cs`) keinen Code enthalten, der die Eigenschaften von Formularsteuerelementen (z. B. `TextBox.Text`) direkt liest oder setzt.
+    * Zwei Ausnahmen von dieser Regel: 
+        * Die Eigenschaft `ListView.SelectedItem` soll direkt gesetzt werden.
+        * Die Steuerung der Formularsichtbarkeit ohne Datenbindung ist akzeptabel (obwohl die Verwendung von Datenbindung für eine bessere Praxis empfohlen wird).
+    * Wenn eine neue Aufgabe nach einer vorherigen Aufgabe hinzugefügt wird, dürfen die Daten der vorherigen Aufgabe NICHT in den Formularsteuerelementen verbleiben.
+
 ??? success "Schritte zur Implementierung des Speicherns und der Kontrolle der Formularsichtbarkeit"
 
     1. Die Daten im Formular werden in einem neuen "ToDoItem"-Objekt gesammelt, dessen Eigenschaften (bidirektional!) zu der Oberfläche gebunden werden. Erstellen Sie eine Eigenschaft mit dem Namen `EditedTodo` (der Anfangswert sollte null sein).
