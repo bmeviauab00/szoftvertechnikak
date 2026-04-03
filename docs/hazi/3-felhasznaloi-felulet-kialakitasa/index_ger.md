@@ -306,7 +306,7 @@ Zusätzliche Hinweise zur Umsetzung einiger der Anforderungen finden Sie in den 
 Zusätzliche funktionale Anforderungen:
 
 * Das Formular sollte nur sichtbar sein, wenn die Taste *Add* angeklickt wird, und verschwinden, wenn die Aufgabe gespeichert wird.
-* Klicken Sie auf *Save*, um die Daten zur Liste hinzuzufügen, und das Formular wird ausgeblendet.
+* Klicken Sie auf *Save* (die Beschriftung soll „Save" sein), um die Daten zur Liste hinzuzufügen, und das Formular wird ausgeblendet.
 * Mit dem Klicken auf die Taste *Add* soll die Auswahl der aktuellen Element in der Liste entfernt werden (`SelectedItem`). (Nur die Auswahl, nicht das Element sich selbst.)
 * Optionale Aufgabe: Das Formular sollte scrollbar sein, wenn sein Inhalt nicht auf den Bildschirm passt (verwenden Sie`ScrollViewer` ).
   

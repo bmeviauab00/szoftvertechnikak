@@ -293,7 +293,7 @@ Additional guidance on implementing some of the requirements is available in the
 Functional requirements:
 
 * The form should only be visible after clicking the __Add__ button and should disappear once the task is saved.
-* Clicking the __Save__ button should add the entered data to the list and hide the form.
+* Clicking the __Save__ (the label should be "Save") button should add the entered data to the list and hide the form.
 * Clicking the __Add__ button should clear the currently selected item in the list (`SelectedItem`).
 * Optional: Make the form scrollable if its content does not fit on the screen (use `ScrollViewer`).
   

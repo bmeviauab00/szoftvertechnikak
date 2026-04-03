@@ -294,7 +294,7 @@ Néhány fenti és alább meghatározott követelmény megvalósítása kapcsán
 További funkcionális követelmények:
 
 * Az űrlap csak akkor legyen látható, ha a _Hozzáadás_ gombra kattintottak, és tűnjön el, ha a teendő mentésre kerül.
-* A _Mentés_ gombra kattintva a felvitt adatok kerüljenek a listába, és az űrlap tűnjön el.
+* A _Mentés_ (a felirata legyen "Save") gombra kattintva a felvitt adatok kerüljenek a listába, és az űrlap tűnjön el.
 * A _Hozzáadás_ gombra kattintva a listában ürítsük ki az aktuálisan kiválasztott elem jelölését (`SelectedItem`)
 * Opcionális feladat: Az űrlap legyen görgethető, ha a tartalma nem fér ki a képernyőre (`ScrollViewer` használata).
   
