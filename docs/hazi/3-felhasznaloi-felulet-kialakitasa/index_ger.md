@@ -331,7 +331,7 @@ Bevor Sie mit der Implementierung beginnen, lesen Sie unbedingt die folgenden Ei
     * Sowohl bei den Listen- als auch bei den Formularelementen muss Datenbindung verwendet werden. Eine Lösung, die die Datenbindung umgeht, ist nicht akzeptabel. Beispielsweise darf die Code-Behind-Datei (`MainPage.xaml.cs`) keinen Code enthalten, der die Eigenschaften von Formularsteuerelementen (z. B. `TextBox.Text`) direkt liest oder setzt.
     * Zwei Ausnahmen von dieser Regel: 
         * Die Eigenschaft `ListView.SelectedItem` soll direkt gesetzt werden.
-        * Die Steuerung der Formularsichtbarkeit ohne Datenbindung ist akzeptabel (obwohl die Verwendung von Datenbindung für eine bessere Praxis empfohlen wird).
+        * Die Steuerung der Formularsichtbarkeit ohne Datenbindung ist akzeptabel, aber nur, wenn `TodoItem` das Interface `INotifyPropertyChanged` implementiert.
     * Die Formularsteuerelemente müssen an die Eigenschaften eines einzelnen `TodoItem`-Objekts gebunden werden (z. B. EditedTodo.Title, EditedTodo.Description) und nicht an separate Eigenschaften von `MainPage`.
     * Wenn eine neue Aufgabe nach einer vorherigen Aufgabe hinzugefügt wird, dürfen die Daten der vorherigen Aufgabe NICHT in den Formularsteuerelementen verbleiben.
     * Für die Priorität-`ComboBox` ist nur eine `SelectedItem`-basierte Lösung akzeptabel (z. B. ist eine `SelectedIndex`-basierte Lösung nicht akzeptabel, da sie zu einer weniger robusten Lösung führen würde).

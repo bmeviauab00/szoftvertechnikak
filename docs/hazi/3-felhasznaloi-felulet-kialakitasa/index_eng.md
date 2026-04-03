@@ -318,7 +318,7 @@ Before you start implementing, make sure to read the constraints below!
     * Both the list and form controls must use data binding. Any solution that bypasses data binding is not acceptable. For example, the code-behind file (`MainPage.xaml.cs`) must NOT contain code that directly reads or modifies form control properties (e.g., `TextBox.Text`).
     * Two exceptions to this rule: 
         * The `ListView.SelectedItem` property should be set directly.  
-        * Controlling form visibility without data binding is acceptable (though using data binding is recommended for better practice).  
+        * Controlling form visibility without data binding is acceptable, but only if `TodoItem` implements the `INotifyPropertyChanged` interface.
     * The form controls must be bound to the properties of a single `TodoItem` object (e.g., EditedTodo.Title, EditedTodo.Description), not to separate properties of `MainPage`.
     * If a new task is added after a previous task, the previous task's data must NOT remain in the form controls.
     * For the Priority `ComboBox`, only a `SelectedItem`-based solution is acceptable (e.g., `SelectedIndex`-based is not, as it would lead to a less robust solution).

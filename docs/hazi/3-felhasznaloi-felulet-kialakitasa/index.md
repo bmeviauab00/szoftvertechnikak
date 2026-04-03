@@ -319,7 +319,7 @@ Mielőtt belevágsz a megoldásba, mindenképpen olvasd el az alábbi megkötés
     * A listában és az űrlapon levő vezérlők esetében is adatkötéssel kell dolgozni. Olyan megoldás nem elfogadható, mely ezt megkerüli. Így például nem lehet a code behind fájlban (`MainPage.xaml.cs`) olyan kód, mely az űrlapokon levő vezérlők tulajdonságait (pl. TextBox Text tulajdonsága) közvetlenül kérdezi le vagy állítja.
     * Az előző pont alól két kivétel van: 
         * A `ListView` `SelectedItem` tulajdonsága közvetlenül állítandó.
-        * Az űrlap láthatóságának szabályozása adatkötés nélkül is elfogadható (bár nem a legszebb megoldás, és a gyakorlás kedvéért is érdemesebb adatkötéssel dolgozni).
+        * Az űrlap láthatóságának szabályozása adatkötés nélkül is elfogadható, de csak akkor, ha a `TodoItem` megvalósítja az `INotifyPropertyChanged` interfészt.
     * A űrlap vezérlőelemeit egyetlen `TodoItem` objektum tulajdonságaihoz kell kötni (például EditedTodo.Title, EditedTodo.Description), nem pedig a `MainPage` különálló tulajdonságaihoz.
     * Amikor egy új to-do elem felvétele történik, és korábban már történt egy ilyen elem felvétele, akkor a korábbi elem adatai NEM lehetnek benne az űrlap vezérlőiben.
     * A Prioritás `ComboBox` esetében csak `SelectedItem` alapú megoldás fogadható el (pl. `SelectedIndex` alapú nem, az kevésbé robosztus megoldáshoz vezetne).
