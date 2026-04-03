@@ -45,6 +45,18 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
 :warning: __Layout - egyszerűség__  
 Mint általában, a jelen házi feladat keretében elkészítendő feladatra is igaz, hogy az oldal alapelrendezését `Grid`-del célszerű kialakítani. Ugyanakkor az egyes belső részek elrendezésének kialakításakor törekedj az egyszerűségre: ahol az `StackPanel`-t is lehet használni, ne használj `Grid`-et.
 
+:warning: __Technikai megkötések__  
+
+* Új külső könyvtár referenciák (NuGet és assembly referenciák) felvétele nem megengedett.
+* Új osztályok bevezetése nem megengedett, a feladat által is kért `TodoItem` osztályon, és esetlegesen bevezetett konverter(ek)en (IValueConverter implementáció(k)) felül. Segédosztályok, ViewModel-ek és ősosztályok nem megengedettek.
+* Adatkötések során: 
+    * Csak `x:Bind` alapú megoldás használható, a klasszikus `Binding` nem (ez utóbbi nem típusbiztos, lassabb, így modern alkalmazásokban kerüljük a használatát).
+    * A `Bindings.Update()` alkalmazása, valamint trükkös PropertyChanged használat üres string paraméterrel nem megengedett. Ezeknél "korrektebb", elegánsabb megoldás alkalmazása elvárás. 
+* A `Windows.UI` névtér használata nem megendegett. Ennek oka: az itt levő típusok **közvetlen** használata modern WinUI alkalmazásokban kerülendő.
+* Property állításra element syntax csak ott használható, ahol esetleg indokolt. Pl. `<StackPanel.BorderThickness>1</StackPanel.BorderThickness>` feleslegesen bonyolult, helyette a szokásos attribute syntax-szal egyszerűbben megadható (`<StackPanel BorderThickness="1">`).
+* Felesleges vezérlők/panelek alkalmazása nem elfogadott: pl. `StackPanel`, egyetlen tartalmazott vezérlővel (nincs értelme).
+
+
 ## 1. feladat - Modell kialakítása és tesztadatok
 
 A projekten belül hozzunk létre egy `Models` mappát (VS Solution Exporerben), majd a mappába az alábbi ábrán látható osztályt és enum típust. A `TodoItem` osztály fogja tartalmazni a teendők adatait, a prioritáshoz egy felsorolt típust hozunk létre.
@@ -254,7 +266,7 @@ Az alábbiakban a lenyíló panelekben segítség taláható az egyes részfelad
 
 ## 3. feladat - Új teendő hozzáadása
 
-A grid jobb oldalán az 1. sorban a "To-Do item" szöveg legyen látható, 25-ös betűmérettel, vízszintesen balra, függőlegesen pedig középre igazítva, baloldalon 20 pixelnyi üres hellyel.
+A grid jobb oldalán az 1. sorban a "To-Do item" szöveg legyen látható, 18-as betűmérettel, vízszintesen balra, függőlegesen pedig középre igazítva, baloldalon 20 pixelnyi üres hellyel.
 
 A felületen a _Hozzáadás_ gombra kattintva jelenjen a 2. sorban egy űrlap, ahol új teendőt lehet felvenni.
 
@@ -276,7 +288,8 @@ Az űrlapban a következő elemek legyenek egymás alatt.
 
 Az űrlaphoz nem kell speciális, egyedi vezérlőt (pl. `UserControl` készíteni): egyszerűen használjuk valamelyik, a feladathoz jól illeszkedő layout panel típust. 
 
-Néhány fenti és alább meghatározott követelmény megvalósítása kapcsán lentebb görgetve lenyíló mezőkben némi iránymutatást ad az útmutató.
+Mielőtt belevágsz a megoldásba, mindenképpen olvasd el az alábbiakat is, beleérve a lentebb található "Fontos kritériumok" szekciót!
+Néhány fenti és alább meghatározott követelmény megvalósítása kapcsán pedig lentebb görgetve lenyíló mezőkben némi iránymutatást ad az útmutató.
 
 További funkcionális követelmények:
 
@@ -303,11 +316,14 @@ Mielőtt belevágsz a megoldásba, mindenképpen olvasd el az alábbi megkötés
 !!! warning "Fontos kritériumok"
     Az alábbiakban megadunk néhány fontos kritériumot, melyek mindenképpen feltételei a házi feladat elfogadásának:
 
-    * A feladatkiírás kikötötte, hogy a listában és az űrlapon levő vezérlők esetében is adatkötéssel kell dolgozni. Olyan megoldás nem elfogadható, mely ezt megkerüli. Így például nem lehet a code behind fájlban (`MainPage.xaml.cs`) olyan kód, mely az űrlapokon levő vezérlők tulajdonságait (pl. TextBox Text tulajdonsága) közvetlenül kérdezi le vagy állítja.
+    * A listában és az űrlapon levő vezérlők esetében is adatkötéssel kell dolgozni. Olyan megoldás nem elfogadható, mely ezt megkerüli. Így például nem lehet a code behind fájlban (`MainPage.xaml.cs`) olyan kód, mely az űrlapokon levő vezérlők tulajdonságait (pl. TextBox Text tulajdonsága) közvetlenül kérdezi le vagy állítja.
     * Az előző pont alól két kivétel van: 
         * A `ListView` `SelectedItem` tulajdonsága közvetlenül állítandó.
         * Az űrlap láthatóságának szabályozása adatkötés nélkül is elfogadható (bár nem a legszebb megoldás, és a gyakorlás kedvéért is érdemesebb adatkötéssel dolgozni).
+    * A űrlap vezérlőelemeit egyetlen `TodoItem` objektum tulajdonságaihoz kell kötni (például EditedTodo.Title, EditedTodo.Description), nem pedig a `MainPage` különálló tulajdonságaihoz.
     * Amikor egy új to-do elem felvétele történik, és korábban már történt egy ilyen elem felvétele, akkor a korábbi elem adatai NEM lehetnek benne az űrlap vezérlőiben.
+    * A Prioritás `ComboBox` esetében csak `SelectedItem` alapú megoldás fogadható el (pl. `SelectedIndex` alapú nem, az kevésbé robosztus megoldáshoz vezetne).
+    * Az új elem felvételekor tilos mindig új listát létrehozni, az elemet a meglévő gyűjteménybe kell felvenni (gondold át, melyik kollekciótípus a megfelelő egy olyan listához, amelyet a felhasználói felületnek dinamikusan kell frissítenie).
 
 Az alábbiakban a lenyíló panelekben segítség taláható az egyes részfeladatok megoldásához.
 

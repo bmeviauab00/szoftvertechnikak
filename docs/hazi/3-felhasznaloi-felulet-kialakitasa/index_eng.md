@@ -41,6 +41,18 @@ A description of the necessary development environment can be found [here](../fe
 :warning: __Layout - Keep it simple__
     As in most cases, the basic page layout for this homework should be created using a `Grid`. However, when designing the internal sections, prioritize simplicity: where a `StackPanel` is sufficient, avoid using `Grid`.
 
+:warning: __Technical constraints__  
+
+* Adding new external library references (NuGet and assembly references) is not allowed.
+* Introducing new classes is not allowed, beyond the `TodoItem` class required by the task, and any converter(s) (IValueConverter implementation(s)) that may be introduced. Helper classes, ViewModels, and base classes are not allowed.
+* Regarding data bindings: 
+    * Only `x:Bind`-based solutions may be used; the classic `Binding` is not allowed (the latter is not type-safe, slower, and should be avoided in modern applications).
+    * The use of `Bindings.Update()`, as well as tricky PropertyChanged usage with an empty string parameter, is not allowed. A more "correct", elegant solution is expected instead. 
+* The use of the `Windows.UI` namespace is not allowed. The reason: the **direct** use of types in this namespace should be avoided in modern WinUI applications.
+* Property element syntax should only be used where it is justified. For example, `<StackPanel.BorderThickness>1</StackPanel.BorderThickness>` is unnecessarily complex; instead, the standard attribute syntax is simpler (`<StackPanel BorderThickness="1">`).
+* The use of unnecessary controls/panels is not accepted: e.g., a `StackPanel` with a single contained control (which serves no purpose).
+
+
 ## Task 1 - Model creation and test data
 
 Within the project, create a `Models` folder in Visual Studio Solution Explorer and add the class and enum type shown in the diagram below. The `TodoItem` class will store the task data, and an enumerated type will be used for priority.
@@ -250,7 +262,7 @@ Below, the dropdown panels contain help for solving the individual sub-tasks.
 
 On the right side of the grid, in row 1, display the text "To-Do item" with:
 
-- A font size of 25,
+- A font size of 18,
 - Horizontally aligned to the left,
 - Vertically centered,
 - 20 pixels of left padding.
@@ -275,6 +287,7 @@ The form should contain the following elements in a vertical layout:
 
 You do not need to create a custom control (e.g., `UserControl`) for this form. Simply use a layout panel that best fits the task.
 
+Before you start implementing, make sure to read the following as well, including the "Important criteria" section below!
 Additional guidance on implementing some of the requirements is available in the collapsible sections below.
 
 Functional requirements:
@@ -302,11 +315,14 @@ Before you start implementing, make sure to read the constraints below!
 !!! warning "Important criteria"
     The following criteria are mandatory for the homework to be accepted:
 
-    * The task description explicitly requires that both the list and form controls must use data binding. Any solution that bypasses data binding is not acceptable. For example, the code-behind file (`MainPage.xaml.cs`) must NOT contain code that directly reads or modifies form control properties (e.g., `TextBox.Text`).
+    * Both the list and form controls must use data binding. Any solution that bypasses data binding is not acceptable. For example, the code-behind file (`MainPage.xaml.cs`) must NOT contain code that directly reads or modifies form control properties (e.g., `TextBox.Text`).
     * Two exceptions to this rule: 
         * The `ListView.SelectedItem` property should be set directly.  
         * Controlling form visibility without data binding is acceptable (though using data binding is recommended for better practice).  
+    * The form controls must be bound to the properties of a single `TodoItem` object (e.g., EditedTodo.Title, EditedTodo.Description), not to separate properties of `MainPage`.
     * If a new task is added after a previous task, the previous task's data must NOT remain in the form controls.
+    * For the Priority `ComboBox`, only a `SelectedItem`-based solution is acceptable (e.g., `SelectedIndex`-based is not, as it would lead to a less robust solution).
+    * When adding a new item, it is forbidden to always create a new list; the item must be added to the existing collection (consider which collection type is appropriate for a list that the UI needs to dynamically refresh).
 
 Below, the dropdown panels contain help for solving the individual sub-tasks.
 

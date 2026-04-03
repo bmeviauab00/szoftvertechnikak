@@ -41,6 +41,18 @@ Die erforderliche Entwicklungsumgebung wird [hier](../fejlesztokornyezet/index_g
 :warning: **Layout - Einfachheit**  
 Wie im Allgemeinen, auch in dieser Hausaufgabe sollte das grundlegende Layout der Seite mit `Grid` gestaltet werden. Bei der Gestaltung der einzelnen internen Abschnitte sollten Sie jedoch darauf achten, dass sie einfach gehalten sind: Wo `StackPanel`verwendet werden kann, sollten Sie nicht `Grid`verwenden.
 
+:warning: **Technische Einschränkungen**  
+
+* Das Hinzufügen neuer externer Bibliotheksreferenzen (NuGet- und Assembly-Referenzen) ist nicht erlaubt.
+* Das Einführen neuer Klassen ist nicht erlaubt, über die vom Aufgabenblatt geforderte `TodoItem`-Klasse und eventuell eingeführte Konverter (IValueConverter-Implementierung(en)) hinaus. Hilfsklassen, ViewModels und Basisklassen sind nicht erlaubt.
+* Bezüglich Datenbindungen: 
+    * Es dürfen nur `x:Bind`-basierte Lösungen verwendet werden; das klassische `Binding` ist nicht erlaubt (letzteres ist nicht typsicher, langsamer und sollte in modernen Anwendungen vermieden werden).
+    * Die Verwendung von `Bindings.Update()` sowie die trickreiche Verwendung von PropertyChanged mit einem leeren String-Parameter ist nicht erlaubt. Stattdessen wird eine „korrektere", elegantere Lösung erwartet. 
+* Die Verwendung des `Windows.UI`-Namensraums ist nicht erlaubt. Der Grund: Die **direkte** Verwendung von Typen in diesem Namensraum sollte in modernen WinUI-Anwendungen vermieden werden.
+* Property-Element-Syntax sollte nur dort verwendet werden, wo sie gerechtfertigt ist. Zum Beispiel ist `<StackPanel.BorderThickness>1</StackPanel.BorderThickness>` unnötig komplex; stattdessen ist die übliche Attribut-Syntax einfacher (`<StackPanel BorderThickness="1">`).
+* Die Verwendung unnötiger Steuerelemente/Panels ist nicht akzeptabel: z. B. ein `StackPanel` mit einem einzigen enthaltenen Steuerelement (das keinen Zweck erfüllt).
+
+
 ## Aufgabe 1. - Modellentwurf und Testdaten
 
 Erstellen Sie ein neuen Projekt mit Visual Studio (WinUI 3 Projekt, Blank App, Packaged (WinUI 3 in Desktop) type), und addieren Sie einen Ordner namens `Models` zu dem erzeugten Projekt. Erstellen Sie die Klasse und den Enum-Typ, die in der folgenden Abbildung gezeigt werden, im Ordner `Models`. Die Klasse `TodoItem` enthält die Details zu den Aufgaben, für die Priorität wird ein aufgelisteter Typ erstellt.
@@ -266,7 +278,7 @@ Im Folgenden finden Sie in den aufklappbaren Bereichen Hilfe zur Lösung der ein
 
 ## Aufgabe 3 - Eine neue Aufgabe hinzufügen
 
-Der Text "To-Do item" sollte auf der rechten Seite des Grids in Zeile 1 angezeigt werden, mit Schriftgrad 25, horizontal links ausgerichtet und vertikal zentriert, mit 20 Pixel Leerraum auf der linken Seite.
+Der Text "To-Do item" sollte auf der rechten Seite des Grids in Zeile 1 angezeigt werden, mit Schriftgrad 18, horizontal links ausgerichtet und vertikal zentriert, mit 20 Pixel Leerraum auf der linken Seite.
 
 Klicken Sie auf der Oberfläche auf die Taste *Add*, um in der zweiten Zeile ein Formular anzuzeigen, in dem Sie eine neue Aufgabe hinzufügen können.
 
@@ -287,6 +299,9 @@ Das Formular sollte die folgenden Elemente enthalten, die untereinander angeordn
 * **Speichern**: Taste mit eingebautem Stil accent (`Style="{StaticResource AccentButtonStyle}"`)
 
 Das Formular benötigt kein spezielles, benutzerdefiniertes Steuerelement (z. B. `UserControl` ): Verwenden Sie einfach einen der Layout-Paneltypen, die für die Aufgabe geeignet sind.
+
+Bevor Sie mit der Implementierung beginnen, lesen Sie unbedingt auch das Folgende, einschließlich des Abschnitts „Wichtige Kriterien" weiter unten!
+Zusätzliche Hinweise zur Umsetzung einiger der Anforderungen finden Sie in den aufklappbaren Bereichen weiter unten.
 
 Zusätzliche funktionale Anforderungen:
 
@@ -313,11 +328,14 @@ Bevor Sie mit der Implementierung beginnen, lesen Sie unbedingt die folgenden Ei
 !!! warning "Wichtige Kriterien"
     Die folgenden Kriterien sind zwingend erforderlich, damit die Hausaufgabe akzeptiert wird:
 
-    * Die Aufgabenstellung schreibt ausdrücklich vor, dass sowohl bei den Listen- als auch bei den Formularelementen Datenbindung verwendet werden muss. Eine Lösung, die die Datenbindung umgeht, ist nicht akzeptabel. Beispielsweise darf die Code-Behind-Datei (`MainPage.xaml.cs`) keinen Code enthalten, der die Eigenschaften von Formularsteuerelementen (z. B. `TextBox.Text`) direkt liest oder setzt.
+    * Sowohl bei den Listen- als auch bei den Formularelementen muss Datenbindung verwendet werden. Eine Lösung, die die Datenbindung umgeht, ist nicht akzeptabel. Beispielsweise darf die Code-Behind-Datei (`MainPage.xaml.cs`) keinen Code enthalten, der die Eigenschaften von Formularsteuerelementen (z. B. `TextBox.Text`) direkt liest oder setzt.
     * Zwei Ausnahmen von dieser Regel: 
         * Die Eigenschaft `ListView.SelectedItem` soll direkt gesetzt werden.
         * Die Steuerung der Formularsichtbarkeit ohne Datenbindung ist akzeptabel (obwohl die Verwendung von Datenbindung für eine bessere Praxis empfohlen wird).
+    * Die Formularsteuerelemente müssen an die Eigenschaften eines einzelnen `TodoItem`-Objekts gebunden werden (z. B. EditedTodo.Title, EditedTodo.Description) und nicht an separate Eigenschaften von `MainPage`.
     * Wenn eine neue Aufgabe nach einer vorherigen Aufgabe hinzugefügt wird, dürfen die Daten der vorherigen Aufgabe NICHT in den Formularsteuerelementen verbleiben.
+    * Für die Priorität-`ComboBox` ist nur eine `SelectedItem`-basierte Lösung akzeptabel (z. B. ist eine `SelectedIndex`-basierte Lösung nicht akzeptabel, da sie zu einer weniger robusten Lösung führen würde).
+    * Beim Hinzufügen eines neuen Elements ist es verboten, immer eine neue Liste zu erstellen; das Element muss der bestehenden Sammlung hinzugefügt werden (überlegen Sie, welcher Sammlungstyp für eine Liste geeignet ist, die von der Benutzeroberfläche dynamisch aktualisiert werden muss).
 
 Im Folgenden finden Sie in den aufklappbaren Bereichen Hilfe zur Lösung der einzelnen Teilaufgaben.
 
