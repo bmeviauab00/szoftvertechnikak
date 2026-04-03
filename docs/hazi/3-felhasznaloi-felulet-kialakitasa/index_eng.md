@@ -154,6 +154,15 @@ The UI should be updated dynamically using data binding, ensuring that the eleme
 * Task description
 * Task deadline displayed in `yyyy.MM.dd` format
 * The `ListView` background should match the `CommandBar` to create a continuous left-aligned section.
+* Before you start implementing, make sure to read the constraints below!
+
+!!! warning "Important criteria"
+    The following criteria are mandatory for the homework to be accepted:
+
+    * The direct use of the `Windows.UI.Color` type is not allowed for color handling. Instead, `Color` should be used indirectly, e.g., through the `Colors` type (e.g., `Colors.Red`), or `ColorHelper.FromArgb(...)`. Whichever is chosen, these can be used to create a brush with the appropriate color. The reason for this constraint: in modern WinUI applications, the use of the `Windows.UI` namespace should be avoided where possible, and the `Color` type is located there.
+    * For accessing the default foreground color, only the `(Brush)App.Current.Resources["ApplicationForegroundThemeBrush"]` approach is acceptable (this is the "correct", targeted solution for this purpose).
+
+Below, the dropdown panels contain help for solving the individual sub-tasks.
 
 ??? tip "Binding elements in the list"
     Always consider whether you are binding to a single object or a list, and apply the appropriate binding technique! In this homework, the order of elements may differ from how they were covered in the lab sessions.
@@ -288,6 +297,8 @@ Form layout
         ![Resizing](images/newtodo-resizing.gif)
         ![Size annotations](images/newtodo-annotated.png)
 
+Before you start implementing, make sure to read the constraints below!
+
 !!! warning "Important criteria"
     The following criteria are mandatory for the homework to be accepted:
 
@@ -296,6 +307,8 @@ Form layout
         * The `ListView.SelectedItem` property should be set directly.  
         * Controlling form visibility without data binding is acceptable (though using data binding is recommended for better practice).  
     * If a new task is added after a previous task, the previous task's data must NOT remain in the form controls.
+
+Below, the dropdown panels contain help for solving the individual sub-tasks.
 
 ??? success "Steps to implement the save functionality"
     1. Store form data in a new `TodoItem` object bound to UI elements using two-way data binding. Introduce a property named `EditedTodo`. Then two possible approaches are working:

@@ -157,6 +157,15 @@ A `CommandBar` alatti cellában egy listába (`ListView`) kerüljenek a teendők
 * Teendő leírása
 * Teendő határideje `yyyy.MM.dd` formátumban
 * A `ListView` háttere legyen azonos a `CommandBar`-éval, így baloldalt egy egybefüggő sávot alkotnak.
+* Mielőtt belevágsz a megoldásba, mindenképpen olvasd el az alábbi megkötéseket!
+
+!!! warning "Fontos kritériumok"
+    Az alábbiakban megadunk néhány fontos kritériumot, melyek mindenképpen feltételei a házi feladat elfogadásának:
+
+    * A színek kezelésére a `Windows.UI.Color` típus **közvetlen** használata nem engedélyezett. Helyette a `Color` közvetve használandó, pl. `Colors` típuson keresztül (pl. `Colors.Red`), vagy `ColorHelper.FromArgb(...)`. Bármelyiket is választjuk, ezek segítségével már létrehozható megfelelő színű ecset. A megkötés oka: modern WinUI alkalmazásokban a Windows.UI névtér használata lehetőleg kerülendő, a `Color` típus pedig itt található.
+    * A beépített előtérszín elérésére csak a `(Brush)App.Current.Resources["ApplicationForegroundThemeBrush"]` megoldás elfogadható (erre ez a "korrekt", célirányos megoldás).
+
+Az alábbiakban a lenyíló panelekben segítség taláható az egyes részfeladatok megoldásához.
 
 ??? tip "Elemek a listában"
     Mindig gondoljuk át, hogy egy objektumhoz történő, vagy listás adatkötésről van-e szó, és ennek megfelelő technikát alkalmazzunk! Jelen házi feladatban nem biztos, olyan sorrendben jönnek ezek elő, mint ahogy laboron szerepeltek!"
@@ -289,6 +298,8 @@ Az űrlap elrendezése
         ![Viselkedés átméretezés közben](images/newtodo-resizing.gif)
         ![Néhány méret feltüntetése](images/newtodo-annotated.png)
 
+Mielőtt belevágsz a megoldásba, mindenképpen olvasd el az alábbi megkötéseket!
+
 !!! warning "Fontos kritériumok"
     Az alábbiakban megadunk néhány fontos kritériumot, melyek mindenképpen feltételei a házi feladat elfogadásának:
 
@@ -297,6 +308,8 @@ Az űrlap elrendezése
         * A `ListView` `SelectedItem` tulajdonsága közvetlenül állítandó.
         * Az űrlap láthatóságának szabályozása adatkötés nélkül is elfogadható (bár nem a legszebb megoldás, és a gyakorlás kedvéért is érdemesebb adatkötéssel dolgozni).
     * Amikor egy új to-do elem felvétele történik, és korábban már történt egy ilyen elem felvétele, akkor a korábbi elem adatai NEM lehetnek benne az űrlap vezérlőiben.
+
+Az alábbiakban a lenyíló panelekben segítség taláható az egyes részfeladatok megoldásához.
 
 ??? success "Mentés megvalósításának lépései"
 

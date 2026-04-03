@@ -169,6 +169,15 @@ Stellen Sie in der Zelle unter `CommandBar` in einer Liste (`ListView`) die Aufg
 * Beschreibung der Aufgabe
 * Abgabetermin im Format `yyyy.MM.dd` 
 * Der Hintergrund von `ListView` sollte derselbe sein wie der von `CommandBar`, so dass sie einen durchgehenden Balken auf der linken Seite bilden.
+* Bevor Sie mit der Implementierung beginnen, lesen Sie unbedingt die folgenden Einschränkungen!
+
+!!! warning "Wichtige Kriterien"
+    Die folgenden Kriterien sind zwingend erforderlich, damit die Hausaufgabe akzeptiert wird:
+
+    * Die **direkte** Verwendung des Typs `Windows.UI.Color` für die Farbbehandlung ist nicht erlaubt. Stattdessen soll `Color` indirekt verwendet werden, z. B. über den Typ `Colors` (z. B. `Colors.Red`) oder `ColorHelper.FromArgb(...)`. Unabhängig von der Wahl können damit Pinsel mit der entsprechenden Farbe erstellt werden. Der Grund für diese Einschränkung: In modernen WinUI-Anwendungen sollte die Verwendung des Namensraums `Windows.UI` möglichst vermieden werden, und der Typ `Color` befindet sich dort.
+    * Für den Zugriff auf die eingebaute Vordergrundfarbe ist nur die Lösung `(Brush)App.Current.Resources["ApplicationForegroundThemeBrush"]` akzeptabel (dies ist die „korrekte", zielgerichtete Lösung dafür).
+
+Im Folgenden finden Sie in den aufklappbaren Bereichen Hilfe zur Lösung der einzelnen Teilaufgaben.
 
 ??? tip "Elemente in der Liste"
     Überlegen Sie immer, ob Sie Daten an ein Objekt oder an eine Liste binden, und verwenden Sie die entsprechende Technik! Bei dieser Hausaufgabe ist es nicht sicher, dass sie in der Reihenfolge kommen, in der sie im Labor waren!"
@@ -299,6 +308,8 @@ Layout des Formulars
         ![bei Größenänderung](images/newtodo-resizing.gif)
         ![Einige Abmessungen werden angezeigt](images/newtodo-annotated.png)
 
+Bevor Sie mit der Implementierung beginnen, lesen Sie unbedingt die folgenden Einschränkungen!
+
 !!! warning "Wichtige Kriterien"
     Die folgenden Kriterien sind zwingend erforderlich, damit die Hausaufgabe akzeptiert wird:
 
@@ -307,6 +318,8 @@ Layout des Formulars
         * Die Eigenschaft `ListView.SelectedItem` soll direkt gesetzt werden.
         * Die Steuerung der Formularsichtbarkeit ohne Datenbindung ist akzeptabel (obwohl die Verwendung von Datenbindung für eine bessere Praxis empfohlen wird).
     * Wenn eine neue Aufgabe nach einer vorherigen Aufgabe hinzugefügt wird, dürfen die Daten der vorherigen Aufgabe NICHT in den Formularsteuerelementen verbleiben.
+
+Im Folgenden finden Sie in den aufklappbaren Bereichen Hilfe zur Lösung der einzelnen Teilaufgaben.
 
 ??? success "Schritte zur Implementierung des Speicherns und der Kontrolle der Formularsichtbarkeit"
 
