@@ -51,7 +51,7 @@ A description of the necessary development environment can be found [here](../fe
 * The use of the `Windows.UI` namespace is not allowed. The reason: the **direct** use of types in this namespace should be avoided in modern WinUI applications.
 * Property element syntax should only be used where it is justified. For example, `<StackPanel.BorderThickness>1</StackPanel.BorderThickness>` is unnecessarily complex; instead, the standard attribute syntax is simpler (`<StackPanel BorderThickness="1">`).
 * The use of unnecessary controls/panels is not accepted: e.g., a `StackPanel` with a single contained control (which serves no purpose).
-
+* Regarding `TextBlock`s, the use of `Run` is not allowed (it serves no purpose, unnecessary complexity).
 
 ## Task 1 - Model creation and test data
 

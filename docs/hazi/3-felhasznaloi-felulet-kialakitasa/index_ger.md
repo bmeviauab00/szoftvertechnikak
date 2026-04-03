@@ -51,7 +51,7 @@ Wie im Allgemeinen, auch in dieser Hausaufgabe sollte das grundlegende Layout de
 * Die Verwendung des `Windows.UI`-Namensraums ist nicht erlaubt. Der Grund: Die **direkte** Verwendung von Typen in diesem Namensraum sollte in modernen WinUI-Anwendungen vermieden werden.
 * Property-Element-Syntax sollte nur dort verwendet werden, wo sie gerechtfertigt ist. Zum Beispiel ist `<StackPanel.BorderThickness>1</StackPanel.BorderThickness>` unnötig komplex; stattdessen ist die übliche Attribut-Syntax einfacher (`<StackPanel BorderThickness="1">`).
 * Die Verwendung unnötiger Steuerelemente/Panels ist nicht akzeptabel: z. B. ein `StackPanel` mit einem einzigen enthaltenen Steuerelement (das keinen Zweck erfüllt).
-
+* Bei `TextBlock`s ist die Verwendung von `Run` nicht erlaubt (es dient keinem Zweck, unnötige Komplexität).
 
 ## Aufgabe 1. - Modellentwurf und Testdaten
 

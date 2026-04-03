@@ -55,7 +55,7 @@ Mint általában, a jelen házi feladat keretében elkészítendő feladatra is 
 * A `Windows.UI` névtér használata nem megendegett. Ennek oka: az itt levő típusok **közvetlen** használata modern WinUI alkalmazásokban kerülendő.
 * Property állításra element syntax csak ott használható, ahol esetleg indokolt. Pl. `<StackPanel.BorderThickness>1</StackPanel.BorderThickness>` feleslegesen bonyolult, helyette a szokásos attribute syntax-szal egyszerűbben megadható (`<StackPanel BorderThickness="1">`).
 * Felesleges vezérlők/panelek alkalmazása nem elfogadott: pl. `StackPanel`, egyetlen tartalmazott vezérlővel (nincs értelme).
-
+* `TextBlock`-ok vonatkozásában a `Run` alkalmazása nem megengedett (nincs értelme, felesleges komplexitás).
 
 ## 1. feladat - Modell kialakítása és tesztadatok
 
