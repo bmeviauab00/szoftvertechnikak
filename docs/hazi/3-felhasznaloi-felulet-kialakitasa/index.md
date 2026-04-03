@@ -6,7 +6,7 @@ authors: tibitoth
 
 ## Bevezetés
 
-A házi feladatban elkészítendő kis szoftver egy egyszerű feladatkezelő alkalmazás, amelyben a felhasználók feladatokat tudnak listázni létrehozni, módosítani.
+A házi feladatban elkészítendő kis szoftver egy egyszerű feladatkezelő alkalmazás, amelyben a felhasználók feladatokat tudnak listázni, létrehozni, módosítani.
 
 Az önálló feladat a XAML előadásokon elhangzottakra épít. A feladatok gyakorlati hátteréül a [3. labor – Felhasználói felületek kialakítása](../../labor/3-felhasznaloi-felulet/index.md) laborgyakorlat szolgál.
 
@@ -40,10 +40,10 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
 ## Kikötések
 
 :warning: __MVVM minta - ne alkalmazd!__  
-  Jelen házi feladatban az MVVM mintát még NE használd (egyik későbbi részfeladatnál sem), `ViewModel` osztályt NE vezess be. Az MVVM egy később házi feladatnak lesz a tárgya.
+  Jelen házi feladatban az MVVM mintát még NE használd (egyik későbbi részfeladatnál sem), `ViewModel` osztályt NE vezess be. Az MVVM egy későbbi házi feladatnak lesz a tárgya.
 
 :warning: __Layout - egyszerűség__  
-Mint általában, a jelen házi feladat keretében elkészítendő feladatra is igaz, hogy az oldal alapelrendezését `Grid`-del célszerű kialakítani. Ugyanakkor az egyes belső részek elrendezésének kialakításakor törekedj az egyszerűségre: ahol az `StackPanel`-t is lehet használni, ne használj `Grid`-et.
+Mint általában, a jelen házi feladat keretében elkészítendő feladatra is igaz, hogy az oldal alapelrendezését `Grid`-del célszerű kialakítani. Ugyanakkor az egyes belső részek elrendezésének kialakításakor törekedj az egyszerűségre: ahol a `StackPanel`-t is lehet használni, ne használj `Grid`-et.
 
 ## 1. feladat - Modell kialakítása és tesztadatok
 
@@ -94,7 +94,7 @@ public List<TodoItem> Todos { get; set; } = new()
     A fenti kódrészletben több modern C# nyelvi elemet kombináltunk:
 
     * Ez egy auto-implementált tulajdonság (lásd 2. labor).
-    * Kedzőértéket adtunk neki.
+    * Kezdőértéket adtunk neki.
     * A `new` után nem adtuk meg a típust, mert a fordító ki tudja következtetni (lásd 2. labor "Target-typed new expressions").
     * A gyűjtemény elemeit `{}` között soroljuk fel (lásd 2. labor "Collection initializer szintaxis").
 
@@ -134,7 +134,7 @@ A felületen a következő struktúrában helyezkednek el az elemek:
     </CommandBar>
     ```
     !!! note "Világos/sötét megjelenés"
-        A Windows beállítasainak függvényében (light/dark mode) lehetséges, hogy sötét háttéren világos színekkel jelenik meg a felület, ez is teljesen rendben van. A WinUI alkalmazások alapértelemezett esetben alkalmazkodnak az operációs rendszer beállításához, ebből ered ez a viselkedés.
+        A Windows beállítasainak függvényében (light/dark mode) lehetséges, hogy sötét háttéren világos színekkel jelenik meg a felület, ez is teljesen rendben van. A WinUI alkalmazások alapértelmezett esetben alkalmazkodnak az operációs rendszer beállításához, ebből ered ez a viselkedés.
 
     !!! note "ThemeResource"
         A példában szereplő `ThemeResource`-okat használhatjuk a színek és stílusok beállítására, melyek a felület témájától függően változnak. Például a `AppBarBackgroundThemeBrush` a felület témájától (világos/sötét) függően a megfelelő színű háttér lesz.
