@@ -256,7 +256,7 @@ Below, the dropdown panels contain help for solving the individual sub-tasks.
     The provided screenshot example shows that there is vertical spacing between list items, improving readability. By default, this spacing is not present. Since a DataTemplate will already be used for displaying items, a small adjustment (e.g., setting Margin/Padding) can create adequate spacing between list items for better readability. 
 
 !!! example "Task 2 - Submission requirement"
-    Insert a **screenshot** of the application where one task in the list has either its **title or description set to your NEPTUN code!** (`f2.png`)
+    Insert a **screenshot** of the application where one task in the list has either its **title or description set to your own (!) Neptun code** (i.e., NOT the text "NEPTUN")! The file name should be `f2.png`, and it should be placed in the same folder as neptun.txt.
 
 ## Task 3 - Adding a new task
 

@@ -274,7 +274,7 @@ Im Folgenden finden Sie in den aufklappbaren Bereichen Hilfe zur Lösung der ein
     Auf dem Screenshot der Anleitung sehen Sie, dass zwischen den Listenelementen ein vertikaler Abstand besteht, so dass die Listenelemente gut voneinander getrennt sind. Dies ist nicht standardmäßig der Fall. Glücklicherweise erfordert die Lösung, dass DataTemplate für die Anzeige der Elemente verwendet wird, so dass Sie durch eine kleine Anpassung (Tipp: geben Sie einen einzelnen Margin/Padding an) leicht etwas Platz zwischen den Listenelementen für eine bessere Lesbarkeit erreichen können. 
 
 !!! example "Aufgabe 2 - EINGABE"
-    Fügen Sie ein Bildschirmfoto der Anwendung ein, in der eine der Aufgaben in der Liste Ihren NEPTUN-Code als Namen oder Beschreibung hat (`f2.png`).
+    Fügen Sie ein Bildschirmfoto der Anwendung ein, in der eine der Aufgaben in der Liste Ihren eigenen (!) Neptun-Code als Namen oder Beschreibung hat (also NICHT den Text "NEPTUN")! Der Dateiname soll `f2.png` sein und im selben Ordner wie neptun.txt abgelegt werden.
 
 ## Aufgabe 3 - Eine neue Aufgabe hinzufügen
 
