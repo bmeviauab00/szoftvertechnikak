@@ -249,6 +249,7 @@ Ezekhez a lépésekhez még adunk megoldást (de sokkal többet tanulsz belőle,
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `Game` osztály `CreateBike` és `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
+    - A vágást úgy készítsd, hogy képernyőmentésen a releváns részek legyenek csak (pl.ezek ne: VS Solution Explorer, debuggolást segítő alsó és oldalsó panelek, vagy akár a Windows tálca/taskbar).
 
 ## Feladat 3 – A verseny indítása
 
@@ -272,6 +273,7 @@ Valósítsd meg a verseny indítását a rajtvonalról és futtatását mindaddi
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `Game` osztály `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
+    - A vágást úgy készítsd, hogy képernyőmentésen a releváns részek legyenek csak (pl.ezek ne: VS Solution Explorer, debuggolást segítő als és oldalsó panelek, vagy akár a Windows tálca/taskbar).
 
 ## Feladat 4 – A versenyzők indítása a depóból
 
@@ -295,6 +297,7 @@ Valósítsd meg a versenyzők indítását a depóból és futtatását mindaddi
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `Game` osztály `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
+    - A vágást úgy készítsd, hogy képernyőmentésen a releváns részek legyenek csak (pl.ezek ne: VS Solution Explorer, debuggolást segítő alsó és oldalsó panelek, vagy akár a Windows tálca/taskbar).
 
 ## Feladat 5 – Győztes bicikli megvalósítása
 
@@ -338,6 +341,7 @@ A logikát ezt követően önállóan valósítsd meg, az alábbi irányleveknek
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `Game` osztály `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
+    - A vágást úgy készítsd, hogy képernyőmentésen a releváns részek legyenek csak (pl.ezek ne: VS Solution Explorer, debuggolást segítő alsó és oldalsó panelek, vagy akár a Windows tálca/taskbar).
 
 ## Feladat 6 – Kölcsönös kizárás, valamint volatile
 
@@ -447,6 +451,7 @@ Feladat: módosítsd úgy a `MainWindow.UpdateBikeUI` függvényt, hogy a `Dispa
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `MainWindow.xaml.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `MainWindow` osztály `UpdateBikeUI` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
+    - A vágást úgy készítsd, hogy képernyőmentésen a releváns részek legyenek csak (pl.ezek ne: VS Solution Explorer, debuggolást segítő panalek, vagy akár a Windows tálca/taskbar).
 
 !!! warning "Hasonló játék megvalósítása a gyakorlatban"
     Lényeges, hogy egy hasonló "játék" megvalósítására nem szoktunk szálakat indítani: a biciklik léptetésére egy timer sokkal praktikusabb lenne, mert az egész játék egyszálú maradhatna, és elkerülhetnénk számos, a többszálúságból adódó nehézséget (jelen feladat keretében a célunk értelemszerűen pont a többszálúság témakörének gyakorlása volt).
@@ -483,3 +488,4 @@ Megjegyzés: szálak kiléptetésére alternatív megoldás lett volna a bool é
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `Game` osztály szálfüggvénye függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
+    - A vágást úgy készítsd, hogy képernyőmentésen a releváns részek legyenek csak (pl.ezek ne: VS Solution Explorer, debuggolást segítő alsó és oldalsó panelek, vagy akár a Windows tálca/taskbar).

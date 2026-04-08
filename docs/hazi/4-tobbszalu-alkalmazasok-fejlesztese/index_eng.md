@@ -250,6 +250,7 @@ but you will learn much more if you try to solve it yourself first — use the p
     - Start the application. If necessary, resize the window so it doesn’t take up too much space on the screen.
     - In the background, Visual Studio should be open with `Game.cs` visible.
     - In Visual Studio, zoom so that both the `CreateBike` and `BikeThreadFunction` methods of the `Game` class are visible. In the foreground, your application window should be shown.
+    - Crop the screenshot so that only the relevant parts are shown (e.g., do NOT include: VS Solution Explorer, debugging side and bottom panels, or the Windows taskbar).
 
 ## Task 2 – Starting the race
 
@@ -272,6 +273,7 @@ Implement the race start from the start line and let it run until the bikes reac
     - Start the application. If necessary, resize the window so it doesn’t take up too much space on the screen.
     - In the background, Visual Studio should be open with `Game.cs` visible.
     - In Visual Studio, zoom so that the `BikeThreadFunction` method of the `Game` class is visible. In the foreground, your application window should be shown.
+    - Crop the screenshot so that only the relevant parts are shown (e.g., do NOT include: VS Solution Explorer, debugging side and bottom panels, or the Windows taskbar).
 
 ## Task 3 – Releasing racers from the depot
 
@@ -295,6 +297,7 @@ Implement the logic for releasing racers from the depot and allowing them to rac
     - Start the application. If necessary, resize the window so it doesn’t take up too much space on the screen.
     - In the background, Visual Studio should be open with `Game.cs` visible.
     - In Visual Studio, zoom so that the `BikeThreadFunction` method of the `Game` class is visible. In the foreground, your application window should be shown.
+    - Crop the screenshot so that only the relevant parts are shown (e.g., do NOT include: VS Solution Explorer, debugging side and bottom panels, or the Windows taskbar).
 
 ## Task 4 – Implementing the winning bicycle
 
@@ -341,6 +344,7 @@ Implement the logic yourself based on the following guidelines and tips.
     - In the background, Visual Studio should be open with `Game.cs` visible.
     - In Visual Studio, zoom so that the `BikeThreadFunction` method of the `Game` class is visible. 
     - In the foreground, your application window should be shown.
+    - Crop the screenshot so that only the relevant parts are shown (e.g., do NOT include: VS Solution Explorer, debugging side and bottom panels, or the Windows taskbar).
 
 ## Task 5 – Mutual exclusion and volatile
 
@@ -456,6 +460,7 @@ Task: Modify the `MainWindow.UpdateBikeUI` method so that UI element access is d
     - Start the application. If needed, resize the window to take up less screen space.
     - In the background, Visual Studio should be open with MainWindow.xaml.cs visible.
     - Zoom in so that the `UpdateBikeUI` method of the `MainWindow` class is visible. In the foreground, the application window should be shown.
+    - Crop the screenshot so that only the relevant parts are shown (e.g., do NOT include: VS Solution Explorer, debugging panels, or the Windows taskbar).
 
 !!! warning "Implementing a similar game in real-world scenarios" 
     In practice, we would not use threads to implement a game like this. Using a timer to update bike positions would be much more practical, allowing the whole game to remain single-threaded, thus avoiding many of the challenges introduced by multithreading. (In this assignment, however, our goal is specifically to practice multithreading techniques.)
@@ -496,4 +501,5 @@ Note: An alternative solution for stopping threads — instead of using a boolea
     - Start the application. If necessary, resize the window so it takes up less screen space.
     - In the background, Visual Studio should be open with Game.cs visible.
     - Zoom in so the thread function of the Game class is visible. In the foreground, the application window should be visible.
+    - Crop the screenshot so that only the relevant parts are shown (e.g., do NOT include: VS Solution Explorer, debugging side and bottom panels, or the Windows taskbar).
 -->

@@ -252,6 +252,7 @@ Wir geben Ihnen die Lösung für diese Schritte (aber Sie lernen viel mehr, wenn
     - Starten Sie die App. Verkleinern Sie sie gegebenenfalls, damit sie nicht zu viel Platz auf dem Bildschirm einnimmt,
     - im "Hintergrund" sollte Visual Studio mit "Game.cs" geöffnet sein,
     - Zoomen Sie in VS so hinein, dass die Funktionen `CreateBike` und `BikeThreadFunction` der Klasse `Game` sichtbar sind, wobei das Fenster Ihrer Anwendung im Vordergrund ist.
+    - Schneiden Sie den Screenshot so zu, dass nur die relevanten Teile sichtbar sind (z. B. NICHT: VS Solution Explorer, Debugging-Seiten- und Unterpanels oder die Windows-Taskleiste).
 
 ## Aufgabe 2 - Start des Wettbewerbs
 
@@ -275,6 +276,7 @@ Veranlassen Sie das Starten von der Startlinie beginnend und die Ablauf des Wett
     - Starten Sie die App. Verkleinern Sie sie gegebenenfalls, damit sie nicht zu viel Platz auf dem Bildschirm einnimmt,
     - im "Hintergrund" sollte Visual Studio mit "Game.cs" geöffnet sein,
     - Zoomen Sie in VS so hinein, dass die Funktion "BikeThreadFunction" der Klasse "Game" sichtbar ist, wobei Ihr Anwendungsfenster im Vordergrund ist.
+    - Schneiden Sie den Screenshot so zu, dass nur die relevanten Teile sichtbar sind (z. B. NICHT: VS Solution Explorer, Debugging-Seiten- und Unterpanels oder die Windows-Taskleiste).
 
 ## Aufgabe 3 - Starten der Fahrräder vom Depot
 
@@ -298,6 +300,7 @@ Veranlassen Sie das Starten der Fahrräder vom Depot aus und das Wettlauf bis di
     - Starten Sie die App. Verkleinern Sie sie gegebenenfalls, damit sie nicht zu viel Platz auf dem Bildschirm einnimmt,
     - im "Hintergrund" sollte Visual Studio mit "Game.cs" geöffnet sein,
     - Zoomen Sie in VS so hinein, dass die Funktion "BikeThreadFunction" der Klasse "Game" sichtbar ist, wobei Ihr Anwendungsfenster im Vordergrund ist.
+    - Schneiden Sie den Screenshot so zu, dass nur die relevanten Teile sichtbar sind (z. B. NICHT: VS Solution Explorer, Debugging-Seiten- und Unterpanels oder die Windows-Taskleiste).
 
 ## Aufgabe 4 - Verwirklichen des Gewinnerfahrrads
 
@@ -341,6 +344,7 @@ Dann setzen Sie die Logik selbständig um, indem Sie die nachstehenden Leitlinie
     - Starten Sie die App. Verkleinern Sie sie gegebenenfalls, damit sie nicht zu viel Platz auf dem Bildschirm einnimmt,
     - im "Hintergrund" sollte Visual Studio mit "Game.cs" geöffnet sein,
     - Zoomen Sie in VS so hinein, dass die Funktion "BikeThreadFunction" der Klasse "Game" sichtbar ist, wobei Ihr Anwendungsfenster im Vordergrund ist.
+    - Schneiden Sie den Screenshot so zu, dass nur die relevanten Teile sichtbar sind (z. B. NICHT: VS Solution Explorer, Debugging-Seiten- und Unterpanels oder die Windows-Taskleiste).
 
 ## Aufgabe 5 - Gegenseitiger Ausschluss und volatile
 
@@ -450,6 +454,7 @@ Aufgabe: Ändern Sie die Funktion `MainWindow.UpdateBikeUI` so, dass `DispacherQ
     - Starten Sie die App. Verkleinern Sie sie gegebenenfalls, damit sie nicht zu viel Platz auf dem Bildschirm einnimmt,
     - im "Hintergrund" sollte Visual Studio mit "Game.cs" geöffnet sein,
     - Zoomen Sie in VS so hinein, dass die Funktion `UpdateBikeUI` der Klasse `MainWindow` sichtbar ist, wobei das Fenster Ihrer Anwendung im Vordergrund ist.
+    - Schneiden Sie den Screenshot so zu, dass nur die relevanten Teile sichtbar sind (z. B. NICHT: VS Solution Explorer, Debugging-Panels oder die Windows-Taskleiste).
 
 !!! warning "Verwirklichung eines ähnlichen Spiels in der Praxis"
     Es ist wichtig zu bemerken, dass wir normalerweise keine Threads starten, um ein ähnliches "Spiel" zu implementieren: ein Timer für das Steppen der Fahrräder wäre praktischer, weil das ganze Spiel einfadig bleiben könnte und wir viele der Schwierigkeiten vermeiden könnten, die durch Mehrfädigkeit entstehen (im Rahmen dieser Hausaufgabe war unser Ziel natürlich, Mehrfädigkeit zu üben).
@@ -486,3 +491,4 @@ Hinweis: Eine alternative Möglichkeit, Threads zu beenden, wäre gewesen, `Inte
     - Starten Sie die App. Verkleinern Sie sie gegebenenfalls, damit sie nicht zu viel Platz auf dem Bildschirm einnimmt,
     - im "Hintergrund" sollte Visual Studio mit "Game.cs" geöffnet sein,
     - Zoomen Sie in VS so hinein, dass die Thread-Funktion der Klasse "Game" sichtbar ist, wobei das Fenster Ihrer Anwendung im Vordergrund ist.
+    - Schneiden Sie den Screenshot so zu, dass nur die relevanten Teile sichtbar sind (z. B. NICHT: VS Solution Explorer, Debugging-Seiten- und Unterpanels oder die Windows-Taskleiste).
