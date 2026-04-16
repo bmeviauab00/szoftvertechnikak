@@ -359,7 +359,7 @@ A `DataFifo` osztály szálbiztossá tételéhez szükségünk van egy objektumr
     }
     ```
 
-    ```cs hl_lines="3-4 16"
+    ```cs hl_lines="3-4 13"
     public bool TryGet(out double[] data)
     {
         lock (_syncRoot)
