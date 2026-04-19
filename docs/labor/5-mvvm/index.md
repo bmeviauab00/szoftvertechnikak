@@ -436,12 +436,12 @@ Továbbá lehetőségünk van az `ObservableProperty` attribútum használatára
     }
     ```
 
-Lényeges, hogy a korábbi `BooksPageViewModel` megoldásból töröljük a tagváltozókat (a _booksService kivételével), a property-ket (hiszen ezeket a kódgenerátor hozza létre), a `PropertyChanged` eseményt és a `SetProperty` műveletet. :exclamation: az átalakítás után buildeljünk egyet (pl. Build/Build solution menü): enélkül a fordítási hibák nem szűnnek meg, a Visual Studio számos hibát jelez a kódban. Ez logikus is, hiszen az adatkötött propertyket a kódgenerátor csak a build során generálja le (egy "rejtett" állományban).
+Lényeges, hogy a korábbi `BooksPageViewModel` megoldásból töröljük a tagváltozókat (a _booksService kivételével), a property-ket (hiszen ezeket a kódgenerátor hozza létre), a `PropertyChanged` eseményt és a `SetProperty` műveletet. :exclamation: Az átalakítás után buildeljünk egyet (pl. Build/Build solution menü): enélkül a fordítási hibák nem szűnnek meg, a Visual Studio számos hibát jelez a kódban. Ez logikus is, hiszen az adatkötött propertyket a kódgenerátor csak a build során generálja le (egy "rejtett" állományban).
 
 Ellenőrizhetjük, hogy milyen kód generálódott, ha például ++f12++-vel navigálunk a `Genres` tulajdonságra (a xaml fájlban az `ItemsSource` adatkötésnél a kurzorral a `ViewModel.Genres`-en állva).
 
 !!! tip "ObservableProperty attribútum property-re"
-    Az `ObservableProperty` attribútumot mezők helyett property-kre is alkalmazhatjuk egy [új C# nyelvi funkció segítéségével](https://devblogs.microsoft.com/dotnet/announcing-the-dotnet-community-toolkit-840/#partial-properties-support-for-the-mvvm-toolkit-🎉), ehhez viszont preview C# verziót kellene használnunk, így ezt idén még kihagyjuk.
+    Az `ObservableProperty` attribútumot mezők helyett property-kre is alkalmazhatjuk egy [viszonylag új C# nyelvi funkció segítségével](https://devblogs.microsoft.com/dotnet/announcing-the-dotnet-community-toolkit-840/#partial-properties-support-for-the-mvvm-toolkit-🎉), de ezt most kihagyjuk.
 
 **Próbáljuk ki!**
 
