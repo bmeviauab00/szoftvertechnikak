@@ -139,7 +139,7 @@ A `Book` osztályunk a korábbi `Lab.Mvvm` névtérből a `Lab.Mvvm.Models` név
 
 Az adatok betöltéséért felelős kódot helyezzük át egy új `BookService` nevű osztályba, amit egy újonnan létrehozott `Services` mappába helyezzünk el.
 
-* A `BookService` osztályba a `SeedDatabase`, `LoadGenres` és `LoadBooks` függvényeket emeljük át a `BookPage.xaml.cs`-ből
+* A `BookService` osztályba a `SeedDatabase`, `LoadGenres` és `LoadBooks` függvényeket emeljük át a `BookPage.xaml.cs`-ből.
 
 * Mozgassuk át a `_connectionString` mezőt is.
 
@@ -349,7 +349,7 @@ A `BooksPage.xaml` fájlban innentől kezdve használhatjuk a `ViewModel` proper
             SelectedItem="{x:Bind ViewModel.SelectedGenre, Mode=TwoWay}" />
     ```
 
-* A _Clear_ gomb esetében is töröljük a `Click` esemény feliratkozást és a code-behindban a `GenreFilterComboBox_SelectionChanged` eseménykezelőt. Ennek viselkedését majd csak később implementáljuk a ViewModel-ben.
+* A _Clear_ gomb esetében is töröljük a `Click` esemény feliratkozást és a code-behindban a `clearGenreFilterButton_Click` eseménykezelőt. Ennek viselkedését majd csak később implementáljuk a ViewModel-ben.
 
     ```xml
     <Button x:Name="clearGenreFilterButton"
