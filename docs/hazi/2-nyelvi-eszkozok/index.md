@@ -40,7 +40,7 @@ Az előellenőrző is a szokásos módon működik. Részletes leírás: [A ház
 Amint az közismert, a jedi lovagok erejét a sejtjeikben élő kis életformák, a midi-chlorianok adják.
 Az eddigi legmagasabb midi-chlorian szintet (20.000 fölötti értéket) Anakin Skywalkernél mérték.
 
-Készíts egy osztályt `Jedi` néven mely egy `string` típusú `Name` és egy `int` típusú `MidiChlorianCount` tulajdonsággal rendelkezik.
+Készíts egy osztályt `Jedi` néven, mely egy `string` típusú `Name` és egy `int` típusú `MidiChlorianCount` tulajdonsággal rendelkezik.
 Utóbbi esetében figyelj rá, hogy a `MidiChlorianCount` értékét ne lehessen 35-re, vagy annál kisebb értékre állítani, ha ezzel próbálkozik valaki, az osztálynak kivételt kell dobnia.
 A validáció során a lehető legegyszerűbb, legletisztultabb megoldást válaszd: a property setterben egyszerű `if`-et használj és dobj kivételt, ne legyen az `if`-nek `else` ága, valamint nincs szükség a `return` használatára sem.
 
@@ -262,7 +262,7 @@ Szükség szerint korrigáld a saját megoldásod!
 
 ### Feladat
 
-Egészítsd ki a `JediCouncil` osztályt egy olyan paraméter nélküli függvénnyel (**a függvénynév végződjön `_Delegate`-re, ez kötelező**), mely visszatérési értékében visszaadja a Jedi tanács összes olyan tagját, melynek a midi-chlorian száma **530** alatt van!
+Egészítsd ki a `JediCouncil` osztályt egy olyan paraméter nélküli függvénnyel (**a függvénynév végződjön `_Delegate`-re, ez kötelező**), mely visszatérési értékében visszaadja a Jeditanács összes olyan tagját, akinek a midi-chlorian száma **530** alatt van!
 
 - Függvényt használj, ne tulajdonságot a lekérdezésre.
 - A függvényen belül a tagok kikeresésére használd a `List<Jedi>` osztály `FindAll()` függvényét.
@@ -294,7 +294,7 @@ A feladat megoldásához a 2. labor 5. feladatát használhatjuk referenciaként
 
 A feladat megfelel az előzőnek, csak most lambda kifejezés segítségével fogunk dolgozni. Ez a témakör szerepelt előadáson és laboron is ([2. labor 6. feladat](../../labor/2-nyelvi-eszkozok/index.md#6-feladat-lambda-kifejezesek)).
 
-Egészítsd ki a JediCouncil osztályt egy olyan paraméter nélküli függvénnyel (**a függvénynév végződjön `_Lambda`-ra, ez kötelező**), mely visszatérési értékében visszaadja a Jedi tanács összes olyan tagját, melynek a midi-chlorian száma 1000 alatt van!
+Egészítsd ki a JediCouncil osztályt egy olyan paraméter nélküli függvénnyel (**a függvénynév végződjön `_Lambda`-ra, ez kötelező**), mely visszatérési értékében visszaadja a Jeditanács összes olyan tagját, melynek a midi-chlorian száma 1000 alatt van!
 
 - Függvényt használj, ne tulajdonságot a lekérdezésre.
 - A függvényen belül a tagok kikeresésére használd a `List<Jedi>` osztály `FindAll()` függvényét.

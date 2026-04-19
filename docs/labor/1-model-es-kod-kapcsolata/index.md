@@ -33,7 +33,7 @@ Visual Studio-ból a legfrissebb verziót célszerű feltenni. A Community Editi
     2. A megjelenő ablakban „Individual components” fül kiválasztása
     3. A keresőmezőbe „class designer” begépelése, majd győződjünk meg, hogy a szűrt listában a „Class Designer” elem ki van pipálva.
         
-        ![Osztálydiagram támogatás telepítés](images/vs-isntaller-add-class-diagram.png)
+        ![Osztálydiagram támogatás telepítés](images/vs-installer-add-class-diagram.png)
 
 Amit érdemes átnézned:
 

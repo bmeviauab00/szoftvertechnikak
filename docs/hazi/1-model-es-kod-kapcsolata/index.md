@@ -54,7 +54,7 @@ A `Task1\Input` mappában található egy `music.txt` fájl, mely a feladat beme
 
 ### Feladat
 
-Egy szövegfáljban zeneszerzők/előadók/együttesek számainak címeit tároljuk a következő formátumban.
+Egy szövegfájlban zeneszerzők/előadók/együttesek számainak címeit tároljuk a következő formátumban.
 
 - Minden szerzőhöz külön sor tartozik.
 - Minden sorban először a szerző neve szerepel, majd `;`-t követve `;`-vel elválasztva számok címei.
@@ -154,7 +154,7 @@ A következő kód egy lehetséges megoldást mutat, a megoldás részleteit a k
                     string[] lineItems = line.Split(';');
 
                     // Első elem, amiben az szerző nevét várjuk
-                    // A Trim eltávolítja a vezető és záró whitespace karaktereket
+                    // A Trim eltávolítja a vezető és záró whitespace-karaktereket
                     string artist = lineItems[0].Trim();
 
                     // Menjünk végig a dalokon, és vegyük fel a listába
@@ -192,7 +192,7 @@ A következő kód egy lehetséges megoldást mutat, a megoldás részleteit a k
 
     A `c:\temp` mappába másoljuk ki a `music.txt` fájlt, és futtassuk az alkalmazást. A megvalósítás során az egyszerűségre törekedve mindent beleöntöttünk a `main` függvénybe, „éles” környezetben mindenképp célszerű a kódot egy külön feldolgozó osztályba kiszervezni.
 
-    A fenti példában jópár .NET/C# alaptechnika bemutatásra kerül, mindenképen érdemes a fenti kódba szúrt megjegyzések alapján ezeket értelmezni és megtanulni, a félév során ezekre építeni fogunk.
+    A fenti példában jó pár .NET/C# alaptechnika bemutatásra kerül, mindenképpen érdemes a fenti kódba szúrt megjegyzések alapján ezeket értelmezni és megtanulni, a félév során ezekre építeni fogunk.
 
 ## Feladat 2 - Az UML és a kód kapcsolata, interfész és absztrakt ős alkalmazástechnikája
 
@@ -232,7 +232,7 @@ Egy síkbeli vektorgrafikus alakzatokat kezelni képes CAD tervezőalkalmazás e
 - A megvalósítás során törekedjen egységbezárásra: pl. az alakzatok menedzselése legyen egy **erre dedikált osztály** feladata.
   
     !!! failure
-        Az nem elfogadható, ha a `Main` függvényben egy helyben létrehozott egyszerű listába kerülnek az alakzatok tárolásra! Ezen felül a menedzselésért felelős osztály NE származzon a beépített `List` vagy hasonló osztályból, hanem tartalmazza azt. Az adatok szabványos kimentre történő listázásáért ez az osztály legyen a felelős.
+        Az nem elfogadható, ha a `Main` függvényben egy helyben létrehozott egyszerű listába kerülnek az alakzatok tárolásra! Ezen felül a menedzselésért felelős osztály NE származzon a beépített `List` vagy hasonló osztályból, hanem tartalmazza azt. Az adatok szabványos kimenetre történő listázásáért ez az osztály legyen a felelős.
 
 - A megvalósítás során törekedjen a könnyű bővíthetőségre, karbantarthatóságra, kerülje el a kódduplikációt (tagváltozók, műveletek, konstruktorok esetében egyaránt). A megoldás elfogadásának ezek kiemelt szempontjai!
 
