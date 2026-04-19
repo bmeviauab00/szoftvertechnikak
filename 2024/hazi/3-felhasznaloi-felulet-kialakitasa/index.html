@@ -2412,7 +2412,7 @@
 
 <h1 id="3-hf-felhasznaloi-felulet-kialakitasa">3. HF - Felhasználói felület kialakítása<a class="headerlink" href="#3-hf-felhasznaloi-felulet-kialakitasa" title="Permanent link">¶</a></h1>
 <h2 id="bevezetes">Bevezetés<a class="headerlink" href="#bevezetes" title="Permanent link">¶</a></h2>
-<p>A házi feladatban elkészítendő kis szoftver egy egyszerű feladatkezelő alkalmazás, amelyben a felhasználók feladatokat tudnak listázni létrehozni, módosítani.</p>
+<p>A házi feladatban elkészítendő kis szoftver egy egyszerű feladatkezelő alkalmazás, amelyben a felhasználók feladatokat tudnak listázni, létrehozni, módosítani.</p>
 <p>Az önálló feladat a XAML előadásokon elhangzottakra épít. A feladatok gyakorlati hátteréül a <a href="../../labor/3-felhasznaloi-felulet/">3. labor – Felhasználói felületek kialakítása</a> laborgyakorlat szolgál.</p>
 <p>A fentiekre építve, jelen önálló gyakorlat feladatai a feladatleírást követő rövidebb iránymutatás segítségével (néha alapértelmezetten összecsukva) önállóan elvégezhetők.</p>
 <p>Az önálló gyakorlat célja:</p>
@@ -2441,9 +2441,9 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
 </ul>
 <h2 id="kikotesek">Kikötések<a class="headerlink" href="#kikotesek" title="Permanent link">¶</a></h2>
 <p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" title=":warning:"> <strong>MVVM minta - ne alkalmazd!</strong><br>
-  Jelen házi feladatban az MVVM mintát még NE használd (egyik későbbi részfeladatnál sem), <code>ViewModel</code> osztályt NE vezess be. Az MVVM egy később házi feladatnak lesz a tárgya.</p>
+  Jelen házi feladatban az MVVM mintát még NE használd (egyik későbbi részfeladatnál sem), <code>ViewModel</code> osztályt NE vezess be. Az MVVM egy későbbi házi feladatnak lesz a tárgya.</p>
 <p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" title=":warning:"> <strong>Layout - egyszerűség</strong><br>
-Mint általában, a jelen házi feladat keretében elkészítendő feladatra is igaz, hogy az oldal alapelrendezését <code>Grid</code>-del célszerű kialakítani. Ugyanakkor az egyes belső részek elrendezésének kialakításakor törekedj az egyszerűségre: ahol az <code>StackPanel</code>-t is lehet használni, ne használj <code>Grid</code>-et.</p>
+Mint általában, a jelen házi feladat keretében elkészítendő feladatra is igaz, hogy az oldal alapelrendezését <code>Grid</code>-del célszerű kialakítani. Ugyanakkor az egyes belső részek elrendezésének kialakításakor törekedj az egyszerűségre: ahol a <code>StackPanel</code>-t is lehet használni, ne használj <code>Grid</code>-et.</p>
 <h2 id="1-feladat-modell-kialakitasa-es-tesztadatok">1. feladat - Modell kialakítása és tesztadatok<a class="headerlink" href="#1-feladat-modell-kialakitasa-es-tesztadatok" title="Permanent link">¶</a></h2>
 <p>A projekten belül hozzunk létre egy <code>Models</code> mappát (VS Solution Exporerben), majd a mappába az alábbi ábrán látható osztályt és enum típust. A <code>TodoItem</code> osztály fogja tartalmazni a teendők adatait, a prioritáshoz egy felsorolt típust hozunk létre.</p>
 <figure>
@@ -2487,7 +2487,7 @@ Mint általában, a jelen házi feladat keretében elkészítendő feladatra is 
 <p>A fenti kódrészletben több modern C# nyelvi elemet kombináltunk:</p>
 <ul>
 <li>Ez egy auto-implementált tulajdonság (lásd 2. labor).</li>
-<li>Kedzőértéket adtunk neki.</li>
+<li>Kezdőértéket adtunk neki.</li>
 <li>A <code>new</code> után nem adtuk meg a típust, mert a fordító ki tudja következtetni (lásd 2. labor "Target-typed new expressions").</li>
 <li>A gyűjtemény elemeit <code>{}</code> között soroljuk fel (lásd 2. labor "Collection initializer szintaxis").</li>
 </ul>
@@ -2524,7 +2524,7 @@ Mint általában, a jelen házi feladat keretében elkészítendő feladatra is 
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Világos/sötét megjelenés</p>
-<p>A Windows beállítasainak függvényében (light/dark mode) lehetséges, hogy sötét háttéren világos színekkel jelenik meg a felület, ez is teljesen rendben van. A WinUI alkalmazások alapértelemezett esetben alkalmazkodnak az operációs rendszer beállításához, ebből ered ez a viselkedés.</p>
+<p>A Windows beállítasainak függvényében (light/dark mode) lehetséges, hogy sötét háttéren világos színekkel jelenik meg a felület, ez is teljesen rendben van. A WinUI alkalmazások alapértelmezett esetben alkalmazkodnak az operációs rendszer beállításához, ebből ered ez a viselkedés.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">ThemeResource</p>
@@ -2798,8 +2798,8 @@ Alap esetben nem lenne fontos a függvénynek statikusnak lennie, de mivel itt e
         </path>
       </svg>
     </span>
-    <span title="2026. április 2. 17:47:30">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. április 2. 17:47:30 CEST"><span class="timeago" datetime="2026-04-02T17:47:30+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. április 2. 17:47:30 CEST">2026-04-02</span>
+    <span title="2026. április 3. 15:05:59">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. április 3. 15:05:59 CEST"><span class="timeago" datetime="2026-04-03T15:05:59+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. április 3. 15:05:59 CEST">2026-04-03</span>
     </span>
   </span>
 
@@ -2817,6 +2817,8 @@ Alap esetben nem lenne fontos a függvénynek statikusnak lennie, de mivel itt e
         <img src="https://avatars.githubusercontent.com/tibitoth?size=72" alt="@tibitoth">
       </a><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
         <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&amp;v=4?size=72" alt="@Zoltán Benedek">
+      </a><a href="https://github.com/tottorini" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tamás Szenes-Suba">
+        <img src="https://avatars.githubusercontent.com/u/69861952?u=427350181cf7565b8627ddc258cb32e6eeeb86a6&amp;v=4?size=72" alt="@Tamás Szenes-Suba">
       </a><a href="https://github.com/zbenedek-mirango" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
         <img src="https://avatars.githubusercontent.com/u/105201689?u=f025d5bedc2ea0cab45a1010194e95afd8ed3556&amp;v=4?size=72" alt="@Zoltán Benedek">
       </a></nav>      

@@ -2767,7 +2767,7 @@
 <h2 id="bevezeto">Bevezető<a class="headerlink" href="#bevezeto" title="Permanent link">¶</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">Kitekintő részek</p>
-<p>Jelen útmutató több helyen is bővített ismeretanyagot, <strong>illetve</strong> extra magyarázatot ad meg jelen megjegyzéssel egyező színnel keretezett és ugyanilyen ikonnal ellátott formában. Ezek hasznos kitekintések, de nem képezik az alap tananyag részét.</p>
+<p>Jelen útmutató több helyen is bővített ismeretanyagot, <strong>illetve</strong> extra magyarázatot ad meg jelen megjegyzéssel egyező színnel keretezett és ugyanilyen ikonnal ellátott formában. Ezek hasznos kitekintések, de nem képezik az alaptananyag részét.</p>
 </div>
 <h2 id="megoldas">Megoldás<a class="headerlink" href="#megoldas" title="Permanent link">¶</a></h2>
 <details class="success">
@@ -2809,10 +2809,10 @@
 <span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Ezt <strong>implicitly typed local variables</strong>-nek, magyarul <strong>implicit típusú lokális változó</strong>-nak nevezzük. Ilyenkor a fordító a kontextusból, az egyenlőségjel jobb oldalából megpróbálja kitalálni a változó típusát, fenti esetben ez egy <code>Person</code> lesz. Fontos, hogy ettől a nyelv még statikusan tipusos marad (tehát <strong>nem</strong> úgy működik mint a JavaScript-es <code>var</code> kulcsszó), mert a <code>p</code> változó típusa a későbbiekben nem változhat meg, ez csak egy egyszerű szintaktikai édesítőszer annek érdekében, hogy tömörebben tudjunk lokális változókat definiálni (ne kelljen a típust "duplán", az <code>=</code> bal és jobb oldalán is megadni).</p>
+<p>Ezt <strong>implicitly typed local variables</strong>-nek, magyarul <strong>implicit típusú lokális változó</strong>-nak nevezzük. Ilyenkor a fordító a kontextusból, az egyenlőségjel jobb oldalából megpróbálja kitalálni a változó típusát, fenti esetben ez egy <code>Person</code> lesz. Fontos, hogy ettől a nyelv még statikusan típusos marad (tehát <strong>nem</strong> úgy működik mint a JavaScript-es <code>var</code> kulcsszó), mert a <code>p</code> változó típusa a későbbiekben nem változhat meg, ez csak egy egyszerű szintaktikai édesítőszer annak érdekében, hogy tömörebben tudjunk lokális változókat definiálni (ne kelljen a típust "duplán", az <code>=</code> bal és jobb oldalán is megadni).</p>
 <div class="admonition note">
 <p class="admonition-title">Target-typed <code>new</code> expressions</p>
-<p>Egy másik megközelítés lehet a a C# 9-ben megjelent Target-typed <code>new</code> expressions, ahol a <code>new</code> operátor esetén hagyható el a típus, ha az a fordító által kitalálható a kontextusból (pl.: értékadás bal oldala, paraméter típusa stb.). A fenti <code>Person</code> konstruktorunk a következőképpen nézne ki:</p>
+<p>Egy másik megközelítés lehet a C# 9-ben megjelent Target-typed <code>new</code> expressions, ahol a <code>new</code> operátor esetén hagyható el a típus, ha az a fordító által kitalálható a kontextusból (pl.: értékadás bal oldala, paraméter típusa stb.). A fenti <code>Person</code> konstruktorunk a következőképpen nézne ki:</p>
 <div class="highlight"><pre><span></span><code><span class="n">Person</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
 </code></pre></div>
 <p>Ennek a megközelítésnek az előnye a <code>var</code>-ral szemben, hogy tagváltozók esetében is alkalmazható.</p>
@@ -2820,7 +2820,7 @@
 </li>
 </ol>
 <h2 id="1-feladat-tulajdonsag-property">1. Feladat – Tulajdonság (property)<a class="headerlink" href="#1-feladat-tulajdonsag-property" title="Permanent link">¶</a></h2>
-<p>A tulajdonságok segítségével tipikusan (de mint látni fogjuk, nem kizárólagosan) osztályok tagváltozóihoz férhetünk hozzá szintaktika tekintetében hasonló módon, mintha egy hagyományos tagváltozót érnénk el. A hozzáférés során azonban lehetőségünk van arra, hogy az egyszerű érték lekérdezés vagy beállítás helyett metódusszerűen implementáljuk a változó elérésének a módját, sőt külön külön is meghatározhatjuk a lekérdezés és a beállítás láthatóságát.</p>
+<p>A tulajdonságok segítségével tipikusan (de mint látni fogjuk, nem kizárólagosan) osztályok tagváltozóihoz férhetünk hozzá szintaktika tekintetében hasonló módon, mintha egy hagyományos tagváltozót érnénk el. A hozzáférés során azonban lehetőségünk van arra, hogy az egyszerű érték lekérdezés vagy beállítás helyett metódusszerűen implementáljuk a változó elérésének a módját, sőt külön-külön is meghatározhatjuk a lekérdezés és a beállítás láthatóságát.</p>
 <h3 id="tulajdonsag-szintaktikaja">Tulajdonság szintaktikája<a class="headerlink" href="#tulajdonsag-szintaktikaja" title="Permanent link">¶</a></h3>
 <p>A következő példában egy <code>Person</code> nevű osztályt fogunk elkészíteni, mely egy személyt reprezentál. Két tagváltozója van, <code>name</code> és <code>age</code>. A tagváltozókhoz közvetlenül nem férhetünk hozzá (mivel privátok), csak a <code>Name</code>, illetve <code>Age</code> publikus tulajdonságokon keresztül kezelhetjük őket. <strong>A példa jól szemlélteti, hogy a .NET-es tulajdonságok egyértelműen megfelelnek a C++-ból és Java-ból már jól ismert <code>SetX(…)</code> illetve <code>GetX()</code> típusú metódusoknak, csak itt ez a megoldás egységbezártabb módon nyelvi szinten támogatott</strong>.</p>
 <ol>
@@ -2912,7 +2912,7 @@
 <p>Egészítsük ki a <code>Person</code> osztályunkat egy ilyen, ún. <strong>„autoimplementált” tulajdonsággal (auto-implemented property)</strong>. Készítsünk egy <code>string</code> típusú <code>Name</code> nevű tulajdonságot.</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
-<p>A szintaktikai különbség a korábbiakhoz képest: a get és a set ágnak sem adtunk implementációt (nincsenek kapcsos zárójelek). Autoimplemetált tulajdonság esetén a fordító egy rejtett, kódból nem elérhető változót generál az osztályba, mely a tulajdonság aktuális értékének tárolására szolgál. Hangsúlyozandó, hogy ez nem a korábban bevezetett <code>name</code> tagváltozót állítja és kérdezi le (az ki is törölhetnénk), hanem egy rejtett, új változón dolgozik!</p>
+<p>A szintaktikai különbség a korábbiakhoz képest: a get és a set ágnak sem adtunk implementációt (nincsenek kapcsos zárójelek). Autoimplementált tulajdonság esetén a fordító egy rejtett, kódból nem elérhető változót generál az osztályba, mely a tulajdonság aktuális értékének tárolására szolgál. Hangsúlyozandó, hogy ez nem a korábban bevezetett <code>name</code> tagváltozót állítja és kérdezi le (az ki is törölhetnénk), hanem egy rejtett, új változón dolgozik!</p>
 </li>
 <li>
 <p>Most ellenőrizzük a működését a <code>Main</code> függvény kiegészítésével.</p>
@@ -3148,7 +3148,7 @@ A láthatóság szabályozása autoimplementált és nem autoimplementált tulaj
 </code></pre></div>
 </li>
 <li>
-<p>Az <code>XmlAttribute</code> attribútum jelzi a sorosító számára, hogy a jelölt tulajdonságot ne xml elemre, hanem xml attribútumra képezze le. Lássuk el ezzel az <code>Age</code> tulajdonságot (és ne a tagváltozót!)!</p>
+<p>Az <code>XmlAttribute</code> attribútum jelzi a sorosító számára, hogy a jelölt tulajdonságot ne XML elemre, hanem XML attribútumra képezze le. Lássuk el ezzel az <code>Age</code> tulajdonságot (és ne a tagváltozót!)!</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="na">[XmlAttribute("Kor")]</span>
 </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Age</span>
 </code></pre></div>
@@ -3231,7 +3231,7 @@ A láthatóság szabályozása autoimplementált és nem autoimplementált tulaj
 </code></pre></div>
 <p>A következő egyszerűsítéseket eszközöltük:</p>
 <ul>
-<li>a paraméter típusát nem írtuk ki: a fordító ki tudja következtetni a <code>FindAll</code> delegate paraméteraméterének típusából, mely a korábban vizsgált <code>Predicate</code>.</li>
+<li>a paraméter típusát nem írtuk ki: a fordító ki tudja következtetni a <code>FindAll</code> delegate paraméterének típusából, mely a korábban vizsgált <code>Predicate</code>.</li>
 <li>a paraméter körüli zárójelet elhagyhattuk (mert csak egy paraméter van)</li>
 <li>a <code>=&gt;</code> jobb oldalán elhagyhattuk a {} zárójeleket és a <code>return</code>-t (mert egyetlen kifejezésből állt a függvény törzse, mellyel a függvény visszatér).</li>
 </ul>
@@ -3348,8 +3348,8 @@ Erre megoldást nyújt a <code>field</code> kulcsszú, amivel az autoimplementá
         </path>
       </svg>
     </span>
-    <span title="2026. március 16. 10:59:30">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. március 16. 10:59:30 CET"><span class="timeago" datetime="2026-03-16T10:59:30+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. március 16. 10:59:30 CET">2026-03-16</span>
+    <span title="2026. április 3. 15:15:15">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. április 3. 15:15:15 CEST"><span class="timeago" datetime="2026-04-03T15:15:15+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. április 3. 15:15:15 CEST">2026-04-03</span>
     </span>
   </span>
 
@@ -3371,6 +3371,8 @@ Erre megoldást nyújt a <code>field</code> kulcsszú, amivel az autoimplementá
         <img src="https://avatars.githubusercontent.com/tibitoth?size=72" alt="@tibitoth">
       </a><a href="https://github.com/juhaszm053" target="_blank" rel="noopener noreferrer" class="md-author" title="@Juhász Márton">
         <img src="https://avatars.githubusercontent.com/u/231761956?v=4?size=72" alt="@Juhász Márton">
+      </a><a href="https://github.com/tottorini" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tamás Szenes-Suba">
+        <img src="https://avatars.githubusercontent.com/u/69861952?u=427350181cf7565b8627ddc258cb32e6eeeb86a6&amp;v=4?size=72" alt="@Tamás Szenes-Suba">
       </a><a href="https://github.com/zbenedek-mirango" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
         <img src="https://avatars.githubusercontent.com/u/105201689?u=f025d5bedc2ea0cab45a1010194e95afd8ed3556&amp;v=4?size=72" alt="@Zoltán Benedek">
       </a></nav>      

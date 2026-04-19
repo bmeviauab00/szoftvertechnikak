@@ -2707,7 +2707,7 @@
 <h3 id="feladat">Feladat<a class="headerlink" href="#feladat" title="Permanent link">¶</a></h3>
 <p>Amint az közismert, a jedi lovagok erejét a sejtjeikben élő kis életformák, a midi-chlorianok adják.
 Az eddigi legmagasabb midi-chlorian szintet (20.000 fölötti értéket) Anakin Skywalkernél mérték.</p>
-<p>Készíts egy osztályt <code>Jedi</code> néven mely egy <code>string</code> típusú <code>Name</code> és egy <code>int</code> típusú <code>MidiChlorianCount</code> tulajdonsággal rendelkezik.
+<p>Készíts egy osztályt <code>Jedi</code> néven, mely egy <code>string</code> típusú <code>Name</code> és egy <code>int</code> típusú <code>MidiChlorianCount</code> tulajdonsággal rendelkezik.
 Utóbbi esetében figyelj rá, hogy a <code>MidiChlorianCount</code> értékét ne lehessen 35-re, vagy annál kisebb értékre állítani, ha ezzel próbálkozik valaki, az osztálynak kivételt kell dobnia.
 A validáció során a lehető legegyszerűbb, legletisztultabb megoldást válaszd: a property setterben egyszerű <code>if</code>-et használj és dobj kivételt, ne legyen az <code>if</code>-nek <code>else</code> ága, valamint nincs szükség a <code>return</code> használatára sem.</p>
 <h3 id="megoldas">Megoldás<a class="headerlink" href="#megoldas" title="Permanent link">¶</a></h3>
@@ -2902,7 +2902,7 @@ Ezt elég a <code>JediCouncil.Add</code> kapcsán megtenni, a <code>JediCouncil.
 </div>
 <h2 id="feladat-4-delegatok">Feladat 4 – Delegátok<a class="headerlink" href="#feladat-4-delegatok" title="Permanent link">¶</a></h2>
 <h3 id="feladat_3">Feladat<a class="headerlink" href="#feladat_3" title="Permanent link">¶</a></h3>
-<p>Egészítsd ki a <code>JediCouncil</code> osztályt egy olyan paraméter nélküli függvénnyel (<strong>a függvénynév végződjön <code>_Delegate</code>-re, ez kötelező</strong>), mely visszatérési értékében visszaadja a Jedi tanács összes olyan tagját, melynek a midi-chlorian száma <strong>530</strong> alatt van!</p>
+<p>Egészítsd ki a <code>JediCouncil</code> osztályt egy olyan paraméter nélküli függvénnyel (<strong>a függvénynév végződjön <code>_Delegate</code>-re, ez kötelező</strong>), mely visszatérési értékében visszaadja a Jeditanács összes olyan tagját, akinek a midi-chlorian száma <strong>530</strong> alatt van!</p>
 <ul>
 <li>Függvényt használj, ne tulajdonságot a lekérdezésre.</li>
 <li>A függvényen belül a tagok kikeresésére használd a <code>List&lt;Jedi&gt;</code> osztály <code>FindAll()</code> függvényét.</li>
@@ -2932,7 +2932,7 @@ A célunk ezzel az, hogy egy olyan inicializáló metódusunk legyen, mely a ké
 </ul>
 <h2 id="feladat-5-lambda-kifejezesek">Feladat 5 – Lambda kifejezések<a class="headerlink" href="#feladat-5-lambda-kifejezesek" title="Permanent link">¶</a></h2>
 <p>A feladat megfelel az előzőnek, csak most lambda kifejezés segítségével fogunk dolgozni. Ez a témakör szerepelt előadáson és laboron is (<a href="../../labor/2-nyelvi-eszkozok/#6-feladat-lambda-kifejezesek">2. labor 6. feladat</a>).</p>
-<p>Egészítsd ki a JediCouncil osztályt egy olyan paraméter nélküli függvénnyel (<strong>a függvénynév végződjön <code>_Lambda</code>-ra, ez kötelező</strong>), mely visszatérési értékében visszaadja a Jedi tanács összes olyan tagját, melynek a midi-chlorian száma 1000 alatt van!</p>
+<p>Egészítsd ki a JediCouncil osztályt egy olyan paraméter nélküli függvénnyel (<strong>a függvénynév végződjön <code>_Lambda</code>-ra, ez kötelező</strong>), mely visszatérési értékében visszaadja a Jeditanács összes olyan tagját, melynek a midi-chlorian száma 1000 alatt van!</p>
 <ul>
 <li>Függvényt használj, ne tulajdonságot a lekérdezésre.</li>
 <li>A függvényen belül a tagok kikeresésére használd a <code>List&lt;Jedi&gt;</code> osztály <code>FindAll()</code> függvényét.</li>
@@ -3127,8 +3127,8 @@ Number of Employees: 2
         </path>
       </svg>
     </span>
-    <span title="2026. március 19. 16:47:10">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. március 19. 16:47:10 CET"><span class="timeago" datetime="2026-03-19T16:47:10+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. március 19. 16:47:10 CET">2026-03-19</span>
+    <span title="2026. április 3. 15:02:22">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. április 3. 15:02:22 CEST"><span class="timeago" datetime="2026-04-03T15:02:22+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. április 3. 15:02:22 CEST">2026-04-03</span>
     </span>
   </span>
 
@@ -3152,6 +3152,8 @@ Number of Employees: 2
         <img src="https://avatars.githubusercontent.com/u/35033903?v=4?size=72" alt="@Merena Dénes">
       </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tibor Tóth">
         <img src="https://avatars.githubusercontent.com/u/8333960?u=d26653213d265ecdceeaf20a896d74f479d35450&amp;v=4?size=72" alt="@Tibor Tóth">
+      </a><a href="https://github.com/tottorini" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tamás Szenes-Suba">
+        <img src="https://avatars.githubusercontent.com/u/69861952?u=427350181cf7565b8627ddc258cb32e6eeeb86a6&amp;v=4?size=72" alt="@Tamás Szenes-Suba">
       </a><a href="https://github.com/zbenedek-mirango" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
         <img src="https://avatars.githubusercontent.com/u/105201689?u=f025d5bedc2ea0cab45a1010194e95afd8ed3556&amp;v=4?size=72" alt="@Zoltán Benedek">
       </a></nav>      
