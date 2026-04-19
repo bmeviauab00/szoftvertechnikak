@@ -48,7 +48,7 @@ Az alábbi animált képen azt illusztrálja, hogy a megoldás során hova szere
 
 ![Kiinduló UI](images/app-ui-anim.gif)
 
-A játék/szimuláció alapelvelve a következő (még nincs megvalósítva):
+A játék/szimuláció alapelve a következő (még nincs megvalósítva):
 
 - Minden egyes biciklihez egy külön szál tartozik.
 - A játék/szimuláció iterációkra bontott: minden iterációban a biciklihez tartozó szál (amennyiben az éppen nem várakozik a verseny indítására vagy a depóban) egy véletlenszerű számértékkel lép előre a pályán, egészen addig, amíg el nem éri a célvonalat.
@@ -76,7 +76,7 @@ A felület kialakítása a `MainWindow.xaml`-ben található, a következő alap
 - Az ablak alapelrendezésének kialakítására "szokásosan" egy `Grid`-et használtunk, mely két sorból áll. Az első sorában található a versenypálya a biciklikkel (`*` sormagasság), az alsó részben pedig egy `StackPanel` a gombokkal (`Auto` sormagasság).
 - A pálya kialakítására `Rectangle` objektumokat (háttér, startvonal, depo, célegyenes), a szövegelemek elrendezésére pedig (részben elforgatott) `TextBlock` objektumokat használtunk.
 - Az egyes bicikliket egy vertikális `StackPanel`-en helyeztük el. A bicikliket egy-egy `TextBlock` objektummal jelenítjük meg (`Webdings` betűtípus, `b` betű). Használhattunk volna `FontIcon`-t is, a `TextBlock`-ra csak azért esett a választásunk, mert ezzel már korábban megismerkedtünk.
-- A pálya valamennyi elemét és a bicikliket tartalmazó `StackPanel`-t is a `Grid` első (technikailag 0-dik) sorában helyeztük el. Ezek a definiálásuk sorrendjében rajzolódnak ki, az igazítások és margók által meghatározott helyen. A biciklik `TextBlock`-jának pozícionálására is a margót használjuk majd. Egy alternatíva megoldás lett volna, ha minden felületelemet egy `Canvas`-re helyeztünk volna el, és azon állítottuk volna be az elemek abszolút pozícióját és méretét (Left, Top, Width, Height) a margók alkalmazása helyett.
+- A pálya valamennyi elemét és a bicikliket tartalmazó `StackPanel`-t is a `Grid` első (technikailag nulladik) sorában helyeztük el. Ezek a definiálásuk sorrendjében rajzolódnak ki, az igazítások és margók által meghatározott helyen. A biciklik `TextBlock`-jának pozícionálására is a margót használjuk majd. Egy alternatíva megoldás lett volna, ha minden felületelemet egy `Canvas`-re helyeztünk volna el, és azon állítottuk volna be az elemek abszolút pozícióját és méretét (Left, Top, Width, Height) a margók alkalmazása helyett.
 
 Az ablakhoz tartozó `MainWindow.xaml.cs` code behind fájlt is nézzük meg, főbb elemei a következők:
 
@@ -172,7 +172,7 @@ private void Timer_Tick(object sender, object e)
 }
 ```
 
-A `Trace.WriteLine` művelet a Visual Studio Output ablakába ír egy sort, a `DateTime.Now`-val pedig az aktuális időt lehet lekérdeni. Ezt alakítjuk a `ToString` hívással megfelelő formátumú szöveggé.
+A `Trace.WriteLine` művelet a Visual Studio Output ablakába ír egy sort, a `DateTime.Now`-val pedig az aktuális időt lehet lekérdezni. Ezt alakítjuk a `ToString` hívással megfelelő formátumú szöveggé.
 Futtassuk az alkalmazást (lényeges, hogy debuggolva, vagyis az ++f5++ billentyűvel) és ellenőrizzük a Visual Studio Output ablakát, hogy valóban megjelenik egy új sor 100 ms-ként. Ha minden jól működik, a Trace-elő sort kommentezzük ki.
 
 !!! note "A DispatcherTimer pontossága"
@@ -273,7 +273,7 @@ Valósítsd meg a verseny indítását a rajtvonalról és futtatását mindaddi
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `Game.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `Game` osztály `BikeThreadFunction` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
-    - A vágást úgy készítsd, hogy képernyőmentésen a releváns részek legyenek csak (pl.ezek ne: VS Solution Explorer, debuggolást segítő als és oldalsó panelek, vagy akár a Windows tálca/taskbar).
+    - A vágást úgy készítsd, hogy képernyőmentésen a releváns részek legyenek csak (pl.ezek ne: VS Solution Explorer, debuggolást segítő alsó és oldalsó panelek, vagy akár a Windows tálca/taskbar).
 
 ## Feladat 4 – A versenyzők indítása a depóból
 
@@ -451,7 +451,7 @@ Feladat: módosítsd úgy a `MainWindow.UpdateBikeUI` függvényt, hogy a `Dispa
     - Indítsd el az alkalmazást. Ha szükséges, méretezd át kisebbre, hogy ne foglaljon sok helyet a képernyőn,
     - a „háttérben” a Visual Studio legyen, a `MainWindow.xaml.cs` megnyitva,
     - VS-ben zoomolj úgy, hogy a `MainWindow` osztály `UpdateBikeUI` függvénye látható legyen, az előtérben pedig az alkalmazásod ablaka.
-    - A vágást úgy készítsd, hogy képernyőmentésen a releváns részek legyenek csak (pl.ezek ne: VS Solution Explorer, debuggolást segítő panalek, vagy akár a Windows tálca/taskbar).
+    - A vágást úgy készítsd, hogy képernyőmentésen a releváns részek legyenek csak (pl.ezek ne: VS Solution Explorer, debuggolást segítő panelek, vagy akár a Windows tálca/taskbar).
 
 !!! warning "Hasonló játék megvalósítása a gyakorlatban"
     Lényeges, hogy egy hasonló "játék" megvalósítására nem szoktunk szálakat indítani: a biciklik léptetésére egy timer sokkal praktikusabb lenne, mert az egész játék egyszálú maradhatna, és elkerülhetnénk számos, a többszálúságból adódó nehézséget (jelen feladat keretében a célunk értelemszerűen pont a többszálúság témakörének gyakorlása volt).
