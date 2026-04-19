@@ -471,7 +471,7 @@ Az előző pontban megoldottuk a jelzést, ám ez önmagában nem sokat ér, his
 
     Kölcsönösen egymásra várnak végtelen ideig, ez a holtpont/deadlock klasszikus esete.
 
-    Próbálkozhatnánk egy időkorlát megadásával (ms) a várakozásnál (ez nem kell megvalósítani):
+    Próbálkozhatnánk egy időkorlát megadásával (ms) a várakozásnál (ezt nem kell megvalósítani):
 
     ```cs
     if (_hasData.WaitOne(100))
