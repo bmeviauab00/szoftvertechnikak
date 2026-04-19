@@ -3021,11 +3021,11 @@ Továbbá lehetőségünk van az <code>ObservableProperty</code> attribútum has
 </code></pre></div>
 </li>
 </ul>
-<p>Lényeges, hogy a korábbi <code>BooksPageViewModel</code> megoldásból töröljük a tagváltozókat (a _booksService kivételével), a property-ket (hiszen ezeket a kódgenerátor hozza létre), a <code>PropertyChanged</code> eseményt és a <code>SetProperty</code> műveletet. <img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> az átalakítás után buildeljünk egyet (pl. Build/Build solution menü): enélkül a fordítási hibák nem szűnnek meg, a Visual Studio számos hibát jelez a kódban. Ez logikus is, hiszen az adatkötött propertyket a kódgenerátor csak a build során generálja le (egy "rejtett" állományban).</p>
+<p>Lényeges, hogy a korábbi <code>BooksPageViewModel</code> megoldásból töröljük a tagváltozókat (a _booksService kivételével), a property-ket (hiszen ezeket a kódgenerátor hozza létre), a <code>PropertyChanged</code> eseményt és a <code>SetProperty</code> műveletet. <img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Az átalakítás után buildeljünk egyet (pl. Build/Build solution menü): enélkül a fordítási hibák nem szűnnek meg, a Visual Studio számos hibát jelez a kódban. Ez logikus is, hiszen az adatkötött propertyket a kódgenerátor csak a build során generálja le (egy "rejtett" állományban).</p>
 <p>Ellenőrizhetjük, hogy milyen kód generálódott, ha például <span class="keys"><kbd class="key-f12">F12</kbd></span>-vel navigálunk a <code>Genres</code> tulajdonságra (a xaml fájlban az <code>ItemsSource</code> adatkötésnél a kurzorral a <code>ViewModel.Genres</code>-en állva).</p>
 <div class="admonition tip">
 <p class="admonition-title">ObservableProperty attribútum property-re</p>
-<p>Az <code>ObservableProperty</code> attribútumot mezők helyett property-kre is alkalmazhatjuk egy <a href="https://devblogs.microsoft.com/dotnet/announcing-the-dotnet-community-toolkit-840/#partial-properties-support-for-the-mvvm-toolkit-🎉">új C# nyelvi funkció segítéségével</a>, ehhez viszont preview C# verziót kellene használnunk, így ezt idén még kihagyjuk.</p>
+<p>Az <code>ObservableProperty</code> attribútumot mezők helyett property-kre is alkalmazhatjuk egy <a href="https://devblogs.microsoft.com/dotnet/announcing-the-dotnet-community-toolkit-840/#partial-properties-support-for-the-mvvm-toolkit-🎉">viszonylag új C# nyelvi funkció segítségével</a>, de ezt most kihagyjuk.</p>
 </div>
 <p><strong>Próbáljuk ki!</strong></p>
 <p>Azt tapasztaljuk, hogy a könyvek betöltődnek, de a műfaj kiválasztásakor nem töltődnek be újra a könyvek.
@@ -3170,8 +3170,8 @@ Esetünkben a <code>NotifyCanExecuteChangedFor</code>-ral kössük össze a <cod
         </path>
       </svg>
     </span>
-    <span title="2026. április 19. 11:26:43">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. április 19. 11:26:43 CEST"><span class="timeago" datetime="2026-04-19T11:26:43+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. április 19. 11:26:43 CEST">2026-04-19</span>
+    <span title="2026. április 19. 14:24:15">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. április 19. 14:24:15 CEST"><span class="timeago" datetime="2026-04-19T14:24:15+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. április 19. 14:24:15 CEST">2026-04-19</span>
     </span>
   </span>
 
