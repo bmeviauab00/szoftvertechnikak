@@ -9,7 +9,7 @@ Az önálló/házi feladatokra vonatkozó pontos követelmények Moodle-ben, a [
 - [2. HF - Nyelvi eszközök](../hazi/2-nyelvi-eszkozok/index.md)
 - [3. HF - Felhasználói felület kialakítása](../hazi/3-felhasznaloi-felulet-kialakitasa/index.md)
 - [4. HF - Többszálú alkalmazások fejlesztése](../hazi/4-tobbszalu-alkalmazasok-fejlesztese/index.md)
-- [5. HF - MVVM](../hazi/meghirdetes-elott.md)
+- [5. HF - MVVM](../hazi/5-mvvm/index.md)
 - [6. HF - Tervezési minták](../hazi/meghirdetes-elott.md)
 - [IMSc HF - Liftrendszer](../hazi/meghirdetes-elott.md)
 
