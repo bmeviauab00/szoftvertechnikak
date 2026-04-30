@@ -113,7 +113,7 @@ nav:
       - '4. HF - Többszálú alkalmazások fejlesztése': hazi/4-tobbszalu-alkalmazasok-fejlesztese/index.md
       - '5. HF - MVVM': hazi/5-mvvm/index.md
       - '6. HF - Tervezési minták': hazi/6-tervezesi-mintak/meghirdetes-elott.md
-      - 'IMSc HF - Liftrendszer': hazi/imsc-liftsystem/meghirdetes-elott.md
+      - 'IMSc HF - Liftrendszer': hazi/imsc-liftsystem/index.md
       - 'Fejlesztőkörnyezet': hazi/fejlesztokornyezet/index.md
   - "English course labs":
       - labor/1-model-es-kod-kapcsolata/index_eng.md
@@ -131,7 +131,6 @@ nav:
       - '4. HW - Developing multithreaded applications': hazi/4-tobbszalu-alkalmazasok-fejlesztese/index_eng.md
       - '5. HW - MVVM': hazi/5-mvvm/index_eng.md
       - '6. HW - Design patterns': hazi/6-tervezesi-mintak/meghirdetes-elott_eng.md
-      - 'IMSc HW - Liftsystem': hazi/imsc-liftsystem/meghirdetes-elott_eng.md
       - 'Development environment': hazi/fejlesztokornyezet/index_eng.md   
   - "Deutschkurs-Labore":
       - labor/1-model-es-kod-kapcsolata/index_ger.md
