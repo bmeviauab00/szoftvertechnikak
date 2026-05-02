@@ -24,9 +24,9 @@ Die erforderliche Entwicklungsumgebung wird [hier](../fejlesztokornyezet/index_g
 !!! warning "Entwicklungsumgebung für WinUI3-Entwicklung"
     Wie in den vorherigen Übungen müssen zusätzliche Komponenten installiert werden. Auf der [obigen](../fejlesztokornyezet/index_ger.md) Seite wird erwähnt, dass Sie Visual Studio Workload für die ".NET-Desktop-Entwicklung" installieren müssen, und es gibt einen Abschnitt "WinUI-Unterstützung" am unteren Ende der Seite, Sie sollten den Schritten dort folgen!
 
-## Das Verfahren für die Einreichung
+## Das Verfahren für die Abgabe
 
-- Der grundlegende Prozess ist derselbe wie zuvor. Erstellen Sie mit GitHub Classroom ein Repository für sich selbst. Sie finden die Einladungs-URL in Moodle (Sie können sie sehen, indem Sie auf den Link*"GitHub classroom links for homework*" auf der Startseite des Fachs klicken). Es ist wichtig, dass Sie die richtige Einladungs-URL für diese Hausaufgabe verwenden (jede Hausaufgabe hat eine andere URL). Klonen Sie das resultierende Repository. Dazu gehört auch die erwartete Struktur der Lösung. Nachdem Sie die Aufgaben erledigt haben, übergeben Sie Ihre Lösung alt und drücken Sie sie alt.
+- Der grundlegende Prozess ist derselbe wie zuvor. Erstellen Sie mit GitHub Classroom ein Repository für sich selbst. Sie finden die Einladungs-URL in Moodle (Sie können sie sehen, indem Sie auf den Link*"GitHub classroom links for homework*" auf der Startseite des Fachs klicken). Es ist wichtig, dass Sie die richtige Einladungs-URL für diese Hausaufgabe verwenden (jede Hausaufgabe hat eine andere URL). Klonen Sie das resultierende Repository. Dazu gehört auch die erwartete Struktur der Lösung. Nachdem Sie die Aufgaben erledigt haben, committen Sie Ihre Lösung und pushen Sie sie.
 - Um mit den geklonten Dateien zu arbeiten, öffnen Sie `MvvmLab.sln`.
 - :exclamation: In den Übungen werden Sie aufgefordert, **einen Screenshot von** einem Teil Ihrer Lösung zu machen, da dies beweist, dass Sie Ihre Lösung selbst erstellt haben. **Der erwartete Inhalt der Screenshots wird immer in der Aufgabe angegeben.** Screenshots sollten als Teil der Lösung eingereicht werden, legen Sie sie in den Stammordner Ihres Repositorys (neben neptun.txt). Die Screenshots werden dann zusammen mit dem Inhalt des Git-Repositorys auf GitHub hochgeladen. Da das Repository privat ist, ist es für niemanden außer den Lehrkräften sichtbar. Wenn Sie Inhalte auf dem Screenshot haben, die Sie nicht hochladen möchten, können Sie diese aus dem Screenshot herausschneiden.
 - :exclamation: Diese Aufgabe enthält keinen sinnvollen Pre-Checker: Sie wird nach jedem Push ausgeführt, prüft aber nur, ob neptun.txt gefüllt ist. Die inhaltliche Überprüfung wird von den Laborleitern nach Ablauf der Frist durchgeführt.
@@ -40,7 +40,7 @@ Die erforderliche Entwicklungsumgebung wird [hier](../fejlesztokornyezet/index_g
 
 Der Ausgangszustand baut auf dem Endzustand von Labor 5 auf, allerdings mit einer wichtigen Änderung.
 
-Wenn die Anwendung gestartet wird, wird eine Seite des Typs `ShellPage` erstellt, die sich im Ordner `Views` des Projekts befindet. Es enthält eine `NavigationView`(aka. Hamburger Menü), das in unserem Fall die Navigation übernimmt. Sie kann `NavigationViewItem`enthalten, die Menüpunkte darstellen und in der Anwendung immer verfügbar sind. Wenn Sie auf die Menüpunkte innerhalb von `Frame`klicken, wird die entsprechende Seite mit Hilfe der Hilfsklassen im Projekt aufgerufen, die auch die Navigation zurück zur vorherigen Seite unterstützt.
+Wenn die Anwendung gestartet wird, wird eine Seite des Typs `ShellPage` erstellt, die sich im Ordner `Views` des Projekts befindet. Es enthält eine `NavigationView` (aka. Hamburger-Menü), die in unserem Fall die Navigation übernimmt. Sie kann `NavigationViewItem` enthalten, die Menüpunkte darstellen und in der Anwendung immer verfügbar sind. Wenn Sie auf die Menüpunkte klicken, wird die entsprechende Seite innerhalb des `Frame` mit Hilfe der Hilfsklassen im Projekt aufgerufen, die auch die Navigation zurück zur vorherigen Seite unterstützt.
 
 ## 1. Aufgabe - Rezepte als Favoriten verwalten
 
@@ -90,20 +90,20 @@ Bei der Verwendung ist zu beachten, dass die Funktionen generisch sind, so dass 
 
 Mit Hilfe der obigen `ILocalSettingsService` speichern wir eine Liste der bevorzugten Rezept-IDs unter einem bestimmten Schlüssel.
 
-Wichtig ist auch, dass die Funktionen `Task`zurückgeben, also asynchron sind. Sie müssen also mit dem Schlüsselwort `await` aufgerufen werden, und die aufrufende Funktion muss ebenfalls asynchron sein (für einen detaillierteren Satz von Regeln siehe den zugehörigen Abschnitt "5. MVVM" Laborbeschreibung).
+Wichtig ist auch, dass die Funktionen `Task` zurückgeben, also asynchron sind. Sie müssen also mit dem Schlüsselwort `await` aufgerufen werden, und die aufrufende Funktion muss ebenfalls asynchron sein (für einen detaillierteren Satz von Regeln siehe den zugehörigen Abschnitt "5. MVVM" Laborbeschreibung).
 
 Die Verwaltung der Favoriten sollte in der Verantwortung der Schnittstelle `IRecipeService` und der Klasse `RecipeService` liegen, die sie implementiert. 
 
-Der erste Schritt besteht darin, `RecipeService` ein Objekt zur Verfügung zu stellen, das die Schnittstelle `ILocalSettingsService` implementiert, die es in seiner Implementierung verwenden kann, um seine bevorzugten Rezeptbezeichnungen zu speichern und abzurufen. Unser Ziel ist es, dieses Implementierungsobjekt in `RecipeService`als Schnittstelle zu `ILocalSettingsService` **zu erhalten** und zu **speichern**, wir wollen hier keine Abhängigkeiten von der spezifischen Implementierung einführen. Dazu wird der bereits im Labor verwendete DI-Behälter verwendet.
+Der erste Schritt besteht darin, `RecipeService` ein Objekt zur Verfügung zu stellen, das die Schnittstelle `ILocalSettingsService` implementiert, die es in seiner Implementierung verwenden kann, um seine bevorzugten Rezeptbezeichnungen zu speichern und abzurufen. Unser Ziel ist es, dieses Implementierungsobjekt in `RecipeService` als Schnittstelle zu `ILocalSettingsService` **zu erhalten** und zu **speichern**, wir wollen hier keine Abhängigkeiten von der spezifischen Implementierung einführen. Dazu wird der bereits im Labor verwendete DI-Behälter verwendet.
 
 !!! tip
-    Bei der Umsetzung sollten wir `ILocalSettingsService`in `RecipeService`genauso behandeln, wie wir `IRecipeService`in `MainPageViewModel`im Labor behandelt haben.
+    Bei der Umsetzung sollten wir `ILocalSettingsService` in `RecipeService` genauso behandeln, wie wir `IRecipeService` in `MainPageViewModel` im Labor behandelt haben.
 
 
 Nachdem Sie die obigen Vorbereitungen getroffen haben, implementieren Sie die notwendige Funktionalität in der Klasse `RecipeService`!  Hier finden Sie einige Hinweise dazu.
 
 
-??? success erfolg "RezeptService vase"
+??? success "RezeptService-Rahmen"
 
     Der `RecipeService` (und die Schnittstelle) sollten die folgenden neuen Eigenschaften haben:
 
@@ -135,7 +135,7 @@ Auf der Rezeptseite (unter `RecipeDetailPage`) sollten Sie eine Schaltfläche mi
 
 === "Aus Favoriten entfernen" ![Aus Favoriten entfernen](images/remove_from_favorites.png)
 
-Dieser true/false-Zustand und die ändernde Aktion sollten in `RecipeDetailPageViewModel`gespeichert/implementiert werden (da dies per Definition die Aufgabe des ViewModels ist) und dann mit dem Zustand der Schaltfläche und dem Befehl der Aktion datengebunden werden. Achten Sie darauf, das MVVM-Modell zu befolgen!
+Dieser true/false-Zustand und die ändernde Aktion sollten in `RecipeDetailPageViewModel` gespeichert/implementiert werden (da dies per Definition die Aufgabe des ViewModels ist) und dann mit dem Zustand der Schaltfläche und dem Befehl der Aktion datengebunden werden. Achten Sie darauf, das MVVM-Modell zu befolgen!
 
 ??? success "RecipeDetailPageViewModel modification"
 
@@ -158,7 +158,7 @@ Dieser true/false-Zustand und die ändernde Aktion sollten in `RecipeDetailPageV
 
     Auf der "RecipeDetailPage" sollte folgendes geändert werden:
 
-    1. Fügen Sie oben auf der Seite eine neue Schaltfläche hinzu, mit einem "SymbolSymbol" und einem "Textblock" nebeneinander.
+    1. Fügen Sie oben auf der Seite eine neue Schaltfläche hinzu, mit einem `SymbolIcon` und einem `TextBlock` nebeneinander.
           1. Für die Eigenschaft `SymbolIcon` von `Symbol` sind die Enum-Werte `Symbol.SolidStar` und `Symbol.OutlineStar` für die Sternsymbole zu verwenden.
     2. Der Schaltflächenbefehl muss mit dem Befehl im ViewModel datengebunden sein.
 
@@ -169,7 +169,7 @@ Dieser true/false-Zustand und die ändernde Aktion sollten in `RecipeDetailPageV
     - Im "RecipeDetailPageViewModel" werden die für die Ansicht erforderlichen Daten gespeichert, indem neue Ergebniseigenschaften eingeführt werden (die für die Ansicht erforderlichen Eigenschaftstypen sind "Symbol" und "String") und die Daten an sie gebunden werden.
         - Dies ist wahrscheinlich die einfachste Lösung, wenn Sie keinen separaten Konverter schreiben oder die Datenbindungen "verkomplizieren" wollen, aber es ist auch die am wenigsten wartbare, da die ViewModel-Ansicht ansichtsspezifische Daten enthält, die separat gepflegt werden müssen, wenn sich die bool-Eigenschaft ändert.
 
-!!! example "Aufgabe 1.2. einzureichen"
+!!! example "Aufgabe 1.2. - ABGABE"
     Fügen Sie einen Screenshot des Antrags ein, auf dem Sie eine Schaltfläche zum Markieren als Favorit auf der Detailseite sehen (`f1.2.1.png`)
 
     Fügen Sie einen Screenshot der App ein, auf der die Schaltfläche "Aus Favoriten entfernen" auf der Detailseite eines bereits als Favorit markierten Rezepts erscheint (`f1.2.2.png`)
@@ -185,14 +185,14 @@ Um zur Favoritenseite zu navigieren, sind mehrere Schritte erforderlich, die fü
 
         ```xml
         <ItemGroup>
-            <Keine Remove="ViewsFavoritesPage.xaml" />
-        </EinzelteilGruppe>
+            <None Remove="ViewsFavoritesPage.xaml" />
+        </ItemGroup>
         ```
 
         ```xml
-        <Seite Update="ViewsFavoritesPage.xaml">
+        <Page Update="ViewsFavoritesPage.xaml">
             <Generator>MSBuild:Compile</Generator>
-        </Seite>
+        </Page>
         ```
 
 2. Erstellen Sie die Klasse `FavoritesPageViewModel` im Ordner `ViewModels` 
@@ -215,7 +215,7 @@ Um zur Favoritenseite zu navigieren, sind mehrere Schritte erforderlich, die fü
     Configure<FavoritesPageViewModel, FavoritesPage>(Pages.Favorites);
     ```
 
-5. Fügen Sie unter `ShellPage`eine neue `NavigationViewItem`bis `NavigationView`für die Favoritenseite hinzu:
+5. Fügen Sie unter `ShellPage` ein neues `NavigationViewItem` zur `NavigationView` für die Favoritenseite hinzu:
 
     ```xml
     <NavigationViewItem helpers:NavigationHelper.NavigateTo="Favorites" Content="Favorites">
@@ -234,15 +234,15 @@ Die Favoritenseite (`FavoritesPage`) sollte nach dem Vorbild von `MainPage` gest
 
 ![Favoriten Seite](images/favorites_page.png)
 
-Erstellen Sie ein ViewModel (`FavoritesPageViewModel`) basierend auf `MainPageViewModel` und rufen Sie die Liste der Lieblingsrezepte ( `IRecipeService`) während der Navigation (`GetFavoriteRecipesAsync`) von ab und speichern Sie sie in einer geeigneten Eigenschaft, z.B. generated. Da wir die Rezepte hier nicht gruppieren, müssen Sie mit `RecipeHeader`statt mit `RecipeGroup`arbeiten.
+Erstellen Sie ein ViewModel (`FavoritesPageViewModel`) basierend auf `MainPageViewModel` und rufen Sie die Liste der Lieblingsrezepte von `IRecipeService` während der Navigation (`GetFavoriteRecipesAsync`) ab und speichern Sie sie in einer geeigneten Eigenschaft. Da wir die Rezepte hier nicht gruppieren, müssen Sie mit `RecipeHeader` statt mit `RecipeGroup` arbeiten.
 
-!!! example "1.4. exercise REQUIRED"
+!!! example "Aufgabe 1.4. - ABGABE"
     Einfügen eines Screenshots der Anwendung mit einer Liste von Favoriten (`f1.4.png`)
 
-## Vorlegen bei
+## Abgabe
 
 Checkliste für Wiederholungen:
 
 - Es ist wichtig, dass nur die Aufgaben akzeptiert werden, die Sie vollständig gemacht haben und die die Anforderungen in jeder Hinsicht erfüllen. 
-- Sie müssen natürlich Ihre eigene Arbeit eingeben (da sie bewertet wird).
-- Nicht nur das Quellcode, sondern auch die erwartete Bildschirmfotos sollen eingegeben werden.
+- Sie müssen natürlich Ihre eigene Arbeit abgeben (da sie bewertet wird).
+- Nicht nur den Quellcode, sondern auch die erwarteten Bildschirmfotos sollen abgegeben werden.
