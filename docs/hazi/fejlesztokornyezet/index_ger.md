@@ -11,7 +11,7 @@ Für die Hausaufgaben während des Semesters muss die Entwicklungsumgebung **Vis
     - Sie unterstützen nicht die Entwicklung von .NET-Anwendungen mit der Benutzeroberfläche *WinUI3* (einige Hausaufgaben ab Hausaufgabe 3 bauen darauf auf).
     - Die Laborunterlagen und die Hausaufgaben sind für eine unterstützte Entwicklungsumgebung geschrieben, sodass wir in den Laboren und zu Hause dieselbe vertraute Umgebung verwenden.
 
-### Visual Studio Ausgabe-ök
+### Visual Studio Editionen
 
 Es gibt verschiedene Editionen von Visual Studio:
 
@@ -23,21 +23,21 @@ Es gibt verschiedene Editionen von Visual Studio:
 In der ersten Vorlesung des Kurses werden kurz die verschiedenen Versionen von .NET (.NET Framework 4.x, .NET 5+ (früher .NET Core) usw.) behandelt. Wir werden .NET 10 verwenden, um die Probleme während des Semesters zu lösen. Visual Studio installiert dies, aber Sie müssen den ".NET Desktop Development" Visual Studio Workload installieren:
 
 1. Starten Sie das Visual Studio-Installationsprogramm (z. B. durch Eingabe von "Visual Studio Installer" im Windows-Startmenü).
-2. Klicken Sie auf die Schaltfläche Ändern
-3. Vergewissern Sie sich in dem nun erscheinenden Fenster, dass die Karte **".NET-Desktop-Entwicklung"** aktiviert ist.
-4. Wenn nicht, entfernen Sie das Häkchen und klicken Sie unten rechts auf *Ändern*, um es zu installieren.
+2. Klicken Sie auf die Schaltfläche Ändern.
+3. Vergewissern Sie sich in dem nun erscheinenden Fenster, dass die Kachel **".NET-Desktop-Entwicklung"** angekreuzt ist.
+4. Wenn nicht, setzen Sie das Häkchen und klicken Sie unten rechts auf *Ändern*, um es zu installieren.
 
 #### Unterstützung von Klassendiagrammen
 
 Für bestimmte Hausaufgaben (sogar für die erste) benötigen Sie die Unterstützung von Visual Studio Class Diagram. Diese kann unter Visual Studio wie folgt installiert werden:
 
 1. Starten Sie das Visual Studio-Installationsprogramm (z. B. durch Eingabe von "Visual Studio Installer" im Windows-Startmenü).
-2. Klicken Sie auf die Schaltfläche Ändern
+2. Klicken Sie auf die Schaltfläche Ändern.
 3. Wählen Sie in dem nun erscheinenden Fenster die Registerkarte "Einzelne Komponenten"
-4. Geben Sie in das Suchfeld "Klassendesigner" ein und vergewissern Sie sich, dass "Klassendesigner" in der gefilterten Liste nicht angekreuzt ist.
-5. Wenn nicht, entfernen Sie das Häkchen und klicken Sie unten rechts auf *Ändern*, um es zu installieren.
+4. Geben Sie in das Suchfeld "Klassendesigner" ein und vergewissern Sie sich, dass "Klassendesigner" in der gefilterten Liste angekreuzt ist.
+5. Wenn nicht, setzen Sie das Häkchen und klicken Sie unten rechts auf *Ändern*, um es zu installieren.
 
-    ![TableDiagram Unterstützung Installation](images/install-vs-class-diagram.png)
+    ![Klassendiagramm Unterstützung Installation](images/install-vs-class-diagram.png)
 
 #### WinUI-Unterstützung
 
@@ -45,7 +45,7 @@ Für Aufgaben, die sich auf XAML/WinUI-Technologien beziehen (ab Hausaufgabe 3),
 
 1. Der "Entwicklermodus" muss auf dem Computer aktiviert sein. Suchen Sie im Windows-Startmenü nach "Entwicklereinstellungen" (je nachdem, ob Sie ein englisches oder ungarisches Windows verwenden).
 
-2. Vergewissern Sie sich im Visual Studio-Installationsprogramm, dass der ".NET Desktop Development"-Workload und der „WinUI application development“-Workload installiert sind (falls nicht, entfernen Sie die Markierung und installieren Sie ihn)
+2. Vergewissern Sie sich im Visual Studio-Installationsprogramm, dass der ".NET Desktop Development"-Workload und der „WinUI application development“-Workload installiert sind (falls nicht, setzen Sie die Markierung und installieren Sie ihn).
 
 3. Windows-SDK installieren
 
