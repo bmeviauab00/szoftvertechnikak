@@ -2,7 +2,7 @@
 authors: bzolka
 ---
 
-# 5. HA - Verwendung der MVVM-Muster und des MVVM-Toolkits
+# 5. HA - Verwendung des MVVM-Musters und des MVVM-Toolkits
 
 ## Einführung
 
@@ -15,31 +15,31 @@ Durch das Durcharbeiten des zugehörigen Vorlesungsmaterials können die Aufgabe
 
 Das Ziel der Hausaufgabe:
 
-- Üben Sie die Verwendung der MVVM-Muster
+- Üben Sie die Verwendung des MVVM-Musters
 - NuGet-Referenzen verwenden
 - Kennenlernen der Grundlagen des MVVM-Toolkits
 - Üben von XAML-Techniken
 
-Die erforderliche Entwicklungsumgebung wird [hier](.../fejlesztokornyezet/index_ger.md) beschrieben, identisch mit Hausaufgabe 3 (XAML-Grundlagen).
+Die erforderliche Entwicklungsumgebung wird [hier](../fejlesztokornyezet/index_ger.md) beschrieben, identisch mit Hausaufgabe 3 (XAML-Grundlagen).
 
 ## Das Verfahren für die Einreichung
 
-Auf das Moodle soll ein ZIP-Archiv hochgeladen werden, das die folgenden Anforderungen entspricht:
+Auf Moodle soll ein ZIP-Archiv hochgeladen werden, das den folgenden Anforderungen entspricht:
 
-- Die Aufgaben sind aufeinander basiert, deshalb ist es genügend den resultierenden Quellcode am Ende der letzten Aufgabe hochzuladen (Visual Studio Solution Verzeichnis). Der Name des Verzeichnisses soll "MVVM_NEPTUN" sein (wo NEPTUN Ihre Neptun-Code ist).
-- Wir erwarten keine schriftliche Begründung oder Beschreibung, aber die komplexe Codeteile sollen mit Kommentaren versehen werden
-- Das ZIP-Archiv darf die Ausgangsdaten (.exe) und die temporären Dateien nicht enthalten. Um diese Bestände zu löschen, Visual Studio soll geöffnet werden und in dem Solution Explorer Rechtsklick an dem „Clean Solution” Menüelement. Das manuelle Löschen von den "obj" und "bin" Verzeichnissen kann auch nötig sein.
-- :exclamation: In den Aufgaben werden Sie aufgefordert, einen **Screenshot** von einem Teil Ihrer Lösung zu machen, da dies beweist, dass Sie Ihre Lösung selbst erstellt haben. **Der erwartete Inhalt der Screenshots ist immer in der Aufgabe angegeben.** Die Screenshots sollten als Teil der Lösung eingegeben, also innerhalb dem ZIP-Archiv auf das Moodle hochgeladen werden.
+- Die Aufgaben bauen aufeinander auf, deshalb genügt es, den resultierenden Quellcode am Ende der letzten Aufgabe hochzuladen (Visual Studio Solution Verzeichnis). Der Name des Verzeichnisses soll "MVVM_NEPTUN" sein (wobei NEPTUN Ihr Neptun-Code ist).
+- Wir erwarten keine schriftliche Begründung oder Beschreibung, aber die komplexen Codeteile sollen mit Kommentaren versehen werden.
+- Das ZIP-Archiv darf die Ausgabedateien (.exe) und die temporären Dateien nicht enthalten. Um diese zu löschen, soll Visual Studio geöffnet werden und im Solution Explorer mit Rechtsklick das „Clean Solution”-Menüelement gewählt werden. Das manuelle Löschen der Verzeichnisse "obj" und "bin" kann ebenfalls nötig sein.
+- :exclamation: In den Aufgaben werden Sie aufgefordert, einen **Screenshot** von einem Teil Ihrer Lösung zu machen, da dies beweist, dass Sie Ihre Lösung selbst erstellt haben. **Der erwartete Inhalt der Screenshots ist immer in der Aufgabe angegeben.** Die Screenshots sollten als Teil der Lösung abgegeben, also innerhalb des ZIP-Archivs auf Moodle hochgeladen werden.
 Wenn Sie Inhalte im Screenshot haben, die Sie nicht hochladen möchten, können Sie diese aus dem Screenshot ausblenden.
 
 ## Bedingungen
 
-:warning: **Obligatorische Verwendung der MVVM-Muster!**  
+:warning: **Obligatorische Verwendung des MVVM-Musters!**  
   In dieser Hausaufgabe üben wir das MVVM-Muster, daher ist das MVVM-Muster für die Lösung der Aufgaben obligatorisch erforderlich. Andernfalls wird die Bewertung der Aufgaben verweigert.
 
 ## Aufgabe 0 - Überblick über den Ausgangszustand
 
-Der Ausgangszustand ist im Grunde derselbe wie die Endzustand von der Laborübung [3. Entwurf der Benutzeroberfläche](../../labor/3-users-felulet/index_ger.md). Also eine solche Anwendung, die die Speicherung der Daten von Personen in einer Liste ermöglicht. Sie enthält eine kleinere Änderung im Vergleich zum Endzustand des Labors. Im Labor war die vollständige Beschreibung der Oberfläche in `MainWindow.xaml` (und die zugehörige Code-Behind-Datei) verfügbar. Der Unterschied zu dieser ursprünglichen Lösung besteht darin, dass sie nach `PersonListPage.xaml` (und in den Code dahinter) im Ordner `Views` verschoben wurde.  `PersonListPage` ist keine `Window`, sondern eine von `Page` abgeleitete Klasse (siehe den Code hinter der Datei). Aber sonst hat sich nichts geändert! Wie der Name schon sagt, stellt `Page` eine "Seite" in der Anwendung dar: Sie kann nicht selbst angezeigt werden, sondern muss z. B. in einem Fenster platziert werden. Der Vorteil dieses Fensters ist, dass es möglich ist, zwischen den Seiten (verschiedene `Page` Nachkommen) zu navigieren, indem man die entsprechende Navigation verwendet. Wir werden das nicht ausnutzen, wir werden nur eine Seite haben. Der Zweck der Einführung dieser Seite war nur zu veranschaulichen, dass in der MVVM-Architektur, Ansichten können nicht nur mit `Window` (full window), sondern auch mit Objekten wie `Page` implementiert werden. 
+Der Ausgangszustand ist im Grunde derselbe wie der Endzustand der Laborübung [3. Entwurf der Benutzeroberfläche](../../labor/3-users-felulet/index_ger.md). Also eine solche Anwendung, die die Speicherung der Daten von Personen in einer Liste ermöglicht. Sie enthält eine kleinere Änderung im Vergleich zum Endzustand des Labors. Im Labor war die vollständige Beschreibung der Oberfläche in `MainWindow.xaml` (und die zugehörige Code-Behind-Datei) verfügbar. Der Unterschied zu dieser ursprünglichen Lösung besteht darin, dass sie nach `PersonListPage.xaml` (und in den Code dahinter) im Ordner `Views` verschoben wurde.  `PersonListPage` ist keine `Window`, sondern eine von `Page` abgeleitete Klasse (siehe den Code hinter der Datei). Aber sonst hat sich nichts geändert! Wie der Name schon sagt, stellt `Page` eine "Seite" in der Anwendung dar: Sie kann nicht selbst angezeigt werden, sondern muss z. B. in einem Fenster platziert werden. Der Vorteil dieses Fensters ist, dass es möglich ist, zwischen den Seiten (verschiedene `Page` Nachkommen) zu navigieren, indem man die entsprechende Navigation verwendet. Wir werden das nicht ausnutzen, wir werden nur eine Seite haben. Der Zweck der Einführung dieser Seite war nur zu veranschaulichen, dass in der MVVM-Architektur Ansichten nicht nur mit `Window` (full window), sondern auch mit Objekten wie `Page` implementiert werden können. 
 
 Da alles von `MainWindow` nach `PersonListPage` verschoben wurde, gibt es auf `MainWindow.xaml` nichts anderes als eine Kopie eines solchen `PersonListPage` Objekts:
 
@@ -119,7 +119,7 @@ Dieser Code ergibt nach einer Übersetzung im Wesentlichen die gleiche Lösung w
 
 Da viel weniger Code geschrieben werden muss, verwenden wir in der Praxis die auf dem MVVM-Toolkit basierende Lösung (aber Sie müssen auch die manuelle Lösung kennen, damit Sie verstehen können, was hinter den Kulissen geschieht).
 
-!!! example "EINGABE"
+!!! example "ABGABE"
     Machen Sie einen Screenshot mit dem Namen `f1b.png` wie folgt:
 
     - Starten Sie die App. Verkleinern Sie sie gegebenenfalls, damit sie nicht zu viel Platz auf dem Bildschirm einnimmt,
@@ -133,8 +133,8 @@ Im Folgenden werden wir die Architektur unserer Anwendung so anpassen, dass sie 
 
 **Aufgabe**: Arbeiten Sie das entsprechende Vorlesungsmaterial durch (am Ende des WinUI-Abschnitts):
  
- * Verstehen Sie der grundlegenden Konzepte des MVVM-Musters.
- * Der vollständige Code für die Beispiele in den Folien ist im Ordner "04-05 WinUI\DancerProfiles" ("RelaxedMVVM" und "StrictMVVM") von [GitHub Repository](https://github.com/bmeviauab00/eloadas-demok) verfügbar und kann Ihnen helfen, die zu verstehen und die Aufgaben später zu lösen. 
+ * Verstehen Sie die grundlegenden Konzepte des MVVM-Musters.
+ * Der vollständige Code für die Beispiele in den Folien ist im Ordner "04-05 WinUI\DancerProfiles" ("RelaxedMVVM" und "StrictMVVM") von [GitHub Repository](https://github.com/bmeviauab00/eloadas-demok) verfügbar und kann Ihnen helfen, sie zu verstehen und die Aufgaben später zu lösen. 
 
 Was bedeutet das MVVM-Muster für unser Beispiel:
 
@@ -162,12 +162,12 @@ Aufgabe: Ändern Sie die bestehende Logik so, dass sie dem MVVM-Muster folgt und
 
 Andere wichtige Modifikationen:
 
-* Die aktuellen Namen der Ereignishandler von `Click` in ViewModel lauten `AddButton_Click`, `IncreaseButton_Click` und `DecreaseButton_Click`. Das ist nicht glücklich. Im ViewModel denken wir "semantisch" nicht im Sinne von Ereignishandlern. Stattdessen werden im Sinne von Modifizierungsoperationen denken, die den Zustand des ViewModel ändern. Also statt dem oberen Namen werden wir die folgenden, sehr viel geignetere und aussagekräftigere Namen verwenden:  `AddPersonToList`, `IncreaseAge` und `DecreaseAge`. Benennen Sie die Funktionen entsprechend um! Natürlich müssen Sie diese noch an die `Click` Ereignisse in der XAML-Datei binden.
+* Die aktuellen Namen der Ereignishandler von `Click` in ViewModel lauten `AddButton_Click`, `IncreaseButton_Click` und `DecreaseButton_Click`. Das ist nicht glücklich. Im ViewModel denken wir "semantisch" nicht im Sinne von Ereignishandlern. Stattdessen werden wir im Sinne von Modifizierungsoperationen denken, die den Zustand des ViewModel ändern. Also statt der obigen Namen werden wir die folgenden, sehr viel geeigneteren und aussagekräftigeren Namen verwenden:  `AddPersonToList`, `IncreaseAge` und `DecreaseAge`. Benennen Sie die Funktionen entsprechend um! Natürlich müssen Sie diese noch an die `Click` Ereignisse in der XAML-Datei binden.
 * Die Parameterliste für die oben genannten Funktionen lautet zunächst "`object sender, RoutedEventArgs e`". Diese Parameter werden jedoch nicht für irgendetwas verwendet. Glücklicherweise ist die x:Bind-Ereignisbindung so flexibel, dass Sie auch eine Operation ohne Parameter angeben können, und das funktioniert auch problemlos. Entfernen Sie daher die oben genannten unnötigen Parameter aus den drei Funktionen unseres ViewModel. Dies führt zu einer schlankeren Lösung.
 
 Prüfen Sie, ob die Anwendung nach den Änderungen genauso funktioniert wie vorher!
 
-Was haben wir durch die Umstellung unserer bisherigen Lösung auf eine MVVM-Basis gewonnen? Die Antwort finden Sie in den Vorlesungsmaterial! Ein paar Dinge sind hervorzuheben:
+Was haben wir durch die Umstellung unserer bisherigen Lösung auf eine MVVM-Basis gewonnen? Die Antwort finden Sie im Vorlesungsmaterial! Ein paar Dinge sind hervorzuheben:
 
 * Die verschiedenen Zuständigkeiten sind gut voneinander getrennt (nicht vermischt), so dass es leichter zu verstehen ist:
     * UI-unabhängige Logik (Modell und zugehörige Klassen).
@@ -175,9 +175,9 @@ Was haben wir durch die Umstellung unserer bisherigen Lösung auf eine MVVM-Basi
     * Nur UI-Erscheinung (View)
 * Da die UI-Logik separat ist, könn(t)en Sie Unit-Tests für sie schreiben.
 
-Je komplexer eine Anwendung ist, desto mehr sind diese wahr.
+Je komplexer eine Anwendung ist, desto mehr trifft dies zu.
 
-!!! example "EINGABE"
+!!! example "ABGABE"
     Machen Sie einen Screenshot mit dem Namen `f2.png` wie folgt:
 
     - Starten Sie die App. Verkleinern Sie sie gegebenenfalls, damit sie nicht zu viel Platz auf dem Bildschirm einnimmt,
@@ -187,9 +187,9 @@ Je komplexer eine Anwendung ist, desto mehr sind diese wahr.
 
 In diesem Stadium verhält sich die Anwendung etwas komisch: Sie können die Taste "-" verwenden, um ein Alter in den negativen Bereich zu verschieben, oder die Taste "+", um es über 150 zu verschieben, oder die Taste "+Add", um eine Person mit sinnlosen Attributen hinzuzufügen. Diese Tasten sollten deaktiviert werden, wenn die von ihnen ausgelöste Aktion keinen Sinn ergibt, und aktiviert werden, wenn sie Sinn hat.
 
-Im nächsten Schritt deaktivieren/aktivieren Sie die Taset "-" entsprechend. Die Taste sollte nur aktiviert werden, wenn das Alter der Person größer als 0 ist.
+Im nächsten Schritt deaktivieren/aktivieren Sie die Taste "-" entsprechend. Die Taste sollte nur aktiviert werden, wenn das Alter der Person größer als 0 ist.
 
-Versuchen Sie, es zuerst selbst zu lösen, zumindest um die Grundlagen zu schaffen! Denken Sie unbedingt über eine Lösung mit Datenverbindung, nur diese ist akzeptabel! Wenn Sie nicht weiterkommen kann, Ihre Lösung nicht funktionieren "will", überdenken Sie, was der Grund dafür sein könnte, und konstruiren Sie Ihre Lösung wie folgt.
+Versuchen Sie, es zuerst selbst zu lösen, zumindest um die Grundlagen zu schaffen! Denken Sie unbedingt über eine Lösung mit Datenverbindung, nur diese ist akzeptabel! Wenn Sie nicht weiterkommen oder Ihre Lösung nicht funktionieren "will", überdenken Sie, was der Grund dafür sein könnte, und konstruieren Sie Ihre Lösung wie folgt.
 
 Es gibt mehrere mögliche Lösungen für dieses Problem. In allen gemeinsam ist, dass die Eigenschaft `IsEnabled` der Taste "-" in irgendeiner Weise gebunden ist. In unserer Lösung binden wir sie an eine bool-Eigenschaft, die in `PersonListPageViewModel` neu eingeführt wurde. 
 
@@ -206,7 +206,7 @@ Es gibt mehrere mögliche Lösungen für dieses Problem. In allen gemeinsam ist,
 
 Probieren wir es aus! Leider funktioniert es nicht, die "-"-Taste wird nicht deaktiviert, wenn das Alter auf 0 oder weniger gesetzt wird (z.B. durch wiederholtes Anklicken der Taste). Wenn Sie einen Haltepunkt in `IsDecrementEnabled` setzen und die Anwendung auf diese Weise starten, werden Sie feststellen, dass der Wert der Eigenschaft nur einmal vom gebundenen Steuerelement abgefragt wird, wenn die Anwendung startet: Danach können Sie auf die Taste "-" mehrmals klicken, aber es wird nicht mehr als einmal abgefragt. Probieren Sie es aus!
 
-Überdenken Sie, was die Ursache dafür ist, und lesen Sie erst dann der Leitfaden weiter!
+Überdenken Sie, was die Ursache dafür ist, und lesen Sie erst dann den Leitfaden weiter!
 
 ??? tip "Begründung"
     Wie wir bereits gelernt haben, ruft die Datenverbindung den Wert der Quelleigenschaft (in diesem Fall `IsDecrementEnabled`) nur ab, wenn sie über `INotifyPropertyChanged` über eine Änderung informiert wird! Aber in unserer Lösung gibt es jedoch, selbst wenn sich die Eigenschaft `Age` des Objekts `NewPerson` ändert, keine Benachrichtigung über die Änderung der darauf basierenden Eigenschaft `IsDecrementEnabled`!
@@ -226,9 +226,9 @@ Erarbeiten Sie eine ähnliche Lösung für die Taste "+" und die Taste "+Add"!
 * Der Name ist nur akzeptabel, wenn er mindestens ein Zeichen enthält, das kein Leerzeichen ist (um letzteres zu prüfen, verwenden Sie die statische Operation der String-Klasse `IsNullOrWhiteSpace`).
 * Der Fall, dass der Benutzer eine ungültige Zahl in die Alters-Textbox eingibt (was bei dieser Lösung nicht möglich ist), muss nicht behandelt werden.
 
-Beim Testen haben wir festgestellt, dass sich der Zustand der Taste "+Add" nicht sofort ändert, wenn wir beispielsweise den Namen in der Textbox "Name" löschen, sondern erst, wenn wir die Textbox verlassen? Warum ist das so? Ändern Sie Ihre Lösung so, dass dies bei jeder Textänderung geschieht, ohne die TextBox zu verlassen. Hinweis: siehe die Folie "x:Bind wann werden die Daten aktualisiert?" in der Vorlesungsmaterial.
+Beim Testen haben wir festgestellt, dass sich der Zustand der Taste "+Add" nicht sofort ändert, wenn wir beispielsweise den Namen in der Textbox "Name" löschen, sondern erst, wenn wir die Textbox verlassen? Warum ist das so? Ändern Sie Ihre Lösung so, dass dies bei jeder Textänderung geschieht, ohne die TextBox zu verlassen. Hinweis: siehe die Folie "x:Bind wann werden die Daten aktualisiert?" im Vorlesungsmaterial.
 
-!!! example "EINGABE"
+!!! example "ABGABE"
     Machen Sie einen Screenshot mit dem Namen `f3.png` wie folgt:
 
     - Starten Sie die App. Verkleinern Sie sie gegebenenfalls, damit sie nicht zu viel Platz auf dem Bildschirm einnimmt,
@@ -246,22 +246,22 @@ Einige Controller, wie z. B. die Taste, unterstützen die Möglichkeit, beide Au
 
 Das Grundprinzip ist: Anstatt die "Angaben" von `Click` und `IsEnabled` für die Taste, setzen wir die Eigenschaft `Command` der Taste auf ein Befehlsobjekt, das die Schnittstelle `ICommand` implementiert. Es liegt an diesem Befehlsobjekt, den Befehl auszuführen oder zu deaktivieren/aktivieren.
 
-Standardmäßig sollte eine Anwendung für jeden Befehl eine eigene `ICommand` Implementierung haben. Dies erfordert jedoch die Einführung vieler Klassen für viele Befehle. Das MVVM-Toolkit ist hier, um zu helfen. Stellt eine Klasse `RelayCommand` zur Verfügung, die die Schnittstelle `ICommand` implementiert. Diese Klasse kann zur Ausführung beliebiger Befehle/Codes verwendet werden, so dass keine zusätzlichen Befehlsklassen eingeführt werden müssen. Wie ist das möglich? So, dass `RelayCommand` hat den Code für die Ausführung und deaktivieren/aktivieren in Konstruktor-Parameter, in Form von zwei Delegaten:
+Standardmäßig sollte eine Anwendung für jeden Befehl eine eigene `ICommand` Implementierung haben. Dies erfordert jedoch die Einführung vieler Klassen für viele Befehle. Das MVVM-Toolkit ist hier, um zu helfen. Stellt eine Klasse `RelayCommand` zur Verfügung, die die Schnittstelle `ICommand` implementiert. Diese Klasse kann zur Ausführung beliebiger Befehle/Codes verwendet werden, so dass keine zusätzlichen Befehlsklassen eingeführt werden müssen. Wie ist das möglich? So, dass `RelayCommand` den Code für die Ausführung und das Deaktivieren/Aktivieren in Konstruktor-Parametern erhält, in Form von zwei Delegaten:
 
 * Der erste Parameter gibt den Code an, der ausgeführt werden soll, wenn der Befehl ausgeführt wird.
 * Der zweite Parameter (optional) ist der Code, den der Befehl aufruft, um zu prüfen, ob er sich selbst zulassen oder verbieten soll (die hier angegebene Funktion muss einen booleschen Wert zurückgeben, im wahren Fall wird der Befehl zugelassen).
 
-Der nächste Schritt besteht darin, die Behandlung der Taste "-" auf command basierende umzustellen. Versuchen Sie zuerst, das meiste davon selbst zu implementieren, basierend auf dem zugehörigen WinUI-Vorlesungen. Das Ausführen des Befehls ist einfacher, aber Sie müssen etwas Arbeit investieren, um den Befehl zu deaktivieren und zu aktivieren. Die wichtigsten Schritte:
+Der nächste Schritt besteht darin, die Behandlung der Taste "-" auf Command-Basis umzustellen. Versuchen Sie zuerst, das meiste davon selbst zu implementieren, basierend auf den zugehörigen WinUI-Vorlesungen. Das Ausführen des Befehls ist einfacher, aber Sie müssen etwas Arbeit investieren, um den Befehl zu deaktivieren und zu aktivieren. Die wichtigsten Schritte:
 
-* Fügen Sie eine öffentliche `RelayCommand` Eigenschaft mit nur Getter zum ViewModel hinzu, z.B. `DecreaseAgeCommand`.  Anders als in den Vorlesungsmaterial brauchen wir in unserem Fall `RelayCommand` keinen allgemeinen Parameter zu geben, da unsere Befehlsbehandlungsfunktion (`DecreaseAge`) keinen Parameter hat.
+* Fügen Sie eine öffentliche `RelayCommand` Eigenschaft mit nur Getter zum ViewModel hinzu, z.B. `DecreaseAgeCommand`.  Anders als im Vorlesungsmaterial brauchen wir in unserem Fall `RelayCommand` keinen generischen Parameter zu geben, da unsere Befehlsbehandlungsfunktion (`DecreaseAge`) keinen Parameter hat.
 * Geben Sie der neu eingeführten Eigenschaft im ViewModel-Konstruktor einen Wert. Geben Sie die Parameter des `RelayCommand` Konstruktors entsprechend an.
 * In `PersonListPage.xaml` muss die Taste "-" nicht mehr `Click` und `IsEnabled` binden, sie werden gelöscht. Binden Sie stattdessen die Eigenschaft `Command` der Taste an die Eigenschaft `DecreaseAgeCommand`, die im vorherigen Schritt im ViewModel eingeführt wurde.
 
-Wenn Sie es ausprobieren, funktioniert die Ausführund des Befehls, aber das Deaktivieren/Aktivieren nicht: Wenn Sie es gut beobachten, bleibt die Taste in ihrem Aussehen immer aktiviert. Es gibt einen logischen Grund dafür, wenn man darüber nachdenkt: `RelayCommand` kann die Aktion im zweiten Konstruktorparameter aufrufen, um den Zustand zu überprüfen, aber es weiß nicht, dass es dies jedes Mal tun sollte, wenn `NewPerson.Age` sich ändert! Wir können dabei helfen. In unserem ViewModel-Konstruktor haben wir bereits das `NewPerson.PropertyChanged` -Ereignis abonniert: Darauf aufbauend rufen wir, wenn sich das Alter ändert (oder wenn es sich ändern könnte, es ist kein Problem, dies manchmal unnötigerweise zu tun), die Method `NotifyCanExecuteChanged` von `DecreaseAgeCommand` auf. Diese Operation hat einen sehr aussagekräftigen Namen: Sie teilt dem Befehl mit, dass sich der Zustand, auf dem der verbotene/erlaubte Zustand des Befehls aufgebaut ist, geändert hat. Auf diese Weise wird der Befehl selbst aktualisiert, genauer gesagt der Zustand der mit dem Befehl verbundenen Taste.
+Wenn Sie es ausprobieren, funktioniert die Ausführung des Befehls, aber das Deaktivieren/Aktivieren nicht: Wenn Sie es gut beobachten, bleibt die Taste in ihrem Aussehen immer aktiviert. Es gibt einen logischen Grund dafür, wenn man darüber nachdenkt: `RelayCommand` kann die Aktion im zweiten Konstruktorparameter aufrufen, um den Zustand zu überprüfen, aber es weiß nicht, dass es dies jedes Mal tun sollte, wenn `NewPerson.Age` sich ändert! Wir können dabei helfen. In unserem ViewModel-Konstruktor haben wir bereits das `NewPerson.PropertyChanged` -Ereignis abonniert: Darauf aufbauend rufen wir, wenn sich das Alter ändert (oder wenn es sich ändern könnte, es ist kein Problem, dies manchmal unnötigerweise zu tun), die Methode `NotifyCanExecuteChanged` von `DecreaseAgeCommand` auf. Diese Operation hat einen sehr aussagekräftigen Namen: Sie teilt dem Befehl mit, dass sich der Zustand, auf dem der verbotene/erlaubte Zustand des Befehls aufgebaut ist, geändert hat. Auf diese Weise wird der Befehl selbst aktualisiert, genauer gesagt der Zustand der mit dem Befehl verbundenen Taste.
 
 Ändern Sie die Behandlung der "+"-Taste auf ähnliche Weise auf Befehlsbasis! Ändern Sie **nicht** die Behandlung der Taste "+Add"!
 
-!!! example "EINGABE"
+!!! example "ABGABE"
     Machen Sie einen Screenshot mit dem Namen `f4.png` wie folgt:
 
     - Starten Sie die App. Verkleinern Sie sie gegebenenfalls, damit sie nicht zu viel Platz auf dem Bildschirm einnimmt,
@@ -278,11 +278,11 @@ In der vorigen Aufgabe wurde die Einführung von Command-Eigenschaften und deren
 2. Entfernen Sie die Eigenschaft `DecreaseAgeCommand` und ihre Instanziierung aus dem Konstruktor.
 3. Ergänzen Sie `DecreaseAge` mit diesem Attribut: `[RelayCommand(CanExecute = nameof(IsDecrementEnabled))]`. 
     * Als Ergebnis führt der Codegenerator eine Eigenschaft `RelayCommand` in die Klasse ein, die mit dem Namen unserer Operation (`DecreaseAge`) benannt ist und an die die Zeichenfolge "Command" angehängt ist. So erhalten wir die Eigenschaft `DecreaseAgeCommand`, die wir zuvor manuell eingeführt haben.
-    * Die Attributeigenschaft `CanExecute` kann verwendet werden, um in Form einer Zeichenkette den Namen der Operation oder Eigenschaft  mit booleschen Rückgabewert anzugeben, die der generierte Code verwenden wird, wenn er den Befehl verbietet/erlaubt (er ist der zweite Parameter des Konstruktors RelayCommand). Wir haben bereits eine solche Eigenschaft, die "IsDecrementEnabled" heißt. Sie wird nicht als einfache Zeichenkette angegeben, denn wenn jemand die Operation `IsDecrementEnabled` nachträglich umbenennt, würde die aktuelle "IsDecrementEnabled" nicht auf die richtige Operation verweisen. Die Verwendung des Ausdrucks `nameof` vermeidet dieses Problem. Die Angabe von `CanExecute` ist im Allgemeinen optional (geben Sie es nicht an, wenn Sie den Befehl niemals deaktivieren wollen).
+    * Die Attributeigenschaft `CanExecute` kann verwendet werden, um in Form einer Zeichenkette den Namen der Operation oder Eigenschaft mit booleschem Rückgabewert anzugeben, die der generierte Code verwenden wird, wenn er den Befehl verbietet/erlaubt (er ist der zweite Parameter des Konstruktors RelayCommand). Wir haben bereits eine solche Eigenschaft, die "IsDecrementEnabled" heißt. Sie wird nicht als einfache Zeichenkette angegeben, denn wenn jemand die Operation `IsDecrementEnabled` nachträglich umbenennt, würde die aktuelle "IsDecrementEnabled" nicht auf die richtige Operation verweisen. Die Verwendung des Ausdrucks `nameof` vermeidet dieses Problem. Die Angabe von `CanExecute` ist im Allgemeinen optional (geben Sie es nicht an, wenn Sie den Befehl niemals deaktivieren wollen).
 
 Testen Sie die Lösung (Verkleinerung des Alters), sie sollte genauso funktionieren wie zuvor.
 
-!!! example "EINGABE"
+!!! example "ABGABE"
     Machen Sie einen Screenshot mit dem Namen `f5.png` wie folgt:
 
     - Starten Sie die App. Verkleinern Sie sie gegebenenfalls, damit sie nicht zu viel Platz auf dem Bildschirm einnimmt,
