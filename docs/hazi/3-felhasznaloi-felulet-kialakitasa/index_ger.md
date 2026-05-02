@@ -24,13 +24,13 @@ Die erforderliche Entwicklungsumgebung wird [hier](../fejlesztokornyezet/index_g
 !!! warning "Entwicklungsumgebung für WinUI3-Entwicklung"
     Im Vergleich zu den vorherigen Hausaufgaben ist die Installation zusätzlicher Komponenten erforderlich. Die oben genannte Seite erwähnt, dass die Installation der Visual Studio-Workload ".NET desktop development" notwendig ist. Außerdem gibt es am Ende derselben Seite einen Abschnitt "WinUI-Unterstützung", dessen aufgeführte Schritte unbedingt ebenfalls durchgeführt werden müssen!
 
-## Das Verfahren der Eingabe
+## Das Verfahren der Abgabe
 
 :exclamation: Obwohl die Grundlagen ähnlich sind, gibt es wesentliche Unterschiede im Ablauf und in den Anforderungen im Vergleich zu den vorherigen Hausaufgaben. Lies die folgenden Punkte daher unbedingt sorgfältig durch.
 
 - Der grundlegende Ablauf ist derselbe wie zuvor. Erstelle mit GitHub Classroom ein eigenes Repository. Die Einladungs-URL findest du in Moodle (bei Hausaufgabe 3.). Klone das so erstellte Repository. Dieses enthält die erwartete Struktur der Lösung. Nach der Fertigstellung der Aufgaben committe und pushe deine Lösung.
 - Öffne `TodoXaml.sln` aus den geklonten Dateien und arbeite in diesem.
-- :exclamation: Die Aufgaben verlangen, dass du **Screenshots** von bestimmten Teilen deiner Lösung erstellst, um zu belegen, dass du sie selbst angefertigt hast. **Der erwartete Inhalt der Screenshots wird in jeder Aufgabe genau angegeben.** Die Screenshots müssen als Teil der Lösung eingegeben werden. Lege sie im Stammverzeichnis deines Repositorys ab (neben der Datei `neptun.txt`). Dadurch werden die Screenshots zusammen mit dem Inhalt des Git-Repositorys auf GitHub hochgeladen. Da das Repository privat ist, können es außer den Lehrkräfte keine anderen Personen sehen. Falls Inhalte auf den Screenshots erscheinen, die du nicht hochladen möchtest, kannst du diese unkenntlich machen.
+- :exclamation: Die Aufgaben verlangen, dass du **Screenshots** von bestimmten Teilen deiner Lösung erstellst, um zu belegen, dass du sie selbst angefertigt hast. **Der erwartete Inhalt der Screenshots wird in jeder Aufgabe genau angegeben.** Die Screenshots müssen als Teil der Lösung eingegeben werden. Lege sie im Stammverzeichnis deines Repositorys ab (neben der Datei `neptun.txt`). Dadurch werden die Screenshots zusammen mit dem Inhalt des Git-Repositorys auf GitHub hochgeladen. Da das Repository privat ist, können es außer den Lehrkräften keine anderen Personen sehen. Falls Inhalte auf den Screenshots erscheinen, die du nicht hochladen möchtest, kannst du diese unkenntlich machen.
 - :exclamation: Für diese Aufgabe gibt es keine inhaltliche Vorabprüfung: Nach jedem Push wird zwar eine Prüfung ausgeführt, diese kontrolliert jedoch nur, ob die Datei `neptun.txt` ausgefüllt ist. Die eigentliche Bewertung erfolgt nach Ablauf der Frist durch die Übungsleiter.
 
 ## Vorbedingungen
@@ -39,19 +39,19 @@ Die erforderliche Entwicklungsumgebung wird [hier](../fejlesztokornyezet/index_g
   Verwenden Sie in dieser Hausaufgabe NICHT das MVVM-Muster (auch nicht in den späteren Teilaufgaben), führen Sie NICHT die Klasse `ViewModel` ein. MVVM wird das Thema einer späteren Hausaufgabe sein.
 
 :warning: **Layout - Einfachheit**  
-Wie im Allgemeinen, auch in dieser Hausaufgabe sollte das grundlegende Layout der Seite mit `Grid` gestaltet werden. Bei der Gestaltung der einzelnen internen Abschnitte sollten Sie jedoch darauf achten, dass sie einfach gehalten sind: Wo `StackPanel`verwendet werden kann, sollten Sie nicht `Grid`verwenden.
+Wie im Allgemeinen, auch in dieser Hausaufgabe sollte das grundlegende Layout der Seite mit `Grid` gestaltet werden. Bei der Gestaltung der einzelnen internen Abschnitte sollten Sie jedoch darauf achten, dass sie einfach gehalten sind: Wo `StackPanel` verwendet werden kann, sollten Sie nicht `Grid` verwenden.
 
 ## Aufgabe 1. - Modellentwurf und Testdaten
 
-Erstellen Sie ein neuen Projekt mit Visual Studio (WinUI 3 Projekt, Blank App, Packaged (WinUI 3 in Desktop) type), und addieren Sie einen Ordner namens `Models` zu dem erzeugten Projekt. Erstellen Sie die Klasse und den Enum-Typ, die in der folgenden Abbildung gezeigt werden, im Ordner `Models`. Die Klasse `TodoItem` enthält die Details zu den Aufgaben, für die Priorität wird ein aufgelisteter Typ erstellt.
+Erstellen Sie ein neues Projekt mit Visual Studio (WinUI 3 Projekt, Blank App, Packaged (WinUI 3 in Desktop) type), und fügen Sie einen Ordner namens `Models` zu dem erzeugten Projekt hinzu. Erstellen Sie die Klasse und den Enum-Typ, die in der folgenden Abbildung gezeigt werden, im Ordner `Models`. Die Klasse `TodoItem` enthält die Details zu den Aufgaben, für die Priorität wird ein aufgelisteter Typ erstellt.
 
 <figure markdown>
 ![Modell](images/model.png)
 </figure>
 
-Beide Typen sollten öffentlich sein ( `class` und `enum` mit `public` vorangestellt), da Ihr sonst später bei der Übersetzung einen Fehler "Inconsistent accessibility" erhalten würden.
+Beide Typen sollten öffentlich sein ( `class` und `enum` mit `public` vorangestellt), da Sie sonst später bei der Übersetzung einen Fehler "Inconsistent accessibility" erhalten würden.
 
-Addieren Sie einen Ordner namens `Views` zu dem Projekt, und eine neue leere Seite namens `MainPage` zu diesem Ordner (Rechtsklick auf `Views`: _Add/New Item/Blank Page (WinUI 3)_). Um diese Seite auf dem Fenster unserer Anwendung anzuzeigen, muss ein `MainPage` Objekt im Hauptfenster `MainWindow.xaml` instanziiert werden (Namensraum `views` soll auch addiert werden):
+Fügen Sie einen Ordner namens `Views` zu dem Projekt hinzu, und eine neue leere Seite namens `MainPage` zu diesem Ordner (Rechtsklick auf `Views`: _Add/New Item/Blank Page (WinUI 3)_). Um diese Seite auf dem Fenster unserer Anwendung anzuzeigen, muss ein `MainPage` Objekt im Hauptfenster `MainWindow.xaml` instanziiert werden (Namensraum `views` soll auch hinzugefügt werden):
 
 ```xml title="MainWindow.xaml" hl_lines="8 11"
     <Window
@@ -119,18 +119,18 @@ public List<TodoItem> Todos { get; set; } = new()
 
 ### Layout
 
-Unter `MainPage.xaml`erstellen Sie die Oberfläche, auf der die Liste der Aufgaben angezeigt wird.
+Unter `MainPage.xaml` erstellen Sie die Oberfläche, auf der die Liste der Aufgaben angezeigt wird.
 
 <figure markdown>
 ![MainPage](images/mainpage.png)
 <figurecaption>Die zu erstellende Anwendung mit einer Benutzeroberfläche für Listen</figurecaption>
 </figure>
 
-Wie in der obigen Abbildung mit den drei Aufgaben zu sehen ist, werden die Aufgabendetails untereinander angezeigt, die Priorität der Aufgaben wird durch Farben angezeigt, und neben den erledigten Aufgaben werden mit einem Häkchen rechts bezeichnet.
+Wie in der obigen Abbildung mit den drei Aufgaben zu sehen ist, werden die Aufgabendetails untereinander angezeigt, die Priorität der Aufgaben wird durch Farben angezeigt, und die erledigten Aufgaben werden mit einem Häkchen rechts gekennzeichnet.
 
 Die Elemente sind in der folgenden Struktur auf der Oberfläche angeordnet:
 
-* Verwenden Sie in `MainPage`eine `Grid`mit zwei Zeilen und zwei Spalten von Elementen. Die erste Spalte sollte eine feste Breite haben (z. B: 300 px) und die zweite nimmt den restlichen Platz ein.
+* Verwenden Sie in `MainPage` ein `Grid` mit zwei Zeilen und zwei Spalten von Elementen. Die erste Spalte sollte eine feste Breite haben (z. B: 300 px) und die zweite nimmt den restlichen Platz ein.
 * Die erste Zeile der ersten Spalte sollte ein `CommandBar` Steuerelement mit einer Adresse und einer Taste enthalten. Das folgende Beispiel ist hilfreich:
 
     ```xml
@@ -149,11 +149,11 @@ Die Elemente sind in der folgenden Struktur auf der Oberfläche angeordnet:
     ```
 
     !!! note "ThemeResource"
-        Die `ThemeResource`im Beispiel kann verwendet werden, um die Farben und Stile einzustellen, die je nach Thema der Oberfläche variieren werden. Zum Beispiel hat `AppBarBackgroundThemeBrush` die richtige Hintergrundfarbe je nach dem Thema der Oberfläche (hell/dunkel).
+        Die `ThemeResource` im Beispiel kann verwendet werden, um die Farben und Stile einzustellen, die je nach Thema der Oberfläche variieren werden. Zum Beispiel hat `AppBarBackgroundThemeBrush` die richtige Hintergrundfarbe je nach dem Thema der Oberfläche (hell/dunkel).
 
-        Einzelheiten finden Sie in der [Dokumentation](https://docs.microsoft.com/en-us/windows/uwp/design/style/color#theme-resources) und die Beispiele in [WinUI 3 Gallery App Colors](winui3gallery://item/Colors).
+        Einzelheiten finden Sie in der [Dokumentation](https://docs.microsoft.com/en-us/windows/uwp/design/style/color#theme-resources) und in den Beispielen in [WinUI 3 Gallery App Colors](winui3gallery://item/Colors).
 
-Wenn Sie Ihre Arbeit richtig gemacht haben, sollte bei der Ausführung der Anwendung `CommandBar`an der richtigen Stelle erscheinen.
+Wenn Sie Ihre Arbeit richtig gemacht haben, sollte bei der Ausführung der Anwendung `CommandBar` an der richtigen Stelle erscheinen.
 
 ### Liste anzeigen
 
@@ -171,10 +171,10 @@ Stellen Sie in der Zelle unter `CommandBar` in einer Liste (`ListView`) die Aufg
 * Der Hintergrund von `ListView` sollte derselbe sein wie der von `CommandBar`, so dass sie einen durchgehenden Balken auf der linken Seite bilden.
 
 ??? tip "Elemente in der Liste"
-    Überlegen Sie immer, ob Sie Daten an ein Objekt oder an eine Liste binden, und verwenden Sie die entsprechende Technik! Bei dieser Hausaufgabe ist es nicht sicher, dass sie in der Reihenfolge kommen, in der sie im Labor waren!"
+    Überlegen Sie immer, ob Sie Daten an ein Objekt oder an eine Liste binden, und verwenden Sie die entsprechende Technik! Bei dieser Hausaufgabe ist es nicht sicher, dass sie in der Reihenfolge kommen, in der sie im Labor waren!
 
 ??? tip "Bedingte Einfärbung"
-    Sie können einen Konverter oder eine Funktionsbindung auf Basis von `x:Bind` verwenden, um die Adresse einzufärben.
+    Sie können einen Konverter oder eine Funktionsbindung auf Basis von `x:Bind` verwenden, um den Text einzufärben.
 
     - Beispiel für Funktionsbindung auf der Grundlage von "x:Bind":
             
@@ -217,11 +217,11 @@ Stellen Sie in der Zelle unter `CommandBar` in einer Liste (`ListView`) die Aufg
 
         Verwendung des Konverters als statische Ressource in der Datenverbindung
 
-        ``xml
+        ```xml
         Foreground="{x:Bind Priority, Converter={StaticResource PriorityBrushConverter}}"
         ```
 
-    Um die Pinsel (Brush) zu instanziieren, verwenden Sie die Klasse `SolidColorBrush`, oder können Sie auch eingebaute Pinsel aus C#-Code (wie mit `ThemeResource` oben) benutzen.
+    Um die Pinsel (Brush) zu instanziieren, verwenden Sie die Klasse `SolidColorBrush`, oder Sie können auch eingebaute Pinsel aus C#-Code (wie mit `ThemeResource` oben) benutzen.
 
     ```csharp
     new SolidColorBrush(Colors.Red);
@@ -232,13 +232,13 @@ Stellen Sie in der Zelle unter `CommandBar` in einer Liste (`ListView`) die Aufg
 ??? tip "Fette Schriftart"
     Schriftattribute können unter die Eigenschaften namens "Font..." eingestellt werden: `FontFamily` , `FontSize`, `FontStyle`, `FontStretch` und `FontWeight`.
 
-??? tip "Sichtbarkeit des Häkchen-Symbol"
+??? tip "Sichtbarkeit des Häkchen-Symbols"
     Für das Häkchen-Symbol verwenden Sie `SymbolIcon`, wobei die Eigenschaft `Symbol` auf `Accept` gesetzt ist.
 
     Wenn das Häkchen-Symbol angezeigt wird, muss ein Wahr-Falsch-Wert in einen `Sichtbarkeit`-Typ umgewandelt werden. Man könnte dafür einen Konverter verwenden, aber diese Konvertierung ist so üblich, dass in der Datenverbindung `x:Bind` die Konvertierung von `bool` in `Sichtbarkeit` bereits eingebaut ist.
 
 ??? tip "Ausrichtung des Häkchen-Symbols"
-    Der Titel der Aufgabe und das Häkchen-Symbol müssen ausgerichtet sein (eines nach links und eines nach rechts). Hier ein Tipp: Sie können z. B. eine einzelne Zelle verwenden `Grid`. In `Grid`können Sie mehrere Steuerelemente in einer Zelle "stapeln" und ihre Ausrichtung separat einstellen. Im zweiten Labor haben wir das Problem der Anzeige von Name und Alter in `ListView` `DataTemplate`folgendermaßen gelöst.
+    Der Titel der Aufgabe und das Häkchen-Symbol müssen ausgerichtet sein (eines nach links und eines nach rechts). Hier ein Tipp: Sie können z. B. eine einzelne Zelle verwenden `Grid`. In `Grid` können Sie mehrere Steuerelemente in einer Zelle "stapeln" und ihre Ausrichtung separat einstellen. Im zweiten Labor haben wir das Problem der Anzeige von Name und Alter in `ListView` `DataTemplate` folgendermaßen gelöst.
 
 ??? tip "Datumsformatierung"
     Zur Formatierung des Datums der Abgabefrist können Sie auch einen Konverter oder eine Funktionsbindung auf der Grundlage von `x:Bind` verwenden, wobei Sie die Funktion `DateTime.ToString` mit Parametern binden.
@@ -252,7 +252,7 @@ Stellen Sie in der Zelle unter `CommandBar` in einer Liste (`ListView`) die Aufg
 ??? tip "Abstand zwischen den Listenelementen"
     Auf dem Screenshot der Anleitung sehen Sie, dass zwischen den Listenelementen ein vertikaler Abstand besteht, so dass die Listenelemente gut voneinander getrennt sind. Dies ist nicht standardmäßig der Fall. Glücklicherweise erfordert die Lösung, dass DataTemplate für die Anzeige der Elemente verwendet wird, so dass Sie durch eine kleine Anpassung (Tipp: geben Sie einen einzelnen Margin/Padding an) leicht etwas Platz zwischen den Listenelementen für eine bessere Lesbarkeit erreichen können. 
 
-!!! example "Aufgabe 2 - EINGABE"
+!!! example "Aufgabe 2 - ABGABE"
     Fügen Sie ein Bildschirmfoto der Anwendung ein, in der eine der Aufgaben in der Liste Ihren NEPTUN-Code als Namen oder Beschreibung hat (`f2.png`).
 
 ## Aufgabe 3 - Eine neue Aufgabe hinzufügen
@@ -283,14 +283,14 @@ Zusätzliche funktionale Anforderungen:
 
 * Das Formular sollte nur sichtbar sein, wenn die Taste *Add* angeklickt wird, und verschwinden, wenn die Aufgabe gespeichert wird.
 * Klicken Sie auf *Save*, um die Daten zur Liste hinzuzufügen, und das Formular wird ausgeblendet.
-* Mit dem Klicken auf die Taste *Add* soll die Auswahl der aktuellen Element in der Liste entfernt werden (`SelectedItem`). (Nur die Auswahl, nicht das Element sich selbst.)
+* Mit dem Klicken auf die Taste *Add* soll die Auswahl des aktuellen Elements in der Liste entfernt werden (`SelectedItem`). (Nur die Auswahl, nicht das Element selbst.)
 * Optionale Aufgabe: Das Formular sollte scrollbar sein, wenn sein Inhalt nicht auf den Bildschirm passt (verwenden Sie`ScrollViewer` ).
   
 Layout des Formulars
 
 *  Die Steuerelemente `TextBox`, `ComboBox` und `DatePicker` haben eine Eigenschaft `Header`, in der der Überschrifttext über dem Steuerelement angegeben werden kann. Verwenden Sie dies, um Kopftexte anzugeben, nicht eine separate `TextBlock`!
 * Auf dem Formular sollten die Elemente nicht zu dicht nebeneinander liegen, mit etwa 15 Pixeln zusätzlichem Abstand zwischen ihnen (die Eigenschaft `StackPanel` `Spacing` ist eine gute Möglichkeit, dies zu erreichen).
-* Legen Sie einen sichtbaren Rahmen für das Formular fest. Wir tun dies nicht, um unsere Benutzeroberfläche hübscher zu machen, sondern um besser erkennen zu können, wo genau sich unser Formular befindet (eine Alternative wäre, die Hintergrundfarbe zu ändern). Dieser "Trick" wird temporär auch währen der Gestaltung der Oberfläche eingesetzt, wenn nicht klar ist, wo genau sich etwas auf der Oberfläche befindet. Setzen Sie dazu die Eigenschaft `BorderThickness` des Formular-Containers auf 1 und die Rahmenfarbe (Eigenschaft`BorderBrush` ) auf eine sichtbare Farbe (z.B. `LightGray`).
+* Legen Sie einen sichtbaren Rahmen für das Formular fest. Wir tun dies nicht, um unsere Benutzeroberfläche hübscher zu machen, sondern um besser erkennen zu können, wo genau sich unser Formular befindet (eine Alternative wäre, die Hintergrundfarbe zu ändern). Dieser "Trick" wird temporär auch während der Gestaltung der Oberfläche eingesetzt, wenn nicht klar ist, wo genau sich etwas auf der Oberfläche befindet. Setzen Sie dazu die Eigenschaft `BorderThickness` des Formular-Containers auf 1 und die Rahmenfarbe (Eigenschaft`BorderBrush` ) auf eine sichtbare Farbe (z.B. `LightGray`).
 * Verwenden Sie links, rechts und unten im Formular einen Rand von 8 und oben einen Rand von 0 (dies ist der Abstand zwischen dem Rand des Formulars und seinem Inhalt, unabhängig davon, wie groß der Benutzer das Fenster zur Laufzeit skaliert). 
 * Zwischen dem Rahmen des Formulars und dem Rand der Steuerelemente sollten oben und unten jeweils 15 Pixel und links und rechts jeweils 10 Pixel Platz sein. Um dies zu tun, setzen Sie nicht die Ränder der Steuerelemente im Formular einzeln, sondern setzen Sie eine entsprechende Eigenschaft des Formular-Containers (die steuert, wie viel Platz zwischen den Rändern des Containers und seinem inneren Inhalt vorhanden ist)!
 * Die beiden vorangegangenen Punkte bedeuten auch, dass das Formular und die darin enthaltenen Textfelder automatisch mit dem Fenster skaliert werden sollten, wie in den Bildern unter dem Dropdown-Bereich dargestellt.
@@ -322,16 +322,16 @@ Layout des Formulars
         
     ??? "Alternative Möglichkeiten für die Lösung"
         
-        Andere Alternativen sind ebenfalls möglich (nur interessehalber, aber verwenden Sie sie nicht diese in der Lösung):
+        Andere Alternativen sind ebenfalls möglich (nur interessehalber, aber verwenden Sie diese nicht in der Lösung):
         
-        5. Implementieren einer funktionsbasierte Datenverbindung, aber in unserem Fall wäre dies komplizierter.
+        5. Implementieren einer funktionsbasierten Datenverbindung, aber in unserem Fall wäre dies komplizierter.
             * Bei einer auf der Grundlage von "x:Bind" gebundenen Funktion wird der Wert "null" oder ein anderer Wert als "null" der Eigenschaft "EditedTodo" zum Anzeigen und Ausblenden in "Sichtbarkeit" umgewandelt.
             * Wenn wir Daten binden, müssen wir auch `FallbackValue='Collapsed'` verwenden, denn leider ruft `x:Bind` die Funktion standardmäßig nicht auf, wenn der Wert `null` ist.
             * Die gebundene Funktion muss einen Parameter haben, der die Eigenschaft angibt, deren Änderung die Aktualisierung der Datenverbindung bewirkt, und auch die Änderungsmeldung für die Eigenschaft muss hier implementiert werden.
         6. Anwendung des Konverters.
 
 ??? tip "Liste der Prioritäten"
-    Zeigen Sie in `ComboBox`die Werte des aufgelisteten Typs `Priority` an. Zu diesem Zweck können Sie die Funktion `Enum.GetValues` verwenden und eine Eigenschaft in `MainPage.xaml.cs`erstellen.
+    Zeigen Sie in `ComboBox` die Werte des aufgelisteten Typs `Priority` an. Zu diesem Zweck können Sie die Funktion `Enum.GetValues` verwenden und eine Eigenschaft in `MainPage.xaml.cs` erstellen.
 
     ```csharp
     public List<Priority> Priorities { get; } = Enum.GetValues(typeof(Priority)).Cast<Priority>().ToList();
@@ -343,24 +343,24 @@ Layout des Formulars
     <ComboBox ItemsSource="{x:Bind Priorities}" />
     ```
 
-    Im obigen Beispiel gibt `ItemsSource` nur an, welche Elemente in der Liste der `ComboBox` erscheinen sollen. Aber das sagt nichts darüber aus, woran das ausgewählte Element in der "ComboBox" gebunden sein soll. Dies erfordert eine weitere Datenverbindung. Dies wurde in der Übung nicht erwähnt, aber es lohnt sich im Vorlesungsmaterial zum Beispiel `SelectedItem` suchen (alle Vorkommen lohnt es sich anzuschauen).
+    Im obigen Beispiel gibt `ItemsSource` nur an, welche Elemente in der Liste der `ComboBox` erscheinen sollen. Aber das sagt nichts darüber aus, woran das ausgewählte Element in der "ComboBox" gebunden sein soll. Dies erfordert eine weitere Datenverbindung. Dies wurde in der Übung nicht erwähnt, aber es lohnt sich, im Vorlesungsmaterial zum Beispiel nach `SelectedItem` zu suchen (alle Vorkommen lohnt es sich anzuschauen).
 
 ??? tip "Einige wichtige Controller-Eigenschaften"
     * Die Eigenschaft `IsChecked` (und nicht `Checked`!) von`CheckBox`  
     * Die Eigenschaft `Date` von `DatePicker`  
 
-!!! example "Aufgabe 3 - EINGABE"
-    Fügen Sie ein Bildschirmfoto der Anwendung ein, auf dem das Hinzufügen der neuen Aufgabe vor dem Speichern sehbar ist! (`f3.1.png`)
+!!! example "Aufgabe 3 - ABGABE"
+    Fügen Sie ein Bildschirmfoto der Anwendung ein, auf dem das Hinzufügen der neuen Aufgabe vor dem Speichern sichtbar ist! (`f3.1.png`)
 
     Fügen Sie ein Bildschirmfoto der Anwendung ein, auf dem die Aufgabe im vorherigen Bild der Liste hinzugefügt wurde und das Formular verschwunden ist (`f3.2.png`)
 
 Optionale Übungsaufgaben
 
 ??? tip "Optionale Übungsaufgabe 1 - Ein Formular scrollbar machen"
-    Alles, was Sie tun müssen, ist, das Formular in ein `ScrollViewer` Steuerelement einzuschließen (und denken Sie daran, dass dies das äußerste Element in der Gridzelle sein wird, so dass Sie die Position innerhalb dem Grid dafür angeben müssen). Wenn Sie dies implementieren, kann es in Ihre eingereichte Lösung aufgenommen werden.
+    Alles, was Sie tun müssen, ist, das Formular in ein `ScrollViewer` Steuerelement einzuschließen (und denken Sie daran, dass dies das äußerste Element in der Gridzelle sein wird, so dass Sie die Position innerhalb des Grids dafür angeben müssen). Wenn Sie dies implementieren, kann es in Ihre eingereichte Lösung aufgenommen werden.
 
 ??? tip "Optionale Übungsaufgabe 2 - Formular mit fester Breite"
-    In unserer Lösung wird das Formular automatisch mit dem Fenster skaliert. Eine gute Möglichkeit ist zu üben, dies so zu ändern, dass das Formular eine feste Breite (z. B. 500 Pixel) und eine Höhe hat, die der Gesamthöhe der darin enthaltenen Elemente entspricht. Wenn Sie für das Formular mit StackPanel gearbeitet haben, müssen Sie nur drei Attribute hinzufügen oder ändern. Dieses Verhalten wird in der nachstehenden animierten Abbildung veranschaulicht. Es ist wichtig, dass Sie die vorherige Lösung eingaben soll und nicht das in dieser optionalen Übung beschriebene Verhalten!
+    In unserer Lösung wird das Formular automatisch mit dem Fenster skaliert. Eine gute Möglichkeit ist zu üben, dies so zu ändern, dass das Formular eine feste Breite (z. B. 500 Pixel) und eine Höhe hat, die der Gesamthöhe der darin enthaltenen Elemente entspricht. Wenn Sie für das Formular mit StackPanel gearbeitet haben, müssen Sie nur drei Attribute hinzufügen oder ändern. Dieses Verhalten wird in der nachstehenden animierten Abbildung veranschaulicht. Es ist wichtig, dass Sie die vorherige Lösung abgeben sollen und nicht das in dieser optionalen Übung beschriebene Verhalten!
     ![Formular mit fester Größe](images/newtodo-resizing-optional.gif)
 
 ## 4. Optionale Aufgabe für 3 IMSc-Punkte - Bearbeiten einer Aufgabe (ToDo)
@@ -371,21 +371,21 @@ Machen Sie es möglich, die Aufgaben wie folgt zu bearbeiten:
 * Beim Speichern sollte die bearbeitete Aufgabenliste aktualisiert werden und das Formular verschwinden.
 
 ??? success "Tipps zur Lösung"
-    * Es lohnt sich, die eindeutige ID der Aufgaben während des Einfügens beizubehalten, damit Sie während dem Speichern, zwischen Bearbeiten und Einfügen unterscheiden können. Im Falle einer Einfügung können Sie beispielsweise den Wert -1 verwenden, den wir durch eine Zahl ersetzen, die um eins größer ist als die zuvor verwendete. Aber nehmen wir an, dass -1 auch ein Wert ist, den ein gültiges Aufgabenobjekt haben kann. Was kann getan werden? Ändern Sie in der Klasse `TodoItem` den Typ von `Id` in `int?`. Bei `?`können die Wertetypen (`int`, `bool`, `char`, `enum`, `struct` usw.) auch den Wert `null` annehmen. Diese werden als nullable Werttypen (nullable value types) bezeichnet. Sie werden während der Kompilierung auf die Struktur `Nullable<T>`.NET abgebildet, die die ursprüngliche Variable und ein Flag enthält, das angibt, ob der Wert gefüllt ist oder nicht. Lesen Sie mehr über sie [hier](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-value-types) und [hier](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1).  Wenden Sie dies in der Lösung an.
+    * Es lohnt sich, die eindeutige ID der Aufgaben während des Einfügens beizubehalten, damit Sie während des Speicherns zwischen Bearbeiten und Einfügen unterscheiden können. Im Falle einer Einfügung können Sie beispielsweise den Wert -1 verwenden, den wir durch eine Zahl ersetzen, die um eins größer ist als die zuvor verwendete. Aber nehmen wir an, dass -1 auch ein Wert ist, den ein gültiges Aufgabenobjekt haben kann. Was kann getan werden? Ändern Sie in der Klasse `TodoItem` den Typ von `Id` in `int?`. Bei `?`können die Wertetypen (`int`, `bool`, `char`, `enum`, `struct` usw.) auch den Wert `null` annehmen. Diese werden als nullable Werttypen (nullable value types) bezeichnet. Sie werden während der Kompilierung auf die Struktur `Nullable<T>`.NET abgebildet, die die ursprüngliche Variable und ein Flag enthält, das angibt, ob der Wert gefüllt ist oder nicht. Lesen Sie mehr über sie [hier](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-value-types) und [hier](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1).  Wenden Sie dies in der Lösung an.
     * Um auf das Listenelement zu klicken, empfiehlt es sich, das Ereignis `ListView` `ItemClick` zu verwenden, nachdem die Eigenschaft `IsItemClickEnabled` auf `ListView`aktiviert wurde. Informationen über das neu ausgewählte Listenelement werden im Parameter `ItemClickEventArgs` des Ereignishandlers angegeben. 
     * Es gibt mehrere Möglichkeiten, die zu bearbeitenden Daten zu behandeln, eine davon ist: 
         * Setzen Sie die Eigenschaft `EditedTodo` auf die bearbeitete Aufgabe, wenn Sie darauf klicken.
         * Wenn Sie auf die Taste "Save" klicken, wird die bearbeitete Aufgabe in der Liste `Todos` durch den Wert `EditedTodo` ersetzt. Im Endeffekt ersetzen wir das gleiche Element durch sich selbst, aber `ListView` wird aktualisiert.
 
-!!! example "Aufgave 4. iMSc - EINGABE"
+!!! example "Aufgabe 4. iMSc - ABGABE"
     Fügen Sie ein Bildschirmfoto der Anwendung ein, bei der ein Klick auf einen vorhandenen Eintrag das Formular ausfüllt (`f4.imsc.1.png`)
 
     Fügen Sie ein Bildschirmfoto der Anwendung ein, auf dem die im vorherigen Screenshot ausgewählte Aufgabe in der Liste als Ergebnis der Speicheraktion aktualisiert wird! (`f4.imsc.2.png`)
 
-## Eingabe
+## Abgabe
 
 Checkliste für Wiederholungen:
 
 - Es ist wichtig, dass nur die Aufgaben akzeptiert werden, die Sie vollständig gemacht haben und die die Anforderungen in jeder Hinsicht erfüllen. 
-- Sie müssen natürlich Ihre eigene Arbeit eingeben (da sie bewertet wird).
-- Nicht nur das Quellcode, sondern auch die erwartete Bildschirmfotos sollen eingegeben werden.
+- Sie müssen natürlich Ihre eigene Arbeit abgeben (da sie bewertet wird).
+- Nicht nur den Quellcode, sondern auch die erwarteten Bildschirmfotos sollen abgegeben werden.
