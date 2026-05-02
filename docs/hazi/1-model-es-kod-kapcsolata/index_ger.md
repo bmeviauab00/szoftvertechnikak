@@ -6,7 +6,7 @@ authors: bzolka
 
 ## Einführung
 
-Zu dieser Hausaufgabe gehört keine Vorlesung. Als theoretischer und praktischer Hintergrund für die Hausufgaben dient die Laborübung „1. Beziehung zwischen dem Modell und dem Code“:
+Zu dieser Hausaufgabe gehört keine Vorlesung. Als theoretischer und praktischer Hintergrund für die Hausaufgaben dient die Laborübung „1. Beziehung zwischen dem Modell und dem Code“:
 
 - Diese Laborübung wird/wurde von den Studenten unter Anleitung des Übungsleiters gemeinsam durchgeführt.
 - Zur Laborübung gehört eine Anleitung, die den theoretischen Hintergrund detailliert darstellt und die Erstellung der Lösung Schritt für Schritt erläutert: [1. Die Beziehung zwischen Modell und Code](../../labor/1-model-es-kod-kapcsolata/index_ger.md)
@@ -22,9 +22,9 @@ Das Ziel der Hausaufgabe:
 Die erforderliche Entwicklungsumgebung wird [hier](../fejlesztokornyezet/index_ger.md) beschrieben.
 
 !!! warning "Verwendung von Sprachelementen aus C# 12 (und neuer)"
-    Bei der Lösung der Hausaufgabe dürfen Sprachelementen von C# 12 und neuer (z. B. primary constructor) NICHT verwendet werden, da das auf GitHub laufende Prüfsystem diese noch nicht unterstützt.
+    Bei der Lösung der Hausaufgabe dürfen Sprachelemente von C# 12 und neuer (z. B. primary constructor) NICHT verwendet werden, da das auf GitHub laufende Prüfsystem diese noch nicht unterstützt.
 
-## Herunterladen des Ausgangsrahmen, Hochladen der fertigen Lösung
+## Herunterladen des Ausgangsrahmens, Hochladen der fertigen Lösung
 
 Die Veröffentlichung der Ausgangsumgebung der Hausaufgabe sowie die Abgabe der Lösung erfolgen mithilfe von Git, GitHub und GitHub Classroom. Die wichtigsten Schritte:
 
@@ -119,7 +119,7 @@ Für die Verarbeitung von Textdateien können wir am bequemsten die [`StreamRead
 
 In unserer `Main`-Funktion lesen wir die Datei zeilenweise ein, erstellen die `Song`-Objekte und fügen sie in eine dynamisch wachsende `List<Song>` ein. Achten wir darauf, dass vor und nach den mit `;` getrennten Elementen in der Datei Whitespace-Zeichen (Leerzeichen, Tabulatoren) stehen können, die wir entfernen sollten!  
 
-Der folgende Code zeigt eine mögliche Lösung, die Details werden in den Codekommentaren erläutert. Im Verlauf des Semesters ist dies die erste eigenständige Aufgabe, und für die meisten Studenten die erste .NET/C#-Anwendung, daher geben wir hier noch eine Musterlösung, aber die erfahreneren Studierenden steht es jedoch frei, selbstständig zu experimentieren.  
+Der folgende Code zeigt eine mögliche Lösung, die Details werden in den Codekommentaren erläutert. Im Verlauf des Semesters ist dies die erste eigenständige Aufgabe, und für die meisten Studenten die erste .NET/C#-Anwendung, daher geben wir hier noch eine Musterlösung, aber den erfahreneren Studierenden steht es jedoch frei, selbstständig zu experimentieren.  
 
 ??? example "Lösung"
 
@@ -168,14 +168,14 @@ Der folgende Code zeigt eine mögliche Lösung, die Details werden in den Codeko
             catch (Exception e)
             {
                 Console.WriteLine("A fájl feldolgozása sikertelen.");
-                // Die e.Message enhält nur den Text der Ausnahme.
+                // Die e.Message enthält nur den Text der Ausnahme.
                 // Falls wir jede Information, die zu dieser Ausnahme gehört,
                 // ausschreiben möchten, dann benutzen wir e.ToString()
                 Console.WriteLine(e.Message);
             }
             finally
             {
-                // Es ist wichtig, dass die Datai in dem finally Block geschlossen wird 
+                // Es ist wichtig, dass die Datei in dem finally Block geschlossen wird 
                 // um sicherzustellen, dass wir im Falle einer Ausnahme keine 
                 // offene Datei haben.
                 // Wir könnten ein using-Block statt try-finally verwenden
@@ -184,7 +184,7 @@ Der folgende Code zeigt eine mögliche Lösung, die Details werden in den Codeko
                     sr.Close();
             }
 
-            // Ausschreiben der Elementen der Liste songs auf die Konsole
+            // Ausschreiben der Elemente der Liste songs auf die Konsole
             foreach (Song song in songs)
                 Console.WriteLine(song.ToString());
         }
@@ -207,7 +207,7 @@ Die Ausgangsumgebung befindet sich im Ordner `Task2`. Öffne die darin enthalten
 
 Im Ordner `Task2\Shapes` befindet sich eine Datei `Controls.dll`, die während der Lösung dieser Aufgabe verwendet werden muss.
 
-### Es soll eingaben (neben dem Quellcode)
+### Abzugeben (neben dem Quellcode)
 
 Schreibe eine kurze textuelle Zusammenfassung (zwei bis drei Absätze) über die Entwurfsentscheidungen, die während der Lösung von Aufgabe 2 getroffen wurden, sowie über die wichtigsten Prinzipien der Lösung und deren Begründung. Dies soll in die bereits im `Task2`-Ordner vorhandene Datei `readme.md` geschrieben werden, wahlweise in beliebigem Markdown-Format oder als einfacher Text. Arbeite unbedingt in der Datei im `Task2`-Ordner (auch wenn eventuell eine gleichnamige Datei im Stammverzeichnis existiert).
 
@@ -220,7 +220,7 @@ Wir sollen die erste Version einer CAD-Anwendung entwickeln, die zweidimensional
     !!! warning "Benennung"
         Die Klassen müssen unbedingt wie oben angegeben benannt werden!
 
-- Daten, die zu den Formen gehören: x- und y-Koordinaten sowie weitere Informationen, die für die Darstellung und die Berechnung der Flächeninhalt der Formen notwendig sind. Z. B. Seitenlänge für ein Quadrat, Breite und Höhe für `TextArea`, Radius für den Kreis.
+- Daten, die zu den Formen gehören: x- und y-Koordinaten sowie weitere Informationen, die für die Darstellung und die Berechnung des Flächeninhalts der Formen notwendig sind. Z. B. Seitenlänge für ein Quadrat, Breite und Höhe für `TextArea`, Radius für den Kreis.
 
 - Jede Form muss Operationen bereitstellen, um ihren Typ, ihre Koordinaten und ihre Fläche abzufragen. Die Typabfrage soll als `string` zurückgegeben werden und die eingebaute `GetType`-Methode der `Type`-Klasse darf nicht verwendet werden.
 
@@ -229,7 +229,7 @@ Wir sollen die erste Version einer CAD-Anwendung entwickeln, die zweidimensional
 - Die `TextArea`-Klasse muss zwingend von der `Textbox`-Klasse der `Controls.dll` vererben. Die `Controls.dll` ist eine .NET-Assembly mit vorcompilierten Klassen.
 
     !!! failure "Standardimplementierung in Interface"
-        Ab C# 8 Standardimplementierungen in Schnittstellen unterstützt sind. Es kann oft sehr nützlich sein, aber darf diese Technik in der Lösung nicht angewendet werden. Verwende hier einen "klassischeren" Ansatz.
+        Ab C# 8 werden Standardimplementierungen in Schnittstellen unterstützt. Es kann oft sehr nützlich sein, aber diese Technik darf in der Lösung nicht angewendet werden. Verwende hier einen "klassischeren" Ansatz.
 
 - Bei der Implementierung soll Verkapselung gewahrt werden: z. B. soll das Verwalten der Formen von einer **dedizierten Klasse** übernommen werden.
 
@@ -243,7 +243,7 @@ Wir sollen die erste Version einer CAD-Anwendung entwickeln, die zweidimensional
 - Spätestens am Ende der Implementierung soll in der Visual Studio Solution ein Klassendiagramm erstellt werden, in dem die Klassen der Solution übersichtlich angeordnet sind. Assoziationsbeziehungen sollen in der Form einer Assoziation dargestellt werden, nicht als Membervariablen (*Show as Association* bzw. *Show as Collection Association*, siehe [die Anleitung der Laborübung 1.](../../labor/1-model-es-kod-kapcsolata/index_ger.md)).
 
     !!! tip "Class Diagram-Komponente"
-        Visual Studio 2026 installiert die *Class Designer*-Komponente nicht immer standardmäßig. Falls das Klassendiagramm nicht hinzugefügt werden kann (weil *Class Diagram* nicht in der Liste unter *Add / New Item* angezeigt wird), muss die Komponente nachträglich installiert werden. Weitere Informationen findest du auf der Seite [Entwicklungsumbgebung](../fejlesztokornyezet/index_ger.md).
+        Visual Studio 2026 installiert die *Class Designer*-Komponente nicht immer standardmäßig. Falls das Klassendiagramm nicht hinzugefügt werden kann (weil *Class Diagram* nicht in der Liste unter *Add / New Item* angezeigt wird), muss die Komponente nachträglich installiert werden. Weitere Informationen findest du auf der Seite [Entwicklungsumgebung](../fejlesztokornyezet/index_ger.md).
 
 Bei der Verwirklichung wird eine erhebliche Vereinfachung verwendet:
 
@@ -270,7 +270,7 @@ Im Folgenden sehen wir uns an, welche Schritte erforderlich sind, um Klassen aus
 ??? "Falls die Fehlermeldung 'Reference is invalid or unsupported' erscheint"
     Sehr selten kann es vorkommen, dass Visual Studio während dieser Schritte die Meldung "Reference is invalid or unsupported" anzeigt. Meist hilft in solchen Fällen eine Neuinstallation von Visual Studio.
 
-Damit haben wir eine Referenz auf `Controls.dll` im Projekt hinzugefügt, so die darin enthaltenen Klassen verwendet werden können (z. B. instanziiert oder davon vererbt). Im Solution Explorer wird unter *Dependencies*, dann *Assemblies* die Referenz *Controls* angezeigt:
+Damit haben wir eine Referenz auf `Controls.dll` im Projekt hinzugefügt, sodass die darin enthaltenen Klassen verwendet werden können (z. B. instanziiert oder davon vererbt). Im Solution Explorer wird unter *Dependencies*, dann *Assemblies* die Referenz *Controls* angezeigt:
 
 ![Controls.dll](images/controlsdll.png)
 
@@ -278,9 +278,9 @@ Die `Textbox`-Klasse, von der unsere `TextArea`-Klasse vererbt werden muss, befi
 Falls weitere Informationen benötigt werden, kann der *Object Browser* helfen. Dieser wird über das Menü *View* → *Object Browser* geöffnet und erscheint in einem neuen Tab.
 
 !!! note "Falls die Object Browser-Ansicht leer ist"
-    Visual Studio 2026 zeigt im Object Browser nichts an (nur ein Text beginnend mit „No information“ ist sehbar), solange keine Quelldatei geöffnet ist. Öffne in diesem Fall die Datei `Program.cs` im Solution Explorer und wechsel dann zurück zum Object Browser-Tab, um die Komponenten anzuzeigen.
+    Visual Studio 2026 zeigt im Object Browser nichts an (nur ein Text beginnend mit „No information“ ist sichtbar), solange keine Quelldatei geöffnet ist. Öffne in diesem Fall die Datei `Program.cs` im Solution Explorer und wechsle dann zurück zum Object Browser-Tab, um die Komponenten anzuzeigen.
 
-Im Object Browser können durch Öffnen des `Controls`-Komponente und Auswahl einzelner Knoten (Namespace, Klasse) die Eigenschaften der jeweiligen Elemente eingesehen werden: z. B. werden beim Überfahren des Klassennamens die Klassenmitglieder angezeigt.
+Im Object Browser können durch Öffnen der `Controls`-Komponente und Auswahl einzelner Knoten (Namespace, Klasse) die Eigenschaften der jeweiligen Elemente eingesehen werden: z. B. werden beim Überfahren des Klassennamens die Klassenmitglieder angezeigt.
 
 ![Object Browser](images/object-browser.png)
 
@@ -292,4 +292,4 @@ Checkliste zur Wiederholung:
 
 --8<-- "docs/hazi/beadas-ellenorzes/index.md:3"
 
-- Vergiss bei Aufgabe 2 nicht, deine Lösung im `readme.md` dokumentieren.
+- Vergiss bei Aufgabe 2 nicht, deine Lösung in der `readme.md` zu dokumentieren.
