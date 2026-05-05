@@ -22,7 +22,7 @@ Das Ziel der Hausaufgabe:
 
 Die erforderliche Entwicklungsumgebung wird [hier](../fejlesztokornyezet/index_ger.md) beschrieben, identisch mit Hausaufgabe 3 (XAML-Grundlagen).
 
-## Das Verfahren für die Einreichung
+## Das Verfahren für die Abgabe
 
 Auf Moodle soll ein ZIP-Archiv hochgeladen werden, das den folgenden Anforderungen entspricht:
 
