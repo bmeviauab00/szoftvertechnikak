@@ -2255,7 +2255,7 @@
 <p>Information about the required development environment is available <a href="../../fejlesztokornyezet/index_eng/">here</a>. For this homework, WinUI is not required (you will work in the context of a console-based application), so <strong>the tasks can also be completed on Linux or macOS.</strong></p>
 <h2 id="submission-process">Submission process<a class="headerlink" href="#submission-process" title="Permanent link">¶</a></h2>
 <ul>
-<li>The submission process is the same as in previous assignments. Use GitHub Classroom to create a personal repository. The invitation URL is available on Teams and on AUT portal. Make sure you use the correct URL specific to this homework (each homework has its own unique link). Clone the repository that gets created — it will include the expected structure for your solution. After completing the tasks, commit and push your work.</li>
+<li>The submission process is the same as in previous assignments. Use GitHub Classroom to create a personal repository. The invitation URL is available on Teams and on the AUT portal. Make sure you use the correct URL specific to this homework (each homework has its own unique link). Clone the repository that gets created — it will include the expected structure for your solution. After completing the tasks, commit and push your work.</li>
 <li>Open and work in the <code>Patterns-Extensibility.sln</code> solution file found among the cloned files.</li>
 <li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> The tasks require you to take <strong>screenshots</strong> of specific parts of your solution, which serve as proof that you created the solution yourself. <strong>The expected content of each screenshot is clearly specified in the individual tasks.</strong> 
 These screenshots must be submitted as part of your solution — place them in the root folder of your repository (next to neptun.txt).
@@ -2277,7 +2277,7 @@ If any screenshot includes content you don’t want to share, you may blur or re
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Dependency Injection (Manual) vs. Dependency Injection Container</p>
-<p>In the lab — and in this homework — we use the simple, manual form of Dependency Injection (this is also what is shown in the lecture). In this case, dependencies of a class are manually instantiated and passed into the constructor. In more complex real-world applications, it is common to use a Dependency Injection Container,  where you can register which implementation to use for each interface type.  However, DI containers are not covered in this course and are not part of the curriculum. The manual version of DI <strong>is required</strong> and critically important — without it, applying the Strategy pattern would not make sense.</p>
+<p>In the lab — and in this homework — we use the simple, manual form of Dependency Injection (this is also what is shown in the lecture). In this case, dependencies of a class are manually instantiated and passed into the constructor. In more complex real-world applications, it is common to use a Dependency Injection Container, where you can register which implementation to use for each interface type. However, DI containers are not covered in this course and are not part of the curriculum. The manual version of DI <strong>is required</strong> and critically important — without it, applying the Strategy pattern would not make sense.</p>
 </div>
 <p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" title=":warning:"> In your own words, provide short answers to the following questions in the <code>readme.md</code> file located in the <em>Feladatok</em> folder:</p>
 <ul>
@@ -2285,7 +2285,7 @@ If any screenshot includes content you don’t want to share, you may blur or re
 <li>What does it mean that applying the Strategy pattern results in satisfying the Open/Closed Principle in the solution? (You can read about the Open/Closed Principle in the lecture and lab materials.)</li>
 </ul>
 <h2 id="task-2-null-strategy">Task 2 - Null Strategy<a class="headerlink" href="#task-2-null-strategy" title="Permanent link">¶</a></h2>
-<p>Looking at the constructor parameters of <code>Anonymizer</code>, you’ll see that it accepts <code>null</code> as a valid value for the progress strategy. This makes sense — the user of the Anonymizer class might not care about progress updates. However, this approach has a downside: if <code>_progress</code>is null, then every usage of it in the class must include a null check. Indeed, the code uses the null-conditional operator <code>?.</code> to safely invoke methods on <code>_progress</code>. But this is a risky practice: in more complex code, if a single null check is missed, it can lead to a runtime <code>NullReferenceException</code>. Null reference errors are among the most common and hardest to track.</p>
+<p>Looking at the constructor parameters of <code>Anonymizer</code>, you’ll see that it accepts <code>null</code> as a valid value for the progress strategy. This makes sense — the user of the Anonymizer class might not care about progress updates. However, this approach has a downside: if <code>_progress</code> is null, then every usage of it in the class must include a null check. Indeed, the code uses the null-conditional operator <code>?.</code> to safely invoke methods on <code>_progress</code>. But this is a risky practice: in more complex code, if a single null check is missed, it can lead to a runtime <code>NullReferenceException</code>. Null reference errors are among the most common and hardest to track.</p>
 <p>Task: Design a solution that eliminates the possibility of this kind of error. Hint: You need a solution where <code>_progress</code> is never null. Try to figure it out on your own first.</p>
 <details class="tip">
 <summary>Solution Principle</summary>
@@ -2371,13 +2371,13 @@ If any screenshot includes content you don’t want to share, you may blur or re
 </div>
 <h2 id="task-5-using-delegates-with-reusable-logic">Task 5 - Using delegates with reusable logic<a class="headerlink" href="#task-5-using-delegates-with-reusable-logic" title="Permanent link">¶</a></h2>
 <p>In the previous task, we assumed that the “simple progress” and “percent progress” logic was used only once, so there was no need to make it reusable. Accordingly, the “simple progress” logic was provided in the simplest form — as a lambda expression (no need for a separate function). </p>
-<p>However, what if we want to reuse the “simple progress” logic in multiple places, across multiple <code>Anonymizer</code> objects? It would be a serious mistake to multiply the lambda expression using copy-paste, as this leads to code duplication — violating the "<strong>Do Not Repeat Yourself</strong>" (**DRY) principle.</p>
+<p>However, what if we want to reuse the “simple progress” logic in multiple places, across multiple <code>Anonymizer</code> objects? It would be a serious mistake to multiply the lambda expression using copy-paste, as this leads to code duplication — violating the "<strong>Do Not Repeat Yourself</strong>" (<strong>DRY</strong>) principle.</p>
 <p>Question: Is there a way to provide reusable code when working with delegates? Of course there is — with delegates, it's not mandatory to use lambda expressions. As we’ve seen (and used) many times throughout the semester, delegates can refer to regular methods (whether static or instance methods).</p>
 <p>If we want the “simple progress” and/or “percent progress” logic to be reusable when using delegates, we should place them into separate functions, inside an appropriate class (or classes). Then, we pass these method references to the <code>Anonymizer</code> constructor as parameters.</p>
 <p>Task: Extend the previous solution so that the “simple progress” and “percent progress” logic becomes reusable. Specifically:</p>
 <ul>
 <li>Implement the “simple progress” and “percent progress” logic as two static methods in a newly introduced static class named <code>AllProgresses</code> (place this class in the root of the project).</li>
-<li>Add two new usages of the <code>Anonymizer</code> class in the <code>Program.cs</code>file (in addition to the existing ones), which utilize the two static methods from the <code>AllProgresses</code> class (do not use lambda expressions here).</li>
+<li>Add two new usages of the <code>Anonymizer</code> class in the <code>Program.cs</code> file (in addition to the existing ones), which utilize the two static methods from the <code>AllProgresses</code> class (do not use lambda expressions here).</li>
 <li>The existing <code>IProgress</code> interface and its implementations could theoretically be deleted (since they are no longer used), but do not delete them — keep them so the progress logic from your earlier solutions can still be reviewed.</li>
 </ul>
 <p>We’re done — let’s evaluate the solution:</p>
@@ -2489,8 +2489,8 @@ Tip: You can read the entire content of a file in one step using the static meth
         </path>
       </svg>
     </span>
-    <span title="2025. május 10. 18:33:59">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. május 10. 18:33:59 CEST"><span class="timeago" datetime="2025-05-10T18:33:59+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. május 10. 18:33:59 CEST">2025-05-10</span>
+    <span title="2026. május 2. 15:55:54">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. május 2. 15:55:54 CEST"><span class="timeago" datetime="2026-05-02T15:55:54+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. május 2. 15:55:54 CEST">2026-05-02</span>
     </span>
   </span>
 
@@ -2506,6 +2506,8 @@ Tip: You can read the entire content of a file in one step using the static meth
     <span>Szerzők</span>
     <nav><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@bzolka">
         <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
+      </a><a href="https://github.com/lyozi" target="_blank" rel="noopener noreferrer" class="md-author" title="@Urak József">
+        <img src="https://avatars.githubusercontent.com/u/124312789?v=4?size=72" alt="@Urak József">
       </a><a href="https://github.com/szinyeribence" target="_blank" rel="noopener noreferrer" class="md-author" title="@None">
         <img src="https://avatars.githubusercontent.com/u/44683763?v=4?size=72" alt="@None">
       </a></nav>      

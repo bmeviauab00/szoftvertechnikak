@@ -2594,7 +2594,7 @@ To keep implementation simple, we will continue to use the MVVM Toolkit.</p>
 <li>The <code>PersonListPageViewModel</code> will work with the model and handle user interactions (event handlers).</li>
 <li>Since we are using the Relaxed MVVM pattern (not Strict MVVM), we do not need to introduce a wrapper <code>PersonViewModel</code> around the <code>Person</code> model class.</li>
 </ul>
-<p>Task: Refactor the existing logic to follow the MVVM (Model-View-ViewModel) pattern as described above. Move the <code>PersonListPageViewModel</code> class into a newly created <code>ViewModels</code> folder. Try to figure out the solution yourself based on the provided hints! Here's a helpful tip in advance (since this part is a bit trickier): for events, you can bind event handler methods using data binding — see the the lecture. (After the refactor, event handlers must only be specified via bindings.) Also important: You can only bind to public properties or methods, so keep that in mind when refactoring!</p>
+<p>Task: Refactor the existing logic to follow the MVVM (Model-View-ViewModel) pattern as described above. Move the <code>PersonListPageViewModel</code> class into a newly created <code>ViewModels</code> folder. Try to figure out the solution yourself based on the provided hints! Here's a helpful tip in advance (since this part is a bit trickier): for events, you can bind event handler methods using data binding — see the lecture. (After the refactor, event handlers must only be specified via bindings.) Also important: You can only bind to public properties or methods, so keep that in mind when refactoring!</p>
 <details>
 <summary>Tips / solution validation</summary>
 <ol>
@@ -2645,7 +2645,7 @@ Fortunately, the x:Bind event binding is flexible enough to allow methods withou
 <span class="w">        </span><span class="k">get</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">NewPerson</span><span class="p">.</span><span class="n">Age</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><span class="filename">PersonListPage.xaml-be a '-' gombhoz</span><pre><span></span><code><span class="w">    </span>IsEnabled="{x:Bind<span class="w"> </span>ViewModel.IsDecrementEnabled,<span class="w"> </span>Mode=OneWay}"
+<div class="highlight"><span class="filename">PersonListPage.xaml — for the '-' button</span><pre><span></span><code><span class="w">    </span>IsEnabled="{x:Bind<span class="w"> </span>ViewModel.IsDecrementEnabled,<span class="w"> </span>Mode=OneWay}"
 </code></pre></div>
 <p>Let’s try it out! Unfortunately, it doesn’t work: the "–" button is not disabled when the age becomes 0 or less (e.g. by clicking the button multiple times). If we place a breakpoint inside the <code>IsDecrementEnabled</code> property and then launch the application, we’ll notice that the property is only queried once by the bound control — during application startup. Even after repeatedly clicking the "–" button, it won’t be queried again. Try it yourself!</p>
 <p>Think through what’s causing this, and only then continue with the guide.</p>
@@ -2762,8 +2762,8 @@ Pass appropriate delegates to the <code>RelayCommand</code> constructor (one for
         </path>
       </svg>
     </span>
-    <span title="2025. április 25. 02:14:09">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. április 25. 02:14:09 CEST"><span class="timeago" datetime="2025-04-25T02:14:09+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. április 25. 02:14:09 CEST">2025-04-25</span>
+    <span title="2026. május 2. 15:55:34">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. május 2. 15:55:34 CEST"><span class="timeago" datetime="2026-05-02T15:55:34+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. május 2. 15:55:34 CEST">2026-05-02</span>
     </span>
   </span>
 
@@ -2779,6 +2779,8 @@ Pass appropriate delegates to the <code>RelayCommand</code> constructor (one for
     <span>Szerzők</span>
     <nav><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@bzolka">
         <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
+      </a><a href="https://github.com/lyozi" target="_blank" rel="noopener noreferrer" class="md-author" title="@Urak József">
+        <img src="https://avatars.githubusercontent.com/u/124312789?v=4?size=72" alt="@Urak József">
       </a><a href="https://github.com/szinyeribence" target="_blank" rel="noopener noreferrer" class="md-author" title="@None">
         <img src="https://avatars.githubusercontent.com/u/44683763?v=4?size=72" alt="@None">
       </a></nav>      
