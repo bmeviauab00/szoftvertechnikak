@@ -2665,7 +2665,7 @@
 <p>A szükséges fejlesztőkörnyezetről <a href="../fejlesztokornyezet/">itt</a> található leírás.</p>
 <div class="admonition warning">
 <p class="admonition-title">C# 12-es (és újabb) nyelvi elemek használata</p>
-<p>A házi feladat megoldása során C# 12-es, és annál újabb nyelvi elemek, (pl. primary constructor) nem használhatók, ugyanis a GitHub-on futó ellenőrző ezeket még nem támogatja.</p>
+<p>A házi feladat megoldása során C# 12-es, és annál újabb nyelvi elemek (pl. primary constructor) nem használhatók, ugyanis a GitHub-on futó ellenőrző ezeket még nem támogatja.</p>
 </div>
 <h2 id="beadas-menete-eloellenorzo">Beadás menete, előellenőrző<a class="headerlink" href="#beadas-menete-eloellenorzo" title="Permanent link">¶</a></h2>
 <p>A beadás menete megegyezik az első házi feladatéval (részletes leírás a szokásos helyen, lásd <a href="../hf-folyamat/">Házi feladat munkafolyamat és a Git/GitHub használata</a>):</p>
@@ -2684,7 +2684,7 @@ Utóbbi esetében figyelj rá, hogy a <code>MidiChlorianCount</code> értékét 
 A validáció során a lehető legegyszerűbb, legletisztultabb megoldást válaszd: a property setterben egyszerű <code>if</code>-et használj és dobj kivételt, ne legyen az <code>if</code>-nek <code>else</code> ága, valamint nincs szükség a <code>return</code> használatára sem.</p>
 <h3 id="megoldas">Megoldás<a class="headerlink" href="#megoldas" title="Permanent link">¶</a></h3>
 <p>A feladat megoldása a <a href="../../labor/2-nyelvi-eszkozok/#1-feladat-tulajdonsag-property">2. labor 1. feladatával</a> analóg módon készíthető el.
-A <code>MidiChlorianCount</code> tulajdonság setterében érvénytelen érték esetén dobj kivételt. Ezt például a következő utasítással tehető meg:</p>
+A <code>MidiChlorianCount</code> tulajdonság setterében érvénytelen érték esetén dobj kivételt. Ez például a következő utasítással tehető meg:</p>
 <div class="highlight"><pre><span></span><code><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">ArgumentException</span><span class="p">(</span><span class="s">"You are not a true jedi!"</span><span class="p">);</span>
 </code></pre></div>
 <h2 id="feladat-2-a-klonok-tamadasa">Feladat 2 – A klónok támadása<a class="headerlink" href="#feladat-2-a-klonok-tamadasa" title="Permanent link">¶</a></h2>
@@ -2992,7 +2992,7 @@ A <code>Program.cs</code> fájlba vedd fel az alábbi függvényt a <code>Report
 --------------- Summary -----------------
 Footer
 </code></pre></div>
-<p>Az első sorban "----" felett található a fejléc. Alatta az egye személyekhez egy-egy "Person" beégetett szöveg, majd a "----" alatt a lábléc, egyelőre csak egy beégetett "Footer" szöveggel.</p>
+<p>Az első sorban "----" felett található a fejléc. Alatta az egyes személyekhez egy-egy "Person" beégetett szöveg, majd a "----" alatt a lábléc, egyelőre csak egy beégetett "Footer" szöveggel.</p>
 <p>A megoldásban látható, hogy a fejléc szövege a <code>ReportPrinter</code> osztályba nincs beégetve. Ezt <code>ReportPrinter</code> felhasználója adja meg konstruktor paraméterben egy delegate, esetünkben egy lambda kifejezés formájában. A delegate típusa a .NET beépített <code>Action</code> típusa.</p>
 <p>A feladatok a következők:</p>
 <div class="admonition warning">
@@ -3099,8 +3099,8 @@ Number of Employees: 2
         </path>
       </svg>
     </span>
-    <span title="2026. április 3. 15:02:22">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. április 3. 15:02:22 CEST"><span class="timeago" datetime="2026-04-03T15:02:22+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. április 3. 15:02:22 CEST">2026-04-03</span>
+    <span title="2026. április 30. 19:54:31">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. április 30. 19:54:31 CEST"><span class="timeago" datetime="2026-04-30T19:54:31+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. április 30. 19:54:31 CEST">2026-04-30</span>
     </span>
   </span>
 
@@ -3122,6 +3122,8 @@ Number of Employees: 2
         <img src="https://avatars.githubusercontent.com/u/92692400?u=542eb4f547185fe2d7d0fd465866e05aaa64ffd7&amp;v=4?size=72" alt="@Kovács Bertalan">
       </a><a href="https://github.com/denesmerena" target="_blank" rel="noopener noreferrer" class="md-author" title="@Merena Dénes">
         <img src="https://avatars.githubusercontent.com/u/35033903?v=4?size=72" alt="@Merena Dénes">
+      </a><a href="https://github.com/lyozi" target="_blank" rel="noopener noreferrer" class="md-author" title="@Urak József">
+        <img src="https://avatars.githubusercontent.com/u/124312789?v=4?size=72" alt="@Urak József">
       </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tibor Tóth">
         <img src="https://avatars.githubusercontent.com/u/8333960?u=d26653213d265ecdceeaf20a896d74f479d35450&amp;v=4?size=72" alt="@Tibor Tóth">
       </a><a href="https://github.com/tottorini" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tamás Szenes-Suba">

@@ -2168,11 +2168,11 @@
 <li>A fejlesztő klónozza (<code>clone</code>) az adott központi repository-t, melynek során egy azzal megegyező helyi repository jön létre a saját számítógépén. Ezt a műveletet elég egyszer elvégezni.</li>
 <li>A fejlesztő a helyi repository-hoz tartozó munkakönyvtárban (working directory) változtatásokat végez a kódon: új fájlokat vesz fel, meglévőket módosít és töröl.</li>
 <li>Ha elkészül egy érdemi részfeladat, akkor a fejlesztő a változtatásokat <code>commit</code>-olja a számítógépén levő helyi repository-ba. Ennek során a commit-ot célszerű egy a változtatások jellegét jól összefoglaló megjegyzéssel ellátni.</li>
-<li>A helyi repository-ból egy <code>push</code> művelettel a fejlesztő felölti a változásokat a központi repository-ba, ahol így változtatásai mások számára is láthatóvá válnak.</li>
+<li>A helyi repository-ból egy <code>push</code> művelettel a fejlesztő feltölti a változásokat a központi repository-ba, ahol így változtatásai mások számára is láthatóvá válnak.</li>
 </ol>
 <p>Minden egyes <strong>commit</strong> tulajdonképpen egy időbélyeggel, a fejlesztő felhasználónevével és e-mail címével ellátott kódot érintő változáshalmaz. A repositoryban ezek "egymásutániságából" áll össze a teljes verziótörténet.
 Mivel a legtöbb esetben a fejlesztők csapatban dolgoznak, időnként szükség van arra, hogy mások által a központi repository-ba <code>push</code>-olt változtatásokat a fejlesztők a saját lokális repository-jukba letöltsék és belemerge-eljék: erre szolgál a <code>pull</code> művelet. Fontos szabály, hogy <code>push</code>-olni csak akkor lehet a központi repository-ba (a Git csak akkor engedi), ha előtte mások változtatásait a saját lokális repository-nkba egy <code>pull</code> művelettel előtte belemerge-eltük.
-A Szoftvertechnikák tárgy keretében a <code>pull</code> műveletet nem kell használni, mert mindenki önállóan, saját repository-ba dolgozik. Megjegyzés: ha esetleg a GitHub felületén közvetlen változtatunk fájlokon (vagy több clone-ban is dolgozunk), akkor szükség van a <code>pull</code> használatára ez esetben is.
+A Szoftvertechnikák tárgy keretében a <code>pull</code> műveletet nem kell használni, mert mindenki önállóan, saját repository-ba dolgozik. Megjegyzés: ha esetleg a GitHub felületén közvetlenül változtatunk fájlokon (vagy több clone-ban is dolgozunk), akkor szükség van a <code>pull</code> használatára ez esetben is.
 A fentieken túlmenően a Git számos további szolgáltatást biztosít (pl. teljes verziótörténet megtekintése minden fájlra, commit történet megtekintése, tetszőleges múltbeli verzióra visszaállás, ágak kezelése stb.).</p>
 <h2 id="github">GitHub<a class="headerlink" href="#github" title="Permanent link">¶</a></h2>
 <p>A GitHub egy online elérhető website és szolgáltatás (<a href="https://github.com">https://github.com</a>), mely teljes körű Git szolgáltatást biztosít. Mindezt ráadásul – legalábbis publikus, vagyis mindenki számára hozzáférhető repositoryk vonatkozásában – teljesen ingyenesen biztosítja. Napjainkra a GitHub vált a közösségi kód (verziókezelt) tárolásának első számú platformjává, a legtöbb nyílt forráskódú projekt „otthonává”.</p>
@@ -2186,7 +2186,7 @@ A fentieken túlmenően a Git számos további szolgáltatást biztosít (pl. te
 <li>A Git önmagában is telepíthető, és parancssorból is ki tudjuk adni a szükséges <code>clone</code>, <code>commit</code>, <code>push</code> stb. parancsokat.</li>
 <li>Használhatunk a parancsok kiadására egy grafikus felülettel rendelkező eszközt. Ilyenek pl. a GitHub Desktop, a GitExtensions, vagy maga a Visual Studio is (mely integrált grafikus Git szolgáltatásokat is biztosít).</li>
 </ul>
-<p>A két megközelítést a mindennapokban kombináltan szoktuk használni. Egy repo leklónozása sokszor parancssorból a legegyszerűbb/leggyorsabb. A változások commit-olására, a központi repositoryval való szinkronizációra (push, pull), a verziótörtének megjelenítésére már célszerűbb egy grafikus eszközt használni, különösen akkor, ha még kevésbé vagyunk rutinosak. A tárgy keretében a klónozásra a parancssor vagy a Visual Studio, az egyéb parancsok kiadására a Visual Studio javasolt. A git használatról (a házi feladatok kontextusában) <a href="../hf-folyamat/">itt</a> található bővebb leírás.</p>
+<p>A két megközelítést a mindennapokban kombináltan szoktuk használni. Egy repo leklónozása sokszor parancssorból a legegyszerűbb/leggyorsabb. A változások commit-olására, a központi repositoryval való szinkronizációra (push, pull), a verziótörténet megjelenítésére már célszerűbb egy grafikus eszközt használni, különösen akkor, ha még kevésbé vagyunk rutinosak. A tárgy keretében a klónozásra a parancssor vagy a Visual Studio, az egyéb parancsok kiadására a Visual Studio javasolt. A git használatról (a házi feladatok kontextusában) <a href="../hf-folyamat/">itt</a> található bővebb leírás.</p>
 <h2 id="git-telepitese">Git telepítése<a class="headerlink" href="#git-telepitese" title="Permanent link">¶</a></h2>
 <p>Amennyiben a számítógépünkre nincs még a Git telepítve, és szeretnénk azt parancssorból is használni, akkor innen telepíthető Windows operációs rendszerre: <a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a>. Egyéb operációs rendszerek esetén pedig innen érdemes indulni: <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a>.</p>
 <div class="admonition warning">
@@ -2204,8 +2204,8 @@ A fentieken túlmenően a Git számos további szolgáltatást biztosít (pl. te
         </path>
       </svg>
     </span>
-    <span title="2025. december 18. 22:33:38">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. december 18. 22:33:38 CET"><span class="timeago" datetime="2025-12-18T22:33:38+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. december 18. 22:33:38 CET">2025-12-18</span>
+    <span title="2026. május 8. 14:56:28">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. május 8. 14:56:28 CEST"><span class="timeago" datetime="2026-05-08T14:56:28+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. május 8. 14:56:28 CEST">2026-05-08</span>
     </span>
   </span>
 
@@ -2221,6 +2221,8 @@ A fentieken túlmenően a Git számos további szolgáltatást biztosít (pl. te
     <span>Szerzők</span>
     <nav><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
         <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&amp;v=4?size=72" alt="@Zoltán Benedek">
+      </a><a href="https://github.com/lyozi" target="_blank" rel="noopener noreferrer" class="md-author" title="@Urak József">
+        <img src="https://avatars.githubusercontent.com/u/124312789?v=4?size=72" alt="@Urak József">
       </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tibor Tóth">
         <img src="https://avatars.githubusercontent.com/u/8333960?u=d26653213d265ecdceeaf20a896d74f479d35450&amp;v=4?size=72" alt="@Tibor Tóth">
       </a></nav>      

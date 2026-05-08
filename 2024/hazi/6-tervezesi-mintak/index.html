@@ -2245,7 +2245,7 @@
 <p>A házi feladatban a kapcsolódó laboron (<a href="../../labor/6-tervezesi-mintak/">6. labor – Tervezési minták (kiterjeszthetőség)</a>) elkezdett adatfeldolgozó/anonimizáló alkalmazást fogjuk továbbfejleszteni.</p>
 <p>Az önálló feladat a "Tervezési minták" előadásokon elhangzottakra épít:
 - "Előadás 08 - Tervezési minták 1" előadás: "Bővíthetőséghez, kiterjeszthetőséghez kapcsolódó alap tervezési minták" nagyfejezet: bevezető példa, Template Method, Strategy, Open/Closed elv, SRP elv, egyéb technikák (metódusreferencia/lambda)
-- "Előadás 09 - Tervezési minták 1" előadás: Dependency Injection minta</p>
+- "Előadás 09 - Tervezési minták 2" előadás: Dependency Injection minta</p>
 <p>A feladatok gyakorlati hátteréül a <a href="../../labor/6-tervezesi-mintak/">6. labor – Tervezési minták (kiterjeszthetőség)</a> laborgyakorlat szolgál.</p>
 <p>Az önálló gyakorlat célja:</p>
 <ul>
@@ -2279,13 +2279,13 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
 <p class="admonition-title">Dependency Injection (manuális) vs. Dependency Injection Container</p>
 <p>A labor során, és jelen házi feladatban a Dependency Injection egyszerű, manuális változatát használjuk (előadáson is ez szerepel). Ez esetben az osztály függőségeit manuálisan példányosítjuk és adjuk át az osztály konstruktorában. Alternatív és komplexebb alkalmazások esetében gyakran használt alternatíva egy Dependency Injection Container alkalmazása, melybe beregisztrálhatjuk, hogy az egyes interfész típusokhoz milyen implementációt kívánunk használni. A DI konténerek alkalmazása a tárgy keretében nem szerepelt, nem tananyag. A manuális változata viszont az, és kiemelt fontosságú, hiszen enélkül nincs értelme a Strategy minta alkalmazásának.</p>
 </div>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" title=":warning:"> Saját szavaiddal megfogalmazva adj rövid választ a <em>Feladatok</em> mappában találtható (vagyis nem a gyökérben található !!!) <code>readme.md</code> fájlban az alábbi kérdésekre:</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" title=":warning:"> Saját szavaiddal megfogalmazva adj rövid választ a <em>Feladatok</em> mappában található (vagyis nem a gyökérben található !!!) <code>readme.md</code> fájlban az alábbi kérdésekre:</p>
 <ul>
 <li>Mit biztosít a Strategy a DI mintával kombinálva a labor példa keretében, mik az együttes alkalmazásuk előnyei?</li>
 <li>Mit jelent az, hogy a Strategy minta alkalmazásával az Open/Closed elv megvalósul a megoldásban? (az Open/Closed elvről az előadás és laboranyagban is olvashatsz).</li>
 </ul>
 <h2 id="2-feladat-null-strategy">2. Feladat - Null Strategy<a class="headerlink" href="#2-feladat-null-strategy" title="Permanent link">¶</a></h2>
-<p>Az <code>Anonymizer</code> konstruktor paramétereit megvizsgálva azt látjuk, hogy progress stratégiának <code>null</code> is megadható. Ez logikus, hiszen lehet, hogy az <code>Anonymizer</code> felhasználója nem kíváncsi semmiféle progress információra. Ennek a megközelítésnek van egy hátránya is. Ez esetben az osztályban a <code>_progress</code> tagváltozó null lesz, és így az alkalmazása során szükség van a null vizsgálatra. Ellenőrizzük, hogy a <code>_progess</code> használatakor valóban van null vizsgálat a <code>?.</code> operátor alkalmazásával. De ez egy veszélyes játék, mert komplexebb esetben hacsak egyetlen helyen is lefelejtődik a null vizsgálat, akkor futás közben <code>NullReferenceException</code>-t kapunk. Az ehhez hasonló null hivatkozás hibák a leggyakoribbak közé tartoznak.</p>
+<p>Az <code>Anonymizer</code> konstruktor paramétereit megvizsgálva azt látjuk, hogy progress stratégiának <code>null</code> is megadható. Ez logikus, hiszen lehet, hogy az <code>Anonymizer</code> felhasználója nem kíváncsi semmiféle progress információra. Ennek a megközelítésnek van egy hátránya is. Ez esetben az osztályban a <code>_progress</code> tagváltozó null lesz, és így az alkalmazása során szükség van a null vizsgálatra. Ellenőrizzük, hogy a <code>_progress</code> használatakor valóban van null vizsgálat a <code>?.</code> operátor alkalmazásával. De ez egy veszélyes játék, mert komplexebb esetben hacsak egyetlen helyen is lefelejtődik a null vizsgálat, akkor futás közben <code>NullReferenceException</code>-t kapunk. Az ehhez hasonló null hivatkozás hibák a leggyakoribbak közé tartoznak.</p>
 <p>Feladat: Dolgozz ki egy olyan megoldást, mely a fent vázolt hibalehetőséget kizárja. Tipp: olyan megoldásra van szükség, melynél a <code>_progress</code> tag soha nem lehet null. A megoldásra először magadtól próbálj rájönni.</p>
 <details class="tip">
 <summary>Megoldás alapelve</summary>
@@ -2328,12 +2328,12 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
 </ul>
 </div>
 <p>Ennek megfelelően elkészítjük a megoldásunk egységtesztelésre is előkészített változatát, melyben a bemenet és kimenet kezelése is le van választva a Strategy minta alkalmazásával.</p>
-<p>Feladat: Alakítsd át a Strategy-DI projektben található megoldást olyan módon, hogy az osztály egység tesztelhető legyen, mégpedig a Strategy minta segítségével. Részletesebben:</p>
+<p>Feladat: Alakítsd át a Strategy-DI projektben található megoldást olyan módon, hogy az osztály egységtesztelhető legyen, mégpedig a Strategy minta segítségével. Részletesebben:</p>
 <ul>
 <li>Vezess be egy <code>InputReaders</code> mappát, melyben vezess be egy bemenet feldolgozó strategy interfészt <code>IInputReader</code> néven (egyetlen, <code>List&lt;Person&gt; Read()</code> művelettel), és az <code>Anonymizer</code> osztályból a Strategy mintát követve szervezd ki a bemenet feldolgozást egy <code>CsvInputReader</code> nevű strategy implementációba. Ez az osztály konstruktor paraméterben kapja meg a fájl útvonalát, melyből a bemenetét olvassa.</li>
-<li>Vezess be egy <code>ResultWriters</code> mappát, melyben vezess be egy eredmény kiíró strategy interfészt <code>IResultWriter</code> néven (egyetlen, <code>void Write(List&lt;Person&gt; persons)</code> művelettel), és az <code>Anonymizer</code> osztályból a Strategy mintát követve szervezd ki a kimenet írását egy <code>CsvResultWriter</code> nevű strategy implementációba. Ez az osztály konstruktor paraméterben kapja meg a fájl útvonalát, melybe a kimenetet bele kell írja.</li>
-<li>Bővítsd ki a <code>Anonymizer</code> osztályt, beleértve annak konstruktorát (Strategy + DI minta), hogy bármilyen <code>IInputReader</code> és <code>IResultWriter</code> implementációval használható legyen.</li>
-<li>A <code>Program.cs</code> fájlban alakítsd át az <code>Anonymizer</code> osztály használatát, hogy az újonnan bevezetett <code>CsvInputReader</code> és <code>CsvResultWriter</code> osztályok is át legyenek paraméterként átadva.</li>
+<li>Vezess be egy <code>ResultWriters</code> mappát, melyben vezess be egy eredmény kiíró strategy interfészt <code>IResultWriter</code> néven (egyetlen, <code>void Write(List&lt;Person&gt; persons)</code> művelettel), és az <code>Anonymizer</code> osztályból a Strategy mintát követve szervezd ki a kimenet írását egy <code>CsvResultWriter</code> nevű strategy implementációba. Ez az osztály konstruktor paraméterben kapja meg a fájl útvonalát, melybe a kimenetet bele kell írnia.</li>
+<li>Bővítsd ki az <code>Anonymizer</code> osztályt, beleértve annak konstruktorát (Strategy + DI minta), hogy bármilyen <code>IInputReader</code> és <code>IResultWriter</code> implementációval használható legyen.</li>
+<li>A <code>Program.cs</code> fájlban alakítsd át az <code>Anonymizer</code> osztály használatát, hogy az újonnan bevezetett <code>CsvInputReader</code> és <code>CsvResultWriter</code> osztályok is paraméterként át legyenek adva.</li>
 </ul>
 <p>A következő lépés egységtesztek készítése (lenne) az <code>Anonymizer</code> osztályhoz. Ehhez olyan, ún. mock strategy implementációkat kell bevezetni, melyek nemcsak tesztadatokat szolgáltatnak (természetesen gyorsan, fájlkezelés nélkül), hanem ellenőrzéseket is végeznek (adott logikai egység valóban jól működik-e). Ez most bonyolultnak hangzik, de szerencsére a legtöbb modern keretrendszerben van rá könyvtár támogatás (.NET-ben a <a href="https://github.com/devlooped/moq">moq</a>). Ennek alkalmazása túlmutat a tárgy keretein, így a feladatunk egységtesztelhetőséghez kapcsolódó vonulatát ebben a pontban lezárjuk.</p>
 <p>A feladat végeztével, a kimeneti fájl tartalmának ellenőrzésével mindenképpen győződj meg arról, hogy az anonimizálás valóban lefut!</p>
@@ -2351,7 +2351,7 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
 <p>Feladat: Alakítsd át a Strategy-DI projektben található megoldást olyan módon, hogy a progress kezelés Strategy helyett delegate alapon legyen megvalósítva. Részletesebben:</p>
 <ul>
 <li>Ne vezess be saját delegate típust (használd a .NET által biztosított <code>Action</code> típust).</li>
-<li>A meglévő <code>SimpleProgress</code> és <code>PercentProgress</code> osztályokat ne használd a megoldásodban(de ne is töröld ezeket!).</li>
+<li>A meglévő <code>SimpleProgress</code> és <code>PercentProgress</code> osztályokat ne használd a megoldásodban (de ne is töröld ezeket!).</li>
 <li>Legyen lehetősége az <code>Anonymizer</code> használójának továbbiakban is <code>null</code>-t megadni a konstruktorban, ha nem kíván semmiféle progress kezelést használni.</li>
 <li>A <code>Program.cs</code> fájlban kommentezd ki az eddigi <code>Anonymizer</code> használatokat. Ugyanitt vezess be egy új példát az <code>Anonymizer</code> olyan használatára, melyben a progress kezelés lambda kifejezés formájában van megadva, és a lambda kifejezés pontosan a korábbi "simple progress" logikáját valósítja meg. A "percent progress"-re nem kell hasonlót megvalósítani, azt ebben a megoldásban nem kell támogatni (a következő feladatban térünk vissza rá).</li>
 </ul>
@@ -2404,11 +2404,11 @@ Amennyiben olyan tartalom kerül a képernyőképre, amit nem szeretnél feltöl
 <li>Az <code>AnonymizerIntegrationTest</code> osztályban már van egy <code>Anonymize_CleanInput_MaskNames_Test</code> nevű tesztelést végző művelet (a teszt műveleteket <code>[Test]</code> attribútummal kell ellátni, ez erre a műveletre már elő van készítve). A művelet törzse egyelőre üres, ebben kell dolgozni a következő lépésekben.<ol>
 <li>Hozz létre egy <code>Anonymizer</code> objektumot, mely<ul>
 <li>a <code>@"TestFiles\us-500-01-clean.input.csv"</code> bemenettel dolgozik (ez megtalálható a projekt <em>TestFiles</em> mappájában, nézd meg a tartalmát),</li>
-<li>a kimente legyen a <code>@"us-500-01-maskedname.processed.txt"</code> fájl,</li>
+<li>a kimenete legyen a <code>@"us-500-01-maskedname.processed.txt"</code> fájl,</li>
 <li>"***" paraméterű <code>NameMaskingAnonymizerAlgorithm</code>-t használ.</li>
 </ul>
 </li>
-<li>Futtasd az anonimizálót a <code>Run</code> műveletének hívásával, hogy álljon elő a kimenti állomány.</li>
+<li>Futtasd az anonimizálót a <code>Run</code> műveletének hívásával, hogy álljon elő a kimeneti állomány.</li>
 <li>Az <code>Assert.AreEqual</code> hívással ellenőrizd, hogy az anonimizálás során előállt kimeneti állomány tartalma megegyezik-e a várt tartalommal. A várt tartalom a <code>@"TestFiles\us-500-01-maskedname.processed-expected.txt"</code> fájlban érhető el (ez megtalálható a projekt <code>TestFiles</code> mappájában, nézd meg a tartalmát). 
 Tipp: egy fájl tartalmát pl. a <code>File.ReadAllBytes</code> statikus művelettel egy lépésben be lehet olvasni.</li>
 </ol>
@@ -2441,7 +2441,7 @@ Tipp: egy fájl tartalmát pl. a <code>File.ReadAllBytes</code> statikus művele
 <li>A tesztfüggvény neve legyen <code>RunShouldCallAlgorithmForEachInput</code>.</li>
 <li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Alapvető fontosságú, hogy nagyon gyors egységtesztet kell írni, nem integrációs tesztet: tehát csak a <code>Run</code> logikáját akarjuk önmagában tesztelni, mindenféle fájlfeldolgozás nélkül. A megoldásban semmiféle fájlkezelés nem lehet!</li>
 <li>Tipp: Memóriában hozz létre 2-3 <code>Person</code> objektumot, ezekkel dolgozz bemenetként.</li>
-<li>Tipp: Olyan bemenő személyadatokkal dolgozz, melyekre a <code>TrimCityNames</code> függvénynek nincs hatása (vagyis nincsenek benne áltávolítandó adatok), ez egyszerűbbé teszi a tesztelést.</li>
+<li>Tipp: Olyan bemenő személyadatokkal dolgozz, melyekre a <code>TrimCityNames</code> függvénynek nincs hatása (vagyis nincsenek benne eltávolítandó adatok), ez egyszerűbbé teszi a tesztelést.</li>
 <li>Tipp: Olyan <code>IInputReader</code>, <code>IAnonymizerAlgorithm</code> implementációkat hozz létre (és az <code>Anonymizert</code> ezekkel használd), <strong>melyek megfelelő tesztadatokat biztosítanak, és/vagy futás közben adatokat gyűjtenek annak érdekében, hogy a futás után ellenőrizni tudd ezen adatok alapján, hogy a tesztelendő feltételek teljesülnek</strong>. Ezeket a strategy implementációkat mindenképpen a teszt projektben vedd fel, mert csak a tesztelést szolgálják.</li>
 </ul>
 <p>További gyakorlásképpen készíthetsz egy olyan másik egységtesztet, mely azt ellenőrzi, hogy minden bemeneti személyadat eljut-e a kimenetre is. </p>
@@ -2464,13 +2464,13 @@ Tipp: egy fájl tartalmát pl. a <code>File.ReadAllBytes</code> statikus művele
 <p>Természetesen a % szinteket nem szabad túl komolyan venni. Mindenesetre a fejlődés jól megfigyelhető.</p>
 <details class="note">
 <summary>Miért "csak" 70%-os a végső megoldásnál mutatónk?</summary>
-<p>Felmerülhet a kérdés, miért adunk jelem megoldásra kb. 70%-ot? Többek között:</p>
+<p>Felmerülhet a kérdés, miért adunk jelen megoldásra kb. 70%-ot? Többek között:</p>
 <ul>
 <li>Az <code>Anonymizer</code> osztályba az adattisztítás módja mereven be van égetve (trimmelés adott oszlopra adott módon).</li>
 <li>Nem követtünk egy nagyon fontos általános alapelvet: a UI és a logika különválasztását. A kódunk több pontban konzolra ír, így például egy grafikus felülettel nem használható!</li>
 <li>Bizonyos az anonimizáló algoritmusaink nagyon specifikusak. Lehetne olyan általánosabb algoritmusokat készíteni, melyek tetszőleges mezőket kicsillagoznak (nem csak a nevet beégetetten), illetve tetszőleges mezőket sávosítanak (nem csak az életkort).</li>
 <li>Jelen megoldás csak <code>Person</code> objektumokkal tud működni.</li>
-<li>Nem lehet egyszerre alkalmazni kombinálni különböző anonimizáló algoritmusokat.</li>
+<li>Nem lehet egyszerre alkalmazni, kombinálni különböző anonimizáló algoritmusokat.</li>
 </ul>
 </details>
 <h3 id="kiterjesztesi-technikak-attekintese">Kiterjesztési technikák áttekintése<a class="headerlink" href="#kiterjesztesi-technikak-attekintese" title="Permanent link">¶</a></h3>
@@ -2479,12 +2479,12 @@ Tipp: egy fájl tartalmát pl. a <code>File.ReadAllBytes</code> statikus művele
 <li><strong>Strategy</strong>: Nagyon rugalmas megoldást biztosít, és nem vezet kombinatorikus robbanáshoz, ha több aspektus mentén kell az osztályt kiterjeszteni, és több keresztkombinációban is szeretnénk ezeket használni. Sok esetben csak azért alkalmazzuk, hogy az osztályunkról interfészek segítségével leválasszuk a függőségeit, és így egységtesztelhetővé tegyük az osztályunkat.</li>
 <li><strong>Delegate/lambda</strong>: Ez a megközelítés kisebb ceremóniával jár, mint a Strategy alkalmazása, ugyanis nincs szükség interfészek és implementációs osztályok bevezetésére, emiatt egyre inkább (rohamosan) terjed a használata a modern objektumorientált nyelvekben is. Különösen akkor jönnek ki az előnyei, ha a viselkedéseket nem akarjuk újrafelhasználhatóvá tenni (mert ekkor csak egy-egy lambda kifejezéssel megadjuk ezeket, mindenféle új osztályok/külön függvények bevezetése nélkül). </li>
 </ul>
-<p>Érdemes összeszedni, hogy a Strategy-nek mikor lehet/van van előnye a delegate-ekkel szemben:</p>
+<p>Érdemes összeszedni, hogy a Strategy-nek mikor lehet/van előnye a delegate-ekkel szemben:</p>
 <ul>
 <li>Ha kiterjesztendő osztály adott aspektusához több (minél több, annál inkább) művelet tartozik. Ilyenkor a strategy interfész ezeket "magától" szépen összefogja, csoportosítja (mint a példánkban az <code>IAnonymizerAlgorithm</code> interfész az <code>Anonymize</code> és <code>GetAnonymizerDescription</code> műveleteket). Ezek értelemszerűen az interfész implementációkban is együtt jelennek meg (delegate-ek esetében nincs ilyen csoportosítás). Ez átláthatóbbá teheti, sok művelet esetén egyértelműen azzá is teszi a megoldást.</li>
 <li>Az adott nyelv pusztán objektumorientált, nem támogatja a delegate/lambda alkalmazását. De ma már a legtöbb modern OO nyelv szerencsére támogatja valamilyen formában (Java és C++ is).</li>
 <li>
-<p>A strategy implementációk a tagváltozóikban állapotot is tudnak tárolni, melyet létrehozásukkor meg tudunk adni. Ezt használtuk is (a <code>NameMaskingAnonymizerAlgorithm</code> esetében ilyen volt a <code>_mask</code>, a <code>AgeAnonymizerAlgorithm</code> esetében a <code>_rangeSize</code>). Ez nem azt jelenti, hogy ilyen esetben egyáltalán nem tudunk delegate-eket használni, hiszen:</p>
+<p>A strategy implementációk a tagváltozóikban állapotot is tudnak tárolni, melyet létrehozásukkor meg tudunk adni. Ezt használtuk is (a <code>NameMaskingAnonymizerAlgorithm</code> esetében ilyen volt a <code>_mask</code>, az <code>AgeAnonymizerAlgorithm</code> esetében a <code>_rangeSize</code>). Ez nem azt jelenti, hogy ilyen esetben egyáltalán nem tudunk delegate-eket használni, hiszen:</p>
 <ul>
 <li>ezeket az adatokat akár újonnan bevezetett függvény paraméterben is átadhatjuk az egyes delegate hívások során,</li>
 <li>illetve, lambda használata esetén a "variable capture" mechanizmus segítségével a lambda függvények tudnak állapotot átvenni környezetükből.</li>
@@ -2492,7 +2492,7 @@ Tipp: egy fájl tartalmát pl. a <code>File.ReadAllBytes</code> statikus művele
 <p>De ezek a megoldások nem mindig alkalmazhatók, vagy legalábbis körülményes lehet az alkalmazásuk.</p>
 </li>
 </ul>
-<p>Mindenképpen meg kell említeni, hogy nem csak jelen gyakorlatban említett néhány minta szolgálja a kiterjeszthetőséget és újrafelhasználhatóságot, hanem gyakorlatilag az összes. Most kiemeltünk párat, melyek (még p. az Observert/Iteratort/Adaptert ide sorolva) talán a leggyakrabban, legszélesebb körben alkalmazhatók és bukkannak is fel keretrendszerekben.</p>
+<p>Mindenképpen meg kell említeni, hogy nem csak jelen gyakorlatban említett néhány minta szolgálja a kiterjeszthetőséget és újrafelhasználhatóságot, hanem gyakorlatilag az összes. Most kiemeltünk párat, melyek (még pl. az Observert/Iteratort/Adaptert ide sorolva) talán a leggyakrabban, legszélesebb körben alkalmazhatók és bukkannak is fel keretrendszerekben.</p>
 <p>Ha idáig olvastad, mindenképpen jár egy extra thumbs up 👍!</p>
 <hr>
 <div class="md-source-file">
@@ -2501,8 +2501,8 @@ Tipp: egy fájl tartalmát pl. a <code>File.ReadAllBytes</code> statikus művele
         </path>
       </svg>
     </span>
-    <span title="2025. december 16. 16:28:56">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. december 16. 16:28:56 CET"><span class="timeago" datetime="2025-12-16T16:28:56+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. december 16. 16:28:56 CET">2025-12-16</span>
+    <span title="2026. május 2. 15:51:34">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. május 2. 15:51:34 CEST"><span class="timeago" datetime="2026-05-02T15:51:34+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. május 2. 15:51:34 CEST">2026-05-02</span>
     </span>
   </span>
 
@@ -2520,6 +2520,8 @@ Tipp: egy fájl tartalmát pl. a <code>File.ReadAllBytes</code> statikus művele
         <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
       </a><a href="https://github.com/koppanybme" target="_blank" rel="noopener noreferrer" class="md-author" title="@None">
         <img src="https://avatars.githubusercontent.com/u/162472536?v=4?size=72" alt="@None">
+      </a><a href="https://github.com/lyozi" target="_blank" rel="noopener noreferrer" class="md-author" title="@Urak József">
+        <img src="https://avatars.githubusercontent.com/u/124312789?v=4?size=72" alt="@Urak József">
       </a><a href="https://github.com/tibitoth" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tibor Tóth">
         <img src="https://avatars.githubusercontent.com/u/8333960?u=d26653213d265ecdceeaf20a896d74f479d35450&amp;v=4?size=72" alt="@Tibor Tóth">
       </a></nav>      

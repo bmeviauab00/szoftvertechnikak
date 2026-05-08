@@ -2305,10 +2305,10 @@ A menüpontokra kattintva a <code>Frame</code>-en belül a megfelelő oldal jele
 <p>A fenti <code>ILocalSettingsService</code> segítségével egy adott kulcs alatt fogjuk a kedvenc receptek azonosítóinak listáját eltárolni.</p>
 <p>Szintén fontos, hogy a függvények <code>Task</code>-kal térnek vissza, tehát aszinkronok, így <code>await</code> kulcsszóval kell hívni őket, és a hívó függvénynek is aszinkronnak kell lennie (a részletesebb szabályhalmaz a kapcsolódó "5. MVVM" labor leírásában található).</p>
 <p>A kedvencek kezelése a labor során bevezetett <code>IRecipeService</code> interfész és az ezt megvalósító <code>RecipeService</code> osztály feladata legyen. </p>
-<p>Első lépésben azt kell megoldani, hogy a <code>RecipeService</code> számára rendelkezésre álljon egy <code>ILocalSettingsService</code> interfészt megvalósító objektum, melyet fel tud használni  megvalósításában a kedvenc receptazonosítók eltárolására és lekérdezésére. A célunk az, hogy <code>RecipeService</code>-ben <code>ILocalSettingsService</code> interfészként <strong>kapjuk meg</strong> és <strong>tároljuk</strong> ezt az implementációs objektumot, semmiféle függést nem szeretnénk itt bevezetni a konkrét implementációtól. Ezt a laboron már alkalmazott DI konténer segítségével valósítsuk meg.</p>
+<p>Első lépésben azt kell megoldani, hogy a <code>RecipeService</code> számára rendelkezésre álljon egy <code>ILocalSettingsService</code> interfészt megvalósító objektum, melyet fel tud használni a megvalósításában a kedvenc receptazonosítók eltárolására és lekérdezésére. A célunk az, hogy <code>RecipeService</code>-ben <code>ILocalSettingsService</code> interfészként <strong>kapjuk meg</strong> és <strong>tároljuk</strong> ezt az implementációs objektumot, semmiféle függést nem szeretnénk itt bevezetni a konkrét implementációtól. Ezt a laboron már alkalmazott DI konténer segítségével valósítsuk meg.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>A megvalósítás során a <code>RecipeService</code>-ben ahhoz hasonlóan kell kezeljük a <code>ILocalSettingsService</code>-t, mint a ahogy a labor során a <code>MainPageViewModel</code>-ben kezeltük a <code>IRecipeService</code>-t.</p>
+<p>A megvalósítás során a <code>RecipeService</code>-ben ahhoz hasonlóan kell kezelnünk az <code>ILocalSettingsService</code>-t, mint ahogy a labor során a <code>MainPageViewModel</code>-ben kezeltük az <code>IRecipeService</code>-t.</p>
 </div>
 <p>Miután a fenti előkészítéssel elkészültél, valósítsd meg a szükséges funkciókat a <code>RecipeService</code> osztályban! Az alábbiakban ehhez némi iránymutatást adunk.</p>
 <details class="success">
@@ -2386,7 +2386,7 @@ A menüpontokra kattintva a <code>Frame</code>-en belül a megfelelő oldal jele
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Állapot tárolása a modellben</p>
-<p>A kedvenc állapotot a <code>RecipeHeader</code> modellben is tárolhatnánk, viszont az két másik problémát is generálna: a modellnek kell megvalósítania az <code>INotifyPropertyChanged</code> interfészt, hogy az állapot változását jelezni tudja.  Ezen felül az új property értékét valamelyik másik rétegben (ViewModel vagy Service) kellene kitölteni, mivel ez az infó csak lokálisan érhető el, a <code>RecipeHeader</code>pedig alapvetően most csak egy DTO (Data Transfer Object) a modell rétegben.</p>
+<p>A kedvenc állapotot a <code>RecipeHeader</code> modellben is tárolhatnánk, viszont az két másik problémát is generálna: a modellnek kell megvalósítania az <code>INotifyPropertyChanged</code> interfészt, hogy az állapot változását jelezni tudja. Ezen felül az új property értékét valamelyik másik rétegben (ViewModel vagy Service) kellene kitölteni, mivel ez az infó csak lokálisan érhető el, a <code>RecipeHeader</code> pedig alapvetően most csak egy DTO (Data Transfer Object) a modell rétegben.</p>
 </div>
 </details>
 <details class="success">
@@ -2403,19 +2403,19 @@ A menüpontokra kattintva a <code>Frame</code>-en belül a megfelelő oldal jele
 <ul>
 <li><code>x:Bind</code> használata, ahol nem property-t kötünk, hanem egy a xaml.cs-ben lévő segédfüggvényt, mely a konverziót elvégzi. Vagyis property kötés helyett függvény/funkció kötést használunk. Előadásanyagban a "Property kötése funkciókhoz"-ra érdemes rákeresni, illetve a 3. házi feladatban a "függvény kötés példa"-ra.</li>
 <li>Az <code>IValueConverter</code> interfész implementálása és használata az adatkötés során.</li>
-<li>A <code>RecipeDetailPageViewModel</code>-ben tároljuk a nézethez szükséges adatokat új tuljadonságokat bevezetve (a tulajdonságok típusa a nézet számára szükséges <code>Symbol</code> és <code>string</code>), és ezekhez történik az adatkötés.<ul>
-<li>Talán ez a legegyszerűbb megoldás, ha nem szeretnénk külön konvertert írni vagy az adatkötéseket "bonyolítani", viszont a legkevésbé is lesz karbantartható, mivel a ViewModel view specifikus adatokat is tartalmaz, melyeket külön karban is kell tartani ha a bool property megváltozik.</li>
+<li>A <code>RecipeDetailPageViewModel</code>-ben tároljuk a nézethez szükséges adatokat új tulajdonságokat bevezetve (a tulajdonságok típusa a nézet számára szükséges <code>Symbol</code> és <code>string</code>), és ezekhez történik az adatkötés.<ul>
+<li>Talán ez a legegyszerűbb megoldás, ha nem szeretnénk külön konvertert írni vagy az adatkötéseket "bonyolítani", viszont a legkevésbé lesz karbantartható, mivel a ViewModel view specifikus adatokat is tartalmaz, melyeket külön karban is kell tartani, ha a bool property megváltozik.</li>
 </ul>
 </li>
 </ul>
 </details>
 <div class="admonition example">
 <p class="admonition-title">1.2. feladat BEADANDÓ</p>
-<p>Illessz be egy képernyőképet az alkalmazásról, ahol a teendő részletes oldalon megjelenik a kedvencnek jelölés gomb! (<code>f1.2.1.png</code>)</p>
-<p>Illessz be egy képernyőképet az alkalmazásról, ahol a teendő részletes oldalon egy már kedvencnek jelölt recepthez a kedvencekből eltávolítás gomb jelenik meg! (<code>f1.2.2.png</code>)</p>
+<p>Illessz be egy képernyőképet az alkalmazásról, ahol a recept részletes oldalon megjelenik a kedvencnek jelölés gomb! (<code>f1.2.1.png</code>)</p>
+<p>Illessz be egy képernyőképet az alkalmazásról, ahol a recept részletes oldalon egy már kedvencnek jelölt recepthez a kedvencekből eltávolítás gomb jelenik meg! (<code>f1.2.2.png</code>)</p>
 </div>
 <h3 id="13-kedvencek-oldal-navigacio">1.3 Kedvencek oldal navigáció<a class="headerlink" href="#13-kedvencek-oldal-navigacio" title="Permanent link">¶</a></h3>
-<p>A kedvencek oldalra navigáláshoz több lépésre is szükségünk lesz, melyek a kiinduló projekt sajátosságaiból adódódnak, de ezeket itt részletesen átvesszük (a navigáció megvalósítása nem része a tanagyagnak).</p>
+<p>A kedvencek oldalra navigáláshoz több lépésre is szükségünk lesz, melyek a kiinduló projekt sajátosságaiból adódnak, de ezeket itt részletesen átvesszük (a navigáció megvalósítása nem része a tananyagnak).</p>
 <ol>
 <li>
 <p>Hozzuk létre a <code>FavoritesPage</code>-et a <code>Views</code> mappában (Add/New Item/Blank Page (WinUI3))</p>
@@ -2491,8 +2491,8 @@ A menüpontokra kattintva a <code>Frame</code>-en belül a megfelelő oldal jele
         </path>
       </svg>
     </span>
-    <span title="2024. április 27. 19:45:18">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2024. április 27. 19:45:18 CEST"><span class="timeago" datetime="2024-04-27T19:45:18+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2024. április 27. 19:45:18 CEST">2024-04-27</span>
+    <span title="2026. május 2. 15:51:34">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. május 2. 15:51:34 CEST"><span class="timeago" datetime="2026-05-02T15:51:34+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. május 2. 15:51:34 CEST">2026-05-02</span>
     </span>
   </span>
 
@@ -2510,6 +2510,8 @@ A menüpontokra kattintva a <code>Frame</code>-en belül a megfelelő oldal jele
         <img src="https://avatars.githubusercontent.com/tibitoth?size=72" alt="@tibitoth">
       </a><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
         <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&amp;v=4?size=72" alt="@Zoltán Benedek">
+      </a><a href="https://github.com/lyozi" target="_blank" rel="noopener noreferrer" class="md-author" title="@Urak József">
+        <img src="https://avatars.githubusercontent.com/u/124312789?v=4?size=72" alt="@Urak József">
       </a></nav>      
   </span>
 </div>

@@ -2940,7 +2940,7 @@ A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk,
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="iequipment-megvalositok">IEquipment megvalósítók<a class="headerlink" href="#iequipment-megvalositok" title="Permanent link">¶</a></h3>
-<p>Korábbi döntésünk értelmében az <code>IEquipment</code> interfészt használjuk az különböző alkatrésztípusok egységes kezelésére. Esetünkben mind a <code>SoundCard</code>, mind a <code>HardDisk</code> osztály rendelkezik <code>GetAge()</code> és <code>GetPrice()</code> metódussal, mégsem tudjuk őket egységesen kezelni (pl. közös listában tárolni). Ahhoz, hogy ezt meg tudjuk tenni, el kell érnünk, hogy mindkét osztály megvalósítsa az <code>IEquipment</code> interfészt. Módosítsuk a forrásukat:</p>
+<p>Korábbi döntésünk értelmében az <code>IEquipment</code> interfészt használjuk a különböző alkatrésztípusok egységes kezelésére. Esetünkben mind a <code>SoundCard</code>, mind a <code>HardDisk</code> osztály rendelkezik <code>GetAge()</code> és <code>GetPrice()</code> metódussal, mégsem tudjuk őket egységesen kezelni (pl. közös listában tárolni). Ahhoz, hogy ezt meg tudjuk tenni, el kell érnünk, hogy mindkét osztály megvalósítsa az <code>IEquipment</code> interfészt. Módosítsuk a forrásukat:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SoundCard</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">HardDisk</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IEquipment</span>
@@ -3169,8 +3169,8 @@ A diagramon az <code>EquipmentInventory</code> osztályra pillantva azt látjuk,
         </path>
       </svg>
     </span>
-    <span title="2026. április 3. 15:10:35">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. április 3. 15:10:35 CEST"><span class="timeago" datetime="2026-04-03T15:10:35+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. április 3. 15:10:35 CEST">2026-04-03</span>
+    <span title="2026. április 30. 00:50:08">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. április 30. 00:50:08 CEST"><span class="timeago" datetime="2026-04-30T00:50:08+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. április 30. 00:50:08 CEST">2026-04-30</span>
     </span>
   </span>
 

@@ -2496,7 +2496,7 @@ Mint általában, a jelen házi feladat keretében elkészítendő feladatra is 
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Világos/sötét megjelenés</p>
-<p>A Windows beállítasainak függvényében (light/dark mode) lehetséges, hogy sötét háttéren világos színekkel jelenik meg a felület, ez is teljesen rendben van. A WinUI alkalmazások alapértelmezett esetben alkalmazkodnak az operációs rendszer beállításához, ebből ered ez a viselkedés.</p>
+<p>A Windows beállításainak függvényében (light/dark mode) lehetséges, hogy sötét háttéren világos színekkel jelenik meg a felület, ez is teljesen rendben van. A WinUI alkalmazások alapértelmezett esetben alkalmazkodnak az operációs rendszer beállításához, ebből ered ez a viselkedés.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">ThemeResource</p>
@@ -2505,7 +2505,7 @@ Mint általában, a jelen házi feladat keretében elkészítendő feladatra is 
 </div>
 </li>
 </ul>
-<p>Ha jól dolgoztunk, az alkalmazást futtatva, <code>CommandBar</code>-nak a megfelelő helyen meg kell jelennie.</p>
+<p>Ha jól dolgoztunk, az alkalmazást futtatva, a <code>CommandBar</code>-nak a megfelelő helyen meg kell jelennie.</p>
 <h3 id="lista-megjelenitese">Lista megjelenítése<a class="headerlink" href="#lista-megjelenitese" title="Permanent link">¶</a></h3>
 <p>A <code>CommandBar</code> alatti cellában egy listába (<code>ListView</code>) kerüljenek a teendők a következő tartalommal egymás alatt. Az adatok adatkötésen keresztül hassanak a felület megjelenítésére (a korábban bevezetett <code>Todos</code> listából jelenjenek meg adatkötéssel az elemek).</p>
 <ul>
@@ -2526,7 +2526,7 @@ Mint általában, a jelen házi feladat keretében elkészítendő feladatra is 
 </ul>
 <details class="tip">
 <summary>Elemek a listában</summary>
-<p>Mindig gondoljuk át, hogy egy objektumhoz történő, vagy listás adatkötésről van-e szó, és ennek megfelelő technikát alkalmazzunk! Jelen házi feladatban nem biztos, olyan sorrendben jönnek ezek elő, mint ahogy laboron szerepeltek!"</p>
+<p>Mindig gondoljuk át, hogy egy objektumhoz történő, vagy listás adatkötésről van-e szó, és ennek megfelelő technikát alkalmazzunk! Jelen házi feladatban nem biztos, hogy olyan sorrendben jönnek ezek elő, mint ahogy laboron szerepeltek!</p>
 </details>
 <details class="tip">
 <summary>Feltételes színezés</summary>
@@ -2618,7 +2618,7 @@ Alap esetben nem lenne fontos a függvénynek statikusnak lennie, de mivel itt e
 <li><strong>Készültség</strong>: jelölőnégyzet (<code>CheckBox</code>)</li>
 <li><strong>Mentés</strong>: gomb beépített accent stílussal (<code>Style="{StaticResource AccentButtonStyle}"</code>)</li>
 </ul>
-<p>Az űrlaphoz nem kell speciális, egyedi vezérlőt (pl. <code>UserControl</code> készíteni): egyszerűen használjuk valamelyik, a feladathoz jól illeszkedő layout panel típust. </p>
+<p>Az űrlaphoz nem kell speciális, egyedi vezérlőt (pl. <code>UserControl</code>-t) készíteni: egyszerűen használjuk valamelyik, a feladathoz jól illeszkedő layout panel típust. </p>
 <p>Néhány fenti és alább meghatározott követelmény megvalósítása kapcsán lentebb görgetve lenyíló mezőkben némi iránymutatást ad az útmutató.</p>
 <p>További funkcionális követelmények:</p>
 <ul>
@@ -2664,10 +2664,10 @@ Alap esetben nem lenne fontos a függvénynek statikusnak lennie, de mivel itt e
 <li>Egy közös EditedTodo objektumot használunk minden to-do elem felvételekor. Ezt már az oldal létrehozáskor példányosítjuk. Amikor a felhasználó új to-do elem felvételét kezdeményezi (vagy a mentés végén), akkor gondoskodni kell az EditedTodo alapértelmezett értékekkel való feltöltéséről. Mentéskor egy másolatot kell készíteni róla és ezt kell a közös listába beletenni.</li>
 </ol>
 </li>
-<li>A kövezkezőkben a fenti 1. megközelítés lépéseire adunk iránymutatást, de mindenképpen érdemes először önálóan próbálkozni. </li>
+<li>A következőkben a fenti 1. megközelítés lépéseire adunk iránymutatást, de mindenképpen érdemes először önállóan próbálkozni. </li>
 <li>Az EditedTodo kezdőértéke legyen null, illetve a <em>Hozzáadás</em> gombra kattintva legyen példányosítva az <code>EditedTodo</code>. </li>
 <li>A mentés során a <code>Todos</code> listához adjuk hozzá a szerkesztett teendő objektumot. Gondoljunk arra, hogy az adatkötéseknek frissülniük kell a felületen a lista tartalmának változása során (ehhez az adataink tárolásán kell változtatni).</li>
-<li>A mentés során az <code>EditedTodo</code> property-t nullozzuk ki. Ezt annak érdekében, tesszük, hogy a következő to-do elem felvételekor az adatkötés miatt üresek legyenek az űrlapon a vezérlők, ne a korábbi to-do elem adatai legyenek rajta. Gondoljuk át, ez elég lesz-e a megoldáshoz? Próbáljuk is ki a megoldásunkat! Amikor az <code>EditedTodo</code> tulajdonságot állítjuk, a kötött vezérlőknek frissülniük kell. Mire van ehhez szükség? 
+<li>A mentés során az <code>EditedTodo</code> property-t nullozzuk ki. Ezt annak érdekében tesszük, hogy a következő to-do elem felvételekor az adatkötés miatt üresek legyenek az űrlapon a vezérlők, ne a korábbi to-do elem adatai legyenek rajta. Gondoljuk át, ez elég lesz-e a megoldáshoz? Próbáljuk is ki a megoldásunkat! Amikor az <code>EditedTodo</code> tulajdonságot állítjuk, a kötött vezérlőknek frissülniük kell. Mire van ehhez szükség? 
     (Tipp: itt most nem az érdekel minket, hogy az <code>EditedTodo</code> által hivatkozott <code>TodoItem</code> tulajdonságai, pl. <code>Title</code>, <code>Description</code> változnak, hanem a <code>MainPage</code> osztály <code>EditedTodo</code> tulajdonsága változik: ennek megfelelően az <code>EditedTodo</code>-t tartalmazó osztályban kell a megfelelő interfészt megvalósítani).</li>
 </ol>
 </details>
@@ -2696,10 +2696,10 @@ Alap esetben nem lenne fontos a függvénynek statikusnak lennie, de mivel itt e
 </details>
 <details class="tip">
 <summary>Prioritások listája</summary>
-<p>A <code>ComboBox</code>-ban a <code>Priority</code> felsorolt típus értékeit jelenítsük meg. Ehhez használhatjuk a <code>Enum.GetValues</code> függvényt, amihez készítsünk egy tulajdonságot a <code>MainPage.xaml.cs</code>-ben.</p>
+<p>A <code>ComboBox</code>-ban a <code>Priority</code> felsorolt típus értékeit jelenítsük meg. Ehhez használhatjuk az <code>Enum.GetValues</code> függvényt, amihez készítsünk egy tulajdonságot a <code>MainPage.xaml.cs</code>-ben.</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Priority</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Priorities</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Enum</span><span class="p">.</span><span class="n">GetValues</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">Priority</span><span class="p">)).</span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">Priority</span><span class="o">&gt;</span><span class="p">().</span><span class="n">ToList</span><span class="p">();</span>
 </code></pre></div>
-<p>A <code>ComboBox</code> <code>ItemsSource</code> tulajdonságához kössük az <code>Priorities</code> listát.</p>
+<p>A <code>ComboBox</code> <code>ItemsSource</code> tulajdonságához kössük a <code>Priorities</code> listát.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;ComboBox</span><span class="w"> </span><span class="na">ItemsSource=</span><span class="s">"{x:Bind Priorities}"</span><span class="w"> </span><span class="nt">/&gt;</span>
 </code></pre></div>
 <p>A fenti példában az <code>ItemsSource</code> csak azt határozza meg, hogy milyen elemek jelenjenek meg a <code>ComboBox</code> listájában. De ez semmit nem mond arról, hogy a <code>ComboBox</code> kiválasztott elemét mihez kell kötni. Ehhez szükség van még egy adatkötésre. Laboron ez nem szerepelt, előadásanyagban pl. a <code>SelectedItem</code>-re érdemes rákeresni (minden előfordulását érdemes megnézni).</p>
@@ -2770,8 +2770,8 @@ Alap esetben nem lenne fontos a függvénynek statikusnak lennie, de mivel itt e
         </path>
       </svg>
     </span>
-    <span title="2026. április 3. 15:05:59">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. április 3. 15:05:59 CEST"><span class="timeago" datetime="2026-04-03T15:05:59+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. április 3. 15:05:59 CEST">2026-04-03</span>
+    <span title="2026. április 30. 19:54:31">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. április 30. 19:54:31 CEST"><span class="timeago" datetime="2026-04-30T19:54:31+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. április 30. 19:54:31 CEST">2026-04-30</span>
     </span>
   </span>
 
@@ -2789,6 +2789,8 @@ Alap esetben nem lenne fontos a függvénynek statikusnak lennie, de mivel itt e
         <img src="https://avatars.githubusercontent.com/tibitoth?size=72" alt="@tibitoth">
       </a><a href="https://github.com/bzolka" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">
         <img src="https://avatars.githubusercontent.com/u/22932444?u=a3e164177137cbef68f0e72985785b0795ac7565&amp;v=4?size=72" alt="@Zoltán Benedek">
+      </a><a href="https://github.com/lyozi" target="_blank" rel="noopener noreferrer" class="md-author" title="@Urak József">
+        <img src="https://avatars.githubusercontent.com/u/124312789?v=4?size=72" alt="@Urak József">
       </a><a href="https://github.com/tottorini" target="_blank" rel="noopener noreferrer" class="md-author" title="@Tamás Szenes-Suba">
         <img src="https://avatars.githubusercontent.com/u/69861952?u=427350181cf7565b8627ddc258cb32e6eeeb86a6&amp;v=4?size=72" alt="@Tamás Szenes-Suba">
       </a><a href="https://github.com/zbenedek-mirango" target="_blank" rel="noopener noreferrer" class="md-author" title="@Zoltán Benedek">

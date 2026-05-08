@@ -2299,7 +2299,7 @@
 <li><code>Floor</code> tulajdonság: Aktuális emelet. Egész érték.</li>
 <li><code>TargetFloor</code> tulajdonság: Cél emelet. Egész érték.</li>
 <li><code>Stairway</code> tulajdonság: Lépcsőház száma, melyben a lift található. Egész érték. Egy lépcsőházban egy lift lehet (ezt nem kell validálni az alkalmazásban, de mindig így használjuk).</li>
-<li><code>Call</code> művelet: A lift hívására szolgál, beállítja a célemeletet a paraméterben magadott értékre.</li>
+<li><code>Call</code> művelet: A lift hívására szolgál, beállítja a célemeletet a paraméterben megadott értékre.</li>
 <li><code>Step</code> művelet: A lift egy emelettel történő léptetésére szolgál (amennyiben az aktuális és célemelet nem egyezik: ha egyezik, nem csinál semmit). Véletlenszerű esetben - átlagosan kb. minden 5. lépés során - a lift ideiglenesen beragad: ez azt jelenti, hogy az adott lépés során nem vált emeletet a célemelet irányába.</li>
 </ul>
 <p>Készíts egy <code>LiftDoor</code> osztályt, mely egy liftajtót reprezentál:</p>
@@ -2320,7 +2320,7 @@
 <li>A jövőben a továbbfejlesztés során lehetnek más <code>Subject</code> osztályok is, ezért be kell vezetni egy <code>Subject</code> ősosztályt a kódduplikáció elkerülésére (de a házi feladatban csak egy subject lesz).</li>
 <li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> A megoldás NEM építhet .NET event-ekre (ugyanezen osztályokkal/interfészekkel pl. Java nyelven is megvalósíthatónak kell lennie).</li>
 </ul>
-<p>A liftrendszer konfiguráció összeállításért és a szimuláció futtatásáért egy <code>LiftSystemModel</code> osztály legyen a felelős. Ennek forráskódját alább megadjuk, ebből kell egy példányt a <code>Main</code> függvényben létrehozni, és a <code>Run</code> függvényét meghívni:</p>
+<p>A liftrendszer konfiguráció összeállításáért és a szimuláció futtatásáért egy <code>LiftSystemModel</code> osztály legyen a felelős. Ennek forráskódját alább megadjuk, ebből kell egy példányt a <code>Main</code> függvényben létrehozni, és a <code>Run</code> függvényét meghívni:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">LiftSystemModel</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">iterationCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -2391,7 +2391,7 @@
 <p>A megoldás illusztrálása:</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/two-lifts-2.png" data-desc-position="bottom"><img alt="2 lifts" src="images/two-lifts-2.png"></a></p>
 <h2 id="3-feladat-meglevo-liftmonitor-osztaly-beillesztese">3. feladat - Meglévő LiftMonitor osztály beillesztése<a class="headerlink" href="#3-feladat-meglevo-liftmonitor-osztaly-beillesztese" title="Permanent link">¶</a></h2>
-<p>A feladat a liftek működési státuszáról információ megjelenítése. Emlékezzünk: a liftek véletlenszerű időközönként elakadnak, mint ahogy a korábbi leírásban szerepelt! Minden időpillanatban tudni szeretnénk, hogy egy lift működik (státusza "OK"), vagy el van akadva (státusza "stuck").  Ehhez rendelkezésre is áll az alábbi osztály:</p>
+<p>A feladat a liftek működési státuszáról információ megjelenítése. Emlékezzünk: a liftek véletlenszerű időközönként elakadnak, mint ahogy a korábbi leírásban szerepelt! Minden időpillanatban tudni szeretnénk, hogy egy lift működik (státusza "OK"), vagy el van akadva (státusza "stuck"). Ehhez rendelkezésre is áll az alábbi osztály:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">LiftMonitor</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">prevFloor</span><span class="p">;</span>
@@ -2446,8 +2446,8 @@
         </path>
       </svg>
     </span>
-    <span title="2025. május 9. 18:41:23">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. május 9. 18:41:23 CEST"><span class="timeago" datetime="2025-05-09T18:41:23+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. május 9. 18:41:23 CEST">2025-05-09</span>
+    <span title="2026. május 2. 15:51:34">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. május 2. 15:51:34 CEST"><span class="timeago" datetime="2026-05-02T15:51:34+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. május 2. 15:51:34 CEST">2026-05-02</span>
     </span>
   </span>
 
@@ -2465,6 +2465,8 @@
         <img src="https://avatars.githubusercontent.com/bzolka?size=72" alt="@bzolka">
       </a><a href="https://github.com/ BenceKovari" target="_blank" rel="noopener noreferrer" class="md-author" title="@ BenceKovari">
         <img src="https://avatars.githubusercontent.com/ BenceKovari?size=72" alt="@ BenceKovari">
+      </a><a href="https://github.com/lyozi" target="_blank" rel="noopener noreferrer" class="md-author" title="@Urak József">
+        <img src="https://avatars.githubusercontent.com/u/124312789?v=4?size=72" alt="@Urak József">
       </a></nav>      
   </span>
 </div>
