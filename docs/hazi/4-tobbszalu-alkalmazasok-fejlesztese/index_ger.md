@@ -25,12 +25,12 @@ Die erforderliche Entwicklungsumgebung ist die übliche, [hier](../fejlesztokorn
 !!! warning "Laufen der Vorabprüfung"
     Für diese Aufgabe gibt es keine inhaltliche Vorabprüfung: Nach jedem Push wird zwar eine Prüfung ausgeführt, diese kontrolliert jedoch nur, ob die Datei `neptun.txt` ausgefüllt ist. Die eigentliche Bewertung erfolgt nach Ablauf der Frist durch die Übungsleiter.
 
-## Das Verfahren der Eingabe
+## Das Verfahren der Abgabe
 
 - Der grundlegende Ablauf ist derselbe wie zuvor. Erstelle mit GitHub Classroom ein eigenes Repository. Die Einladungs-URL findest du in Moodle (bei Hausaufgabe 4.). Klone das so erstellte Repository. Dieses enthält die erwartete Struktur der Lösung. Nach der Fertigstellung der Aufgaben committe und pushe deine Lösung.
 - Schreibe deinen Neptun-Code in die Datei „neptun.txt“!
 - Öffne `MultiThreadedApp.sln` aus den geklonten Dateien und arbeite in diesem.
-- :exclamation: Die Aufgaben verlangen, dass du **Screenshots** von bestimmten Teilen deiner Lösung erstellst, um zu belegen, dass du sie selbst angefertigt hast. **Der erwartete Inhalt der Screenshots wird in jeder Aufgabe genau angegeben.** Die Screenshots müssen als Teil der Lösung eingegeben werden. Lege sie im Stammverzeichnis deines Repositorys ab (neben der Datei `neptun.txt`). Dadurch werden die Screenshots zusammen mit dem Inhalt des Git-Repositorys auf GitHub hochgeladen. Da das Repository privat ist, können es außer den Lehrkräfte keine anderen Personen sehen. Falls Inhalte auf den Screenshots erscheinen, die du nicht hochladen möchtest, kannst du diese unkenntlich machen.
+- :exclamation: Die Aufgaben verlangen, dass du **Screenshots** von bestimmten Teilen deiner Lösung erstellst, um zu belegen, dass du sie selbst angefertigt hast. **Der erwartete Inhalt der Screenshots wird in jeder Aufgabe genau angegeben.** Die Screenshots müssen als Teil der Lösung eingegeben werden. Lege sie im Stammverzeichnis deines Repositorys ab (neben der Datei `neptun.txt`). Dadurch werden die Screenshots zusammen mit dem Inhalt des Git-Repositorys auf GitHub hochgeladen. Da das Repository privat ist, können es außer den Lehrkräften keine anderen Personen sehen. Falls Inhalte auf den Screenshots erscheinen, die du nicht hochladen möchtest, kannst du diese unkenntlich machen.
 
 ## Aufgabe 0 - Überblick über die Aufgabe, Kennenlernen des Ausgangsrahmens
 
@@ -52,16 +52,16 @@ Das nachstehende animierte Bild veranschaulicht, was wir mit dieser Lösung erre
 
 Das Grundprinzip des Spieles/der Simulation sieht wie folgt aus (aber es ist noch nicht implementiert):
 
-- Jedes Fahrrad hat ein eigener Thread.
+- Jedes Fahrrad hat einen eigenen Thread.
 - Das Spiel/die Simulation ist in Iterationen unterteilt: In jeder Iteration bewegt sich der mit dem Fahrrad verbundene Faden (sofern er nicht auf den Start des Rennens wartet oder sich im Depot befindet) mit einem zufälligen Zahlenwert entlang der Strecke vorwärts, bis er die Ziellinie erreicht.
 
 Eine zusätzliche Funktion wurde implementiert (die funktioniert bereits): Man kann zwischen hellen und dunklen Themes wechseln, falls man die Tastenkombination ++ctrl+t++ drückt.
 
 ### Anwendungslogik
 
-Im ursprünglichen Rahmen sind die Klassen der **Anwendungslogik** in einem unvollständigen Zustand implementiert. Die Klassen befinden sich im Ordner/Namensberiech `AppLogic`, sehen wir uns ihren Code an:
+Im ursprünglichen Rahmen sind die Klassen der **Anwendungslogik** in einem unvollständigen Zustand implementiert. Die Klassen befinden sich im Ordner/Namensbereich `AppLogic`, sehen wir uns ihren Code an:
 
-- `Bike`: Es stellt ein Fahrrad dar, mit dem Startnummer des Fahrrads, der Position und der Information, ob das Fahrrad das Rennen gewonnen hat. Die Funktion `Step` wird verwendet, um das Fahrrad während des Rennens in zufälligen Schritten zu bewegen.
+- `Bike`: Es stellt ein Fahrrad dar, mit der Startnummer des Fahrrads, der Position und der Information, ob das Fahrrad das Rennen gewonnen hat. Die Funktion `Step` wird verwendet, um das Fahrrad während des Rennens in zufälligen Schritten zu bewegen.
 - `Game`: Die Logik der Spielsteuerung (dies könnte noch weiter aufgeteilt werden, aber wegen der Einfachheit werden wir grundsätzlich in dieser Klasse arbeiten).
     - Definiert die Positionen der einzelnen Streckenelemente, wie Startlinie, Zwischenstopp (Depot) und Ziellinie: die Konstanten `StartLinePosition`, `DepoPosition` und `FinishLinePosition`.
     - Speichert die konkurrierenden Fahrräder (`Bikes` Membervariable).
@@ -84,7 +84,7 @@ Werfen wir auch einen Blick auf den `MainWindow.xaml.cs` Code behind-Datei, die 
 
 - `game` Mitgliedsvariable: Das Spielobjekt `Game` selbst, dessen Status im Hauptfenster angezeigt wird.
 - `bikeTextBlocks` Mitgliedsvariable: In dieser Liste werden wir die `TextBlock` Objekte speichern, die die Fahrräder anzeigen. Momentan ist sie leer und wir müssen ihre Wartung behandeln.
-- Konstruktor: Setzt die x-Koordinate der Oberflächenelementen Startlinie, Depot und Ziellinie auf der Grundlage der durch `Game` definierten konstanten Werte. Die x-Koordinate wird festgelegt, indem der linke Rand (`Margin`) entsprechend angepasst wird (da diese Elemente in unserem Container linksbündig sind!). Darüber hinaus registriert, mit der Hilfsfunktion `AddKeyboardAcceleratorToChangeTheme`, die Tastenkombination ++ctrl+t++ zum Umschalten zwischen hellen und dunklen Themen.
+- Konstruktor: Setzt die x-Koordinate der Oberflächenelemente Startlinie, Depot und Ziellinie auf der Grundlage der durch `Game` definierten konstanten Werte. Die x-Koordinate wird festgelegt, indem der linke Rand (`Margin`) entsprechend angepasst wird (da diese Elemente in unserem Container linksbündig sind!). Darüber hinaus registriert, mit der Hilfsfunktion `AddKeyboardAcceleratorToChangeTheme`, die Tastenkombination ++ctrl+t++ zum Umschalten zwischen hellen und dunklen Themen.
 - `PrepareRaceButton_Click`, `StartRaceButton_Click`, `StartNextFromDepoButton_Click`: Ereignishändler für die drei Tasten.
 - `UpdateUI`-Methode: Sie enthält eine Schlüssellogik. Aktualisiert die Benutzeroberfläche entsprechend dem Zustand des Spiels. Es durchläuft alle Fahrräder im Spiel und stellt die x-Position der `TextBlock`, die mit den einzelnen Fahrrädern verbunden sind, basierend auf der Position des Fahrrads ein (indem es den linken Rand entsprechend anpasst). Die Operation `UpdateUI` wird zurzeit nie aufgerufen, so dass die Oberfläche nicht aktualisiert wird.
 
@@ -94,12 +94,12 @@ In diesem Moment wäre es sinnlos, den Zustand des Spiels zu ändern, während e
 
 ### Dynamische Verwaltung von Fahrrädern
 
-Das erste Problem: In `MainWindow.xaml` sind die drei `TextBlock` Elementen, die die Fahrräder darstellen, eingebrannt. Unsere Oberfläche wäre also nur fähig, ein Spiel mit genau drei Spielern anzuzeigen. Bereiten wir die Anzeige für eine beliebige Anzahl von Fahrrädern vor.
-Entfernen wir zuerst die "eingebrannte" `TextBlock` Definitionen für die drei Fahrräder aus `MainWindow.xaml` (kommentieren wir die drei Zeilen aus). Danach, in der Code-Behind-Datei, im Ereignishandler `PrepareRaceButton_Click`, nach der Vorbereitung des Rennens (Aufruf von `game.PrepareRace()`):
+Das erste Problem: In `MainWindow.xaml` sind die drei `TextBlock` Elemente, die die Fahrräder darstellen, eingebrannt. Unsere Oberfläche wäre also nur fähig, ein Spiel mit genau drei Spielern anzuzeigen. Bereiten wir die Anzeige für eine beliebige Anzahl von Fahrrädern vor.
+Entfernen wir zuerst die "eingebrannten" `TextBlock` Definitionen für die drei Fahrräder aus `MainWindow.xaml` (kommentieren wir die drei Zeilen aus). Danach, in der Code-Behind-Datei, im Ereignishandler `PrepareRaceButton_Click`, nach der Vorbereitung des Rennens (Aufruf von `game.PrepareRace()`):
 
 1. Dynamische Erstellung eines entsprechenden `TextBlock`-Objekts für jedes Fahrrad im `game` -Objekt (`game.Bikes` Eigenschaft!). Die Eigenschaften der erstellten `TextBlock` sollten genau die gleichen sein wie die, die wir in der XAML-Datei deaktiviert haben (`FontFamily`, `FontSize`, `Margin`, `Text`)
 2. Die erstellten `TextBlock`-Objekte müssen zu den Kindern von `StackPanel` namens `bikesPanel` hinzugefügt werden (die in der XAML-Datei auskommentierten `TextBlock`-Objekte waren Kinder von diesen auch, sehen wir uns das an!), nämlich durch den Aufruf von `bikesPanel.Children.Add`.
-3. Nehmen wir die erstellten `TextBlock`-Objekte in die `bikeTextBlocks` Liste auf. Dies ist wichtig - und wir sollten es uns im Code ansehen - weil die Aktualisierungsfunktion der Oberfläche `UpdateUI` nach den zu den Fahrrädern gehörigen `TextBlock`s in der Liste `bikeTextBlocks` sucht (sie paart Fahrräder und `TextBlock`anhand des Array-Index).
+3. Nehmen wir die erstellten `TextBlock`-Objekte in die `bikeTextBlocks` Liste auf. Dies ist wichtig - und wir sollten es uns im Code ansehen - weil die Aktualisierungsfunktion der Oberfläche `UpdateUI` nach den zu den Fahrrädern gehörigen `TextBlock`s in der Liste `bikeTextBlocks` sucht (sie paart Fahrräder und `TextBlock` anhand des Array-Index).
 
 Die Änderung in der Funktionsweise der App (aber das ist geplant) besteht darin, dass die Fahrräder nicht beim Start angezeigt werden, sondern erst, wenn es auf die Taste `Prepare Race` geklickt wird.
 
@@ -176,7 +176,7 @@ private void Timer_Tick(object sender, object e)
 Die Operation `Trace.WriteLine` schreibt eine Zeile in das Visual Studio-Ausgabefenster, und `DateTime.Now` wird verwendet, um die aktuelle Zeit abzurufen. Diese wird durch den Aufruf von `ToString` in das entsprechende Format umgewandelt. Führen wir die Anwendung aus (wichtig: im Debug-Modus, d.h. mit ++f5++ ) und überprüfen wir im Visual Studio-Ausgabefenster, ob tatsächlich alle 100 ms eine neue Zeile angezeigt wird. Wenn alles gut funktioniert, kommentieren wir die Trace-Zeile aus.
 
 !!! note "Genauigkeit von DispatcherTimer"
-    Wir können feststellen, dass `DispatcherTimer` nicht besonders genau ist, aber für unsere Zwecke vollkommen ausreicht. Für uns ist es jedoch wichtig, dass sie im UI-Thread aufgerufen wird (das `Tick`-Ereignis wird von diesem Thread ausgelöst), damit wir von unserer Ereignishandler aus auf die UI-Elemente zugreifen können (`Timer_Tick`) .
+    Wir können feststellen, dass `DispatcherTimer` nicht besonders genau ist, aber für unsere Zwecke vollkommen ausreicht. Für uns ist es jedoch wichtig, dass sie im UI-Thread aufgerufen wird (das `Tick`-Ereignis wird von diesem Thread ausgelöst), damit wir von unserem Ereignishandler aus auf die UI-Elemente zugreifen können (`Timer_Tick`) .
 
 ### Kopfzeile des Hauptfensters
 
@@ -184,14 +184,14 @@ Die Operation `Trace.WriteLine` schreibt eine Zeile in das Visual Studio-Ausgabe
 
 ## Aufgabe 2 - Vorbereitung des Rennens
 
-Nachdem wir uns mit der Visualisierungslogik befasst haben, wenden wir uns nun der Anwendungslogik und den damit verbundenen Fadenbehanglungsproblemen zu. Dementsprechend werden wir nun hauptsächlich in der Klasse `Game` arbeiten.
+Nachdem wir uns mit der Visualisierungslogik befasst haben, wenden wir uns nun der Anwendungslogik und den damit verbundenen Fadenbehandlungsproblemen zu. Dementsprechend werden wir nun hauptsächlich in der Klasse `Game` arbeiten.
 
 Zur Erinnerung: Das Prinzip unserer Lösung wird:
 
 - Für jedes Fahrrad wird ein eigener Thread erstellt.
 - Das Spiel/die Simulation ist in Iterationen unterteilt: In jeder Iteration bewegt sich der mit dem Fahrrad verbundene Faden (sofern er nicht auf den Start des Rennens wartet oder sich im Depot befindet) mit einem zufälligen Zahlenwert entlang der Strecke vorwärts, bis er die Ziellinie erreicht.
 
-Erstellen wir die Rahmen anhand der folgenden Schritte::
+Erstellen wir die Rahmen anhand der folgenden Schritte:
 
 1. Am Ende der Funktion `CreateBike` der Klasse `Game` starten wir einen Thread für das Fahrrad.
 2. Die Thread-Funktion sollte sich in der Klasse `Game` befinden.
@@ -202,13 +202,13 @@ Erstellen wir die Rahmen anhand der folgenden Schritte::
     In einem Zyklus, in jeder Iteration:
        
        - das Fahrrad mit einem zufälligen Schritt treten (Aufruf der Funktion `Step` der Klasse `Bike`),
-       - dann soll den Faden für 100 ms schlafen lassen.
+       - dann soll der Faden für 100 ms schlafen.
     
     All diese Bewegungen sollten fortgesetzt werden, bis das Fahrrad die Startlinie erreicht (seine Position erreicht den Wert, der durch die Mitgliedsvariable `StartLinePosition` definiert ist).
 
-Versuche die oben genannten Aufgaben auf der Grundlage des in der Vorlesung und im Labor Gelernten selbständig zu lösen. Du kannst deine Lösung durch Debugging testen, oder, da die Oberflächenlogik bereits implementiert wurde, durh das Ausführen der Anwendung und Klicken auf `Prepare Race`: Die Fahrräder sollten dann stufenweise zur Startlinie rollen.
+Versuche die oben genannten Aufgaben auf der Grundlage des in der Vorlesung und im Labor Gelernten selbständig zu lösen. Du kannst deine Lösung durch Debugging testen, oder, da die Oberflächenlogik bereits implementiert wurde, durch das Ausführen der Anwendung und Klicken auf `Prepare Race`: Die Fahrräder sollten dann stufenweise zur Startlinie rollen.
 
-Zu diesen Schritten geben wir noch eine Lösung an (aber du lernst jedoch viel mehr, wenn du es selbst versuchst zu lösen und benutzt die Lösung daher nur zur Überprüfung):
+Zu diesen Schritten geben wir noch eine Lösung an (aber du lernst jedoch viel mehr, wenn du versuchst, es selbst zu lösen, und benutze die Lösung daher nur zur Überprüfung):
 
 ??? tip "Lösung"
     In der Klasse `Game` ist die Thread-Funktion:
@@ -241,7 +241,7 @@ Zu diesen Schritten geben wir noch eine Lösung an (aber du lernst jedoch viel m
     }
     ```
 
-!!! example "EINGABE"
+!!! example "ABGABE"
     Bevor du mit der nächsten Aufgabe fortfährst, musst du einen Screenshot machen.
 
     Erstelle einen Screenshot mit dem Namen `Task2.png` entsprechend den Folgenden:
@@ -265,14 +265,14 @@ Verwirkliche den Start des Rennens an der Startlinie und die Durchführung des R
     Da die Teilnehmer nach dem Warten gleichzeitig starten müssen, empfiehlt es sich, ein Objekt `ManualResetEvent` zu verwenden, um das Warten und Starten zu implementieren.
 
 
-!!! example "EINGABE"
+!!! example "ABGABE"
     Bevor du mit der nächsten Aufgabe fortfährst, musst du einen Screenshot machen.
 
     Erstelle einen Screenshot mit dem Namen `Task3.png` entsprechend den Folgenden:
 
     - Starte die Anwendung. Verkleinere sie gegebenenfalls, damit sie nicht zu viel Platz auf dem Bildschirm einnimmt,
     - im "Hintergrund" sollte Visual Studio mit `Game.cs` geöffnet sein,
-    - Zoome in VS so hinein, dass die Funktion `BikeThreadFunction` der Klasse `Game` sichtbar sind, wobei das Fenster deiner Anwendung im Vordergrund ist.
+    - Zoome in VS so hinein, dass die Funktion `BikeThreadFunction` der Klasse `Game` sichtbar ist, wobei das Fenster deiner Anwendung im Vordergrund ist.
     - Stelle den Ausschnitt so ein, dass der Screenshot nur die relevanten Bereiche enthält (z. B. NICHT: VS Solution Explorer, die unteren und seitlichen Panels für Debugging oder die Windows-Taskleiste).
 
 
@@ -290,14 +290,14 @@ Verwirkliche das Starten der Rennfahrer aus der Depot und das Rennen, bis die Fa
 !!! tip "Hinweis zur Lösung"
     Die Lösung ist analog zur vorherigen, aber dieses Mal muss man anstelle von `ManualResetEvent` ein anderes, aber ähnliches Objekt verwenden...
 
-!!! example "EINGABE"
+!!! example "ABGABE"
     Bevor du mit der nächsten Aufgabe fortfährst, musst du einen Screenshot machen.
 
     Erstelle einen Screenshot mit dem Namen `Task4.png` entsprechend den Folgenden:
 
     - Starte die Anwendung. Verkleinere sie gegebenenfalls, damit sie nicht zu viel Platz auf dem Bildschirm einnimmt,
     - im "Hintergrund" sollte Visual Studio mit `Game.cs` geöffnet sein,
-    - Zoome in VS so hinein, dass die Funktion `BikeThreadFunction` der Klasse `Game` sichtbar sind, wobei das Fenster deiner Anwendung im Vordergrund ist.
+    - Zoome in VS so hinein, dass die Funktion `BikeThreadFunction` der Klasse `Game` sichtbar ist, wobei das Fenster deiner Anwendung im Vordergrund ist.
     - Stelle den Ausschnitt so ein, dass der Screenshot nur die relevanten Bereiche enthält (z. B. NICHT: VS Solution Explorer, die unteren und seitlichen Panels für Debugging oder die Windows-Taskleiste).
 
 
@@ -305,13 +305,13 @@ Verwirkliche das Starten der Rennfahrer aus der Depot und das Rennen, bis die Fa
 
 Implementiere die Logik zur Bestimmung und Darstellung des Gewinnerfahrrads entsprechend den folgenden Richtlinien:
 
-- Der Gewinner ist der Fahrrad, der als Erster die Ziellinie erreicht (der Erste, dessen Position den durch die Mitgliedsvariable `FinishLinePosition` definierten Wert erreicht).
+- Der Gewinner ist das Fahrrad, das als Erstes die Ziellinie erreicht (der Erste, dessen Position den durch die Mitgliedsvariable `FinishLinePosition` definierten Wert erreicht).
 - Nutze in der Lösung die Tatsache, dass die Klasse `Bike` bereits über eine Variable `isWinner` verfügt, deren Wert zunächst falsch ist und mit `SetAsWinner` auf true gesetzt werden kann und deren Wert mit der Eigenschaft `IsWinner` abgefragt werden kann.
 - Die Entscheidung, ob das gegebene Fahrrad der Gewinner ist, ist die Aufgabe der Thread-Funktion für das Fahrrad in der Klasse `Game`, lege die Entscheidungslogik hier.
 - :exclamation: Es ist sehr wichtig, dass genau ein Gewinner sein kann. Wenn mehr als ein Fahrrad als Gewinner markiert wird (d.h. die Funktion `SetAsWinner` der Klasse `Bike` wird für mehr als ein Fahrrad aufgerufen), ist dies ein sehr schwerer Fehler!
 - Arbeite in der Klasse `Game`.
 
-Bevor wir die Logik implementieren, werden wir die Anzeige ein wenig optimieren, um das Gewinnerfahrrad von den anderen auf der Benutzeroberfläche zu unterscheiden. Füge dazu eine kleine zusätzliche Logik in die Funktion `UpdateUI` der Klasse `MainWindow` ein: Wenn das angegebene Fahrrad ein Gewinner ist, ändern wir seine Anzeige in eine Trophäe. Dazu soll der Text des zu dem Fahrrad gehörenden `TextBlock`s Text auf "%" gesetzt werden:
+Bevor wir die Logik implementieren, werden wir die Anzeige ein wenig optimieren, um das Gewinnerfahrrad von den anderen auf der Benutzeroberfläche zu unterscheiden. Füge dazu eine kleine zusätzliche Logik in die Funktion `UpdateUI` der Klasse `MainWindow` ein: Wenn das angegebene Fahrrad ein Gewinner ist, ändern wir seine Anzeige in eine Trophäe. Dazu soll der Text des zum Fahrrad gehörenden `TextBlock`s auf "%" gesetzt werden:
 
 ```csharp
 private void UpdateUI()
@@ -326,7 +326,7 @@ private void UpdateUI()
 }
 ```
 
-Verwirkclihe die Logik danach selbständig gemäß den folgenden Richtlinien und Tipps.
+Verwirkliche die Logik danach selbständig gemäß den folgenden Richtlinien und Tipps.
 
 !!! tip "Richtlinien und Tipps für die Lösung"
 
@@ -335,14 +335,14 @@ Verwirkclihe die Logik danach selbständig gemäß den folgenden Richtlinien und
     - Die Lösung sollte auch gut funktionieren (es kann nur einen Gewinner geben), wenn man zwischen der `hasWinner`-Bedingungsprüfung und der `hasWinner`-Wahrheitsaussage eine längere künstliche Verzögerung einfügt, die simuliert, dass der Thread hier "unglücklicherweise" sein Ausführungsrecht verliert, und die Fahrräder "sofort" aus dem Depot freigegeben werden (d.h. sie kommen fast gleichzeitig im Ziel an). 
     - Für die Dauer des Tests füge hier (zwischen der Bedingungsprüfung und Einstellung von `hasWinner`) eine Zeile `Thread.Sleep(2000)` ein, die du nach dem Test auskommentierst. Teste das natürlich so, dass du die Fahrräder mit den Tastenklicks möglichst gleichzeitig aus dem Depot weiterfahren lässt, damit sie ungefähr gleichzeitig das Ziel erreichen. Wenn es mehr als einen Gewinner gibt, (weil deine Lösung fehlerhaft ist) werden mehrere Fahrräder im Ziel zu Trophäen!
 
-!!! example "EINGABE"
+!!! example "ABGABE"
     Bevor du mit der nächsten Aufgabe fortfährst, musst du einen Screenshot machen.
 
     Erstelle einen Screenshot mit dem Namen `Task5.png` entsprechend den Folgenden:
 
     - Starte die Anwendung. Verkleinere sie gegebenenfalls, damit sie nicht zu viel Platz auf dem Bildschirm einnimmt,
     - im "Hintergrund" sollte Visual Studio mit `Game.cs` geöffnet sein,
-    - Zoome in VS so hinein, dass die Funktion `BikeThreadFunction` der Klasse `Game` sichtbar sind, wobei das Fenster deiner Anwendung im Vordergrund ist.
+    - Zoome in VS so hinein, dass die Funktion `BikeThreadFunction` der Klasse `Game` sichtbar ist, wobei das Fenster deiner Anwendung im Vordergrund ist.
     - Stelle den Ausschnitt so ein, dass der Screenshot nur die relevanten Bereiche enthält (z. B. NICHT: VS Solution Explorer, die unteren und seitlichen Panels für Debugging oder die Windows-Taskleiste).
 
 ## Aufgabe 6 - Gegenseitiger Ausschluss und volatile
@@ -351,7 +351,7 @@ In der vorigen Aufgabe haben wir gesehen, dass wir die Abfrage und Einstellung v
 
 - Die Mitgliedsvariable `position` der Klasse `Bike`. Diese wird von den Fadenfunktionen der Fahrräder mit dem Operator `+=` geändert und vom Hauptthread mit der Eigenschaft `Position` während der Anzeige gelesen. Es stellt sich die Frage, ob es zu Inkonsistenzen führen kann (denn wenn ja, sollte der gegenseitige Ausschluss implementiert werden, z. B. mit Hilfe von `lock` ). Dies erfordert ein tieferes Nachdenken. Das Lesen und Schreiben von Variablen des Typs `int` (einfacher `=`-Operator) ist atomar, also wäre das in Ordnung. Nur dass wir hier `+=` für die Änderung verwenden, nicht `=`.  Der Operator `+=` ist nicht atomar, sondern besteht aus mehreren Schritten: Lesen einer Variablen, Inkrementieren und anschließendes Neuschreiben (wenn es nicht ganz klar ist, warum und welches Problem dabei auftreten könnte, schau dir auf jeden Fall die entsprechende Vorlesungsfolie an). Wenn also mehrere Threads den `+=` Operator "gleichzeitig" auf dieselbe Variable verwenden, kann es zu einer Inkonsistenz kommen. Aber seien wir nicht voreilig, denken wir darüber nach: In unserem Fall ruft jeweils ein Thread `+=` auf, der andere Thread liest nur `position`.  Dies kann keine Inkonsistenz sein, da es einfach darum geht, dass der lesende Thread entweder den Pre-Increment-Wert vor dem Lesen oder den Post-Increment-Wert nach dem Lesen erhält (wenn er fast genau zur gleichen Zeit liest wie der andere Thread, der den `+=` Operator ausführt). Wir können also sagen, dass es in diesem Zusammenhang keine Notwendigkeit gibt, den gegenseitigen Ausschluss zu implementieren.
 - Die Mitgliedsvariable `isWinner` der Klasse `Bike`. Diese wird von der Fadenfunktion der Fahrräder durch den Aufruf von `SetAsWinner` geändert, und vom Hauptthread über die Eigenschaft `IsWinner` während der Anzeige gelesen. Ihr Typ ist `bool`, dessen Lesen und Schreiben atomar sind, so dass kein gegenseitiger Ausschluss implementiert werden muss.
-- Die Mitgliedsvariable `hasWinner` der Klasse `Game`. Sie ist vom Typ bool, dessen Lesen und Schreiben atomar ist, so dass ein gegenseitiger Ausschluss nicht erforderlich ist. Aber wir hatten eine zusätzliche Bedingung: Es konnte nur ein Gewinner der Wettbewerb sein, also mussten wir den gegenseitigen Ausschluss noch implementieren (was wir in der vorherigen Aufgabe getan haben).
+- Die Mitgliedsvariable `hasWinner` der Klasse `Game`. Sie ist vom Typ bool, dessen Lesen und Schreiben atomar ist, so dass ein gegenseitiger Ausschluss nicht erforderlich ist. Aber wir hatten eine zusätzliche Bedingung: Es konnte nur einen Gewinner des Wettbewerbs geben, also mussten wir den gegenseitigen Ausschluss noch implementieren (was wir in der vorherigen Aufgabe getan haben).
 
 Man könnte sagen, dass für die drei oben genannten Variablen alles in Ordnung ist, aber das ist nicht der Fall. **Wenn der Wert einer Variablen von einem Thread geändert wird, kann der Wert der Variablen vom System zwischengespeichert werden (z. B. in einem Register), so dass der andere Thread auch nach der Änderung den vorherigen Wert sieht**. Um dies zu verhindern, sollten diese Variablen mit dem Schlüsselwort `volatile` als flüchtig definiert werden, was garantiert, dass die Variable nach einer Änderung in den Speicher geschrieben wird und der andere Thread einen neuen Wert liest (die Funktionsweise von `volatile` ist etwas komplexer und wird in der Vorlesung genauer erklärt). Wichtiger Hinweis: `volatile` muss nicht verwendet werden, wenn die Variable aus dem Block `lock` geschrieben und gelesen oder mit der Klasse `Interlocked` geändert wird. Aus diesem Grund sollte sie nur für `position` und `isWinner` eingeführt werden:
 
@@ -364,13 +364,13 @@ class Bike
 
 ## Aufgabe 7 - Loggen von Schritten (nicht fadensichere .NET-Klassen)
 
-Implementiere das Loggen jeder Schritt, den die Fahrräder während des Rennens gemacht haben, in der Klasse `Game` in einer Variablen des Typs `List<int>` (gemeinsam für alle Fahrräder). Mit den geloggten Werten muss nichts weiter geschehen (z. B. müssen sie nicht angezeigt werden). Die Lösung sollte sich die Tatsache ausnutzen, dass die Operation `Step` der Klasse `Bike` den gemachten Schritt in Form einer Variablen `int` zurückgibt, die geloggt werden sollte (einfach in die Liste einfügen).
+Implementiere das Loggen jedes Schrittes, den die Fahrräder während des Rennens gemacht haben, in der Klasse `Game` in einer Variablen des Typs `List<int>` (gemeinsam für alle Fahrräder). Mit den geloggten Werten muss nichts weiter geschehen (z. B. müssen sie nicht angezeigt werden). Die Lösung sollte sich die Tatsache zunutze machen, dass die Operation `Step` der Klasse `Bike` den gemachten Schritt in Form einer Variablen `int` zurückgibt, die geloggt werden sollte (einfach in die Liste einfügen).
 
 ??? tip "Tipp für die Lösung"
     Da die Klasse `List<T>` nicht fadensicher ist und wir von mehreren Threads aus auf sie schreiben, müssen wir den gegenseitigen Ausschluss während des Zugriffs mit der Anweisung `lock` implementieren.
 
 !!! Note "Sammlungsklassen des Namensraums System.Collections.Concurrent"
-    Wenn wir statt `List<T>` in ein Objekt einer Klasse der Namensraum `System.Collections.Concurrent`, der den Zweck entspricht, (z. B. `ConcurrentQueue`) geloggt würden, wäre es nicht erforderlich, den gegenseitigen Ausschluss zu implementieren, da dieser Namensraum fadensichere Sammlungsklassen enthält.
+    Wenn wir statt in `List<T>` in ein Objekt einer Klasse aus dem Namensraum `System.Collections.Concurrent`, die dem Zweck entspricht, (z. B. `ConcurrentQueue`) loggen würden, wäre es nicht erforderlich, den gegenseitigen Ausschluss zu implementieren, da dieser Namensraum fadensichere Sammlungsklassen enthält.
 
 ## Aufgabe 8 - Aktualisierung der Oberfläche für jede Änderung (Zugriff auf Elemente der Benutzeroberfläche aus den Arbeitsfäden)
 
@@ -393,7 +393,7 @@ Alternativen:
     - `MainWindow` als "Abonnent":
         - In der Klasse `MainWindow` muss eine Funktion `UpdateBikeUI(Bike bike)` eingeführt und beim Aufruf von `Game.PrepareRace` als Parameter (Delegatenobjekt) übergeben werden. In dieser Funktion `UpdateBikeUI` muss sichergestellt werden, dass das zum als Parameter übergebenen Fahrrad-Objekt gehörende Oberflächenelement (`TextBlock`) aktualisiert wird.
         - Im vorangegangenen Abschnitt wurde deutlich, warum wir einen Delegaten des Typs `Action<Bike>` und nicht `Action` verwendet haben: `Game` kann so während der Benachrichtigung/des Rückrufs angeben, welches Fahrrad sich geändert hat, und die zurückgerufene/registrierte Funktion (in unserem Fall `MainWindow.UpdateBikeUI`) wird dies als Parameter erhalten und kann ihre Darstellung aktualisieren (basierend auf dem Zustand des empfangenen Fahrrads).
-    - Kommentiere das Starten des Timers (im Konstruktor von `MainWindow` die Aufruf `timer.Start()`) aus, da die Oberflächenaktualisierung bereits durch die obige `Action<Bike>` basierte Benachrichtigung/Rückruf behandelt wird.
+    - Kommentiere das Starten des Timers (im Konstruktor von `MainWindow` den Aufruf `timer.Start()`) aus, da die Oberflächenaktualisierung bereits durch die obige `Action<Bike>` basierte Benachrichtigung/Rückruf behandelt wird.
 
 Verwirkliche die in Punkt 3 oben beschriebene Benachrichtigung! Die Implementierung von `MainWindow.UpdateBikeUI` wird als Hinweis gegeben (die Idee ist, dass `TextBlock` auf der Grundlage des im Parameter angegebenen `Bike` aktualisiert wird):
 
@@ -432,26 +432,26 @@ private void UpdateBikeUI(Bike bike)
 Was ist der Grund für diesen Fehler? Bevor du die folgende Erinnerung öffnest, versuche selbst herauszufinden, basierend auf dem, was du in der Vorlesung/im Labor gelernt hast.
 
 ??? tip "Erinnerung"
-    **Auf eine WinUI-Oberflächenelement/einen WinUI-Controller kann nur von dem Thread aus zugegriffen werden, der das Oberflächenelement erstellt hat, da diese Oberflächenelement nicht fadensicher sind und eine Ausnahme auslösen, wenn wir versuchen, sie "falsch" zu verwenden**.
+    **Auf ein WinUI-Oberflächenelement/einen WinUI-Controller kann nur von dem Thread aus zugegriffen werden, der das Oberflächenelement erstellt hat, da diese Oberflächenelemente nicht fadensicher sind und eine Ausnahme auslösen, wenn wir versuchen, sie "falsch" zu verwenden**.
 
 Die Lösung wird in der nächsten Teilaufgabe ausgearbeitet.
 
 ### Verwendung von DispatcherQueue
 
-In unserem Fall besteht das Problem darin, dass bei einer Änderung des Zustands von `Game`, wird der Delegat für die Änderungsbenachrichtigung in der Klasse `Game` in den mit den Fahrräder verbundenen Arbeitsthreads aufgerufen. So die registrierte Handlerfunktion `MainWindow.UpdateBikeUI` wird auch in diesen Threads aufgerufen. Die Funktion `UpdateBikeUI` wird für den Zugriff auf die Oberflächenelemente verwendet (`TextBlock` für Fahrrad). Diese Oberflächenelemente werden jedoch vom Hauptfaden aus erstellt: Sie sind also nur vom Hauptfaden aus erreichbar.
+In unserem Fall besteht das Problem darin, dass bei einer Änderung des Zustands von `Game` der Delegat für die Änderungsbenachrichtigung in der Klasse `Game` in den mit den Fahrrädern verbundenen Arbeitsthreads aufgerufen wird. So wird die registrierte Handlerfunktion `MainWindow.UpdateBikeUI` auch in diesen Threads aufgerufen. Die Funktion `UpdateBikeUI` wird für den Zugriff auf die Oberflächenelemente verwendet (`TextBlock` für Fahrrad). Diese Oberflächenelemente werden jedoch vom Hauptfaden aus erstellt: Sie sind also nur vom Hauptfaden aus erreichbar.
 
-:exclamation: Die Lösung für dieses Problem ist die Verwendung von `DispatcherQueue`, die es uns **ermöglicht, den Aufruf von den Arbeitsthreads auf den Hauptthread "umzuleiten", von dem aus wir auf die Steuerelemente zugreifen können**. Die Verwendung von `DispacherQueue` wurde in der Vorlesung und im dazugehörigen Labor auch ausführlich erläutert.
+:exclamation: Die Lösung für dieses Problem ist die Verwendung von `DispatcherQueue`, die es uns **ermöglicht, den Aufruf von den Arbeitsthreads auf den Hauptthread "umzuleiten", von dem aus wir auf die Steuerelemente zugreifen können**. Die Verwendung von `DispatcherQueue` wurde in der Vorlesung und im dazugehörigen Labor auch ausführlich erläutert.
 
-Aufgabe: Ändere die Funktion `MainWindow.UpdateBikeUI` so, dass `DispacherQueue` verwendet wird, um auf die Oberflächenelemente vom richtigen Thread aus zuzugreifen (und somit die aktuelle Ausnahme zu vermeiden).
+Aufgabe: Ändere die Funktion `MainWindow.UpdateBikeUI` so, dass `DispatcherQueue` verwendet wird, um auf die Oberflächenelemente vom richtigen Thread aus zuzugreifen (und somit die aktuelle Ausnahme zu vermeiden).
 
-!!! example "EINGABE"
+!!! example "ABGABE"
     Bevor du mit der nächsten Aufgabe fortfährst, musst du einen Screenshot machen.
 
     Erstelle einen Screenshot mit dem Namen `Task8.png` entsprechend den Folgenden:
 
     - Starte die Anwendung. Verkleinere sie gegebenenfalls, damit sie nicht zu viel Platz auf dem Bildschirm einnimmt,
     - im "Hintergrund" sollte Visual Studio mit `MainWindow.xaml.cs` geöffnet sein,
-    - Zoome in VS so hinein, dass die Funktion `UpdateBikeUI` der Klasse `MainWindow` sichtbar sind, wobei das Fenster deiner Anwendung im Vordergrund ist.
+    - Zoome in VS so hinein, dass die Funktion `UpdateBikeUI` der Klasse `MainWindow` sichtbar ist, wobei das Fenster deiner Anwendung im Vordergrund ist.
     - Stelle den Ausschnitt so ein, dass der Screenshot nur die relevanten Bereiche enthält (z. B. NICHT: VS Solution Explorer, die unteren und seitlichen Panels für Debugging oder die Windows-Taskleiste).
 
 
@@ -475,7 +475,7 @@ Ermögliche das Anhalten von Fahrrädern mit einem Mausklick:
 Hier sind einige wichtige Elemente der Lösung des Problems:
 
 - Lege eine Taste *Stop Race* auf die Oberfläche, erstelle eine Handler-Funktion dafür, und rufe von dieser aus die neu einzuführende Funktion `Game.StopRace` auf.
-- Zum Anhalten ist ein Signal an den Thread erforderlich, der die Fahrräder laufen lässt. Dies sollte eine Variable vom Typ `bool` sein, die von der Schleife des Threads, der die Fahrräder ausführt, überwacht wird. Nehme dies als `raceEnded` auf und ändere die Thread-Funktion so, dass der Thread aufhört zu laufen (zurückkehrt), wenn dies wahr ist.
+- Zum Anhalten ist ein Signal an den Thread erforderlich, der die Fahrräder laufen lässt. Dies sollte eine Variable vom Typ `bool` sein, die von der Schleife des Threads, der die Fahrräder ausführt, überwacht wird. Nimm dies als `raceEnded` auf und ändere die Thread-Funktion so, dass der Thread aufhört zu laufen (zurückkehrt), wenn dies wahr ist.
 - Die soeben eingeführte bool-Variable allein wird nicht ausreichen. Denn wenn das Fahrrad an der Startlinie oder im Depot wartet, ist sein Thread blockiert (er wartet auf ein Ereignissignal) und kann die bool-Variable `raceEnded` nicht überprüfen. Aus diesem Grund muss eine neue Variable vom Typ `ManualResetEvent` eingeführt werden, die das Ereignis des Herunterfahrens anzeigt (und auf die gewartet werden kann).
 - Dieses Ereignis muss beim Klicken auf die Taste *Stop Race* (in `Game.StopRace`) zusammen mit der Variablen `bool` auf "markiert" gesetzt werden.
 - Kommentiere (nicht löschen!) in der Thread-Funktion, die die Fahrräder bewegt, die Codefragmente aus, die das bisherige Warten implementieren, und erstelle eine neue Lösung unter Verwendung von `ManualResetEvent`, um den soeben aufgezeichneten Halt anzuzeigen. Der Wartezustand muss jedoch auch dann verlassen werden, wenn das Ereignis `ManualResetEvent`, das das Herunterfahren anzeigt, ausgelöst wird.
@@ -484,10 +484,10 @@ Hier sind einige wichtige Elemente der Lösung des Problems:
 
 Hinweis: Eine alternative Möglichkeit, Threads zu beenden, wäre gewesen, `Interrupt` für die Threads aufzurufen, anstatt bool und `ManualResetEvent` einzuführen, und die daraus resultierenden `ThreadInterruptedException` in den Thread-Funktionen abzufangen. Dieses Thema wurde in einer Vorlesung vorgestellt.
 
-!!! example "EINGABE"
+!!! example "ABGABE"
     Erstelle einen Screenshot mit dem Namen `Task_IMSc.png` entsprechend den Folgenden:
 
     - Starte die Anwendung. Verkleinere sie gegebenenfalls, damit sie nicht zu viel Platz auf dem Bildschirm einnimmt,
     - im "Hintergrund" sollte Visual Studio mit `Game.cs` geöffnet sein,
-    - Zoome in VS so hinein, dass die Fadenfunktion der Klasse `Game` sichtbar sind, wobei das Fenster deiner Anwendung im Vordergrund ist.
+    - Zoome in VS so hinein, dass die Fadenfunktion der Klasse `Game` sichtbar ist, wobei das Fenster deiner Anwendung im Vordergrund ist.
     - Stelle den Ausschnitt so ein, dass der Screenshot nur die relevanten Bereiche enthält (z. B. NICHT: VS Solution Explorer, die unteren und seitlichen Panels für Debugging oder die Windows-Taskleiste).

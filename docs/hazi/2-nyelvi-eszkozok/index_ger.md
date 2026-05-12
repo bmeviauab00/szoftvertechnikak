@@ -21,11 +21,11 @@ Das Ziel der Hausaufgabe:
 Die erforderliche Entwicklungsumgebung wird [hier](../fejlesztokornyezet/index_ger.md) beschrieben.
 
 !!! warning "Verwendung von Sprachelementen aus C# 12 (und neuer)"
-    Bei der Lösung der Hausaufgabe dürfen Sprachelementen von C# 12 und neuer (z. B. primary constructor) NICHT verwendet werden, da das auf GitHub laufende Prüfsystem diese noch nicht unterstützt.
+    Bei der Lösung der Hausaufgabe dürfen Sprachelemente von C# 12 und neuer (z. B. primary constructor) NICHT verwendet werden, da das auf GitHub laufende Prüfsystem diese noch nicht unterstützt.
 
 ## Abgabeablauf, Vorprüfung
 
-Der Ablauf der Eingabe entspricht dem der ersten Hausaufgabe (detaillierte Beschreibung an der üblichen Stelle, siehe [Hausaufgaben-Workflow und die Verwendung von Git/GitHub](../hf-folyamat/index.md)):
+Der Ablauf der Abgabe entspricht dem der ersten Hausaufgabe (detaillierte Beschreibung an der üblichen Stelle, siehe [Hausaufgaben-Workflow und die Verwendung von Git/GitHub](../hf-folyamat/index.md)):
 
 1. Erstelle mit GitHub Classroom ein eigenes Repository. Die Einladungs-URL findest du in Moodle (bei Hausaufgabe 2.). Wichtig ist, dass du die richtige Einladungs-URL für diese Hausaufgabe verwendest (für jede Hausaufgabe gibt es eine andere URL).
 2. Klone das so erstellte Repository. Dieses enthält die erwartete Struktur der Lösung.
@@ -37,7 +37,7 @@ Die Vorprüfung funktioniert ebenfalls auf die übliche Weise. Detaillierte Besc
 
 ### Aufgabe
 
-Wie es bewusst ist, stammt die Macht der Jedi-Ritter von den kleinen Lebensformen, den sogenannten Midi-Chlorianern, die in ihren Zellen leben. Der bisher höchste gemessene Midi-Chlorian-Wert (über 20.000) wurde bei Anakin Skywalker festgestellt.
+Wie bekannt ist, stammt die Macht der Jedi-Ritter von den kleinen Lebensformen, den sogenannten Midi-Chlorianern, die in ihren Zellen leben. Der bisher höchste gemessene Midi-Chlorian-Wert (über 20.000) wurde bei Anakin Skywalker festgestellt.
 
 Erstelle eine Klasse mit dem Namen `Jedi`, die eine `string`-Eigenschaft `Name` und eine `int`-Eigenschaft `MidiChlorianCount` hat. Achte im letzteren Fall darauf, dass der Wert von `MidiChlorianCount` nicht auf 35 oder einen kleineren Wert gesetzt werden kann. Wenn jemand dies versucht, muss die Klasse eine Ausnahme auslösen. Wähle bei der Validierung die einfachste und klarste Lösung: Verwende im Setter der Property ein einfaches `if` und löse eine Ausnahme aus. Das `if` soll keinen `else`-Zweig haben, und die Verwendung von `return` ist ebenfalls nicht notwendig.
 
@@ -53,7 +53,7 @@ throw new ArgumentException("You are not a true jedi!");
 
 ### Aufgabe
 
-Erweitere die in Aufgabe 1 erstellte Klasse mit Attributen, sodass wenn eines `Jedi`-Objekts in eine XML-Datei mithilfe der `XmlSerializer`-Klasse geschrieben/serialisiert wird, die Eigenschaften als XML-Attribute als `JediName` und `JediMidiChlorianCount` angezeigt werden! Schreibe danach eine Funktion, die eine Instanz der `Jedi`-Klasse in eine Textdatei serialisiert und dann wieder in ein neues Objekt einliest (dadurch wird das ursprüngliche Objekt praktisch geklont).
+Erweitere die in Aufgabe 1 erstellte Klasse mit Attributen, sodass wenn ein `Jedi`-Objekt in eine XML-Datei mithilfe der `XmlSerializer`-Klasse geschrieben/serialisiert wird, die Eigenschaften als XML-Attribute als `JediName` und `JediMidiChlorianCount` angezeigt werden! Schreibe danach eine Funktion, die eine Instanz der `Jedi`-Klasse in eine Textdatei serialisiert und dann wieder in ein neues Objekt einliest (dadurch wird das ursprüngliche Objekt praktisch geklont).
 
 !!! tip "Attribute für XML-Serialisierung"
     Die Attribute, die die XML-Serialisierung steuern, sollen über den Eigenschaften und **nicht** über den Membervariablen platziert werden!
@@ -65,7 +65,7 @@ Erweitere die in Aufgabe 1 erstellte Klasse mit Attributen, sodass wenn eines `J
     ```
 
 !!! danger "Wichtig"
-    Schreibe den Code, der das Specihern und Einlesen verwirklicht/demonstriert, in eine gemeinsame, dafür dedizierte Funktion, und versehe die Funktion mit dem C#-Attribut `[Description("Task2")]` (direkt über die Zeile der Funktion). Das gespeicherte/geladene Objekt soll als lokale Variable in dieser Funktion implementiert werden. Der Name der Klasse/Funktion kann beliebig sein (z. B. kann sie auch in die `Program`-Klasse gesetzt werden). Die Funktion darf keinen Code enthalten, der nicht zur Aufgabe gehört, also auch keinen, der zu anderen (Teil-)Aufgaben gehört. Rufe die Funktion aus der `Main`-Methode der `Program`-Klasse auf. Um das oben genannte Attribut zu verwenden, muss der Namespace `System.ComponentModel` eingebunden werden.
+    Schreibe den Code, der das Speichern und Einlesen verwirklicht/demonstriert, in eine gemeinsame, dafür dedizierte Funktion, und versehe die Funktion mit dem C#-Attribut `[Description("Task2")]` (direkt über die Zeile der Funktion). Das gespeicherte/geladene Objekt soll als lokale Variable in dieser Funktion implementiert werden. Der Name der Klasse/Funktion kann beliebig sein (z. B. kann sie auch in die `Program`-Klasse gesetzt werden). Die Funktion darf keinen Code enthalten, der nicht zur Aufgabe gehört, also auch keinen, der zu anderen (Teil-)Aufgaben gehört. Rufe die Funktion aus der `Main`-Methode der `Program`-Klasse auf. Um das oben genannte Attribut zu verwenden, muss der Namespace `System.ComponentModel` eingebunden werden.
 
     Die folgenden sind wesentlich:
 
@@ -208,7 +208,7 @@ Versuche anhand der oben genannten Informationen, die Aufgabe selbstständig zu 
         }
         ```
 
-    9. Zum Schluss testen wir unsere neue Klasse mit einer für diesen Zweck dedizierte Funktion (z. B. in der `Program`-Klasse), die mit dem `[Description("Task3")]`-Attribut versehen wird. Der Aufbau der Funktion:
+    9. Zum Schluss testen wir unsere neue Klasse mit einer für diesen Zweck dedizierten Funktion (z. B. in der `Program`-Klasse), die mit dem `[Description("Task3")]`-Attribut versehen wird. Der Aufbau der Funktion:
 
         ```csharp
         // Erstellen des Rates
@@ -406,7 +406,7 @@ Die Aufgaben sind die folgenden:
    
     Die Aufgabe lautet: Führe eine `ReportBuilder`-Klasse nach dem Beispiel der bereits vorhandenen `ReportPrinter` ein, die jedoch nicht auf die Konsole schreibt, sondern einen String mit dem gesamten Bericht erstellt, den man über eine neue Methode `GetResult()` abrufen kann.
 
-    !!! warning "Eingabe"
+    !!! warning "Abgabe"
         Wenn du diese Aufgabe abgibst, setze den Code zum Instanziieren/Testen von `ReportBuilder` nicht in die obige `test6`-Funktion, sondern erstelle eine neue Funktion `test6b` und versieh sie mit dem Attribut `[Description("Task6b")]`.
    
     !!! tip "Tipps zur Lösung"
@@ -446,7 +446,7 @@ Erweitere die Klasse `JediCouncil`.
 - Bei der Implementierung der Funktion `CountIf` hilft Aufgabe 4. Der Unterschied ist, dass `CountIf` nur die Anzahl zurückgibt, nicht die Mitglieder selbst.
     - Der Delegate-Parameter der Funktion `CountIf` sollte die Signatur `bool Funktionsname(Jedi jedi)` haben.
 
-## Eingabe
+## Abgabe
 
 Checkliste (zur Wiederholung):
 

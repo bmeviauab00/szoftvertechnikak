@@ -19,14 +19,14 @@ Ziele der Hausaufgabe:
 
 Eine Beschreibung der benötigten Entwicklungsumgebung ist [hier](../fejlesztokornyezet/index_ger.md) zu finden. Für diese Hausaufgabe ist keine WinUI erforderlich (die Arbeit erfolgt im Kontext einer Konsolenanwendung), sodass sie z. B. auch unter Linux/MacOS durchgeführt werden kann.
 
-## Das Verfahren für die Eingabe
+## Das Verfahren für die Abgabe
 
-Auf das Moodle soll ein ZIP-Archiv hochgeladen werden, das die folgenden Anforderungen entspricht:
+Auf Moodle soll ein ZIP-Archiv hochgeladen werden, das den folgenden Anforderungen entspricht:
 
-- Die Aufgaben sind aufeinander basiert, deshalb ist es genügend den resultierenden Quellcode am Ende der letzten Aufgabe hochzuladen (Visual Studio Solution Verzeichnis). Der Name des Verzeichnisses soll "Entwurfsmuster_NEPTUN" sein (wo NEPTUN Ihre Neptun-Code ist).
-- Wir erwarten keine schriftliche Begründung oder Beschreibung, aber die komplexe Codeteile sollen mit Kommentaren versehen werden
-- Das ZIP-Archiv darf die Ausgangsdaten (.exe) und die temporären Dateien nicht enthalten. Um diese Bestände zu löschen, Visual Studio soll geöffnet werden und in dem Solution Explorer Rechtsklick an dem „Clean Solution” Menüelement. Das manuelle Löschen von den "obj" und "bin" Verzeichnissen kann auch nötig sein.
-- :exclamation: In den Aufgaben werden Sie aufgefordert, einen **Screenshot** von einem Teil Ihrer Lösung zu machen, da dies beweist, dass Sie Ihre Lösung selbst erstellt haben. **Der erwartete Inhalt der Screenshots ist immer in der Aufgabe angegeben.** Die Screenshots sollten als Teil der Lösung eingegeben, also innerhalb dem ZIP-Archiv auf das Moodle hochgeladen werden.
+- Die Aufgaben bauen aufeinander auf, deshalb genügt es, den resultierenden Quellcode am Ende der letzten Aufgabe hochzuladen (Visual Studio Solution Verzeichnis). Der Name des Verzeichnisses soll "Entwurfsmuster_NEPTUN" sein (wobei NEPTUN Ihr Neptun-Code ist).
+- Wir erwarten keine schriftliche Begründung oder Beschreibung, aber die komplexen Codeteile sollen mit Kommentaren versehen werden.
+- Das ZIP-Archiv darf die Ausgabedateien (.exe) und die temporären Dateien nicht enthalten. Um diese zu löschen, soll Visual Studio geöffnet werden und im Solution Explorer mit Rechtsklick das „Clean Solution”-Menüelement gewählt werden. Das manuelle Löschen der Verzeichnisse "obj" und "bin" kann ebenfalls nötig sein.
+- :exclamation: In den Aufgaben werden Sie aufgefordert, einen **Screenshot** von einem Teil Ihrer Lösung zu machen, da dies beweist, dass Sie Ihre Lösung selbst erstellt haben. **Der erwartete Inhalt der Screenshots ist immer in der Aufgabe angegeben.** Die Screenshots sollten als Teil der Lösung abgegeben, also innerhalb des ZIP-Archivs auf Moodle hochgeladen werden.
 Wenn Sie Inhalte im Screenshot haben, die Sie nicht hochladen möchten, können Sie diese aus dem Screenshot ausblenden.
 
 ## Aufgabe 1
@@ -118,7 +118,7 @@ Der nächste Schritt wäre die Erstellung von Unit-Tests für die `Anonymizer`-K
 
 Am Ende der Aufgabe solltest du durch Überprüfung der Ausgabedatei sicherstellen, dass die Anonymisierung tatsächlich durchgeführt wurde!
 
-!!! example "Aufgabe 3 - EINGABE"
+!!! example "Aufgabe 3 - ABGABE"
     - Füge einen Screenshot ein, auf dem der Konstruktor der `Anonymizer`-Klasse sowie die Implementierung der Methode `Run` zu sehen sind (`f3.1.png`).
 
 ## Aufgabe 4 – Verwendung von Delegates
@@ -142,7 +142,7 @@ Aufgabe: Passe die Lösung im Projekt *Strategy-DI* so an, dass die Fortschritts
     - Der Delegate-Ansatz ist im Prinzip sehr ähnlich zum Strategy-Muster – nur dass die Klasse statt Strategieobjekten (über Schnittstellenverweise) Delegates erhält und speichert, und dann die referenzierten Funktionen an den Erweiterungspunkten aufruft.
     - Etwas Ähnliches hast du übrigens schon bei der zweiten Hausaufgabe im Teil *ReportPrinter* gemacht ;).
 
-!!! example "Aufgabe 4 – EINGABE"
+!!! example "Aufgabe 4 – ABGABE"
     - Füge einen Screenshot ein, auf dem der Konstruktor der `Anonymizer`-Klasse sowie die Implementierung der `Run`-Methode zu sehen sind (`f4.1.png`).
     - Füge einen Screenshot ein, auf dem der Inhalt der Datei `Program.cs` (insbesondere die neuen Teile) zu sehen ist (`f4.2.png`).
 
@@ -159,7 +159,7 @@ Wenn wir also die Logik(en) für „Simple Progress“ und/oder „Percent Progr
 Aufgabe: Erweitere die bisherige Lösung so, dass die Logiken für „Simple Progress“ und „Percent Progress“ wiederverwendbar sind. Im Detail:
 
 - Implementiere die Logiken für „Simple Progress“ und „Percent Progress“ jeweils in einer statischen Methode der neu eingeführten statischen Klasse `AllProgresses` (diese Klasse soll im Projekt-Hauptverzeichnis angelegt werden).
-- Ergänze in der Datei `Program.cs` zwei neue `Anonymizer`-Verwendungen zusätzlich zu den bestehenden, welche die je eine Methode der Klasse `AllProgresses` verwenden (hier bitte keine Lambda-Ausdrücke verwenden).
+- Ergänze in der Datei `Program.cs` zwei neue `Anonymizer`-Verwendungen zusätzlich zu den bestehenden, welche je eine Methode der Klasse `AllProgresses` verwenden (hier bitte keine Lambda-Ausdrücke verwenden).
 - Das bestehende `IProgress`-Interface sowie dessen Implementierungen könnten nun gelöscht werden (da sie nicht mehr verwendet werden). Aber: **Lösche sie nicht**, damit auch die Progress-Logik deiner vorherigen Lösung weiterhin überprüfbar bleibt.
 
 Wir sind fertig, prüfen wir die Lösung:
@@ -167,13 +167,13 @@ Wir sind fertig, prüfen wir die Lösung:
 - Es lässt sich feststellen, dass die delegate-basierte Lösung mit weniger „Zeremonie“ auskommt als das Strategy-Muster: Es war nicht notwendig, eigene Schnittstellen und Implementierungsklassen zu erstellen (wir konnten die eingebauten generischen Delegatetypen `Action` und `Func` verwenden).
 - Für völlig situationsabhängige Logik ist die Übergabe per Lambda-Ausdruck am einfachsten. Für wiederverwendbare Logik sollten wir hingegen klassische, wiederverwendbare Methoden definieren.
 
-!!! example "Aufgabe 5 – EINGABE"
+!!! example "Aufgabe 5 – ABGABE"
     - Füge einen Screenshot ein, auf dem der Inhalt der Datei `AllProgresses.cs` zu sehen ist (`f5.1.png`).
     - Füge einen Screenshot ein, auf dem der Inhalt der Datei `Program.cs` (insbesondere die neuen Teile) zu sehen ist (`f5.2.png`).
 
 ## Begriff der Refaktorisierung (Refactoring)
 
-Während der Laborübung und der Hausaufgab haben wir den Code mehrmals so umgestaltet, dass sich das äußere Verhalten der Anwendung nicht verändert hat, sondern nur der interne Aufbau. Ziel war es, den Code aus irgendeinem Blickwinkel qualitativ zu verbessern. Dies nennt man `Refaktorisierung` (englisch: `refactoring`). Dies ist ein sehr wichtiger Begriff und wird im Arbeitsalltag häufig angewendet. Es gibt eine eigene Fachliteratur dazu, und mit den wichtigsten Techniken sollte man sich später vertraut machen. Fortgeschrittene Entwicklungsumgebungen unterstützen einige Refaktorisierungsschritte direkt: Visual Studio gehört hierbei nicht zu den stärksten Tools, unterstützt aber einige grundlegende Operationen (z. B. Extract Method, Extract Base Class usw.). Wir haben Refaktorisierung manuell geübt – es wird keine eigene Aufgabe mehr dazu geben, aber den Begriff Refaktorisierung muss man kennen.
+Während der Laborübung und der Hausaufgabe haben wir den Code mehrmals so umgestaltet, dass sich das äußere Verhalten der Anwendung nicht verändert hat, sondern nur der interne Aufbau. Ziel war es, den Code aus irgendeinem Blickwinkel qualitativ zu verbessern. Dies nennt man `Refaktorisierung` (englisch: `refactoring`). Dies ist ein sehr wichtiger Begriff und wird im Arbeitsalltag häufig angewendet. Es gibt eine eigene Fachliteratur dazu, und mit den wichtigsten Techniken sollte man sich später vertraut machen. Fortgeschrittene Entwicklungsumgebungen unterstützen einige Refaktorisierungsschritte direkt: Visual Studio gehört hierbei nicht zu den stärksten Tools, unterstützt aber einige grundlegende Operationen (z. B. Extract Method, Extract Base Class usw.). Wir haben Refaktorisierung manuell geübt – es wird keine eigene Aufgabe mehr dazu geben, aber den Begriff Refaktorisierung muss man kennen.
 
 ## Optionale Aufgabe 6 – Erstellung eines Integrationstests
 
@@ -251,7 +251,7 @@ Natürlich sollte man die % Werte nicht zu ernst nehmen. Jedenfalls ist die Entw
 
 * **Template Method**: In einfachen Fällen, wenn nicht viele Kreuzkombinationen der Verhaltensaspekte unterstützt werden müssen, bietet dies eine sehr bequeme und einfache Lösung, insbesondere wenn wir die Vererbung ohnehin verwenden müssen. Es führt jedoch zu einer Basisklasse, die schwer oder gar nicht einheitlich testbar ist.
 * **Strategy**: Bietet eine sehr flexible Lösung und führt nicht zu einer kombinatorischen Explosion, wenn die Klasse in mehreren Aspekten erweitert werden muss und wir diese in verschiedenen Kreuzkombinationen verwenden wollen. Oft wenden wir es nur an, um die Abhängigkeiten unserer Klasse durch Schnittstellen abzukoppeln und so die Testbarkeit unserer Klasse zu gewährleisten.
-* **Delegate/Lambda**: Dieser Ansatz ist weniger "feierlich" als die Anwendung der Strategy, da keine Schnittstellen und Implementierungsklassen eingeführt werden müssen. Daher verbreitet sich die Verwendung zunehmend (rasch) auch in modernen objektorientierten Sprachen. Besonders vorteilhaft wird er, wenn wir Verhaltensweisen nicht wiederverwendbar machen wollen (denn dann definieren wir diese einfach mit einer Lambda-Ausdruck, ohne neue Klassen oder zusätzliche Funktionen einzuführen).
+* **Delegate/Lambda**: Dieser Ansatz ist weniger "feierlich" als die Anwendung der Strategy, da keine Schnittstellen und Implementierungsklassen eingeführt werden müssen. Daher verbreitet sich die Verwendung zunehmend (rasch) auch in modernen objektorientierten Sprachen. Besonders vorteilhaft wird er, wenn wir Verhaltensweisen nicht wiederverwendbar machen wollen (denn dann definieren wir diese einfach mit einem Lambda-Ausdruck, ohne neue Klassen oder zusätzliche Funktionen einzuführen).
 
 Es lohnt sich, zu sammeln, wann Strategy einen Vorteil gegenüber Delegaten hat:
 

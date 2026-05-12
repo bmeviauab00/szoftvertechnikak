@@ -2,7 +2,7 @@
 authors: bzolka
 ---
 
-# 5. HA - Verwendung der MVVM-Muster und des MVVM-Toolkits
+# 5. HA - Verwendung des MVVM-Musters und des MVVM-Toolkits
 
 ## Einführung
 
@@ -15,14 +15,14 @@ Durch das Durcharbeiten des zugehörigen Vorlesungsmaterials können die Aufgabe
 
 Das Ziel der Hausaufgabe:
 
-- Üben der Verwendung der MVVM-Muster
+- Üben der Verwendung des MVVM-Musters
 - NuGet-Referenzen verwenden
 - Kennenlernen der Grundlagen des MVVM-Toolkits
 - Üben von XAML-Techniken
 
-Die erforderliche Entwicklungsumgebung wird [hier](.../fejlesztokornyezet/index_ger.md) beschrieben, identisch mit Hausaufgabe 3 (XAML-Grundlagen).
+Die erforderliche Entwicklungsumgebung wird [hier](../fejlesztokornyezet/index_ger.md) beschrieben, identisch mit Hausaufgabe 3 (XAML-Grundlagen).
 
-## Das Verfahren der Eingabe
+## Das Verfahren für die Abgabe
 
 - Der grundlegende Ablauf ist derselbe wie zuvor. Erstelle mit GitHub Classroom ein eigenes Repository. Die Einladungs-URL findest du in Moodle (bei Hausaufgabe 4.). Klone das so erstellte Repository. Dieses enthält die erwartete Struktur der Lösung. Nach der Fertigstellung der Aufgaben committe und pushe deine Lösung.
 - Schreibe deinen Neptun-Code in die Datei „neptun.txt“!
@@ -32,7 +32,7 @@ Die erforderliche Entwicklungsumgebung wird [hier](.../fejlesztokornyezet/index_
 
 ## Bedingungen
 
-:warning: **Obligatorische Verwendung der MVVM-Muster!**  
+:warning: **Obligatorische Verwendung des MVVM-Musters!**  
   In dieser Hausaufgabe üben wir das MVVM-Muster, daher ist das MVVM-Muster für die Lösung der Aufgaben obligatorisch erforderlich. Andernfalls wird die Bewertung der Aufgaben verweigert.
 
 ## Aufgabe 0 - Überblick über den Ausgangszustand
@@ -117,7 +117,7 @@ Dieser Code ergibt nach einer Übersetzung im Wesentlichen die gleiche Lösung w
 
 Da viel weniger Code geschrieben werden muss, verwenden wir in der Praxis die auf dem MVVM-Toolkit basierende Lösung (aber du musst auch die manuelle Lösung kennen, damit du verstehen kannst, was hinter den Kulissen geschieht).
 
-!!! example "EINGABE"
+!!! example "ABGABE"
     Erstelle einen Screenshot mit dem Namen `f1b.png` wie folgt:
 
     - Starte die App. Verkleinere sie gegebenenfalls, damit sie nicht zu viel Platz auf dem Bildschirm einnimmt,
@@ -131,7 +131,7 @@ Im Folgenden werden wir die Architektur unserer Anwendung so anpassen, dass sie 
 
 **Aufgabe**: Arbeite das entsprechende Vorlesungsmaterial durch (am Ende des WinUI-Abschnitts):
  
- * Verstehe der grundlegenden Konzepte des MVVM-Musters.
+ * Verstehe die grundlegenden Konzepte des MVVM-Musters.
  * Der vollständige Code für die Beispiele in den Folien ist im Ordner "04-05 WinUI\DancerProfiles" ("RelaxedMVVM" und "StrictMVVM") von [GitHub Repository](https://github.com/bmeviauab00/eloadas-demok) verfügbar und kann dir helfen, die zu verstehen und die Aufgaben später zu lösen. 
 
 Was bedeutet das MVVM-Muster für unser Beispiel:
@@ -175,7 +175,7 @@ Was haben wir durch die Umstellung unserer bisherigen Lösung auf eine MVVM-Basi
 
 Je komplexer eine Anwendung ist, desto mehr sind diese wahr.
 
-!!! example "EINGABE"
+!!! example "ABGABE"
     Erstelle einen Screenshot mit dem Namen `f2.png` wie folgt:
 
     - Starte die App. Verkleinere sie gegebenenfalls, damit sie nicht zu viel Platz auf dem Bildschirm einnimmt,
@@ -226,7 +226,7 @@ Erarbeite eine ähnliche Lösung für die Taste "+" und die Taste "+Add"!
 
 Beim Testen haben wir festgestellt, dass sich der Zustand der Taste "+Add" nicht sofort ändert, wenn wir beispielsweise den Namen in der Textbox "Name" löschen, sondern erst, wenn wir die Textbox verlassen? Warum ist das so? Ändere deine Lösung so, dass dies bei jeder Textänderung geschieht, ohne die TextBox zu verlassen. Hinweis: siehe die Folie "x:Bind wann werden die Daten aktualisiert?" in der Vorlesungsmaterial.
 
-!!! example "EINGABE"
+!!! example "ABGABE"
     Erstelle einen Screenshot mit dem Namen `f3.png` wie folgt:
 
     - Starte die App. Verkleinere sie gegebenenfalls, damit sie nicht zu viel Platz auf dem Bildschirm einnimmt,
@@ -259,7 +259,7 @@ Wenn du es ausprobierst, funktioniert die Ausführund des Befehls, aber das Deak
 
 Ändere die Behandlung der "+"-Taste auf ähnliche Weise auf Befehlsbasis! Ändere **nicht** die Behandlung der Taste "+Add"!
 
-!!! example "EINGABE"
+!!! example "ABGABE"
     Erstelle einen Screenshot mit dem Namen `f4.png` wie folgt:
 
     - Starte die App. Verkleinere sie gegebenenfalls, damit sie nicht zu viel Platz auf dem Bildschirm einnimmt,
@@ -280,7 +280,7 @@ In der vorigen Aufgabe wurde die Einführung von Command-Eigenschaften und deren
 
 Teste die Lösung (Verkleinerung des Alters), sie sollte genauso funktionieren wie zuvor.
 
-!!! example "EINGABE"
+!!! example "ABGABE"
     Erstelle einen Screenshot mit dem Namen `f5.png` wie folgt:
 
     - Starte die App. Verkleinere sie gegebenenfalls, damit sie nicht zu viel Platz auf dem Bildschirm einnimmt,
