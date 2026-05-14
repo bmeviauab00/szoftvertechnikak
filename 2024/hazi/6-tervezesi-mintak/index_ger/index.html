@@ -10,6 +10,10 @@
         <link rel="canonical" href="https://bmeviauab00.github.io/szoftvertechnikak/2024/hazi/6-tervezesi-mintak/index_ger/">
       
       
+        <link rel="prev" href="../../5-mvvm/index_ger/">
+      
+      
+        <link rel="next" href="../../fejlesztokornyezet/index_ger/">
       
       
         
@@ -20,7 +24,7 @@
     
     
       
-        <title>6. HA - Entwurfsmuster (Erweiterbarkeit) - BMEVIAUAB00 Szoftvertechnikák</title>
+        <title>6. Entwurfsmuster - BMEVIAUAB00 Szoftvertechnikák</title>
       
     
     
@@ -122,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              6. HA - Entwurfsmuster (Erweiterbarkeit)
+              6. Entwurfsmuster
             
           </span>
         </div>
@@ -352,10 +356,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../1-model-es-kod-kapcsolata/index_ger/" class="md-tabs__link">
           
   
@@ -1792,24 +1798,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked="">
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
             
   
   
@@ -1827,7 +1838,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1982,10 +1993,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../meghirdetes-elott_ger/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Entwurfsmuster
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2001,6 +2039,175 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tartalomjegyzék">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tartalomjegyzék
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#das-verfahren-fur-die-eingabe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Das Verfahren für die Eingabe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aufgabe-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aufgabe 1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aufgabe-2-null-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aufgabe 2 – Null Strategy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aufgabe-3-testbarkeit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aufgabe 3 – Testbarkeit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aufgabe-4-verwendung-von-delegates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aufgabe 4 – Verwendung von Delegates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aufgabe-5-verwendung-von-delegates-mit-wiederverwendbarer-logik" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aufgabe 5 – Verwendung von Delegates mit wiederverwendbarer Logik
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#begriff-der-refaktorisierung-refactoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Begriff der Refaktorisierung (Refactoring)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optionale-aufgabe-6-erstellung-eines-integrationstests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optionale Aufgabe 6 – Erstellung eines Integrationstests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optionale-aufgabe-7-erstellung-eines-unit-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optionale Aufgabe 7 – Erstellung eines Unit-Tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zusammenfassung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zusammenfassung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Zusammenfassung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uberblick-uber-unseren-arbeitsprozess" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Überblick über unseren Arbeitsprozess
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wiederverwendbarkeit-und-erweiterbarkeit-der-einzelnen-losungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wiederverwendbarkeit und Erweiterbarkeit der einzelnen Lösungen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uberblick-uber-erweiterungstechniken" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Überblick über Erweiterungstechniken
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2242,11 +2449,11 @@
 
 
 <h1 id="6-ha-entwurfsmuster-erweiterbarkeit">6. HA - Entwurfsmuster (Erweiterbarkeit)<a class="headerlink" href="#6-ha-entwurfsmuster-erweiterbarkeit" title="Permanent link">¶</a></h1>
-<p>In dieser Hausaufgabe werden wir die im zugehörigen Labor (<a href="../../../labor/6-tervezesi-mintak/">Labor 6 – Entwurfsmuster (Erweiterbarkeit)</a>) begonnene Datenverarbeitungs-/Anonymisierungsanwendung weiterentwickeln.</p>
+<p>In dieser Hausaufgabe werden wir die im zugehörigen Labor (<a href="../../../labor/6-tervezesi-mintak/index_ger/">Labor 6 – Entwurfsmuster (Erweiterbarkeit)</a>) begonnene Datenverarbeitungs-/Anonymisierungsanwendung weiterentwickeln.</p>
 <p>Die Hausaufgabe basiert auf dem Inhalt der Vorlesungen zu den Entwurfsmustern:
 - Vorlesung 08 – Entwurfsmuster 1: Kapitel „Grundlegende Entwurfsmuster zur Erweiterbarkeit“ – Einführung, Template Method, Strategy, Open/Closed-Prinzip, SRP-Prinzip, weitere Techniken (Methodenreferenz/Lambda)
 - Vorlesung 09 – Entwurfsmuster 1: Dependency Injection-Muster</p>
-<p>Den praktischen Hintergrund für die Aufgaben bildet das <a href="../../../labor/6-tervezesi-mintak/">Labor 6 – Entwurfsmuster (Erweiterbarkeit)</a>.</p>
+<p>Den praktischen Hintergrund für die Aufgaben bildet das <a href="../../../labor/6-tervezesi-mintak/index_ger/">Labor 6 – Entwurfsmuster (Erweiterbarkeit)</a>.</p>
 <p>Ziele der Hausaufgabe:</p>
 <ul>
 <li>Anwendung der relevanten Entwurfsmuster und weiterer Erweiterungstechniken</li>
@@ -2254,13 +2461,12 @@
 </ul>
 <p>Eine Beschreibung der benötigten Entwicklungsumgebung ist <a href="../../fejlesztokornyezet/index_ger/">hier</a> zu finden. Für diese Hausaufgabe ist keine WinUI erforderlich (die Arbeit erfolgt im Kontext einer Konsolenanwendung), sodass sie z. B. auch unter Linux/MacOS durchgeführt werden kann.</p>
 <h2 id="das-verfahren-fur-die-eingabe">Das Verfahren für die Eingabe<a class="headerlink" href="#das-verfahren-fur-die-eingabe" title="Permanent link">¶</a></h2>
-<p>Auf das Moodle soll ein ZIP-Archiv hochgeladen werden, das die folgenden Anforderungen entspricht:</p>
 <ul>
-<li>Die Aufgaben sind aufeinander basiert, deshalb ist es genügend den resultierenden Quellcode am Ende der letzten Aufgabe hochzuladen (Visual Studio Solution Verzeichnis). Der Name des Verzeichnisses soll "Entwurfsmuster_NEPTUN" sein (wo NEPTUN Ihre Neptun-Code ist).</li>
-<li>Wir erwarten keine schriftliche Begründung oder Beschreibung, aber die komplexe Codeteile sollen mit Kommentaren versehen werden</li>
-<li>Das ZIP-Archiv darf die Ausgangsdaten (.exe) und die temporären Dateien nicht enthalten. Um diese Bestände zu löschen, Visual Studio soll geöffnet werden und in dem Solution Explorer Rechtsklick an dem „Clean Solution” Menüelement. Das manuelle Löschen von den "obj" und "bin" Verzeichnissen kann auch nötig sein.</li>
-<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> In den Aufgaben werden Sie aufgefordert, einen <strong>Screenshot</strong> von einem Teil Ihrer Lösung zu machen, da dies beweist, dass Sie Ihre Lösung selbst erstellt haben. <strong>Der erwartete Inhalt der Screenshots ist immer in der Aufgabe angegeben.</strong> Die Screenshots sollten als Teil der Lösung eingegeben, also innerhalb dem ZIP-Archiv auf das Moodle hochgeladen werden.
-Wenn Sie Inhalte im Screenshot haben, die Sie nicht hochladen möchten, können Sie diese aus dem Screenshot ausblenden.</li>
+<li>Der grundlegende Ablauf ist derselbe wie zuvor. Erstelle mit GitHub Classroom ein eigenes Repository. Die Einladungs-URL findest du in Moodle (bei Hausaufgabe 4.). Klone das so erstellte Repository. Dieses enthält die erwartete Struktur der Lösung. Nach der Fertigstellung der Aufgaben committe und pushe deine Lösung.</li>
+<li>Schreibe deinen Neptun-Code in die Datei „neptun.txt“!</li>
+<li>Öffne <code>Patterns-Extensibility.sln</code> aus den geklonten Dateien und arbeite in diesem.</li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Die Aufgaben verlangen, dass du <strong>Screenshots</strong> von bestimmten Teilen deiner Lösung erstellst, um zu belegen, dass du sie selbst angefertigt hast. <strong>Der erwartete Inhalt der Screenshots wird in jeder Aufgabe genau angegeben.</strong> Die Screenshots müssen als Teil der Lösung eingegeben werden. Lege sie im Stammverzeichnis deines Repositorys ab (neben der Datei <code>neptun.txt</code>). Dadurch werden die Screenshots zusammen mit dem Inhalt des Git-Repositorys auf GitHub hochgeladen. Da das Repository privat ist, können es außer den Lehrkräfte keine anderen Personen sehen. Falls Inhalte auf den Screenshots erscheinen, die du nicht hochladen möchtest, kannst du diese unkenntlich machen.</li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Für diese Aufgabe gibt es keine inhaltliche Vorabprüfung: Nach jedem Push wird zwar eine Prüfung ausgeführt, diese kontrolliert jedoch nur, ob die Datei <code>neptun.txt</code> ausgefüllt ist. Die eigentliche Bewertung erfolgt nach Ablauf der Frist durch die Übungsleiter.</li>
 </ul>
 <h2 id="aufgabe-1">Aufgabe 1<a class="headerlink" href="#aufgabe-1" title="Permanent link">¶</a></h2>
 <p>Die Grundlage zur Lösung dieser Hausaufgabe ist Folgendes:</p>
@@ -2277,7 +2483,7 @@ Wenn Sie Inhalte im Screenshot haben, die Sie nicht hochladen möchten, können 
 <p class="admonition-title">Dependency Injection (manuell) vs. Dependency Injection Container</p>
 <p>Im Labor sowie in dieser Hausaufgabe verwenden wir die einfache, manuelle Variante der Dependency Injection (auch in der Vorlesung behandelt). In diesem Fall werden die Abhängigkeiten einer Klasse manuell instanziiert und über den Konstruktor übergeben. In komplexeren Anwendungen wird häufig ein Dependency Injection Container verwendet, in den registriert werden kann, welche Implementierung für einen bestimmten Interface-Typ verwendet werden soll. Der Einsatz solcher DI-Container ist nicht Teil der Lehrveranstaltung. Die manuelle Variante hingegen schon – und sie ist besonders wichtig, da ohne sie der Einsatz des Strategy-Musters keinen Sinn ergibt.</p>
 </div>
-<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" title=":warning:"> Beantworte in eigenen Worten kurz die folgenden Fragen in der Datei <code>readme.md</code> <em>Feladatok</em>:</p>
+<p><img alt="⚠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" title=":warning:"> Beantworte die folgenden Fragen kurz mit deinen eigenen Worten in der Datei <code>readme.md</code>, die sich im Ordner <em>Feladatok</em> befindet (also nicht im Stammverzeichnis!!!):</p>
 <ul>
 <li>Was ermöglicht das Strategy-Muster in Kombination mit Dependency Injection im Rahmen des Laborbeispiels, und was sind die Vorteile ihrer gemeinsamen Verwendung?</li>
 <li>Was bedeutet es, dass durch die Anwendung des Strategy-Musters das Open/Closed-Prinzip in der Lösung umgesetzt wird? (Hinweise zum Open/Closed-Prinzip findest du in der Vorlesung und im Labor-Material.)</li>
@@ -2420,6 +2626,12 @@ Entwickle eine Lösung, die das oben beschriebene Fehlerpotenzial ausschließt. 
 </ol>
 </li>
 </ol>
+<div class="admonition example">
+<p class="admonition-title">Aufgabe 6 – EINGABE</p>
+<ul>
+<li>Füge einen Screenshot ein, auf dem der Quellcode deines Integrationstests zu sehen ist (<code>f6-IMSc.png</code>).</li>
+</ul>
+</div>
 <h2 id="optionale-aufgabe-7-erstellung-eines-unit-tests">Optionale Aufgabe 7 – Erstellung eines Unit-Tests<a class="headerlink" href="#optionale-aufgabe-7-erstellung-eines-unit-tests" title="Permanent link">¶</a></h2>
 <p>Mit der Lösung dieser Aufgabe können +2 IMSc-Punkte erzielt werden.</p>
 <p>Im Rahmen der vorherigen Aufgabe 3 wurde das Konzept des Unit-Tests vorgestellt. Ziel dieser optionalen Aufgabe ist es, dieses Konzept zu üben und besser zu verstehen – anhand einer konkreten Aufgabe.</p>
@@ -2438,6 +2650,12 @@ Entwickle eine Lösung, die das oben beschriebene Fehlerpotenzial ausschließt. 
 <li>Tipp: Erstelle eigene Implementierungen von <code>IInputReader</code> und <code>IAnonymizerAlgorithm</code> (und verwende den <code>Anonymizer</code> damit), <strong>die passende Testdaten liefern und/oder zur Laufzeit Daten sammeln, damit nach dem Ausführen überprüft werden kann, ob die Bedingungen erfüllt wurden</strong>. Diese Strategy-Implementierungen sollen ausschließlich im Testprojekt erstellt werden, da sie nur für Testzwecke gedacht sind.</li>
 </ul>
 <p>Zur weiteren Übung kannst du auch einen weiteren Unit-Test erstellen, der überprüft, ob alle Eingabedaten auch in der Ausgabe enthalten sind.</p>
+<div class="admonition example">
+<p class="admonition-title">Aufgabe 7 – EINGABE</p>
+<ul>
+<li>Füge einen Screenshot ein, auf dem der Quellcode deines Unit-Tests zu sehen ist (<code>f7-IMSc.png</code>).</li>
+</ul>
+</div>
 <h2 id="zusammenfassung">Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Permanent link">¶</a></h2>
 <p>Es wird keine weiteren Aufgaben geben 😊. Aber wenn du zum Beispiel neugierig bist, wie perfekt oder unvollständig die aktuelle Lösung ist, oder wann es sinnvoll ist, mit der Template Method, der Strategy oder eher mit Delegaten zu arbeiten, dann solltest du das Folgende lesen, in dem wir die im Labor begonnene und im Rahmen der Hausaufgabe abgeschlossene Lösung bewerten.</p>
 <h3 id="uberblick-uber-unseren-arbeitsprozess">Überblick über unseren Arbeitsprozess<a class="headerlink" href="#uberblick-uber-unseren-arbeitsprozess" title="Permanent link">¶</a></h3>
@@ -2488,8 +2706,8 @@ Entwickle eine Lösung, die das oben beschriebene Fehlerpotenzial ausschließt. 
         </path>
       </svg>
     </span>
-    <span title="2025. május 9. 14:58:47">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. május 9. 14:58:47 CEST"><span class="timeago" datetime="2025-05-09T14:58:47+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. május 9. 14:58:47 CEST">2025-05-09</span>
+    <span title="2026. május 14. 14:07:09">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. május 14. 14:07:09 CEST"><span class="timeago" datetime="2026-05-14T14:07:09+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. május 14. 14:07:09 CEST">2026-05-14</span>
     </span>
   </span>
 
