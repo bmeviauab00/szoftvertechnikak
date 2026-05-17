@@ -2300,12 +2300,12 @@
 <li><code>TargetFloor</code> tulajdonság: Cél emelet. Egész érték.</li>
 <li><code>Stairway</code> tulajdonság: Lépcsőház száma, melyben a lift található. Egész érték. Egy lépcsőházban egy lift lehet (ezt nem kell validálni az alkalmazásban, de mindig így használjuk).</li>
 <li><code>Call</code> művelet: A lift hívására szolgál, beállítja a célemeletet a paraméterben megadott értékre.</li>
-<li><code>Step</code> művelet: A lift egy emelettel történő léptetésére szolgál (amennyiben az aktuális és célemelet nem egyezik: ha egyezik, nem csinál semmit). Véletlenszerű esetben - átlagosan kb. minden 5. lépés során - a lift ideiglenesen beragad: ez azt jelenti, hogy az adott lépés során nem vált emeletet a célemelet irányába.</li>
+<li><code>Step</code> művelet: A lift egy emelettel történő léptetésére szolgál (amennyiben az aktuális és célemelet nem egyezik: ha egyezik, nem csinál semmit). Véletlenszerűen - átlagosan kb. minden 5. lépés során - a lift ideiglenesen beragad: ez azt jelenti, hogy az adott lépés során nem vált emeletet a célemelet irányába.</li>
 </ul>
 <p>Készíts egy <code>LiftDoor</code> osztályt, mely egy liftajtót reprezentál:</p>
 <ul>
-<li>Konstruktor paraméterben lehessen megadni a lift objektumot, melyhez a lift tartozik, valamint azt, hogy az ajtó melyik emeleten helyezkedik el.</li>
-<li>A liftajtó kijelzője mindig a liftjének aktuális emeletét mutatja, kivéve, amikor a lift az adott liftajtó szintjére érkezik. Ekkor, ha ez volt a célállomás, egy 'o' jelenik meg a kijelzőn (jelezve, hogy nyílik az ajtó), egyébként egy '*'. </li>
+<li>Konstruktor paraméterben lehessen megadni a lift objektumot, melyhez a liftajtó tartozik, valamint azt, hogy az ajtó melyik emeleten helyezkedik el.</li>
+<li>A liftajtó kijelzője mindig a liftjének aktuális emeletét mutatja, kivéve, amikor a lift megérkezik arra az emeletre, ahol az adott liftajtó található. Ekkor, ha ez volt a célemelet, egy 'o' jelenik meg a kijelzőn (jelezve, hogy nyílik az ajtó), egyébként egy '*'. </li>
 <li>A kijelzőhöz nem kell külön osztályt készíteni, a megjelenítésért a <code>LiftDoor</code> osztály felel.</li>
 <li>
 <p>Egy adott lifthez tartozó ajtók adatai egy oszlopban, egymás alatt (emelet sorrendjében) jelenjenek meg. Az 1. oszlopban az 1. lépcsőház, 2. oszlopban a 2. lépcsőház stb. lift/liftajtó adatok jelenjenek meg. Az oszlopok 20-as karakterszélességűek, így az 1. oszlop a 20-as, a 2. oszlop a 40-es stb. karakterpozícióban kezdődik. Az alábbi ábra illusztrálja az elrendezést két lift esetére (1. lift az első lépcsőházban, 2. lift a 2. lépcsőházban található):</p>
@@ -2316,7 +2316,7 @@
 <p>A konzolra írás során a <code>Console.SetCursorPosition</code> műveletet érdemes használni az írási pozíció beállítására.</p>
 </li>
 <li>Egyszerűsítés: a <code>Lift</code> osztálynak nem kell tudnia, hogy hány szint tartozik hozzá, így nem szükséges erre vonatkozó validációkat sem megvalósítani.</li>
-<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Kulcsfontosságú, hogy a <code>Lift</code> osztály nem tudhatja, milyen más osztályok építenek az állapotára. Pl. esetünkben egyelőre a <code>LiftDoor</code> ilyen (később lesz más is). Vagyis a rendszernek könnyen bővíthetőnek kell lenni más osztályokkal, melyek a <code>Lift</code> működésétől/állapotától függenek, új ilyen osztály bevezetésekor a <code>Lift</code> osztályt nem szabad a későbbiekben módosítani. Ennek megfelelően a <code>Lift</code> - <code>LiftDoor</code> viszonyát az Observer mintára kell építeni. </li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Kulcsfontosságú, hogy a <code>Lift</code> osztály nem tudhatja, milyen más osztályok építenek az állapotára. Pl. esetünkben egyelőre a <code>LiftDoor</code> ilyen (később lesz más is). Vagyis a rendszernek könnyen bővíthetőnek kell lenni más osztályokkal, melyek a <code>Lift</code> működésétől/állapotától függenek, új ilyen osztály bevezetésekor a <code>Lift</code> osztályt ne kelljen módosítani. Ennek megfelelően a <code>Lift</code> - <code>LiftDoor</code> viszonyát az Observer mintára kell építeni. </li>
 <li>A jövőben a továbbfejlesztés során lehetnek más <code>Subject</code> osztályok is, ezért be kell vezetni egy <code>Subject</code> ősosztályt a kódduplikáció elkerülésére (de a házi feladatban csak egy subject lesz).</li>
 <li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> A megoldás NEM építhet .NET event-ekre (ugyanezen osztályokkal/interfészekkel pl. Java nyelven is megvalósíthatónak kell lennie).</li>
 </ul>
@@ -2376,7 +2376,7 @@
 <li>A modell két liftet tartalmaz, az egyik az 1., a másik a 2. lépcsőházban található.</li>
 <li>A konstruktorban létrehozzuk a két lifthez az egyes emeleteken található ajtókat (mindkét lépcsőház 5 emeletes).</li>
 <li>A <code>Run</code> egy végtelen ciklusban futtatja a szimulációt. A <code>Step</code> műveletben léptet, vár egy másodpercet, majd megnöveli az aktuális iterációszámot.</li>
-<li>A <code>Step</code> hívódik minden iterációban. Ebben léptetjük mindkét liftet, és bizonyos iterációkban hívjuk a két liftet az 5. illetve 1. emeletre.</li>
+<li>A <code>Step</code> metódus minden iterációban meghívódik. Ebben léptetjük mindkét liftet, és bizonyos iterációkban hívjuk a két liftet az 5. illetve 1. emeletre.</li>
 </ul>
 <p>A következő mozgókép illusztrálja a működést:
  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/Lift-1-anim.gif" data-desc-position="bottom"><img alt="2 lifts" src="images/Lift-1-anim.gif"></a></p>
@@ -2391,7 +2391,7 @@
 <p>A megoldás illusztrálása:</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/two-lifts-2.png" data-desc-position="bottom"><img alt="2 lifts" src="images/two-lifts-2.png"></a></p>
 <h2 id="3-feladat-meglevo-liftmonitor-osztaly-beillesztese">3. feladat - Meglévő LiftMonitor osztály beillesztése<a class="headerlink" href="#3-feladat-meglevo-liftmonitor-osztaly-beillesztese" title="Permanent link">¶</a></h2>
-<p>A feladat a liftek működési státuszáról információ megjelenítése. Emlékezzünk: a liftek véletlenszerű időközönként elakadnak, mint ahogy a korábbi leírásban szerepelt! Minden időpillanatban tudni szeretnénk, hogy egy lift működik (státusza "OK"), vagy el van akadva (státusza "stuck"). Ehhez rendelkezésre is áll az alábbi osztály:</p>
+<p>A feladat a liftek működési állapotának megjelenítése. Emlékezzünk: a liftek véletlenszerű időközönként elakadnak, ahogyan az a korábbi leírásban szerepelt! Minden időpillanatban tudni szeretnénk, hogy egy lift működik (státusza "OK"), vagy el van akadva (státusza "stuck"). Ehhez rendelkezésre is áll az alábbi osztály:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">LiftMonitor</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">prevFloor</span><span class="p">;</span>
@@ -2400,7 +2400,7 @@
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CheckLift</span><span class="p">(</span><span class="n">Lift</span><span class="w"> </span><span class="n">lift</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">SetCursorPosition</span><span class="p">(</span><span class="n">lift</span><span class="p">.</span><span class="n">Stairway</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lift</span><span class="p">.</span><span class="n">Floor</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">prevFloor</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">isPrevFloorInitialized</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lift</span><span class="p">.</span><span class="n">Floor</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">prevFloor</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">lift</span><span class="p">.</span><span class="n">Floor</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">lift</span><span class="p">.</span><span class="n">TargetFloor</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">isPrevFloorInitialized</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">$"LiftMonitor: stuck!"</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
@@ -2417,20 +2417,20 @@
 <p>Illesszük be az Adapter minta segítségével a fenti osztályt a megoldásunkba:</p>
 <ul>
 <li>A <code>LiftMonitor</code> osztály nem módosítható!</li>
-<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Kulcsfontosságú, hogy a beillesztése során NE kelljen a <code>Lift</code> osztályt módosítani (az Observer mintának köszönhetően). Tipp: a <code>Lift</code> akkor is kell értesítse a megfigyelőit, ha beragadás miatt nem váltott szintet, máskülönben a <code>LiftMonitor</code> nem tudja detektálni a beragadást.</li>
+<li><img alt="❗" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2757.svg" title=":exclamation:"> Kulcsfontosságú, hogy a beillesztése során NE kelljen a <code>Lift</code> osztályt módosítani (az Observer mintának köszönhetően). Tipp: a <code>Lift</code> akkor is értesítse a megfigyelőit, ha beragadás miatt nem váltott szintet, máskülönben a <code>LiftMonitor</code> nem tudja detektálni a beragadást.</li>
 <li><code>LiftSystemModel</code> konstruktorában mindkét lifthez vegyünk fel egy-egy monitorozást megvalósító objektumot.</li>
 <li>Csak Object Adapter alapú megoldás fogadható el (Class Adapter nem).</li>
 </ul>
 <p>A megoldás működésének illusztrálása:</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="images/two-lifts-3.png" data-desc-position="bottom"><img alt="2 lifts" src="images/two-lifts-3.png"></a></p>
 <h2 id="4-feladat-lift-leptetese-a-chain-of-responsibility-minta-segitsegevel">4. feladat - Lift léptetése a Chain of Responsibility minta segítségével<a class="headerlink" href="#4-feladat-lift-leptetese-a-chain-of-responsibility-minta-segitsegevel" title="Permanent link">¶</a></h2>
-<p>Jelen megoldásban a lift léptetésének megvalósítása be van égetve a <code>Lift</code> osztály <code>Step</code> műveletébe. A feladat a lift léptetésének rugalmasabbá tétele. A következőket kell támogatni:</p>
+<p>A jelenlegi megoldásban a lift léptetésének megvalósítása be van égetve a <code>Lift</code> osztály <code>Step</code> műveletébe. A feladat a lift léptetésének rugalmasabbá tétele. A következőket kell támogatni:</p>
 <ul>
 <li>A már meglévő, véletlenszerű elakadás.</li>
 <li>Vészleállás mód. Amikor a liftre bekapcsolják a vészleállás módot, a <code>Step</code> művelet nem léptetheti a liftet semmilyen irányba (egészen a vészleállás mód deaktiválásáig).</li>
 <li>Legyen lehetőség a léptetés művelet viselkedésének kényelmes konfigurálására, további viselkedések bevezetésére és a meglévő/újonnan bevezetett viselkedések tetszőleges kombinálására <strong>anélkül, hogy a <code>Step</code> művelet kódját módosítani kellene!</strong></li>
 </ul>
-<p>A megoldáshoz a Chain of Responsibility tervezési mintát kell alkalmazni. A minta nem szerepel előadáson, de online források alapján könnyen megismerhető. </p>
+<p>A megoldáshoz a Chain of Responsibility tervezési mintát kell alkalmazni. A minta nem része az előadásanyagnak, de online források alapján könnyen megismerhető. </p>
 <details class="tip">
 <summary>Megoldás alapelve - kis segítség</summary>
 <p>Három konkrét Handler osztályt célszerű bevezetni és a <code>Lift</code> osztály konstruktorában megfelelő sorrendben "összefűzni", a <code>Step</code> műveletben pedig ezt használni.</p>
@@ -2446,8 +2446,8 @@
         </path>
       </svg>
     </span>
-    <span title="2026. május 2. 15:51:34">
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. május 2. 15:51:34 CEST"><span class="timeago" datetime="2026-05-02T15:51:34+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. május 2. 15:51:34 CEST">2026-05-02</span>
+    <span title="2026. május 17. 10:23:12">
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2026. május 17. 10:23:12 CEST"><span class="timeago" datetime="2026-05-17T10:23:12+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026. május 17. 10:23:12 CEST">2026-05-17</span>
     </span>
   </span>
 
