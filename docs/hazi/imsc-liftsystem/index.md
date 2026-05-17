@@ -27,12 +27,12 @@ Készíts egy `Lift` osztályt, mely egy emeletes ház felvonóját reprezentál
 * `TargetFloor` tulajdonság: Cél emelet. Egész érték.
 * `Stairway` tulajdonság: Lépcsőház száma, melyben a lift található. Egész érték. Egy lépcsőházban egy lift lehet (ezt nem kell validálni az alkalmazásban, de mindig így használjuk).
 * `Call` művelet: A lift hívására szolgál, beállítja a célemeletet a paraméterben megadott értékre.
-* `Step` művelet: A lift egy emelettel történő léptetésére szolgál (amennyiben az aktuális és célemelet nem egyezik: ha egyezik, nem csinál semmit). Véletlenszerű esetben - átlagosan kb. minden 5. lépés során - a lift ideiglenesen beragad: ez azt jelenti, hogy az adott lépés során nem vált emeletet a célemelet irányába.
+* `Step` művelet: A lift egy emelettel történő léptetésére szolgál (amennyiben az aktuális és célemelet nem egyezik: ha egyezik, nem csinál semmit). Véletlenszerűen - átlagosan kb. minden 5. lépés során - a lift ideiglenesen beragad: ez azt jelenti, hogy az adott lépés során nem vált emeletet a célemelet irányába.
 
 Készíts egy `LiftDoor` osztályt, mely egy liftajtót reprezentál:
 
-* Konstruktor paraméterben lehessen megadni a lift objektumot, melyhez a lift tartozik, valamint azt, hogy az ajtó melyik emeleten helyezkedik el.
-* A liftajtó kijelzője mindig a liftjének aktuális emeletét mutatja, kivéve, amikor a lift az adott liftajtó szintjére érkezik. Ekkor, ha ez volt a célállomás, egy 'o' jelenik meg a kijelzőn (jelezve, hogy nyílik az ajtó), egyébként egy '*'. 
+* Konstruktor paraméterben lehessen megadni a lift objektumot, melyhez a liftajtó tartozik, valamint azt, hogy az ajtó melyik emeleten helyezkedik el.
+* A liftajtó kijelzője mindig a liftjének aktuális emeletét mutatja, kivéve, amikor a lift megérkezik arra az emeletre, ahol az adott liftajtó található. Ekkor, ha ez volt a célemelet, egy 'o' jelenik meg a kijelzőn (jelezve, hogy nyílik az ajtó), egyébként egy '*'. 
 * A kijelzőhöz nem kell külön osztályt készíteni, a megjelenítésért a `LiftDoor` osztály felel.
 * Egy adott lifthez tartozó ajtók adatai egy oszlopban, egymás alatt (emelet sorrendjében) jelenjenek meg. Az 1. oszlopban az 1. lépcsőház, 2. oszlopban a 2. lépcsőház stb. lift/liftajtó adatok jelenjenek meg. Az oszlopok 20-as karakterszélességűek, így az 1. oszlop a 20-as, a 2. oszlop a 40-es stb. karakterpozícióban kezdődik. Az alábbi ábra illusztrálja az elrendezést két lift esetére (1. lift az első lépcsőházban, 2. lift a 2. lépcsőházban található):
   
@@ -42,7 +42,7 @@ Készíts egy `LiftDoor` osztályt, mely egy liftajtót reprezentál:
 
 * A konzolra írás során a `Console.SetCursorPosition` műveletet érdemes használni az írási pozíció beállítására.
 * Egyszerűsítés: a `Lift` osztálynak nem kell tudnia, hogy hány szint tartozik hozzá, így nem szükséges erre vonatkozó validációkat sem megvalósítani.
-* :exclamation: Kulcsfontosságú, hogy a `Lift` osztály nem tudhatja, milyen más osztályok építenek az állapotára. Pl. esetünkben egyelőre a `LiftDoor` ilyen (később lesz más is). Vagyis a rendszernek könnyen bővíthetőnek kell lenni más osztályokkal, melyek a `Lift` működésétől/állapotától függenek, új ilyen osztály bevezetésekor a `Lift` osztályt nem szabad a későbbiekben módosítani. Ennek megfelelően a `Lift` - `LiftDoor` viszonyát az Observer mintára kell építeni. 
+* :exclamation: Kulcsfontosságú, hogy a `Lift` osztály nem tudhatja, milyen más osztályok építenek az állapotára. Pl. esetünkben egyelőre a `LiftDoor` ilyen (később lesz más is). Vagyis a rendszernek könnyen bővíthetőnek kell lenni más osztályokkal, melyek a `Lift` működésétől/állapotától függenek, új ilyen osztály bevezetésekor a `Lift` osztályt ne kelljen módosítani. Ennek megfelelően a `Lift` - `LiftDoor` viszonyát az Observer mintára kell építeni. 
 * A jövőben a továbbfejlesztés során lehetnek más `Subject` osztályok is, ezért be kell vezetni egy `Subject` ősosztályt a kódduplikáció elkerülésére (de a házi feladatban csak egy subject lesz).
 * :exclamation: A megoldás NEM építhet .NET event-ekre (ugyanezen osztályokkal/interfészekkel pl. Java nyelven is megvalósíthatónak kell lennie).
 
@@ -105,7 +105,7 @@ A fenti kód rövid magyarázata:
 * A modell két liftet tartalmaz, az egyik az 1., a másik a 2. lépcsőházban található.
 * A konstruktorban létrehozzuk a két lifthez az egyes emeleteken található ajtókat (mindkét lépcsőház 5 emeletes).
 * A `Run` egy végtelen ciklusban futtatja a szimulációt. A `Step` műveletben léptet, vár egy másodpercet, majd megnöveli az aktuális iterációszámot.
-* A `Step` hívódik minden iterációban. Ebben léptetjük mindkét liftet, és bizonyos iterációkban hívjuk a két liftet az 5. illetve 1. emeletre.
+* A `Step` metódus minden iterációban meghívódik. Ebben léptetjük mindkét liftet, és bizonyos iterációkban hívjuk a két liftet az 5. illetve 1. emeletre.
 
 A következő mozgókép illusztrálja a működést:
  ![2 lifts](images/Lift-1-anim.gif)
@@ -125,7 +125,7 @@ A megoldás illusztrálása:
 
 ## 3. feladat - Meglévő LiftMonitor osztály beillesztése
 
-A feladat a liftek működési státuszáról információ megjelenítése. Emlékezzünk: a liftek véletlenszerű időközönként elakadnak, mint ahogy a korábbi leírásban szerepelt! Minden időpillanatban tudni szeretnénk, hogy egy lift működik (státusza "OK"), vagy el van akadva (státusza "stuck"). Ehhez rendelkezésre is áll az alábbi osztály:
+A feladat a liftek működési állapotának megjelenítése. Emlékezzünk: a liftek véletlenszerű időközönként elakadnak, ahogyan az a korábbi leírásban szerepelt! Minden időpillanatban tudni szeretnénk, hogy egy lift működik (státusza "OK"), vagy el van akadva (státusza "stuck"). Ehhez rendelkezésre is áll az alábbi osztály:
 
 ```csharp
 class LiftMonitor
@@ -136,7 +136,7 @@ class LiftMonitor
     public void CheckLift(Lift lift)
     {
         Console.SetCursorPosition(lift.Stairway * 20, 13);
-        if (lift.Floor == prevFloor && isPrevFloorInitialized)
+        if (lift.Floor == prevFloor && lift.Floor != lift.TargetFloor && isPrevFloorInitialized)
         {
             Console.Write($"LiftMonitor: stuck!");
         }
@@ -156,7 +156,7 @@ Vegyük fel a fenti osztályt!
 Illesszük be az Adapter minta segítségével a fenti osztályt a megoldásunkba:
 
 * A `LiftMonitor` osztály nem módosítható!
-* :exclamation: Kulcsfontosságú, hogy a beillesztése során NE kelljen a `Lift` osztályt módosítani (az Observer mintának köszönhetően). Tipp: a `Lift` akkor is kell értesítse a megfigyelőit, ha beragadás miatt nem váltott szintet, máskülönben a `LiftMonitor` nem tudja detektálni a beragadást.
+* :exclamation: Kulcsfontosságú, hogy a beillesztése során NE kelljen a `Lift` osztályt módosítani (az Observer mintának köszönhetően). Tipp: a `Lift` akkor is értesítse a megfigyelőit, ha beragadás miatt nem váltott szintet, máskülönben a `LiftMonitor` nem tudja detektálni a beragadást.
 * `LiftSystemModel` konstruktorában mindkét lifthez vegyünk fel egy-egy monitorozást megvalósító objektumot.
 * Csak Object Adapter alapú megoldás fogadható el (Class Adapter nem).
 
@@ -166,13 +166,13 @@ A megoldás működésének illusztrálása:
 
 ## 4. feladat - Lift léptetése a Chain of Responsibility minta segítségével
 
-Jelen megoldásban a lift léptetésének megvalósítása be van égetve a `Lift` osztály `Step` műveletébe. A feladat a lift léptetésének rugalmasabbá tétele. A következőket kell támogatni:
+A jelenlegi megoldásban a lift léptetésének megvalósítása be van égetve a `Lift` osztály `Step` műveletébe. A feladat a lift léptetésének rugalmasabbá tétele. A következőket kell támogatni:
 
 * A már meglévő, véletlenszerű elakadás.
 * Vészleállás mód. Amikor a liftre bekapcsolják a vészleállás módot, a `Step` művelet nem léptetheti a liftet semmilyen irányba (egészen a vészleállás mód deaktiválásáig).
 * Legyen lehetőség a léptetés művelet viselkedésének kényelmes konfigurálására, további viselkedések bevezetésére és a meglévő/újonnan bevezetett viselkedések tetszőleges kombinálására **anélkül, hogy a `Step` művelet kódját módosítani kellene!**
 
-A megoldáshoz a Chain of Responsibility tervezési mintát kell alkalmazni. A minta nem szerepel előadáson, de online források alapján könnyen megismerhető. 
+A megoldáshoz a Chain of Responsibility tervezési mintát kell alkalmazni. A minta nem része az előadásanyagnak, de online források alapján könnyen megismerhető. 
 
 ??? tip "Megoldás alapelve - kis segítség"
     Három konkrét Handler osztályt célszerű bevezetni és a `Lift` osztály konstruktorában megfelelő sorrendben "összefűzni", a `Step` műveletben pedig ezt használni.
