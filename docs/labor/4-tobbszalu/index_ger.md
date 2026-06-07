@@ -397,7 +397,7 @@ Die Schleife `while`, die in `WorkerThread`ständig läuft, implementiert ein so
 
 Im Folgenden wird die Anwendung so geändert, dass sie in einem blockierten Zustand wartet, bis Daten zum FIFO hinzugefügt werden (aber wenn Daten hinzugefügt werden, beginnt sie sofort mit der Verarbeitung). Um anzuzeigen, ob sich Daten in der Warteschlange befinden, wird `ManualResetEvent`verwendet.
 
-1. Fügen wir eine Instanz von `MaunalResetEvent` zu unserer Klasse `DataFifo` als `_hasData` hinzu.
+1. Fügen wir eine Instanz von `ManualResetEvent` zu unserer Klasse `DataFifo` als `_hasData` hinzu.
 
     ```cs
     // Infolge des Konstruktorparameters false wird das Ereignis anfänglich nicht signalisiert (Tor geschlossen)

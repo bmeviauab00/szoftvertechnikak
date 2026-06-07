@@ -670,8 +670,8 @@ Starten wir die Anwendung und setzen wir dann einen Haltepunkt im Setter der Eig
 Das liegt daran, dass wir oben die Datenverbindung `OneWay` verwendet haben, die nur eine Datenbindung von der Datenquelle zur Oberfläche ist. **Für den Weg zurück soll der Datenbindungsmodus auf `TwoWay` eingestellt werden.**
 
 ```xml
-Text="{x:Bind Name, Mode=TwoWay}"
-Text="{x:Bind Age, Mode=TwoWay}"
+Text="{x:Bind NewPerson.Name, Mode=TwoWay}"
+Text="{x:Bind NewPerson.Age, Mode=TwoWay}"
 ```
 
 Probieren wir es aus! Auf diese Weise funktioniert die Rückwärts-Datenverbindung: Die angegebene Eigenschaft des Controllers (in unserem Fall Text) und die Datenquelle bleiben bei jeder Richtungsänderung synchron.

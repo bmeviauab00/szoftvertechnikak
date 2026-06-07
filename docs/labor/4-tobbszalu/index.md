@@ -397,7 +397,7 @@ A `WorkerThread`-ben folyamatosan futó `while` ciklus ún. aktív várakozást 
 
 A következőkben úgy fogjuk módosítani az alkalmazást, hogy blokkolva várakozzon, amíg adat nem kerül a FIFO-ba (amikor viszont adat kerül bele, azonnal kezdje meg a feldolgozást). Annak jelzésére, hogy van-e adat a sorban egy `ManualResetEvent`-et fogunk használni.
 
-1. Adjunk hozzá egy `MaunalResetEvent` példányt a `DataFifo` osztályunkhoz `_hasData` néven.
+1. Adjunk hozzá egy `ManualResetEvent` példányt a `DataFifo` osztályunkhoz `_hasData` néven.
 
     ```cs
     // A false konstruktor paraméter eredményeképpen kezdetben az esemény nem jelzett (kapu csukva)
@@ -509,7 +509,7 @@ Az előző pontban megoldottuk a jelzést, ám ez önmagában nem sokat ér, his
 
 3. A `lock`-on belüli üresség-vizsgálat szerepe.
 
-    Az előző lépésben a `TryGet`-ben bevezettünk `_hasData` néven egy `MaunalResetEvent` objektumot. Ez pontosan akkor van jelzett állapotban, amikor a FIFO-ban van adat. Kérdés, szükség van-e még most is a lock blokkban az sor üresség vizsgálatra (`if (_innerList.Count > 0)`). Első érzésre redundánsnak gondolhatjuk. De próbáljuk ki, az `if`-ben az ürességvizsgálat helyett adjunk meg egy fix `true` értéket, ezzel semlegesítve az `if` hatását (azért dolgozunk így, hogy könnyű legyen visszacsinálni):
+    Az előző lépésben a `TryGet`-ben bevezettünk `_hasData` néven egy `ManualResetEvent` objektumot. Ez pontosan akkor van jelzett állapotban, amikor a FIFO-ban van adat. Kérdés, szükség van-e még most is a lock blokkban az sor üresség vizsgálatra (`if (_innerList.Count > 0)`). Első érzésre redundánsnak gondolhatjuk. De próbáljuk ki, az `if`-ben az ürességvizsgálat helyett adjunk meg egy fix `true` értéket, ezzel semlegesítve az `if` hatását (azért dolgozunk így, hogy könnyű legyen visszacsinálni):
 
     ```cs hl_lines="4"
         ...
