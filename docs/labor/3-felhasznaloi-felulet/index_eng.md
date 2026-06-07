@@ -667,8 +667,8 @@ Start the application, then set a breakpoint in the setter of the `Name` propert
 This happens because earlier we used `OneWay` data binding, which only means data binding from the data source to the UI. If we want the data binding to work in the reverse direction as well (from control to data source), we need to set the binding mode to **`TwoWay`**. This is called **two-way data binding**.
 
 ```xml
-Text="{x:Bind Name, Mode=TwoWay}"
-Text="{x:Bind Age, Mode=TwoWay}"
+Text="{x:Bind NewPerson.Name, Mode=TwoWay}"
+Text="{x:Bind NewPerson.Age, Mode=TwoWay}"
 ```
 
 Try it out! Now the data binding works in both directions:

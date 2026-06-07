@@ -20,7 +20,7 @@ Das Ziel der Hausaufgabe:
 - Kennenlernen der Grundlagen des MVVM-Toolkits
 - Üben von XAML-Techniken
 
-Die erforderliche Entwicklungsumgebung wird [hier](.../fejlesztokornyezet/index_ger.md) beschrieben, identisch mit Hausaufgabe 3 (XAML-Grundlagen).
+Die erforderliche Entwicklungsumgebung wird [hier](../fejlesztokornyezet/index_ger.md) beschrieben, identisch mit Hausaufgabe 3 (XAML-Grundlagen).
 
 ## Das Verfahren der Eingabe
 

@@ -167,7 +167,7 @@ Der folgende Code zeigt eine mögliche Lösung, die Details werden in den Codeko
             }
             catch (Exception e)
             {
-                Console.WriteLine("A fájl feldolgozása sikertelen.");
+                Console.WriteLine("Verarbeitung der Datei fehlgeschlagen.");
                 // Die e.Message enhält nur den Text der Ausnahme.
                 // Falls wir jede Information, die zu dieser Ausnahme gehört,
                 // ausschreiben möchten, dann benutzen wir e.ToString()

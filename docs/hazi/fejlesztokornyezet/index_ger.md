@@ -25,7 +25,7 @@ In der ersten Vorlesung des Kurses werden kurz die verschiedenen Versionen von .
 1. Starten Sie das Visual Studio-Installationsprogramm (z. B. durch Eingabe von "Visual Studio Installer" im Windows-Startmenü).
 2. Klicken Sie auf die Schaltfläche Ändern
 3. Vergewissern Sie sich in dem nun erscheinenden Fenster, dass die Karte **".NET-Desktop-Entwicklung"** aktiviert ist.
-4. Wenn nicht, entfernen Sie das Häkchen und klicken Sie unten rechts auf *Ändern*, um es zu installieren.
+4. Wenn nicht, setzen Sie das Häkchen und klicken Sie unten rechts auf *Ändern*, um es zu installieren.
 
 #### Unterstützung von Klassendiagrammen
 
@@ -34,8 +34,8 @@ Für bestimmte Hausaufgaben (sogar für die erste) benötigen Sie die Unterstüt
 1. Starten Sie das Visual Studio-Installationsprogramm (z. B. durch Eingabe von "Visual Studio Installer" im Windows-Startmenü).
 2. Klicken Sie auf die Schaltfläche Ändern
 3. Wählen Sie in dem nun erscheinenden Fenster die Registerkarte "Einzelne Komponenten"
-4. Geben Sie in das Suchfeld "Klassendesigner" ein und vergewissern Sie sich, dass "Klassendesigner" in der gefilterten Liste nicht angekreuzt ist.
-5. Wenn nicht, entfernen Sie das Häkchen und klicken Sie unten rechts auf *Ändern*, um es zu installieren.
+4. Geben Sie in das Suchfeld "Klassendesigner" ein und vergewissern Sie sich, dass "Klassendesigner" in der gefilterten Liste angekreuzt ist.
+5. Wenn nicht, setzen Sie das Häkchen und klicken Sie unten rechts auf *Ändern*, um es zu installieren.
 
     ![TableDiagram Unterstützung Installation](images/install-vs-class-diagram.png)
 
